@@ -1,12 +1,12 @@
 :: Accept-Dialogue [Dialogue nobr] {"position":"950,775","size":"100,100"}
 <<if _n.personality =="Calm">>
-"Yes. I’m ready — and I want you to be fully present with me"
+"Yes. I'm ready — and I want you to be fully present with me"
 <<elseif _n.personality == "Jolly">>
-"Yes! That sounds exciting — I’m totally in the mood for you."
+"Yes! That sounds exciting — I'm totally in the mood for you."
 <<elseif _n.personality == "Timid">>
 "I… yes. Only if you stay close to me the whole time."
 <<elseif _n.personality == "Tough">>
-"Heh. You’re bold. Fine — I’ll bite. Just try to keep up."
+"Heh. You're bold. Fine — I'll bite. Just try to keep up."
 <<elseif _n.personality == "Brave">>
 "Yeah! Let's do this!"
 <<elseif _n.personality == "Kind">>

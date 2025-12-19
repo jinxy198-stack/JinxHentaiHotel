@@ -937,13 +937,13 @@ setup.hasBoth = (npc, a, b) => !!(npc?.parts && npc.parts[a] && npc.parts[b]);
 
   
 })();</script><tw-tag name="creation-page" color="red"></tw-tag><tw-tag name="popup" color="blue"></tw-tag><tw-tag name="widget" color="green"></tw-tag><tw-tag name="Popup" color="yellow"></tw-tag><tw-tag name="Dialogue" color="blue"></tw-tag><tw-tag name="nobr" color="orange"></tw-tag><tw-passagedata pid="1" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
-&quot;Yes. I’m ready — and I want you to be fully present with me&quot;
+&quot;Yes. I&#39;m ready — and I want you to be fully present with me&quot;
 &lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
-&quot;Yes! That sounds exciting — I’m totally in the mood for you.&quot;
+&quot;Yes! That sounds exciting — I&#39;m totally in the mood for you.&quot;
 &lt;&lt;elseif _n.personality == &quot;Timid&quot;&gt;&gt;
 &quot;I… yes. Only if you stay close to me the whole time.&quot;
 &lt;&lt;elseif _n.personality == &quot;Tough&quot;&gt;&gt;
-&quot;Heh. You’re bold. Fine — I’ll bite. Just try to keep up.&quot;
+&quot;Heh. You&#39;re bold. Fine — I&#39;ll bite. Just try to keep up.&quot;
 &lt;&lt;elseif _n.personality == &quot;Brave&quot;&gt;&gt;
 &quot;Yeah! Let&#39;s do this!&quot;
 &lt;&lt;elseif _n.personality == &quot;Kind&quot;&gt;&gt;
@@ -3327,11 +3327,6 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
 		&quot;Taking hold of &quot; + _n.name + &quot;&#39;s shoulders, you push &quot; + $proset.them + &quot; down onto &quot; + $proset.their + &quot; back. Kneeling down between &quot; + $proset.their + &quot; &quot; + _n.body.legs + &quot;, you pause and look down into &quot; + $proset.their + &quot; &quot; + _n.eyes.toLowerCase() + &quot; eyes.&quot;,
 		_n.name + &quot; lies down on your bed, lifting &quot; + $proset.their + &quot; feet in the air.&quot;
 	)&gt;&gt;
-	&lt;br&gt;
-	&amp;ldquo;&lt;&lt;= either(
-		&quot;That&#39;s right, spread your legs for me...&quot;,
-		&quot;Good idea! Spread your legs nice and wide, now!&quot;
-	)&gt;&gt;&amp;rdquo;
 &lt;&lt;elseif $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
 		&quot;Taking hold of &quot; + _n.name + &quot;&#39;s shoulders, you push &quot; + $proset.them + &quot; down onto &quot; + $proset.their + &quot; knees. Kneeling down before &quot; + $proset.them + &quot;, you then lie down on your back, spreading your &quot; + $mc.body.legs + &quot; and look up into &quot; + _n.name + &quot;&#39;s &quot; + _n.eyes.toLowerCase() + &quot; eyes as you moan,&quot;,
@@ -3343,11 +3338,6 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
 		&quot;Much to your delight, you allow yourself to be pushed down onto your front, and as you present &quot; + $proset.them + &quot; with your &quot; + $mc.assSize + &quot; ass and groin, you moan,&quot;,
         &quot;You lie down on your bed as _n.name crawls between your legs.&quot;
 	)&gt;&gt;
-	&lt;br&gt;
-	&amp;ldquo;&lt;&lt;= either(
-		&quot;Come and take me!&quot;,
-		&quot;I&#39;m all yours, &quot; + _n.name + &quot;!&quot;
-	)&gt;&gt;&amp;rdquo;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="NPC-List-Body" tags="nobr" position="750,375" size="100,100">&lt;span id=&quot;list&quot;&gt;
 &lt;&lt;for _i = 0; _i &lt; $npcs.length; _i++&gt;&gt;
 	&lt;&lt;set _n to $npcs[_i]&gt;&gt;&lt;&lt;PronounsSet&gt;&gt;&lt;div class=&quot;npc-card&quot;&gt;
@@ -3874,11 +3864,11 @@ Wanna have aftercare or end the session?
     )&gt;&gt;
     &quot; Kneeling down between $proset.their _n.body.legs, you smirk as you hover over their body.&quot;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
-&quot;Not interested. But I’m content simply sharing this moment with you.&quot;
+&quot;Not interested. But I&#39;m content simply sharing this moment with you.&quot;
 &lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
-Not right now — but don’t worry, I’m still enjoying you being here.
+Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 &lt;&lt;elseif _n.personality == &quot;Timid&quot;&gt;&gt;
-&quot;I-I’m sorry. I don&#39;t want to… but I’m grateful you asked gently.&quot;
+&quot;I-I&#39;m sorry. I don&#39;t want to… but I&#39;m grateful you asked gently.&quot;
 &lt;&lt;elseif _n.personality == &quot;Tough&quot;&gt;&gt;
 &quot;Not happening. So drop it.&quot;
 &lt;&lt;elseif _n.personality == &quot;Brave&quot;&gt;&gt;
@@ -3890,12 +3880,12 @@ Not right now — but don’t worry, I’m still enjoying you being here.
 &lt;&lt;elseif _n.personality == &quot;Logical&quot;&gt;&gt;
 &quot;I decline. The conditions are not ideal for full engagement.&quot;
 &lt;&lt;elseif _n.personality == &quot;Sassy&quot;&gt;&gt;
-&quot;No — don’t look so shocked. I got other things to do anyway&quot;
+&quot;No — don&#39;t look so shocked. I got other things to do anyway&quot;
 &lt;&lt;elseif _n.personality == &quot;Mean&quot;&gt;&gt;
 &quot;With you? Absolutely not!&quot;
 &lt;&lt;else&gt;&gt;
 &quot;No&quot;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Respond-Dialogue" tags="nobr Dialogue" position="1375,1325" size="100,100">/* only what You say */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Respond-Dialogue" tags="nobr Dialogue" position="1375,1325" size="100,100">/* You respond to certain actions. */
 &lt;br&gt;
 &lt;b&gt;&lt;&lt;=$mc.name&gt;&gt;: &lt;/b&gt;
 &lt;&lt;if $sex.action == &quot;Kiss&quot;&gt;&gt;
@@ -5334,14 +5324,14 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 &lt;&lt;set _lines = {
   Default: [&quot;Hello&quot;,&quot;Hi&quot;],
   Calm: [&quot;We can take our time.&quot;,&quot;No rush.&quot;,&quot;Your presence is steady. Peaceful. I welcome it.&quot;],
-  Jolly: [&quot;Hey there! Great to see you!&quot;,&quot;Isn’t today perfect?&quot;],
-  Timid: [&quot;Ah s-sorry… you startled me. But I’m happy you’re here.&quot;],
-  Tough: [&quot;Hey. Don’t waste my time. Speak if you’ve got something worth saying.&quot;],
-  Brave: [&quot;You’re here. Good. I was ready for something to happen.&quot;],
+  Jolly: [&quot;Hey there! Great to see you!&quot;,&quot;Isn&#39;t today perfect?&quot;],
+  Timid: [&quot;Ah s-sorry… you startled me. But I&#39;m happy you&#39;re here.&quot;],
+  Tough: [&quot;Hey. Don&#39;t waste my time. Speak if you&#39;ve got something worth saying.&quot;],
+  Brave: [&quot;You&#39;re here. Good. I was ready for something to happen.&quot;],
   Kind: [&quot;Hi!&quot;,&quot;You look well.&quot;,&quot;Hey, seeing you always makes me happy.&quot;],
   Active: [&quot;There you are — I was seconds from coming to get you myself.&quot;],
   Logical: [&quot;You arrived precisely when I anticipated. Efficient...&quot;],
-  Sassy: [&quot;Oh? About time you showed up. I’ve been waiting awhile.&quot;],
+  Sassy: [&quot;Oh? About time you showed up. I&#39;ve been waiting awhile.&quot;],
   Mean: [&quot;Well there you are, lil brat!&quot;]
 }&gt;&gt;
 
@@ -7039,41 +7029,41 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
     origin: &quot;Camp Buddy&quot;
 }&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
 	&lt;&lt;if _n.personality ==&quot;Tough&quot;&gt;&gt;
-    “You want me in charge? Good, I don’t do half-measures.”
+    “You want me in charge? Good, I don&#39;t do half-measures.”
     &lt;&lt;elseif _n.personality== &quot;Sassy&quot;&gt;&gt;
-    &quot;You want me to take over? Fine, hope you’re ready to be handled properly.&quot;
+    &quot;You want me to take over? Fine, hope you&#39;re ready to be handled properly.&quot;
     &lt;&lt;elseif _n.personality== &quot;Brave&quot;&gt;&gt;
     &quot;Alright, I&#39;ll top&quot;
     &lt;&lt;elseif _n.personality== &quot;Shy&quot;&gt;&gt;
-    &quot;M-me… on top? I-I don’t know if I can… but… I’ll do my best…&quot;
+    &quot;M-me… on top? I-I don&#39;t know if I can… but… I&#39;ll do my best…&quot;
     &lt;&lt;elseif _n.personality== &quot;Relaxed&quot;&gt;&gt;
-    &quot;You want me to lead? Sure. I’ll keep it slow,  unless you ask otherwise.&quot;
+    &quot;You want me to lead? Sure. I&#39;ll keep it slow,  unless you ask otherwise.&quot;
     &lt;&lt;elseif _n.personality== &quot;Playful&quot;&gt;&gt;
-    &quot;So you’re giving me full control? Heh. Hope you’re ready to be teased nonstop.&quot;
+    &quot;So you&#39;re giving me full control? Heh. Hope you&#39;re ready to be teased nonstop.&quot;
     &lt;&lt;elseif _n.personality== &quot;Good&quot;&gt;&gt;
     &quot;You want me to take the lead? Very well, I&#39;ll take care of you&quot;
     &lt;&lt;elseif _n.personality== &quot;Evil&quot;&gt;&gt;
     &quot;Oh I&#39;m gonna enjoy you submitting to me.&quot;
     &lt;&lt;elseif _n.personality== &quot;Kind&quot;&gt;&gt;
-    &quot;You want me to lead? Then I’ll take care of you, we will both feel good.&quot;
+    &quot;You want me to lead? Then I&#39;ll take care of you, we will both feel good.&quot;
     &lt;&lt;elseif _n.personality== &quot;Logical&quot;&gt;&gt;
     &quot;You want me to lead? Very well if it&#39;s what will give the most satisfaction for both.&quot;
     &lt;&lt;elseif _n.personality== &quot;Studious&quot;&gt;&gt;
-    &quot;You want me to top? I’ve studied plenty, I won’t disappoint.&quot;
+    &quot;You want me to top? I&#39;ve studied plenty, I won&#39;t disappoint.&quot;
     &lt;&lt;elseif _n.personality== &quot;Active&quot;&gt;&gt;
-    &quot;You’re letting me take initiative? Perfect, I don’t waste time hesitating.&quot;
+    &quot;You&#39;re letting me take initiative? Perfect, I don&#39;t waste time hesitating.&quot;
     &lt;&lt;elseif _n.personality== &quot;Lonely&quot;&gt;&gt;
-    &quot;You’re leaving it to me? …Fine.&quot;
+    &quot;You&#39;re leaving it to me? …Fine.&quot;
     &lt;&lt;elseif _n.personality== &quot;Timid&quot;&gt;&gt;
-    &quot;You want me to take control…? I… I’ll try.&quot;
+    &quot;You want me to take control…? I… I&#39;ll try.&quot;
     &lt;&lt;elseif _n.personality== &quot;Stubborn&quot;&gt;&gt;
     &quot;I&#39;m on top and that&#39;s final!&quot;
     &lt;&lt;elseif _n.personality== &quot;Serious&quot;&gt;&gt;
-    &quot;You trust me to lead? Then I’ll carry this with full intent. No games.&quot;
+    &quot;You trust me to lead? Then I&#39;ll carry this with full intent. No games.&quot;
     &lt;&lt;elseif _n.personality== &quot;Jolly&quot;&gt;&gt;
-    &quot;So I get to lead? Nice — I’ll make sure you enjoy every second!&quot;
+    &quot;So I get to lead? Nice — I&#39;ll make sure you enjoy every second!&quot;
     &lt;&lt;elseif _n.personality== &quot;Naive&quot;&gt;&gt;
-    &quot;You want me to lead? I’ll do it, just tell me if I do something wrong.&quot;
+    &quot;You want me to lead? I&#39;ll do it, just tell me if I do something wrong.&quot;
     &lt;&lt;elseif _n.personality== &quot;Modest&quot;&gt;&gt;
     &quot;I&#39;m not a pro but I&#39;ll take the lead if it&#39;s what you want.&quot;
     &lt;&lt;elseif _n.personality== &quot;Quiet&quot;&gt;&gt;
@@ -7083,21 +7073,21 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
     &lt;&lt;elseif _n.personality== &quot;Calm&quot;&gt;&gt;
     &quot;Alright, relax and trust me.&quot;
     &lt;&lt;elseif _n.personality== &quot;Flamboyant&quot;&gt;&gt;
-    &quot;Fabulous — I’ll make this unforgettable.&quot;
+    &quot;Fabulous — I&#39;ll make this unforgettable.&quot;
     &lt;&lt;elseif _n.personality== &quot;Mean&quot;&gt;&gt;
     &quot;Hmph&quot;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $sex.roles.sub.name is _n.name&gt;&gt;
 	&lt;&lt;if _n.personality ==&quot;Tough&quot;&gt;&gt;
-     “Oh? You think you can handle me? Fine, just don’t expect me to go easy on you.”
+     “Oh? You think you can handle me? Fine, just don&#39;t expect me to go easy on you.”
      &lt;&lt;elseif _n.personality== &quot;Sassy&quot;&gt;&gt;
-    &quot;Oh? So you’re the boss now? Heh. Don’t get sloppy.&quot;
+    &quot;Oh? So you&#39;re the boss now? Heh. Don&#39;t get sloppy.&quot;
     &lt;&lt;elseif _n.personality== &quot;Brave&quot;&gt;&gt;
-    &quot;Hah, you’re taking charge? Then you better keep up. I don’t follow the weak.&quot;
+    &quot;Hah, you&#39;re taking charge? Then you better keep up. I don&#39;t follow the weak.&quot;
     &lt;&lt;elseif _n.personality== &quot;Shy&quot;&gt;&gt;
     &quot;O-okay… if you want me.&quot;
     &lt;&lt;elseif _n.personality== &quot;Relaxed&quot;&gt;&gt;
-    &quot;Alright, alright… take the wheel then. Just don’t make me do extra effort&quot;
+    &quot;Alright, alright… take the wheel then. Just don&#39;t make me do extra effort&quot;
     &lt;&lt;elseif _n.personality== &quot;Playful&quot;&gt;&gt;
     &quot;Oooh, show me how serious you are, then~&quot;
     &lt;&lt;elseif _n.personality== &quot;Good&quot;&gt;&gt;
@@ -7109,9 +7099,9 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
     &lt;&lt;elseif _n.personality== &quot;Logical&quot;&gt;&gt;
     &quot;Confident move. If you can maintain stable control, I have no objections.&quot;
     &lt;&lt;elseif _n.personality== &quot;Studious&quot;&gt;&gt;
-    &quot;You’re taking charge? Alright show me.&quot;
+    &quot;You&#39;re taking charge? Alright show me.&quot;
     &lt;&lt;elseif _n.personality== &quot;Active&quot;&gt;&gt;
-    &quot;Good — don’t hold back.&quot;
+    &quot;Good — don&#39;t hold back.&quot;
     &lt;&lt;elseif _n.personality== &quot;Lonely&quot;&gt;&gt;
     &quot;“Please, make me feel good.”&quot;
     &lt;&lt;elseif _n.personality== &quot;Timid&quot;&gt;&gt;
@@ -7119,19 +7109,19 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
     &lt;&lt;elseif _n.personality== &quot;Stubborn&quot;&gt;&gt;
     &quot;Tch, think you can break me? Give it your best shot then!&quot;
     &lt;&lt;elseif _n.personality== &quot;Serious&quot;&gt;&gt;
-    &quot;Understood. If you take command, then execute it properly, I won’t tolerate hesitation.&quot;
+    &quot;Understood. If you take command, then execute it properly, I won&#39;t tolerate hesitation.&quot;
     &lt;&lt;elseif _n.personality== &quot;Jolly&quot;&gt;&gt;
     &quot;Haha, then use me as you see fit!&quot;
     &lt;&lt;elseif _n.personality== &quot;Naive&quot;&gt;&gt;
-    &quot;Oh, you’re really taking charge? Then I’ll follow your lead&quot;
+    &quot;Oh, you&#39;re really taking charge? Then I&#39;ll follow your lead&quot;
     &lt;&lt;elseif _n.personality== &quot;Modest&quot;&gt;&gt;
-    &quot;…If you’re leading, then I’ll simply trust your judgment.&quot;
+    &quot;…If you&#39;re leading, then I&#39;ll simply trust your judgment.&quot;
     &lt;&lt;elseif _n.personality== &quot;Quiet&quot;&gt;&gt;
     &quot;Ok&quot;
     &lt;&lt;elseif _n.personality== &quot;Bashful&quot;&gt;&gt;
     *Blushes*
     &lt;&lt;elseif _n.personality== &quot;Calm&quot;&gt;&gt;
-    &quot;Alright. I’ll follow your pace, no need to rush.&quot;
+    &quot;Alright. I&#39;ll follow your pace, no need to rush.&quot;
     &lt;&lt;elseif _n.personality== &quot;Flamboyant&quot;&gt;&gt;
     &quot;Go ahead darling, treat me like a star!&quot;
     &lt;&lt;elseif _n.personality== &quot;Mean&quot;&gt;&gt;
