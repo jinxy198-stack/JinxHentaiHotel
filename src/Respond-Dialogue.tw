@@ -1,5 +1,5 @@
 :: Respond-Dialogue [nobr Dialogue] {"position":"1375,1325","size":"100,100"}
-/* only what You say */
+/* You respond to certain actions. */
 <br>
 <b><<=$mc.name>>: </b>
 <<if $sex.action == "Kiss">>

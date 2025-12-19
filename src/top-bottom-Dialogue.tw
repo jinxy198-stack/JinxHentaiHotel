@@ -1,41 +1,41 @@
 :: top-bottom-Dialogue [Dialogue nobr] {"position":"1000,900","size":"100,100"}
 <<if $sex.roles.dom.name is _n.name>>
 	<<if _n.personality =="Tough">>
-    “You want me in charge? Good, I don’t do half-measures.”
+    “You want me in charge? Good, I don't do half-measures.”
     <<elseif _n.personality== "Sassy">>
-    "You want me to take over? Fine, hope you’re ready to be handled properly."
+    "You want me to take over? Fine, hope you're ready to be handled properly."
     <<elseif _n.personality== "Brave">>
     "Alright, I'll top"
     <<elseif _n.personality== "Shy">>
-    "M-me… on top? I-I don’t know if I can… but… I’ll do my best…"
+    "M-me… on top? I-I don't know if I can… but… I'll do my best…"
     <<elseif _n.personality== "Relaxed">>
-    "You want me to lead? Sure. I’ll keep it slow,  unless you ask otherwise."
+    "You want me to lead? Sure. I'll keep it slow,  unless you ask otherwise."
     <<elseif _n.personality== "Playful">>
-    "So you’re giving me full control? Heh. Hope you’re ready to be teased nonstop."
+    "So you're giving me full control? Heh. Hope you're ready to be teased nonstop."
     <<elseif _n.personality== "Good">>
     "You want me to take the lead? Very well, I'll take care of you"
     <<elseif _n.personality== "Evil">>
     "Oh I'm gonna enjoy you submitting to me."
     <<elseif _n.personality== "Kind">>
-    "You want me to lead? Then I’ll take care of you, we will both feel good."
+    "You want me to lead? Then I'll take care of you, we will both feel good."
     <<elseif _n.personality== "Logical">>
     "You want me to lead? Very well if it's what will give the most satisfaction for both."
     <<elseif _n.personality== "Studious">>
-    "You want me to top? I’ve studied plenty, I won’t disappoint."
+    "You want me to top? I've studied plenty, I won't disappoint."
     <<elseif _n.personality== "Active">>
-    "You’re letting me take initiative? Perfect, I don’t waste time hesitating."
+    "You're letting me take initiative? Perfect, I don't waste time hesitating."
     <<elseif _n.personality== "Lonely">>
-    "You’re leaving it to me? …Fine."
+    "You're leaving it to me? …Fine."
     <<elseif _n.personality== "Timid">>
-    "You want me to take control…? I… I’ll try."
+    "You want me to take control…? I… I'll try."
     <<elseif _n.personality== "Stubborn">>
     "I'm on top and that's final!"
     <<elseif _n.personality== "Serious">>
-    "You trust me to lead? Then I’ll carry this with full intent. No games."
+    "You trust me to lead? Then I'll carry this with full intent. No games."
     <<elseif _n.personality== "Jolly">>
-    "So I get to lead? Nice — I’ll make sure you enjoy every second!"
+    "So I get to lead? Nice — I'll make sure you enjoy every second!"
     <<elseif _n.personality== "Naive">>
-    "You want me to lead? I’ll do it, just tell me if I do something wrong."
+    "You want me to lead? I'll do it, just tell me if I do something wrong."
     <<elseif _n.personality== "Modest">>
     "I'm not a pro but I'll take the lead if it's what you want."
     <<elseif _n.personality== "Quiet">>
@@ -45,21 +45,21 @@
     <<elseif _n.personality== "Calm">>
     "Alright, relax and trust me."
     <<elseif _n.personality== "Flamboyant">>
-    "Fabulous — I’ll make this unforgettable."
+    "Fabulous — I'll make this unforgettable."
     <<elseif _n.personality== "Mean">>
     "Hmph"
     <</if>>
 <<elseif $sex.roles.sub.name is _n.name>>
 	<<if _n.personality =="Tough">>
-     “Oh? You think you can handle me? Fine, just don’t expect me to go easy on you.”
+     “Oh? You think you can handle me? Fine, just don't expect me to go easy on you.”
      <<elseif _n.personality== "Sassy">>
-    "Oh? So you’re the boss now? Heh. Don’t get sloppy."
+    "Oh? So you're the boss now? Heh. Don't get sloppy."
     <<elseif _n.personality== "Brave">>
-    "Hah, you’re taking charge? Then you better keep up. I don’t follow the weak."
+    "Hah, you're taking charge? Then you better keep up. I don't follow the weak."
     <<elseif _n.personality== "Shy">>
     "O-okay… if you want me."
     <<elseif _n.personality== "Relaxed">>
-    "Alright, alright… take the wheel then. Just don’t make me do extra effort"
+    "Alright, alright… take the wheel then. Just don't make me do extra effort"
     <<elseif _n.personality== "Playful">>
     "Oooh, show me how serious you are, then~"
     <<elseif _n.personality== "Good">>
@@ -71,9 +71,9 @@
     <<elseif _n.personality== "Logical">>
     "Confident move. If you can maintain stable control, I have no objections."
     <<elseif _n.personality== "Studious">>
-    "You’re taking charge? Alright show me."
+    "You're taking charge? Alright show me."
     <<elseif _n.personality== "Active">>
-    "Good — don’t hold back."
+    "Good — don't hold back."
     <<elseif _n.personality== "Lonely">>
     "“Please, make me feel good.”"
     <<elseif _n.personality== "Timid">>
@@ -81,19 +81,19 @@
     <<elseif _n.personality== "Stubborn">>
     "Tch, think you can break me? Give it your best shot then!"
     <<elseif _n.personality== "Serious">>
-    "Understood. If you take command, then execute it properly, I won’t tolerate hesitation."
+    "Understood. If you take command, then execute it properly, I won't tolerate hesitation."
     <<elseif _n.personality== "Jolly">>
     "Haha, then use me as you see fit!"
     <<elseif _n.personality== "Naive">>
-    "Oh, you’re really taking charge? Then I’ll follow your lead"
+    "Oh, you're really taking charge? Then I'll follow your lead"
     <<elseif _n.personality== "Modest">>
-    "…If you’re leading, then I’ll simply trust your judgment."
+    "…If you're leading, then I'll simply trust your judgment."
     <<elseif _n.personality== "Quiet">>
     "Ok"
     <<elseif _n.personality== "Bashful">>
     *Blushes*
     <<elseif _n.personality== "Calm">>
-    "Alright. I’ll follow your pace, no need to rush."
+    "Alright. I'll follow your pace, no need to rush."
     <<elseif _n.personality== "Flamboyant">>
     "Go ahead darling, treat me like a star!"
     <<elseif _n.personality== "Mean">>

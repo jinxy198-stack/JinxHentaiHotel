@@ -4,11 +4,6 @@
 		"Taking hold of " + _n.name + "'s shoulders, you push " + $proset.them + " down onto " + $proset.their + " back. Kneeling down between " + $proset.their + " " + _n.body.legs + ", you pause and look down into " + $proset.their + " " + _n.eyes.toLowerCase() + " eyes.",
 		_n.name + " lies down on your bed, lifting " + $proset.their + " feet in the air."
 	)>>
-	<br>
-	&ldquo;<<= either(
-		"That's right, spread your legs for me...",
-		"Good idea! Spread your legs nice and wide, now!"
-	)>>&rdquo;
 <<elseif $sex.roles.dom.name == _n.name>>
 	<<= either(
 		"Taking hold of " + _n.name + "'s shoulders, you push " + $proset.them + " down onto " + $proset.their + " knees. Kneeling down before " + $proset.them + ", you then lie down on your back, spreading your " + $mc.body.legs + " and look up into " + _n.name + "'s " + _n.eyes.toLowerCase() + " eyes as you moan,",
@@ -20,11 +15,6 @@
 		"Much to your delight, you allow yourself to be pushed down onto your front, and as you present " + $proset.them + " with your " + $mc.assSize + " ass and groin, you moan,",
         "You lie down on your bed as _n.name crawls between your legs."
 	)>>
-	<br>
-	&ldquo;<<= either(
-		"Come and take me!",
-		"I'm all yours, " + _n.name + "!"
-	)>>&rdquo;
 <</if>>
 
 
