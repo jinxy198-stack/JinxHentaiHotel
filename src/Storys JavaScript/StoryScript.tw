@@ -1,0 +1,104 @@
+:: StoryScript [script]
+
+/* === Affection helpers + binder (place in Story JavaScript) === */
+(function () {
+	/* ------- binder (no timers) ------- */
+	function getVarByName(name) {
+		try { return State.getVar(name); } catch { return undefined; }
+	}
+	function applyBinding(el) {
+		const varName = el.getAttribute('data-bind');
+		if (!varName) return;
+
+		let val = getVarByName(varName);
+		let num = Number(val);
+		if (!Number.isFinite(num)) num = 0;
+
+		if (el.tagName === 'PROGRESS' || el.tagName === 'METER') {
+			let max = Number(el.getAttribute('max'));
+			if (!Number.isFinite(max) || max <= 0) { max = 100; el.setAttribute('max', '100'); }
+			num = Math.min(max, Math.max(0, num));
+			el.setAttribute('value', String(num));  // avoid indeterminate
+			el.value = num;
+			const sel = el.getAttribute('data-percent-target');
+			if (sel) {
+				const tgt = document.querySelector(sel);
+				if (tgt) tgt.textContent = Math.round((num / max) * 100) + '%';
+			}
+		} else {
+			el.textContent = val != null ? String(val) : '';
+		}
+	}
+	function updateAll(container) {
+		(container || document).querySelectorAll('[data-bind]').forEach(applyBinding);
+	}
+	$(document).on(':passagerender :update :save :load :undo :redo', function (ev) {
+		updateAll(ev && ev.content ? ev.content : document);
+	});
+	setup.updateBindings = function () { updateAll(document); };
+
+	/* ------- affection helpers ------- */
+	setup.clamp = function (x, min, max) { return Math.min(max, Math.max(min, Number(x) || 0)); };
+
+	setup.ensureAffection = function () {
+		if (!Number.isFinite(Number(State.variables.affection))) State.variables.affection = 0;
+	};
+
+	setup.addAffection = function (delta) {
+		setup.ensureAffection();
+		const v = Number(State.variables.affection) || 0;
+		const d = Number(delta) || 0;
+		State.variables.affection = setup.clamp(v + d, 0, 100);
+		setup.updateBindings();
+	};
+
+	/* Optional alias */
+	setup.bumpAffection = setup.addAffection;
+})();
+
+/* Default body-part presence flags */
+setup.defaultParts = {
+  head: true, torso: true,
+  leftArm: true, rightArm: true,
+  leftHand: true, rightHand: true,
+  leftLeg: true, rightLeg: true,
+  tail: false
+};
+
+/* Initialize parts on an NPC.
+   overrides = { key:Boolean, ... } e.g., { leftArm:false }
+*/
+setup.initParts = function (npc, overrides = {}) {
+  npc.parts = Object.assign({}, setup.defaultParts, overrides);
+  return npc;
+};
+
+/* Check helpers */
+setup.hasPart = (npc, key) => !!(npc && npc.parts && npc.parts[key]);
+
+setup.hasAny  = (npc, keys) => !!(npc?.parts && keys.some(k => npc.parts[k]));
+setup.hasBoth = (npc, a, b) => !!(npc?.parts && npc.parts[a] && npc.parts[b]);
+
+/* === General helpers & tiny widgets === */
+(function () {
+  /* One-liner picker is already present: setup.pick(...) in SugarCube runtime. Keep using it. */
+
+  /* Generic confirm->goto widget to kill repetition:
+     Usage in passages: <<ConfirmBack "Index-CC" "pages.gender">> */
+  Macro.add('ConfirmBack', {
+    handler() {
+      const dest = this.args[0] || 'Index-CC';
+      const pageFlag = this.args[1]; // optional, e.g., "pages.gender"
+      const $btn = jQuery(document.createElement('button')).text('Confirm');
+      $btn.on('click', () => {
+        if (pageFlag) State.setVar(`$${pageFlag}`, true);
+        Engine.play(dest);
+      });
+      jQuery(this.output).append($btn);
+    }
+  });
+
+  
+})();
+
+

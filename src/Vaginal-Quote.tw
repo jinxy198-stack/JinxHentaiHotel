@@ -1,0 +1,64 @@
+:: Vaginal-Quote [nobr Dialogue] {"position":"1600,1400","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* NPC fucks your pussy*/
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Good _n.petname! Feel my <<= $mc.genitals.toLowerCase() >> slide deep into your little pussy!",
+				"That's right, be a good _n.petname and moan for me! Feel my <<= $mc.genitals.toLowerCase() >> sliding deep into your cute little cunt!",
+				"Your cute little cunt feels so good squeezing down around my <<= $mc.genitals.toLowerCase() >>!",
+				"Fuck! Your pussy feels so good!",
+				"Oh yes! Take my cock! Take it deep!",
+				"Your pussy was made for my cock!",
+				"The way you're squeezing in there, feels so damn good!",
+				"Oh fuck, this feels great."
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Fuck! Your pussy feels so good!",
+				"Yes! Use my cock! I love your pussy!",
+				"Oh yes! Use me! I love your pussy!",
+				"The way you're squeezing in there, feels so damn good!",
+                "Uah!",
+                "Ah",
+                "Ha! Ah!"
+			)>>
+		<<else>>
+			<<= either(
+				"Your pussy is so poggers!", /* adjust if you want less meme-y */
+				"Fuck! Your pussy feels so good!",
+				"The way you're squeezing in there, feels so damn good!"
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* You fuck NPC's pussy */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Don't stop! Harder! Fuck me! Yes, yes, yes!",
+				"Fuck my pussy!",
+				"It's so big!",
+				"Keep fucking me!",
+				"You like feeling my pussy gripping down on your cock?!",
+				"Keep going! Get that _n.genitals in deep like a good _n.petname!",
+				"Yes! Fuck me! Fuck me harder! Don't stop!",
+                "Mmm, I'm glad you like my body so much."
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Don't stop! Harder! Fuck me! Yes, yes, yes!",
+				"It's so big!",
+				"I feel so full!"
+			)>>
+		<<else>>
+			<<= either(
+				"Don't stop! Harder! Fuck me! Yes, yes, yes!",
+				"It's so big!",
+				"I feel so full!",
+				"Keep fucking me!",
+				"Uhnn! Fuck, fuck, fuck!",
+				"Ahh!",
+                "It's inside me!"
+			)>>
+		<</if>>
+ <</if>>
+
+

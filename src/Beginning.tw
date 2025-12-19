@@ -1,0 +1,26 @@
+:: Beginning {"position":"100,575","size":"100,100"}
+<<set $gamelocation to "Hotel Room">>
+The first sensation you feel is soft fabric against your back. The next is a warm radiance against your front.
+
+<span class="Jinx">"So, you're finally awake 
+I was waiting quite awhile for you to awaken."
+Now get up $mc.name ."
+</span>
+<span class="mc">
+"W-who are you?"
+</span>
+<span class="Jinx">
+"Haha! You don't know who I am? I am Jinx, the god of sex and joy. I have chosen you to be my emissary."
+"If you have questions, best ask them now."
+</span>
+<p>Ask Jinx:</p>
+<<button "God?">><<PopupJinxQ "god" "god?">><</button>>
+<<button "Emissary?">><<PopupJinxQ "emissary" "Emissary?">><</button>>
+<<button "Where am I?">><<PopupJinxQ "where?" "Where am I?">><</button>>
+
+<<button [[I'm done|DoneQuestions]]>><</button>>
+
+
+
+
+

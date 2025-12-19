@@ -1,0 +1,14 @@
+:: Against-Wall-Dialogue [nobr Dialogue] {"position":"975,1225","size":"100,100"}
+
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+   	"You quickly move up against a nearby wall. Placing your hands up against the solid surface that's now in front of you, you push your <<= $mc.assSize.toLowerCase() >> ass out, shaking it at _n.name as you try to encourage $proset.them to fuck you like this."
+    )>>
+<<elseif $sex.roles.sub.name== _n.name>>
+	<<=either(
+	"Taking hold of $proset.their shoulders, you push $proset.them up against a nearby wall.",
+	"Grinding your body up against $proset.their back, _n.name feels your breath on $proset.their _n.body.ears."
+    )>>
+<</if>>
+
+

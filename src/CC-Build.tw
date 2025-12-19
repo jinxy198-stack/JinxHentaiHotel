@@ -1,0 +1,20 @@
+:: CC-Build [creation-page] {"position":"1050,225","size":"100,100"}
+<<BodyBuild>>
+<h1>Set up the frame of the body</h1>
+Tall, short, wide, thin... there are many ways to define how a body is framed. Below are examples of setting the PC's height, type, and musculature.
+
+//How tall are you?// <<listbox "$mc.bodyheight">><<optionsfrom _height>><</listbox>>
+
+//What is your body type?// <<listbox "$mc.bodyweight">><<optionsfrom _type>><</listbox>>
+
+//How muscular are you?// <<listbox "$mc.bodymusc">><<optionsfrom _muscle>><</listbox>>
+<<if $mc.gender is "female">>
+//What is your breast size?
+<<listbox "$mc.breastsize">><<optionsfrom _breast>>
+<</listbox>>
+<</if>>
+
+
+<<button [[Confirm|Index-CC]]>><</button>>
+
+

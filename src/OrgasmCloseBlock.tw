@@ -1,0 +1,41 @@
+:: OrgasmCloseBlock [nobr] {"position":"1550,925","size":"100,100"}
+<<if _n.arousal >= 100>>
+    <<replace "#actions">><</replace>>
+	<<replace "#positionList">><</replace>>
+	<<replace "#log">>You are close to orgasm 
+    <br>
+    _n.name:<<include "Orgasm-Close-Quote">><</replace>>
+
+	<<button "Cum">>
+		<<set $orgasmPlace = "Inside">>
+		<<set $sex.stage = "Orgasm">>
+
+		<<if $sex.action == "Anal">>
+			<<set $sex.action = "Anal Orgasm">>
+		<<elseif $sex.action == "Vaginal">>
+			<<set $sex.action = "Vaginal Orgasm">>
+		<<elseif $sex.action == "Handjob">>
+			<<set $sex.action = "Handjob Orgasm">>
+		<<elseif $sex.action == "Footjob">>
+			<<set $sex.action = "Footjob Orgasm">>
+		<<elseif $sex.action == "Frot">>
+			<<set $sex.action = "Frot Orgasm">>
+		<<elseif $sex.action == "Rimjob">>
+			<<set $sex.action = "Rimjob Orgasm">>
+		<<elseif $sex.action == "Blowjob">>
+			<<set $sex.action = "Blowjob Orgasm">>
+		<<elseif $sex.action == "Boobjob">>
+			<<set $sex.action = "Boobjob Orgasm">>
+		<<elseif $sex.action == "Cunnilingus">>
+			<<set $sex.action = "Cunnilingus Orgasm">>
+		<<else>>
+			<<set $sex.action = "Orgasm">>
+		<</if>>
+
+		<<replace "#log">><<include "OrgasmBlock">><</replace>>
+	<</button>>
+    
+<</if>>
+
+
+

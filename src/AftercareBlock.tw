@@ -1,0 +1,21 @@
+:: AftercareBlock [nobr] {"position":"1800,925","size":"100,100"}
+	<<replace "#actions">>
+
+			<<button "Cuddle">>
+				<<set $sex.stage = "Aftercare">>
+				<<set $sex.action = "Cuddle">>
+				<<run setup.bumpAffection ? setup.bumpAffection(4) : (setup.addAffection(4), setup.updateBindings())>>
+				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+				<<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+			<</button>>
+		<<button "End Session">>
+			<<set $lastNpc = $ui.npc>>      <!-- remember who you were with -->
+			<<set $sex = { stage: "foreplay", log: [] }>>  <!-- optional reset -->
+            <<set $seenActions = {}>>
+			<<goto "Bedroom">>              <!-- or "Your Room" or whatever -->
+		<</button>>
+	<</replace>>
+
+
+
+

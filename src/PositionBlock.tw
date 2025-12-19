@@ -1,0 +1,143 @@
+:: PositionBlock [nobr] {"position":"1550,800","size":"100,100"}
+	<hr>
+    <div id="positionList" class="position-block">
+    Change location:
+	<<if $position != "Standing">>
+		<<button "Stand up">>
+			<<set $position = "Standing">>
+			<<set $sexSpot = "On Floor">>
+			<<replace "#position">><b>Position: </b><<= $position >><</replace>>
+            <<replace "#intro">><</replace>>
+			<<replace "#log">><<include "PositionDialogue">><</replace>>
+			<<replace "#positionList">><<include "PositionBlock">><</replace>>
+			<<replace "#actions">><<include "ForeplayBlock">><<include "IntercourseBlock">><</replace>>
+		<</button>> |
+	<</if>>
+	<<if $position != "Sitting">>
+		<<button "Sit on bed">>
+			<<set $position = "Sitting">>
+			<<set $sexSpot = "On Bed">>
+			<<replace "#position">><b>Position: </b><<= $position >><</replace>>
+			<<replace "#intro">><</replace>>
+			<<replace "#log">><<include "PositionDialogue">><</replace>>
+			<<replace "#positionList">><<include "PositionBlock">><</replace>>
+			<<replace "#actions">><<include "ForeplayBlock">><<include "IntercourseBlock">><</replace>>
+		<</button>> |
+	<</if>>
+
+	<br>
+	Change Position:
+	<<if $sexSpot == "On Bed">>
+		<<if $position != "Cowgirl">>
+			<<button "Cowgirl">>
+				<<set $position = "Cowgirl">>
+				<<set $sexSpot = "On Bed">>
+				<<replace "#position">><b>Position: </b><<= $position >><</replace>>
+				<<replace "#intro">><</replace>>
+				<<replace "#log">><<include "PositionDialogue">><</replace>>
+				<<replace "#positionList">><<include "PositionBlock">><</replace>>
+				<<replace "#actions">><<include "ForeplayBlock">><<include "IntercourseBlock">><</replace>>
+			<</button>> |
+		<</if>>
+
+		<<if $position != "Missionary">>
+			<<button "Missionary">>
+				<<set $position = "Missionary">>
+				<<set $sexSpot = "On Bed">>
+				<<replace "#position">><b>Position: </b><<= $position >><</replace>>
+				<<replace "#intro">><</replace>>
+				<<replace "#log">><<include "PositionDialogue">><</replace>>
+				<<replace "#positionList">><<include "PositionBlock">><</replace>>
+				<<replace "#actions">><<include "ForeplayBlock">><<include "IntercourseBlock">><</replace>>
+			<</button>> |
+		<</if>>
+
+		<<if $position != "Doggystyle">>
+			<<button "Doggystyle">>
+				<<set $position = "Doggystyle">>
+				<<set $sexSpot = "On Bed">>
+				<<replace "#position">><b>Position: </b><<= $position >><</replace>>
+				<<replace "#intro">><</replace>>
+				<<replace "#log">><<include "PositionDialogue">><</replace>>
+				<<replace "#positionList">><<include "PositionBlock">><</replace>>
+				<<replace "#actions">><<include "ForeplayBlock">><<include "IntercourseBlock">><</replace>>
+			<</button>> |
+		<</if>>
+
+		<<if $position != "SixtyNine">>
+			<<button "Sixty Nine">>
+				<<set $position = "SixtyNine">>
+				<<set $sexSpot = "On Bed">>
+				<<replace "#position">><b>Position: </b><<= $position >><</replace>>
+				<<replace "#intro">><</replace>>
+				<<replace "#log">><<include "PositionDialogue">><</replace>>
+				<<replace "#positionList">><<include "PositionBlock">><</replace>>
+				<<replace "#actions">><<include "ForeplayBlock">><<include "IntercourseBlock">><</replace>>
+			<</button>> |
+		<</if>>
+
+		<<if $position != "Sit on Face">>
+			<<button "Sit on face">>
+				<<set $position = "Sit on Face">>
+				<<set $sexSpot = "On Bed">>
+				<<replace "#position">><b>Position: </b><<= $position >><</replace>>
+				<<replace "#intro">><</replace>>
+				<<replace "#log">><<include "PositionDialogue">><</replace>>
+				<<replace "#positionList">><<include "PositionBlock">><</replace>>
+				<<replace "#actions">><<include "ForeplayBlock">><<include "IntercourseBlock">><</replace>>
+			<</button>> |
+		<</if>>
+
+		<<if $position != "Sit on Lap">>
+			<<button "Sit on Lap">>
+				<<set $position = "Sit on Lap">>
+				<<set $sexSpot = "On Bed">>
+				<<replace "#position">><b>Position: </b><<= $position >><</replace>>
+				<<replace "#intro">><</replace>>
+				<<replace "#log">><<include "PositionDialogue">><</replace>>
+				<<replace "#positionList">><<include "PositionBlock">><</replace>>
+				<<replace "#actions">><<include "ForeplayBlock">><<include "IntercourseBlock">><</replace>>
+			<</button>> |
+		<</if>>
+	<</if>>
+
+	<<if $sexSpot == "On Floor">>
+		<<if $position != "Lean against wall">>
+			<<button "Lean against wall">>
+				<<set $position = "Lean against wall">>
+				<<set $sexSpot = "On Floor">>
+				<<replace "#position">><b>Position: </b><<= $position >><</replace>>
+				<<replace "#intro">><</replace>>
+				<<replace "#log">><<include "PositionDialogue">><</replace>>
+				<<replace "#positionList">><<include "PositionBlock">><</replace>>
+				<<replace "#actions">><<include "ForeplayBlock">><<include "IntercourseBlock">><</replace>>
+			<</button>> |
+		<</if>>
+
+		<<if $position != "Oral Front">>
+			<<button "Oral Front">>
+				<<set $position = "Oral Front">>
+				<<set $sexSpot = "On Floor">>
+				<<replace "#position">><b>Position: </b><<= $position >><</replace>>
+				<<replace "#intro">><</replace>>
+				<<replace "#log">><<include "PositionDialogue">><</replace>>
+				<<replace "#positionList">><<include "PositionBlock">><</replace>>
+				<<replace "#actions">><<include "ForeplayBlock">><<include "IntercourseBlock">><</replace>>
+			<</button>> |
+		<</if>>
+
+		<<if $position != "Oral Back">>
+			<<button "Oral Back">>
+				<<set $position = "Oral Back">>
+				<<set $sexSpot = "On Floor">>
+				<<replace "#position">><b>Position: </b><<= $position >><</replace>>
+				<<replace "#intro">><</replace>>
+				<<replace "#log">><<include "PositionDialogue">><</replace>>
+				<<replace "#positionList">><<include "PositionBlock">><</replace>>
+				<<replace "#actions">><<include "ForeplayBlock">><<include "IntercourseBlock">><</replace>>
+			<</button>> |
+		<</if>>
+	<</if>>
+    </div>
+
+

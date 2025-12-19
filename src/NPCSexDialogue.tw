@@ -1,0 +1,32 @@
+:: NPCSexDialogue [nobr Dialogue] {"position":"1000,1025","size":"100,100"}
+<<silently>>
+	<<set _n = $ui.npc>>
+	<<if !_n>><<return>><</if>>
+	<<set _a = ($sex and $sex.action) or "none">>
+<</silently>>
+
+<<switch _a>>
+	<<case "Kiss">><<include "Kiss-Dialogue">>
+	<<case "Caress">><<include "Caress-Dialogue">>
+    <<case "Frot">><<include "Frot-Dialogue">>
+	<<case "Grope Breast">><<include "Grope-Breast-Dialogue">>
+	<<case "Anal">><<include "Anal-Dialogue">>
+	<<case "Vaginal">><<include "Vaginal-Dialogue">>
+	<<case "Cunnilingus">><<include "Cunnilingus-Dialogue">>
+	<<case "Blowjob">><<include "Blowjob-Dialogue">>
+	<<case "Handjob">><<include "Handjob-Dialogue">>
+    <<case "Footjob">><<include "Footjob-Dialogue">>
+    <<case "Rimjob">><<include "Rimjob-Dialogue">>
+	<<case "Cuddle">><<include "Cuddle-Dialogue">>
+    <<case "Finger Ass">><<include "Finger-Ass-Dialogue">>
+    <<case "Finger Pussy">><<include "Finger-Vagina-Dialogue">>
+    <<case "Grope Butt">><<include "Grope-Butt-Dialogue">>
+    <<case "Suck Foot">><<include "SuckFoot-Dialogue">>
+    <<case "Boobjob">><<include "Boobjob-Dialogue">>
+    <<case "Pet Ears">><<include "Pet-Ears-Dialogue">>
+    <<case "Touch Stomach">><<include "Feel-Stomach-Dialogue">>
+    <<case "Press Face on Chest">><<include "Face-On-Chest-Dialogue">>
+    <<case "Embrace">><<include "Embrace-Dialogue">>
+<</switch>>
+
+

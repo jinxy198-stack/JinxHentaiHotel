@@ -1,0 +1,181 @@
+:: ForeplayBlock [nobr] {"position":"1675,800","size":"100,100"}
+<<set $seenActions = $seenActions or {}>>
+<hr>
+<b>Foreplay:</b>
+
+<<if $position == "Standing" or $position == "Missionary" or $position == "Sitting" or $position == "Cowgirl" >>
+	<<button "Kiss">>
+		<<set $sex.action = "Kiss">>
+		<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+		<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+		<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+        <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+		<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+        <<replace "#intro">><</replace>>
+		<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+		<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+	<</button>> |
+<</if>>
+
+<<button "Caress">>
+	<<set $sex.action = "Caress">>
+	<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+	<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+		<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+        <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+		<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+        <<replace "#intro">><</replace>>
+		<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+		<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+<</button>> |
+
+<<if $position == "Standing" or $position == "Missionary" or $position == "Sitting" or $position == "Cowgirl" or $position == "Sit on Lap">>
+	<<button "Embrace">>
+		<<set $sex.action = "Embrace">>
+		<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+		<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+			<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+			<<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+			<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+			<<replace "#intro">><</replace>>
+			<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+			<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+	<</button>> |
+<</if>>
+
+<<if $position == "Standing" or $position == "Missionary" or $position == "Sitting" or $position == "Cowgirl" >>
+	<<button "Feel Abdomen">>
+		<<set $sex.action = "Touch Stomach">>
+		<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+		<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+			<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+			<<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+			<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+			<<replace "#intro">><</replace>>
+			<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+			<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+	<</button>> |
+<</if>>
+
+<<if ( _n.body && _n.body.ears && $sex.roles.sub.name == _n.name) || ($mc.body && $mc.body.ears && $sex.roles.dom.name == _n.name)>>
+	<<button "Pet Ears">>
+		<<set $sex.action = "Pet Ears">>
+		<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+		<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+		<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+		<<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+		<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+		<<replace "#intro">><</replace>>
+		<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+		<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+	<</button>> |
+<</if>>
+
+
+<<if $position == "Standing" or $position == "Missionary" or $position == "Cowgirl" or $position == "Sit on Lap">>
+	<<if $mc.genitals == "Penis" and _n.genitals == "Penis">>
+		<<button "Frottage">>
+			<<set $sex.action = "Frot">>
+			<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+			<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+			<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+            <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+			<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+            <<replace "#intro">><</replace>>
+			<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+			<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+		<</button>> |
+	<</if>>
+<</if>>
+
+<<if $position == "Standing" or $position == "Sitting" or $position == "Missionary" or $position == "Cowgirl">>
+	<<if _n.breastsize or $mc.breastsize>>
+		<<button "Grope breast">>
+			<<set $sex.action = "Grope Breast">>
+			<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+			<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+			<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+            <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+			<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+            <<replace "#intro">><</replace>>
+			<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+			<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+		<</button>>
+	<</if>>
+<</if>>
+
+<<if $position == "SixtyNine" or $position == "Oral Back" or $position == "Sit on Face">>
+		<<button "Rimjob">>
+				<<set $sex.action = "Rimjob">>
+				<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+				<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+                <<replace "#intro">><</replace>>
+				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+                <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+		<</button>> |
+<</if>>
+
+<<if $position == "Lean against wall" or $position == "Sitting" or $position == "Standing" or $position=="SixtyNine" or  $position=="Oral Back" or $position=="Doggystyle" or $position == "Sit on Face">>
+		<<button "Grope Butt">>
+				<<set $sex.action = "Grope Butt">>
+				<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+				<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+                <<replace "#intro">><</replace>>
+				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+                <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+		<</button>> |
+<</if>>
+
+<<if $position == "SixtyNine" or $position == "Oral Back" or $position == "Sit on Face" or $position == "Doggystyle">>
+		<<button "Finger Ass">>
+				<<set $sex.action = "Finger Ass">>
+				<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+				<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+                <<replace "#intro">><</replace>>
+				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+                <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+		<</button>> |
+<</if>>
+
+<<if $position == "SixtyNine" or $position == "Oral Front" or $position == "Sit on Face" or $position == "Doggystyle">>
+	<<if _n.genitals=="Vagina" and $sex.roles.sub.name == _n.name or $mc.genitals =="Vagina" and $sex.roles.dom.name == _n.name>>
+		<<button "Finger Pussy">>
+				<<set $sex.action = "Finger Pussy">>
+				<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+				<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+                <<replace "#intro">><</replace>>
+				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+                <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+		<</button>> |
+<</if>>
+	<</if>>
+    
+<<if $position == "SixtyNine">>
+	<<button "Suck Foot">>
+		<<set $sex.action = "Suck Foot">>
+		<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
+		<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
+		<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+        <<replace "#intro">><</replace>>
+		<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+        <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+		<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+		<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+	<</button>> |
+	<</if>>
+<br>
+
+
+

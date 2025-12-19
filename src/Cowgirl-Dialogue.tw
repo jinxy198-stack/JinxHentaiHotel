@@ -1,0 +1,30 @@
+:: Cowgirl-Dialogue [Dialogue nobr] {"position":"875,1225","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+		"Taking hold of " + _n.name + "'s shoulders, you push " + $proset.them + " down onto " + $proset.their + " back. You then lower yourself down on top of " + $proset.them + ", bringing your crotch down to bump against " + $proset.theirs + " as you straddle " + $proset.them + " in the cowgirl position. Once you've made yourself comfortable, you grin down at " + _n.name + " and say, ",
+		"Lifting your " + $mc.body.arms + ", you take hold of " + _n.name + "'s shoulders, and with a little pressure, try to get " + $proset.them + " to drop down onto " + $proset.their + " back as you plead, ",
+		"Taking hold of " + _n.name + "'s shoulders, you pull " + $proset.them + " down with you as you lie down on your back. With a firm grip on " + _n.name + "'s " + _n.body.hips + ", you push " + $proset.them + " back so that they are straddling you in the cowgirl position. Once you've made yourself comfortable, you look up at " + _n.name + " and moan, "
+	)>>
+	<br>
+	<<= either(
+		"Give me a ride.",
+		"Would it be okay if I rode your cock a little?",
+		"I kinda like to feel you in my ass…"
+	)>>
+<<elseif $sex.roles.sub.name == _n.name>>
+	<<= either(
+		"Dropping down and quickly lying on your back, you put on the most enticing look you can muster as you plead, ",
+		"Jumping down over the top of you, " + _n.name + " lowers " + $proset.themself + " down over your groin, bringing " + $proset.their + " crotch to yours as " + $proset.they + " straddle you in the cowgirl position. Leaning forward a little, " + $proset.they + " grin down at you, ",
+		"Allowing you to push " + $proset.them + " down, " + _n.name + " reaches up and takes a firm grip on your " + $mc.body.hips + ", before pulling you down so that you're straddling " + $proset.them + " in the cowgirl position. Looking up into your " + $mc.eyes + " eyes, " + $proset.they + " says, "
+	)>>
+	<br>
+<</if>>
+<<= either(
+	"Good " + _n.petname + "! It's time to give you a ride!",
+	"Let me ride you... Please!",
+	"Good " + _n.petname + "! It's time for you to have a ride!",
+	"Come and ride me... Please!"
+)>>
+
+
+

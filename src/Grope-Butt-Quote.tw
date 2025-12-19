@@ -1,0 +1,26 @@
+:: Grope-Butt-Quote [nobr Dialogue] {"position":"1700,1300","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* NPC gropes your butt */
+		<<if _n.sexpref == "Dominant">>
+			<<= either("I love how your ass feels.")>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either("I love how your ass feels.")>>
+		<<else>>
+			<<= either("I love how your ass feels.")>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* You grope NPC's butt */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+            	"Your hands are so warm..."
+            )>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+            	"Your hands are so warm..."
+           	)>>
+		<<else>>
+			<<= either("Your hands are so warm...")>>
+		<</if>>
+	<</if>>
+
+

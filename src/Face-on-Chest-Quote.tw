@@ -1,0 +1,48 @@
+:: Face-on-Chest-Quote [nobr Dialogue] {"position":"1700,1600","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* NPC puts their face in your chest */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Mmmf—rrhh… mmnnh!",
+				"Hrrmph… mffh—mm!",
+				"Nnff… mmphh—rrgh!",
+				"Mmm—hff… nnhhmm!",
+				"Rrmmf—hnn… mpphh!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Mmmf—rrhh… mmnnh!",
+				"Hrrmph… mffh—mm!",
+				"Nnff… mmphh—rrgh!",
+				"Mmm—hff… nnhhmm!",
+				"Rrmmf—hnn… mpphh!"
+			)>>
+		<<else>>
+			<<= either(
+				"Mmmf—rrhh… mmnnh!",
+				"Hrrmph… mffh—mm!",
+				"Nnff… mmphh—rrgh!",
+				"Mmm—hff… nnhhmm!",
+				"Rrmmf—hnn… mpphh!"
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* You put your face in NPC's chest */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Bet you like that, huh?.",
+                "Ah!",
+                "Hah"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Aww."
+			)>>
+		<<else>>
+			<<= either(
+				"Is my chest comfy?"
+			)>>
+		<</if>>
+	<</if>>
+
+

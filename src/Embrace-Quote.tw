@@ -1,0 +1,36 @@
+:: Embrace-Quote [nobr Dialogue] {"position":"1700,1500","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* NPC embraces you */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Heh, come here!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"This is nice.",
+                "Gimme a hug!"
+			)>>
+		<<else>>
+			<<= either(
+				"I like hugs!"
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* You embrace NPC */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Heh, feeling affectionate?"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Aw, wanted a hug?"
+			)>>
+		<<else>>
+			<<= either(
+				"Aw"
+			)>>
+		<</if>>
+	<</if>>
+
+
+

@@ -1,0 +1,20 @@
+:: CC-Gender [creation-page] {"position":"925,100","size":"100,100"}
+<h1>Set your Gender Identity</h1>\
+//What term do you use to describe your gender?//
+* <label><<radiobutton "$mc.gender" "male" checked>> Male</label>
+* <label><<radiobutton "$mc.gender" "female">> Female</label>
+
+
+//What do you identify as?//
+* <label><<radiobutton "$mc.sexu" "Heterosexual" checked>> Heterosexual</label>
+* <label><<radiobutton "$mc.sexu" "Homosexual">> Homosexual</label>
+* <label><<radiobutton "$mc.sexu" "Bisexual">> Bisexual</label>
+* <label><<radiobutton "$mc.sexu" "Pansexual">> Pansexual</label>
+* <label><<radiobutton "$mc.sexu" "Asexual">> Asexual</label>
+
+<<button "Confirm">>
+    <<set $pages.gender to true>>
+        <<goto "Index-CC">>
+<</button>>
+
+

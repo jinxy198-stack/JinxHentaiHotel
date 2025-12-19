@@ -1,0 +1,12 @@
+:: Sit-On-Lap-Dialogue [Dialogue nobr] {"position":"1075,1225","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+    "You sit on _n.name's lap."
+    )>>
+<<elseif $sex.roles.sub.name== _n.name>>
+	<<=either(
+    "You get _n.name to sit on your lap."
+    )>>
+<</if>>
+
+

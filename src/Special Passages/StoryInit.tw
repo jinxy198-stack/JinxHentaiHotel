@@ -1,0 +1,128 @@
+:: StoryInit {"position":"25,25","size":"100,100"}
+<<set $npcSeq = 0>>
+<<set $npcs = []>>
+<<set $ui = {}>>
+<<set $lastNpc = null>>
+<<set $npcMemory = {}>>
+
+
+/* pools */
+
+<<set $npcPools = {
+  	species: ["Human","Anthro"],
+  	genders: ["Male","Female"],
+  	givenNames: ["RandomNPC"],
+  	surnames: ["Placeholder"],
+  	personalities: ["Brave", "Shy", "Relaxed", "Playful", "Good", "Evil", "Kind", "Logical", "Studious", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Quiet", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean"],
+  	eyes: ["Brown","Blue","Green","Grey","Hazel","Amber","Scarlet"],
+  	hair: ["Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut, Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads" ,"Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky Anime", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair","Bald"],
+  	haircolor: ["Black", "Brown", "Blonde", "Red", "White", "Grey", "Blue", "Green", "Purple"],
+  	facefeatures: ["Freckles", "Scar", "Mole", "Piercing", "None"],
+  	skincolor: ["Pale", "Fair", "Tan", "Olive", "Brown", "Ebony"],
+  	skinfeatures: ["Smooth", "Freckled", "Scarred", "Tattooed", "Birthmark", "None"],
+  	bodymusc: ["Soft", "Light Muscles", "Toned", "Muscular", "Ripped"],
+    bodyweight:["Skinny", "Slender", "Average", "Large", "Huge"],
+    bodyheight: ["Mini", "Tiny", "Small", "Very Short", "Short", "Average", "Tall", "Very Tall", "Towering", "Gigantic", "Colossal"],
+  	anthroGroups: ["Furry", "Scalie", "Avian"],
+  	furryTypes:  ["Canine", "Feline", "Bunny", "Fox", "Bear", "Goat", "Mouse", "Pig", "Other"],
+  	scalieTypes: ["Lizard", "Dragon", "Alligator", "Crocodile"],
+  	avianTypes:  ["Duck", "Parrot", "Chicken", "Eagle", "Hawk", "Owl"],
+  	furScalesColors: ["Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green"],
+  	patterns: ["Solid", "Striped", "Spotted", "Patterned"],
+  	genitals:["Penis","Vagina"],
+  	genitaltype: ["Uncut", "Cut"],
+    breastSize:["Flat", "Small", "Average", "Large", "Busty"],
+    penislength: ["Tiny", "Small", "Average", "Large", "Huge"],
+    assSize:["Flat", "Tiny", "Small", "Round", "Large", "Huge"],
+  	virgin: [true, false],
+  	sexpref: ["Switch", "Dominant", "Submissive"],
+    sexu: ["Heterosexual","Homosexual", "Bisexual", "Pansexual", "Asexual"]
+}>>
+
+
+/* helpers */
+<<run setup.defaultParts = {
+  head:true, torso:true,
+  leftArm:true, rightArm:true,
+  leftHand:true, rightHand:true,
+  leftLeg:true, rightLeg:true,
+  tail:false
+}>>
+<<run setup.initParts = (npc, overrides = {}) => {
+  npc.parts = Object.assign({}, setup.defaultParts, overrides);
+  return npc;
+}>>
+<<run setup.hasPart = (npc, key) => !!(npc && npc.parts && npc.parts[key])>>
+<<run setup.hasAny  = (npc, keys) => !!(npc && npc.parts && keys.some(k => npc.parts[k]))>>
+<<run setup.hasBoth = (npc, a, b) => !!(npc && npc.parts && npc.parts[a] && npc.parts[b])>>
+
+<<run window.setup = window.setup || {} >>
+<<run setup.pick  = (arr) => arr[Math.floor(Math.random() * arr.length)]>>
+<<run setup.randint = (a,b) => Math.floor(Math.random()*(b-a+1))+a>>
+<<run setup.clone = (o) => JSON.parse(JSON.stringify(o))>>
+
+	/* General MC/PC characteristics */
+<<set $currentLocation to null>>
+<<set $characterTemplate = {
+    name: "",
+    nickname: "",
+    surname: "",
+    species: "",
+    gender: "",
+    sexu: "",  /* sexual orientation */
+    genitals: "",
+    genitaltype: "", /*cut or uncut */
+    pronouns: "",
+    age: null,
+    ageGroup: "",
+    eyes: "",
+    hair: "",
+    haircolor: "",
+    facefeatures: "",
+    skincolor: "",
+    skinfeatures: "",
+    bodyheight: null,
+    bodyweight: null,
+    bodymusc: null,
+    personality: "",
+     anthro: {
+		group: "",
+		subtype: "",
+		color: "",
+		pattern: "",
+		tail: "",
+		ears: "",
+		wings: false,
+		wingspan: ""
+	}
+}>>
+<<set $mc to clone($characterTemplate)>>
+
+/* Ensure main character object */
+<<set $mc = $mc or {}>>
+<<set $mc.anthro = $mc.anthro or {}>>
+<<set $mc.anthro.group   = $mc.anthro.group   or {}>>
+<<set $mc.anthro.subtype = $mc.anthro.subtype or {}>>
+<<set $mc.anthro.color   = $mc.anthro.color   or {}>>
+<<set $mc.anthro.pattern = $mc.anthro.pattern or {}>>
+
+/* General attributes */
+<<set $proset to {}>>
+<<set $skin to {}>>
+<<set $hair to {
+    length: "",
+    style: "",
+    colour: ""
+}>>
+<<set $mc.virgin to true>>
+
+
+	/* This last one is only for practicality */
+<<set $pages to {}>>
+<<set $anthroColors = ["Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green"]>>
+<<set $anthroPatterns = ["Solid", "Striped", "Spotted", "Patterned"]>>
+<<set $anthroTailTypes = ["None", "Short", "Long", "Bushy", "Reptilian", "Avian"]>>
+<<set $anthroEarTypes = ["None", "Canine", "Feline", "Bunny", "Bear", "Pointed", "Rounded"]>>
+<<set $anthroWingspans = ["None", "Short", "Medium", "Large", "Massive"]>>
+
+

@@ -1,0 +1,12 @@
+:: Face-On-Chest-Dialogue [nobr Dialogue] {"position":"900,1775","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+ 	"_n.name presses their face against your chest."
+    )>>
+<<elseif $sex.roles.sub.name == _n.name>>
+	<<= either(
+    "You press your face against _n.name's chest."
+    )>>
+<</if>>
+
+

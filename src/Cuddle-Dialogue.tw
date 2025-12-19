@@ -1,0 +1,14 @@
+:: Cuddle-Dialogue [Dialogue nobr] {"position":"1100,1675","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+ 	"_n.name wrap their arms around you. You lay your head on their chest."
+    )>>
+<<elseif $sex.roles.sub.name == _n.name>>
+	<<= either(
+    "You wrap your arms around _n.name. They slink their face into your chest.",
+    "You both hug, _n.name snuggling up to you."
+    )>>
+<</if>>
+
+
+

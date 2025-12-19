@@ -1,0 +1,47 @@
+:: Embrace-Dialogue [nobr Dialogue] {"position":"1100,1575","size":"100,100"}
+<<if $position == "Standing">>
+	<<if $sex.roles.dom.name == _n.name>>		
+		<<= either(
+			"_n.name wraps their arms around you, giving you a nice hug."
+		)>>		
+	<<elseif $sex.roles.sub.name == _n.name>>		
+		<<= either(
+			"You wrap your arms around _n.name, giving them a nice hug."
+		)>>		
+	<</if>>
+<<elseif $position == "Sitting">>
+	<<if $sex.roles.dom.name == _n.name>>		
+		<<= either(
+			"_n.name wraps their arms around you."
+		)>>		
+	<<elseif $sex.roles.sub.name == _n.name>>	
+		<<= either(
+			"You wrap your arms around _n.name."
+		)>>
+	<</if>>
+	
+<<elseif $position == "Doggystyle">>
+	<<if $sex.roles.dom.name == _n.name>>		
+		<<= either(
+			"_n.name looms over you and wraps their arms around you."
+		)>>		
+	<<elseif $sex.roles.sub.name == _n.name>>		
+		<<= either(
+			"You loom over _n.name and wrap your arms around them."
+		)>>		
+	<</if>>
+<<elseif $position == "Missionary">>
+	<<if $sex.roles.dom.name == _n.name>>
+		<<= either(
+			"_n.name lies on top of you and pull you into a nice embrace."
+		)>>		
+	<<elseif $sex.roles.sub.name == _n.name>>	
+		<<= either(
+			"You lie on _n.name and wrap your arms around them. They in turn wrap their arms and legs around you."
+		)>>		
+	<</if>>
+<<else>>
+	You should not be able to read this, that means there's an error.
+<</if>>
+
+

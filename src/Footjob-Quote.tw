@@ -1,0 +1,41 @@
+:: Footjob-Quote [nobr Dialogue] {"position":"1800,1400","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* NPC fucks your feet */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Good, keep doing that."
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Your feet are so soft.",
+				"That’s great, $mc.name! Keep it up!"
+			)>>
+		<<else>>
+			<<= either(
+				"Your feet are so soft.",
+				"That’s great, $mc.name! Keep it up!"
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* You fuck NPC's feet */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"DOM-LINE-1 about BODY-PART.",
+				"DOM-LINE-2 about BODY-PART.",
+				"DOM-LINE-3 about BODY-PART."
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"I really like how you feel against my toes.",
+				"I can feel your cock pulse, $mc.name.",
+				"I wonder how it'll feel to have your cum squirt into my soft, bare feet?"
+			)>>
+		<<else>>
+			<<= either(
+				"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+				"NEUTRAL-DOM-LINE-2 about BODY-PART."
+			)>>
+		<</if>>
+	<</if>>
+
+

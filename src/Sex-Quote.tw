@@ -1,0 +1,112 @@
+:: Sex-Quote [Dialogue nobr] {"position":"1600,1200","size":"100,100"}
+<!-- only what the npc says -->
+<br>
+<b><<= _n.name >>: </b>
+
+<<if $sex.action == "Kiss">>
+	<<if $sex.roles.dom.name == _n.name>>
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Mmm",
+				"Mmmph",
+				"Mmmmm"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Mmm",
+				"Mmmph",
+				"Mmmmm"
+			)>>
+		<<else>>
+			<<= either(
+				"Mmm",
+				"Mmmph",
+				"Mmmmm"
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Mmm",
+				"Mmmph",
+				"Mmmmm"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Mmm",
+				"Mmmph",
+				"Mmmmm"
+			)>>
+		<<else>>
+			<<= either(
+				"Mmm",
+				"Mmmph",
+				"Mmmmm"
+			)>>
+		<</if>>
+	<</if>>
+
+<<elseif $sex.action == "Touch Stomach">>
+	<<include "Feel-Stomach-Quote">>
+
+<<elseif $sex.action == "Face on chest">>
+	<<include "Face-on-Chest-Quote">>
+
+<<elseif $sex.action == "Pet Ears">>
+	<<include "Pet-Ears-Quote">>
+    
+<<elseif $sex.action == "Embrace">>
+	<<include "Embrace-Quote">>
+
+<<elseif $sex.action == "Caress">>
+	<<include "Caress-Quote">>
+	
+<<elseif $sex.action == "Frot">>
+	<<include "Frot-Quote">>
+
+<<elseif $sex.action == "Grope Breast">>
+	<<include "Grope-Breast-Quote">>
+
+/* check for different positions */
+<<elseif $sex.action == "Anal">>
+	<<include "Anal-Quote">>
+
+/* check for different age groups? */
+<<elseif $sex.action == "Vaginal">>
+	<<include "Vaginal-Quote">>
+
+<<elseif $sex.action == "Cunnilingus">>
+	<<include "Cunnilingus-Quote">>
+
+<<elseif $sex.action == "Blowjob">>
+	<<include "Blowjob-Quote">>
+
+<<elseif $sex.action == "Handjob">>
+	<<include "Handjob-Quote">>
+
+<<elseif $sex.action == "Footjob">>
+	<<include "Footjob-Quote">>
+
+<<elseif $sex.action == "Suck Foot">>
+	<<include "Suck-Foot-Quote">>
+    
+<<elseif $sex.action == "Rimjob">>
+	<<include "Rimjob-Quote">>
+
+<<elseif $sex.action == "Cuddle">>
+	<<include "Cuddle-Quote">>
+    
+<<elseif $sex.action == "Grope Butt">>
+	<<include "Grope-Butt-Quote">>
+
+<<elseif $sex.action == "Finger Ass">>
+	<<include "Finger-Ass-Quote">>
+	
+<<elseif $sex.action == "Finger Pussy">>
+	<<include "Finger-Pussy-Quote">>	
+
+<<elseif $sex.action == "Orgasm">>
+	<<include "Orgasm-Quote">>
+<</if>>
+
+

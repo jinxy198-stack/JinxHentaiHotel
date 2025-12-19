@@ -1,0 +1,12 @@
+:: Finger-Ass-Dialogue [Dialogue nobr] {"position":"800,1675","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+ 	"_n.name fingers your ass."
+    )>>
+<<elseif $sex.roles.sub.name == _n.name>>
+	<<= either(
+    "You finger _n.name's ass."
+    )>>
+<</if>>
+
+

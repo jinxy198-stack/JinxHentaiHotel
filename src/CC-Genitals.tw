@@ -1,0 +1,46 @@
+:: CC-Genitals [creation-page] {"position":"925,225","size":"100,100"}
+Decide your genitals
+<<if $mc.gender is "male">>
+Because you chose male you have a penis. 
+<<set $mc.genitals to "Penis">>
+<<if $mc.species != "Anthro">>
+Is it cut or uncut?
+*<label><<radiobutton "$mc.genitaltype" "Cut" checked>> cut</label>
+*<label><<radiobutton "$mc.genitaltype" "Uncut">> uncut</label>
+<<else>>
+What type of penis do you want?
+*<label><<radiobutton "$mc.genitaltype" "Knotted" checked>> Knotted</label>
+*<label><<radiobutton "$mc.genitaltype" "Barbed">> Barbed</label>
+*<label><<radiobutton "$mc.genitaltype" "Tapered">> Tapered</label>
+*<label><<radiobutton "$mc.genitaltype" "Flared">> Flared</label>
+*<label><<radiobutton "$mc.genitaltype" "Sheathed">> Sheathed</label>
+
+<</if>>
+Also, what's it's length?
+*<label><<radiobutton "$mc.penislength" "Tiny" checked>> tiny</label>
+*<label><<radiobutton "$mc.penislength" "Small" checked>> small</label>
+*<label><<radiobutton "$mc.penislength" "Average" checked>> average</label>
+*<label><<radiobutton "$mc.penislength" "Large" checked>> large</label>
+*<label><<radiobutton "$mc.penislength" "Huge" checked>> huge</label>
+<<elseif $mc.gender is "female">>
+Because you chose female you have a vagina
+<<set $mc.genitals to "Vagina">>
+*<label><<radiobutton "$mc.genitaltype" "Very Tight">> very tight</label>
+*<label><<radiobutton "$mc.genitaltype" "Tight">>tight</label>
+*<label><<radiobutton "$mc.genitaltype" "Loose">> loose</label>
+*<label><<radiobutton "$mc.genitaltype" "Gaping">> gaping</label>
+<</if>>
+
+Decide your ass size
+*<label><<radiobutton "$mc.assSize" "Flat">> flat</label>
+*<label><<radiobutton "$mc.assSize" "Small">> small</label>
+*<label><<radiobutton "$mc.assSize" "Average">> average</label>
+*<label><<radiobutton "$mc.assSize" "Large">> large</label>
+
+
+
+<<button "Confirm">>
+        <<goto "Index-CC">>
+<</button>>
+
+

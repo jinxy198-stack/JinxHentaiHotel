@@ -1,0 +1,36 @@
+:: Bedroom [nobr] {"position":"400,725","size":"100,100"}
+<<set $gamelocation to "Your Room">>
+You are in your hotel room. It looks like the love suite of a luxury hotel, complete with a heart shaped bed. Next to the bed is a phone for calling up people you know for a 'good time'.
+To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic.
+On the other side there was a door to your bathroom.
+<br>
+<<if $lastNpc>>
+	<<set $ui.npc = $lastNpc>>
+	<<set _n = $ui.npc>>
+	<p>_n.name is here in your room. $proset.they will leave after you leave your room.</p>
+<br>
+<<link "Go to the bathroom with _n.name">>
+	<<goto "Bathroom">>
+<</link>>
+<<else>>
+<<link "Go to the bathroom">>
+	<<goto "Bathroom">>
+<</link>>
+<</if>>
+<br>
+<<link "Leave your room">>
+	<<set $lastNpc = null>>
+	<<goto "Hallway">>
+<</link>>
+
+/*
+<<if !$flags or !$flags.spawnedSNPC>>
+	<<set $flags to $flags or {}>>
+	<<set $flags.spawnedSNPC = true>>
+	
+    <<SpawnRandomNPCs 10>>
+<</if>>
+<<include "SNPC-List">>
+*/
+
+

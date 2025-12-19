@@ -1,0 +1,34 @@
+:: Finger-Ass-Quote [nobr Dialogue] {"position":"1900,1200","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* NPC fingers your ass */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Yeah, lets get it nice and stretched"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"It's so warm in there."
+			)>>
+		<<else>>
+			<<= either(
+				"It's warm."
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* You finger NPC's ass */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+            	"Oh f-fuck!"
+            )>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+            	"Oh f-fuck!"
+            )>>
+		<<else>>
+			<<= either(
+            	"Oh f-fuck!"
+            )>>
+		<</if>>
+	<</if>>
+
+

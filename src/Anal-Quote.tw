@@ -1,0 +1,120 @@
+:: Anal-Quote [nobr Dialogue] {"position":"1600,1300","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* NPC fucks your ass */
+	<<if $sex.position == "Cowgirl">>
+		<<if _n.sexpref == "Dominant">>	
+			<<= either(
+				"Bounce on my cock!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Please, bounce on my cock!"
+			)>>
+		<</if>>
+	<<elseif $sex.position=="Missionary">>
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"You're so cute when you're being fucked."
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"I love that look on your face."
+			)>>	
+		<</if>>	
+	<<else>>
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Shit, you know how to move!",
+				"Ah, $mc.name.",
+				"Mm, yeah, you like that, $mc.name?",
+				"You feel so fucking good around me!",
+				"You feel so tight, $mc.name. You were made for this!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Ahh, so tight, so good!",
+				"Ah! Ah! Ah!",
+				"Ah, $mc.name.",
+				"I-It's so tight!",
+				"Ah, you're so tight, $mc.name!",
+				"You're doing so well! You feel amazing, $mc.name!",
+				"$mc.name, $mc.name, $mc.name!"
+			)>>
+		<<else>>
+			<<= either(
+				"This feels so good!",
+				"Ah! Ah! Ah!",
+				"Ah, $mc.name.",
+				"I-It's so tight!"
+			)>>
+		<</if>>
+	<</if>>	
+<<elseif $sex.roles.sub.name == _n.name>>
+	/* You fuck NPC */
+	<<if $mc.penislength is "Huge">>
+		<<= either(
+			"Fuck you're huge!"
+		)>>
+	<<else>>
+		<<if $sex.position == "Cowgirl">>
+			<<if _n.sexpref == "Dominant">>	
+				<<= either(
+				"Love it when I bounce on your cock?"
+				)>>
+			<<elseif _n.sexpref == "Submissive">>
+				<<= either(
+					"Fuck me hard!",
+					"Ahh"
+				)>>
+			<</if>>
+		<<else>>
+			<<if _n.sexpref == "Dominant">>
+				<<= either(
+					"Yeah, like that!! Ooh!",
+					"Ahh, so good...",
+					"Yeah, that's it...",
+					"Ah, right there!",
+					"Oh yeah, get it dude!",
+					"Yeah! Ram it in me!",
+					"Ah... That's it...",
+					"Now shut it and let me enjoy this Grade A dick of yours!",
+					"Keep fucking me!",
+					"Yes! Yes! Give it to me! AH!",
+					"Good _n.petname! Keep sliding that delicious cock of yours in and out of my ass!",
+					"You like feeling my slutty little asshole gripping down on your cock?!"
+				)>>
+			<<elseif _n.sexpref == "Submissive">>
+				<<= either(
+					"Yes! That's it! Oh, yes! Yes!",
+					"Make me yours!",
+					"Yes! Yes! Give it to me! AH!",
+					"Ahh! Just like this!",
+					"Your dick is h-heaven!",
+					"It's so big!",
+					"Ah, right there!",
+					"Oh yeah, get it dude!",
+					"Ah... That's it...",
+					"You're really fucking me, $mc.name!",
+					"It feels so good to have you inside me!",
+					"Keep fucking me!",
+					"Yess... It's sooo good!",
+					"You fill me up so w-well..."
+				)>>
+			<<else>>
+				<<= either(
+					"Ah, right there!",
+					"Ah... That's it...",
+					"It feels so good to have you inside me!",
+					"Keep fucking me!",
+					"F-fuck, you're big!",
+					"Keep it up, you're hitting me just right!",
+					"Yess... It's sooo good!",
+					"Oh! Oh fuck yeah! Yes!!!",
+					"You feel so good inside me."
+				)>>
+			<</if>>
+		<</if>>
+	<</if>>	
+<</if>>
+
+

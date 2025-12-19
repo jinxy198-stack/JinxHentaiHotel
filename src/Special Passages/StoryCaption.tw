@@ -1,0 +1,12 @@
+:: StoryCaption {"position":"25,150","size":"100,100"}
+<<if $gamelocation>>
+<b>Location: </b>$gamelocation
+<</if>>
+
+<<button "Lexicon">><<PopupLexicon>><</button>>
+<<button "Credits">><<PopupCredits>><</button>>
+<<button "Your Stats">><<PopupStats>><</button>>
+<<button "Disclaimer">><<PopupDisc>><</button>>
+<<if passage() is "UI-NPC-Sex">><<button "How to play">><<PopupTutorial>><</button>><</if>>
+
+

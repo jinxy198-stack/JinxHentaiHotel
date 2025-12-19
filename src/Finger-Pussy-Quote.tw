@@ -1,0 +1,37 @@
+:: Finger-Pussy-Quote [nobr Dialogue] {"position":"1800,1200","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* NPC fingers your pussy */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Damn, you're wet!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"It's so warm in there."
+			)>>
+		<<else>>
+			<<= either(
+				"It's warm in there."
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* You finger NPC's pussy */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Oh f-fuck!",
+				"That feels nice",
+				"Yes... just like that!",
+				"That's the spot, don't stop!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+            	"Oh f-fuck!"
+            )>>
+		<<else>>
+			<<= either(
+            	"Oh f-fuck!"
+            )>>
+		<</if>>
+	<</if>>
+
+

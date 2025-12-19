@@ -1,0 +1,73 @@
+:: OrgasmBlock [nobr] {"position":"1675,925","size":"100,100"}
+
+<<if $sex.roles.sub.name == _n.name>>
+	<<if $sex.action == "Anal Orgasm">>
+		<<if $position == "Cowgirl">>
+			_n.name slam down one final time before you let out a moan and unloads into their ass. They shudder at the warmth filling them.
+		<<elseif $position == "Missionary">>
+			_n.name grits $proset.their _n.body.teeth, their eyes roll behind their head, and their whole body tenses. They let out a moan before shooting long strings of cum that cover their thigh's and belly.
+		<<else>>
+			You cum and they cum with you.
+		<</if>>
+	<<elseif $sex.action == "Vaginal">>
+		You moan and groan as you shoot your load into _n.name's _n.genitaltype _n.genitals.
+	<<elseif $sex.action == "Blowjob Orgasm">>
+		$proset.their tongue swirls around your head some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.
+	<<elseif $sex.action == "Handjob Orgasm">>
+		You let out a moan and buck your $mc.body.hips forward as you shoot your load.
+	<<elseif $sex.action == "Footjob Orgasm">>
+		Bucking your $mc.body.hips, you let out a moan as _n.name continues stimulating your $mc.genitals with $proset.their _n.feet.
+	<<elseif $sex.action == "Cunnilingus Orgasm">>
+		_n.name writhes as $proset.they squirt in your mouth.
+	<<elseif $sex.action == "Frot Orgasm">>
+		_n.name's cock twitches and pulses as it cums between you both.
+	<<elseif $sex.action == "Boobjob Orgasm">>
+		You keep on fucking _n.name's breasts as you orgasm, spurting your cum all over $proset.their tits and _n.body.face.
+	<</if>>
+
+<<elseif $sex.roles.dom.name == _n.name>>
+	<<if $sex.action == "Anal Orgasm">>
+		<<if $position == "Cowgirl">>
+			You slam down one final time before _n.name lets out a moan and unloads into your ass. You feel the warmth fill you up.
+		<<elseif $position == "Missionary">>
+			_n.name thrusts into you one last time before holding inside you and letting out a moan. You feel $proset.their cum shoot into your ass.
+		<<else>>
+			_n.name unleashes inside you, $proset.their hot cum spraying against the walls of your ass.
+		<</if>>
+	<<elseif $sex.action == "Vaginal Orgasm">>
+		_n.name thrusts into you one last time before holding inside you and letting out a moan. You feel $proset.their cum shoot into your $mc.genitals.
+	<<elseif $sex.action == "Blowjob Orgasm">>
+		_n.name cums in your mouth.
+	<<elseif $sex.action == "Footjob Orgasm">>
+		_n.name cums. Your feet are wet from $proset.their semen.
+	<<elseif $sex.action == "Cunnilingus Orgasm">>
+		You writhe in place as you squirt in _n.name's mouth.
+	<<elseif $sex.action == "Frot Orgasm">>
+		Your cock twitches and pulses as it cums between you both.
+	<<elseif $sex.action == "Boobjob Orgasm">>
+		_n.name moans as $proset.they jizz onto your face.
+    <<elseif $sex.action == "Handjob Orgasm">>
+		_n.name moans as they cum in your hands.
+	<</if>>
+<</if>>
+_n.name:<<include "Orgasm-Quote">>
+
+<br>
+Wanna have aftercare or end the session?
+
+<<replace "#aftercare">>
+	<<button "Aftercare">>
+		<<set $sex.stage = "aftercare">>
+		<<replace "#aftercare">><<include "AftercareBlock">><</replace>>
+	<</button>>
+
+	<<button "End Session">>
+			<<set $lastNpc = $ui.npc>>      <!-- remember who you were with -->
+			<<set $sex = { stage: "foreplay", log: [] }>>  <!-- optional reset -->
+            <<set $seenActions = {}>>
+			<<goto "Bedroom">>              <!-- or "Your Room" or whatever -->
+		<</button>>
+<</replace>>
+
+
+

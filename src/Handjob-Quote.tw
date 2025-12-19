@@ -1,0 +1,96 @@
+:: Handjob-Quote [nobr Dialogue] {"position":"1700,1700","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* You give NPC a handjob */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Mmm, your hand feels good around my cock.",
+				"Your hands are soft"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Mmm, that feels nice.",
+				"Ohh"
+			)>>
+		<<else>>
+			<<= either(
+				"Mmm, that feels nice."
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* NPC gives you a handjob */
+		<<if _n.sexpref == "Dominant">>
+			<<if $mc.penislength == "tiny">>
+				<<if $mc.agegroup =="Child">>
+					<<= either(
+						"Perfect size for someone your age."
+					)>>
+				<<else>>
+					<<= either(
+						"So cute and tiny."
+					)>>
+				<</if>>	
+			<<elseif $mc.penislength == "small">>
+				<<= either(
+					"So small, yet so precious."
+				)>>
+			<<elseif $mc.penislength == "average">>
+				<<= either(
+					"Your cock is so pretty."
+				)>>
+			<<elseif $mc.penislength == "large">>
+				<<= either(
+					"Damn, that's pretty big."
+				)>>	
+			<<elseif $mc.penislength == "huge">>
+				<<= either(
+					"DOM-LINE-1 about BODY-PART.",
+					"DOM-LINE-2 about BODY-PART.",
+					"DOM-LINE-3 about BODY-PART."
+				)>>
+			<</if>>	
+		<<elseif _n.sexpref == "Submissive">>
+			<<if $mc.penislength == "tiny">>
+				<<if $mc.agegroup =="Child">>
+					<<= either(
+						"Perfect size for someone your age."
+					)>>
+				<<else>>
+					<<= either(
+						"So cute and tiny."
+					)>>
+				<</if>>	
+			<<elseif $mc.penislength == "small">>
+				<<= either(
+					"DOM-LINE-1 about BODY-PART.",
+					"DOM-LINE-2 about BODY-PART.",
+					"DOM-LINE-3 about BODY-PART."
+				)>>
+			<<elseif $mc.penislength == "average">>
+				<<= either(
+					"DOM-LINE-1 about BODY-PART.",
+					"DOM-LINE-2 about BODY-PART.",
+					"DOM-LINE-3 about BODY-PART."
+				)>>
+			<<elseif $mc.penislength == "large">>
+				<<= either(
+					"Wow, it's pretty big!"
+				)>>	
+			<<elseif $mc.penislength == "huge">>
+				<<= either(
+					"DOM-LINE-1 about BODY-PART.",
+					"DOM-LINE-2 about BODY-PART.",
+					"DOM-LINE-3 about BODY-PART."
+				)>>
+			<</if>>
+			
+			<<= either(
+				"Wow, this is a really nice dick, $mc.name!"
+			)>>
+		<<else>>
+			<<= either(
+				"Wow, this is a really nice dick, $mc.name!"
+			)>>
+		<</if>>
+	<</if>>
+
+

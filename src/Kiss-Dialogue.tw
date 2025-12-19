@@ -1,0 +1,30 @@
+:: Kiss-Dialogue [Dialogue nobr]
+<<if !$seenActions.Kiss>>
+<<set $seenActions.Kiss = true>>
+
+<<= either(
+	"_n.name leans in and kisses you softly.",
+	"You peck _n.name on the lips.",
+	"_n.name makes out with you.",
+	"You lean down, pressing your lips against _n.name's mouth as you deliver a passionate kiss.",
+	"You lean down, grabbing _n.name's head in both hands and pulling _n.name up into a passionate kiss.",
+	"With a grin, you lean down into _n.name's chest, breathing in _n.name's scent before pressing your lips against _n.name's.",
+	"Leaning down, you let out a moan as you press your lips against _n.name's and start to eagerly kiss _n.name."
+)>>
+
+<br>
+
+<<= either(
+	"_n.name lets out an eager moan in response.",
+	"_n.name enthusiastically presses $proset.themself against you and thrusts $proset.their tongue into your mouth as $proset.they eagerly return your affection.",
+	"With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic kiss.",
+	"Letting out a soft moan, _n.name plants a series of gentle kisses on your lips before slowly sliding $proset.their tongue into your mouth.",
+	"With a soft hum, _n.name leans into you, gently pushing $proset.their tongue past your lips.",
+	"_n.name presses $proset.themself against you, muffling your moans as $proset.they slide $proset.their tongue into your mouth.",
+	"_n.name pushes $proset.their tongue deep into your mouth, moaning as $proset.they eagerly return the kiss.",
+	"With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips."
+)>>
+
+<<else>>
+You two kiss again.
+<</if>>

@@ -1,0 +1,99 @@
+:: Index-CC {"position":"350,275","size":"100,100"}
+Note: It is suggested to do the customization in order, as skipping some parts can lead to bugs. Will attempt to fix later.
+
+<h1>Create your character</h1>
+
+<h2>Basic Info</h2>
+<div class="index-flex">
+    <div id="name">
+        FIRST NAME
+        <<button [[Choose|CC-Name]]>><</button>>
+    </div>
+    <div id="nickname">
+        NICKNAME
+        <<button [[Choose|CC-Nickname]]>><</button>>
+    </div>
+    <div id="surname">
+        SURNAME
+        <<button [[Choose|CC-Surname]]>><</button>>
+    </div>
+    <div id="gender">
+        GENDER AND SEX
+        <<button [[Choose|CC-Gender]]>><</button>>
+    </div>
+
+   <div id="pronouns">
+        PRONOUNS
+        <<button [[Choose|CC-Pronouns]]>><</button>>
+    </div> 
+    <div id="age">
+        AGE
+        <<button [[Choose|CC-Age]]>><</button>>
+    </div>
+    <div id="species">
+        SPECIES
+        <<button [[Choose|CC-Species]]>><</button>>
+    </div>
+</div>
+
+
+<h2>Physical Traits</h2>
+
+<h3>Face and Hair</h3>
+<div class="index-flex">
+    <div id="eyes">
+        EYES
+        <<button [[Choose|CC-Eyes]]>><</button>>
+    </div>
+    <div id="hair">
+        HAIR
+        <<button [[Choose|CC-Hair]]>><</button>>
+    </div>
+    <div id="ffeat">
+        FACIAL FEATURES
+        <<button [[Choose|CC-FacialFeatures]]>><</button>>
+    </div>
+</div>
+
+<h3>Body</h3>
+<div class="index-flex">
+    <div id="skin">
+        SKIN
+        <<button [[Choose|CC-Skin]]>><</button>>
+    </div>
+    <div id="build">
+        BUILD
+        <<button [[Choose|CC-Build]]>><</button>>
+    </div>
+</div>
+
+<h2>Personality</h2>
+<div class="index-flex">
+    <div id="perso">
+        PERSONALITY
+        <<button [[Choose|CC-Personality]]>><</button>>
+    </div>
+</div>
+
+<h2> Sex info </h2>
+<div class ="index-flex">
+	<div id = "genitals">
+		GENITALS 
+    	<<button [[Choose|CC-Genitals]]>><</button>>
+     </div>
+     
+     <div id = "sexpref">
+     	SEX PREFERENCE
+        <<button[[Choose|CC-sexPreference]]>><</button>>
+     </div>
+/*
+<div id = "kinks">
+     	KINKS
+        <<button[[Choose|CC-Kinks]]>><</button>>
+     </div>
+</div>
+*/
+<<button [[Review Choices|CC-Check]]>><</button>>
+<<CheckIfDone>>
+
+

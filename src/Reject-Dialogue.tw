@@ -1,0 +1,26 @@
+:: Reject-Dialogue [Dialogue nobr] {"position":"1075,775","size":"100,100"}
+<<if _n.personality =="Calm">>
+"Not interested. But I’m content simply sharing this moment with you."
+<<elseif _n.personality == "Jolly">>
+Not right now — but don’t worry, I’m still enjoying you being here.
+<<elseif _n.personality == "Timid">>
+"I-I’m sorry. I don't want to… but I’m grateful you asked gently."
+<<elseif _n.personality == "Tough">>
+"Not happening. So drop it."
+<<elseif _n.personality == "Brave">>
+"Gonna have to decline. It's just not going to work out."
+<<elseif _n.personality == "Kind">>
+"I appreciate it but I must decline."
+<<elseif _n.personality == "Active">>
+"Love the enthusiasm but I'm gonna pass."
+<<elseif _n.personality == "Logical">>
+"I decline. The conditions are not ideal for full engagement."
+<<elseif _n.personality == "Sassy">>
+"No — don’t look so shocked. I got other things to do anyway"
+<<elseif _n.personality == "Mean">>
+"With you? Absolutely not!"
+<<else>>
+"No"
+<</if>>
+
+

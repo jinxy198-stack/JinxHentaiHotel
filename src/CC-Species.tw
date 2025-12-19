@@ -1,0 +1,35 @@
+:: CC-Species [creation-page] {"position":"1050,100","size":"100,100"}
+<<EnsureSpeciesData>> 
+<<SpeciesList>>  /* sets _speciesList, or replace with your own array */
+
+<h1>Let's Talk Species!</h1>
+Your species defines you in many ways — choose wisely.
+
+<span class="player-species">
+	<<set $mc.species = $mc.species or _speciesList[0]>>
+	<<listbox "$mc.species">>
+		<<optionsfrom _speciesList>>
+	<</listbox>>
+</span>
+
+<<button "Show options for selected species">>
+	<<replace "#anthro-ui">><<RenderAnthroUI>><</replace>>
+<</button>>
+
+<!-- the replace target must exist -->
+<div id="anthro-ui"><<RenderAnthroUI>></div>
+
+<span id="cover"></span>
+
+<<button "Confirm">>
+	<<set $pages.species = true>>
+
+	/* only update the summary cell if it exists on the current DOM */
+	<<if jQuery('#mc-species').length>>
+		<<replace "#mc-species">><<print $mc.species or "—">><</replace>>
+	<</if>>
+		<<goto "Index-CC">>
+<</button>>
+
+
+

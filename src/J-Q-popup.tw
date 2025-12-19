@@ -1,0 +1,30 @@
+:: J-Q-popup [Popup] {"position":"250,750","size":"100,100"}
+<<switch _topic>>
+	<<case "god">>
+		<span class="Jinx">Yes. I am a god. Specifically the god of joy and sex.</span>
+        <span class="mc"> "Yeah you just said that..."</span>
+        <span class="Jinx"> Please don't tell me you don't know what sex is. <<if $mc.virgin is true>> Because even though you haven't gotten laid I hope you've seen some porn before. <<elseif $mc.virgin is false>> Because otherwise I'm really curious what the fuck you thought you were doing to lose that virginity of yours. <</if>></span>
+        <span class="mc"> "Nono! I know about sex, I just have not heard of you before." </span>
+        Jinx arched an eyebrow and guffawed. 
+        <span class="Jinx"> Yeah, that's fair. Most gods have temples and disciples but I am not a very vain god, rather I use my authority to spread joy and sex (mainly sex) across the realms, however what some people fail to understand is the limits of my power. I only tolerate consensual sex, anything otherwise I cast aside. But it don't matter the species, age, or background, so long as the other participant is willing or hasn't said no then I will allow it. And that's where you come in.</span>
+	<<case "emissary">>
+		<span class="Jinx">Yes, you $mc.name are my emissary. With it comes some benefits. You have the power to seduce anyone you come across for sex, skipping the whole socializing thing. The only requirment is that they have to feel sexual attraction for you and they have to be consenting. </span>
+        The thought made you feel excited inside.
+        <span class="Jinx"> Now while it does sound like my task for you is as simple as going around having sex with random people, it's a little more nuanced than that. You are spreading the joy of having sex to everyone. Too many people are nervous to express their sexual desires and I want you to encourage them to let it out!"</span>
+        <span class= "mc">"What if they don't want to have sex with me?" </span>
+        Jinx shrugged
+        <span class= "Jinx"> Then you don't have sex with them. People have their own desires and sexualities. It would go against my domain to force them to engage in somthing they are not interested in. </span>
+    <<case "where?">>
+    	<span class = "Jinx">This is my domain, the Jinx Hentai Hotel! Don't bother looking it up on a map, it exists in it's own pocket dimension. It also acts as a gateway to any known universe, even some you might find familiar. </span>
+	<<case "Sex">>
+		<span class= "mc"> "So, is there any limit to the type of people I can have sex with?" </span>
+		<span class= "Jinx"> "Nope, so long as it's consensual then you can make love to anyone regardless of age, gender, or species."</span>
+		<span class= "mc"> "When you say regardless of age, does that include.....?" </span>
+		<span class= "Jinx"> "Look, so long as you obey the one simple rule, I don't judge who you bed with at all. You'd be surprised who would be down for some love making. But the choice is yours." </span>
+	<<default>>
+		<span class="Jinx">Ask a question.</span>
+<</switch>>
+<br>
+<<button "Close">><<run Dialog.close()>><</button>>
+
+

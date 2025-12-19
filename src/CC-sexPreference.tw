@@ -1,0 +1,13 @@
+:: CC-sexPreference [creation-page] {"position":"675,225","size":"100,100"}
+What role do you normally play as during sex?
+
+* <label><<radiobutton "$mc.sexpref" "Dominant">>Dominant</label>
+* <label><<radiobutton "$mc.sexpref" "Switch">>Switch</label>
+* <label><<radiobutton "$mc.sexpref" "Submissive">>Submissive</label>
+
+<<button "Confirm">>
+    <<set $pages.sexpref to true>>
+        <<goto "Index-CC">>
+<</button>>
+
+

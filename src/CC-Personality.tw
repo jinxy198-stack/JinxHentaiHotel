@@ -1,0 +1,17 @@
+:: CC-Personality [creation-page] {"position":"1425,225","size":"100,100"}
+<h1>Choose your Personality</h1>\
+
+//What term do you use to describe your personality?//
+* <label><<radiobutton "$mc.personality" "Adventerous" checked>> Adventurous</label>
+* <label><<radiobutton "$mc.personality" "Kind">>Kind</label>
+* <label><<radiobutton "$mc.personality" "Shy">>Shy</label>
+* <label><<radiobutton "$mc.personality" "Playful">>Playful</label>
+* <label><<radiobutton "$mc.personality" "Lazy">>Lazy</label>
+* <label><<radiobutton "$mc.personality" "Good">>Good</label>
+* <label><<radiobutton "$mc.personality" "Evil">>Evil</label>
+
+<<button [[Confirm|Index-CC]]>>
+    <<set $pages.perso to true>>
+<</button>>
+
+

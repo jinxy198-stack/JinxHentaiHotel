@@ -1,0 +1,27 @@
+:: UI-Attracted-check {"position":"900,500","size":"100,100"}
+<<check-attraction $mc _n>>
+<b>$mc.name: </b>
+* $mc.gender
+* $mc.sexu
+<b>_n.name: </b>
+* _n.gender
+* _n.sexu
+<<if $attraction>><<pick-roles $mc _n>>
+<div id="role-line">Top: <<= $sex.roles.dom.name >> | Bottom: <<= $sex.roles.sub.name >></div>
+<<link "Swap roles">>
+	<<set [$sex.roles.dom, $sex.roles.sub] to [$sex.roles.sub, $sex.roles.dom]>>
+	<<replace "#role-line">>Top: <<= $sex.roles.dom.name >> | Bottom: <<= $sex.roles.sub.name >><</replace>>
+    <<replace "#top-bottom-chat">><<include "top-bottom-Dialogue">><</replace>>
+<</link>>
+<<include "Accept-Dialogue">>
+<<nobr>><div id="top-bottom-chat"><<include "top-bottom-Dialogue">></div><</nobr>>
+<<button "Go have sex">>
+	<<WithNPC _n.id>>
+    <<run Dialog.close()>>
+	<<goto "UI-NPC-Sex">>
+<</button>>
+<<else>>
+<<include "Reject-Dialogue">>
+<</if>>
+
+

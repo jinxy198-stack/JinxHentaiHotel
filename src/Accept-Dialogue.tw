@@ -1,0 +1,26 @@
+:: Accept-Dialogue [Dialogue nobr] {"position":"950,775","size":"100,100"}
+<<if _n.personality =="Calm">>
+"Yes. I’m ready — and I want you to be fully present with me"
+<<elseif _n.personality == "Jolly">>
+"Yes! That sounds exciting — I’m totally in the mood for you."
+<<elseif _n.personality == "Timid">>
+"I… yes. Only if you stay close to me the whole time."
+<<elseif _n.personality == "Tough">>
+"Heh. You’re bold. Fine — I’ll bite. Just try to keep up."
+<<elseif _n.personality == "Brave">>
+"Yeah! Let's do this!"
+<<elseif _n.personality == "Kind">>
+"Yes… I want to be that close with you."
+<<elseif _n.personality == "Active">>
+"Alright! I like this energy, let's work up a sweat!"
+<<elseif _n.personality == "Logical">>
+"Logically — I want you as well. I approve of this."
+<<elseif _n.personality == "Sassy">>
+"Yes — obviously. Took you long enough to say it."
+<<elseif _n.personality == "Mean">>
+"Fine then, you're lucky I find you attractive."
+<<else>>
+"Ok"
+<</if>>
+
+

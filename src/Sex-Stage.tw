@@ -1,0 +1,21 @@
+:: Sex-Stage [nobr] {"position":"1325,725","size":"100,100"}
+<<silently>>
+	<<set _n = $ui.npc>>
+	<<if !_n>>[Error] No active NPC.<<return>><</if>>
+
+	<<set $sex = $sex or {}>>
+
+	<<if _n.arousal < 10>>
+		<<set $sex.stage = "Foreplay">>
+	<<elseif _n.arousal < 100>>
+		<<set $sex.stage = "Intercourse">>
+    /* <<else>>
+		<<set $sex.stage = "Aftercare">> */
+	<</if>>
+    
+<</silently>>
+
+<span class="stage-pill"><<= $sex.stage >></span>
+
+
+

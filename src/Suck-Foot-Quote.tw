@@ -1,0 +1,47 @@
+:: Suck-Foot-Quote [nobr Dialogue] {"position":"1800,1600","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* You suck NPC's toes */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Good _n.petname, keep sucking on my _n.body.toes!",
+				"That's right, keep swirling your $mc.body.tongue around my _n.body.toes!",
+				"What a good _n.petname! You love sucking on my _n.body.toes, don't you?",
+				"That's right, keep sucking on my _n.body.toes!",
+				"Keep sucking on my _n.body.toes, just like that!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"I love having my _n.body.toes sucked! Keep going!",
+				"Ah, that feels funny."
+			)>>
+		<<else>>
+			<<= either(
+				"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+				"NEUTRAL-DOM-LINE-2 about BODY-PART."
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* NPC sucks your toes */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Mmmf",
+				"Mmmph",
+				"Mmf"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Mmmf",
+				"Mmmph",
+				"Mmf"
+			)>>
+		<<else>>
+			<<= either(
+				"Mmmf",
+				"Mmmph",
+				"Mmf"
+			)>>
+		<</if>>
+	<</if>>
+
+
+

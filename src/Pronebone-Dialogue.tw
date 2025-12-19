@@ -1,0 +1,13 @@
+:: Pronebone-Dialogue [nobr Dialogue] {"position":"1425,1075","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+   "You lay down on your front, presenting your behind to _n.name."
+    )>>
+<<elseif $sex.roles.sub.name== _n.name>>
+	<<=either(
+	"Taking hold of $proset.their shoulders, you push $proset.them down so that $proset.they are lying on their front."
+    )>>
+    " Kneeling down between $proset.their _n.body.legs, you smirk as you hover over their body."
+<</if>>
+
+

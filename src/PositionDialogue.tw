@@ -1,0 +1,22 @@
+:: PositionDialogue [nobr Dialogue] {"position":"1100,1025","size":"100,100"}
+<<set _p = $position or "">>
+
+/* POSITION (prints once per change) */
+<<if $sex._printedPos != _p>>
+	<<switch _p>>
+		<<case "Cowgirl">><<include "Cowgirl-Dialogue">>
+		<<case "Sitting">><<include "Sitting-Dialogue">>
+        <<case "Standing">><<include "Standing-Dialogue">>
+		<<case "Missionary">><<include "Missionary-Dialogue">>
+		<<case "Doggystyle">><<include "Doggystyle-Dialogue">>
+        <<case "SixtyNine">><<include "SixtyNine-Dialogue">>
+        <<case "Sit on Face">><<include "Facesit-Dialogue">>
+        <<case "Sit on Lap">><<include "Sit-On-Lap-Dialogue">>
+        <<case "Oral Front">><<include "Stand-Front-Oral-Dialogue">>
+        <<case "Oral Back">><<include "Stand-Back-Oral-Dialogue">>
+        <<case "Lean against wall">><<include "Against-Wall-Dialogue">>
+	<</switch>>
+	<<set $sex._printedPos = _p>>
+<</if>>
+
+

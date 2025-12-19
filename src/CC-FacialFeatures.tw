@@ -1,0 +1,38 @@
+:: CC-FacialFeatures [creation-page] {"position":"1425,100","size":"100,100"}
+<h1>Options for Facial Features</h1>\
+
+//What facial feature(s) is(are) applicable to you?//
+* <label><<checkbox "_moustache" false true>> a full moustache</label>
+* <label><<checkbox "_goatee" false true>> a goatee</label>
+* <label><<checkbox "_fullbeard" false true>> a full beard</label>
+* <label><<checkbox "_sideburns" false true>> some sideburns</label>
+* <label><<checkbox "_shadow" false true>> shadow</label>
+* <label><<checkbox "_patch" false true>> soul patch</label>
+* <label><<checkbox "_handlebar" false true>> a handle bar</label>
+* <label><<checkbox "_wrinkes" false true>> wrinkles</label>
+* <label><<checkbox "_mole" false true>> a mole</label>
+* <label><<checkbox "_brow" false true>> a unibrow</label>
+* <label><<checkbox "_thickbrow" false true>> thick brows</label>
+* <label><<checkbox "_thinbrow" false true>> thin brows</label>
+* <label><<checkbox "_noeyelash" false true>> no eye lashes</label>
+* <label><<checkbox "_pointedear" false true>> pointed ears</label>
+* <label><<checkbox "_smallears" false true>> small ears</label>
+* <label><<checkbox "_largeears" false true>> large ears</label>
+* <label><<checkbox "_buttonnose" false true>> a Button nose</label>
+* <label><<checkbox "_romannose" false true>> a Roman nose</label>
+* <label><<checkbox "_crooked" false true>> a Crooked nose</label>
+* <label><<checkbox "_widenose" false true>> a Wide nose</label>
+* <label><<checkbox "_hawknose" false true>> a Hawk nose</label>
+* <label><<checkbox "_pointchin" false true>> a pointy chin</label>
+* <label><<checkbox "_roundchin" false true>> a rounded chin</label>
+* <label><<checkbox "_squarejaw" false true>> a square jaw</label>
+* <label><<checkbox "_pronouncedcheeks" false true>> pronounced cheeks</label>
+* <label><<checkbox "_bm" false true>> a beauty mark</label>
+* <label><<checkbox "_freckles" false true>> freckles</label>
+* <label><<checkbox "_fangs" false true>> fangs</label>
+* <label><<checkbox "_toothgap" false true>> tooth gap</label>
+* <label><<checkbox "_acne" false true>> acne</label>
+
+<<button [[Confirm|Index-CC]]>><<AllThisInAnArray>><<set $pages.facefeat to true>><</button>>
+
+

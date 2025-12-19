@@ -1,0 +1,12 @@
+:: Grope-Butt-Dialogue [nobr Dialogue] {"position":"1000,1675","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+ 	 "_n.name grabs your <<= $mc.assSize.toLowerCase() >> ass."
+    )>>
+<<elseif $sex.roles.sub.name == _n.name>>
+	<<= either(
+    "You grab _n.name's <<= $mc.assSize.toLowerCase() >> ass"
+    )>>
+<</if>>
+
+

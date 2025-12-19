@@ -1,0 +1,36 @@
+:: Grope-Breast-Quote [nobr Dialogue] {"position":"1600,1500","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* NPC gropes your breast */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Heh, look a the size of these!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Your breasts are so soft."
+			)>>
+		<<else>>
+			<<= either(
+				"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+				"NEUTRAL-DOM-LINE-2 about BODY-PART."
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* You grope NPC's breast */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"That's right, play with my _n.breastsize breasts!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"You can play with them if you like."
+			)>>
+		<<else>>
+			<<= either(
+				"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+				"NEUTRAL-DOM-LINE-2 about BODY-PART."
+			)>>
+		<</if>>
+	<</if>>
+
+

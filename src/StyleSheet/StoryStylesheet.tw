@@ -1,0 +1,734 @@
+:: StoryStylesheet [stylesheet]
+
+/* Make sure the PositionBlock never extends under the sidebar */
+.position-block {
+  /* it lives in #story, so it uses the remaining width */
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+
+html, body {
+  background:
+    radial-gradient(circle at top, #222 0, #050509 55%, #000 100%);
+  color: #eee;
+  
+}
+
+/* Frame the story area next to the sidebar */
+#story {
+  max-width: 960px;
+  margin: 1.5rem 1.5rem 1.5rem 21rem; /* top, right, bottom, left */
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(10,10,20,.96), rgba(5,5,10,.98));
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 0 40px rgba(0,0,0,0.9);
+  text-align: left;
+  overflow-x: hidden;
+}
+
+/* Mobile: when the screen is small, drop the big left margin */
+@media (max-width: 900px) {
+  #story {
+    margin: 1rem;
+  }
+}
+
+
+
+/* Location styling */
+.room-hotel {
+  border-left: 3px solid #ff7be9;
+  padding-left: 0.75rem;
+}
+
+/* NPC card / panels */
+.npc-card,
+.npcsex-root .npc-panel {
+  background: linear-gradient(145deg, rgba(20,20,35,0.98), rgba(8,8,16,0.98));
+  border-radius: 14px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 0 18px rgba(0,0,0,0.7);
+}
+
+.npc-name {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.npc-name::before {
+  content: "✦ ";
+}
+
+/* Global buttons: neon hotel choices */
+button {
+  border-radius: 999px;
+  padding: 0.35rem 0.95rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: radial-gradient(circle at top, #3a1480, #170623);
+  color: #fff;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 0 10px rgba(173, 64, 255, 0.4);
+  cursor: pointer;
+}
+
+button:hover,
+html[data-outlines] button:focus {
+  background: radial-gradient(circle at top, #5f22c0, #201032);
+  box-shadow: 0 0 16px rgba(200, 120, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 0 4px rgba(120, 60, 180, 0.5);
+}
+button.active-choice {
+  background: radial-gradient(circle at top, #6a28ff, #24063b);
+  border-color: rgba(255,255,255,0.35);
+  box-shadow:
+      inset 0 0 8px rgba(0,0,0,0.9),
+      0 0 14px rgba(180, 80, 255, 0.8);
+  transform: none;
+  filter: none;
+}
+
+
+/* ========== UI-NPC-Sex fixed action bar ========== */
+
+/* Make room so content doesn't sit under the fixed bar */
+.npcsex-root {
+  padding-bottom: 9rem;
+}
+
+/* Full-width fixed bar */
+#npcsex-actions-bar {
+  position: fixed;
+  left: 21rem;
+  right: 1.5rem;
+  bottom: 0;
+  z-index: 10;
+  padding: 0.5rem 0;
+  text-align: center;
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 255, 255, 0.05),
+    rgba(0, 0, 0, 0.95)
+  );
+  border-top: 1px solid rgba(255,255,255,0.18);
+  box-shadow:
+    0 -2px 18px rgba(0,0,0,0.85),
+    0 0 32px rgba(120, 40, 200, 0.45);
+  backdrop-filter: blur(6px);
+}
+@media (max-width: 900px) {
+  #npcsex-actions-bar {
+    left: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Centered inner panel */
+.npcsex-actions-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center; /* center vertically */
+  justify-content: space-between;
+  border-radius: 999px;
+  background: rgba(15, 15, 20, 0.95);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
+}
+
+/* Each group (Position / Foreplay / etc.) */
+.npcsex-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+/* Optional: keep help a bit narrower */
+.npcsex-group.npcsex-side {
+  min-width: 110px;
+  text-align: right;
+}
+
+/* Group titles */
+.npcsex-group-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+  line-height: 1;
+  color: rgba(220,210,255,0.88);
+  text-shadow: 0 0 6px rgba(150,120,255,0.7);
+}
+
+/* Allow button lists inside to wrap nicely */
+#npcsex-actions-bar span,
+#npcsex-actions-bar div {
+  white-space: normal;
+}
+
+/* Keep buttons/links tidy inside bar */
+#npcsex-actions-bar a.link-internal,
+#npcsex-actions-bar button {
+  margin: 0.1rem 0.15rem;
+}
+
+/* Simple responsive tweak: stack into two rows on small screens */
+@media (max-width: 900px) {
+  .npcsex-actions-inner {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+    border-radius: 1rem;
+    justify-content: center;
+  }
+}
+
+/* ========== Status / meters ========== */
+
+/* Tighten horizontal rules globally or scope to .npcsex-root */
+.passage hr {
+  margin: 0.75rem 0;
+  border: 0;
+  border-top: 2px solid #666;
+}
+
+/* Optional: ensure no extra vertical gaps in this UI */
+.npcsex-root .intro,
+.npcsex-root #log,
+.npcsex-root .status-row {
+  margin: 0;
+  padding: 0;
+}
+
+/* compact status row */
+.status-row{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  flex-wrap:wrap;
+  margin:.25em 0;
+}
+
+/* pill for the stage */
+.stage-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:.5em;
+  padding:.25em .6em;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.06);
+  font-weight:600;
+}
+
+/* arousal/affection progress inline with its % */
+.meter{
+  display:flex;
+  align-items:center;
+  gap:.5em;
+  min-width:240px;
+}
+
+.meter progress{
+  width:180px;
+  height:10px;
+}
+
+/* percentage alignment */
+#aff-pct{
+  min-width:3ch;
+  text-align:right;
+}
+
+/* nicer progress look (keeps colors generic) */
+progress{
+  -webkit-appearance:none;
+  appearance:none;
+  border:none;
+  background:transparent;
+}
+
+progress::-webkit-progress-bar{
+  background:rgba(255,255,255,.12);
+  border-radius:8px;
+}
+
+progress::-webkit-progress-value{
+  background:rgba(255,255,255,.6);
+  border-radius:8px;
+}
+
+progress::-moz-progress-bar{
+  background:rgba(255,255,255,.6);
+  border-radius:8px;
+}
+
+/* ========== Glitch / glitchy text ========== */
+
+.glitch,
+.glitchy {
+  color: white;
+  position: relative;
+}
+
+/* legacy clip-based glitch */
+.glitch::before {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -9px;
+  text-shadow: 1px 0 blue;
+  top: -5px;
+  color: #FFD;
+  background: #111;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -5px;
+  text-shadow: -1px 0 red;
+  top: -5px;
+  color: #DFF;
+  background: #111;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+/* newer clip-path based glitch */
+.glitchy::before {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -9px;
+  text-shadow: 1px 0 blue;
+  top: -5px;
+  color: #FFD;
+  background: #111;
+  overflow: hidden;
+  clip-path: polygon(0 0);
+  animation: noise-animY-2 3s infinite linear alternate-reverse;
+}
+
+.glitchy::after {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -5px;
+  text-shadow: -1px 0 red;
+  top: -5px;
+  color: #DFF;
+  background: #111;
+  overflow: hidden;
+  clip-path: polygon(0 0);
+  animation: noise-animY 2s infinite linear alternate-reverse;
+}
+
+/* keyframes (unchanged, just grouped) */
+@keyframes noise-anim {
+  0%   { clip: rect(80px, 9999px, 16px, 0); }
+  5%   { clip: rect(94px, 9999px, 17px, 0); }
+  10%  { clip: rect(9px, 9999px, 92px, 0); }
+  15%  { clip: rect(37px, 9999px, 4px, 0); }
+  20%  { clip: rect(53px, 9999px, 47px, 0); }
+  25%  { clip: rect(99px, 9999px, 69px, 0); }
+  30%  { clip: rect(15px, 9999px, 49px, 0); }
+  35%  { clip: rect(83px, 9999px, 81px, 0); }
+  40%  { clip: rect(55px, 9999px, 43px, 0); }
+  45%  { clip: rect(28px, 9999px, 27px, 0); }
+  50%  { clip: rect(64px, 9999px, 28px, 0); }
+  55%  { clip: rect(76px, 9999px, 91px, 0); }
+  60%  { clip: rect(29px, 9999px, 72px, 0); }
+  65%  { clip: rect(70px, 9999px, 10px, 0); }
+  70%  { clip: rect(5px, 9999px, 84px, 0); }
+  75%  { clip: rect(46px, 9999px, 81px, 0); }
+  80%  { clip: rect(7px, 9999px, 85px, 0); }
+  85%  { clip: rect(17px, 9999px, 89px, 0); }
+  90%  { clip: rect(41px, 9999px, 59px, 0); }
+  95%  { clip: rect(53px, 9999px, 90px, 0); }
+  100% { clip: rect(10px, 9999px, 30px, 0); }
+}
+
+@keyframes noise-anim-2 {
+  0%   { clip: rect(84px, 9999px, 3px, 0); }
+  5%   { clip: rect(31px, 9999px, 69px, 0); }
+  10%  { clip: rect(37px, 9999px, 33px, 0); }
+  15%  { clip: rect(18px, 9999px, 6px, 0); }
+  20%  { clip: rect(25px, 9999px, 87px, 0); }
+  25%  { clip: rect(100px, 9999px, 8px, 0); }
+  30%  { clip: rect(24px, 9999px, 87px, 0); }
+  35%  { clip: rect(39px, 9999px, 16px, 0); }
+  40%  { clip: rect(96px, 9999px, 25px, 0); }
+  45%  { clip: rect(16px, 9999px, 100px, 0); }
+  50%  { clip: rect(92px, 9999px, 76px, 0); }
+  55%  { clip: rect(29px, 9999px, 40px, 0); }
+  60%  { clip: rect(40px, 9999px, 39px, 0); }
+  65%  { clip: rect(94px, 9999px, 44px, 0); }
+  70%  { clip: rect(2px, 9999px, 78px, 0); }
+  75%  { clip: rect(86px, 9999px, 50px, 0); }
+  80%  { clip: rect(2px, 9999px, 46px, 0); }
+  85%  { clip: rect(41px, 9999px, 71px, 0); }
+  90%  { clip: rect(75px, 9999px, 15px, 0); }
+  95%  { clip: rect(41px, 9999px, 8px, 0); }
+  100% { clip: rect(23px, 9999px, 75px, 0); }
+}
+
+@keyframes noise-animY {
+  0%   { clip-path: polygon(0 80px, 100% 80px, 100% 16px, 0 16px); }
+  5%   { clip-path: polygon(0 94px, 100% 94px, 100% 17px, 0 17px); }
+  10%  { clip-path: polygon(0 9px, 100% 9px, 100% 92px, 0 92px); }
+  15%  { clip-path: polygon(0 37px, 100% 37px, 100% 4px, 0 4px); }
+  20%  { clip-path: polygon(0 53px, 100% 53px, 100% 47px, 0 47px); }
+  25%  { clip-path: polygon(0 99px, 100% 99px, 100% 69px, 0 69px); }
+  30%  { clip-path: polygon(0 15px, 100% 15px, 100% 49px, 0 49px); }
+  35%  { clip-path: polygon(0 83px, 100% 83px, 100% 81px, 0 81px); }
+  40%  { clip-path: polygon(0 55px, 100% 55px, 100% 43px, 0 43px); }
+  45%  { clip-path: polygon(0 28px, 100% 28px, 100% 27px, 0 27px); }
+  50%  { clip-path: polygon(0 64px, 100% 64px, 100% 28px, 0 28px); }
+  55%  { clip-path: polygon(0 76px, 100% 76px, 100% 91px, 0 91px); }
+  60%  { clip-path: polygon(0 29px, 100% 29px, 100% 72px, 0 72px); }
+  65%  { clip-path: polygon(0 70px, 100% 70px, 100% 10px, 0 10px); }
+  70%  { clip-path: polygon(0 5px, 100% 5px, 100% 84px, 0 84px); }
+  75%  { clip-path: polygon(0 46px, 100% 46px, 100% 81px, 0 81px); }
+  80%  { clip-path: polygon(0 7px, 100% 7px, 100% 85px, 0 85px); }
+  85%  { clip-path: polygon(0 17px, 100% 17px, 100% 89px, 0 89px); }
+  90%  { clip-path: polygon(0 41px, 100% 41px, 100% 59px, 0 59px); }
+  95%  { clip-path: polygon(0 53px, 100% 53px, 100% 90px, 0 90px); }
+  100% { clip-path: polygon(0 10px, 100% 10px, 100% 30px, 0 30px); }
+}
+
+@keyframes noise-animY-2 {
+  0%   { clip-path: polygon(0 84px, 100% 84px, 100% 3px, 0 3px); }
+  5%   { clip-path: polygon(0 31px, 100% 31px, 100% 69px, 0 69px); }
+  10%  { clip-path: polygon(0 37px, 100% 37px, 100% 33px, 0 33px); }
+  15%  { clip-path: polygon(0 18px, 100% 18px, 100% 6px, 0 6px); }
+  20%  { clip-path: polygon(0 25px, 100% 25px, 100% 87px, 0 87px); }
+  25%  { clip-path: polygon(0 100px, 100% 100px, 100% 8px, 0 8px); }
+  30%  { clip-path: polygon(0 24px, 100% 24px, 100% 87px, 0 87px); }
+  35%  { clip-path: polygon(0 39px, 100% 39px, 100% 16px, 0 16px); }
+  40%  { clip-path: polygon(0 96px, 100% 96px, 100% 25px, 0 25px); }
+  45%  { clip-path: polygon(0 16px, 100% 16px, 100% 100px, 0 100px); }
+  50%  { clip-path: polygon(0 92px, 100% 92px, 100% 76px, 0 76px); }
+  55%  { clip-path: polygon(0 29px, 100% 29px, 100% 40px, 0 40px); }
+  60%  { clip-path: polygon(0 40px, 100% 40px, 100% 39px, 0 39px); }
+  65%  { clip-path: polygon(0 94px, 100% 94px, 100% 44px, 0 44px); }
+  70%  { clip-path: polygon(0 2px, 100% 2px, 100% 78px, 0 78px); }
+  75%  { clip-path: polygon(0 86px, 100% 86px, 100% 50px, 0 50px); }
+  80%  { clip-path: polygon(0 2px, 100% 2px, 100% 46px, 0 46px); }
+  85%  { clip-path: polygon(0 41px, 100% 41px, 100% 71px, 0 71px); }
+  90%  { clip-path: polygon(0 75px, 100% 75px, 100% 15px, 0 15px); }
+  95%  { clip-path: polygon(0 41px, 100% 41px, 100% 8px, 0 8px); }
+  100% { clip-path: polygon(0 23px, 100% 23px, 100% 75px, 0 75px); }
+}
+
+/* ========== Tables / stats / hair toggles ========== */
+
+/* Hair visibility helpers */
+.hairshort,
+.hairmed,
+.hairlong,
+.hairmisc {
+  display: none;
+  visibility: hidden;
+}
+
+.visible {
+  display: block;
+  visibility: visible;
+}
+
+/* Base table styling for all passage tables */
+.passage table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 0 0 16px 0;
+  background: transparent;
+}
+
+.passage th,
+.passage td {
+  padding: 8px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Label column (th) */
+.passage th {
+  width: 200px;
+  text-align: right;
+  padding-right: 12px;
+  font-weight: 600;
+  color: #999;
+}
+
+/* Value column(s) */
+.passage td {
+  text-align: left;
+}
+
+/* Last column */
+.passage td:last-child {
+  white-space: normal;
+  padding-left: 10px;
+}
+
+/* NSFW table */
+table.nsfw {
+  margin-top: 8px;
+}
+
+/* Subsection headers */
+h2,
+h3 {
+  margin: 4px 0;
+}
+
+
+/* Section wrapper around stats */
+.stats-section {
+  margin:16px 0 24px;
+  padding:12px;
+  border:1px solid rgba(0,0,0,0.08);
+  border-radius:10px;
+  background:rgba(0,0,0,0.02);
+}
+
+@media (prefers-color-scheme: dark) {
+  .stats-section {
+    border-color:rgba(255,255,255,0.14);
+    background:rgba(255,255,255,0.04);
+  }
+}
+
+/* Stats tables */
+.passage table.stats-table {
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+  margin:0 0 12px 0;
+  background:transparent;
+}
+
+.passage table.stats-table th,
+.passage table.stats-table td {
+  padding:8px 12px;
+  vertical-align:top;
+  border-bottom:1px solid rgba(0,0,0,0.10);
+  overflow-wrap:anywhere;
+}
+
+.passage table.stats-table th {
+  text-align:right;
+  font-weight:600;
+  color:#222;
+  opacity:.9;
+}
+
+.passage table.stats-table td {
+  text-align:left;
+  color:#111;
+}
+
+/* Zebra striping */
+.passage table.stats-table tr:nth-child(odd) td,
+.passage table.stats-table tr:nth-child(odd) th {
+  background:rgba(0,0,0,0.02);
+}
+
+/* Optional third-column actions */
+.passage table.stats-table td.action {
+  width:1%;
+  white-space:nowrap;
+  padding-left:8px;
+}
+
+/* Completed row: neon highlight for stats table rows */
+.passage table.stats-table tr.green th,
+.passage table.stats-table tr.green td {
+  background: radial-gradient(circle at left, rgba(40, 200, 140, 0.22), transparent);
+  border-bottom-color: rgba(80, 255, 180, 0.45);
+}
+
+/* Left accent bar on the row itself */
+.passage table.stats-table tr.green {
+  box-shadow: inset 3px 0 0 rgba(80, 255, 180, 0.85);
+}
+
+/* Label cell tweak + checkmark */
+.passage table.stats-table tr.green th {
+  color: #e6fff5;
+}
+
+.passage table.stats-table tr.green th::before {
+  content: "✔";
+  font-size: 0.8em;
+  margin-right: 0.35em;
+  opacity: 0.85;
+}
+
+
+/* Reuse main button style inside tables (no override needed) */
+
+@media (prefers-color-scheme: dark) {
+  .passage table.stats-table th,
+  .passage table.stats-table td {
+    border-bottom-color: rgba(255,255,255,0.12);
+  }
+  .passage table.stats-table th {
+    color:#e6e6e6;
+  }
+  .passage table.stats-table td {
+    color:#f2f2f2;
+  }
+  .passage table.stats-table tr:nth-child(odd) td,
+  .passage table.stats-table tr:nth-child(odd) th {
+    background:rgba(255,255,255,0.05);
+  }
+
+  .passage table.stats-table tr.green th,
+  .passage table.stats-table tr.green td {
+    background: radial-gradient(circle at left, rgba(40, 200, 140, 0.25), transparent);
+    border-bottom-color: rgba(80, 255, 180, 0.55);
+  }
+
+  .passage table.stats-table tr.green th {
+    color: #eafff9;
+  }
+}
+
+
+
+/* Mobile: relax fixed layout */
+@media (max-width: 640px) {
+  .passage table.stats-table {
+    table-layout:auto;
+  }
+}
+
+/* ========== Dialogue speaker styles ========== */
+
+.Jinx {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-shadow:
+    0 0 6px rgba(120,180,255,0.9),
+    0 0 18px rgba(80,120,255,0.8);
+  color: #c9e2ff;
+}
+
+.mc {
+  font-style: italic;
+  color: #ffd8f0;
+}
+
+/* UI-NPC-Sex header alignment */
+#passage-UI-NPC-Sex .status-row {
+  display:flex;
+  align-items:center;
+  gap:16px 24px;
+  flex-wrap:wrap;
+}
+
+#passage-UI-NPC-Sex .status-item {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+#passage-UI-NPC-Sex .label {
+  font-weight:600;
+}
+
+#passage-UI-NPC-Sex .value {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+#passage-UI-NPC-Sex .stage-pill {
+  display:inline-block;
+  padding:2px 8px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:8px;
+  line-height:1.2;
+}
+
+/* Generic status line block (non-UI-NPC-Sex specific) */
+.status-line {
+  display: grid;
+  grid-template-columns: 100px auto;
+  align-items: center;
+}
+
+.status-label {
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.status-value {
+  text-align: left;
+  min-height: 1.2em;
+}
+
+.index-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.index-flex > div {
+  background: rgba(255,255,255,0.04);
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  min-width: 220px;
+}
+
+/* Character Creator completed box styling */
+.index-flex div.green {
+  background: linear-gradient(135deg, rgba(40, 200, 140, 0.25), rgba(0,0,0,0.10));
+  border: 1px solid rgba(80, 255, 180, 0.55);
+  box-shadow:
+    inset 0 0 12px rgba(0, 0, 0, 0.6),
+    0 0 8px rgba(80, 255, 180, 0.55);
+  border-radius: 10px;
+  padding: 12px;
+  transition: 0.2s ease;
+  color: #dfffe9;
+  font-weight: 600;
+}
+
+/* Optional: checkmark before the label */
+.index-flex div.green::before {
+  content: "✔ ";
+  color: #8fffbf;
+  font-weight: 900;
+}

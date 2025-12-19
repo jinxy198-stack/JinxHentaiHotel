@@ -1,0 +1,57 @@
+:: UI-NPC-Talk [nobr] {"position":"750,500","size":"100,100"}
+<<nobr>><<silently>>
+<<set _n = $ui.npc>>
+<<set _lines = {
+  Default: ["Hello","Hi"],
+  Calm: ["We can take our time.","No rush.","Your presence is steady. Peaceful. I welcome it."],
+  Jolly: ["Hey there! Great to see you!","Isn’t today perfect?"],
+  Timid: ["Ah s-sorry… you startled me. But I’m happy you’re here."],
+  Tough: ["Hey. Don’t waste my time. Speak if you’ve got something worth saying."],
+  Brave: ["You’re here. Good. I was ready for something to happen."],
+  Kind: ["Hi!","You look well.","Hey, seeing you always makes me happy."],
+  Active: ["There you are — I was seconds from coming to get you myself."],
+  Logical: ["You arrived precisely when I anticipated. Efficient..."],
+  Sassy: ["Oh? About time you showed up. I’ve been waiting awhile."],
+  Mean: ["Well there you are, lil brat!"]
+}>>
+
+<<set _pool = _lines[_n.personality] or _lines.Default>>
+<<set _line = _pool[random(0, _pool.length - 1)]>>
+<<set _key = _n.id or _n.name>>
+<<set _mem = $npcMemory[_key]>>
+<</silently>><</nobr>>
+
+<<if !_mem or !_mem.interacted>>
+	/* first time */
+	<<= either(
+		_n.name + " looks you over curiously.",
+		_n.name + " gives you a cautious nod."
+	)>>
+<<elseif _mem.times < 5>>
+	/* early repeat interactions */
+	<<= either(
+		_n.name + " greets you with a familiar look.",
+		_n.name + " seems more relaxed around you this time."
+	)>>
+<<else>>
+	/* long-term familiarity */
+	<<= either(
+		_n.name + " barely glances up before smirking at you.",
+		"You and " + _n.name + " fall back into your usual rhythm without a word."
+	)>>
+<</if>>
+<br>
+<<print '"' + _line.replace('$mc.name', $mc.name) + '"' >>
+<br>
+<br>
+/* setup sex interactions */
+<<button "Wanna have sex in my room?">>
+	<<WithNPC _n.id>>
+	<<run Dialog.create("Propose sex with " + $ui.npc.name).wikiPassage("UI-Attracted-check").open()>>
+<</button>>
+<br>
+<br>
+<<link "Close">><<run Dialog.close()>><</link>>
+
+
+

@@ -1,0 +1,46 @@
+:: CC-Skin [creation-page] {"position":"800,225","size":"100,100"}
+<h1>Choose your Skin Characteristics</h1>\
+<<if $mc.species is "Human">>
+ Your skin colour is: 
+* <label><<radiobutton "$skin.color" "Pale">>Pale</label>
+* <label><<radiobutton "$skin.color" "Fair" checked>>Fair</label>
+* <label><<radiobutton "$skin.color" "Tan" checked>>Tan</label>
+* <label><<radiobutton "$skin.color" "Olive" checked>>Olive</label>
+* <label><<radiobutton "$skin.color" "Brown" checked>>Brown</label>
+* <label><<radiobutton "$skin.color" "Ebony">>Ebony</label>
+
+//Does your skin have any notable features?//
+* <label><<checkbox "_vitiligo" false true>> Viligo</label>
+* <label><<checkbox "_freckles" false true>> Freckles</label>
+* <label><<checkbox "_eczema" false true>> Eczema</label>
+* <label><<checkbox "_beatymarks" false true>> Beauty Marks</label>
+* <label><<checkbox "_albinism" false true>> Albinism</label>
+
+<<elseif $mc.species is "Anthro">>
+	Decide the color of your body and if it has any patterns or not.
+	<<nobr>>
+	<<if $mc.anthro.group is "Furry">>
+    <label>Fur Color</label>
+  <<elseif $mc.anthro.group is "Scalie">>
+    <label>Scale Color</label>
+  <<elseif $mc.anthro.group is "Avian">>
+    <label>Feather Color</label>
+  	<</if>>  <</nobr>>
+  <<listbox "$mc.anthro.color">><<optionsfrom $anthroColors>><</listbox>>
+Pattern
+<<listbox "$mc.anthro.pattern">><<optionsfrom $anthroPatterns>><</listbox>>
+<</if>>
+
+
+<<button [[Confirm|Index-CC]]>>
+    <<set 
+        $skin.features to []
+    >>
+    <<if _vitiligo>><<run $skin.features.push("Viligo")>><</if>>
+    <<if _freckles>><<run $skin.features.push("Freckles")>><</if>>
+    <<if _eczema>><<run $skin.features.push("Eczema")>><</if>>
+    <<if _beatymarks>><<run $skin.features.push("Beauty Marks")>><</if>>
+    <<if _albinism>><<run $skin.features.push("Albinism")>><</if>>
+<</button>>
+
+

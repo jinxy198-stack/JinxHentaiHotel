@@ -1,0 +1,39 @@
+:: Handjob-Dialogue [Dialogue nobr] {"position":"900,1575","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+	"Reaching down between $proset.their _n.body.legs, you wrap your $mc.body.fingers around $proset.their <<= _n.genitals.toLowerCase()>>, letting out a soft moan as you start slowly stroking up and down its length.",
+	"You drop one of your $mc.body.hands down between $proset.their _n.body.legs, and, taking hold of $proset.their <<= _n.genitals.toLowerCase()>>, you start slowly jerking $proset.them off.",
+	"Teasing your $mc.body.fingers over $proset.their <<= _n.genitals.toLowerCase()>> , you let out a soft moan as you start gently stroking up and down its throbbing length.",
+	"Reaching down between $proset.their _n.body.legs, you eagerly wrap your $mc.body.fingers around $proset.their <<= _n.genitals.toLowerCase()>>, letting out a moan as you start rapidly stroking up and down its length.",
+	"You drop one of your $mc.body.hands down between $proset.their _n.body.legs, and, taking hold of $proset.their <<= _n.genitals.toLowerCase()>>, you start eagerly jerking $proset.them off.",
+	"Teasing your $mc.body.fingers over $proset.their <<= _n.genitals.toLowerCase()>>, $proset.they let out a moan as you start rapidly stroking up and down $proset.their throbbing length.",
+	"You gently slide your $mc.body.hand up and down around $proset.their <<= _n.penislength.toLowerCase()>> cock, spreading $proset.their precum all over your shaft in the process.",
+	"Using $proset.their precum as extra lubricant, you gently wrap your $mc.body.fingers around $proset.their <<= _n.genitals.toLowerCase()>> and jerk $proset.them off.",
+	"_n.name lets out a reassuring moan as you gently slide your $mc.body.hand up and down the length of $proset.their precum-dripping <<= _n.genitals.toLowerCase()>>.",
+	"Gently wrapping your $mc.body.fingers around $proset.their <<= _n.genitals.toLowerCase()>>, you slowly start to slide your $mc.body.hand up and down $proset.their <<= _n.penislength.toLowerCase()>> shaft.",
+	"You gently wrap your $mc.body.hand around $proset.their <<= _n.genitals.toLowerCase() >>, leaning forwards and inhaling $proset.their scent as you gently slide your $mc.body.fingers up and down around $proset.their <<= _n.penislength.toLowercase>> length.",
+	"Gently pressing yourself against _n.name, you let out a moan as you softly slide your $mc.body.hand up and down the length of $proset.their <<= _n.genitals.toLowerCase()>>.",
+	"You slide your $mc.body.hand up and down around $proset.their <<= _n.penislength.toLowerCase()>> cock, spreading $proset.their precum all over $proset.their shaft in the process.",				
+	"Using $proset.their precum as extra lubricant, you wrap your $mc.body.fingers around $proset.their <<= _n.genitals.toLowerCase()>> and jerk $proset.them off.",	
+	"$proset.they let out a moan as you slide your $mc.body.hand up and down the length of $proset.their precum-dripping <<= _n.genitals.toLowerCase()>>.",
+	"_n.name buck $proset.their _n.body.hips out in response, letting out a delighted moan as $proset.they start enthusiastically imploring you to continue giving $proset.them a handjob.",
+	"A delighted moan bursts out from between $proset.their _n.body.lips, and $proset.they start eagerly thrusting $proset.their _n.body.hips out against $proset.their touch as $proset.they begs you to continue giving $proset.them a handjob.",	
+	"Moaning in delight, _n.name buck $proset.their _n.body.hips forwards, eagerly imploring you to continue giving $proset.them a handjob."
+	)>>
+    <<if _n.genitaltype == "Uncut">>
+    Their foreskin is pulled back and forth from the movement.
+    <</if>>
+    
+    
+<<elseif $sex.roles.sub.name == _n.name>>
+	<<= either(
+    "_n.name wraps their <<= _n.body.hand.toLowerCase()>> around your <<= $mc.genitals.toLowerCase()>> and jerks you off.",
+    "_n.name jerks you off."
+	)>>
+    
+   	<<if $mc.genitaltype == "Uncut">>
+    Your foreskin is pulled back and forth from the movement.
+    <</if>>
+<</if>>
+
+

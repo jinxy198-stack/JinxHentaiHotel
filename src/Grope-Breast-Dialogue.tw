@@ -1,0 +1,13 @@
+:: Grope-Breast-Dialogue [nobr Dialogue] {"position":"1100,1475","size":"100,100"}
+<<if $sex.roles.sub.name == _n.name>>
+	<<= either(
+    "Reaching up to _n.name's chest, they lets out a soft moan as you starts fondling and groping _n.name's _n.breastsize breasts,"
+    )>>
+<<elseif $sex.roles.dom.name == _n.name>>
+	<<= either(
+    "Reaching up to your chest, you let out a moan as $proset.they start eagerly fondling and groping your <<= $mc.breastsize.toLowerCase() >> breasts,"
+    )>>
+    <</if>>
+
+
+

@@ -1,0 +1,31 @@
+:: Missionary-Dialogue [nobr Dialogue] {"position":"675,1225","size":"100,100"}
+<<if $sex.roles.sub.name == _n.name>>
+	<<= either(
+		"Taking hold of " + _n.name + "'s shoulders, you push " + $proset.them + " down onto " + $proset.their + " back. Kneeling down between " + $proset.their + " " + _n.body.legs + ", you pause and look down into " + $proset.their + " " + _n.eyes.toLowerCase() + " eyes.",
+		_n.name + " lies down on your bed, lifting " + $proset.their + " feet in the air."
+	)>>
+	<br>
+	&ldquo;<<= either(
+		"That's right, spread your legs for me...",
+		"Good idea! Spread your legs nice and wide, now!"
+	)>>&rdquo;
+<<elseif $sex.roles.dom.name == _n.name>>
+	<<= either(
+		"Taking hold of " + _n.name + "'s shoulders, you push " + $proset.them + " down onto " + $proset.their + " knees. Kneeling down before " + $proset.them + ", you then lie down on your back, spreading your " + $mc.body.legs + " and look up into " + _n.name + "'s " + _n.eyes.toLowerCase() + " eyes as you moan,",
+		"Looking up at " + _n.name + ", you bite your lip and let out a moan, before spreading your legs and submissively presenting yourself, ready to be penetrated.",
+		"You spread your legs for " + _n.name + ", presenting yourself in anticipation of being penetrated.",
+		"Pulling your " + $mc.body.feet + " back and to each side, you spread your legs, enticing " + _n.name + " to penetrate you.",
+		"You spread your legs, looking up at " + _n.name + " and biting your lip as you entice " + $proset.them + " to penetrate you.",
+		"Much to your delight, " + $proset.they + " kneels down between your " + $mc.body.legs + ", and as " + $proset.they + " takes hold of your " + $mc.body.legs + " to help push them apart, you moan,",
+		"Much to your delight, you allow yourself to be pushed down onto your front, and as you present " + $proset.them + " with your " + $mc.assSize + " ass and groin, you moan,",
+        "You lie down on your bed as _n.name crawls between your legs."
+	)>>
+	<br>
+	&ldquo;<<= either(
+		"Come and take me!",
+		"I'm all yours, " + _n.name + "!"
+	)>>&rdquo;
+<</if>>
+
+
+

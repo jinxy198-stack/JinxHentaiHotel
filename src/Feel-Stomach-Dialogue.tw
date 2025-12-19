@@ -1,0 +1,12 @@
+:: Feel-Stomach-Dialogue [nobr Dialogue] {"position":"1000,1775","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+ 	"_n.name presses their hand against your belly"
+    )>>
+<<elseif $sex.roles.sub.name == _n.name>>
+	<<= either(
+    "You press your hand against _n.name's belly"
+    )>>
+<</if>>
+
+

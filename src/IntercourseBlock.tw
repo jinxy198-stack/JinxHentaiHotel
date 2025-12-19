@@ -1,0 +1,125 @@
+:: IntercourseBlock [nobr] {"position":"1800,800","size":"100,100"}
+<b>Intercourse:</b>
+
+<<if $mc.genitals == "Penis" and $sex.roles.sub.name == _n.name or _n.genitals == "Penis" and $sex.roles.dom.name == _n.name>>
+	<<if $position == "Cowgirl" or $position == "Pronebone" or $position == "Sit on Lap" or $position == "Doggystyle" or $position == "Missionary" or $position == "Lean against wall">>
+		<<button "Anal">>
+			<<if _n.arousal < 10>>
+				<<replace "#log">>They are not ready to proceed. Build more comfort first.<</replace>>
+			<<else>>
+				<<set $sex.action = "Anal">>
+				<<run setup.bumpAffection ? setup.bumpAffection(5) : (setup.addAffection(5), setup.updateBindings())>>
+				<<set _n.arousal = Math.min(100, _n.arousal + 5)>>
+				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+                <<replace "#intro">><</replace>>
+				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+                <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+			<</if>>
+		<</button>> |
+	<</if>>
+<</if>>
+
+<<if $position == "Cowgirl" or $position == "Sitting" or $position == "Sit on Lap" or $position == "Doggystyle" or $position == "Missionary">>
+	<<if ((_n.genitals == "Vagina" and $mc.genitals == "Penis" and $sex.roles.sub.name == _n.name)
+		or ($mc.genitals == "Vagina" and _n.genitals == "Penis" and $sex.roles.sub.name == _n.name))>>
+		<<button "Vaginal">>
+			<<if _n.arousal < 10>>
+				<<replace "#log">>They are not ready to proceed. Build more comfort first.<</replace>>
+			<<else>>
+				<<set $sex.action = "Vaginal">>
+                <<replace "#intro">><</replace>>
+				<<run setup.bumpAffection ? setup.bumpAffection(5) : (setup.addAffection(5), setup.updateBindings())>>
+				<<set _n.arousal = Math.min(100, _n.arousal + 5)>>
+				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+                <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+			<</if>>
+		<</button>> |
+	<</if>>
+<</if>>
+
+<<if $position == "Oral Front" or $position == "Sitting" or $position == "SixtyNine" or $position =="Facesitting">>
+	<<if _n.genitals == "Penis" and $sex.roles.dom.name == _n.name or $mc.genitals == "Penis" and $sex.roles.sub.name == _n.name>>
+		<<button "Blowjob">>
+			<<if _n.arousal < 10>>
+				<<replace "#log">>They are not ready to proceed. Build more comfort first.<</replace>>
+			<<else>>
+				<<set $sex.action = "Blowjob">>
+				<<run setup.bumpAffection ? setup.bumpAffection(5) : (setup.addAffection(5), setup.updateBindings())>>
+				<<set _n.arousal = Math.min(100, _n.arousal + 5)>>
+				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+                <<replace "#intro">><</replace>>
+				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+                <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+			<</if>>
+		<</button>> |
+	<</if>>
+<</if>>
+
+<<if $position == "SixtyNine" or $position == "Oral Front" or $position == "Facesitting">>
+	<<if _n.genitals == "Vagina" and $sex.roles.sub.name == _n.name or $mc.genitals == "Vagina" and $sex.roles.dom.name == _n.name>>
+		<<button "Cunnilingus">>
+			<<if _n.arousal < 10>>
+				<<replace "#log">>They are not ready to proceed. Build more comfort first.<</replace>>
+			<<else>>
+				<<set $sex.action = "Cunnilingus">>
+				<<run setup.bumpAffection ? setup.bumpAffection(5) : (setup.addAffection(5), setup.updateBindings())>>
+				<<set _n.arousal = Math.min(100, _n.arousal + 5)>>
+				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+                <<replace "#intro">><</replace>>
+				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+                <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+			<</if>>
+		<</button>> |
+	<</if>>
+<</if>>
+
+<<if $position == "Standing" or $position == "Sitting" or $position == "Sit on Lap" or $position == "Oral Front" or $position == "DoggyStyle" or $position == "Lean against wall" or $position == "Cowgirl">>
+	<<if _n.genitals == "Penis" and $sex.roles.dom.name == _n.name or $mc.genitals == "Penis" and $sex.roles.sub.name == _n.name>>
+		<<button "Handjob">>
+			<<if _n.arousal < 10>>
+				<<replace "#log">>They are not ready to proceed. Build more arousal first.<</replace>>
+			<<else>>
+				<<set $sex.action = "Handjob">>
+				<<run setup.bumpAffection ? setup.bumpAffection(5) : (setup.addAffection(5), setup.updateBindings())>>
+				<<set _n.arousal = Math.min(100, _n.arousal + 5)>>
+				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+                <<replace "#intro">><</replace>>
+				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+                <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+			<</if>>
+		<</button>> |
+	<</if>>
+<</if>>
+
+<<if $position == "Sitting">>
+	<<if _n.genitals == "Penis" or $mc.genitals == "Penis">>
+		<<button "Footjob">>
+			<<if _n.arousal < 10>>
+				<<replace "#log">>They are not ready to proceed. Build more comfort first.<</replace>>
+			<<else>>
+				<<set $sex.action = "Footjob">>
+				<<run setup.bumpAffection ? setup.bumpAffection(5) : (setup.addAffection(5), setup.updateBindings())>>
+				<<set _n.arousal = Math.min(100, _n.arousal + 5)>>
+				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
+                <<replace "#intro">><</replace>>
+				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+                <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
+				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
+				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
+			<</if>>
+		<</button>>
+	<</if>>
+<</if>>
+
+

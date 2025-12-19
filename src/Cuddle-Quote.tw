@@ -1,0 +1,42 @@
+:: Cuddle-Quote [nobr Dialogue] {"position":"1800,1700","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* NPC cuddles you */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Hope you don't mind some cuddling after all that.",
+				"You can use my tits as a pillow if you want."
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"This is nice."
+			)>>
+		<<else>>
+			<<= either(
+				"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+				"NEUTRAL-DOM-LINE-2 about BODY-PART."
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* You cuddle NPC */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Your body is so soft and warm.",
+				"You can use my tits as a pillow if you want.",
+				"You like the feeling of me being this close, don't you?"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"SUB-LINE-1 about BODY-PART.",
+				"SUB-LINE-2 about BODY-PART.",
+				"SUB-LINE-3 about BODY-PART."
+			)>>
+		<<else>>
+			<<= either(
+				"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+				"NEUTRAL-DOM-LINE-2 about BODY-PART."
+			)>>
+		<</if>>
+	<</if>>
+
+
+

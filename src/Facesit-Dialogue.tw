@@ -1,0 +1,12 @@
+:: Facesit-Dialogue [nobr Dialogue] {"position":"1075,1325","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+	"You push _n.name onto their back and then lower yourself over their face."
+    )>>
+<<elseif $sex.roles.sub.name== _n.name>>
+	<<=either(
+    "_n.name pushes you onto your back and they lower themself over your face"
+    )>>
+<</if>>
+
+

@@ -1,0 +1,669 @@
+:: Respond-Dialogue [nobr Dialogue] {"position":"1375,1325","size":"100,100"}
+/* only what You say */
+<br>
+<b><<=$mc.name>>: </b>
+<<if $sex.action == "Kiss">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Caress">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Frot">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Grope Breast">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Anal">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc..sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"My ass loves your <<= _n.genitals.toLowerCase() >> !",
+			"Good _n.petname! Keep sliding that delicious cock of yours in and out of my ass!",
+			"What a good _n.petname! Enjoy my ass as your reward now!",
+			"You like feeling my slutty little asshole gripping down on your cock?!",
+			"Good _n.petname! Push your <<= _n.genitals.toLowerCase() >> deep into my ass!",
+			"Keep going! Get that <<= _n.genitals.toLowerCase() >> deep in my ass like a good _n.petname!",
+			"Yes! Fuck my ass! Fuck me harder! Don't stop!",
+			"Don't stop! Harder! Fuck my ass! Yes, yes, yes!",
+			"Oh yes! Fuck my ass! I love your <<= _n.genitals.toLowerCase() >> !"
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Vaginal">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Cunnilingus">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Blowjob">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Handjob">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Footjob">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Suck Foot">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Rimjob">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Cuddle">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Grope Butt">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Finger Ass">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+
+<<elseif $sex.action == "Orgasm">>
+	<<if $sex.roles.dom.name == $mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<<elseif $sex.roles.sub.name == _$mc.name>>
+	<<if $mc.sexpref == "Dominant">>
+		<<= either(
+			"DOM-LINE-1 about BODY-PART.",
+			"DOM-LINE-2 about BODY-PART.",
+			"DOM-LINE-3 about BODY-PART."
+		)>>
+    <<elseif $mc.sexpref == "Submissive">>
+		<<= either(
+			"SUB-LINE-1 about BODY-PART.",
+			"SUB-LINE-2 about BODY-PART.",
+			"SUB-LINE-3 about BODY-PART."
+		)>>    
+	<<else>>
+		<<= either(
+			"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+			"NEUTRAL-DOM-LINE-2 about BODY-PART."
+		)>>
+	<</if>>
+<</if>>
+<</if>>
+
+
+

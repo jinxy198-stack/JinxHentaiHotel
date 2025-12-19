@@ -1,0 +1,17 @@
+:: Doggystyle-Dialogue [nobr Dialogue] {"position":"675,1325","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<= either(
+   "You drop down on all fours, facing away from _n.name.",
+	"You nod, crawling up onto your bed. You get on all fours, presenting your ass out towards _n.name."
+    )>>
+    You can't see what _n.name's doing, and your asshole twitches in anticipation for what's to come.
+    <br>
+    "Use me, _n.name!"
+<<elseif $sex.roles.sub.name== _n.name>>
+	<<=either(
+	"_n.name get on all fours like a dog, and present their _n.assSize ass to you."
+    )>>
+    "I'm all yours, $mc.name. What do you want to do?"
+<</if>>
+
+

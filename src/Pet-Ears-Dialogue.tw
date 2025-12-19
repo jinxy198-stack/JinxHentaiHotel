@@ -1,0 +1,16 @@
+:: Pet-Ears-Dialogue [nobr Dialogue] {"position":"1200,1675","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+	<<if $mc.body.ears=="Long Bunny Ears">>
+    	<<= either(
+ 		"_n.name pets your <<= $mc.body.ears.toLowerCase()>>."
+    	)>>
+	<</if>>    
+<<elseif $sex.roles.sub.name == _n.name>>
+	<<if _n.body.ears =="Long Bunny Ears">>
+    	<<= either(
+    	"You pet _n.name's <<= _n.body.ears.toLowerCase()>>."
+    	)>>
+    <</if>>
+<</if>>
+
+

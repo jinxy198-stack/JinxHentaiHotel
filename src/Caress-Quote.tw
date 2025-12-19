@@ -1,0 +1,40 @@
+:: Caress-Quote [nobr Dialogue] {"position":"1900,1400","size":"100,100"}
+<<if $sex.roles.dom.name == _n.name>>
+		/* NPC caresses you */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"DOM-LINE-1 about BODY-PART.",
+				"DOM-LINE-2 about BODY-PART.",
+				"DOM-LINE-3 about BODY-PART."
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"SUB-LINE-1 about BODY-PART.",
+				"SUB-LINE-2 about BODY-PART.",
+				"SUB-LINE-3 about BODY-PART."
+			)>>
+		<<else>>
+			<<= either(
+				"NEUTRAL-DOM-LINE-1 about BODY-PART.",
+				"NEUTRAL-DOM-LINE-2 about BODY-PART."
+			)>>
+		<</if>>
+	<<elseif $sex.roles.sub.name == _n.name>>
+		/* You caress NPC */
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Yeah, feel me up!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Mmm, that feels nice."
+			)>>
+		<<else>>
+			<<= either(
+				"That feels nice."
+			)>>
+		<</if>>
+	<</if>>
+
+
+

@@ -1,0 +1,36 @@
+:: npc template sample {"position":"1925,450","size":"100,100"}
+*/
+<<set $characterTemplate = {
+    name: "",
+    nickname: "",
+    surname: "",
+    species: "",
+    gender: "",
+    trans: "",
+    sexu: "",  /* sexual orientation */
+    genitals: "",
+    genitaltype: "", /*cut or uncut */
+    pronouns: "",
+    age: 0,
+    eyes: "",
+    hair: "",
+    haircolor: "",
+    facefeatures: "",
+    skincolor: "",
+    skinfeatures: "",
+    bodyheight: "",
+    bodyweight: "",
+    bodymusc: "", /* Musculature*/
+    personality: "",
+     anthro: {
+		group: "", /* furry, scalie, or avian */
+		subtype: "", /* Specific animal */
+		color: "", /* fur/scales/feathers */
+		wings: , /* yes or no */
+	},
+    Virgin: true or false,
+    sexpref: ""
+}>>
+/*
+
+

@@ -1,0 +1,73 @@
+:: CC-Hair [creation-page] {"position":"1175,225","size":"100,100"}
+<<HairOptions>> 
+<h1>Let's Talk Hair!</h1>
+//How long is your hair? (if no hair, choose misc)// <<nobr>> 
+<<button "Short Hair">> 
+	<<removeclass ".hairmed,.hairlong,.hairmisc" "visible">> 
+	<<addclass ".hairshort" "visible">> 
+    <<set $hair = ($hair is "bald") ? {} : $hair>> 
+    <<set $hair.length = "Short">>
+<</button>>
+
+<<button "Medium Hair">>
+	<<removeclass ".hairshort,.hairlong,.hairmisc" "visible">>
+	<<addclass ".hairmed" "visible">>
+    <<set $hair = ($hair is "bald") ? {} : $hair>>
+    <<set $hair.length = "Medium">>
+<</button>>
+
+<<button "Long Hair">>
+	<<removeclass ".hairshort,.hairmed,.hairmisc" "visible">>
+	<<addclass ".hairlong" "visible">>
+    <<set $hair = ($hair is "bald") ? {} : $hair>>
+    <<set $hair.length = "Long">>
+<</button>>
+
+<<button "Misc Hair">>
+	<<removeclass ".hairshort,.hairmed,.hairlong" "visible">>
+	<<addclass ".hairmisc" "visible">>
+    <<set $hair = ($hair is "bald") ? {} : $hair>>
+    <<set $hair.length = "Misc">>
+<</button>>
+
+<<button "No, I am bald.">>
+	<<removeclass ".hairshort,.hairmed,.hairlong,.hairmisc" "visible">>
+	<<set $hair to "bald">>
+<</button>>
+ <</nobr>> 
+    
+<span class="hairshort"> 
+//What is your natural hair style?// 
+<<listbox "$hair.style">> <<optionsfrom _hairshort>> <</listbox>> 
+//What is your natural hair colour?// 
+<<listbox "$hair.colour">> <<optionsfrom _haircolour>> <</listbox>> 
+</span>
+    
+    <span class="hairmed"> 
+    //What is your natural hair style?// 
+    <<listbox "$hair.style">> <<optionsfrom _hairmed>> <</listbox>> 
+//What is your natural hair colour?//
+<<listbox "$hair.colour">> <<optionsfrom _haircolour>> <</listbox>> 
+</span>
+
+<span class="hairlong">
+//What is your natural hair style?// 
+<<listbox "$hair.style">> <<optionsfrom _hairlong>> <</listbox>>
+//What is your natural hair colour?// 
+<<listbox "$hair.colour">> 
+<<optionsfrom _haircolour>> <</listbox>> 
+</span>
+
+<span class="hairmisc"> 
+//What is your natural hair style?// 
+<<listbox "$hair.style">> <<optionsfrom _hairmisc>> <</listbox>>
+//What is your natural hair colour?// 
+<<listbox "$hair.colour">> 
+<<optionsfrom _haircolour>> <</listbox>> </span> 
+
+<span id="cover"></span> 
+
+<<button [[Confirm|Index-CC]]>><<set $pages.hair to true>><</button>>
+
+
+

@@ -1,0 +1,9 @@
+:: CC-Kinks [creation-page] {"position":"550,225","size":"100,100"}
+Empty for now
+
+<<button "Confirm">>
+    <<set $pages.kinks to true>>
+        <<goto "Index-CC">>
+<</button>>
+
+

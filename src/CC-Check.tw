@@ -1,0 +1,146 @@
+:: CC-Check {"position":"200,400","size":"100,100"}
+<h1>Is this Correct?</h1>
+Please review the character page below and confirm the traits chosen are correct.  
+<h2>Basic Info</h2>
+<table>
+    <tr id="name">
+        <th><u><strong>First Name:</strong></u></th>
+        <td id="mc-name">$mc.name</td>
+    </tr>
+    <<if $mc.nickname>>
+    <tr id="nickname">
+        <th><u><strong>Nickname:</strong></u></th>
+        <td id="mc-nick">$mc.nickname</td>
+    </tr>
+    <</if>>
+    <tr id="surname">
+        <th><u><strong>Surname:</strong></u></th>
+        <td id="mc-surb">$mc.surname</td>
+    </tr>
+    <tr id="mc-gender">
+        <th><u><strong>Gender Identity:</strong></u></th>
+        <td id="mc-identity">
+            Gender: $mc.gender<br>
+            Sexuality: $mc.sexu
+        </td>
+    </tr>
+    <tr id="pronouns">
+        <th><u><strong>Pronouns:</strong></u></th>
+        <td id="mc-pro">$mc.pronouns</td>
+    </tr>
+    <tr id="age">
+        <th><u><strong>Age:</strong></u></th>
+        <td id="mc-age">$mc.age</td>
+    </tr>
+    <tr id="age">
+        <th><u><strong>Age Group:</strong></u></th>
+        <td id="mc-agegroup">$mc.ageGroup</td>
+    </tr>
+    <tr id="species">
+        <th><u><strong>Species:</strong></u></th>
+        <td id="mc-species">$mc.species</td>
+    </tr>
+    <<if $mc.species is "Anthro">>
+    <tr id="species">
+        <th><u><strong>Type:</strong></u></th>
+        <td id="mc-species">$mc.anthro.group</td>
+    </tr>
+    <tr id="species">
+        <th><u><strong>Subspecies:</strong></u></th>
+        <td id="mc-species">$mc.anthro.subtype</td>
+    </tr>
+    <</if>>
+</table>
+<h2>Physical Traits:</h2>
+<h3>Face and Hair:</h3>
+<table>
+    <tr id="eyes">
+        <th><u><strong>Eyes:</strong></u></th>
+        <td id="mc-eyes">$mc.eyes</td>
+    </tr>
+<tr id="hair"> 
+<th><u><strong>Hair:</strong></u></th> 
+<td> 
+<span id="mc-hairnat"> 
+<<if $hair is "bald">> You are $hair. 
+<<else>> 
+You have $hair.colour hair. Your hair is styled in a $hair.style . 
+<</if>>
+</span> 
+</td> 
+</tr>
+    <<if $facefeatures>>
+    <tr id="facial-features">
+        <th><u><strong>Facial Features:</strong></u></th>
+        <td id="mc-ffeat">$facefeatures</td>
+    </tr>
+    <</if>>
+</table>
+<h3>Body</h3>
+<table>
+    <tr id="skin-colour">
+        <th><u><strong>Skin:</strong></u></th>
+        <td id="mc-skin">$skin.color <<if $skin.features>>$skin.features <</if>></td>
+    </tr>
+    <tr id="body-build">
+        <th><u><strong>Build:</strong></u></th>
+        <td id="mc-build">
+            Height: $mc.bodyheight
+            Type: $mc.bodyweight
+            Musculature: $mc.bodymusc
+         <<if $mc.breastsize>>Breast Size: $mc.breastsize<</if>>         
+        </td>
+    </tr>
+</table>
+<h2>Personality</h2>
+<table>
+    <tr id="perso">
+        <th><u><strong>Personality:</strong></u></th>
+        <td id="mc-perso">$mc.personality</td>
+    </tr>
+</table>
+<h2>NSFW Options</h2>
+<table class="nsfw">
+    <tr>
+        <th><u><strong>Genitals:</strong></u></th>
+        <td id="mc-genitals">$mc.genitals</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th><u><strong>Genital type:</strong></u></th>
+        <td id="mc-genitaltype">$mc.genitaltype</td>
+     </tr>
+     <<if $mc.penislength>>
+        <tr>
+         <th><u><strong>Penis Length:</strong></u></th>
+        <td id="mc-penislength">$mc.penislength</td>
+        </tr>
+        <</if>>
+     <tr>
+        <th><u><strong>Ass Size:</strong></u></th>
+        <td id="mc-asssize">$mc.assSize</td>
+    </tr>
+        <tr id="sexpref">
+        <th><u><strong>Sex Preference:</strong></u></th>
+        <td id="mc-sexpref">$mc.sexpref</td>
+    </tr>   
+</table>
+/*
+<<if $mc.virgin is true>>
+	Virgin?: Yes
+<<elseif $mc.virgin is false>>
+	Virgin: No
+<</if>> */
+
+<div>
+You have a $mc.body.ears 
+You have a $mc.body.feet 
+You have a $mc.body.tail
+</div>
+<div>
+    <<button "YES!">><<goto "CC-Confirm">><</button>>
+    <<button "Go back">><<goto "Index-CC">><</button>>
+	<<button [[Randomize|CC-Check]]>><<Randomiser>><</button>>
+</div>
+
+
