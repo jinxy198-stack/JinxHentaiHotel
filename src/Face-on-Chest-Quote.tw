@@ -26,8 +26,15 @@
 				"Rrmmf—hnn… mpphh!"
 			)>>
 		<</if>>
-	<<elseif $sex.roles.sub.name == _n.name>>
+<<elseif $sex.roles.sub.name == _n.name>>
 		/* You put your face in NPC's chest */
+	<<if _n.breastsize is "Large" or _n.breastsize is "Busty">>
+		<<= either (
+			"Can you feel my heart beat? Or are my breasts too big?",
+			"I can tell you like my breasts.",
+			"Do you like my breasts?"
+		)>>
+	<<else>>
 		<<if _n.sexpref == "Dominant">>
 			<<= either(
 				"Bet you like that, huh?.",
@@ -36,13 +43,15 @@
 			)>>
 		<<elseif _n.sexpref == "Submissive">>
 			<<= either(
-				"Aww."
+				"Aww.",
+				"You're making my chest feel good."
 			)>>
 		<<else>>
 			<<= either(
 				"Is my chest comfy?"
 			)>>
 		<</if>>
-	<</if>>
+	<</if>>	
+<</if>>
 
 

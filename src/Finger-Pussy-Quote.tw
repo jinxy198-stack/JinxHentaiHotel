@@ -7,7 +7,8 @@
 			)>>
 		<<elseif _n.sexpref == "Submissive">>
 			<<= either(
-				"It's so warm in there."
+				"It's so warm in there.",
+				"Wow, its so wet down there."
 			)>>
 		<<else>>
 			<<= either(

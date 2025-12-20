@@ -28,7 +28,8 @@
 				"Ah, $mc.name.",
 				"Mm, yeah, you like that, $mc.name?",
 				"You feel so fucking good around me!",
-				"You feel so tight, $mc.name. You were made for this!"
+				"You feel so tight, $mc.name. You were made for this!",
+				"You make a good fucktoy."
 			)>>
 		<<elseif _n.sexpref == "Submissive">>
 			<<= either(
@@ -38,7 +39,8 @@
 				"I-It's so tight!",
 				"Ah, you're so tight, $mc.name!",
 				"You're doing so well! You feel amazing, $mc.name!",
-				"$mc.name, $mc.name, $mc.name!"
+				"$mc.name, $mc.name, $mc.name!",
+				"Don't worry, I'll be gentle."
 			)>>
 		<<else>>
 			<<= either(
@@ -59,12 +61,14 @@
 		<<if $sex.position == "Cowgirl">>
 			<<if _n.sexpref == "Dominant">>	
 				<<= either(
-				"Love it when I bounce on your cock?"
+				"Love it when I bounce on your cock?",
+				"You feel so good inside me."
 				)>>
 			<<elseif _n.sexpref == "Submissive">>
 				<<= either(
 					"Fuck me hard!",
-					"Ahh"
+					"Ahh",
+					"You feel so good inside me."
 				)>>
 			<</if>>
 		<<else>>
@@ -110,7 +114,8 @@
 					"Keep it up, you're hitting me just right!",
 					"Yess... It's sooo good!",
 					"Oh! Oh fuck yeah! Yes!!!",
-					"You feel so good inside me."
+					"You feel so good inside me.",
+					"You like being inside me, don't you?"
 				)>>
 			<</if>>
 		<</if>>

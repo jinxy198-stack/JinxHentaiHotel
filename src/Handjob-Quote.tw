@@ -61,9 +61,7 @@
 				<</if>>	
 			<<elseif $mc.penislength == "small">>
 				<<= either(
-					"DOM-LINE-1 about BODY-PART.",
-					"DOM-LINE-2 about BODY-PART.",
-					"DOM-LINE-3 about BODY-PART."
+					"Don't feel bad about the size, I like it"
 				)>>
 			<<elseif $mc.penislength == "average">>
 				<<= either(
@@ -73,13 +71,12 @@
 				)>>
 			<<elseif $mc.penislength == "large">>
 				<<= either(
-					"Wow, it's pretty big!"
+					"Wow, it's pretty big!",
+					"You should be proud to have a cock this big!"
 				)>>	
 			<<elseif $mc.penislength == "huge">>
 				<<= either(
-					"DOM-LINE-1 about BODY-PART.",
-					"DOM-LINE-2 about BODY-PART.",
-					"DOM-LINE-3 about BODY-PART."
+					"It's quite an intimidating size."
 				)>>
 			<</if>>
 			

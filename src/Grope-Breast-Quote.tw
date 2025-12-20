@@ -1,6 +1,66 @@
 :: Grope-Breast-Quote [nobr Dialogue] {"position":"1600,1500","size":"100,100"}
 <<if $sex.roles.dom.name == _n.name>>
 		/* NPC gropes your breast */
+	<<if $mc.breastsize is "Flat">>
+		<<= either(
+			"Don't be ashamed about being flat, it's really cute."
+		)>>
+	<<elseif $mc.breastsize is "Small">>
+		<<if $mc.ageGroup is "Child" or "Teen">>
+			<<= either(
+				"Nothing quite like developing breasts. So lewd and cute."
+			)>>	
+		<<else>>
+			<<= either(
+				"I think small breasts are kinda cute."
+			)>>
+		<</if>>
+	<<elseif $mc.breastsize is "Average">>
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Nice tits."
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"I like your breasts."
+			)>>
+		<<else>>
+			<<= either(
+				"I like your breasts."
+			)>>
+		<</if>>
+	<<elseif $mc.breastsize is "Large">>
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Heh, look a the size of these!",
+				"Damn, these are huge!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Your breasts are so soft.",
+				"Wow, they are pretty big."
+			)>>
+		<<else>>
+			<<= either(
+				"Wow.."
+			)>>
+		<</if>>
+	<<elseif $mc.breastsize is "Busty">>
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+				"Shit, these are big!",
+				"How do you carry these things?!"
+			)>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+				"Whoa..."
+			)>>
+		<<else>>
+			<<= either(
+				"These sure are big!"
+			)>>
+		<</if>>
+	<<else>>	
 		<<if _n.sexpref == "Dominant">>
 			<<= either(
 				"Heh, look a the size of these!"
@@ -15,7 +75,8 @@
 				"NEUTRAL-DOM-LINE-2 about BODY-PART."
 			)>>
 		<</if>>
-	<<elseif $sex.roles.sub.name == _n.name>>
+	<</if>>	
+<<elseif $sex.roles.sub.name == _n.name>>
 		/* You grope NPC's breast */
 		<<if _n.sexpref == "Dominant">>
 			<<= either(
@@ -31,6 +92,6 @@
 				"NEUTRAL-DOM-LINE-2 about BODY-PART."
 			)>>
 		<</if>>
-	<</if>>
+<</if>>
 
 

@@ -20,9 +20,7 @@
 		/* You frot NPC */
 		<<if _n.sexpref == "Dominant">>
 			<<= either(
-				"DOM-LINE-1 about BODY-PART.",
-				"DOM-LINE-2 about BODY-PART.",
-				"DOM-LINE-3 about BODY-PART."
+				"Mmm, this feels so good."
 			)>>
 		<<elseif _n.sexpref == "Submissive">>
 			<<= either(

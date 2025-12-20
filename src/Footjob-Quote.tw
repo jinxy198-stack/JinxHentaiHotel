@@ -8,12 +8,15 @@
 		<<elseif _n.sexpref == "Submissive">>
 			<<= either(
 				"Your feet are so soft.",
-				"That's great, $mc.name! Keep it up!"
+				"That's great, $mc.name! Keep it up!",
+				"Your feet feel nice."
 			)>>
 		<<else>>
 			<<= either(
 				"Your feet are so soft.",
-				"That's great, $mc.name! Keep it up!"
+				"That's great, $mc.name! Keep it up!",
+				"Your feet feel so nice.",
+				"You really know how to handle your feet."
 			)>>
 		<</if>>
 	<<elseif $sex.roles.sub.name == _n.name>>

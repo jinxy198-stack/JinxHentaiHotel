@@ -1,6 +1,6 @@
 :: Cunnilingus-Quote [nobr Dialogue] {"position":"1800,1300","size":"100,100"}
 <<if $sex.roles.dom.name == _n.name>>
-		/* NPC eats out your pussy */
+		/* You eats out NPC pussy */
 		<<if _n.sexpref == "Dominant">>
 			<<= either(
 				"That's right, keep eating me out!",
@@ -9,7 +9,8 @@
 				"Oh yes! Get that _n.body.tongue in deep!",
 				"Good _n.petname! Get that _n.body.tongue of yours in deep!",
 				"Keep going! My pussy loves your _n.body.tongue!",
-				"Don't stop! Deeper! Eat me out! Yes, yes, yes!"
+				"Don't stop! Deeper! Eat me out! Yes, yes, yes!",
+				"Hope you like the taste."
 			)>>
 		<<elseif _n.sexpref == "Submissive">>
 			<<= either(
@@ -21,11 +22,11 @@
 		<<else>>
 			<<= either(
 				"Don't stop! Deeper! Eat me out! Yes, yes, yes!",
-				"Mmmm"
+				"Mmmm",
 			)>>
 		<</if>>
 	<<elseif $sex.roles.sub.name == _n.name>>
-		/* You eat out NPC's Pussy */
+		/* NPC eat out your Pussy */
 		<<if _n.sexpref == "Dominant">>
 			<<= either(
 				"Mmmf",
