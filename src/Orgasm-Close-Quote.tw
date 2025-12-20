@@ -28,6 +28,21 @@
             )>>            
     <</if>>    
 <<elseif $sex.roles.sub.name == _n.name>>
+	<<if $sex.action == "Anal">>
+		<<if _n.sexpref == "Dominant">>
+			<<= either(
+            	"Cum in my ass!"
+            )>>
+		<<elseif _n.sexpref == "Submissive">>
+			<<= either(
+            	"Oh god, cum in me!"
+            )>>
+		<<else>>
+			<<= either(
+            	"Oh god, cum in me!"
+            )>>
+		<</if>>
+	<<else>>
 		<<if _n.sexpref == "Dominant">>
 			<<= either(
             	"Oh god, cum in me!",
@@ -42,4 +57,5 @@
             	"Oh god, cum in me!"
             )>>
 		<</if>>
-	<</if>>
+	<</if>>	
+<</if>>

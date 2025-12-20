@@ -20,7 +20,7 @@
 		/* NPC gives you a handjob */
 		<<if _n.sexpref == "Dominant">>
 			<<if $mc.penislength == "tiny">>
-				<<if $mc.agegroup =="Child">>
+				<<if $mc.agegroup == "Child">>
 					<<= either(
 						"Perfect size for someone your age."
 					)>>
@@ -50,7 +50,7 @@
 			<</if>>	
 		<<elseif _n.sexpref == "Submissive">>
 			<<if $mc.penislength == "tiny">>
-				<<if $mc.agegroup =="Child">>
+				<<if $mc.agegroup == "Child">>
 					<<= either(
 						"Perfect size for someone your age."
 					)>>

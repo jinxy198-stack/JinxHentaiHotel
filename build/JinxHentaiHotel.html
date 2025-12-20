@@ -989,7 +989,7 @@ Glasses
 &lt;&lt;elseif $sex.roles.sub.name== _n.name&gt;&gt;
 	&lt;&lt;=either(
 	&quot;Taking hold of $proset.their shoulders, you push $proset.them up against a nearby wall.&quot;,
-	&quot;Grinding your body up against $proset.their back, _n.name feels your breath on $proset.their _n.body.ears.&quot;
+	&quot;Grinding your body up against $proset.their back, _n.name feels your breath on $proset.their &quot;+ ((_n.body.ears &amp;&amp; _n.body.ears.toLowerCase) ? _n.body.ears.toLowerCase() : &quot;ears&quot;)+&quot;.&quot;
     )&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Anal-Dialogue" tags="nobr Dialogue" position="1200,1575" size="100,100">&lt;&lt;if $position == &quot;Cowgirl&quot;&gt;&gt;
 	&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
@@ -3025,7 +3025,7 @@ At the end of the hall is an elevator.
 		/* NPC gives you a handjob */
 		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
 			&lt;&lt;if $mc.penislength == &quot;tiny&quot;&gt;&gt;
-				&lt;&lt;if $mc.agegroup ==&quot;Child&quot;&gt;&gt;
+				&lt;&lt;if $mc.agegroup == &quot;Child&quot;&gt;&gt;
 					&lt;&lt;= either(
 						&quot;Perfect size for someone your age.&quot;
 					)&gt;&gt;
@@ -3055,7 +3055,7 @@ At the end of the hall is an elevator.
 			&lt;&lt;/if&gt;&gt;	
 		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
 			&lt;&lt;if $mc.penislength == &quot;tiny&quot;&gt;&gt;
-				&lt;&lt;if $mc.agegroup ==&quot;Child&quot;&gt;&gt;
+				&lt;&lt;if $mc.agegroup == &quot;Child&quot;&gt;&gt;
 					&lt;&lt;= either(
 						&quot;Perfect size for someone your age.&quot;
 					)&gt;&gt;
@@ -3576,6 +3576,21 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
             )&gt;&gt;            
     &lt;&lt;/if&gt;&gt;    
 &lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;if $sex.action == &quot;Anal&quot;&gt;&gt;
+		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
+			&lt;&lt;= either(
+            	&quot;Cum in my ass!&quot;
+            )&gt;&gt;
+		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
+			&lt;&lt;= either(
+            	&quot;Oh god, cum in me!&quot;
+            )&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;= either(
+            	&quot;Oh god, cum in me!&quot;
+            )&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;else&gt;&gt;
 		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
 			&lt;&lt;= either(
             	&quot;Oh god, cum in me!&quot;,
@@ -3590,7 +3605,8 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
             	&quot;Oh god, cum in me!&quot;
             )&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;/if&gt;&gt;	
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 			&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
 				&lt;&lt;= either(
             		&quot;I&#39;m cumming!&quot;,
@@ -3635,12 +3651,22 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
 		&lt;&lt;else&gt;&gt;
 			You cum and they cum with you.
 		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.action == &quot;Vaginal&quot;&gt;&gt;
+		&lt;br&gt;
+		/* If you have a knotted penis */
+		&lt;&lt;if $mc.genitaltype is &quot;knotted&quot;&gt;&gt;
+			&lt;&lt;= either(
+				&quot;Even after your balls have pumped their entire load into _n.name, your knot remains swollen, locking the two of you together.&quot;
+			)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;elseif $sex.action == &quot;Vaginal Orgasm&quot;&gt;&gt;
 		You moan and groan as you shoot your load into _n.name&#39;s _n.genitaltype _n.genitals.
 	&lt;&lt;elseif $sex.action == &quot;Blowjob Orgasm&quot;&gt;&gt;
 		$proset.their tongue swirls around your head some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.
 	&lt;&lt;elseif $sex.action == &quot;Handjob Orgasm&quot;&gt;&gt;
 		You let out a moan and buck your $mc.body.hips forward as you shoot your load.
+		&lt;&lt;if $mc.genitaltype is &quot;Knotted&quot;&gt;&gt;
+			The thick knot at the base of your $mc.genitals swells up, and you feel your balls tightening as you start to cum.
+		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;elseif $sex.action == &quot;Footjob Orgasm&quot;&gt;&gt;
 		Bucking your $mc.body.hips, you let out a moan as _n.name continues stimulating your $mc.genitals with $proset.their _n.feet.
 	&lt;&lt;elseif $sex.action == &quot;Cunnilingus Orgasm&quot;&gt;&gt;
@@ -3667,7 +3693,10 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
 	&lt;&lt;elseif $sex.action == &quot;Footjob Orgasm&quot;&gt;&gt;
 		_n.name cums. Your feet are wet from $proset.their semen.
 	&lt;&lt;elseif $sex.action == &quot;Cunnilingus Orgasm&quot;&gt;&gt;
-		You writhe in place as you squirt in _n.name&#39;s mouth.
+		&lt;&lt;= either(
+		&quot;You writhe in place as you squirt in _n.name&#39;s mouth.&quot;,
+		&quot;_n.name carries on licking and kissing at your clit while you orgasm.&quot;
+		)&gt;&gt;
 	&lt;&lt;elseif $sex.action == &quot;Frot Orgasm&quot;&gt;&gt;
 		Your cock twitches and pulses as it cums between you both.
 	&lt;&lt;elseif $sex.action == &quot;Boobjob Orgasm&quot;&gt;&gt;
@@ -4994,6 +5023,7 @@ _n.name is taller
 	&lt;&lt;= either(
 		&quot;Wanting &quot; + _n.name + &quot; to perform oral on you, you push &quot; + $proset.them + &quot; down so that &quot; + $proset.they + &quot; are kneeling behind you.&quot;
 	)&gt;&gt;
+	&lt;br&gt;
 	&lt;&lt;= either(
 		&quot;So cute, like my &quot; + (($mc.assSize &amp;&amp; $mc.assSize.toLowerCase) ? $mc.assSize.toLowerCase() : &quot;average&quot;) + &quot; ass?&quot;
 	)&gt;&gt;

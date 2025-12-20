@@ -13,6 +13,7 @@
 	<<= either(
 		"Wanting " + _n.name + " to perform oral on you, you push " + $proset.them + " down so that " + $proset.they + " are kneeling behind you."
 	)>>
+	<br>
 	<<= either(
 		"So cute, like my " + (($mc.assSize && $mc.assSize.toLowerCase) ? $mc.assSize.toLowerCase() : "average") + " ass?"
 	)>>

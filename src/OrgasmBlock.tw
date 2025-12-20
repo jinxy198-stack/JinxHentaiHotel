@@ -9,12 +9,22 @@
 		<<else>>
 			You cum and they cum with you.
 		<</if>>
-	<<elseif $sex.action == "Vaginal">>
+		<br>
+		/* If you have a knotted penis */
+		<<if $mc.genitaltype is "knotted">>
+			<<= either(
+				"Even after your balls have pumped their entire load into _n.name, your knot remains swollen, locking the two of you together."
+			)>>
+		<</if>>
+	<<elseif $sex.action == "Vaginal Orgasm">>
 		You moan and groan as you shoot your load into _n.name's _n.genitaltype _n.genitals.
 	<<elseif $sex.action == "Blowjob Orgasm">>
 		$proset.their tongue swirls around your head some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.
 	<<elseif $sex.action == "Handjob Orgasm">>
 		You let out a moan and buck your $mc.body.hips forward as you shoot your load.
+		<<if $mc.genitaltype is "Knotted">>
+			The thick knot at the base of your $mc.genitals swells up, and you feel your balls tightening as you start to cum.
+		<</if>>
 	<<elseif $sex.action == "Footjob Orgasm">>
 		Bucking your $mc.body.hips, you let out a moan as _n.name continues stimulating your $mc.genitals with $proset.their _n.feet.
 	<<elseif $sex.action == "Cunnilingus Orgasm">>
@@ -41,7 +51,10 @@
 	<<elseif $sex.action == "Footjob Orgasm">>
 		_n.name cums. Your feet are wet from $proset.their semen.
 	<<elseif $sex.action == "Cunnilingus Orgasm">>
-		You writhe in place as you squirt in _n.name's mouth.
+		<<= either(
+		"You writhe in place as you squirt in _n.name's mouth.",
+		"_n.name carries on licking and kissing at your clit while you orgasm."
+		)>>
 	<<elseif $sex.action == "Frot Orgasm">>
 		Your cock twitches and pulses as it cums between you both.
 	<<elseif $sex.action == "Boobjob Orgasm">>
