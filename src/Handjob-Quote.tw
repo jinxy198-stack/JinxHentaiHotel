@@ -1,93 +1,41 @@
 :: Handjob-Quote [nobr Dialogue] {"position":"1700,1700","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-		/* You give NPC a handjob */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Mmm, your hand feels good around my cock.",
-				"Your hands are soft"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"Mmm, that feels nice.",
-				"Ohh"
-			)>>
-		<<else>>
-			<<= either(
-				"Mmm, that feels nice."
-			)>>
-		<</if>>
-	<<elseif $sex.roles.sub.name == _n.name>>
-		/* NPC gives you a handjob */
-		<<if _n.sexpref == "Dominant">>
-			<<if $mc.penislength == "tiny">>
-				<<if $mc.agegroup == "Child">>
-					<<= either(
-						"Perfect size for someone your age."
-					)>>
-				<<else>>
-					<<= either(
-						"So cute and tiny."
-					)>>
-				<</if>>	
-			<<elseif $mc.penislength == "small">>
-				<<= either(
-					"So small, yet so precious."
-				)>>
-			<<elseif $mc.penislength == "average">>
-				<<= either(
-					"Your cock is so pretty."
-				)>>
-			<<elseif $mc.penislength == "large">>
-				<<= either(
-					"Damn, that's pretty big."
-				)>>	
-			<<elseif $mc.penislength == "huge">>
-				<<= either(
-					"DOM-LINE-1 about BODY-PART.",
-					"DOM-LINE-2 about BODY-PART.",
-					"DOM-LINE-3 about BODY-PART."
-				)>>
-			<</if>>	
-		<<elseif _n.sexpref == "Submissive">>
-			<<if $mc.penislength == "tiny">>
-				<<if $mc.agegroup == "Child">>
-					<<= either(
-						"Perfect size for someone your age."
-					)>>
-				<<else>>
-					<<= either(
-						"So cute and tiny."
-					)>>
-				<</if>>	
-			<<elseif $mc.penislength == "small">>
-				<<= either(
-					"Don't feel bad about the size, I like it"
-				)>>
-			<<elseif $mc.penislength == "average">>
-				<<= either(
-					"DOM-LINE-1 about BODY-PART.",
-					"DOM-LINE-2 about BODY-PART.",
-					"DOM-LINE-3 about BODY-PART."
-				)>>
-			<<elseif $mc.penislength == "large">>
-				<<= either(
-					"Wow, it's pretty big!",
-					"You should be proud to have a cock this big!"
-				)>>	
-			<<elseif $mc.penislength == "huge">>
-				<<= either(
-					"It's quite an intimidating size."
-				)>>
-			<</if>>
-			
-			<<= either(
-				"Wow, this is a really nice dick, $mc.name!"
-			)>>
-		<<else>>
-			<<= either(
-				"Wow, this is a really nice dick, $mc.name!"
-			)>>
-		<</if>>
+<<if !setup.handjobQuotes>>
+	[Error] setup.handjobQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _size = $mc.penislength || "average">>
+<<set _age  = ($mc.ageGroup == "Child") ? "child" : "adult">>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.handjobQuotes.give[_pref] || setup.handjobQuotes.give.Neutral>>
+<<else>>
+	<<if _size == "tiny">>
+		<<run _pool =
+			(
+				setup.handjobQuotes.receive[_pref]
+				&& setup.handjobQuotes.receive[_pref].tiny
+				&& setup.handjobQuotes.receive[_pref].tiny[_age]
+			)
+			|| setup.handjobQuotes.receive.Neutral.default
+		>>
+	<<else>>
+		<<run _pool =
+			(
+				setup.handjobQuotes.receive[_pref]
+				&& setup.handjobQuotes.receive[_pref][_size]
+			)
+			|| setup.handjobQuotes.receive.Neutral.default
+		>>
 	<</if>>
+<</if>>
 
-
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No handjob quote pool found.
+<</if>>
