@@ -1,0 +1,32 @@
+:: Footjob-Quote [nobr Dialogue] {"position":"1800,1400","size":"100,100"}
+<<if !setup.footjobQuotes>>
+	[Error] setup.footjobQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _size = $mc.penislength || "average">>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.footjobQuotes.give[_pref] || setup.footjobQuotes.give.Neutral>>
+<<else>>
+	
+		<<run _pool =
+			(
+				setup.footjobQuotes.receive[_pref]
+				&& setup.footjobQuotes.receive[_pref][_size]
+			)
+			|| setup.footjobQuotes.receive.Neutral.default
+		>>
+<</if>>
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No footjob quote pool found.
+<</if>>
+
+

@@ -3595,47 +3595,35 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 		&quot;Pushing _n.name&#39;s &lt;&lt;= _n.body.feet.toLowerCase()&gt;&gt; together, you let out a moan as you start to pump your &lt;&lt;= $mc.body.hips.toLowerCase()&gt;&gt; back and forth, sighing as you receive a footjob.&quot;,
 		&quot;_n.name picks up the pace, sliding their &lt;&lt;= _n.body.feet.toLowerCase()&gt;&gt; up agaisnt your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;.&quot;
 	)&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC fucks your feet */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Good, keep doing that.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Your feet are so soft.&quot;,
-				&quot;That&#39;s great, $mc.name! Keep it up!&quot;,
-				&quot;Your feet feel nice.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Your feet are so soft.&quot;,
-				&quot;That&#39;s great, $mc.name! Keep it up!&quot;,
-				&quot;Your feet feel so nice.&quot;,
-				&quot;You really know how to handle your feet.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* You fuck NPC&#39;s feet */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;DOM-LINE-1 about BODY-PART.&quot;,
-				&quot;DOM-LINE-2 about BODY-PART.&quot;,
-				&quot;DOM-LINE-3 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;I really like how you feel against my toes.&quot;,
-				&quot;I can feel your cock pulse, $mc.name.&quot;,
-				&quot;I wonder how it&#39;ll feel to have your cum squirt into my soft, bare feet?&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-				&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="ForeplayBlock" tags="nobr" position="1675,800" size="100,100">&lt;&lt;set $seenActions = $seenActions or {}&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if !setup.footjobQuotes&gt;&gt;
+	[Error] setup.footjobQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _size = $mc.penislength || &quot;average&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.footjobQuotes.give[_pref] || setup.footjobQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	
+		&lt;&lt;run _pool =
+			(
+				setup.footjobQuotes.receive[_pref]
+				&amp;&amp; setup.footjobQuotes.receive[_pref][_size]
+			)
+			|| setup.footjobQuotes.receive.Neutral.default
+		&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No footjob quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="ForeplayBlock" tags="nobr" position="1675,800" size="100,100">&lt;&lt;set $seenActions = $seenActions or {}&gt;&gt;
 &lt;hr&gt;
 &lt;b&gt;Foreplay:&lt;/b&gt;
 
@@ -4718,6 +4706,44 @@ setup.handjobQuotes = {
   }
 };
 
+
+
+
+setup.footjobQuotes = {
+  give: {
+    Dominant: [
+      &quot;Good, keep doing that.&quot;
+    ],
+    Submissive: [
+      &quot;Your feet are so soft.&quot;,
+			&quot;That&#39;s great, $mc.name! Keep it up!&quot;,
+			&quot;Your feet feel nice.&quot;
+    ],
+    Neutral: [
+      &quot;Your feet are so soft.&quot;,
+			&quot;That&#39;s great, $mc.name! Keep it up!&quot;,
+			&quot;Your feet feel so nice.&quot;,
+			&quot;You really know how to handle your feet.&quot;
+    ]
+  },
+
+  receive: {
+    Dominant: [
+      &quot;DOM-LINE-1 about FOOT-JOB.&quot;
+    ],
+
+    Submissive: [
+      &quot;I really like how you feel against my toes.&quot;,
+			&quot;I can feel your cock pulse, $mc.name.&quot;,
+			&quot;I wonder how it&#39;ll feel to have your cum squirt into my soft, bare feet?&quot;
+    ],
+
+    Neutral: {
+      default: [&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;]
+    }
+  }
+};
+
 &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="Sex-Quote" tags="Dialogue nobr" position="1600,1200" size="100,100">&lt;!-- only what the npc says --&gt;
 &lt;br&gt;
 &lt;b&gt;&lt;&lt;= _n.name &gt;&gt;: &lt;/b&gt;
@@ -5727,7 +5753,62 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;HandjobQuote&quot;&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;BlowjobQuote&quot;&gt;&gt;
+
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;RimJobQuote&quot;&gt;&gt;
+
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;VaginalQuote&quot;&gt;&gt;
+
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;SuckFootQuote&quot;&gt;&gt;
+
+&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &quot;FootjobQuote&quot;&gt;&gt;
+
+	/* guard */
+	&lt;&lt;if !setup.footjobQuotes&gt;&gt;
+		[Error] setup.footjobQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _size = $mc.penislength || &quot;average&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.footjobQuotes.give[_pref]
+			|| setup.footjobQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.footjobQuotes.receive[_pref]
+					&amp;&amp; setup.footjobQuotes.receive[_pref][_size]
+				)
+				|| setup.footjobQuotes.receive.Neutral.default
+			&gt;&gt;
+
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] FootjobQuote: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;HandjobQuote&quot;&gt;&gt;
 
 	/* guard */
 	&lt;&lt;if !setup.handjobQuotes&gt;&gt;
@@ -5789,7 +5870,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
     &lt;&lt;AgeGroupNPC&gt;&gt;
     &lt;&lt;make-petname&gt;&gt;
     &lt;&lt;SetNPCBodyType _npc&gt;&gt;
-    &lt;&lt;create-body&gt;&gt;
+    &lt;&lt;create-body _npc&gt;&gt;
 	&lt;&lt;initParts _npc&gt;&gt;
 	&lt;&lt;set _dummy = $npcs.push(_npc)&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
@@ -5873,7 +5954,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 
 	/* Small string used by pick-roles (dom|sub|switch) */
 	&lt;&lt;set _prefKey = setup.pick([&quot;dom&quot;, &quot;sub&quot;, &quot;switch&quot;])&gt;&gt;
-	&lt;&lt;set _npc.sexPref = _prefKey&gt;&gt;
+	&lt;&lt;set _npc.sexpref = _prefKey&gt;&gt;
 
 	/* Human-readable version used by existing dialogue (Dominant/Submissive/Switch) */
 	&lt;&lt;switch _prefKey&gt;&gt;
@@ -5885,7 +5966,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 	/**********************
 	    AGE &amp; BODY
 	**********************/
-	&lt;&lt;set _npc.age = setup.randint(8, 40)&gt;&gt;
+	&lt;&lt;set _npc.age = setup.randint(18, 40)&gt;&gt;
 	&lt;&lt;set _npc.heterochromia = either(true,false)&gt;&gt;
 
 	&lt;&lt;set _npc.eyes		= setup.pick(_eyesPool)&gt;&gt;
@@ -5949,7 +6030,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 	&lt;&lt;PronounsSet&gt;&gt;
 	&lt;&lt;AgeGroupNPC&gt;&gt;
 	&lt;&lt;make-petname&gt;&gt;
-	&lt;&lt;create-body&gt;&gt;
+	&lt;&lt;create-body _npc&gt;&gt;
 	&lt;&lt;initParts _npc&gt;&gt;
     &lt;&lt;SetNPCBodyType _npc&gt;&gt;
 
@@ -5970,7 +6051,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 
-&lt;&lt;widget &quot;check-attraction&quot; mc n&gt;&gt;
+&lt;&lt;widget &quot;check-attraction&quot; $mc _n&gt;&gt;
 	&lt;&lt;set _mcG = $mc.gender&gt;&gt;
 	&lt;&lt;set _npcG = _n.gender&gt;&gt;
 	&lt;&lt;set _sexu = _n.sexu or &quot;Unknown&quot;&gt;&gt;
@@ -6015,8 +6096,8 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 	&lt;&lt;set _npc = _args[1]&gt;&gt;
 
 	/* optional single-string prefs: &quot;dom&quot; | &quot;sub&quot; | &quot;switch&quot; (or unset) */
-	&lt;&lt;set _mcPref  = (_mc.sexPref  or &quot;switch&quot;)&gt;&gt;
-	&lt;&lt;set _npcPref = (_npc.sexPref or &quot;switch&quot;)&gt;&gt;
+	&lt;&lt;set _mcPref  = (_mc.sexpref  or &quot;switch&quot;)&gt;&gt;
+	&lt;&lt;set _npcPref = (_npc.sexpref or &quot;switch&quot;)&gt;&gt;
 
 	/* init target */
 	&lt;&lt;set $sex to $sex or {}&gt;&gt;
@@ -6061,7 +6142,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
-&lt;&lt;widget &quot;create-body&quot;&gt;&gt;
+&lt;&lt;widget &quot;create-body&quot; _npc&gt;&gt;
 	&lt;&lt;set _npc.body to {
 		head: &quot;head&quot;,
 		face: &quot;face&quot;,
@@ -6082,7 +6163,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 	}&gt;&gt;
 
 	&lt;&lt;if _npc.species is &quot;Anthro&quot;&gt;&gt;
-		&lt;&lt;alternatebody&gt;&gt;
+		&lt;&lt;alternatebody _npc&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
 	/* enforce: anthro color OR human skin, never both */
@@ -6098,7 +6179,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 
-&lt;&lt;widget &quot;alternatebody&quot;&gt;&gt;
+&lt;&lt;widget &quot;alternatebody&quot; _npc&gt;&gt;
 	&lt;&lt;if _npc and _npc.species and _npc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;
 		&lt;&lt;set _group = _npc.anthro and _npc.anthro.group ? _npc.anthro.group : &quot;Furry&quot;&gt;&gt;
 		&lt;&lt;set _sub   = _npc.anthro and _npc.anthro.subtype ? _npc.anthro.subtype.toLowerCase() : &quot;&quot;&gt;&gt;
@@ -6260,7 +6341,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 
 			/* ----- AVIAN NPCS ----- */
 			&lt;&lt;case &quot;Avian&quot;&gt;&gt;
-				&lt;&lt;set _npc.body.bodymaterial to &quot;feathers&quot;&gt;&gt;
+				&lt;&lt;set _npc.body.bodymaterial to &quot;Feathers&quot;&gt;&gt;
 				&lt;&lt;set _npc.body.feet         to &quot;Talons&quot;&gt;&gt;
 				&lt;&lt;set _npc.body.face         to &quot;Beak&quot;&gt;&gt;
 				&lt;&lt;set _npc.body.tail         to &quot;Tailfeathers&quot;&gt;&gt;
@@ -6359,7 +6440,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 			/* ----- FURRY ----- */
 			&lt;&lt;case &quot;Furry&quot;&gt;&gt;
 				/* base furry defaults */
-				&lt;&lt;set $mc.body.bodymaterial = &quot;fur&quot;&gt;&gt;
+				&lt;&lt;set $mc.body.bodymaterial = &quot;Fur&quot;&gt;&gt;
 				&lt;&lt;set $mc.body.feet         = &quot;paws&quot;&gt;&gt;
 				&lt;&lt;set $mc.body.ears         = &quot;furry ears&quot;&gt;&gt;
 				&lt;&lt;set $mc.body.tail         = &quot;furred tail&quot;&gt;&gt;
@@ -6413,7 +6494,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 
 			/* ----- SCALIE ----- */
 			&lt;&lt;case &quot;Scalie&quot;&gt;&gt;
-				&lt;&lt;set $mc.body.bodymaterial = &quot;scales&quot;&gt;&gt;
+				&lt;&lt;set $mc.body.bodymaterial = &quot;Scales&quot;&gt;&gt;
 				&lt;&lt;set $mc.body.feet         = &quot;clawed feet&quot;&gt;&gt;
 				&lt;&lt;set $mc.body.tail         = &quot;thick scaled tail&quot;&gt;&gt;
                 &lt;&lt;set $mc.body.face			=&quot;snout&quot;&gt;&gt;
@@ -6445,7 +6526,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 
 			/* ----- AVIAN ----- */
 			&lt;&lt;case &quot;Avian&quot;&gt;&gt;
-				&lt;&lt;set $mc.body.bodymaterial = &quot;feathers&quot;&gt;&gt;
+				&lt;&lt;set $mc.body.bodymaterial = &quot;Feathers&quot;&gt;&gt;
 				&lt;&lt;set $mc.body.feet         = &quot;talons&quot;&gt;&gt;
 				&lt;&lt;set $mc.body.face         = &quot;beak&quot;&gt;&gt;
 				&lt;&lt;set $mc.body.tail         = &quot;tailfeathers&quot;&gt;&gt;
@@ -6482,10 +6563,13 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;make-petname&quot;&gt;&gt;
+
 &lt;&lt;if _npc.pronouns is &quot;He/Him&quot;&gt;&gt;
 	&lt;&lt;set _npc.petname to &quot;boy&quot;&gt;&gt;
 &lt;&lt;elseif _npc.pronouns is &quot;She/Her&quot;&gt;&gt;
 	&lt;&lt;set _npc.petname to &quot;girl&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _npc.petname = &quot;pet&quot;&gt;&gt;	
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="Widgets" tags="widget nobr" position="400,25" size="100,100">&lt;&lt;widget &quot;SetNPCBodyType&quot;&gt;&gt;
 	/* choose NPC: arg 0 or $ui.npc */

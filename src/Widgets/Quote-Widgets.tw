@@ -1,5 +1,130 @@
 :: Quote-Widgets [widget nobr] {"position":"400,150","size":"100,100"}
 
+
+<<widget "BlowjobQuote">>
+
+<</widget>>
+
+<<widget "RimjobQuote">>
+
+<</widget>>
+
+<<widget "VaginalQuote">>
+	/* guard */
+	<<if !setup.vaginalQuotes>>
+		[Error] setup.vaginalQuotes is not defined.
+		<<return>>
+	<</if>>
+
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _size = $mc.penislength || "average">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.vaginalQuotes.give[_pref]
+			|| setup.vaginalQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.vaginalQuotes.receive[_pref]
+					&& setup.vaginalQuotes.receive[_pref][_size]
+				)
+				|| setup.vaginalQuotes.receive.Neutral.default
+			>>
+
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] VaginalQuote: empty dialogue pool.
+	<</if>>
+<</widget>>
+
+<<widget "SuckFootQuote">>
+	/* guard */
+	<<if !setup.suckfootQuotes>>
+		[Error] setup.suckfootQuotes is not defined.
+		<<return>>
+	<</if>>
+
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _size = $mc.penislength || "average">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.suckfootQuotes.give[_pref]
+			|| setup.suckfootQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.suckfootQuotes.receive[_pref]
+					&& setup.suckfootQuotes.receive[_pref][_size]
+				)
+				|| setup.suckfootQuotes.receive.Neutral.default
+			>>
+
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] SuckfootQuote: empty dialogue pool.
+	<</if>>
+<</widget>>
+
+<<widget "FootjobQuote">>
+
+	/* guard */
+	<<if !setup.footjobQuotes>>
+		[Error] setup.footjobQuotes is not defined.
+		<<return>>
+	<</if>>
+
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _size = $mc.penislength || "average">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.footjobQuotes.give[_pref]
+			|| setup.footjobQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.footjobQuotes.receive[_pref]
+					&& setup.footjobQuotes.receive[_pref][_size]
+				)
+				|| setup.footjobQuotes.receive.Neutral.default
+			>>
+
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] FootjobQuote: empty dialogue pool.
+	<</if>>
+
+<</widget>>
+
 <<widget "HandjobQuote">>
 
 	/* guard */

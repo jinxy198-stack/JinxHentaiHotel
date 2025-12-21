@@ -12,7 +12,7 @@
     <<AgeGroupNPC>>
     <<make-petname>>
     <<SetNPCBodyType _npc>>
-    <<create-body>>
+    <<create-body _npc>>
 	<<initParts _npc>>
 	<<set _dummy = $npcs.push(_npc)>>
 <</widget>>
@@ -96,7 +96,7 @@
 
 	/* Small string used by pick-roles (dom|sub|switch) */
 	<<set _prefKey = setup.pick(["dom", "sub", "switch"])>>
-	<<set _npc.sexPref = _prefKey>>
+	<<set _npc.sexpref = _prefKey>>
 
 	/* Human-readable version used by existing dialogue (Dominant/Submissive/Switch) */
 	<<switch _prefKey>>
@@ -108,7 +108,7 @@
 	/**********************
 	    AGE & BODY
 	**********************/
-	<<set _npc.age = setup.randint(8, 40)>>
+	<<set _npc.age = setup.randint(18, 40)>>
 	<<set _npc.heterochromia = either(true,false)>>
 
 	<<set _npc.eyes		= setup.pick(_eyesPool)>>
@@ -172,7 +172,7 @@
 	<<PronounsSet>>
 	<<AgeGroupNPC>>
 	<<make-petname>>
-	<<create-body>>
+	<<create-body _npc>>
 	<<initParts _npc>>
     <<SetNPCBodyType _npc>>
 
@@ -193,7 +193,7 @@
 <</widget>>
 
 
-<<widget "check-attraction" mc n>>
+<<widget "check-attraction" $mc _n>>
 	<<set _mcG = $mc.gender>>
 	<<set _npcG = _n.gender>>
 	<<set _sexu = _n.sexu or "Unknown">>
@@ -238,8 +238,8 @@
 	<<set _npc = _args[1]>>
 
 	/* optional single-string prefs: "dom" | "sub" | "switch" (or unset) */
-	<<set _mcPref  = (_mc.sexPref  or "switch")>>
-	<<set _npcPref = (_npc.sexPref or "switch")>>
+	<<set _mcPref  = (_mc.sexpref  or "switch")>>
+	<<set _npcPref = (_npc.sexpref or "switch")>>
 
 	/* init target */
 	<<set $sex to $sex or {}>>
@@ -284,7 +284,7 @@
 	<</if>>
 <</widget>>
 
-<<widget "create-body">>
+<<widget "create-body" _npc>>
 	<<set _npc.body to {
 		head: "head",
 		face: "face",
@@ -305,7 +305,7 @@
 	}>>
 
 	<<if _npc.species is "Anthro">>
-		<<alternatebody>>
+		<<alternatebody _npc>>
 	<</if>>
 
 	/* enforce: anthro color OR human skin, never both */
@@ -321,7 +321,7 @@
 <</widget>>
 
 
-<<widget "alternatebody">>
+<<widget "alternatebody" _npc>>
 	<<if _npc and _npc.species and _npc.species.toLowerCase() is "anthro">>
 		<<set _group = _npc.anthro and _npc.anthro.group ? _npc.anthro.group : "Furry">>
 		<<set _sub   = _npc.anthro and _npc.anthro.subtype ? _npc.anthro.subtype.toLowerCase() : "">>
@@ -483,7 +483,7 @@
 
 			/* ----- AVIAN NPCS ----- */
 			<<case "Avian">>
-				<<set _npc.body.bodymaterial to "feathers">>
+				<<set _npc.body.bodymaterial to "Feathers">>
 				<<set _npc.body.feet         to "Talons">>
 				<<set _npc.body.face         to "Beak">>
 				<<set _npc.body.tail         to "Tailfeathers">>
@@ -582,7 +582,7 @@
 			/* ----- FURRY ----- */
 			<<case "Furry">>
 				/* base furry defaults */
-				<<set $mc.body.bodymaterial = "fur">>
+				<<set $mc.body.bodymaterial = "Fur">>
 				<<set $mc.body.feet         = "paws">>
 				<<set $mc.body.ears         = "furry ears">>
 				<<set $mc.body.tail         = "furred tail">>
@@ -636,7 +636,7 @@
 
 			/* ----- SCALIE ----- */
 			<<case "Scalie">>
-				<<set $mc.body.bodymaterial = "scales">>
+				<<set $mc.body.bodymaterial = "Scales">>
 				<<set $mc.body.feet         = "clawed feet">>
 				<<set $mc.body.tail         = "thick scaled tail">>
                 <<set $mc.body.face			="snout">>
@@ -668,7 +668,7 @@
 
 			/* ----- AVIAN ----- */
 			<<case "Avian">>
-				<<set $mc.body.bodymaterial = "feathers">>
+				<<set $mc.body.bodymaterial = "Feathers">>
 				<<set $mc.body.feet         = "talons">>
 				<<set $mc.body.face         = "beak">>
 				<<set $mc.body.tail         = "tailfeathers">>
@@ -705,10 +705,13 @@
 <</widget>>
 
 <<widget "make-petname">>
+
 <<if _npc.pronouns is "He/Him">>
 	<<set _npc.petname to "boy">>
 <<elseif _npc.pronouns is "She/Her">>
 	<<set _npc.petname to "girl">>
+<<else>>
+	<<set _npc.petname = "pet">>	
 <</if>>
 <</widget>>
 
