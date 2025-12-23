@@ -660,4 +660,216 @@
     <<SetMCBodyType>>
 <</widget>>
 
+<<widget "LittleBoy">>
+    <<set 
+        $mc.name to "Gary",
+        $mc.nickname to "Sexy",
+        $mc.surname to "Stu",
+        $mc.species to "Human",
+        $mc.gender to "Male",
+        $mc.trans to "Cisgender",
+        $mc.sexu to "Bisexual",
+        $mc.pronouns to "He/Him (singular)",
+        $mc.age to "10",
+        $heterochromia to false,
+        $mc.eyes to "Brown",
+        $hair to {},
+        $hair.length to "Short",
+        $hair.colour to "Black",
+        $hair.style to "Buzz cut",
+        $facefeatures to ["A mole"],
+        $skin.color to "Tan",
+        $skin.features to [],
+        $mc.bodyheight to "Short",
+        $mc.bodyweight to "Thin",
+        $mc.bodymusc to "Soft",
+        $mc.personality to "Kind",
+        $mc.genitals to "Penis",
+        $mc.penislength to "Tiny",
+        $mc.genitaltype to "Uncut",
+        $mc.assSize to "Average",
+        $mc.sexpref to "Versatile",
+        $mc.virgin to true
+    >>
+    <<AgeGroupSet>>
+    <<MC-Create-body>>
+    <<SetMCBodyType>>
+<</widget>>
 
+<<widget "LittleGirl">>
+    <<set 
+        $mc.name to "Mary",
+        $mc.nickname to "Sexy",
+        $mc.surname to "Stu",
+        $mc.species to "Human",
+        $mc.gender to "Female",
+        $mc.trans to "Cisgender",
+        $mc.sexu to "Bisexual",
+        $mc.pronouns to "She/Her (singular)",
+        $mc.age to "10",
+        $heterochromia to false,
+        $mc.eyes to "Brown",
+        $hair to {},
+        $hair.length to "Short",
+        $hair.colour to "Black",
+        $hair.style to "Buzz cut",
+        $facefeatures to ["A mole"],
+        $skin.color to "Tan",
+        $skin.features to [],
+        $mc.bodyheight to "Short",
+        $mc.bodyweight to "Thin",
+        $mc.bodymusc to "Soft",
+        $mc.breastsize to "Flat"
+        $mc.personality to "Kind",
+        $mc.genitals to "Vagina",
+        $mc.genitaltype to "Tight",
+        $mc.assSize to "Average",
+        $mc.sexpref to "Versatile",
+        $mc.virgin to true
+    >>
+    <<AgeGroupSet>>
+    <<MC-Create-body>>
+    <<SetMCBodyType>>
+<</widget>>
+
+<<widget "TeenBoy">>
+    <<set 
+        $mc.name to "Gary",
+        $mc.nickname to "Sexy",
+        $mc.surname to "Stu",
+        $mc.species to "Human",
+        $mc.gender to "Male",
+        $mc.trans to "Cisgender",
+        $mc.sexu to "Bisexual",
+        $mc.pronouns to "He/Him (singular)",
+        $mc.age to "16",
+        $heterochromia to false,
+        $mc.eyes to "Brown",
+        $hair to {},
+        $hair.length to "Short",
+        $hair.colour to "Black",
+        $hair.style to "Buzz cut",
+        $facefeatures to ["A mole"],
+        $skin.color to "Tan",
+        $skin.features to [],
+        $mc.bodyheight to "Average",
+        $mc.bodyweight to "Thin",
+        $mc.bodymusc to "Soft",
+        $mc.personality to "Kind",
+        $mc.genitals to "Penis",
+        $mc.penislength to "Average",
+        $mc.genitaltype to "Cut",
+        $mc.assSize to "Average",
+        $mc.sexpref to "Versatile",
+        $mc.virgin to true
+    >>
+    <<AgeGroupSet>>
+    <<MC-Create-body>>
+    <<SetMCBodyType>>
+<</widget>>
+<<widget "TeenGirl">>
+    <<set 
+        $mc.name to "Mary",
+        $mc.nickname to "Sexy",
+        $mc.surname to "Stu",
+        $mc.species to "Human",
+        $mc.gender to "Female",
+        $mc.trans to "Cisgender",
+        $mc.sexu to "Bisexual",
+        $mc.pronouns to "She/Her (singular)",
+        $mc.age to "16",
+        $heterochromia to false,
+        $mc.eyes to "Brown",
+        $hair to {},
+        $hair.length to "Short",
+        $hair.colour to "Black",
+        $hair.style to "Buzz cut",
+        $facefeatures to ["A mole"],
+        $skin.color to "Tan",
+        $skin.features to [],
+        $mc.bodyheight to "Average",
+        $mc.bodyweight to "Thin",
+        $mc.bodymusc to "Soft",
+        $mc.breastsize to "Small"
+        $mc.personality to "Kind",
+        $mc.genitals to "Vagina",
+        $mc.genitaltype to "Tight",
+        $mc.assSize to "Average",
+        $mc.sexpref to "Versatile",
+        $mc.virgin to true
+    >>
+    <<AgeGroupSet>>
+    <<MC-Create-body>>
+    <<SetMCBodyType>>
+<</widget>>
+<<widget "AdultWoman">>
+    <<set 
+        $mc.name to "Mary",
+        $mc.nickname to "Sexy",
+        $mc.surname to "Stu",
+        $mc.species to "Human",
+        $mc.gender to "Female",
+        $mc.trans to "Cisgender",
+        $mc.sexu to "Bisexual",
+        $mc.pronouns to "She/Her (singular)",
+        $mc.age to "27",
+        $heterochromia to false,
+        $mc.eyes to "Brown",
+        $hair to {},
+        $hair.length to "Short",
+        $hair.colour to "Black",
+        $hair.style to "Buzz cut",
+        $facefeatures to ["A mole"],
+        $skin.color to "Tan",
+        $skin.features to [],
+        $mc.bodyheight to "Tall",
+        $mc.bodyweight to "Thin",
+        $mc.bodymusc to "Soft",
+        $mc.breastsize to "Large",
+        $mc.personality to "Kind",
+        $mc.genitals to "Vagina",
+        $mc.genitaltype to "Loose",
+        $mc.assSize to "Average",
+        $mc.sexpref to "Versatile",
+        $mc.virgin to true
+    >>
+    <<AgeGroupSet>>
+    <<MC-Create-body>>
+    <<SetMCBodyType>>
+<</widget>>
+
+<<widget "AdultMan">>
+    <<set 
+        $mc.name to "Gary",
+        $mc.nickname to "Sexy",
+        $mc.surname to "Stu",
+        $mc.species to "Human",
+        $mc.gender to "Male",
+        $mc.trans to "Cisgender",
+        $mc.sexu to "Bisexual",
+        $mc.pronouns to "He/Him (singular)",
+        $mc.age to "27",
+        $heterochromia to false,
+        $mc.eyes to "Brown",
+        $hair to {},
+        $hair.length to "Short",
+        $hair.colour to "Black",
+        $hair.style to "Buzz cut",
+        $facefeatures to ["A mole"],
+        $skin.color to "Tan",
+        $skin.features to [],
+        $mc.bodyheight to "Tall",
+        $mc.bodyweight to "Thin",
+        $mc.bodymusc to "Soft",
+        $mc.personality to "Kind",
+        $mc.genitals to "Penis",
+        $mc.penislength to "Average",
+        $mc.genitaltype to "Cut",
+        $mc.assSize to "Average",
+        $mc.sexpref to "Versatile",
+        $mc.virgin to true
+    >>
+    <<AgeGroupSet>>
+    <<MC-Create-body>>
+    <<SetMCBodyType>>
+<</widget>>

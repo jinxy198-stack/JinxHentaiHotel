@@ -27,7 +27,7 @@
   	furryTypes:  ["Canine", "Feline", "Bunny", "Fox", "Bear", "Goat", "Mouse", "Pig", "Other"],
   	scalieTypes: ["Lizard", "Dragon", "Alligator", "Crocodile"],
   	avianTypes:  ["Duck", "Parrot", "Chicken", "Eagle", "Hawk", "Owl"],
-  	furScalesColors: ["Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green"],
+  	furScalesColors: ["Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Rainbow"],
   	patterns: ["Solid", "Striped", "Spotted", "Patterned"],
   	genitals:["Penis","Vagina"],
   	genitaltype: ["Uncut", "Cut"],
@@ -119,7 +119,7 @@
 
 	/* This last one is only for practicality */
 <<set $pages to {}>>
-<<set $anthroColors = ["Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green"]>>
+<<set $anthroColors = ["Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green", "Rainbow"]>>
 <<set $anthroPatterns = ["Solid", "Striped", "Spotted", "Patterned"]>>
 <<set $anthroTailTypes = ["None", "Short", "Long", "Bushy", "Reptilian", "Avian"]>>
 <<set $anthroEarTypes = ["None", "Canine", "Feline", "Bunny", "Bear", "Pointed", "Rounded"]>>

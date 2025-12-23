@@ -1,40 +1,28 @@
 :: Orgasm-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
-	<<if $sex.roles.dom.name == _n.name>>
-			<<if _n.sexpref == "Dominant">>
-				<<= either(
-            		"I'm cumming!",
-                	"I'll fill you up nicely",
-					"I'm fucking cumming!",
-					"Here it comes!"
-            	)>>
-			<<elseif _n.sexpref == "Submissive">>
-				<<= either(
-					"I'm cumming!",
-					"I'm... gonna cum!",
-                	"A-agh!! AaaHhhh!!!"
-            	)>>
-			<<else>>
-				<<= either(
-            		"I'm cumming!",
-                	"Aaaah!!"
-            	)>>
-			<</if>>
+<<if !setup.orgasmQuotes>>
+	[Error] setup.orgasmcloseQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
 
-	<<elseif $sex.roles.sub.name == _n.name>>
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-            	"Oh god, cum in me!",
-				"Give it to me!!!"
-            )>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-            	"Oh god, cum in me!"
-            )>>
-		<<else>>
-			<<= either(
-            	"Oh god, cum in me!"
-            )>>
-		<</if>>
-	<</if>>
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _msize = $mc.penislength>>
+<<set _mage  = $mc.ageGroup>>
+<<set _action = $sex.action>>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.orgasmQuotes.give[_pref] || setup.orgasmQuotes.give.Neutral>>
+<<else>>
+	<<set _pool = setup.orgasmQuotes.receive[_pref] || setup.orgasmQuotes.receive.Neutral>>
+<</if>>
+
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Orgasm quote pool found.
+<</if>>
 
 

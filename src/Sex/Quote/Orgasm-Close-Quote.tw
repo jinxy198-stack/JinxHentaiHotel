@@ -1,61 +1,27 @@
 :: Orgasm-Close-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
 /* When you or NPC are close to orgasm */
-<<if $sex.roles.dom.name == _n.name>>
-	<<if $sex.action == "Anal">>	
-        <<if _n.sexpref == "Dominant">>
-			<<= either(
-            	"I'm gonna cum in your ass!"
-            )>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"I'm... gonna cum!",
-                "A-agh!! AaaHhhh!!!"
-            )>>
-		<<else>>
-			<<= either(
-            	"I'm cumming!",
-                "Aaaah!!"
-            )>>
-		<</if>>
-    <<elseif $sex.action == "Handjob">>
-            <<= either(
-            	"Don't stop jerking it, I'm so close!",
-                "Faster, I'm almost there!"
-            )>>
-    <<elseif $sex.action == "Finger-Pussy">>
-            <<= either(
-            	"Faster, I'm so close!"
-            )>>            
-    <</if>>    
-<<elseif $sex.roles.sub.name == _n.name>>
-	<<if $sex.action == "Anal">>
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-            	"Cum in my ass!"
-            )>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-            	"Oh god, cum in me!"
-            )>>
-		<<else>>
-			<<= either(
-            	"Oh god, cum in me!"
-            )>>
-		<</if>>
-	<<else>>
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-            	"Oh god, cum in me!",
-				"Give it to me!!!"
-            )>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-            	"Oh god, cum in me!"
-            )>>
-		<<else>>
-			<<= either(
-            	"Oh god, cum in me!"
-            )>>
-		<</if>>
-	<</if>>	
+<<if !setup.orgasmcloseQuotes>>
+	[Error] setup.orgasmcloseQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _msize = $mc.penislength>>
+<<set _mage  = $mc.ageGroup>>
+<<set _action = $sex.action>>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.orgasmcloseQuotes.give[_pref] || setup.orgasmcloseQuotes.give.Neutral>>
+<<else>>
+	<<set _pool = setup.orgasmcloseQuotes.receive[_pref] || setup.orgasmcloseQuotes.receive.Neutral>>
+<</if>>
+
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Orgasm Close quote pool found.
 <</if>>
