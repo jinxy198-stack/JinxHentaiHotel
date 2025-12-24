@@ -314,27 +314,30 @@ setup.fingervaginaQuotes = {
 setup.frotQuotes = {
   give: {
     Dominant: [
-      
+      "Ahh yeah.",
+			"Fuck yeah, this is good!."
     ],
     Submissive: [
-      
+      "Hope I'm not moving too fast.",
+			"Y-you feel so good."
     ],
     Neutral: [
-      
+      "Ah."
     ]
   },
 
   receive: {
     Dominant: [
-      
+      "Mmm, this feels so good."
     ],
 
     Submissive: [
-      
+      "O-Oh wow...",
+			"P-Please keep going."
     ],
 
     Neutral: {
-      default: [ ]
+      default: ["Ah."]
     }
   }
 };
@@ -406,30 +409,147 @@ setup.gropebreastQuotes = {
 
 /* ----- GROPE BUTT ----- */
 setup.gropebuttQuotes = {
-  give: {
-    Dominant: [
-      
-    ],
-    Submissive: [
-      
-    ],
-    Neutral: [
-      
-    ]
+  give: {  
+    Flat: {  
+      Dominant: [     
+      ],
+      Submissive: [
+      "I love how your ass feels."
+      ],
+      Neutral: [
+      "I love how your ass feels."
+      ]   
+    },
+    Tiny: {  
+      Dominant: [     
+      ],
+      Submissive: [
+      "I love how your ass feels."
+      ],
+      Neutral: [
+      "I love how your ass feels."
+      ]  
+    },
+    Small: {  
+      Dominant: [      
+      ],
+      Submissive: [
+      "I love how your ass feels."
+      ],
+      Neutral: [
+      "I love how your ass feels."
+      ]  
+    },
+    Round: {  
+      Dominant: [
+      "I love how round your ass is.",
+      "I love how your ass feels.",
+			"You like me grabbing your ass like this?",
+			"I like playing with your ass."
+      ],
+      Submissive: [
+      "I love how round your ass is.",
+      "I love how your ass feels."
+      ],
+      Neutral: [
+      "I love how round your ass is.",
+      "I love how your ass feels."
+      ]   
   },
-
+    Large: {  
+      Dominant: [
+      "I love how your ass feels.",
+			"You like me grabbing your ass like this?",
+			"I like playing with your ass."
+      ],
+      Submissive: [
+      "I love how your ass feels."
+      ],
+      Neutral: [
+      "I love how your ass feels."
+      ] 
+    },
+    Huge: {  
+      Dominant: [
+      "I love how your ass feels.",
+			"You like me grabbing your ass like this?",
+			"I like playing with your ass."
+      ],
+      Submissive: [
+      "I love how your ass feels."
+      ],
+      Neutral: [
+      "I love how your ass feels."
+      ] 
+    },
+  },  
   receive: {
-    Dominant: [
-      
-    ],
-
-    Submissive: [
-      
-    ],
-
-    Neutral: {
-      default: [ ]
-    }
+    Flat: {  
+      Dominant: [
+      "Your hands are so warm..."
+      ],
+      Submissive: [
+      "Your hands are so warm..."
+      ],
+      Neutral: [
+      "Your hands are so warm..."
+      ]   
+    },
+  Tiny: {  
+      Dominant: [
+      "Your hands are so warm..."
+      ],
+      Submissive: [
+      "Your hands are so warm..."
+      ],
+      Neutral: [
+      "Your hands are so warm..."
+      ]  
+    },
+  Small: {  
+      Dominant: [
+      "Your hands are so warm..."
+      ],
+      Submissive: [
+      "Your hands are so warm..."
+      ],
+      Neutral: [
+      "Your hands are so warm..."
+      ]   
+    },
+  Round: {  
+      Dominant: [
+      "Your hands are so warm..."
+      ],
+      Submissive: [
+      "Your hands are so warm..."
+      ],
+      Neutral: [
+      "Your hands are so warm..."
+      ]   
+    },
+  Large: {  
+      Dominant: [
+      "Your hands are so warm..."
+      ],
+      Submissive: [
+      "Your hands are so warm..."
+      ],
+      Neutral: [
+      "Your hands are so warm..."     
+      ]  
+    },
+  Huge: {  
+      Dominant: [
+      "Your hands are so warm..."
+      ],
+      Submissive: [
+      "Your hands are so warm..."
+      ],
+      Neutral: [
+      "Your hands are so warm..."
+      ]    
+    },
   }
 };
 
@@ -470,9 +590,7 @@ setup.handjobQuotes = {
       },
       small: ["Don't feel bad about the size, I like it."],
       average: [
-        "DOM-LINE-1 about BODY-PART.",
-        "DOM-LINE-2 about BODY-PART.",
-        "DOM-LINE-3 about BODY-PART."
+        "DOM-LINE-1 about BODY-PART."
       ],
       large: [
         "Wow, it's pretty big!",
@@ -687,7 +805,9 @@ setup.orgasmcloseQuotes = {
     },
 
     Neutral: {
-      default: [ NEUTRAL DEFAULT QUOTE]
+      default: [ 
+      NEUTRAL DEFAULT QUOTE
+      ]
     }
   }
 };

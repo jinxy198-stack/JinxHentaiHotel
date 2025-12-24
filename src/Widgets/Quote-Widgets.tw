@@ -64,7 +64,6 @@
 				)
 				|| setup.footjobQuotes.receive.Neutral.default
 			>>
-
 	<</if>>
 
 	/* output */
@@ -77,13 +76,82 @@
 <</widget>>
 
 /* ----- FROT ----- */
+/* guard */
+	<<if !setup.frotQuotes>>
+		[Error] setup.frotQuotes is not defined.
+		<<return>>
+	<</if>>
+
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _msize = $mc.penislength>>
+	<<set _nsize =_n.penislength>>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.frotQuotes.give[_pref]
+			|| setup.frotQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.frotQuotes.receive[_pref]
+				)
+				|| setup.frotQuotes.receive.Neutral.default
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] FrotQuote: empty dialogue pool.
+	<</if>>
 
 
 /* ----- GROPE BREAST ----- */
 
 
 /* ----- GROPE BUTT ----- */
+	/* guard */
+	<<if !setup.gropebuttQuotes>>
+		[Error] setup.gropebuttQuotes is not defined.
+		<<return>>
+	<</if>>
 
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _msize = $mc.assSize>>
+	<<set _nsize =_n.assSize>>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.gropebuttQuotes.give[_pref]
+		&& setup.gropebuttQuotes.give[_pref][_nsize]
+			|| setup.gropebuttQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.gropebuttQuotes.receive[_pref]
+					&& setup.gropebuttQuotes.receive[_pref][_msize]
+				)
+				|| setup.gropebuttQuotes.receive.Neutral.default
+			>>
+
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] GropeButtQuote: empty dialogue pool.
+	<</if>>
 
 /* ----- HANDJOB ----- */
 <<widget "HandjobQuote">>
@@ -274,7 +342,7 @@
 
 	/* normalize inputs */
 	<<set _pref = _n.sexpref || "Neutral">>
-	<<set _size = $mc.penislength || "average">>
+	<<set _msize = $mc.penislength || "average">>
 	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
 
 	<<set _pool = null>>
@@ -288,7 +356,7 @@
 			<<run _pool =
 				(
 					setup.vaginalQuotes.receive[_pref]
-					&& setup.vaginalQuotes.receive[_pref][_size]
+					&& setup.vaginalQuotes.receive[_pref][_msize]
 				)
 				|| setup.vaginalQuotes.receive.Neutral.default
 			>>

@@ -1,6 +1,6 @@
 :: Orgasm-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
 <<if !setup.orgasmQuotes>>
-	[Error] setup.orgasmcloseQuotes is missing. Define it in StoryInit.
+	[Error] setup.orgasmQuotes is missing. Define it in StoryInit.
 	<<return>>
 <</if>>
 

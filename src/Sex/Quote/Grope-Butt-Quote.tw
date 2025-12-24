@@ -1,50 +1,33 @@
 :: Grope-Butt-Quote [nobr Dialogue] {"position":"1700,1300","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-		/* NPC gropes your butt */
-	<<if $mc.assSize is "Flat">>
+<<if !setup.gropebuttQuotes>>
+	[Error] setup.gropebuttQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
 
-	<<elseif $mc.assSize is "Tiny">>
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _msize = $mc.assSize>>
+<<set _nsize = _n.assSize>>
+<<set _mage  = $mc.ageGroup>>
+<<set _action = $sex.action>>
 
-	<<elseif $mc.assSize is "Small">>
+<<set _pool = null>>
 
-	<<elseif $mc.assSize is "Round">>
-		<<= either(
-			"I love how round your ass is."
-		)>>	
-	<<elseif $mc.assSize is "Large">>
+<<if _mode == "give">>
+	<<set _pool = setup.gropebuttQuotes.give[_pref]
+	 && setup.gropebuttQuotes.give[_pref][_nsize]
+	|| setup.gropebuttQuotes.give.Neutral>>
+<<else>>
+	<<set _pool = setup.gropebuttQuotes.receive[_pref] 
+	&& setup.gropebuttQuotes.receive[_pref][_msize]
+	|| setup.gropebuttQuotes.receive.Neutral>>
+<</if>>
 
-	<<elseif $mc.assSize is "Huge">>
 
-	<<else>>	
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"I love how your ass feels.",
-				"You like me grabbing your ass like this?",
-				"I like playing with your ass."
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"I love how your ass feels."
-			)>>
-		<<else>>
-			<<= either(
-				"I love how your ass feels."
-			)>>
-		<</if>>
-	<</if>>	
-<<elseif $sex.roles.sub.name == _n.name>>
-		/* You grope NPC's butt */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-            	"Your hands are so warm..."
-            )>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-            	"Your hands are so warm..."
-           	)>>
-		<<else>>
-			<<= either("Your hands are so warm...")>>
-		<</if>>
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Grope Butt quote pool found.
 <</if>>
 
 

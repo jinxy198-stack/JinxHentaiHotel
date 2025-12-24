@@ -1,37 +1,31 @@
 :: Frot-Quote [nobr Dialogue] {"position":"1600,1700","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-		/* NPC frots you */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Ahh yeah.",
-				"Fuck yeah, this is good!."
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"Hope I'm not moving too fast.",
-				"Y-you feel so good."
-			)>>
-		<<else>>
-			<<= either(
-				"Ah"
-			)>>
-		<</if>>
-	<<elseif $sex.roles.sub.name == _n.name>>
-		/* You frot NPC */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Mmm, this feels so good."
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"O-Oh wow...",
-				"P-Please keep going."
-			)>>
-		<<else>>
-			<<= either(
-				"Ah"
-			)>>
-		<</if>>
-	<</if>>
+<<if !setup.frotQuotes>>
+	[Error] setup.frotQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+
+/* Use later */
+<<set _msize = $mc.penislength>>
+<<set _nsize = _n.penislength>>
+
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.frotQuotes.give[_pref]
+	|| setup.frotQuotes.give.Neutral>>
+<<else>>
+	<<set _pool = setup.frotQuotes.receive[_pref] 
+	|| setup.frotQuotes.receive.Neutral>>
+<</if>>
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Frot quote pool found.
+<</if>>
 
 
