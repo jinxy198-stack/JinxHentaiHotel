@@ -1,34 +1,27 @@
 :: Finger-Ass-Quote [nobr Dialogue] {"position":"1900,1200","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-		/* NPC fingers your ass */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Yeah, lets get it nice and stretched"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"It's so warm in there."
-			)>>
-		<<else>>
-			<<= either(
-				"It's warm."
-			)>>
-		<</if>>
-	<<elseif $sex.roles.sub.name == _n.name>>
-		/* You finger NPC's ass */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-            	"Oh f-fuck!"
-            )>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-            	"Oh f-fuck!"
-            )>>
-		<<else>>
-			<<= either(
-            	"Oh f-fuck!"
-            )>>
-		<</if>>
-	<</if>>
+<<if !setup.fingerassQuotes>>
+	[Error] setup.fingerassQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.fingerassQuotes.give[_pref]
+	|| setup.fingerassQuotes.give.Neutral>>
+<<else>>
+	<<set _pool = setup.fingerassQuotes.receive[_pref] 
+	|| setup.fingerassQuotes.receive.Neutral>>
+<</if>>
+
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Finger Ass quote pool found.
+<</if>>
 
 

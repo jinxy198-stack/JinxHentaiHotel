@@ -27,13 +27,117 @@
 
 
 /* ----- FEEL STOMACH ----- */
+<<widget "FeelStomachQuote">>
 
+	/* guard */
+	<<if !setup.feelstomachQuotes>>
+		[Error] setup.feelstomachQuotes is not defined.
+		<<return>>
+	<</if>>
+
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+	<<set _body = $mc.bodytype || "Average">>
+	<<set _material = _n.body.bodymaterial || null>>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.feelstomachQuotes.give[_body]
+			|| setup.feelstomachQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.feelstomachQuotes.receive[_material]
+				)
+				|| setup.feelstomachQuotes.receive.Neutral.default
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] FeelStomach: empty dialogue pool.
+	<</if>>
+<</widget>>
 
 /* ----- FINGER ASS ----- */
+<<widget "FingerAssQuote">>
 
+	/* guard */
+	<<if !setup.fingerassQuotes>>
+		[Error] setup.fingerassQuotes is not defined.
+		<<return>>
+	<</if>>
+
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.fingerassQuotes.give[_pref]
+			|| setup.fingerassQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.fingerassQuotes.receive[_pref]
+				)
+				|| setup.fingerassQuotes.receive.Neutral.default
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] FingerAss: empty dialogue pool.
+	<</if>>
+<</widget>>
 
 /* ----- FINGER VAGINA ----- */
+<<widget "FingerVaginaQuote">>
 
+	/* guard */
+	<<if !setup.fingervaginaQuotes>>
+		[Error] setup.fingervaginaQuotes is not defined.
+		<<return>>
+	<</if>>
+
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.fingervaginaQuotes.give[_pref]
+			|| setup.fingervaginaQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.fingervaginaQuotes.receive[_pref]
+				)
+				|| setup.fingervaginaQuotes.receive.Neutral.default
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] FingerVagina: empty dialogue pool.
+	<</if>>
+<</widget>>
 
 /* ----- FOOTJOB ----- */
 <<widget "FootjobQuote">>
@@ -76,6 +180,7 @@
 <</widget>>
 
 /* ----- FROT ----- */
+<<widget "FrotQuote">>
 /* guard */
 	<<if !setup.frotQuotes>>
 		[Error] setup.frotQuotes is not defined.
@@ -109,12 +214,63 @@
 	<<else>>
 		[Error] FrotQuote: empty dialogue pool.
 	<</if>>
+<</widget>>
 
 
 /* ----- GROPE BREAST ----- */
+<<widget "GropeBreastQuote">>
+/* guard */
+	<<if !setup.gropebreastQuotes>>
+		[Error] setup.gropebreastQuotes is not defined.
+		<<return>>
+	<</if>>
+
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _msize = $mc.penislength || "average">>
+	<<set _mage  = $mc.agegroup>>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.gropebreastQuotes.give[_pref]
+			|| setup.gropebreastQuotes.give.Neutral
+		>>
+	<<else>>
+		<<if _msize == "tiny">>
+			<<run _pool =
+				(
+					setup.gropebreastQuotes.receive[_pref]
+					&& setup.gropebreastQuotes.receive[_pref].tiny
+					&& setup.gropebreastQuotes.receive[_pref].tiny[_mage]
+				)
+				|| setup.gropebreastQuotes.receive.Neutral.default
+			>>
+		<<else>>
+			<<run _pool =
+				(
+					setup.gropebreastQuotes.receive[_pref]
+					&& setup.gropebreastQuotes.receive[_pref][_msize]
+				)
+				|| setup.gropebreastQuotes.receive.Neutral.default
+			>>
+		<</if>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] GropeBreastQuote: empty dialogue pool.
+	<</if>>
+
+<</widget>>
 
 
 /* ----- GROPE BUTT ----- */
+<<widget "GropeButtQuote">>
 	/* guard */
 	<<if !setup.gropebuttQuotes>>
 		[Error] setup.gropebuttQuotes is not defined.
@@ -143,7 +299,6 @@
 				)
 				|| setup.gropebuttQuotes.receive.Neutral.default
 			>>
-
 	<</if>>
 
 	/* output */
@@ -152,10 +307,10 @@
 	<<else>>
 		[Error] GropeButtQuote: empty dialogue pool.
 	<</if>>
+<</widget>>
 
 /* ----- HANDJOB ----- */
 <<widget "HandjobQuote">>
-
 	/* guard */
 	<<if !setup.handjobQuotes>>
 		[Error] setup.handjobQuotes is not defined.
@@ -206,11 +361,76 @@
 <</widget>>
 
 /* ----- PET EARS ----- */
+<<widget "PetEarsQuote">>
+	/* guard */
+	<<if !setup.petearsQuotes>>
+		[Error] setup.petearsQuotes is not defined.
+		<<return>>
+	<</if>>
 
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.petearsQuotes.give[_pref]
+			|| setup.petearsQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.petearsQuotes.receive[_pref]
+				)
+				|| setup.petearsQuotes.receive.Neutral.default
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] PetEarsQuote: empty dialogue pool.
+	<</if>>
+<</widget>>
 
 /* ----- RIMJOB ----- */
 <<widget "RimjobQuote">>
+	/* guard */
+	<<if !setup.rimjobQuotes>>
+		[Error] setup.rimjobQuotes is not defined.
+		<<return>>
+	<</if>>
 
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.rimjobQuotes.give[_pref]
+			|| setup.rimjobQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.rimjobQuotes.receive[_pref]
+				)
+				|| setup.rimjobQuotes.receive.Neutral.default
+			>>
+
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] RimjobQuote: empty dialogue pool.
+	<</if>>
 <</widget>>
 
 /* ----- SUCK FOOT ----- */
@@ -223,7 +443,6 @@
 
 	/* normalize inputs */
 	<<set _pref = _n.sexpref || "Neutral">>
-	<<set _msize = $mc.penislength || "average">>
 	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
 
 	<<set _pool = null>>
@@ -237,7 +456,6 @@
 			<<run _pool =
 				(
 					setup.suckfootQuotes.receive[_pref]
-					&& setup.suckfootQuotes.receive[_pref][_size]
 				)
 				|| setup.suckfootQuotes.receive.Neutral.default
 			>>

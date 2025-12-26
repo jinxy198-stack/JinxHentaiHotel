@@ -3737,223 +3737,78 @@ You two kiss again.
 			)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;	
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="Feel-Stomach-Quote" tags="Dialogue nobr" position="1700,1200" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;!-- NPC is feeling your stomach --&gt;
-	&lt;&lt;if $mc.bodytype is &quot;Gaunt&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Your belly&#39;s light, almost hollow.&quot;,
-			&quot;Barely anything to rub.&quot;,
-			&quot;I love how delicate it feels.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Petite&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;It feels small and gentle under my hand.&quot;,
-			&quot;Soft touch fits your tiny frame.&quot;,
-			&quot;Your tiny belly is adorable to touch.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Slender&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Feels so smooth.&quot;,
-			&quot;You&#39;re so tight and lean here.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Lean&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Firm, love how it feels against my hand.&quot;,
-			&quot;You&#39;ve got clean definition.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Defined&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Your lines show even when relaxed.&quot;,
-			&quot;It&#39;s like it was carved from a statue.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Slim&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;So flat and smooth.&quot;,
-			&quot;I love how flat it feels here.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Thin&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Light frame. My hand fits perfectly.&quot;,
-			&quot;It&#39;s all smooth and narrow.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Spry&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Your belly feels very firm.&quot;,
-			&quot;Feels good.&quot;,
-			&quot;Your belly’s got a nice feel to it.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Lithe&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Nice muscles under here.&quot;,
-			&quot;Flexible and firm.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Cut&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Your midline shows clearly.&quot;,
-			&quot;I can feel the lines of your muscles clearly.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Chubby&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Love how soft and warm it is here, like a pillow.&quot;,
-			&quot;Nice cushion under my hand.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Average&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Nice and smooth.&quot;,
-			&quot;I like the way you feel under my hand.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Fit&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Nice and firm.&quot;,
-			&quot;You&#39;ve got a healthy body.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Strong&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;You&#39;ve got a nice solid core.&quot;,
-			&quot;So much strength behind this.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Athletic&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Nice and smooth muscles.&quot;,
-			&quot;Really nice definition.&quot;,
-			&quot;You&#39;ve got a good tone.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Fat&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;There&#39;s a lot to love here!&quot;,
-			&quot;So soft...&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Plump&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Nice and round.&quot;,
-			&quot;I love how it jiggles!&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Burly&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;These muscles are so thick!&quot;,
-			&quot;You’ve got real heft here… it feels good to touch.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Powerful&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Love these thick abs!&quot;,
-			&quot;Such strength.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Buff&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;It&#39;s as solid as a rock!&quot;,
-			&quot;Nothing but pure muscle, amazing!&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Obese&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Look at it jiggle.&quot;,
-			&quot;I love how your belly feels.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Chunky&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Thick and plush.&quot;,
-			&quot;I could use it like a pillow.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Robust&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Nice and solid frame.&quot;,
-			&quot;Such a sturdy build.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Thick&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;You can grind meat with these abs!&quot;,
-			&quot;Your belly is solid strength!&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.bodytype is &quot;Jacked&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Wow, look at these abs!&quot;,
-			&quot;Such sexy abs!&quot;,
-			&quot;You&#39;re ripped!&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;!-- You are feeling NPC&#39;s stomach --&gt;
-	&lt;&lt;if _n.body.bodymaterial==&quot;Fur&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;You like my fur, huh?&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif _n.body.bodymaterial==&quot;Scales&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;You like my fur, huh?&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif _n.body.bodymaterial ==&quot;Feathers&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;You like my fur, huh?&quot;
-		)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;= either (
-			&quot;Mmm, that feels good.&quot;
-		)&gt;&gt;	
-	&lt;&lt;/if&gt;&gt;	
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC fingers your ass */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Yeah, lets get it nice and stretched&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;It&#39;s so warm in there.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;It&#39;s warm.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* You finger NPC&#39;s ass */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-            	&quot;Oh f-fuck!&quot;
-            )&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-            	&quot;Oh f-fuck!&quot;
-            )&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-            	&quot;Oh f-fuck!&quot;
-            )&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="Finger-Pussy-Quote" tags="nobr Dialogue" position="1800,1200" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC fingers your pussy */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Damn, you&#39;re wet!&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;It&#39;s so warm in there.&quot;,
-				&quot;Wow, its so wet down there.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;It&#39;s warm in there.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* You finger NPC&#39;s pussy */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Oh f-fuck!&quot;,
-				&quot;That feels nice&quot;,
-				&quot;Yes... just like that!&quot;,
-				&quot;That&#39;s the spot, don&#39;t stop!&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-            	&quot;Oh f-fuck!&quot;
-            )&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-            	&quot;Oh f-fuck!&quot;
-            )&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if !setup.footjobQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="Feel-Stomach-Quote" tags="Dialogue nobr" position="1700,1200" size="100,100">&lt;&lt;if !setup.feelstomachQuotes&gt;&gt;
+	[Error] setup.feelstomachQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _body = $mc.bodytype || &quot;Average&quot;&gt;&gt;
+&lt;&lt;set _material = _n.body.bodymaterial || null&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.feelstomachQuotes.give[_body]
+	|| setup.feelstomachQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.feelstomachQuotes.receive[_material] 
+	|| setup.feelstomachQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Feel Stomach quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">&lt;&lt;if !setup.fingerassQuotes&gt;&gt;
+	[Error] setup.fingerassQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.fingerassQuotes.give[_pref]
+	|| setup.fingerassQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.fingerassQuotes.receive[_pref] 
+	|| setup.fingerassQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Finger Ass quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="Finger-Pussy-Quote" tags="nobr Dialogue" position="1800,1200" size="100,100">&lt;&lt;if !setup.fingervaginaQuotes&gt;&gt;
+	[Error] setup.fingervaginaQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.fingervaginaQuotes.give[_pref]
+	|| setup.fingervaginaQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.fingervaginaQuotes.receive[_pref] 
+	|| setup.fingervaginaQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Finger Vagina quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if !setup.footjobQuotes&gt;&gt;
 	[Error] setup.footjobQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -3981,178 +3836,92 @@ You two kiss again.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No footjob quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC frots you */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Ahh yeah.&quot;,
-				&quot;Fuck yeah, this is good!.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Hope I&#39;m not moving too fast.&quot;,
-				&quot;Y-you feel so good.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Ah&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* You frot NPC */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmm, this feels so good.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;O-Oh wow...&quot;,
-				&quot;P-Please keep going.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Ah&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC gropes your breast */
-	&lt;&lt;if $mc.breastsize is &quot;Flat&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Don&#39;t be ashamed about being flat, it&#39;s really cute.&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $mc.breastsize is &quot;Small&quot;&gt;&gt;
-		&lt;&lt;if $mc.ageGroup is &quot;Child&quot; or &quot;Teen&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Nothing quite like developing breasts. So lewd and cute.&quot;
-			)&gt;&gt;	
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;I think small breasts are kinda cute.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $mc.breastsize is &quot;Average&quot;&gt;&gt;
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Nice tits.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;I like your breasts.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;I like your breasts.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $mc.breastsize is &quot;Large&quot;&gt;&gt;
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Heh, look a the size of these!&quot;,
-				&quot;Damn, these are huge!&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Your breasts are so soft.&quot;,
-				&quot;Wow, they are pretty big.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Wow..&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $mc.breastsize is &quot;Busty&quot;&gt;&gt;
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Shit, these are big!&quot;,
-				&quot;How do you carry these things?!&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Whoa...&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;These sure are big!&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;else&gt;&gt;	
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Heh, look a the size of these!&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Your breasts are so soft.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-				&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;	
-&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* You grope NPC&#39;s breast */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;That&#39;s right, play with my _n.breastsize breasts!&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;You can play with them if you like.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-				&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC gropes your butt */
-	&lt;&lt;if $mc.assSize is &quot;Flat&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;if !setup.frotQuotes&gt;&gt;
+	[Error] setup.frotQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-	&lt;&lt;elseif $mc.assSize is &quot;Tiny&quot;&gt;&gt;
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
-	&lt;&lt;elseif $mc.assSize is &quot;Small&quot;&gt;&gt;
+/* Use later */
+&lt;&lt;set _msize = $mc.penislength&gt;&gt;
+&lt;&lt;set _nsize = _n.penislength&gt;&gt;
 
-	&lt;&lt;elseif $mc.assSize is &quot;Round&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;I love how round your ass is.&quot;
-		)&gt;&gt;	
-	&lt;&lt;elseif $mc.assSize is &quot;Large&quot;&gt;&gt;
 
-	&lt;&lt;elseif $mc.assSize is &quot;Huge&quot;&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
 
-	&lt;&lt;else&gt;&gt;	
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;I love how your ass feels.&quot;,
-				&quot;You like me grabbing your ass like this?&quot;,
-				&quot;I like playing with your ass.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;I love how your ass feels.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;I love how your ass feels.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;	
-&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* You grope NPC&#39;s butt */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-            	&quot;Your hands are so warm...&quot;
-            )&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-            	&quot;Your hands are so warm...&quot;
-           	)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(&quot;Your hands are so warm...&quot;)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.frotQuotes.give[_pref]
+	|| setup.frotQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.frotQuotes.receive[_pref] 
+	|| setup.frotQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Frot quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
+	[Error] setup.gropebreastQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _msize = $mc.breastsize || &quot;average&quot;&gt;&gt;
+&lt;&lt;set _nsize = _n.breastsize || &quot;average&quot;&gt;&gt;
+&lt;&lt;set _mage  = $mc.ageGroup  ? &quot;child&quot; : &quot;adult&quot;&gt;&gt;
+&lt;&lt;set _nage  = _n.ageGroup  ? &quot;child&quot; : &quot;adult&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.gropebreastQuotes.give[_pref][_msize][_msize] 
+	|| setup.gropebreastQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+		&lt;&lt;run _pool =
+			(
+				setup.gropebreastQuotes.receive[_pref]
+				&amp;&amp; setup.gropebreastQuotes.receive[_pref][_nsize][_nage]
+			)
+			|| setup.gropebreastQuotes.receive.Neutral.default
+		&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No grope breast quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;if !setup.gropebuttQuotes&gt;&gt;
+	[Error] setup.gropebuttQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _msize = $mc.assSize&gt;&gt;
+&lt;&lt;set _nsize = _n.assSize&gt;&gt;
+&lt;&lt;set _mage  = $mc.ageGroup&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.gropebuttQuotes.give[_pref]
+	 &amp;&amp; setup.gropebuttQuotes.give[_pref][_nsize]
+	|| setup.gropebuttQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.gropebuttQuotes.receive[_pref] 
+	&amp;&amp; setup.gropebuttQuotes.receive[_pref][_msize]
+	|| setup.gropebuttQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Grope Butt quote pool found.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="Handjob-Quote" tags="nobr Dialogue" position="1700,1700" size="100,100">&lt;&lt;if !setup.handjobQuotes&gt;&gt;
 	[Error] setup.handjobQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -4218,7 +3987,7 @@ You two kiss again.
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm Close quote pool found.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if !setup.orgasmQuotes&gt;&gt;
-	[Error] setup.orgasmcloseQuotes is missing. Define it in StoryInit.
+	[Error] setup.orgasmQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -4241,88 +4010,53 @@ You two kiss again.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC pets your ears */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;DOM-LINE-1 about BODY-PART.&quot;,
-				&quot;DOM-LINE-2 about BODY-PART.&quot;,
-				&quot;DOM-LINE-3 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;SUB-LINE-1 about BODY-PART.&quot;,
-				&quot;SUB-LINE-2 about BODY-PART.&quot;,
-				&quot;SUB-LINE-3 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-                &quot;They feel so soft.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* You pet NPC&#39;s ears */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;DOM-LINE-1 about BODY-PART.&quot;,
-				&quot;DOM-LINE-2 about BODY-PART.&quot;,
-				&quot;DOM-LINE-3 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;SUB-LINE-1 about BODY-PART.&quot;,
-				&quot;SUB-LINE-2 about BODY-PART.&quot;,
-				&quot;SUB-LINE-3 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmm, that feels nice.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* You eat NPC&#39;s ass */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Fuck, eat my ass!&quot;,
-				&quot;Good _n.petname! Keep that _n.body.tongue of yours busy in my ass!&quot;,
-				&quot;What a good _n.petname! You love the taste of my ass, don&#39;t you?!&quot;,
-				&quot;Don&#39;t stop! Deeper! Get your _n.body.tongue into my ass! Yes, yes, yes!&quot;,
-				&quot;Fuck yeah!&quot;,
-				&quot;Get in there more!&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Yes! I love your _n.body.tongue! Please don&#39;t stop!&quot;,
-				&quot;Oh yes! Taste my ass! I love your _n.body.tongue! Get it deeper!&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;O-oh fuck!.&quot;,
-				&quot;Ah, fuck.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* NPC eats your ass */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmmf&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmf&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmmf&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmf&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmmf&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmf&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="Sex-Quote" tags="Dialogue nobr" position="1600,1200" size="100,100">&lt;!-- only what the npc says --&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if !setup.petearsQuotes&gt;&gt;
+	[Error] setup.petearsQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.petearsQuotes.give[_pref]
+	|| setup.petearsQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.petearsQuotes.receive[_pref] 
+	|| setup.petearsQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Pet Ears quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;if !setup.rimjobQuotes&gt;&gt;
+	[Error] setup.rimjobQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.rimjobQuotes.give[_pref]
+	|| setup.rimjobQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.rimjobQuotes.receive[_pref] 
+	|| setup.rimjobQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Rimjob quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="Sex-Quote" tags="Dialogue nobr" position="1600,1200" size="100,100">&lt;!-- only what the npc says --&gt;
 &lt;br&gt;
 &lt;b&gt;&lt;&lt;= _n.name &gt;&gt;: &lt;/b&gt;
 
@@ -4706,28 +4440,127 @@ setup.faceonchestQuotes = {
 /* ----- FEEL STOMACH ----- */
 setup.feelstomachQuotes = {
   give: {
-    Dominant: [
-      
+    Gaunt: [
+      &quot;Your belly&#39;s light, almost hollow.&quot;,
+			&quot;Barely anything to rub.&quot;,
+			&quot;I love how delicate it feels.&quot;
     ],
-    Submissive: [
-      
+    Petite: [
+      &quot;It feels small and gentle under my hand.&quot;,
+			&quot;Soft touch fits your tiny frame.&quot;,
+			&quot;Your tiny belly is adorable to touch.&quot;
     ],
-    Neutral: [
-      
+    Slender: [
+      &quot;Feels so smooth.&quot;,
+			&quot;You&#39;re so tight and lean here.&quot;
+    ],
+    Lean: [
+      &quot;Firm, love how it feels against my hand.&quot;,
+			&quot;You&#39;ve got clean definition.&quot;
+    ],
+    Defined: [
+      &quot;Your lines show even when relaxed.&quot;,
+			&quot;It&#39;s like it was carved from a statue.&quot;
+    ],
+    Slim: [
+      &quot;So flat and smooth.&quot;,
+			&quot;I love how flat it feels here.&quot;
+    ],
+    Thin: [
+      &quot;Light frame. My hand fits perfectly.&quot;,
+			&quot;It&#39;s all smooth and narrow.&quot;
+    ],
+    Spry: [
+      &quot;Your belly feels very firm.&quot;,
+			&quot;Feels good.&quot;,
+			&quot;Your belly&#39;s got a nice feel to it.&quot;
+    ],
+    Lithe: [
+      &quot;Nice muscles under here.&quot;,
+			&quot;Flexible and firm.&quot;
+    ],
+    Cut: [
+      &quot;Your midline shows clearly.&quot;,
+			&quot;I can feel the lines of your muscles clearly.&quot;
+    ],
+    Chubby: [
+      &quot;Love how soft and warm it is here, like a pillow.&quot;,
+			&quot;Nice cushion under my hand.&quot;
+    ],
+    Average: [
+      &quot;Nice and smooth.&quot;,
+			&quot;I like the way you feel under my hand.&quot;
+    ],
+    Fit: [
+      &quot;Nice and firm.&quot;,
+			&quot;You&#39;ve got a healthy body.&quot;
+    ],
+    Strong: [
+      &quot;You&#39;ve got a nice solid core.&quot;,
+			&quot;So much strength behind this.&quot;
+    ],
+    Athletic: [
+      &quot;Nice and smooth muscles.&quot;,
+			&quot;Really nice definition.&quot;,
+			&quot;You&#39;ve got a good tone.&quot;
+    ],
+    Fat: [
+      &quot;There&#39;s a lot to love here!&quot;,
+			&quot;So soft...&quot;
+    ],
+    Plump: [
+      &quot;Nice and round.&quot;,
+			&quot;I love how it jiggles!&quot;
+    ],
+    Burly: [
+      &quot;These muscles are so thick!&quot;,
+			&quot;You&#39;ve got real heft here… it feels good to touch.&quot;
+    ],
+    Powerful: [
+      &quot;Love these thick abs!&quot;,
+			&quot;Such strength.&quot;
+    ],
+    Buff: [
+      &quot;It&#39;s as solid as a rock!&quot;,
+			&quot;Nothing but pure muscle, amazing!&quot;
+    ],
+    Obese: [
+      &quot;Look at it jiggle.&quot;,
+			&quot;I love how your belly feels.&quot;
+    ],
+    Chunky: [
+      &quot;Thick and plush.&quot;,
+			&quot;I could use it like a pillow.&quot;
+    ],
+    Robust: [
+      &quot;Nice and solid frame.&quot;,
+			&quot;Such a sturdy build.&quot;
+    ],
+    Thick: [
+      &quot;You can grind meat with these abs!&quot;,
+			&quot;Your belly is solid strength!&quot;
+    ],
+    Jacked: [
+      &quot;Wow, look at these abs!&quot;,
+			&quot;Such sexy abs!&quot;,
+			&quot;You&#39;re ripped!&quot;
     ]
   },
 
   receive: {
-    Dominant: [
-      
+    Fur: [
+      &quot;You like my fur, huh?&quot;
     ],
 
-    Submissive: [
-      
+    Scales: [
+      &quot;You like my scales, huh?&quot;
+    ],
+    Feathers: [
+      &quot;You like my feathers, huh?&quot;
     ],
 
     Neutral: {
-      default: [ ]
+      default: [&quot;Mmm, that feels good.&quot;]
     }
   }
 };
@@ -4735,27 +4568,29 @@ setup.feelstomachQuotes = {
 setup.fingerassQuotes = {
   give: {
     Dominant: [
-      
+      &quot;Yeah, lets get it nice and stretched&quot;
     ],
     Submissive: [
-      
+      &quot;It&#39;s so warm in there.&quot;
     ],
     Neutral: [
-      
+      &quot;It&#39;s warm.&quot;
     ]
   },
 
   receive: {
     Dominant: [
-      
+      &quot;Oh f-fuck!&quot;
     ],
 
     Submissive: [
-      
+      &quot;Oh f-fuck!&quot;
     ],
 
     Neutral: {
-      default: [ ]
+      default: [
+        &quot;Oh f-fuck!&quot;
+      ]
     }
   }
 };
@@ -4763,27 +4598,33 @@ setup.fingerassQuotes = {
 setup.fingervaginaQuotes = {
   give: {
     Dominant: [
-      
+      &quot;Damn, you&#39;re wet!&quot;
     ],
     Submissive: [
-      
+      &quot;It&#39;s so warm in there.&quot;,
+			&quot;Wow, its so wet down there.&quot;
     ],
     Neutral: [
-      
+      &quot;It&#39;s warm in there.&quot;
     ]
   },
 
   receive: {
     Dominant: [
-      
+      &quot;Oh f-fuck!&quot;,
+			&quot;That feels nice&quot;,
+			&quot;Yes... just like that!&quot;,
+			&quot;That&#39;s the spot, don&#39;t stop!&quot;
     ],
 
     Submissive: [
-      
+      &quot;Oh f-fuck!&quot;
     ],
 
     Neutral: {
-      default: [ ]
+      default: [
+       &quot;Oh f-fuck!&quot;
+       ]
     }
   }
 };
@@ -4792,27 +4633,30 @@ setup.fingervaginaQuotes = {
 setup.frotQuotes = {
   give: {
     Dominant: [
-      
+      &quot;Ahh yeah.&quot;,
+			&quot;Fuck yeah, this is good!.&quot;
     ],
     Submissive: [
-      
+      &quot;Hope I&#39;m not moving too fast.&quot;,
+			&quot;Y-you feel so good.&quot;
     ],
     Neutral: [
-      
+      &quot;Ah.&quot;
     ]
   },
 
   receive: {
     Dominant: [
-      
+      &quot;Mmm, this feels so good.&quot;
     ],
 
     Submissive: [
-      
+      &quot;O-Oh wow...&quot;,
+			&quot;P-Please keep going.&quot;
     ],
 
     Neutral: {
-      default: [ ]
+      default: [&quot;Ah.&quot;]
     }
   }
 };
@@ -4856,58 +4700,197 @@ setup.footjobQuotes = {
 /* ----- GROPE BREAST ----- */
 setup.gropebreastQuotes = {
   give: {
-    Dominant: [
-      
-    ],
-    Submissive: [
-      
-    ],
-    Neutral: [
-      
-    ]
-  },
+    Dominant: {
+      Flat: [
+        &quot;Don&#39;t be ashamed about being flat, it&#39;s really cute.&quot;
+      ],
+      Small: {
+        Child: [&quot;Nothing quite like developing breasts. So lewd and cute.&quot;],
+        Teen: [&quot;Nothing quite like developing breasts. So lewd and cute.&quot;]
+        default:[&quot;I think small breasts are kinda cute.&quot;]
+      },
+      Average: [
+        &quot;Nice tits&quot;
+      ],
+      Large: [
+        &quot;Heh, look a the size of these!&quot;,
+				&quot;Damn, these are huge!&quot;
+      ],
+      Busty:[
+        &quot;Shit, these are big!&quot;,
+				&quot;How do you carry these things?!&quot;
+      ]
 
+    }
+    Submissive: {
+      Average: [
+        &quot;I like your breasts.&quot;
+      ],
+      Large: [
+        &quot;Your breasts are so soft.&quot;,
+				&quot;Wow, they are pretty big.&quot;
+      ],
+      Busty: [ &quot;Whoa...&quot;],
+    },
+    Neutral: {
+      Large: [&quot;Wow...&quot;],
+      Busty: [&quot;These sure are big!&quot;]
+      default: [Default text]
+    }
+  },
   receive: {
     Dominant: [
-      
+      &quot;That&#39;s right, play with my _n.breastsize breasts!&quot;,
+      &quot;That&#39;s right, play with my tits!&quot;
     ],
 
     Submissive: [
-      
+      &quot;You can play with them if you like.&quot;
     ],
 
     Neutral: {
-      default: [ ]
+      default: [NEUTRAL dialogue about grabbing boobs]
     }
   }
 };
 
 /* ----- GROPE BUTT ----- */
 setup.gropebuttQuotes = {
-  give: {
-    Dominant: [
-      
-    ],
-    Submissive: [
-      
-    ],
-    Neutral: [
-      
-    ]
+  give: {  
+    Flat: {  
+      Dominant: [     
+      ],
+      Submissive: [
+      &quot;I love how your ass feels.&quot;
+      ],
+      Neutral: [
+      &quot;I love how your ass feels.&quot;
+      ]   
+    },
+    Tiny: {  
+      Dominant: [     
+      ],
+      Submissive: [
+      &quot;I love how your ass feels.&quot;
+      ],
+      Neutral: [
+      &quot;I love how your ass feels.&quot;
+      ]  
+    },
+    Small: {  
+      Dominant: [      
+      ],
+      Submissive: [
+      &quot;I love how your ass feels.&quot;
+      ],
+      Neutral: [
+      &quot;I love how your ass feels.&quot;
+      ]  
+    },
+    Round: {  
+      Dominant: [
+      &quot;I love how round your ass is.&quot;,
+      &quot;I love how your ass feels.&quot;,
+			&quot;You like me grabbing your ass like this?&quot;,
+			&quot;I like playing with your ass.&quot;
+      ],
+      Submissive: [
+      &quot;I love how round your ass is.&quot;,
+      &quot;I love how your ass feels.&quot;
+      ],
+      Neutral: [
+      &quot;I love how round your ass is.&quot;,
+      &quot;I love how your ass feels.&quot;
+      ]   
   },
-
+    Large: {  
+      Dominant: [
+      &quot;I love how your ass feels.&quot;,
+			&quot;You like me grabbing your ass like this?&quot;,
+			&quot;I like playing with your ass.&quot;
+      ],
+      Submissive: [
+      &quot;I love how your ass feels.&quot;
+      ],
+      Neutral: [
+      &quot;I love how your ass feels.&quot;
+      ] 
+    },
+    Huge: {  
+      Dominant: [
+      &quot;I love how your ass feels.&quot;,
+			&quot;You like me grabbing your ass like this?&quot;,
+			&quot;I like playing with your ass.&quot;
+      ],
+      Submissive: [
+      &quot;I love how your ass feels.&quot;
+      ],
+      Neutral: [
+      &quot;I love how your ass feels.&quot;
+      ] 
+    },
+  },  
   receive: {
-    Dominant: [
-      
-    ],
-
-    Submissive: [
-      
-    ],
-
-    Neutral: {
-      default: [ ]
-    }
+    Flat: {  
+      Dominant: [
+      &quot;Your hands are so warm...&quot;
+      ],
+      Submissive: [
+      &quot;Your hands are so warm...&quot;
+      ],
+      Neutral: [
+      &quot;Your hands are so warm...&quot;
+      ]   
+    },
+  Tiny: {  
+      Dominant: [
+      &quot;Your hands are so warm...&quot;
+      ],
+      Submissive: [
+      &quot;Your hands are so warm...&quot;
+      ],
+      Neutral: [
+      &quot;Your hands are so warm...&quot;
+      ]  
+    },
+  Small: {  
+      Dominant: [
+      &quot;Your hands are so warm...&quot;
+      ],
+      Submissive: [
+      &quot;Your hands are so warm...&quot;
+      ],
+      Neutral: [
+      &quot;Your hands are so warm...&quot;
+      ]   
+    },
+  Round: {  
+      Dominant: [
+      &quot;Your hands are so warm...&quot;
+      ],
+      Submissive: [
+      &quot;Your hands are so warm...&quot;
+      ],
+      Neutral: [
+      &quot;Your hands are so warm...&quot;
+      ]   
+    },
+  Large: {  
+      Dominant: [
+      &quot;Your hands are so warm...&quot;
+      ],
+      Submissive: [
+      &quot;Your hands are so warm...&quot;
+      ],
+      Neutral: [
+      &quot;Your hands are so warm...&quot;     
+      ]  
+    },
+  Huge: {  
+      Dominant: [ &quot;Your hands are so warm...&quot; ],
+      Submissive: [ &quot;Your hands are so warm...&quot;],
+      Neutral: [ &quot;Your hands are so warm...&quot;]    
+    },
   }
 };
 
@@ -4948,9 +4931,7 @@ setup.handjobQuotes = {
       },
       small: [&quot;Don&#39;t feel bad about the size, I like it.&quot;],
       average: [
-        &quot;DOM-LINE-1 about BODY-PART.&quot;,
-        &quot;DOM-LINE-2 about BODY-PART.&quot;,
-        &quot;DOM-LINE-3 about BODY-PART.&quot;
+        &quot;DOM-LINE-1 about BODY-PART.&quot;
       ],
       large: [
         &quot;Wow, it&#39;s pretty big!&quot;,
@@ -4969,27 +4950,29 @@ setup.handjobQuotes = {
 setup.petearsQuotes = {
   give: {
     Dominant: [
-      
+      &quot;DOM-LINE-1 about Petting ears.&quot;
     ],
     Submissive: [
-      
+      &quot;SUB-LINE-1 about Petting ears.&quot;
     ],
     Neutral: [
-      
+      &quot;They feel so soft.&quot;
     ]
   },
 
   receive: {
     Dominant: [
-      
+      &quot;DOM-LINE-1 about Petting ears.&quot;
     ],
 
     Submissive: [
-      
+      &quot;SUB-LINE-1 about Petting ears.&quot;
     ],
 
     Neutral: {
-      default: [ ]
+      default: [
+        &quot;Mmm, that feels nice.&quot;
+       ]
     }
   }
 };
@@ -4998,27 +4981,42 @@ setup.petearsQuotes = {
 setup.rimjobQuotes = {
   give: {
     Dominant: [
-      
+      &quot;Fuck, eat my ass!&quot;,
+			&quot;Good _n.petname! Keep that _n.body.tongue of yours busy in my ass!&quot;,
+			&quot;What a good _n.petname! You love the taste of my ass, don&#39;t you?!&quot;,
+			&quot;Don&#39;t stop! Deeper! Get your _n.body.tongue into my ass! Yes, yes, yes!&quot;,
+			&quot;Fuck yeah!&quot;,
+			&quot;Get in there more!&quot;
     ],
     Submissive: [
-      
+      &quot;Yes! I love your _n.body.tongue! Please don&#39;t stop!&quot;,
+			&quot;Oh yes! Taste my ass! I love your _n.body.tongue! Get it deeper!&quot;
     ],
     Neutral: [
-      
+      &quot;O-oh fuck!.&quot;,
+			&quot;Ah, fuck.&quot;
     ]
   },
 
   receive: {
     Dominant: [
-      
+      &quot;Mmmf&quot;,
+			&quot;Mmmph&quot;,
+			&quot;Mmf&quot;
     ],
 
     Submissive: [
-      
+      &quot;Mmmf&quot;,
+			&quot;Mmmph&quot;,
+			&quot;Mmf&quot;
     ],
 
     Neutral: {
-      default: [ ]
+      default: [ 
+        &quot;Mmmf&quot;,
+			  &quot;Mmmph&quot;,
+			  &quot;Mmf&quot;
+      ]
     }
   }
 };
@@ -5165,7 +5163,9 @@ setup.orgasmcloseQuotes = {
     },
 
     Neutral: {
-      default: [ NEUTRAL DEFAULT QUOTE]
+      default: [ 
+      NEUTRAL DEFAULT QUOTE
+      ]
     }
   }
 };
@@ -6351,13 +6351,117 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 
 
 /* ----- FEEL STOMACH ----- */
+&lt;&lt;widget &quot;FeelStomachQuote&quot;&gt;&gt;
 
+	/* guard */
+	&lt;&lt;if !setup.feelstomachQuotes&gt;&gt;
+		[Error] setup.feelstomachQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+	&lt;&lt;set _body = $mc.bodytype || &quot;Average&quot;&gt;&gt;
+	&lt;&lt;set _material = _n.body.bodymaterial || null&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.feelstomachQuotes.give[_body]
+			|| setup.feelstomachQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.feelstomachQuotes.receive[_material]
+				)
+				|| setup.feelstomachQuotes.receive.Neutral.default
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] FeelStomach: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 /* ----- FINGER ASS ----- */
+&lt;&lt;widget &quot;FingerAssQuote&quot;&gt;&gt;
 
+	/* guard */
+	&lt;&lt;if !setup.fingerassQuotes&gt;&gt;
+		[Error] setup.fingerassQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.fingerassQuotes.give[_pref]
+			|| setup.fingerassQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.fingerassQuotes.receive[_pref]
+				)
+				|| setup.fingerassQuotes.receive.Neutral.default
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] FingerAss: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 /* ----- FINGER VAGINA ----- */
+&lt;&lt;widget &quot;FingerVaginaQuote&quot;&gt;&gt;
 
+	/* guard */
+	&lt;&lt;if !setup.fingervaginaQuotes&gt;&gt;
+		[Error] setup.fingervaginaQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.fingervaginaQuotes.give[_pref]
+			|| setup.fingervaginaQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.fingervaginaQuotes.receive[_pref]
+				)
+				|| setup.fingervaginaQuotes.receive.Neutral.default
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] FingerVagina: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 /* ----- FOOTJOB ----- */
 &lt;&lt;widget &quot;FootjobQuote&quot;&gt;&gt;
@@ -6388,7 +6492,6 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 				)
 				|| setup.footjobQuotes.receive.Neutral.default
 			&gt;&gt;
-
 	&lt;&lt;/if&gt;&gt;
 
 	/* output */
@@ -6401,17 +6504,137 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 /* ----- FROT ----- */
+&lt;&lt;widget &quot;FrotQuote&quot;&gt;&gt;
+/* guard */
+	&lt;&lt;if !setup.frotQuotes&gt;&gt;
+		[Error] setup.frotQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _msize = $mc.penislength&gt;&gt;
+	&lt;&lt;set _nsize =_n.penislength&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.frotQuotes.give[_pref]
+			|| setup.frotQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.frotQuotes.receive[_pref]
+				)
+				|| setup.frotQuotes.receive.Neutral.default
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] FrotQuote: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 
 /* ----- GROPE BREAST ----- */
+&lt;&lt;widget &quot;GropeBreastQuote&quot;&gt;&gt;
+/* guard */
+	&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
+		[Error] setup.gropebreastQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
+	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.gropebreastQuotes.give[_pref]
+			|| setup.gropebreastQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;if _msize == &quot;tiny&quot;&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.gropebreastQuotes.receive[_pref]
+					&amp;&amp; setup.gropebreastQuotes.receive[_pref].tiny
+					&amp;&amp; setup.gropebreastQuotes.receive[_pref].tiny[_mage]
+				)
+				|| setup.gropebreastQuotes.receive.Neutral.default
+			&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.gropebreastQuotes.receive[_pref]
+					&amp;&amp; setup.gropebreastQuotes.receive[_pref][_msize]
+				)
+				|| setup.gropebreastQuotes.receive.Neutral.default
+			&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] GropeBreastQuote: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;/widget&gt;&gt;
 
 
 /* ----- GROPE BUTT ----- */
+&lt;&lt;widget &quot;GropeButtQuote&quot;&gt;&gt;
+	/* guard */
+	&lt;&lt;if !setup.gropebuttQuotes&gt;&gt;
+		[Error] setup.gropebuttQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _msize = $mc.assSize&gt;&gt;
+	&lt;&lt;set _nsize =_n.assSize&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.gropebuttQuotes.give[_pref]
+		&amp;&amp; setup.gropebuttQuotes.give[_pref][_nsize]
+			|| setup.gropebuttQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.gropebuttQuotes.receive[_pref]
+					&amp;&amp; setup.gropebuttQuotes.receive[_pref][_msize]
+				)
+				|| setup.gropebuttQuotes.receive.Neutral.default
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] GropeButtQuote: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 /* ----- HANDJOB ----- */
 &lt;&lt;widget &quot;HandjobQuote&quot;&gt;&gt;
-
 	/* guard */
 	&lt;&lt;if !setup.handjobQuotes&gt;&gt;
 		[Error] setup.handjobQuotes is not defined.
@@ -6462,11 +6685,76 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 /* ----- PET EARS ----- */
+&lt;&lt;widget &quot;PetEarsQuote&quot;&gt;&gt;
+	/* guard */
+	&lt;&lt;if !setup.petearsQuotes&gt;&gt;
+		[Error] setup.petearsQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.petearsQuotes.give[_pref]
+			|| setup.petearsQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.petearsQuotes.receive[_pref]
+				)
+				|| setup.petearsQuotes.receive.Neutral.default
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] PetEarsQuote: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 /* ----- RIMJOB ----- */
 &lt;&lt;widget &quot;RimjobQuote&quot;&gt;&gt;
+	/* guard */
+	&lt;&lt;if !setup.rimjobQuotes&gt;&gt;
+		[Error] setup.rimjobQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.rimjobQuotes.give[_pref]
+			|| setup.rimjobQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.rimjobQuotes.receive[_pref]
+				)
+				|| setup.rimjobQuotes.receive.Neutral.default
+			&gt;&gt;
+
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] RimjobQuote: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 /* ----- SUCK FOOT ----- */
@@ -6479,7 +6767,6 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
 	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
@@ -6493,7 +6780,6 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 			&lt;&lt;run _pool =
 				(
 					setup.suckfootQuotes.receive[_pref]
-					&amp;&amp; setup.suckfootQuotes.receive[_pref][_size]
 				)
 				|| setup.suckfootQuotes.receive.Neutral.default
 			&gt;&gt;
@@ -6598,7 +6884,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _size = $mc.penislength || &quot;average&quot;&gt;&gt;
+	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
 	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
@@ -6612,7 +6898,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 			&lt;&lt;run _pool =
 				(
 					setup.vaginalQuotes.receive[_pref]
-					&amp;&amp; setup.vaginalQuotes.receive[_pref][_size]
+					&amp;&amp; setup.vaginalQuotes.receive[_pref][_msize]
 				)
 				|| setup.vaginalQuotes.receive.Neutral.default
 			&gt;&gt;

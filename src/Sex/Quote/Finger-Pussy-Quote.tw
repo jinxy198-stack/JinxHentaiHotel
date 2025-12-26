@@ -1,38 +1,27 @@
 :: Finger-Pussy-Quote [nobr Dialogue] {"position":"1800,1200","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-		/* NPC fingers your pussy */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Damn, you're wet!"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"It's so warm in there.",
-				"Wow, its so wet down there."
-			)>>
-		<<else>>
-			<<= either(
-				"It's warm in there."
-			)>>
-		<</if>>
-	<<elseif $sex.roles.sub.name == _n.name>>
-		/* You finger NPC's pussy */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Oh f-fuck!",
-				"That feels nice",
-				"Yes... just like that!",
-				"That's the spot, don't stop!"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-            	"Oh f-fuck!"
-            )>>
-		<<else>>
-			<<= either(
-            	"Oh f-fuck!"
-            )>>
-		<</if>>
-	<</if>>
+<<if !setup.fingervaginaQuotes>>
+	[Error] setup.fingervaginaQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.fingervaginaQuotes.give[_pref]
+	|| setup.fingervaginaQuotes.give.Neutral>>
+<<else>>
+	<<set _pool = setup.fingervaginaQuotes.receive[_pref] 
+	|| setup.fingervaginaQuotes.receive.Neutral>>
+<</if>>
+
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Finger Vagina quote pool found.
+<</if>>
 
 

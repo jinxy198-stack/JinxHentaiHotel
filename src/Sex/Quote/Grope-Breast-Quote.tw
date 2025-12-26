@@ -1,97 +1,35 @@
 :: Grope-Breast-Quote [nobr Dialogue] {"position":"1600,1500","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-		/* NPC gropes your breast */
-	<<if $mc.breastsize is "Flat">>
-		<<= either(
-			"Don't be ashamed about being flat, it's really cute."
-		)>>
-	<<elseif $mc.breastsize is "Small">>
-		<<if $mc.ageGroup is "Child" or "Teen">>
-			<<= either(
-				"Nothing quite like developing breasts. So lewd and cute."
-			)>>	
-		<<else>>
-			<<= either(
-				"I think small breasts are kinda cute."
-			)>>
-		<</if>>
-	<<elseif $mc.breastsize is "Average">>
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Nice tits."
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"I like your breasts."
-			)>>
-		<<else>>
-			<<= either(
-				"I like your breasts."
-			)>>
-		<</if>>
-	<<elseif $mc.breastsize is "Large">>
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Heh, look a the size of these!",
-				"Damn, these are huge!"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"Your breasts are so soft.",
-				"Wow, they are pretty big."
-			)>>
-		<<else>>
-			<<= either(
-				"Wow.."
-			)>>
-		<</if>>
-	<<elseif $mc.breastsize is "Busty">>
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Shit, these are big!",
-				"How do you carry these things?!"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"Whoa..."
-			)>>
-		<<else>>
-			<<= either(
-				"These sure are big!"
-			)>>
-		<</if>>
-	<<else>>	
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Heh, look a the size of these!"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"Your breasts are so soft."
-			)>>
-		<<else>>
-			<<= either(
-				"NEUTRAL-DOM-LINE-1 about BODY-PART.",
-				"NEUTRAL-DOM-LINE-2 about BODY-PART."
-			)>>
-		<</if>>
-	<</if>>	
-<<elseif $sex.roles.sub.name == _n.name>>
-		/* You grope NPC's breast */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"That's right, play with my _n.breastsize breasts!"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"You can play with them if you like."
-			)>>
-		<<else>>
-			<<= either(
-				"NEUTRAL-DOM-LINE-1 about BODY-PART.",
-				"NEUTRAL-DOM-LINE-2 about BODY-PART."
-			)>>
-		<</if>>
+<<if !setup.gropebreastQuotes>>
+	[Error] setup.gropebreastQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _msize = $mc.breastsize || "average">>
+<<set _nsize = _n.breastsize || "average">>
+<<set _mage  = $mc.ageGroup  ? "child" : "adult">>
+<<set _nage  = _n.ageGroup  ? "child" : "adult">>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.gropebreastQuotes.give[_pref][_msize][_msize] 
+	|| setup.gropebreastQuotes.give.Neutral>>
+<<else>>
+		<<run _pool =
+			(
+				setup.gropebreastQuotes.receive[_pref]
+				&& setup.gropebreastQuotes.receive[_pref][_nsize][_nage]
+			)
+			|| setup.gropebreastQuotes.receive.Neutral.default
+		>>
+<</if>>
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No grope breast quote pool found.
 <</if>>
 
 

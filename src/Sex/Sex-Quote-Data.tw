@@ -228,28 +228,127 @@ setup.faceonchestQuotes = {
 /* ----- FEEL STOMACH ----- */
 setup.feelstomachQuotes = {
   give: {
-    Dominant: [
-      
+    Gaunt: [
+      "Your belly's light, almost hollow.",
+			"Barely anything to rub.",
+			"I love how delicate it feels."
     ],
-    Submissive: [
-      
+    Petite: [
+      "It feels small and gentle under my hand.",
+			"Soft touch fits your tiny frame.",
+			"Your tiny belly is adorable to touch."
     ],
-    Neutral: [
-      
+    Slender: [
+      "Feels so smooth.",
+			"You're so tight and lean here."
+    ],
+    Lean: [
+      "Firm, love how it feels against my hand.",
+			"You've got clean definition."
+    ],
+    Defined: [
+      "Your lines show even when relaxed.",
+			"It's like it was carved from a statue."
+    ],
+    Slim: [
+      "So flat and smooth.",
+			"I love how flat it feels here."
+    ],
+    Thin: [
+      "Light frame. My hand fits perfectly.",
+			"It's all smooth and narrow."
+    ],
+    Spry: [
+      "Your belly feels very firm.",
+			"Feels good.",
+			"Your belly's got a nice feel to it."
+    ],
+    Lithe: [
+      "Nice muscles under here.",
+			"Flexible and firm."
+    ],
+    Cut: [
+      "Your midline shows clearly.",
+			"I can feel the lines of your muscles clearly."
+    ],
+    Chubby: [
+      "Love how soft and warm it is here, like a pillow.",
+			"Nice cushion under my hand."
+    ],
+    Average: [
+      "Nice and smooth.",
+			"I like the way you feel under my hand."
+    ],
+    Fit: [
+      "Nice and firm.",
+			"You've got a healthy body."
+    ],
+    Strong: [
+      "You've got a nice solid core.",
+			"So much strength behind this."
+    ],
+    Athletic: [
+      "Nice and smooth muscles.",
+			"Really nice definition.",
+			"You've got a good tone."
+    ],
+    Fat: [
+      "There's a lot to love here!",
+			"So soft..."
+    ],
+    Plump: [
+      "Nice and round.",
+			"I love how it jiggles!"
+    ],
+    Burly: [
+      "These muscles are so thick!",
+			"You've got real heft here… it feels good to touch."
+    ],
+    Powerful: [
+      "Love these thick abs!",
+			"Such strength."
+    ],
+    Buff: [
+      "It's as solid as a rock!",
+			"Nothing but pure muscle, amazing!"
+    ],
+    Obese: [
+      "Look at it jiggle.",
+			"I love how your belly feels."
+    ],
+    Chunky: [
+      "Thick and plush.",
+			"I could use it like a pillow."
+    ],
+    Robust: [
+      "Nice and solid frame.",
+			"Such a sturdy build."
+    ],
+    Thick: [
+      "You can grind meat with these abs!",
+			"Your belly is solid strength!"
+    ],
+    Jacked: [
+      "Wow, look at these abs!",
+			"Such sexy abs!",
+			"You're ripped!"
     ]
   },
 
   receive: {
-    Dominant: [
-      
+    Fur: [
+      "You like my fur, huh?"
     ],
 
-    Submissive: [
-      
+    Scales: [
+      "You like my scales, huh?"
+    ],
+    Feathers: [
+      "You like my feathers, huh?"
     ],
 
     Neutral: {
-      default: [ ]
+      default: ["Mmm, that feels good."]
     }
   }
 };
@@ -257,27 +356,29 @@ setup.feelstomachQuotes = {
 setup.fingerassQuotes = {
   give: {
     Dominant: [
-      
+      "Yeah, lets get it nice and stretched"
     ],
     Submissive: [
-      
+      "It's so warm in there."
     ],
     Neutral: [
-      
+      "It's warm."
     ]
   },
 
   receive: {
     Dominant: [
-      
+      "Oh f-fuck!"
     ],
 
     Submissive: [
-      
+      "Oh f-fuck!"
     ],
 
     Neutral: {
-      default: [ ]
+      default: [
+        "Oh f-fuck!"
+      ]
     }
   }
 };
@@ -285,27 +386,33 @@ setup.fingerassQuotes = {
 setup.fingervaginaQuotes = {
   give: {
     Dominant: [
-      
+      "Damn, you're wet!"
     ],
     Submissive: [
-      
+      "It's so warm in there.",
+			"Wow, its so wet down there."
     ],
     Neutral: [
-      
+      "It's warm in there."
     ]
   },
 
   receive: {
     Dominant: [
-      
+      "Oh f-fuck!",
+			"That feels nice",
+			"Yes... just like that!",
+			"That's the spot, don't stop!"
     ],
 
     Submissive: [
-      
+      "Oh f-fuck!"
     ],
 
     Neutral: {
-      default: [ ]
+      default: [
+       "Oh f-fuck!"
+       ]
     }
   }
 };
@@ -381,28 +488,56 @@ setup.footjobQuotes = {
 /* ----- GROPE BREAST ----- */
 setup.gropebreastQuotes = {
   give: {
-    Dominant: [
-      
-    ],
-    Submissive: [
-      
-    ],
-    Neutral: [
-      
-    ]
-  },
+    Dominant: {
+      Flat: [
+        "Don't be ashamed about being flat, it's really cute."
+      ],
+      Small: {
+        Child: ["Nothing quite like developing breasts. So lewd and cute."],
+        Teen: ["Nothing quite like developing breasts. So lewd and cute."]
+        default:["I think small breasts are kinda cute."]
+      },
+      Average: [
+        "Nice tits"
+      ],
+      Large: [
+        "Heh, look a the size of these!",
+				"Damn, these are huge!"
+      ],
+      Busty:[
+        "Shit, these are big!",
+				"How do you carry these things?!"
+      ]
 
+    }
+    Submissive: {
+      Average: [
+        "I like your breasts."
+      ],
+      Large: [
+        "Your breasts are so soft.",
+				"Wow, they are pretty big."
+      ],
+      Busty: [ "Whoa..."],
+    },
+    Neutral: {
+      Large: ["Wow..."],
+      Busty: ["These sure are big!"]
+      default: [Default text]
+    }
+  },
   receive: {
     Dominant: [
-      
+      "That's right, play with my _n.breastsize breasts!",
+      "That's right, play with my tits!"
     ],
 
     Submissive: [
-      
+      "You can play with them if you like."
     ],
 
     Neutral: {
-      default: [ ]
+      default: [NEUTRAL dialogue about grabbing boobs]
     }
   }
 };
@@ -540,15 +675,9 @@ setup.gropebuttQuotes = {
       ]  
     },
   Huge: {  
-      Dominant: [
-      "Your hands are so warm..."
-      ],
-      Submissive: [
-      "Your hands are so warm..."
-      ],
-      Neutral: [
-      "Your hands are so warm..."
-      ]    
+      Dominant: [ "Your hands are so warm..." ],
+      Submissive: [ "Your hands are so warm..."],
+      Neutral: [ "Your hands are so warm..."]    
     },
   }
 };
@@ -609,27 +738,29 @@ setup.handjobQuotes = {
 setup.petearsQuotes = {
   give: {
     Dominant: [
-      
+      "DOM-LINE-1 about Petting ears."
     ],
     Submissive: [
-      
+      "SUB-LINE-1 about Petting ears."
     ],
     Neutral: [
-      
+      "They feel so soft."
     ]
   },
 
   receive: {
     Dominant: [
-      
+      "DOM-LINE-1 about Petting ears."
     ],
 
     Submissive: [
-      
+      "SUB-LINE-1 about Petting ears."
     ],
 
     Neutral: {
-      default: [ ]
+      default: [
+        "Mmm, that feels nice."
+       ]
     }
   }
 };
@@ -638,27 +769,42 @@ setup.petearsQuotes = {
 setup.rimjobQuotes = {
   give: {
     Dominant: [
-      
+      "Fuck, eat my ass!",
+			"Good _n.petname! Keep that _n.body.tongue of yours busy in my ass!",
+			"What a good _n.petname! You love the taste of my ass, don't you?!",
+			"Don't stop! Deeper! Get your _n.body.tongue into my ass! Yes, yes, yes!",
+			"Fuck yeah!",
+			"Get in there more!"
     ],
     Submissive: [
-      
+      "Yes! I love your _n.body.tongue! Please don't stop!",
+			"Oh yes! Taste my ass! I love your _n.body.tongue! Get it deeper!"
     ],
     Neutral: [
-      
+      "O-oh fuck!.",
+			"Ah, fuck."
     ]
   },
 
   receive: {
     Dominant: [
-      
+      "Mmmf",
+			"Mmmph",
+			"Mmf"
     ],
 
     Submissive: [
-      
+      "Mmmf",
+			"Mmmph",
+			"Mmf"
     ],
 
     Neutral: {
-      default: [ ]
+      default: [ 
+        "Mmmf",
+			  "Mmmph",
+			  "Mmf"
+      ]
     }
   }
 };

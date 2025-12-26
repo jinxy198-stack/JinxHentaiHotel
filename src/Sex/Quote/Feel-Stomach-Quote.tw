@@ -1,157 +1,29 @@
 :: Feel-Stomach-Quote [Dialogue nobr] {"position":"1700,1200","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-	<!-- NPC is feeling your stomach -->
-	<<if $mc.bodytype is "Gaunt">>
-		<<= either(
-			"Your belly's light, almost hollow.",
-			"Barely anything to rub.",
-			"I love how delicate it feels."
-		)>>
-	<<elseif $mc.bodytype is "Petite">>
-		<<= either(
-			"It feels small and gentle under my hand.",
-			"Soft touch fits your tiny frame.",
-			"Your tiny belly is adorable to touch."
-		)>>
-	<<elseif $mc.bodytype is "Slender">>
-		<<= either(
-			"Feels so smooth.",
-			"You're so tight and lean here."
-		)>>
-	<<elseif $mc.bodytype is "Lean">>
-		<<= either(
-			"Firm, love how it feels against my hand.",
-			"You've got clean definition."
-		)>>
-	<<elseif $mc.bodytype is "Defined">>
-		<<= either(
-			"Your lines show even when relaxed.",
-			"It's like it was carved from a statue."
-		)>>
-	<<elseif $mc.bodytype is "Slim">>
-		<<= either(
-			"So flat and smooth.",
-			"I love how flat it feels here."
-		)>>
-	<<elseif $mc.bodytype is "Thin">>
-		<<= either(
-			"Light frame. My hand fits perfectly.",
-			"It's all smooth and narrow."
-		)>>
-	<<elseif $mc.bodytype is "Spry">>
-		<<= either(
-			"Your belly feels very firm.",
-			"Feels good.",
-			"Your belly’s got a nice feel to it."
-		)>>
-	<<elseif $mc.bodytype is "Lithe">>
-		<<= either(
-			"Nice muscles under here.",
-			"Flexible and firm."
-		)>>
-	<<elseif $mc.bodytype is "Cut">>
-		<<= either(
-			"Your midline shows clearly.",
-			"I can feel the lines of your muscles clearly."
-		)>>
-	<<elseif $mc.bodytype is "Chubby">>
-		<<= either(
-			"Love how soft and warm it is here, like a pillow.",
-			"Nice cushion under my hand."
-		)>>
-	<<elseif $mc.bodytype is "Average">>
-		<<= either(
-			"Nice and smooth.",
-			"I like the way you feel under my hand."
-		)>>
-	<<elseif $mc.bodytype is "Fit">>
-		<<= either(
-			"Nice and firm.",
-			"You've got a healthy body."
-		)>>
-	<<elseif $mc.bodytype is "Strong">>
-		<<= either(
-			"You've got a nice solid core.",
-			"So much strength behind this."
-		)>>
-	<<elseif $mc.bodytype is "Athletic">>
-		<<= either(
-			"Nice and smooth muscles.",
-			"Really nice definition.",
-			"You've got a good tone."
-		)>>
-	<<elseif $mc.bodytype is "Fat">>
-		<<= either(
-			"There's a lot to love here!",
-			"So soft..."
-		)>>
-	<<elseif $mc.bodytype is "Plump">>
-		<<= either(
-			"Nice and round.",
-			"I love how it jiggles!"
-		)>>
-	<<elseif $mc.bodytype is "Burly">>
-		<<= either(
-			"These muscles are so thick!",
-			"You’ve got real heft here… it feels good to touch."
-		)>>
-	<<elseif $mc.bodytype is "Powerful">>
-		<<= either(
-			"Love these thick abs!",
-			"Such strength."
-		)>>
-	<<elseif $mc.bodytype is "Buff">>
-		<<= either(
-			"It's as solid as a rock!",
-			"Nothing but pure muscle, amazing!"
-		)>>
-	<<elseif $mc.bodytype is "Obese">>
-		<<= either(
-			"Look at it jiggle.",
-			"I love how your belly feels."
-		)>>
-	<<elseif $mc.bodytype is "Chunky">>
-		<<= either(
-			"Thick and plush.",
-			"I could use it like a pillow."
-		)>>
-	<<elseif $mc.bodytype is "Robust">>
-		<<= either(
-			"Nice and solid frame.",
-			"Such a sturdy build."
-		)>>
-	<<elseif $mc.bodytype is "Thick">>
-		<<= either(
-			"You can grind meat with these abs!",
-			"Your belly is solid strength!"
-		)>>
-	<<elseif $mc.bodytype is "Jacked">>
-		<<= either(
-			"Wow, look at these abs!",
-			"Such sexy abs!",
-			"You're ripped!"
-		)>>
-	<</if>>
-<<elseif $sex.roles.sub.name == _n.name>>
-	<!-- You are feeling NPC's stomach -->
-	<<if _n.body.bodymaterial=="Fur">>
-		<<= either(
-			"You like my fur, huh?"
-		)>>
-	<<elseif _n.body.bodymaterial=="Scales">>
-		<<= either(
-			"You like my fur, huh?"
-		)>>
-	<<elseif _n.body.bodymaterial =="Feathers">>
-		<<= either(
-			"You like my fur, huh?"
-		)>>
-	<<else>>
-		<<= either (
-			"Mmm, that feels good."
-		)>>	
-	<</if>>	
+<<if !setup.feelstomachQuotes>>
+	[Error] setup.feelstomachQuotes is missing. Define it in StoryInit.
+	<<return>>
 <</if>>
 
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _body = $mc.bodytype || "Average">>
+<<set _material = _n.body.bodymaterial || null>>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.feelstomachQuotes.give[_body]
+	|| setup.feelstomachQuotes.give.Neutral>>
+<<else>>
+	<<set _pool = setup.feelstomachQuotes.receive[_material] 
+	|| setup.feelstomachQuotes.receive.Neutral>>
+<</if>>
+
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Feel Stomach quote pool found.
+<</if>>
 
 

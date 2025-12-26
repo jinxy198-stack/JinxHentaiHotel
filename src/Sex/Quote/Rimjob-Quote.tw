@@ -1,47 +1,27 @@
 :: Rimjob-Quote [nobr Dialogue] {"position":"1800,1500","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-		/* You eat NPC's ass */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Fuck, eat my ass!",
-				"Good _n.petname! Keep that _n.body.tongue of yours busy in my ass!",
-				"What a good _n.petname! You love the taste of my ass, don't you?!",
-				"Don't stop! Deeper! Get your _n.body.tongue into my ass! Yes, yes, yes!",
-				"Fuck yeah!",
-				"Get in there more!"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"Yes! I love your _n.body.tongue! Please don't stop!",
-				"Oh yes! Taste my ass! I love your _n.body.tongue! Get it deeper!"
-			)>>
-		<<else>>
-			<<= either(
-				"O-oh fuck!.",
-				"Ah, fuck."
-			)>>
-		<</if>>
-	<<elseif $sex.roles.sub.name == _n.name>>
-		/* NPC eats your ass */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Mmmf",
-				"Mmmph",
-				"Mmf"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"Mmmf",
-				"Mmmph",
-				"Mmf"
-			)>>
-		<<else>>
-			<<= either(
-				"Mmmf",
-				"Mmmph",
-				"Mmf"
-			)>>
-		<</if>>
-	<</if>>
+<<if !setup.rimjobQuotes>>
+	[Error] setup.rimjobQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.rimjobQuotes.give[_pref]
+	|| setup.rimjobQuotes.give.Neutral>>
+<<else>>
+	<<set _pool = setup.rimjobQuotes.receive[_pref] 
+	|| setup.rimjobQuotes.receive.Neutral>>
+<</if>>
+
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Rimjob quote pool found.
+<</if>>
 
 

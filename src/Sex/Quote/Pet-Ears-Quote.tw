@@ -1,43 +1,25 @@
 :: Pet-Ears-Quote [nobr Dialogue] {"position":"1700,1400","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-		/* NPC pets your ears */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"DOM-LINE-1 about BODY-PART.",
-				"DOM-LINE-2 about BODY-PART.",
-				"DOM-LINE-3 about BODY-PART."
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"SUB-LINE-1 about BODY-PART.",
-				"SUB-LINE-2 about BODY-PART.",
-				"SUB-LINE-3 about BODY-PART."
-			)>>
-		<<else>>
-			<<= either(
-                "They feel so soft."
-			)>>
-		<</if>>
-	<<elseif $sex.roles.sub.name == _n.name>>
-		/* You pet NPC's ears */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"DOM-LINE-1 about BODY-PART.",
-				"DOM-LINE-2 about BODY-PART.",
-				"DOM-LINE-3 about BODY-PART."
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"SUB-LINE-1 about BODY-PART.",
-				"SUB-LINE-2 about BODY-PART.",
-				"SUB-LINE-3 about BODY-PART."
-			)>>
-		<<else>>
-			<<= either(
-				"Mmm, that feels nice."
-			)>>
-		<</if>>
-	<</if>>
+<<if !setup.petearsQuotes>>
+	[Error] setup.petearsQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.petearsQuotes.give[_pref]
+	|| setup.petearsQuotes.give.Neutral>>
+<<else>>
+	<<set _pool = setup.petearsQuotes.receive[_pref] 
+	|| setup.petearsQuotes.receive.Neutral>>
+<</if>>
 
 
-
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Pet Ears quote pool found.
+<</if>>
