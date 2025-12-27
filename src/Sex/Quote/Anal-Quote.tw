@@ -6,27 +6,28 @@
 
 <<set _pref = _n.sexpref || "Neutral">>
 <<set _msize = $mc.penislength || "Average">>
-<<set _mage  = $mc.agegroup>>
 <<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
-<<set _poisition = $sex.position>>
+<<set _position = $sex.position || "Neutral">>
 
 <<set _pool = null>>
 
 <<if _mode == "give">>
-		<<set _pool = setup.analQuotes.give[_position][_pref]
-		&& setup.analQuotes.give[_pref]
-			|| setup.analQuotes.give.Neutral
-		>>
-	<<else>>
-			<<run _pool =
-				(
-					setup.analQuotes.receive[_pref]
-					&& setup.analQuotes.receive[_msize] /*Only if _msize is established */
-					&& setup.analQuotes.receive [_position][_pref]
-				)
-				|| setup.analQuotes.receive.Neutral
-			>>
-	<</if>>
+	<<set _pool =
+		(
+			setup.analQuotes.give[_position]
+			&& setup.analQuotes.give[_position][_pref]
+		)
+		|| setup.analQuotes.give.Neutral
+	>>
+<<else>>
+	<<set _pool =
+		(
+			setup.analQuotes.receive[_position]
+			&& setup.analQuotes.receive[_position][_pref]
+		)
+		|| setup.analQuotes.receive.Neutral
+	>>
+<</if>>
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>

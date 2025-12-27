@@ -14,9 +14,11 @@
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.orgasmcloseQuotes.give[_pref] || setup.orgasmcloseQuotes.give.Neutral>>
+	<<set _pool = setup.orgasmcloseQuotes.give[_pref] 
+	|| setup.orgasmcloseQuotes.give.Neutral>>
 <<else>>
-	<<set _pool = setup.orgasmcloseQuotes.receive[_pref] || setup.orgasmcloseQuotes.receive.Neutral>>
+	<<set _pool = setup.orgasmcloseQuotes.receive[_pref] 
+	|| setup.orgasmcloseQuotes.receive.Neutral>>
 <</if>>
 
 

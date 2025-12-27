@@ -501,9 +501,9 @@ setup.feelstomachQuotes = {
       "You like my feathers, huh?"
     ],
 
-    Neutral: {
-      default: ["Mmm, that feels good."]
-    }
+    Neutral: [
+      "Mmm, that feels good."
+    ]
   }
 };
 /* ----- FINGER ASS ----- */
@@ -529,11 +529,9 @@ setup.fingerassQuotes = {
       "Oh f-fuck!"
     ],
 
-    Neutral: {
-      default: [
-        "Oh f-fuck!"
-      ]
-    }
+    Neutral: [
+      "Oh f-fuck!"
+    ]
   }
 };
 /* ----- FINGER VAGINA ----- */
@@ -563,11 +561,9 @@ setup.fingervaginaQuotes = {
       "Oh f-fuck!"
     ],
 
-    Neutral: {
-      default: [
-       "Oh f-fuck!"
-       ]
-    }
+    Neutral: [
+      "Oh f-fuck!"
+    ]
   }
 };
 
@@ -598,7 +594,7 @@ setup.frotQuotes = {
     ],
 
     Neutral: {
-      default: ["Ah."]
+      "Ah."
     }
   }
 };
@@ -634,7 +630,7 @@ setup.footjobQuotes = {
     ],
 
     Neutral: {
-      default: ["NEUTRAL-DOM-LINE-1 about BODY-PART."]
+      "NEUTRAL-DOM-LINE-1 about BODY-PART."
     }
   }
 };
@@ -648,8 +644,7 @@ setup.gropebreastQuotes = {
       ],
       Small: {
         Child: ["Nothing quite like developing breasts. So lewd and cute."],
-        Teen: ["Nothing quite like developing breasts. So lewd and cute."],
-        default:["I think small breasts are kinda cute."]
+        Teen: ["Nothing quite like developing breasts. So lewd and cute."]
       },
       Average: [
         "Nice tits"
@@ -676,8 +671,7 @@ setup.gropebreastQuotes = {
     },
     Neutral: {
       Large: ["Wow..."],
-      Busty: ["These sure are big!"],
-      default: ["Default text"]
+      Busty: ["These sure are big!"]
     }
   },
   receive: {
@@ -690,9 +684,9 @@ setup.gropebreastQuotes = {
       "You can play with them if you like."
     ],
 
-    Neutral: {
-      default: ["NEUTRAL dialogue about grabbing boobs"]
-    }
+    Neutral: [
+     "NEUTRAL dialogue about grabbing boobs"
+    ]
   }
 };
 
@@ -701,6 +695,7 @@ setup.gropebuttQuotes = {
   give: {  
     Flat: {  
       Dominant: [     
+      "DEFAULT DIALOGUE ABOUT GROPING BUTT, FLAT BUTT."
       ],
       Submissive: [
       "I love how your ass feels."
@@ -711,6 +706,7 @@ setup.gropebuttQuotes = {
     },
     Tiny: {  
       Dominant: [     
+      "DEFAULT DIALOGUE ABOUT GROPING BUTT, TINY BUTT."
       ],
       Submissive: [
       "I love how your ass feels."
@@ -720,7 +716,8 @@ setup.gropebuttQuotes = {
       ]  
     },
     Small: {  
-      Dominant: [      
+      Dominant: [   
+      "DEFAULT DIALOGUE ABOUT GROPING BUTT, SMALL BUTT."   
       ],
       Submissive: [
       "I love how your ass feels."
@@ -855,36 +852,36 @@ setup.handjobQuotes = {
   receive: {
     Dominant: {
       Tiny: {
-        child: ["Perfect size for someone your age."],
-        adult: ["So cute and tiny."]
+        Child: ["Perfect size for someone your age."],
+        Adult: ["So cute and tiny."]
       },
-      small: ["So small, yet so precious."],
-      average: ["Your cock is so pretty."],
-      large: ["Damn, that's pretty big."],
-      huge: [
+      Small: ["So small, yet so precious."],
+      Average: ["Your cock is so pretty."],
+      Large: ["Damn, that's pretty big."],
+      Huge: [
         "FOOTJOB QUOTE ABOUT HUGE DICK"
       ]
     },
 
     Submissive: {
       Tiny: {
-        child: ["Perfect size for someone your age."],
-        adult: ["So cute and tiny."]
+        Child: ["Perfect size for someone your age."],
+        Adult: ["So cute and tiny."]
       },
-      small: ["Don't feel bad about the size, I like it."],
-      average: [
+      Small: ["Don't feel bad about the size, I like it."],
+      Average: [
         "DOM-LINE-1 about BODY-PART."
       ],
-      large: [
+      Large: [
         "Wow, it's pretty big!",
         "You should be proud to have a cock this big!"
       ],
-      huge: ["It's quite an intimidating size."]
+      Huge: ["It's quite an intimidating size."]
     },
 
-    Neutral: {
-      default: ["Wow, this is a really nice dick, $mc.name!"]
-    }
+    Neutral: [
+     "Wow, this is a really nice dick, $mc.name!"
+    ]
   }
 };
 
@@ -911,11 +908,9 @@ setup.petearsQuotes = {
       "SUB-LINE-1 about Petting ears."
     ],
 
-    Neutral: {
-      default: [
-        "Mmm, that feels nice."
-       ]
-    }
+    Neutral: [
+      "Mmm, that feels nice."
+    ]
   }
 };
 
@@ -995,13 +990,11 @@ setup.suckfootQuotes = {
 			"Mmf"
     ],
 
-    Neutral: {
-      default: [ 
+    Neutral: [ 
         "Mmmf",
 				"Mmmph",
 				"Mmf"
-      ]
-    }
+    ]
   }
 };
 
@@ -1035,11 +1028,9 @@ setup.orgasmQuotes = {
       "Oh god, cum in me!"
     ],
 
-    Neutral: {
-      default: [
+    Neutral: [
         "Oh god, cum in me!"
-      ]
-    }
+    ]
   }
 };
 
@@ -1104,11 +1095,9 @@ setup.orgasmcloseQuotes = {
       ]
     },
 
-    Neutral: {
-      default: [ 
+    Neutral: [
       "NEUTRAL DEFAULT QUOTE"
-      ]
-    }
+    ]
   }
 };
 

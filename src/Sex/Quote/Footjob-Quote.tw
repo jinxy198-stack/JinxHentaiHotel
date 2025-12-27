@@ -11,7 +11,8 @@
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.footjobQuotes.give[_pref] || setup.footjobQuotes.give.Neutral>>
+	<<set _pool = setup.footjobQuotes.give[_pref] 
+	|| setup.footjobQuotes.give.Neutral>>
 <<else>>
 	
 		<<run _pool =
@@ -19,7 +20,7 @@
 				setup.footjobQuotes.receive[_pref]
 				&& setup.footjobQuotes.receive[_pref][_size]
 			)
-			|| setup.footjobQuotes.receive.Neutral.default
+			|| setup.footjobQuotes.receive.Neutral
 		>>
 <</if>>
 

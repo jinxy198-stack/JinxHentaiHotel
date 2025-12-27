@@ -510,43 +510,47 @@
 
 /* ----- GROPE BUTT ----- */
 <<widget "GropeButtQuote">>
-	/* guard */
 	<<if !setup.gropebuttQuotes>>
 		[Error] setup.gropebuttQuotes is not defined.
 		<<return>>
 	<</if>>
 
-	/* normalize inputs */
+	<<if !_n or !$sex or !$sex.roles or !$sex.roles.dom or !$sex.roles.sub>>
+		<<return>>
+	<</if>>
+
 	<<set _pref = _n.sexpref || "Neutral">>
-	<<set _msize = $mc.assSize>>
-	<<set _nsize =_n.assSize>>
+	<<set _msize = $mc.assSize || "Round">>
+	<<set _nsize = _n.assSize || "Round">>
 	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
 
 	<<set _pool = null>>
 
-	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.gropebuttQuotes.give[_pref]
-		&& setup.gropebuttQuotes.give[_pref][_nsize]
-			|| setup.gropebuttQuotes.give.Neutral
+		<<set _pool =
+			(
+				setup.gropebuttQuotes.give[_nsize]
+				&& setup.gropebuttQuotes.give[_nsize][_pref]
+			)
+			|| setup.gropebuttQuotes.give[_nsize]?.Neutral
 		>>
 	<<else>>
-			<<run _pool =
-				(
-					setup.gropebuttQuotes.receive[_pref]
-					&& setup.gropebuttQuotes.receive[_pref][_msize]
-				)
-				|| setup.gropebuttQuotes.receive.Neutral.default
-			>>
+		<<set _pool =
+			(
+				setup.gropebuttQuotes.receive[_msize]
+				&& setup.gropebuttQuotes.receive[_msize][_pref]
+			)
+			|| setup.gropebuttQuotes.receive[_msize]?.Neutral
+		>>
 	<</if>>
 
-	/* output */
-	<<if _pool && _pool.length>>
+	<<if Array.isArray(_pool) && _pool.length>>
 		<<= either(..._pool)>>
 	<<else>>
 		[Error] GropeButtQuote: empty dialogue pool.
 	<</if>>
 <</widget>>
+
 
 /* ----- HANDJOB ----- */
 <<widget "HandjobQuote">>
@@ -577,7 +581,7 @@
 					&& setup.handjobQuotes.receive[_pref].tiny
 					&& setup.handjobQuotes.receive[_pref].tiny[_mage]
 				)
-				|| setup.handjobQuotes.receive.Neutral.default
+				|| setup.handjobQuotes.receive.Neutral
 			>>
 		<<else>>
 			<<run _pool =
@@ -585,7 +589,7 @@
 					setup.handjobQuotes.receive[_pref]
 					&& setup.handjobQuotes.receive[_pref][_msize]
 				)
-				|| setup.handjobQuotes.receive.Neutral.default
+				|| setup.handjobQuotes.receive.Neutral
 			>>
 		<</if>>
 	<</if>>
@@ -623,7 +627,7 @@
 				(
 					setup.petearsQuotes.receive[_pref]
 				)
-				|| setup.petearsQuotes.receive.Neutral.default
+				|| setup.petearsQuotes.receive.Neutral
 			>>
 	<</if>>
 

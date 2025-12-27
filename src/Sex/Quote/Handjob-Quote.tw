@@ -6,30 +6,33 @@
 
 <<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
 <<set _pref = _n.sexpref || "Neutral">>
-<<set _size = $mc.penislength || "average">>
-<<set _age  = ($mc.ageGroup == "Child") ? "child" : "adult">>
+<<set _size = $mc.penislength || "Average">>
+<<set _age  = ($mc.ageGroup == "Child") ? "Child" : "Adult">>
 
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.handjobQuotes.give[_pref] || setup.handjobQuotes.give.Neutral>>
+	<<set _pool =
+		setup.handjobQuotes.give[_pref]
+		|| setup.handjobQuotes.give.Neutral
+	>>
 <<else>>
-	<<if _size == "tiny">>
-		<<run _pool =
+	<<if _size == "Tiny">>
+		<<set _pool =
 			(
 				setup.handjobQuotes.receive[_pref]
-				&& setup.handjobQuotes.receive[_pref].tiny
-				&& setup.handjobQuotes.receive[_pref].tiny[_age]
+				&& setup.handjobQuotes.receive[_pref].Tiny
+				&& setup.handjobQuotes.receive[_pref].Tiny[_age]
 			)
-			|| setup.handjobQuotes.receive.Neutral.default
+			|| setup.handjobQuotes.receive.Neutral
 		>>
 	<<else>>
-		<<run _pool =
+		<<set _pool =
 			(
 				setup.handjobQuotes.receive[_pref]
 				&& setup.handjobQuotes.receive[_pref][_size]
 			)
-			|| setup.handjobQuotes.receive.Neutral.default
+			|| setup.handjobQuotes.receive.Neutral
 		>>
 	<</if>>
 <</if>>
@@ -39,3 +42,4 @@
 <<else>>
 	[Error] No handjob quote pool found.
 <</if>>
+

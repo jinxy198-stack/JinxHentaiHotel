@@ -13,9 +13,11 @@
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.suckfootQuotes.give[_pref] || setup.suckfootQuotes.give.Neutral>>
+	<<set _pool = setup.suckfootQuotes.give[_pref] 
+	|| setup.suckfootQuotes.give.Neutral>>
 <<else>>
-	<<set _pool = setup.suckfootQuotes.receive[_pref] || setup.suckfootQuotes.receive.Neutral>>
+	<<set _pool = setup.suckfootQuotes.receive[_pref] 
+	|| setup.suckfootQuotes.receive.Neutral>>
 <</if>>
 
 

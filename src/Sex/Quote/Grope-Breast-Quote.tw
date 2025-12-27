@@ -22,7 +22,7 @@
 				setup.gropebreastQuotes.receive[_pref]
 				&& setup.gropebreastQuotes.receive[_pref][_nsize][_nage]
 			)
-			|| setup.gropebreastQuotes.receive.Neutral.default
+			|| setup.gropebreastQuotes.receive.Neutral
 		>>
 <</if>>
 

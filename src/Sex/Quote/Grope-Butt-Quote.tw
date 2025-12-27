@@ -3,30 +3,37 @@
 	[Error] setup.gropebuttQuotes is missing. Define it in StoryInit.
 	<<return>>
 <</if>>
+<<if !_n or !$sex or !$sex.roles or !$sex.roles.dom or !$sex.roles.sub>>
+	<<return>>
+<</if>>
 
 <<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
 <<set _pref = _n.sexpref || "Neutral">>
-<<set _msize = $mc.assSize>>
-<<set _nsize = _n.assSize>>
-<<set _mage  = $mc.ageGroup>>
+<<set _msize = $mc.assSize || "Round">>
+<<set _nsize = _n.assSize || "Round">>
 
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.gropebuttQuotes.give[_pref]
-	 && setup.gropebuttQuotes.give[_pref][_nsize]
-	|| setup.gropebuttQuotes.give.Neutral>>
+	<<set _pool =
+		(
+			setup.gropebuttQuotes.give[_nsize]
+			&& setup.gropebuttQuotes.give[_nsize][_pref]
+		)
+		|| setup.gropebuttQuotes.give[_nsize]?.Neutral
+	>>
 <<else>>
-	<<set _pool = setup.gropebuttQuotes.receive[_pref] 
-	&& setup.gropebuttQuotes.receive[_pref][_msize]
-	|| setup.gropebuttQuotes.receive.Neutral>>
+	<<set _pool =
+		(
+			setup.gropebuttQuotes.receive[_msize]
+			&& setup.gropebuttQuotes.receive[_msize][_pref]
+		)
+		|| setup.gropebuttQuotes.receive[_msize]?.Neutral
+	>>
 <</if>>
 
-
-<<if _pool && _pool.length>>
+<<if Array.isArray(_pool) && _pool.length>>
 	<<= either(..._pool)>>
 <<else>>
 	[Error] No Grope Butt quote pool found.
 <</if>>
-
-

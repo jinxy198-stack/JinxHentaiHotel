@@ -3366,27 +3366,28 @@ You two kiss again.
 
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
-&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
 &lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _poisition = $sex.position&gt;&gt;
+&lt;&lt;set _position = $sex.position || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.analQuotes.give[_position][_pref]
-		&amp;&amp; setup.analQuotes.give[_pref]
-			|| setup.analQuotes.give.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.analQuotes.receive[_pref]
-					&amp;&amp; setup.analQuotes.receive[_msize] /*Only if _msize is established */
-					&amp;&amp; setup.analQuotes.receive [_position][_pref]
-				)
-				|| setup.analQuotes.receive.Neutral
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;set _pool =
+		(
+			setup.analQuotes.give[_position]
+			&amp;&amp; setup.analQuotes.give[_position][_pref]
+		)
+		|| setup.analQuotes.give.Neutral
+	&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool =
+		(
+			setup.analQuotes.receive[_position]
+			&amp;&amp; setup.analQuotes.receive[_position][_pref]
+		)
+		|| setup.analQuotes.receive.Neutral
+	&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
 	&lt;&lt;= either(..._pool)&gt;&gt;
@@ -3628,7 +3629,8 @@ You two kiss again.
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.footjobQuotes.give[_pref] || setup.footjobQuotes.give.Neutral&gt;&gt;
+	&lt;&lt;set _pool = setup.footjobQuotes.give[_pref] 
+	|| setup.footjobQuotes.give.Neutral&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	
 		&lt;&lt;run _pool =
@@ -3636,7 +3638,7 @@ You two kiss again.
 				setup.footjobQuotes.receive[_pref]
 				&amp;&amp; setup.footjobQuotes.receive[_pref][_size]
 			)
-			|| setup.footjobQuotes.receive.Neutral.default
+			|| setup.footjobQuotes.receive.Neutral
 		&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -3694,7 +3696,7 @@ You two kiss again.
 				setup.gropebreastQuotes.receive[_pref]
 				&amp;&amp; setup.gropebreastQuotes.receive[_pref][_nsize][_nage]
 			)
-			|| setup.gropebreastQuotes.receive.Neutral.default
+			|| setup.gropebreastQuotes.receive.Neutral
 		&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -3706,27 +3708,36 @@ You two kiss again.
 	[Error] setup.gropebuttQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+&lt;&lt;if !_n or !$sex or !$sex.roles or !$sex.roles.dom or !$sex.roles.sub&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _msize = $mc.assSize&gt;&gt;
-&lt;&lt;set _nsize = _n.assSize&gt;&gt;
-&lt;&lt;set _mage  = $mc.ageGroup&gt;&gt;
+&lt;&lt;set _msize = $mc.assSize || &quot;Round&quot;&gt;&gt;
+&lt;&lt;set _nsize = _n.assSize || &quot;Round&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.gropebuttQuotes.give[_pref]
-	 &amp;&amp; setup.gropebuttQuotes.give[_pref][_nsize]
-	|| setup.gropebuttQuotes.give.Neutral&gt;&gt;
+	&lt;&lt;set _pool =
+		(
+			setup.gropebuttQuotes.give[_nsize]
+			&amp;&amp; setup.gropebuttQuotes.give[_nsize][_pref]
+		)
+		|| setup.gropebuttQuotes.give[_nsize]?.Neutral
+	&gt;&gt;
 &lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool = setup.gropebuttQuotes.receive[_pref] 
-	&amp;&amp; setup.gropebuttQuotes.receive[_pref][_msize]
-	|| setup.gropebuttQuotes.receive.Neutral&gt;&gt;
+	&lt;&lt;set _pool =
+		(
+			setup.gropebuttQuotes.receive[_msize]
+			&amp;&amp; setup.gropebuttQuotes.receive[_msize][_pref]
+		)
+		|| setup.gropebuttQuotes.receive[_msize]?.Neutral
+	&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Grope Butt quote pool found.
@@ -3737,30 +3748,33 @@ You two kiss again.
 
 &lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _size = $mc.penislength || &quot;average&quot;&gt;&gt;
-&lt;&lt;set _age  = ($mc.ageGroup == &quot;Child&quot;) ? &quot;child&quot; : &quot;adult&quot;&gt;&gt;
+&lt;&lt;set _size = $mc.penislength || &quot;Average&quot;&gt;&gt;
+&lt;&lt;set _age  = ($mc.ageGroup == &quot;Child&quot;) ? &quot;Child&quot; : &quot;Adult&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.handjobQuotes.give[_pref] || setup.handjobQuotes.give.Neutral&gt;&gt;
+	&lt;&lt;set _pool =
+		setup.handjobQuotes.give[_pref]
+		|| setup.handjobQuotes.give.Neutral
+	&gt;&gt;
 &lt;&lt;else&gt;&gt;
-	&lt;&lt;if _size == &quot;tiny&quot;&gt;&gt;
-		&lt;&lt;run _pool =
+	&lt;&lt;if _size == &quot;Tiny&quot;&gt;&gt;
+		&lt;&lt;set _pool =
 			(
 				setup.handjobQuotes.receive[_pref]
-				&amp;&amp; setup.handjobQuotes.receive[_pref].tiny
-				&amp;&amp; setup.handjobQuotes.receive[_pref].tiny[_age]
+				&amp;&amp; setup.handjobQuotes.receive[_pref].Tiny
+				&amp;&amp; setup.handjobQuotes.receive[_pref].Tiny[_age]
 			)
-			|| setup.handjobQuotes.receive.Neutral.default
+			|| setup.handjobQuotes.receive.Neutral
 		&gt;&gt;
 	&lt;&lt;else&gt;&gt;
-		&lt;&lt;run _pool =
+		&lt;&lt;set _pool =
 			(
 				setup.handjobQuotes.receive[_pref]
 				&amp;&amp; setup.handjobQuotes.receive[_pref][_size]
 			)
-			|| setup.handjobQuotes.receive.Neutral.default
+			|| setup.handjobQuotes.receive.Neutral
 		&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -3784,9 +3798,11 @@ You two kiss again.
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.orgasmcloseQuotes.give[_pref] || setup.orgasmcloseQuotes.give.Neutral&gt;&gt;
+	&lt;&lt;set _pool = setup.orgasmcloseQuotes.give[_pref] 
+	|| setup.orgasmcloseQuotes.give.Neutral&gt;&gt;
 &lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool = setup.orgasmcloseQuotes.receive[_pref] || setup.orgasmcloseQuotes.receive.Neutral&gt;&gt;
+	&lt;&lt;set _pool = setup.orgasmcloseQuotes.receive[_pref] 
+	|| setup.orgasmcloseQuotes.receive.Neutral&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 
@@ -3808,9 +3824,11 @@ You two kiss again.
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.orgasmQuotes.give[_pref] || setup.orgasmQuotes.give.Neutral&gt;&gt;
+	&lt;&lt;set _pool = setup.orgasmQuotes.give[_pref] 
+	|| setup.orgasmQuotes.give.Neutral&gt;&gt;
 &lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool = setup.orgasmQuotes.receive[_pref] || setup.orgasmQuotes.receive.Neutral&gt;&gt;
+	&lt;&lt;set _pool = setup.orgasmQuotes.receive[_pref] 
+	|| setup.orgasmQuotes.receive.Neutral&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 
@@ -3986,9 +4004,11 @@ You two kiss again.
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.suckfootQuotes.give[_pref] || setup.suckfootQuotes.give.Neutral&gt;&gt;
+	&lt;&lt;set _pool = setup.suckfootQuotes.give[_pref] 
+	|| setup.suckfootQuotes.give.Neutral&gt;&gt;
 &lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool = setup.suckfootQuotes.receive[_pref] || setup.suckfootQuotes.receive.Neutral&gt;&gt;
+	&lt;&lt;set _pool = setup.suckfootQuotes.receive[_pref] 
+	|| setup.suckfootQuotes.receive.Neutral&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 
@@ -4521,9 +4541,9 @@ setup.feelstomachQuotes = {
       &quot;You like my feathers, huh?&quot;
     ],
 
-    Neutral: {
-      default: [&quot;Mmm, that feels good.&quot;]
-    }
+    Neutral: [
+      &quot;Mmm, that feels good.&quot;
+    ]
   }
 };
 /* ----- FINGER ASS ----- */
@@ -4549,11 +4569,9 @@ setup.fingerassQuotes = {
       &quot;Oh f-fuck!&quot;
     ],
 
-    Neutral: {
-      default: [
-        &quot;Oh f-fuck!&quot;
-      ]
-    }
+    Neutral: [
+      &quot;Oh f-fuck!&quot;
+    ]
   }
 };
 /* ----- FINGER VAGINA ----- */
@@ -4583,11 +4601,9 @@ setup.fingervaginaQuotes = {
       &quot;Oh f-fuck!&quot;
     ],
 
-    Neutral: {
-      default: [
-       &quot;Oh f-fuck!&quot;
-       ]
-    }
+    Neutral: [
+      &quot;Oh f-fuck!&quot;
+    ]
   }
 };
 
@@ -4618,7 +4634,7 @@ setup.frotQuotes = {
     ],
 
     Neutral: {
-      default: [&quot;Ah.&quot;]
+      &quot;Ah.&quot;
     }
   }
 };
@@ -4654,7 +4670,7 @@ setup.footjobQuotes = {
     ],
 
     Neutral: {
-      default: [&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;]
+      &quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;
     }
   }
 };
@@ -4668,8 +4684,7 @@ setup.gropebreastQuotes = {
       ],
       Small: {
         Child: [&quot;Nothing quite like developing breasts. So lewd and cute.&quot;],
-        Teen: [&quot;Nothing quite like developing breasts. So lewd and cute.&quot;],
-        default:[&quot;I think small breasts are kinda cute.&quot;]
+        Teen: [&quot;Nothing quite like developing breasts. So lewd and cute.&quot;]
       },
       Average: [
         &quot;Nice tits&quot;
@@ -4696,8 +4711,7 @@ setup.gropebreastQuotes = {
     },
     Neutral: {
       Large: [&quot;Wow...&quot;],
-      Busty: [&quot;These sure are big!&quot;],
-      default: [&quot;Default text&quot;]
+      Busty: [&quot;These sure are big!&quot;]
     }
   },
   receive: {
@@ -4710,9 +4724,9 @@ setup.gropebreastQuotes = {
       &quot;You can play with them if you like.&quot;
     ],
 
-    Neutral: {
-      default: [&quot;NEUTRAL dialogue about grabbing boobs&quot;]
-    }
+    Neutral: [
+     &quot;NEUTRAL dialogue about grabbing boobs&quot;
+    ]
   }
 };
 
@@ -4721,6 +4735,7 @@ setup.gropebuttQuotes = {
   give: {  
     Flat: {  
       Dominant: [     
+      &quot;DEFAULT DIALOGUE ABOUT GROPING BUTT, FLAT BUTT.&quot;
       ],
       Submissive: [
       &quot;I love how your ass feels.&quot;
@@ -4731,6 +4746,7 @@ setup.gropebuttQuotes = {
     },
     Tiny: {  
       Dominant: [     
+      &quot;DEFAULT DIALOGUE ABOUT GROPING BUTT, TINY BUTT.&quot;
       ],
       Submissive: [
       &quot;I love how your ass feels.&quot;
@@ -4740,7 +4756,8 @@ setup.gropebuttQuotes = {
       ]  
     },
     Small: {  
-      Dominant: [      
+      Dominant: [   
+      &quot;DEFAULT DIALOGUE ABOUT GROPING BUTT, SMALL BUTT.&quot;   
       ],
       Submissive: [
       &quot;I love how your ass feels.&quot;
@@ -4875,36 +4892,36 @@ setup.handjobQuotes = {
   receive: {
     Dominant: {
       Tiny: {
-        child: [&quot;Perfect size for someone your age.&quot;],
-        adult: [&quot;So cute and tiny.&quot;]
+        Child: [&quot;Perfect size for someone your age.&quot;],
+        Adult: [&quot;So cute and tiny.&quot;]
       },
-      small: [&quot;So small, yet so precious.&quot;],
-      average: [&quot;Your cock is so pretty.&quot;],
-      large: [&quot;Damn, that&#39;s pretty big.&quot;],
-      huge: [
+      Small: [&quot;So small, yet so precious.&quot;],
+      Average: [&quot;Your cock is so pretty.&quot;],
+      Large: [&quot;Damn, that&#39;s pretty big.&quot;],
+      Huge: [
         &quot;FOOTJOB QUOTE ABOUT HUGE DICK&quot;
       ]
     },
 
     Submissive: {
       Tiny: {
-        child: [&quot;Perfect size for someone your age.&quot;],
-        adult: [&quot;So cute and tiny.&quot;]
+        Child: [&quot;Perfect size for someone your age.&quot;],
+        Adult: [&quot;So cute and tiny.&quot;]
       },
-      small: [&quot;Don&#39;t feel bad about the size, I like it.&quot;],
-      average: [
+      Small: [&quot;Don&#39;t feel bad about the size, I like it.&quot;],
+      Average: [
         &quot;DOM-LINE-1 about BODY-PART.&quot;
       ],
-      large: [
+      Large: [
         &quot;Wow, it&#39;s pretty big!&quot;,
         &quot;You should be proud to have a cock this big!&quot;
       ],
-      huge: [&quot;It&#39;s quite an intimidating size.&quot;]
+      Huge: [&quot;It&#39;s quite an intimidating size.&quot;]
     },
 
-    Neutral: {
-      default: [&quot;Wow, this is a really nice dick, $mc.name!&quot;]
-    }
+    Neutral: [
+     &quot;Wow, this is a really nice dick, $mc.name!&quot;
+    ]
   }
 };
 
@@ -4931,11 +4948,9 @@ setup.petearsQuotes = {
       &quot;SUB-LINE-1 about Petting ears.&quot;
     ],
 
-    Neutral: {
-      default: [
-        &quot;Mmm, that feels nice.&quot;
-       ]
-    }
+    Neutral: [
+      &quot;Mmm, that feels nice.&quot;
+    ]
   }
 };
 
@@ -5015,13 +5030,11 @@ setup.suckfootQuotes = {
 			&quot;Mmf&quot;
     ],
 
-    Neutral: {
-      default: [ 
+    Neutral: [ 
         &quot;Mmmf&quot;,
 				&quot;Mmmph&quot;,
 				&quot;Mmf&quot;
-      ]
-    }
+    ]
   }
 };
 
@@ -5055,11 +5068,9 @@ setup.orgasmQuotes = {
       &quot;Oh god, cum in me!&quot;
     ],
 
-    Neutral: {
-      default: [
+    Neutral: [
         &quot;Oh god, cum in me!&quot;
-      ]
-    }
+    ]
   }
 };
 
@@ -5124,11 +5135,9 @@ setup.orgasmcloseQuotes = {
       ]
     },
 
-    Neutral: {
-      default: [ 
+    Neutral: [
       &quot;NEUTRAL DEFAULT QUOTE&quot;
-      ]
-    }
+    ]
   }
 };
 
@@ -6141,22 +6150,6 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;br&gt;
 &lt;b&gt;Genitals:&lt;/b&gt; &lt;&lt;=_n.genitals&gt;&gt;&lt;&lt;if _n.genitals== &quot;Penis&quot;&gt;&gt; * &lt;b&gt;Length:&lt;/b&gt; &lt;&lt;=_n.penislength&gt;&gt; &lt;&lt;/if&gt;&gt; (&lt;&lt;=_n.genitaltype&gt;&gt;)
 &lt;br&gt;
-Body: &lt;&lt;= _n.body.head&gt;&gt;
-&lt;&lt;=  _n.body.face&gt;&gt;
-&lt;&lt;= _n.body.arms&gt;&gt;
-&lt;&lt;= _n.body.legs&gt;&gt;
-&lt;&lt;= _n.body.hands&gt;&gt;
-&lt;&lt;= _n.body.hand&gt;&gt;
-&lt;&lt;= _n.body.feet&gt;&gt;
-&lt;&lt;= _n.body.butt&gt;&gt;
-&lt;&lt;= _n.body.ass&gt;&gt;
-&lt;&lt;= _n.body.asshole&gt;&gt;
-&lt;&lt;= _n.body.finger&gt;&gt;
-&lt;&lt;= _n.body.fingers&gt;&gt;
-&lt;&lt;= _n.body.hips&gt;&gt;
-&lt;&lt;= _n.body.lips&gt;&gt;
-&lt;&lt;= _n.body.tongue&gt;&gt;
-&lt;br&gt;
 &lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="UI-NPC-Sex" tags="nobr" position="1025,475" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;set _n = $ui.npc&gt;&gt;
 	&lt;&lt;if !_n&gt;&gt;[Error] No active NPC selected.&lt;&lt;return&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -6800,43 +6793,47 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 
 /* ----- GROPE BUTT ----- */
 &lt;&lt;widget &quot;GropeButtQuote&quot;&gt;&gt;
-	/* guard */
 	&lt;&lt;if !setup.gropebuttQuotes&gt;&gt;
 		[Error] setup.gropebuttQuotes is not defined.
 		&lt;&lt;return&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
-	/* normalize inputs */
+	&lt;&lt;if !_n or !$sex or !$sex.roles or !$sex.roles.dom or !$sex.roles.sub&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.assSize&gt;&gt;
-	&lt;&lt;set _nsize =_n.assSize&gt;&gt;
+	&lt;&lt;set _msize = $mc.assSize || &quot;Round&quot;&gt;&gt;
+	&lt;&lt;set _nsize = _n.assSize || &quot;Round&quot;&gt;&gt;
 	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
 
-	/* resolve pool */
 	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.gropebuttQuotes.give[_pref]
-		&amp;&amp; setup.gropebuttQuotes.give[_pref][_nsize]
-			|| setup.gropebuttQuotes.give.Neutral
+		&lt;&lt;set _pool =
+			(
+				setup.gropebuttQuotes.give[_nsize]
+				&amp;&amp; setup.gropebuttQuotes.give[_nsize][_pref]
+			)
+			|| setup.gropebuttQuotes.give[_nsize]?.Neutral
 		&gt;&gt;
 	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.gropebuttQuotes.receive[_pref]
-					&amp;&amp; setup.gropebuttQuotes.receive[_pref][_msize]
-				)
-				|| setup.gropebuttQuotes.receive.Neutral.default
-			&gt;&gt;
+		&lt;&lt;set _pool =
+			(
+				setup.gropebuttQuotes.receive[_msize]
+				&amp;&amp; setup.gropebuttQuotes.receive[_msize][_pref]
+			)
+			|| setup.gropebuttQuotes.receive[_msize]?.Neutral
+		&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
 		&lt;&lt;= either(..._pool)&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		[Error] GropeButtQuote: empty dialogue pool.
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
+
 
 /* ----- HANDJOB ----- */
 &lt;&lt;widget &quot;HandjobQuote&quot;&gt;&gt;
@@ -6867,7 +6864,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 					&amp;&amp; setup.handjobQuotes.receive[_pref].tiny
 					&amp;&amp; setup.handjobQuotes.receive[_pref].tiny[_mage]
 				)
-				|| setup.handjobQuotes.receive.Neutral.default
+				|| setup.handjobQuotes.receive.Neutral
 			&gt;&gt;
 		&lt;&lt;else&gt;&gt;
 			&lt;&lt;run _pool =
@@ -6875,7 +6872,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 					setup.handjobQuotes.receive[_pref]
 					&amp;&amp; setup.handjobQuotes.receive[_pref][_msize]
 				)
-				|| setup.handjobQuotes.receive.Neutral.default
+				|| setup.handjobQuotes.receive.Neutral
 			&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
@@ -6913,7 +6910,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 				(
 					setup.petearsQuotes.receive[_pref]
 				)
-				|| setup.petearsQuotes.receive.Neutral.default
+				|| setup.petearsQuotes.receive.Neutral
 			&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
@@ -8527,6 +8524,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
     &lt;&lt;SetMCBodyType&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
+
 &lt;&lt;widget &quot;LittleGirl&quot;&gt;&gt;
     &lt;&lt;set 
         $mc.name to &quot;Mary&quot;,
@@ -8550,7 +8548,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
         $mc.bodyheight to &quot;Short&quot;,
         $mc.bodyweight to &quot;Thin&quot;,
         $mc.bodymusc to &quot;Soft&quot;,
-        $mc.breastsize to &quot;Flat&quot;
+        $mc.breastsize to &quot;Flat&quot;,
         $mc.personality to &quot;Kind&quot;,
         $mc.genitals to &quot;Vagina&quot;,
         $mc.genitaltype to &quot;Tight&quot;,
@@ -8621,7 +8619,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
         $mc.bodyheight to &quot;Average&quot;,
         $mc.bodyweight to &quot;Thin&quot;,
         $mc.bodymusc to &quot;Soft&quot;,
-        $mc.breastsize to &quot;Small&quot;
+        $mc.breastsize to &quot;Small&quot;,
         $mc.personality to &quot;Kind&quot;,
         $mc.genitals to &quot;Vagina&quot;,
         $mc.genitaltype to &quot;Tight&quot;,
