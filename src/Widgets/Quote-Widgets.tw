@@ -1,30 +1,269 @@
 :: Quote-Widgets [widget nobr] {"position":"400,150","size":"100,100"}
 
 /* ----- ANAL ----- */
+<<widget "AnalQuote">>
+	/* guard */
+	<<if !setup.analQuotes>>
+		[Error] setup.analQuotes is not defined.
+		<<return>>
+	<</if>>
 
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _msize = $mc.penislength || "Average">>
+	<<set _mage  = $mc.agegroup>>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+	<<set _poisition = $sex.position>>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.analQuotes.give[_position][_pref]
+		&& setup.analQuotes.give[_pref]
+			|| setup.analQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.analQuotes.receive[_pref]
+					&& setup.analQuotes.receive[_msize] /*Only if _msize is established */
+					&& setup.analQuotes.receive [_position][_pref]
+				)
+				|| setup.analQuotes.receive.Neutral
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] Anal: empty dialogue pool.
+	<</if>>
+<</widget>>
 
 /* ----- BLOWJOB ----- */
 <<widget "BlowjobQuote">>
+	/* guard */
+	<<if !setup.blowjobsQuotes>>
+		[Error] setup.blowjobQuotes is not defined.
+		<<return>>
+	<</if>>
 
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.blowjobQuotes.give[_pref]
+			|| setup.blowjobQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.blowjobQuotes.receive[_pref]
+				)
+				|| setup.blowjobQuotes.receive.Neutral
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] Blowjob: empty dialogue pool.
+	<</if>>
 <</widget>>
 
 /* ----- BOOBJOB ----- */
-
+/* NOT MADE YET */
 
 /* ----- CARESS ----- */
+<<widget "CaressQuote">>
+	/* guard */
+	<<if !setup.caressQuotes>>
+		[Error] setup.caressQuotes is not defined.
+		<<return>>
+	<</if>>
 
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.caressQuotes.give[_pref]
+			|| setup.caressQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.caressQuotes.receive[_pref]
+				)
+				|| setup.caressQuotes.receive.Neutral
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] Caress: empty dialogue pool.
+	<</if>>
+<</widget>>
 
 /* ----- CUDDLE ----- */
+<<widget "CuddleQuote">>
+	/* guard */
+	<<if !setup.cuddleQuotes>>
+		[Error] setup.cuddleQuotes is not defined.
+		<<return>>
+	<</if>>
 
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.cuddleQuotes.give[_pref]
+			|| setup.cuddleQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.cuddleQuotes.receive[_pref]
+				)
+				|| setup.cuddleQuotes.receive.Neutral
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] Cuddle: empty dialogue pool.
+	<</if>>
+<</widget>>
 
 /* ----- CUNNILINGUS ----- */
+<<widget "CunnilingusQuote">>
+	/* guard */
+	<<if !setup.cunnilingusQuotes>>
+		[Error] setup.cunnilingusQuotes is not defined.
+		<<return>>
+	<</if>>
 
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.cunnilingusQuotes.give[_pref]
+			|| setup.cunnilingusQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.cunnilingusQuotes.receive[_pref]
+				)
+				|| setup.cunnilingusQuotes.receive.Neutral
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] Cunnilingus: empty dialogue pool.
+	<</if>>
+<</widget>>
 
 /* ----- EMBRACE ----- */
+<<widget "EmbraceQuote">>
+	/* guard */
+	<<if !setup.embraceQuotes>>
+		[Error] setup.embraceQuotes is not defined.
+		<<return>>
+	<</if>>
 
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.embraceQuotes.give[_pref]
+			|| setup.embraceQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.embraceQuotes.receive[_pref]
+				)
+				|| setup.embraceQuotes.receive.Neutral
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] Embrace: empty dialogue pool.
+	<</if>>
+<</widget>>
 
 /* ----- FACE ON CHEST ----- */
+<<widget "FaceOnChestQuote">>
 
+	/* guard */
+	<<if !setup.faceonchestQuotes>>
+		[Error] setup.faceonchestQuotes is not defined.
+		<<return>>
+	<</if>>
+
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+	<<set _nsize = _n.breastsize || "Average">>
+	<<set _msize = $mc.breastsize || "Average">>
+
+	<<set _pool = null>>
+
+	/* resolve pool */
+	<<if _mode == "give">>
+		<<set _pool = setup.faceonchestQuotes.give[_pref]
+			|| setup.faceonchestQuotes.give.Neutral
+		>>
+	<<else>>
+			<<run _pool =
+				(
+					setup.faceonchestQuotes.receive[_pref]
+					setup.faceonchestQuotes.receive[_nsize]
+				)
+				|| setup.faceonchestQuotes.receive.Neutral
+			>>
+	<</if>>
+
+	/* output */
+	<<if _pool && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] FaceOnChest: empty dialogue pool.
+	<</if>>
+<</widget>>
 
 /* ----- FEEL STOMACH ----- */
 <<widget "FeelStomachQuote">>

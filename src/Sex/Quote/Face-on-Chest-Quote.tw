@@ -1,57 +1,34 @@
 :: Face-on-Chest-Quote [nobr Dialogue] {"position":"1700,1600","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-		/* NPC puts their face in your chest */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Mmmf—rrhh… mmnnh!",
-				"Hrrmph… mffh—mm!",
-				"Nnff… mmphh—rrgh!",
-				"Mmm—hff… nnhhmm!",
-				"Rrmmf—hnn… mpphh!"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"Mmmf—rrhh… mmnnh!",
-				"Hrrmph… mffh—mm!",
-				"Nnff… mmphh—rrgh!",
-				"Mmm—hff… nnhhmm!",
-				"Rrmmf—hnn… mpphh!"
-			)>>
-		<<else>>
-			<<= either(
-				"Mmmf—rrhh… mmnnh!",
-				"Hrrmph… mffh—mm!",
-				"Nnff… mmphh—rrgh!",
-				"Mmm—hff… nnhhmm!",
-				"Rrmmf—hnn… mpphh!"
-			)>>
-		<</if>>
-<<elseif $sex.roles.sub.name == _n.name>>
-		/* You put your face in NPC's chest */
-	<<if _n.breastsize is "Large" or _n.breastsize is "Busty">>
-		<<= either (
-			"Can you feel my heart beat? Or are my breasts too big?",
-			"I can tell you like my breasts.",
-			"Do you like my breasts?"
-		)>>
-	<<else>>
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Bet you like that, huh?.",
-                "Ah!",
-                "Hah"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"Aww.",
-				"You're making my chest feel good."
-			)>>
-		<<else>>
-			<<= either(
-				"Is my chest comfy?"
-			)>>
-		<</if>>
-	<</if>>	
+<<if !setup.faceonchestQuotes>>
+	[Error] setup.faceonchestQuotes is missing. Define it in StoryInit.
+	<<return>>
 <</if>>
+
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _nsize = _n.breastsize || "Average">>
+<<set _msize = $mc.breastsize || "Average">>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.faceonchestQuotes.give[_pref]
+	|| setup.faceonchestQuotes.give.Neutral>>
+<<else>>
+			<<run _pool =
+				(
+					setup.faceonchestQuotes.receive[_pref]
+					setup.faceonchestQuotes.receive[_nsize]
+				)
+				|| setup.faceonchestQuotes.receive.Neutral
+			>>
+	<</if>>
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Face on Chest quote pool found.
+<</if>>
+
 
 

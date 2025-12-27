@@ -3359,384 +3359,180 @@ You two kiss again.
     &lt;&lt;elseif _n.personality== &quot;Mean&quot;&gt;&gt;
     &quot;Hmph&quot;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="Anal-Quote" tags="nobr Dialogue" position="1600,1300" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC fucks your ass */
-	&lt;&lt;if $sex.position == &quot;Cowgirl&quot;&gt;&gt;
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;	
-			&lt;&lt;= either(
-				&quot;Bounce on my cock!&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Please, bounce on my cock!&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.position==&quot;Missionary&quot;&gt;&gt;
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;You&#39;re so cute when you&#39;re being fucked.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;I love that look on your face.&quot;
-			)&gt;&gt;	
-		&lt;&lt;/if&gt;&gt;	
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="Anal-Quote" tags="nobr Dialogue" position="1600,1300" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
+	[Error] setup.analQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
+&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _poisition = $sex.position&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.analQuotes.give[_position][_pref]
+		&amp;&amp; setup.analQuotes.give[_pref]
+			|| setup.analQuotes.give.Neutral
+		&gt;&gt;
 	&lt;&lt;else&gt;&gt;
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Shit, you know how to move!&quot;,
-				&quot;Ah, $mc.name.&quot;,
-				&quot;Mm, yeah, you like that, $mc.name?&quot;,
-				&quot;You feel so fucking good around me!&quot;,
-				&quot;You feel so tight, $mc.name. You were made for this!&quot;,
-				&quot;You make a good fucktoy.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Ahh, so tight, so good!&quot;,
-				&quot;Ah! Ah! Ah!&quot;,
-				&quot;Ah, $mc.name.&quot;,
-				&quot;I-It&#39;s so tight!&quot;,
-				&quot;Ah, you&#39;re so tight, $mc.name!&quot;,
-				&quot;You&#39;re doing so well! You feel amazing, $mc.name!&quot;,
-				&quot;$mc.name, $mc.name, $mc.name!&quot;,
-				&quot;Don&#39;t worry, I&#39;ll be gentle.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;This feels so good!&quot;,
-				&quot;Ah! Ah! Ah!&quot;,
-				&quot;Ah, $mc.name.&quot;,
-				&quot;I-It&#39;s so tight!&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;	
-&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-	/* You fuck NPC */
-	&lt;&lt;if $mc.penislength is &quot;Huge&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Fuck you&#39;re huge!&quot;
-		)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;if $sex.position == &quot;Cowgirl&quot;&gt;&gt;
-			&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;	
-				&lt;&lt;= either(
-				&quot;Love it when I bounce on your cock?&quot;,
-				&quot;You feel so good inside me.&quot;
-				)&gt;&gt;
-			&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-				&lt;&lt;= either(
-					&quot;Fuck me hard!&quot;,
-					&quot;Ahh&quot;,
-					&quot;You feel so good inside me.&quot;
-				)&gt;&gt;
-			&lt;&lt;/if&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-				&lt;&lt;= either(
-					&quot;Yeah, like that!! Ooh!&quot;,
-					&quot;Ahh, so good...&quot;,
-					&quot;Yeah, that&#39;s it...&quot;,
-					&quot;Ah, right there!&quot;,
-					&quot;Oh yeah, get it dude!&quot;,
-					&quot;Yeah! Ram it in me!&quot;,
-					&quot;Ah... That&#39;s it...&quot;,
-					&quot;Now shut it and let me enjoy this Grade A dick of yours!&quot;,
-					&quot;Keep fucking me!&quot;,
-					&quot;Yes! Yes! Give it to me! AH!&quot;,
-					&quot;Good _n.petname! Keep sliding that delicious cock of yours in and out of my ass!&quot;,
-					&quot;You like feeling my slutty little asshole gripping down on your cock?!&quot;
-				)&gt;&gt;
-			&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-				&lt;&lt;= either(
-					&quot;Yes! That&#39;s it! Oh, yes! Yes!&quot;,
-					&quot;Make me yours!&quot;,
-					&quot;Yes! Yes! Give it to me! AH!&quot;,
-					&quot;Ahh! Just like this!&quot;,
-					&quot;Your dick is h-heaven!&quot;,
-					&quot;It&#39;s so big!&quot;,
-					&quot;Ah, right there!&quot;,
-					&quot;Oh yeah, get it dude!&quot;,
-					&quot;Ah... That&#39;s it...&quot;,
-					&quot;You&#39;re really fucking me, $mc.name!&quot;,
-					&quot;It feels so good to have you inside me!&quot;,
-					&quot;Keep fucking me!&quot;,
-					&quot;Yess... It&#39;s sooo good!&quot;,
-					&quot;You fill me up so w-well...&quot;
-				)&gt;&gt;
-			&lt;&lt;else&gt;&gt;
-				&lt;&lt;= either(
-					&quot;Ah, right there!&quot;,
-					&quot;Ah... That&#39;s it...&quot;,
-					&quot;It feels so good to have you inside me!&quot;,
-					&quot;Keep fucking me!&quot;,
-					&quot;F-fuck, you&#39;re big!&quot;,
-					&quot;Keep it up, you&#39;re hitting me just right!&quot;,
-					&quot;Yess... It&#39;s sooo good!&quot;,
-					&quot;Oh! Oh fuck yeah! Yes!!!&quot;,
-					&quot;You feel so good inside me.&quot;,
-					&quot;You like being inside me, don&#39;t you?&quot;
-				)&gt;&gt;
-			&lt;&lt;/if&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;	
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Blowjob-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* You suck NPC */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Oh yeah, keep sucking my cock!&quot;,
-				&quot;Yeah, suck my dick!&quot;,
-				&quot;That&#39;s right, use your $mc.body.tongue as well! You&#39;re good at sucking cock!&quot;,
-				&quot;What a good $mc.petname! You love sucking my cock, don&#39;t you?&quot;,
-				&quot;Use your tongue as well! Yeah, like that!&quot;,
-				&quot;Yes! Keep sucking my cock! Just like that!&quot;,
-				&quot;Oh yes! Wrap those lips of yours around my cock! Keep going!&quot;,
-				&quot;Keep sucking my cock! Yes! Just like that!&quot;,
-				&quot;Fuck, that feels incredible.&quot;,
-				&quot;That&#39;s really good, $mc.name... you&#39;re a natural at this.&quot;,
-                &quot;You&#39;re so good at sucking dick.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;You&#39;re good at sucking cock!&quot;,
-				&quot;Ahh Ahh&quot;,
-				&quot;Ah! Please, more!&quot;,
-				&quot;Your tongue is so soft...&quot;,
-				&quot;Fuck, that feels incredible.&quot;,
-				&quot;OOOH, your mouth feels so good $mc.name!&quot;,
-                &quot;You&#39;re doing so great.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;You&#39;re good at sucking cock!&quot;,
-				&quot;Fuck, that feels incredible.&quot;,
-                &quot;Ah...&quot;,
-                &quot;Ahh Ahh&quot;,
-                &quot;Oh yeah...&quot;,
-				&quot;Your mouth is so warm...&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* NPC sucks you */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;&lt;i&gt;GLRK GLRK&lt;/i&gt;&quot;,
-				&quot;&lt;i&gt;SLRP&lt;/i&gt;&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;&lt;i&gt;GLRK GLRK&lt;/i&gt;&quot;,
-				&quot;&lt;i&gt;SLRP&lt;/i&gt;&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;&lt;i&gt;GLRK GLRK&lt;/i&gt;&quot;,
-				&quot;&lt;i&gt;SLRP&lt;/i&gt;&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC caresses you */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;DOM-LINE-1 about BODY-PART.&quot;,
-				&quot;DOM-LINE-2 about BODY-PART.&quot;,
-				&quot;DOM-LINE-3 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;SUB-LINE-1 about BODY-PART.&quot;,
-				&quot;SUB-LINE-2 about BODY-PART.&quot;,
-				&quot;SUB-LINE-3 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-				&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* You caress NPC */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Yeah, feel me up!&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmm, that feels nice.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;That feels nice.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="Cuddle-Quote" tags="nobr Dialogue" position="1800,1700" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC cuddles you */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Hope you don&#39;t mind some cuddling after all that.&quot;,
-				&quot;You can use my tits as a pillow if you want.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;This is nice.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-				&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* You cuddle NPC */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Your body is so soft and warm.&quot;,
-				&quot;You can use my tits as a pillow if you want.&quot;,
-				&quot;You like the feeling of me being this close, don&#39;t you?&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;SUB-LINE-1 about BODY-PART.&quot;,
-				&quot;SUB-LINE-2 about BODY-PART.&quot;,
-				&quot;SUB-LINE-3 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-				&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* You eats out NPC pussy */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;That&#39;s right, keep eating me out!&quot;,
-				&quot;Good _n.petname! Keep that _n.body.tongue of yours busy!&quot;,
-				&quot;What a good _n.petname! You love the taste of my pussy, don&#39;t you?!&quot;,
-				&quot;Oh yes! Get that _n.body.tongue in deep!&quot;,
-				&quot;Good _n.petname! Get that _n.body.tongue of yours in deep!&quot;,
-				&quot;Keep going! My pussy loves your _n.body.tongue!&quot;,
-				&quot;Don&#39;t stop! Deeper! Eat me out! Yes, yes, yes!&quot;,
-				&quot;Hope you like the taste.&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Please keep going! My pussy loves your _n.body.tongue!&quot;,
-				&quot;Yes! I love your _n.body.tongue! Please don&#39;t stop!&quot;,
-				&quot;Don&#39;t stop! Deeper! Eat me out! Yes, yes, yes!&quot;,
-				&quot;Oh yes! Taste my pussy! I love your _n.body.tongue! Get it deeper!&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Don&#39;t stop! Deeper! Eat me out! Yes, yes, yes!&quot;,
-				&quot;Mmmm&quot;,
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* NPC eat out your Pussy */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmmf&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmf&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmmf&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmf&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmmf&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmf&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="Embrace-Quote" tags="nobr Dialogue" position="1700,1500" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC embraces you */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Heh, come here!&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;This is nice.&quot;,
-                &quot;Gimme a hug!&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;I like hugs!&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* You embrace NPC */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Heh, feeling affectionate?&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Aw, wanted a hug?&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Aw&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="Face-on-Chest-Quote" tags="nobr Dialogue" position="1700,1600" size="100,100">&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		/* NPC puts their face in your chest */
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmmf—rrhh… mmnnh!&quot;,
-				&quot;Hrrmph… mffh—mm!&quot;,
-				&quot;Nnff… mmphh—rrgh!&quot;,
-				&quot;Mmm—hff… nnhhmm!&quot;,
-				&quot;Rrmmf—hnn… mpphh!&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmmf—rrhh… mmnnh!&quot;,
-				&quot;Hrrmph… mffh—mm!&quot;,
-				&quot;Nnff… mmphh—rrgh!&quot;,
-				&quot;Mmm—hff… nnhhmm!&quot;,
-				&quot;Rrmmf—hnn… mpphh!&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmmf—rrhh… mmnnh!&quot;,
-				&quot;Hrrmph… mffh—mm!&quot;,
-				&quot;Nnff… mmphh—rrgh!&quot;,
-				&quot;Mmm—hff… nnhhmm!&quot;,
-				&quot;Rrmmf—hnn… mpphh!&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		/* You put your face in NPC&#39;s chest */
-	&lt;&lt;if _n.breastsize is &quot;Large&quot; or _n.breastsize is &quot;Busty&quot;&gt;&gt;
-		&lt;&lt;= either (
-			&quot;Can you feel my heart beat? Or are my breasts too big?&quot;,
-			&quot;I can tell you like my breasts.&quot;,
-			&quot;Do you like my breasts?&quot;
-		)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Bet you like that, huh?.&quot;,
-                &quot;Ah!&quot;,
-                &quot;Hah&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Aww.&quot;,
-				&quot;You&#39;re making my chest feel good.&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Is my chest comfy?&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;	
+			&lt;&lt;run _pool =
+				(
+					setup.analQuotes.receive[_pref]
+					&amp;&amp; setup.analQuotes.receive[_msize] /*Only if _msize is established */
+					&amp;&amp; setup.analQuotes.receive [_position][_pref]
+				)
+				|| setup.analQuotes.receive.Neutral
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Anal quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Blowjob-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">&lt;&lt;if !setup.blowjobQuotes&gt;&gt;
+	[Error] setup.blowjobQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.blowjobQuotes.give[_pref]
+	|| setup.blowjobQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.blowjobQuotes.receive[_pref] 
+	|| setup.blowjobQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Blowjob quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if !setup.caressQuotes&gt;&gt;
+	[Error] setup.caressQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.caressQuotes.give[_pref]
+	|| setup.caressQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.caressQuotes.receive[_pref] 
+	|| setup.caressQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Caress quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="Cuddle-Quote" tags="nobr Dialogue" position="1800,1700" size="100,100">&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
+	[Error] setup.cuddleQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.cuddleQuotes.give[_pref]
+	|| setup.cuddleQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.cuddleQuotes.receive[_pref] 
+	|| setup.cuddleQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Cuddle quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;if !setup.cunnilingusQuotes&gt;&gt;
+	[Error] setup.cunnilingusQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.cunnilingusQuotes.give[_pref]
+	|| setup.cunnilingusQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.cunnilingusQuotes.receive[_pref] 
+	|| setup.cunnilingusQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Cunnilingus quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="Embrace-Quote" tags="nobr Dialogue" position="1700,1500" size="100,100">&lt;&lt;if !setup.embraceQuotes&gt;&gt;
+	[Error] setup.embraceQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.embraceQuotes.give[_pref]
+	|| setup.embraceQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = setup.embraceQuotes.receive[_pref] 
+	|| setup.embraceQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Embrace quote pool found.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="Face-on-Chest-Quote" tags="nobr Dialogue" position="1700,1600" size="100,100">&lt;&lt;if !setup.faceonchestQuotes&gt;&gt;
+	[Error] setup.faceonchestQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _nsize = _n.breastsize || &quot;Average&quot;&gt;&gt;
+&lt;&lt;set _msize = $mc.breastsize || &quot;Average&quot;&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.faceonchestQuotes.give[_pref]
+	|| setup.faceonchestQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.faceonchestQuotes.receive[_pref]
+					setup.faceonchestQuotes.receive[_nsize]
+				)
+				|| setup.faceonchestQuotes.receive.Neutral
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Face on Chest quote pool found.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="Feel-Stomach-Quote" tags="Dialogue nobr" position="1700,1200" size="100,100">&lt;&lt;if !setup.feelstomachQuotes&gt;&gt;
 	[Error] setup.feelstomachQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -4216,57 +4012,168 @@ You two kiss again.
 /* ----- ANAL ----- */
 setup.analQuotes = {
   give: {
+    Cowgirl: {
+      Dominant: [
+        &quot;Bounce on my cock!&quot;
+      ],
+      Submissive: [
+        &quot;Please, bounce on my cock!&quot;
+      ],
+      Neutral: [
+        &quot;NEUTRAL DIALOGUE FOR ANAL COWGIRL&quot;
+      ]
+    },
+    Missionary: {
+      Dominant: [
+        &quot;You&#39;re so cute when you&#39;re being fucked.&quot;
+      ],
+      Submissive: [
+        &quot;I love that look on your face.&quot;
+      ],
+      Neutral: [
+        &quot;NEUTRAL DIALOGUE FOR ANAL MISSIONARY&quot;
+      ]
+    },
     Dominant: [
-      
-    ],
-    Submissive: [
-      
-    ],
-    Neutral: [
-      
-    ]
+      &quot;Shit, you know how to move!&quot;,
+			&quot;Ah, $mc.name.&quot;,
+			&quot;Mm, yeah, you like that, $mc.name?&quot;,
+			&quot;You feel so fucking good around me!&quot;,
+			&quot;You feel so tight, $mc.name. You were made for this!&quot;,
+			&quot;You make a good fucktoy.&quot;
+      ],
+      Submissive: [
+        &quot;Ahh, so tight, so good!&quot;,
+				&quot;Ah! Ah! Ah!&quot;,
+				&quot;Ah, $mc.name.&quot;,
+				&quot;I-It&#39;s so tight!&quot;,
+				&quot;Ah, you&#39;re so tight, $mc.name!&quot;,
+				&quot;You&#39;re doing so well! You feel amazing, $mc.name!&quot;,
+				&quot;$mc.name, $mc.name, $mc.name!&quot;,
+				&quot;Don&#39;t worry, I&#39;ll be gentle.&quot;
+      ],
+      Neutral: [
+        &quot;This feels so good!&quot;,
+				&quot;Ah! Ah! Ah!&quot;,
+				&quot;Ah, $mc.name.&quot;,
+				&quot;I-It&#39;s so tight!&quot;
+      ]
   },
-
   receive: {
+    Huge: [
+      &quot;Fuck you&#39;re huge!&quot;
+    ],  
+    
+    Cowgirl: {
+      Dominant: [
+        &quot;Love it when I bounce on your cock?&quot;,
+				&quot;You feel so good inside me.&quot;
+      ],
+      Submissive: [
+        &quot;Fuck me hard!&quot;,
+				&quot;Ahh&quot;,
+				&quot;You feel so good inside me.&quot;
+      ],
+      Neutral: [
+        &quot;NEUTRAL DIALOGUE ABOUT ANAL COWGIRL&quot;
+      ],
+    },
     Dominant: [
-      
+        &quot;Yeah, like that!! Ooh!&quot;,
+				&quot;Ahh, so good...&quot;,
+				&quot;Yeah, that&#39;s it...&quot;,
+				&quot;Ah, right there!&quot;,
+				&quot;Oh yeah, get it dude!&quot;,
+				&quot;Yeah! Ram it in me!&quot;,
+				&quot;Ah... That&#39;s it...&quot;,
+				&quot;Now shut it and let me enjoy this Grade A dick of yours!&quot;,
+				&quot;Keep fucking me!&quot;,
+				&quot;Yes! Yes! Give it to me! AH!&quot;,
+				&quot;Good _n.petname! Keep sliding that delicious cock of yours in and out of my ass!&quot;,
+				&quot;You like feeling my slutty little asshole gripping down on your cock?!&quot;
     ],
 
     Submissive: [
-      
+      &quot;Yes! That&#39;s it! Oh, yes! Yes!&quot;,
+				&quot;Make me yours!&quot;,
+				&quot;Yes! Yes! Give it to me! AH!&quot;,
+				&quot;Ahh! Just like this!&quot;,
+				&quot;Your dick is h-heaven!&quot;,
+				&quot;It&#39;s so big!&quot;,
+				&quot;Ah, right there!&quot;,
+				&quot;Oh yeah, get it dude!&quot;,
+				&quot;Ah... That&#39;s it...&quot;,
+				&quot;You&#39;re really fucking me, $mc.name!&quot;,
+				&quot;It feels so good to have you inside me!&quot;,
+				&quot;Keep fucking me!&quot;,
+				&quot;Yess... It&#39;s sooo good!&quot;,
+				&quot;You fill me up so w-well...&quot;
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      &quot;Ah, right there!&quot;,
+			&quot;Ah... That&#39;s it...&quot;,
+			&quot;It feels so good to have you inside me!&quot;,
+			&quot;Keep fucking me!&quot;,
+			&quot;F-fuck, you&#39;re big!&quot;,
+			&quot;Keep it up, you&#39;re hitting me just right!&quot;,
+			&quot;Yess... It&#39;s sooo good!&quot;,
+			&quot;Oh! Oh fuck yeah! Yes!!!&quot;,
+			&quot;You feel so good inside me.&quot;,
+			&quot;You like being inside me, don&#39;t you?&quot;
+    ]
   }
 };
 /* ----- BLOWJOB ----- */
 setup.blowjobQuotes = {
   give: {
     Dominant: [
-      
+      &quot;Oh yeah, keep sucking my cock!&quot;,
+			&quot;Yeah, suck my dick!&quot;,
+			&quot;That&#39;s right, use your $mc.body.tongue as well! You&#39;re good at sucking cock!&quot;,
+			&quot;What a good $mc.petname! You love sucking my cock, don&#39;t you?&quot;,
+			&quot;Use your tongue as well! Yeah, like that!&quot;,
+			&quot;Yes! Keep sucking my cock! Just like that!&quot;,
+			&quot;Oh yes! Wrap those lips of yours around my cock! Keep going!&quot;,
+			&quot;Keep sucking my cock! Yes! Just like that!&quot;,
+			&quot;Fuck, that feels incredible.&quot;,
+			&quot;That&#39;s really good, $mc.name... you&#39;re a natural at this.&quot;,
+      &quot;You&#39;re so good at sucking dick.&quot;
     ],
     Submissive: [
-      
+      &quot;You&#39;re good at sucking cock!&quot;,
+			&quot;Ahh Ahh&quot;,
+			&quot;Ah! Please, more!&quot;,
+			&quot;Your tongue is so soft...&quot;,
+			&quot;Fuck, that feels incredible.&quot;,
+			&quot;OOOH, your mouth feels so good $mc.name!&quot;,
+      &quot;You&#39;re doing so great.&quot;
     ],
     Neutral: [
-      
+      &quot;You&#39;re good at sucking cock!&quot;,
+				&quot;Fuck, that feels incredible.&quot;,
+        &quot;Ah...&quot;,
+        &quot;Ahh Ahh&quot;,
+        &quot;Oh yeah...&quot;,
+				&quot;Your mouth is so warm...&quot;
     ]
   },
 
   receive: {
     Dominant: [
-      
+      &quot;&lt;i&gt;GLRK GLRK&lt;/i&gt;&quot;,
+			&quot;&lt;i&gt;SLRP&lt;/i&gt;&quot;
     ],
 
     Submissive: [
-      
+      &quot;&lt;i&gt;GLRK GLRK&lt;/i&gt;&quot;,
+			&quot;&lt;i&gt;SLRP&lt;/i&gt;&quot;
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      &quot;&lt;i&gt;GLRK GLRK&lt;/i&gt;&quot;,
+			&quot;&lt;i&gt;SLRP&lt;/i&gt;&quot;
+    ]
   }
 };
 /* ----- BOOBJOB ----- */
@@ -4292,149 +4199,192 @@ setup.boobjobQuotes = {
       
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+
+    ]
   }
 };
 /* ----- CARESS ----- */
 setup.caressQuotes = {
   give: {
     Dominant: [
-      
+      &quot;DOM-LINE-1 about CARESSING.&quot;
     ],
     Submissive: [
-      
+      &quot;SUB-LINE-1 about CARESSING.&quot;
     ],
     Neutral: [
-      
+      &quot;NEUTRAL-DOM-LINE-1 about CARESSING.&quot;
     ]
   },
-
   receive: {
     Dominant: [
-      
+      &quot;Yeah, feel me up!&quot;
     ],
 
     Submissive: [
-      
+      &quot;Mmm, that feels nice.&quot;
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      &quot;That feels nice.&quot;
+    ]
   }
 };
 /* ----- CUDDLE ----- */
 setup.cuddleQuotes = {
   give: {
     Dominant: [
-      
+      &quot;Hope you don&#39;t mind some cuddling after all that.&quot;,
+			&quot;You can use my tits as a pillow if you want.&quot;
     ],
     Submissive: [
-      
+      &quot;This is nice.&quot;
     ],
     Neutral: [
-      
+      &quot;NEUTRAL-DOM-LINE-1 about CUDDLING.&quot;
     ]
   },
-
   receive: {
     Dominant: [
-      
+      &quot;Your body is so soft and warm.&quot;,
+			&quot;You can use my tits as a pillow if you want.&quot;,
+			&quot;You like the feeling of me being this close, don&#39;t you?&quot;
     ],
 
     Submissive: [
-      
+      &quot;SUB-LINE-1 about CUDDLING.&quot;
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      &quot;NEUTRAL-DOM-LINE-1 about CUDDLING.&quot;,
+    ]
   }
 };
 /* ----- CUNNILINGUS ----- */
 setup.cunnilingusQuotes = {
   give: {
     Dominant: [
-      
+      &quot;That&#39;s right, keep eating me out!&quot;,
+			&quot;Good _n.petname! Keep that _n.body.tongue of yours busy!&quot;,
+			&quot;What a good _n.petname! You love the taste of my pussy, don&#39;t you?!&quot;,
+			&quot;Oh yes! Get that _n.body.tongue in deep!&quot;,
+			&quot;Good _n.petname! Get that _n.body.tongue of yours in deep!&quot;,
+			&quot;Keep going! My pussy loves your _n.body.tongue!&quot;,
+			&quot;Don&#39;t stop! Deeper! Eat me out! Yes, yes, yes!&quot;,
+			&quot;Hope you like the taste.&quot;
     ],
     Submissive: [
-      
+      &quot;Please keep going! My pussy loves your _n.body.tongue!&quot;,
+			&quot;Yes! I love your _n.body.tongue! Please don&#39;t stop!&quot;,
+			&quot;Don&#39;t stop! Deeper! Eat me out! Yes, yes, yes!&quot;,
+			&quot;Oh yes! Taste my pussy! I love your _n.body.tongue! Get it deeper!&quot;
     ],
     Neutral: [
-      
+      &quot;Don&#39;t stop! Deeper! Eat me out! Yes, yes, yes!&quot;,
+			&quot;Mmmm&quot;
     ]
   },
 
   receive: {
     Dominant: [
-      
+      &quot;Mmmf&quot;,
+			&quot;Mmmph&quot;,
+			&quot;Mmf&quot;
     ],
 
     Submissive: [
-      
+      &quot;Mmmf&quot;,
+			&quot;Mmmph&quot;,
+			&quot;Mmf&quot;
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      &quot;Mmmf&quot;,
+			&quot;Mmmph&quot;,
+			&quot;Mmf&quot;
+    ]
   }
 };
 /* ----- EMBRACE ----- */
 setup.embraceQuotes = {
   give: {
     Dominant: [
-      
+      &quot;Heh, come here!&quot;
     ],
     Submissive: [
-      
+      &quot;This is nice.&quot;,
+      &quot;Gimme a hug!&quot;
     ],
     Neutral: [
-      
+      &quot;I like hugs!&quot;
     ]
   },
 
   receive: {
     Dominant: [
-      
+      &quot;Heh, feeling affectionate?&quot;
     ],
 
     Submissive: [
-      
+      &quot;Aw, wanted a hug?&quot;
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [ 
+        &quot;Aw&quot;
+      ]
   }
 };
 /* ----- FACE ON CHEST ----- */
 setup.faceonchestQuotes = {
   give: {
     Dominant: [
-      
+      &quot;Mmmf—rrhh… mmnnh!&quot;,
+			&quot;Hrrmph… mffh—mm!&quot;,
+			&quot;Nnff… mmphh—rrgh!&quot;,
+			&quot;Mmm—hff… nnhhmm!&quot;,
+			&quot;Rrmmf—hnn… mpphh!&quot;
     ],
     Submissive: [
-      
+      &quot;Mmmf—rrhh… mmnnh!&quot;,
+			&quot;Hrrmph… mffh—mm!&quot;,
+			&quot;Nnff… mmphh—rrgh!&quot;,
+			&quot;Mmm—hff… nnhhmm!&quot;,
+			&quot;Rrmmf—hnn… mpphh!&quot;
     ],
     Neutral: [
-      
+      &quot;Mmmf—rrhh… mmnnh!&quot;,
+			&quot;Hrrmph… mffh—mm!&quot;,
+			&quot;Nnff… mmphh—rrgh!&quot;,
+			&quot;Mmm—hff… nnhhmm!&quot;,
+			&quot;Rrmmf—hnn… mpphh!&quot;
     ]
   },
 
-  receive: {
+  receive: {  
+    Large: [
+      &quot;Can you feel my heart beat? Or are my breasts too big?&quot;,
+			&quot;I can tell you like my breasts.&quot;,
+			&quot;Do you like my breasts?&quot;
+      ],
+    Busty: [
+      &quot;Can you feel my heart beat? Or are my breasts too big?&quot;,
+			&quot;I can tell you like my breasts.&quot;,
+			&quot;Do you like my breasts?&quot;
+      ],
     Dominant: [
-      
+      &quot;Bet you like that, huh?.&quot;,
+      &quot;Ah!&quot;,
+      &quot;Hah&quot;
     ],
-
     Submissive: [
-      
+      &quot;Aww.&quot;,
+			&quot;You&#39;re making my chest feel good.&quot;
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      &quot;Is my chest comfy?&quot;
+    ]
   }
 };
 /* ----- FEEL STOMACH ----- */
@@ -6325,30 +6275,269 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
 &lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
+&lt;&lt;widget &quot;AnalQuote&quot;&gt;&gt;
+	/* guard */
+	&lt;&lt;if !setup.analQuotes&gt;&gt;
+		[Error] setup.analQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
+	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+	&lt;&lt;set _poisition = $sex.position&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.analQuotes.give[_position][_pref]
+		&amp;&amp; setup.analQuotes.give[_pref]
+			|| setup.analQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.analQuotes.receive[_pref]
+					&amp;&amp; setup.analQuotes.receive[_msize] /*Only if _msize is established */
+					&amp;&amp; setup.analQuotes.receive [_position][_pref]
+				)
+				|| setup.analQuotes.receive.Neutral
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] Anal: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 /* ----- BLOWJOB ----- */
 &lt;&lt;widget &quot;BlowjobQuote&quot;&gt;&gt;
+	/* guard */
+	&lt;&lt;if !setup.blowjobsQuotes&gt;&gt;
+		[Error] setup.blowjobQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.blowjobQuotes.give[_pref]
+			|| setup.blowjobQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.blowjobQuotes.receive[_pref]
+				)
+				|| setup.blowjobQuotes.receive.Neutral
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] Blowjob: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 /* ----- BOOBJOB ----- */
-
+/* NOT MADE YET */
 
 /* ----- CARESS ----- */
+&lt;&lt;widget &quot;CaressQuote&quot;&gt;&gt;
+	/* guard */
+	&lt;&lt;if !setup.caressQuotes&gt;&gt;
+		[Error] setup.caressQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.caressQuotes.give[_pref]
+			|| setup.caressQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.caressQuotes.receive[_pref]
+				)
+				|| setup.caressQuotes.receive.Neutral
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] Caress: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 /* ----- CUDDLE ----- */
+&lt;&lt;widget &quot;CuddleQuote&quot;&gt;&gt;
+	/* guard */
+	&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
+		[Error] setup.cuddleQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.cuddleQuotes.give[_pref]
+			|| setup.cuddleQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.cuddleQuotes.receive[_pref]
+				)
+				|| setup.cuddleQuotes.receive.Neutral
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] Cuddle: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 /* ----- CUNNILINGUS ----- */
+&lt;&lt;widget &quot;CunnilingusQuote&quot;&gt;&gt;
+	/* guard */
+	&lt;&lt;if !setup.cunnilingusQuotes&gt;&gt;
+		[Error] setup.cunnilingusQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.cunnilingusQuotes.give[_pref]
+			|| setup.cunnilingusQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.cunnilingusQuotes.receive[_pref]
+				)
+				|| setup.cunnilingusQuotes.receive.Neutral
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] Cunnilingus: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 /* ----- EMBRACE ----- */
+&lt;&lt;widget &quot;EmbraceQuote&quot;&gt;&gt;
+	/* guard */
+	&lt;&lt;if !setup.embraceQuotes&gt;&gt;
+		[Error] setup.embraceQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.embraceQuotes.give[_pref]
+			|| setup.embraceQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.embraceQuotes.receive[_pref]
+				)
+				|| setup.embraceQuotes.receive.Neutral
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] Embrace: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 /* ----- FACE ON CHEST ----- */
+&lt;&lt;widget &quot;FaceOnChestQuote&quot;&gt;&gt;
 
+	/* guard */
+	&lt;&lt;if !setup.faceonchestQuotes&gt;&gt;
+		[Error] setup.faceonchestQuotes is not defined.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+	&lt;&lt;set _nsize = _n.breastsize || &quot;Average&quot;&gt;&gt;
+	&lt;&lt;set _msize = $mc.breastsize || &quot;Average&quot;&gt;&gt;
+
+	&lt;&lt;set _pool = null&gt;&gt;
+
+	/* resolve pool */
+	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+		&lt;&lt;set _pool = setup.faceonchestQuotes.give[_pref]
+			|| setup.faceonchestQuotes.give.Neutral
+		&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.faceonchestQuotes.receive[_pref]
+					setup.faceonchestQuotes.receive[_nsize]
+				)
+				|| setup.faceonchestQuotes.receive.Neutral
+			&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* output */
+	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;&lt;= either(..._pool)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error] FaceOnChest: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 /* ----- FEEL STOMACH ----- */
 &lt;&lt;widget &quot;FeelStomachQuote&quot;&gt;&gt;

@@ -4,57 +4,168 @@
 /* ----- ANAL ----- */
 setup.analQuotes = {
   give: {
+    Cowgirl: {
+      Dominant: [
+        "Bounce on my cock!"
+      ],
+      Submissive: [
+        "Please, bounce on my cock!"
+      ],
+      Neutral: [
+        "NEUTRAL DIALOGUE FOR ANAL COWGIRL"
+      ]
+    },
+    Missionary: {
+      Dominant: [
+        "You're so cute when you're being fucked."
+      ],
+      Submissive: [
+        "I love that look on your face."
+      ],
+      Neutral: [
+        "NEUTRAL DIALOGUE FOR ANAL MISSIONARY"
+      ]
+    },
     Dominant: [
-      
-    ],
-    Submissive: [
-      
-    ],
-    Neutral: [
-      
-    ]
+      "Shit, you know how to move!",
+			"Ah, $mc.name.",
+			"Mm, yeah, you like that, $mc.name?",
+			"You feel so fucking good around me!",
+			"You feel so tight, $mc.name. You were made for this!",
+			"You make a good fucktoy."
+      ],
+      Submissive: [
+        "Ahh, so tight, so good!",
+				"Ah! Ah! Ah!",
+				"Ah, $mc.name.",
+				"I-It's so tight!",
+				"Ah, you're so tight, $mc.name!",
+				"You're doing so well! You feel amazing, $mc.name!",
+				"$mc.name, $mc.name, $mc.name!",
+				"Don't worry, I'll be gentle."
+      ],
+      Neutral: [
+        "This feels so good!",
+				"Ah! Ah! Ah!",
+				"Ah, $mc.name.",
+				"I-It's so tight!"
+      ]
   },
-
   receive: {
+    Huge: [
+      "Fuck you're huge!"
+    ],  
+    
+    Cowgirl: {
+      Dominant: [
+        "Love it when I bounce on your cock?",
+				"You feel so good inside me."
+      ],
+      Submissive: [
+        "Fuck me hard!",
+				"Ahh",
+				"You feel so good inside me."
+      ],
+      Neutral: [
+        "NEUTRAL DIALOGUE ABOUT ANAL COWGIRL"
+      ],
+    },
     Dominant: [
-      
+        "Yeah, like that!! Ooh!",
+				"Ahh, so good...",
+				"Yeah, that's it...",
+				"Ah, right there!",
+				"Oh yeah, get it dude!",
+				"Yeah! Ram it in me!",
+				"Ah... That's it...",
+				"Now shut it and let me enjoy this Grade A dick of yours!",
+				"Keep fucking me!",
+				"Yes! Yes! Give it to me! AH!",
+				"Good _n.petname! Keep sliding that delicious cock of yours in and out of my ass!",
+				"You like feeling my slutty little asshole gripping down on your cock?!"
     ],
 
     Submissive: [
-      
+      "Yes! That's it! Oh, yes! Yes!",
+				"Make me yours!",
+				"Yes! Yes! Give it to me! AH!",
+				"Ahh! Just like this!",
+				"Your dick is h-heaven!",
+				"It's so big!",
+				"Ah, right there!",
+				"Oh yeah, get it dude!",
+				"Ah... That's it...",
+				"You're really fucking me, $mc.name!",
+				"It feels so good to have you inside me!",
+				"Keep fucking me!",
+				"Yess... It's sooo good!",
+				"You fill me up so w-well..."
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      "Ah, right there!",
+			"Ah... That's it...",
+			"It feels so good to have you inside me!",
+			"Keep fucking me!",
+			"F-fuck, you're big!",
+			"Keep it up, you're hitting me just right!",
+			"Yess... It's sooo good!",
+			"Oh! Oh fuck yeah! Yes!!!",
+			"You feel so good inside me.",
+			"You like being inside me, don't you?"
+    ]
   }
 };
 /* ----- BLOWJOB ----- */
 setup.blowjobQuotes = {
   give: {
     Dominant: [
-      
+      "Oh yeah, keep sucking my cock!",
+			"Yeah, suck my dick!",
+			"That's right, use your $mc.body.tongue as well! You're good at sucking cock!",
+			"What a good $mc.petname! You love sucking my cock, don't you?",
+			"Use your tongue as well! Yeah, like that!",
+			"Yes! Keep sucking my cock! Just like that!",
+			"Oh yes! Wrap those lips of yours around my cock! Keep going!",
+			"Keep sucking my cock! Yes! Just like that!",
+			"Fuck, that feels incredible.",
+			"That's really good, $mc.name... you're a natural at this.",
+      "You're so good at sucking dick."
     ],
     Submissive: [
-      
+      "You're good at sucking cock!",
+			"Ahh Ahh",
+			"Ah! Please, more!",
+			"Your tongue is so soft...",
+			"Fuck, that feels incredible.",
+			"OOOH, your mouth feels so good $mc.name!",
+      "You're doing so great."
     ],
     Neutral: [
-      
+      "You're good at sucking cock!",
+				"Fuck, that feels incredible.",
+        "Ah...",
+        "Ahh Ahh",
+        "Oh yeah...",
+				"Your mouth is so warm..."
     ]
   },
 
   receive: {
     Dominant: [
-      
+      "<i>GLRK GLRK</i>",
+			"<i>SLRP</i>"
     ],
 
     Submissive: [
-      
+      "<i>GLRK GLRK</i>",
+			"<i>SLRP</i>"
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      "<i>GLRK GLRK</i>",
+			"<i>SLRP</i>"
+    ]
   }
 };
 /* ----- BOOBJOB ----- */
@@ -80,149 +191,192 @@ setup.boobjobQuotes = {
       
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+
+    ]
   }
 };
 /* ----- CARESS ----- */
 setup.caressQuotes = {
   give: {
     Dominant: [
-      
+      "DOM-LINE-1 about CARESSING."
     ],
     Submissive: [
-      
+      "SUB-LINE-1 about CARESSING."
     ],
     Neutral: [
-      
+      "NEUTRAL-DOM-LINE-1 about CARESSING."
     ]
   },
-
   receive: {
     Dominant: [
-      
+      "Yeah, feel me up!"
     ],
 
     Submissive: [
-      
+      "Mmm, that feels nice."
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      "That feels nice."
+    ]
   }
 };
 /* ----- CUDDLE ----- */
 setup.cuddleQuotes = {
   give: {
     Dominant: [
-      
+      "Hope you don't mind some cuddling after all that.",
+			"You can use my tits as a pillow if you want."
     ],
     Submissive: [
-      
+      "This is nice."
     ],
     Neutral: [
-      
+      "NEUTRAL-DOM-LINE-1 about CUDDLING."
     ]
   },
-
   receive: {
     Dominant: [
-      
+      "Your body is so soft and warm.",
+			"You can use my tits as a pillow if you want.",
+			"You like the feeling of me being this close, don't you?"
     ],
 
     Submissive: [
-      
+      "SUB-LINE-1 about CUDDLING."
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      "NEUTRAL-DOM-LINE-1 about CUDDLING.",
+    ]
   }
 };
 /* ----- CUNNILINGUS ----- */
 setup.cunnilingusQuotes = {
   give: {
     Dominant: [
-      
+      "That's right, keep eating me out!",
+			"Good _n.petname! Keep that _n.body.tongue of yours busy!",
+			"What a good _n.petname! You love the taste of my pussy, don't you?!",
+			"Oh yes! Get that _n.body.tongue in deep!",
+			"Good _n.petname! Get that _n.body.tongue of yours in deep!",
+			"Keep going! My pussy loves your _n.body.tongue!",
+			"Don't stop! Deeper! Eat me out! Yes, yes, yes!",
+			"Hope you like the taste."
     ],
     Submissive: [
-      
+      "Please keep going! My pussy loves your _n.body.tongue!",
+			"Yes! I love your _n.body.tongue! Please don't stop!",
+			"Don't stop! Deeper! Eat me out! Yes, yes, yes!",
+			"Oh yes! Taste my pussy! I love your _n.body.tongue! Get it deeper!"
     ],
     Neutral: [
-      
+      "Don't stop! Deeper! Eat me out! Yes, yes, yes!",
+			"Mmmm"
     ]
   },
 
   receive: {
     Dominant: [
-      
+      "Mmmf",
+			"Mmmph",
+			"Mmf"
     ],
 
     Submissive: [
-      
+      "Mmmf",
+			"Mmmph",
+			"Mmf"
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      "Mmmf",
+			"Mmmph",
+			"Mmf"
+    ]
   }
 };
 /* ----- EMBRACE ----- */
 setup.embraceQuotes = {
   give: {
     Dominant: [
-      
+      "Heh, come here!"
     ],
     Submissive: [
-      
+      "This is nice.",
+      "Gimme a hug!"
     ],
     Neutral: [
-      
+      "I like hugs!"
     ]
   },
 
   receive: {
     Dominant: [
-      
+      "Heh, feeling affectionate?"
     ],
 
     Submissive: [
-      
+      "Aw, wanted a hug?"
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [ 
+        "Aw"
+      ]
   }
 };
 /* ----- FACE ON CHEST ----- */
 setup.faceonchestQuotes = {
   give: {
     Dominant: [
-      
+      "Mmmf—rrhh… mmnnh!",
+			"Hrrmph… mffh—mm!",
+			"Nnff… mmphh—rrgh!",
+			"Mmm—hff… nnhhmm!",
+			"Rrmmf—hnn… mpphh!"
     ],
     Submissive: [
-      
+      "Mmmf—rrhh… mmnnh!",
+			"Hrrmph… mffh—mm!",
+			"Nnff… mmphh—rrgh!",
+			"Mmm—hff… nnhhmm!",
+			"Rrmmf—hnn… mpphh!"
     ],
     Neutral: [
-      
+      "Mmmf—rrhh… mmnnh!",
+			"Hrrmph… mffh—mm!",
+			"Nnff… mmphh—rrgh!",
+			"Mmm—hff… nnhhmm!",
+			"Rrmmf—hnn… mpphh!"
     ]
   },
 
-  receive: {
+  receive: {  
+    Large: [
+      "Can you feel my heart beat? Or are my breasts too big?",
+			"I can tell you like my breasts.",
+			"Do you like my breasts?"
+      ],
+    Busty: [
+      "Can you feel my heart beat? Or are my breasts too big?",
+			"I can tell you like my breasts.",
+			"Do you like my breasts?"
+      ],
     Dominant: [
-      
+      "Bet you like that, huh?.",
+      "Ah!",
+      "Hah"
     ],
-
     Submissive: [
-      
+      "Aww.",
+			"You're making my chest feel good."
     ],
 
-    Neutral: {
-      default: [ ]
-    }
+    Neutral: [
+      "Is my chest comfy?"
+    ]
   }
 };
 /* ----- FEEL STOMACH ----- */

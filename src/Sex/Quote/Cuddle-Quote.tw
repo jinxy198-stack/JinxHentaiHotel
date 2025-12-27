@@ -1,42 +1,28 @@
 :: Cuddle-Quote [nobr Dialogue] {"position":"1800,1700","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-		/* NPC cuddles you */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Hope you don't mind some cuddling after all that.",
-				"You can use my tits as a pillow if you want."
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"This is nice."
-			)>>
-		<<else>>
-			<<= either(
-				"NEUTRAL-DOM-LINE-1 about BODY-PART.",
-				"NEUTRAL-DOM-LINE-2 about BODY-PART."
-			)>>
-		<</if>>
-	<<elseif $sex.roles.sub.name == _n.name>>
-		/* You cuddle NPC */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Your body is so soft and warm.",
-				"You can use my tits as a pillow if you want.",
-				"You like the feeling of me being this close, don't you?"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"SUB-LINE-1 about BODY-PART.",
-				"SUB-LINE-2 about BODY-PART.",
-				"SUB-LINE-3 about BODY-PART."
-			)>>
-		<<else>>
-			<<= either(
-				"NEUTRAL-DOM-LINE-1 about BODY-PART.",
-				"NEUTRAL-DOM-LINE-2 about BODY-PART."
-			)>>
-		<</if>>
-	<</if>>
+<<if !setup.cuddleQuotes>>
+	[Error] setup.cuddleQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
+
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.cuddleQuotes.give[_pref]
+	|| setup.cuddleQuotes.give.Neutral>>
+<<else>>
+	<<set _pool = setup.cuddleQuotes.receive[_pref] 
+	|| setup.cuddleQuotes.receive.Neutral>>
+<</if>>
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Cuddle quote pool found.
+<</if>>
+
 
 
 

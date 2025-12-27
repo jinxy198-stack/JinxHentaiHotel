@@ -1,58 +1,24 @@
 :: Blowjob-Quote [nobr Dialogue] {"position":"1600,1600","size":"100,100"}
-<<if $sex.roles.dom.name == _n.name>>
-		/* You suck NPC */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Oh yeah, keep sucking my cock!",
-				"Yeah, suck my dick!",
-				"That's right, use your $mc.body.tongue as well! You're good at sucking cock!",
-				"What a good $mc.petname! You love sucking my cock, don't you?",
-				"Use your tongue as well! Yeah, like that!",
-				"Yes! Keep sucking my cock! Just like that!",
-				"Oh yes! Wrap those lips of yours around my cock! Keep going!",
-				"Keep sucking my cock! Yes! Just like that!",
-				"Fuck, that feels incredible.",
-				"That's really good, $mc.name... you're a natural at this.",
-                "You're so good at sucking dick."
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"You're good at sucking cock!",
-				"Ahh Ahh",
-				"Ah! Please, more!",
-				"Your tongue is so soft...",
-				"Fuck, that feels incredible.",
-				"OOOH, your mouth feels so good $mc.name!",
-                "You're doing so great."
-			)>>
-		<<else>>
-			<<= either(
-				"You're good at sucking cock!",
-				"Fuck, that feels incredible.",
-                "Ah...",
-                "Ahh Ahh",
-                "Oh yeah...",
-				"Your mouth is so warm..."
-			)>>
-		<</if>>
-	<<elseif $sex.roles.sub.name == _n.name>>
-		/* NPC sucks you */
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"<i>GLRK GLRK</i>",
-				"<i>SLRP</i>"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"<i>GLRK GLRK</i>",
-				"<i>SLRP</i>"
-			)>>
-		<<else>>
-			<<= either(
-				"<i>GLRK GLRK</i>",
-				"<i>SLRP</i>"
-			)>>
-		<</if>>
-	<</if>>
+<<if !setup.blowjobQuotes>>
+	[Error] setup.blowjobQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
 
+<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref = _n.sexpref || "Neutral">>
 
+<<set _pool = null>>
+
+<<if _mode == "give">>
+	<<set _pool = setup.blowjobQuotes.give[_pref]
+	|| setup.blowjobQuotes.give.Neutral>>
+<<else>>
+	<<set _pool = setup.blowjobQuotes.receive[_pref] 
+	|| setup.blowjobQuotes.receive.Neutral>>
+<</if>>
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Blowjob quote pool found.
+<</if>>
