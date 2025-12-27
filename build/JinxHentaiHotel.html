@@ -2680,7 +2680,7 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
  	&quot;_n.name gently caresses your arm, testing your reaction.&quot;,
     &quot;Wanting to make _n.name feel loved, you lift your $mc.body.hand, before gently stroking your $mc.body.fingers over $proset.their face.&quot;,
     &quot;Lifting your $mc.body.hand, you softly trace your $mc.body.fingers over _n.name  cheek in order to make $proset.them feel loved.&quot;,
-    &quot;Seeking to put _n.name at ease, you raise your $mc.body.hand, before using your $mc.body.fingers to lovingly caress $proset.their face.&quot;,
+    &quot;Seeking to put _n.name at ease, you raise your $mc.body.hand, before using your $mc.body.fingers to lovingly caress $proset.their face.&quot;
     )&gt;&gt;
     &lt;&lt;=either(
     &quot;A happy moan escapes from _n.name&#39;s mouth in response to this contact, causing you to smile in delight.&quot;,
@@ -5190,8 +5190,8 @@ setup.vaginalQuotes = {
 		&lt;&lt;set $sex.stage = &quot;Foreplay&quot;&gt;&gt;
 	&lt;&lt;elseif _n.arousal &lt; 100&gt;&gt;
 		&lt;&lt;set $sex.stage = &quot;Intercourse&quot;&gt;&gt;
-    /* &lt;&lt;else&gt;&gt;
-		&lt;&lt;set $sex.stage = &quot;Aftercare&quot;&gt;&gt; */
+     /* &lt;&lt;else&gt;&gt; */
+	/*	&lt;&lt;set $sex.stage = &quot;Aftercare&quot;&gt;&gt;  */
 	&lt;&lt;/if&gt;&gt;
     
 &lt;&lt;/silently&gt;&gt;
@@ -5895,7 +5895,7 @@ Create your character to begin.
 &lt;center&gt;&lt;&lt;button [[Use the Randomiser|CC-Check]]&gt;&gt;&lt;&lt;Randomiser&gt;&gt;&lt;&lt;/button&gt;&gt; | &lt;&lt;button [[Use the Pre-Set|CC-Check]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/center&gt;
 
-Updated as of 12/18/2025
+Updated as of 12/27/2025
 
 &lt;&lt;button [[TestShota|Lounge]]&gt;&gt;&lt;&lt;LittleBoy&gt;&gt;&lt;&lt;/button&gt;&gt; 
 &lt;&lt;button [[TestLoli|Lounge]]&gt;&gt;&lt;&lt;LittleGirl&gt;&gt;&lt;&lt;/button&gt;&gt; 
@@ -6153,7 +6153,7 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 	&lt;&lt;set $npcMemory = $npcMemory or {}&gt;&gt;
 
 	/* choose a key for this NPC */
-	&lt;&lt;set _key = _n.name&gt;&gt;
+	&lt;&lt;set _key = _n.id or _n.name&gt;&gt;
 
 	/* ensure memory entry exists */
 	&lt;&lt;set $npcMemory[_key] = $npcMemory[_key] or {}&gt;&gt;
@@ -6180,6 +6180,10 @@ Body: &lt;&lt;= _n.body.head&gt;&gt;
 	&lt;&lt;set $gamelocation = &quot;Your Room&quot;&gt;&gt;
 	&lt;&lt;set $position = &quot;Standing&quot;&gt;&gt;
 	&lt;&lt;set $sexSpot = &quot;On Floor&quot;&gt;&gt;
+	
+	&lt;&lt;if !$sex.roles or !$sex.roles.dom or !$sex.roles.sub&gt;&gt;
+	&lt;&lt;pick-roles $mc _n&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
 
 &lt;div class=&quot;npcsex-root&quot;&gt;

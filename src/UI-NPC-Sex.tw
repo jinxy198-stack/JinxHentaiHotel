@@ -7,7 +7,7 @@
 	<<set $npcMemory = $npcMemory or {}>>
 
 	/* choose a key for this NPC */
-	<<set _key = _n.name>>
+	<<set _key = _n.id or _n.name>>
 
 	/* ensure memory entry exists */
 	<<set $npcMemory[_key] = $npcMemory[_key] or {}>>
@@ -34,6 +34,10 @@
 	<<set $gamelocation = "Your Room">>
 	<<set $position = "Standing">>
 	<<set $sexSpot = "On Floor">>
+	
+	<<if !$sex.roles or !$sex.roles.dom or !$sex.roles.sub>>
+	<<pick-roles $mc _n>>
+	<</if>>
 <</silently>>
 
 <div class="npcsex-root">
