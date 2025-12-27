@@ -3418,21 +3418,33 @@ You two kiss again.
 	[Error] setup.caressQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+&lt;&lt;if !_n or !$sex or !$sex.roles or !$sex.roles.dom or !$sex.roles.sub&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref ? _n.sexpref : &quot;Neutral&quot;&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.caressQuotes.give[_pref]
-	|| setup.caressQuotes.give.Neutral&gt;&gt;
+	&lt;&lt;set _pool =
+		setup.caressQuotes.give
+		&amp;&amp; (setup.caressQuotes.give[_pref] || setup.caressQuotes.give.Neutral)&gt;&gt;
 &lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool = setup.caressQuotes.receive[_pref] 
-	|| setup.caressQuotes.receive.Neutral&gt;&gt;
+	&lt;&lt;set _pool =
+		setup.caressQuotes.receive
+		&amp;&amp; (setup.caressQuotes.receive[_pref] || setup.caressQuotes.receive.Neutral)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Caress quote pool found.
@@ -4656,7 +4668,7 @@ setup.gropebreastQuotes = {
       ],
       Small: {
         Child: [&quot;Nothing quite like developing breasts. So lewd and cute.&quot;],
-        Teen: [&quot;Nothing quite like developing breasts. So lewd and cute.&quot;]
+        Teen: [&quot;Nothing quite like developing breasts. So lewd and cute.&quot;],
         default:[&quot;I think small breasts are kinda cute.&quot;]
       },
       Average: [
@@ -4671,7 +4683,7 @@ setup.gropebreastQuotes = {
 				&quot;How do you carry these things?!&quot;
       ]
 
-    }
+    },
     Submissive: {
       Average: [
         &quot;I like your breasts.&quot;
@@ -4680,12 +4692,12 @@ setup.gropebreastQuotes = {
         &quot;Your breasts are so soft.&quot;,
 				&quot;Wow, they are pretty big.&quot;
       ],
-      Busty: [ &quot;Whoa...&quot;],
+      Busty: [ &quot;Whoa...&quot;]
     },
     Neutral: {
       Large: [&quot;Wow...&quot;],
-      Busty: [&quot;These sure are big!&quot;]
-      default: [Default text]
+      Busty: [&quot;These sure are big!&quot;],
+      default: [&quot;Default text&quot;]
     }
   },
   receive: {
@@ -4699,7 +4711,7 @@ setup.gropebreastQuotes = {
     ],
 
     Neutral: {
-      default: [NEUTRAL dialogue about grabbing boobs]
+      default: [&quot;NEUTRAL dialogue about grabbing boobs&quot;]
     }
   }
 };
@@ -5068,13 +5080,13 @@ setup.orgasmcloseQuotes = {
         &quot;Aaaah!!&quot;
       ]
     },
-    Handjob: {
+    Handjob: [
       &quot;Don&#39;t stop jerking it, I&#39;m so close!&quot;,
       &quot;Faster, I&#39;m almost there!&quot;
-    },
-    Finger-Pussy: {
+    ],
+    &quot;Finger-Pussy&quot;: [
       &quot;Faster, I&#39;m so close!&quot;
-    }  
+    ]  
   },
 
   receive: {
@@ -5091,30 +5103,30 @@ setup.orgasmcloseQuotes = {
     },
     Handjob: {
       Dominant: [
-        DOMINANT HANDJOB ORGASM CLOSE QUOTE
+        &quot;DOMINANT HANDJOB ORGASM CLOSE QUOTE&quot;
       ],
       Submissive: [
-        SUBMISSIVE HANDJOB ORGASM CLOSE QUOTE
+        &quot;SUBMISSIVE HANDJOB ORGASM CLOSE QUOTE&quot;
       ],
       Neutral: [
-        NEUTRAL HANDJOB ORGASM CLOSE QUOTE
+        &quot;NEUTRAL HANDJOB ORGASM CLOSE QUOTE&quot;
       ]
     },
-    Finger-Pussy: {
+    &quot;Finger-Pussy&quot;: {
       Dominant: [
-        DOMINANT HANDJOB ORGASM CLOSE QUOTE
+        &quot;DOMINANT HANDJOB ORGASM CLOSE QUOTE&quot;
       ],
       Submissive: [
-        SUBMISSIVE HANDJOB ORGASM CLOSE QUOTE
+        &quot;SUBMISSIVE HANDJOB ORGASM CLOSE QUOTE&quot;
       ],
       Neutral: [
-        NEUTRAL HANDJOB ORGASM CLOSE QUOTE
+        &quot;NEUTRAL HANDJOB ORGASM CLOSE QUOTE&quot;
       ]
     },
 
     Neutral: {
       default: [ 
-      NEUTRAL DEFAULT QUOTE
+      &quot;NEUTRAL DEFAULT QUOTE&quot;
       ]
     }
   }

@@ -3,21 +3,33 @@
 	[Error] setup.caressQuotes is missing. Define it in StoryInit.
 	<<return>>
 <</if>>
+<<if !_n or !$sex or !$sex.roles or !$sex.roles.dom or !$sex.roles.sub>>
+	<<return>>
+<</if>>
+<<if $sex.roles.dom.name == _n.name>>
+	<<set _mode = "give">>
+<<elseif $sex.roles.sub.name == _n.name>>
+	<<set _mode = "receive">>
+<<else>>
+	<<return>>
+<</if>>
+<<set _pref = _n.sexpref ? _n.sexpref : "Neutral">>
 
-<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
-<<set _pref = _n.sexpref || "Neutral">>
 
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.caressQuotes.give[_pref]
-	|| setup.caressQuotes.give.Neutral>>
+	<<set _pool =
+		setup.caressQuotes.give
+		&& (setup.caressQuotes.give[_pref] || setup.caressQuotes.give.Neutral)>>
 <<else>>
-	<<set _pool = setup.caressQuotes.receive[_pref] 
-	|| setup.caressQuotes.receive.Neutral>>
+	<<set _pool =
+		setup.caressQuotes.receive
+		&& (setup.caressQuotes.receive[_pref] || setup.caressQuotes.receive.Neutral)>>
 <</if>>
 
-<<if _pool && _pool.length>>
+
+<<if Array.isArray(_pool) && _pool.length>>
 	<<= either(..._pool)>>
 <<else>>
 	[Error] No Caress quote pool found.
