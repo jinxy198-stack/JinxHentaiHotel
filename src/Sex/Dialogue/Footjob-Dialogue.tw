@@ -1,4 +1,8 @@
 :: Footjob-Dialogue [Dialogue nobr] {"position":"1300,1575","size":"100,100"}
+
+<<set _npc = _n>>
+<<PronounsSet>>
+
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
 		"_n.name lets out a moan, eagerly bucking $proset.their _n.body.hips forward as $proset.they start eagerly fucking your <<= $mc.body.feet.toLowerCase()>>.",

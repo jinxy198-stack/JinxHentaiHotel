@@ -1,4 +1,8 @@
 :: Cunnilingus-Dialogue [nobr Dialogue] {"position":"900,1475","size":"100,100"}
+<<set _npc = _n>>
+<<PronounsSet>>
+
+
 <<if _n.genitals == "Vagina">>
 	<<if $sex.roles.sub.name == _n.name>>
 		<<= either(

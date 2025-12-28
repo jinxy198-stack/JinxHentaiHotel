@@ -1,4 +1,7 @@
 :: Cowgirl-Dialogue [Dialogue nobr] {"position":"875,1225","size":"100,100"}
+
+<<set _npc = _n>>
+<<PronounsSet>>
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
 		"Taking hold of " + _n.name + "'s shoulders, you push " + $proset.them + " down onto " + $proset.their + " back. You then lower yourself down on top of " + $proset.them + ", bringing your crotch down to bump against " + $proset.theirs + " as you straddle " + $proset.them + " in the cowgirl position. Once you've made yourself comfortable, you grin down at " + _n.name + " and say, ",

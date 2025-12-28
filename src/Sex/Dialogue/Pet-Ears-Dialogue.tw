@@ -1,4 +1,7 @@
 :: Pet-Ears-Dialogue [nobr Dialogue] {"position":"1200,1675","size":"100,100"}
+
+<<set _npc = _n>>
+<<PronounsSet>>
 <<if $sex.roles.dom.name == _n.name>>
 	<<if $mc.body.ears=="Long Bunny Ears">>
     	<<= either(

@@ -1,4 +1,7 @@
 :: Sit-On-Lap-Dialogue [Dialogue nobr] {"position":"1075,1225","size":"100,100"}
+<<set _npc = _n>>
+<<PronounsSet>>
+
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
     "You sit on _n.name's lap."

@@ -1,4 +1,7 @@
 :: Frot-Dialogue [nobr Dialogue] {"position":"1300,1475","size":"100,100"}
+<<set _npc = _n>>
+<<PronounsSet>>
+
 <<if $sex.roles.sub.name == _n.name>>
 	<<= either(
 		"Reaching down, you adjust your <<= $mc.genitals.toLowerCase() >> to line it up with _n.name's, before starting to slowly thrust, rubbing your shaft against $proset.theirs.",

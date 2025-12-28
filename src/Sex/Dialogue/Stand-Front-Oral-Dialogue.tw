@@ -1,4 +1,8 @@
 :: Stand-Front-Oral-Dialogue [nobr Dialogue] {"position":"875,1325","size":"100,100"}
+
+<<set _npc = _n>>
+<<PronounsSet>>
+
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
    "With half-lidded eyes, _n.name pushes you back towards your bed. You sit down, your cock already hardening between your legs. <br>_n.name gets on $proset.their knees in front of you, eyeing it hungrily.",
@@ -6,7 +10,7 @@
     )>>
 <<elseif $sex.roles.sub.name== _n.name>>
 	<<=either(
-	"Wanting _n.name to perform oral on you, you push $proset.them down so that $proset.they are kneeling in front of you.",
+	"Wanting _n.name to perform oral on you, you push $proset.them down so that $proset.they is kneeling in front of you.",
     )>>
     <br>
     "So cute, you like my <<= $mc.genitals.toLowerCase()>>?"

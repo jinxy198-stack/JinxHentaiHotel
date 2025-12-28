@@ -1,5 +1,8 @@
 :: Against-Wall-Dialogue [nobr Dialogue] {"position":"975,1225","size":"100,100"}
 
+<<set _npc = _n>>
+<<PronounsSet>>
+
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
    	"You quickly move up against a nearby wall. Placing your hands up against the solid surface that's now in front of you, you push your <<= $mc.assSize.toLowerCase() >> ass out, shaking it at _n.name as you try to encourage $proset.them to fuck you like this."

@@ -1,4 +1,7 @@
 :: Facesit-Dialogue [nobr Dialogue] {"position":"1075,1325","size":"100,100"}
+<<set _npc = _n>>
+<<PronounsSet>>
+
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
 	"You push _n.name onto their back and then lower yourself over their face."

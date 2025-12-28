@@ -141,12 +141,56 @@ button.active-choice{
   backdrop-filter:blur(6px);
 }
 
-/* Ensure the bar width matches your story column automatically */
-#npcsex-actions-bar{
-  left:auto;
-  right:auto;
+/* Desktop PC: fix action bar to bottom of viewport */
+@media (min-width: 901px){
+  #npcsex-actions-bar{
+    position:fixed;
+    bottom:0;
+
+    /* align with story column */
+    left:21rem;
+    right:1.5rem;
+
+    margin-top:0;
+  }
+
+  /* prevent content being hidden behind fixed bar */
+  #story{
+    padding-bottom:6rem;
+  }
 }
 
+/* Mobile: keep current sticky behavior + margins */
+@media (max-width:900px){
+  #npcsex-actions-bar{
+    position:sticky;
+    bottom:0;
+    left:1rem;
+    right:1rem;
+  }
+}
+
+/* Landscape: keep the same alignment (no “empty space” stretching look) */
+@media (orientation:landscape) and (max-height:500px) and (min-width:901px){
+  #npcsex-actions-bar{
+    left:21rem;
+    right:1.5rem;
+  }
+}
+
+@media (orientation:landscape) and (max-height:500px) and (max-width:900px){
+  #npcsex-actions-bar{
+    left:1rem;
+    right:1rem;
+  }
+}
+
+/* Ensure the bar width matches your story column automatically */
+/* Temporailiy removed */
+/* #npcsex-actions-bar{ */
+/*  left:auto; */
+/*  right:auto; */
+/* } */
 
 @media (max-width:900px){
   #npcsex-actions-bar{
@@ -237,7 +281,6 @@ button.active-choice{
     -webkit-overflow-scrolling:touch;
   }
 
-
   .npcsex-actions-inner{
     padding:0.35rem 0.6rem;
     border-radius:1rem;
@@ -253,6 +296,15 @@ button.active-choice{
   #npcsex-actions-bar a.link-internal,
   #npcsex-actions-bar button{
     margin:0.05rem 0.1rem;
+  }
+
+  /* mobile landscape */
+  @media (max-width: 900px){
+    #npcsex-actions-bar{
+      left:1rem;
+      right:1rem;
+      width:auto;
+    }
   }
 }
 

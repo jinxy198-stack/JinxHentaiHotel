@@ -1,4 +1,7 @@
 :: Handjob-Dialogue [Dialogue nobr] {"position":"900,1575","size":"100,100"}
+<<set _npc = _n>>
+<<PronounsSet>>
+
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
 	"Reaching down between $proset.their _n.body.legs, you wrap your $mc.body.fingers around $proset.their <<= _n.genitals.toLowerCase()>>, letting out a soft moan as you start slowly stroking up and down its length.",

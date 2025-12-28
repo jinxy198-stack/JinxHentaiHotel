@@ -1,4 +1,7 @@
 :: Doggystyle-Dialogue [nobr Dialogue] {"position":"675,1325","size":"100,100"}
+
+<<set _npc = _n>>
+<<PronounsSet>>
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
    "You drop down on all fours, facing away from _n.name.",

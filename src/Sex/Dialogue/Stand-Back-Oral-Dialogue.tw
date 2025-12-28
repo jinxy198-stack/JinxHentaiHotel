@@ -1,4 +1,7 @@
 :: Stand-Back-Oral-Dialogue [Dialogue nobr] {"position":"975,1325","size":"100,100"}
+
+<<set _npc = _n>>
+<<PronounsSet>>
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
 		"You kneel down behind " + _n.name + ", " + $proset.their + " " + ((_n.assSize && _n.assSize.toLowerCase) ? _n.assSize.toLowerCase() : "average") + " ass in front of you."

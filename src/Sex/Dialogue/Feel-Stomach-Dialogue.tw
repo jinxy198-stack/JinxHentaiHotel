@@ -1,4 +1,7 @@
 :: Feel-Stomach-Dialogue [nobr Dialogue] {"position":"1000,1775","size":"100,100"}
+<<set _npc = _n>>
+<<PronounsSet>>
+
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
  	"_n.name presses their hand against your belly"

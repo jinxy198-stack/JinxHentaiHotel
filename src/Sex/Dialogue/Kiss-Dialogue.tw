@@ -1,4 +1,7 @@
 :: Kiss-Dialogue [Dialogue nobr]
+<<set _npc = _n>>
+<<PronounsSet>>
+
 <<if !$seenActions.Kiss>>
 <<set $seenActions.Kiss = true>>
 

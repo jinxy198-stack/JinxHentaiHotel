@@ -1,4 +1,7 @@
 :: Grope-Breast-Dialogue [nobr Dialogue] {"position":"1100,1475","size":"100,100"}
+<<set _npc = _n>>
+<<PronounsSet>>
+
 <<if $sex.roles.sub.name == _n.name>>
 	<<= either(
     "Reaching up to _n.name's chest, they lets out a soft moan as you starts fondling and groping _n.name's _n.breastsize breasts,"

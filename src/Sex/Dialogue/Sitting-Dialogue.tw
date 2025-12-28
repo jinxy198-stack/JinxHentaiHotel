@@ -1,4 +1,8 @@
 :: Sitting-Dialogue [nobr Dialogue] {"position":"775,1225","size":"100,100"}
+
+<<set _npc = _n>>
+<<PronounsSet>>
+
 You and _n.name sit on the bed.
 
 

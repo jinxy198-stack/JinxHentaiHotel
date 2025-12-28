@@ -1,4 +1,8 @@
 :: Cuddle-Dialogue [Dialogue nobr] {"position":"1100,1675","size":"100,100"}
+
+<<set _npc = _n>>
+<<PronounsSet>>
+
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
  	"_n.name wrap their arms around you. You lay your head on their chest."

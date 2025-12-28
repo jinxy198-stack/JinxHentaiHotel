@@ -1,4 +1,6 @@
 :: Rimjob-Dialogue [nobr Dialogue] {"position":"1000,1575","size":"100,100"}
+<<set _npc = _n>>
+<<PronounsSet>>
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
  	"_n.name eats out your ass."

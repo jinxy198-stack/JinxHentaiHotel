@@ -35,6 +35,7 @@
 	<<set $position = "Standing">>
 	<<set $sexSpot = "On Floor">>
 	
+	
 	<<if !$sex.roles or !$sex.roles.dom or !$sex.roles.sub>>
 	<<pick-roles $mc _n>>
 	<</if>>
