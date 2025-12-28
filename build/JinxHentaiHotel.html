@@ -133,6 +133,10 @@ html, body{
   overflow-x:hidden;
 }
 
+/* ---------- UI-NPC-Sex layout (ADD HERE) ---------- */
+
+
+
 /* Mobile: when the screen is small, drop the big left margin */
 @media (max-width:900px){
   #story{ margin:1rem; }
@@ -204,24 +208,32 @@ button.active-choice{
   filter:none;
 }
 
-/* ========== UI-NPC-Sex fixed action bar ========== */
+/* ===== UI-NPC-Sex: non-overlapping layout ===== */
 
-/* Make room so content doesn't sit under the fixed bar */
-.npcsex-root{
-  /* use safe-area so iOS home bar doesn't overlap; keep your 9rem base */
-  padding-bottom:calc(9rem + env(safe-area-inset-bottom, 0px));
+/* Make the UI-NPC-Sex passage a flex column that fills the viewport */
+#passage-UI-NPC-Sex{
+  display:flex;
+  flex-direction:column;
+  min-height:calc(100vh - 3rem); /* adjust if needed */
 }
 
-/* Full-width fixed bar */
+/* The content area (everything above the bar) */
+#passage-UI-NPC-Sex .npcsex-root,
+#passage-UI-NPC-Sex #npcsex-text,
+#passage-UI-NPC-Sex .passage{
+  min-height:0; /* important for flex children */
+}
+
+/* Action bar sits after content and stays visible at bottom without overlaying */
 #npcsex-actions-bar{
-  position:fixed;
-  left:21rem;
-  right:1.5rem;
-
-  /* keep the bar above iOS/Android bottom UI */
-  bottom:env(safe-area-inset-bottom, 0px);
-
+  position:sticky;
+  bottom:0;
   z-index:10;
+
+  /* make it occupy layout space instead of overlaying content */
+  margin-top:auto;
+
+  /* match your styling */
   padding:0.5rem 0;
   text-align:center;
   background:radial-gradient(
@@ -235,6 +247,13 @@ button.active-choice{
     0 0 32px rgba(120, 40, 200, 0.45);
   backdrop-filter:blur(6px);
 }
+
+/* Ensure the bar width matches your story column automatically */
+#npcsex-actions-bar{
+  left:auto;
+  right:auto;
+}
+
 
 @media (max-width:900px){
   #npcsex-actions-bar{
@@ -311,12 +330,20 @@ button.active-choice{
     padding-bottom:calc(5rem + env(safe-area-inset-bottom, 0px));
   }
 
+   #passage-UI-NPC-Sex{
+    padding-bottom:calc(5rem + env(safe-area-inset-bottom, 0px));
+  }
+  #passage-UI-NPC-Sex .npcsex-root{
+    padding-bottom:calc(5rem + env(safe-area-inset-bottom, 0px));
+  }
+
   #npcsex-actions-bar{
     padding:0.25rem 0;
     max-height:42vh;
     overflow-y:auto;
     -webkit-overflow-scrolling:touch;
   }
+
 
   .npcsex-actions-inner{
     padding:0.35rem 0.6rem;
@@ -6220,6 +6247,8 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 			&lt;/span&gt;
 		&lt;/div&gt;
 	&lt;/div&gt;
+&lt;br&gt;
+&lt;br&gt;
 
 	&lt;!-- fixed bar at bottom --&gt;
 	&lt;div id=&quot;npcsex-actions-bar&quot;&gt;
