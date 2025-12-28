@@ -1037,25 +1037,20 @@ setup.orgasmcloseQuotes = {
   
   give: {
     Anal: {  
-      Dominant: [
-        "I'm gonna cum in your ass!"
-        ],
-      Submissive: [
-        "I'm... gonna cum!",
-        "A-agh!! AaaHhhh!!!"
-      ],
-      Neutral: [
-        "I'm cumming!",
-        "Aaaah!!"
-      ]
+      Dominant: ["I'm gonna cum in your ass!"],
+      Submissive: ["I'm... gonna cum!", "A-agh!! AaaHhhh!!!" ],
+      Versatile: ["I'm cumming!","Aaaah!!"]
     },
-    Handjob: [
-      "Don't stop jerking it, I'm so close!",
-      "Faster, I'm almost there!"
-    ],
-    "Finger-Pussy": [
-      "Faster, I'm so close!"
-    ]  
+    Handjob: {
+      Dominant: ["Don't stop jerking it, I'm so close!"],
+      Submissive: ["Faster, I'm almost there!"],
+      Versatile: ["Faster, I'm almost there!"]
+    },
+    "Finger-Pussy": {
+      Dominant:["Faster, I'm so close!"],
+      Submissive: ["Faster, I'm so close!"],
+      Versatile: ["Faster, I'm so close!"]
+    } 
   },
 
   receive: {
@@ -1066,7 +1061,7 @@ setup.orgasmcloseQuotes = {
       Submissive: [
         "Oh god, cum in me!"
       ],
-      Neutral: [
+      Versatile: [
         "Oh god, cum in me!"
       ]
     },
@@ -1077,7 +1072,7 @@ setup.orgasmcloseQuotes = {
       Submissive: [
         "SUBMISSIVE HANDJOB ORGASM CLOSE QUOTE"
       ],
-      Neutral: [
+      Versatile: [
         "NEUTRAL HANDJOB ORGASM CLOSE QUOTE"
       ]
     },
@@ -1088,7 +1083,7 @@ setup.orgasmcloseQuotes = {
       Submissive: [
         "SUBMISSIVE HANDJOB ORGASM CLOSE QUOTE"
       ],
-      Neutral: [
+      Versatile: [
         "NEUTRAL HANDJOB ORGASM CLOSE QUOTE"
       ]
     },

@@ -10,6 +10,7 @@ A nice place to rest, relax, and socialize.
 	<<set $flags to $flags or {}>>
 	<<set $flags.spawnedSNPC = true>>
 	<<SpawnSNPCs 1 $KevinNpc>>
+    <<SpawnSNPCs 1 $JoshuaNpc>>
     <<SpawnSNPCs 1 $Yoichi>>
     <<SpawnSNPCs 1 $CoryPark>>
     <<SpawnSNPCs 1 $LorraineD>>

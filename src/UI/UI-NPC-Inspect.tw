@@ -1,6 +1,6 @@
 :: UI-NPC-Inspect [nobr] {"position":"900,375","size":"100,100"}
 <<silently>><<set _n = $ui.npc>><</silently>>
-<b>Name:</b> ''<<=_n.name>> <<=_n.surname>>'' <<if _n.nickname>>
+<b>Name:</b> <<=_n.name>> <<if _n.surname>><<=_n.surname>><</if>> <<if _n.nickname>>
 <br>
 <b>Nickname: </b>"<<=_n.nickname>>"<</if>>
 <br>

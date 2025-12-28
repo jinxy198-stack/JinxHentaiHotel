@@ -760,29 +760,24 @@
 		<<return>>
 	<</if>>
 
-	/* normalize inputs */
-	<<set _pref = _n.sexpref || "Neutral">>
-	<<set _msize = $mc.penislength || "average">>
-	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
-	<<set _action = $sex.action >>
+	<<set _mode   = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+	<<set _pref   = _n.sexpref || "Versatile">>
+	<<set _action = $sex.action>>
+	<<set _pool   = null>>
 
-	<<set _pool = null>>
+	<<set _entry = setup.orgasmcloseQuotes[_mode] && setup.orgasmcloseQuotes[_mode][_action]>>
 
-	/* resolve pool */
-	<<if _mode == "give">>
-		<<set _pool = setup.orgasmcloseQuotes.give[_pref] 
-			&& setup.orgasmcloseQuotes.give[_action][_pref]
-			|| setup.orgasmcloseQuotes.give.Neutral
-		>>
+	<<if Array.isArray(_entry)>>
+	<<set _pool = _entry>>
 	<<else>>
-			<<run _pool =
-				(
-					setup.orgasmcloseQuotes.receive[_pref]
-					&& setup.orgasmcloseQuotes.receive[_action][_pref]
-				)
-				|| setup.orgasmcloseQuotes.receive.Neutral.default
-			>>
+	<<set _pool = (_entry && _entry[_pref]) || null>>
+	<</if>>
 
+	<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+	<<else>>
+	[Error] No Orgasm Close quote pool found.
+	(mode=<<=_mode>>, action=<<=_action>>, pref=<<=_pref>>)
 	<</if>>
 
 	/* output */

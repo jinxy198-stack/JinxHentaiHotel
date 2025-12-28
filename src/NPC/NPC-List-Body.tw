@@ -2,7 +2,7 @@
 <span id="list">
 <<for _i = 0; _i < $npcs.length; _i++>>
 	<<set _n to $npcs[_i]>><<PronounsSet>><div class="npc-card">
-		<b>[ _n.id ]</b> _n.name _n.surname — _n.species<<if _n.species is "Anthro">> / _n.anthro.group / _n.anthro.subtype<</if>> · _n.gender
+		<b>[ _n.id ]</b> _n.name <<if _n.surname>>_n.surname<</if>> — _n.species<<if _n.species is "Anthro">> / _n.anthro.group / _n.anthro.subtype<</if>> · _n.gender
         <br>
         <i>Age:</i> _n.age
         <br>

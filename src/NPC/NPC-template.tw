@@ -37,6 +37,33 @@
     origin: "Unknown"
 }>>
 
+/*Joshua  */
+<<set $JoshuaNpc = {
+    name: "Joshua",
+    species: "Human",
+    gender: "Male",
+    trans: "cisgender",
+    sexu: "Bisexual",
+    pronouns: "He/Him",
+    age: 11,
+    heterochromia: false,
+    eyes: "Green",
+    hair: "Bald",
+    haircolour: "Light Brown",
+    bodyheight: "Short",
+    bodyweight: "Thin",
+    bodymusc: "Soft",
+    personality: "Kind",
+    genitals: "Penis",
+    genitaltype: "Cut",
+    penislength:"Small",
+    assSize: "Round",
+    virgin: false,
+    sexpref: "Submissive",
+    origin: "Unknown"
+}>>
+
+
 /% Applebridge %/
 <<set $CoryPark = {
     name: "Cory",
@@ -48,6 +75,8 @@
     sexu: "Heterosexual",  /* sexual orientation */
     genitals: "Penis",
     genitaltype: "Cut", /*cut or uncut */
+    penislength: "Large",
+    assSize: "Round",
     pronouns: "He/Him",
     age: 14,
     eyes: "Brown",
@@ -88,10 +117,11 @@
     bodymusc: "Soft",
     breastsize:"Large",
     personality: "Mean",
-    Virgin: true or false,
+    assSize: "Huge",
     sexpref: "Dominant",
     origin: "Applebridge"
 }>>
+
 /%Camp Buddy %/
 <<set $Yoichi = {
     name: "Yoichi",
@@ -104,6 +134,7 @@
     genitals: "Penis",
     genitaltype: "Uncut",
     penislength:"Large",
+    assSize: "Round",
     pronouns: "He/Him",
     age: 20,
     eyes: "Scarlet",
