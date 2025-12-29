@@ -1753,7 +1753,6 @@ Note: Dom does not always mean Top and Sub does not always mean Bottom.</tw-pass
 
 &lt;&lt;link &quot;Go back&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Bedroom&quot;&gt;&gt;
-    &lt;&lt;remove $action&gt;&gt;
 &lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Bedroom" tags="nobr" position="400,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Room&quot;&gt;&gt;
 You are in your hotel room. It looks like the love suite of a luxury hotel, complete with a heart shaped bed. Next to the bed is a phone for calling up people you know for a &#39;good time&#39;.
 To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic.
@@ -1821,20 +1820,16 @@ You are in the lobby of the hotel, classical music plays as you watch people fro
 &lt;&lt;set $gamelocation to &quot;Lounge&quot;&gt;&gt;
 
 A nice place to rest, relax, and socialize.
-/* Randomly Generate npc&#39;s, including special npc&#39;s*/
-/* Spawn exactly once per visit (guard with a flag if desired) */
-&lt;&lt;if !$flags or !$flags.spawnedSNPC&gt;&gt;
-	&lt;&lt;set $flags to $flags or {}&gt;&gt;
-	&lt;&lt;set $flags.spawnedSNPC = true&gt;&gt;
-	&lt;&lt;SpawnSNPCs 1 $KevinNpc&gt;&gt;
-    &lt;&lt;SpawnSNPCs 1 $JoshuaNpc&gt;&gt;
-    &lt;&lt;SpawnSNPCs 1 $Yoichi&gt;&gt;
-    &lt;&lt;SpawnSNPCs 1 $CoryPark&gt;&gt;
-    &lt;&lt;SpawnSNPCs 1 $LorraineD&gt;&gt;
-    
-    &lt;&lt;SpawnRandomNPCs 3&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;SpawnPoolOnce &quot;OC&quot; $OCPool&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;CB&quot; $CBPool&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;AB&quot; $ABPool&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 3&gt;&gt;
+
 &lt;&lt;include &quot;SNPC-List&quot;&gt;&gt;
+
+
+
 [[Lobby]]
 
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="Map" tags="" position="1925,325" size="100,100">/* 
@@ -1898,7 +1893,7 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
     sexpref: &quot;Dominant&quot;,
     origin: &quot;Applebridge&quot;
 }&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="CampBuddyNPC" tags="init nobr" position="475,400" size="100,100">/%Camp Buddy %/
-&lt;&lt;set $Yoichi = {
+&lt;&lt;set $Yoichi_CB = {
     name: &quot;Yoichi&quot;,
     nickname: &quot;&quot;,
     surname: &quot;Yukimura&quot;,
@@ -1909,7 +1904,7 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
     genitals: &quot;Penis&quot;,
     genitaltype: &quot;Uncut&quot;,
     penislength:&quot;Large&quot;,
-    assSize: &quot;Round&quot;,
+    assSize: &quot;Small&quot;,
     pronouns: &quot;He/Him&quot;,
     age: 20,
     eyes: &quot;Scarlet&quot;,
@@ -1919,11 +1914,146 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
     skincolor: &quot;Fair&quot;,
     skinfeatures: &quot;Scars&quot;,
     bodyheight: &quot;Tall&quot;,
-    bodyweight: &quot;Heavy&quot;,
-    bodymusc: &quot;Muscular&quot; , 
+    bodyweight: &quot;Average&quot;,
+    bodymusc: &quot;Ripped&quot; , 
     personality: &quot;Tough&quot;,
     virgin: false,
     sexpref: &quot;Dominant&quot;,
+    origin: &quot;Camp Buddy&quot;
+}&gt;&gt;
+
+&lt;&lt;set $Natsumi_CB = {
+    name: &quot;Natsumi&quot;,
+    nickname: &quot;&quot;,
+    surname: &quot;Hamasaki&quot;,
+    trans: &quot;Cisgender&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    sexu: &quot;Homosexual&quot;,  
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;,
+    penislength:&quot;Huge&quot;,
+    assSize: &quot;Round&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 20,
+    eyes: &quot;Cyan&quot;,
+    hair: &quot;Spiky&quot;,
+    haircolor: &quot;Blue&quot;,
+    skincolor: &quot;Tan&quot;,
+    bodyheight: &quot;Tall&quot;,
+    bodyweight: &quot;Slender&quot;,
+    bodymusc: &quot;Muscular&quot; , 
+    personality: &quot;Naive&quot;,
+    virgin: false,
+    sexpref: &quot;Dominant&quot;,
+    origin: &quot;Camp Buddy&quot;
+}&gt;&gt;
+
+&lt;&lt;set $Hunter_CB = {
+    name: &quot;Hunter&quot;,
+    nickname: &quot;&quot;,
+    surname: &quot;Springfield&quot;,
+    trans: &quot;Cisgender&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    sexu: &quot;Homosexual&quot;,  
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Phimosis&quot;,
+    penislength:&quot;Small&quot;,
+    assSize: &quot;Large&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 18,
+    eyes: &quot;Green&quot;,
+    hair: &quot;Spiky&quot;,
+    haircolor: &quot;Blonde&quot;,
+    skincolor: &quot;Pale&quot;,
+    bodyheight: &quot;Short&quot;,
+    bodyweight: &quot;Slender&quot;,
+    bodymusc: &quot;Light Muscles&quot; , 
+    personality: &quot;Timid&quot;,
+    virgin: false,
+    sexpref: &quot;Submissive&quot;,
+    origin: &quot;Camp Buddy&quot;
+}&gt;&gt;
+
+&lt;&lt;set $Keitaro_CB = {
+    name: &quot;Keitaro&quot;,
+    nickname: &quot;&quot;,
+    surname: &quot;Nagame&quot;,
+    trans: &quot;Cisgender&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    sexu: &quot;Homosexual&quot;,  
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;,
+    penislength:&quot;Average&quot;,
+    assSize: &quot;Round&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 19,
+    eyes: &quot;Green&quot;,
+    hair: &quot;Spiky&quot;,
+    haircolor: &quot;Brown&quot;,
+    skincolor: &quot;Tan&quot;,
+    bodyheight: &quot;Average&quot;,
+    bodyweight: &quot;Average&quot;,
+    bodymusc: &quot;Toned&quot; , 
+    personality: &quot;Kind&quot;,
+    virgin: false,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;Camp Buddy&quot;
+}&gt;&gt;
+
+&lt;&lt;set $Hiro_CB = {
+    name: &quot;Hiro&quot;,
+    nickname: &quot;&quot;,
+    surname: &quot;Akiba&quot;,
+    trans: &quot;Cisgender&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    sexu: &quot;Homosexual&quot;,  
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;,
+    penislength:&quot;Average&quot;,
+    assSize: &quot;Small&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 19,
+    eyes: &quot;Orange&quot;,
+    hair: &quot;Spiky&quot;,
+    haircolor: &quot;Orange&quot;,
+    skincolor: &quot;Fair&quot;,
+    bodyheight: &quot;Average&quot;,
+    bodyweight: &quot;Average&quot;,
+    bodymusc: &quot;Toned&quot;, 
+    personality: &quot;Energetic&quot;,
+    virgin: false,
+    sexpref: &quot;Submissive&quot;,
+    origin: &quot;Camp Buddy&quot;
+}&gt;&gt;
+
+&lt;&lt;set $Taiga_CB = {
+    name: &quot;Taiga&quot;,
+    nickname: &quot;&quot;,
+    surname: &quot;Akatora&quot;,
+    trans: &quot;Cisgender&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    sexu: &quot;Homosexual&quot;,  
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;,
+    penislength:&quot;Average&quot;,
+    assSize: &quot;Round&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 19,
+    eyes: &quot;Red&quot;,
+    hair: &quot;Spiky&quot;,
+    haircolor: &quot;Flame&quot;,
+    skincolor: &quot;Fair&quot;,
+    bodyheight: &quot;Average&quot;,
+    bodyweight: &quot;Average&quot;,
+    bodymusc: &quot;Ripped&quot;, 
+    personality: &quot;Brave&quot;,
+    virgin: false,
+    sexpref: &quot;Switch&quot;,
     origin: &quot;Camp Buddy&quot;
 }&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="NPC-List-Body" tags="nobr" position="750,375" size="100,100">&lt;span id=&quot;list&quot;&gt;
 &lt;&lt;for _i = 0; _i &lt; $npcs.length; _i++&gt;&gt;
@@ -2001,6 +2131,7 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
     heterochromia: false,
     eyes: &quot;Green&quot;,
     hair: &quot;Bald&quot;,
+    skincolor: &quot;Tan&quot;,
     haircolour: &quot;Light Brown&quot;,
     bodyheight: &quot;Short&quot;,
     bodyweight: &quot;Thin&quot;,
@@ -2868,11 +2999,11 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 &lt;&lt;elseif $position == &quot;Doggystyle&quot;&gt;&gt;
 	&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 		&lt;&lt;= either(
-        	&quot;You are being fucked in the doggy style.&quot;
+        	&quot;You are being fucked doggystyle.&quot;
         )&gt;&gt;
 	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
 		&lt;&lt;= either(
-        	&quot;You are fucking NPC in the doggy style&quot;
+        	&quot;You are fucking NPC doggystyle&quot;
         )&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="Blowjob-Dialogue" tags="nobr Dialogue" position="1000,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
@@ -3210,7 +3341,7 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 	)&gt;&gt;
 &lt;&lt;elseif $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
-		&quot;Reaching down, _n.name adjusts $proset.their&lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; to line it up with yours, before starting to slowly thrust, rubbing $proset.their shaft against yours.&quot;,
+		&quot;Reaching down, _n.name adjusts $proset.their &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; to line it up with yours, before starting to slowly thrust, rubbing $proset.their shaft against yours.&quot;,
 		&quot;_n.name draws you in close, opening $proset.their legs to align $proset.their groin with yours.&quot;
 	)&gt;&gt;
 	&lt;&lt;= either(
@@ -4574,7 +4705,7 @@ setup.boobjobQuotes = {
 setup.caressQuotes = {
   give: {
     Dominant: [
-      &quot;DOM-LINE-1 about CARESSING.&quot;
+      &quot;You like me feeling you up?&quot;
     ],
     Submissive: [
       &quot;SUB-LINE-1 about CARESSING.&quot;
@@ -6135,6 +6266,24 @@ _n.name is taller
 
 
 /* pools */
+&lt;&lt;set $CBPool = [
+  $Yoichi_CB,
+  $Hiro_CB,
+  $Hunter_CB,
+  $Keitaro_CB,
+  $Taiga_CB,
+  $Natsumi_CB
+]&gt;&gt;
+
+&lt;&lt;set $OCPool = [
+  $KevinNpc,
+  $JoshuaNpc
+]&gt;&gt;
+
+&lt;&lt;set $ABPool = [
+  $CoryPark,
+  $LorraineD
+]&gt;&gt;
 
 &lt;&lt;set $npcPools = {
   	species: [&quot;Human&quot;,&quot;Anthro&quot;],
@@ -6168,7 +6317,13 @@ _n.name is taller
       &quot;Zion&quot;,&quot;Zane&quot;,&quot;Zephyr&quot;,&quot;Zuri&quot;,&quot;Zen&quot;
     ],
   	surnames: [&quot;Placeholder&quot;],
-  	personalities: [&quot;Brave&quot;, &quot;Shy&quot;, &quot;Relaxed&quot;, &quot;Playful&quot;, &quot;Good&quot;, &quot;Evil&quot;, &quot;Kind&quot;, &quot;Logical&quot;, &quot;Studious&quot;, &quot;Active&quot;, &quot;Lonely&quot;, &quot;Timid&quot;, &quot;Stubborn&quot;, &quot;Serious&quot;, &quot;Tough&quot;, &quot;Jolly&quot;, &quot;Naive&quot;, &quot;Modest&quot;, &quot;Quiet&quot;, &quot;Bashful&quot;, &quot;Calm&quot;, &quot;Sassy&quot;, &quot;Flamboyant&quot;, &quot;Mean&quot;],
+  	personalities: [
+      &quot;Brave&quot;, &quot;Shy&quot;, &quot;Relaxed&quot;, &quot;Playful&quot;, &quot;Good&quot;, &quot;Evil&quot;,
+      &quot;Kind&quot;, &quot;Logical&quot;, &quot;Studious&quot;, &quot;Active&quot;, &quot;Lonely&quot;, &quot;Timid&quot;, 
+      &quot;Stubborn&quot;, &quot;Serious&quot;, &quot;Tough&quot;, &quot;Jolly&quot;, &quot;Naive&quot;, &quot;Modest&quot;, 
+      &quot;Quiet&quot;, &quot;Bashful&quot;, &quot;Calm&quot;, &quot;Sassy&quot;, &quot;Flamboyant&quot;, &quot;Mean&quot;,
+      &quot;Energetic&quot;
+      ],
   	eyes: [&quot;Brown&quot;,&quot;Blue&quot;,&quot;Green&quot;,&quot;Grey&quot;,&quot;Hazel&quot;,&quot;Amber&quot;,&quot;Scarlet&quot;],
   	hair: [
       &quot;Buzz cut&quot;, &quot;Crew Cut&quot;,  &quot;Ceaser cut&quot;, &quot;Undercut&quot;, &quot;Faux Hawk&quot;, &quot;Pixie Cut&quot;,
@@ -6194,7 +6349,7 @@ _n.name is taller
   	furScalesColors: [&quot;Black&quot;, &quot;Brown&quot;, &quot;Grey&quot;, &quot;White&quot;, &quot;Golden&quot;, &quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;,&quot;Rainbow&quot;],
   	patterns: [&quot;Solid&quot;, &quot;Striped&quot;, &quot;Spotted&quot;, &quot;Patterned&quot;],
   	genitals:[&quot;Penis&quot;,&quot;Vagina&quot;],
-  	genitaltype: [&quot;Uncut&quot;, &quot;Cut&quot;],
+  	genitaltype: [&quot;Phimosis&quot;,&quot;Uncut&quot;, &quot;Cut&quot;],
     breastSize:[&quot;Flat&quot;, &quot;Small&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Busty&quot;],
     penislength: [&quot;Tiny&quot;, &quot;Small&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Huge&quot;],
     assSize:[&quot;Flat&quot;, &quot;Tiny&quot;, &quot;Small&quot;, &quot;Round&quot;, &quot;Large&quot;, &quot;Huge&quot;],
@@ -7539,6 +7694,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _weightPool  = _p.bodyweight    || [&quot;Thin&quot;, &quot;Average&quot;, &quot;Heavy&quot;, &quot;Large&quot;]&gt;&gt;
 	&lt;&lt;set _muscPool    = _p.bodymusc      || [&quot;Soft&quot;, &quot;Light Muscles&quot;, &quot;Toned&quot;, &quot;Muscular&quot;, &quot;Ripped&quot; ]&gt;&gt;
 	&lt;&lt;set _persPool    = _p.personalities || [&quot;Kind&quot;, &quot;Tough&quot;, &quot;Calm&quot;, &quot;Jolly&quot;, &quot;Timid&quot;, &quot;Brave&quot;, &quot;Sassy&quot;, &quot;Mean&quot;]&gt;&gt;
+	&lt;&lt;set _assPool	   = _p.assSize		  || [&quot;Flat&quot;, &quot;Tiny&quot;, &quot;Small&quot;, &quot;Round&quot;, &quot;Large&quot;, &quot;Huge&quot;]&gt;&gt;
 	&lt;&lt;set _sexuPool    = _p.sexu          || [&quot;Heterosexual&quot;, &quot;Homosexual&quot;, &quot;Bisexual&quot;, &quot;Pansexual&quot;, &quot;Asexual&quot;]&gt;&gt;
 	&lt;&lt;set _speciesPool = _p.species       || [&quot;Human&quot;, &quot;Anthro&quot;]&gt;&gt;
 
@@ -7603,7 +7759,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	
 	&lt;&lt;set _npc.personality  = setup.pick(_persPool)&gt;&gt;
 
-	&lt;&lt;set _npc.assSize      = setup.pick([&quot;Flat&quot;, &quot;Small&quot;, &quot;Average&quot;, &quot;Round&quot;, &quot;Large&quot;])&gt;&gt;
+	&lt;&lt;set _npc.assSize      = setup.pick(_assPool)&gt;&gt;
 	&lt;&lt;set _npc.virgin       = either(true,false)&gt;&gt;
 	&lt;&lt;set _npc.origin       = &quot;Random Stranger&quot;&gt;&gt;
 
@@ -7669,6 +7825,31 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;for _i = 0; _i &lt; _count; _i++&gt;&gt;
 		&lt;&lt;MakeRandomNPC&gt;&gt;
 	&lt;&lt;/for&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+
+&lt;&lt;widget &quot;SpawnPoolOnce&quot;&gt;&gt;
+  &lt;&lt;set _poolKey = _args[0]&gt;&gt;
+  &lt;&lt;set _poolArr = _args[1]&gt;&gt;
+
+  &lt;&lt;set $flags = $flags or {}&gt;&gt;
+  &lt;&lt;set $flags.spawnedPools = $flags.spawnedPools or {}&gt;&gt;
+
+  &lt;&lt;if $flags.spawnedPools[_poolKey]&gt;&gt;
+    &lt;&lt;return&gt;&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;&lt;set $flags.spawnedPools[_poolKey] = true&gt;&gt;
+
+  &lt;&lt;if !_poolArr or !_poolArr.length&gt;&gt;
+    [Error] Pool is empty: &lt;&lt;= _poolKey&gt;&gt;
+    &lt;&lt;return&gt;&gt;
+  &lt;&lt;/if&gt;&gt;
+
+  /* Use unique temp var names to avoid collisions */
+  &lt;&lt;for _spawnPool_idx = 0; _spawnPool_idx &lt; _poolArr.length; _spawnPool_idx++&gt;&gt;
+    &lt;&lt;set _spawnPool_tpl = _poolArr[_spawnPool_idx]&gt;&gt;
+    &lt;&lt;MakeSNPC _spawnPool_tpl&gt;&gt;
+  &lt;&lt;/for&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 

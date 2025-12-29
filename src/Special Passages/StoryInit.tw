@@ -7,6 +7,24 @@
 
 
 /* pools */
+<<set $CBPool = [
+  $Yoichi_CB,
+  $Hiro_CB,
+  $Hunter_CB,
+  $Keitaro_CB,
+  $Taiga_CB,
+  $Natsumi_CB
+]>>
+
+<<set $OCPool = [
+  $KevinNpc,
+  $JoshuaNpc
+]>>
+
+<<set $ABPool = [
+  $CoryPark,
+  $LorraineD
+]>>
 
 <<set $npcPools = {
   	species: ["Human","Anthro"],
@@ -40,7 +58,13 @@
       "Zion","Zane","Zephyr","Zuri","Zen"
     ],
   	surnames: ["Placeholder"],
-  	personalities: ["Brave", "Shy", "Relaxed", "Playful", "Good", "Evil", "Kind", "Logical", "Studious", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Quiet", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean"],
+  	personalities: [
+      "Brave", "Shy", "Relaxed", "Playful", "Good", "Evil",
+      "Kind", "Logical", "Studious", "Active", "Lonely", "Timid", 
+      "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", 
+      "Quiet", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean",
+      "Energetic"
+      ],
   	eyes: ["Brown","Blue","Green","Grey","Hazel","Amber","Scarlet"],
   	hair: [
       "Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut",
@@ -66,7 +90,7 @@
   	furScalesColors: ["Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Rainbow"],
   	patterns: ["Solid", "Striped", "Spotted", "Patterned"],
   	genitals:["Penis","Vagina"],
-  	genitaltype: ["Uncut", "Cut"],
+  	genitaltype: ["Phimosis","Uncut", "Cut"],
     breastSize:["Flat", "Small", "Average", "Large", "Busty"],
     penislength: ["Tiny", "Small", "Average", "Large", "Huge"],
     assSize:["Flat", "Tiny", "Small", "Round", "Large", "Huge"],

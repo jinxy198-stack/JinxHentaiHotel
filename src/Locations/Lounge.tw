@@ -4,20 +4,16 @@
 <<set $gamelocation to "Lounge">>
 
 A nice place to rest, relax, and socialize.
-/* Randomly Generate npc's, including special npc's*/
-/* Spawn exactly once per visit (guard with a flag if desired) */
-<<if !$flags or !$flags.spawnedSNPC>>
-	<<set $flags to $flags or {}>>
-	<<set $flags.spawnedSNPC = true>>
-	<<SpawnSNPCs 1 $KevinNpc>>
-    <<SpawnSNPCs 1 $JoshuaNpc>>
-    <<SpawnSNPCs 1 $Yoichi>>
-    <<SpawnSNPCs 1 $CoryPark>>
-    <<SpawnSNPCs 1 $LorraineD>>
-    
-    <<SpawnRandomNPCs 3>>
-<</if>>
+
+<<SpawnPoolOnce "OC" $OCPool>>
+<<SpawnPoolOnce "CB" $CBPool>>
+<<SpawnPoolOnce "AB" $ABPool>>
+<<SpawnRandomNPCs 3>>
+
 <<include "SNPC-List">>
+
+
+
 [[Lobby]]
 
 </div>

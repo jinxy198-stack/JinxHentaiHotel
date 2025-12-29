@@ -56,11 +56,11 @@
 <<elseif $position == "Doggystyle">>
 	<<if $sex.roles.dom.name == _n.name>>
 		<<= either(
-        	"You are being fucked in the doggy style."
+        	"You are being fucked doggystyle."
         )>>
 	<<elseif $sex.roles.sub.name == _n.name>>
 		<<= either(
-        	"You are fucking NPC in the doggy style"
+        	"You are fucking NPC doggystyle"
         )>>
 	<</if>>
 <</if>>

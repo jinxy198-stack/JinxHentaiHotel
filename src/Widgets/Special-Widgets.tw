@@ -60,6 +60,7 @@
 	<<set _weightPool  = _p.bodyweight    || ["Thin", "Average", "Heavy", "Large"]>>
 	<<set _muscPool    = _p.bodymusc      || ["Soft", "Light Muscles", "Toned", "Muscular", "Ripped" ]>>
 	<<set _persPool    = _p.personalities || ["Kind", "Tough", "Calm", "Jolly", "Timid", "Brave", "Sassy", "Mean"]>>
+	<<set _assPool	   = _p.assSize		  || ["Flat", "Tiny", "Small", "Round", "Large", "Huge"]>>
 	<<set _sexuPool    = _p.sexu          || ["Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"]>>
 	<<set _speciesPool = _p.species       || ["Human", "Anthro"]>>
 
@@ -124,7 +125,7 @@
 	
 	<<set _npc.personality  = setup.pick(_persPool)>>
 
-	<<set _npc.assSize      = setup.pick(["Flat", "Small", "Average", "Round", "Large"])>>
+	<<set _npc.assSize      = setup.pick(_assPool)>>
 	<<set _npc.virgin       = either(true,false)>>
 	<<set _npc.origin       = "Random Stranger">>
 
@@ -190,6 +191,31 @@
 	<<for _i = 0; _i < _count; _i++>>
 		<<MakeRandomNPC>>
 	<</for>>
+<</widget>>
+
+
+<<widget "SpawnPoolOnce">>
+  <<set _poolKey = _args[0]>>
+  <<set _poolArr = _args[1]>>
+
+  <<set $flags = $flags or {}>>
+  <<set $flags.spawnedPools = $flags.spawnedPools or {}>>
+
+  <<if $flags.spawnedPools[_poolKey]>>
+    <<return>>
+  <</if>>
+  <<set $flags.spawnedPools[_poolKey] = true>>
+
+  <<if !_poolArr or !_poolArr.length>>
+    [Error] Pool is empty: <<= _poolKey>>
+    <<return>>
+  <</if>>
+
+  /* Use unique temp var names to avoid collisions */
+  <<for _spawnPool_idx = 0; _spawnPool_idx < _poolArr.length; _spawnPool_idx++>>
+    <<set _spawnPool_tpl = _poolArr[_spawnPool_idx]>>
+    <<MakeSNPC _spawnPool_tpl>>
+  <</for>>
 <</widget>>
 
 
