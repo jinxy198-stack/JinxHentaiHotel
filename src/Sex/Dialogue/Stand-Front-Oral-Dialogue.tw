@@ -5,7 +5,7 @@
 
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
-   "With half-lidded eyes, _n.name pushes you back towards your bed. You sit down, your cock already hardening between your legs. <br>_n.name gets on $proset.their knees in front of you, eyeing it hungrily.",
+   "With half-lidded eyes, _n.name pushes you back towards your bed. You sit down with your <<= $mc.genitals.toLowerCase()>> sticking out. <br>_n.name gets on $proset.their knees in front of you, eyeing it hungrily.",
    "You kneel down in front of $proset.them, their <<= _n.genitals.toLowerCase() >> in front of you."
     )>>
 <<elseif $sex.roles.sub.name== _n.name>>

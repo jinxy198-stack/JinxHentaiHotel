@@ -1,0 +1,66 @@
+:: OC-NPC [init nobr] {"position":"475,400","size":"100,100"}
+
+/* already designated NPC's will have their information stored here. */
+
+/*Kevin Snowpaw */
+<<set $KevinNpc = {
+    name: "Kevin",
+    nickname: "Kevy",
+    surname: "Snowpaw",
+    species: "Anthro",
+    anthro: {
+    	group: "Furry", 
+        subtype: "Bunny", 
+        color: "White"
+    },            /* start as object */
+    gender: "Male",
+    trans: "cisgender",
+    sexu: "Bisexual",
+    pronouns: "He/Him",
+    age: 8,
+    heterochromia: false,
+    eyes: "Blue",
+    hair: "Bald",
+    haircolour: {},
+    facefeatures: {},      /* use {} not the string "{}" */
+    skinfeatures: "",
+    bodyheight: "Very Short",
+    bodyweight: "Thin",
+    bodymusc: "Soft",
+    personality: "Kind",
+    genitals: "Penis",
+    genitaltype: "Uncut",
+    penislength:"Small",
+    assSize: "Small",
+    virgin: false,
+    sexpref: "Switch",
+    origin: "Unknown"
+}>>
+
+/*Joshua  */
+<<set $JoshuaNpc = {
+    name: "Joshua",
+    species: "Human",
+    gender: "Male",
+    trans: "cisgender",
+    sexu: "Bisexual",
+    pronouns: "He/Him",
+    age: 11,
+    heterochromia: false,
+    eyes: "Green",
+    hair: "Bald",
+    haircolour: "Light Brown",
+    bodyheight: "Short",
+    bodyweight: "Thin",
+    bodymusc: "Soft",
+    personality: "Kind",
+    genitals: "Penis",
+    genitaltype: "Cut",
+    penislength:"Small",
+    assSize: "Round",
+    virgin: false,
+    sexpref: "Submissive",
+    origin: "Unknown"
+}>>
+
+

@@ -2,8 +2,6 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-
-<<if _n.genitals == "Vagina">>
 	<<if $sex.roles.sub.name == _n.name>>
 		<<= either(
 			"Shifting your $mc.body.hips, you reposition yourself to eagerly grind your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.lips.toLowerCase()>>.",
@@ -23,7 +21,7 @@
 			"Pressing $proset.their <<= _n.genitals.toLowerCase()>> down against your mouth, $proset.they reposition $proset.themself so that $proset.they are grinding $proset.their <<= _n.genitals.toLowerCase() >> against your <<= $mc.body.lips.toLowerCase()>>."
 		)>>
 	<</if>>
-<</if>>
+
 
 
 

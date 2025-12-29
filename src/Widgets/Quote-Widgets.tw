@@ -465,8 +465,8 @@
 	<</if>>
 
 	/* normalize inputs */
-	<<set _pref = _n.sexpref || "Neutral">>
-	<<set _msize = $mc.penislength || "average">>
+	<<set _pref = _n.sexpref || "Switch">>
+	<<set _msize = $mc.breastsize || "average">>
 	<<set _mage  = $mc.agegroup>>
 	<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
 
@@ -474,28 +474,16 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.gropebreastQuotes.give[_pref]
-			|| setup.gropebreastQuotes.give.Neutral
-		>>
+	<<set _pool = setup.gropebreastQuotes.give[_pref][_msize][_mage] 
+	|| setup.gropebreastQuotes.give.Neutral>>
 	<<else>>
-		<<if _msize == "tiny">>
-			<<run _pool =
-				(
-					setup.gropebreastQuotes.receive[_pref]
-					&& setup.gropebreastQuotes.receive[_pref].tiny
-					&& setup.gropebreastQuotes.receive[_pref].tiny[_mage]
-				)
-				|| setup.gropebreastQuotes.receive.Neutral.default
-			>>
-		<<else>>
-			<<run _pool =
-				(
-					setup.gropebreastQuotes.receive[_pref]
-					&& setup.gropebreastQuotes.receive[_pref][_msize]
-				)
-				|| setup.gropebreastQuotes.receive.Neutral.default
-			>>
-		<</if>>
+		<<run _pool =
+			(
+				setup.gropebreastQuotes.receive[_pref]
+				&& setup.gropebreastQuotes.receive[_pref][_nsize][_nage]
+			)
+			|| setup.gropebreastQuotes.receive.Neutral
+		>>
 	<</if>>
 
 	/* output */

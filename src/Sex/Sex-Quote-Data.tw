@@ -639,11 +639,12 @@ setup.footjobQuotes = {
 setup.gropebreastQuotes = {
   give: {
     Dominant: {
-      Flat: [
-        "Don't be ashamed about being flat, it's really cute."
-      ],
+      Flat: {
+        Kid: ["I guess I shouldn't be expecting anything yet."],
+        Adult: ["Don't be ashamed about being flat, it's really cute."]
+      },
       Small: {
-        Child: ["Nothing quite like developing breasts. So lewd and cute."],
+        Kid: ["Nothing quite like developing breasts. So lewd and cute."],
         Teen: ["Nothing quite like developing breasts. So lewd and cute."]
       },
       Average: [
@@ -660,6 +661,10 @@ setup.gropebreastQuotes = {
 
     },
     Submissive: {
+      Flat: {
+        Kid: ["They're soft."],
+        Adult: ["I can work with this."]
+      },
       Average: [
         "I like your breasts."
       ],
@@ -669,7 +674,7 @@ setup.gropebreastQuotes = {
       ],
       Busty: [ "Whoa..."]
     },
-    Neutral: {
+    Switch: {
       Large: ["Wow..."],
       Busty: ["These sure are big!"]
     }
@@ -684,7 +689,7 @@ setup.gropebreastQuotes = {
       "You can play with them if you like."
     ],
 
-    Neutral: [
+    Switch: [
      "NEUTRAL dialogue about grabbing boobs"
     ]
   }
@@ -852,7 +857,7 @@ setup.handjobQuotes = {
   receive: {
     Dominant: {
       Tiny: {
-        Child: ["Perfect size for someone your age."],
+        Kid: ["Perfect size for someone your age."],
         Adult: ["So cute and tiny."]
       },
       Small: ["So small, yet so precious."],
@@ -865,7 +870,7 @@ setup.handjobQuotes = {
 
     Submissive: {
       Tiny: {
-        Child: ["Perfect size for someone your age."],
+        Kid: ["Perfect size for someone your age."],
         Adult: ["So cute and tiny."]
       },
       Small: ["Don't feel bad about the size, I like it."],
@@ -1050,7 +1055,12 @@ setup.orgasmcloseQuotes = {
       Dominant:["Faster, I'm so close!"],
       Submissive: ["Faster, I'm so close!"],
       Versatile: ["Faster, I'm so close!"]
-    } 
+    }, 
+    Blowjob: {
+      Dominant:["I'm gonna cum!"],
+      Submissive: ["I'm gonna cum!"],
+      Versatile: ["I'm gonna cum!"]
+    }
   },
 
   receive: {
@@ -1086,6 +1096,11 @@ setup.orgasmcloseQuotes = {
       Versatile: [
         "NEUTRAL HANDJOB ORGASM CLOSE QUOTE"
       ]
+    },
+    Blowjob: {
+      Dominant:["MMPH"],
+      Submissive: ["MMPH"],
+      Versatile: ["MMPH"]
     },
 
     Neutral: [

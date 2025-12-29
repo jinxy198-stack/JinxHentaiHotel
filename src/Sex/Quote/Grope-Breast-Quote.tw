@@ -5,16 +5,16 @@
 <</if>>
 
 <<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
-<<set _pref = _n.sexpref || "Neutral">>
-<<set _msize = $mc.breastsize || "average">>
-<<set _nsize = _n.breastsize || "average">>
-<<set _mage  = $mc.ageGroup  ? "child" : "adult">>
-<<set _nage  = _n.ageGroup  ? "child" : "adult">>
+<<set _pref = _n.sexpref || "Switch">>
+<<set _msize = $mc.breastsize || "Average">>
+<<set _nsize = _n.breastsize || "Average">>
+<<set _mage  = $mc.ageGroup  || "Adult">>
+<<set _nage  = _n.ageGroup  || "Adult">>
 
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.gropebreastQuotes.give[_pref][_msize][_msize] 
+	<<set _pool = setup.gropebreastQuotes.give[_pref][_msize][_mage] 
 	|| setup.gropebreastQuotes.give.Neutral>>
 <<else>>
 		<<run _pool =
@@ -30,6 +30,7 @@
 	<<= either(..._pool)>>
 <<else>>
 	[Error] No grope breast quote pool found.
+	(mode=<<=_mode>>, action=<<=_action>>, pref=<<=_pref>>)
 <</if>>
 
 
