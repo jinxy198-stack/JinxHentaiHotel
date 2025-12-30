@@ -11,7 +11,7 @@
     <<elseif _n.personality== "Relaxed">>
     "You want me to lead? Sure. I'll keep it slow,  unless you ask otherwise."
     <<elseif _n.personality== "Playful">>
-    "So you're giving me full control? Heh. Hope you're ready to be teased nonstop."
+    "So you're letting me top? Heh, this will be fun."
     <<elseif _n.personality== "Good">>
     "You want me to take the lead? Very well, I'll take care of you"
     <<elseif _n.personality== "Evil">>
@@ -48,6 +48,8 @@
     "Fabulous — I'll make this unforgettable."
     <<elseif _n.personality== "Mean">>
     "Hmph"
+    <<elseif _n.personality== "Energetic">>
+    "Hope you can match my pace!"
     <</if>>
 <<elseif $sex.roles.sub.name is _n.name>>
 	<<if _n.personality =="Tough">>
@@ -61,7 +63,7 @@
     <<elseif _n.personality== "Relaxed">>
     "Alright, alright… take the wheel then. Just don't make me do extra effort"
     <<elseif _n.personality== "Playful">>
-    "Oooh, show me how serious you are, then~"
+    "You wanna top? This will be fun!"
     <<elseif _n.personality== "Good">>
     "Alright, just be sure to enjoy it."
     <<elseif _n.personality== "Evil">>
@@ -98,6 +100,8 @@
     "Go ahead darling, treat me like a star!"
     <<elseif _n.personality== "Mean">>
     "Hmph"
+    <<elseif _n.personality== "Energetic">>
+    "I normally prefer to be active but sure!"
     <</if>>
 <</if>>
 
