@@ -8,7 +8,7 @@
     )>>
 <<elseif $sex.roles.sub.name == _n.name>>
 	<<= either(
-    "You finger __n.name's <<= _n.genitals.toLowerCase()>>"
+    "You finger _n.name's <<= _n.genitals.toLowerCase()>>"
     )>>
 <</if>>
 
