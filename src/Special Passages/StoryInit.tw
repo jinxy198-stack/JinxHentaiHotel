@@ -116,7 +116,6 @@
 <<run setup.hasAny  = (npc, keys) => !!(npc && npc.parts && keys.some(k => npc.parts[k]))>>
 <<run setup.hasBoth = (npc, a, b) => !!(npc && npc.parts && npc.parts[a] && npc.parts[b])>>
 
-<<run window.setup = window.setup || {} >>
 <<run setup.pick  = (arr) => arr[Math.floor(Math.random() * arr.length)]>>
 <<run setup.randint = (a,b) => Math.floor(Math.random()*(b-a+1))+a>>
 <<run setup.clone = (o) => JSON.parse(JSON.stringify(o))>>

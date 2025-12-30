@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="116" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
+	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="117" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
 /* Make sure the PositionBlock never extends under the sidebar */
 .position-block{
   box-sizing:border-box;
@@ -3008,6 +3008,10 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="Blowjob-Dialogue" tags="nobr Dialogue" position="1000,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
+
+&lt;&lt;if !$seenActions.Blowjob&gt;&gt;
+&lt;&lt;set $seenActions.Blowjob = true&gt;&gt;
+
 &lt;&lt;if $position == &quot;SixtyNine&quot;&gt;&gt;
 	&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 		&lt;&lt;= either(
@@ -3044,9 +3048,10 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 			&quot;Moaning in delight, _n.name wraps $proset.their _n.body.lips around your &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt;, licking and sucking your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt; as $proset.they continue making muffled moaning noises.&quot;
 		)&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
 
-	&lt;br&gt;
-    &lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
+&lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
 		&lt;&lt;= either(
 			&quot;You eagerly thrust your &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt; past $proset.their &lt;&lt;= _n.body.lips.toLowerCase()&gt;&gt;, letting out a moan as you greedily pump your &lt;&lt;= $mc.body.hips.toLowerCase()&gt;&gt; into $proset.their &lt;&lt;= _n.body.face.toLowerCase()&gt;&gt;.&quot;,
 			&quot;You desperately buck your $mc.body.hips into $proset.their &lt;&lt;= _n.body.face.toLowerCase()&gt;&gt;, letting out a moan as you eagerly fuck $proset.their throat.&quot;,
@@ -3837,7 +3842,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 &lt;&lt;set _position = $sex.position || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
@@ -3869,8 +3884,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -3886,47 +3910,48 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Blowjob quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if !setup.caressQuotes&gt;&gt;
-	[Error] setup.caressQuotes is missing. Define it in StoryInit.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;if !_n or !$sex or !$sex.roles or !$sex.roles.dom or !$sex.roles.sub&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref ? _n.sexpref : &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;set _material = ($mc &amp;&amp; $mc.body &amp;&amp; $mc.body.bodymaterial) ? $mc.body.bodymaterial : &quot;Skin&quot;&gt;&gt;
 
+[DEBUG] mode=&lt;&lt;=_mode&gt;&gt; n=&lt;&lt;=_n.name&gt;&gt;
 
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool =
-		setup.caressQuotes.give
-		&amp;&amp; (setup.caressQuotes.give[_pref] || setup.caressQuotes.give.Neutral)&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool =
-		setup.caressQuotes.receive
-		&amp;&amp; (setup.caressQuotes.receive[_pref] || setup.caressQuotes.receive.Neutral)&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
+&lt;&lt;set _pool =
+	setup.caressQuotes[_mode]
+	&amp;&amp; setup.caressQuotes[_mode][_material]
+	&amp;&amp; setup.caressQuotes[_mode][_material][_pref]
+&gt;&gt;
 
 &lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Caress quote pool found.
+	(mode=&lt;&lt;=_mode&gt;&gt;, material=&lt;&lt;=_material&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="Cuddle-Quote" tags="nobr Dialogue" position="1800,1700" size="100,100">&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
 	[Error] setup.cuddleQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -3947,8 +3972,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -3970,8 +4004,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -3994,8 +4037,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _nsize = _n.breastsize || &quot;Average&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _nsize = _n.breastsize || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.breastsize || &quot;Average&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
@@ -4007,7 +4059,7 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 			&lt;&lt;run _pool =
 				(
 					setup.faceonchestQuotes.receive[_pref]
-					setup.faceonchestQuotes.receive[_nsize]
+					&amp;&amp; setup.faceonchestQuotes.receive[_pref][_nsize]
 				)
 				|| setup.faceonchestQuotes.receive.Neutral
 			&gt;&gt;
@@ -4023,8 +4075,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _body = $mc.bodytype || &quot;Average&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _body = $mc.bodytype || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _material = _n.body.bodymaterial || null&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
@@ -4047,8 +4108,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -4070,8 +4140,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -4093,8 +4172,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength || &quot;average&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
@@ -4122,8 +4210,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 /* Use later */
 &lt;&lt;set _msize = $mc.penislength&gt;&gt;
@@ -4149,8 +4246,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.breastsize || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _nsize = _n.breastsize || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
@@ -4184,8 +4290,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.assSize || &quot;Round&quot;&gt;&gt;
 &lt;&lt;set _nsize = _n.assSize || &quot;Round&quot;&gt;&gt;
 
@@ -4197,7 +4312,12 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 			setup.gropebuttQuotes.give[_nsize]
 			&amp;&amp; setup.gropebuttQuotes.give[_nsize][_pref]
 		)
-		|| setup.gropebuttQuotes.give[_nsize]?.Neutral
+		|| 
+		(
+			setup.gropebuttQuotes.give[_nsize]
+			&amp;&amp; setup.gropebuttQuotes.give[_nsize].Neutral
+		)
+
 	&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;set _pool =
@@ -4205,7 +4325,11 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 			setup.gropebuttQuotes.receive[_msize]
 			&amp;&amp; setup.gropebuttQuotes.receive[_msize][_pref]
 		)
-		|| setup.gropebuttQuotes.receive[_msize]?.Neutral
+		|| 
+		(
+			setup.gropebuttQuotes.receive[_nsize]
+			&amp;&amp; setup.gropebuttQuotes.receive[_nsize].Neutral
+		)
 	&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -4219,8 +4343,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _age  = ($mc.ageGroup == &quot;Child&quot;) ? &quot;Child&quot; : &quot;Adult&quot;&gt;&gt;
 
@@ -4275,39 +4408,40 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm Close quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if !setup.orgasmQuotes&gt;&gt;
-	[Error] setup.orgasmQuotes is missing. Define it in StoryInit.
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _msize = $mc.penislength&gt;&gt;
-&lt;&lt;set _mage  = $mc.ageGroup&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;set _mode   = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;set _pref   = _n.sexpref || &quot;Versatile&quot;&gt;&gt;
 &lt;&lt;set _action = $sex.action&gt;&gt;
+&lt;&lt;set _pool   = null&gt;&gt;
 
-&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _entry = setup.orgasmQuotes[_mode] &amp;&amp; setup.orgasmQuotes[_mode][_action]&gt;&gt;
 
-&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.orgasmQuotes.give[_pref] 
-	|| setup.orgasmQuotes.give.Neutral&gt;&gt;
+&lt;&lt;if Array.isArray(_entry)&gt;&gt;
+	&lt;&lt;set _pool = _entry&gt;&gt;
 &lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool = setup.orgasmQuotes.receive[_pref] 
-	|| setup.orgasmQuotes.receive.Neutral&gt;&gt;
+	&lt;&lt;set _pool = (_entry &amp;&amp; _entry[_pref]) || null&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-
 
 &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm quote pool found.
+	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if !setup.petearsQuotes&gt;&gt;
 	[Error] setup.petearsQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -4329,8 +4463,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -4460,8 +4603,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength&gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup&gt;&gt;
 &lt;&lt;set _action = $sex.action&gt;&gt;
@@ -4486,8 +4638,17 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength&gt;&gt;
 &lt;&lt;set _age  = $mc.ageGroup&gt;&gt;
 
@@ -4704,28 +4865,48 @@ setup.boobjobQuotes = {
 /* ----- CARESS ----- */
 setup.caressQuotes = {
   give: {
-    Dominant: [
-      &quot;You like me feeling you up?&quot;
-    ],
-    Submissive: [
-      &quot;SUB-LINE-1 about CARESSING.&quot;
-    ],
-    Neutral: [
-      &quot;NEUTRAL-DOM-LINE-1 about CARESSING.&quot;
-    ]
+    Skin:{
+      Dominant: [&quot;You like me feeling you up?&quot;],
+      Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
+      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING.&quot;]
+    },
+    Scales:{
+      Dominant: [&quot;You like me feeling you up?&quot;],
+      Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
+      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING.&quot;]
+    },
+    Feathers:{
+      Dominant: [&quot;You like me feeling you up?&quot;],
+      Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
+      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING.&quot;]
+    },
+    Fur:{
+      Dominant: [&quot;You like me feeling you up?&quot;],
+      Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
+      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING.&quot;]
+    }
   },
   receive: {
-    Dominant: [
-      &quot;Yeah, feel me up!&quot;
-    ],
-
-    Submissive: [
-      &quot;Mmm, that feels nice.&quot;
-    ],
-
-    Neutral: [
-      &quot;That feels nice.&quot;
-    ]
+    Skin:{
+      Dominant: [&quot;Yeah, feel me up!&quot;],
+      Submissive: [&quot;Mmm, that feels nice.&quot;],
+      Switch: [&quot;That feels nice.&quot;]
+    },
+    Scales:{
+      Dominant: [&quot;You like me feeling you up?&quot;],
+      Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
+      Switch: [&quot;That feels nice.&quot;]
+    },
+    Feathers:{
+      Dominant: [&quot;You like me feeling you up?&quot;],
+      Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
+      Switch: [&quot;That feels nice.&quot;]
+    },
+    Fur:{
+      Dominant: [&quot;You like me feeling you up?&quot;],
+      Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
+      Switch: [&quot;That feels nice.&quot;]
+    }
   }
 };
 /* ----- CUDDLE ----- */
@@ -6250,7 +6431,9 @@ Wanna have aftercare or end the session?
 
 _n.name is taller 
 &quot;_n.name is ready to perform oral, 
-&quot;but due to your shorter height, they don&#39;t need to kneel, instead they just stand there.&quot;</tw-passagedata><tw-passagedata pid="114" name="StoryCaption" tags="" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
+&quot;but due to your shorter height, they don&#39;t need to kneel, instead they just stand there.&quot;</tw-passagedata><tw-passagedata pid="114" name="Setup-Init" tags="init" position="475,1475" size="100,100">&lt;&lt;script&gt;&gt;
+window.setup = window.setup || {};
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="StoryCaption" tags="" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
 &lt;b&gt;Location: &lt;/b&gt;$gamelocation
 &lt;&lt;/if&gt;&gt;
 
@@ -6258,7 +6441,7 @@ _n.name is taller
 &lt;&lt;button &quot;Credits&quot;&gt;&gt;&lt;&lt;PopupCredits&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $npcSeq = 0&gt;&gt;
+&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $npcSeq = 0&gt;&gt;
 &lt;&lt;set $npcs = []&gt;&gt;
 &lt;&lt;set $ui = {}&gt;&gt;
 &lt;&lt;set $lastNpc = null&gt;&gt;
@@ -6375,7 +6558,6 @@ _n.name is taller
 &lt;&lt;run setup.hasAny  = (npc, keys) =&gt; !!(npc &amp;&amp; npc.parts &amp;&amp; keys.some(k =&gt; npc.parts[k]))&gt;&gt;
 &lt;&lt;run setup.hasBoth = (npc, a, b) =&gt; !!(npc &amp;&amp; npc.parts &amp;&amp; npc.parts[a] &amp;&amp; npc.parts[b])&gt;&gt;
 
-&lt;&lt;run window.setup = window.setup || {} &gt;&gt;
 &lt;&lt;run setup.pick  = (arr) =&gt; arr[Math.floor(Math.random() * arr.length)]&gt;&gt;
 &lt;&lt;run setup.randint = (a,b) =&gt; Math.floor(Math.random()*(b-a+1))+a&gt;&gt;
 &lt;&lt;run setup.clone = (o) =&gt; JSON.parse(JSON.stringify(o))&gt;&gt;
@@ -6442,7 +6624,7 @@ _n.name is taller
 &lt;&lt;set $anthroPatterns = [&quot;Solid&quot;, &quot;Striped&quot;, &quot;Spotted&quot;, &quot;Patterned&quot;]&gt;&gt;
 &lt;&lt;set $anthroTailTypes = [&quot;None&quot;, &quot;Short&quot;, &quot;Long&quot;, &quot;Bushy&quot;, &quot;Reptilian&quot;, &quot;Avian&quot;]&gt;&gt;
 &lt;&lt;set $anthroEarTypes = [&quot;None&quot;, &quot;Canine&quot;, &quot;Feline&quot;, &quot;Bunny&quot;, &quot;Bear&quot;, &quot;Pointed&quot;, &quot;Rounded&quot;]&gt;&gt;
-&lt;&lt;set $anthroWingspans = [&quot;None&quot;, &quot;Short&quot;, &quot;Medium&quot;, &quot;Large&quot;, &quot;Massive&quot;]&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="Start" tags="" position="175,275" size="100,100">&lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
+&lt;&lt;set $anthroWingspans = [&quot;None&quot;, &quot;Short&quot;, &quot;Medium&quot;, &quot;Large&quot;, &quot;Massive&quot;]&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="Start" tags="" position="175,275" size="100,100">&lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
 &lt;h3 style=&quot;font-weight: normal;&quot;&gt;This game is meant to simulate interactions of many sexual varieties. 
 Create your character to begin.
 &lt;/h3&gt;
@@ -6461,7 +6643,7 @@ Updated as of 12/27/2025
 
  
  
-&lt;&lt;button [[TestShota|Bedroom]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="Statistics" tags="" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
+&lt;&lt;button [[TestShota|Bedroom]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="Statistics" tags="" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
 &lt;table class=&quot;stats-table&quot;&gt;
   &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
 
@@ -6611,7 +6793,7 @@ Updated as of 12/27/2025
     &lt;th&gt;Ass size:&lt;/th&gt;
     &lt;td id=&quot;mc-assSize&quot;&gt;$mc.assSize&lt;/td&gt;
   &lt;/tr&gt;
-&lt;/table&gt;</tw-passagedata><tw-passagedata pid="118" name="Tutorial" tags="" position="25,275" size="100,100">You and the person you brought to your room will engage in a session of sex. How you engage in it is up to you.
+&lt;/table&gt;</tw-passagedata><tw-passagedata pid="119" name="Tutorial" tags="" position="25,275" size="100,100">You and the person you brought to your room will engage in a session of sex. How you engage in it is up to you.
 
 You can choose who will be the bottom and who will be the top. Note that will not mean that you will determine who is the dom and who is the sub, that will depend on the personality. Certain actions will be locked depending on your role, you cannot be the top and suck off the other&#39;s dick.
 For example, you can have a submissive feminine twink be the one to fuck you or you can have a big muscular dom be fucked by you.
@@ -6630,7 +6812,7 @@ Intercourse is the stage where the meat of the game is. The actions there will b
 Orgasm is the part where your control is limited. Depending on what you are doing, you can choose where to have your orgasm or the npc. Note that to save on complexity it will be treated as a simultenious orgasm between you and the NPC.
 Following the Orgasm you are automatically put into the Aftercare stage. It is an optional stage where you can choose to enjoy the afterglow with the NPC or just finish the sex.
 
-Only when you reach the Aftercare stage will you be allowed to end the session.</tw-passagedata><tw-passagedata pid="119" name="UI-Attracted-check" tags="" position="900,500" size="100,100">&lt;&lt;check-attraction $mc _n&gt;&gt;
+Only when you reach the Aftercare stage will you be allowed to end the session.</tw-passagedata><tw-passagedata pid="120" name="UI-Attracted-check" tags="" position="900,500" size="100,100">&lt;&lt;check-attraction $mc _n&gt;&gt;
 &lt;b&gt;$mc.name: &lt;/b&gt;
 * $mc.gender
 * $mc.sexu
@@ -6653,7 +6835,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;include &quot;Reject-Dialogue&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="UI-NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;silently&gt;&gt;&lt;&lt;set _n = $ui.npc&gt;&gt;&lt;&lt;/silently&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="UI-NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;silently&gt;&gt;&lt;&lt;set _n = $ui.npc&gt;&gt;&lt;&lt;/silently&gt;&gt;
 &lt;b&gt;Name:&lt;/b&gt; &lt;&lt;=_n.name&gt;&gt; &lt;&lt;if _n.surname&gt;&gt;&lt;&lt;=_n.surname&gt;&gt;&lt;&lt;/if&gt;&gt; &lt;&lt;if _n.nickname&gt;&gt;
 &lt;br&gt;
 &lt;b&gt;Nickname: &lt;/b&gt;&quot;&lt;&lt;=_n.nickname&gt;&gt;&quot;&lt;&lt;/if&gt;&gt;
@@ -6684,7 +6866,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;br&gt;
 &lt;b&gt;Genitals:&lt;/b&gt; &lt;&lt;=_n.genitals&gt;&gt;&lt;&lt;if _n.genitals== &quot;Penis&quot;&gt;&gt; * &lt;b&gt;Length:&lt;/b&gt; &lt;&lt;=_n.penislength&gt;&gt; &lt;&lt;/if&gt;&gt; (&lt;&lt;=_n.genitaltype&gt;&gt;)
 &lt;br&gt;
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="UI-NPC-Sex" tags="nobr" position="1025,475" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="UI-NPC-Sex" tags="nobr" position="1025,475" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;set _n = $ui.npc&gt;&gt;
 	&lt;&lt;if !_n&gt;&gt;[Error] No active NPC selected.&lt;&lt;return&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -6768,7 +6950,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 		&lt;br&gt;
 		&lt;span id=&quot;aftercare&quot;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;/span&gt;
 	&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="122" name="UI-NPC-Talk" tags="nobr" position="750,500" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;silently&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="123" name="UI-NPC-Talk" tags="nobr" position="750,500" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;silently&gt;&gt;
 &lt;&lt;set _n = $ui.npc&gt;&gt;
 &lt;&lt;set _lines = {
   Default: [&quot;Hello&quot;,&quot;Hi&quot;],
@@ -6820,7 +7002,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/button&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
 &lt;&lt;widget &quot;AnalQuote&quot;&gt;&gt;
 	/* guard */
 	&lt;&lt;if !setup.analQuotes&gt;&gt;
@@ -6832,8 +7014,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
 	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-	&lt;&lt;set _poisition = $sex.position&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;	&lt;&lt;set _position = $sex.position&gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
 
@@ -6872,8 +7063,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -6903,38 +7103,35 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 /* ----- CARESS ----- */
 &lt;&lt;widget &quot;CaressQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.caressQuotes&gt;&gt;
-		[Error] setup.caressQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
 
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-	&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;set _material = ($mc &amp;&amp; $mc.body &amp;&amp; $mc.body.bodymaterial) ? $mc.body.bodymaterial : &quot;Skin&quot;&gt;&gt;
 
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.caressQuotes.give[_pref]
-			|| setup.caressQuotes.give.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.caressQuotes.receive[_pref]
-				)
-				|| setup.caressQuotes.receive.Neutral
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
+[DEBUG] setup.caressQuotes = &lt;&lt;= typeof setup.caressQuotes &gt;&gt;
 
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;= either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] Caress: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _pool =
+	setup.caressQuotes[_mode]
+	&amp;&amp; setup.caressQuotes[_mode][_material]
+	&amp;&amp; setup.caressQuotes[_mode][_material][_pref]
+&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Caress quote pool found.
+	(mode=&lt;&lt;=_mode&gt;&gt;, material=&lt;&lt;=_material&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
+&lt;&lt;/if&gt;&gt;
+
 &lt;&lt;/widget&gt;&gt;
 
 /* ----- CUDDLE ----- */
@@ -6947,8 +7144,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -6983,8 +7189,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -7019,8 +7234,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -7056,8 +7280,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-	&lt;&lt;set _nsize = _n.breastsize || &quot;Average&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;	&lt;&lt;set _nsize = _n.breastsize || &quot;Average&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.breastsize || &quot;Average&quot;&gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
@@ -7096,8 +7329,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-	&lt;&lt;set _body = $mc.bodytype || &quot;Average&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;	&lt;&lt;set _body = $mc.bodytype || &quot;Average&quot;&gt;&gt;
 	&lt;&lt;set _material = _n.body.bodymaterial || null&gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
@@ -7135,8 +7377,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -7172,8 +7423,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -7210,8 +7470,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _size = $mc.penislength || &quot;average&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -7250,8 +7519,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.penislength&gt;&gt;
 	&lt;&lt;set _nsize =_n.penislength&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
 	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
@@ -7288,8 +7566,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.breastsize || &quot;average&quot;&gt;&gt;
 	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -7330,8 +7617,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.assSize || &quot;Round&quot;&gt;&gt;
 	&lt;&lt;set _nsize = _n.assSize || &quot;Round&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
@@ -7340,7 +7636,12 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 				setup.gropebuttQuotes.give[_nsize]
 				&amp;&amp; setup.gropebuttQuotes.give[_nsize][_pref]
 			)
-			|| setup.gropebuttQuotes.give[_nsize]?.Neutral
+			|| 
+			(
+				setup.gropebuttQuotes.give[_nsize]
+				&amp;&amp; setup.gropebuttQuotes.give[_nsize].Neutral
+			)
+
 		&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;set _pool =
@@ -7348,7 +7649,12 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 				setup.gropebuttQuotes.receive[_msize]
 				&amp;&amp; setup.gropebuttQuotes.receive[_msize][_pref]
 			)
-			|| setup.gropebuttQuotes.receive[_msize]?.Neutral
+			|| 
+			(
+				setup.gropebuttQuotes.give[_nsize]
+				&amp;&amp; setup.gropebuttQuotes.give[_nsize].Neutral
+			)
+
 		&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
@@ -7372,8 +7678,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
 	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -7388,7 +7703,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 					setup.handjobQuotes.receive[_pref]
 					&amp;&amp; setup.handjobQuotes.receive[_pref].tiny
 					&amp;&amp; setup.handjobQuotes.receive[_pref].tiny[_mage]
-				)
+)
 				|| setup.handjobQuotes.receive.Neutral
 			&gt;&gt;
 		&lt;&lt;else&gt;&gt;
@@ -7421,8 +7736,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -7457,8 +7781,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -7494,8 +7827,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -7532,8 +7874,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-	&lt;&lt;set _action = $sex.action &gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;	&lt;&lt;set _action = $sex.action &gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
 
@@ -7547,7 +7898,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 				(
 					setup.orgasmQuotes.receive[_pref]
 				)
-				|| setup.orgasmcQuotes.receive.Neutral.default
+				|| setup.orgasmQuotes.receive.Neutral.default
 			&gt;&gt;
 
 	&lt;&lt;/if&gt;&gt;
@@ -7607,8 +7958,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
-	&lt;&lt;set _mode = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
+&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -7633,7 +7993,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;else&gt;&gt;
 		[Error] VaginalQuote: empty dialogue pool.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No template provided to MakeSNPC.
 		&lt;&lt;return&gt;&gt;
@@ -8373,7 +8733,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;set _npc.petname = &quot;pet&quot;&gt;&gt;	
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Widgets" tags="widget nobr" position="400,25" size="100,100">&lt;&lt;widget &quot;SetNPCBodyType&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="Widgets" tags="widget nobr" position="400,25" size="100,100">&lt;&lt;widget &quot;SetNPCBodyType&quot;&gt;&gt;
 	/* choose NPC: arg 0 or $ui.npc */
 	&lt;&lt;set _npc = (_args.length &gt; 0) ? _args[0] : $ui.npc&gt;&gt;
 	&lt;&lt;if !_npc&gt;&gt;

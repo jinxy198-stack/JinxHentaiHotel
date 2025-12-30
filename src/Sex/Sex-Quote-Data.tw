@@ -199,28 +199,48 @@ setup.boobjobQuotes = {
 /* ----- CARESS ----- */
 setup.caressQuotes = {
   give: {
-    Dominant: [
-      "You like me feeling you up?"
-    ],
-    Submissive: [
-      "SUB-LINE-1 about CARESSING."
-    ],
-    Neutral: [
-      "NEUTRAL-DOM-LINE-1 about CARESSING."
-    ]
+    Skin:{
+      Dominant: ["You like me feeling you up?"],
+      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Switch: ["NEUTRAL-DOM-LINE-1 about CARESSING."]
+    },
+    Scales:{
+      Dominant: ["You like me feeling you up?"],
+      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Switch: ["NEUTRAL-DOM-LINE-1 about CARESSING."]
+    },
+    Feathers:{
+      Dominant: ["You like me feeling you up?"],
+      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Switch: ["NEUTRAL-DOM-LINE-1 about CARESSING."]
+    },
+    Fur:{
+      Dominant: ["You like me feeling you up?"],
+      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Switch: ["NEUTRAL-DOM-LINE-1 about CARESSING."]
+    }
   },
   receive: {
-    Dominant: [
-      "Yeah, feel me up!"
-    ],
-
-    Submissive: [
-      "Mmm, that feels nice."
-    ],
-
-    Neutral: [
-      "That feels nice."
-    ]
+    Skin:{
+      Dominant: ["Yeah, feel me up!"],
+      Submissive: ["Mmm, that feels nice."],
+      Switch: ["That feels nice."]
+    },
+    Scales:{
+      Dominant: ["You like me feeling you up?"],
+      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Switch: ["That feels nice."]
+    },
+    Feathers:{
+      Dominant: ["You like me feeling you up?"],
+      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Switch: ["That feels nice."]
+    },
+    Fur:{
+      Dominant: ["You like me feeling you up?"],
+      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Switch: ["That feels nice."]
+    }
   }
 };
 /* ----- CUDDLE ----- */

@@ -7,8 +7,17 @@
 	<<return>>
 <</if>>
 
-<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
-<<set _pref = _n.sexpref || "Neutral">>
+<<if !$sex or !$sex.roles or !_n>>
+	<<return>>
+<</if>>
+
+<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
+	<<set _mode = "give">>
+<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
+	<<set _mode = "receive">>
+<<else>>
+	<<return>>
+<</if>><<set _pref = _n.sexpref || "Neutral">>
 <<set _msize = $mc.assSize || "Round">>
 <<set _nsize = _n.assSize || "Round">>
 
@@ -20,7 +29,12 @@
 			setup.gropebuttQuotes.give[_nsize]
 			&& setup.gropebuttQuotes.give[_nsize][_pref]
 		)
-		|| setup.gropebuttQuotes.give[_nsize]?.Neutral
+		|| 
+		(
+			setup.gropebuttQuotes.give[_nsize]
+			&& setup.gropebuttQuotes.give[_nsize].Neutral
+		)
+
 	>>
 <<else>>
 	<<set _pool =
@@ -28,7 +42,11 @@
 			setup.gropebuttQuotes.receive[_msize]
 			&& setup.gropebuttQuotes.receive[_msize][_pref]
 		)
-		|| setup.gropebuttQuotes.receive[_msize]?.Neutral
+		|| 
+		(
+			setup.gropebuttQuotes.receive[_nsize]
+			&& setup.gropebuttQuotes.receive[_nsize].Neutral
+		)
 	>>
 <</if>>
 

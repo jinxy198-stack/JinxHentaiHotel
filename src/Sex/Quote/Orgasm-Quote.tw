@@ -1,30 +1,21 @@
 :: Orgasm-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
-<<if !setup.orgasmQuotes>>
-	[Error] setup.orgasmQuotes is missing. Define it in StoryInit.
-	<<return>>
-<</if>>
-
-<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
-<<set _pref = _n.sexpref || "Neutral">>
-<<set _msize = $mc.penislength>>
-<<set _mage  = $mc.ageGroup>>
+<<set _mode   = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+<<set _pref   = _n.sexpref || "Versatile">>
 <<set _action = $sex.action>>
+<<set _pool   = null>>
 
-<<set _pool = null>>
+<<set _entry = setup.orgasmQuotes[_mode] && setup.orgasmQuotes[_mode][_action]>>
 
-<<if _mode == "give">>
-	<<set _pool = setup.orgasmQuotes.give[_pref] 
-	|| setup.orgasmQuotes.give.Neutral>>
+<<if Array.isArray(_entry)>>
+	<<set _pool = _entry>>
 <<else>>
-	<<set _pool = setup.orgasmQuotes.receive[_pref] 
-	|| setup.orgasmQuotes.receive.Neutral>>
+	<<set _pool = (_entry && _entry[_pref]) || null>>
 <</if>>
-
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>
 <<else>>
 	[Error] No Orgasm quote pool found.
+	(mode=<<=_mode>>, action=<<=_action>>, pref=<<=_pref>>)
 <</if>>
-
 

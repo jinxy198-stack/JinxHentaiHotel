@@ -1,8 +1,10 @@
 :: Blowjob-Dialogue [nobr Dialogue] {"position":"1000,1475","size":"100,100"}
-
-
 <<set _npc = _n>>
 <<PronounsSet>>
+
+<<if !$seenActions.Blowjob>>
+<<set $seenActions.Blowjob = true>>
+
 <<if $position == "SixtyNine">>
 	<<if $sex.roles.dom.name == _n.name>>
 		<<= either(
@@ -39,9 +41,10 @@
 			"Moaning in delight, _n.name wraps $proset.their _n.body.lips around your <<= $mc.genitals.toLowerCase() >>, licking and sucking your <<= $mc.genitals.toLowerCase()>> as $proset.they continue making muffled moaning noises."
 		)>>
 	<</if>>
+<</if>>
+<<else>>
 
-	<br>
-    <<if $sex.roles.sub.name == _n.name>>
+<<if $sex.roles.sub.name == _n.name>>
 		<<= either(
 			"You eagerly thrust your <<= $mc.genitals.toLowerCase() >> past $proset.their <<= _n.body.lips.toLowerCase()>>, letting out a moan as you greedily pump your <<= $mc.body.hips.toLowerCase()>> into $proset.their <<= _n.body.face.toLowerCase()>>.",
 			"You desperately buck your $mc.body.hips into $proset.their <<= _n.body.face.toLowerCase()>>, letting out a moan as you eagerly fuck $proset.their throat.",

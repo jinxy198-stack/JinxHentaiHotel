@@ -5,8 +5,17 @@
 <</if>>
 
 <<set _pref = _n.sexpref || "Neutral">>
-<<set _mode = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
-<<set _body = $mc.bodytype || "Average">>
+<<if !$sex or !$sex.roles or !_n>>
+	<<return>>
+<</if>>
+
+<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
+	<<set _mode = "give">>
+<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
+	<<set _mode = "receive">>
+<<else>>
+	<<return>>
+<</if>><<set _body = $mc.bodytype || "Average">>
 <<set _material = _n.body.bodymaterial || null>>
 
 <<set _pool = null>>
