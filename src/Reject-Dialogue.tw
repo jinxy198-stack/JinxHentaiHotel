@@ -19,6 +19,10 @@ Not right now — but don't worry, I'm still enjoying you being here.
 "No — don't look so shocked. I got other things to do anyway"
 <<elseif _n.personality == "Mean">>
 "With you? Absolutely not!"
+<<elseif _n.personality == "Energetic">>
+"Mmmm, no thanks. Sorry."
+<<elseif _n.personality == "Playful">>
+"Nah, I don't feel like playing with you."
 <<else>>
 "No"
 <</if>>

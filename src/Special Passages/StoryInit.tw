@@ -18,7 +18,9 @@
 
 <<set $OCPool = [
   $KevinNpc,
-  $JoshuaNpc
+  $JoshuaNpc,
+  $CarlaNpc,
+  $CarlosNpc
 ]>>
 
 <<set $ABPool = [
@@ -59,11 +61,7 @@
     ],
   	surnames: ["Placeholder"],
   	personalities: [
-      "Brave", "Shy", "Relaxed", "Playful", "Good", "Evil",
-      "Kind", "Logical", "Studious", "Active", "Lonely", "Timid", 
-      "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", 
-      "Quiet", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean",
-      "Energetic"
+      "Brave", "Shy", "Relaxed", "Playful", "Good", "Evil","Kind", "Logical", "Studious", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Quiet", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean", "Energetic"
       ],
   	eyes: ["Brown","Blue","Green","Grey","Hazel","Amber","Scarlet"],
   	hair: [
@@ -91,7 +89,7 @@
   	patterns: ["Solid", "Striped", "Spotted", "Patterned"],
   	genitals:["Penis","Vagina"],
   	genitaltype: ["Phimosis","Uncut", "Cut"],
-    breastSize:["Flat", "Small", "Average", "Large", "Busty"],
+    breastsize:["Flat", "Small", "Average", "Large", "Busty"],
     penislength: ["Tiny", "Small", "Average", "Large", "Huge"],
     assSize:["Flat", "Tiny", "Small", "Round", "Large", "Huge"],
   	virgin: [true, false],

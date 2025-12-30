@@ -12,7 +12,9 @@
   Active: ["There you are — I was seconds from coming to get you myself."],
   Logical: ["You arrived precisely when I anticipated. Efficient..."],
   Sassy: ["Oh? About time you showed up. I've been waiting awhile."],
-  Mean: ["Well there you are, lil brat!"]
+  Mean: ["Well there you are, lil brat!"],
+  Energetic: ["Hey, $mc.name!"],
+  Playful: ["Hey, $mc.name! Hope you're in the mood for playing around."]
 }>>
 
 <<set _pool = _lines[_n.personality] or _lines.Default>>

@@ -4,11 +4,11 @@
 <<PronounsSet>>
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
- 	"_n.name thrusts their _n.genitals between your $mc.breastSize breasts."
+ 	"_n.name thrusts their _n.genitals between your $mc.breastsize breasts."
     )>>
 <<elseif $sex.roles.sub.name == _n.name>>
 	<<= either(
-    "You thrust your $mc.genitals between _n.name's _n.breastSize breasts."
+    "You thrust your $mc.genitals between _n.name's _n.breastsize breasts."
     )>>
 <</if>>
 

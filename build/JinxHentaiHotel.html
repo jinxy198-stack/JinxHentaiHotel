@@ -1042,6 +1042,10 @@ setup.hasBoth = (npc, a, b) => !!(npc?.parts && npc.parts[a] && npc.parts[b]);
 &quot;Yes — obviously. Took you long enough to say it.&quot;
 &lt;&lt;elseif _n.personality == &quot;Mean&quot;&gt;&gt;
 &quot;Fine then, you&#39;re lucky I find you attractive.&quot;
+&lt;&lt;elseif _n.personality == &quot;Energetic&quot;&gt;&gt;
+&quot;Alright! Let&#39;s do this!&quot;
+&lt;&lt;elseif _n.personality == &quot;Playful&quot;&gt;&gt;
+&quot;Oh yeah...&quot;
 &lt;&lt;else&gt;&gt;
 &quot;Ok&quot;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Accessory" tags="" position="1725,325" size="100,100">/*
@@ -1584,9 +1588,14 @@ Once you are set on a name (by clicking one of the listed options), you will be 
 &lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Credits" tags="" position="150,25" size="100,100">The following are assets I do not claim to own yet use them in the creation and development of the game. 
 The &#39;&#39;Character Creator Template&#39;&#39; section was created by manonamora on Twine 2/Tweego with SugarCube (2.37.3). Heavily modified but was very important for development.
 
-Kevin Snowpaw is an oc created by KevinSnowpaw.
+
+
 Applebridge is a original work created by online artist Nearphotison.
-Camp Buddy is a Yaoi Visual Novel game created by BLit&#39;s Games.</tw-passagedata><tw-passagedata pid="23" name="Disclaimer" tags="" position="275,25" size="100,100">Warning, this game will contain many simulated sexual interactions that is meant to appeal to many different kinks and fetishes including underage and zoophilia. I don&#39;t intend on restricting the content but I can give you the option to not engage when scenarios you do not like occurs.
+Camp Buddy is a Yaoi Visual Novel game created by BLit&#39;s Games.
+
+Kevin Snowpaw is an OC created by KevinSnowpaw.
+Carla and Carlos Lovelie are twin OC&#39;s created by LewdmasterLora
+Joshua is a OC created by DragonSoul.</tw-passagedata><tw-passagedata pid="23" name="Disclaimer" tags="" position="275,25" size="100,100">Warning, this game will contain many simulated sexual interactions that is meant to appeal to many different kinks and fetishes including underage and zoophilia. I don&#39;t intend on restricting the content but I can give you the option to not engage when scenarios you do not like occurs.
 While I cannot list all the content that is or will be included I can list what I will not include in the game (might grow over time):
 *Noncon
 *Watersports
@@ -2144,6 +2153,62 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
     virgin: false,
     sexpref: &quot;Submissive&quot;,
     origin: &quot;Unknown&quot;
+}&gt;&gt;
+
+/*Carlos Lovelie  */
+&lt;&lt;set $CarlosNpc = {
+    name: &quot;Carlos&quot;,
+    surname: &quot;Lovelie&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    trans: &quot;cisgender&quot;,
+    sexu: &quot;Bisexual&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 9,
+    heterochromia: false,
+    eyes: &quot;Green&quot;,
+    hair: &quot;Pageboy&quot;,
+    haircolour: &quot;Light Brown&quot;,
+    skincolor: &quot;Fair&quot;,
+    bodyheight: &quot;Very Short&quot;,
+    bodyweight: &quot;Thin&quot;,
+    bodymusc: &quot;Soft&quot;,
+    personality: &quot;Playful&quot;,
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;,
+    penislength:&quot;Small&quot;,
+    assSize: &quot;Small&quot;,
+    virgin: false,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;Unknown&quot;
+}&gt;&gt;
+
+/*Carla Lovelie  */
+&lt;&lt;set $CarlaNpc = {
+    name: &quot;Carla&quot;,
+    surname: &quot;Lovelie&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Female&quot;,
+    trans: &quot;cisgender&quot;,
+    sexu: &quot;Bisexual&quot;,
+    pronouns: &quot;She/Her&quot;,
+    age: 9,
+    heterochromia: false,
+    eyes: &quot;Green&quot;,
+    hair: &quot;Pigtails&quot;,
+    haircolour: &quot;Light Brown&quot;,
+    skincolor: &quot;Fair&quot;,
+    bodyheight: &quot;Very Short&quot;,
+    bodyweight: &quot;Thin&quot;,
+    bodymusc: &quot;Soft&quot;,
+    personality: &quot;Playful&quot;,
+    genitals: &quot;Vagina&quot;,
+    genitaltype: &quot;Tight&quot;,
+    breastsize:&quot;Flat&quot;,
+    assSize: &quot;Small&quot;,
+    virgin: false,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;Unknown&quot;
 }&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="SNPC-List" tags="" position="625,500" size="100,100">&lt;&lt;include &quot;NPC-List-Body&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="43" name="npc template sample" tags="" position="1925,450" size="100,100">*/
 &lt;&lt;set $characterTemplate = {
     name: &quot;&quot;,
@@ -2250,6 +2315,10 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 &quot;No — don&#39;t look so shocked. I got other things to do anyway&quot;
 &lt;&lt;elseif _n.personality == &quot;Mean&quot;&gt;&gt;
 &quot;With you? Absolutely not!&quot;
+&lt;&lt;elseif _n.personality == &quot;Energetic&quot;&gt;&gt;
+&quot;Mmmm, no thanks. Sorry.&quot;
+&lt;&lt;elseif _n.personality == &quot;Playful&quot;&gt;&gt;
+&quot;Nah, I don&#39;t feel like playing with you.&quot;
 &lt;&lt;else&gt;&gt;
 &quot;No&quot;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="Respond-Dialogue" tags="nobr Dialogue" position="1375,1325" size="100,100">/* You respond to certain actions. */
@@ -3069,11 +3138,11 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
- 	&quot;_n.name thrusts their _n.genitals between your $mc.breastSize breasts.&quot;
+ 	&quot;_n.name thrusts their _n.genitals between your $mc.breastsize breasts.&quot;
     )&gt;&gt;
 &lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
-    &quot;You thrust your $mc.genitals between _n.name&#39;s _n.breastSize breasts.&quot;
+    &quot;You thrust your $mc.genitals between _n.name&#39;s _n.breastsize breasts.&quot;
     )&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Caress-Dialogue" tags="Dialogue nobr" position="800,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
@@ -3921,9 +3990,7 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-&lt;&lt;set _material = ($mc &amp;&amp; $mc.body &amp;&amp; $mc.body.bodymaterial) ? $mc.body.bodymaterial : &quot;Skin&quot;&gt;&gt;
-
-[DEBUG] mode=&lt;&lt;=_mode&gt;&gt; n=&lt;&lt;=_n.name&gt;&gt;
+&lt;&lt;set _material = (_n &amp;&amp; _n.body &amp;&amp; _n.body.bodymaterial) ? _n.body.bodymaterial : &quot;Skin&quot;&gt;&gt;
 
 &lt;&lt;set _pool =
 	setup.caressQuotes[_mode]
@@ -4868,12 +4935,12 @@ setup.caressQuotes = {
     Skin:{
       Dominant: [&quot;You like me feeling you up?&quot;],
       Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
-      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING.&quot;]
+      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING SKIN.&quot;]
     },
     Scales:{
       Dominant: [&quot;You like me feeling you up?&quot;],
       Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
-      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING.&quot;]
+      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING Scales.&quot;]
     },
     Feathers:{
       Dominant: [&quot;You like me feeling you up?&quot;],
@@ -4883,14 +4950,14 @@ setup.caressQuotes = {
     Fur:{
       Dominant: [&quot;You like me feeling you up?&quot;],
       Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
-      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING.&quot;]
+      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING FUR.&quot;]
     }
   },
   receive: {
     Skin:{
       Dominant: [&quot;Yeah, feel me up!&quot;],
       Submissive: [&quot;Mmm, that feels nice.&quot;],
-      Switch: [&quot;That feels nice.&quot;]
+      Switch: [&quot;That feels nice, skin&quot;]
     },
     Scales:{
       Dominant: [&quot;You like me feeling you up?&quot;],
@@ -4905,7 +4972,7 @@ setup.caressQuotes = {
     Fur:{
       Dominant: [&quot;You like me feeling you up?&quot;],
       Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
-      Switch: [&quot;That feels nice.&quot;]
+      Switch: [&quot;That feels nice, fur&quot;]
     }
   }
 };
@@ -6460,7 +6527,9 @@ window.setup = window.setup || {};
 
 &lt;&lt;set $OCPool = [
   $KevinNpc,
-  $JoshuaNpc
+  $JoshuaNpc,
+  $CarlaNpc,
+  $CarlosNpc
 ]&gt;&gt;
 
 &lt;&lt;set $ABPool = [
@@ -6501,11 +6570,7 @@ window.setup = window.setup || {};
     ],
   	surnames: [&quot;Placeholder&quot;],
   	personalities: [
-      &quot;Brave&quot;, &quot;Shy&quot;, &quot;Relaxed&quot;, &quot;Playful&quot;, &quot;Good&quot;, &quot;Evil&quot;,
-      &quot;Kind&quot;, &quot;Logical&quot;, &quot;Studious&quot;, &quot;Active&quot;, &quot;Lonely&quot;, &quot;Timid&quot;, 
-      &quot;Stubborn&quot;, &quot;Serious&quot;, &quot;Tough&quot;, &quot;Jolly&quot;, &quot;Naive&quot;, &quot;Modest&quot;, 
-      &quot;Quiet&quot;, &quot;Bashful&quot;, &quot;Calm&quot;, &quot;Sassy&quot;, &quot;Flamboyant&quot;, &quot;Mean&quot;,
-      &quot;Energetic&quot;
+      &quot;Brave&quot;, &quot;Shy&quot;, &quot;Relaxed&quot;, &quot;Playful&quot;, &quot;Good&quot;, &quot;Evil&quot;,&quot;Kind&quot;, &quot;Logical&quot;, &quot;Studious&quot;, &quot;Active&quot;, &quot;Lonely&quot;, &quot;Timid&quot;, &quot;Stubborn&quot;, &quot;Serious&quot;, &quot;Tough&quot;, &quot;Jolly&quot;, &quot;Naive&quot;, &quot;Modest&quot;, &quot;Quiet&quot;, &quot;Bashful&quot;, &quot;Calm&quot;, &quot;Sassy&quot;, &quot;Flamboyant&quot;, &quot;Mean&quot;, &quot;Energetic&quot;
       ],
   	eyes: [&quot;Brown&quot;,&quot;Blue&quot;,&quot;Green&quot;,&quot;Grey&quot;,&quot;Hazel&quot;,&quot;Amber&quot;,&quot;Scarlet&quot;],
   	hair: [
@@ -6533,7 +6598,7 @@ window.setup = window.setup || {};
   	patterns: [&quot;Solid&quot;, &quot;Striped&quot;, &quot;Spotted&quot;, &quot;Patterned&quot;],
   	genitals:[&quot;Penis&quot;,&quot;Vagina&quot;],
   	genitaltype: [&quot;Phimosis&quot;,&quot;Uncut&quot;, &quot;Cut&quot;],
-    breastSize:[&quot;Flat&quot;, &quot;Small&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Busty&quot;],
+    breastsize:[&quot;Flat&quot;, &quot;Small&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Busty&quot;],
     penislength: [&quot;Tiny&quot;, &quot;Small&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Huge&quot;],
     assSize:[&quot;Flat&quot;, &quot;Tiny&quot;, &quot;Small&quot;, &quot;Round&quot;, &quot;Large&quot;, &quot;Huge&quot;],
   	virgin: [true, false],
@@ -6963,7 +7028,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
   Active: [&quot;There you are — I was seconds from coming to get you myself.&quot;],
   Logical: [&quot;You arrived precisely when I anticipated. Efficient...&quot;],
   Sassy: [&quot;Oh? About time you showed up. I&#39;ve been waiting awhile.&quot;],
-  Mean: [&quot;Well there you are, lil brat!&quot;]
+  Mean: [&quot;Well there you are, lil brat!&quot;],
+  Energetic: [&quot;Hey, $mc.name!&quot;],
+  Playful: [&quot;Hey, $mc.name! Hope you&#39;re in the mood for playing around.&quot;]
 }&gt;&gt;
 
 &lt;&lt;set _pool = _lines[_n.personality] or _lines.Default&gt;&gt;
@@ -7115,14 +7182,14 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-&lt;&lt;set _material = ($mc &amp;&amp; $mc.body &amp;&amp; $mc.body.bodymaterial) ? $mc.body.bodymaterial : &quot;Skin&quot;&gt;&gt;
+&lt;&lt;set _materialN = (_n &amp;&amp; _n.body &amp;&amp; _n.body.bodymaterial) ? _n.body.bodymaterial : &quot;Skin&quot;&gt;&gt;
+&lt;&lt;set _materialM = ($mc &amp;&amp; $mc.body &amp;&amp; $mc.body.bodymaterial) ? $mc.body.bodymaterial : &quot;Skin&quot;&gt;&gt;
 
-[DEBUG] setup.caressQuotes = &lt;&lt;= typeof setup.caressQuotes &gt;&gt;
 
 &lt;&lt;set _pool =
 	setup.caressQuotes[_mode]
-	&amp;&amp; setup.caressQuotes[_mode][_material]
-	&amp;&amp; setup.caressQuotes[_mode][_material][_pref]
+	&amp;&amp; setup.caressQuotes[_mode][_materialN]
+	&amp;&amp; setup.caressQuotes[_mode][_materialN][_pref]
 &gt;&gt;
 
 &lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;

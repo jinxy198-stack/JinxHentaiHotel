@@ -19,6 +19,10 @@
 "Yes — obviously. Took you long enough to say it."
 <<elseif _n.personality == "Mean">>
 "Fine then, you're lucky I find you attractive."
+<<elseif _n.personality == "Energetic">>
+"Alright! Let's do this!"
+<<elseif _n.personality == "Playful">>
+"Oh yeah..."
 <<else>>
 "Ok"
 <</if>>
