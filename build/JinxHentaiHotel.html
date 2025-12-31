@@ -1846,7 +1846,7 @@ Location: Hotel
 Sub locations: Your room, Hallway, elevator, lobby, dimension jumper
 Sub-sub locations: Bathroom, Bedroom, Kitchen
 */</tw-passagedata><tw-passagedata pid="37" name="ApplebridgeNPC" tags="init nobr" position="475,400" size="100,100">/% Applebridge %/
-&lt;&lt;set $CoryPark = {
+&lt;&lt;set $CoryP = {
     name: &quot;Cory&quot;,
     nickname: &quot;&quot;,
     surname: &quot;Park&quot;,
@@ -1870,8 +1870,33 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
     bodyweight: &quot;Slender&quot;,
     bodymusc: &quot;Toned&quot;, /* Musculature*/
     personality: &quot;Sassy&quot;,
-    Virgin: false,
     sexpref: &quot;Dominant&quot;,
+    origin: &quot;Applebridge&quot;
+}&gt;&gt;
+
+&lt;&lt;set $JaidenB = {
+    name: &quot;Jaiden&quot;,
+    surname: &quot;Bate&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Female&quot;,
+    trans: &quot;Cisgender&quot;,
+    sexu: &quot;Bisexual&quot;,  /* sexual orientation */
+    genitals: &quot;Vagina&quot;,
+    genitaltype: &quot;Tight&quot;,
+    pronouns: &quot;She/Her&quot;,
+    age: 9,
+    eyes: &quot;Blue&quot;,
+    hair: &quot;Long&quot;,
+    haircolor: &quot;Blonde&quot;,
+    facefeatures: &quot;Freckles&quot;,
+    skincolor: &quot;Fair&quot;,
+    bodyheight: &quot;Short&quot;,
+    bodyweight: &quot;Skinny&quot;,
+    bodymusc: &quot;Light Muscles&quot;,
+    breastsize:&quot;Flat&quot;,
+    personality: &quot;Kind&quot;,
+    assSize: &quot;Small&quot;,
+    sexpref: &quot;Switch&quot;,
     origin: &quot;Applebridge&quot;
 }&gt;&gt;
 
@@ -1900,6 +1925,33 @@ Sub-sub locations: Bathroom, Bedroom, Kitchen
     personality: &quot;Mean&quot;,
     assSize: &quot;Huge&quot;,
     sexpref: &quot;Dominant&quot;,
+    origin: &quot;Applebridge&quot;
+}&gt;&gt;
+
+&lt;&lt;set $OliverT = {
+    name: &quot;Oliver&quot;,
+    nickname: &quot;Olly&quot;,
+    surname: &quot;Townsend&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    trans: &quot;Cisgender&quot;,
+    sexu: &quot;Bisexual&quot;,  /* sexual orientation */
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Phimosis&quot;, /*cut or uncut */
+    penislength: &quot;Small&quot;,
+    assSize: &quot;Round&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 12,
+    eyes: &quot;Blue&quot;,
+    hair: &quot;Bobcut&quot;,
+    haircolor: &quot;Brown&quot;,
+    skincolor: &quot;Fair&quot;,
+    skinfeatures: &quot;&quot;,
+    bodyheight: &quot;Short&quot;,
+    bodyweight: &quot;Slender&quot;,
+    bodymusc: &quot;Light Muscles&quot;, /* Musculature*/
+    personality: &quot;Shy&quot;,
+    sexpref: &quot;Submissive&quot;,
     origin: &quot;Applebridge&quot;
 }&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="CampBuddyNPC" tags="init nobr" position="475,400" size="100,100">/%Camp Buddy %/
 &lt;&lt;set $Yoichi_CB = {
@@ -2998,7 +3050,7 @@ setup.analQuotes = {
         &quot;Please, bounce on my cock!&quot;
       ],
       Neutral: [
-        &quot;NEUTRAL DIALOGUE FOR ANAL COWGIRL&quot;
+        &quot;A-Ahhh...&quot;
       ]
     },
     Missionary: {
@@ -3204,27 +3256,27 @@ setup.caressQuotes = {
     Fur:{
       Dominant: [&quot;You like me feeling you up?&quot;],
       Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
-      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING FUR.&quot;]
+      Switch: [&quot;Your fur is so fluffy!&quot;]
     }
   },
   receive: {
-    Skin:{
+    Skin: {
       Dominant: [&quot;Yeah, feel me up!&quot;],
       Submissive: [&quot;Mmm, that feels nice.&quot;],
       Switch: [&quot;That feels nice.&quot;]
     },
-    Scales:{
-      Dominant: [&quot;You like me feeling you up?&quot;],
+    Scales: {
+      Dominant: [&quot;Yeah, that feels nice.&quot;],
       Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
       Switch: [&quot;That feels nice.&quot;]
     },
-    Feathers:{
-      Dominant: [&quot;You like me feeling you up?&quot;],
+    Feathers: {
+      Dominant: [&quot;Yeah, feel my feathers.&quot;],
       Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
       Switch: [&quot;That feels nice.&quot;]
     },
-    Fur:{
-      Dominant: [&quot;You like me feeling you up?&quot;],
+    Fur: {
+      Dominant: [&quot;Like my fluffy fur?&quot;],
       Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
       Switch: [&quot;That feels nice.&quot;]
     }
@@ -3537,7 +3589,8 @@ setup.fingerassQuotes = {
     ],
 
     Neutral: [
-      &quot;Oh f-fuck!&quot;
+      &quot;Oh f-fuck!&quot;,
+      &quot;H-Haaa... Ahhh!&quot;
     ]
   }
 };
@@ -3648,19 +3701,32 @@ setup.gropebreastQuotes = {
     Dominant: {
       Flat: {
         Kid: [&quot;I guess I shouldn&#39;t be expecting anything yet.&quot;],
+        Teen: [&quot;It&#39;s kinda cute&quot;],
         Adult: [&quot;Don&#39;t be ashamed about being flat, it&#39;s really cute.&quot;]
       },
       Small: {
         Kid: [&quot;Nothing quite like developing breasts. So lewd and cute.&quot;],
         Teen: [&quot;Nothing quite like developing breasts. So lewd and cute.&quot;]
       },
-      Average: [
-        &quot;Nice tits&quot;
-      ],
-      Large: [
-        &quot;Heh, look a the size of these!&quot;,
-				&quot;Damn, these are huge!&quot;
-      ],
+      Average: {
+        Kid: [&quot;Nice tits.&quot;],
+        Teen: [&quot;Nice tits.&quot;],
+        Adult: [&quot;Nice tits.&quot;]
+      },
+      Large: {
+        Kid: [
+          &quot;Heh, look a the size of these!&quot;,
+				  &quot;Damn, these are huge!&quot;
+        ],
+        Teen: [
+          &quot;Heh, look a the size of these!&quot;,
+				  &quot;Damn, these are huge!&quot;
+        ],
+        Adult: [
+          &quot;Heh, look a the size of these!&quot;,
+				  &quot;Damn, these are huge!&quot;
+        ]
+      },
       Busty:[
         &quot;Shit, these are big!&quot;,
 				&quot;How do you carry these things?!&quot;
@@ -3670,18 +3736,36 @@ setup.gropebreastQuotes = {
     Submissive: {
       Flat: {
         Kid: [&quot;They&#39;re soft.&quot;],
+        Teen: [&quot;Yeah, I&#39;m not that developed.&quot;],
         Adult: [&quot;I can work with this.&quot;]
       },
-      Average: [
-        &quot;I like your breasts.&quot;
-      ],
+      Average: {
+        Kid: [&quot;Like my breasts?&quot;],
+        Teen: [&quot;Like my breasts?&quot;],
+        Adult: [&quot;Like my breasts?&quot;],
+      },
       Large: [
         &quot;Your breasts are so soft.&quot;,
 				&quot;Wow, they are pretty big.&quot;
       ],
-      Busty: [ &quot;Whoa...&quot;]
+      Busty: [&quot;Whoa...&quot;]
     },
     Switch: {
+      Flat: {
+        Kid: [&quot;SWITCH DIALOUGE ABOUT FLAT BREAST, KID.&quot;],
+        Teen: [&quot;SWITCH DIALOUGE ABOUT FLAT BREAST, TEEN.&quot;],
+        Adult: [&quot;SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT.&quot;],
+      },
+      Small: {
+        Kid: [&quot;SWITCH DIALOUGE ABOUT SMALL BREAST, KID.&quot;],
+        Teen: [&quot;SWITCH DIALOUGE ABOUT SMALL BREAST, TEEN.&quot;],
+        Adult: [&quot;SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT.&quot;],
+      },
+      Average: {
+        Kid: [&quot;SWITCH DIALOUGE ABOUT AVERAGE BREAST, KID.&quot;],
+        Teen: [&quot;SWITCH DIALOUGE ABOUT AVERAGE BREAST, TEEN.&quot;],
+        Adult: [&quot;SWITCH DIALOUGE ABOUT AVERAGE BREAST, ADULT.&quot;],
+      },
       Large: [&quot;Wow...&quot;],
       Busty: [&quot;These sure are big!&quot;]
     }
@@ -3696,9 +3780,23 @@ setup.gropebreastQuotes = {
       &quot;You can play with them if you like.&quot;
     ],
 
-    Switch: [
-     &quot;NEUTRAL dialogue about grabbing boobs&quot;
-    ]
+    Switch: {
+     Flat: {
+        Kid: [&quot;SWITCH DIALOUGE ABOUT FLAT BREAST, KID.&quot;],
+        Teen: [&quot;SWITCH DIALOUGE ABOUT FLAT BREAST, TEEN.&quot;],
+        Adult: [&quot;SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT.&quot;],
+      },
+      Small: {
+        Kid: [&quot;SWITCH DIALOUGE ABOUT SMALL BREAST, KID.&quot;],
+        Teen: [&quot;SWITCH DIALOUGE ABOUT SMALL BREAST, TEEN.&quot;],
+        Adult: [&quot;SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT.&quot;],
+      },
+      Average: {
+        Kid: [&quot;SWITCH DIALOUGE ABOUT AVERAGE BREAST, KID.&quot;],
+        Teen: [&quot;SWITCH DIALOUGE ABOUT AVERAGE BREAST, TEEN.&quot;],
+        Adult: [&quot;SWITCH DIALOUGE ABOUT AVERAGE BREAST, ADULT.&quot;],
+      }
+    }
   }
 };
 
@@ -4046,32 +4144,43 @@ setup.orgasmQuotes = {
 
 /* ----- ORGASM CLOSE ----- */
 setup.orgasmcloseQuotes = {
-  
   give: {
     Anal: {  
-      Dominant: [&quot;I&#39;m gonna cum in your ass!&quot;],
-      Submissive: [&quot;I&#39;m... gonna cum!&quot;, &quot;A-agh!! AaaHhhh!!!&quot; ],
-      Versatile: [&quot;I&#39;m cumming!&quot;,&quot;Aaaah!!&quot;]
+      Dominant: [
+        &quot;I&#39;m gonna cum in your ass!&quot;
+      ],
+      Submissive: [
+        &quot;I&#39;m... gonna cum!&quot;, 
+        &quot;A-agh!! AaaHhhh!!!&quot;,
+        &quot;I can&#39;t hold it anymore!&quot;
+      ],
+      Switch: [&quot;I&#39;m cumming!&quot;,&quot;Aaaah!!&quot;]
     },
     Handjob: {
       Dominant: [&quot;Don&#39;t stop jerking it, I&#39;m so close!&quot;],
       Submissive: [&quot;Faster, I&#39;m almost there!&quot;],
-      Versatile: [&quot;Faster, I&#39;m almost there!&quot;]
+      Switch: [&quot;Faster, I&#39;m almost there!&quot;]
     },
     &quot;Finger-Pussy&quot;: {
       Dominant:[&quot;Faster, I&#39;m so close!&quot;],
       Submissive: [&quot;Faster, I&#39;m so close!&quot;],
-      Versatile: [&quot;Faster, I&#39;m so close!&quot;]
+      Switch: [&quot;Faster, I&#39;m so close!&quot;]
     }, 
     Blowjob: {
       Dominant:[&quot;I&#39;m gonna cum in your mouth!&quot;],
       Submissive: [&quot;I&#39;m gonna cum!&quot;],
-      Versatile: [&quot;I&#39;m gonna cum!&quot;]
-    }
+      Switch: [&quot;I&#39;m gonna cum!&quot;]
+    },
     Caress: {
       Dominant:[&quot;I&#39;m gonna cum!&quot;],
       Submissive: [&quot;I&#39;m gonna cum!&quot;],
-      Versatile: [&quot;I&#39;m gonna cum!&quot;]
+      Switch: [&quot;I&#39;m gonna cum!&quot;]
+    },
+    /* DEFAULT FALLBACK */
+    default: {
+      Dominant: [&quot;DEFAULT QUOTE DOM&quot;],
+      Submissive: [&quot;DEFAULT QUOTE SUB&quot;],
+      Switch: [&quot;DEFAULT QUOTE SWITCH&quot;]
     }
   },
 
@@ -4115,9 +4224,12 @@ setup.orgasmcloseQuotes = {
       Versatile: [&quot;MMPH&quot;]
     },
 
-    Neutral: [
-      &quot;NEUTRAL DEFAULT QUOTE&quot;
-    ]
+     /* DEFAULT FALLBACK */
+    default: {
+      Dominant: [&quot;DEFAULT QUOTE DOM&quot;],
+      Submissive: [&quot;DEFAULT QUOTE SUB&quot;],
+      Switch: [&quot;DEFAULT QUOTE SWITCH&quot;]
+    }
   }
 };
 
@@ -4143,7 +4255,7 @@ setup.vaginalQuotes = {
       &quot;Ah&quot;,
       &quot;Ha! Ah!&quot;
     ],
-    Neutral: [
+    Versatile: [
       &quot;Your pussy is so poggers!&quot;, /* adjust if you want less meme-y */
 			&quot;Fuck! Your pussy feels so good!&quot;,
 			&quot;The way you&#39;re squeezing in there, feels so damn good!&quot;,
@@ -4170,7 +4282,7 @@ setup.vaginalQuotes = {
 			&quot;I feel so full!&quot;
     ],
 
-    Neutral: [
+    Versatile: [
       &quot;Don&#39;t stop! Harder! Fuck me! Yes, yes, yes!&quot;,
 			&quot;It&#39;s so big!&quot;,
 			&quot;I feel so full!&quot;,
@@ -4497,9 +4609,8 @@ setup.vaginalQuotes = {
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="OrgasmBlock" tags="nobr" position="1675,925" size="100,100">&lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;if $sex.action == &quot;Anal Orgasm&quot;&gt;&gt;
 		&lt;&lt;if $position == &quot;Cowgirl&quot;&gt;&gt;
-			_n.name slam down one final time before you let out a moan and unloads into their ass. They shudder at the warmth filling them.
+			You slam down one final time before _n.name lets out a moan and unloads into your ass. You feel the warmth fill you up.
 		&lt;&lt;elseif $position == &quot;Missionary&quot;&gt;&gt;
-			_n.name grits $proset.their _n.body.teeth, their eyes roll behind their head, and their whole body tenses. They let out a moan before shooting long strings of cum that cover their thigh&#39;s and belly.
 		&lt;&lt;else&gt;&gt;
 			You cum and they cum with you.
 		&lt;&lt;/if&gt;&gt;
@@ -4532,7 +4643,7 @@ setup.vaginalQuotes = {
 &lt;&lt;elseif $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;if $sex.action == &quot;Anal Orgasm&quot;&gt;&gt;
 		&lt;&lt;if $position == &quot;Cowgirl&quot;&gt;&gt;
-			You slam down one final time before _n.name lets out a moan and unloads into your ass. You feel the warmth fill you up.
+			_n.name slam down one final time before you let out a moan and unloads into their ass. They shudder at the warmth filling them.
 		&lt;&lt;elseif $position == &quot;Missionary&quot;&gt;&gt;
 			_n.name thrusts into you one last time before holding inside you and letting out a moan. You feel $proset.their cum shoot into your ass.
 		&lt;&lt;else&gt;&gt;
@@ -4779,66 +4890,84 @@ Wanna have aftercare or end the session?
     )&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="Anal-Dialogue" tags="nobr Dialogue" position="1200,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
-&lt;&lt;if $position == &quot;Cowgirl&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;= either(
-			&quot;You sink down onto _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , letting out a moan as you lean down and grab _n.name&#39;s head in both hands, before pulling _n.name up into a passionate kiss.&quot;,
-			&quot;With a moan, you slide down onto _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , leaning down into _n.name&#39;s _n.breasts and breathing in _n.name&#39;s scent before pressing your lips against _n.name&#39;s.&quot;,
-			&quot;You let _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; slide even deeper into your $mc.assSize ass as you lean down and pull _n.name into a desperate kiss.&quot;,
-			&quot;Leaning down, you let out a moan as you bury yourself on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , before leaning forward and pressing your lips against _n.name&#39;s.&quot;,
-			&quot;You reach down to take hold of _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , before shuffling around to get into a good position. After teasing the cockhead over your $mc.assSize ass, you let out a little moan as you slowly drop down and penetrate your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
-			&quot;Shuffling around into a better position, you line the head of _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; up between your ass cheeks, and with a slow, steady movement, you gently drop down, penetrating your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
-			&quot;You take a firm hold of _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , then tease the cockhead over your $mc.assSize ass before eagerly dropping down and penetrating your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
-			&quot;Shuffling into a better position, you line the head of _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; up between your ass cheeks, and with a single movement, you eagerly drop down, penetrating your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
-			&quot;You reach down and roughly grab _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , tease the head over your $mc.assSize ass, then forcefully drop down and penetrate your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
-			&quot;Shuffling into a better position, you line the head of _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; up between your ass cheeks, and with a single movement, you roughly drop down, penetrating your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;
-		)&gt;&gt;
-		&lt;&lt;= either(
-			&quot;_n.name lets out a moan as $proset.they enter you, eagerly bucking _n.name&#39;s _n.body.hips up as _n.name start fucking your $mc.assSize ass.&quot;,
-			&quot;With a moan, _n.name eagerly thrust _n.name&#39;s _n.body.hips up into your $mc.assSize ass, sinking _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; into your $mc.assSize ass as _n.name start energetically fucking you.&quot;,
-			&quot;_n.name lets out a moan as $proset.they enter you, bucking $proset.their _n.body.hips up as _n.name start fucking your $mc.assSize ass.&quot;,
-			&quot;With a moan, _n.name thrust $proset.their _n.body.hips up into your $mc.assSize ass, sinking _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; into your $mc.assSize ass as _n.name starts fucking you.&quot;
-		)&gt;&gt;
-		&lt;&lt;= either(
-			&quot;Using your legs, you slowly lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; in and out of your $mc.assSize ass as you moan out loud.&quot;,
-			&quot;Leaning forwards, you use your $mc.body.hands to support some of your weight as you slowly slide up and down on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; . As you lower your face towards _n.name, you get a waft of _n.name&#39;s scent, and you bite your lip as you breathe in the intoxicating aroma.&quot;,
-			&quot;Lowering your $mc.body.hands to your knees, you use your $mc.body.legs to slowly slide yourself up and down, letting out a soft moan as you impale yourself on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
-			&quot;You slowly lift yourself up before sliding back down, letting out a soft moan as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
-			&quot;Using your legs, you lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; in and out of your $mc.assSize ass as you moan out loud.&quot;,
-			&quot;Leaning forwards, you use your $mc.body.hands to support some of your weight as you eagerly slide up and down on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; . As you lower your face towards _n.name, you get a waft of _n.name&#39;s scent, and you bite your lip as you breathe in the intoxicating aroma.&quot;,
-			&quot;Lowering your $mc.body.hands to your knees, you use your $mc.body.legs to enthusiastically slide yourself up and down, letting out a moan as you impale yourself on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
-			&quot;You lift yourself up before greedily sliding back down, letting out a moan as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
-			&quot;Using your legs, you rapidly bounce yourself up and down, slamming _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; in and out of your $mc.assSize ass as you moan out loud.&quot;,
-			&quot;Leaning forward, you use your $mc.body.hands to support some of your weight as you start rapidly bucking up and down on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; . As you lower your face towards _n.name, you get a waft of _n.name&#39;s scent, and you bite your lip as you breathe in the intoxicating aroma.&quot;,
-			&quot;Placing your $mc.body.hands down on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering moan as you impale yourself on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
-			&quot;Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a moan as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;
-		)&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;= either(
-        	&quot;You fuck _n.name.&quot;
-        )&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
+&lt;&lt;if !$seenActions.Finger-Ass&gt;&gt;
+&lt;&lt;set $seenActions.Finger-Ass = true&gt;&gt;
+	&lt;&lt;if $position == &quot;Cowgirl&quot;&gt;&gt;
+		&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+				&quot;You sink down onto _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , letting out a moan as you lean down and grab _n.name&#39;s head in both hands, before pulling _n.name up into a passionate kiss.&quot;,
+				&quot;With a moan, you slide down onto _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , leaning down into _n.name&#39;s _n.breasts and breathing in _n.name&#39;s scent before pressing your lips against _n.name&#39;s.&quot;,
+				&quot;You let _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; slide even deeper into your $mc.assSize ass as you lean down and pull _n.name into a desperate kiss.&quot;,
+				&quot;Leaning down, you let out a moan as you bury yourself on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , before leaning forward and pressing your lips against _n.name&#39;s.&quot;,
+				&quot;You reach down to take hold of _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , before shuffling around to get into a good position. After teasing the cockhead over your $mc.assSize ass, you let out a little moan as you slowly drop down and penetrate your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
+				&quot;Shuffling around into a better position, you line the head of _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; up between your ass cheeks, and with a slow, steady movement, you gently drop down, penetrating your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
+				&quot;You take a firm hold of _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , then tease the cockhead over your $mc.assSize ass before eagerly dropping down and penetrating your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
+				&quot;Shuffling into a better position, you line the head of _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; up between your ass cheeks, and with a single movement, you eagerly drop down, penetrating your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
+				&quot;You reach down and roughly grab _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , tease the head over your $mc.assSize ass, then forcefully drop down and penetrate your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
+				&quot;Shuffling into a better position, you line the head of _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; up between your ass cheeks, and with a single movement, you roughly drop down, penetrating your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;
+			)&gt;&gt;
+			&lt;&lt;= either(
+				&quot;_n.name lets out a moan as $proset.they enter you, eagerly bucking _n.name&#39;s _n.body.hips up as _n.name start fucking your $mc.assSize ass.&quot;,
+				&quot;With a moan, _n.name eagerly thrust _n.name&#39;s _n.body.hips up into your $mc.assSize ass, sinking _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; into your $mc.assSize ass as _n.name start energetically fucking you.&quot;,
+				&quot;_n.name lets out a moan as $proset.they enter you, bucking $proset.their _n.body.hips up as _n.name start fucking your $mc.assSize ass.&quot;,
+				&quot;With a moan, _n.name thrust $proset.their _n.body.hips up into your $mc.assSize ass, sinking _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; into your $mc.assSize ass as _n.name starts fucking you.&quot;
+			)&gt;&gt;
+			&lt;&lt;= either(
+				&quot;Using your legs, you slowly lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; in and out of your $mc.assSize ass as you moan out loud.&quot;,
+				&quot;Leaning forwards, you use your $mc.body.hands to support some of your weight as you slowly slide up and down on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; . As you lower your face towards _n.name, you get a waft of _n.name&#39;s scent, and you bite your lip as you breathe in the intoxicating aroma.&quot;,
+				&quot;Lowering your $mc.body.hands to your knees, you use your $mc.body.legs to slowly slide yourself up and down, letting out a soft moan as you impale yourself on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
+				&quot;You slowly lift yourself up before sliding back down, letting out a soft moan as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
+				&quot;Using your legs, you lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; in and out of your $mc.assSize ass as you moan out loud.&quot;,
+				&quot;Leaning forwards, you use your $mc.body.hands to support some of your weight as you eagerly slide up and down on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; . As you lower your face towards _n.name, you get a waft of _n.name&#39;s scent, and you bite your lip as you breathe in the intoxicating aroma.&quot;,
+				&quot;Lowering your $mc.body.hands to your knees, you use your $mc.body.legs to enthusiastically slide yourself up and down, letting out a moan as you impale yourself on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
+				&quot;You lift yourself up before greedily sliding back down, letting out a moan as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
+				&quot;Using your legs, you rapidly bounce yourself up and down, slamming _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; in and out of your $mc.assSize ass as you moan out loud.&quot;,
+				&quot;Leaning forward, you use your $mc.body.hands to support some of your weight as you start rapidly bucking up and down on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; . As you lower your face towards _n.name, you get a waft of _n.name&#39;s scent, and you bite your lip as you breathe in the intoxicating aroma.&quot;,
+				&quot;Placing your $mc.body.hands down on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering moan as you impale yourself on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;,
+				&quot;Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a moan as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; .&quot;
+			)&gt;&gt;
+		&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+        		&quot;You fuck _n.name.&quot;,
+				&quot;You both cry out as _n.name slides $proset.their ass onto my &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt;. Soon their butt fully rested on my thighs.&quot;
+        	)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;elseif $position == &quot;Missionary&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;= either(
-        	&quot;_n.name fucks you in the missionary position.&quot;
-        )&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;= either(
-        	&quot;You fuck _n.name in the missionary position.&quot;
-        )&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;elseif $position == &quot;Missionary&quot;&gt;&gt;
+		&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+        		&quot;_n.name fucks you in the missionary position.&quot;
+        	)&gt;&gt;
+		&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+        		&quot;You fuck _n.name in the missionary position.&quot;
+        	)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;elseif $position == &quot;Doggystyle&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;= either(
-        	&quot;You are being fucked doggystyle.&quot;
-        )&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;= either(
-        	&quot;You are fucking NPC doggystyle&quot;
-        )&gt;&gt;
+	&lt;&lt;elseif $position == &quot;Doggystyle&quot;&gt;&gt;
+		&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+        		&quot;You are being fucked doggystyle.&quot;
+        	)&gt;&gt;
+		&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+        		&quot;You are fucking NPC doggystyle&quot;
+        	)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;if $position == &quot;Cowgirl&quot;&gt;&gt;
+		&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+
+			)&gt;&gt;
+		&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+				&quot;_n.name bounced up and down on your &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt; in a controlled motion.&quot;,
+				&quot;_n.name&#39;s paced increased, pushing my &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt; deeper into $proset.their hole.&quot;,
+				&quot;The sight of _n.name bouncing on my &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt;, their blissful expression, it turned me on.&quot;
+			)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;	
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="Blowjob-Dialogue" tags="nobr Dialogue" position="1000,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
@@ -4963,7 +5092,8 @@ Wanna have aftercare or end the session?
 	&lt;&lt;= either(
 		&quot;Dropping down and quickly lying on your back, you put on the most enticing look you can muster as you plead, &quot;,
 		&quot;Jumping down over the top of you, &quot; + _n.name + &quot; lowers &quot; + $proset.themself + &quot; down over your groin, bringing &quot; + $proset.their + &quot; crotch to yours as &quot; + $proset.they + &quot; straddle you in the cowgirl position. Leaning forward a little, &quot; + $proset.they + &quot; grin down at you, &quot;,
-		&quot;Allowing you to push &quot; + $proset.them + &quot; down, &quot; + _n.name + &quot; reaches up and takes a firm grip on your &quot; + $mc.body.hips + &quot;, before pulling you down so that you&#39;re straddling &quot; + $proset.them + &quot; in the cowgirl position. Looking up into your &quot; + $mc.eyes + &quot; eyes, &quot; + $proset.they + &quot; says, &quot;
+		&quot;Allowing you to push &quot; + $proset.them + &quot; down, &quot; + _n.name + &quot; reaches up and takes a firm grip on your &quot; + $mc.body.hips + &quot;, before pulling you down so that you&#39;re straddling &quot; + $proset.them + &quot; in the cowgirl position. Looking up into your &quot; + $mc.eyes + &quot; eyes, &quot; + $proset.they + &quot; says, &quot;,
+		&quot;_n.name climbed on top of you.&quot;
 	)&gt;&gt;
 	&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
@@ -5101,14 +5231,29 @@ Wanna have aftercare or end the session?
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="Finger-Ass-Dialogue" tags="Dialogue nobr" position="800,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;= either(
- 	&quot;_n.name fingers your ass.&quot;
-    )&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;= either(
-    &quot;You finger _n.name&#39;s ass.&quot;
-    )&gt;&gt;
+&lt;&lt;if !$seenActions.Finger-Ass&gt;&gt;
+&lt;&lt;set $seenActions.Finger-Ass = true&gt;&gt;
+    &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+	    &lt;&lt;= either(
+ 	    &quot;_n.name fingers your ass.&quot;
+        )&gt;&gt;
+    &lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+	    &lt;&lt;= either(
+        &quot;You finger _n.name&#39;s ass.&quot;,
+        &quot;_n.name shivers as I placed my $mc.body.fingers against $proset.their asshole. I then wiggled my way in. It was hot and tight but so smooth. $proset.theyUp let out a moan. I caress their thigh to calm them.&quot;
+        )&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+    &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+        &lt;&lt;= either(
+            &quot;They continue fingering me.&quot;
+        )&gt;&gt;
+    &lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+        &lt;&lt;= either(
+            &quot;I continue fingering them.&quot;,
+            &quot;I slide my $mc.body.fingers back and forth, caressing the walls of _n.name&#39;s inside. $proset.theyUp continues to tense. $proset.theyUp appears to enjoy it very much.&quot;,
+        )&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="Finger-Vagina-Dialogue" tags="Dialogue nobr" position="900,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
@@ -5203,7 +5348,7 @@ Wanna have aftercare or end the session?
 
 &lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
-    &quot;Reaching up to _n.name&#39;s chest, they lets out a soft moan as you starts fondling and groping _n.name&#39;s _n.breastsize breasts,&quot;
+    &quot;Reaching up to _n.name&#39;s chest, they lets out a soft moan as you start fondling and groping _n.name&#39;s _n.breastsize breasts,&quot;
     )&gt;&gt;
 &lt;&lt;elseif $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -5294,7 +5439,7 @@ Wanna have aftercare or end the session?
 &lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
 		&quot;Taking hold of &quot; + _n.name + &quot;&#39;s shoulders, you push &quot; + $proset.them + &quot; down onto &quot; + $proset.their + &quot; back. Kneeling down between &quot; + $proset.their + &quot; &quot; + _n.body.legs + &quot;, you pause and look down into &quot; + $proset.their + &quot; &quot; + _n.eyes.toLowerCase() + &quot; eyes.&quot;,
-		_n.name + &quot; lies down on your bed, lifting &quot; + $proset.their + &quot; feet in the air.&quot;
+		_n.name + &quot; lies down on your bed, lifting &quot; + $proset.their + &quot; feet in the air.&quot;,
 	)&gt;&gt;
 &lt;&lt;elseif $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -6017,7 +6162,7 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No grope breast quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
+	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;if !setup.gropebuttQuotes&gt;&gt;
 	[Error] setup.gropebuttQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -6127,11 +6272,11 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	[Error] No handjob quote pool found.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">/* When you or NPC are close to orgasm */
 &lt;&lt;set _mode   = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-&lt;&lt;set _pref   = _n.sexpref || &quot;Versatile&quot;&gt;&gt;
+&lt;&lt;set _pref   = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _action = $sex.action&gt;&gt;
 &lt;&lt;set _pool   = null&gt;&gt;
 
-&lt;&lt;set _entry = setup.orgasmcloseQuotes[_mode] &amp;&amp; setup.orgasmcloseQuotes[_mode][_action]&gt;&gt;
+&lt;&lt;set _entry = setup.orgasmcloseQuotes[_mode] &amp;&amp; setup.orgasmcloseQuotes[_mode][_action] || setup.orgasmcloseQuotes[_mode].default&gt;&gt;
 
 &lt;&lt;if Array.isArray(_entry)&gt;&gt;
 	&lt;&lt;set _pool = _entry&gt;&gt;
@@ -6443,8 +6588,10 @@ window.setup = window.setup || {};
 ]&gt;&gt;
 
 &lt;&lt;set $ABPool = [
-  $CoryPark,
-  $LorraineD
+  $CoryP,
+  $JaidenB,
+  $LorraineD,
+  $OliverT,
 ]&gt;&gt;
 
 &lt;&lt;set $npcPools = {
@@ -6480,7 +6627,7 @@ window.setup = window.setup || {};
     ],
   	surnames: [&quot;Placeholder&quot;],
   	personalities: [
-      &quot;Brave&quot;, &quot;Shy&quot;, &quot;Relaxed&quot;, &quot;Playful&quot;, &quot;Good&quot;, &quot;Evil&quot;,&quot;Kind&quot;, &quot;Logical&quot;, &quot;Studious&quot;, &quot;Active&quot;, &quot;Lonely&quot;, &quot;Timid&quot;, &quot;Stubborn&quot;, &quot;Serious&quot;, &quot;Tough&quot;, &quot;Jolly&quot;, &quot;Naive&quot;, &quot;Modest&quot;, &quot;Quiet&quot;, &quot;Bashful&quot;, &quot;Calm&quot;, &quot;Sassy&quot;, &quot;Flamboyant&quot;, &quot;Mean&quot;, &quot;Energetic&quot;
+      &quot;Brave&quot;, &quot;Shy&quot;, &quot;Relaxed&quot;, &quot;Playful&quot;, &quot;Good&quot;, &quot;Evil&quot;, &quot;Kind&quot;, &quot;Logical&quot;, &quot;Studious&quot;, &quot;Active&quot;, &quot;Lonely&quot;, &quot;Timid&quot;, &quot;Stubborn&quot;, &quot;Serious&quot;, &quot;Tough&quot;, &quot;Jolly&quot;, &quot;Naive&quot;, &quot;Modest&quot;, &quot;Quiet&quot;, &quot;Bashful&quot;, &quot;Calm&quot;, &quot;Sassy&quot;, &quot;Flamboyant&quot;, &quot;Mean&quot;, &quot;Energetic&quot;
       ],
   	eyes: [&quot;Brown&quot;,&quot;Blue&quot;,&quot;Green&quot;,&quot;Grey&quot;,&quot;Hazel&quot;,&quot;Amber&quot;,&quot;Scarlet&quot;],
   	hair: [
@@ -7897,7 +8044,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;/if&gt;&gt;
 
 	&lt;&lt;set _mode   = ($sex.roles.dom.name == _n.name) ? &quot;give&quot; : &quot;receive&quot;&gt;&gt;
-	&lt;&lt;set _pref   = _n.sexpref || &quot;Versatile&quot;&gt;&gt;
+	&lt;&lt;set _pref   = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 	&lt;&lt;set _action = $sex.action&gt;&gt;
 	&lt;&lt;set _pool   = null&gt;&gt;
 

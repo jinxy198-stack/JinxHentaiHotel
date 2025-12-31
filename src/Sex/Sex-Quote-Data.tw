@@ -12,7 +12,7 @@ setup.analQuotes = {
         "Please, bounce on my cock!"
       ],
       Neutral: [
-        "NEUTRAL DIALOGUE FOR ANAL COWGIRL"
+        "A-Ahhh..."
       ]
     },
     Missionary: {
@@ -218,27 +218,27 @@ setup.caressQuotes = {
     Fur:{
       Dominant: ["You like me feeling you up?"],
       Submissive: ["SUB-LINE-1 about CARESSING."],
-      Switch: ["NEUTRAL-DOM-LINE-1 about CARESSING FUR."]
+      Switch: ["Your fur is so fluffy!"]
     }
   },
   receive: {
-    Skin:{
+    Skin: {
       Dominant: ["Yeah, feel me up!"],
       Submissive: ["Mmm, that feels nice."],
       Switch: ["That feels nice."]
     },
-    Scales:{
-      Dominant: ["You like me feeling you up?"],
+    Scales: {
+      Dominant: ["Yeah, that feels nice."],
       Submissive: ["SUB-LINE-1 about CARESSING."],
       Switch: ["That feels nice."]
     },
-    Feathers:{
-      Dominant: ["You like me feeling you up?"],
+    Feathers: {
+      Dominant: ["Yeah, feel my feathers."],
       Submissive: ["SUB-LINE-1 about CARESSING."],
       Switch: ["That feels nice."]
     },
-    Fur:{
-      Dominant: ["You like me feeling you up?"],
+    Fur: {
+      Dominant: ["Like my fluffy fur?"],
       Submissive: ["SUB-LINE-1 about CARESSING."],
       Switch: ["That feels nice."]
     }
@@ -551,7 +551,8 @@ setup.fingerassQuotes = {
     ],
 
     Neutral: [
-      "Oh f-fuck!"
+      "Oh f-fuck!",
+      "H-Haaa... Ahhh!"
     ]
   }
 };
@@ -662,19 +663,32 @@ setup.gropebreastQuotes = {
     Dominant: {
       Flat: {
         Kid: ["I guess I shouldn't be expecting anything yet."],
+        Teen: ["It's kinda cute"],
         Adult: ["Don't be ashamed about being flat, it's really cute."]
       },
       Small: {
         Kid: ["Nothing quite like developing breasts. So lewd and cute."],
         Teen: ["Nothing quite like developing breasts. So lewd and cute."]
       },
-      Average: [
-        "Nice tits"
-      ],
-      Large: [
-        "Heh, look a the size of these!",
-				"Damn, these are huge!"
-      ],
+      Average: {
+        Kid: ["Nice tits."],
+        Teen: ["Nice tits."],
+        Adult: ["Nice tits."]
+      },
+      Large: {
+        Kid: [
+          "Heh, look a the size of these!",
+				  "Damn, these are huge!"
+        ],
+        Teen: [
+          "Heh, look a the size of these!",
+				  "Damn, these are huge!"
+        ],
+        Adult: [
+          "Heh, look a the size of these!",
+				  "Damn, these are huge!"
+        ]
+      },
       Busty:[
         "Shit, these are big!",
 				"How do you carry these things?!"
@@ -684,18 +698,36 @@ setup.gropebreastQuotes = {
     Submissive: {
       Flat: {
         Kid: ["They're soft."],
+        Teen: ["Yeah, I'm not that developed."],
         Adult: ["I can work with this."]
       },
-      Average: [
-        "I like your breasts."
-      ],
+      Average: {
+        Kid: ["Like my breasts?"],
+        Teen: ["Like my breasts?"],
+        Adult: ["Like my breasts?"],
+      },
       Large: [
         "Your breasts are so soft.",
 				"Wow, they are pretty big."
       ],
-      Busty: [ "Whoa..."]
+      Busty: ["Whoa..."]
     },
     Switch: {
+      Flat: {
+        Kid: ["SWITCH DIALOUGE ABOUT FLAT BREAST, KID."],
+        Teen: ["SWITCH DIALOUGE ABOUT FLAT BREAST, TEEN."],
+        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+      },
+      Small: {
+        Kid: ["SWITCH DIALOUGE ABOUT SMALL BREAST, KID."],
+        Teen: ["SWITCH DIALOUGE ABOUT SMALL BREAST, TEEN."],
+        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+      },
+      Average: {
+        Kid: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, KID."],
+        Teen: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, TEEN."],
+        Adult: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, ADULT."],
+      },
       Large: ["Wow..."],
       Busty: ["These sure are big!"]
     }
@@ -710,9 +742,23 @@ setup.gropebreastQuotes = {
       "You can play with them if you like."
     ],
 
-    Switch: [
-     "NEUTRAL dialogue about grabbing boobs"
-    ]
+    Switch: {
+     Flat: {
+        Kid: ["SWITCH DIALOUGE ABOUT FLAT BREAST, KID."],
+        Teen: ["SWITCH DIALOUGE ABOUT FLAT BREAST, TEEN."],
+        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+      },
+      Small: {
+        Kid: ["SWITCH DIALOUGE ABOUT SMALL BREAST, KID."],
+        Teen: ["SWITCH DIALOUGE ABOUT SMALL BREAST, TEEN."],
+        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+      },
+      Average: {
+        Kid: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, KID."],
+        Teen: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, TEEN."],
+        Adult: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, ADULT."],
+      }
+    }
   }
 };
 
@@ -1060,32 +1106,43 @@ setup.orgasmQuotes = {
 
 /* ----- ORGASM CLOSE ----- */
 setup.orgasmcloseQuotes = {
-  
   give: {
     Anal: {  
-      Dominant: ["I'm gonna cum in your ass!"],
-      Submissive: ["I'm... gonna cum!", "A-agh!! AaaHhhh!!!" ],
-      Versatile: ["I'm cumming!","Aaaah!!"]
+      Dominant: [
+        "I'm gonna cum in your ass!"
+      ],
+      Submissive: [
+        "I'm... gonna cum!", 
+        "A-agh!! AaaHhhh!!!",
+        "I can't hold it anymore!"
+      ],
+      Switch: ["I'm cumming!","Aaaah!!"]
     },
     Handjob: {
       Dominant: ["Don't stop jerking it, I'm so close!"],
       Submissive: ["Faster, I'm almost there!"],
-      Versatile: ["Faster, I'm almost there!"]
+      Switch: ["Faster, I'm almost there!"]
     },
     "Finger-Pussy": {
       Dominant:["Faster, I'm so close!"],
       Submissive: ["Faster, I'm so close!"],
-      Versatile: ["Faster, I'm so close!"]
+      Switch: ["Faster, I'm so close!"]
     }, 
     Blowjob: {
       Dominant:["I'm gonna cum in your mouth!"],
       Submissive: ["I'm gonna cum!"],
-      Versatile: ["I'm gonna cum!"]
-    }
+      Switch: ["I'm gonna cum!"]
+    },
     Caress: {
       Dominant:["I'm gonna cum!"],
       Submissive: ["I'm gonna cum!"],
-      Versatile: ["I'm gonna cum!"]
+      Switch: ["I'm gonna cum!"]
+    },
+    /* DEFAULT FALLBACK */
+    default: {
+      Dominant: ["DEFAULT QUOTE DOM"],
+      Submissive: ["DEFAULT QUOTE SUB"],
+      Switch: ["DEFAULT QUOTE SWITCH"]
     }
   },
 
@@ -1129,9 +1186,12 @@ setup.orgasmcloseQuotes = {
       Versatile: ["MMPH"]
     },
 
-    Neutral: [
-      "NEUTRAL DEFAULT QUOTE"
-    ]
+     /* DEFAULT FALLBACK */
+    default: {
+      Dominant: ["DEFAULT QUOTE DOM"],
+      Submissive: ["DEFAULT QUOTE SUB"],
+      Switch: ["DEFAULT QUOTE SWITCH"]
+    }
   }
 };
 
@@ -1157,7 +1217,7 @@ setup.vaginalQuotes = {
       "Ah",
       "Ha! Ah!"
     ],
-    Neutral: [
+    Versatile: [
       "Your pussy is so poggers!", /* adjust if you want less meme-y */
 			"Fuck! Your pussy feels so good!",
 			"The way you're squeezing in there, feels so damn good!",
@@ -1184,7 +1244,7 @@ setup.vaginalQuotes = {
 			"I feel so full!"
     ],
 
-    Neutral: [
+    Versatile: [
       "Don't stop! Harder! Fuck me! Yes, yes, yes!",
 			"It's so big!",
 			"I feel so full!",

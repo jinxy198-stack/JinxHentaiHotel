@@ -1,7 +1,7 @@
 :: ApplebridgeNPC [init nobr] {"position":"475,400","size":"100,100"}
 
 /% Applebridge %/
-<<set $CoryPark = {
+<<set $CoryP = {
     name: "Cory",
     nickname: "",
     surname: "Park",
@@ -25,8 +25,33 @@
     bodyweight: "Slender",
     bodymusc: "Toned", /* Musculature*/
     personality: "Sassy",
-    Virgin: false,
     sexpref: "Dominant",
+    origin: "Applebridge"
+}>>
+
+<<set $JaidenB = {
+    name: "Jaiden",
+    surname: "Bate",
+    species: "Human",
+    gender: "Female",
+    trans: "Cisgender",
+    sexu: "Bisexual",  /* sexual orientation */
+    genitals: "Vagina",
+    genitaltype: "Tight",
+    pronouns: "She/Her",
+    age: 9,
+    eyes: "Blue",
+    hair: "Long",
+    haircolor: "Blonde",
+    facefeatures: "Freckles",
+    skincolor: "Fair",
+    bodyheight: "Short",
+    bodyweight: "Skinny",
+    bodymusc: "Light Muscles",
+    breastsize:"Flat",
+    personality: "Kind",
+    assSize: "Small",
+    sexpref: "Switch",
     origin: "Applebridge"
 }>>
 
@@ -55,5 +80,32 @@
     personality: "Mean",
     assSize: "Huge",
     sexpref: "Dominant",
+    origin: "Applebridge"
+}>>
+
+<<set $OliverT = {
+    name: "Oliver",
+    nickname: "Olly",
+    surname: "Townsend",
+    species: "Human",
+    gender: "Male",
+    trans: "Cisgender",
+    sexu: "Bisexual",  /* sexual orientation */
+    genitals: "Penis",
+    genitaltype: "Phimosis", /*cut or uncut */
+    penislength: "Small",
+    assSize: "Round",
+    pronouns: "He/Him",
+    age: 12,
+    eyes: "Blue",
+    hair: "Bobcut",
+    haircolor: "Brown",
+    skincolor: "Fair",
+    skinfeatures: "",
+    bodyheight: "Short",
+    bodyweight: "Slender",
+    bodymusc: "Light Muscles", /* Musculature*/
+    personality: "Shy",
+    sexpref: "Submissive",
     origin: "Applebridge"
 }>>

@@ -918,7 +918,7 @@
 	<</if>>
 
 	<<set _mode   = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
-	<<set _pref   = _n.sexpref || "Versatile">>
+	<<set _pref   = _n.sexpref || "Switch">>
 	<<set _action = $sex.action>>
 	<<set _pool   = null>>
 
