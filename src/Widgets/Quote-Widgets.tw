@@ -920,7 +920,7 @@
 	<</if>>
 
 	/* normalize inputs */
-	<<set _pref = _n.sexpref || "Neutral">>
+	<<set _pref = _n.sexpref || "Switch">>
 	<<set _msize = $mc.penislength || "average">>
 <<if !$sex or !$sex.roles or !_n>>
 	<<return>>
