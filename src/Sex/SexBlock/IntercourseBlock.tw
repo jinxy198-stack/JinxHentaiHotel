@@ -23,7 +23,7 @@
 
 <<if $position == "Cowgirl" or $position == "Sitting" or $position == "Sit on Lap" or $position == "Doggystyle" or $position == "Missionary">>
 	<<if ((_n.genitals == "Vagina" and $mc.genitals == "Penis" and $sex.roles.sub.name == _n.name)
-		or ($mc.genitals == "Vagina" and _n.genitals == "Penis" and $sex.roles.sub.name == _n.name))>>
+		or ($mc.genitals == "Vagina" and _n.genitals == "Penis" and $sex.roles.dom.name == _n.name))>>
 		<<button "Vaginal">>
 			<<if _n.arousal < 10>>
 				<<replace "#log">>They are not ready to proceed. Build more comfort first.<</replace>>
@@ -63,7 +63,7 @@
 <</if>>
 
 <<if $position == "SixtyNine" or $position == "Oral Front" or $position == "Facesitting">>
-	<<if _n.genitals == "Vagina" and $sex.roles.sub.name == _n.name or $mc.genitals == "Vagina" and $sex.roles.dom.name == _n.name>>
+	<<if $mc.genitals == "Vagina" and $sex.roles.sub.name == _n.name or _n.genitals == "Vagina" and $sex.roles.dom.name == _n.name>>
 		<<button "Cunnilingus">>
 			<<if _n.arousal < 10>>
 				<<replace "#log">>They are not ready to proceed. Build more comfort first.<</replace>>

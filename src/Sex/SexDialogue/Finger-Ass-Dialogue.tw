@@ -2,8 +2,8 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if !$seenActions.Finger-Ass>>
-<<set $seenActions.Finger-Ass = true>>
+<<if !$seenActions.FingerAss>>
+<<set $seenActions.FingerAss = true>>
     <<if $sex.roles.dom.name == _n.name>>
 	    <<= either(
  	    "_n.name fingers your ass."

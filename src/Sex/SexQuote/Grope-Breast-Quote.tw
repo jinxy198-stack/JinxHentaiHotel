@@ -15,8 +15,8 @@
 <<else>>
 	<<return>>
 <</if>><<set _pref = _n.sexpref || "Switch">>
-<<set _msize = $mc.breastsize || "Average">>
-<<set _nsize = _n.breastsize || "Average">>
+<<set _msize = $mc.breastsize >>
+<<set _nsize = _n.breastsize >>
 <<set _mage  = $mc.ageGroup  || "Adult">>
 <<set _nage  = _n.ageGroup  || "Adult">>
 

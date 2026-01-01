@@ -2,8 +2,8 @@
 
 <<set _npc = _n>>
 <<PronounsSet>>
-<<if !$seenActions.Finger-Ass>>
-<<set $seenActions.Finger-Ass = true>>
+<<if !$seenActions.Anal>>
+<<set $seenActions.Anal = true>>
 	<<if $position == "Cowgirl">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
@@ -63,15 +63,25 @@
         	)>>
 		<<elseif $sex.roles.sub.name == _n.name>>
 			<<= either(
-        		"You are fucking NPC doggystyle"
+        		"You are fucking _n.name doggystyle"
         	)>>
 		<</if>>
+	<<elseif $position == "Lean against wall">>
+		<<if $sex.roles.dom.name == _n.name>>
+			<<= either(
+        		"You line up your dick and push into _n.name."
+        	)>>
+		<<elseif $sex.roles.sub.name == _n.name>>
+			<<= either(
+        		"_n.name gets into position and pushes $proset.their dick into you."
+        	)>>
+		<</if>>	
 	<</if>>
 <<else>>
 	<<if $position == "Cowgirl">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
-
+				"_n.name rides your <<= $mc.genitals.toLowerCase() >>"
 			)>>
 		<<elseif $sex.roles.sub.name == _n.name>>
 			<<= either(

@@ -89,7 +89,7 @@
 <</if>>
 
 <<if $position == "Standing" or $position == "Sitting" or $position == "Missionary" or $position == "Cowgirl">>
-	<<if _n.breastsize or $mc.breastsize>>
+	<<if (_n.breastsize and $sex.roles.sub.name == _n.name) or ($mc.breastsize and $sex.roles.dom.name == _n.name)>>
 		<<button "Grope breast">>
 			<<set $sex.action = "Grope Breast">>
 			<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>

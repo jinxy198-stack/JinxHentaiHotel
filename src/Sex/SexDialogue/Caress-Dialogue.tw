@@ -4,10 +4,7 @@
 <<PronounsSet>>
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
- 	"_n.name gently caresses your arm, testing your reaction.",
-    "Wanting to make _n.name feel loved, you lift your $mc.body.hand, before gently stroking your $mc.body.fingers over $proset.their face.",
-    "Lifting your $mc.body.hand, you softly trace your $mc.body.fingers over _n.name  cheek in order to make $proset.them feel loved.",
-    "Seeking to put _n.name at ease, you raise your $mc.body.hand, before using your $mc.body.fingers to lovingly caress $proset.their face."
+ 	"_n.name gently caresses your arm, testing your reaction."
     )>>
     <<=either(
     "A happy moan escapes from _n.name's mouth in response to this contact, causing you to smile in delight.",
@@ -15,7 +12,12 @@
     "In response to this, _n.name lets out a happy moan, letting you know that your gesture is much appreciated."
 	)>>
 <<elseif $sex.roles.sub.name == _n.name>>
-	Your $mc.body.fingers glides across _n.name's body.
+	<<= either(
+		"Wanting to make _n.name feel loved, you lift your $mc.body.hand, before gently stroking your $mc.body.fingers over $proset.their face.",
+    	"Lifting your $mc.body.hand, you softly trace your $mc.body.fingers over _n.name  cheek in order to make $proset.them feel loved.",
+    	"Seeking to put _n.name at ease, you raise your $mc.body.hand, before using your $mc.body.fingers to lovingly caress $proset.their face.",
+		"Your $mc.body.fingers glides across _n.name's body."
+	)>>
 	
 	/* Describe body texture */
     <<if _n.body.bodymaterial == "Skin">>

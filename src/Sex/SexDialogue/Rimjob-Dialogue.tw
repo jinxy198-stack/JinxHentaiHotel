@@ -3,11 +3,11 @@
 <<PronounsSet>>
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
- 	"_n.name eats out your ass."
+ 	"You eat out _n.name's ass."
     )>>
 <<elseif $sex.roles.sub.name == _n.name>>
 	<<= either(
-    "You eat out _n.name's ass."
+    "_n.name eats out your ass."
     )>>
 <</if>>
 

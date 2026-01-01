@@ -11,7 +11,7 @@ setup.analQuotes = {
       Submissive: [
         "Please, bounce on my cock!"
       ],
-      Neutral: [
+      Switch: [
         "A-Ahhh..."
       ]
     },
@@ -22,7 +22,7 @@ setup.analQuotes = {
       Submissive: [
         "I love that look on your face."
       ],
-      Neutral: [
+      Switch: [
         "NEUTRAL DIALOGUE FOR ANAL MISSIONARY"
       ]
     },
@@ -566,7 +566,7 @@ setup.fingervaginaQuotes = {
       "It's so warm in there.",
 			"Wow, its so wet down there."
     ],
-    Neutral: [
+    Switch: [
       "It's warm in there."
     ]
   },
@@ -583,7 +583,7 @@ setup.fingervaginaQuotes = {
       "Oh f-fuck!"
     ],
 
-    Neutral: [
+    Switch: [
       "Oh f-fuck!"
     ]
   }
@@ -600,7 +600,7 @@ setup.frotQuotes = {
       "Hope I'm not moving too fast.",
 			"Y-you feel so good."
     ],
-    Neutral: [
+    Switch: [
       "Ah."
     ]
   },
@@ -615,7 +615,7 @@ setup.frotQuotes = {
 			"P-Please keep going."
     ],
 
-    Neutral: [
+    Switch: [
       "Ah."
     ]
   }
@@ -1071,36 +1071,39 @@ setup.suckfootQuotes = {
 /* ----- ORGASM ----- */
 setup.orgasmQuotes = {
   give: {
-    Dominant: [
-      "I'm cumming!",
-      "I'll fill you up nicely",
-			"I'm fucking cumming!",
-			"Here it comes!"
-    ],
-    Submissive: [
-      "I'm cumming!",
-			"I'm... gonna cum!",
-      "A-agh!! AaaHhhh!!!"
-    ],
-    Neutral: [
-      "I'm cumming!",
-      "Aaaah!!"
-    ]
+    "Anal Orgasm": {
+      Dominant: [
+        "I'm cumming!",
+        "I'll fill you up nicely",
+			  "I'm fucking cumming!",
+			  "Here it comes!"
+      ],
+      Submissive: [
+        "I'm cumming!",
+			  "I'm... gonna cum!",
+        "A-agh!! AaaHhhh!!!"
+      ],
+      Switch: [
+        "I'm cumming!",
+        "Aaaah!!"
+      ]
+    }
+
   },
-
   receive: {
-    Dominant: [
-      "Oh god, cum in me!",
-			"Give it to me!!!"
-    ],
-
-    Submissive: [
-      "Oh god, cum in me!"
-    ],
-
-    Neutral: [
+    "Anal Orgasm": {
+      Dominant: [
+        "Oh god, cum in me!",
+			  "Give it to me!!!"
+      ],
+      Submissive: [
         "Oh god, cum in me!"
-    ]
+      ],
+      Switch: [
+        "Oh god, cum in me!"
+      ]
+    }
+
   }
 };
 
