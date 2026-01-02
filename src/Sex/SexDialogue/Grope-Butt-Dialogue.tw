@@ -1,15 +1,26 @@
 :: Grope-Butt-Dialogue [nobr Dialogue] {"position":"1000,1675","size":"100,100"}
 <<set _npc = _n>>
 <<PronounsSet>>
-
-<<if $sex.roles.dom.name == _n.name>>
-	<<= either(
- 	 "_n.name grabs your <<= $mc.assSize.toLowerCase() >> ass."
-    )>>
-<<elseif $sex.roles.sub.name == _n.name>>
-	<<= either(
-    "You grab _n.name's <<= $mc.assSize.toLowerCase() >> ass"
-    )>>
+<<if !$seenActions.Kiss>>
+<<set $seenActions.Kiss = true>>
+    <<if $sex.roles.dom.name == _n.name>>
+	    <<= either(
+ 	        "_n.name grabs your <<= $mc.assSize.toLowerCase() >> ass."
+        )>>
+    <<elseif $sex.roles.sub.name == _n.name>>
+	    <<= either(
+            "You grab _n.name's <<= $mc.assSize.toLowerCase() >> ass."
+        )>>
+    <</if>>
+<<else>>
+    <<if $sex.roles.dom.name == _n.name>>
+	    <<= either(
+ 	        "_n.name gives your ass another squeeze."
+        )>>
+    <<elseif $sex.roles.sub.name == _n.name>>
+	    <<= either(
+            "You give _n.name's <<= $mc.assSize.toLowerCase() >> ass another squeeze."
+        )>>
+    <</if>>
 <</if>>
-
 

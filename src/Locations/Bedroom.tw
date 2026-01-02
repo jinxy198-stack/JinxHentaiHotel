@@ -23,14 +23,4 @@ On the other side there was a door to your bathroom.
 	<<goto "Hallway">>
 <</link>>
 
-/*
-<<if !$flags or !$flags.spawnedSNPC>>
-	<<set $flags to $flags or {}>>
-	<<set $flags.spawnedSNPC = true>>
-	
-    <<SpawnRandomNPCs 10>>
-<</if>>
-<<include "SNPC-List">>
-*/
-
 

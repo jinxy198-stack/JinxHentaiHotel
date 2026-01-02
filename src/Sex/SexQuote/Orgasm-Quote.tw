@@ -4,7 +4,7 @@
 <<set _action = $sex.action>>
 <<set _pool   = null>>
 
-<<set _entry = setup.orgasmQuotes[_mode] && setup.orgasmQuotes[_mode][_action] || setup.orgasmcloseQuotes[_mode].default>>
+<<set _entry = setup.orgasmQuotes[_mode] && setup.orgasmQuotes[_mode][_action] || setup.orgasmQuotes[_mode].default>>
 
 <<if Array.isArray(_entry)>>
 	<<set _pool = _entry>>

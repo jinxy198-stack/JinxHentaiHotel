@@ -1762,10 +1762,20 @@ Note: Dom does not always mean Top and Sub does not always mean Bottom.</tw-pass
 
 &lt;p&gt; You step through the doorway into a clean, polished bathroom. Soft overhead lighting reflects off the marble tiles, giving the room a muted glow. The air is cool and lightly scented. A wide mirror stretches across the wall, framed by smooth metal edging. The sink basin sits beneath it, carved from a single piece of stone, with neatly arranged toiletries placed with precision. The glass shower enclosure stands to the side, its chrome fixtures catching the light. Everything is orderly, quiet, and waiting for you to use it.
 &lt;/p&gt;
-
+&lt;&lt;if $lastNpc&gt;&gt;
+&lt;&lt;set $ui.npc = $lastNpc&gt;&gt;
+&lt;&lt;set _n = $ui.npc&gt;&gt;
+&lt;p&gt; _n.name joins you in the bathroom.
+&lt;/p&gt;
+&lt;&lt;linkreplace &quot;Take a shower with _n.name&quot;&gt;&gt; 
+&lt;p&gt;_n.name joins you in the shower and you two wash yourselves. You both could hardly keep your hands off each other but eventually you are both squeaky clean.&lt;/p&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;else&gt;&gt;
 &lt;&lt;linkreplace &quot;Take a shower&quot;&gt;&gt; 
 &lt;p&gt;You take a nice hot shower.&lt;/p&gt;
 &lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
 
 &lt;&lt;link &quot;Go back&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Bedroom&quot;&gt;&gt;
@@ -1791,17 +1801,7 @@ On the other side there was a door to your bathroom.
 &lt;&lt;link &quot;Leave your room&quot;&gt;&gt;
 	&lt;&lt;set $lastNpc = null&gt;&gt;
 	&lt;&lt;goto &quot;Hallway&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;
-
-/*
-&lt;&lt;if !$flags or !$flags.spawnedSNPC&gt;&gt;
-	&lt;&lt;set $flags to $flags or {}&gt;&gt;
-	&lt;&lt;set $flags.spawnedSNPC = true&gt;&gt;
-	
-    &lt;&lt;SpawnRandomNPCs 10&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;include &quot;SNPC-List&quot;&gt;&gt;
-*/</tw-passagedata><tw-passagedata pid="30" name="Elevator" tags="" position="375,975" size="100,100">&lt;&lt;set $gamelocation to &quot;Elevator&quot;&gt;&gt;
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="Elevator" tags="" position="375,975" size="100,100">&lt;&lt;set $gamelocation to &quot;Elevator&quot;&gt;&gt;
 You enter the elevator.
 
 [[Ground Floor|Lobby]]
@@ -4172,7 +4172,7 @@ setup.orgasmcloseQuotes = {
     Handjob: {
       Dominant: [&quot;Don&#39;t stop jerking it, I&#39;m so close!&quot;],
       Submissive: [&quot;Faster, I&#39;m almost there!&quot;],
-      Switch: [&quot;Faster, I&#39;m almost there!&quot;]
+      Switch: [&quot;You&#39;re gonna jerk the cum out of me!&quot;]
     },
     &quot;Finger-Pussy&quot;: {
       Dominant:[&quot;Faster, I&#39;m so close!&quot;],
@@ -4322,7 +4322,22 @@ setup.vaginalQuotes = {
     
 &lt;&lt;/silently&gt;&gt;
 
-&lt;span class=&quot;stage-pill&quot;&gt;&lt;&lt;= $sex.stage &gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="49" name="ForeplayBlock" tags="nobr" position="1675,800" size="100,100">&lt;&lt;set $seenActions = $seenActions or {}&gt;&gt;
+&lt;span class=&quot;stage-pill&quot;&gt;&lt;&lt;= $sex.stage &gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="49" name="AftercareBlock" tags="nobr" position="1800,925" size="100,100">&lt;&lt;replace &quot;#actions&quot;&gt;&gt;
+
+			&lt;&lt;button &quot;Cuddle&quot;&gt;&gt;
+				&lt;&lt;set $sex.stage = &quot;Aftercare&quot;&gt;&gt;
+				&lt;&lt;set $sex.action = &quot;Cuddle&quot;&gt;&gt;
+				&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(4) : (setup.addAffection(4), setup.updateBindings())&gt;&gt;
+				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;/button&gt;&gt;
+		&lt;&lt;button &quot;End Session&quot;&gt;&gt;
+			&lt;&lt;set $lastNpc = $ui.npc&gt;&gt;      &lt;!-- remember who you were with --&gt;
+			&lt;&lt;set $sex = { stage: &quot;foreplay&quot;, log: [] }&gt;&gt;  &lt;!-- optional reset --&gt;
+            &lt;&lt;set $seenActions = {}&gt;&gt;
+			&lt;&lt;goto &quot;Bedroom&quot;&gt;&gt;              &lt;!-- or &quot;Your Room&quot; or whatever --&gt;
+		&lt;&lt;/button&gt;&gt;
+	&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="ForeplayBlock" tags="nobr" position="1675,800" size="100,100">&lt;&lt;set $seenActions = $seenActions or {}&gt;&gt;
 &lt;hr&gt;
 &lt;b&gt;Foreplay:&lt;/b&gt;
 
@@ -4498,7 +4513,7 @@ setup.vaginalQuotes = {
 		&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;/button&gt;&gt; |
 	&lt;&lt;/if&gt;&gt;
-&lt;br&gt;</tw-passagedata><tw-passagedata pid="50" name="IntercourseBlock" tags="nobr" position="1800,800" size="100,100">&lt;b&gt;Intercourse:&lt;/b&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="51" name="IntercourseBlock" tags="nobr" position="1800,800" size="100,100">&lt;b&gt;Intercourse:&lt;/b&gt;
 
 &lt;&lt;if $mc.genitals == &quot;Penis&quot; and $sex.roles.sub.name == _n.name or _n.genitals == &quot;Penis&quot; and $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;if $position == &quot;Cowgirl&quot; or $position == &quot;Pronebone&quot; or $position == &quot;Sit on Lap&quot; or $position == &quot;Doggystyle&quot; or $position == &quot;Missionary&quot; or $position == &quot;Lean against wall&quot;&gt;&gt;
@@ -4619,7 +4634,7 @@ setup.vaginalQuotes = {
 			&lt;&lt;/if&gt;&gt;
 		&lt;&lt;/button&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="OrgasmBlock" tags="nobr" position="1675,925" size="100,100">&lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="OrgasmBlock" tags="nobr" position="1675,925" size="100,100">&lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;if $sex.action == &quot;Anal Orgasm&quot;&gt;&gt;
 		&lt;&lt;if $position == &quot;Cowgirl&quot;&gt;&gt;
 			You slam down one final time before _n.name lets out a moan and unloads into your ass. You feel the warmth fill you up.
@@ -4699,7 +4714,7 @@ Wanna have aftercare or end the session?
             &lt;&lt;set $seenActions = {}&gt;&gt;
 			&lt;&lt;goto &quot;Bedroom&quot;&gt;&gt;              &lt;!-- or &quot;Your Room&quot; or whatever --&gt;
 		&lt;&lt;/button&gt;&gt;
-&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="OrgasmCloseBlock" tags="nobr" position="1550,925" size="100,100">&lt;&lt;if _n.arousal &gt;= 100&gt;&gt;
+&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="OrgasmCloseBlock" tags="nobr" position="1550,925" size="100,100">&lt;&lt;if _n.arousal &gt;= 100&gt;&gt;
     &lt;&lt;replace &quot;#actions&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace &quot;#positionList&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace &quot;#log&quot;&gt;&gt;You are close to orgasm 
@@ -4735,7 +4750,7 @@ Wanna have aftercare or end the session?
 		&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;/button&gt;&gt;
     
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="PositionBlock" tags="nobr" position="1550,800" size="100,100">&lt;hr&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="PositionBlock" tags="nobr" position="1550,800" size="100,100">&lt;hr&gt;
     &lt;div id=&quot;positionList&quot; class=&quot;position-block&quot;&gt;
     Change location:
 	&lt;&lt;if $position != &quot;Standing&quot;&gt;&gt;
@@ -4874,22 +4889,7 @@ Wanna have aftercare or end the session?
 			&lt;&lt;/button&gt;&gt; |
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-    &lt;/div&gt;</tw-passagedata><tw-passagedata pid="54" name="AftercareBlock" tags="nobr" position="1800,925" size="100,100">&lt;&lt;replace &quot;#actions&quot;&gt;&gt;
-
-			&lt;&lt;button &quot;Cuddle&quot;&gt;&gt;
-				&lt;&lt;set $sex.stage = &quot;Aftercare&quot;&gt;&gt;
-				&lt;&lt;set $sex.action = &quot;Cuddle&quot;&gt;&gt;
-				&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(4) : (setup.addAffection(4), setup.updateBindings())&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
-			&lt;&lt;/button&gt;&gt;
-		&lt;&lt;button &quot;End Session&quot;&gt;&gt;
-			&lt;&lt;set $lastNpc = $ui.npc&gt;&gt;      &lt;!-- remember who you were with --&gt;
-			&lt;&lt;set $sex = { stage: &quot;foreplay&quot;, log: [] }&gt;&gt;  &lt;!-- optional reset --&gt;
-            &lt;&lt;set $seenActions = {}&gt;&gt;
-			&lt;&lt;goto &quot;Bedroom&quot;&gt;&gt;              &lt;!-- or &quot;Your Room&quot; or whatever --&gt;
-		&lt;&lt;/button&gt;&gt;
-	&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="Against-Wall-Dialogue" tags="nobr Dialogue" position="975,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+    &lt;/div&gt;</tw-passagedata><tw-passagedata pid="55" name="Against-Wall-Dialogue" tags="nobr Dialogue" position="975,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
@@ -5073,8 +5073,8 @@ Wanna have aftercare or end the session?
     )&gt;&gt;
     &lt;&lt;=either(
     &quot;A happy moan escapes from _n.name&#39;s mouth in response to this contact, causing you to smile in delight.&quot;,
-    &quot;The happy sigh which escapes _n.name&#39;s mouth is more than enough to let you know that your gentle caress has had the desired effect.&quot;,
-    &quot;In response to this, _n.name lets out a happy moan, letting you know that your gesture is much appreciated.&quot;
+    &quot;The happy sigh which escapes your mouth is more than enough to let _n.name know that your gentle caress has had the desired effect.&quot;,
+    &quot;In response to this, you let out a happy moan, letting _n.name know that your gesture is much appreciated.&quot;
 	)&gt;&gt;
 &lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -5375,15 +5375,27 @@ Wanna have aftercare or end the session?
     )&gt;&gt;
     &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="Grope-Butt-Dialogue" tags="nobr Dialogue" position="1000,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
-
-&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;= either(
- 	 &quot;_n.name grabs your &lt;&lt;= $mc.assSize.toLowerCase() &gt;&gt; ass.&quot;
-    )&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;= either(
-    &quot;You grab _n.name&#39;s &lt;&lt;= $mc.assSize.toLowerCase() &gt;&gt; ass&quot;
-    )&gt;&gt;
+&lt;&lt;if !$seenActions.Kiss&gt;&gt;
+&lt;&lt;set $seenActions.Kiss = true&gt;&gt;
+    &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+	    &lt;&lt;= either(
+ 	        &quot;_n.name grabs your &lt;&lt;= $mc.assSize.toLowerCase() &gt;&gt; ass.&quot;
+        )&gt;&gt;
+    &lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+	    &lt;&lt;= either(
+            &quot;You grab _n.name&#39;s &lt;&lt;= $mc.assSize.toLowerCase() &gt;&gt; ass.&quot;
+        )&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+    &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+	    &lt;&lt;= either(
+ 	        &quot;_n.name gives your ass another squeeze.&quot;
+        )&gt;&gt;
+    &lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+	    &lt;&lt;= either(
+            &quot;You give _n.name&#39;s &lt;&lt;= $mc.assSize.toLowerCase() &gt;&gt; ass another squeeze.&quot;
+        )&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Handjob-Dialogue" tags="Dialogue nobr" position="900,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
@@ -6346,7 +6358,7 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 &lt;&lt;set _action = $sex.action&gt;&gt;
 &lt;&lt;set _pool   = null&gt;&gt;
 
-&lt;&lt;set _entry = setup.orgasmQuotes[_mode] &amp;&amp; setup.orgasmQuotes[_mode][_action] || setup.orgasmcloseQuotes[_mode].default&gt;&gt;
+&lt;&lt;set _entry = setup.orgasmQuotes[_mode] &amp;&amp; setup.orgasmQuotes[_mode][_action] || setup.orgasmQuotes[_mode].default&gt;&gt;
 
 &lt;&lt;if Array.isArray(_entry)&gt;&gt;
 	&lt;&lt;set _pool = _entry&gt;&gt;

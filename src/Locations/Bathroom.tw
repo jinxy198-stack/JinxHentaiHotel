@@ -4,10 +4,20 @@
 
 <p> You step through the doorway into a clean, polished bathroom. Soft overhead lighting reflects off the marble tiles, giving the room a muted glow. The air is cool and lightly scented. A wide mirror stretches across the wall, framed by smooth metal edging. The sink basin sits beneath it, carved from a single piece of stone, with neatly arranged toiletries placed with precision. The glass shower enclosure stands to the side, its chrome fixtures catching the light. Everything is orderly, quiet, and waiting for you to use it.
 </p>
-
+<<if $lastNpc>>
+<<set $ui.npc = $lastNpc>>
+<<set _n = $ui.npc>>
+<p> _n.name joins you in the bathroom.
+</p>
+<<linkreplace "Take a shower with _n.name">> 
+<p>_n.name joins you in the shower and you two wash yourselves. You both could hardly keep your hands off each other but eventually you are both squeaky clean.</p>
+<</linkreplace>>
+<<else>>
 <<linkreplace "Take a shower">> 
 <p>You take a nice hot shower.</p>
 <</linkreplace>>
+<</if>>
+
 
 <<link "Go back">>
 	<<goto "Bedroom">>

@@ -8,8 +8,8 @@
     )>>
     <<=either(
     "A happy moan escapes from _n.name's mouth in response to this contact, causing you to smile in delight.",
-    "The happy sigh which escapes _n.name's mouth is more than enough to let you know that your gentle caress has had the desired effect.",
-    "In response to this, _n.name lets out a happy moan, letting you know that your gesture is much appreciated."
+    "The happy sigh which escapes your mouth is more than enough to let _n.name know that your gentle caress has had the desired effect.",
+    "In response to this, you let out a happy moan, letting _n.name know that your gesture is much appreciated."
 	)>>
 <<elseif $sex.roles.sub.name == _n.name>>
 	<<= either(
