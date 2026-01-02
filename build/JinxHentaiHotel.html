@@ -1728,7 +1728,14 @@ If you are looking for some ass then I would suggest checking out the lounge on 
 		&lt;span class= &quot;mc&quot;&gt; &quot;So, is there any limit to the type of people I can have sex with?&quot; &lt;/span&gt;
 		&lt;span class= &quot;Jinx&quot;&gt; &quot;Nope, so long as it&#39;s consensual then you can make love to anyone regardless of age, gender, or species.&quot;&lt;/span&gt;
 		&lt;span class= &quot;mc&quot;&gt; &quot;When you say regardless of age, does that include.....?&quot; &lt;/span&gt;
-		&lt;span class= &quot;Jinx&quot;&gt; &quot;Look, so long as you obey the one simple rule, I don&#39;t judge who you bed with at all. You&#39;d be surprised who would be down for some love making. But the choice is yours.&quot; &lt;/span&gt;
+		&lt;span class= &quot;Jinx&quot;&gt; &quot;Look, so long as you obey the one simple rule, I don&#39;t judge who you bed with at all. You&#39;d be surprised who would be down for some love making. But the choice is both yours and theirs.&quot; &lt;/span&gt;
+	&lt;&lt;case &quot;Door&quot;&gt;&gt;
+		&lt;span class= &quot;mc&quot;&gt; &quot;When I left my room I noticed a door that had a strange aura around it. It felt almost like something was broken.&quot; &lt;/span&gt;
+		Jinx had a faraway look on his face. As if he was reminiscing on something.
+		&lt;span class= &quot;Jinx&quot;&gt; &quot;That is a reminder...&quot;&lt;/span&gt;
+		&lt;span class= &quot;mc&quot;&gt;&quot;A reminder of what?&quot;&lt;/span&gt;
+		&lt;span class=&quot;Jinx&quot;&gt;&quot;What happens when you break my rule.&quot;&lt;/span&gt;
+		You decide not to press any further.
 	&lt;&lt;default&gt;&gt;
 		&lt;span class=&quot;Jinx&quot;&gt;Ask a question.&lt;/span&gt;
 &lt;&lt;/switch&gt;&gt;
@@ -1820,7 +1827,10 @@ Welcome my acolyte, do you have question&#39;s for me?
 &lt;/span&gt;
 
 &lt;&lt;button &quot;Sex&quot;&gt;&gt;&lt;&lt;PopupJinxQ &quot;Sex&quot; &quot;Sex&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;button &quot;Emissary?&quot;&gt;&gt;&lt;&lt;PopupJinxQ &quot;emissary&quot; &quot;Emissary?&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="Lobby" tags="" position="375,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lobby&quot;&gt;&gt;
+&lt;&lt;button &quot;Emissary?&quot;&gt;&gt;&lt;&lt;PopupJinxQ &quot;emissary&quot; &quot;Emissary?&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;&lt;button &quot;Door?&quot;&gt;&gt;&lt;&lt;PopupJinxQ &quot;Door&quot; &quot;Door&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+
+[[Elevator]]</tw-passagedata><tw-passagedata pid="34" name="Lobby" tags="" position="375,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lobby&quot;&gt;&gt;
 You are in the lobby of the hotel, classical music plays as you watch people from other worlds go about their business.
 
 [[Lounge]]
@@ -4615,7 +4625,7 @@ setup.vaginalQuotes = {
 			You slam down one final time before _n.name lets out a moan and unloads into your ass. You feel the warmth fill you up.
 		&lt;&lt;elseif $position == &quot;Missionary&quot;&gt;&gt;
 		&lt;&lt;else&gt;&gt;
-			You cum and they cum with you.
+			_n.name slams downs one last time before you groan and cum inside their ass.
 		&lt;&lt;/if&gt;&gt;
 		&lt;br&gt;
 		/* If you have a knotted penis */
@@ -8088,7 +8098,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;/if&gt;&gt;
 
 	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
 &lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
@@ -8176,33 +8186,46 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 		[Error] VaginalQuote: empty dialogue pool.
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
+/* Creates a single Story NPC from a provided template and registers it globally */
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No template provided to MakeSNPC.
 		&lt;&lt;return&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
+	/* Clone template to avoid mutating the original */
 	&lt;&lt;set _tpl = _args[0]&gt;&gt;
 	&lt;&lt;set _npc = setup.clone(_tpl)&gt;&gt;
+
+	/* Assign unique NPC ID */
 	&lt;&lt;set _npc.id = ++$npcSeq&gt;&gt;
+
+	/* Apply derived traits and body setup */
 	&lt;&lt;PronounsSet&gt;&gt;
     &lt;&lt;AgeGroupNPC&gt;&gt;
     &lt;&lt;make-petname&gt;&gt;
     &lt;&lt;SetNPCBodyType _npc&gt;&gt;
     &lt;&lt;create-body _npc&gt;&gt;
 	&lt;&lt;initParts _npc&gt;&gt;
+
+	/* Register NPC in global NPC list */
 	&lt;&lt;set _dummy = $npcs.push(_npc)&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;SpawnSNPCs&quot;&gt;&gt;
+/* Spawns multiple NPCs from a template or a small fallback pool */
+
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No template(s) provided to SpawnSNPCs.
 		&lt;&lt;return&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
+	/* Number of NPCs to spawn */
 	&lt;&lt;set _count = _args[0]&gt;&gt;
+
+	/* Optional explicit template */
 	&lt;&lt;set _tpl   = (_args.length &gt; 1) ? _args[1] : null&gt;&gt;
 
-	/* random pool includes Kevin and your new NPC template */
+	/* Pool used for random selection */
 	&lt;&lt;set _pool  = (_tpl) ? [_tpl] : [$KevinNpc, $Yoichi]&gt;&gt;
 
 	&lt;&lt;for _i = 0; _i &lt; _count; _i++&gt;&gt;
@@ -8212,17 +8235,20 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;MakeRandomNPC&quot;&gt;&gt;
-	/* Ensure core globals exist */
+/* Fully procedural NPC generator using npcPools */
+
+	/* Ensure globals exist */
 	&lt;&lt;set $npcSeq = $npcSeq || 0&gt;&gt;
 	&lt;&lt;set $npcs   = $npcs   || []&gt;&gt;
 
-	/* Base template clone */
+	/* Clone base character template */
 	&lt;&lt;set _npc = setup.clone($characterTemplate)&gt;&gt;
 	&lt;&lt;set _npc.id = ++$npcSeq&gt;&gt;
 
-	/* Shortcut to pools (with simple fallbacks) */
+	/* Shortcut reference to pool config */
 	&lt;&lt;set _p = $npcPools || {}&gt;&gt;
 
+	/* Localized fallback pools */
 	&lt;&lt;set _names       = _p.givenNames    || [&quot;Alex&quot;, &quot;Taylor&quot;, &quot;Morgan&quot;, &quot;Riley&quot;]&gt;&gt;
 	&lt;&lt;set _surnames    = _p.surnames      || [&quot;Smith&quot;, &quot;Jones&quot;, &quot;Brown&quot;, &quot;Lee&quot;]&gt;&gt;
 	&lt;&lt;set _genders     = _p.genders       || [&quot;Male&quot;, &quot;Female&quot;]&gt;&gt;
@@ -8357,6 +8383,8 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;SpawnRandomNPCs&quot;&gt;&gt;
+	/* Spawns N fully randomized NPCs */
+
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No count provided to SpawnRandomNPCs.
 		&lt;&lt;return&gt;&gt;
@@ -8371,12 +8399,16 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 
 &lt;&lt;widget &quot;SpawnPoolOnce&quot;&gt;&gt;
+/* Spawns an NPC pool only once per game using a flag */
+
   &lt;&lt;set _poolKey = _args[0]&gt;&gt;
   &lt;&lt;set _poolArr = _args[1]&gt;&gt;
 
+  /* Persistent flags container */
   &lt;&lt;set $flags = $flags or {}&gt;&gt;
   &lt;&lt;set $flags.spawnedPools = $flags.spawnedPools or {}&gt;&gt;
 
+  /* Prevent duplicate spawning */
   &lt;&lt;if $flags.spawnedPools[_poolKey]&gt;&gt;
     &lt;&lt;return&gt;&gt;
   &lt;&lt;/if&gt;&gt;
@@ -8387,7 +8419,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     &lt;&lt;return&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 
-  /* Use unique temp var names to avoid collisions */
+  /* Spawn each template once */
   &lt;&lt;for _spawnPool_idx = 0; _spawnPool_idx &lt; _poolArr.length; _spawnPool_idx++&gt;&gt;
     &lt;&lt;set _spawnPool_tpl = _poolArr[_spawnPool_idx]&gt;&gt;
     &lt;&lt;MakeSNPC _spawnPool_tpl&gt;&gt;
@@ -8396,6 +8428,8 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 
 &lt;&lt;widget &quot;check-attraction&quot; $mc _n&gt;&gt;
+	/* Determines if NPC is attracted to MC based on sexuality */
+
 	&lt;&lt;set _mcG = $mc.gender&gt;&gt;
 	&lt;&lt;set _npcG = _n.gender&gt;&gt;
 	&lt;&lt;set _sexu = _n.sexu or &quot;Unknown&quot;&gt;&gt;
@@ -8434,20 +8468,20 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;/capture&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
-/* Determine who tops and who bottoms */
 &lt;&lt;widget &quot;pick-roles&quot;&gt;&gt;
+	/* Determines dom/sub roles between MC and NPC */
 	&lt;&lt;set _mc  = _args[0]&gt;&gt;
 	&lt;&lt;set _npc = _args[1]&gt;&gt;
 
-	/* optional single-string prefs: &quot;dom&quot; | &quot;sub&quot; | &quot;switch&quot; (or unset) */
+	/* Normalize preference keys */
 	&lt;&lt;set _mcPref  = (_mc.sexpref  or &quot;switch&quot;)&gt;&gt;
 	&lt;&lt;set _npcPref = (_npc.sexpref or &quot;switch&quot;)&gt;&gt;
 
-	/* init target */
+	/* Initialize role object */
 	&lt;&lt;set $sex to $sex or {}&gt;&gt;
 	&lt;&lt;set $sex.roles to { dom: null, sub: null }&gt;&gt;
 
-	/* hard overrides (optional): $forceDom = &quot;mc&quot;|&quot;npc&quot; */
+	/* Optional forced override */
 	&lt;&lt;if $forceDom is &quot;mc&quot;&gt;&gt;
 		&lt;&lt;set $sex.roles = { dom: _mc,  sub: _npc }&gt;&gt;
 		&lt;&lt;return&gt;&gt;
@@ -8487,6 +8521,8 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;create-body&quot; _npc&gt;&gt;
+	/* Initializes default body part map */
+
 	&lt;&lt;set _npc.body to {
 		head: &quot;head&quot;,
 		face: &quot;face&quot;,
@@ -8506,6 +8542,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         bodymaterial: &quot;Skin&quot;
 	}&gt;&gt;
 
+	/* Override for anthro */
 	&lt;&lt;if _npc.species is &quot;Anthro&quot;&gt;&gt;
 		&lt;&lt;alternatebody _npc&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
@@ -8521,7 +8558,6 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
-
 
 &lt;&lt;widget &quot;alternatebody&quot; _npc&gt;&gt;
 	&lt;&lt;if _npc and _npc.species and _npc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;

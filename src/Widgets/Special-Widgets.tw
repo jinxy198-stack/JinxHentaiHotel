@@ -373,7 +373,6 @@
 	<</if>>
 <</widget>>
 
-
 <<widget "alternatebody" _npc>>
 	<<if _npc and _npc.species and _npc.species.toLowerCase() is "anthro">>
 		<<set _group = _npc.anthro and _npc.anthro.group ? _npc.anthro.group : "Furry">>
