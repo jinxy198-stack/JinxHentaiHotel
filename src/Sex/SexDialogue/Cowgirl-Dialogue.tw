@@ -17,12 +17,7 @@
 	)>>
 	<br>
 <</if>>
-<<= either(
-	"Good " + _n.petname + "! It's time to give you a ride!",
-	"Let me ride you... Please!",
-	"Good " + _n.petname + "! It's time for you to have a ride!",
-	"Come and ride me... Please!"
-)>>
+
 
 
 

@@ -23,7 +23,6 @@
 			"You wrap your arms around _n.name."
 		)>>
 	<</if>>
-	
 <<elseif $position == "Doggystyle">>
 	<<if $sex.roles.dom.name == _n.name>>		
 		<<= either(
@@ -44,6 +43,16 @@
 			"You lie on _n.name and wrap your arms around them. They in turn wrap their arms and legs around you."
 		)>>		
 	<</if>>
+<<elseif $position == "Sit on Lap">>
+	<<if $sex.roles.dom.name == _n.name>>
+		<<= either(
+			"_n.name presses against your back and wraps their arm around you."
+		)>>		
+	<<elseif $sex.roles.sub.name == _n.name>>	
+		<<= either(
+			"You wrap your arms around _n.name and pulls them closer to you."
+		)>>		
+	<</if>>	
 <<else>>
 	You should not be able to read this, that means there's an error.
 <</if>>

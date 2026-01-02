@@ -1,8 +1,8 @@
 :: Grope-Butt-Dialogue [nobr Dialogue] {"position":"1000,1675","size":"100,100"}
 <<set _npc = _n>>
 <<PronounsSet>>
-<<if !$seenActions.Kiss>>
-<<set $seenActions.Kiss = true>>
+<<if !$seenActions.Grope-Butt>>
+<<set $seenActions.Grope-Butt = true>>
     <<if $sex.roles.dom.name == _n.name>>
 	    <<= either(
  	        "_n.name grabs your <<= $mc.assSize.toLowerCase() >> ass."

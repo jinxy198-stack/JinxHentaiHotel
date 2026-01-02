@@ -7,11 +7,7 @@
 		"Jumping down onto all fours, you lower yourself down over the top of _n.name, bringing your crotch down to $proset.their face as you drop your head down between $proset.their _n.body.legs.",
 		"Allowing $proset.them to push you down, you reach up and take a firm grip on $proset.their _n.hips before roughly tugging $proset.them down so that they're over the top of you in a sixty-nine."
 	)>>
-    <br>
-	"<<= either(
-		/* NPC bottom dialogue */
-		"I like where this is going."
-	)>>"
+
 <<elseif $sex.roles.dom.name == _n.name>>
 	<<= either(
 		/* NPC tops, beginning */
@@ -19,11 +15,6 @@
 		"Taking hold of _n.name's shoulders, you tug $proset.them down on top of you as you lie down on your back. Pulling $proset.their _n.hips back so that $proset.they're in a reversed all-fours position over the top of you, you look up at $proset.their crotch hovering over your face and smirk,",
 		"Sinking down to lie on your back, you put on the most enticing look you can muster as you plead,",
 		"Jumping down onto all fours, _n.name lowers $proset.themself down over the top of you, bringing $proset.their crotch down to your face as $proset.they drop $proset.their head down between your $mc.body.legs. Turning $proset.their head back to look at you, $proset.they grin,"
-	)>>
-    <br>
-	<<= either(
-		/* NPC top dialogue */
-		"I want to sixty-nine with you... Please!"
 	)>>
 <</if>>
 

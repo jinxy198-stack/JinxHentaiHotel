@@ -2,45 +2,75 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if $sex.roles.sub.name == _n.name>>
-	<<= either(
-		"Reaching down, you adjust your <<= $mc.genitals.toLowerCase() >> to line it up with _n.name's, before starting to slowly thrust, rubbing your shaft against $proset.theirs.",
-		"You draw _n.name in close, opening your legs to align your <<= $mc.genitals.toLowerCase() >> with $proset.theirs.",
-		"You draw _n.name in close, positioning yourself so that your groin is pressing against $proset.theirs. You then pull _n.name in eagerly, coaxing $proset.them to thrust and grind $proset.their <<= _n.genitals.toLowerCase() >> against you.",
-		"With a moan, you eagerly press your groin against $proset.theirs before starting to tease your <<= $mc.genitals.toLowerCase() >> up against them."
-	)>>
-	<<= either(
-		"Gently bucking $proset.their own _n.body.hips in response, _n.name lets out a moan as $proset.they mirror your movements and softly rub $proset.their <<= _n.genitals.toLowerCase() >> against yours.",
-		"Responding with a gentle buck of $proset.their own _n.body.hips, _n.name starts mirroring your movements, helping to softly rub $proset.their <<= _n.genitals.toLowerCase() >> up and down over yours.",
-		"Happily bucking $proset.their own _n.body.hips in response, _n.name lets out a moan as $proset.they mirror your movements and readily rub $proset.their <<= _n.genitals.toLowerCase() >> against yours.",
-		"Responding with a happy buck of $proset.their own _n.body.hips, _n.name starts mirroring your movements, helping to frantically rub $proset.their <<= _n.genitals.toLowerCase() >> up and down over yours.",
-		"_n.name enthusiastically responds in kind and lets out a moan as $proset.they rub $proset.their own <<= _n.genitals.toLowerCase() >> up and down over yours.",
-		"A moan bursts out from between _n.name's lips, and, eagerly thrusting $proset.their _n.body.hips, $proset.they grind $proset.their <<= _n.genitals.toLowerCase() >> against yours.",
-		"Moaning in delight, _n.name eagerly thrusts $proset.their _n.body.hips out, using your movements to help grind $proset.their own <<= _n.genitals.toLowerCase() >> against yours.",
-		"_n.name happily responds in kind and lets out a moan as $proset.they softly rub $proset.their own <<= _n.genitals.toLowerCase() >> up and down over your groin.",
-		"A moan drifts out from between _n.name's lips, and, gently thrusting $proset.their _n.body.hips, $proset.they grind $proset.their <<= _n.genitals.toLowerCase() >> against yours.",
-		"Moaning in pleasure, _n.name gently pushes $proset.their _n.body.hips out, using your movements to help grind $proset.their own <<= _n.genitals.toLowerCase() >> against yours.",
-		"_n.name responds in kind and lets out a moan as $proset.they rub $proset.their own <<= _n.genitals.toLowerCase()>> up and down over yours.",
-		"A moan bursts out from between _n.name's lips, and, thrusting $proset.their _n.body.hips, $proset.they grind $proset.their <<= _n.genitals.toLowerCase()>> against yours.",
-		"Moaning in pleasure, _n.name thrusts $proset.their _n.body.hips out, using your movements to help grind $proset.their own <<= _n.genitals.toLowerCase() >> against yours."
-	)>>
-<<elseif $sex.roles.dom.name == _n.name>>
-	<<= either(
-		"Reaching down, _n.name adjusts $proset.their <<= _n.genitals.toLowerCase() >> to line it up with yours, before starting to slowly thrust, rubbing $proset.their shaft against yours.",
-		"_n.name draws you in close, opening $proset.their legs to align $proset.their groin with yours."
-	)>>
-	<<= either(
-		"Letting out a little moan with every thrust of your $mc.body.hips, you gently rub your $mc.genitals up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
-		"You let out a series of soft sighs as you gently rub your <<= $mc.genitals.toLowerCase() >> up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
-		"Sliding your <<= $mc.genitals.toLowerCase() >> over _n.name's <<= _n.genitals.toLowerCase() >> , you let out a little moan with each pump of your $mc.body.hips.",
-		"Letting out a moan with each thrust of your $mc.body.hips, you continue to rub your <<= $mc.genitals.toLowerCase() >> up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
-		"You let out a series of lewd moans as you rub your <<= $mc.genitals.toLowerCase() >> up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
-		"Rubbing your <<= $mc.genitals.toLowerCase() >> over _n.name's <<= _n.genitals.toLowerCase() >> , you let out a moan with each pump of your $mc.body.hips.",
-		"Letting out a moan with each eager thrust of your $mc.body.hips, you passionately rub your <<= $mc.genitals.toLowerCase() >> up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
-		"You let out a series of lewd moans as you desperately grind your <<= $mc.genitals.toLowerCase() >> up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
-		"Eagerly grinding your <<= $mc.genitals.toLowerCase() >> over _n.name's <<= _n.genitals.toLowerCase() >> , you let out a moan with each frantic pump of your $mc.body.hips."
-	)>>
+<<if !$seenActions.Frot>>
+<<set $seenActions.Frot = true>>
+	<<if $position is "Sit on Lap">>
+		<<if $sex.roles.sub.name == _n.name>>
+			<<= either(
+				"You turn yourself to face _n.name and line up your <<= $mc.genitals.toLowerCase() with _n.name's <<= _n.genitals.toLowerCase() >>."
+			)>>
+		<<elseif $sex.roles.dom.name == _n.name>>
+			<<= either(
+				"_n.name turns to face you and line up their <<= _n.genitals.toLowerCase() >> with your <<= $mc.genitals.toLowerCase() >>."
+			)>>	
+		<</if>>
+	<<elseif $position is "Missionary">>
+		<<if $sex.roles.sub.name == _n.name>>
+			<<= either(
+				""
+			)>>
+		<<elseif $sex.roles.dom.name == _n.name>>
+			<<= either(
+				"With you on your back, _n.name climbed on top of you, gazes locked. You felt _n.name's <<= _n.genitals.toLowerCase() >> pressed against yours. _n.name began thrusting $proset.their hips against you, your cocks grinding and rubbing aginst each other."
+			)>>	
+		<</if>>			
+	<<else>>
+		<<if $sex.roles.sub.name == _n.name>>
+			<<= either(
+				"Reaching down, you adjust your <<= $mc.genitals.toLowerCase() >> to line it up with _n.name's, before starting to slowly thrust, rubbing your shaft against $proset.theirs.",
+				"You draw _n.name in close, opening your legs to align your <<= $mc.genitals.toLowerCase() >> with $proset.theirs.",
+				"You draw _n.name in close, positioning yourself so that your groin is pressing against $proset.theirs. You then pull _n.name in eagerly, coaxing $proset.them to thrust and grind $proset.their <<= _n.genitals.toLowerCase() >> against you.",
+				"With a moan, you eagerly press your groin against $proset.theirs before starting to tease your <<= $mc.genitals.toLowerCase() >> up against them."
+			)>>
+		<<elseif $sex.roles.dom.name == _n.name>>
+			<<= either(
+				"Reaching down, _n.name adjusts $proset.their <<= _n.genitals.toLowerCase() >> to line it up with yours, before starting to slowly thrust, rubbing $proset.their shaft against yours.",
+				"_n.name draws you in close, opening $proset.their legs to align $proset.their groin with yours."
+			)>>
+		<</if>>
+	<</if>>	
+<<else>>
+		<<if $sex.roles.sub.name == _n.name>>
+			<<= either(
+				"Gently bucking $proset.their own _n.body.hips in response, _n.name lets out a moan as $proset.they mirror your movements and softly rub $proset.their <<= _n.genitals.toLowerCase() >> against yours.",
+				"Responding with a gentle buck of $proset.their own _n.body.hips, _n.name starts mirroring your movements, helping to softly rub $proset.their <<= _n.genitals.toLowerCase() >> up and down over yours.",
+				"Happily bucking $proset.their own _n.body.hips in response, _n.name lets out a moan as $proset.they mirror your movements and readily rub $proset.their <<= _n.genitals.toLowerCase() >> against yours.",
+				"Responding with a happy buck of $proset.their own _n.body.hips, _n.name starts mirroring your movements, helping to frantically rub $proset.their <<= _n.genitals.toLowerCase() >> up and down over yours.",
+				"_n.name enthusiastically responds in kind and lets out a moan as $proset.they rub $proset.their own <<= _n.genitals.toLowerCase() >> up and down over yours.",
+				"A moan bursts out from between _n.name's lips, and, eagerly thrusting $proset.their _n.body.hips, $proset.they grind $proset.their <<= _n.genitals.toLowerCase() >> against yours.",
+				"Moaning in delight, _n.name eagerly thrusts $proset.their _n.body.hips out, using your movements to help grind $proset.their own <<= _n.genitals.toLowerCase() >> against yours.",
+				"_n.name happily responds in kind and lets out a moan as $proset.they softly rub $proset.their own <<= _n.genitals.toLowerCase() >> up and down over your groin.",
+				"A moan drifts out from between _n.name's lips, and, gently thrusting $proset.their _n.body.hips, $proset.they grind $proset.their <<= _n.genitals.toLowerCase() >> against yours.",
+				"Moaning in pleasure, _n.name gently pushes $proset.their _n.body.hips out, using your movements to help grind $proset.their own <<= _n.genitals.toLowerCase() >> against yours.",
+				"_n.name responds in kind and lets out a moan as $proset.they rub $proset.their own <<= _n.genitals.toLowerCase()>> up and down over yours.",
+				"A moan bursts out from between _n.name's lips, and, thrusting $proset.their _n.body.hips, $proset.they grind $proset.their <<= _n.genitals.toLowerCase()>> against yours.",
+				"Moaning in pleasure, _n.name thrusts $proset.their _n.body.hips out, using your movements to help grind $proset.their own <<= _n.genitals.toLowerCase() >> against yours."
+			)>>
+		
+		<<elseif $sex.roles.dom.name == _n.name>>
+			<<= either(
+				"Letting out a little moan with every thrust of your $mc.body.hips, you gently rub your $mc.genitals up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
+				"You let out a series of soft sighs as you gently rub your <<= $mc.genitals.toLowerCase() >> up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
+				"Sliding your <<= $mc.genitals.toLowerCase() >> over _n.name's <<= _n.genitals.toLowerCase() >> , you let out a little moan with each pump of your $mc.body.hips.",
+				"Letting out a moan with each thrust of your $mc.body.hips, you continue to rub your <<= $mc.genitals.toLowerCase() >> up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
+				"You let out a series of lewd moans as you rub your <<= $mc.genitals.toLowerCase() >> up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
+				"Rubbing your <<= $mc.genitals.toLowerCase() >> over _n.name's <<= _n.genitals.toLowerCase() >> , you let out a moan with each pump of your $mc.body.hips.",
+				"Letting out a moan with each eager thrust of your $mc.body.hips, you passionately rub your <<= $mc.genitals.toLowerCase() >> up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
+				"You let out a series of lewd moans as you desperately grind your <<= $mc.genitals.toLowerCase() >> up and down over _n.name's <<= _n.genitals.toLowerCase() >> .",
+				"Eagerly grinding your <<= $mc.genitals.toLowerCase() >> over _n.name's <<= _n.genitals.toLowerCase() >> , you let out a moan with each frantic pump of your $mc.body.hips.",
+				"You both shiver from the pleasure from your cocks each time _n.name thrusts."
+			)>>
+		<</if>>	
 <</if>>
-
 
 

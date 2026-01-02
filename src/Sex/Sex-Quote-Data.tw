@@ -594,7 +594,8 @@ setup.frotQuotes = {
   give: {
     Dominant: [
       "Ahh yeah.",
-			"Fuck yeah, this is good!"
+			"Fuck yeah, this is good!",
+      "Y-Your <<= $mc.genitals.toLowerCase() >> feels so good, $mc.name..."
     ],
     Submissive: [
       "Hope I'm not moving too fast.",
@@ -607,7 +608,8 @@ setup.frotQuotes = {
 
   receive: {
     Dominant: [
-      "Mmm, this feels so good."
+      "Mmm, this feels so good.",
+      "Y-You feel so good $mc.name!"
     ],
 
     Submissive: [
@@ -616,7 +618,8 @@ setup.frotQuotes = {
     ],
 
     Switch: [
-      "Ah."
+      "Ah.",
+      "Augh...!"
     ]
   }
 };
@@ -1087,8 +1090,12 @@ setup.orgasmQuotes = {
         "I'm cumming!",
         "Aaaah!!"
       ]
+    },
+    "Frot Orgasm": {
+      Dominant: ["Mnnngh!!"],
+      Submissive: ["SUBMISSIVE FROT ORGASM QUOTE"],
+      Switch: ["Mnnngh!!"]
     }
-
   },
   receive: {
     "Anal Orgasm": {
@@ -1102,8 +1109,12 @@ setup.orgasmQuotes = {
       Switch: [
         "Oh god, cum in me!"
       ]
+    },
+    "Frot Orgasm": {
+      Dominant: ["DOMINANT FROT ORGASM QUOTE"],
+      Submissive: ["A-Ahhh...!"],
+      Switch: ["A-Ahhh...!"]
     }
-
   }
 };
 
@@ -1133,11 +1144,6 @@ setup.orgasmcloseQuotes = {
     }, 
     Blowjob: {
       Dominant:["I'm gonna cum in your mouth!"],
-      Submissive: ["I'm gonna cum!"],
-      Switch: ["I'm gonna cum!"]
-    },
-    Caress: {
-      Dominant:["I'm gonna cum!"],
       Submissive: ["I'm gonna cum!"],
       Switch: ["I'm gonna cum!"]
     },

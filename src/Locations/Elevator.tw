@@ -1,9 +1,9 @@
-:: Elevator {"position":"375,975","size":"100,100"}
+:: Elevator [nobr]{"position":"375,975","size":"100,100"}
 <<set $gamelocation to "Elevator">>
-You enter the elevator.
-
-[[Ground Floor|Lobby]]
-[[Jinx's Room]]
-[[Hallway]]
-
-
+You enter the elevator. Some buttons are lit up, indicating you can go there, other's are currently not available yet.
+<br>
+<div class="room-hotel">
+[[Ground Floor|Lobby]] <br>
+[[Jinx's Room]] <br>
+[[Resident Hallway|Hallway]] <br>
+</div>
