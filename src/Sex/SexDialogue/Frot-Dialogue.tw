@@ -17,7 +17,7 @@
 	<<elseif $position is "Missionary">>
 		<<if $sex.roles.sub.name == _n.name>>
 			<<= either(
-				""
+				"_n.name lays on their back as you crawl on top of them. You line up your <<= $mc.genitals.toLowerCase() >> with their <<= _n.genitals.toLowerCase() >> and rubbed them together."
 			)>>
 		<<elseif $sex.roles.dom.name == _n.name>>
 			<<= either(
