@@ -623,6 +623,11 @@
 <<widget "PopupTutorial">>
     <<run Dialog.create("How to fuck").wikiPassage("Tutorial").open();>>
 <</widget>>
+<<widget "PopupBrothelSign">>
+    <<run Dialog.create("Brothel").wikiPassage("BrothelSign").open();>>
+<</widget>>
+
+
 
 <<widget "PreSet">>
     <<set 
