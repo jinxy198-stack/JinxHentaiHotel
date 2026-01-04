@@ -21,7 +21,7 @@
 	<</if>>
 <</if>>
 
-<<if $position == "Cowgirl" or $position == "Sitting" or $position == "Sit on Lap" or $position == "Doggystyle" or $position == "Missionary">>
+<<if $position == "Cowgirl" or $position == "Sit on Lap" or $position == "Doggystyle" or $position == "Missionary">>
 	<<if ((_n.genitals == "Vagina" and $mc.genitals == "Penis" and $sex.roles.sub.name == _n.name)
 		or ($mc.genitals == "Vagina" and _n.genitals == "Penis" and $sex.roles.dom.name == _n.name))>>
 		<<button "Vaginal">>

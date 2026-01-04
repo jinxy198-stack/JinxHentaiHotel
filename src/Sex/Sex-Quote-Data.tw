@@ -285,7 +285,8 @@ setup.cunnilingusQuotes = {
 			"Good _n.petname! Get that _n.body.tongue of yours in deep!",
 			"Keep going! My pussy loves your _n.body.tongue!",
 			"Don't stop! Deeper! Eat me out! Yes, yes, yes!",
-			"Hope you like the taste."
+			"Hope you like the taste.",
+      "Damn, you feel great down there."
     ],
     Submissive: [
       "Please keep going! My pussy loves your _n.body.tongue!",
@@ -293,7 +294,7 @@ setup.cunnilingusQuotes = {
 			"Don't stop! Deeper! Eat me out! Yes, yes, yes!",
 			"Oh yes! Taste my pussy! I love your _n.body.tongue! Get it deeper!"
     ],
-    Neutral: [
+    Switch: [
       "Don't stop! Deeper! Eat me out! Yes, yes, yes!",
 			"Mmmm"
     ]
@@ -919,25 +920,29 @@ setup.handjobQuotes = {
       "Mmm, that feels nice.",
       "Ohh."
     ],
-    Neutral: [
+    Switch: [
       "Mmm, that feels nice."
     ]
   },
-
   receive: {
     Dominant: {
       Tiny: {
-        Kid: ["Perfect size for someone your age."],
-        Adult: ["So cute and tiny."]
+        Kid: [
+          "Perfect size for someone your age.",
+          "So cute"
+        ],
+        Adult: [
+          "So cute and tiny.",
+          "Wow, it's small!"
+        ]
       },
       Small: ["So small, yet so precious."],
       Average: ["Your cock is so pretty."],
       Large: ["Damn, that's pretty big."],
       Huge: [
-        "FOOTJOB QUOTE ABOUT HUGE DICK"
+        "Fuck, you're hung!"
       ]
     },
-
     Submissive: {
       Tiny: {
         Kid: ["Perfect size for someone your age."],
@@ -945,16 +950,17 @@ setup.handjobQuotes = {
       },
       Small: ["Don't feel bad about the size, I like it."],
       Average: [
-        "DOM-LINE-1 about BODY-PART."
+        "Perfect size."
       ],
       Large: [
         "Wow, it's pretty big!",
-        "You should be proud to have a cock this big!"
+        "You should be proud to have a cock this big!",
+        "Yeah, let me jerk it."
       ],
       Huge: ["It's quite an intimidating size."]
     },
 
-    Neutral: [
+    Switch: [
      "Wow, this is a really nice dick, $mc.name!"
     ]
   }
@@ -1049,20 +1055,17 @@ setup.suckfootQuotes = {
       "NEUTRAL-DOM-LINE-1 ABOUT SUCKING FOOT."
     ]
   },
-
   receive: {
     Dominant: [
       "Mmmf",
 			"Mmmph",
 			"Mmf"
     ],
-
     Submissive: [
       "Mmmf",
 			"Mmmph",
 			"Mmf"
     ],
-
     Neutral: [ 
         "Mmmf",
 				"Mmmph",
@@ -1095,6 +1098,12 @@ setup.orgasmQuotes = {
       Dominant: ["Mnnngh!!"],
       Submissive: ["SUBMISSIVE FROT ORGASM QUOTE"],
       Switch: ["Mnnngh!!"]
+    },
+     /* DEFAULT FALLBACK */
+    default: {
+      Dominant: ["Ahh. That was a good fuck."],
+      Submissive: ["DEFAULT ORGASM QUOTE SUB"],
+      Switch: ["DEFAULT QUOTE SWITCH"]
     }
   },
   receive: {
@@ -1114,6 +1123,12 @@ setup.orgasmQuotes = {
       Dominant: ["DOMINANT FROT ORGASM QUOTE"],
       Submissive: ["A-Ahhh...!"],
       Switch: ["A-Ahhh...!"]
+    },
+     /* DEFAULT FALLBACK */
+    default: {
+      Dominant: ["Damn, enjoyed yourself?"],
+      Submissive: ["Wow, that was nice."],
+      Switch: ["Phew..."]
     }
   }
 };
@@ -1122,9 +1137,7 @@ setup.orgasmQuotes = {
 setup.orgasmcloseQuotes = {
   give: {
     Anal: {  
-      Dominant: [
-        "I'm gonna cum in your ass!"
-      ],
+      Dominant: ["I'm gonna cum in your ass!"],
       Submissive: [
         "I'm... gonna cum!", 
         "A-agh!! AaaHhhh!!!",
@@ -1147,11 +1160,16 @@ setup.orgasmcloseQuotes = {
       Submissive: ["I'm gonna cum!"],
       Switch: ["I'm gonna cum!"]
     },
+    Footjob: {
+      Dominant:["I'm gonna cum on your feet!"],
+      Submissive: ["I'm gonna cum on your feet!"],
+      Switch: ["I'm gonna cum on your feet!"]
+    },
     /* DEFAULT FALLBACK */
     default: {
-      Dominant: ["DEFAULT QUOTE DOM"],
-      Submissive: ["DEFAULT QUOTE SUB"],
-      Switch: ["DEFAULT QUOTE SWITCH"]
+      Dominant: ["Fuck, I'm gonna cum"],
+      Submissive: ["A-Ah! I'm gonna cum!"],
+      Switch: ["I'm gonna cum!"]
     }
   },
 
@@ -1169,13 +1187,13 @@ setup.orgasmcloseQuotes = {
     },
     Handjob: {
       Dominant: [
-        "DOMINANT HANDJOB ORGASM CLOSE QUOTE"
+        "Yeah, gonna squeeze it out of you!"
       ],
       Submissive: [
         "SUBMISSIVE HANDJOB ORGASM CLOSE QUOTE"
       ],
       Switch: [
-        "NEUTRAL HANDJOB ORGASM CLOSE QUOTE"
+        "Come on, cum."
       ]
     },
     "Finger-Pussy": {
@@ -1194,12 +1212,22 @@ setup.orgasmcloseQuotes = {
       Submissive: ["MMPH"],
       Switch: ["MMPH"]
     },
+    Cunnilingus: {
+      Dominant:["MMPH"],
+      Submissive: ["MMPH"],
+      Switch: ["MMPH"]
+    },
+    Footjob: {
+      Dominant:["Cum on my feet!"],
+      Submissive: ["Please, cum on my feet!"],
+      Switch: ["Cum on my feet!"]
+    },
 
      /* DEFAULT FALLBACK */
     default: {
-      Dominant: ["DEFAULT QUOTE DOM"],
-      Submissive: ["DEFAULT QUOTE SUB"],
-      Switch: ["DEFAULT QUOTE SWITCH"]
+      Dominant: ["Come on, cum!"],
+      Submissive: ["I can see it, let it out."],
+      Switch: ["Let it out."]
     }
   }
 };
@@ -1231,7 +1259,7 @@ setup.vaginalQuotes = {
 			"Fuck! Your pussy feels so good!",
 			"The way you're squeezing in there, feels so damn good!",
 			"Your pussy is perfect!",
-			"It's so warm and wed in there."
+			"It's so warm and wet in there..."
     ]
   },
 

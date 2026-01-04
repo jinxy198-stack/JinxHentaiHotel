@@ -2,9 +2,15 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 <<if $sex.roles.dom.name == _n.name>>
-	<<= either(
- 	"You eat out _n.name's ass."
-    )>>
+	<<if $position is "Cowgirl">>
+        <<= either(
+ 	        "You lick up and down the crack of the ass pressing down on your mouth."
+        )>>
+    <<else>>
+        <<= either(
+ 	        "You eat out _n.name's ass."
+        )>>
+    <</if>>
 <<elseif $sex.roles.sub.name == _n.name>>
 	<<= either(
     "_n.name eats out your ass."

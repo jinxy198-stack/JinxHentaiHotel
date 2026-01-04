@@ -32,6 +32,10 @@
 		_n.name's cock twitches and pulses as it cums between you both.
 	<<elseif $sex.action == "Boobjob Orgasm">>
 		You keep on fucking _n.name's breasts as you orgasm, spurting your cum all over $proset.their tits and _n.body.face.
+	<<elseif $sex.action == "Vaginal b Orgasm">>
+		You shoot your cum into _n.name's pussy.	
+	<<else>>
+		You cum and _n.name cums with you. You've both made a mess	
 	<</if>>
 
 <<elseif $sex.roles.dom.name == _n.name>>
@@ -44,7 +48,10 @@
 			_n.name unleashes inside you, $proset.their hot cum spraying against the walls of your ass.
 		<</if>>
 	<<elseif $sex.action == "Vaginal Orgasm">>
-		_n.name thrusts into you one last time before holding inside you and letting out a moan. You feel $proset.their cum shoot into your $mc.genitals.
+		<<= either(
+			"_n.name thrusts into you one last time before holding inside you and letting out a moan. You feel $proset.their cum shoot into your <<= $mc.genitals.toLowerCase() >>.",
+			"_n.name convulses and grinds against your <<= $mc.genitals.toLowerCase() >> before shooting $proset.their load."
+		)>>
 	<<elseif $sex.action == "Blowjob Orgasm">>
 		_n.name cums in your mouth.
 	<<elseif $sex.action == "Footjob Orgasm">>
@@ -60,6 +67,8 @@
 		_n.name moans as $proset.they jizz onto your face.
     <<elseif $sex.action == "Handjob Orgasm">>
 		_n.name moans as they cum in your hands.
+	<<elseif $sex.action == "Vaginal Orgasm">>	
+		_n.name cums into your <<= $mc.genitals.toLowerCase() >>.
 	<</if>>
 <</if>>
 <br>
