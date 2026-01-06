@@ -1,40 +1,33 @@
-:: Statistics {"position":"275,150","size":"100,100"}
+:: Statistics [nobr]{"position":"275,150","size":"100,100"}
 <h2>Basic Info</h2>
 <table class="stats-table">
   <colgroup><col style="width:220px"><col style="width:auto"></colgroup>
-
   <tr id="name">
     <th>First Name:</th>
     <td id="mc-name">$mc.name</td>
   </tr>
-
   <<if $mc.nickname>>
   <tr id="nickname">
     <th>Nickname:</th>
     <td id="mc-nick">$mc.nickname</td>
   </tr>
   <</if>>
-
   <tr id="surname">
     <th>Surname:</th>
     <td id="mc-surb">$mc.surname</td>
   </tr>
-
   <tr id="age">
     <th>Age:</th>
     <td id="mc-age">$mc.age</td>
   </tr>
-
   <tr id="agegroup">
     <th>Age Group:</th>
     <td id="mc-agegroup">$mc.ageGroup</td>
   </tr>
-
   <tr id="species">
     <th>Species:</th>
     <td id="mc-species">$mc.species</td>
   </tr>
-
   <<if $mc.species and $mc.species.toLowerCase() is "anthro">>
   <tr id="anthro-type">
     <th>Anthro Type:</th>
@@ -47,16 +40,13 @@
 </table>
 
 <h2>Physical Traits:</h2>
-
 <h3>Face and Hair:</h3>
 <table class="stats-table">
   <colgroup><col style="width:220px"><col style="width:auto"></colgroup>
-
   <tr id="eyes">
     <th>Eyes:</th>
     <td id="mc-eyes">$mc.eyes</td>
   </tr>
-
   <<if $hair.length or $hair.texture or $hair.colour or $hair.do or $hair.bangs or $hair.shave>>
   <tr id="hair">
     <th>Hair:</th>
@@ -71,7 +61,6 @@
     </td>
   </tr>
   <</if>>
-
   <<if $facefeatures>>
   <tr id="facial-features">
     <th>Facial Features:</th>
@@ -96,7 +85,6 @@
       <<if $skin.features>> $skin.features<</if>>
     </td>
   </tr>
-
   <!-- Anthro-only body part summary -->
   <<if $mc.species and $mc.species.toLowerCase() is "anthro">>
   <tr id="anthro-parts">
@@ -108,14 +96,13 @@
     </td>
   </tr>
   <</if>>
-
   <!-- Build still uses the existing height/weight/musc system -->
   <tr id="body-build">
     <th>Build:</th>
     <td id="mc-build">
-      Height: $mc.bodyheight
-      Type: $mc.bodyweight
-      Musculature: $mc.bodymusc
+      Height: $mc.bodyheight <br>
+      Type: $mc.bodyweight   <br>
+      Musculature: $mc.bodymusc  <br>
     </td>
   </tr>
 </table>
@@ -132,19 +119,16 @@
 <h2>NSFW Options</h2>
 <table class="stats-table nsfw">
   <colgroup><col style="width:220px"><col style="width:auto"></colgroup>
-
   <tr>
     <th>Genitals:</th>
     <td id="mc-genitals">$mc.genitals</td>
   </tr>
-
   <<if $mc.genitaltype>>
   <tr>
     <th>Genital type:</th>
     <td id="mc-genitaltype">$mc.genitaltype</td>
   </tr>
   <</if>>
-
   <tr>
     <th>Ass size:</th>
     <td id="mc-assSize">$mc.assSize</td>

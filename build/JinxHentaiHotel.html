@@ -6961,42 +6961,35 @@ Updated as of 12/27/2025
 
  
  
-&lt;&lt;button [[TestShota|Bedroom]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Statistics" tags="" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
+&lt;&lt;button [[TestShota|Bedroom]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Statistics" tags="nobr" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
 &lt;table class=&quot;stats-table&quot;&gt;
   &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
-
   &lt;tr id=&quot;name&quot;&gt;
     &lt;th&gt;First Name:&lt;/th&gt;
     &lt;td id=&quot;mc-name&quot;&gt;$mc.name&lt;/td&gt;
   &lt;/tr&gt;
-
   &lt;&lt;if $mc.nickname&gt;&gt;
   &lt;tr id=&quot;nickname&quot;&gt;
     &lt;th&gt;Nickname:&lt;/th&gt;
     &lt;td id=&quot;mc-nick&quot;&gt;$mc.nickname&lt;/td&gt;
   &lt;/tr&gt;
   &lt;&lt;/if&gt;&gt;
-
   &lt;tr id=&quot;surname&quot;&gt;
     &lt;th&gt;Surname:&lt;/th&gt;
     &lt;td id=&quot;mc-surb&quot;&gt;$mc.surname&lt;/td&gt;
   &lt;/tr&gt;
-
   &lt;tr id=&quot;age&quot;&gt;
     &lt;th&gt;Age:&lt;/th&gt;
     &lt;td id=&quot;mc-age&quot;&gt;$mc.age&lt;/td&gt;
   &lt;/tr&gt;
-
   &lt;tr id=&quot;agegroup&quot;&gt;
     &lt;th&gt;Age Group:&lt;/th&gt;
     &lt;td id=&quot;mc-agegroup&quot;&gt;$mc.ageGroup&lt;/td&gt;
   &lt;/tr&gt;
-
   &lt;tr id=&quot;species&quot;&gt;
     &lt;th&gt;Species:&lt;/th&gt;
     &lt;td id=&quot;mc-species&quot;&gt;$mc.species&lt;/td&gt;
   &lt;/tr&gt;
-
   &lt;&lt;if $mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;
   &lt;tr id=&quot;anthro-type&quot;&gt;
     &lt;th&gt;Anthro Type:&lt;/th&gt;
@@ -7009,16 +7002,13 @@ Updated as of 12/27/2025
 &lt;/table&gt;
 
 &lt;h2&gt;Physical Traits:&lt;/h2&gt;
-
 &lt;h3&gt;Face and Hair:&lt;/h3&gt;
 &lt;table class=&quot;stats-table&quot;&gt;
   &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
-
   &lt;tr id=&quot;eyes&quot;&gt;
     &lt;th&gt;Eyes:&lt;/th&gt;
     &lt;td id=&quot;mc-eyes&quot;&gt;$mc.eyes&lt;/td&gt;
   &lt;/tr&gt;
-
   &lt;&lt;if $hair.length or $hair.texture or $hair.colour or $hair.do or $hair.bangs or $hair.shave&gt;&gt;
   &lt;tr id=&quot;hair&quot;&gt;
     &lt;th&gt;Hair:&lt;/th&gt;
@@ -7033,7 +7023,6 @@ Updated as of 12/27/2025
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;&lt;/if&gt;&gt;
-
   &lt;&lt;if $facefeatures&gt;&gt;
   &lt;tr id=&quot;facial-features&quot;&gt;
     &lt;th&gt;Facial Features:&lt;/th&gt;
@@ -7058,7 +7047,6 @@ Updated as of 12/27/2025
       &lt;&lt;if $skin.features&gt;&gt; $skin.features&lt;&lt;/if&gt;&gt;
     &lt;/td&gt;
   &lt;/tr&gt;
-
   &lt;!-- Anthro-only body part summary --&gt;
   &lt;&lt;if $mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;
   &lt;tr id=&quot;anthro-parts&quot;&gt;
@@ -7070,14 +7058,13 @@ Updated as of 12/27/2025
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;&lt;/if&gt;&gt;
-
   &lt;!-- Build still uses the existing height/weight/musc system --&gt;
   &lt;tr id=&quot;body-build&quot;&gt;
     &lt;th&gt;Build:&lt;/th&gt;
     &lt;td id=&quot;mc-build&quot;&gt;
-      Height: $mc.bodyheight
-      Type: $mc.bodyweight
-      Musculature: $mc.bodymusc
+      Height: $mc.bodyheight &lt;br&gt;
+      Type: $mc.bodyweight   &lt;br&gt;
+      Musculature: $mc.bodymusc  &lt;br&gt;
     &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
@@ -7094,19 +7081,16 @@ Updated as of 12/27/2025
 &lt;h2&gt;NSFW Options&lt;/h2&gt;
 &lt;table class=&quot;stats-table nsfw&quot;&gt;
   &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
-
   &lt;tr&gt;
     &lt;th&gt;Genitals:&lt;/th&gt;
     &lt;td id=&quot;mc-genitals&quot;&gt;$mc.genitals&lt;/td&gt;
   &lt;/tr&gt;
-
   &lt;&lt;if $mc.genitaltype&gt;&gt;
   &lt;tr&gt;
     &lt;th&gt;Genital type:&lt;/th&gt;
     &lt;td id=&quot;mc-genitaltype&quot;&gt;$mc.genitaltype&lt;/td&gt;
   &lt;/tr&gt;
   &lt;&lt;/if&gt;&gt;
-
   &lt;tr&gt;
     &lt;th&gt;Ass size:&lt;/th&gt;
     &lt;td id=&quot;mc-assSize&quot;&gt;$mc.assSize&lt;/td&gt;
