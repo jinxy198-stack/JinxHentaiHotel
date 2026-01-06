@@ -3100,6 +3100,7 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 /* ----- ANAL ----- */
 setup.analQuotes = {
   give: {
+    /* ----- POSITIONS ----- */
     Cowgirl: {
       Dominant: [
         &quot;Bounce on my cock!&quot;
@@ -3149,9 +3150,7 @@ setup.analQuotes = {
       ]
   },
   receive: {
-    Huge: [
-      &quot;Fuck you&#39;re huge!&quot;
-    ],  
+    /* ----- Positions ----- */
     Cowgirl: {
       Dominant: [
         &quot;Love it when I bounce on your cock?&quot;,
@@ -3162,9 +3161,6 @@ setup.analQuotes = {
 				&quot;Ahh&quot;,
 				&quot;You feel so good inside me.&quot;
       ],
-      Neutral: [
-        &quot;NEUTRAL DIALOGUE ABOUT ANAL COWGIRL&quot;
-      ]
     },
     Dominant: [
         &quot;Yeah, like that!! Ooh!&quot;,
@@ -3178,9 +3174,9 @@ setup.analQuotes = {
 				&quot;Keep fucking me!&quot;,
 				&quot;Yes! Yes! Give it to me! AH!&quot;,
 				&quot;Good _n.petname! Keep sliding that delicious cock of yours in and out of my ass!&quot;,
-				&quot;You like feeling my slutty little asshole gripping down on your cock?!&quot;
+				&quot;You like feeling my slutty little asshole gripping down on your cock?!&quot;,
+        &quot;Fuck, _n.name, you&#39;ve stuffed me good...&quot;
     ],
-
     Submissive: [
       &quot;Yes! That&#39;s it! Oh, yes! Yes!&quot;,
 				&quot;Make me yours!&quot;,
@@ -3197,8 +3193,7 @@ setup.analQuotes = {
 				&quot;Yess... It&#39;s sooo good!&quot;,
 				&quot;You fill me up so w-well...&quot;
     ],
-
-    Neutral: [
+    Switch: [
       &quot;Ah, right there!&quot;,
 			&quot;Ah... That&#39;s it...&quot;,
 			&quot;It feels so good to have you inside me!&quot;,
@@ -3209,7 +3204,10 @@ setup.analQuotes = {
 			&quot;Oh! Oh fuck yeah! Yes!!!&quot;,
 			&quot;You feel so good inside me.&quot;,
 			&quot;You like being inside me, don&#39;t you?&quot;
-    ]
+    ],
+    Huge: [
+      &quot;Fuck you&#39;re huge!&quot;
+    ],  
   }
 };
 /* ----- BLOWJOB ----- */
@@ -4137,8 +4135,8 @@ setup.suckfootQuotes = {
       &quot;I love having my _n.body.toes sucked! Keep going!&quot;,
 			&quot;Ah, that feels funny.&quot;
     ],
-    Neutral: [
-      &quot;NEUTRAL-DOM-LINE-1 ABOUT SUCKING FOOT.&quot;
+    Switch: [
+      &quot;Mmm, that feels nice.&quot;
     ]
   },
   receive: {
@@ -4152,7 +4150,7 @@ setup.suckfootQuotes = {
 			&quot;Mmmph&quot;,
 			&quot;Mmf&quot;
     ],
-    Neutral: [ 
+    Switch: [ 
         &quot;Mmmf&quot;,
 				&quot;Mmmph&quot;,
 				&quot;Mmf&quot;
@@ -5087,7 +5085,8 @@ Wanna have aftercare or end the session?
 	&lt;&lt;elseif $position == &quot;Doggystyle&quot;&gt;&gt;
 		&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 			&lt;&lt;= either(
-				&quot;_n.name fucks your ass like a dog.&quot;
+				&quot;_n.name fucks your ass like a dog.&quot;,
+				&quot;$proset.they begin to pick up a rhythm, thrusting into you over and over. Each time $proset.they do, your body is jostled forwards by the impact.&quot;
 			)&gt;&gt;
 		&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
 			&lt;&lt;= either(
@@ -5101,7 +5100,7 @@ Wanna have aftercare or end the session?
 			)&gt;&gt;
 		&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
 			&lt;&lt;= either(
-				&quot;&quot;
+				&quot;$proset.their feet flop in the air with your thrusts, $proset.their toes curling and uncurling in pleasure.&quot;
 			)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;		
 	&lt;&lt;else&gt;&gt;
@@ -5245,7 +5244,8 @@ Wanna have aftercare or end the session?
     )&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="Cunnilingus-Dialogue" tags="nobr Dialogue" position="900,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
-
+&lt;&lt;if !$seenActions.Cunnilingus&gt;&gt;
+&lt;&lt;set $seenActions.Cunnilingus = true&gt;&gt;
 	&lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
 		&lt;&lt;= either(
 			&quot;Shifting your $mc.body.hips, you reposition yourself to eagerly grind your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt; against _n.name&#39;s &lt;&lt;= _n.body.lips.toLowerCase()&gt;&gt;.&quot;,
@@ -5257,14 +5257,26 @@ Wanna have aftercare or end the session?
 		)&gt;&gt;
 	&lt;&lt;elseif $sex.roles.dom.name == _n.name&gt;&gt;
 		&lt;&lt;= either(
-			&quot;_n.name repositions $proset.themself to eagerly grind $proset.their &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; against your &lt;&lt;= $mc.body.lips.toLowerCase()&gt;&gt;.&quot;,
+			&quot;_n.name repositions themself to eagerly grind $proset.their &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; against your &lt;&lt;= $mc.body.lips.toLowerCase()&gt;&gt;.&quot;,
 			&quot;With a quick shift of $proset.their &lt;&lt;= _n.body.hips.toLowerCase()&gt;&gt;, _n.name lets out a moan as $proset.they greedily press $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt; down against your &lt;&lt;= $mc.body.tongue.toLowerCase()&gt;&gt;.&quot;,
 			&quot;Eagerly pressing $proset.their &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; down against your mouth, $proset.they reposition $proset.themselves so that $proset.they are grinding $proset.their &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; against your &lt;&lt;= $mc.body.lips.toLowerCase()&gt;&gt;.&quot;,
 			&quot;Shifting $proset.their &lt;&lt;= _n.body.hips.toLowerCase()&gt;&gt;, $proset.they reposition $proset.themselves to grind $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt; against your &lt;&lt;= $mc.body.lips.toLowerCase()&gt;&gt;.&quot;,
 			&quot;With a quick shift of $proset.their _n.body.hips, $proset.they let out a moan as $proset.they press $proset.their &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; down against your $mc.body.tongue.&quot;,
 			&quot;Pressing $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt; down against your mouth, $proset.they reposition $proset.themself so that $proset.they are grinding $proset.their &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; against your &lt;&lt;= $mc.body.lips.toLowerCase()&gt;&gt;.&quot;
 		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Doggystyle-Dialogue" tags="nobr Dialogue" position="675,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+
+	&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+		&lt;&lt;= either(
+ 		&quot;You continue to eat out their &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt;.&quot;
+    	)&gt;&gt;
+	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+		&lt;&lt;= either(
+    	&quot;_n.name continues to eat you out.&quot;
+    	)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Doggystyle-Dialogue" tags="nobr Dialogue" position="675,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(

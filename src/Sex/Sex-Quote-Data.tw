@@ -4,6 +4,7 @@
 /* ----- ANAL ----- */
 setup.analQuotes = {
   give: {
+    /* ----- POSITIONS ----- */
     Cowgirl: {
       Dominant: [
         "Bounce on my cock!"
@@ -53,9 +54,7 @@ setup.analQuotes = {
       ]
   },
   receive: {
-    Huge: [
-      "Fuck you're huge!"
-    ],  
+    /* ----- Positions ----- */
     Cowgirl: {
       Dominant: [
         "Love it when I bounce on your cock?",
@@ -66,9 +65,6 @@ setup.analQuotes = {
 				"Ahh",
 				"You feel so good inside me."
       ],
-      Neutral: [
-        "NEUTRAL DIALOGUE ABOUT ANAL COWGIRL"
-      ]
     },
     Dominant: [
         "Yeah, like that!! Ooh!",
@@ -82,9 +78,9 @@ setup.analQuotes = {
 				"Keep fucking me!",
 				"Yes! Yes! Give it to me! AH!",
 				"Good _n.petname! Keep sliding that delicious cock of yours in and out of my ass!",
-				"You like feeling my slutty little asshole gripping down on your cock?!"
+				"You like feeling my slutty little asshole gripping down on your cock?!",
+        "Fuck, _n.name, you've stuffed me good..."
     ],
-
     Submissive: [
       "Yes! That's it! Oh, yes! Yes!",
 				"Make me yours!",
@@ -101,8 +97,7 @@ setup.analQuotes = {
 				"Yess... It's sooo good!",
 				"You fill me up so w-well..."
     ],
-
-    Neutral: [
+    Switch: [
       "Ah, right there!",
 			"Ah... That's it...",
 			"It feels so good to have you inside me!",
@@ -113,7 +108,10 @@ setup.analQuotes = {
 			"Oh! Oh fuck yeah! Yes!!!",
 			"You feel so good inside me.",
 			"You like being inside me, don't you?"
-    ]
+    ],
+    Huge: [
+      "Fuck you're huge!"
+    ],  
   }
 };
 /* ----- BLOWJOB ----- */
@@ -1041,8 +1039,8 @@ setup.suckfootQuotes = {
       "I love having my _n.body.toes sucked! Keep going!",
 			"Ah, that feels funny."
     ],
-    Neutral: [
-      "NEUTRAL-DOM-LINE-1 ABOUT SUCKING FOOT."
+    Switch: [
+      "Mmm, that feels nice."
     ]
   },
   receive: {
@@ -1056,7 +1054,7 @@ setup.suckfootQuotes = {
 			"Mmmph",
 			"Mmf"
     ],
-    Neutral: [ 
+    Switch: [ 
         "Mmmf",
 				"Mmmph",
 				"Mmf"

@@ -93,7 +93,8 @@
 	<<elseif $position == "Doggystyle">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
-				"_n.name fucks your ass like a dog."
+				"_n.name fucks your ass like a dog.",
+				"$proset.they begin to pick up a rhythm, thrusting into you over and over. Each time $proset.they do, your body is jostled forwards by the impact."
 			)>>
 		<<elseif $sex.roles.sub.name == _n.name>>
 			<<= either(
@@ -107,7 +108,7 @@
 			)>>
 		<<elseif $sex.roles.sub.name == _n.name>>
 			<<= either(
-				""
+				"$proset.their feet flop in the air with your thrusts, $proset.their toes curling and uncurling in pleasure."
 			)>>
 		<</if>>		
 	<<else>>
