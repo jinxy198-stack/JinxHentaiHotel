@@ -121,6 +121,7 @@
 	setup.caressQuotes[_mode]
 	&& setup.caressQuotes[_mode][_materialN]
 	&& setup.caressQuotes[_mode][_materialN][_pref]
+	|| setup.caressQuotes[_mode][_pref]
 >>
 
 <<if Array.isArray(_pool) && _pool.length>>
@@ -559,15 +560,9 @@
 		[Error] setup.gropebreastQuotes is not defined.
 		<<return>>
 	<</if>>
-
-	/* normalize inputs */
-	<<set _pref = _n.sexpref || "Switch">>
-	<<set _msize = $mc.breastsize || "average">>
-	<<set _mage  = $mc.agegroup>>
 <<if !$sex or !$sex.roles or !_n>>
 	<<return>>
 <</if>>
-
 <<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
 	<<set _mode = "give">>
 <<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
@@ -575,6 +570,13 @@
 <<else>>
 	<<return>>
 <</if>>
+	/* normalize inputs */
+	<<set _pref = _n.sexpref || "Switch">>
+	<<set _msize = $mc.breastsize >>
+	<<set _nsize = _n.breastsize >>
+	<<set _mage  = $mc.agegroup>>
+	<<set _nage  = _n.ageGroup  || "Adult">>
+
 	<<set _pool = null>>
 
 	/* resolve pool */

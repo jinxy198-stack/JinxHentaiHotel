@@ -1872,15 +1872,17 @@ Welcome my acolyte, do you have question&#39;s for me?
 &lt;&lt;button &quot;Door?&quot;&gt;&gt;&lt;&lt;PopupJinxQ &quot;Door&quot; &quot;Door&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
 [[Elevator]]</tw-passagedata><tw-passagedata pid="40" name="Lobby" tags="" position="375,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lobby&quot;&gt;&gt;
-You are in the lobby of the hotel, classical music plays as you watch people from other worlds go about their business.
+You are in the lobby of the hotel, classical music plays as you watch people from various worlds go about their business.
 
 [[Lounge]]
 [[Hotel Portal]]
-[[Elevator]]</tw-passagedata><tw-passagedata pid="41" name="Lounge" tags="nobr" position="500,1150" size="100,100">&lt;div class=&quot;room-hotel&quot;&gt;
-&lt;&lt;set $gamelocation to &quot;Lounge&quot;&gt;&gt;
+[[Elevator]]</tw-passagedata><tw-passagedata pid="41" name="Lounge" tags="nobr" position="500,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lounge&quot;&gt;&gt;
 
-A nice place to rest, relax, and socialize.
+A nice place to rest, relax, and socialize. There are some people mingling around the place.
 
+[[Lobby]]
+
+&lt;div class=&quot;room-hotel&quot;&gt;
 &lt;&lt;SpawnPoolOnce &quot;OC&quot; $OCPool&gt;&gt;
 &lt;&lt;SpawnPoolOnce &quot;CB&quot; $CBPool&gt;&gt;
 &lt;&lt;SpawnPoolOnce &quot;AB&quot; $ABPool&gt;&gt;
@@ -1888,9 +1890,6 @@ A nice place to rest, relax, and socialize.
 
 &lt;&lt;include &quot;SNPC-List&quot;&gt;&gt;
 
-
-
-[[Lobby]]
 
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="42" name="Pool" tags="nobr" position="225,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Pool&quot;&gt;&gt;
 
@@ -3129,7 +3128,8 @@ setup.analQuotes = {
 			&quot;Mm, yeah, you like that, $mc.name?&quot;,
 			&quot;You feel so fucking good around me!&quot;,
 			&quot;You feel so tight, $mc.name. You were made for this!&quot;,
-			&quot;You make a good fucktoy.&quot;
+			&quot;You make a good fucktoy.&quot;,
+      &quot;Yeah, that&#39;s it...&quot;
       ],
       Submissive: [
         &quot;Ahh, so tight, so good!&quot;,
@@ -3152,11 +3152,10 @@ setup.analQuotes = {
     Huge: [
       &quot;Fuck you&#39;re huge!&quot;
     ],  
-    
     Cowgirl: {
       Dominant: [
         &quot;Love it when I bounce on your cock?&quot;,
-				&quot;You feel so good inside me.&quot;
+        &quot;Let me enjoy this Grade A dick of yours!&quot;
       ],
       Submissive: [
         &quot;Fuck me hard!&quot;,
@@ -3299,8 +3298,8 @@ setup.caressQuotes = {
   give: {
     Skin:{
       Dominant: [&quot;You like me feeling you up?&quot;],
-      Submissive: [&quot;SUB-LINE-1 about CARESSING.&quot;],
-      Switch: [&quot;NEUTRAL-DOM-LINE-1 about CARESSING SKIN.&quot;]
+      Submissive: [&quot;Your skin is so smooth.&quot;],
+      Switch: [&quot;Your skin is so smooth.&quot;]
     },
     Scales:{
       Dominant: [&quot;You like me feeling you up?&quot;],
@@ -3634,21 +3633,18 @@ setup.fingerassQuotes = {
     Submissive: [
       &quot;It&#39;s so warm in there.&quot;
     ],
-    Neutral: [
+    Switch: [
       &quot;It&#39;s warm.&quot;
     ]
   },
-
   receive: {
     Dominant: [
       &quot;Oh f-fuck!&quot;
     ],
-
     Submissive: [
       &quot;Oh f-fuck!&quot;
     ],
-
-    Neutral: [
+    Switch: [
       &quot;Oh f-fuck!&quot;,
       &quot;H-Haaa... Ahhh!&quot;
     ]
@@ -3676,11 +3672,9 @@ setup.fingervaginaQuotes = {
 			&quot;Yes... just like that!&quot;,
 			&quot;That&#39;s the spot, don&#39;t stop!&quot;
     ],
-
     Submissive: [
       &quot;Oh f-fuck!&quot;
     ],
-
     Switch: [
       &quot;Oh f-fuck!&quot;
     ]
@@ -3703,18 +3697,15 @@ setup.frotQuotes = {
       &quot;Ah.&quot;
     ]
   },
-
   receive: {
     Dominant: [
       &quot;Mmm, this feels so good.&quot;,
       &quot;Y-You feel so good $mc.name!&quot;
     ],
-
     Submissive: [
       &quot;O-Oh wow...&quot;,
 			&quot;P-Please keep going.&quot;
     ],
-
     Switch: [
       &quot;Ah.&quot;,
       &quot;Augh...!&quot;
@@ -3740,20 +3731,17 @@ setup.footjobQuotes = {
 			&quot;You really know how to handle your feet.&quot;
     ]
   },
-
   receive: {
     Dominant: [
-      &quot;DOM-LINE-1 about FOOT-JOB.&quot;
+      &quot;I can feel your pulse through the soles of my feet, $mc.name.&quot;
     ],
-
     Submissive: [
       &quot;I really like how you feel against my toes.&quot;,
 			&quot;I can feel your cock pulse, $mc.name.&quot;,
 			&quot;I wonder how it&#39;ll feel to have your cum squirt into my soft, bare feet?&quot;
     ],
-
-    Neutral: [
-      &quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;
+    Switch: [
+      &quot;I can feel your pulse through the soles of my feet, $mc.name.&quot;
     ]
   }
 };
@@ -3794,13 +3782,17 @@ setup.gropebreastQuotes = {
         &quot;Shit, these are big!&quot;,
 				&quot;How do you carry these things?!&quot;
       ]
-
     },
     Submissive: {
       Flat: {
         Kid: [&quot;They&#39;re soft.&quot;],
         Teen: [&quot;Yeah, I&#39;m not that developed.&quot;],
         Adult: [&quot;I can work with this.&quot;]
+      },
+      Small: {
+        Kid:[&quot;Cute and developing.&quot;],
+        Teen: [&quot;It&#39;s ok being a late bloomer.&quot;],
+        Adult: [&quot;Cute.&quot;]
       },
       Average: {
         Kid: [&quot;Like my breasts?&quot;],
@@ -3838,11 +3830,9 @@ setup.gropebreastQuotes = {
       &quot;That&#39;s right, play with my _n.breastsize breasts!&quot;,
       &quot;That&#39;s right, play with my tits!&quot;
     ],
-
     Submissive: [
       &quot;You can play with them if you like.&quot;
     ],
-
     Switch: {
      Flat: {
         Kid: [&quot;SWITCH DIALOUGE ABOUT FLAT BREAST, KID.&quot;],
@@ -4034,7 +4024,10 @@ setup.handjobQuotes = {
         ]
       },
       Small: [&quot;So small, yet so precious.&quot;],
-      Average: [&quot;Your cock is so pretty.&quot;],
+      Average: [
+      &quot;Your cock is so pretty.&quot;,
+      &quot;Wow, this is a really nice dick, $mc.name!&quot;
+      ],
       Large: [&quot;Damn, that&#39;s pretty big.&quot;],
       Huge: [
         &quot;Fuck, you&#39;re hung!&quot;
@@ -4056,7 +4049,6 @@ setup.handjobQuotes = {
       ],
       Huge: [&quot;It&#39;s quite an intimidating size.&quot;]
     },
-
     Switch: [
      &quot;Wow, this is a really nice dick, $mc.name!&quot;
     ]
@@ -4072,21 +4064,18 @@ setup.petearsQuotes = {
     Submissive: [
       &quot;SUB-LINE-1 about Petting ears.&quot;
     ],
-    Neutral: [
+    Switch: [
       &quot;They feel so soft.&quot;
     ]
   },
-
   receive: {
     Dominant: [
       &quot;DOM-LINE-1 about Petting ears.&quot;
     ],
-
     Submissive: [
       &quot;SUB-LINE-1 about Petting ears.&quot;
     ],
-
-    Neutral: [
+    Switch: [
       &quot;Mmm, that feels nice.&quot;
     ]
   }
@@ -4199,25 +4188,26 @@ setup.orgasmQuotes = {
      /* DEFAULT FALLBACK */
     default: {
       Dominant: [&quot;Ahh. That was a good fuck.&quot;],
-      Submissive: [&quot;DEFAULT ORGASM QUOTE SUB&quot;],
-      Switch: [&quot;DEFAULT QUOTE SWITCH&quot;]
+      Submissive: [&quot;Phew, that felt good.&quot;],
+      Switch: [&quot;Mmm, that was nice.&quot;]
     }
   },
   receive: {
     &quot;Anal Orgasm&quot;: {
       Dominant: [
-        &quot;Oh god, cum in me!&quot;,
-			  &quot;Give it to me!!!&quot;
+        &quot;Fuck that was alot.&quot;,
+        &quot;Fuck, you really filled me up, _n.name...&quot;,
+        &quot;Mmf! That&#39;s the stuff!&quot;
       ],
       Submissive: [
-        &quot;Oh god, cum in me!&quot;
+        &quot;You&#39;re filling me up!&quot;
       ],
       Switch: [
-        &quot;Oh god, cum in me!&quot;
+        &quot;M-my ass... you filled me up so much!&quot;
       ]
     },
     &quot;Frot Orgasm&quot;: {
-      Dominant: [&quot;DOMINANT FROT ORGASM QUOTE&quot;],
+      Dominant: [&quot;Fuck yeah!...&quot;],
       Submissive: [&quot;A-Ahhh...!&quot;],
       Switch: [&quot;A-Ahhh...!&quot;]
     },
@@ -4234,7 +4224,11 @@ setup.orgasmQuotes = {
 setup.orgasmcloseQuotes = {
   give: {
     Anal: {  
-      Dominant: [&quot;I&#39;m gonna cum in your ass!&quot;],
+      Dominant: [
+      &quot;I&#39;m gonna cum in your ass!&quot;,
+      &quot;Yeah, I&#39;m gonna pump you full of my cum!&quot;,
+      &quot;Here it comes!&quot;
+      ],
       Submissive: [
         &quot;I&#39;m... gonna cum!&quot;, 
         &quot;A-agh!! AaaHhhh!!!&quot;,
@@ -4273,13 +4267,14 @@ setup.orgasmcloseQuotes = {
   receive: {
     Anal: {  
       Dominant: [
-        &quot;Cum in my ass!&quot;
+        &quot;Cum in my ass!&quot;,
+        &quot;Fill my ass with your spunk!&quot;
         ],
       Submissive: [
         &quot;Oh god, cum in me!&quot;
       ],
       Versatile: [
-        &quot;Oh god, cum in me!&quot;
+        &quot;C-cum in me!&quot;
       ]
     },
     Handjob: {
@@ -4287,7 +4282,7 @@ setup.orgasmcloseQuotes = {
         &quot;Yeah, gonna squeeze it out of you!&quot;
       ],
       Submissive: [
-        &quot;SUBMISSIVE HANDJOB ORGASM CLOSE QUOTE&quot;
+        &quot;Oh, I can feel you cumming.&quot;
       ],
       Switch: [
         &quot;Come on, cum.&quot;
@@ -4295,7 +4290,7 @@ setup.orgasmcloseQuotes = {
     },
     &quot;Finger-Pussy&quot;: {
       Dominant: [
-        &quot;DOMINANT HANDJOB ORGASM CLOSE QUOTE&quot;
+        &quot;You&#39;re going to make me squirt!&quot;
       ],
       Submissive: [
         &quot;SUBMISSIVE HANDJOB ORGASM CLOSE QUOTE&quot;
@@ -4371,14 +4366,12 @@ setup.vaginalQuotes = {
 			&quot;Yes! Fuck me! Fuck me harder! Don&#39;t stop!&quot;,
       &quot;Mmm, I&#39;m glad you like my body so much.&quot;
     ],
-
     Submissive: [
       &quot;Don&#39;t stop! Harder! Fuck me! Yes, yes, yes!&quot;,
 			&quot;It&#39;s so big!&quot;,
 			&quot;I feel so full!&quot;
     ],
-
-    Versatile: [
+    Switch: [
       &quot;Don&#39;t stop! Harder! Fuck me! Yes, yes, yes!&quot;,
 			&quot;It&#39;s so big!&quot;,
 			&quot;I feel so full!&quot;,
@@ -4434,7 +4427,7 @@ setup.vaginalQuotes = {
 		&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/button&gt;&gt; |
 
-&lt;&lt;if $position == &quot;Standing&quot; or $position == &quot;Missionary&quot; or $position == &quot;Sitting&quot; or $position == &quot;Cowgirl&quot; or $position == &quot;Sit on Lap&quot;&gt;&gt;
+&lt;&lt;if $position == &quot;Standing&quot; or $position == &quot;Missionary&quot; or $position == &quot;Sitting&quot; or $position == &quot;Doggystyle&quot; or $position == &quot;Sit on Lap&quot;&gt;&gt;
 	&lt;&lt;button &quot;Embrace&quot;&gt;&gt;
 		&lt;&lt;set $sex.action = &quot;Embrace&quot;&gt;&gt;
 		&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())&gt;&gt;
@@ -4706,6 +4699,7 @@ setup.vaginalQuotes = {
 		&lt;&lt;if $position == &quot;Cowgirl&quot;&gt;&gt;
 			You slam down one final time before _n.name lets out a moan and unloads into your ass. You feel the warmth fill you up.
 		&lt;&lt;elseif $position == &quot;Missionary&quot;&gt;&gt;
+			_n.name unleashes inside of you, $proset.their hot cum spraying against the walls of your ass.
 		&lt;&lt;else&gt;&gt;
 			_n.name slams downs one last time before you groan and cum inside their ass.
 		&lt;&lt;/if&gt;&gt;
@@ -4716,10 +4710,15 @@ setup.vaginalQuotes = {
 				&quot;Even after your balls have pumped their entire load into _n.name, your knot remains swollen, locking the two of you together.&quot;
 			)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
+		As $proset.their load fills you up, you hit your limit as well, shooting your cum.
+		_n.name pulls $proset.their cock out of you with a wet splurch. You can feel $proset.their jizz leaking from your ass, but you&#39;re too tired to care.
 	&lt;&lt;elseif $sex.action == &quot;Vaginal Orgasm&quot;&gt;&gt;
 		You moan and groan as you shoot your load into _n.name&#39;s _n.genitaltype _n.genitals.
 	&lt;&lt;elseif $sex.action == &quot;Blowjob Orgasm&quot;&gt;&gt;
-		$proset.their tongue swirls around your head some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.
+		&lt;&lt;= either(	
+			&quot;$proset.their tongue swirls around your head some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.&quot;,
+			&quot;With a cry of pleasure, you empty your balls into _n.name&#39;s hungry mouth.&quot;
+		)&gt;&gt;
 	&lt;&lt;elseif $sex.action == &quot;Handjob Orgasm&quot;&gt;&gt;
 		You let out a moan and buck your $mc.body.hips forward as you shoot your load.
 		&lt;&lt;if $mc.genitaltype is &quot;Knotted&quot;&gt;&gt;
@@ -4736,7 +4735,7 @@ setup.vaginalQuotes = {
 	&lt;&lt;elseif $sex.action == &quot;Vaginal b Orgasm&quot;&gt;&gt;
 		You shoot your cum into _n.name&#39;s pussy.	
 	&lt;&lt;else&gt;&gt;
-		You cum and _n.name cums with you. You&#39;ve both made a mess	
+		You cum and _n.name cums with you. You&#39;ve both made a mess.	
 	&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $sex.roles.dom.name == _n.name&gt;&gt;
@@ -4754,7 +4753,7 @@ setup.vaginalQuotes = {
 			&quot;_n.name convulses and grinds against your &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt; before shooting $proset.their load.&quot;
 		)&gt;&gt;
 	&lt;&lt;elseif $sex.action == &quot;Blowjob Orgasm&quot;&gt;&gt;
-		_n.name cums in your mouth.
+		Before you know it, $proset.their cock swells in your mouth, and a hot stream of jizz shoots down your throat! You swallow as much as you can.
 	&lt;&lt;elseif $sex.action == &quot;Footjob Orgasm&quot;&gt;&gt;
 		_n.name cums. Your feet are wet from $proset.their semen.
 	&lt;&lt;elseif $sex.action == &quot;Cunnilingus Orgasm&quot;&gt;&gt;
@@ -4770,6 +4769,8 @@ setup.vaginalQuotes = {
 		_n.name moans as they cum in your hands.
 	&lt;&lt;elseif $sex.action == &quot;Vaginal Orgasm&quot;&gt;&gt;	
 		_n.name cums into your &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt;.
+	&lt;&lt;else&gt;&gt;
+		You cum and _n.name cums with you. You&#39;ve both made a mess.		
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
@@ -5033,7 +5034,6 @@ Wanna have aftercare or end the session?
 			)&gt;&gt;
 		&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
 			&lt;&lt;= either(
-        		&quot;You fuck _n.name.&quot;,
 				&quot;You both cry out as _n.name slides $proset.their ass onto my &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt;. Soon their butt fully rested on my thighs.&quot;
         	)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
@@ -5048,7 +5048,6 @@ Wanna have aftercare or end the session?
         		&quot;You fuck _n.name in the missionary position.&quot;
         	)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
-
 	&lt;&lt;elseif $position == &quot;Doggystyle&quot;&gt;&gt;
 		&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 			&lt;&lt;= either(
@@ -5062,11 +5061,11 @@ Wanna have aftercare or end the session?
 	&lt;&lt;elseif $position == &quot;Lean against wall&quot;&gt;&gt;
 		&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 			&lt;&lt;= either(
-        		&quot;You line up your dick and push into _n.name.&quot;
+				&quot;_n.name gets into position and pushes $proset.their dick into you. _n.name sighs as $proset.their cock buries itself deeper into you.&quot;
         	)&gt;&gt;
 		&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
 			&lt;&lt;= either(
-        		&quot;_n.name gets into position and pushes $proset.their dick into you.&quot;
+				&quot;You line up your dick and push into _n.name.&quot;
         	)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;	
 	&lt;&lt;/if&gt;&gt;
@@ -5074,15 +5073,39 @@ Wanna have aftercare or end the session?
 	&lt;&lt;if $position == &quot;Cowgirl&quot;&gt;&gt;
 		&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 			&lt;&lt;= either(
-				&quot;_n.name rides your &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt;&quot;
+				&quot;You continue to ride _n.name&quot;
 			)&gt;&gt;
 		&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
 			&lt;&lt;= either(
 				&quot;_n.name bounced up and down on your &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt; in a controlled motion.&quot;,
 				&quot;_n.name&#39;s paced increased, pushing my &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt; deeper into $proset.their hole.&quot;,
-				&quot;The sight of _n.name bouncing on my &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt;, their blissful expression, it turned me on.&quot;
+				&quot;The sight of _n.name bouncing on my &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt;, their blissful expression, it turned me on.&quot;,
+				&quot;_n.name leans forward, putting $proset.their small hands on your bare chest. Balanced like this, $proset.they begins bouncing $proset.their ass up and down the length of your cock.&quot;,
+				&quot;You lay back, enjoying the feeling of $proset.their ass gripping your dick.&quot;
 			)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;	
+	&lt;&lt;elseif $position == &quot;Doggystyle&quot;&gt;&gt;
+		&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+				&quot;_n.name fucks your ass like a dog.&quot;
+			)&gt;&gt;
+		&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+				&quot;You hump _n.name&#39;s ass like a dog.&quot;
+			)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;	
+	&lt;&lt;elseif $position == &quot;Missionary&quot;&gt;&gt;
+		&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+				&quot;Your body rocks back and forth on the bed as $proset.they thrusts into you with force.&quot;
+			)&gt;&gt;
+		&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
+			&lt;&lt;= either(
+				&quot;&quot;
+			)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;		
+	&lt;&lt;else&gt;&gt;
+		You both keep on fucking.
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="Blowjob-Dialogue" tags="nobr Dialogue" position="1000,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
@@ -5137,7 +5160,8 @@ Wanna have aftercare or end the session?
 			&quot;Enthusiastically bucking your hips into $proset.their &lt;&lt;= _n.body.face.toLowerCase()&gt;&gt;, you let out a moan as you continue happily receiving your blowjob.&quot;,
 			&quot;You thrust your &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt; past $proset.their _n.body.lips, letting out a moan as you pump your $mc.body.hips into $proset.their _n.body.face.&quot;,
 			&quot;You buck your &lt;&lt;= $mc.body.hips.toLowerCase()&gt;&gt; into $proset.their &lt;&lt;= _n.body.face.toLowerCase()&gt;&gt;, letting out a moan as you fuck $proset.their throat.&quot;,
-			&quot;Bucking your hips into $proset.their &lt;&lt;= _n.body.face.toLowerCase()&gt;&gt;, you let out a moan as you continue happily receiving a blowjob.&quot;
+			&quot;Bucking your hips into $proset.their &lt;&lt;= _n.body.face.toLowerCase()&gt;&gt;, you let out a moan as you continue happily receiving a blowjob.&quot;,
+			&quot;Inside $proset.their mouth, you can feel that practiced tongue of $proset.them swirling around your tip.&quot;
 		)&gt;&gt;
     &lt;&lt;elseif $sex.roles.dom.name== _n.name&gt;&gt;
 		&lt;&lt;= either(
@@ -5279,11 +5303,11 @@ Wanna have aftercare or end the session?
 &lt;&lt;elseif $position == &quot;Doggystyle&quot;&gt;&gt;
 	&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;		
 		&lt;&lt;= either(
-			&quot;_n.name looms over you and wraps their arms around you.&quot;
+			&quot;_n.name looms over your back and wraps their arms around you.&quot;
 		)&gt;&gt;		
 	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;		
 		&lt;&lt;= either(
-			&quot;You loom over _n.name and wrap your arms around them.&quot;
+			&quot;You loom over _n.name&#39;s back and wrap your arms around them.&quot;
 		)&gt;&gt;		
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $position == &quot;Missionary&quot;&gt;&gt;
@@ -5371,7 +5395,7 @@ Wanna have aftercare or end the session?
 
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
- 	&quot;_n.name finger&#39;s your ass.&quot;
+ 	&quot;_n.name finger&#39;s your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;.&quot;
     )&gt;&gt;
 &lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -5395,6 +5419,7 @@ Wanna have aftercare or end the session?
 		)&gt;&gt;
 	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
 		&lt;&lt;= either(
+			&quot;Sitting up between your legs, $proset.they runs $proset.their toes delicately over the skin of your scrotum.&quot;,
 			&quot;_n.name lets out a moan as you start using $proset.their &lt;&lt;= _n.body.feet.toLowerCase()&gt;&gt;, before they are eagerly sliding them up and down around your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;.&quot;,	
 			&quot;With a moan, _n.name starts eagerly sliding $proset.their &lt;&lt;= _n.body.feet.toLowerCase()&gt;&gt; up and down against your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;.&quot;,
 			&quot;Eagerly pushing $proset.their &lt;&lt;= _n.body.feet.toLowerCase()&gt;&gt; together, you press the head of your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt; up against $proset.their soles before eagerly thrusting your $mc.body.hips forward and starting to fuck the crevice that&#39;s formed.&quot;,
@@ -5422,7 +5447,8 @@ Wanna have aftercare or end the session?
 		)&gt;&gt;
 	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
 		&lt;&lt;= either(
-			&quot;You fuck _n.name&#39;s feet.&quot;
+			&quot;You fuck _n.name&#39;s feet.&quot;,
+			&quot;$proset.they giggle softly to $proset.themself as $proset.their feet glide up and down the length of your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;.&quot;
 		)&gt;&gt;
 	&lt;&lt;/if&gt;&gt;	
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="Frot-Dialogue" tags="nobr Dialogue" position="1300,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
@@ -6006,6 +6032,7 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	setup.caressQuotes[_mode]
 	&amp;&amp; setup.caressQuotes[_mode][_material]
 	&amp;&amp; setup.caressQuotes[_mode][_material][_pref]
+	|| setup.caressQuotes[_mode][_pref]
 &gt;&gt;
 
 &lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
@@ -6333,7 +6360,8 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.breastsize &gt;&gt;
 &lt;&lt;set _nsize = _n.breastsize &gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
@@ -6767,6 +6795,8 @@ window.setup = window.setup || {};
 
 
 /* pools */
+
+/* Camp Buddy */
 &lt;&lt;set $CBPool = [
   $Yoichi_CB,
   $Hiro_CB,
@@ -6775,14 +6805,14 @@ window.setup = window.setup || {};
   $Taiga_CB,
   $Natsumi_CB
 ]&gt;&gt;
-
+/* Orginal Characters */
 &lt;&lt;set $OCPool = [
   $KevinNpc,
   $JoshuaNpc,
   $CarlaNpc,
   $CarlosNpc
 ]&gt;&gt;
-
+/* Applebridge */
 &lt;&lt;set $ABPool = [
   $CoryP,
   $JaidenB,
@@ -7445,6 +7475,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	setup.caressQuotes[_mode]
 	&amp;&amp; setup.caressQuotes[_mode][_materialN]
 	&amp;&amp; setup.caressQuotes[_mode][_materialN][_pref]
+	|| setup.caressQuotes[_mode][_pref]
 &gt;&gt;
 
 &lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
@@ -7883,15 +7914,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 		[Error] setup.gropebreastQuotes is not defined.
 		&lt;&lt;return&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.breastsize || &quot;average&quot;&gt;&gt;
-	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
 &lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-
 &lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
 &lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
@@ -7899,6 +7924,13 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+	/* normalize inputs */
+	&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+	&lt;&lt;set _msize = $mc.breastsize &gt;&gt;
+	&lt;&lt;set _nsize = _n.breastsize &gt;&gt;
+	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
+	&lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
+
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -8556,7 +8588,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
   /* Prevent duplicate spawning */
   &lt;&lt;if $flags.spawnedPools[_poolKey]&gt;&gt;
-    &lt;&lt;return&gt;&gt;
+    &lt;&lt;set $flags.spawnedPools[_poolKey] = true&gt;&gt;
   &lt;&lt;/if&gt;&gt;
   &lt;&lt;set $flags.spawnedPools[_poolKey] = true&gt;&gt;
 

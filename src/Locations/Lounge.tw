@@ -1,10 +1,13 @@
 :: Lounge [nobr] {"position":"500,1150","size":"100,100"}
 
-<div class="room-hotel">
+
 <<set $gamelocation to "Lounge">>
 
-A nice place to rest, relax, and socialize.
+A nice place to rest, relax, and socialize. There are some people mingling around the place.
 
+[[Lobby]]
+
+<div class="room-hotel">
 <<SpawnPoolOnce "OC" $OCPool>>
 <<SpawnPoolOnce "CB" $CBPool>>
 <<SpawnPoolOnce "AB" $ABPool>>
@@ -13,9 +16,7 @@ A nice place to rest, relax, and socialize.
 <<include "SNPC-List">>
 
 
-
-[[Lobby]]
-
 </div>
+
 
 

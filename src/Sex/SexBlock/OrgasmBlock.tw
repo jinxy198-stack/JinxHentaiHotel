@@ -5,6 +5,7 @@
 		<<if $position == "Cowgirl">>
 			You slam down one final time before _n.name lets out a moan and unloads into your ass. You feel the warmth fill you up.
 		<<elseif $position == "Missionary">>
+			_n.name unleashes inside of you, $proset.their hot cum spraying against the walls of your ass.
 		<<else>>
 			_n.name slams downs one last time before you groan and cum inside their ass.
 		<</if>>
@@ -15,10 +16,15 @@
 				"Even after your balls have pumped their entire load into _n.name, your knot remains swollen, locking the two of you together."
 			)>>
 		<</if>>
+		As $proset.their load fills you up, you hit your limit as well, shooting your cum.
+		_n.name pulls $proset.their cock out of you with a wet splurch. You can feel $proset.their jizz leaking from your ass, but you're too tired to care.
 	<<elseif $sex.action == "Vaginal Orgasm">>
 		You moan and groan as you shoot your load into _n.name's _n.genitaltype _n.genitals.
 	<<elseif $sex.action == "Blowjob Orgasm">>
-		$proset.their tongue swirls around your head some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.
+		<<= either(	
+			"$proset.their tongue swirls around your head some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.",
+			"With a cry of pleasure, you empty your balls into _n.name's hungry mouth."
+		)>>
 	<<elseif $sex.action == "Handjob Orgasm">>
 		You let out a moan and buck your $mc.body.hips forward as you shoot your load.
 		<<if $mc.genitaltype is "Knotted">>
@@ -35,7 +41,7 @@
 	<<elseif $sex.action == "Vaginal b Orgasm">>
 		You shoot your cum into _n.name's pussy.	
 	<<else>>
-		You cum and _n.name cums with you. You've both made a mess	
+		You cum and _n.name cums with you. You've both made a mess.	
 	<</if>>
 
 <<elseif $sex.roles.dom.name == _n.name>>
@@ -53,7 +59,7 @@
 			"_n.name convulses and grinds against your <<= $mc.genitals.toLowerCase() >> before shooting $proset.their load."
 		)>>
 	<<elseif $sex.action == "Blowjob Orgasm">>
-		_n.name cums in your mouth.
+		Before you know it, $proset.their cock swells in your mouth, and a hot stream of jizz shoots down your throat! You swallow as much as you can.
 	<<elseif $sex.action == "Footjob Orgasm">>
 		_n.name cums. Your feet are wet from $proset.their semen.
 	<<elseif $sex.action == "Cunnilingus Orgasm">>
@@ -69,6 +75,8 @@
 		_n.name moans as they cum in your hands.
 	<<elseif $sex.action == "Vaginal Orgasm">>	
 		_n.name cums into your <<= $mc.genitals.toLowerCase() >>.
+	<<else>>
+		You cum and _n.name cums with you. You've both made a mess.		
 	<</if>>
 <</if>>
 <br>

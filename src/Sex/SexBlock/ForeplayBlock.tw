@@ -29,7 +29,7 @@
 		<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
 <</button>> |
 
-<<if $position == "Standing" or $position == "Missionary" or $position == "Sitting" or $position == "Cowgirl" or $position == "Sit on Lap">>
+<<if $position == "Standing" or $position == "Missionary" or $position == "Sitting" or $position == "Doggystyle" or $position == "Sit on Lap">>
 	<<button "Embrace">>
 		<<set $sex.action = "Embrace">>
 		<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>

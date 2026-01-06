@@ -4,7 +4,7 @@
 
 <<if $sex.roles.dom.name == _n.name>>
 	<<= either(
- 	"_n.name finger's your ass."
+ 	"_n.name finger's your <<= $mc.genitals.toLowerCase()>>."
     )>>
 <<elseif $sex.roles.sub.name == _n.name>>
 	<<= either(

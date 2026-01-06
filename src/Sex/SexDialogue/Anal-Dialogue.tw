@@ -40,7 +40,6 @@
 			)>>
 		<<elseif $sex.roles.sub.name == _n.name>>
 			<<= either(
-        		"You fuck _n.name.",
 				"You both cry out as _n.name slides $proset.their ass onto my <<= $mc.genitals.toLowerCase() >>. Soon their butt fully rested on my thighs."
         	)>>
 		<</if>>
@@ -55,7 +54,6 @@
         		"You fuck _n.name in the missionary position."
         	)>>
 		<</if>>
-
 	<<elseif $position == "Doggystyle">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
@@ -69,11 +67,11 @@
 	<<elseif $position == "Lean against wall">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
-        		"You line up your dick and push into _n.name."
+				"_n.name gets into position and pushes $proset.their dick into you. _n.name sighs as $proset.their cock buries itself deeper into you."
         	)>>
 		<<elseif $sex.roles.sub.name == _n.name>>
 			<<= either(
-        		"_n.name gets into position and pushes $proset.their dick into you."
+				"You line up your dick and push into _n.name."
         	)>>
 		<</if>>	
 	<</if>>
@@ -81,14 +79,38 @@
 	<<if $position == "Cowgirl">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
-				"_n.name rides your <<= $mc.genitals.toLowerCase() >>"
+				"You continue to ride _n.name"
 			)>>
 		<<elseif $sex.roles.sub.name == _n.name>>
 			<<= either(
 				"_n.name bounced up and down on your <<= $mc.genitals.toLowerCase() >> in a controlled motion.",
 				"_n.name's paced increased, pushing my <<= $mc.genitals.toLowerCase() >> deeper into $proset.their hole.",
-				"The sight of _n.name bouncing on my <<= $mc.genitals.toLowerCase() >>, their blissful expression, it turned me on."
+				"The sight of _n.name bouncing on my <<= $mc.genitals.toLowerCase() >>, their blissful expression, it turned me on.",
+				"_n.name leans forward, putting $proset.their small hands on your bare chest. Balanced like this, $proset.they begins bouncing $proset.their ass up and down the length of your cock.",
+				"You lay back, enjoying the feeling of $proset.their ass gripping your dick."
 			)>>
 		<</if>>	
+	<<elseif $position == "Doggystyle">>
+		<<if $sex.roles.dom.name == _n.name>>
+			<<= either(
+				"_n.name fucks your ass like a dog."
+			)>>
+		<<elseif $sex.roles.sub.name == _n.name>>
+			<<= either(
+				"You hump _n.name's ass like a dog."
+			)>>
+		<</if>>	
+	<<elseif $position == "Missionary">>
+		<<if $sex.roles.dom.name == _n.name>>
+			<<= either(
+				"Your body rocks back and forth on the bed as $proset.they thrusts into you with force."
+			)>>
+		<<elseif $sex.roles.sub.name == _n.name>>
+			<<= either(
+				""
+			)>>
+		<</if>>		
+	<<else>>
+		You both keep on fucking.
 	<</if>>
 <</if>>

@@ -18,6 +18,7 @@
 		)>>
 	<<elseif $sex.roles.sub.name == _n.name>>
 		<<= either(
+			"Sitting up between your legs, $proset.they runs $proset.their toes delicately over the skin of your scrotum.",
 			"_n.name lets out a moan as you start using $proset.their <<= _n.body.feet.toLowerCase()>>, before they are eagerly sliding them up and down around your <<= $mc.genitals.toLowerCase()>>.",	
 			"With a moan, _n.name starts eagerly sliding $proset.their <<= _n.body.feet.toLowerCase()>> up and down against your <<= $mc.genitals.toLowerCase()>>.",
 			"Eagerly pushing $proset.their <<= _n.body.feet.toLowerCase()>> together, you press the head of your <<= $mc.genitals.toLowerCase()>> up against $proset.their soles before eagerly thrusting your $mc.body.hips forward and starting to fuck the crevice that's formed.",
@@ -45,7 +46,8 @@
 		)>>
 	<<elseif $sex.roles.sub.name == _n.name>>
 		<<= either(
-			"You fuck _n.name's feet."
+			"You fuck _n.name's feet.",
+			"$proset.they giggle softly to $proset.themself as $proset.their feet glide up and down the length of your <<= $mc.genitals.toLowerCase()>>."
 		)>>
 	<</if>>	
 <</if>>

@@ -16,6 +16,7 @@
 	setup.caressQuotes[_mode]
 	&& setup.caressQuotes[_mode][_material]
 	&& setup.caressQuotes[_mode][_material][_pref]
+	|| setup.caressQuotes[_mode][_pref]
 >>
 
 <<if Array.isArray(_pool) && _pool.length>>

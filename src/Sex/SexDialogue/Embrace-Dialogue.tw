@@ -26,11 +26,11 @@
 <<elseif $position == "Doggystyle">>
 	<<if $sex.roles.dom.name == _n.name>>		
 		<<= either(
-			"_n.name looms over you and wraps their arms around you."
+			"_n.name looms over your back and wraps their arms around you."
 		)>>		
 	<<elseif $sex.roles.sub.name == _n.name>>		
 		<<= either(
-			"You loom over _n.name and wrap your arms around them."
+			"You loom over _n.name's back and wrap your arms around them."
 		)>>		
 	<</if>>
 <<elseif $position == "Missionary">>

@@ -224,7 +224,7 @@
 
   /* Prevent duplicate spawning */
   <<if $flags.spawnedPools[_poolKey]>>
-    <<return>>
+    <<set $flags.spawnedPools[_poolKey] = true>>
   <</if>>
   <<set $flags.spawnedPools[_poolKey] = true>>
 
