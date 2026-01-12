@@ -101,7 +101,6 @@
     sexu: ["Heterosexual","Homosexual", "Bisexual", "Pansexual", "Asexual"]
 }>>
 
-
 /* helpers */
 <<run setup.defaultParts = {
   head:true, torso:true,
@@ -146,16 +145,16 @@
     bodyweight: null,
     bodymusc: null,
     personality: "",
-     anthro: {
-		group: "",
-		subtype: "",
-		color: "",
-		pattern: "",
-		tail: "",
-		ears: "",
-		wings: false,
-		wingspan: ""
-	}
+    anthro: {
+		  group: "",
+		  subtype: "",
+		  color: "",
+		  pattern: "",
+		  tail: "",
+		  ears: "",
+		  wings: false,
+		  wingspan: ""
+	  }
 }>>
 <<set $mc to clone($characterTemplate)>>
 
