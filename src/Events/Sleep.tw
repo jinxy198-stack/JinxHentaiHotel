@@ -1,0 +1,15 @@
+:: Sleep [nobr]
+
+<<set _loc to $gamelocation>>
+
+<<set _getuppassage to _loc>>
+
+<<set _nosleep to false>>
+
+<<if _loc is "Your Room">>
+You go to sleep on your bed.
+<<link "Continue">>
+	<<set $wakemsg = "You go to sleep for a full eight hours.">>
+	<<goto "Wakeup">>
+<</link>>
+<</if>>

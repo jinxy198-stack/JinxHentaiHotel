@@ -12,7 +12,7 @@
 			<<set $lastNpc = $ui.npc>>      <!-- remember who you were with -->
 			<<set $sex = { stage: "foreplay", log: [] }>>  <!-- optional reset -->
             <<set $seenActions = {}>>
-			<<goto "Bedroom">>              <!-- or "Your Room" or whatever -->
+			<<goto "Your Room">>              <!-- or "Your Room" or whatever -->
 		<</button>>
 	<</replace>>
 

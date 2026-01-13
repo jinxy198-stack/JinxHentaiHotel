@@ -1,0 +1,10 @@
+::Wakeup [nobr]
+
+<<set _loc to $gamelocation>>
+<<set _getuppassage to _loc>>
+
+You wake up
+<br>
+
+<<link "Get up" _getuppassage>><</link>>
+<br>

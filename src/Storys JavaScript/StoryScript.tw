@@ -97,7 +97,6 @@ setup.hasBoth = (npc, a, b) => !!(npc?.parts && npc.parts[a] && npc.parts[b]);
       jQuery(this.output).append($btn);
     }
   });
-
   
 })();
 

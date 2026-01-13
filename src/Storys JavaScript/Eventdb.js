@@ -1,0 +1,100 @@
+if (!("Events" in setup)) setup.Events = {};
+
+// the event database!
+// this is centralized logic for picking from a set of random events that can happen
+// 'tags' are most important: the function searching for events will need all of its given tags to be present
+// however, the event can still be selected if it has tags that aren't being looked for (exceptions below)
+
+// example: if the tags you're searching for are "green", "apple"
+// then events tagged with just "apple" (lacking "green") will be discarded
+// however if you're only searching for tag "apple" then an event tagged "red", "apple" can be selected
+
+// event picking doesn't have to use this framework but it'll generally save you some work if it does
+
+// 'prereq' the given event (identified by story passage) must have happened first
+// 'checkvar' the given value (in story variables) must be truthy
+// 'kink' when the given kink must be present in the player's $kinkcontent, otherwise the event is filtered out
+// 'chance' 0.0 to 1.0 are the odds of this event being valid -- you are usually better off just using frequency or relying on the base event chance but this can be useful sometimes
+// 'genders' which will select the event only if the PC's gender is in the list
+// 'genderprefs' which must include one or more genders within the PC's sexual preferences
+// 'majors' for specific majors (college class events)
+// 'class types' for specific class types (valid values: classroom, lecture, lab)
+// 'courses' for specific valid courses (i.e. 'Intro to Psychology', 'Photography I' etc)
+// 'peoplehere' number of NPCs at this location for the event to fire (# of NPCs must be >= this # except that 0 means 0)
+// 'peopleherelt' number of NPCs at this location less than the given number
+// 'inclinations' if the PC has any of these inclinations
+// 'noinclinations' if the PC does not have any of these inclinations
+// 'npc inclinations' if someone with these inclinations needs to be present at the scene
+// 'desired relationships' what the npc wants with the pc (can be friend, date, rival, fuckbuddy, hatefuck, indifferent)
+// 'niche' which will only fire if the NPC in the specified narrative niche is present
+// 'noniche' will only fire if the NPC is not present
+// 'from day' which will discard the event unless $gameday is >= to
+// 'days since' which will discard the event if it previously occurred < this number of days ago
+// 'before day' event no longer valid after this day
+// 'unique' set to true if the event should fire only one time ever (these should be rare and usually set up future events)
+// 'horny' if it requires a pc horniness level (set to 0 for no horniness, 1 if requiring 1-2 horniness, 2 for 2 horniness) (if set to 1, happens at increased frequency when pc horniness is 2)
+// 'genders' for certain genders only... use sparingly
+// 'parts' for certain body parts only
+// 'hours' starting and ending hours for this event
+// 'timeofday' which can be (exact strings) morning/day/afternoon/night
+// 'weekdays' happens on these weekdays only (Monday, Saturday, etc)
+// 'skill' array of [skill, level] as a prereq
+// 'locations' event only happens at these locations
+// 'locationblocks' as above but for locationblocks
+// 'nolocations' event excluded if at these locations
+// 'nolocationblocks' as above but for locationblocks
+// 'toys' event excluded unless player has a toy of the given types
+// 'equippedtoys' event excluded unless player has a currently equipped/worn toy of the given types
+// 'reputation' an array of [reputation type, amount to exceed, (optional) population type]
+// 'findnpc' will fire the event of an NPC matching the given person-picker conditions are met, and $eventnpc will be set to this person
+// 'crush' if true, finds a crushable NPC under default conditions (generally perfectly fine) and sets it to $eventnpc, but you can override these conditions by also including findnpc
+// 'findrelationship' will find an NPC of the given relationship(s) -- notably, whether they are originally at that location or not (by default, it'll pick any student; override with findnpcamong)
+// 'addrelationship' to find an NPC where the given relationship(s) is to be added among $peopleatlocation (or event.findnpcamong)
+// 'removerelationship' as above except for removing
+
+// take care with events that exclude entire genders and the like
+// if they're minor things anyway, then ok, or if you have an event for each gender, then great
+// but generally, try to include all types of characters, just vary the scene accordingly
+// also, do not expect gender and body parts to necessarily correlate, it's the 21st century
+// use $pc.has_parts("vagina") or whatever
+
+// we also have many special tags:
+//      breasts: if the player has breasts
+//      cleavage: if the player is showing cleavage or will show it if they bend over
+//      skirt flip: if the player is wearing a skirt that may flip up (random chance)
+//      upshorts: if the player is wearing shorts that may give a glimpse up the leg (random chance)
+//      downblouse: if the player is wearing a shirt that one may be able to see all the way down (random chance)
+//      nipslip: if the player is wearing a top that may accidentally reveal their bra cup or nipple (random chance)
+//      underboob: if the player is wearing a crop top that may accidentally fully reveal the breast from underneath (random chance)
+//      under access: if the player is wearing a skirt or dress, basically
+//      underwear access: if underwear (or naked bits) is accessible under skirt/dress
+//      elastic waistband: if pants have an elastic waistband (i.e. easily accessed or pulled down)
+//      no underwear: if the player is not wearing underwear (specifically covering the crotch)
+//      no bra: if the player has breasts and is not wearing a bra
+//      bra visible: if the player has breasts and their bra is visible
+//      underwear visible: if the player's underwear is visible
+//      topless: if chest is uncovered (not necessarily for breasts only!)
+//      bottomless: if the PC is bottomless
+//      boobless topless: if chest is uncovered and player does not have breasts
+//      shirt: if pc is wearing shirt/top
+//      pants: if PC is wearing pants (dress counts, so consider also using the 'no dress' tag if that matters)
+//      dress: if pc is wearing a dress (not just skirt)
+//      no dress: if pc is NOT wearing a dress
+//      fullbody: if pc is wearing a full body but non-dress item
+//      no fullbody: not wearing the above
+//      drunk: if PC is drunk (drunkenness > 400)
+//      passoutdrunk: if PC is passout drunk (drunkenness > 800)
+//      sober: if PC is... not drunk!
+//      hard nipples: if the PC has visibly hard nipples
+//      muscles: if the PC is masc and has visible muscles (skintight or no shirt)
+//      bulge: if the PC is wearing something tight enough to show bulge (not necessarily erect)
+//      hardon: as above, but just for erections
+//      anonymous: only if player is anonymous (wearing mask)
+//      not anonymous: only if player is not anonymous
+// using any of these tags will cause the event to be discarded if the player doesn't fit the circumstances
+
+setup.Events.db =
+[
+
+
+]

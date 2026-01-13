@@ -1,4 +1,4 @@
-:: Bedroom [nobr] {"position":"400,725","size":"100,100"}
+:: Your Room [nobr] {"position":"400,725","size":"100,100"}
 <<set $gamelocation to "Your Room">>
 You are in your hotel room. It looks like the love suite of a luxury hotel, complete with a heart shaped bed. Next to the bed is a phone for calling up people you know for a 'good time'.
 To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic.
@@ -19,6 +19,9 @@ On the other side there was a door to your bathroom.
 <</if>>
 <br>
 
+<<set _sleeplink to {text: "Sleep", link: "Sleep"}>>
+<<link _sleeplink>><</link>>
+<br><br>
 <<link "Leave your room">>
 	<<set $lastNpc = null>>
 	<<goto "Hallway">>

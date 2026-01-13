@@ -878,3 +878,10 @@
     <<MC-Create-body>>
     <<SetMCBodyType>>
 <</widget>>
+
+
+
+<<widget "Sleep">>
+ <<set _wakeuppassage to "WakeUp">>
+ <<goto _wakeuppassage>>
+<</widget>>
