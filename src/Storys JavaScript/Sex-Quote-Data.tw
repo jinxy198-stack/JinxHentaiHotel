@@ -6,7 +6,10 @@ setup.analQuotes = {
     /* ----- POSITIONS ----- */
     Cowgirl: {
       Dominant: [
-        "Bounce on my cock!"
+        "Bounce on my cock!",
+        "Oh yeah, you're so good at that",
+        "Such a good $mc.petname",
+        "That's it, feel that cock deep inside you"
       ],
       Submissive: [
         "Please, bounce on my cock!",
@@ -26,7 +29,7 @@ setup.analQuotes = {
         "I love that look on your face."
       ],
       Switch: [
-        "NEUTRAL DIALOGUE FOR ANAL MISSIONARY"
+        "Ah, so good!"
       ]
     },
     Doggystyle: {
@@ -88,15 +91,23 @@ setup.analQuotes = {
     },
     Doggystyle: {
       Dominant: [
-        "Dominant DIALOGUE FOR ANAL MISSIONARY"
+        "Yeah, give it to me!",
+        "MMM.. fuck!"
       ],
       Submissive: [
         "That's it, give it to me",
         "Yes, pound me...",
         "Fuck me!"
+      ]
+    },
+    Missionary: {
+      Dominant: [
+        "Yeah, give it to me!"
       ],
-      Switch: [
-        "NEUTRAL DIALOGUE FOR ANAL MISSIONARY"
+      Submissive: [
+        "I love it when you're on top of me like this",
+        "Yes, pound me...",
+        "Fuck me!"
       ]
     },
     Dominant: [
@@ -110,9 +121,9 @@ setup.analQuotes = {
 				"Now shut it and let me enjoy this Grade A dick of yours!",
 				"Keep fucking me!",
 				"Yes! Yes! Give it to me! AH!",
-				"Good _n.petname! Keep sliding that delicious cock of yours in and out of my ass!",
+				"Good $mc.petname! Keep sliding that delicious cock of yours in and out of my ass!",
 				"You like feeling my slutty little asshole gripping down on your cock?!",
-        "Fuck, _n.name, you've stuffed me good..."
+        "Fuck, $mc.name, you've stuffed me good..."
     ],
     Submissive: [
       "Yes! That's it! Oh, yes! Yes!",
@@ -162,7 +173,8 @@ setup.blowjobQuotes = {
 			"Fuck, that feels incredible.",
 			"That's really good, $mc.name... you're a natural at this.",
       "You're so good at sucking dick.",
-      "A-Ah..."
+      "A-Ah...",
+      "Yesss, suck it"
     ],
     Submissive: [
       "You're good at sucking cock!",
@@ -238,17 +250,17 @@ setup.caressQuotes = {
     },
     Scales:{
       Dominant: ["You like me feeling you up?"],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
-      Switch: ["NEUTRAL-DOM-LINE-1 about CARESSING Scales."]
+      Submissive: ["Your scales have such a smooth pattern."],
+      Switch: ["Your scales have such a smooth pattern."]
     },
     Feathers:{
       Dominant: ["You like me feeling you up?"],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
-      Switch: ["NEUTRAL-DOM-LINE-1 about CARESSING."]
+      Submissive: ["Your feathers feel light and gentle."],
+      Switch: ["Your feathers feel light and gentle."]
     },
     Fur:{
       Dominant: ["You like me feeling you up?"],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Submissive: ["Your fur is so warm… it feels comforting."],
       Switch: ["Your fur is so fluffy!"]
     }
   },
@@ -260,17 +272,17 @@ setup.caressQuotes = {
     },
     Scales: {
       Dominant: ["Yeah, that feels nice."],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Submissive: ["Your hands feel good on my scales…"],
       Switch: ["That feels nice."]
     },
     Feathers: {
       Dominant: ["Yeah, feel my feathers."],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Submissive: ["That feels nice. I like your touch."],
       Switch: ["That feels nice."]
     },
     Fur: {
       Dominant: ["Like my fluffy fur?"],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Submissive: ["That feels good. It's relaxing."],
       Switch: ["That feels nice."]
     }
   }
@@ -280,28 +292,60 @@ setup.cuddleQuotes = {
   give: {
     Dominant: [
       "Hope you don't mind some cuddling after all that.",
-			"You can use my tits as a pillow if you want."
+			"You can use my tits as a pillow if you want.",
+      "Come here. I've got you.",
+      "Relax. Stay close like this.",
+      "Come here. I want you pressed against me.",
+      "Relax. Let me hold you while your body's still warm.",
+      "Stay close. I like feeling you breathe against me.",
+      "Come here. You did good—just relax against me.",
+      "Don't move yet. I like you like this, all spent and warm.",
+      "Stay close. Let your breathing slow down."
     ],
     Submissive: [
-      "This is nice."
+      "This is nice.",
+      "This feels safe… I like being this close.",
+      "I love being held like this… it makes me feel small and safe.",
+      "Your body feels so warm wrapped around mine.",
+      "I'm so tired… holding you feels perfect right now.",
+      "My body's still trembling a little. Please stay."
     ],
     Neutral: [
-      "NEUTRAL-DOM-LINE-1 about CUDDLING."
+      "It's nice just holding each other for a while.",
+      "It feels good just lying together like this.",
+      "I don't need anything else right now.",
+      "That took a lot out of me… this feels nice.",
+      "I just want to lie here and catch my breath with you."
     ]
   },
   receive: {
     Dominant: [
       "Your body is so soft and warm.",
 			"You can use my tits as a pillow if you want.",
-			"You like the feeling of me being this close, don't you?"
+			"You like the feeling of me being this close, don't you?",
+      "You like being held, don't you?",
+      "Mm… you're nice and warm against me.",
+      "I like the way you cling when I pull you closer.",
+      "Don't move. I want you right here.",
+      "Mm… you look completely worn out.",
+      "Good. Let yourself rest against me.",
+      "I can feel your heartbeat slowing down."
     ],
 
     Submissive: [
-      "SUB-LINE-1 about CUDDLING."
+      "Your arms feel really comforting…",
+      "Your arms feel so good around me… please don't let go.",
+      "I could melt like this if you keep holding me.",
+      "I'm exhausted… but being held like this feels amazing.",
+      "My legs barely want to move anymore."
     ],
 
     Neutral: [
-      "NEUTRAL-DOM-LINE-1 about CUDDLING."
+      "This is comfortable. I could stay like this.",
+      "Your arms feel so good around me… please don't let go.",
+      "I could melt like this if you keep holding me.",
+      "I'm really tired… in a good way.",
+      "Let's stay like this for a bit."
     ]
   }
 };
@@ -589,14 +633,19 @@ setup.fingerassQuotes = {
 setup.fingervaginaQuotes = {
   give: {
     Dominant: [
-      "Damn, you're wet!"
+      "Damn, you're wet!",
+      "Ohh, you're so wet",
+      "Look at you... so wet",
+      "Mmm, already wet"
     ],
     Submissive: [
       "It's so warm in there.",
 			"Wow, its so wet down there."
     ],
     Switch: [
-      "It's warm in there."
+      "It's warm in there.",
+      "Fuck, your pussy is so wet",
+      "Your pussy's so wet"
     ]
   },
 
@@ -686,8 +735,11 @@ setup.gropebreastQuotes = {
   give: {
     Dominant: {
       Flat: {
-        Kid: ["I guess I shouldn't be expecting anything yet."],
-        Teen: ["It's kinda cute"],
+        Kid: [
+          "I guess I shouldn't be expecting anything yet.",
+          "You're so hot. I love small breasts."
+        ],
+        Teen: ["It's kinda cute."],
         Adult: ["Don't be ashamed about being flat, it's really cute."]
       },
       Small: {
@@ -695,9 +747,19 @@ setup.gropebreastQuotes = {
         Teen: ["Nothing quite like developing breasts. So lewd and cute."]
       },
       Average: {
-        Kid: ["Nice tits."],
-        Teen: ["Nice tits."],
-        Adult: ["Nice tits."]
+        Kid: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Teen: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Adult: [
+          "Nice tits.",
+          "Such perfect perky breasts",
+          "Such nice breasts"
+        ]
       },
       Large: {
         Kid: [
@@ -710,7 +772,10 @@ setup.gropebreastQuotes = {
         ],
         Adult: [
           "Heh, look a the size of these!",
-				  "Damn, these are huge!"
+				  "Damn, these are huge!",
+          "I love your big breasts",
+          "Your huge breasts are so hot",
+          "Love your big breasts",
         ]
       },
       Busty:[
@@ -721,7 +786,7 @@ setup.gropebreastQuotes = {
     Submissive: {
       Flat: {
         Kid: ["They're soft."],
-        Teen: ["Yeah, I'm not that developed."],
+        Teen: ["I'm sure they're develop."],
         Adult: ["I can work with this."]
       },
       Small: {
@@ -730,9 +795,9 @@ setup.gropebreastQuotes = {
         Adult: ["Cute."]
       },
       Average: {
-        Kid: ["Like my breasts?"],
-        Teen: ["Like my breasts?"],
-        Adult: ["Like my breasts?"],
+        Kid: ["Nice tits."],
+        Teen: ["Nice tits."],
+        Adult: ["Nice tits."],
       },
       Large: [
         "Your breasts are so soft.",
@@ -742,19 +807,19 @@ setup.gropebreastQuotes = {
     },
     Switch: {
       Flat: {
-        Kid: ["SWITCH DIALOUGE ABOUT FLAT BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT FLAT BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+        Kid: ["They're soft."],
+        Teen: ["Your breasts are so soft."],
+        Adult: ["Your breasts are so soft."],
       },
       Small: {
-        Kid: ["SWITCH DIALOUGE ABOUT SMALL BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT SMALL BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+        Kid: ["They're soft."],
+        Teen: ["Your breasts are so soft."],
+        Adult: ["Your breasts are so soft."],
       },
       Average: {
-        Kid: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, ADULT."],
+        Kid: ["They're soft."],
+        Teen: ["Your breasts are so soft."],
+        Adult: ["Your breasts are so soft."]
       },
       Large: ["Wow..."],
       Busty: ["These sure are big!"]
@@ -770,19 +835,29 @@ setup.gropebreastQuotes = {
     ],
     Switch: {
      Flat: {
-        Kid: ["SWITCH DIALOUGE ABOUT FLAT BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT FLAT BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+        Kid: ["Like my breasts?"],
+        Teen: ["Like my breasts?"],
+        Adult: ["Like my breasts?"]
       },
       Small: {
-        Kid: ["SWITCH DIALOUGE ABOUT SMALL BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT SMALL BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+        Kid: ["Like my breasts?"],
+        Teen: ["Like my breasts?"],
+        Adult: ["Like my breasts?"]
       },
       Average: {
-        Kid: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, ADULT."],
+        Kid: ["Like my breasts?"],
+        Teen: ["Like my breasts?"],
+        Adult: ["Like my breasts?"]
+      },
+      Large: {
+        Kid: ["Like my breasts?"],
+        Teen: ["Like my breasts?"],
+        Adult: ["Like my breasts?"]
+      },
+      Busty: {
+        Kid: ["Like my breasts?"],
+        Teen: ["Like my breasts?"],
+        Adult: ["Like my breasts?"]
       }
     }
   }
@@ -793,7 +868,7 @@ setup.gropebuttQuotes = {
   give: {  
     Flat: {  
       Dominant: [     
-      "DEFAULT DIALOGUE ABOUT GROPING BUTT, FLAT BUTT."
+      "Yeah, you like this?"
       ],
       Submissive: [
       "I love how your ass feels."
@@ -804,7 +879,7 @@ setup.gropebuttQuotes = {
     },
     Tiny: {  
       Dominant: [     
-      "DEFAULT DIALOGUE ABOUT GROPING BUTT, TINY BUTT."
+      "Let me just enjoy this tiny butt."
       ],
       Submissive: [
       "I love how your ass feels."
@@ -815,7 +890,7 @@ setup.gropebuttQuotes = {
     },
     Small: {  
       Dominant: [   
-      "DEFAULT DIALOGUE ABOUT GROPING BUTT, SMALL BUTT."   
+      "I love how your ass feels."   
       ],
       Submissive: [
       "I love how your ass feels."
@@ -955,7 +1030,9 @@ setup.handjobQuotes = {
         ],
         Adult: [
           "So cute and tiny.",
-          "Wow, it's small!"
+          "Wow, it's small.",
+          "What a cute little dick",
+          "Such a tiny dick"
         ]
       },
       Small: ["So small, yet so precious."],
@@ -963,9 +1040,17 @@ setup.handjobQuotes = {
       "Your cock is so pretty.",
       "Wow, this is a really nice dick, $mc.name!"
       ],
-      Large: ["Damn, that's pretty big."],
+      Large: [
+        "Damn, that's pretty big.",
+        "That's a nice cock",
+        "Nice and big",
+        "Such a big cock"
+      ],
       Huge: [
-        "Fuck, you're hung!"
+        "Fuck, you're hung!",
+        "Fuck, your cock is huge",
+        "Holy shit, that's so massive",
+        "Holy fuck, that's huge"
       ]
     },
     Submissive: {
@@ -994,10 +1079,10 @@ setup.handjobQuotes = {
 setup.petearsQuotes = {
   give: {
     Dominant: [
-      "DOM-LINE-1 about Petting ears."
+      "They feel so soft."
     ],
     Submissive: [
-      "SUB-LINE-1 about Petting ears."
+      "They feel so soft."
     ],
     Switch: [
       "They feel so soft."
@@ -1005,13 +1090,16 @@ setup.petearsQuotes = {
   },
   receive: {
     Dominant: [
-      "DOM-LINE-1 about Petting ears."
+      "Mmm, that feels nice.",
+      "Mmm..."
     ],
     Submissive: [
-      "SUB-LINE-1 about Petting ears."
+      "Mmm, that feels nice."
+      "Mmm..."
     ],
     Switch: [
       "Mmm, that feels nice."
+      "Mmm..."
     ]
   }
 };
@@ -1117,7 +1205,7 @@ setup.orgasmQuotes = {
     },
     "Frot Orgasm": {
       Dominant: ["Mnnngh!!"],
-      Submissive: ["SUBMISSIVE FROT ORGASM QUOTE"],
+      Submissive: ["Mnnngh!!"],
       Switch: ["Mnnngh!!"]
     },
      /* DEFAULT FALLBACK */
@@ -1161,7 +1249,7 @@ setup.orgasmcloseQuotes = {
     Anal: {  
       Dominant: [
       "I'm gonna cum in your ass!",
-      "Yeah, I'm gonna pump you full of my cum!",
+      "I'm gonna pump you full of my cum!",
       "Here it comes!"
       ],
       Submissive: [
@@ -1169,17 +1257,17 @@ setup.orgasmcloseQuotes = {
         "A-agh!! AaaHhhh!!!",
         "I can't hold it anymore!"
       ],
-      Switch: ["I'm cumming!","Aaaah!!"]
+      Switch: ["I'm gonna cum in your ass!", "I'm cumming!","Aaaah!!"]
     },
     Handjob: {
       Dominant: ["Don't stop jerking it, I'm so close!"],
       Submissive: ["Faster, I'm almost there!"],
       Switch: ["You're gonna jerk the cum out of me!"]
     },
-    "Finger-Pussy": {
-      Dominant:["Faster, I'm so close!"],
-      Submissive: ["Faster, I'm so close!"],
-      Switch: ["Faster, I'm so close!"]
+    "Finger Pussy": {
+      Dominant:["I can feel it, you're close? I am as well."],
+      Submissive: ["I can feel it, you're close? I am as well."],
+      Switch: ["I can feel it, you're close? I am as well."]
     }, 
     Blowjob: {
       Dominant:["I'm gonna cum in your mouth!"],
@@ -1223,15 +1311,24 @@ setup.orgasmcloseQuotes = {
         "Come on, cum."
       ]
     },
-    "Finger-Pussy": {
+    "Finger Pussy": {
       Dominant: [
-        "You're going to make me squirt!"
+        "You're going to make me squirt!",
+        "Gonna fucking cum",
+        "Shit, I'm gonna cum",
+        "Oh fuck, I'm gonna cum"
       ],
       Submissive: [
-        "SUBMISSIVE HANDJOB ORGASM CLOSE QUOTE"
+        "Gonna cum",
+        "I'm gonna cum",
+        "Oh fuck, I'm close",
+        "I'm so close"
       ],
       Switch: [
-        "NEUTRAL HANDJOB ORGASM CLOSE QUOTE"
+        "Gonna cum",
+        "I'm gonna cum",
+        "Oh fuck, I'm close",
+        "I'm so close"
       ]
     },
     Blowjob: {
@@ -1273,7 +1370,15 @@ setup.vaginalQuotes = {
 			"Oh fuck, this feels great.",
       "That's a good $mc.petname . Take that cock",
       "Yesss, you're taking it so well",
-      "Good $mc.petname. Take it..."
+      "Good $mc.petname. Take it...",
+      "Fuck, your tight little cunt feels amazing",
+      "Fuck yes, give me all of that fucking pussy",
+      "Oh yeah, take my cock",
+      "Fuck, that feels good",
+      "You're so tight",
+      "You feel so good",
+      "Your pussy is so tight",
+      "You feel amazing"
     ],
     Submissive: [
       "Fuck! Your pussy feels so good!",
@@ -1302,7 +1407,10 @@ setup.vaginalQuotes = {
 			"You like feeling my pussy gripping down on your cock?!",
 			"Keep going! Get that <<= $mc.genitals.toLowerCase() >> in deep like a good $mc.petname!",
 			"Yes! Fuck me! Fuck me harder! Don't stop!",
-      "Mmm, I'm glad you like my body so much."
+      "Mmm, I'm glad you like my body so much.",
+      "Oh yeah, fuck me",
+      "Give me that hard cock",
+      "Fuck my pussy"
     ],
     Submissive: [
       "Don't stop! Harder! Fuck me! Yes, yes, yes!",

@@ -993,13 +993,13 @@
 			|| setup.vaginalQuotes.give.Neutral
 		>>
 	<<else>>
-			<<run _pool =
-				(
-					setup.vaginalQuotes.receive[_pref]
-					&& setup.vaginalQuotes.receive[_pref][_msize]
-				)
-				|| setup.vaginalQuotes.receive.Neutral.default
-			>>
+		<<run _pool =
+			(
+				setup.vaginalQuotes.receive[_pref]
+				&& setup.vaginalQuotes.receive[_pref][_msize]
+			)
+			|| setup.vaginalQuotes.receive.Neutral.default
+		>>
 
 	<</if>>
 

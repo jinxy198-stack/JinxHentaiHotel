@@ -1,5 +1,5 @@
 :: Start {"position":"175,275","size":"100,100"}
-
+<<set $devMode = true>>
 <h1>Welcome to Jinx Hentai Hotel!</h1>
 <h3 style="font-weight: normal;">This game is meant to simulate interactions of many sexual varieties. 
 Create your character to begin.
@@ -8,8 +8,9 @@ Create your character to begin.
 <center><<button [[Use the Randomiser|CC-Check]]>><<Randomiser>><</button>> | <<button [[Use the Pre-Set|CC-Check]]>><<PreSet>><</button>>
 </center>
 
-Updated as of 12/27/2025
+Updated as of 1/14/2026
 
+<<if $devMode>>
 <<button [[Test as a Shota|Lounge]]>><<LittleBoy>><</button>> 
 <<button [[Test as a Loli|Lounge]]>><<LittleGirl>><</button>> 
 <<button [[Test as a Teen Boy|Lounge]]>><<TeenBoy>><</button>> 
@@ -18,7 +19,6 @@ Updated as of 12/27/2025
 <<button [[Test as a Adult Man|Lounge]]>><<AdultMan>><</button>> 
 
  
- 
 <<button [[Test|Your Room]]>><<PreSet>><</button>> 
 
-
+<</if>>

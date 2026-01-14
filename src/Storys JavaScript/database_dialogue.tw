@@ -1,0 +1,44 @@
+::database_dialogue [script]
+
+
+setup.Dialogue = {};
+
+setup.Dialogue.db = [
+
+{
+        tags: ["noun", "breasts"],
+        inclinations: "crude",
+        content: [
+            "tits"
+        ],
+    },
+    {
+        tags: ["noun", "breasts"],
+        noinclinations: "crude",
+        content: [
+            "breasts"
+        ],
+    },
+    {
+        tags: ["noun", "pussy"],
+        noinclinations: "crude",
+        content: [
+            "pussy"
+        ],
+    },
+    {
+        tags: ["noun", "pussy"],
+        inclinations: "crude",
+        content: [
+            "pussy",
+            "cunt"
+        ],
+    },
+    {
+        tags: ["noun", "cock"],
+        content: [
+            "cock"
+        ],
+    }
+
+]

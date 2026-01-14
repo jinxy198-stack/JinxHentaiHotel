@@ -924,7 +924,7 @@ h2, h3{ margin:4px 0; }
   font-weight:900;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "Setup-Init" */
 window.setup = window.setup || {};
-/* twine-user-script #2: "Eventdb.js" */
+/* twine-user-script #2: "Eventdb" */
 if (!("Events" in setup)) setup.Events = {};
 
 // the event database!
@@ -1032,7 +1032,10 @@ setup.analQuotes = {
     /* ----- POSITIONS ----- */
     Cowgirl: {
       Dominant: [
-        "Bounce on my cock!"
+        "Bounce on my cock!",
+        "Oh yeah, you're so good at that",
+        "Such a good $mc.petname",
+        "That's it, feel that cock deep inside you"
       ],
       Submissive: [
         "Please, bounce on my cock!",
@@ -1052,7 +1055,7 @@ setup.analQuotes = {
         "I love that look on your face."
       ],
       Switch: [
-        "NEUTRAL DIALOGUE FOR ANAL MISSIONARY"
+        "Ah, so good!"
       ]
     },
     Doggystyle: {
@@ -1114,15 +1117,23 @@ setup.analQuotes = {
     },
     Doggystyle: {
       Dominant: [
-        "Dominant DIALOGUE FOR ANAL MISSIONARY"
+        "Yeah, give it to me!",
+        "MMM.. fuck!"
       ],
       Submissive: [
         "That's it, give it to me",
         "Yes, pound me...",
         "Fuck me!"
+      ]
+    },
+    Missionary: {
+      Dominant: [
+        "Yeah, give it to me!"
       ],
-      Switch: [
-        "NEUTRAL DIALOGUE FOR ANAL MISSIONARY"
+      Submissive: [
+        "I love it when you're on top of me like this",
+        "Yes, pound me...",
+        "Fuck me!"
       ]
     },
     Dominant: [
@@ -1136,9 +1147,9 @@ setup.analQuotes = {
 				"Now shut it and let me enjoy this Grade A dick of yours!",
 				"Keep fucking me!",
 				"Yes! Yes! Give it to me! AH!",
-				"Good _n.petname! Keep sliding that delicious cock of yours in and out of my ass!",
+				"Good $mc.petname! Keep sliding that delicious cock of yours in and out of my ass!",
 				"You like feeling my slutty little asshole gripping down on your cock?!",
-        "Fuck, _n.name, you've stuffed me good..."
+        "Fuck, $mc.name, you've stuffed me good..."
     ],
     Submissive: [
       "Yes! That's it! Oh, yes! Yes!",
@@ -1188,7 +1199,8 @@ setup.blowjobQuotes = {
 			"Fuck, that feels incredible.",
 			"That's really good, $mc.name... you're a natural at this.",
       "You're so good at sucking dick.",
-      "A-Ah..."
+      "A-Ah...",
+      "Yesss, suck it"
     ],
     Submissive: [
       "You're good at sucking cock!",
@@ -1264,17 +1276,17 @@ setup.caressQuotes = {
     },
     Scales:{
       Dominant: ["You like me feeling you up?"],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
-      Switch: ["NEUTRAL-DOM-LINE-1 about CARESSING Scales."]
+      Submissive: ["Your scales have such a smooth pattern."],
+      Switch: ["Your scales have such a smooth pattern."]
     },
     Feathers:{
       Dominant: ["You like me feeling you up?"],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
-      Switch: ["NEUTRAL-DOM-LINE-1 about CARESSING."]
+      Submissive: ["Your feathers feel light and gentle."],
+      Switch: ["Your feathers feel light and gentle."]
     },
     Fur:{
       Dominant: ["You like me feeling you up?"],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Submissive: ["Your fur is so warm… it feels comforting."],
       Switch: ["Your fur is so fluffy!"]
     }
   },
@@ -1286,17 +1298,17 @@ setup.caressQuotes = {
     },
     Scales: {
       Dominant: ["Yeah, that feels nice."],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Submissive: ["Your hands feel good on my scales…"],
       Switch: ["That feels nice."]
     },
     Feathers: {
       Dominant: ["Yeah, feel my feathers."],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Submissive: ["That feels nice. I like your touch."],
       Switch: ["That feels nice."]
     },
     Fur: {
       Dominant: ["Like my fluffy fur?"],
-      Submissive: ["SUB-LINE-1 about CARESSING."],
+      Submissive: ["That feels good. It's relaxing."],
       Switch: ["That feels nice."]
     }
   }
@@ -1306,28 +1318,60 @@ setup.cuddleQuotes = {
   give: {
     Dominant: [
       "Hope you don't mind some cuddling after all that.",
-			"You can use my tits as a pillow if you want."
+			"You can use my tits as a pillow if you want.",
+      "Come here. I've got you.",
+      "Relax. Stay close like this.",
+      "Come here. I want you pressed against me.",
+      "Relax. Let me hold you while your body's still warm.",
+      "Stay close. I like feeling you breathe against me.",
+      "Come here. You did good—just relax against me.",
+      "Don't move yet. I like you like this, all spent and warm.",
+      "Stay close. Let your breathing slow down."
     ],
     Submissive: [
-      "This is nice."
+      "This is nice.",
+      "This feels safe… I like being this close.",
+      "I love being held like this… it makes me feel small and safe.",
+      "Your body feels so warm wrapped around mine.",
+      "I'm so tired… holding you feels perfect right now.",
+      "My body's still trembling a little. Please stay."
     ],
     Neutral: [
-      "NEUTRAL-DOM-LINE-1 about CUDDLING."
+      "It's nice just holding each other for a while.",
+      "It feels good just lying together like this.",
+      "I don't need anything else right now.",
+      "That took a lot out of me… this feels nice.",
+      "I just want to lie here and catch my breath with you."
     ]
   },
   receive: {
     Dominant: [
       "Your body is so soft and warm.",
 			"You can use my tits as a pillow if you want.",
-			"You like the feeling of me being this close, don't you?"
+			"You like the feeling of me being this close, don't you?",
+      "You like being held, don't you?",
+      "Mm… you're nice and warm against me.",
+      "I like the way you cling when I pull you closer.",
+      "Don't move. I want you right here.",
+      "Mm… you look completely worn out.",
+      "Good. Let yourself rest against me.",
+      "I can feel your heartbeat slowing down."
     ],
 
     Submissive: [
-      "SUB-LINE-1 about CUDDLING."
+      "Your arms feel really comforting…",
+      "Your arms feel so good around me… please don't let go.",
+      "I could melt like this if you keep holding me.",
+      "I'm exhausted… but being held like this feels amazing.",
+      "My legs barely want to move anymore."
     ],
 
     Neutral: [
-      "NEUTRAL-DOM-LINE-1 about CUDDLING."
+      "This is comfortable. I could stay like this.",
+      "Your arms feel so good around me… please don't let go.",
+      "I could melt like this if you keep holding me.",
+      "I'm really tired… in a good way.",
+      "Let's stay like this for a bit."
     ]
   }
 };
@@ -1615,14 +1659,19 @@ setup.fingerassQuotes = {
 setup.fingervaginaQuotes = {
   give: {
     Dominant: [
-      "Damn, you're wet!"
+      "Damn, you're wet!",
+      "Ohh, you're so wet",
+      "Look at you... so wet",
+      "Mmm, already wet"
     ],
     Submissive: [
       "It's so warm in there.",
 			"Wow, its so wet down there."
     ],
     Switch: [
-      "It's warm in there."
+      "It's warm in there.",
+      "Fuck, your pussy is so wet",
+      "Your pussy's so wet"
     ]
   },
 
@@ -1712,8 +1761,11 @@ setup.gropebreastQuotes = {
   give: {
     Dominant: {
       Flat: {
-        Kid: ["I guess I shouldn't be expecting anything yet."],
-        Teen: ["It's kinda cute"],
+        Kid: [
+          "I guess I shouldn't be expecting anything yet.",
+          "You're so hot. I love small breasts."
+        ],
+        Teen: ["It's kinda cute."],
         Adult: ["Don't be ashamed about being flat, it's really cute."]
       },
       Small: {
@@ -1721,9 +1773,19 @@ setup.gropebreastQuotes = {
         Teen: ["Nothing quite like developing breasts. So lewd and cute."]
       },
       Average: {
-        Kid: ["Nice tits."],
-        Teen: ["Nice tits."],
-        Adult: ["Nice tits."]
+        Kid: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Teen: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Adult: [
+          "Nice tits.",
+          "Such perfect perky breasts",
+          "Such nice breasts"
+        ]
       },
       Large: {
         Kid: [
@@ -1736,7 +1798,10 @@ setup.gropebreastQuotes = {
         ],
         Adult: [
           "Heh, look a the size of these!",
-				  "Damn, these are huge!"
+				  "Damn, these are huge!",
+          "I love your big breasts",
+          "Your huge breasts are so hot",
+          "Love your big breasts",
         ]
       },
       Busty:[
@@ -1747,7 +1812,7 @@ setup.gropebreastQuotes = {
     Submissive: {
       Flat: {
         Kid: ["They're soft."],
-        Teen: ["Yeah, I'm not that developed."],
+        Teen: ["I'm sure they're develop."],
         Adult: ["I can work with this."]
       },
       Small: {
@@ -1756,9 +1821,9 @@ setup.gropebreastQuotes = {
         Adult: ["Cute."]
       },
       Average: {
-        Kid: ["Like my breasts?"],
-        Teen: ["Like my breasts?"],
-        Adult: ["Like my breasts?"],
+        Kid: ["Nice tits."],
+        Teen: ["Nice tits."],
+        Adult: ["Nice tits."],
       },
       Large: [
         "Your breasts are so soft.",
@@ -1768,19 +1833,19 @@ setup.gropebreastQuotes = {
     },
     Switch: {
       Flat: {
-        Kid: ["SWITCH DIALOUGE ABOUT FLAT BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT FLAT BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+        Kid: ["They're soft."],
+        Teen: ["Your breasts are so soft."],
+        Adult: ["Your breasts are so soft."],
       },
       Small: {
-        Kid: ["SWITCH DIALOUGE ABOUT SMALL BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT SMALL BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+        Kid: ["They're soft."],
+        Teen: ["Your breasts are so soft."],
+        Adult: ["Your breasts are so soft."],
       },
       Average: {
-        Kid: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, ADULT."],
+        Kid: ["They're soft."],
+        Teen: ["Your breasts are so soft."],
+        Adult: ["Your breasts are so soft."]
       },
       Large: ["Wow..."],
       Busty: ["These sure are big!"]
@@ -1796,19 +1861,29 @@ setup.gropebreastQuotes = {
     ],
     Switch: {
      Flat: {
-        Kid: ["SWITCH DIALOUGE ABOUT FLAT BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT FLAT BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+        Kid: ["Like my breasts?"],
+        Teen: ["Like my breasts?"],
+        Adult: ["Like my breasts?"]
       },
       Small: {
-        Kid: ["SWITCH DIALOUGE ABOUT SMALL BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT SMALL BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT FLAT BREAST, ADULT."],
+        Kid: ["Like my breasts?"],
+        Teen: ["Like my breasts?"],
+        Adult: ["Like my breasts?"]
       },
       Average: {
-        Kid: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, KID."],
-        Teen: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, TEEN."],
-        Adult: ["SWITCH DIALOUGE ABOUT AVERAGE BREAST, ADULT."],
+        Kid: ["Like my breasts?"],
+        Teen: ["Like my breasts?"],
+        Adult: ["Like my breasts?"]
+      },
+      Large: {
+        Kid: ["Like my breasts?"],
+        Teen: ["Like my breasts?"],
+        Adult: ["Like my breasts?"]
+      },
+      Busty: {
+        Kid: ["Like my breasts?"],
+        Teen: ["Like my breasts?"],
+        Adult: ["Like my breasts?"]
       }
     }
   }
@@ -1819,7 +1894,7 @@ setup.gropebuttQuotes = {
   give: {  
     Flat: {  
       Dominant: [     
-      "DEFAULT DIALOGUE ABOUT GROPING BUTT, FLAT BUTT."
+      "Yeah, you like this?"
       ],
       Submissive: [
       "I love how your ass feels."
@@ -1830,7 +1905,7 @@ setup.gropebuttQuotes = {
     },
     Tiny: {  
       Dominant: [     
-      "DEFAULT DIALOGUE ABOUT GROPING BUTT, TINY BUTT."
+      "Let me just enjoy this tiny butt."
       ],
       Submissive: [
       "I love how your ass feels."
@@ -1841,7 +1916,7 @@ setup.gropebuttQuotes = {
     },
     Small: {  
       Dominant: [   
-      "DEFAULT DIALOGUE ABOUT GROPING BUTT, SMALL BUTT."   
+      "I love how your ass feels."   
       ],
       Submissive: [
       "I love how your ass feels."
@@ -1981,7 +2056,9 @@ setup.handjobQuotes = {
         ],
         Adult: [
           "So cute and tiny.",
-          "Wow, it's small!"
+          "Wow, it's small.",
+          "What a cute little dick",
+          "Such a tiny dick"
         ]
       },
       Small: ["So small, yet so precious."],
@@ -1989,9 +2066,17 @@ setup.handjobQuotes = {
       "Your cock is so pretty.",
       "Wow, this is a really nice dick, $mc.name!"
       ],
-      Large: ["Damn, that's pretty big."],
+      Large: [
+        "Damn, that's pretty big.",
+        "That's a nice cock",
+        "Nice and big",
+        "Such a big cock"
+      ],
       Huge: [
-        "Fuck, you're hung!"
+        "Fuck, you're hung!",
+        "Fuck, your cock is huge",
+        "Holy shit, that's so massive",
+        "Holy fuck, that's huge"
       ]
     },
     Submissive: {
@@ -2020,10 +2105,10 @@ setup.handjobQuotes = {
 setup.petearsQuotes = {
   give: {
     Dominant: [
-      "DOM-LINE-1 about Petting ears."
+      "They feel so soft."
     ],
     Submissive: [
-      "SUB-LINE-1 about Petting ears."
+      "They feel so soft."
     ],
     Switch: [
       "They feel so soft."
@@ -2031,13 +2116,16 @@ setup.petearsQuotes = {
   },
   receive: {
     Dominant: [
-      "DOM-LINE-1 about Petting ears."
+      "Mmm, that feels nice.",
+      "Mmm..."
     ],
     Submissive: [
-      "SUB-LINE-1 about Petting ears."
+      "Mmm, that feels nice."
+      "Mmm..."
     ],
     Switch: [
       "Mmm, that feels nice."
+      "Mmm..."
     ]
   }
 };
@@ -2143,7 +2231,7 @@ setup.orgasmQuotes = {
     },
     "Frot Orgasm": {
       Dominant: ["Mnnngh!!"],
-      Submissive: ["SUBMISSIVE FROT ORGASM QUOTE"],
+      Submissive: ["Mnnngh!!"],
       Switch: ["Mnnngh!!"]
     },
      /* DEFAULT FALLBACK */
@@ -2187,7 +2275,7 @@ setup.orgasmcloseQuotes = {
     Anal: {  
       Dominant: [
       "I'm gonna cum in your ass!",
-      "Yeah, I'm gonna pump you full of my cum!",
+      "I'm gonna pump you full of my cum!",
       "Here it comes!"
       ],
       Submissive: [
@@ -2195,17 +2283,17 @@ setup.orgasmcloseQuotes = {
         "A-agh!! AaaHhhh!!!",
         "I can't hold it anymore!"
       ],
-      Switch: ["I'm cumming!","Aaaah!!"]
+      Switch: ["I'm gonna cum in your ass!", "I'm cumming!","Aaaah!!"]
     },
     Handjob: {
       Dominant: ["Don't stop jerking it, I'm so close!"],
       Submissive: ["Faster, I'm almost there!"],
       Switch: ["You're gonna jerk the cum out of me!"]
     },
-    "Finger-Pussy": {
-      Dominant:["Faster, I'm so close!"],
-      Submissive: ["Faster, I'm so close!"],
-      Switch: ["Faster, I'm so close!"]
+    "Finger Pussy": {
+      Dominant:["I can feel it, you're close? I am as well."],
+      Submissive: ["I can feel it, you're close? I am as well."],
+      Switch: ["I can feel it, you're close? I am as well."]
     }, 
     Blowjob: {
       Dominant:["I'm gonna cum in your mouth!"],
@@ -2249,15 +2337,24 @@ setup.orgasmcloseQuotes = {
         "Come on, cum."
       ]
     },
-    "Finger-Pussy": {
+    "Finger Pussy": {
       Dominant: [
-        "You're going to make me squirt!"
+        "You're going to make me squirt!",
+        "Gonna fucking cum",
+        "Shit, I'm gonna cum",
+        "Oh fuck, I'm gonna cum"
       ],
       Submissive: [
-        "SUBMISSIVE HANDJOB ORGASM CLOSE QUOTE"
+        "Gonna cum",
+        "I'm gonna cum",
+        "Oh fuck, I'm close",
+        "I'm so close"
       ],
       Switch: [
-        "NEUTRAL HANDJOB ORGASM CLOSE QUOTE"
+        "Gonna cum",
+        "I'm gonna cum",
+        "Oh fuck, I'm close",
+        "I'm so close"
       ]
     },
     Blowjob: {
@@ -2299,7 +2396,15 @@ setup.vaginalQuotes = {
 			"Oh fuck, this feels great.",
       "That's a good $mc.petname . Take that cock",
       "Yesss, you're taking it so well",
-      "Good $mc.petname. Take it..."
+      "Good $mc.petname. Take it...",
+      "Fuck, your tight little cunt feels amazing",
+      "Fuck yes, give me all of that fucking pussy",
+      "Oh yeah, take my cock",
+      "Fuck, that feels good",
+      "You're so tight",
+      "You feel so good",
+      "Your pussy is so tight",
+      "You feel amazing"
     ],
     Submissive: [
       "Fuck! Your pussy feels so good!",
@@ -2328,7 +2433,10 @@ setup.vaginalQuotes = {
 			"You like feeling my pussy gripping down on your cock?!",
 			"Keep going! Get that <<= $mc.genitals.toLowerCase() >> in deep like a good $mc.petname!",
 			"Yes! Fuck me! Fuck me harder! Don't stop!",
-      "Mmm, I'm glad you like my body so much."
+      "Mmm, I'm glad you like my body so much.",
+      "Oh yeah, fuck me",
+      "Give me that hard cock",
+      "Fuck my pussy"
     ],
     Submissive: [
       "Don't stop! Harder! Fuck me! Yes, yes, yes!",
@@ -2449,7 +2557,49 @@ setup.hasBoth = (npc, a, b) => !!(npc?.parts && npc.parts[a] && npc.parts[b]);
     }
   });
   
-})();</script><tw-tag name="creation-page" color="red"></tw-tag><tw-tag name="popup" color="blue"></tw-tag><tw-tag name="widget" color="green"></tw-tag><tw-tag name="Popup" color="yellow"></tw-tag><tw-tag name="Dialogue" color="blue"></tw-tag><tw-tag name="nobr" color="orange"></tw-tag><tw-passagedata pid="1" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
+})();
+/* twine-user-script #5: "database_dialogue" */
+setup.Dialogue = {};
+
+setup.Dialogue.db = [
+
+{
+        tags: ["noun", "breasts"],
+        inclinations: "crude",
+        content: [
+            "tits"
+        ],
+    },
+    {
+        tags: ["noun", "breasts"],
+        noinclinations: "crude",
+        content: [
+            "breasts"
+        ],
+    },
+    {
+        tags: ["noun", "pussy"],
+        noinclinations: "crude",
+        content: [
+            "pussy"
+        ],
+    },
+    {
+        tags: ["noun", "pussy"],
+        inclinations: "crude",
+        content: [
+            "pussy",
+            "cunt"
+        ],
+    },
+    {
+        tags: ["noun", "cock"],
+        content: [
+            "cock"
+        ],
+    }
+
+]</script><tw-tag name="creation-page" color="red"></tw-tag><tw-tag name="popup" color="blue"></tw-tag><tw-tag name="widget" color="green"></tw-tag><tw-tag name="Popup" color="yellow"></tw-tag><tw-tag name="Dialogue" color="blue"></tw-tag><tw-tag name="nobr" color="orange"></tw-tag><tw-passagedata pid="1" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
 &quot;Yes. I&#39;m ready — and I want you to be fully present with me&quot;
 &lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
 &quot;Yes! That sounds exciting — I&#39;m totally in the mood for you.&quot;
@@ -3045,7 +3195,7 @@ Alright, well then if you don&#39;t got any more questions then we can begin. Go
 If you are looking for some ass then I would suggest checking out the lounge on the ground floor.
 &lt;/span&gt;
 
-[[Bedroom]]</tw-passagedata><tw-passagedata pid="26" name="Sleep" tags="nobr" position="725,350" size="100,100">&lt;&lt;set _loc to $gamelocation&gt;&gt;
+[[Your Room]]</tw-passagedata><tw-passagedata pid="26" name="Sleep" tags="nobr" position="725,350" size="100,100">&lt;&lt;set _loc to $gamelocation&gt;&gt;
 
 &lt;&lt;set _getuppassage to _loc&gt;&gt;
 
@@ -3054,13 +3204,13 @@ If you are looking for some ass then I would suggest checking out the lounge on 
 &lt;&lt;if _loc is &quot;Your Room&quot;&gt;&gt;
 You go to sleep on your bed.
 &lt;&lt;link &quot;Continue&quot;&gt;&gt;
-	&lt;&lt;set $wakemsg = &quot;You go to sleep for a full eight hours.&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Wakeup&quot;&gt;&gt;
 &lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Wakeup" tags="nobr" position="850,350" size="100,100">&lt;&lt;set _loc to $gamelocation&gt;&gt;
 &lt;&lt;set _getuppassage to _loc&gt;&gt;
 
-
+You wake up
+&lt;br&gt;
 
 &lt;&lt;link &quot;Get up&quot; _getuppassage&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;br&gt;</tw-passagedata><tw-passagedata pid="28" name="Index-CC" tags="" position="350,275" size="100,100">Note: It is suggested to do the customization in order, as skipping some parts can lead to bugs. Will attempt to fix later.
@@ -3236,7 +3386,7 @@ WORK IN PROGESS
 
 &lt;br&gt;
 &lt;&lt;link &quot;Go back&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Bedroom&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Your Room&quot;&gt;&gt;
 &lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Brothel" tags="nobr" position="350,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Brothel&quot;&gt;&gt;
 
 You enter a lavish brothel.
@@ -3360,7 +3510,7 @@ On the other side there was a door to your bathroom.
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link &quot;Leave your room&quot;&gt;&gt;
 	&lt;&lt;set $lastNpc = null&gt;&gt;
-	&lt;&lt;goto &quot;Hallway&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Hotel Hallway&quot;&gt;&gt;
 &lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="ApplebridgeNPC" tags="init nobr" position="475,400" size="100,100">/% Applebridge %/
 &lt;&lt;set $CoryP = {
     name: &quot;Cory&quot;,
@@ -4566,7 +4716,7 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 			&lt;&lt;set $lastNpc = $ui.npc&gt;&gt;      &lt;!-- remember who you were with --&gt;
 			&lt;&lt;set $sex = { stage: &quot;foreplay&quot;, log: [] }&gt;&gt;  &lt;!-- optional reset --&gt;
             &lt;&lt;set $seenActions = {}&gt;&gt;
-			&lt;&lt;goto &quot;Your Room&quot;&gt;&gt;              &lt;!-- or &quot;Your Room&quot; or whatever --&gt;
+			&lt;&lt;goto &quot;Your Room&quot;&gt;&gt;              
 		&lt;&lt;/button&gt;&gt;
 	&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="ForeplayBlock" tags="nobr" position="1675,800" size="100,100">&lt;&lt;set $seenActions = $seenActions or {}&gt;&gt;
 &lt;hr&gt;
@@ -4640,7 +4790,6 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 	&lt;&lt;/button&gt;&gt; |
 &lt;&lt;/if&gt;&gt;
 
-
 &lt;&lt;if $position == &quot;Standing&quot; or $position == &quot;Missionary&quot; or $position == &quot;Cowgirl&quot; or $position == &quot;Sit on Lap&quot;&gt;&gt;
 	&lt;&lt;if $mc.genitals == &quot;Penis&quot; and _n.genitals == &quot;Penis&quot;&gt;&gt;
 		&lt;&lt;button &quot;Frottage&quot;&gt;&gt;
@@ -4701,7 +4850,7 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 		&lt;&lt;/button&gt;&gt; |
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $position == &quot;SixtyNine&quot; or $position == &quot;Oral Back&quot; or $position == &quot;Sit on Face&quot; or $position == &quot;Doggystyle&quot;&gt;&gt;
+&lt;&lt;if $position == &quot;SixtyNine&quot; or $position == &quot;Missionary&quot; or $position == &quot;Cowgirl&quot; or $position == &quot;Oral Back&quot; or $position == &quot;Sit on Face&quot; or $position == &quot;Doggystyle&quot;&gt;&gt;
 		&lt;&lt;button &quot;Finger Ass&quot;&gt;&gt;
 				&lt;&lt;set $sex.action = &quot;Finger Ass&quot;&gt;&gt;
 				&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())&gt;&gt;
@@ -4718,18 +4867,18 @@ Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.
 &lt;&lt;if $position == &quot;SixtyNine&quot; or $position == &quot;Oral Front&quot; or $position == &quot;Sit on Face&quot; or $position == &quot;Doggystyle&quot;&gt;&gt;
 	&lt;&lt;if _n.genitals==&quot;Vagina&quot; and $sex.roles.sub.name == _n.name or $mc.genitals ==&quot;Vagina&quot; and $sex.roles.dom.name == _n.name&gt;&gt;
 		&lt;&lt;button &quot;Finger Pussy&quot;&gt;&gt;
-				&lt;&lt;set $sex.action = &quot;Finger Pussy&quot;&gt;&gt;
-				&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())&gt;&gt;
-				&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
-				&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-                &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-                &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
-				&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;set $sex.action = &quot;Finger Pussy&quot;&gt;&gt;
+			&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())&gt;&gt;
+			&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
+			&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+            &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+            &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
+			&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;/button&gt;&gt; |
-&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
     
 &lt;&lt;if $position == &quot;SixtyNine&quot;&gt;&gt;
 	&lt;&lt;button &quot;Suck Foot&quot;&gt;&gt;
@@ -5456,7 +5605,7 @@ Wanna have aftercare or end the session?
    &quot;You drop down on all fours, facing away from _n.name.&quot;,
 	&quot;You nod, crawling up onto your bed. You get on all fours, presenting your ass out towards _n.name.&quot;
     )&gt;&gt;
-    You can&#39;t see what _n.name&#39;s doing, and your asshole twitches in anticipation for what&#39;s to come.
+    You can&#39;t see what _n.name&#39;s doing, and you shiver in anticipation for what&#39;s to come.
     &lt;br&gt;
 &lt;&lt;elseif $sex.roles.sub.name== _n.name&gt;&gt;
 	&lt;&lt;=either(
@@ -7154,7 +7303,8 @@ _n.name is taller
 &lt;&lt;set $anthroPatterns = [&quot;Solid&quot;, &quot;Striped&quot;, &quot;Spotted&quot;, &quot;Patterned&quot;]&gt;&gt;
 &lt;&lt;set $anthroTailTypes = [&quot;None&quot;, &quot;Short&quot;, &quot;Long&quot;, &quot;Bushy&quot;, &quot;Reptilian&quot;, &quot;Avian&quot;]&gt;&gt;
 &lt;&lt;set $anthroEarTypes = [&quot;None&quot;, &quot;Canine&quot;, &quot;Feline&quot;, &quot;Bunny&quot;, &quot;Bear&quot;, &quot;Pointed&quot;, &quot;Rounded&quot;]&gt;&gt;
-&lt;&lt;set $anthroWingspans = [&quot;None&quot;, &quot;Short&quot;, &quot;Medium&quot;, &quot;Large&quot;, &quot;Massive&quot;]&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Start" tags="" position="175,275" size="100,100">&lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
+&lt;&lt;set $anthroWingspans = [&quot;None&quot;, &quot;Short&quot;, &quot;Medium&quot;, &quot;Large&quot;, &quot;Massive&quot;]&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Start" tags="" position="175,275" size="100,100">&lt;&lt;set $devMode = true&gt;&gt;
+&lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
 &lt;h3 style=&quot;font-weight: normal;&quot;&gt;This game is meant to simulate interactions of many sexual varieties. 
 Create your character to begin.
 &lt;/h3&gt;
@@ -7162,8 +7312,9 @@ Create your character to begin.
 &lt;center&gt;&lt;&lt;button [[Use the Randomiser|CC-Check]]&gt;&gt;&lt;&lt;Randomiser&gt;&gt;&lt;&lt;/button&gt;&gt; | &lt;&lt;button [[Use the Pre-Set|CC-Check]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/center&gt;
 
-Updated as of 12/27/2025
+Updated as of 1/14/2026
 
+&lt;&lt;if $devMode&gt;&gt;
 &lt;&lt;button [[Test as a Shota|Lounge]]&gt;&gt;&lt;&lt;LittleBoy&gt;&gt;&lt;&lt;/button&gt;&gt; 
 &lt;&lt;button [[Test as a Loli|Lounge]]&gt;&gt;&lt;&lt;LittleGirl&gt;&gt;&lt;&lt;/button&gt;&gt; 
 &lt;&lt;button [[Test as a Teen Boy|Lounge]]&gt;&gt;&lt;&lt;TeenBoy&gt;&gt;&lt;&lt;/button&gt;&gt; 
@@ -7172,8 +7323,9 @@ Updated as of 12/27/2025
 &lt;&lt;button [[Test as a Adult Man|Lounge]]&gt;&gt;&lt;&lt;AdultMan&gt;&gt;&lt;&lt;/button&gt;&gt; 
 
  
- 
-&lt;&lt;button [[Test|Your Room]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Statistics" tags="nobr" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
+&lt;&lt;button [[Test|Your Room]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt; 
+
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Statistics" tags="nobr" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
 &lt;table class=&quot;stats-table&quot;&gt;
   &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
   &lt;tr id=&quot;name&quot;&gt;
@@ -8529,13 +8681,13 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 			|| setup.vaginalQuotes.give.Neutral
 		&gt;&gt;
 	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.vaginalQuotes.receive[_pref]
-					&amp;&amp; setup.vaginalQuotes.receive[_pref][_msize]
-				)
-				|| setup.vaginalQuotes.receive.Neutral.default
-			&gt;&gt;
+		&lt;&lt;run _pool =
+			(
+				setup.vaginalQuotes.receive[_pref]
+				&amp;&amp; setup.vaginalQuotes.receive[_pref][_msize]
+			)
+			|| setup.vaginalQuotes.receive.Neutral.default
+		&gt;&gt;
 
 	&lt;&lt;/if&gt;&gt;
 
