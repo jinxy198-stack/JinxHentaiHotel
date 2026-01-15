@@ -1,4 +1,4 @@
-:: CC-Check {"position":"200,400","size":"100,100"}
+:: CC-Check [nobr]{"position":"200,400","size":"100,100"}
 <h1>Is this Correct?</h1>
 Please review the character page below and confirm the traits chosen are correct.  
 <h2>Basic Info</h2>
@@ -79,15 +79,41 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
 <h3>Body</h3>
 <table>
     <tr id="skin-colour">
-        <th><u><strong>Skin:</strong></u></th>
-        <td id="mc-skin">$skin.color <<if $skin.features>>$skin.features <</if>></td>
+        <th> 
+            <<if $skincolor>>
+                <u><strong>Skin:</strong></u>
+            <<elseif $mc.anthro.group is "Furry">> 
+                <u><strong>Fur:</strong></u>
+            <<elseif $mc.anthro.group is "Scalie">>
+                <u><strong>Scales:</strong></u>
+            <<elseif $mc.anthro.group is "Avian">>   
+                <u><strong>Feathers:</strong></u>
+            <</if>>
+        </th>
+        <td id="mc-skin">
+            <<if $skincolor>>
+                $skin.color
+            <<elseif $mc.anthro.colors>>
+                $mc.anthro.colors
+                <br>
+                Patterns: $mc.anthro.patterns
+                
+            <<else>>
+                ERROR NO SKIN OR BODY COLOR FOUND!
+            <</if>>     
+        <<if $skin.features>>
+            $skin.features
+        <</if>></td>
     </tr>
     <tr id="body-build">
         <th><u><strong>Build:</strong></u></th>
         <td id="mc-build">
             Height: $mc.bodyheight
+            <br>
             Type: $mc.bodyweight
+            <br>
             Musculature: $mc.bodymusc
+            <br>
          <<if $mc.breastsize>>Breast Size: $mc.breastsize<</if>>         
         </td>
     </tr>
@@ -133,9 +159,18 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
 <</if>> */
 
 <div>
+<<if $mc.body.ears>>
 You have a $mc.body.ears 
+<</if>>
+<br>
+<<if $mc.body.ears>>
 You have a $mc.body.feet 
+<</if>>
+<br>
+<<if $mc.body.tail>>
 You have a $mc.body.tail
+<</if>>
+<br>
 </div>
 <div>
     <<button "YES!">><<goto "CC-Confirm">><</button>>

@@ -2,11 +2,11 @@
 <h1>Choose your Skin Characteristics</h1>\
 <<if $mc.species is "Human">>
  Your skin colour is: 
-* <label><<radiobutton "$skin.color" "Pale">>Pale</label>
-* <label><<radiobutton "$skin.color" "Fair" checked>>Fair</label>
-* <label><<radiobutton "$skin.color" "Tan" checked>>Tan</label>
-* <label><<radiobutton "$skin.color" "Olive" checked>>Olive</label>
-* <label><<radiobutton "$skin.color" "Brown" checked>>Brown</label>
+* <label><<radiobutton "$skin.color" "Pale" checked >>Pale</label>
+* <label><<radiobutton "$skin.color" "Fair" >>Fair</label>
+* <label><<radiobutton "$skin.color" "Tan" >>Tan</label>
+* <label><<radiobutton "$skin.color" "Olive" >>Olive</label>
+* <label><<radiobutton "$skin.color" "Brown" >>Brown</label>
 * <label><<radiobutton "$skin.color" "Ebony">>Ebony</label>
 
 //Does your skin have any notable features?//

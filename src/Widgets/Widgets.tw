@@ -420,17 +420,6 @@
     <<if _acne>><<run $facefeatures.push("acne")>><</if>>  
 <</widget>>
 
-/*************************** 
-    SKIN COLOURS WIDGETS 
-***************************/
-<<widget "SkinColourCycle">>
-    <<cycle "_color" autoselect>>
-        <<option "Pale">>
-        <<option "Tan">>
-        <<option "Brown">>
-        <<option "Ebony">>
-    <</cycle>>
-<</widget>>
 
 /*************************** 
     BUILD WIDGET
@@ -448,6 +437,8 @@
     MAIN PAGE WIDGETS 
 ********************************/
 <<widget "Randomiser">>
+    /*reset body parts*/
+    <<set $skin.color to {}>>
     <<set
     	$mc.species to either ("Human", "Anthro"),
         $mc.name to either ("Suzette", "Maribelle", "Francine", "Thomas", "Charles", "Alfonso", "Riley", "Blake", "Taylor","Jay","Susan","Micheal","Jamie","Kris"),
@@ -466,6 +457,7 @@
        $mc.personality to either("Friendly",  "Shy",  "Confident",  "Sarcastic",  "Serious",  "Optimistic",  "Pessimistic", "Caring", "Aggressive",  "Lazy", "Energetic",  "Intelligent", "Naive", "Funny", "Calm", "Anxious",  "Rebellious", "Loyal", "Greedy"),
        $mc.species to either("Human","Anthro")>>
     <<if $mc.species is "Anthro">>
+        <<set $skin.color to {}>>
     	<<set $mc.anthro.group to either("Furry","Scalie","Avian")>>
         <<set $mc.anthro.colors to either("Black","Brown", "Grey", "White", "Golden","Red", "Blue", "Green")>>
         <<set $mc.anthro.patterns to either("Solid","Striped", "Spotted","Patterned")>>
@@ -506,7 +498,6 @@
     <</if>>
 <</widget>>
 
-
 <<widget "CheckIfDone">>
     <<done>>
         <<if $mc.name>>
@@ -541,6 +532,8 @@
         <</if>>
         <<if $skin.color>>
             <<addclass "#skin" "green">>
+        <<elseif $anthrocolors>>
+            <<addclass "#skin" "green">>
         <</if>>
         <<if $mc.bodyheight>>
             <<addclass "#build" "green">>
@@ -548,10 +541,10 @@
         <<if $pages.perso>>
             <<addclass "#perso" "green">>
         <</if>>
-<<if $mc.genitals>>
-  <<addclass "#genitals" "green">>
-<</if>>
-<<if $pages.sexpref>>
+        <<if $mc.genitals>>
+            <<addclass "#genitals" "green">>
+        <</if>>
+        <<if $pages.sexpref>>
             <<addclass "#sexpref" "green">>
         <</if>>
     <</done>>

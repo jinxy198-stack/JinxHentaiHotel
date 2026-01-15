@@ -2656,7 +2656,7 @@ Now get up $mc.name .&quot;
 
 Remember to follow the golden rule:
 
-Consent is required.</tw-passagedata><tw-passagedata pid="5" name="CC-Check" tags="" position="200,400" size="100,100">&lt;h1&gt;Is this Correct?&lt;/h1&gt;
+Consent is required.</tw-passagedata><tw-passagedata pid="5" name="CC-Check" tags="nobr" position="200,400" size="100,100">&lt;h1&gt;Is this Correct?&lt;/h1&gt;
 Please review the character page below and confirm the traits chosen are correct.  
 &lt;h2&gt;Basic Info&lt;/h2&gt;
 &lt;table&gt;
@@ -2736,15 +2736,41 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
 &lt;h3&gt;Body&lt;/h3&gt;
 &lt;table&gt;
     &lt;tr id=&quot;skin-colour&quot;&gt;
-        &lt;th&gt;&lt;u&gt;&lt;strong&gt;Skin:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-skin&quot;&gt;$skin.color &lt;&lt;if $skin.features&gt;&gt;$skin.features &lt;&lt;/if&gt;&gt;&lt;/td&gt;
+        &lt;th&gt; 
+            &lt;&lt;if $skincolor&gt;&gt;
+                &lt;u&gt;&lt;strong&gt;Skin:&lt;/strong&gt;&lt;/u&gt;
+            &lt;&lt;elseif $mc.anthro.group is &quot;Furry&quot;&gt;&gt; 
+                &lt;u&gt;&lt;strong&gt;Fur:&lt;/strong&gt;&lt;/u&gt;
+            &lt;&lt;elseif $mc.anthro.group is &quot;Scalie&quot;&gt;&gt;
+                &lt;u&gt;&lt;strong&gt;Scales:&lt;/strong&gt;&lt;/u&gt;
+            &lt;&lt;elseif $mc.anthro.group is &quot;Avian&quot;&gt;&gt;   
+                &lt;u&gt;&lt;strong&gt;Feathers:&lt;/strong&gt;&lt;/u&gt;
+            &lt;&lt;/if&gt;&gt;
+        &lt;/th&gt;
+        &lt;td id=&quot;mc-skin&quot;&gt;
+            &lt;&lt;if $skincolor&gt;&gt;
+                $skin.color
+            &lt;&lt;elseif $mc.anthro.colors&gt;&gt;
+                $mc.anthro.colors
+                &lt;br&gt;
+                Patterns: $mc.anthro.patterns
+                
+            &lt;&lt;else&gt;&gt;
+                ERROR NO SKIN OR BODY COLOR FOUND!
+            &lt;&lt;/if&gt;&gt;     
+        &lt;&lt;if $skin.features&gt;&gt;
+            $skin.features
+        &lt;&lt;/if&gt;&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr id=&quot;body-build&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Build:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
         &lt;td id=&quot;mc-build&quot;&gt;
             Height: $mc.bodyheight
+            &lt;br&gt;
             Type: $mc.bodyweight
+            &lt;br&gt;
             Musculature: $mc.bodymusc
+            &lt;br&gt;
          &lt;&lt;if $mc.breastsize&gt;&gt;Breast Size: $mc.breastsize&lt;&lt;/if&gt;&gt;         
         &lt;/td&gt;
     &lt;/tr&gt;
@@ -2790,9 +2816,18 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
 &lt;&lt;/if&gt;&gt; */
 
 &lt;div&gt;
+&lt;&lt;if $mc.body.ears&gt;&gt;
 You have a $mc.body.ears 
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;
+&lt;&lt;if $mc.body.ears&gt;&gt;
 You have a $mc.body.feet 
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;
+&lt;&lt;if $mc.body.tail&gt;&gt;
 You have a $mc.body.tail
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;
 &lt;/div&gt;
 &lt;div&gt;
     &lt;&lt;button &quot;YES!&quot;&gt;&gt;&lt;&lt;goto &quot;CC-Confirm&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
@@ -3083,11 +3118,11 @@ Once you are set on a name (by following one of the listed options and), you wil
 &lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="CC-Skin" tags="creation-page" position="800,225" size="100,100">&lt;h1&gt;Choose your Skin Characteristics&lt;/h1&gt;\
 &lt;&lt;if $mc.species is &quot;Human&quot;&gt;&gt;
  Your skin colour is: 
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$skin.color&quot; &quot;Pale&quot;&gt;&gt;Pale&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$skin.color&quot; &quot;Fair&quot; checked&gt;&gt;Fair&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$skin.color&quot; &quot;Tan&quot; checked&gt;&gt;Tan&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$skin.color&quot; &quot;Olive&quot; checked&gt;&gt;Olive&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$skin.color&quot; &quot;Brown&quot; checked&gt;&gt;Brown&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$skin.color&quot; &quot;Pale&quot; checked &gt;&gt;Pale&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$skin.color&quot; &quot;Fair&quot; &gt;&gt;Fair&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$skin.color&quot; &quot;Tan&quot; &gt;&gt;Tan&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$skin.color&quot; &quot;Olive&quot; &gt;&gt;Olive&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$skin.color&quot; &quot;Brown&quot; &gt;&gt;Brown&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$skin.color&quot; &quot;Ebony&quot;&gt;&gt;Ebony&lt;/label&gt;
 
 //Does your skin have any notable features?//
@@ -9883,17 +9918,6 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     &lt;&lt;if _acne&gt;&gt;&lt;&lt;run $facefeatures.push(&quot;acne&quot;)&gt;&gt;&lt;&lt;/if&gt;&gt;  
 &lt;&lt;/widget&gt;&gt;
 
-/*************************** 
-    SKIN COLOURS WIDGETS 
-***************************/
-&lt;&lt;widget &quot;SkinColourCycle&quot;&gt;&gt;
-    &lt;&lt;cycle &quot;_color&quot; autoselect&gt;&gt;
-        &lt;&lt;option &quot;Pale&quot;&gt;&gt;
-        &lt;&lt;option &quot;Tan&quot;&gt;&gt;
-        &lt;&lt;option &quot;Brown&quot;&gt;&gt;
-        &lt;&lt;option &quot;Ebony&quot;&gt;&gt;
-    &lt;&lt;/cycle&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
 
 /*************************** 
     BUILD WIDGET
@@ -9911,6 +9935,8 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     MAIN PAGE WIDGETS 
 ********************************/
 &lt;&lt;widget &quot;Randomiser&quot;&gt;&gt;
+    /*reset body parts*/
+    &lt;&lt;set $skin.color to {}&gt;&gt;
     &lt;&lt;set
     	$mc.species to either (&quot;Human&quot;, &quot;Anthro&quot;),
         $mc.name to either (&quot;Suzette&quot;, &quot;Maribelle&quot;, &quot;Francine&quot;, &quot;Thomas&quot;, &quot;Charles&quot;, &quot;Alfonso&quot;, &quot;Riley&quot;, &quot;Blake&quot;, &quot;Taylor&quot;,&quot;Jay&quot;,&quot;Susan&quot;,&quot;Micheal&quot;,&quot;Jamie&quot;,&quot;Kris&quot;),
@@ -9929,6 +9955,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
        $mc.personality to either(&quot;Friendly&quot;,  &quot;Shy&quot;,  &quot;Confident&quot;,  &quot;Sarcastic&quot;,  &quot;Serious&quot;,  &quot;Optimistic&quot;,  &quot;Pessimistic&quot;, &quot;Caring&quot;, &quot;Aggressive&quot;,  &quot;Lazy&quot;, &quot;Energetic&quot;,  &quot;Intelligent&quot;, &quot;Naive&quot;, &quot;Funny&quot;, &quot;Calm&quot;, &quot;Anxious&quot;,  &quot;Rebellious&quot;, &quot;Loyal&quot;, &quot;Greedy&quot;),
        $mc.species to either(&quot;Human&quot;,&quot;Anthro&quot;)&gt;&gt;
     &lt;&lt;if $mc.species is &quot;Anthro&quot;&gt;&gt;
+        &lt;&lt;set $skin.color to {}&gt;&gt;
     	&lt;&lt;set $mc.anthro.group to either(&quot;Furry&quot;,&quot;Scalie&quot;,&quot;Avian&quot;)&gt;&gt;
         &lt;&lt;set $mc.anthro.colors to either(&quot;Black&quot;,&quot;Brown&quot;, &quot;Grey&quot;, &quot;White&quot;, &quot;Golden&quot;,&quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;)&gt;&gt;
         &lt;&lt;set $mc.anthro.patterns to either(&quot;Solid&quot;,&quot;Striped&quot;, &quot;Spotted&quot;,&quot;Patterned&quot;)&gt;&gt;
@@ -10004,6 +10031,8 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         &lt;&lt;/if&gt;&gt;
         &lt;&lt;if $skin.color&gt;&gt;
             &lt;&lt;addclass &quot;#skin&quot; &quot;green&quot;&gt;&gt;
+        &lt;&lt;elseif $anthrocolors&gt;&gt;
+            &lt;&lt;addclass &quot;#skin&quot; &quot;green&quot;&gt;&gt;
         &lt;&lt;/if&gt;&gt;
         &lt;&lt;if $mc.bodyheight&gt;&gt;
             &lt;&lt;addclass &quot;#build&quot; &quot;green&quot;&gt;&gt;
@@ -10011,10 +10040,10 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         &lt;&lt;if $pages.perso&gt;&gt;
             &lt;&lt;addclass &quot;#perso&quot; &quot;green&quot;&gt;&gt;
         &lt;&lt;/if&gt;&gt;
-&lt;&lt;if $mc.genitals&gt;&gt;
-  &lt;&lt;addclass &quot;#genitals&quot; &quot;green&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $pages.sexpref&gt;&gt;
+        &lt;&lt;if $mc.genitals&gt;&gt;
+            &lt;&lt;addclass &quot;#genitals&quot; &quot;green&quot;&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+        &lt;&lt;if $pages.sexpref&gt;&gt;
             &lt;&lt;addclass &quot;#sexpref&quot; &quot;green&quot;&gt;&gt;
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/done&gt;&gt;
