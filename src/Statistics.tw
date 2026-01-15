@@ -79,6 +79,8 @@
     <td id="mc-skin">
       <<if $mc.species and $mc.species.toLowerCase() is "anthro">>
         $mc.body.bodymaterial
+        $mc.anthro.color
+        $mc.anthro.pattern
       <<else>>
         $skin.color
       <</if>>

@@ -530,9 +530,7 @@
         <<if $pages.facefeat>>
             <<addclass "#ffeat" "green">>
         <</if>>
-        <<if $skin.color>>
-            <<addclass "#skin" "green">>
-        <<elseif $anthrocolors>>
+        <<if $flags.skinChosen>>
             <<addclass "#skin" "green">>
         <</if>>
         <<if $mc.bodyheight>>

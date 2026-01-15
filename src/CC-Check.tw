@@ -93,10 +93,10 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
         <td id="mc-skin">
             <<if $skincolor>>
                 $skin.color
-            <<elseif $mc.anthro.colors>>
-                $mc.anthro.colors
+            <<elseif $mc.anthro.color>>
+                $mc.anthro.color
                 <br>
-                Patterns: $mc.anthro.patterns
+                Patterns: $mc.anthro.pattern
                 
             <<else>>
                 ERROR NO SKIN OR BODY COLOR FOUND!

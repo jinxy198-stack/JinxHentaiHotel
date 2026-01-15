@@ -26,16 +26,21 @@
   <<elseif $mc.anthro.group is "Avian">>
     <label>Feather Color</label>
   	<</if>>  <</nobr>>
-  <<listbox "$mc.anthro.color">><<optionsfrom $anthroColors>><</listbox>>
+<<listbox "$mc.anthro.color">>
+  <<optionsfrom $anthroColors>>
+<</listbox>>
+
 Pattern
-<<listbox "$mc.anthro.pattern">><<optionsfrom $anthroPatterns>><</listbox>>
+<<listbox "$mc.anthro.pattern">>
+  <<optionsfrom $anthroPatterns>>
+<</listbox>>
+
 <</if>>
 
 
 <<button [[Confirm|Index-CC]]>>
-    <<set 
-        $skin.features to []
-    >>
+  <<set $flags.skinChosen = true>>
+    <<set $skin.features to []>>
     <<if _vitiligo>><<run $skin.features.push("Viligo")>><</if>>
     <<if _freckles>><<run $skin.features.push("Freckles")>><</if>>
     <<if _eczema>><<run $skin.features.push("Eczema")>><</if>>

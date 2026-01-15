@@ -2750,10 +2750,10 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
         &lt;td id=&quot;mc-skin&quot;&gt;
             &lt;&lt;if $skincolor&gt;&gt;
                 $skin.color
-            &lt;&lt;elseif $mc.anthro.colors&gt;&gt;
-                $mc.anthro.colors
+            &lt;&lt;elseif $mc.anthro.color&gt;&gt;
+                $mc.anthro.color
                 &lt;br&gt;
-                Patterns: $mc.anthro.patterns
+                Patterns: $mc.anthro.pattern
                 
             &lt;&lt;else&gt;&gt;
                 ERROR NO SKIN OR BODY COLOR FOUND!
@@ -3142,16 +3142,21 @@ Once you are set on a name (by following one of the listed options and), you wil
   &lt;&lt;elseif $mc.anthro.group is &quot;Avian&quot;&gt;&gt;
     &lt;label&gt;Feather Color&lt;/label&gt;
   	&lt;&lt;/if&gt;&gt;  &lt;&lt;/nobr&gt;&gt;
-  &lt;&lt;listbox &quot;$mc.anthro.color&quot;&gt;&gt;&lt;&lt;optionsfrom $anthroColors&gt;&gt;&lt;&lt;/listbox&gt;&gt;
+&lt;&lt;listbox &quot;$mc.anthro.color&quot;&gt;&gt;
+  &lt;&lt;optionsfrom $anthroColors&gt;&gt;
+&lt;&lt;/listbox&gt;&gt;
+
 Pattern
-&lt;&lt;listbox &quot;$mc.anthro.pattern&quot;&gt;&gt;&lt;&lt;optionsfrom $anthroPatterns&gt;&gt;&lt;&lt;/listbox&gt;&gt;
+&lt;&lt;listbox &quot;$mc.anthro.pattern&quot;&gt;&gt;
+  &lt;&lt;optionsfrom $anthroPatterns&gt;&gt;
+&lt;&lt;/listbox&gt;&gt;
+
 &lt;&lt;/if&gt;&gt;
 
 
 &lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;
-    &lt;&lt;set 
-        $skin.features to []
-    &gt;&gt;
+  &lt;&lt;set $flags.skinChosen = true&gt;&gt;
+    &lt;&lt;set $skin.features to []&gt;&gt;
     &lt;&lt;if _vitiligo&gt;&gt;&lt;&lt;run $skin.features.push(&quot;Viligo&quot;)&gt;&gt;&lt;&lt;/if&gt;&gt;
     &lt;&lt;if _freckles&gt;&gt;&lt;&lt;run $skin.features.push(&quot;Freckles&quot;)&gt;&gt;&lt;&lt;/if&gt;&gt;
     &lt;&lt;if _eczema&gt;&gt;&lt;&lt;run $skin.features.push(&quot;Eczema&quot;)&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -7337,7 +7342,11 @@ _n.name is taller
 &lt;&lt;set $anthroPatterns = [&quot;Solid&quot;, &quot;Striped&quot;, &quot;Spotted&quot;, &quot;Patterned&quot;]&gt;&gt;
 &lt;&lt;set $anthroTailTypes = [&quot;None&quot;, &quot;Short&quot;, &quot;Long&quot;, &quot;Bushy&quot;, &quot;Reptilian&quot;, &quot;Avian&quot;]&gt;&gt;
 &lt;&lt;set $anthroEarTypes = [&quot;None&quot;, &quot;Canine&quot;, &quot;Feline&quot;, &quot;Bunny&quot;, &quot;Bear&quot;, &quot;Pointed&quot;, &quot;Rounded&quot;]&gt;&gt;
-&lt;&lt;set $anthroWingspans = [&quot;None&quot;, &quot;Short&quot;, &quot;Medium&quot;, &quot;Large&quot;, &quot;Massive&quot;]&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Start" tags="" position="175,275" size="100,100">&lt;&lt;set $devMode = false&gt;&gt;
+&lt;&lt;set $anthroWingspans = [&quot;None&quot;, &quot;Short&quot;, &quot;Medium&quot;, &quot;Large&quot;, &quot;Massive&quot;]&gt;&gt;
+
+
+&lt;&lt;set $flags = $flags || {}&gt;&gt;
+&lt;&lt;set $flags.skinChosen = false&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Start" tags="" position="175,275" size="100,100">&lt;&lt;set $devMode = false&gt;&gt;
 &lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
 &lt;h3 style=&quot;font-weight: normal;&quot;&gt;This game is meant to simulate interactions of many sexual varieties. 
 Create your character to begin.
@@ -7439,6 +7448,8 @@ Updated as of 1/15/2026
     &lt;td id=&quot;mc-skin&quot;&gt;
       &lt;&lt;if $mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;
         $mc.body.bodymaterial
+        $mc.anthro.color
+        $mc.anthro.pattern
       &lt;&lt;else&gt;&gt;
         $skin.color
       &lt;&lt;/if&gt;&gt;
@@ -10028,9 +10039,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         &lt;&lt;if $pages.facefeat&gt;&gt;
             &lt;&lt;addclass &quot;#ffeat&quot; &quot;green&quot;&gt;&gt;
         &lt;&lt;/if&gt;&gt;
-        &lt;&lt;if $skin.color&gt;&gt;
-            &lt;&lt;addclass &quot;#skin&quot; &quot;green&quot;&gt;&gt;
-        &lt;&lt;elseif $anthrocolors&gt;&gt;
+        &lt;&lt;if $flags.skinChosen&gt;&gt;
             &lt;&lt;addclass &quot;#skin&quot; &quot;green&quot;&gt;&gt;
         &lt;&lt;/if&gt;&gt;
         &lt;&lt;if $mc.bodyheight&gt;&gt;

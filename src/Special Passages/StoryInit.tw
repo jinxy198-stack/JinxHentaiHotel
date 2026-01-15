@@ -184,3 +184,7 @@
 <<set $anthroTailTypes = ["None", "Short", "Long", "Bushy", "Reptilian", "Avian"]>>
 <<set $anthroEarTypes = ["None", "Canine", "Feline", "Bunny", "Bear", "Pointed", "Rounded"]>>
 <<set $anthroWingspans = ["None", "Short", "Medium", "Large", "Massive"]>>
+
+
+<<set $flags = $flags || {}>>
+<<set $flags.skinChosen = false>>
