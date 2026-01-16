@@ -244,9 +244,9 @@
 <<widget "check-attraction" $mc _n>>
 	/* Determines if NPC is attracted to MC based on sexuality */
 
-	<<set _mcG = $mc.gender>>
-	<<set _npcG = _n.gender>>
-	<<set _sexu = _n.sexu or "Unknown">>
+	<<set _mcG = $mc.gender.toLowerCase>>
+	<<set _npcG = _n.gender.toLowerCase()>>
+	<<set _sexu = _n.sexu.toLowercase() or "Unknown">>
 	<<set _result = false>>
 
 	<<switch _sexu>>

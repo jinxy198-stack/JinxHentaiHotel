@@ -80,7 +80,7 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
 <table>
     <tr id="skin-colour">
         <th> 
-            <<if $skincolor>>
+            <<if $skin.color>>
                 <u><strong>Skin:</strong></u>
             <<elseif $mc.anthro.group is "Furry">> 
                 <u><strong>Fur:</strong></u>
@@ -91,7 +91,7 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
             <</if>>
         </th>
         <td id="mc-skin">
-            <<if $skincolor>>
+            <<if $skin.color>>
                 $skin.color
             <<elseif $mc.anthro.color>>
                 $mc.anthro.color

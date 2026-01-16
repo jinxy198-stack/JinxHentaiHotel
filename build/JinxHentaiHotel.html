@@ -2737,7 +2737,7 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
 &lt;table&gt;
     &lt;tr id=&quot;skin-colour&quot;&gt;
         &lt;th&gt; 
-            &lt;&lt;if $skincolor&gt;&gt;
+            &lt;&lt;if $skin.color&gt;&gt;
                 &lt;u&gt;&lt;strong&gt;Skin:&lt;/strong&gt;&lt;/u&gt;
             &lt;&lt;elseif $mc.anthro.group is &quot;Furry&quot;&gt;&gt; 
                 &lt;u&gt;&lt;strong&gt;Fur:&lt;/strong&gt;&lt;/u&gt;
@@ -2748,7 +2748,7 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
             &lt;&lt;/if&gt;&gt;
         &lt;/th&gt;
         &lt;td id=&quot;mc-skin&quot;&gt;
-            &lt;&lt;if $skincolor&gt;&gt;
+            &lt;&lt;if $skin.color&gt;&gt;
                 $skin.color
             &lt;&lt;elseif $mc.anthro.color&gt;&gt;
                 $mc.anthro.color
@@ -8987,9 +8987,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;widget &quot;check-attraction&quot; $mc _n&gt;&gt;
 	/* Determines if NPC is attracted to MC based on sexuality */
 
-	&lt;&lt;set _mcG = $mc.gender&gt;&gt;
-	&lt;&lt;set _npcG = _n.gender&gt;&gt;
-	&lt;&lt;set _sexu = _n.sexu or &quot;Unknown&quot;&gt;&gt;
+	&lt;&lt;set _mcG = $mc.gender.toLowerCase&gt;&gt;
+	&lt;&lt;set _npcG = _n.gender.toLowerCase()&gt;&gt;
+	&lt;&lt;set _sexu = _n.sexu.toLowercase() or &quot;Unknown&quot;&gt;&gt;
 	&lt;&lt;set _result = false&gt;&gt;
 
 	&lt;&lt;switch _sexu&gt;&gt;
