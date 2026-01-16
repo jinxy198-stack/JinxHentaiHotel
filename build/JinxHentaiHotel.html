@@ -2928,8 +2928,8 @@ Do your eyes have &lt;&lt;link &quot;the same colour&quot;&gt;&gt;&lt;&lt;set $h
 
 &lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;AllThisInAnArray&gt;&gt;&lt;&lt;set $pages.facefeat to true&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="CC-Gender" tags="creation-page" position="925,100" size="100,100">&lt;h1&gt;Set your Gender Identity&lt;/h1&gt;\
 //What term do you use to describe your gender?//
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.gender&quot; &quot;male&quot; checked&gt;&gt; Male&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.gender&quot; &quot;female&quot;&gt;&gt; Female&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.gender&quot; &quot;Male&quot; checked&gt;&gt; Male&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.gender&quot; &quot;Female&quot;&gt;&gt; Female&lt;/label&gt;
 
 
 //What do you identify as?//
@@ -2943,7 +2943,7 @@ Do your eyes have &lt;&lt;link &quot;the same colour&quot;&gt;&gt;&lt;&lt;set $h
     &lt;&lt;set $pages.gender to true&gt;&gt;
         &lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="CC-Genitals" tags="creation-page" position="925,225" size="100,100">Decide your genitals
-&lt;&lt;if $mc.gender is &quot;male&quot;&gt;&gt;
+&lt;&lt;if $mc.gender is &quot;Male&quot;&gt;&gt;
 Because you chose male you have a penis. 
 &lt;&lt;set $mc.genitals to &quot;Penis&quot;&gt;&gt;
 &lt;&lt;if $mc.species != &quot;Anthro&quot;&gt;&gt;
@@ -2966,7 +2966,7 @@ Also, what&#39;s it&#39;s length?
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.penislength&quot; &quot;Average&quot; checked&gt;&gt; average&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.penislength&quot; &quot;Large&quot; checked&gt;&gt; large&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.penislength&quot; &quot;Huge&quot; checked&gt;&gt; huge&lt;/label&gt;
-&lt;&lt;elseif $mc.gender is &quot;female&quot;&gt;&gt;
+&lt;&lt;elseif $mc.gender is &quot;Female&quot;&gt;&gt;
 Because you chose female you have a vagina.
 Choose the tightness
 &lt;&lt;set $mc.genitals to &quot;Vagina&quot;&gt;&gt;
@@ -8987,9 +8987,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;widget &quot;check-attraction&quot; $mc _n&gt;&gt;
 	/* Determines if NPC is attracted to MC based on sexuality */
 
-	&lt;&lt;set _mcG = $mc.gender.toLowerCase&gt;&gt;
-	&lt;&lt;set _npcG = _n.gender.toLowerCase()&gt;&gt;
-	&lt;&lt;set _sexu = _n.sexu.toLowercase() or &quot;Unknown&quot;&gt;&gt;
+	&lt;&lt;set _mcG = $mc.gender&gt;&gt;
+	&lt;&lt;set _npcG = _n.gender&gt;&gt;
+	&lt;&lt;set _sexu = _n.sexu or &quot;Unknown&quot;&gt;&gt;
 	&lt;&lt;set _result = false&gt;&gt;
 
 	&lt;&lt;switch _sexu&gt;&gt;

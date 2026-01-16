@@ -1,6 +1,6 @@
 :: CC-Genitals [creation-page] {"position":"925,225","size":"100,100"}
 Decide your genitals
-<<if $mc.gender is "male">>
+<<if $mc.gender is "Male">>
 Because you chose male you have a penis. 
 <<set $mc.genitals to "Penis">>
 <<if $mc.species != "Anthro">>
@@ -23,7 +23,7 @@ Also, what's it's length?
 *<label><<radiobutton "$mc.penislength" "Average" checked>> average</label>
 *<label><<radiobutton "$mc.penislength" "Large" checked>> large</label>
 *<label><<radiobutton "$mc.penislength" "Huge" checked>> huge</label>
-<<elseif $mc.gender is "female">>
+<<elseif $mc.gender is "Female">>
 Because you chose female you have a vagina.
 Choose the tightness
 <<set $mc.genitals to "Vagina">>

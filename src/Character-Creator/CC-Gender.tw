@@ -1,8 +1,8 @@
 :: CC-Gender [creation-page] {"position":"925,100","size":"100,100"}
 <h1>Set your Gender Identity</h1>\
 //What term do you use to describe your gender?//
-* <label><<radiobutton "$mc.gender" "male" checked>> Male</label>
-* <label><<radiobutton "$mc.gender" "female">> Female</label>
+* <label><<radiobutton "$mc.gender" "Male" checked>> Male</label>
+* <label><<radiobutton "$mc.gender" "Female">> Female</label>
 
 
 //What do you identify as?//
