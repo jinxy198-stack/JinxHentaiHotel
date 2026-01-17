@@ -5610,7 +5610,7 @@ Alright, well then if you don&#39;t got any more questions then we can begin. Go
 If you are looking for some ass then I would suggest checking out the lounge on the ground floor.
 &lt;/span&gt;
 
-[[Your Room]]</tw-passagedata><tw-passagedata pid="27" name="Eat_Food" tags="nobr" position="850,350" size="100,100">&lt;&lt;set _food = setup.food[$lastEaten]&gt;&gt;
+[[Your Room]]</tw-passagedata><tw-passagedata pid="27" name="Event_EatFood" tags="nobr" position="850,350" size="100,100">&lt;&lt;set _food = setup.food[$lastEaten]&gt;&gt;
 
 You eat &lt;&lt;print _food.aoran ? _food.aoran : &quot;a&quot;&gt;&gt; $lastEaten.
 
@@ -5742,7 +5742,7 @@ You enter a large cafe for eating.
 	&lt;li&gt;
 		&lt;&lt;link _name&gt;&gt;
 			&lt;&lt;set $lastEaten = _name&gt;&gt;
-			&lt;&lt;goto &quot;Eat_Food&quot;&gt;&gt;
+			&lt;&lt;goto Event_EatFood&gt;&gt;
 		&lt;&lt;/link&gt;&gt;
 	&lt;/li&gt;
 	&lt;&lt;/capture&gt;&gt;
@@ -6313,7 +6313,7 @@ On the other side there was a door to your bathroom.
 }&gt;&gt;
 /*</tw-passagedata><tw-passagedata pid="54" name="Notes" tags="" position="1950,125" size="100,100">/* 
 
-
+Fix the food menu
 
     Species:
     Human

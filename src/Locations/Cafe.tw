@@ -15,7 +15,7 @@ You enter a large cafe for eating.
 	<li>
 		<<link _name>>
 			<<set $lastEaten = _name>>
-			<<goto "Eat_Food">>
+			<<goto Event_EatFood>>
 		<</link>>
 	</li>
 	<</capture>>
