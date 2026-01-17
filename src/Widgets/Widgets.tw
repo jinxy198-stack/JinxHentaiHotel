@@ -378,7 +378,7 @@
         _hairmed to ["--", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads"],
         _hairlong to ["--","Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down"],
         _hairmisc to ["--","Spiky Anime","Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair"],
-        _haircolour to ["--", "Black", "Brown", "Auburn", "Red", "Blond", "White", "Pink","Purple", "Orange"]
+        _haircolour to ["Black", "Brown", "Blonde", "Red", "White", "Grey", "Blue", "Green", "Purple"]
     >>
 <</widget>>
 
@@ -437,8 +437,6 @@
     MAIN PAGE WIDGETS 
 ********************************/
 <<widget "Randomiser">>
-    /*reset body parts*/
-    <<set $skin.color to {}>>
     <<set
     	$mc.species to either ("Human", "Anthro"),
         $mc.name to either ("Suzette", "Maribelle", "Francine", "Thomas", "Charles", "Alfonso", "Riley", "Blake", "Taylor","Jay","Susan","Micheal","Jamie","Kris"),
@@ -447,7 +445,7 @@
         $mc.sexpref to either("Dom","Sub","Switch"),
         $mc.sexu to either("Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"),
         $mc.pronouns to either("She/Her", "He/Him", "They/Them (singular)", "They/Them (plural)"),
-        $mc.age to random(6, 78),
+        $mc.age to random(18, 78),
         $heterochromia to either(true, false),
         $skin.color to either("Pale", "Fair", "Tan", "Olive", "Brown", "Ebony" ),
         $mc.bodyheight to either("Very Short", "Short", "Average", "Tall", "Very Tall"),
@@ -457,10 +455,10 @@
        $mc.personality to either("Friendly",  "Shy",  "Confident",  "Sarcastic",  "Serious",  "Optimistic",  "Pessimistic", "Caring", "Aggressive",  "Lazy", "Energetic",  "Intelligent", "Naive", "Funny", "Calm", "Anxious",  "Rebellious", "Loyal", "Greedy"),
        $mc.species to either("Human","Anthro")>>
     <<if $mc.species is "Anthro">>
-        <<set $skin.color to {}>>
+        <<set $skin.color to null>>
     	<<set $mc.anthro.group to either("Furry","Scalie","Avian")>>
-        <<set $mc.anthro.colors to either("Black","Brown", "Grey", "White", "Golden","Red", "Blue", "Green")>>
-        <<set $mc.anthro.patterns to either("Solid","Striped", "Spotted","Patterned")>>
+        <<set $mc.anthro.color to either("Black","Brown", "Grey", "White", "Golden","Red", "Blue", "Green")>>
+        <<set $mc.anthro.pattern to either("Solid","Striped", "Spotted","Patterned")>>
         <<if $mc.anthro.group is "Furry">>
         	<<set $mc.anthro.subtype to either ("Canine","Bunny","Feline","Bear","Fox","Goat","Mouse","Pig","Other")>>
         <<elseif $mc.anthro.group is "Scalie">>
@@ -474,7 +472,7 @@
    	<<AgeGroupSet>>
     <<setGenitals>>
     <<if $mc.genitals is "Penis">>
-    	<<set $mc.genitaltype to either("Cut", "Uncut")>>
+    	<<set $mc.genitaltype to either("Cut", "Uncut","Phimosis")>>
         <<set $mc.penislength to either("Tiny","Small","Average","Large","Huge")>>
     <<elseif $mc.genitals is "Vagina">>
     	<<set $mc.genitaltype to either ("Very Tight", "Tight", "Loose", "Gaping")>>

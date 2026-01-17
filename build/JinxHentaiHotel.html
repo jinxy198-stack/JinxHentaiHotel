@@ -2656,7 +2656,8 @@ Now get up $mc.name .&quot;
 
 Remember to follow the golden rule:
 
-Consent is required.</tw-passagedata><tw-passagedata pid="5" name="CC-Check" tags="nobr" position="200,400" size="100,100">&lt;h1&gt;Is this Correct?&lt;/h1&gt;
+Consent is required.</tw-passagedata><tw-passagedata pid="5" name="CC-Check" tags="nobr" position="200,400" size="100,100">&lt;&lt;MC-Create-body&gt;&gt;
+&lt;h1&gt;Is this Correct?&lt;/h1&gt;
 Please review the character page below and confirm the traits chosen are correct.  
 &lt;h2&gt;Basic Info&lt;/h2&gt;
 &lt;table&gt;
@@ -2749,9 +2750,9 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
         &lt;/th&gt;
         &lt;td id=&quot;mc-skin&quot;&gt;
             &lt;&lt;if $skin.color&gt;&gt;
-                $skin.color
+                $skin.color 
             &lt;&lt;elseif $mc.anthro.color&gt;&gt;
-                $mc.anthro.color
+                $mc.anthro.color 
                 &lt;br&gt;
                 Patterns: $mc.anthro.pattern
                 
@@ -9887,7 +9888,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         _hairmed to [&quot;--&quot;, &quot;Bob Cut&quot;, &quot;Long (Long Bob)&quot;, &quot;Pageboy&quot;, &quot;Shag cut&quot;, &quot;Shoulder Length Waves&quot;, &quot;Afro&quot;, &quot;Mullet&quot;, &quot;Wolf Cut&quot;, &quot;Mid-length Dreads&quot;],
         _hairlong to [&quot;--&quot;,&quot;Straight and Sleek&quot;, &quot;Loose Waves&quot;, &quot;Curly volume&quot;, &quot;Braided&quot;, &quot;Ponytail&quot;, &quot;Pigtails&quot;, &quot;Space Buns&quot;, &quot;Dreadlocks&quot;, &quot;Half-Up Half Down&quot;],
         _hairmisc to [&quot;--&quot;,&quot;Spiky Anime&quot;,&quot;Wild Mane&quot;, &quot;Flowing Magical Locks&quot;, &quot;Asymmetrial Cut&quot;, &quot;Gravity-defying spikes&quot;, &quot;Shaved Pattern Designs&quot;, &quot;Elemental Hair&quot;],
-        _haircolour to [&quot;--&quot;, &quot;Black&quot;, &quot;Brown&quot;, &quot;Auburn&quot;, &quot;Red&quot;, &quot;Blond&quot;, &quot;White&quot;, &quot;Pink&quot;,&quot;Purple&quot;, &quot;Orange&quot;]
+        _haircolour to [&quot;Black&quot;, &quot;Brown&quot;, &quot;Blonde&quot;, &quot;Red&quot;, &quot;White&quot;, &quot;Grey&quot;, &quot;Blue&quot;, &quot;Green&quot;, &quot;Purple&quot;]
     &gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
@@ -9946,8 +9947,6 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     MAIN PAGE WIDGETS 
 ********************************/
 &lt;&lt;widget &quot;Randomiser&quot;&gt;&gt;
-    /*reset body parts*/
-    &lt;&lt;set $skin.color to {}&gt;&gt;
     &lt;&lt;set
     	$mc.species to either (&quot;Human&quot;, &quot;Anthro&quot;),
         $mc.name to either (&quot;Suzette&quot;, &quot;Maribelle&quot;, &quot;Francine&quot;, &quot;Thomas&quot;, &quot;Charles&quot;, &quot;Alfonso&quot;, &quot;Riley&quot;, &quot;Blake&quot;, &quot;Taylor&quot;,&quot;Jay&quot;,&quot;Susan&quot;,&quot;Micheal&quot;,&quot;Jamie&quot;,&quot;Kris&quot;),
@@ -9956,7 +9955,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         $mc.sexpref to either(&quot;Dom&quot;,&quot;Sub&quot;,&quot;Switch&quot;),
         $mc.sexu to either(&quot;Heterosexual&quot;, &quot;Homosexual&quot;, &quot;Bisexual&quot;, &quot;Pansexual&quot;, &quot;Asexual&quot;),
         $mc.pronouns to either(&quot;She/Her&quot;, &quot;He/Him&quot;, &quot;They/Them (singular)&quot;, &quot;They/Them (plural)&quot;),
-        $mc.age to random(6, 78),
+        $mc.age to random(18, 78),
         $heterochromia to either(true, false),
         $skin.color to either(&quot;Pale&quot;, &quot;Fair&quot;, &quot;Tan&quot;, &quot;Olive&quot;, &quot;Brown&quot;, &quot;Ebony&quot; ),
         $mc.bodyheight to either(&quot;Very Short&quot;, &quot;Short&quot;, &quot;Average&quot;, &quot;Tall&quot;, &quot;Very Tall&quot;),
@@ -9966,10 +9965,10 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
        $mc.personality to either(&quot;Friendly&quot;,  &quot;Shy&quot;,  &quot;Confident&quot;,  &quot;Sarcastic&quot;,  &quot;Serious&quot;,  &quot;Optimistic&quot;,  &quot;Pessimistic&quot;, &quot;Caring&quot;, &quot;Aggressive&quot;,  &quot;Lazy&quot;, &quot;Energetic&quot;,  &quot;Intelligent&quot;, &quot;Naive&quot;, &quot;Funny&quot;, &quot;Calm&quot;, &quot;Anxious&quot;,  &quot;Rebellious&quot;, &quot;Loyal&quot;, &quot;Greedy&quot;),
        $mc.species to either(&quot;Human&quot;,&quot;Anthro&quot;)&gt;&gt;
     &lt;&lt;if $mc.species is &quot;Anthro&quot;&gt;&gt;
-        &lt;&lt;set $skin.color to {}&gt;&gt;
+        &lt;&lt;set $skin.color to null&gt;&gt;
     	&lt;&lt;set $mc.anthro.group to either(&quot;Furry&quot;,&quot;Scalie&quot;,&quot;Avian&quot;)&gt;&gt;
-        &lt;&lt;set $mc.anthro.colors to either(&quot;Black&quot;,&quot;Brown&quot;, &quot;Grey&quot;, &quot;White&quot;, &quot;Golden&quot;,&quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;)&gt;&gt;
-        &lt;&lt;set $mc.anthro.patterns to either(&quot;Solid&quot;,&quot;Striped&quot;, &quot;Spotted&quot;,&quot;Patterned&quot;)&gt;&gt;
+        &lt;&lt;set $mc.anthro.color to either(&quot;Black&quot;,&quot;Brown&quot;, &quot;Grey&quot;, &quot;White&quot;, &quot;Golden&quot;,&quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;)&gt;&gt;
+        &lt;&lt;set $mc.anthro.pattern to either(&quot;Solid&quot;,&quot;Striped&quot;, &quot;Spotted&quot;,&quot;Patterned&quot;)&gt;&gt;
         &lt;&lt;if $mc.anthro.group is &quot;Furry&quot;&gt;&gt;
         	&lt;&lt;set $mc.anthro.subtype to either (&quot;Canine&quot;,&quot;Bunny&quot;,&quot;Feline&quot;,&quot;Bear&quot;,&quot;Fox&quot;,&quot;Goat&quot;,&quot;Mouse&quot;,&quot;Pig&quot;,&quot;Other&quot;)&gt;&gt;
         &lt;&lt;elseif $mc.anthro.group is &quot;Scalie&quot;&gt;&gt;
@@ -9983,7 +9982,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
    	&lt;&lt;AgeGroupSet&gt;&gt;
     &lt;&lt;setGenitals&gt;&gt;
     &lt;&lt;if $mc.genitals is &quot;Penis&quot;&gt;&gt;
-    	&lt;&lt;set $mc.genitaltype to either(&quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
+    	&lt;&lt;set $mc.genitaltype to either(&quot;Cut&quot;, &quot;Uncut&quot;,&quot;Phimosis&quot;)&gt;&gt;
         &lt;&lt;set $mc.penislength to either(&quot;Tiny&quot;,&quot;Small&quot;,&quot;Average&quot;,&quot;Large&quot;,&quot;Huge&quot;)&gt;&gt;
     &lt;&lt;elseif $mc.genitals is &quot;Vagina&quot;&gt;&gt;
     	&lt;&lt;set $mc.genitaltype to either (&quot;Very Tight&quot;, &quot;Tight&quot;, &quot;Loose&quot;, &quot;Gaping&quot;)&gt;&gt;

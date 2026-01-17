@@ -1,4 +1,5 @@
 :: CC-Check [nobr]{"position":"200,400","size":"100,100"}
+<<MC-Create-body>>
 <h1>Is this Correct?</h1>
 Please review the character page below and confirm the traits chosen are correct.  
 <h2>Basic Info</h2>
@@ -92,9 +93,9 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
         </th>
         <td id="mc-skin">
             <<if $skin.color>>
-                $skin.color
+                $skin.color 
             <<elseif $mc.anthro.color>>
-                $mc.anthro.color
+                $mc.anthro.color 
                 <br>
                 Patterns: $mc.anthro.pattern
                 
