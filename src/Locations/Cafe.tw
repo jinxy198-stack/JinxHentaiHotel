@@ -3,4 +3,24 @@
 
 You enter a large cafe for eating.
 
+
+<h2>Café Menu</h2>
+
+<<set _foods = Object.keys(setup.food)>>
+
+<ul>
+<<for _i = 0; _i < _foods.length; _i++>>
+	<<set _name = _foods[_i]>>
+	<<capture _name>>
+	<li>
+		<<link _name>>
+			<<set $lastEaten = _name>>
+			<<goto "Eat_Food">>
+		<</link>>
+	</li>
+	<</capture>>
+<</for>>
+</ul>
+
+
 [[Elevator]]

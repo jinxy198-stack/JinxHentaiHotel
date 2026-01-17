@@ -1,0 +1,218 @@
+::database_roomtypes [script]
+
+setup.RoomTypes = {};
+
+setup.RoomTypes.db = {
+
+    "bedroom": {
+        name: "bedroom",
+        contents: {
+            "large floor": {},
+            "wall": {},
+            "bed": {},
+        },
+    },
+    "bathroom": {
+        name: "bathroom",
+        contents: {
+            "large floor": {useMultiplier: 0.1},
+            "wall": {},
+            "toilet": {},
+            "shower":{},
+        },
+    },
+    "showerstall": {
+        name: "shower stall",
+        contents: {
+            "small floor": {},
+            "wall": {},
+        },
+    },
+    "showerroom": {
+        name: "shower room",
+        contents: {
+            "large floor": {},
+            "wall": {},
+            "bench": {},
+        },
+    },
+    "empty": {
+        name: "room",
+        contents: {
+            "large floor": {},
+            "wall": {},
+        },
+    },
+    "lounge": {
+        name: "lounge",
+        contents: {
+            "large floor": {},
+            "couch": {},
+            "chair": {},
+        },
+    },
+    "nature": {
+        name: "area",
+        contents: {
+            "large floor": {label: "ground"},
+        },
+    },
+    "pool": {
+        name: "pool",
+        contents: {
+            "large floor": {},
+            "wall": {},
+        },
+    },
+    "garden": {
+        name: "garden",
+        contents: {
+            "large floor": {label: "ground"},
+        },
+    },
+    "library": {
+        name: "library",
+        contents: {
+            "large floor": {},
+            "wall": {},
+            "chair": {},
+            "table": {},
+        },
+    },
+    "restaurant": {
+        name: "restaurant",
+        contents: {
+            "large floor": {},
+            "wall": {},
+            "chair": {},
+            "table": {},
+        },
+    },
+    "bar": {
+        name: "bar",
+        contents: {
+            "large floor": {},
+            "wall": {},
+            "chair": {},
+            "table": {},
+            "bar": {},
+        },
+    },
+};
+
+setup.RoomTypes.furniture = {
+    "small floor":
+    {
+        label: "floor",
+        preposition: "on",
+        flags: ["small standing room", "unconventional"],
+    },
+    "large floor":
+    {
+        label: "floor",
+        preposition: "on",
+        flags: ["large standing room", "horizontal surface", "unconventional"],
+    },
+    "wall":
+    {
+        label: "wall",
+        preposition: "against",
+        flags: ["vertical surface", "unconventional"],
+    },
+    "door":
+    {
+        label: "door",
+        preposition: "against",
+        flags: ["vertical surface", "unconventional", "exhibitionist", "loud"],
+    },
+    "window":
+    {
+        label: "window",
+        preposition: "against",
+        flags: ["vertical surface", "unconventional", "exhibitionist", "visible"],
+    },
+    "bed":
+    {
+        label: "bed",
+        preposition: "on",
+        flags: ["horizontal surface", "seat"],
+    },
+    "futon":
+    {
+        label: "futon",
+        preposition: "on",
+        flags: ["horizontal surface", "seat"],
+    },
+    "bench":
+    {
+        label: "bench",
+        preposition: "on",
+        flags: ["horizontal surface", "seat"],
+    },
+    "couch":
+    {
+        label: "couch",
+        preposition: "on",
+        flags: ["horizontal surface", "seat"],
+    },
+    "sofa":
+    {
+        label: "sofa",
+        preposition: "on",
+        flags: ["horizontal surface", "seat"],
+    },
+    "table":
+    {
+        label: "table",
+        preposition: "on",
+        flags: ["horizontal surface", "underspace", "unconventional"],
+    },
+    "chair":
+    {
+        label: "chair",
+        preposition: "on",
+        flags: ["seat"],
+    },
+    "toilet":
+    {
+        label: "toilet",
+        preposition: "on",
+        flags: ["seat"],
+    },
+    "shower":
+    {
+        label: "shower",
+        preposition: "against",
+        flags: ["vertical surface"],
+    },
+    "desk":
+    {
+        label: "desk",
+        preposition: "on",
+        flags: ["seat", "underspace", "unconventional"],
+    },
+    "box":
+    {
+        label: "box",
+        preposition: "on",
+        flags: ["seat", "unconventional"],
+    },
+    "bar":
+    {
+        label: "bar",
+        preposition: "on",
+        flags: ["seat", "unconventional"],
+    },
+    "counter":
+    {
+        label: "counter",
+        preposition: "on",
+        flags: ["seat", "unconventional"],
+    },
+    "fridge":
+    {
+        label: "counter",
+        preposition: "against",
+        flags: ["vertical surface", "unconventional"],
+    },
+};

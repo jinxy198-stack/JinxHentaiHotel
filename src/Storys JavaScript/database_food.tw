@@ -1,0 +1,404 @@
+:: database_food [script]
+setup.food=
+{
+    "granola bar":{},
+    "energy drink":{
+        "flags": ["drinks"]
+    },
+    "protein bar": {},
+    "bag of chips": {},
+    "bag of cookies":{},
+    "box of Suteki Sutikku": {
+        "description": "Chocolate-covered biscuit sticks arranged neatly in a carton that looks sort of like a box of cigarettes if you squint. Goes great with tea!"
+    },
+     "bag of Carūbotta": {
+        "description": "Chocolate-covered animal crackers, but the only animals are turtles. Appears to be some kind of tie-in promotion, but you can't read the small print on the package. Is it even in English...?"
+    },
+    "summit meal deal": {
+        "description": "A combo deal of a sandwich, a bag of chips and a small soda for only $5. A bargain meal you can keep in your bag for later.",
+        "flags": ["gluten"]
+    },
+    "fruit":{},
+    "hot dog":{
+        "flags": ["meat", "gluten"]
+    },
+    "tofu dog":{
+        "flags": ["gluten"]
+    },
+    "hamburger":{
+        "flags": ["meat", "gluten"]
+    },
+    "plant-based burger": {
+        "flags": ["gluten"]
+    },
+    "cheeseburger": {
+        "flags": ["meat", "gluten", "dairy"]
+    },
+    "fish filet sandwich": {
+        "flags": ["fish", "gluten"]
+    },
+    "bacon muffin": {
+        "flags": ["meat", "gluten"]
+    },
+    "bacon & egg muffin": {
+        "flags": ["meat", "egg", "gluten"]
+    },
+    "slice of pizza": {
+        "flags": ["meat", "gluten", "dairy"]
+    },
+    "sandwich": {
+        "flags": []
+    },
+    "sandwich half": {
+        "flags": []
+    },
+    "fries": {
+
+        "flags": []
+    },
+    "hash browns": {
+        "aoran": "some",
+        "flags": []
+    },
+    "nachos": {
+        "aoran": "some",
+        "flags": ["dairy"]
+    },
+    "pretzels": {
+        "aoran": "some",
+        "flags": []
+    },
+    "baked pretzel": {
+        "aoran": "a",
+        "flags": []
+    },
+    "ham paste and crackers": {
+        "description": "It's like a tube of toothpaste, but filled with ham. Also includes a little pack of crackers to spread it onto, in case you're too much of a coward to spray it directly into your mouth.",
+        "aoran": "some",
+        "flags": ["meat"],
+    },
+    "sushi": {
+        "aoran": "some",
+        "flags": ["fish"]
+    },
+    "vegetarian sushi": {
+        "restore hunger": 400,
+        "plumpness": 1,
+        "purchase quantity": 1,
+        "price": 9,
+        "aoran": "some",
+        "flags": [],
+    },
+    "chicken wings": {
+        "aoran": "some",
+        "flags": ["meat"]
+    },
+    "cereal": {
+        "aoran": "some",
+        "flags": ["dairy"]
+    },
+    "scrambled eggs": {
+        "aoran": "some",
+        "flags": ["eggs"],
+    },
+    "eggs and bacon": {
+        "aoran": "some",
+        "flags": []
+    },
+    "pancakes": {
+        "aoran": "some",
+        "flags": ["gluten"]
+    },
+    "toast": {
+        "aoran": "some",
+        "flags": []
+    },
+    "toasted bagel": {
+        "aoran": "a",
+        "flags": []
+    },
+    "croissant": {
+        "aoran": "a",
+        "flags": []
+    },
+    "melonpan": {
+        "description": "A roll of bread with a crispy layer of sugar on top that's cut to resemble a melon. Apparently. You've never seen a melon that looks like that, but would snack packaging lie to you?",
+        "aoran": "some",
+        "flags": []
+    },
+    "onigiri": {
+        "description": "Plain white rice pressed into various shapes and wrapped in seaweed. Straddles the line between a meal and a snack. A sneal? A mack? The world may never know.",
+        "aoran": "an",
+        "flags": []
+    },
+    "bag of rice crackers": {
+        "description": "They're like normal crackers, but also rice. These ones are additionally wrapped in seaweed to make sure they're as annoying as possible to bite into.",
+        "aoran": "some",
+        "flags": []
+    },
+    "chocolate croissant": {
+        "aoran": "a",
+        "flags": []
+    },
+    "chicken tenders": {
+        "aoran": "some",
+        "flags": ["meat"]
+    },
+    "chicken nuggets": {
+        "aoran": "some",
+        "flags": ["meat"]
+    },
+    "corn chowder": {
+        "aoran": "some",
+        "flags": ["dairy", "warming"]
+    },
+    "fried rice": {
+        "aoran": "some",
+        "flags": []
+    },
+    "salad": {
+        "aoran": "a",
+        "flags": []
+    },
+    "fried tofu": {
+        "aoran": "some",
+        "flags": []
+    },
+    "lasagna": {
+        "aoran": "some",
+        "flags": ["meat", "dairy"]
+    },
+    "vegan lasagna": {
+        "aoran": "some",
+        "flags": []
+    },
+    "miso risotto": {
+        "aoran": "some",
+        "flags": []
+    },
+    "lobster": {
+        "aoran": "a",
+        "flags": ["fish"]
+    },
+    "steak": {
+        "aoran": "a",
+        "flags": ["meat"]
+    },
+    "spicy chili": {
+        "aoran": "some",
+        "flags": ["meat"]
+    },
+    "pork chop": {
+        "flags": ["meat"]
+    },
+    "chicken soup": {
+        "aoran": "some",
+        "flags": ["meat", "warming"]
+    },
+    "lentil soup": {
+        "aoran": "some",
+        "flags": ["warming"]
+    },
+    "shepherd's pie": {
+        "aoran": "some",
+        "flags": ["meat", "dairy", "warming"]
+    },
+    "chicken chow mein": {
+        "aoran": "some",
+        "flags": ["meat"],
+        "cooking": 3,
+    },
+    "ratatouille": {
+        "aoran": "some",
+        "flags": [],
+    },
+    "brownie": {
+        "flags": ["dairy", "eggs"],
+    },
+    "slice of apple pie": {
+        "aoran": "some",
+        "flags": ["dairy", "eggs"]
+    },
+    "scoop of ice cream": {
+        "aoran": "some",
+        "flags": ["dairy"]
+    },
+    "astronaut ice cream": {
+        "description": "Made by real astronauts. Or made out of astronauts. You're not entirely sure.",
+        "aoran": "some",
+        "flags": ["dairy", "cooling"]
+    },
+    "candy bar": {
+        "flags": ["dairy"]
+    },
+    "spotted dick": {
+        "flags": ["dairy", "eggs"],
+    },
+    "gummy worms": {
+        "flags": []
+    },
+    "Hi-Fruc": {
+        "description": "A chewy snack named after its main ingredient, high fructose corn syrup. Also, there's little chunks of freeze-dried fruit in it. What more could you need, really?",
+        "flags": []
+    },
+    "mochi": {
+        "description": "One of several popular spherical rice-based snacks, this particular one is made out of steamed rice that's been pounded into a paste with a big hammer until it's a squishy ball. Knowing that the rice suffered makes it taste better.",
+        "flags": []
+    },
+    "cheesecake": {
+        "flags": ["dairy", "eggs"],
+    },
+    "big cookie": {
+        "flags": ["dairy", "eggs"],
+    },
+    "tiramisu": {
+        "flags": ["dairy", "eggs"],
+    },
+    "whoopie pie": {
+        "flags": ["dairy", "eggs"],
+    },
+    "shortcake": {
+        "flags": ["dairy", "eggs"],
+    },
+    "cream puff": {
+        "flags": ["dairy", "eggs"],
+    },
+    "can of cola": {
+        "flags": ["drink"]
+    },
+    "cup of cola": {
+        "flags": ["drink"]
+    },
+    "bottle of Māburu": {
+        "description": "A popular soft drink among children overseas that's known for its distinctive Codd-neck bottle and requiring the strength of two bears to open. For when normal sodas are just too convenient to drink.",
+        "flags": ["drink"]
+    },
+    "bottle of soda": {
+        "flags": ["drink"]
+    },
+    "bottle of water": {
+        "flags": ["drink"]
+    },
+    "cup of water": {
+        "flags": ["drink"]
+    },
+    "can of energy drink": {
+        "flags": ["drink"]
+    },
+    "energy shot": {
+        "flags": ["drink"]
+    },
+    "cup of coffee": {
+        "flags": ["drink", "warming"]
+    },
+    "cup of tea": {
+        "flags": ["drink", "warming"]
+    },
+    "hot chocolate": {
+        "flags": ["drink", "dairy", "warming"]
+    },
+    "bottle of chocolate milk": {
+        "flags": ["drink", "dairy", "cooling"]
+    },
+    "milkshake": {
+        "flags": ["drink", "dairy", "cooling"]
+    },
+    "carton of milk": {
+        "flags": ["drink", "dairy", "cooling"]
+    },
+    "protein shake": {
+        "flags": ["drink", "muscle boost"]
+    },
+    "cup of fruit punch": {
+        "flags": ["drink"]
+    },
+    // cookable meals
+    "instant oatmeal": {
+        "aoran": "some",
+        "flags": [],
+        "cooking": 1,
+        "cook with": ["hot plate", "microwave"],
+    },
+    "instant cup noodles": {
+        "description": "They're like normal noodles, but in a styrofoam cup! A great daily source of both microplastics and sodium.",
+        "aoran": "some",
+        "flags": [],
+        "cooking": 1,
+        "cook with": ["hot plate", "microwave", "electric kettle"],
+    },
+    "instant hot chocolate": {
+        "description": "The 'we have hot chocolate at home' of hot chocolates. The miniature marshmallows are both delicious and completely flavorless.",
+        "flags": ["drink", "dairy"],
+        "cooking": 1,
+        "cook with": ["coffeemaker", "microwave", "electric kettle"],
+        "cook into": ["hot chocolate with marshmallows"]
+    }
+};
+
+setup.alcohol =
+{
+    // this has some overlap with food really
+    // but it's specifically meant for drinks at a bar
+    // that you can drink over time
+    "beer": {
+        name: "glass of beer",
+        type: "drink",
+    },
+    "rum": {
+        name: "shot of rum",
+        type: "shot",
+    },
+    "tequila": {
+        name: "shot of tequila",
+        type: "shot",
+    },
+    "vodka": {
+        name: "shot of vodka",
+        type: "shot",
+    },
+    "cocktail": {
+        name: "cocktail",
+        type: "drink",
+
+    },
+    "martini": {
+        name: "martini",
+        type: "drink",
+    },
+    "margarita": {
+        name: "margarita",
+        type: "drink",
+    },
+    "wine": {
+        name: "glass of wine",
+        type: "drink",
+    },
+    "spiked fruit punch": {
+        name: "cup of spiked fruit punch",
+        type: "drink",
+    },
+    "premium vodka": {
+        name: "glass of premium vodka",
+        type: "drink",
+    },
+    "premium whiskey": {
+        name: "glass of premium whiskey",
+        type: "drink",
+    },
+    "premium tequila": {
+        name: "glass of premium tequila",
+        type: "drink",
+    },
+    "premium gin": {
+        name: "glass of premium gin",
+        type: "drink",
+    },
+    "premium cognac": {
+        name: "glass of premium cognac",
+        type: "drink",
+    },
+    "eggnog": {
+        name: "glass of eggnog",
+        type: "drink",
+    },
+};
