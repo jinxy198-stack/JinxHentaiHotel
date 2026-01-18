@@ -1,338 +1,290 @@
 :: database_food [script]
 setup.food=
 {
-    "granola bar":{},
-    "energy drink":{
-        "flags": ["drinks"]
-    },
-    "protein bar": {},
-    "bag of chips": {},
-    "bag of cookies":{},
-    "box of Suteki Sutikku": {
-        "description": "Chocolate-covered biscuit sticks arranged neatly in a carton that looks sort of like a box of cigarettes if you squint. Goes great with tea!"
-    },
-     "bag of Carūbotta": {
-        "description": "Chocolate-covered animal crackers, but the only animals are turtles. Appears to be some kind of tie-in promotion, but you can't read the small print on the package. Is it even in English...?"
-    },
-    "summit meal deal": {
-        "description": "A combo deal of a sandwich, a bag of chips and a small soda for only $5. A bargain meal you can keep in your bag for later.",
-        "flags": ["gluten"]
-    },
-    "fruit":{},
-    "hot dog":{
+    "Hot dog":{
+        description: "A basic hot dog in a soft bun. Cheap, filling, and exactly what you expect.",
+        consume: "You unwrap the hot dog and take a few quick bites, the bun warm and slightly soggy from the heat. It's salty and familiar, gone faster than you expect.",
         "flags": ["meat", "gluten"]
     },
-    "tofu dog":{
+    "Tofu dog":{
+        description: "A plant-based hot dog substitute in a bun. Close enough if you don't think about it.",
+        consume: "You eat the tofu dog in a few measured bites. The texture is different, but it fills the same role well enough.",
         "flags": ["gluten"]
     },
-    "hamburger":{
+    "Hamburger":{
+        description: "A plain hamburger on a bun. No frills, just warm meat and bread.",
+        consume: "You eat the hamburger while it's still warm, juices soaking into the bun. It's heavy, filling, and satisfying.",
         "flags": ["meat", "gluten"]
     },
-    "plant-based burger": {
+    "Plant-based burger": {
+        description: "A plant-based burger on a bun, seasoned to mimic the real thing.",
+        consume: "You eat the plant-based burger, noting the familiar flavors beneath the difference in texture. It fills you up just the same.",
         "flags": ["gluten"]
     },
-    "cheeseburger": {
+    "Cheeseburger": {
+        description: "A burger topped with melted cheese on a soft bun. Greasy in the usual way.",
+        consume: "You eat the cheeseburger while the cheese is still melted, grease clinging to your fingers. It's rich and filling.",
         "flags": ["meat", "gluten", "dairy"]
     },
-    "fish filet sandwich": {
+    "Fish filet sandwich": {
+        description: "A breaded fish filet on a bun, warm and a little oily. Smells faintly of the fryer.",
+        consume: "You eat the fish sandwich carefully, the crisp coating giving way to soft fish inside. It's warm and surprisingly satisfying.",
         "flags": ["fish", "gluten"]
     },
-    "bacon muffin": {
-        "flags": ["meat", "gluten"]
-    },
-    "bacon & egg muffin": {
-        "flags": ["meat", "egg", "gluten"]
-    },
-    "slice of pizza": {
+    "Pizza": {
+        description: "A greasy slice of pizza with melted cheese and toppings. Best eaten hot.",
+        consume: "You fold the slice slightly and eat it while it's still warm, grease soaking into the crust. It's messy, satisfying, and over in minutes.",
         "flags": ["meat", "gluten", "dairy"]
     },
-    "sandwich": {
-        "flags": []
-    },
-    "sandwich half": {
-        "flags": []
-    },
-    "fries": {
-
-        "flags": []
-    },
-    "hash browns": {
+    "Fries": {
+        description: "A serving of salted fries, hot from the fryer and lightly greasy.",
+        consume: "You eat the fries one by one, the salt sticking to your fingers. They're hot, crisp, and disappear quickly.",
         "aoran": "some",
         "flags": []
     },
-    "nachos": {
-        "aoran": "some",
-        "flags": ["dairy"]
-    },
-    "pretzels": {
-        "aoran": "some",
-        "flags": []
-    },
-    "baked pretzel": {
-        "aoran": "a",
-        "flags": []
-    },
-    "ham paste and crackers": {
-        "description": "It's like a tube of toothpaste, but filled with ham. Also includes a little pack of crackers to spread it onto, in case you're too much of a coward to spray it directly into your mouth.",
-        "aoran": "some",
-        "flags": ["meat"],
-    },
-    "sushi": {
-        "aoran": "some",
-        "flags": ["fish"]
-    },
-    "vegetarian sushi": {
-        "restore hunger": 400,
-        "plumpness": 1,
-        "purchase quantity": 1,
-        "price": 9,
-        "aoran": "some",
-        "flags": [],
-    },
-    "chicken wings": {
+    "Chili fries": {
+        description: "A serving of fries covered with red chili, cheese sauce, and jalapeño slices. This particular snack is the favorite from a hero of another world who wears a special watch.",
+        consume: "You eat the fries, deliciously greasy! The satisfaction is fit for ten.",
         "aoran": "some",
         "flags": ["meat"]
     },
-    "cereal": {
+    "Hash browns": {
+        description: "Crispy shredded potatoes browned on the outside with a soft center.",
+        consume: "You eat the hash browns while they're still hot, the outside crisp and the inside soft. They're simple and filling.",
+        "aoran": "some",
+        "flags": ["breakfast"]
+    },
+    "Nachos": {
+        description: "Tortilla chips piled with melted cheese and toppings. Messy by design.",
+        consume: "You eat the nachos carefully, cheese stretching between chips as you pull them apart. They're messy but satisfying.",
         "aoran": "some",
         "flags": ["dairy"]
     },
-    "scrambled eggs": {
-        "aoran": "some",
-        "flags": ["eggs"],
-    },
-    "eggs and bacon": {
-        "aoran": "some",
-        "flags": []
-    },
-    "pancakes": {
-        "aoran": "some",
-        "flags": ["gluten"]
-    },
-    "toast": {
-        "aoran": "some",
-        "flags": []
-    },
-    "toasted bagel": {
+    "Baked pretzel": {
+        description: "A large baked pretzel with a firm crust and soft interior. Salty and filling.",
+        consume: "You eat the baked pretzel while it's still warm, the crust firm and the inside soft. It's heavier than it looks.",
         "aoran": "a",
         "flags": []
     },
-    "croissant": {
+    "Sushi": {
+        description: "A small assortment of sushi—cool rice and seafood packed into neat bites.",
+        consume: "You eat the sushi piece by piece, the rice soft and cool against the fish. It's light but satisfying.",
+        "aoran": "some",
+        "flags": ["fish"]
+    },
+    "Vegetarian sushi": {
+        description: "Sushi rolls filled with vegetables instead of fish. Clean, mild flavors.",
+        consume: "You eat the vegetarian sushi slowly, the rice and vegetables clean and mild in flavor. It leaves you comfortably full.",
+        "aoran": "some",
+        "flags": [],
+    },
+    "Chicken wings": {
+        description: "A small pile of chicken wings, hot and sticky with seasoning or sauce.",
+        consume: "You eat the chicken wings with your hands, working around the bones. They're messy, greasy, and filling.",
+        "aoran": "some",
+        "flags": ["meat"]
+    },
+    "Cereal": {
+        "aoran": "some",
+        "flags": ["dairy","breakfast"]
+    },
+    "Scrambled eggs": {
+        "aoran": "some",
+        "flags": ["eggs", ,"breakfast"]
+    },
+    "Eggs and bacon": {
+        "aoran": "some",
+        "flags": ["breakfast"]
+    },
+    "Pancakes": {
+        description: "Soft, warm pancakes with a mild sweetness. Dense enough to count as a meal.",
+        consume: "You eat the pancakes while they're still warm, soft and slightly sweet. They sit heavily in your stomach.",
+        "aoran": "some",
+        "flags": ["gluten","breakfast"]
+    },
+    "Croissant": {
+        description: "A flaky, buttery croissant that sheds crumbs with every bite.",
+        consume: "You eat the croissant carefully, flakes falling away with each bite. It's light but rich.",
         "aoran": "a",
         "flags": []
     },
-    "melonpan": {
+    "Melonpan": {
         "description": "A roll of bread with a crispy layer of sugar on top that's cut to resemble a melon. Apparently. You've never seen a melon that looks like that, but would snack packaging lie to you?",
+        consume: "You bite into the melonpan, the sugary crust cracking before giving way to soft bread. It's sweeter than expected, and surprisingly filling.",
         "aoran": "some",
         "flags": []
     },
-    "onigiri": {
+    "Onigiri": {
         "description": "Plain white rice pressed into various shapes and wrapped in seaweed. Straddles the line between a meal and a snack. A sneal? A mack? The world may never know.",
         "aoran": "an",
         "flags": []
     },
-    "bag of rice crackers": {
-        "description": "They're like normal crackers, but also rice. These ones are additionally wrapped in seaweed to make sure they're as annoying as possible to bite into.",
-        "aoran": "some",
-        "flags": []
-    },
-    "chocolate croissant": {
-        "aoran": "a",
-        "flags": []
-    },
-    "chicken tenders": {
+    "Chicken tenders": {
         "aoran": "some",
         "flags": ["meat"]
     },
-    "chicken nuggets": {
+    "Chicken nuggets": {
         "aoran": "some",
         "flags": ["meat"]
     },
-    "corn chowder": {
+    "Corn chowder": {
         "aoran": "some",
         "flags": ["dairy", "warming"]
     },
-    "fried rice": {
+    "Fried rice": {
+        "description": "It's literally in the name.",
         "aoran": "some",
         "flags": []
     },
-    "salad": {
+    "Salad": {
         "aoran": "a",
         "flags": []
     },
-    "fried tofu": {
+    "Fried tofu": {
         "aoran": "some",
         "flags": []
     },
-    "lasagna": {
+    "Lasagna": {
         "aoran": "some",
         "flags": ["meat", "dairy"]
     },
-    "vegan lasagna": {
+    "Vegan lasagna": {
         "aoran": "some",
         "flags": []
     },
-    "miso risotto": {
+    "Miso risotto": {
         "aoran": "some",
         "flags": []
     },
-    "lobster": {
+    "Lobster": {
         "aoran": "a",
         "flags": ["fish"]
     },
-    "steak": {
+    "Steak": {
+        "description":"Crisp but juicy, and sprinkled with just the right amount of salt and spices to bring about the beef's natural flavour",
         "aoran": "a",
         "flags": ["meat"]
     },
-    "spicy chili": {
+    "Spicy chili": {
         "aoran": "some",
         "flags": ["meat"]
     },
-    "pork chop": {
+    "Pork chop": {
         "flags": ["meat"]
     },
-    "chicken soup": {
+    "Chicken soup": {
         "aoran": "some",
         "flags": ["meat", "warming"]
     },
-    "lentil soup": {
+    "Lentil soup": {
         "aoran": "some",
         "flags": ["warming"]
     },
-    "shepherd's pie": {
+    "Shepherd's pie": {
         "aoran": "some",
         "flags": ["meat", "dairy", "warming"]
     },
-    "chicken chow mein": {
+    "Chicken chow mein": {
         "aoran": "some",
-        "flags": ["meat"],
-        "cooking": 3,
+        "flags": ["meat"]
     },
-    "ratatouille": {
+    "Ratatouille": {
         "aoran": "some",
-        "flags": [],
+        "flags": []
     },
-    "brownie": {
-        "flags": ["dairy", "eggs"],
+    "Brownie": {
+        "flags": ["dairy", "eggs","dessert"]
     },
-    "slice of apple pie": {
+    "Apple pie": {
         "aoran": "some",
         "flags": ["dairy", "eggs"]
     },
-    "scoop of ice cream": {
+    "Ice cream": {
         "aoran": "some",
-        "flags": ["dairy"]
+        "flags": ["dairy", "dessert"]
     },
-    "astronaut ice cream": {
+    "Astronaut ice cream": {
         "description": "Made by real astronauts. Or made out of astronauts. You're not entirely sure.",
         "aoran": "some",
         "flags": ["dairy", "cooling"]
     },
-    "candy bar": {
-        "flags": ["dairy"]
+    "Cheesecake": {
+        "flags": ["dairy", "eggs", "dessert"]
     },
-    "spotted dick": {
-        "flags": ["dairy", "eggs"],
+    "Tiramisu": {
+        "flags": ["dairy", "eggs"]
     },
-    "gummy worms": {
+    // cookable meals
+    "Instant cup noodles": {
+        "description": "They're like normal noodles, but in a styrofoam cup! A great daily source of both microplastics and sodium.",
+        "aoran": "some",
         "flags": []
     },
-    "Hi-Fruc": {
-        "description": "A chewy snack named after its main ingredient, high fructose corn syrup. Also, there's little chunks of freeze-dried fruit in it. What more could you need, really?",
-        "flags": []
+    "Flan": {
+        "description": "A steamed egg-and-milk custard. Every bite is bliss.",
+        "aoran": "some",
+        "flags": ["dessert"]
     },
-    "mochi": {
-        "description": "One of several popular spherical rice-based snacks, this particular one is made out of steamed rice that's been pounded into a paste with a big hammer until it's a squishy ball. Knowing that the rice suffered makes it taste better.",
-        "flags": []
+};
+
+setup.drink=
+{
+    "Energy drink":{
+        description: "A can filled with caffeine, sugar, and questionable promises of alertness.",
+        consume: "You crack the can open and drink it down, the sharp, artificial flavor hitting immediately. Your pulse feels a little faster by the time you're done.",
+        "flags": ["drinks"]
     },
-    "cheesecake": {
-        "flags": ["dairy", "eggs"],
-    },
-    "big cookie": {
-        "flags": ["dairy", "eggs"],
-    },
-    "tiramisu": {
-        "flags": ["dairy", "eggs"],
-    },
-    "whoopie pie": {
-        "flags": ["dairy", "eggs"],
-    },
-    "shortcake": {
-        "flags": ["dairy", "eggs"],
-    },
-    "cream puff": {
-        "flags": ["dairy", "eggs"],
-    },
-    "can of cola": {
+    "Can of cola": {
         "flags": ["drink"]
     },
-    "cup of cola": {
-        "flags": ["drink"]
-    },
-    "bottle of Māburu": {
+    "Bottle of Māburu": {
         "description": "A popular soft drink among children overseas that's known for its distinctive Codd-neck bottle and requiring the strength of two bears to open. For when normal sodas are just too convenient to drink.",
         "flags": ["drink"]
     },
-    "bottle of soda": {
+    "Bottle of soda": {
         "flags": ["drink"]
     },
-    "bottle of water": {
+    "Bottle of water": {
+        description: "A simple bottle of clean drinking water. No flavor, no surprises.",
+        consume: "You drink steadily from the bottle, cool water quenshing any thirst you had. It's refreshing in a quiet, unremarkable way.",
         "flags": ["drink"]
     },
-    "cup of water": {
-        "flags": ["drink"]
-    },
-    "can of energy drink": {
-        "flags": ["drink"]
-    },
-    "energy shot": {
-        "flags": ["drink"]
-    },
-    "cup of coffee": {
+    "Cup of coffee": {
+        description: "A hot cup of coffee with a strong, bitter aroma. Wakes you up fast.",
+        consume: "You take a careful sip, then another, letting the bitterness cut through the haze. The warmth settles in as you finish the cup.",
         "flags": ["drink", "warming"]
     },
-    "cup of tea": {
+    "Cup of tea": {
+        description: "A warm cup of tea with a mild scent and a clean finish. Simple and calming.",
+        consume: "You drink the tea slowly, letting the warmth spread through your chest. It's calming and mild.",
         "flags": ["drink", "warming"]
     },
-    "hot chocolate": {
+    "Hot chocolate": {
+        description: "Thick hot chocolate with a sweet scent and a creamy finish.",
+        consume: "You drink the hot chocolate carefully, the sweetness thick and warming. It leaves a faint film on your lips.",
         "flags": ["drink", "dairy", "warming"]
     },
-    "bottle of chocolate milk": {
+    "Bottle of chocolate milk": {
         "flags": ["drink", "dairy", "cooling"]
     },
-    "milkshake": {
+    "Milkshake": {
+        description: "A cold, thick milkshake that's more dessert than drink.",
+        consume: "You drink the milkshake slowly through the straw, thick and cold. It's heavy and satisfying.",
         "flags": ["drink", "dairy", "cooling"]
     },
-    "carton of milk": {
+    "Cup of milk": {
         "flags": ["drink", "dairy", "cooling"]
     },
-    "protein shake": {
-        "flags": ["drink", "muscle boost"]
-    },
-    "cup of fruit punch": {
+    "Cup of fruit punch": {
+        description: "A blend of many different fruit flavors into one drink.",
+        consume: "You taste the fruity flavors on your lips, so satisfying.",
         "flags": ["drink"]
     },
-    // cookable meals
-    "instant oatmeal": {
-        "aoran": "some",
-        "flags": [],
-        "cooking": 1,
-        "cook with": ["hot plate", "microwave"],
+    "Cup of cum": {
+        description: "Why is this an option?",
+        consume: "...What is wrong with you?",
+        "flags": ["drink"]
     },
-    "instant cup noodles": {
-        "description": "They're like normal noodles, but in a styrofoam cup! A great daily source of both microplastics and sodium.",
-        "aoran": "some",
-        "flags": [],
-        "cooking": 1,
-        "cook with": ["hot plate", "microwave", "electric kettle"],
-    },
-    "instant hot chocolate": {
-        "description": "The 'we have hot chocolate at home' of hot chocolates. The miniature marshmallows are both delicious and completely flavorless.",
-        "flags": ["drink", "dairy"],
-        "cooking": 1,
-        "cook with": ["coffeemaker", "microwave", "electric kettle"],
-        "cook into": ["hot chocolate with marshmallows"]
-    }
 };
 
 setup.alcohol =
@@ -340,65 +292,97 @@ setup.alcohol =
     // this has some overlap with food really
     // but it's specifically meant for drinks at a bar
     // that you can drink over time
-    "beer": {
+    "Beer": {
         name: "glass of beer",
         type: "drink",
+        description: "A chilled beer with a bitter edge and a foamy head. Standard bar fare.",
+        consume: "You drink the beer slowly, the bitterness settling in as it warms slightly. It leaves a dull buzz behind.",
     },
-    "rum": {
+    "Rum": {
         name: "shot of rum",
         type: "shot",
+        
     },
-    "tequila": {
+    "Tequila": {
         name: "shot of tequila",
         type: "shot",
     },
-    "vodka": {
+    "Vodka": {
         name: "shot of vodka",
         type: "shot",
+        description: "A clear shot of vodka that smells like pure burn. Best taken quickly.",
+        consume: "You down the shot in one go, the burn hitting your throat before fading. The warmth lingers afterward.",
     },
-    "cocktail": {
+    "Cocktail": {
         name: "cocktail",
         type: "drink",
-
+        description: "A mixed drink with sweet notes masking the alcohol underneath. Easy to overdo.",
+        consume: "You drink the cocktail at an easy pace, sweet flavors covering the alcohol beneath. It goes down smoothly.",
     },
-    "martini": {
+    "Martini": {
         name: "martini",
         type: "drink",
     },
-    "margarita": {
+    "Margarita": {
         name: "margarita",
         type: "drink",
     },
-    "wine": {
+    "Wine": {
         name: "glass of wine",
         type: "drink",
+        description: "A glass of wine with a faintly fruity scent and a dry finish.",
+        consume: "You sip the wine slowly, letting the flavor linger between drinks. It leaves you feeling relaxed.",
     },
-    "spiked fruit punch": {
-        name: "cup of spiked fruit punch",
-        type: "drink",
-    },
-    "premium vodka": {
-        name: "glass of premium vodka",
-        type: "drink",
-    },
-    "premium whiskey": {
-        name: "glass of premium whiskey",
-        type: "drink",
-    },
-    "premium tequila": {
-        name: "glass of premium tequila",
-        type: "drink",
-    },
-    "premium gin": {
-        name: "glass of premium gin",
-        type: "drink",
-    },
-    "premium cognac": {
-        name: "glass of premium cognac",
-        type: "drink",
-    },
-    "eggnog": {
+    "Eggnog": {
         name: "glass of eggnog",
         type: "drink",
+    },
+};
+
+setup.snack={
+
+    "Granola bar":{
+        description: "A compact granola bar packed with oats and sweetened bits. Dry, but dependable.",
+        consume: "You unwrap the granola bar and eat it quickly, the texture dry but filling. It takes the edge off your hunger.",
+    },
+    "Protein bar": {
+        description: "A dense protein bar with a faintly sweet, artificial aftertaste. Built for function, not pleasure.",
+        consume: "You eat the protein bar in slow bites, dense and slightly chalky. It leaves you feeling full.",
+    },
+    "Bag of chips": {
+        description: "A crinkly bag of salty chips, thin and crunchy. Loud to eat, easy to finish.",
+        consume: "You snack on the chips until the bag is empty, salt coating your fingers. It's easy to overdo it.",
+    },
+    "Bag of cookies":{
+        description: "A bag of cookies that smell sweet the moment you open it. Soft enough to vanish fast.",
+        consume: "You eat the cookies a few at a time, sugar and crumbs collecting on your fingers. The bag ends up empty before you think to stop.",
+    },
+    "Box of Suteki Sutikku": {
+        "description": "Chocolate-covered biscuit sticks arranged neatly in a carton that looks sort of like a box of cigarettes if you squint. Goes great with tea!",
+    },
+     "Bag of Carūbotta": {
+        "description": "Chocolate-covered animal crackers, but the only animals are turtles. Appears to be some kind of tie-in promotion, but you can't read the small print on the package. Is it even in English...?",
+    },
+    "Mochi": {
+        description: "A chewy, sticky rice-based sweet with a soft center. Requires patience to bite cleanly.",
+        consume: "You chew the mochi carefully, the sticky texture resisting at first. It's sweet and surprisingly filling.",
+        "flags": []
+    },
+    "Big cookie": {
+        "flags": ["dairy", "eggs"]
+    },
+    "Bag of rice crackers": {
+        "description": "They're like normal crackers, but also rice. These ones are additionally wrapped in seaweed to make sure they're as annoying as possible to bite into.",
+        "aoran": "some",
+        "flags": []
+    },
+    "Candy bar": {
+        "flags": ["dairy"]
+    },
+    "Spotted dick": {
+        "flags": ["dairy", "eggs"]
+    },
+    "Gummy worms": {
+        "flags": []
     },
 };

@@ -2,14 +2,16 @@
 
 <<set _food = setup.food[$lastEaten]>>
 
-You eat <<print _food.aoran ? _food.aoran : "a">> $lastEaten.
+You decide to eat <<print _food.aoran ? _food.aoran : "a">> $lastEaten.
 
-<<if _food.description>>
-<br><em><<print _food.description>></em>
+<<if _food.consume>>
+<br><em><<print _food.consume>></em>
 <</if>>
 
 <<if _food.flags>>
 <br>Tags: <<print _food.flags.join(", ")>>
 <</if>>
 
-<<link "Back to café">><<goto "Cafe">><</link>>
+<<link "Continue">>
+	<<goto $returnPassage>>
+<</link>>

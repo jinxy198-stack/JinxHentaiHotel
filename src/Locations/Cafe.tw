@@ -11,14 +11,21 @@ You enter a large cafe for eating.
 <ul>
 <<for _i = 0; _i < _foods.length; _i++>>
 	<<set _name = _foods[_i]>>
-	<<capture _name>>
+	
 	<li>
+		<<capture _name>>
 		<<link _name>>
+			<<set $returnPassage = passage()>>
 			<<set $lastEaten = _name>>
 			<<goto Event_EatFood>>
 		<</link>>
+		<</capture>>
+		<br>
+		<<if setup.food[_name].description>>
+			<small><<print setup.food[_name].description>></small>
+		<</if>>
 	</li>
-	<</capture>>
+	
 <</for>>
 </ul>
 
