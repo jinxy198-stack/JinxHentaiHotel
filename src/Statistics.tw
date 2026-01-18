@@ -105,6 +105,8 @@
       Height: $mc.bodyheight <br>
       Type: $mc.bodyweight   <br>
       Musculature: $mc.bodymusc  <br>
+      <<if $mc.breastsize>>Breast Size: $mc.breastsize<</if>>  
+
     </td>
   </tr>
 </table>

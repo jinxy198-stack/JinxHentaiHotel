@@ -27,7 +27,7 @@
     <label>Feather Color</label>
   	<</if>>  <</nobr>>
 <<listbox "$mc.anthro.color">>
-  <<optionsfrom $anthroColors>>
+  <<optionsfrom setup.furScalesColors>>
 <</listbox>>
 
 Pattern

@@ -2986,7 +2986,52 @@ setup.snack={
         "flags": []
     },
 };
-/* twine-user-script #7: "database_roomtypes" */
+/* twine-user-script #7: "database_people" */
+setup.species = [
+    "Human",
+    "Anthro",
+];
+setup.genders= [
+    "Male",
+    "Female",
+];
+
+setup.eyecolor= [
+    "white", "grey", "golden", "green", "blue", "maroon", "brown", "black", "red", "pink", "purple", "lime", "seafoam", "cream",
+];
+
+setup.haircolor= [
+    "Black", "Brown", "Blonde", "Red", "White", "Grey", "Blue", "Green", "Purple",
+];
+
+setup.skincolor= [
+    "Pale", "Fair", "Tan", "Olive", "Brown", "Ebony"
+];
+
+setup.anthroGroup= [
+"Furry", "Scalie", "Avian"
+];
+
+setup.furryTypes=[
+    "Canine", "Feline", "Bunny", "Fox", "Bear", "Goat", "Mouse", "Pig", "Other"
+];
+
+setup.scalieTypes=[
+    "Lizard", "Dragon", "Alligator", "Crocodile"
+];
+
+setup.avianTypes=[
+    "Duck", "Parrot", "Chicken", "Eagle", "Hawk", "Owl"
+];
+
+setup.furScalesColors=[
+    "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Rainbow"
+];
+
+setup.breastsize=[
+    "Flat", "Small", "Average","Large", "Busty"
+];
+/* twine-user-script #8: "database_roomtypes" */
 setup.RoomTypes = {};
 
 setup.RoomTypes.db = {
@@ -3203,7 +3248,7 @@ setup.RoomTypes.furniture = {
         flags: ["vertical surface", "unconventional"],
     },
 };
-/* twine-user-script #8: "database_sex" */
+/* twine-user-script #9: "database_sex" */
 setup.sexpositions = {
     // label: player-readable label
     // frequency: how often an NPC chooses this position
@@ -4942,7 +4987,7 @@ Tall, short, wide, thin... there are many ways to define how a body is framed. B
 //What is your body type?// &lt;&lt;listbox &quot;$mc.bodyweight&quot;&gt;&gt;&lt;&lt;optionsfrom _type&gt;&gt;&lt;&lt;/listbox&gt;&gt;
 
 //How muscular are you?// &lt;&lt;listbox &quot;$mc.bodymusc&quot;&gt;&gt;&lt;&lt;optionsfrom _muscle&gt;&gt;&lt;&lt;/listbox&gt;&gt;
-&lt;&lt;if $mc.gender is &quot;female&quot;&gt;&gt;
+&lt;&lt;if $mc.gender is &quot;Female&quot;&gt;&gt;
 //What is your breast size?
 &lt;&lt;listbox &quot;$mc.breastsize&quot;&gt;&gt;&lt;&lt;optionsfrom _breast&gt;&gt;
 &lt;&lt;/listbox&gt;&gt;
@@ -5127,36 +5172,29 @@ You have a $mc.body.tail
     &lt;&lt;button &quot;YES!&quot;&gt;&gt;&lt;&lt;goto &quot;CC-Confirm&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;&lt;button &quot;Go back&quot;&gt;&gt;&lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 	&lt;&lt;button [[Randomize|CC-Check]]&gt;&gt;&lt;&lt;Randomiser&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="CC-Eyes" tags="creation-page" position="1300,100" size="100,100">&lt;&lt;set _eyecolours = [&quot;white&quot;, &quot;grey&quot;, &quot;golden&quot;, &quot;green&quot;, &quot;blue&quot;, &quot;maroon&quot;, &quot;brown&quot;, &quot;black&quot;, &quot;red&quot;, &quot;pink&quot;, &quot;purple&quot;, &quot;lime&quot;, &quot;seafoam&quot;, &quot;cream&quot;]&gt;&gt;
-&lt;h1&gt;Choose your Eye Colour(s)&lt;/h1&gt;\
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="CC-Eyes" tags="creation-page" position="1300,100" size="100,100">&lt;h1&gt;Choose your Eye Colour(s)&lt;/h1&gt;\
 
 Do your eyes have &lt;&lt;link &quot;the same colour&quot;&gt;&gt;&lt;&lt;set $heterochromia to false&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt; or &lt;&lt;link &quot;different colours&quot;&gt;&gt;&lt;&lt;set $heterochromia to true&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;?
 
 &lt;&lt;do&gt;&gt;\
     &lt;&lt;if $heterochromia is false&gt;&gt;\
         Eye Colours: &lt;&lt;cycle &quot;$mc.eyes&quot;&gt;&gt;
-            &lt;&lt;optionsfrom _eyecolours&gt;&gt;
+            &lt;&lt;optionsfrom setup.eyecolor&gt;&gt;
         &lt;&lt;/cycle&gt;&gt;
         //Cycle through the options until you find the colour you want.//
         &lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;&lt;elseif $heterochromia is true&gt;&gt;\
         Left: &lt;&lt;cycle &quot;_eyesleft&quot;&gt;&gt;
-            &lt;&lt;optionsfrom _eyecolours&gt;&gt;
+            &lt;&lt;optionsfrom setup.eyecolor&gt;&gt;
         &lt;&lt;/cycle&gt;&gt;
         Right: &lt;&lt;cycle &quot;_eyesright&quot;&gt;&gt;
-            &lt;&lt;optionsfrom _eyecolours&gt;&gt;
+            &lt;&lt;optionsfrom setup.eyecolor&gt;&gt;
         &lt;&lt;/cycle&gt;&gt;
         //Cycle through the options until you find the colours you want.//
         &lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;
             &lt;&lt;set $mc.eyes to _eyesleft + &quot; and &quot; + _eyesright&gt;&gt;
-            /* 
-                If eye colours matters in the story (creates variation, not just to be in the PC&#39;s page), you will ether want to use:
-                - the [.includes(&quot;colour&quot;)] function
-                - a variable for each eye
-                to help to so.. 
-            */
         &lt;&lt;/button&gt;&gt;
-    &lt;&lt;/if&gt;&gt;\
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="CC-FacialFeatures" tags="creation-page" position="1425,100" size="100,100">&lt;h1&gt;Options for Facial Features&lt;/h1&gt;\
 
 //What facial feature(s) is(are) applicable to you?//
@@ -5408,7 +5446,7 @@ Once you are set on a name (by following one of the listed options and), you wil
     &lt;label&gt;Feather Color&lt;/label&gt;
   	&lt;&lt;/if&gt;&gt;  &lt;&lt;/nobr&gt;&gt;
 &lt;&lt;listbox &quot;$mc.anthro.color&quot;&gt;&gt;
-  &lt;&lt;optionsfrom $anthroColors&gt;&gt;
+  &lt;&lt;optionsfrom setup.furScalesColors&gt;&gt;
 &lt;&lt;/listbox&gt;&gt;
 
 Pattern
@@ -5428,15 +5466,14 @@ Pattern
     &lt;&lt;if _beatymarks&gt;&gt;&lt;&lt;run $skin.features.push(&quot;Beauty Marks&quot;)&gt;&gt;&lt;&lt;/if&gt;&gt;
     &lt;&lt;if _albinism&gt;&gt;&lt;&lt;run $skin.features.push(&quot;Albinism&quot;)&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="CC-Species" tags="creation-page" position="1050,100" size="100,100">&lt;&lt;EnsureSpeciesData&gt;&gt; 
-&lt;&lt;SpeciesList&gt;&gt;  /* sets _speciesList, or replace with your own array */
 
 &lt;h1&gt;Let&#39;s Talk Species!&lt;/h1&gt;
 Your species defines you in many ways — choose wisely.
 
 &lt;span class=&quot;player-species&quot;&gt;
-	&lt;&lt;set $mc.species = $mc.species or _speciesList[0]&gt;&gt;
+	&lt;&lt;set $mc.species = $mc.species || setup.species[0]&gt;&gt;
 	&lt;&lt;listbox &quot;$mc.species&quot;&gt;&gt;
-		&lt;&lt;optionsfrom _speciesList&gt;&gt;
+		&lt;&lt;optionsfrom setup.species&gt;&gt;
 	&lt;&lt;/listbox&gt;&gt;
 &lt;/span&gt;
 
@@ -9586,7 +9623,7 @@ _n.name is taller
 &lt;&lt;run setup.randint = (a,b) =&gt; Math.floor(Math.random()*(b-a+1))+a&gt;&gt;
 &lt;&lt;run setup.clone = (o) =&gt; JSON.parse(JSON.stringify(o))&gt;&gt;
 
-	/* General MC/PC characteristics */
+/* General MC/PC characteristics */
 &lt;&lt;set $currentLocation to null&gt;&gt;
 &lt;&lt;set $characterTemplate = {
     name: &quot;&quot;,
@@ -9780,6 +9817,8 @@ Updated as of 1/16/2026
       Height: $mc.bodyheight &lt;br&gt;
       Type: $mc.bodyweight   &lt;br&gt;
       Musculature: $mc.bodymusc  &lt;br&gt;
+      &lt;&lt;if $mc.breastsize&gt;&gt;Breast Size: $mc.breastsize&lt;&lt;/if&gt;&gt;  
+
     &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
@@ -11954,35 +11993,18 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
-&lt;&lt;widget &quot;SpeciesList&quot;&gt;&gt;
-&lt;&lt;set _speciesList to [
-    &quot;Human&quot;, &quot;Anthro&quot;
-]&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;EnsureSpeciesData&quot;&gt;&gt;
-	/* options */
-	&lt;&lt;set $nonHumanTraitsOptions = $nonHumanTraitsOptions or {
-		anthroType: [&quot;Furry&quot;, &quot;Scalie&quot;, &quot;Avian&quot;],
-		furryType:  [&quot;Canine&quot;, &quot;Bunny&quot;, &quot;Feline&quot;, &quot;Bear&quot;, &quot;Fox&quot;, &quot;Goat&quot;, &quot;Mouse&quot;, &quot;Pig&quot;, &quot;Other&quot;],
-		scalieType: [&quot;Lizard&quot;, &quot;Dragon&quot;, &quot;Alligator&quot;, &quot;Crocodile&quot;],
-		avianType:  [&quot;Duck&quot;, &quot;Parrot&quot;, &quot;Chicken&quot;, &quot;Eagle&quot;, &quot;Raven&quot;]
-	}&gt;&gt;
-	&lt;&lt;set $anthroColors  = $anthroColors or [&quot;Black&quot;, &quot;Brown&quot;, &quot;Grey&quot;, &quot;White&quot;, &quot;Golden&quot;, &quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;]&gt;&gt;
-	&lt;&lt;set $anthroPatterns  = $anthroPatterns  or [&quot;Solid&quot;, &quot;Striped&quot;, &quot;Spotted&quot;, &quot;Patterned&quot;]&gt;&gt;
-	&lt;&lt;set $anthroWingspans = $anthroWingspans or [&quot;None&quot;, &quot;Short&quot;, &quot;Medium&quot;, &quot;Large&quot;, &quot;Massive&quot;]&gt;&gt;
-
-	/* state */
 	&lt;&lt;set $mc = $mc or {}&gt;&gt;
-	&lt;&lt;set $mc.species = $mc.species or &quot;Human&quot;&gt;&gt;
-	&lt;&lt;set $mc.anthro = $mc.anthro or {}&gt;&gt;
-	&lt;&lt;set $mc.anthro.group   = $mc.anthro.group   or {}&gt;&gt;
-	&lt;&lt;set $mc.anthro.subtype = $mc.anthro.subtype or {}&gt;&gt;
-	&lt;&lt;set $mc.anthro.color   = $mc.anthro.color   or {}&gt;&gt;
-	&lt;&lt;set $mc.anthro.pattern = $mc.anthro.pattern or {}&gt;&gt;
+	&lt;&lt;set $mc.species = $mc.species or setup.species[0]&gt;&gt;
 
-	/* default wings only when Avian context is true */
-	&lt;&lt;set _isAvian = (($mc.species is &quot;Anthro&quot;) and ($mc.anthro.group is &quot;Avian&quot;)) or ($mc.species is &quot;Avian&quot;)&gt;&gt;
+	&lt;&lt;set $mc.anthro = $mc.anthro or {}&gt;&gt;
+	&lt;&lt;set $mc.anthro.group   = $mc.anthro.group   or setup.anthroGroup[0]&gt;&gt;
+	&lt;&lt;set $mc.anthro.subtype = $mc.anthro.subtype or &quot;&quot;&gt;&gt;
+	&lt;&lt;set $mc.anthro.color   = $mc.anthro.color   or setup.furScalesColors[0]&gt;&gt;
+	&lt;&lt;set $mc.anthro.pattern = $mc.anthro.pattern or &quot;Solid&quot;&gt;&gt;
+
+	&lt;&lt;set _isAvian = ($mc.species is &quot;Anthro&quot;) and ($mc.anthro.group is &quot;Avian&quot;)&gt;&gt;
 	&lt;&lt;if _isAvian&gt;&gt;
 		&lt;&lt;set $mc.anthro.wings    = ($mc.anthro.wings is undefined) ? false : $mc.anthro.wings&gt;&gt;
 		&lt;&lt;set $mc.anthro.wingspan = $mc.anthro.wingspan or &quot;None&quot;&gt;&gt;
@@ -11992,53 +12014,62 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
+
 &lt;&lt;widget &quot;RenderAnthroSubtype&quot;&gt;&gt;
 	&lt;&lt;if $mc.anthro.group is &quot;Furry&quot;&gt;&gt;
-		&lt;&lt;set _opts = $nonHumanTraitsOptions.furryType&gt;&gt;
+		&lt;&lt;set _opts = setup.furryTypes&gt;&gt;
 	&lt;&lt;elseif $mc.anthro.group is &quot;Scalie&quot;&gt;&gt;
-		&lt;&lt;set _opts = $nonHumanTraitsOptions.scalieType&gt;&gt;
+		&lt;&lt;set _opts = setup.scalieTypes&gt;&gt;
 	&lt;&lt;elseif $mc.anthro.group is &quot;Avian&quot;&gt;&gt;
-		&lt;&lt;set _opts = $nonHumanTraitsOptions.avianType&gt;&gt;
+		&lt;&lt;set _opts = setup.avianTypes&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;set _opts = []&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-	&lt;&lt;if _opts.length and _opts.indexOf($mc.anthro.subtype) == -1&gt;&gt;
+
+	&lt;&lt;if _opts.length and !_opts.includes($mc.anthro.subtype)&gt;&gt;
 		&lt;&lt;set $mc.anthro.subtype = _opts[0]&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-	&lt;&lt;listbox &quot;$mc.anthro.subtype&quot;&gt;&gt;&lt;&lt;optionsfrom _opts&gt;&gt;&lt;&lt;/listbox&gt;&gt;
+
+	&lt;&lt;listbox &quot;$mc.anthro.subtype&quot;&gt;&gt;
+		&lt;&lt;optionsfrom _opts&gt;&gt;
+	&lt;&lt;/listbox&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;RenderAnthroUI&quot;&gt;&gt;
-	&lt;&lt;if $mc.species is &quot;Anthro&quot; or $mc.species is &quot;Avian&quot;&gt;&gt; &lt;!-- supports both taxonomies --&gt;
+	&lt;&lt;if $mc.species is &quot;Anthro&quot;&gt;&gt;
 		&lt;hr&gt;
 		&lt;h3&gt;Anthro Details&lt;/h3&gt;
 
 		&lt;label&gt;Type&lt;/label&gt;
-		&lt;&lt;listbox &quot;$mc.anthro.group&quot;&gt;&gt;&lt;&lt;optionsfrom $nonHumanTraitsOptions.anthroType&gt;&gt;&lt;&lt;/listbox&gt;&gt;
-		&lt;&lt;button &quot;Apply type&quot;&gt;&gt;
-		&lt;&lt;replace &quot;#anthro-dynamic&quot;&gt;&gt;&lt;&lt;RenderAnthroDynamic&gt;&gt;&lt;&lt;/replace&gt;&gt;
-        &lt;&lt;MC-Create-body&gt;&gt;
-		&lt;&lt;/button&gt;&gt;
+		&lt;&lt;listbox &quot;$mc.anthro.group&quot;&gt;&gt;
+			&lt;&lt;optionsfrom setup.anthroGroup&gt;&gt;
+		&lt;&lt;/listbox&gt;&gt;
 
+		&lt;&lt;button &quot;Apply type&quot;&gt;&gt;
+			&lt;&lt;replace &quot;#anthro-dynamic&quot;&gt;&gt;&lt;&lt;RenderAnthroDynamic&gt;&gt;&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;MC-Create-body&gt;&gt;
+		&lt;&lt;/button&gt;&gt;
 
 		&lt;div id=&quot;anthro-dynamic&quot;&gt;&lt;&lt;RenderAnthroDynamic&gt;&gt;&lt;/div&gt;
 	&lt;&lt;/if&gt;&gt;
-    &lt;&lt;if not ($mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;)&gt;&gt;
-	&lt;label&gt;Ears&lt;/label&gt;
-	&lt;&lt;listbox &quot;$mc.body.ears&quot;&gt;&gt;
-		&lt;&lt;option &quot;Human ears&quot;&gt;&gt;
-		&lt;&lt;option &quot;Pointed ears&quot;&gt;&gt;
-		&lt;&lt;option &quot;Animal ears&quot;&gt;&gt;
-	&lt;&lt;/listbox&gt;&gt;
 
-	&lt;label&gt;Tail&lt;/label&gt;
-	&lt;&lt;listbox &quot;$mc.body.tail&quot;&gt;&gt;
-		&lt;&lt;option &quot;No tail&quot;&gt;&gt;
-		&lt;&lt;option &quot;Short tail&quot;&gt;&gt;
-		&lt;&lt;option &quot;Long tail&quot;&gt;&gt;
-	&lt;&lt;/listbox&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if $mc.species is not &quot;Anthro&quot;&gt;&gt;
+		&lt;label&gt;Ears&lt;/label&gt;
+		&lt;&lt;listbox &quot;$mc.body.ears&quot;&gt;&gt;
+			&lt;&lt;option &quot;Human ears&quot;&gt;&gt;
+			&lt;&lt;option &quot;Pointed ears&quot;&gt;&gt;
+			&lt;&lt;option &quot;Animal ears&quot;&gt;&gt;
+		&lt;&lt;/listbox&gt;&gt;
+
+		&lt;label&gt;Tail&lt;/label&gt;
+		&lt;&lt;listbox &quot;$mc.body.tail&quot;&gt;&gt;
+			&lt;&lt;option &quot;No tail&quot;&gt;&gt;
+			&lt;&lt;option &quot;Short tail&quot;&gt;&gt;
+			&lt;&lt;option &quot;Long tail&quot;&gt;&gt;
+		&lt;&lt;/listbox&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
+
 
 &lt;&lt;widget &quot;RenderWingsUI&quot;&gt;&gt;
 	&lt;&lt;set _isAvian = ($mc.species is &quot;Anthro&quot;) and ($mc.anthro.group is &quot;Avian&quot;)&gt;&gt;
@@ -12244,7 +12275,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         _height to [&quot;Very Short&quot;, &quot;Short&quot;, &quot;Average&quot;, &quot;Tall&quot;, &quot;Very Tall&quot;],
         _type to [&quot;Skinny&quot;, &quot;Slender&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Huge&quot;],
         _muscle to [&quot;Soft&quot;, &quot;Light Muscles&quot;, &quot;Toned&quot;, &quot;Muscular&quot;, &quot;Ripped&quot;],
-        _breast to [&quot;Flat&quot;, &quot;Small&quot;, &quot;Average&quot;,&quot;Large&quot;, &quot;Busty&quot;]
+        _breast to setup.breastsize
     &gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 

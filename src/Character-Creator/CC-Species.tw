@@ -1,14 +1,13 @@
 :: CC-Species [creation-page] {"position":"1050,100","size":"100,100"}
 <<EnsureSpeciesData>> 
-<<SpeciesList>>  /* sets _speciesList, or replace with your own array */
 
 <h1>Let's Talk Species!</h1>
 Your species defines you in many ways — choose wisely.
 
 <span class="player-species">
-	<<set $mc.species = $mc.species or _speciesList[0]>>
+	<<set $mc.species = $mc.species || setup.species[0]>>
 	<<listbox "$mc.species">>
-		<<optionsfrom _speciesList>>
+		<<optionsfrom setup.species>>
 	<</listbox>>
 </span>
 

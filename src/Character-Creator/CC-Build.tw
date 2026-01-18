@@ -8,7 +8,7 @@ Tall, short, wide, thin... there are many ways to define how a body is framed. B
 //What is your body type?// <<listbox "$mc.bodyweight">><<optionsfrom _type>><</listbox>>
 
 //How muscular are you?// <<listbox "$mc.bodymusc">><<optionsfrom _muscle>><</listbox>>
-<<if $mc.gender is "female">>
+<<if $mc.gender is "Female">>
 //What is your breast size?
 <<listbox "$mc.breastsize">><<optionsfrom _breast>>
 <</listbox>>

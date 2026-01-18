@@ -139,35 +139,18 @@
 	<</if>>
 <</widget>>
 
-<<widget "SpeciesList">>
-<<set _speciesList to [
-    "Human", "Anthro"
-]>>
-<</widget>>
 
 <<widget "EnsureSpeciesData">>
-	/* options */
-	<<set $nonHumanTraitsOptions = $nonHumanTraitsOptions or {
-		anthroType: ["Furry", "Scalie", "Avian"],
-		furryType:  ["Canine", "Bunny", "Feline", "Bear", "Fox", "Goat", "Mouse", "Pig", "Other"],
-		scalieType: ["Lizard", "Dragon", "Alligator", "Crocodile"],
-		avianType:  ["Duck", "Parrot", "Chicken", "Eagle", "Raven"]
-	}>>
-	<<set $anthroColors  = $anthroColors or ["Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green"]>>
-	<<set $anthroPatterns  = $anthroPatterns  or ["Solid", "Striped", "Spotted", "Patterned"]>>
-	<<set $anthroWingspans = $anthroWingspans or ["None", "Short", "Medium", "Large", "Massive"]>>
-
-	/* state */
 	<<set $mc = $mc or {}>>
-	<<set $mc.species = $mc.species or "Human">>
-	<<set $mc.anthro = $mc.anthro or {}>>
-	<<set $mc.anthro.group   = $mc.anthro.group   or {}>>
-	<<set $mc.anthro.subtype = $mc.anthro.subtype or {}>>
-	<<set $mc.anthro.color   = $mc.anthro.color   or {}>>
-	<<set $mc.anthro.pattern = $mc.anthro.pattern or {}>>
+	<<set $mc.species = $mc.species or setup.species[0]>>
 
-	/* default wings only when Avian context is true */
-	<<set _isAvian = (($mc.species is "Anthro") and ($mc.anthro.group is "Avian")) or ($mc.species is "Avian")>>
+	<<set $mc.anthro = $mc.anthro or {}>>
+	<<set $mc.anthro.group   = $mc.anthro.group   or setup.anthroGroup[0]>>
+	<<set $mc.anthro.subtype = $mc.anthro.subtype or "">>
+	<<set $mc.anthro.color   = $mc.anthro.color   or setup.furScalesColors[0]>>
+	<<set $mc.anthro.pattern = $mc.anthro.pattern or "Solid">>
+
+	<<set _isAvian = ($mc.species is "Anthro") and ($mc.anthro.group is "Avian")>>
 	<<if _isAvian>>
 		<<set $mc.anthro.wings    = ($mc.anthro.wings is undefined) ? false : $mc.anthro.wings>>
 		<<set $mc.anthro.wingspan = $mc.anthro.wingspan or "None">>
@@ -177,53 +160,62 @@
 	<</if>>
 <</widget>>
 
+
 <<widget "RenderAnthroSubtype">>
 	<<if $mc.anthro.group is "Furry">>
-		<<set _opts = $nonHumanTraitsOptions.furryType>>
+		<<set _opts = setup.furryTypes>>
 	<<elseif $mc.anthro.group is "Scalie">>
-		<<set _opts = $nonHumanTraitsOptions.scalieType>>
+		<<set _opts = setup.scalieTypes>>
 	<<elseif $mc.anthro.group is "Avian">>
-		<<set _opts = $nonHumanTraitsOptions.avianType>>
+		<<set _opts = setup.avianTypes>>
 	<<else>>
 		<<set _opts = []>>
 	<</if>>
-	<<if _opts.length and _opts.indexOf($mc.anthro.subtype) == -1>>
+
+	<<if _opts.length and !_opts.includes($mc.anthro.subtype)>>
 		<<set $mc.anthro.subtype = _opts[0]>>
 	<</if>>
-	<<listbox "$mc.anthro.subtype">><<optionsfrom _opts>><</listbox>>
+
+	<<listbox "$mc.anthro.subtype">>
+		<<optionsfrom _opts>>
+	<</listbox>>
 <</widget>>
 
 <<widget "RenderAnthroUI">>
-	<<if $mc.species is "Anthro" or $mc.species is "Avian">> <!-- supports both taxonomies -->
+	<<if $mc.species is "Anthro">>
 		<hr>
 		<h3>Anthro Details</h3>
 
 		<label>Type</label>
-		<<listbox "$mc.anthro.group">><<optionsfrom $nonHumanTraitsOptions.anthroType>><</listbox>>
-		<<button "Apply type">>
-		<<replace "#anthro-dynamic">><<RenderAnthroDynamic>><</replace>>
-        <<MC-Create-body>>
-		<</button>>
+		<<listbox "$mc.anthro.group">>
+			<<optionsfrom setup.anthroGroup>>
+		<</listbox>>
 
+		<<button "Apply type">>
+			<<replace "#anthro-dynamic">><<RenderAnthroDynamic>><</replace>>
+			<<MC-Create-body>>
+		<</button>>
 
 		<div id="anthro-dynamic"><<RenderAnthroDynamic>></div>
 	<</if>>
-    <<if not ($mc.species and $mc.species.toLowerCase() is "anthro")>>
-	<label>Ears</label>
-	<<listbox "$mc.body.ears">>
-		<<option "Human ears">>
-		<<option "Pointed ears">>
-		<<option "Animal ears">>
-	<</listbox>>
 
-	<label>Tail</label>
-	<<listbox "$mc.body.tail">>
-		<<option "No tail">>
-		<<option "Short tail">>
-		<<option "Long tail">>
-	<</listbox>>
-<</if>>
+	<<if $mc.species is not "Anthro">>
+		<label>Ears</label>
+		<<listbox "$mc.body.ears">>
+			<<option "Human ears">>
+			<<option "Pointed ears">>
+			<<option "Animal ears">>
+		<</listbox>>
+
+		<label>Tail</label>
+		<<listbox "$mc.body.tail">>
+			<<option "No tail">>
+			<<option "Short tail">>
+			<<option "Long tail">>
+		<</listbox>>
+	<</if>>
 <</widget>>
+
 
 <<widget "RenderWingsUI">>
 	<<set _isAvian = ($mc.species is "Anthro") and ($mc.anthro.group is "Avian")>>
@@ -429,7 +421,7 @@
         _height to ["Very Short", "Short", "Average", "Tall", "Very Tall"],
         _type to ["Skinny", "Slender", "Average", "Large", "Huge"],
         _muscle to ["Soft", "Light Muscles", "Toned", "Muscular", "Ripped"],
-        _breast to ["Flat", "Small", "Average","Large", "Busty"]
+        _breast to setup.breastsize
     >>
 <</widget>>
 

@@ -121,7 +121,7 @@
 <<run setup.randint = (a,b) => Math.floor(Math.random()*(b-a+1))+a>>
 <<run setup.clone = (o) => JSON.parse(JSON.stringify(o))>>
 
-	/* General MC/PC characteristics */
+/* General MC/PC characteristics */
 <<set $currentLocation to null>>
 <<set $characterTemplate = {
     name: "",

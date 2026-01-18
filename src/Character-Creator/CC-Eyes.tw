@@ -1,5 +1,4 @@
 :: CC-Eyes [creation-page] {"position":"1300,100","size":"100,100"}
-<<set _eyecolours = ["white", "grey", "golden", "green", "blue", "maroon", "brown", "black", "red", "pink", "purple", "lime", "seafoam", "cream"]>>
 <h1>Choose your Eye Colour(s)</h1>\
 
 Do your eyes have <<link "the same colour">><<set $heterochromia to false>><<redo>><</link>> or <<link "different colours">><<set $heterochromia to true>><<redo>><</link>>?
@@ -7,28 +6,22 @@ Do your eyes have <<link "the same colour">><<set $heterochromia to false>><<red
 <<do>>\
     <<if $heterochromia is false>>\
         Eye Colours: <<cycle "$mc.eyes">>
-            <<optionsfrom _eyecolours>>
+            <<optionsfrom setup.eyecolor>>
         <</cycle>>
         //Cycle through the options until you find the colour you want.//
         <<button [[Confirm|Index-CC]]>><</button>>
     <<elseif $heterochromia is true>>\
         Left: <<cycle "_eyesleft">>
-            <<optionsfrom _eyecolours>>
+            <<optionsfrom setup.eyecolor>>
         <</cycle>>
         Right: <<cycle "_eyesright">>
-            <<optionsfrom _eyecolours>>
+            <<optionsfrom setup.eyecolor>>
         <</cycle>>
         //Cycle through the options until you find the colours you want.//
         <<button [[Confirm|Index-CC]]>>
             <<set $mc.eyes to _eyesleft + " and " + _eyesright>>
-            /* 
-                If eye colours matters in the story (creates variation, not just to be in the PC's page), you will ether want to use:
-                - the [.includes("colour")] function
-                - a variable for each eye
-                to help to so.. 
-            */
         <</button>>
-    <</if>>\
+    <</if>>
 <</do>>
 
 
