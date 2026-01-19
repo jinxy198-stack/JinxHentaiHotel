@@ -166,10 +166,12 @@ setup.food=
         "flags": ["meat"]
     },
     "Spicy chili": {
+
         "aoran": "some",
         "flags": ["meat"]
     },
     "Pork chop": {
+        "description":"Juicy, pan-seared pork chops, seasoned simply and cooked to tender perfection.",
         "flags": ["meat"]
     },
     "Chicken soup": {
@@ -189,6 +191,7 @@ setup.food=
         "flags": ["meat"]
     },
     "Ratatouille": {
+        "description": "A colorful medley of tender vegetables simmered in savory tomato sauce. So simple that anyone can cook it.",
         "aoran": "some",
         "flags": []
     },
@@ -212,6 +215,7 @@ setup.food=
         "flags": ["dairy", "eggs", "dessert"]
     },
     "Tiramisu": {
+        "description": "A delicate dessert of espresso-soaked ladyfinger cookies layered in rich mascarpone cream, dusted with cocoa for a perfect balance of sweetness and coffee flavor.",
         "flags": ["dairy", "eggs"]
     },
     // cookable meals
@@ -224,6 +228,9 @@ setup.food=
         "description": "A steamed egg-and-milk custard. Every bite is bliss.",
         "aoran": "some",
         "flags": ["dessert"]
+    },
+    "Bouillabaisse":{
+        "description": "A fragrant seafood stew with a mix of fish and shellfish, simmered in a rich saffron and tomato broth, served with crusty bread.",
     },
 };
 
@@ -378,9 +385,6 @@ setup.snack={
     },
     "Candy bar": {
         "flags": ["dairy"]
-    },
-    "Spotted dick": {
-        "flags": ["dairy", "eggs"]
     },
     "Gummy worms": {
         "flags": []

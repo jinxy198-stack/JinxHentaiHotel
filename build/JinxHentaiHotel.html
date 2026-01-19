@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="124" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
+	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="123" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
 /* Make sure the PositionBlock never extends under the sidebar */
 .position-block{
   box-sizing:border-box;
@@ -2766,10 +2766,12 @@ setup.food=
         "flags": ["meat"]
     },
     "Spicy chili": {
+
         "aoran": "some",
         "flags": ["meat"]
     },
     "Pork chop": {
+        "description":"Juicy, pan-seared pork chops, seasoned simply and cooked to tender perfection.",
         "flags": ["meat"]
     },
     "Chicken soup": {
@@ -2789,6 +2791,7 @@ setup.food=
         "flags": ["meat"]
     },
     "Ratatouille": {
+        "description": "A colorful medley of tender vegetables simmered in savory tomato sauce. So simple that anyone can cook it.",
         "aoran": "some",
         "flags": []
     },
@@ -2812,6 +2815,7 @@ setup.food=
         "flags": ["dairy", "eggs", "dessert"]
     },
     "Tiramisu": {
+        "description": "A delicate dessert of espresso-soaked ladyfinger cookies layered in rich mascarpone cream, dusted with cocoa for a perfect balance of sweetness and coffee flavor.",
         "flags": ["dairy", "eggs"]
     },
     // cookable meals
@@ -2824,6 +2828,9 @@ setup.food=
         "description": "A steamed egg-and-milk custard. Every bite is bliss.",
         "aoran": "some",
         "flags": ["dessert"]
+    },
+    "Bouillabaisse":{
+        "description": "A fragrant seafood stew with a mix of fish and shellfish, simmered in a rich saffron and tomato broth, served with crusty bread.",
     },
 };
 
@@ -2979,9 +2986,6 @@ setup.snack={
     "Candy bar": {
         "flags": ["dairy"]
     },
-    "Spotted dick": {
-        "flags": ["dairy", "eggs"]
-    },
     "Gummy worms": {
         "flags": []
     },
@@ -3008,28 +3012,35 @@ setup.skincolor= [
     "Pale", "Fair", "Tan", "Olive", "Brown", "Ebony"
 ];
 
+setup.height=[
+    "Very Short", "Short", "Average", "Tall", "Very Tall",
+];
 setup.anthroGroup= [
-"Furry", "Scalie", "Avian"
+"Furry", "Scalie", "Avian",
 ];
 
 setup.furryTypes=[
-    "Canine", "Feline", "Bunny", "Fox", "Bear", "Goat", "Mouse", "Pig", "Other"
+    "Canine", "Feline", "Bunny", "Fox", "Bear", "Goat", "Mouse", "Pig", "Other",
 ];
 
 setup.scalieTypes=[
-    "Lizard", "Dragon", "Alligator", "Crocodile"
+    "Lizard", "Dragon", "Alligator", "Crocodile",
 ];
 
 setup.avianTypes=[
-    "Duck", "Parrot", "Chicken", "Eagle", "Hawk", "Owl"
+    "Duck", "Parrot", "Chicken", "Eagle", "Hawk", "Owl",
 ];
 
 setup.furScalesColors=[
-    "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Rainbow"
+    "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Rainbow",
+];
+
+setup.anthroPatterns=[
+    "Solid", "Striped", "Spotted", "Patterned",
 ];
 
 setup.breastsize=[
-    "Flat", "Small", "Average","Large", "Busty"
+    "Flat", "Small", "Average","Large", "Busty",
 ];
 /* twine-user-script #8: "database_roomtypes" */
 setup.RoomTypes = {};
@@ -5406,8 +5417,8 @@ Once you are set on a name (by following one of the listed options and), you wil
 
 
 //What pronoun set are you most comfortable with?//
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;He/Him&quot;&gt;&gt;He/Him&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;She/Her&quot; checked&gt;&gt;She/Her&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;He/Him&quot; checked&gt;&gt;He/Him&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;She/Her&quot; &gt;&gt;She/Her&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;They/Them (singular)&quot;&gt;&gt;They/Them (singular)&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;They/Them (plural)&quot;&gt;&gt;They/Them (plural)&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;Ae/Aer&quot;&gt;&gt;Ae/Aer&lt;/label&gt;
@@ -6343,7 +6354,8 @@ On the other side there was a door to your bathroom.
 }&gt;&gt;
 /*</tw-passagedata><tw-passagedata pid="54" name="Notes" tags="" position="1950,125" size="100,100">/* 
 
-Fix the food menu
+Fix the hair input for main character.
+change from _n to $n
 
     Species:
     Human
@@ -9486,14 +9498,7 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Vaginal quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="Size Difference" tags="" position="625,1625" size="100,100">_n.name is shorter
-&quot;You are ready to perform oral,
-&quot;but due to their shorter height, you don&#39;t need to kneel, instead you just stand there.&quot;
-
-
-_n.name is taller 
-&quot;_n.name is ready to perform oral, 
-&quot;but due to your shorter height, they don&#39;t need to kneel, instead they just stand there.&quot;</tw-passagedata><tw-passagedata pid="122" name="StoryCaption" tags="" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="StoryCaption" tags="" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
 &lt;b&gt;Location: &lt;/b&gt;$gamelocation
 &lt;&lt;/if&gt;&gt;
 
@@ -9501,7 +9506,7 @@ _n.name is taller
 &lt;&lt;button &quot;Credits&quot;&gt;&gt;&lt;&lt;PopupCredits&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $npcSeq = 0&gt;&gt;
+&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $npcSeq = 0&gt;&gt;
 &lt;&lt;set $npcs = []&gt;&gt;
 &lt;&lt;set $ui = {}&gt;&gt;
 &lt;&lt;set $lastNpc = null&gt;&gt;
@@ -9682,14 +9687,12 @@ _n.name is taller
 	/* This last one is only for practicality */
 &lt;&lt;set $pages to {}&gt;&gt;
 &lt;&lt;set $anthroColors = setup.furScalesColors&gt;&gt;
-&lt;&lt;set $anthroPatterns = [&quot;Solid&quot;, &quot;Striped&quot;, &quot;Spotted&quot;, &quot;Patterned&quot;]&gt;&gt;
-&lt;&lt;set $anthroTailTypes = [&quot;None&quot;, &quot;Short&quot;, &quot;Long&quot;, &quot;Bushy&quot;, &quot;Reptilian&quot;, &quot;Avian&quot;]&gt;&gt;
-&lt;&lt;set $anthroEarTypes = [&quot;None&quot;, &quot;Canine&quot;, &quot;Feline&quot;, &quot;Bunny&quot;, &quot;Bear&quot;, &quot;Pointed&quot;, &quot;Rounded&quot;]&gt;&gt;
+&lt;&lt;set $anthroPatterns = setup.anthroPatterns&gt;&gt;
 &lt;&lt;set $anthroWingspans = [&quot;None&quot;, &quot;Short&quot;, &quot;Medium&quot;, &quot;Large&quot;, &quot;Massive&quot;]&gt;&gt;
 
 
 &lt;&lt;set $flags = $flags || {}&gt;&gt;
-&lt;&lt;set $flags.skinChosen = false&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Start" tags="" position="175,275" size="100,100">&lt;&lt;set $devMode = true&gt;&gt;
+&lt;&lt;set $flags.skinChosen = false&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Start" tags="" position="175,275" size="100,100">&lt;&lt;set $devMode = true&gt;&gt;
 &lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
 &lt;h3 style=&quot;font-weight: normal;&quot;&gt;This game is meant to simulate interactions of many sexual varieties. 
 Create your character to begin.
@@ -9711,7 +9714,7 @@ Updated as of 1/16/2026
  
 &lt;&lt;button [[Test|Cafe]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt; 
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Statistics" tags="nobr" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Statistics" tags="nobr" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
 &lt;table class=&quot;stats-table&quot;&gt;
   &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
   &lt;tr id=&quot;name&quot;&gt;
@@ -9849,7 +9852,7 @@ Updated as of 1/16/2026
     &lt;th&gt;Ass size:&lt;/th&gt;
     &lt;td id=&quot;mc-assSize&quot;&gt;$mc.assSize&lt;/td&gt;
   &lt;/tr&gt;
-&lt;/table&gt;</tw-passagedata><tw-passagedata pid="126" name="Tutorial" tags="" position="25,275" size="100,100">You and the person you brought to your room will engage in a session of sex. How you engage in it is up to you.
+&lt;/table&gt;</tw-passagedata><tw-passagedata pid="125" name="Tutorial" tags="" position="25,275" size="100,100">You and the person you brought to your room will engage in a session of sex. How you engage in it is up to you.
 
 You can choose who will be the bottom and who will be the top. Note that will not mean that you will determine who is the dom and who is the sub, that will depend on the personality. Certain actions will be locked depending on your role, you cannot be the top and suck off the other&#39;s dick.
 For example, you can have a submissive feminine twink be the one to fuck you or you can have a big muscular dom be fucked by you.
@@ -9868,7 +9871,7 @@ Intercourse is the stage where the meat of the game is. The actions there will b
 Orgasm is the part where your control is limited. Depending on what you are doing, you can choose where to have your orgasm or the npc. Note that to save on complexity it will be treated as a simultenious orgasm between you and the NPC.
 Following the Orgasm you are automatically put into the Aftercare stage. It is an optional stage where you can choose to enjoy the afterglow with the NPC or just finish the sex.
 
-Only when you reach the Aftercare stage will you be allowed to end the session.</tw-passagedata><tw-passagedata pid="127" name="UI-Attracted-check" tags="" position="900,500" size="100,100">&lt;&lt;check-attraction $mc _n&gt;&gt;
+Only when you reach the Aftercare stage will you be allowed to end the session.</tw-passagedata><tw-passagedata pid="126" name="UI-Attracted-check" tags="" position="900,500" size="100,100">&lt;&lt;check-attraction $mc _n&gt;&gt;
 &lt;b&gt;$mc.name: &lt;/b&gt;
 * $mc.gender
 * $mc.sexu
@@ -9891,7 +9894,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;include &quot;Reject-Dialogue&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="UI-NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;silently&gt;&gt;&lt;&lt;set _n = $ui.npc&gt;&gt;&lt;&lt;/silently&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="UI-NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;silently&gt;&gt;&lt;&lt;set _n = $ui.npc&gt;&gt;&lt;&lt;/silently&gt;&gt;
 &lt;b&gt;Name:&lt;/b&gt; &lt;&lt;=_n.name&gt;&gt; &lt;&lt;if _n.surname&gt;&gt;&lt;&lt;=_n.surname&gt;&gt;&lt;&lt;/if&gt;&gt; &lt;&lt;if _n.nickname&gt;&gt;
 &lt;br&gt;
 &lt;b&gt;Nickname: &lt;/b&gt;&quot;&lt;&lt;=_n.nickname&gt;&gt;&quot;&lt;&lt;/if&gt;&gt;
@@ -9922,7 +9925,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;br&gt;
 &lt;b&gt;Genitals:&lt;/b&gt; &lt;&lt;=_n.genitals&gt;&gt;&lt;&lt;if _n.genitals== &quot;Penis&quot;&gt;&gt; * &lt;b&gt;Length:&lt;/b&gt; &lt;&lt;=_n.penislength&gt;&gt; &lt;&lt;/if&gt;&gt; (&lt;&lt;=_n.genitaltype&gt;&gt;)
 &lt;br&gt;
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="UI-NPC-Sex" tags="nobr" position="1025,475" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="UI-NPC-Sex" tags="nobr" position="1025,475" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;set _n = $ui.npc&gt;&gt;
 	&lt;&lt;if !_n&gt;&gt;[Error] No active NPC selected.&lt;&lt;return&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -10006,7 +10009,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 		&lt;br&gt;
 		&lt;span id=&quot;aftercare&quot;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;/span&gt;
 	&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="130" name="UI-NPC-Talk" tags="nobr" position="750,500" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;silently&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="129" name="UI-NPC-Talk" tags="nobr" position="750,500" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;silently&gt;&gt;
 &lt;&lt;set _n = $ui.npc&gt;&gt;
 &lt;&lt;set _lines = {
   Default: [&quot;Hello&quot;,&quot;Hi&quot;],
@@ -10060,7 +10063,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/button&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="Adjective-Widget" tags="widget nobr" position="100,1725" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="Adjective-Widget" tags="widget nobr" position="1225,1600" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;
 
@@ -10078,7 +10081,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 /* &lt;&lt;set $NPCList[_n].penisdesc to &quot;tiny penis&quot;&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;thick cock&quot;,&quot;hefty cock&quot;,&quot;big cock&quot;,&quot;large cock&quot;,&quot;veiny cock&quot;,&quot;meaty cock&quot;)&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;massive cock&quot;,&quot;huge cock&quot;,&quot;humongous cock&quot;,&quot;immense cock&quot;,&quot;gigantic cock&quot;,&quot;enormous cock&quot;)&gt;&gt;
-*/</tw-passagedata><tw-passagedata pid="132" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
+*/</tw-passagedata><tw-passagedata pid="131" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
 &lt;&lt;widget &quot;AnalQuote&quot;&gt;&gt;
 	/* guard */
 	&lt;&lt;if !setup.analQuotes&gt;&gt;
@@ -11087,7 +11090,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;else&gt;&gt;
 		[Error] VaginalQuote: empty dialogue pool.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
 /* Creates a single Story NPC from a provided template and registers it globally */
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No template provided to MakeSNPC.
@@ -11851,7 +11854,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;set _npc.petname = &quot;pet&quot;&gt;&gt;	
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="Widgets" tags="widget nobr" position="400,25" size="100,100">&lt;&lt;widget &quot;SetNPCBodyType&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="Widgets" tags="widget nobr" position="400,25" size="100,100">&lt;&lt;widget &quot;SetNPCBodyType&quot;&gt;&gt;
 	/* choose NPC: arg 0 or $ui.npc */
 	&lt;&lt;set _npc = (_args.length &gt; 0) ? _args[0] : $ui.npc&gt;&gt;
 	&lt;&lt;if !_npc&gt;&gt;
@@ -12000,7 +12003,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set $mc.anthro.group   = $mc.anthro.group   or setup.anthroGroup[0]&gt;&gt;
 	&lt;&lt;set $mc.anthro.subtype = $mc.anthro.subtype or &quot;&quot;&gt;&gt;
 	&lt;&lt;set $mc.anthro.color   = $mc.anthro.color   or setup.furScalesColors[0]&gt;&gt;
-	&lt;&lt;set $mc.anthro.pattern = $mc.anthro.pattern or &quot;Solid&quot;&gt;&gt;
+	&lt;&lt;set $mc.anthro.pattern = $mc.anthro.pattern or setup.anthroPatterns&gt;&gt;
 
 	&lt;&lt;set _isAvian = ($mc.species is &quot;Anthro&quot;) and ($mc.anthro.group is &quot;Avian&quot;)&gt;&gt;
 	&lt;&lt;if _isAvian&gt;&gt;
@@ -12098,7 +12101,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;penisOptions&quot;&gt;&gt;
-&lt;&lt;set _penis to [&quot;Cut&quot;,&quot;Uncut&quot;]&gt;&gt;
+&lt;&lt;set _penis to [&quot;Cut&quot;,&quot;Uncut&quot;,&quot;Phimosis&quot;]&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 /*************************** 
@@ -12289,10 +12292,10 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         $mc.sexpref to either(&quot;Dom&quot;,&quot;Sub&quot;,&quot;Switch&quot;),
         $mc.sexu to either(&quot;Heterosexual&quot;, &quot;Homosexual&quot;, &quot;Bisexual&quot;, &quot;Pansexual&quot;, &quot;Asexual&quot;),
         $mc.pronouns to either(&quot;She/Her&quot;, &quot;He/Him&quot;, &quot;They/Them (singular)&quot;, &quot;They/Them (plural)&quot;),
-        $mc.age to random(18, 78),
+        $mc.age to random(6, 78),
         $heterochromia to either(true, false),
         $skin.color to either(setup.skincolor),
-        $mc.bodyheight to either(&quot;Very Short&quot;, &quot;Short&quot;, &quot;Average&quot;, &quot;Tall&quot;, &quot;Very Tall&quot;),
+        $mc.bodyheight to either(setup.height),
         $mc.bodyweight to either(&quot;Skinny&quot;, &quot;Slender&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Huge&quot;, &quot;Fat&quot;),
         $mc.bodymusc to either(&quot;Soft&quot;, &quot;Light Muscles&quot;, &quot;Toned&quot;, &quot;Muscular&quot;, &quot;Ripped&quot;),
         $mc.assSize to either(&quot;Flat&quot;,&quot;Tiny&quot;,&quot;Small&quot;,&quot;Round&quot;,&quot;Large&quot;,&quot;Huge&quot;),
@@ -12300,15 +12303,15 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
        $mc.species to either(setup.species)&gt;&gt;
     &lt;&lt;if $mc.species is &quot;Anthro&quot;&gt;&gt;
         &lt;&lt;set $skin.color to null&gt;&gt;
-    	&lt;&lt;set $mc.anthro.group to either(&quot;Furry&quot;,&quot;Scalie&quot;,&quot;Avian&quot;)&gt;&gt;
-        &lt;&lt;set $mc.anthro.color to either(&quot;Black&quot;,&quot;Brown&quot;, &quot;Grey&quot;, &quot;White&quot;, &quot;Golden&quot;,&quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;)&gt;&gt;
-        &lt;&lt;set $mc.anthro.pattern to either(&quot;Solid&quot;,&quot;Striped&quot;, &quot;Spotted&quot;,&quot;Patterned&quot;)&gt;&gt;
+    	&lt;&lt;set $mc.anthro.group to either(setup.anthroGroup)&gt;&gt;
+        &lt;&lt;set $mc.anthro.color to either(setup.furScalesColors)&gt;&gt;
+        &lt;&lt;set $mc.anthro.pattern to either(setup.anthroPatterns)&gt;&gt;
         &lt;&lt;if $mc.anthro.group is &quot;Furry&quot;&gt;&gt;
-        	&lt;&lt;set $mc.anthro.subtype to either (&quot;Canine&quot;,&quot;Bunny&quot;,&quot;Feline&quot;,&quot;Bear&quot;,&quot;Fox&quot;,&quot;Goat&quot;,&quot;Mouse&quot;,&quot;Pig&quot;,&quot;Other&quot;)&gt;&gt;
+        	&lt;&lt;set $mc.anthro.subtype to either (setup.furryTypes)&gt;&gt;
         &lt;&lt;elseif $mc.anthro.group is &quot;Scalie&quot;&gt;&gt;
-        	&lt;&lt;set $mc.anthro.subtype to either (&quot;Lizard&quot;,&quot;Dragon&quot;,&quot;Alligator&quot;,&quot;Crocodile&quot;)&gt;&gt;
+        	&lt;&lt;set $mc.anthro.subtype to either (setup.scalieTypes)&gt;&gt;
         &lt;&lt;elseif $mc.anthro.group is &quot;Avian&quot;&gt;&gt;
-        	&lt;&lt;set $mc.anthro.subtype to either(&quot;Duck&quot;,&quot;Parrot&quot;,&quot;Chicken&quot;,&quot;Eagle&quot;, &quot;Raven&quot;)&gt;&gt;
+        	&lt;&lt;set $mc.anthro.subtype to either(setup.avianTypes)&gt;&gt;
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/if&gt;&gt;
     &lt;&lt;MC-Create-body&gt;&gt;
@@ -12323,11 +12326,11 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         &lt;&lt;set $mc.penislength to null&gt;&gt;
     &lt;&lt;/if&gt;&gt;
     &lt;&lt;if $heterochromia is false&gt;&gt;
-            &lt;&lt;set $mc.eyes to either(&quot;White&quot;, &quot;Grey&quot;, &quot;Golden&quot;, &quot;Green&quot;, &quot;Blue&quot;, &quot;Maroon&quot;, &quot;Brown&quot;, &quot;Black&quot;, &quot;Red&quot;, &quot;Pink&quot;, &quot;Purple&quot;, &quot;Lime&quot;, &quot;Seafoam&quot;, &quot;Cream&quot;)&gt;&gt;
+            &lt;&lt;set $mc.eyes to either(setup.eyecolor)&gt;&gt;
         &lt;&lt;else&gt;&gt;
             &lt;&lt;set 
-                _eyesleft to either(&quot;White&quot;, &quot;Grey&quot;, &quot;Golden&quot;, &quot;Green&quot;, &quot;Blue&quot;, &quot;Maroon&quot;, &quot;Brown&quot;, &quot;Black&quot;, &quot;Red&quot;, &quot;Pink&quot;, &quot;Purple&quot;, &quot;Lime&quot;, &quot;Seafoam&quot;, &quot;Cream&quot;),
-                _eyesright to either(&quot;White&quot;, &quot;Grey&quot;, &quot;Golden&quot;, &quot;Green&quot;, &quot;Blue&quot;, &quot;Maroon&quot;, &quot;Brown&quot;, &quot;Black&quot;, &quot;Red&quot;, &quot;Pink&quot;, &quot;Purple&quot;, &quot;Lime&quot;, &quot;Seafoam&quot;, &quot;Cream&quot;),
+                _eyesleft to either(setup.eyecolor),
+                _eyesright to either(setup.eyecolor),
                 $mc.eyes to _eyesleft + &quot; and &quot; + _eyesright &gt;&gt;
     &lt;&lt;/if&gt;&gt;
             &lt;&lt;set 
@@ -12717,7 +12720,35 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;widget &quot;Sleep&quot;&gt;&gt;
  &lt;&lt;set _wakeuppassage to &quot;WakeUp&quot;&gt;&gt;
  &lt;&lt;goto _wakeuppassage&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+
+//to compare the heights of the pc and npc
+&lt;&lt;widget &quot;HeightCompare&quot;&gt;&gt;
+&lt;&lt;script&gt;&gt;
+const rank = {
+  &quot;Very Short&quot;: 1,
+  &quot;Short&quot;: 2,
+  &quot;Average&quot;: 3,
+  &quot;Tall&quot;: 4,
+  &quot;Very Tall&quot;: 5
+};
+
+const mcH  = rank[$mc.height];
+const npcH = rank[_n.height];
+
+return mcH &gt; npcH ? 1 : mcH &lt; npcH ? -1 : 0;
+&lt;&lt;/script&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="heighttest" tags="" position="475,1725" size="100,100">//example test:
+&lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
+
+&lt;&lt;if _h is 1&gt;&gt;
+  MC taller
+&lt;&lt;elseif _h is -1&gt;&gt;
+  NPC taller
+&lt;&lt;else&gt;&gt;
+  Same height
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
 	&lt;&lt;if _n.personality ==&quot;Tough&quot;&gt;&gt;
     “You want me in charge? Good, I don&#39;t do half-measures.”
     &lt;&lt;elseif _n.personality== &quot;Sassy&quot;&gt;&gt;

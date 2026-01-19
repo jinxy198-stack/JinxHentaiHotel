@@ -148,7 +148,7 @@
 	<<set $mc.anthro.group   = $mc.anthro.group   or setup.anthroGroup[0]>>
 	<<set $mc.anthro.subtype = $mc.anthro.subtype or "">>
 	<<set $mc.anthro.color   = $mc.anthro.color   or setup.furScalesColors[0]>>
-	<<set $mc.anthro.pattern = $mc.anthro.pattern or "Solid">>
+	<<set $mc.anthro.pattern = $mc.anthro.pattern or setup.anthroPatterns>>
 
 	<<set _isAvian = ($mc.species is "Anthro") and ($mc.anthro.group is "Avian")>>
 	<<if _isAvian>>
@@ -246,7 +246,7 @@
 <</widget>>
 
 <<widget "penisOptions">>
-<<set _penis to ["Cut","Uncut"]>>
+<<set _penis to ["Cut","Uncut","Phimosis"]>>
 <</widget>>
 
 /*************************** 
@@ -437,10 +437,10 @@
         $mc.sexpref to either("Dom","Sub","Switch"),
         $mc.sexu to either("Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"),
         $mc.pronouns to either("She/Her", "He/Him", "They/Them (singular)", "They/Them (plural)"),
-        $mc.age to random(18, 78),
+        $mc.age to random(6, 78),
         $heterochromia to either(true, false),
         $skin.color to either(setup.skincolor),
-        $mc.bodyheight to either("Very Short", "Short", "Average", "Tall", "Very Tall"),
+        $mc.bodyheight to either(setup.height),
         $mc.bodyweight to either("Skinny", "Slender", "Average", "Large", "Huge", "Fat"),
         $mc.bodymusc to either("Soft", "Light Muscles", "Toned", "Muscular", "Ripped"),
         $mc.assSize to either("Flat","Tiny","Small","Round","Large","Huge"),
@@ -448,15 +448,15 @@
        $mc.species to either(setup.species)>>
     <<if $mc.species is "Anthro">>
         <<set $skin.color to null>>
-    	<<set $mc.anthro.group to either("Furry","Scalie","Avian")>>
-        <<set $mc.anthro.color to either("Black","Brown", "Grey", "White", "Golden","Red", "Blue", "Green")>>
-        <<set $mc.anthro.pattern to either("Solid","Striped", "Spotted","Patterned")>>
+    	<<set $mc.anthro.group to either(setup.anthroGroup)>>
+        <<set $mc.anthro.color to either(setup.furScalesColors)>>
+        <<set $mc.anthro.pattern to either(setup.anthroPatterns)>>
         <<if $mc.anthro.group is "Furry">>
-        	<<set $mc.anthro.subtype to either ("Canine","Bunny","Feline","Bear","Fox","Goat","Mouse","Pig","Other")>>
+        	<<set $mc.anthro.subtype to either (setup.furryTypes)>>
         <<elseif $mc.anthro.group is "Scalie">>
-        	<<set $mc.anthro.subtype to either ("Lizard","Dragon","Alligator","Crocodile")>>
+        	<<set $mc.anthro.subtype to either (setup.scalieTypes)>>
         <<elseif $mc.anthro.group is "Avian">>
-        	<<set $mc.anthro.subtype to either("Duck","Parrot","Chicken","Eagle", "Raven")>>
+        	<<set $mc.anthro.subtype to either(setup.avianTypes)>>
         <</if>>
     <</if>>
     <<MC-Create-body>>
@@ -865,4 +865,23 @@
 <<widget "Sleep">>
  <<set _wakeuppassage to "WakeUp">>
  <<goto _wakeuppassage>>
+<</widget>>
+
+
+//to compare the heights of the pc and npc
+<<widget "HeightCompare">>
+<<script>>
+const rank = {
+  "Very Short": 1,
+  "Short": 2,
+  "Average": 3,
+  "Tall": 4,
+  "Very Tall": 5
+};
+
+const mcH  = rank[$mc.height];
+const npcH = rank[_n.height];
+
+return mcH > npcH ? 1 : mcH < npcH ? -1 : 0;
+<</script>>
 <</widget>>

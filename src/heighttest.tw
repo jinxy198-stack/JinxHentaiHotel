@@ -1,0 +1,12 @@
+::heighttest 
+
+//example test:
+<<set _h = <<HeightCompare>> >>
+
+<<if _h is 1>>
+  MC taller
+<<elseif _h is -1>>
+  NPC taller
+<<else>>
+  Same height
+<</if>>
