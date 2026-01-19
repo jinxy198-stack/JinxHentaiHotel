@@ -179,7 +179,7 @@
 
 	/* This last one is only for practicality */
 <<set $pages to {}>>
-<<set $anthroColors = ["Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green", "Rainbow"]>>
+<<set $anthroColors = setup.furScalesColors>>
 <<set $anthroPatterns = ["Solid", "Striped", "Spotted", "Patterned"]>>
 <<set $anthroTailTypes = ["None", "Short", "Long", "Bushy", "Reptilian", "Avian"]>>
 <<set $anthroEarTypes = ["None", "Canine", "Feline", "Bunny", "Bear", "Pointed", "Rounded"]>>

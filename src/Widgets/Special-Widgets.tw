@@ -102,6 +102,7 @@
 		<<set _npc.pronouns   = "She/Her">>
 		<<set _npc.genitals   = "Vagina">>
 		<<set _npc.genitaltype = setup.pick(["Tight", "Average", "Loose"])>>
+		<<set _npc.breastsize   = setup.pick(setup.breastsize)>>
 	<</if>>
 
 	<<set _npc.trans = "Cisgender">>
@@ -150,14 +151,11 @@
 	**********************/
 	/* Local anthro options (mirrors EnsureSpeciesData defaults) */
 	<<set $nonHumanTraitsOptions = $nonHumanTraitsOptions || {
-		anthroType: ["Furry", "Scalie", "Avian"],
-		furryType:  ["Canine", "Bunny", "Feline", "Bear", "Wolf", "Goat", "Mouse", "Pig", "Fox", "Other"],
-		scalieType: ["Lizard", "Dragon", "Alligator", "Crocodile"],
-		avianType:  ["Duck", "Parrot", "Chicken", "Eagle", "Raven"]
+		anthroType: setup.anthroGroup,
+		furryType:  setup.furryTypes,
+		scalieType: setup.scalieTypes,
+		avianType:  setup.avianTypes
 	}>>
-
-	<<set $anthroColors  = $anthroColors  || ["Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green"]>>
-	<<set $anthroPatterns = $anthroPatterns || ["Solid", "Striped", "Spotted", "Patterned"]>>
 
 	<<if _npc.species is "Anthro">>
 		<<set _npc.anthro = _npc.anthro || {}>>

@@ -9681,7 +9681,7 @@ _n.name is taller
 
 	/* This last one is only for practicality */
 &lt;&lt;set $pages to {}&gt;&gt;
-&lt;&lt;set $anthroColors = [&quot;Black&quot;, &quot;Brown&quot;, &quot;Grey&quot;, &quot;White&quot;, &quot;Golden&quot;, &quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;, &quot;Rainbow&quot;]&gt;&gt;
+&lt;&lt;set $anthroColors = setup.furScalesColors&gt;&gt;
 &lt;&lt;set $anthroPatterns = [&quot;Solid&quot;, &quot;Striped&quot;, &quot;Spotted&quot;, &quot;Patterned&quot;]&gt;&gt;
 &lt;&lt;set $anthroTailTypes = [&quot;None&quot;, &quot;Short&quot;, &quot;Long&quot;, &quot;Bushy&quot;, &quot;Reptilian&quot;, &quot;Avian&quot;]&gt;&gt;
 &lt;&lt;set $anthroEarTypes = [&quot;None&quot;, &quot;Canine&quot;, &quot;Feline&quot;, &quot;Bunny&quot;, &quot;Bear&quot;, &quot;Pointed&quot;, &quot;Rounded&quot;]&gt;&gt;
@@ -11190,6 +11190,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 		&lt;&lt;set _npc.pronouns   = &quot;She/Her&quot;&gt;&gt;
 		&lt;&lt;set _npc.genitals   = &quot;Vagina&quot;&gt;&gt;
 		&lt;&lt;set _npc.genitaltype = setup.pick([&quot;Tight&quot;, &quot;Average&quot;, &quot;Loose&quot;])&gt;&gt;
+		&lt;&lt;set _npc.breastsize   = setup.pick(setup.breastsize)&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
 	&lt;&lt;set _npc.trans = &quot;Cisgender&quot;&gt;&gt;
@@ -11238,14 +11239,11 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	**********************/
 	/* Local anthro options (mirrors EnsureSpeciesData defaults) */
 	&lt;&lt;set $nonHumanTraitsOptions = $nonHumanTraitsOptions || {
-		anthroType: [&quot;Furry&quot;, &quot;Scalie&quot;, &quot;Avian&quot;],
-		furryType:  [&quot;Canine&quot;, &quot;Bunny&quot;, &quot;Feline&quot;, &quot;Bear&quot;, &quot;Wolf&quot;, &quot;Goat&quot;, &quot;Mouse&quot;, &quot;Pig&quot;, &quot;Fox&quot;, &quot;Other&quot;],
-		scalieType: [&quot;Lizard&quot;, &quot;Dragon&quot;, &quot;Alligator&quot;, &quot;Crocodile&quot;],
-		avianType:  [&quot;Duck&quot;, &quot;Parrot&quot;, &quot;Chicken&quot;, &quot;Eagle&quot;, &quot;Raven&quot;]
+		anthroType: setup.anthroGroup,
+		furryType:  setup.furryTypes,
+		scalieType: setup.scalieTypes,
+		avianType:  setup.avianTypes
 	}&gt;&gt;
-
-	&lt;&lt;set $anthroColors  = $anthroColors  || [&quot;Black&quot;, &quot;Brown&quot;, &quot;Grey&quot;, &quot;White&quot;, &quot;Golden&quot;, &quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;]&gt;&gt;
-	&lt;&lt;set $anthroPatterns = $anthroPatterns || [&quot;Solid&quot;, &quot;Striped&quot;, &quot;Spotted&quot;, &quot;Patterned&quot;]&gt;&gt;
 
 	&lt;&lt;if _npc.species is &quot;Anthro&quot;&gt;&gt;
 		&lt;&lt;set _npc.anthro = _npc.anthro || {}&gt;&gt;
@@ -12224,7 +12222,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         _hairmed to [&quot;--&quot;, &quot;Bob Cut&quot;, &quot;Long (Long Bob)&quot;, &quot;Pageboy&quot;, &quot;Shag cut&quot;, &quot;Shoulder Length Waves&quot;, &quot;Afro&quot;, &quot;Mullet&quot;, &quot;Wolf Cut&quot;, &quot;Mid-length Dreads&quot;],
         _hairlong to [&quot;--&quot;,&quot;Straight and Sleek&quot;, &quot;Loose Waves&quot;, &quot;Curly volume&quot;, &quot;Braided&quot;, &quot;Ponytail&quot;, &quot;Pigtails&quot;, &quot;Space Buns&quot;, &quot;Dreadlocks&quot;, &quot;Half-Up Half Down&quot;],
         _hairmisc to [&quot;--&quot;,&quot;Spiky Anime&quot;,&quot;Wild Mane&quot;, &quot;Flowing Magical Locks&quot;, &quot;Asymmetrial Cut&quot;, &quot;Gravity-defying spikes&quot;, &quot;Shaved Pattern Designs&quot;, &quot;Elemental Hair&quot;],
-        _haircolour to [&quot;Black&quot;, &quot;Brown&quot;, &quot;Blonde&quot;, &quot;Red&quot;, &quot;White&quot;, &quot;Grey&quot;, &quot;Blue&quot;, &quot;Green&quot;, &quot;Purple&quot;]
+        _haircolour to setup.haircolor
     &gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
@@ -12284,22 +12282,22 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 ********************************/
 &lt;&lt;widget &quot;Randomiser&quot;&gt;&gt;
     &lt;&lt;set
-    	$mc.species to either (&quot;Human&quot;, &quot;Anthro&quot;),
+    	$mc.species to either (setup.species),
         $mc.name to either (&quot;Suzette&quot;, &quot;Maribelle&quot;, &quot;Francine&quot;, &quot;Thomas&quot;, &quot;Charles&quot;, &quot;Alfonso&quot;, &quot;Riley&quot;, &quot;Blake&quot;, &quot;Taylor&quot;,&quot;Jay&quot;,&quot;Susan&quot;,&quot;Micheal&quot;,&quot;Jamie&quot;,&quot;Kris&quot;),
         $mc.surname to either(&quot;Vanilla&quot;, &quot;Kerr&quot;, &quot;Silva&quot;),
-        $mc.gender to either(&quot;Female&quot;, &quot;Male&quot;),
+        $mc.gender to either(setup.genders),
         $mc.sexpref to either(&quot;Dom&quot;,&quot;Sub&quot;,&quot;Switch&quot;),
         $mc.sexu to either(&quot;Heterosexual&quot;, &quot;Homosexual&quot;, &quot;Bisexual&quot;, &quot;Pansexual&quot;, &quot;Asexual&quot;),
         $mc.pronouns to either(&quot;She/Her&quot;, &quot;He/Him&quot;, &quot;They/Them (singular)&quot;, &quot;They/Them (plural)&quot;),
         $mc.age to random(18, 78),
         $heterochromia to either(true, false),
-        $skin.color to either(&quot;Pale&quot;, &quot;Fair&quot;, &quot;Tan&quot;, &quot;Olive&quot;, &quot;Brown&quot;, &quot;Ebony&quot; ),
+        $skin.color to either(setup.skincolor),
         $mc.bodyheight to either(&quot;Very Short&quot;, &quot;Short&quot;, &quot;Average&quot;, &quot;Tall&quot;, &quot;Very Tall&quot;),
         $mc.bodyweight to either(&quot;Skinny&quot;, &quot;Slender&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Huge&quot;, &quot;Fat&quot;),
         $mc.bodymusc to either(&quot;Soft&quot;, &quot;Light Muscles&quot;, &quot;Toned&quot;, &quot;Muscular&quot;, &quot;Ripped&quot;),
         $mc.assSize to either(&quot;Flat&quot;,&quot;Tiny&quot;,&quot;Small&quot;,&quot;Round&quot;,&quot;Large&quot;,&quot;Huge&quot;),
-       $mc.personality to either(&quot;Friendly&quot;,  &quot;Shy&quot;,  &quot;Confident&quot;,  &quot;Sarcastic&quot;,  &quot;Serious&quot;,  &quot;Optimistic&quot;,  &quot;Pessimistic&quot;, &quot;Caring&quot;, &quot;Aggressive&quot;,  &quot;Lazy&quot;, &quot;Energetic&quot;,  &quot;Intelligent&quot;, &quot;Naive&quot;, &quot;Funny&quot;, &quot;Calm&quot;, &quot;Anxious&quot;,  &quot;Rebellious&quot;, &quot;Loyal&quot;, &quot;Greedy&quot;),
-       $mc.species to either(&quot;Human&quot;,&quot;Anthro&quot;)&gt;&gt;
+       $mc.personality to either(&quot;Friendly&quot;, &quot;Shy&quot;,  &quot;Confident&quot;, &quot;Sarcastic&quot;, &quot;Serious&quot;, &quot;Optimistic&quot;, &quot;Pessimistic&quot;, &quot;Caring&quot;, &quot;Aggressive&quot;, &quot;Lazy&quot;, &quot;Energetic&quot;, &quot;Intelligent&quot;, &quot;Naive&quot;, &quot;Funny&quot;, &quot;Calm&quot;, &quot;Anxious&quot;, &quot;Rebellious&quot;, &quot;Loyal&quot;, &quot;Greedy&quot;),
+       $mc.species to either(setup.species)&gt;&gt;
     &lt;&lt;if $mc.species is &quot;Anthro&quot;&gt;&gt;
         &lt;&lt;set $skin.color to null&gt;&gt;
     	&lt;&lt;set $mc.anthro.group to either(&quot;Furry&quot;,&quot;Scalie&quot;,&quot;Avian&quot;)&gt;&gt;
@@ -12335,10 +12333,10 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
             &lt;&lt;set 
                 $hair to {},
                 $hair.style to either(&quot;Buzz cut&quot;, &quot;Crew Cut&quot;,  &quot;Ceaser cut&quot;, &quot;Undercut&quot;, &quot;Faux Hawk&quot;, &quot;Pixie Cut&quot;, &quot;Bowl Cut&quot;, &quot;Curly Crop&quot;, &quot;Shaved Sides&quot;, &quot;Bob Cut&quot;, &quot;Long (Long Bob)&quot;, &quot;Pageboy&quot;, &quot;Shag cut&quot;, &quot;Shoulder Length Waves&quot;, &quot;Afro&quot;, &quot;Mullet&quot;, &quot;Wolf Cut&quot;, &quot;Mid-length Dreads&quot; ,&quot;Straight and Sleek&quot;, &quot;Loose Waves&quot;, &quot;Curly volume&quot;, &quot;Braided&quot;, &quot;Ponytail&quot;, &quot;Pigtails&quot;, &quot;Space Buns&quot;, &quot;Dreadlocks&quot;, &quot;Half-Up Half Down&quot;, &quot;Spiky Anime&quot;, &quot;Wild Mane&quot;, &quot;Flowing Magical Locks&quot;, &quot;Asymmetrial Cut&quot;, &quot;Gravity-defying spikes&quot;, &quot;Shaved Pattern Designs&quot;, &quot;Elemental Hair&quot;),
-                $hair.colour to either(&quot;Black&quot;, &quot;Brown&quot;, &quot;Auburn&quot;, &quot;Red&quot;, &quot;Blond&quot;, &quot;White&quot;,&quot;Pink&quot;,&quot;Green&quot;,&quot;Purple&quot;, &quot;Orange&quot;,&quot;Blue&quot;)&gt;&gt;
+                $hair.colour to either(setup.haircolor)&gt;&gt;
 
     &lt;&lt;if $mc.gender is &quot;Female&quot;&gt;&gt;
-    	&lt;&lt;set $mc.breastsize to either (&quot;Flat&quot;,&quot;Small&quot;,&quot;Average&quot;,&quot;Large&quot;,&quot;Busty&quot;)&gt;&gt;
+    	&lt;&lt;set $mc.breastsize to either (setup.breastsize)&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 

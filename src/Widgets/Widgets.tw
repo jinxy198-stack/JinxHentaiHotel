@@ -370,7 +370,7 @@
         _hairmed to ["--", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads"],
         _hairlong to ["--","Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down"],
         _hairmisc to ["--","Spiky Anime","Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair"],
-        _haircolour to ["Black", "Brown", "Blonde", "Red", "White", "Grey", "Blue", "Green", "Purple"]
+        _haircolour to setup.haircolor
     >>
 <</widget>>
 
@@ -430,22 +430,22 @@
 ********************************/
 <<widget "Randomiser">>
     <<set
-    	$mc.species to either ("Human", "Anthro"),
+    	$mc.species to either (setup.species),
         $mc.name to either ("Suzette", "Maribelle", "Francine", "Thomas", "Charles", "Alfonso", "Riley", "Blake", "Taylor","Jay","Susan","Micheal","Jamie","Kris"),
         $mc.surname to either("Vanilla", "Kerr", "Silva"),
-        $mc.gender to either("Female", "Male"),
+        $mc.gender to either(setup.genders),
         $mc.sexpref to either("Dom","Sub","Switch"),
         $mc.sexu to either("Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"),
         $mc.pronouns to either("She/Her", "He/Him", "They/Them (singular)", "They/Them (plural)"),
         $mc.age to random(18, 78),
         $heterochromia to either(true, false),
-        $skin.color to either("Pale", "Fair", "Tan", "Olive", "Brown", "Ebony" ),
+        $skin.color to either(setup.skincolor),
         $mc.bodyheight to either("Very Short", "Short", "Average", "Tall", "Very Tall"),
         $mc.bodyweight to either("Skinny", "Slender", "Average", "Large", "Huge", "Fat"),
         $mc.bodymusc to either("Soft", "Light Muscles", "Toned", "Muscular", "Ripped"),
         $mc.assSize to either("Flat","Tiny","Small","Round","Large","Huge"),
-       $mc.personality to either("Friendly",  "Shy",  "Confident",  "Sarcastic",  "Serious",  "Optimistic",  "Pessimistic", "Caring", "Aggressive",  "Lazy", "Energetic",  "Intelligent", "Naive", "Funny", "Calm", "Anxious",  "Rebellious", "Loyal", "Greedy"),
-       $mc.species to either("Human","Anthro")>>
+       $mc.personality to either("Friendly", "Shy",  "Confident", "Sarcastic", "Serious", "Optimistic", "Pessimistic", "Caring", "Aggressive", "Lazy", "Energetic", "Intelligent", "Naive", "Funny", "Calm", "Anxious", "Rebellious", "Loyal", "Greedy"),
+       $mc.species to either(setup.species)>>
     <<if $mc.species is "Anthro">>
         <<set $skin.color to null>>
     	<<set $mc.anthro.group to either("Furry","Scalie","Avian")>>
@@ -471,20 +471,20 @@
         <<set $mc.penislength to null>>
     <</if>>
     <<if $heterochromia is false>>
-            <<set $mc.eyes to either("White", "Grey", "Golden", "Green", "Blue", "Maroon", "Brown", "Black", "Red", "Pink", "Purple", "Lime", "Seafoam", "Cream")>>
+            <<set $mc.eyes to either(setup.eyecolor)>>
         <<else>>
             <<set 
-                _eyesleft to either("White", "Grey", "Golden", "Green", "Blue", "Maroon", "Brown", "Black", "Red", "Pink", "Purple", "Lime", "Seafoam", "Cream"),
-                _eyesright to either("White", "Grey", "Golden", "Green", "Blue", "Maroon", "Brown", "Black", "Red", "Pink", "Purple", "Lime", "Seafoam", "Cream"),
+                _eyesleft to either(setup.eyecolor),
+                _eyesright to either(setup.eyecolor),
                 $mc.eyes to _eyesleft + " and " + _eyesright >>
     <</if>>
             <<set 
                 $hair to {},
                 $hair.style to either("Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads" ,"Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky Anime", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair"),
-                $hair.colour to either("Black", "Brown", "Auburn", "Red", "Blond", "White","Pink","Green","Purple", "Orange","Blue")>>
+                $hair.colour to either(setup.haircolor)>>
 
     <<if $mc.gender is "Female">>
-    	<<set $mc.breastsize to either ("Flat","Small","Average","Large","Busty")>>
+    	<<set $mc.breastsize to either (setup.breastsize)>>
     <</if>>
 <</widget>>
 
