@@ -1,4 +1,56 @@
 :: Widgets [widget nobr] {"position":"400,25","size":"100,100"}
+
+<<widget "ResolvePhysique">>
+	<<set _m = $physique.muscle>>
+	<<set _p = $physique.plump>>
+
+    <<if _p is 0 >>
+        <<if _m is 0>>
+            <<set $physique.label = "Skinny">>
+        <<elseif _m is 1>>
+            <<set $physique.label = "Lean">>
+        <<elseif _m is 2>>
+            <<set $physique.label = "Wiry">>
+        <<elseif _m is 3>>
+            <<set $physique.label = "Ripped">>    
+        <</if>>
+    <<elseif _p is 1>>
+        <<if _m is 0>>
+            <<set $physique.label = "Thin">>
+        <<elseif _m is 1>>
+            <<set $physique.label = "Toned">>
+        <<elseif _m is 2>>
+            <<set $physique.label = "Lithe">>
+        <<elseif _m is 3>>
+            <<set $physique.label = "Muscular">>    
+        <</if>>
+    <<elseif _p is 2>>
+        <<if _m is 0>>
+            <<set $physique.label = "Plump">>
+        <<elseif _m = 1>>
+            <<set $physique.label = "Thick-Bodied">>
+        <<elseif _m is 2>>
+            <<set $physique.label = "Brawny">>
+        <<elseif _m is 3>>
+            <<set $physique.label = "Ample">>    
+        <</if>>
+    <<elseif _p is 3>>
+        <<if _m is 0>>
+            <<set $physique.label = "Round">>
+        <<elseif _m is 1>>
+            <<set $physique.label = "Full-Figured">>
+        <<elseif _m is 2>>
+            <<set $physique.label = "Well-padded">>
+        <<elseif _m is 3>>
+            <<set $physique.label = "Stocky">>    
+        <</if>>
+    <</if>>
+
+<<set $mc.physique = $physique.label>>
+<</widget>>
+
+    
+
 <<widget "SetNPCBodyType">>
 	/* choose NPC: arg 0 or $ui.npc */
 	<<set _npc = (_args.length > 0) ? _args[0] : $ui.npc>>
@@ -419,8 +471,6 @@
 <<widget "BodyBuild">>
     <<set 
         _height to ["Very Short", "Short", "Average", "Tall", "Very Tall"],
-        _type to ["Skinny", "Slender", "Average", "Large", "Huge"],
-        _muscle to ["Soft", "Light Muscles", "Toned", "Muscular", "Ripped"],
         _breast to setup.breastsize
     >>
 <</widget>>
@@ -441,8 +491,7 @@
         $heterochromia to either(true, false),
         $skin.color to either(setup.skincolor),
         $mc.bodyheight to either(setup.height),
-        $mc.bodyweight to either("Skinny", "Slender", "Average", "Large", "Huge", "Fat"),
-        $mc.bodymusc to either("Soft", "Light Muscles", "Toned", "Muscular", "Ripped"),
+        $mc.physique to either(setup.physique),
         $mc.assSize to either("Flat","Tiny","Small","Round","Large","Huge"),
        $mc.personality to either("Friendly", "Shy",  "Confident", "Sarcastic", "Serious", "Optimistic", "Pessimistic", "Caring", "Aggressive", "Lazy", "Energetic", "Intelligent", "Naive", "Funny", "Calm", "Anxious", "Rebellious", "Loyal", "Greedy"),
        $mc.species to either(setup.species)>>
@@ -631,8 +680,7 @@
         $skin.color to "Tan",
         $skin.features to [],
         $mc.bodyheight to "Average",
-        $mc.bodyweight to "Thin",
-        $mc.bodymusc to "Soft",
+        $mc.physique to "Thin",
         $mc.personality to "Kind",
         $mc.genitals to "Penis",
         $mc.penislength to "Average",
@@ -667,8 +715,7 @@
         $skin.color to "Tan",
         $skin.features to [],
         $mc.bodyheight to "Short",
-        $mc.bodyweight to "Thin",
-        $mc.bodymusc to "Soft",
+        $mc.physique to "Thin",
         $mc.personality to "Kind",
         $mc.genitals to "Penis",
         $mc.penislength to "Tiny",
@@ -703,8 +750,7 @@
         $skin.color to "Tan",
         $skin.features to [],
         $mc.bodyheight to "Short",
-        $mc.bodyweight to "Thin",
-        $mc.bodymusc to "Soft",
+        $mc.physique to "Thin",
         $mc.breastsize to "Flat",
         $mc.personality to "Kind",
         $mc.genitals to "Vagina",
@@ -739,8 +785,7 @@
         $skin.color to "Tan",
         $skin.features to [],
         $mc.bodyheight to "Average",
-        $mc.bodyweight to "Thin",
-        $mc.bodymusc to "Soft",
+        $mc.physique to "Thin",
         $mc.personality to "Kind",
         $mc.genitals to "Penis",
         $mc.penislength to "Average",
@@ -774,8 +819,7 @@
         $skin.color to "Tan",
         $skin.features to [],
         $mc.bodyheight to "Average",
-        $mc.bodyweight to "Thin",
-        $mc.bodymusc to "Soft",
+        $mc.physique to "Thin",
         $mc.breastsize to "Small",
         $mc.personality to "Kind",
         $mc.genitals to "Vagina",
@@ -809,8 +853,7 @@
         $skin.color to "Tan",
         $skin.features to [],
         $mc.bodyheight to "Tall",
-        $mc.bodyweight to "Thin",
-        $mc.bodymusc to "Soft",
+        $mc.physique to "Thin",
         $mc.breastsize to "Large",
         $mc.personality to "Kind",
         $mc.genitals to "Vagina",
@@ -845,8 +888,7 @@
         $skin.color to "Tan",
         $skin.features to [],
         $mc.bodyheight to "Tall",
-        $mc.bodyweight to "Thin",
-        $mc.bodymusc to "Soft",
+        $mc.physique to "Thin",
         $mc.personality to "Kind",
         $mc.genitals to "Penis",
         $mc.penislength to "Average",

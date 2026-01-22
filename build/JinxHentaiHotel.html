@@ -2457,6 +2457,24 @@ setup.vaginalQuotes = {
   }
 };
 /* twine-user-script #4: "StoryScript" */
+/* for the body slider */
+window.SugarCubeInput = function (el) {
+	const path = el.dataset.var;
+	if (!path) return;
+
+	const parts = path.replace(/^\$/, "").split(".");
+	let obj = State.variables;
+
+	for (let i = 0; i < parts.length - 1; i++) {
+		obj = obj[parts[i]];
+		if (!obj) return;
+	}
+
+	obj[parts[parts.length - 1]] = Number(el.value);
+};
+
+
+
 /* === Affection helpers + binder (place in Story JavaScript) === */
 (function () {
 	/* ------- binder (no timers) ------- */
@@ -2990,14 +3008,16 @@ setup.snack={
         "flags": []
     },
 };
-/* twine-user-script #7: "database_people" */
+/* twine-user-script #7: "database_names" */
+setup.names=[
+    "Alex", "Ash", "Aspen", "Avery", "Aris", "Atlas", "Aiden", "Angel", "Arden", "Ari", "Azul", "Bailey","Blair", "Blake", "Brook", "Bryce","Briar", "Bellamy", "Bex", "Blue", "Bowie", "Cameron", "Casey","Charlie", "Chris", "Corey", "Cove", "Cypress", "Carter", "Calyx", "Cy", "Dakota", "Dallas", "Darcy", "Devin", "Drew", "Delta", "Denali", "Dior", "Dusty", "Elliot", "Emerson", "Eden", "Echo", "Evan", "Elian","Ellis", "Ember", "Ever", "Ezri", "Finley", "Frankie", "Fallon", "Fox", "Flynn", "Fable", "Frost", "Florin", "Gray", "Gale", "Gemini", "Glenn", "Greer", "Goldie","Genesis", "Grove", "Harper", "Hayden", "Hollis", "Hunter","Harlow", "Halo", "Haven", "Hero", "Indigo", "Ira","Izzy", "Iman", "Io", "Iris", "Ivory", "Jordan", "Jamie", "Jesse", "Jaden", "Jules", "Justice", "Jory", "Jinx", "Kai", "Kendall", "Kennedy", "Kit", "Knox", "Kieran", "Kestrel", "Kyrie", "Logan", "Lane", "Lennox", "Luca", "Leslie", "Lake", "Lux", "Lior","Linden", "Morgan", "Micah", "Marley", "Mason", "Max", "Milan", "Monroe", "Moon","Merritt", "Noel", "Nova", "Nico", "Navy", "Nile", "North", "Nyx", "Oakley", "Ocean", "Orion", "Onyx", "Ollie", "Opal", "Parker", "Phoenix", "Peyton", "Perry", "Prism", "Poet", "Pike", "Quinn", "Quest", "Quincy", "Riley", "River", "Rowan","Reese", "Robin", "Ren", "Rogue", "Rain", "Sage", "Sky", "Sawyer", "Spencer", "Sidney", "Shiloh", "Sol", "Storm", "Sutton", "Taylor", "Tatum", "Theo", "Tristan", "True", "Timber", "Tonic", "Uma", "Urban", "Val", "Vesper", "Vale","Venus", "Vireo", "Wren", "Winter", "Wilder", "West", "Whitley", "Xan", "Xavi","Xen", "Yael", "Yves", "Yuki", "Zion", "Zane", "Zephyr", "Zuri", "Zen",
+];
+/* twine-user-script #8: "database_people" */
 setup.species = [
-    "Human",
-    "Anthro",
+    "Human", "Anthro",
 ];
 setup.genders= [
-    "Male",
-    "Female",
+    "Male", "Female",
 ];
 
 setup.eyecolor= [
@@ -3009,14 +3029,14 @@ setup.haircolor= [
 ];
 
 setup.skincolor= [
-    "Pale", "Fair", "Tan", "Olive", "Brown", "Ebony"
+    "Pale", "Fair", "Tan", "Olive", "Brown", "Ebony",
 ];
 
 setup.height=[
     "Very Short", "Short", "Average", "Tall", "Very Tall",
 ];
 setup.anthroGroup= [
-"Furry", "Scalie", "Avian",
+    "Furry", "Scalie", "Avian",
 ];
 
 setup.furryTypes=[
@@ -3040,9 +3060,21 @@ setup.anthroPatterns=[
 ];
 
 setup.breastsize=[
-    "Flat", "Small", "Average","Large", "Busty",
+    "Flat", "Tiny", "Small", "Pert", "Modest", "Perky", "Full", "Large", "Ample", "Massive", "Enormous",
 ];
-/* twine-user-script #8: "database_roomtypes" */
+
+setup.physique=[
+    "Skinny","Lean","Wiry","Ripped","Thin","Toned","Lithe","muscular","Plump","Thick-bodied","Brawny","Ample","Round","Full figured","Well-padded","Stocky",
+];
+
+setup.assSize=[
+    "Skinny", "Slender", "Slim", "Tight", "Modest", "Round", "Muscular", "Plump", "Curvaceous", "Well-padded", "Thick", "Large", "Huge",
+];
+
+setup.height=[
+    "very short", "rather short", "short", "somewhat short", "average-height", "average-height", "somewhat tall", "tall", "rather tall", "very tall", "towering",
+];
+/* twine-user-script #9: "database_roomtypes" */
 setup.RoomTypes = {};
 
 setup.RoomTypes.db = {
@@ -3259,7 +3291,7 @@ setup.RoomTypes.furniture = {
         flags: ["vertical surface", "unconventional"],
     },
 };
-/* twine-user-script #9: "database_sex" */
+/* twine-user-script #10: "database_sex" */
 setup.sexpositions = {
     // label: player-readable label
     // frequency: how often an NPC chooses this position
@@ -4989,20 +5021,61 @@ Consent is required.</tw-passagedata><tw-passagedata pid="5" name="CC-Confirm" t
     &lt;&lt;AgeGroupSet&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-* [[I&#39;d rather not share my age|Index-CC][$mc.age to &quot;{/}&quot;]]</tw-passagedata><tw-passagedata pid="7" name="CC-Build" tags="creation-page" position="1050,225" size="100,100">&lt;&lt;BodyBuild&gt;&gt;
+* [[I&#39;d rather not share my age|Index-CC][$mc.age to &quot;{/}&quot;]]</tw-passagedata><tw-passagedata pid="7" name="CC-Build" tags="creation-page nobr" position="1050,225" size="100,100">&lt;&lt;BodyBuild&gt;&gt;
 &lt;h1&gt;Set up the frame of the body&lt;/h1&gt;
 Tall, short, wide, thin... there are many ways to define how a body is framed. Below are examples of setting the PC&#39;s height, type, and musculature.
-
+&lt;br&gt;
 //How tall are you?// &lt;&lt;listbox &quot;$mc.bodyheight&quot;&gt;&gt;&lt;&lt;optionsfrom _height&gt;&gt;&lt;&lt;/listbox&gt;&gt;
-
-//What is your body type?// &lt;&lt;listbox &quot;$mc.bodyweight&quot;&gt;&gt;&lt;&lt;optionsfrom _type&gt;&gt;&lt;&lt;/listbox&gt;&gt;
-
-//How muscular are you?// &lt;&lt;listbox &quot;$mc.bodymusc&quot;&gt;&gt;&lt;&lt;optionsfrom _muscle&gt;&gt;&lt;&lt;/listbox&gt;&gt;
+&lt;br&gt;
 &lt;&lt;if $mc.gender is &quot;Female&quot;&gt;&gt;
 //What is your breast size?
 &lt;&lt;listbox &quot;$mc.breastsize&quot;&gt;&gt;&lt;&lt;optionsfrom _breast&gt;&gt;
 &lt;&lt;/listbox&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+&lt;br&gt;
+
+&lt;br&gt;
+&lt;label&gt;Muscle&lt;/label&gt;
+&lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;3&quot; step=&quot;1&quot;
+	value=&quot;&lt;&lt;print $physique.muscle&gt;&gt;&quot;
+	data-var=&quot;$physique.muscle&quot;
+	oninput=&quot;SugarCubeInput(this)&quot;&gt;
+
+
+
+&lt;span id=&quot;muscleVal&quot;&gt;&lt;/span&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;label&gt;Plumpness&lt;/label&gt;
+&lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;3&quot; step=&quot;1&quot;
+	value=&quot;&lt;&lt;print $physique.plump&gt;&gt;&quot;
+	data-var=&quot;$physique.plump&quot;
+	oninput=&quot;SugarCubeInput(this)&quot;&gt;
+
+
+
+&lt;span id=&quot;plumpVal&quot;&gt;&lt;/span&gt;
+
+&lt;hr&gt;
+
+&lt;b&gt;Physique:&lt;/b&gt; &lt;span id=&quot;physiqueLabel&quot;&gt;&lt;/span&gt;
+
+&lt;&lt;script&gt;&gt;
+$(document).one(&quot;:passagerender&quot;, function (ev) {
+	const $c = $(ev.content);
+
+	function update() {
+		new Wikifier(null, &quot;&lt;&lt;ResolvePhysique&gt;&gt;&quot;);
+		$c.find(&quot;#muscleVal&quot;).text(State.variables.physique.muscle);
+		$c.find(&quot;#plumpVal&quot;).text(State.variables.physique.plump);
+		$c.find(&quot;#physiqueLabel&quot;).text(State.variables.physique.label);
+	}
+
+	update();
+	$c.find(&quot;input[type=range]&quot;).on(&quot;input&quot;, update);
+});
+&lt;&lt;/script&gt;&gt;
 
 
 &lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="CC-Check" tags="nobr" position="200,400" size="100,100">&lt;&lt;MC-Create-body&gt;&gt;
@@ -5117,9 +5190,7 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
         &lt;td id=&quot;mc-build&quot;&gt;
             Height: $mc.bodyheight
             &lt;br&gt;
-            Type: $mc.bodyweight
-            &lt;br&gt;
-            Musculature: $mc.bodymusc
+            Physique: $mc.physique
             &lt;br&gt;
          &lt;&lt;if $mc.breastsize&gt;&gt;Breast Size: $mc.breastsize&lt;&lt;/if&gt;&gt;         
         &lt;/td&gt;
@@ -7927,7 +7998,7 @@ Wanna have aftercare or end the session?
 	&lt;&lt;/if&gt;&gt;
 	
 	/* Describe body type */
-	&lt;&lt;if _n.bodytype == &quot;Gaunt&quot;&gt;&gt;
+	&lt;&lt;if _n.physique == &quot;Gaunt&quot;&gt;&gt;
 	Their ribs stick out from their body due to how skinny they are.
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="Cowgirl-Dialogue" tags="Dialogue nobr" position="875,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
@@ -9506,7 +9577,14 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 &lt;&lt;button &quot;Credits&quot;&gt;&gt;&lt;&lt;PopupCredits&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $npcSeq = 0&gt;&gt;
+&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
+	muscle: 4,
+	plump: 4,
+	label: &quot;Average&quot;
+}&gt;&gt;
+
+
+&lt;&lt;set $npcSeq = 0&gt;&gt;
 &lt;&lt;set $npcs = []&gt;&gt;
 &lt;&lt;set $ui = {}&gt;&gt;
 &lt;&lt;set $lastNpc = null&gt;&gt;
@@ -9543,32 +9621,8 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
   	species: [&quot;Human&quot;,&quot;Anthro&quot;],
   	genders: [&quot;Male&quot;,&quot;Female&quot;],
   	givenNames: [
-      &quot;Alex&quot;,&quot;Ash&quot;,&quot;Aspen&quot;,&quot;Avery&quot;,&quot;Aris&quot;,&quot;Atlas&quot;,&quot;Aiden&quot;,&quot;Angel&quot;,&quot;Arden&quot;,&quot;Ari&quot;,&quot;Azul&quot;,
-      &quot;Bailey&quot;,&quot;Blair&quot;,&quot;Blake&quot;,&quot;Brook&quot;,&quot;Bryce&quot;,&quot;Briar&quot;,&quot;Bellamy&quot;,&quot;Bex&quot;,&quot;Blue&quot;,&quot;Bowie&quot;,
-      &quot;Cameron&quot;,&quot;Casey&quot;,&quot;Charlie&quot;,&quot;Chris&quot;,&quot;Corey&quot;,&quot;Cove&quot;,&quot;Cypress&quot;,&quot;Carter&quot;,&quot;Calyx&quot;,&quot;Cy&quot;,
-      &quot;Dakota&quot;,&quot;Dallas&quot;,&quot;Darcy&quot;,&quot;Devin&quot;,&quot;Drew&quot;,&quot;Delta&quot;,&quot;Denali&quot;,&quot;Dior&quot;,&quot;Dusty&quot;,
-      &quot;Elliot&quot;,&quot;Emerson&quot;,&quot;Eden&quot;,&quot;Echo&quot;,&quot;Evan&quot;,&quot;Elian&quot;,&quot;Ellis&quot;,&quot;Ember&quot;,&quot;Ever&quot;,&quot;Ezri&quot;,
-      &quot;Finley&quot;,&quot;Frankie&quot;,&quot;Fallon&quot;,&quot;Fox&quot;,&quot;Flynn&quot;,&quot;Fable&quot;,&quot;Frost&quot;,&quot;Florin&quot;,
-      &quot;Gray&quot;,&quot;Gale&quot;,&quot;Gemini&quot;,&quot;Glenn&quot;,&quot;Greer&quot;,&quot;Goldie&quot;,&quot;Genesis&quot;,&quot;Grove&quot;,
-      &quot;Harper&quot;,&quot;Hayden&quot;,&quot;Hollis&quot;,&quot;Hunter&quot;,&quot;Harlow&quot;,&quot;Halo&quot;,&quot;Haven&quot;,&quot;Hero&quot;,
-      &quot;Indigo&quot;,&quot;Ira&quot;,&quot;Izzy&quot;,&quot;Iman&quot;,&quot;Io&quot;,&quot;Iris&quot;,&quot;Ivory&quot;,
-      &quot;Jordan&quot;,&quot;Jamie&quot;,&quot;Jesse&quot;,&quot;Jaden&quot;,&quot;Jules&quot;,&quot;Justice&quot;,&quot;Jory&quot;,&quot;Jinx&quot;,
-      &quot;Kai&quot;,&quot;Kendall&quot;,&quot;Kennedy&quot;,&quot;Kit&quot;,&quot;Knox&quot;,&quot;Kieran&quot;,&quot;Kestrel&quot;,&quot;Kyrie&quot;,
-      &quot;Logan&quot;,&quot;Lane&quot;,&quot;Lennox&quot;,&quot;Luca&quot;,&quot;Leslie&quot;,&quot;Lake&quot;,&quot;Lux&quot;,&quot;Lior&quot;,&quot;Linden&quot;,
-      &quot;Morgan&quot;,&quot;Micah&quot;,&quot;Marley&quot;,&quot;Mason&quot;,&quot;Max&quot;,&quot;Milan&quot;,&quot;Monroe&quot;,&quot;Moon&quot;,&quot;Merritt&quot;,
-      &quot;Noel&quot;,&quot;Nova&quot;,&quot;Nico&quot;,&quot;Navy&quot;,&quot;Nile&quot;,&quot;North&quot;,&quot;Nyx&quot;,
-      &quot;Oakley&quot;,&quot;Ocean&quot;,&quot;Orion&quot;,&quot;Onyx&quot;,&quot;Ollie&quot;,&quot;Opal&quot;,
-      &quot;Parker&quot;,&quot;Phoenix&quot;,&quot;Peyton&quot;,&quot;Perry&quot;,&quot;Prism&quot;,&quot;Poet&quot;,&quot;Pike&quot;,
-      &quot;Quinn&quot;,&quot;Quest&quot;,&quot;Quincy&quot;,
-      &quot;Riley&quot;,&quot;River&quot;,&quot;Rowan&quot;,&quot;Reese&quot;,&quot;Robin&quot;,&quot;Ren&quot;,&quot;Rogue&quot;,&quot;Rain&quot;,
-      &quot;Sage&quot;,&quot;Sky&quot;,&quot;Sawyer&quot;,&quot;Spencer&quot;,&quot;Sidney&quot;,&quot;Shiloh&quot;,&quot;Sol&quot;,&quot;Storm&quot;,&quot;Sutton&quot;,
-      &quot;Taylor&quot;,&quot;Tatum&quot;,&quot;Theo&quot;,&quot;Tristan&quot;,&quot;True&quot;,&quot;Timber&quot;,&quot;Tonic&quot;,
-      &quot;Uma&quot;,&quot;Urban&quot;,
-      &quot;Val&quot;,&quot;Vesper&quot;,&quot;Vale&quot;,&quot;Venus&quot;,&quot;Vireo&quot;,
-      &quot;Wren&quot;,&quot;Winter&quot;,&quot;Wilder&quot;,&quot;West&quot;,&quot;Whitley&quot;,
-      &quot;Xan&quot;,&quot;Xavi&quot;,&quot;Xen&quot;,
-      &quot;Yael&quot;,&quot;Yves&quot;,&quot;Yuki&quot;,
-      &quot;Zion&quot;,&quot;Zane&quot;,&quot;Zephyr&quot;,&quot;Zuri&quot;,&quot;Zen&quot;
+      &quot;Alex&quot;, &quot;Ash&quot;, &quot;Aspen&quot;, &quot;Avery&quot;, &quot;Aris&quot;, &quot;Atlas&quot;, &quot;Aiden&quot;, &quot;Angel&quot;,&quot;Arden&quot;, &quot;Ari&quot;, &quot;Azul&quot;, &quot;Bailey&quot;,&quot;Blair&quot;, &quot;Blake&quot;, &quot;Brook&quot;, &quot;Bryce&quot;,&quot;Briar&quot;, &quot;Bellamy&quot;, &quot;Bex&quot;, &quot;Blue&quot;, &quot;Bowie&quot;, &quot;Cameron&quot;, &quot;Casey&quot;,&quot;Charlie&quot;, &quot;Chris&quot;, &quot;Corey&quot;, &quot;Cove&quot;, &quot;Cypress&quot;, &quot;Carter&quot;, &quot;Calyx&quot;, &quot;Cy&quot;, &quot;Dakota&quot;, &quot;Dallas&quot;, &quot;Darcy&quot;, &quot;Devin&quot;,&quot;Drew&quot;,&quot;Delta&quot;,&quot;Denali&quot;,&quot;Dior&quot;, &quot;Dusty&quot;, &quot;Elliot&quot;, &quot;Emerson&quot;, &quot;Eden&quot;,&quot;Echo&quot;, &quot;Evan&quot;,&quot;Elian&quot;,&quot;Ellis&quot;, &quot;Ember&quot;, &quot;Ever&quot;, &quot;Ezri&quot;, &quot;Finley&quot;, &quot;Frankie&quot;, &quot;Fallon&quot;, &quot;Fox&quot;, &quot;Flynn&quot;, &quot;Fable&quot;, &quot;Frost&quot;, &quot;Florin&quot;, &quot;Gray&quot;, &quot;Gale&quot;, &quot;Gemini&quot;,&quot;Glenn&quot;,&quot;Greer&quot;,&quot;Goldie&quot;,&quot;Genesis&quot;,&quot;Grove&quot;, &quot;Harper&quot;, &quot;Hayden&quot;,&quot;Hollis&quot;,&quot;Hunter&quot;,&quot;Harlow&quot;, &quot;Halo&quot;, &quot;Haven&quot;,&quot;Hero&quot;, &quot;Indigo&quot;, &quot;Ira&quot;,&quot;Izzy&quot;,&quot;Iman&quot;,&quot;Io&quot;,&quot;Iris&quot;, &quot;Ivory&quot;, &quot;Jordan&quot;, &quot;Jamie&quot;, &quot;Jesse&quot;, &quot;Jaden&quot;, &quot;Jules&quot;, &quot;Justice&quot;, &quot;Jory&quot;, &quot;Jinx&quot;, &quot;Kai&quot;, &quot;Kendall&quot;,&quot;Kennedy&quot;, &quot;Kit&quot;, &quot;Knox&quot;, &quot;Kieran&quot;, &quot;Kestrel&quot;, &quot;Kyrie&quot;, &quot;Logan&quot;, &quot;Lane&quot;, &quot;Lennox&quot;, &quot;Luca&quot;, &quot;Leslie&quot;, &quot;Lake&quot;, &quot;Lux&quot;, &quot;Lior&quot;,&quot;Linden&quot;, &quot;Morgan&quot;, &quot;Micah&quot;, &quot;Marley&quot;, &quot;Mason&quot;, &quot;Max&quot;, &quot;Milan&quot;, &quot;Monroe&quot;, &quot;Moon&quot;,&quot;Merritt&quot;, &quot;Noel&quot;, &quot;Nova&quot;, &quot;Nico&quot;, &quot;Navy&quot;, &quot;Nile&quot;, &quot;North&quot;, &quot;Nyx&quot;, &quot;Oakley&quot;, &quot;Ocean&quot;, &quot;Orion&quot;, &quot;Onyx&quot;, &quot;Ollie&quot;, &quot;Opal&quot;, &quot;Parker&quot;, &quot;Phoenix&quot;, &quot;Peyton&quot;, &quot;Perry&quot;, &quot;Prism&quot;, &quot;Poet&quot;, &quot;Pike&quot;, &quot;Quinn&quot;, &quot;Quest&quot;, &quot;Quincy&quot;, &quot;Riley&quot;, &quot;River&quot;, &quot;Rowan&quot;,&quot;Reese&quot;, &quot;Robin&quot;, &quot;Ren&quot;, &quot;Rogue&quot;, &quot;Rain&quot;, &quot;Sage&quot;, &quot;Sky&quot;, &quot;Sawyer&quot;, &quot;Spencer&quot;, &quot;Sidney&quot;, &quot;Shiloh&quot;, &quot;Sol&quot;,&quot;Storm&quot;, &quot;Sutton&quot;, &quot;Taylor&quot;, &quot;Tatum&quot;, &quot;Theo&quot;, &quot;Tristan&quot;, &quot;True&quot;, &quot;Timber&quot;, &quot;Tonic&quot;, &quot;Uma&quot;, &quot;Urban&quot;, &quot;Val&quot;, &quot;Vesper&quot;, &quot;Vale&quot;,&quot;Venus&quot;, &quot;Vireo&quot;, &quot;Wren&quot;, &quot;Winter&quot;, &quot;Wilder&quot;, &quot;West&quot;, &quot;Whitley&quot;,
+      &quot;Xan&quot;,&quot;Xavi&quot;,&quot;Xen&quot;, &quot;Yael&quot;, &quot;Yves&quot;, &quot;Yuki&quot;, &quot;Zion&quot;, &quot;Zane&quot;, &quot;Zephyr&quot;, &quot;Zuri&quot;, &quot;Zen&quot;
     ],
   	surnames: [&quot;Placeholder&quot;],
   	personalities: [
@@ -9585,18 +9639,25 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
       &quot;Flowing Magical Locks&quot;, &quot;Asymmetrial Cut&quot;, &quot;Gravity-defying spikes&quot;, 
       &quot;Shaved Pattern Designs&quot;, &quot;Elemental Hair&quot;,&quot;Bald&quot;
     ],
-  	haircolor: [&quot;Black&quot;, &quot;Brown&quot;, &quot;Blonde&quot;, &quot;Red&quot;, &quot;White&quot;, &quot;Grey&quot;, &quot;Blue&quot;, &quot;Green&quot;, &quot;Purple&quot;],
+  	haircolor: [
+      &quot;Black&quot;, &quot;Brown&quot;, &quot;Blonde&quot;, &quot;Red&quot;, &quot;White&quot;, &quot;Grey&quot;, &quot;Blue&quot;, &quot;Green&quot;, &quot;Purple&quot;
+      ],
   	facefeatures: [&quot;Freckles&quot;, &quot;Scar&quot;, &quot;Mole&quot;, &quot;Piercing&quot;, &quot;None&quot;],
   	skincolor: [&quot;Pale&quot;, &quot;Fair&quot;, &quot;Tan&quot;, &quot;Olive&quot;, &quot;Brown&quot;, &quot;Ebony&quot;],
   	skinfeatures: [&quot;Smooth&quot;, &quot;Freckled&quot;, &quot;Scarred&quot;, &quot;Tattooed&quot;, &quot;Birthmark&quot;, &quot;None&quot;],
-  	bodymusc: [&quot;Soft&quot;, &quot;Light Muscles&quot;, &quot;Toned&quot;, &quot;Muscular&quot;, &quot;Ripped&quot;],
-    bodyweight:[&quot;Skinny&quot;, &quot;Slender&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Huge&quot;],
+    physique:[
+      &quot;Skinny&quot;,&quot;Lean&quot;,&quot;Wiry&quot;,&quot;Ripped&quot;,&quot;Thin&quot;,&quot;Toned&quot;,&quot;Lithe&quot;,&quot;muscular&quot;,&quot;Plump&quot;,&quot;Thick-bodied&quot;,&quot;Brawny&quot;,&quot;Ample&quot;,&quot;Round&quot;,&quot;Full figured&quot;,&quot;Well-padded&quot;,&quot;Stocky&quot;
+      ],
     bodyheight: [&quot;Mini&quot;, &quot;Tiny&quot;, &quot;Small&quot;, &quot;Very Short&quot;, &quot;Short&quot;, &quot;Average&quot;, &quot;Tall&quot;, &quot;Very Tall&quot;, &quot;Towering&quot;, &quot;Gigantic&quot;, &quot;Colossal&quot;],
   	anthroGroups: [&quot;Furry&quot;, &quot;Scalie&quot;, &quot;Avian&quot;],
-  	furryTypes:  [&quot;Canine&quot;, &quot;Feline&quot;, &quot;Bunny&quot;, &quot;Fox&quot;, &quot;Bear&quot;, &quot;Goat&quot;, &quot;Mouse&quot;, &quot;Pig&quot;, &quot;Other&quot;],
+  	furryTypes:  [
+      &quot;Canine&quot;, &quot;Feline&quot;, &quot;Bunny&quot;, &quot;Fox&quot;, &quot;Bear&quot;, &quot;Goat&quot;, &quot;Mouse&quot;, &quot;Pig&quot;, &quot;Other&quot;
+    ],
   	scalieTypes: [&quot;Lizard&quot;, &quot;Dragon&quot;, &quot;Alligator&quot;, &quot;Crocodile&quot;],
   	avianTypes:  [&quot;Duck&quot;, &quot;Parrot&quot;, &quot;Chicken&quot;, &quot;Eagle&quot;, &quot;Hawk&quot;, &quot;Owl&quot;],
-  	furScalesColors: [&quot;Black&quot;, &quot;Brown&quot;, &quot;Grey&quot;, &quot;White&quot;, &quot;Golden&quot;, &quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;,&quot;Rainbow&quot;],
+  	furScalesColors: [
+      &quot;Black&quot;, &quot;Brown&quot;, &quot;Grey&quot;, &quot;White&quot;, &quot;Golden&quot;, &quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;,&quot;Rainbow&quot;
+    ],
   	patterns: [&quot;Solid&quot;, &quot;Striped&quot;, &quot;Spotted&quot;, &quot;Patterned&quot;],
   	genitals:[&quot;Penis&quot;,&quot;Vagina&quot;],
   	genitaltype: [&quot;Phimosis&quot;,&quot;Uncut&quot;, &quot;Cut&quot;],
@@ -9818,8 +9879,7 @@ Updated as of 1/16/2026
     &lt;th&gt;Build:&lt;/th&gt;
     &lt;td id=&quot;mc-build&quot;&gt;
       Height: $mc.bodyheight &lt;br&gt;
-      Type: $mc.bodyweight   &lt;br&gt;
-      Musculature: $mc.bodymusc  &lt;br&gt;
+      Physique: $mc.physique &lt;br&gt;
       &lt;&lt;if $mc.breastsize&gt;&gt;Breast Size: $mc.breastsize&lt;&lt;/if&gt;&gt;  
 
     &lt;/td&gt;
@@ -9913,7 +9973,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;br&gt;
 &lt;&lt;if _n.skincolor&gt;&gt; &lt;b&gt;Skin:&lt;/b&gt; &lt;&lt;=_n.skincolor&gt;&gt; &lt;&lt;if _n.skinfeatures&gt;&gt;·  &lt;b&gt;Features:&lt;/b&gt; &lt;&lt;=_n.skinfeatures&gt;&gt;  &lt;&lt;/if&gt;&gt; &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
-&lt;b&gt;Build:&lt;/b&gt; &lt;&lt;=_n.bodymusc&gt;&gt; * &lt;b&gt;Height:&lt;/b&gt; &lt;&lt;=_n.bodyheight&gt;&gt; * &lt;b&gt;Weight:&lt;/b&gt; &lt;&lt;=_n.bodyweight&gt;&gt; *
+&lt;b&gt;Build:&lt;/b&gt; &lt;&lt;=_n.physique&gt;&gt; * &lt;b&gt;Height:&lt;/b&gt; &lt;&lt;=_n.bodyheight&gt;&gt;
 &lt;b&gt;Body Type: &lt;/b&gt; &lt;&lt;=_n.bodytype&gt;&gt;
 &lt;&lt;if _n.breastsize&gt;&gt;* &lt;b&gt;Breast Size:&lt;/b&gt; _n.breastsize &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
@@ -10419,7 +10479,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;	&lt;&lt;set _body = $mc.bodytype || &quot;Average&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;	&lt;&lt;set _body = $mc.physique || &quot;Average&quot;&gt;&gt;
 	&lt;&lt;set _material = _n.body.bodymaterial || null&gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
@@ -10698,17 +10758,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.assSize || &quot;Round&quot;&gt;&gt;
 	&lt;&lt;set _nsize = _n.assSize || &quot;Round&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
@@ -10759,17 +10819,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
 	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -10784,7 +10844,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 					setup.handjobQuotes.receive[_pref]
 					&amp;&amp; setup.handjobQuotes.receive[_pref].tiny
 					&amp;&amp; setup.handjobQuotes.receive[_pref].tiny[_mage]
-)
+				)
 				|| setup.handjobQuotes.receive.Neutral
 			&gt;&gt;
 		&lt;&lt;else&gt;&gt;
@@ -10817,17 +10877,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -10862,17 +10922,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -10908,17 +10968,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
+	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+	&lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -10955,17 +11015,18 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
+	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+	&lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;	&lt;&lt;set _action = $sex.action &gt;&gt;
+	&lt;&lt;/if&gt;&gt;	
+	&lt;&lt;set _action = $sex.action &gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
 
@@ -11005,17 +11066,18 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;	&lt;&lt;set _action = $sex.action &gt;&gt;
+	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;	
+	&lt;&lt;set _action = $sex.action &gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
 
@@ -11055,17 +11117,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
+	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -11164,8 +11226,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _skinColor   = _p.skincolor     || [&quot;Pale&quot;, &quot;Tan&quot;, &quot;Brown&quot;, &quot;Dark&quot;]&gt;&gt;
 	&lt;&lt;set _skinFeat    = _p.skinfeatures  || [&quot;Scars&quot;, &quot;Freckles&quot;]&gt;&gt;
 	&lt;&lt;set _heightPool  = _p.bodyheight    || [&quot;Very Short&quot;, &quot;Short&quot; ,&quot;Average&quot;, &quot;Tall&quot;, &quot;Very Tall&quot;]&gt;&gt;
-	&lt;&lt;set _weightPool  = _p.bodyweight    || [&quot;Thin&quot;, &quot;Average&quot;, &quot;Heavy&quot;, &quot;Large&quot;]&gt;&gt;
-	&lt;&lt;set _muscPool    = _p.bodymusc      || [&quot;Soft&quot;, &quot;Light Muscles&quot;, &quot;Toned&quot;, &quot;Muscular&quot;, &quot;Ripped&quot; ]&gt;&gt;
+	&lt;&lt;set _physiquePool  = _p.physique    || [&quot;Skinny&quot;,&quot;Lean&quot;,&quot;Wiry&quot;,&quot;Ripped&quot;,&quot;Thin&quot;,&quot;Toned&quot;,&quot;Lithe&quot;,&quot;muscular&quot;,&quot;Plump&quot;,&quot;Thick-bodied&quot;,&quot;Brawny&quot;,&quot;Ample&quot;,&quot;Round&quot;,&quot;Full figured&quot;,&quot;Well-padded&quot;,&quot;Stocky&quot;]&gt;&gt;
 	&lt;&lt;set _persPool    = _p.personalities || [&quot;Kind&quot;, &quot;Tough&quot;, &quot;Calm&quot;, &quot;Jolly&quot;, &quot;Timid&quot;, &quot;Brave&quot;, &quot;Sassy&quot;, &quot;Mean&quot;]&gt;&gt;
 	&lt;&lt;set _assPool	   = _p.assSize		  || [&quot;Flat&quot;, &quot;Tiny&quot;, &quot;Small&quot;, &quot;Round&quot;, &quot;Large&quot;, &quot;Huge&quot;]&gt;&gt;
 	&lt;&lt;set _sexuPool    = _p.sexu          || [&quot;Heterosexual&quot;, &quot;Homosexual&quot;, &quot;Bisexual&quot;, &quot;Pansexual&quot;, &quot;Asexual&quot;]&gt;&gt;
@@ -11174,7 +11235,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	/**********************
 	    BASIC IDENTITY
 	**********************/
-	&lt;&lt;set _npc.name     = setup.pick(_names)&gt;&gt;
+	&lt;&lt;set _npc.name     = setup.pick(setup.names)&gt;&gt;
 	&lt;&lt;set _npc.nickname = &quot;&quot;&gt;&gt;
 	&lt;&lt;set _npc.surname  = setup.pick(_surnames)&gt;&gt;
 	
@@ -11228,9 +11289,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _npc.skinfeatures 	= setup.pick(_skinFeat)&gt;&gt;
 
 	&lt;&lt;set _npc.bodyheight   = setup.pick(_heightPool)&gt;&gt;
-	&lt;&lt;set _npc.bodyweight   = setup.pick(_weightPool)&gt;&gt;
-	&lt;&lt;set _npc.bodymusc     = setup.pick(_muscPool)&gt;&gt;
-	
+	&lt;&lt;set _npc.physique   = setup.pick(_physiquePool)&gt;&gt;
 	&lt;&lt;set _npc.personality  = setup.pick(_persPool)&gt;&gt;
 
 	&lt;&lt;set _npc.assSize      = setup.pick(_assPool)&gt;&gt;
@@ -11854,7 +11913,58 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;set _npc.petname = &quot;pet&quot;&gt;&gt;	
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="Widgets" tags="widget nobr" position="400,25" size="100,100">&lt;&lt;widget &quot;SetNPCBodyType&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="Widgets" tags="widget nobr" position="400,25" size="100,100">&lt;&lt;widget &quot;ResolvePhysique&quot;&gt;&gt;
+	&lt;&lt;set _m = $physique.muscle&gt;&gt;
+	&lt;&lt;set _p = $physique.plump&gt;&gt;
+
+    &lt;&lt;if _p is 0 &gt;&gt;
+        &lt;&lt;if _m is 0&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Skinny&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 1&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Lean&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 2&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Wiry&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 3&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Ripped&quot;&gt;&gt;    
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;elseif _p is 1&gt;&gt;
+        &lt;&lt;if _m is 0&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Thin&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 1&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Toned&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 2&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Lithe&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 3&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Muscular&quot;&gt;&gt;    
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;elseif _p is 2&gt;&gt;
+        &lt;&lt;if _m is 0&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Plump&quot;&gt;&gt;
+        &lt;&lt;elseif _m = 1&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Thick-Bodied&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 2&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Brawny&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 3&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Ample&quot;&gt;&gt;    
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;elseif _p is 3&gt;&gt;
+        &lt;&lt;if _m is 0&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Round&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 1&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Full-Figured&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 2&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Well-padded&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 3&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Stocky&quot;&gt;&gt;    
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set $mc.physique = $physique.label&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+    
+
+&lt;&lt;widget &quot;SetNPCBodyType&quot;&gt;&gt;
 	/* choose NPC: arg 0 or $ui.npc */
 	&lt;&lt;set _npc = (_args.length &gt; 0) ? _args[0] : $ui.npc&gt;&gt;
 	&lt;&lt;if !_npc&gt;&gt;
@@ -12274,8 +12384,6 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;widget &quot;BodyBuild&quot;&gt;&gt;
     &lt;&lt;set 
         _height to [&quot;Very Short&quot;, &quot;Short&quot;, &quot;Average&quot;, &quot;Tall&quot;, &quot;Very Tall&quot;],
-        _type to [&quot;Skinny&quot;, &quot;Slender&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Huge&quot;],
-        _muscle to [&quot;Soft&quot;, &quot;Light Muscles&quot;, &quot;Toned&quot;, &quot;Muscular&quot;, &quot;Ripped&quot;],
         _breast to setup.breastsize
     &gt;&gt;
 &lt;&lt;/widget&gt;&gt;
@@ -12296,8 +12404,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         $heterochromia to either(true, false),
         $skin.color to either(setup.skincolor),
         $mc.bodyheight to either(setup.height),
-        $mc.bodyweight to either(&quot;Skinny&quot;, &quot;Slender&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Huge&quot;, &quot;Fat&quot;),
-        $mc.bodymusc to either(&quot;Soft&quot;, &quot;Light Muscles&quot;, &quot;Toned&quot;, &quot;Muscular&quot;, &quot;Ripped&quot;),
+        $mc.physique to either(setup.physique),
         $mc.assSize to either(&quot;Flat&quot;,&quot;Tiny&quot;,&quot;Small&quot;,&quot;Round&quot;,&quot;Large&quot;,&quot;Huge&quot;),
        $mc.personality to either(&quot;Friendly&quot;, &quot;Shy&quot;,  &quot;Confident&quot;, &quot;Sarcastic&quot;, &quot;Serious&quot;, &quot;Optimistic&quot;, &quot;Pessimistic&quot;, &quot;Caring&quot;, &quot;Aggressive&quot;, &quot;Lazy&quot;, &quot;Energetic&quot;, &quot;Intelligent&quot;, &quot;Naive&quot;, &quot;Funny&quot;, &quot;Calm&quot;, &quot;Anxious&quot;, &quot;Rebellious&quot;, &quot;Loyal&quot;, &quot;Greedy&quot;),
        $mc.species to either(setup.species)&gt;&gt;
@@ -12486,8 +12593,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         $skin.color to &quot;Tan&quot;,
         $skin.features to [],
         $mc.bodyheight to &quot;Average&quot;,
-        $mc.bodyweight to &quot;Thin&quot;,
-        $mc.bodymusc to &quot;Soft&quot;,
+        $mc.physique to &quot;Thin&quot;,
         $mc.personality to &quot;Kind&quot;,
         $mc.genitals to &quot;Penis&quot;,
         $mc.penislength to &quot;Average&quot;,
@@ -12522,8 +12628,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         $skin.color to &quot;Tan&quot;,
         $skin.features to [],
         $mc.bodyheight to &quot;Short&quot;,
-        $mc.bodyweight to &quot;Thin&quot;,
-        $mc.bodymusc to &quot;Soft&quot;,
+        $mc.physique to &quot;Thin&quot;,
         $mc.personality to &quot;Kind&quot;,
         $mc.genitals to &quot;Penis&quot;,
         $mc.penislength to &quot;Tiny&quot;,
@@ -12558,8 +12663,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         $skin.color to &quot;Tan&quot;,
         $skin.features to [],
         $mc.bodyheight to &quot;Short&quot;,
-        $mc.bodyweight to &quot;Thin&quot;,
-        $mc.bodymusc to &quot;Soft&quot;,
+        $mc.physique to &quot;Thin&quot;,
         $mc.breastsize to &quot;Flat&quot;,
         $mc.personality to &quot;Kind&quot;,
         $mc.genitals to &quot;Vagina&quot;,
@@ -12594,8 +12698,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         $skin.color to &quot;Tan&quot;,
         $skin.features to [],
         $mc.bodyheight to &quot;Average&quot;,
-        $mc.bodyweight to &quot;Thin&quot;,
-        $mc.bodymusc to &quot;Soft&quot;,
+        $mc.physique to &quot;Thin&quot;,
         $mc.personality to &quot;Kind&quot;,
         $mc.genitals to &quot;Penis&quot;,
         $mc.penislength to &quot;Average&quot;,
@@ -12629,8 +12732,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         $skin.color to &quot;Tan&quot;,
         $skin.features to [],
         $mc.bodyheight to &quot;Average&quot;,
-        $mc.bodyweight to &quot;Thin&quot;,
-        $mc.bodymusc to &quot;Soft&quot;,
+        $mc.physique to &quot;Thin&quot;,
         $mc.breastsize to &quot;Small&quot;,
         $mc.personality to &quot;Kind&quot;,
         $mc.genitals to &quot;Vagina&quot;,
@@ -12664,8 +12766,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         $skin.color to &quot;Tan&quot;,
         $skin.features to [],
         $mc.bodyheight to &quot;Tall&quot;,
-        $mc.bodyweight to &quot;Thin&quot;,
-        $mc.bodymusc to &quot;Soft&quot;,
+        $mc.physique to &quot;Thin&quot;,
         $mc.breastsize to &quot;Large&quot;,
         $mc.personality to &quot;Kind&quot;,
         $mc.genitals to &quot;Vagina&quot;,
@@ -12700,8 +12801,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         $skin.color to &quot;Tan&quot;,
         $skin.features to [],
         $mc.bodyheight to &quot;Tall&quot;,
-        $mc.bodyweight to &quot;Thin&quot;,
-        $mc.bodymusc to &quot;Soft&quot;,
+        $mc.physique to &quot;Thin&quot;,
         $mc.personality to &quot;Kind&quot;,
         $mc.genitals to &quot;Penis&quot;,
         $mc.penislength to &quot;Average&quot;,

@@ -1,4 +1,11 @@
 :: StoryInit {"position":"25,25","size":"100,100"}
+<<set $physique = {
+	muscle: 4,
+	plump: 4,
+	label: "Average"
+}>>
+
+
 <<set $npcSeq = 0>>
 <<set $npcs = []>>
 <<set $ui = {}>>
@@ -36,32 +43,8 @@
   	species: ["Human","Anthro"],
   	genders: ["Male","Female"],
   	givenNames: [
-      "Alex","Ash","Aspen","Avery","Aris","Atlas","Aiden","Angel","Arden","Ari","Azul",
-      "Bailey","Blair","Blake","Brook","Bryce","Briar","Bellamy","Bex","Blue","Bowie",
-      "Cameron","Casey","Charlie","Chris","Corey","Cove","Cypress","Carter","Calyx","Cy",
-      "Dakota","Dallas","Darcy","Devin","Drew","Delta","Denali","Dior","Dusty",
-      "Elliot","Emerson","Eden","Echo","Evan","Elian","Ellis","Ember","Ever","Ezri",
-      "Finley","Frankie","Fallon","Fox","Flynn","Fable","Frost","Florin",
-      "Gray","Gale","Gemini","Glenn","Greer","Goldie","Genesis","Grove",
-      "Harper","Hayden","Hollis","Hunter","Harlow","Halo","Haven","Hero",
-      "Indigo","Ira","Izzy","Iman","Io","Iris","Ivory",
-      "Jordan","Jamie","Jesse","Jaden","Jules","Justice","Jory","Jinx",
-      "Kai","Kendall","Kennedy","Kit","Knox","Kieran","Kestrel","Kyrie",
-      "Logan","Lane","Lennox","Luca","Leslie","Lake","Lux","Lior","Linden",
-      "Morgan","Micah","Marley","Mason","Max","Milan","Monroe","Moon","Merritt",
-      "Noel","Nova","Nico","Navy","Nile","North","Nyx",
-      "Oakley","Ocean","Orion","Onyx","Ollie","Opal",
-      "Parker","Phoenix","Peyton","Perry","Prism","Poet","Pike",
-      "Quinn","Quest","Quincy",
-      "Riley","River","Rowan","Reese","Robin","Ren","Rogue","Rain",
-      "Sage","Sky","Sawyer","Spencer","Sidney","Shiloh","Sol","Storm","Sutton",
-      "Taylor","Tatum","Theo","Tristan","True","Timber","Tonic",
-      "Uma","Urban",
-      "Val","Vesper","Vale","Venus","Vireo",
-      "Wren","Winter","Wilder","West","Whitley",
-      "Xan","Xavi","Xen",
-      "Yael","Yves","Yuki",
-      "Zion","Zane","Zephyr","Zuri","Zen"
+      "Alex", "Ash", "Aspen", "Avery", "Aris", "Atlas", "Aiden", "Angel","Arden", "Ari", "Azul", "Bailey","Blair", "Blake", "Brook", "Bryce","Briar", "Bellamy", "Bex", "Blue", "Bowie", "Cameron", "Casey","Charlie", "Chris", "Corey", "Cove", "Cypress", "Carter", "Calyx", "Cy", "Dakota", "Dallas", "Darcy", "Devin","Drew","Delta","Denali","Dior", "Dusty", "Elliot", "Emerson", "Eden","Echo", "Evan","Elian","Ellis", "Ember", "Ever", "Ezri", "Finley", "Frankie", "Fallon", "Fox", "Flynn", "Fable", "Frost", "Florin", "Gray", "Gale", "Gemini","Glenn","Greer","Goldie","Genesis","Grove", "Harper", "Hayden","Hollis","Hunter","Harlow", "Halo", "Haven","Hero", "Indigo", "Ira","Izzy","Iman","Io","Iris", "Ivory", "Jordan", "Jamie", "Jesse", "Jaden", "Jules", "Justice", "Jory", "Jinx", "Kai", "Kendall","Kennedy", "Kit", "Knox", "Kieran", "Kestrel", "Kyrie", "Logan", "Lane", "Lennox", "Luca", "Leslie", "Lake", "Lux", "Lior","Linden", "Morgan", "Micah", "Marley", "Mason", "Max", "Milan", "Monroe", "Moon","Merritt", "Noel", "Nova", "Nico", "Navy", "Nile", "North", "Nyx", "Oakley", "Ocean", "Orion", "Onyx", "Ollie", "Opal", "Parker", "Phoenix", "Peyton", "Perry", "Prism", "Poet", "Pike", "Quinn", "Quest", "Quincy", "Riley", "River", "Rowan","Reese", "Robin", "Ren", "Rogue", "Rain", "Sage", "Sky", "Sawyer", "Spencer", "Sidney", "Shiloh", "Sol","Storm", "Sutton", "Taylor", "Tatum", "Theo", "Tristan", "True", "Timber", "Tonic", "Uma", "Urban", "Val", "Vesper", "Vale","Venus", "Vireo", "Wren", "Winter", "Wilder", "West", "Whitley",
+      "Xan","Xavi","Xen", "Yael", "Yves", "Yuki", "Zion", "Zane", "Zephyr", "Zuri", "Zen"
     ],
   	surnames: ["Placeholder"],
   	personalities: [
@@ -78,18 +61,25 @@
       "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", 
       "Shaved Pattern Designs", "Elemental Hair","Bald"
     ],
-  	haircolor: ["Black", "Brown", "Blonde", "Red", "White", "Grey", "Blue", "Green", "Purple"],
+  	haircolor: [
+      "Black", "Brown", "Blonde", "Red", "White", "Grey", "Blue", "Green", "Purple"
+      ],
   	facefeatures: ["Freckles", "Scar", "Mole", "Piercing", "None"],
   	skincolor: ["Pale", "Fair", "Tan", "Olive", "Brown", "Ebony"],
   	skinfeatures: ["Smooth", "Freckled", "Scarred", "Tattooed", "Birthmark", "None"],
-  	bodymusc: ["Soft", "Light Muscles", "Toned", "Muscular", "Ripped"],
-    bodyweight:["Skinny", "Slender", "Average", "Large", "Huge"],
+    physique:[
+      "Skinny","Lean","Wiry","Ripped","Thin","Toned","Lithe","muscular","Plump","Thick-bodied","Brawny","Ample","Round","Full figured","Well-padded","Stocky"
+      ],
     bodyheight: ["Mini", "Tiny", "Small", "Very Short", "Short", "Average", "Tall", "Very Tall", "Towering", "Gigantic", "Colossal"],
   	anthroGroups: ["Furry", "Scalie", "Avian"],
-  	furryTypes:  ["Canine", "Feline", "Bunny", "Fox", "Bear", "Goat", "Mouse", "Pig", "Other"],
+  	furryTypes:  [
+      "Canine", "Feline", "Bunny", "Fox", "Bear", "Goat", "Mouse", "Pig", "Other"
+    ],
   	scalieTypes: ["Lizard", "Dragon", "Alligator", "Crocodile"],
   	avianTypes:  ["Duck", "Parrot", "Chicken", "Eagle", "Hawk", "Owl"],
-  	furScalesColors: ["Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Rainbow"],
+  	furScalesColors: [
+      "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Rainbow"
+    ],
   	patterns: ["Solid", "Striped", "Spotted", "Patterned"],
   	genitals:["Penis","Vagina"],
   	genitaltype: ["Phimosis","Uncut", "Cut"],

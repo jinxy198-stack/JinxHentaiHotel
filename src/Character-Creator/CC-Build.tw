@@ -1,20 +1,59 @@
-:: CC-Build [creation-page] {"position":"1050,225","size":"100,100"}
+:: CC-Build [creation-page nobr] {"position":"1050,225","size":"100,100"}
 <<BodyBuild>>
 <h1>Set up the frame of the body</h1>
 Tall, short, wide, thin... there are many ways to define how a body is framed. Below are examples of setting the PC's height, type, and musculature.
-
+<br>
 //How tall are you?// <<listbox "$mc.bodyheight">><<optionsfrom _height>><</listbox>>
-
-//What is your body type?// <<listbox "$mc.bodyweight">><<optionsfrom _type>><</listbox>>
-
-//How muscular are you?// <<listbox "$mc.bodymusc">><<optionsfrom _muscle>><</listbox>>
+<br>
 <<if $mc.gender is "Female">>
 //What is your breast size?
 <<listbox "$mc.breastsize">><<optionsfrom _breast>>
 <</listbox>>
 <</if>>
+<br>
+
+<br>
+<label>Muscle</label>
+<input type="range" min="0" max="3" step="1"
+	value="<<print $physique.muscle>>"
+	data-var="$physique.muscle"
+	oninput="SugarCubeInput(this)">
+
+
+
+<span id="muscleVal"></span>
+
+<br><br>
+
+<label>Plumpness</label>
+<input type="range" min="0" max="3" step="1"
+	value="<<print $physique.plump>>"
+	data-var="$physique.plump"
+	oninput="SugarCubeInput(this)">
+
+
+
+<span id="plumpVal"></span>
+
+<hr>
+
+<b>Physique:</b> <span id="physiqueLabel"></span>
+
+<<script>>
+$(document).one(":passagerender", function (ev) {
+	const $c = $(ev.content);
+
+	function update() {
+		new Wikifier(null, "<<ResolvePhysique>>");
+		$c.find("#muscleVal").text(State.variables.physique.muscle);
+		$c.find("#plumpVal").text(State.variables.physique.plump);
+		$c.find("#physiqueLabel").text(State.variables.physique.label);
+	}
+
+	update();
+	$c.find("input[type=range]").on("input", update);
+});
+<</script>>
 
 
 <<button [[Confirm|Index-CC]]>><</button>>
-
-

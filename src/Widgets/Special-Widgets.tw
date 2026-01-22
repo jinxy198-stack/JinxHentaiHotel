@@ -73,8 +73,7 @@
 	<<set _skinColor   = _p.skincolor     || ["Pale", "Tan", "Brown", "Dark"]>>
 	<<set _skinFeat    = _p.skinfeatures  || ["Scars", "Freckles"]>>
 	<<set _heightPool  = _p.bodyheight    || ["Very Short", "Short" ,"Average", "Tall", "Very Tall"]>>
-	<<set _weightPool  = _p.bodyweight    || ["Thin", "Average", "Heavy", "Large"]>>
-	<<set _muscPool    = _p.bodymusc      || ["Soft", "Light Muscles", "Toned", "Muscular", "Ripped" ]>>
+	<<set _physiquePool  = _p.physique    || ["Skinny","Lean","Wiry","Ripped","Thin","Toned","Lithe","muscular","Plump","Thick-bodied","Brawny","Ample","Round","Full figured","Well-padded","Stocky"]>>
 	<<set _persPool    = _p.personalities || ["Kind", "Tough", "Calm", "Jolly", "Timid", "Brave", "Sassy", "Mean"]>>
 	<<set _assPool	   = _p.assSize		  || ["Flat", "Tiny", "Small", "Round", "Large", "Huge"]>>
 	<<set _sexuPool    = _p.sexu          || ["Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"]>>
@@ -83,7 +82,7 @@
 	/**********************
 	    BASIC IDENTITY
 	**********************/
-	<<set _npc.name     = setup.pick(_names)>>
+	<<set _npc.name     = setup.pick(setup.names)>>
 	<<set _npc.nickname = "">>
 	<<set _npc.surname  = setup.pick(_surnames)>>
 	
@@ -137,9 +136,7 @@
 	<<set _npc.skinfeatures 	= setup.pick(_skinFeat)>>
 
 	<<set _npc.bodyheight   = setup.pick(_heightPool)>>
-	<<set _npc.bodyweight   = setup.pick(_weightPool)>>
-	<<set _npc.bodymusc     = setup.pick(_muscPool)>>
-	
+	<<set _npc.physique   = setup.pick(_physiquePool)>>
 	<<set _npc.personality  = setup.pick(_persPool)>>
 
 	<<set _npc.assSize      = setup.pick(_assPool)>>

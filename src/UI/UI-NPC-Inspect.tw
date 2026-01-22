@@ -18,7 +18,7 @@
 <br>
 <<if _n.skincolor>> <b>Skin:</b> <<=_n.skincolor>> <<if _n.skinfeatures>>·  <b>Features:</b> <<=_n.skinfeatures>>  <</if>> <</if>>
 <br>
-<b>Build:</b> <<=_n.bodymusc>> * <b>Height:</b> <<=_n.bodyheight>> * <b>Weight:</b> <<=_n.bodyweight>> *
+<b>Build:</b> <<=_n.physique>> * <b>Height:</b> <<=_n.bodyheight>>
 <b>Body Type: </b> <<=_n.bodytype>>
 <<if _n.breastsize>>* <b>Breast Size:</b> _n.breastsize <</if>>
 <br>

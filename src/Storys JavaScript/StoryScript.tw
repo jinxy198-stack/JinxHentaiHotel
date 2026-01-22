@@ -1,5 +1,23 @@
 :: StoryScript [script]
 
+/* for the body slider */
+window.SugarCubeInput = function (el) {
+	const path = el.dataset.var;
+	if (!path) return;
+
+	const parts = path.replace(/^\$/, "").split(".");
+	let obj = State.variables;
+
+	for (let i = 0; i < parts.length - 1; i++) {
+		obj = obj[parts[i]];
+		if (!obj) return;
+	}
+
+	obj[parts[parts.length - 1]] = Number(el.value);
+};
+
+
+
 /* === Affection helpers + binder (place in Story JavaScript) === */
 (function () {
 	/* ------- binder (no timers) ------- */

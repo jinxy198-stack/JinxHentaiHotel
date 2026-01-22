@@ -1,12 +1,10 @@
 ::database_people [script]
 
 setup.species = [
-    "Human",
-    "Anthro",
+    "Human", "Anthro",
 ];
 setup.genders= [
-    "Male",
-    "Female",
+    "Male", "Female",
 ];
 
 setup.eyecolor= [
@@ -18,14 +16,14 @@ setup.haircolor= [
 ];
 
 setup.skincolor= [
-    "Pale", "Fair", "Tan", "Olive", "Brown", "Ebony"
+    "Pale", "Fair", "Tan", "Olive", "Brown", "Ebony",
 ];
 
 setup.height=[
     "Very Short", "Short", "Average", "Tall", "Very Tall",
 ];
 setup.anthroGroup= [
-"Furry", "Scalie", "Avian",
+    "Furry", "Scalie", "Avian",
 ];
 
 setup.furryTypes=[
@@ -49,5 +47,17 @@ setup.anthroPatterns=[
 ];
 
 setup.breastsize=[
-    "Flat", "Small", "Average","Large", "Busty",
+    "Flat", "Tiny", "Small", "Pert", "Modest", "Perky", "Full", "Large", "Ample", "Massive", "Enormous",
+];
+
+setup.physique=[
+    "Skinny","Lean","Wiry","Ripped","Thin","Toned","Lithe","muscular","Plump","Thick-bodied","Brawny","Ample","Round","Full figured","Well-padded","Stocky",
+];
+
+setup.assSize=[
+    "Skinny", "Slender", "Slim", "Tight", "Modest", "Round", "Muscular", "Plump", "Curvaceous", "Well-padded", "Thick", "Large", "Huge",
+];
+
+setup.height=[
+    "very short", "rather short", "short", "somewhat short", "average-height", "average-height", "somewhat tall", "tall", "rather tall", "very tall", "towering",
 ];
