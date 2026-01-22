@@ -158,20 +158,20 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
 <</if>> */
 
 <div>
-<<if $mc.body.ears>>
-You have a $mc.body.ears 
-<</if>>
+
+List of body parts:
 <br>
-<<if $mc.body.ears>>
-You have a $mc.body.feet 
-<</if>>
-<br>
-<<if $mc.body.tail>>
-You have a $mc.body.tail
-<</if>>
-<br>
+<ul>
+<<for _key, _val range $mc.body>>
+	<li>
+		<strong><<print _key>></strong> :
+		<<print _val>>
+	</li>
+<</for>>
+</ul>
+
 </div>
-<div>
+<div id="npcsex-actions-bar">
     <<button "YES!">><<goto "CC-Confirm">><</button>>
     <<button "Go back">><<goto "Index-CC">><</button>>
 	<<button [[Randomize|CC-Check]]>><<Randomiser>><</button>>

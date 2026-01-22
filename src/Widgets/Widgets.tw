@@ -1,5 +1,6 @@
 :: Widgets [widget nobr] {"position":"400,25","size":"100,100"}
 
+
 <<widget "ResolvePhysique">>
 	<<set _m = $physique.muscle>>
 	<<set _p = $physique.plump>>
@@ -268,7 +269,6 @@
 	<</if>>
 <</widget>>
 
-
 <<widget "RenderWingsUI">>
 	<<set _isAvian = ($mc.species is "Anthro") and ($mc.anthro.group is "Avian")>>
 	<<if _isAvian>>
@@ -494,39 +494,40 @@
         $mc.physique to either(setup.physique),
         $mc.assSize to either("Flat","Tiny","Small","Round","Large","Huge"),
        $mc.personality to either("Friendly", "Shy",  "Confident", "Sarcastic", "Serious", "Optimistic", "Pessimistic", "Caring", "Aggressive", "Lazy", "Energetic", "Intelligent", "Naive", "Funny", "Calm", "Anxious", "Rebellious", "Loyal", "Greedy"),
-       $mc.species to either(setup.species)>>
-    <<if $mc.species is "Anthro">>
-        <<set $skin.color to null>>
-    	<<set $mc.anthro.group to either(setup.anthroGroup)>>
-        <<set $mc.anthro.color to either(setup.furScalesColors)>>
-        <<set $mc.anthro.pattern to either(setup.anthroPatterns)>>
-        <<if $mc.anthro.group is "Furry">>
-        	<<set $mc.anthro.subtype to either (setup.furryTypes)>>
-        <<elseif $mc.anthro.group is "Scalie">>
-        	<<set $mc.anthro.subtype to either (setup.scalieTypes)>>
-        <<elseif $mc.anthro.group is "Avian">>
-        	<<set $mc.anthro.subtype to either(setup.avianTypes)>>
+       $mc.species to either(setup.species)
+    >>
+        <<if $mc.species is "Anthro">>
+            <<set $skin.color to null>>
+    	    <<set $mc.anthro.group to either(setup.anthroGroup)>>
+            <<set $mc.anthro.color to either(setup.furScalesColors)>>
+            <<set $mc.anthro.pattern to either(setup.anthroPatterns)>>
+            <<if $mc.anthro.group is "Furry">>
+        	    <<set $mc.anthro.subtype to either (setup.furryTypes)>>
+            <<elseif $mc.anthro.group is "Scalie">>
+        	    <<set $mc.anthro.subtype to either (setup.scalieTypes)>>
+            <<elseif $mc.anthro.group is "Avian">>
+        	    <<set $mc.anthro.subtype to either(setup.avianTypes)>>
+            <</if>>
         <</if>>
-    <</if>>
-    <<MC-Create-body>>
-    <<PronounsSet>>
-   	<<AgeGroupSet>>
-    <<setGenitals>>
-    <<if $mc.genitals is "Penis">>
-    	<<set $mc.genitaltype to either("Cut", "Uncut","Phimosis")>>
-        <<set $mc.penislength to either("Tiny","Small","Average","Large","Huge")>>
-    <<elseif $mc.genitals is "Vagina">>
-    	<<set $mc.genitaltype to either ("Very Tight", "Tight", "Loose", "Gaping")>>
-        <<set $mc.penislength to null>>
-    <</if>>
-    <<if $heterochromia is false>>
+        <<MC-Create-body>>
+        <<PronounsSet>>
+   	    <<AgeGroupSet>>
+        <<setGenitals>>
+        <<if $mc.genitals is "Penis">>
+    	    <<set $mc.genitaltype to either("Cut", "Uncut","Phimosis")>>
+            <<set $mc.penislength to either("Tiny","Small","Average","Large","Huge")>>
+        <<elseif $mc.genitals is "Vagina">>
+    	    <<set $mc.genitaltype to either ("Very Tight", "Tight", "Loose", "Gaping")>>
+            <<set $mc.penislength to null>>
+        <</if>>
+        <<if $heterochromia is false>>
             <<set $mc.eyes to either(setup.eyecolor)>>
         <<else>>
             <<set 
                 _eyesleft to either(setup.eyecolor),
                 _eyesright to either(setup.eyecolor),
                 $mc.eyes to _eyesleft + " and " + _eyesright >>
-    <</if>>
+        <</if>>
             <<set 
                 $hair to {},
                 $hair.style to either("Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads" ,"Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky Anime", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair"),
@@ -691,7 +692,7 @@
     >>
     <<AgeGroupSet>>
     <<MC-Create-body>>
-    <<SetMCBodyType>>
+    
 <</widget>>
 
 <<widget "LittleBoy">>
@@ -726,7 +727,6 @@
     >>
     <<AgeGroupSet>>
     <<MC-Create-body>>
-    <<SetMCBodyType>>
 <</widget>>
 
 <<widget "LittleGirl">>
@@ -761,7 +761,6 @@
     >>
     <<AgeGroupSet>>
     <<MC-Create-body>>
-    <<SetMCBodyType>>
 <</widget>>
 
 <<widget "TeenBoy">>
@@ -796,7 +795,6 @@
     >>
     <<AgeGroupSet>>
     <<MC-Create-body>>
-    <<SetMCBodyType>>
 <</widget>>
 <<widget "TeenGirl">>
     <<set 
@@ -830,7 +828,6 @@
     >>
     <<AgeGroupSet>>
     <<MC-Create-body>>
-    <<SetMCBodyType>>
 <</widget>>
 <<widget "AdultWoman">>
     <<set 
@@ -864,7 +861,6 @@
     >>
     <<AgeGroupSet>>
     <<MC-Create-body>>
-    <<SetMCBodyType>>
 <</widget>>
 
 <<widget "AdultMan">>
@@ -899,9 +895,7 @@
     >>
     <<AgeGroupSet>>
     <<MC-Create-body>>
-    <<SetMCBodyType>>
 <</widget>>
-
 
 
 <<widget "Sleep">>
@@ -912,18 +906,18 @@
 
 //to compare the heights of the pc and npc
 <<widget "HeightCompare">>
-<<script>>
-const rank = {
-  "Very Short": 1,
-  "Short": 2,
-  "Average": 3,
-  "Tall": 4,
-  "Very Tall": 5
-};
+    <<script>>
+    const rank = {
+    "Very Short": 1,
+    "Short": 2,
+    "Average": 3,
+    "Tall": 4,
+    "Very Tall": 5
+    };
 
-const mcH  = rank[$mc.height];
-const npcH = rank[_n.height];
+    const mcH  = rank[$mc.height];
+    const npcH = rank[_n.height];
 
-return mcH > npcH ? 1 : mcH < npcH ? -1 : 0;
-<</script>>
+    return mcH > npcH ? 1 : mcH < npcH ? -1 : 0;
+    <</script>>
 <</widget>>

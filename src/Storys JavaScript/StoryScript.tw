@@ -74,29 +74,6 @@ window.SugarCubeInput = function (el) {
 	setup.bumpAffection = setup.addAffection;
 })();
 
-/* Default body-part presence flags */
-setup.defaultParts = {
-  head: true, torso: true,
-  leftArm: true, rightArm: true,
-  leftHand: true, rightHand: true,
-  leftLeg: true, rightLeg: true,
-  tail: false
-};
-
-/* Initialize parts on an NPC.
-   overrides = { key:Boolean, ... } e.g., { leftArm:false }
-*/
-setup.initParts = function (npc, overrides = {}) {
-  npc.parts = Object.assign({}, setup.defaultParts, overrides);
-  return npc;
-};
-
-/* Check helpers */
-setup.hasPart = (npc, key) => !!(npc && npc.parts && npc.parts[key]);
-
-setup.hasAny  = (npc, keys) => !!(npc?.parts && keys.some(k => npc.parts[k]));
-setup.hasBoth = (npc, a, b) => !!(npc?.parts && npc.parts[a] && npc.parts[b]);
-
 /* === General helpers & tiny widgets === */
 (function () {
   /* One-liner picker is already present: setup.pick(...) in SugarCube runtime. Keep using it. */

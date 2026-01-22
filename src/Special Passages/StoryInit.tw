@@ -92,20 +92,6 @@
 }>>
 
 /* helpers */
-<<run setup.defaultParts = {
-  head:true, torso:true,
-  leftArm:true, rightArm:true,
-  leftHand:true, rightHand:true,
-  leftLeg:true, rightLeg:true,
-  tail:false
-}>>
-<<run setup.initParts = (npc, overrides = {}) => {
-  npc.parts = Object.assign({}, setup.defaultParts, overrides);
-  return npc;
-}>>
-<<run setup.hasPart = (npc, key) => !!(npc && npc.parts && npc.parts[key])>>
-<<run setup.hasAny  = (npc, keys) => !!(npc && npc.parts && keys.some(k => npc.parts[k]))>>
-<<run setup.hasBoth = (npc, a, b) => !!(npc && npc.parts && npc.parts[a] && npc.parts[b])>>
 
 <<run setup.pick  = (arr) => arr[Math.floor(Math.random() * arr.length)]>>
 <<run setup.randint = (a,b) => Math.floor(Math.random()*(b-a+1))+a>>

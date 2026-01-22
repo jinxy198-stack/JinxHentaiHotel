@@ -5,8 +5,6 @@
 
 A nice place to rest, relax, and socialize. There are some people mingling around the place.
 
-[[Lobby]]
-
 <div class="room-hotel">
 <<SpawnPoolOnce "OC" $OCPool>>
 <<SpawnPoolOnce "CB" $CBPool>>
@@ -14,9 +12,10 @@ A nice place to rest, relax, and socialize. There are some people mingling aroun
 <<SpawnRandomNPCs 3>>
 
 <<include "SNPC-List">>
-
-
 </div>
 
+<div id="npcsex-actions-bar">
+[[Lobby]]
 
+</div>
 

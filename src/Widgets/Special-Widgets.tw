@@ -19,7 +19,6 @@
     <<make-petname>>
     <<SetNPCBodyType _npc>>
     <<create-body _npc>>
-	<<initParts _npc>>
 
 	/* Register NPC in global NPC list */
 	<<set _dummy = $npcs.push(_npc)>>
@@ -73,7 +72,8 @@
 	<<set _skinColor   = _p.skincolor     || ["Pale", "Tan", "Brown", "Dark"]>>
 	<<set _skinFeat    = _p.skinfeatures  || ["Scars", "Freckles"]>>
 	<<set _heightPool  = _p.bodyheight    || ["Very Short", "Short" ,"Average", "Tall", "Very Tall"]>>
-	<<set _physiquePool  = _p.physique    || ["Skinny","Lean","Wiry","Ripped","Thin","Toned","Lithe","muscular","Plump","Thick-bodied","Brawny","Ample","Round","Full figured","Well-padded","Stocky"]>>
+	<<set _physiquePool  = _p.physique    || ["Skinny","Lean","Wiry","Ripped","Thin",
+		"Toned","Lithe","muscular","Plump","Thick-bodied","Brawny","Ample","Round","Full figured","Well-padded","Stocky"]>>
 	<<set _persPool    = _p.personalities || ["Kind", "Tough", "Calm", "Jolly", "Timid", "Brave", "Sassy", "Mean"]>>
 	<<set _assPool	   = _p.assSize		  || ["Flat", "Tiny", "Small", "Round", "Large", "Huge"]>>
 	<<set _sexuPool    = _p.sexu          || ["Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"]>>
@@ -141,7 +141,7 @@
 
 	<<set _npc.assSize      = setup.pick(_assPool)>>
 	<<set _npc.virgin       = either(true,false)>>
-	<<set _npc.origin       = "Random Stranger">>
+	<<set _npc.origin       = "Random Person">>
 
 	/**********************
 	    ANTHRO BLOCK
@@ -185,7 +185,6 @@
 	<<AgeGroupNPC>>
 	<<make-petname>>
 	<<create-body _npc>>
-	<<initParts _npc>>
     <<SetNPCBodyType _npc>>
 
 	<<set _dummy = $npcs.push(_npc)>>
@@ -271,11 +270,6 @@
 	<<set $attraction = _result>>
 <</widget>>
 
-<<widget "initParts">>
-	<<capture _npc _ovr>>
-		<<run setup.initParts(_npc, _ovr || {})>>
-	<</capture>>
-<</widget>>
 
 <<widget "pick-roles">>
 	/* Determines dom/sub roles between MC and NPC */
@@ -590,26 +584,35 @@
 
 <<widget "MC-Create-body">>
 	<<set $mc.body to{
-    head: "head",
-    face:"face",
-    arms: "arms",
-    legs: "legs",
-    hands: "hands",
-    hand: "hand",
-    feet: "feet",
-    butt: "butt",
-    ass: "ass",
-    asshole: "asshole",
-    finger: "finger",
-    fingers: "fingers",
-    hips: "hips",
-    lips:"lips",
-    tongue:"tongue"
+    	head: "head",
+    	face:"face",
+    	arms: "arms",
+    	legs: "legs",
+   		hands: "hands",
+    	hand: "hand",
+    	feet: "feet",
+    	butt: "butt",
+    	ass: "ass",
+    	asshole: "asshole",
+    	finger: "finger",
+    	fingers: "fingers",
+    	hips: "hips",
+    	lips:"lips",
+    	tongue:"tongue",
     }>>
+
+	/* --- APPLY BODY PART DATABASE --- */
+	<<for _k, _v range $mc.body>>
+		<<if setup.bodyparts[_k]>>
+			<<set $mc.body[_k] = setup.bodyparts[_k]>>
+		<</if>>
+	<</for>>
+
+
     <<if $mc.species is "Anthro">>
     <<MCalternatebody>>
     <</if>>
-      /* --- COLOR RULE: Anthro uses anthro.color only --- */
+    /* --- COLOR RULE: Anthro uses anthro.color only --- */
 	<<if $mc.species is "Anthro">>
 		<<set $mc.skincolor = "" >>
 		<<set $mc.skinfeatures = "" >>
@@ -718,28 +721,29 @@
 				<<set $mc.body.bodymaterial = "Feathers">>
 				<<set $mc.body.feet         = "talons">>
 				<<set $mc.body.face         = "beak">>
-				<<set $mc.body.tail         = "tailfeathers">>
+				<<set $mc.body.tail         = "tail feathers">>
+				<<set $mc.body.lips to null>>
 
 				<<switch _sub>>
 					<<case "duck">>
 						<<set $mc.body.feet to "webbed feet">>
 						<<set $mc.body.ears to null>>
-						<<set $mc.body.tail to "tailfeathers">>
+						<<set $mc.body.tail to "tail feathers">>
 
 					<<case "parrot">>
 						<<set $mc.body.feet to "gripping talons">>
 						<<set $mc.body.ears to null>>
-						<<set $mc.body.tail to "tailfeathers">>
+						<<set $mc.body.tail to "tail feathers">>
 
 					<<case "chicken">>
 						<<set $mc.body.feet to "talons">>
 						<<set $mc.body.ears to null>>
-						<<set $mc.body.tail to "tailfeathers">>
+						<<set $mc.body.tail to "tail feathers">>
 
 					<<case "eagle">>
 						<<set $mc.body.feet to "talons">>
 						<<set $mc.body.ears to null>>
-						<<set $mc.body.tail to "tailfeathers">>
+						<<set $mc.body.tail to "tail feathers">>
 
 					<<default>>
 						/* keep generic avian defaults */
@@ -749,6 +753,7 @@
 				/* other groups: do nothing */
 		<</switch>>
 	<</if>>
+
 <</widget>>
 
 <<widget "make-petname">>

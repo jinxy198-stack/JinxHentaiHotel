@@ -15,7 +15,8 @@
 	<<set _mode = "receive">>
 <<else>>
 	<<return>>
-<</if>><<set _body = $mc.bodytype || "Average">>
+<</if>>
+<<set _body = $mc.physique || "Average">>
 <<set _material = _n.body.bodymaterial || null>>
 
 <<set _pool = null>>

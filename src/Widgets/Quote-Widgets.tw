@@ -102,34 +102,33 @@
 /* ----- CARESS ----- */
 <<widget "CaressQuote">>
 
-<<if !$sex or !$sex.roles or !_n>>
-	<<return>>
-<</if>>
+	<<if !$sex or !$sex.roles or !_n>>
+		<<return>>
+	<</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>><<set _pref = _n.sexpref || "Switch">>
-<<set _materialN = (_n && _n.body && _n.body.bodymaterial) ? _n.body.bodymaterial : "Skin">>
-<<set _materialM = ($mc && $mc.body && $mc.body.bodymaterial) ? $mc.body.bodymaterial : "Skin">>
+	<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
+		<<set _mode = "give">>
+	<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
+		<<set _mode = "receive">>
+	<<else>>
+		<<return>>
+	<</if>><<set _pref = _n.sexpref || "Switch">>
+	<<set _materialN = (_n && _n.body && _n.body.bodymaterial) ? _n.body.bodymaterial : "Skin">>
+	<<set _materialM = ($mc && $mc.body && $mc.body.bodymaterial) ? $mc.body.bodymaterial : "Skin">>
 
+	<<set _pool =
+		setup.caressQuotes[_mode]
+		&& setup.caressQuotes[_mode][_materialN]
+		&& setup.caressQuotes[_mode][_materialN][_pref]
+		|| setup.caressQuotes[_mode][_pref]
+	>>
 
-<<set _pool =
-	setup.caressQuotes[_mode]
-	&& setup.caressQuotes[_mode][_materialN]
-	&& setup.caressQuotes[_mode][_materialN][_pref]
-	|| setup.caressQuotes[_mode][_pref]
->>
-
-<<if Array.isArray(_pool) && _pool.length>>
-	<<= either(..._pool)>>
-<<else>>
-	[Error] No Caress quote pool found.
-	(mode=<<=_mode>>, material=<<=_material>>, pref=<<=_pref>>)
-<</if>>
+	<<if Array.isArray(_pool) && _pool.length>>
+		<<= either(..._pool)>>
+	<<else>>
+		[Error] No Caress quote pool found.
+		(mode=<<=_mode>>, material=<<=_material>>, pref=<<=_pref>>)
+	<</if>>
 
 <</widget>>
 
@@ -143,17 +142,17 @@
 
 	/* normalize inputs */
 	<<set _pref = _n.sexpref || "Neutral">>
-<<if !$sex or !$sex.roles or !_n>>
-	<<return>>
-<</if>>
+	<<if !$sex or !$sex.roles or !_n>>
+		<<return>>
+	<</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>
+	<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
+		<<set _mode = "give">>
+	<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
+		<<set _mode = "receive">>
+	<<else>>
+		<<return>>
+	<</if>>
 	<<set _pool = null>>
 
 	/* resolve pool */
@@ -328,17 +327,19 @@
 
 	/* normalize inputs */
 	<<set _pref = _n.sexpref || "Neutral">>
-<<if !$sex or !$sex.roles or !_n>>
-	<<return>>
-<</if>>
+	<<if !$sex or !$sex.roles or !_n>>
+		<<return>>
+	<</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>	<<set _body = $mc.physique || "Average">>
+	<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
+		<<set _mode = "give">>
+	<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
+		<<set _mode = "receive">>
+	<<else>>
+		<<return>>
+	<</if>>
+		
+	<<set _body = $mc.physique || "Average">>
 	<<set _material = _n.body.bodymaterial || null>>
 
 	<<set _pool = null>>

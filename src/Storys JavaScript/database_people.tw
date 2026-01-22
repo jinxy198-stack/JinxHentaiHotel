@@ -8,7 +8,7 @@ setup.genders= [
 ];
 
 setup.eyecolor= [
-    "white", "grey", "golden", "green", "blue", "maroon", "brown", "black", "red", "pink", "purple", "lime", "seafoam", "cream",
+    "White", "Grey", "Golden", "Green", "Blue", "Maroon", "Brown", "Black", "Red", "Pink", "Purple", "Lime", "Seafoam", "Cream",
 ];
 
 setup.haircolor= [
@@ -51,13 +51,37 @@ setup.breastsize=[
 ];
 
 setup.physique=[
-    "Skinny","Lean","Wiry","Ripped","Thin","Toned","Lithe","muscular","Plump","Thick-bodied","Brawny","Ample","Round","Full figured","Well-padded","Stocky",
+    "Skinny","Lean","Wiry","Ripped",
+    "Thin","Toned","Lithe","Muscular",
+    "Plump","Thick-bodied","Brawny","Ample",
+    "Round","Full figured","Well-padded","Stocky",
 ];
 
 setup.assSize=[
-    "Skinny", "Slender", "Slim", "Tight", "Modest", "Round", "Muscular", "Plump", "Curvaceous", "Well-padded", "Thick", "Large", "Huge",
+    "Flat", "Skinny", "Slender", "Slim", "Tight", "Modest", "Round", "Muscular", "Plump", "Curvaceous", "Well-padded", "Thick", "Large", "Huge",
 ];
 
 setup.height=[
-    "very short", "rather short", "short", "somewhat short", "average-height", "average-height", "somewhat tall", "tall", "rather tall", "very tall", "towering",
+    "Very short", "Short", "Average", "Somewhat tall", "Tall",  "Very tall", "Towering",
 ];
+
+/* body parts database */
+setup.bodyparts = {
+  head: "head",
+  face: "face",
+  arms: "arms",
+  legs: "legs",
+  hands: "hands",
+  hand: "hand",
+  feet: "feet",
+  butt: "butt",
+  ass: "ass",
+  asshole: "asshole",
+  finger: "finger",
+  fingers: "fingers",
+  hips: "hips",
+  lips: "lips",
+  tongue: "tongue"
+};
+
+
