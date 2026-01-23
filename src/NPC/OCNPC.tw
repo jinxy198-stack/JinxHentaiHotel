@@ -1,4 +1,4 @@
-:: OC-NPC [init nobr] {"position":"475,400","size":"100,100"}
+:: OCNPC [init nobr] {"position":"475,400","size":"100,100"}
 
 /* already designated NPC's will have their information stored here. */
 
@@ -25,8 +25,7 @@
     facefeatures: {},      /* use {} not the string "{}" */
     skinfeatures: "",
     bodyheight: "Very Short",
-    bodyweight: "Thin",
-    bodymusc: "Soft",
+    physique: "Thin",
     personality: "Kind",
     genitals: "Penis",
     genitaltype: "Uncut",
@@ -34,6 +33,39 @@
     assSize: "Small",
     virgin: false,
     sexpref: "Switch",
+    origin: "Unknown"
+}>>
+
+/*OOOey Goooey */
+<<set $OOOeyNpc = {
+    name: "OOOey",
+    nickname: "OOO",
+    surname: "Gooey",
+    species: "Anthro",
+    anthro: {
+    	group: "Furry",  
+        color: "Rainbow",
+        pattern: "Patterned"
+    },            /* start as object */
+    gender: "Male",
+    trans: "cisgender",
+    sexu: "Homosexual",
+    pronouns: "He/Him",
+    age: 31,
+    heterochromia: true,
+    eyes: "Blue and Green",
+    hair: "Spikey",
+    haircolour: "Rainbow",
+    facefeatures: "Glowing Star on forehead.",
+    bodyheight: "Very Short",
+    physique: "Plump",
+    personality: "Playful",
+    genitals: "Penis",
+    genitaltype: "Uncut",
+    penislength:"Small",
+    assSize: "Round",
+    virgin: false,
+    sexpref: "Submissive",
     origin: "Unknown"
 }>>
 
