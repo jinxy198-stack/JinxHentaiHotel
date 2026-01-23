@@ -29,7 +29,7 @@
         <<if _m is 0>>
             <<set $physique.label = "Plump">>
         <<elseif _m = 1>>
-            <<set $physique.label = "Thick-Bodied">>
+            <<set $physique.label = "Thick">>
         <<elseif _m is 2>>
             <<set $physique.label = "Brawny">>
         <<elseif _m is 3>>
@@ -254,14 +254,14 @@
 
 	<<if $mc.species is not "Anthro">>
 		<label>Ears</label>
-		<<listbox "$mc.body.ears">>
+		<<listbox "$mc.body.Ears">>
 			<<option "Human ears">>
 			<<option "Pointed ears">>
 			<<option "Animal ears">>
 		<</listbox>>
 
 		<label>Tail</label>
-		<<listbox "$mc.body.tail">>
+		<<listbox "$mc.body.Tail">>
 			<<option "No tail">>
 			<<option "Short tail">>
 			<<option "Long tail">>

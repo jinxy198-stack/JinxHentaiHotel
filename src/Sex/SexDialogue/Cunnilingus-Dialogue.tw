@@ -5,21 +5,21 @@
 <<set $seenActions.Cunnilingus = true>>
 	<<if $sex.roles.sub.name == _n.name>>
 		<<= either(
-			"Shifting your $mc.body.hips, you reposition yourself to eagerly grind your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.lips.toLowerCase()>>.",
-			"With a quick shift of your <<= $mc.body.hips.toLowerCase()>>, you let out a moan as you greedily press your <<= $mc.genitals.toLowerCase()>> down against _n.name's <<= _n.body.tongue.toLowerCase()>>.",
-			"Eagerly pressing your <<= $mc.genitals.toLowerCase()>> down against _n.name's mouth, you reposition so that you are grinding your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.lips.toLowerCase()>>.",
-			"Shifting your <<= $mc.body.hips.toLowerCase()>>, you reposition yourself to grind your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.lips.toLowerCase()>>.",
-			"With a quick shift of your <<= $mc.body.hips.toLowerCase()>>, you let out a moan as you press your <<= $mc.genitals.toLowerCase()>> down against _n.name's <<= _n.body.tongue.toLowerCase()>>.",
-			"Pressing your $mc.genitals down against _n.name's mouth, you reposition so that you are grinding your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.lips.toLowerCase()>>."
+			"Shifting your $mc.body.Hips, you reposition yourself to eagerly grind your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.Lips.toLowerCase()>>.",
+			"With a quick shift of your <<= $mc.body.Hips.toLowerCase()>>, you let out a moan as you greedily press your <<= $mc.genitals.toLowerCase()>> down against _n.name's <<= _n.body.Tongue.toLowerCase()>>.",
+			"Eagerly pressing your <<= $mc.genitals.toLowerCase()>> down against _n.name's mouth, you reposition so that you are grinding your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.Lips.toLowerCase()>>.",
+			"Shifting your <<= $mc.body.Hips.toLowerCase()>>, you reposition yourself to grind your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.Lips.toLowerCase()>>.",
+			"With a quick shift of your <<= $mc.body.Hips.toLowerCase()>>, you let out a moan as you press your <<= $mc.genitals.toLowerCase()>> down against _n.name's <<= _n.body.Tongue.toLowerCase()>>.",
+			"Pressing your $mc.genitals down against _n.name's mouth, you reposition so that you are grinding your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.Lips.toLowerCase()>>."
 		)>>
 	<<elseif $sex.roles.dom.name == _n.name>>
 		<<= either(
-			"_n.name repositions themself to eagerly grind $proset.their <<= _n.genitals.toLowerCase() >> against your <<= $mc.body.lips.toLowerCase()>>.",
-			"With a quick shift of $proset.their <<= _n.body.hips.toLowerCase()>>, _n.name lets out a moan as $proset.they greedily press $proset.their <<= _n.genitals.toLowerCase()>> down against your <<= $mc.body.tongue.toLowerCase()>>.",
-			"Eagerly pressing $proset.their <<= _n.genitals.toLowerCase() >> down against your mouth, $proset.they reposition $proset.themselves so that $proset.they are grinding $proset.their <<= _n.genitals.toLowerCase() >> against your <<= $mc.body.lips.toLowerCase()>>.",
-			"Shifting $proset.their <<= _n.body.hips.toLowerCase()>>, $proset.they reposition $proset.themselves to grind $proset.their <<= _n.genitals.toLowerCase()>> against your <<= $mc.body.lips.toLowerCase()>>.",
-			"With a quick shift of $proset.their _n.body.hips, $proset.they let out a moan as $proset.they press $proset.their <<= _n.genitals.toLowerCase() >> down against your $mc.body.tongue.",
-			"Pressing $proset.their <<= _n.genitals.toLowerCase()>> down against your mouth, $proset.they reposition $proset.themself so that $proset.they are grinding $proset.their <<= _n.genitals.toLowerCase() >> against your <<= $mc.body.lips.toLowerCase()>>."
+			"_n.name repositions themself to eagerly grind $proset.their <<= _n.genitals.toLowerCase() >> against your <<= $mc.body.Lips.toLowerCase()>>.",
+			"With a quick shift of $proset.their <<= _n.body.Hips.toLowerCase()>>, _n.name lets out a moan as $proset.they greedily press $proset.their <<= _n.genitals.toLowerCase()>> down against your <<= $mc.body.Tongue.toLowerCase()>>.",
+			"Eagerly pressing $proset.their <<= _n.genitals.toLowerCase() >> down against your mouth, $proset.they reposition $proset.themselves so that $proset.they are grinding $proset.their <<= _n.genitals.toLowerCase() >> against your <<= $mc.body.Lips.toLowerCase()>>.",
+			"Shifting $proset.their <<= _n.body.Hips.toLowerCase()>>, $proset.they reposition $proset.themselves to grind $proset.their <<= _n.genitals.toLowerCase()>> against your <<= $mc.body.Lips.toLowerCase()>>.",
+			"With a quick shift of $proset.their _n.body.Hips, $proset.they let out a moan as $proset.they press $proset.their <<= _n.genitals.toLowerCase() >> down against your $mc.body.Tongue.",
+			"Pressing $proset.their <<= _n.genitals.toLowerCase()>> down against your mouth, $proset.they reposition $proset.themself so that $proset.they are grinding $proset.their <<= _n.genitals.toLowerCase() >> against your <<= $mc.body.Lips.toLowerCase()>>."
 		)>>
 	<</if>>
 <<else>>

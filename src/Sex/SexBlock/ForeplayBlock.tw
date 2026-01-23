@@ -57,7 +57,7 @@
 	<</button>> |
 <</if>>
 
-<<if ( _n.body && _n.body.ears && $sex.roles.sub.name == _n.name) || ($mc.body && $mc.body.ears && $sex.roles.dom.name == _n.name)>>
+<<if ( _n.body && _n.body.Ears && $sex.roles.sub.name == _n.name) || ($mc.body && $mc.body.Ears && $sex.roles.dom.name == _n.name)>>
 	<<button "Pet Ears">>
 		<<set $sex.action = "Pet Ears">>
 		<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>

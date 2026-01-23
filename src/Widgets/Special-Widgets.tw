@@ -17,7 +17,6 @@
 	<<PronounsSet>>
     <<AgeGroupNPC>>
     <<make-petname>>
-    <<SetNPCBodyType _npc>>
     <<create-body _npc>>
 
 	/* Register NPC in global NPC list */
@@ -193,7 +192,6 @@
 	<<AgeGroupNPC>>
 	<<make-petname>>
 	<<create-body _npc>>
-    <<SetNPCBodyType _npc>>
 
 	<<set _dummy = $npcs.push(_npc)>>
 <</widget>>
@@ -334,24 +332,25 @@
 <<widget "create-body" _npc>>
 	/* Initializes default body part map */
 
-	<<set _npc.body to {
-		head: "head",
-		face: "face",
-		arms: "arms",
-		legs: "legs",
-		hands: "hands",
-		hand: "hand",
-		feet: "feet",
-		butt: "butt",
-		ass: "ass",
-		asshole: "asshole",
-		finger: "finger",
-		fingers: "fingers",
-		hips: "hips",
-		lips: "lips",
-		tongue: "tongue",
-        bodymaterial: "Skin"
-	}>>
+	<<set _npc.body = Object.assign({
+		Head: "head",
+		Face: "face",
+		Arms: "arms",
+		Legs: "legs",
+		Hands: "hands",
+		Hand: "hand",
+		Feet: "feet",
+		Butt: "butt",
+		Ass: "ass",
+		Asshole: "asshole",
+		Finger: "finger",
+		Fingers: "fingers",
+		Hips: "hips",
+		Lips: "lips",
+		Tongue: "tongue",
+        Bodymaterial: "Skin"
+	}, _npc.body || {})>>
+
 
 	/* Override for anthro */
 	<<if _npc.species is "Anthro">>
@@ -380,11 +379,14 @@
 			/* ----- FURRY NPCS ----- */
 			<<case "Furry">>
 				/* generic furry defaults */
-				<<set _npc.body.bodymaterial to "Fur">>
-				<<set _npc.body.feet         to "Paws">>
-				<<set _npc.body.ears         to "Furry Ears">>
-				<<set _npc.body.tail         to "Furry Tail">>
-                <<set _npc.body.face		to "Snout">>
+				<<set _npc.body.Bodymaterial to "Fur">>
+				<<set _npc.body.Feet         to "Paws">>
+				<<set _npc.body.Ears         to "Furry Ears">>
+				<<if !_npc.body.Tail>>
+    				<<set _npc.body.Tail to "Furry Tail">>
+				<</if>>
+
+                <<set _npc.body.Face		to "Snout">>
 
 				<<switch _sub>>
 					<<case "canine">>
@@ -592,21 +594,21 @@
 
 <<widget "MC-Create-body">>
 	<<set $mc.body to{
-    	head: "head",
-    	face:"face",
-    	arms: "arms",
-    	legs: "legs",
-   		hands: "hands",
-    	hand: "hand",
-    	feet: "feet",
-    	butt: "butt",
-    	ass: "ass",
-    	asshole: "asshole",
-    	finger: "finger",
-    	fingers: "fingers",
-    	hips: "hips",
-    	lips:"lips",
-    	tongue:"tongue",
+    	Head: "head",
+    	Face:"face",
+    	Arms: "arms",
+    	Legs: "legs",
+   		Hands: "hands",
+    	Hand: "hand",
+    	Feet: "feet",
+    	Butt: "butt",
+    	Ass: "ass",
+    	Asshole: "asshole",
+    	Finger: "finger",
+    	Fingers: "fingers",
+    	Hips: "hips",
+    	Lips:"lips",
+    	Tongue:"tongue",
     }>>
 
 	/* --- APPLY BODY PART DATABASE --- */
@@ -640,53 +642,53 @@
 			/* ----- FURRY ----- */
 			<<case "Furry">>
 				/* base furry defaults */
-				<<set $mc.body.bodymaterial = "Fur">>
-				<<set $mc.body.feet         = "paws">>
-				<<set $mc.body.ears         = "furry ears">>
-				<<set $mc.body.tail         = "furred tail">>
-                <<set $mc.body.face			="snout">>
+				<<set $mc.body.Bodymaterial = "Fur">>
+				<<set $mc.body.Feet         = "paws">>
+				<<set $mc.body.Ears         = "furry ears">>
+				<<set $mc.body.Tail         = "furred tail">>
+                <<set $mc.body.Face			="snout">>
 
 				<<switch _sub>>
 					<<case "canine">>
-						<<set $mc.body.ears to "canine ears">>
-						<<set $mc.body.feet to "paws">>
-						<<set $mc.body.tail to "bushy tail">>
+						<<set $mc.body.Ears to "canine ears">>
+						<<set $mc.body.Feet to "paws">>
+						<<set $mc.body.Tail to "bushy tail">>
 
 					<<case "bunny">>
-						<<set $mc.body.ears to "long bunny ears">>
-						<<set $mc.body.feet to "paws">>
-						<<set $mc.body.tail to "cotton tail">>
+						<<set $mc.body.Ears to "long bunny ears">>
+						<<set $mc.body.Feet to "paws">>
+						<<set $mc.body.Tail to "cotton tail">>
 
 					<<case "feline">>
-						<<set $mc.body.ears to "feline ears">>
-						<<set $mc.body.feet to "paws">>
-						<<set $mc.body.tail to "long feline tail">>
+						<<set $mc.body.Ears to "feline ears">>
+						<<set $mc.body.Feet to "paws">>
+						<<set $mc.body.Tail to "long feline tail">>
 
 					<<case "bear">>
-						<<set $mc.body.ears to "round bear ears">>
-						<<set $mc.body.feet to "paws">>
-						<<set $mc.body.tail to "stubby tail">>
+						<<set $mc.body.Ears to "round bear ears">>
+						<<set $mc.body.Feet to "paws">>
+						<<set $mc.body.Tail to "stubby tail">>
 
 					<<case "wolf">>
-						<<set $mc.body.ears to "wolf ears">>
-						<<set $mc.body.feet to "paws">>
-						<<set $mc.body.tail to "bushy wolf tail">>
+						<<set $mc.body.Ears to "wolf ears">>
+						<<set $mc.body.Feet to "paws">>
+						<<set $mc.body.Tail to "bushy wolf tail">>
 
 					<<case "goat">>
-						<<set $mc.body.ears to "goat ears">>
-						<<set $mc.body.feet to "hooves">>
-						<<set $mc.body.tail to "short goat tail">>
+						<<set $mc.body.Ears to "goat ears">>
+						<<set $mc.body.Feet to "hooves">>
+						<<set $mc.body.Tail to "short goat tail">>
 
 					<<case "mouse">>
-						<<set $mc.body.ears to "large round ears">>
-						<<set $mc.body.feet to "small paws">>
-						<<set $mc.body.tail to "thin mouse tail">>
+						<<set $mc.body.Ears to "large round ears">>
+						<<set $mc.body.Feet to "small paws">>
+						<<set $mc.body.Tail to "thin mouse tail">>
 
 					<<case "pig">>
-						<<set $mc.body.ears to "pig ears">>
-						<<set $mc.body.feet to "trotters">>
-						<<set $mc.body.tail to "curly tail">>
-                        <<set $mc.body.bodymaterial to "hide">>
+						<<set $mc.body.Ears to "pig ears">>
+						<<set $mc.body.Feet to "trotters">>
+						<<set $mc.body.Tail to "curly tail">>
+                        <<set $mc.body.Bodymaterial to "hide">>
 
 					<<default>>
 						/* keep generic furry defaults */
@@ -694,31 +696,31 @@
 
 			/* ----- SCALIE ----- */
 			<<case "Scalie">>
-				<<set $mc.body.bodymaterial = "Scales">>
-				<<set $mc.body.feet         = "clawed feet">>
-				<<set $mc.body.tail         = "thick scaled tail">>
-                <<set $mc.body.face			="snout">>
+				<<set $mc.body.Bodymaterial = "Scales">>
+				<<set $mc.body.Feet         = "clawed feet">>
+				<<set $mc.body.Tail         = "thick scaled tail">>
+                <<set $mc.body.Face			="snout">>
 
 				<<switch _sub>>
 					<<case "lizard">>
-						<<set $mc.body.ears to null>>
-						<<set $mc.body.feet to "scaled claws">>
-						<<set $mc.body.tail to "long lizard tail">>
+						<<set $mc.body.Ears to null>>
+						<<set $mc.body.Feet to "scaled claws">>
+						<<set $mc.body.Tail to "long lizard tail">>
 
 					<<case "dragon">>
-						<<set $mc.body.ears to "horned frills">>
-						<<set $mc.body.feet to "claws">>
-						<<set $mc.body.tail to "long spiked tail">>
+						<<set $mc.body.Ears to "horned frills">>
+						<<set $mc.body.Feet to "claws">>
+						<<set $mc.body.Tail to "long spiked tail">>
 
 					<<case "alligator">>
-						<<set $mc.body.ears to null>>
-						<<set $mc.body.feet to "claws">>
-						<<set $mc.body.tail to "tail">>
+						<<set $mc.body.Ears to null>>
+						<<set $mc.body.Feet to "claws">>
+						<<set $mc.body.Tail to "tail">>
 
 					<<case "crocodile">>
-						<<set $mc.body.ears to null>>
-						<<set $mc.body.feet to "claws">>
-						<<set $mc.body.tail to "tail">>
+						<<set $mc.body.Ears to null>>
+						<<set $mc.body.Feet to "claws">>
+						<<set $mc.body.Tail to "tail">>
 
 					<<default>>
 						/* keep generic scalie defaults */
@@ -726,32 +728,32 @@
 
 			/* ----- AVIAN ----- */
 			<<case "Avian">>
-				<<set $mc.body.bodymaterial = "Feathers">>
-				<<set $mc.body.feet         = "talons">>
-				<<set $mc.body.face         = "beak">>
-				<<set $mc.body.tail         = "tail feathers">>
-				<<set $mc.body.lips to null>>
+				<<set $mc.body.Bodymaterial = "Feathers">>
+				<<set $mc.body.Feet         = "talons">>
+				<<set $mc.body.Face         = "beak">>
+				<<set $mc.body.Tail         = "tail feathers">>
+				<<set $mc.body.Lips to null>>
 
 				<<switch _sub>>
 					<<case "duck">>
-						<<set $mc.body.feet to "webbed feet">>
-						<<set $mc.body.ears to null>>
-						<<set $mc.body.tail to "tail feathers">>
+						<<set $mc.body.Feet to "webbed feet">>
+						<<set $mc.body.Ears to null>>
+						<<set $mc.body.Tail to "tail feathers">>
 
 					<<case "parrot">>
-						<<set $mc.body.feet to "gripping talons">>
-						<<set $mc.body.ears to null>>
-						<<set $mc.body.tail to "tail feathers">>
+						<<set $mc.body.Feet to "gripping talons">>
+						<<set $mc.body.Ears to null>>
+						<<set $mc.body.Tail to "tail feathers">>
 
 					<<case "chicken">>
-						<<set $mc.body.feet to "talons">>
-						<<set $mc.body.ears to null>>
-						<<set $mc.body.tail to "tail feathers">>
+						<<set $mc.body.Feet to "talons">>
+						<<set $mc.body.Ears to null>>
+						<<set $mc.body.Tail to "tail feathers">>
 
 					<<case "eagle">>
-						<<set $mc.body.feet to "talons">>
-						<<set $mc.body.ears to null>>
-						<<set $mc.body.tail to "tail feathers">>
+						<<set $mc.body.Feet to "talons">>
+						<<set $mc.body.Ears to null>>
+						<<set $mc.body.Tail to "tail feathers">>
 
 					<<default>>
 						/* keep generic avian defaults */

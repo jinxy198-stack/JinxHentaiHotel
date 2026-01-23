@@ -13,18 +13,18 @@
 	)>>
 <<elseif $sex.roles.sub.name == _n.name>>
 	<<= either(
-		"Wanting to make _n.name feel loved, you lift your $mc.body.hand, before gently stroking your $mc.body.fingers over $proset.their face.",
-    	"Lifting your $mc.body.hand, you softly trace your $mc.body.fingers over _n.name  cheek in order to make $proset.them feel loved.",
-    	"Seeking to put _n.name at ease, you raise your $mc.body.hand, before using your $mc.body.fingers to lovingly caress $proset.their face.",
-		"Your $mc.body.fingers glides across _n.name's body."
+		"Wanting to make _n.name feel loved, you lift your $mc.body.Hand, before gently stroking your $mc.body.Fingers over $proset.their face.",
+    	"Lifting your $mc.body.Hand, you softly trace your $mc.body.Fingers over _n.name  cheek in order to make $proset.them feel loved.",
+    	"Seeking to put _n.name at ease, you raise your $mc.body.Hand, before using your $mc.body.Fingers to lovingly caress $proset.their face.",
+		"Your $mc.body.Fingers glides across _n.name's body."
 	)>>
 	
 	/* Describe body texture */
-    <<if _n.body.bodymaterial == "Skin">>
+    <<if _n.body.Bodymaterial == "Skin">>
 		<<= either(
 		"You feel their silky smooth <<= _n.skincolor.toLowerCase()>> skin against your hand."
 		)>>
-	<<elseif _n.body.bodymaterial == "Fur">>
+	<<elseif _n.body.Bodymaterial == "Fur">>
 		<<= either(
 		"You feel the softness of $proset.their <<= _n.anthro.color.toLowerCase()>> fur against your hand."
 		)>>

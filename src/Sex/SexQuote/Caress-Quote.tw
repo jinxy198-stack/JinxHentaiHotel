@@ -10,7 +10,7 @@
 <<else>>
 	<<return>>
 <</if>><<set _pref = _n.sexpref || "Switch">>
-<<set _material = (_n && _n.body && _n.body.bodymaterial) ? _n.body.bodymaterial : "Skin">>
+<<set _material = (_n && _n.body && _n.body.Bodymaterial) ? _n.body.Bodymaterial : "Skin">>
 
 <<set _pool =
 	setup.caressQuotes[_mode]

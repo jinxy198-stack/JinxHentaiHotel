@@ -6,9 +6,9 @@
 <br>
 <b>Gender:</b> <<=_n.gender>> (<<=_n.pronouns>>)  (<<=_n.trans>>)
 <br>
-<b>Species: </b><<=_n.species>><<if _n.species is "Anthro">> — <<=_n.anthro.group>> / <<=_n.anthro.subtype>> / <<=_n.anthro.color>> <<=_n.body.bodymaterial>><<if _n.anthro.pattern>>(<<=_n.anthro.pattern>>)<</if>> 
+<b>Species: </b><<=_n.species>><<if _n.species is "Anthro">> — <<=_n.anthro.group>> / <<=_n.anthro.subtype>> / <<=_n.anthro.color>> <<=_n.body.Bodymaterial>><<if _n.anthro.pattern>>(<<=_n.anthro.pattern>>)<</if>> 
 <br>
-<b>Tail:</b> <<=_n.body.tail>> <<if _n.body.ears>>* <b>Ears:</b> <<=_n.body.ears>><</if>><<if _n.anthro.wings>>* <b>Wings:</b> yes (<<=_n.anthro.wingspan>>)<</if>><</if>>  
+<b>Tail:</b> <<=_n.body.Tail>> <<if _n.body.Ears>>* <b>Ears:</b> <<=_n.body.Ears>><</if>><<if _n.anthro.wings>>* <b>Wings:</b> yes (<<=_n.anthro.wingspan>>)<</if>><</if>>  
 <br>
 <b>Age:</b> <<=_n.age>> (<<=_n.ageGroup>>)  
 <br>
@@ -18,8 +18,7 @@
 <br>
 <<if _n.skincolor>> <b>Skin:</b> <<=_n.skincolor>> <<if _n.skinfeatures>>·  <b>Features:</b> <<=_n.skinfeatures>>  <</if>> <</if>>
 <br>
-<b>Build:</b> <<=_n.physique>> * <b>Height:</b> <<=_n.bodyheight>>
-<b>Body Type: </b> <<=_n.bodytype>>
+<b>Build:</b> <<=_n.physique>> * <b>Height:</b> <<=_n.bodyheight>> *
 <<if _n.breastsize>>* <b>Breast Size:</b> _n.breastsize <</if>>
 <br>
 <b>Personality:</b> <<=_n.personality>>
@@ -30,6 +29,22 @@
 <br>
 <b>Genitals:</b> <<=_n.genitals>><<if _n.genitals== "Penis">> * <b>Length:</b> <<=_n.penislength>> <</if>> (<<=_n.genitaltype>>)
 <br>
+
+<b>List of body parts:</b>
+<br>
+<ul>
+<<for _key, _val range _n.body>>
+	<li>
+		<strong><<print _key>></strong> :
+		<<print _val>>
+	</li>
+<</for>>
+</ul>
+
+
+
+
+
 <<link "Close">><<run Dialog.close()>><</link>>
 
 

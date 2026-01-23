@@ -43,10 +43,11 @@
     surname: "Gooey",
     species: "Anthro",
     anthro: {
-    	group: "Furry",  
+    	group: "Furry",
+        subtype: "Whatever Ooo is",  
         color: "Rainbow",
         pattern: "Patterned"
-    },            /* start as object */
+    },         
     gender: "Male",
     trans: "cisgender",
     sexu: "Homosexual",
@@ -54,9 +55,9 @@
     age: 31,
     heterochromia: true,
     eyes: "Blue and Green",
-    hair: "Spikey",
-    haircolour: "Rainbow",
-    facefeatures: "Glowing Star on forehead.",
+    hair: "Spiky",
+    haircolor: "Rainbow",
+    facefeatures: "Glowing Star on forehead",
     bodyheight: "Very Short",
     physique: "Plump",
     personality: "Playful",
@@ -66,7 +67,11 @@
     assSize: "Round",
     virgin: false,
     sexpref: "Submissive",
-    origin: "Unknown"
+    origin: "Unknown",
+
+    body:{
+        Tail: "Long Scarftail"
+    }
 }>>
 
 /*Joshua  */

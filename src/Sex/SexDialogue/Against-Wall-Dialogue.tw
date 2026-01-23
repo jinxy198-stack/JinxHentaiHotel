@@ -10,7 +10,7 @@
 <<elseif $sex.roles.sub.name== _n.name>>
 	<<=either(
 	"Taking hold of $proset.their shoulders, you push $proset.them up against a nearby wall.",
-	"Grinding your body up against $proset.their back, _n.name feels your breath on $proset.their "+ ((_n.body.ears && _n.body.ears.toLowerCase) ? _n.body.ears.toLowerCase() : "ears")+"."
+	"Grinding your body up against $proset.their back, _n.name feels your breath on $proset.their "+ ((_n.body.Ears && _n.body.Ears.toLowerCase) ? _n.body.Ears.toLowerCase() : "ears")+"."
     )>>
 <</if>>
 

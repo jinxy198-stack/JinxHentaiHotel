@@ -43,8 +43,8 @@ setup.food=
         "flags": []
     },
     "Chili fries": {
-        description: "A serving of fries covered with red chili, cheese sauce, and jalapeño slices. This particular snack is the favorite from a hero of another world who wears a special watch.",
-        consume: "You eat the fries, deliciously greasy! The satisfaction is fit for ten.",
+        description: "A serving of fries covered with red chili, cheese sauce, and jalapeño slices. This particular snack is the favorite of a hero from another world who wears a special watch.",
+        consume: "You eat the fries, deliciously greasy! The satisfaction is fit for ten!",
         "aoran": "some",
         "flags": ["meat"]
     },
@@ -290,6 +290,11 @@ setup.drink=
     "Cup of cum": {
         description: "Why is this an option?",
         consume: "...What is wrong with you?",
+        "flags": ["drink"]
+    },
+    "Cup of OOOey cum": {
+        description: "A cup of rainbow colored semen, a unique delicacy from a unique person.",
+        consume: "Tastes fruity. Yummy!",
         "flags": ["drink"]
     },
 };

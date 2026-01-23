@@ -17,7 +17,7 @@
 	<<return>>
 <</if>>
 <<set _body = $mc.physique || "Average">>
-<<set _material = _n.body.bodymaterial || null>>
+<<set _material = _n.body.Bodymaterial || null>>
 
 <<set _pool = null>>
 

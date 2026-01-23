@@ -78,7 +78,7 @@
     <th><<if $mc.species and $mc.species.toLowerCase() is "anthro">>Body Material:<</if>><<if not ($mc.species and $mc.species.toLowerCase() is "anthro")>>Skin:<</if>></th>
     <td id="mc-skin">
       <<if $mc.species and $mc.species.toLowerCase() is "anthro">>
-        $mc.body.bodymaterial
+        $mc.body.Bodymaterial
         $mc.anthro.color
         $mc.anthro.pattern
       <<else>>
@@ -92,9 +92,9 @@
   <tr id="anthro-parts">
     <th>Anthro Parts:</th>
     <td id="mc-anthroparts">
-      Ears: $mc.body.ears
-      Tail: $mc.body.tail
-      Feet: $mc.body.feet
+      Ears: $mc.body.Ears
+      Tail: $mc.body.Tail
+      Feet: $mc.body.Feet
     </td>
   </tr>
   <</if>>
@@ -138,3 +138,13 @@
   </tr>
 </table>
 
+<b>List of body parts:</b>
+<br>
+<ul>
+<<for _key, _val range $mc.body>>
+	<li>
+		<strong><<print _key>></strong> :
+		<<print _val>>
+	</li>
+<</for>>
+</ul>

@@ -113,8 +113,8 @@
 	<<else>>
 		<<return>>
 	<</if>><<set _pref = _n.sexpref || "Switch">>
-	<<set _materialN = (_n && _n.body && _n.body.bodymaterial) ? _n.body.bodymaterial : "Skin">>
-	<<set _materialM = ($mc && $mc.body && $mc.body.bodymaterial) ? $mc.body.bodymaterial : "Skin">>
+	<<set _materialN = (_n && _n.body && _n.body.Bodymaterial) ? _n.body.Bodymaterial : "Skin">>
+	<<set _materialM = ($mc && $mc.body && $mc.body.Bodymaterial) ? $mc.body.Bodymaterial : "Skin">>
 
 	<<set _pool =
 		setup.caressQuotes[_mode]
@@ -340,7 +340,7 @@
 	<</if>>
 		
 	<<set _body = $mc.physique || "Average">>
-	<<set _material = _n.body.bodymaterial || null>>
+	<<set _material = _n.body.Bodymaterial || null>>
 
 	<<set _pool = null>>
 
