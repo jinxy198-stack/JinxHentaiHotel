@@ -2,8 +2,16 @@
 <<set $gamelocation to "Lobby">>
 You are in the lobby of the hotel, classical music plays as you watch people from various worlds go about their business.
 
-[[Lounge]]
-[[Hotel Portal]]
-[[Elevator]]
 
 
+<div id="npcsex-actions-bar">
+<<button "Hotel Portal">>
+    <<goto "Hotel Portal">>
+<</button>>
+<<button "Lobby">>
+    <<goto "Lobby">>
+<</button>>
+<<button "Elevator">>
+    <<goto "Elevator">>
+<</button>>
+</div>

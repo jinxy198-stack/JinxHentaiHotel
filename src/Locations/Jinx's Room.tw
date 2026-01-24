@@ -11,4 +11,8 @@ Welcome my acolyte, do you have question's for me?
 <<button "Emissary?">><<PopupJinxQ "emissary" "Emissary?">><</button>>
 <<button "Door?">><<PopupJinxQ "Door" "Door">><</button>>
 
-[[Elevator]]
+<div id="npcsex-actions-bar">
+<<button "Elevator">>
+    <<goto "Elevator">>
+<</button>>
+</div>

@@ -21,10 +21,12 @@
 <</if>>
 
 <br>
-<<link "Go back">>
-	<<goto "Your Room">>
-<</link>>
 
 
 
+<div id="npcsex-actions-bar">
+<<button "Go back">>
+    <<goto "Your Room">>
+<</button>>
 
+</div>

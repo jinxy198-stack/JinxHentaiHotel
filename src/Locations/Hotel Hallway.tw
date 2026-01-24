@@ -5,7 +5,12 @@ You are in the hotel hallway, doors to other rooms are on each side but you cann
 At the end of the hall is an elevator.
 
 
-[[Your Room]]
-[[Elevator]]
+<div id="npcsex-actions-bar">
+<<button "Your Room">>
+    <<goto "Your Room">>
+<</button>>
 
-
+<<button "Elevator">>
+    <<goto "Elevator">>
+<</button>>
+</div>

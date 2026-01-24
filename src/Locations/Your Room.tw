@@ -9,22 +9,28 @@ On the other side there was a door to your bathroom.
 	<<set _n = $ui.npc>>
 	<p>_n.name is here in your room. $proset.they will leave after you leave your room.</p>
 <br>
-<<link "Go to the bathroom with _n.name">>
-	<<goto "Bathroom">>
-<</link>>
-<<else>>
-<<link "Go to the bathroom">>
-	<<goto "Bathroom">>
-<</link>>
 <</if>>
 <br>
 
 <<set _sleeplink to {text: "Sleep", link: "Sleep"}>>
 <<link _sleeplink>><</link>>
 <br><br>
-<<link "Leave your room">>
-	<<set $lastNpc = null>>
-	<<goto "Hotel Hallway">>
-<</link>>
 
+<div id="npcsex-actions-bar">
+<<button "Leave your room">>
+	<<set $lastNpc = null>>
+    <<goto "Hotel Hallway">>
+<</button>>
+<<if $lastNpc>>
+<<button "Go to the bathroom with _n.name">>
+    <<goto "Bathroom">>
+<</button>>
+<<else>>
+<<button "Go to the bathroom">>
+    <<goto "Bathroom">>
+<</button>>
+
+<</if>>
+
+</div>
 
