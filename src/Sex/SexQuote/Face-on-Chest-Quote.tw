@@ -31,7 +31,7 @@
 				)
 				|| setup.faceonchestQuotes.receive.Neutral
 			>>
-	<</if>>
+<</if>>
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>

@@ -71,9 +71,7 @@
 	<<set _skinColor   = _p.skincolor     || ["Pale", "Tan", "Brown", "Dark"]>>
 	<<set _skinFeat    = _p.skinfeatures  || ["Scars", "Freckles"]>>
 	<<set _heightPool  = _p.bodyheight    || ["Very Short", "Short" ,"Average", "Tall", "Very Tall"]>>
-	<<set _physiquePool  = _p.physique    || ["Skinny",
-		"Lean", "Wiry", "Ripped", "Thin",
-		"Toned", "Lithe","muscular","Plump", "Thick-bodied", "Brawny", "Ample","Round", "Full figured", "Well-padded", "Stocky"]>>
+	<<set _physiquePool  = _p.physique    || ["Skinny", "Lean", "Wiry", "Ripped", "Thin", "Toned", "Lithe","muscular","Plump", "Thick-bodied", "Brawny", "Ample","Round", "Full figured", "Well-padded", "Stocky"]>>
 	<<set _persPool    = _p.personalities || ["Kind", "Tough", "Calm", "Jolly", "Timid", "Brave", "Sassy", "Mean"]>>
 	<<set _assPool	   = _p.assSize		  || ["Flat", "Tiny", "Small", "Round", "Large", "Huge"]>>
 	<<set _sexuPool    = _p.sexu          || ["Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"]>>
@@ -94,13 +92,13 @@
 		<<set _npc.pronouns   = "He/Him">>
 		<<set _npc.genitals   = "Penis">>
         <<if _npc.species is "Human">>
-			<<set _npc.genitaltype = setup.pick(["Cut","Uncut"])>>
+			<<set _npc.genitaltype = setup.pick(setup.penistype)>>
         <</if>>
-		<<set _npc.penislength = setup.pick(["Small", "Average", "Large"])>>
+		<<set _npc.penislength = setup.pick(setup.penislength)>>
 	<<elseif _npc.gender is "Female">>
 		<<set _npc.pronouns   = "She/Her">>
 		<<set _npc.genitals   = "Vagina">>
-		<<set _npc.genitaltype = setup.pick(["Tight", "Average", "Loose"])>>
+		<<set _npc.genitaltype = setup.pick(setup.vaginatype)>>
 		<<set _npc.breastsize   = setup.pick(setup.breastsize)>>
 	<</if>>
 
@@ -390,9 +388,9 @@
 
 				<<switch _sub>>
 					<<case "canine">>
-						<<set _npc.body.ears to "Floopy Canine Ears">>
-						<<set _npc.body.feet to "Paws">>
-						<<set _npc.body.tail to "Bushy Tail">>
+						<<set _npc.body.Ears to "Floopy Canine Ears">>
+						<<set _npc.body.Feet to "Paws">>
+						<<set _npc.body.Tail to "Bushy Tail">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Knotted", "Cut", "Uncut")>>
@@ -401,9 +399,9 @@
                         
 
 					<<case "bunny">>
-						<<set _npc.body.ears to "Long Bunny Ears">>
-						<<set _npc.body.feet to "Paws">>
-						<<set _npc.body.tail to "Cotton Tail">>
+						<<set _npc.body.Ears to "Long Bunny Ears">>
+						<<set _npc.body.Feet to "Paws">>
+						<<set _npc.body.Tail to "Cotton Tail">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
@@ -411,9 +409,9 @@
                         <</if>>
 
 					<<case "feline">>
-						<<set _npc.body.ears to "Feline Ears">>
-						<<set _npc.body.feet to "Soft Paws">>
-						<<set _npc.body.tail to "Long Feline Tail">>
+						<<set _npc.body.Ears to "Feline Ears">>
+						<<set _npc.body.Feet to "Soft Paws">>
+						<<set _npc.body.Tail to "Long Feline Tail">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Barbed", "Cut", "Uncut")>>
@@ -421,9 +419,9 @@
                         <</if>>
 
 					<<case "bear">>
-						<<set _npc.body.ears to "Round Bear Ears">>
-						<<set _npc.body.feet to "Paws">>
-						<<set _npc.body.tail to "Stubby Tail">>
+						<<set _npc.body.Ears to "Round Bear Ears">>
+						<<set _npc.body.Feet to "Paws">>
+						<<set _npc.body.Tail to "Stubby Tail">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
@@ -431,9 +429,9 @@
                         <</if>>
 
 					<<case "wolf">>
-						<<set _npc.body.ears to "Wolf Ears">>
-						<<set _npc.body.feet to "Paws">>
-						<<set _npc.body.tail to "Bushy Tail">>
+						<<set _npc.body.Ears to "Wolf Ears">>
+						<<set _npc.body.Feet to "Paws">>
+						<<set _npc.body.Tail to "Bushy Tail">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Knotted", "Cut", "Uncut")>>
@@ -441,9 +439,9 @@
                         <</if>>
 
 					<<case "goat">>
-						<<set _npc.body.ears to "Goat Ears">>
-						<<set _npc.body.feet to "Hooves">>
-						<<set _npc.body.tail to "Short Goat Tail">>
+						<<set _npc.body.Ears to "Goat Ears">>
+						<<set _npc.body.Feet to "Hooves">>
+						<<set _npc.body.Tail to "Short Goat Tail">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
@@ -451,9 +449,9 @@
                         <</if>>
 
 					<<case "mouse">>
-						<<set _npc.body.ears to "Big Round Ears">>
-						<<set _npc.body.feet to "Paws">>
-						<<set _npc.body.tail to "Mouse Tail">>
+						<<set _npc.body.Ears to "Big Round Ears">>
+						<<set _npc.body.Feet to "Paws">>
+						<<set _npc.body.Tail to "Mouse Tail">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
@@ -461,15 +459,15 @@
                         <</if>>
 
 					<<case "pig">>
-						<<set _npc.body.ears to "Pig Ears">>
-						<<set _npc.body.feet to "Trotters">>
-						<<set _npc.body.tail to "Curly Tail">>
-                        <<set _npc.body.bodymaterial to "Hide">>
+						<<set _npc.body.Ears to "Pig Ears">>
+						<<set _npc.body.Feet to "Trotters">>
+						<<set _npc.body.Tail to "Curly Tail">>
+                        <<set _npc.body.Bodymaterial to "Hide">>
 
 					<<case "fox">>
-						<<set _npc.body.ears to "Fox Ears">>
-						<<set _npc.body.feet to "Paws">>
-						<<set _npc.body.tail to "Poofy Tail">>
+						<<set _npc.body.Ears to "Fox Ears">>
+						<<set _npc.body.Feet to "Paws">>
+						<<set _npc.body.Tail to "Poofy Tail">>
                         <<if _npc.genitals =="Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Knotted", "Cut", "Uncut")>>
@@ -482,16 +480,16 @@
 
 			/* ----- SCALIE NPCS ----- */
 			<<case "Scalie">>
-				<<set _npc.body.bodymaterial to "Scales">>
-				<<set _npc.body.feet         to "Clawed Feet">>
-				<<set _npc.body.face         to "Snout">>
-				<<set _npc.body.tail         to "Thick Scaled Tail">>
+				<<set _npc.body.Bodymaterial to "Scales">>
+				<<set _npc.body.Feet         to "Clawed Feet">>
+				<<set _npc.body.Face         to "Snout">>
+				<<set _npc.body.Tail         to "Thick Scaled Tail">>
 
 				<<switch _sub>>
 					<<case "lizard">>
-						<<set _npc.body.ears to null>>
-						<<set _npc.body.feet to "Clawed Feet">>
-						<<set _npc.body.tail to "Long Lizard Tail">>
+						<<set _npc.body.Ears to null>>
+						<<set _npc.body.Feet to "Clawed Feet">>
+						<<set _npc.body.Tail to "Long Lizard Tail">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
@@ -499,9 +497,9 @@
                         <</if>>
 
 					<<case "dragon">>
-						<<set _npc.body.ears to "Horned Frills">>
-						<<set _npc.body.feet to "Draconic Claws">>
-						<<set _npc.body.tail to "Spiked Tail">>
+						<<set _npc.body.Ears to "Horned Frills">>
+						<<set _npc.body.Feet to "Draconic Claws">>
+						<<set _npc.body.Tail to "Spiked Tail">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
@@ -509,9 +507,9 @@
                         <</if>>
 
 					<<case "alligator">>
-						<<set _npc.body.ears to null>>
-						<<set _npc.body.feet to "Clawed Feet">>
-						<<set _npc.body.tail to "Spiked Tail">>
+						<<set _npc.body.Ears to null>>
+						<<set _npc.body.Feet to "Clawed Feet">>
+						<<set _npc.body.Tail to "Spiked Tail">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
@@ -519,9 +517,9 @@
                         <</if>>
 
 					<<case "crocodile">>
-						<<set _npc.body.ears to null>>
-						<<set _npc.body.feet to "Clawed Feet">>
-						<<set _npc.body.tail to "Spiked Tail">>
+						<<set _npc.body.Ears to null>>
+						<<set _npc.body.Feet to "Clawed Feet">>
+						<<set _npc.body.Tail to "Spiked Tail">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
@@ -534,17 +532,17 @@
 
 			/* ----- AVIAN NPCS ----- */
 			<<case "Avian">>
-				<<set _npc.body.bodymaterial to "Feathers">>
-				<<set _npc.body.feet         to "Talons">>
-				<<set _npc.body.face         to "Beak">>
-				<<set _npc.body.tail         to "Tailfeathers">>
+				<<set _npc.body.Bodymaterial to "Feathers">>
+				<<set _npc.body.Feet         to "Talons">>
+				<<set _npc.body.Face         to "Beak">>
+				<<set _npc.body.Tail         to "Tailfeathers">>
                 
 
 				<<switch _sub>>
 					<<case "duck">>
-						<<set _npc.body.feet to "Webbed Feet">>
-						<<set _npc.body.ears to null>>
-						<<set _npc.body.tail to "Tailfeathers">>
+						<<set _npc.body.Feet to "Webbed Feet">>
+						<<set _npc.body.Ears to null>>
+						<<set _npc.body.Tail to "Tailfeathers">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
@@ -552,9 +550,9 @@
                         <</if>>
 
 					<<case "parrot">>
-						<<set _npc.body.feet to "Talons">>
-						<<set _npc.body.ears to null>>
-						<<set _npc.body.tail to "Tailfeathers">>
+						<<set _npc.body.Feet to "Talons">>
+						<<set _npc.body.Ears to null>>
+						<<set _npc.body.Tail to "Tailfeathers">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
@@ -562,9 +560,9 @@
                         <</if>>
 
 					<<case "chicken">>
-						<<set _npc.body.feet to "Claws">>
-						<<set _npc.body.ears to null>>
-						<<set _npc.body.tail to "Tailfeathers">>
+						<<set _npc.body.Feet to "Claws">>
+						<<set _npc.body.Ears to null>>
+						<<set _npc.body.Tail to "Tailfeathers">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
@@ -572,9 +570,9 @@
                         <</if>>
 
 					<<case "eagle">>
-						<<set _npc.body.feet to "Talons">>
-						<<set _npc.body.ears to null>>
-						<<set _npc.body.tail to "Tailfeathers">>
+						<<set _npc.body.Feet to "Talons">>
+						<<set _npc.body.Ears to null>>
+						<<set _npc.body.Tail to "Tailfeathers">>
                         <<if _npc.genitals is "Penis">>
                         	<<if !_npc.genitaltype>>
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>

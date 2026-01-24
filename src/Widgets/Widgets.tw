@@ -19,9 +19,9 @@
         <<if _m is 0>>
             <<set $physique.label = "Thin">>
         <<elseif _m is 1>>
-            <<set $physique.label = "Toned">>
-        <<elseif _m is 2>>
             <<set $physique.label = "Lithe">>
+        <<elseif _m is 2>>
+            <<set $physique.label = "Toned">>
         <<elseif _m is 3>>
             <<set $physique.label = "Muscular">>    
         <</if>>
@@ -39,145 +39,15 @@
         <<if _m is 0>>
             <<set $physique.label = "Round">>
         <<elseif _m is 1>>
-            <<set $physique.label = "Full-Figured">>
+            <<set $physique.label = "Portly">>
         <<elseif _m is 2>>
-            <<set $physique.label = "Well-padded">>
+            <<set $physique.label = "Stocky">>
         <<elseif _m is 3>>
-            <<set $physique.label = "Stocky">>    
+            <<set $physique.label = "Jacked">>    
         <</if>>
     <</if>>
 
 <<set $mc.physique = $physique.label>>
-<</widget>>
-
-    
-
-<<widget "SetNPCBodyType">>
-	/* choose NPC: arg 0 or $ui.npc */
-	<<set _npc = (_args.length > 0) ? _args[0] : $ui.npc>>
-	<<if !_npc>>
-		[Error] No NPC given to SetNPCBodyType.
-		<<return>>
-	<</if>>
-
-	<<set _w = _npc.bodyweight>>
-	<<set _m = _npc.bodymusc>>
-
-	<<set _npc.bodytype = "Average">>
-
-	<<switch _w>>
-		/* SKINNY */
-		<<case "Skinny">>
-			<<switch _m>>
-				<<case "Soft">><<set _npc.bodytype = "Gaunt">>
-				<<case "Light Muscles">><<set _npc.bodytype = "Petite">>
-				<<case "Toned">><<set _npc.bodytype = "Slender">>
-				<<case "Muscular">><<set _npc.bodytype = "Lean">>
-				<<case "Ripped">><<set _npc.bodytype = "Defined">>
-			<</switch>>
-
-		/* SLENDER */
-		<<case "Slender">>
-			<<switch _m>>
-				<<case "Soft">><<set _npc.bodytype = "Slim">>
-				<<case "Light Muscles">><<set _npc.bodytype = "Thin">>
-				<<case "Toned">><<set _npc.bodytype = "Spry">>
-				<<case "Muscular">><<set _npc.bodytype = "Lithe">>
-				<<case "Ripped">><<set _npc.bodytype = "Cut">>
-			<</switch>>
-
-		/* AVERAGE */
-		<<case "Average">>
-			<<switch _m>>
-				<<case "Soft">><<set _npc.bodytype = "Chubby">>
-				<<case "Light Muscles">><<set _npc.bodytype = "Average">>
-				<<case "Toned">><<set _npc.bodytype = "Fit">>
-				<<case "Muscular">><<set _npc.bodytype = "Strong">>
-				<<case "Ripped">><<set _npc.bodytype = "Athletic">>
-			<</switch>>
-
-		/* LARGE */
-		<<case "Large">>
-			<<switch _m>>
-				<<case "Soft">><<set _npc.bodytype = "Fat">>
-				<<case "Light Muscles">><<set _npc.bodytype = "Plump">>
-				<<case "Toned">><<set _npc.bodytype = "Burly">>
-				<<case "Muscular">><<set _npc.bodytype = "Powerful">>
-				<<case "Ripped">><<set _npc.bodytype = "Buff">>
-			<</switch>>
-
-		/* HUGE */
-		<<case "Huge">>
-			<<switch _m>>
-				<<case "Soft">><<set _npc.bodytype = "Obese">>
-				<<case "Light Muscles">><<set _npc.bodytype = "Chunky">>
-				<<case "Toned">><<set _npc.bodytype = "Robust">>
-				<<case "Muscular">><<set _npc.bodytype = "Thick">>
-				<<case "Ripped">><<set _npc.bodytype = "Jacked">>
-			<</switch>>
-	<</switch>>
-<</widget>>
-
-
-<<widget "SetMCBodyType">>
-	/* read categories */
-	<<set _w = $mc.bodyweight>>
-	<<set _m = $mc.bodymusc>>
-
-	/* default */
-	<<set $mc.bodytype = "Average">>
-
-	<<switch _w>>
-		/* SKINNY */
-		<<case "Skinny">>
-			<<switch _m>>
-				<<case "Soft">><<set $mc.bodytype = "Gaunt">>
-				<<case "Light Muscles">><<set $mc.bodytype = "Petite">>
-				<<case "Toned">><<set $mc.bodytype = "Slender">>
-				<<case "Muscular">><<set $mc.bodytype = "Lean">>
-				<<case "Ripped">><<set $mc.bodytype = "Defined">>
-			<</switch>>
-
-		/* SLENDER */
-		<<case "Slender">>
-			<<switch _m>>
-				<<case "Soft">><<set $mc.bodytype = "Slim">>
-				<<case "Light Muscles">><<set $mc.bodytype = "Thin">>
-				<<case "Toned">><<set $mc.bodytype = "Spry">>
-				<<case "Muscular">><<set $mc.bodytype = "Lithe">>
-				<<case "Ripped">><<set $mc.bodytype = "Cut">>
-			<</switch>>
-
-		/* AVERAGE */
-		<<case "Average">>
-			<<switch _m>>
-				<<case "Soft">><<set $mc.bodytype = "Chubby">>
-				<<case "Light Muscles">><<set $mc.bodytype = "Average">>
-				<<case "Toned">><<set $mc.bodytype = "Fit">>
-				<<case "Muscular">><<set $mc.bodytype = "Strong">>
-				<<case "Ripped">><<set $mc.bodytype = "Athletic">>
-			<</switch>>
-
-		/* LARGE */
-		<<case "Large">>
-			<<switch _m>>
-				<<case "Soft">><<set $mc.bodytype = "Fat">>
-				<<case "Light Muscles">><<set $mc.bodytype = "Plump">>
-				<<case "Toned">><<set $mc.bodytype = "Burly">>
-				<<case "Muscular">><<set $mc.bodytype = "Powerful">>
-				<<case "Ripped">><<set $mc.bodytype = "Buff">>
-			<</switch>>
-
-		/* HUGE */
-		<<case "Huge">>
-			<<switch _m>>
-				<<case "Soft">><<set $mc.bodytype = "Obese">>
-				<<case "Light Muscles">><<set $mc.bodytype = "Chunky">>
-				<<case "Toned">><<set $mc.bodytype = "Robust">>
-				<<case "Muscular">><<set $mc.bodytype = "Thick">>
-				<<case "Ripped">><<set $mc.bodytype = "Jacked">>
-			<</switch>>
-	<</switch>>
 <</widget>>
 
 

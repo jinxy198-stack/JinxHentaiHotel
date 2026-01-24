@@ -10,14 +10,22 @@
 <<else>>
 	<<return>>
 <</if>><<set _pref = _n.sexpref || "Switch">>
-<<set _material = (_n && _n.body && _n.body.Bodymaterial) ? _n.body.Bodymaterial : "Skin">>
+<<set _mmaterial = ($mc && $mc.body && $mc.body.Bodymaterial) ? $mc.body.Bodymaterial : "Skin">>
+<<set _nmaterial = (_n && _n.body && _n.body.Bodymaterial) ? _n.body.Bodymaterial : "Skin">>
 
-<<set _pool =
-	setup.caressQuotes[_mode]
-	&& setup.caressQuotes[_mode][_material]
-	&& setup.caressQuotes[_mode][_material][_pref]
-	|| setup.caressQuotes[_mode][_pref]
->>
+<<if _mode == "give">>
+	<<set _pool = setup.caressQuotes.give[_mmaterial]
+	&& setup.caressQuotes.give[_mmaterial][_pref]
+	|| setup.caressQuotes.give[_pref]>>
+<<else>>
+			<<run _pool =
+				(
+					setup.caressQuotes.receive[_nmaterial]
+					&& setup.caressQuotes.receive[_nmaterial][_pref]
+				)
+				|| setup.caressQuotes.receive.Neutral
+			>>
+<</if>>
 
 <<if Array.isArray(_pool) && _pool.length>>
 	<<= either(..._pool)>>

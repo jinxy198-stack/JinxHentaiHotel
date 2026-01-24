@@ -1504,37 +1504,38 @@ setup.faceonchestQuotes = {
 /* ----- FEEL STOMACH ----- */
 setup.feelstomachQuotes = {
   give: {
-    Gaunt: [
+    Skinny: [
       "Your belly's light, almost hollow.",
 			"Barely anything to rub.",
 			"I love how delicate it feels."
     ],
-    Petite: [
-      "It feels small and gentle under my hand.",
-			"Soft touch fits your tiny frame.",
-			"Your tiny belly is adorable to touch."
-    ],
-    Slender: [
-      "Feels so smooth.",
-			"You're so tight and lean here."
-    ],
     Lean: [
+      "Light frame. My hand fits perfectly.",
+			"It's all smooth and narrow.",
+      "Feels so smooth.",
+			"You're so tight and lean here.",
       "Firm, love how it feels against my hand.",
 			"You've got clean definition."
     ],
-    Defined: [
+    Petite: [
+      "It feels small and gentle under my hand.",
+			"Your tiny belly is adorable to touch."
+    ],
+    Wiry: [
       "Your lines show even when relaxed.",
 			"It's like it was carved from a statue."
     ],
-    Slim: [
+    Ripped: [
+      "Your midline shows clearly.",
+			"I can feel the lines of your muscles clearly.",
+      "Nice and firm.",
+			"You've got a healthy body."
+    ],
+    Thin: [
       "So flat and smooth.",
 			"I love how flat it feels here."
     ],
-    Thin: [
-      "Light frame. My hand fits perfectly.",
-			"It's all smooth and narrow."
-    ],
-    Spry: [
+    Toned: [
       "Your belly feels very firm.",
 			"Feels good.",
 			"Your belly's got a nice feel to it."
@@ -1543,71 +1544,49 @@ setup.feelstomachQuotes = {
       "Nice muscles under here.",
 			"Flexible and firm."
     ],
-    Cut: [
-      "Your midline shows clearly.",
-			"I can feel the lines of your muscles clearly."
-    ],
-    Chubby: [
-      "Love how soft and warm it is here, like a pillow.",
-			"Nice cushion under my hand."
-    ],
-    Average: [
-      "Nice and smooth.",
-			"I like the way you feel under my hand."
-    ],
-    Fit: [
-      "Nice and firm.",
-			"You've got a healthy body."
-    ],
-    Strong: [
-      "You've got a nice solid core.",
-			"So much strength behind this."
-    ],
-    Athletic: [
-      "Nice and smooth muscles.",
-			"Really nice definition.",
-			"You've got a good tone."
-    ],
-    Fat: [
-      "There's a lot to love here!",
-			"So soft..."
-    ],
-    Plump: [
-      "Nice and round.",
-			"I love how it jiggles!"
-    ],
-    Burly: [
-      "These muscles are so thick!",
-			"You've got real heft here… it feels good to touch."
-    ],
-    Powerful: [
-      "Love these thick abs!",
-			"Such strength."
-    ],
-    Buff: [
-      "It's as solid as a rock!",
-			"Nothing but pure muscle, amazing!"
-    ],
-    Obese: [
-      "Look at it jiggle.",
-			"I love how your belly feels."
-    ],
-    Chunky: [
-      "Thick and plush.",
-			"I could use it like a pillow."
-    ],
-    Robust: [
+    Muscular: [
       "Nice and solid frame.",
 			"Such a sturdy build."
     ],
+    Plump: [
+      "Love how soft and warm it is here, like a pillow.",
+			"Nice cushion under my hand.",
+      "Look at it jiggle.",
+			"I love how your belly feels."
+    ],
     Thick: [
-      "You can grind meat with these abs!",
-			"Your belly is solid strength!"
+      "Nice and smooth.",
+			"I like the way you feel under my hand.",
+      "There's a lot to love here!",
+			"So soft..."
+    ],
+    Brawny: [
+      "Nice and smooth muscles.",
+			"Really nice definition."
+    ],
+    Ample: [
+			"You've got a good tone.",
+      "These muscles are so thick!",
+			"You've got real heft here… it feels good to touch."
+    ],
+    Round: [
+      "Nice and round.",
+			"I love how it jiggles!"
+    ],
+    Portly: [
+      "Thick and plush.",
+			"I could use it like a pillow."
+    ],
+    Stocky: [
+      "You've got a nice solid core.",
+			"So much strength behind this."
     ],
     Jacked: [
       "Wow, look at these abs!",
 			"Such sexy abs!",
-			"You're ripped!"
+			"You can grind meat with these abs!",
+      "It's as solid as a rock!",
+			"Nothing but pure muscle, amazing!"
     ]
   },
 
@@ -1628,6 +1607,7 @@ setup.feelstomachQuotes = {
     ]
   }
 };
+
 /* ----- FINGER ASS ----- */
 setup.fingerassQuotes = {
   give: {
@@ -2998,6 +2978,7 @@ setup.names=[
 setup.species = [
     "Human", "Anthro",
 ];
+
 setup.genders= [
     "Male", "Female",
 ];
@@ -3010,13 +2991,22 @@ setup.haircolor= [
     "Black", "Brown", "Blonde", "Red", "White", "Grey", "Blue", "Green", "Purple",
 ];
 
+setup.hairstyle=[
+    "Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads" ,"Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair","Bald",
+]
+
 setup.skincolor= [
     "Pale", "Fair", "Tan", "Olive", "Brown", "Ebony",
+];
+
+setup.unusualskincolor=[
+    "Red","Blue","Yellow","Green","Blue","Orange","Purple","White","Black","Pink",
 ];
 
 setup.height=[
     "Very Short", "Short", "Average", "Tall", "Very Tall",
 ];
+
 setup.anthroGroup= [
     "Furry", "Scalie", "Avian",
 ];
@@ -3046,10 +3036,10 @@ setup.breastsize=[
 ];
 
 setup.physique=[
-    "Skinny","Lean","Wiry","Ripped",
-    "Thin","Toned","Lithe","Muscular",
-    "Plump","Thick","Brawny","Ample",
-    "Round","Full figured","Portly","Stocky",
+    "Skinny", "Lean", "Wiry", "Ripped",
+    "Thin", "Lithe", "Toned", "Muscular",
+    "Plump", "Thick", "Brawny", "Ample",
+    "Round", "Portly", "Stocky", "Jacked",
 ];
 
 setup.assSize=[
@@ -3058,6 +3048,22 @@ setup.assSize=[
 
 setup.height=[
     "Very short", "Short", "Average", "Somewhat tall", "Tall",  "Very tall", "Towering",
+];
+
+setup.penistype= [
+    "Phimosis","Uncut", "Cut"
+];
+
+setup.penislength=[
+    "Tiny", "Small", "Average", "Large", "Huge",
+];
+
+setup.vaginatype=[
+    "Very Tight", "Tight", "Loose", "Gaping",
+];
+
+setup.sexu= [
+    "Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"
 ];
 
 /* body parts database */
@@ -5664,7 +5670,7 @@ Once you are set on a name (by clicking one of the listed options), you will be 
 &lt;/div&gt;
 */
 &lt;&lt;button [[Review Choices|CC-Check]]&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;CheckIfDone&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Credits" tags="" position="150,25" size="100,100">The following are assets I do not claim to own yet use them in the creation and development of the game. 
+&lt;&lt;CheckIfDone&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Credits" tags="" position="150,25" size="100,100">The following are assets and characters I do not claim to own yet use them in the creation and development of the game. 
 The &#39;&#39;Character Creator Template&#39;&#39; section was created by manonamora on Twine 2/Tweego with SugarCube (2.37.3). Heavily modified but was very important for development.
 
 
@@ -5915,7 +5921,9 @@ A nice place to rest, relax, and socialize. There are some people mingling aroun
 &lt;/div&gt;
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
-[[Lobby]]
+&lt;&lt;button &quot;Lobby&quot;&gt;&gt;
+    &lt;&lt;goto &quot;Lobby&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="Pool" tags="nobr" position="350,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Pool&quot;&gt;&gt;
 
@@ -5962,9 +5970,9 @@ On the other side there was a door to your bathroom.
     species: &quot;Human&quot;,
     gender: &quot;Male&quot;,
     trans: &quot;Cisgender&quot;,
-    sexu: &quot;Heterosexual&quot;,  /* sexual orientation */
+    sexu: &quot;Heterosexual&quot;,  
     genitals: &quot;Penis&quot;,
-    genitaltype: &quot;Cut&quot;, /*cut or uncut */
+    genitaltype: &quot;Cut&quot;, 
     penislength: &quot;Large&quot;,
     assSize: &quot;Round&quot;,
     pronouns: &quot;He/Him&quot;,
@@ -6002,7 +6010,7 @@ On the other side there was a door to your bathroom.
     physique: &quot;Lean&quot;,
     breastsize:&quot;Flat&quot;,
     personality: &quot;Kind&quot;,
-    assSize: &quot;Small&quot;,
+    assSize: &quot;Slim&quot;,
     sexpref: &quot;Switch&quot;,
     origin: &quot;Applebridge&quot;
 }&gt;&gt;
@@ -6026,7 +6034,7 @@ On the other side there was a door to your bathroom.
     skincolor: &quot;Dark&quot;,
     skinfeatures: &quot;&quot;,
     bodyheight: &quot;Tall&quot;,
-    physique: &quot;Soft&quot;,
+    physique: &quot;Thick&quot;,
     breastsize:&quot;Large&quot;,
     personality: &quot;Mean&quot;,
     assSize: &quot;Portly&quot;,
@@ -6054,7 +6062,7 @@ On the other side there was a door to your bathroom.
     skincolor: &quot;Fair&quot;,
     skinfeatures: &quot;&quot;,
     bodyheight: &quot;Short&quot;,
-    physique: &quot;Lean&quot;, /* Musculature*/
+    physique: &quot;Lean&quot;, 
     personality: &quot;Shy&quot;,
     sexpref: &quot;Submissive&quot;,
     origin: &quot;Applebridge&quot;
@@ -6265,7 +6273,6 @@ On the other side there was a door to your bathroom.
     hair: &quot;Bald&quot;,
     haircolour: {},
     facefeatures: {},      /* use {} not the string &quot;{}&quot; */
-    skinfeatures: &quot;&quot;,
     bodyheight: &quot;Very Short&quot;,
     physique: &quot;Thin&quot;,
     personality: &quot;Kind&quot;,
@@ -6331,8 +6338,7 @@ On the other side there was a door to your bathroom.
     skincolor: &quot;Tan&quot;,
     haircolour: &quot;Light Brown&quot;,
     bodyheight: &quot;Short&quot;,
-    bodyweight: &quot;Thin&quot;,
-    bodymusc: &quot;Soft&quot;,
+    physique: &quot;Thin&quot;,
     personality: &quot;Kind&quot;,
     genitals: &quot;Penis&quot;,
     genitaltype: &quot;Cut&quot;,
@@ -6359,8 +6365,7 @@ On the other side there was a door to your bathroom.
     haircolour: &quot;Light Brown&quot;,
     skincolor: &quot;Fair&quot;,
     bodyheight: &quot;Very Short&quot;,
-    bodyweight: &quot;Thin&quot;,
-    bodymusc: &quot;Soft&quot;,
+    physique: &quot;Thin&quot;,
     personality: &quot;Playful&quot;,
     genitals: &quot;Penis&quot;,
     genitaltype: &quot;Uncut&quot;,
@@ -6387,8 +6392,7 @@ On the other side there was a door to your bathroom.
     haircolour: &quot;Light Brown&quot;,
     skincolor: &quot;Fair&quot;,
     bodyheight: &quot;Very Short&quot;,
-    bodyweight: &quot;Thin&quot;,
-    bodymusc: &quot;Soft&quot;,
+    physique: &quot;Thin&quot;,
     personality: &quot;Playful&quot;,
     genitals: &quot;Vagina&quot;,
     genitaltype: &quot;Tight&quot;,
@@ -6417,8 +6421,7 @@ On the other side there was a door to your bathroom.
     skincolor: &quot;&quot;,
     skinfeatures: &quot;&quot;,
     bodyheight: &quot;&quot;,
-    bodyweight: &quot;&quot;,
-    bodymusc: &quot;&quot;, /* Musculature*/
+    physique: &quot;&quot;,
     personality: &quot;&quot;,
      anthro: {
 		group: &quot;&quot;, /* furry, scalie, or avian */
@@ -8536,9 +8539,9 @@ You and _n.name sit on the bed.</tw-passagedata><tw-passagedata pid="91" name="S
 &lt;&lt;elseif $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
 		/* NPC tops, beginning */
-		&quot;Reaching up to take hold of _n.name&#39;s shoulders, you put on the most enticing look you can muster as you try to push $proset.their down, pleading,&quot;,
+		&quot;Reaching up to take hold of _n.name&#39;s shoulders, you put on the most enticing look you can muster as you try to push $proset.their down.&quot;,
 		&quot;Taking hold of _n.name&#39;s shoulders, you tug $proset.them down on top of you as you lie down on your back. Pulling $proset.their _n.hips back so that $proset.they&#39;re in a reversed all-fours position over the top of you, you look up at $proset.their crotch hovering over your face and smirk,&quot;,
-		&quot;Sinking down to lie on your back, you put on the most enticing look you can muster as you plead,&quot;,
+		&quot;Sinking down to lie on your back, you put on the most enticing look you can muster.&quot;,
 		&quot;Jumping down onto all fours, _n.name lowers $proset.themself down over the top of you, bringing $proset.their crotch down to your face as $proset.they drop $proset.their head down between your $mc.body.Legs. Turning $proset.their head back to look at you, $proset.they grin,&quot;
 	)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -8805,14 +8808,22 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-&lt;&lt;set _material = (_n &amp;&amp; _n.body &amp;&amp; _n.body.Bodymaterial) ? _n.body.Bodymaterial : &quot;Skin&quot;&gt;&gt;
+&lt;&lt;set _mmaterial = ($mc &amp;&amp; $mc.body &amp;&amp; $mc.body.Bodymaterial) ? $mc.body.Bodymaterial : &quot;Skin&quot;&gt;&gt;
+&lt;&lt;set _nmaterial = (_n &amp;&amp; _n.body &amp;&amp; _n.body.Bodymaterial) ? _n.body.Bodymaterial : &quot;Skin&quot;&gt;&gt;
 
-&lt;&lt;set _pool =
-	setup.caressQuotes[_mode]
-	&amp;&amp; setup.caressQuotes[_mode][_material]
-	&amp;&amp; setup.caressQuotes[_mode][_material][_pref]
-	|| setup.caressQuotes[_mode][_pref]
-&gt;&gt;
+&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.caressQuotes.give[_mmaterial]
+	&amp;&amp; setup.caressQuotes.give[_mmaterial][_pref]
+	|| setup.caressQuotes.give[_pref]&gt;&gt;
+&lt;&lt;else&gt;&gt;
+			&lt;&lt;run _pool =
+				(
+					setup.caressQuotes.receive[_nmaterial]
+					&amp;&amp; setup.caressQuotes.receive[_nmaterial][_pref]
+				)
+				|| setup.caressQuotes.receive.Neutral
+			&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
 	&lt;&lt;= either(..._pool)&gt;&gt;
@@ -8946,7 +8957,7 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
 				)
 				|| setup.faceonchestQuotes.receive.Neutral
 			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
 	&lt;&lt;= either(..._pool)&gt;&gt;
@@ -9641,7 +9652,7 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
       &quot;Black&quot;, &quot;Brown&quot;, &quot;Grey&quot;, &quot;White&quot;, &quot;Golden&quot;, &quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;,&quot;Rainbow&quot;
     ],
   	patterns: [&quot;Solid&quot;, &quot;Striped&quot;, &quot;Spotted&quot;, &quot;Patterned&quot;],
-  	genitals:[&quot;Penis&quot;,&quot;Vagina&quot;],
+  	genitals:[&quot;Penis&quot;, &quot;Vagina&quot;],
   	genitaltype: [&quot;Phimosis&quot;,&quot;Uncut&quot;, &quot;Cut&quot;],
     breastsize:[&quot;Flat&quot;, &quot;Small&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Busty&quot;],
     penislength: [&quot;Tiny&quot;, &quot;Small&quot;, &quot;Average&quot;, &quot;Large&quot;, &quot;Huge&quot;],
@@ -9678,8 +9689,7 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
     skincolor: &quot;&quot;,
     skinfeatures: &quot;&quot;,
     bodyheight: null,
-    bodyweight: null,
-    bodymusc: null,
+    physique: null,
     personality: &quot;&quot;,
     anthro: {
 		  group: &quot;&quot;,
@@ -10004,7 +10014,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;br&gt;
 &lt;&lt;if _n.skincolor&gt;&gt; &lt;b&gt;Skin:&lt;/b&gt; &lt;&lt;=_n.skincolor&gt;&gt; &lt;&lt;if _n.skinfeatures&gt;&gt;·  &lt;b&gt;Features:&lt;/b&gt; &lt;&lt;=_n.skinfeatures&gt;&gt;  &lt;&lt;/if&gt;&gt; &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
-&lt;b&gt;Build:&lt;/b&gt; &lt;&lt;=_n.physique&gt;&gt; * &lt;b&gt;Height:&lt;/b&gt; &lt;&lt;=_n.bodyheight&gt;&gt; *
+&lt;b&gt;Physique:&lt;/b&gt; &lt;&lt;=_n.physique&gt;&gt; * &lt;b&gt;Height:&lt;/b&gt; &lt;&lt;=_n.bodyheight&gt;&gt;
 &lt;&lt;if _n.breastsize&gt;&gt;* &lt;b&gt;Breast Size:&lt;/b&gt; _n.breastsize &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
 &lt;b&gt;Personality:&lt;/b&gt; &lt;&lt;=_n.personality&gt;&gt;
@@ -11375,9 +11385,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set _skinColor   = _p.skincolor     || [&quot;Pale&quot;, &quot;Tan&quot;, &quot;Brown&quot;, &quot;Dark&quot;]&gt;&gt;
 	&lt;&lt;set _skinFeat    = _p.skinfeatures  || [&quot;Scars&quot;, &quot;Freckles&quot;]&gt;&gt;
 	&lt;&lt;set _heightPool  = _p.bodyheight    || [&quot;Very Short&quot;, &quot;Short&quot; ,&quot;Average&quot;, &quot;Tall&quot;, &quot;Very Tall&quot;]&gt;&gt;
-	&lt;&lt;set _physiquePool  = _p.physique    || [&quot;Skinny&quot;,
-		&quot;Lean&quot;, &quot;Wiry&quot;, &quot;Ripped&quot;, &quot;Thin&quot;,
-		&quot;Toned&quot;, &quot;Lithe&quot;,&quot;muscular&quot;,&quot;Plump&quot;, &quot;Thick-bodied&quot;, &quot;Brawny&quot;, &quot;Ample&quot;,&quot;Round&quot;, &quot;Full figured&quot;, &quot;Well-padded&quot;, &quot;Stocky&quot;]&gt;&gt;
+	&lt;&lt;set _physiquePool  = _p.physique    || [&quot;Skinny&quot;, &quot;Lean&quot;, &quot;Wiry&quot;, &quot;Ripped&quot;, &quot;Thin&quot;, &quot;Toned&quot;, &quot;Lithe&quot;,&quot;muscular&quot;,&quot;Plump&quot;, &quot;Thick-bodied&quot;, &quot;Brawny&quot;, &quot;Ample&quot;,&quot;Round&quot;, &quot;Full figured&quot;, &quot;Well-padded&quot;, &quot;Stocky&quot;]&gt;&gt;
 	&lt;&lt;set _persPool    = _p.personalities || [&quot;Kind&quot;, &quot;Tough&quot;, &quot;Calm&quot;, &quot;Jolly&quot;, &quot;Timid&quot;, &quot;Brave&quot;, &quot;Sassy&quot;, &quot;Mean&quot;]&gt;&gt;
 	&lt;&lt;set _assPool	   = _p.assSize		  || [&quot;Flat&quot;, &quot;Tiny&quot;, &quot;Small&quot;, &quot;Round&quot;, &quot;Large&quot;, &quot;Huge&quot;]&gt;&gt;
 	&lt;&lt;set _sexuPool    = _p.sexu          || [&quot;Heterosexual&quot;, &quot;Homosexual&quot;, &quot;Bisexual&quot;, &quot;Pansexual&quot;, &quot;Asexual&quot;]&gt;&gt;
@@ -11398,13 +11406,13 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 		&lt;&lt;set _npc.pronouns   = &quot;He/Him&quot;&gt;&gt;
 		&lt;&lt;set _npc.genitals   = &quot;Penis&quot;&gt;&gt;
         &lt;&lt;if _npc.species is &quot;Human&quot;&gt;&gt;
-			&lt;&lt;set _npc.genitaltype = setup.pick([&quot;Cut&quot;,&quot;Uncut&quot;])&gt;&gt;
+			&lt;&lt;set _npc.genitaltype = setup.pick(setup.penistype)&gt;&gt;
         &lt;&lt;/if&gt;&gt;
-		&lt;&lt;set _npc.penislength = setup.pick([&quot;Small&quot;, &quot;Average&quot;, &quot;Large&quot;])&gt;&gt;
+		&lt;&lt;set _npc.penislength = setup.pick(setup.penislength)&gt;&gt;
 	&lt;&lt;elseif _npc.gender is &quot;Female&quot;&gt;&gt;
 		&lt;&lt;set _npc.pronouns   = &quot;She/Her&quot;&gt;&gt;
 		&lt;&lt;set _npc.genitals   = &quot;Vagina&quot;&gt;&gt;
-		&lt;&lt;set _npc.genitaltype = setup.pick([&quot;Tight&quot;, &quot;Average&quot;, &quot;Loose&quot;])&gt;&gt;
+		&lt;&lt;set _npc.genitaltype = setup.pick(setup.vaginatype)&gt;&gt;
 		&lt;&lt;set _npc.breastsize   = setup.pick(setup.breastsize)&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
@@ -11694,9 +11702,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 				&lt;&lt;switch _sub&gt;&gt;
 					&lt;&lt;case &quot;canine&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to &quot;Floopy Canine Ears&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Paws&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Bushy Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Floopy Canine Ears&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Paws&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Bushy Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Knotted&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11705,9 +11713,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         
 
 					&lt;&lt;case &quot;bunny&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to &quot;Long Bunny Ears&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Paws&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Cotton Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Long Bunny Ears&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Paws&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Cotton Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11715,9 +11723,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;feline&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to &quot;Feline Ears&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Soft Paws&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Long Feline Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Feline Ears&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Soft Paws&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Long Feline Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Barbed&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11725,9 +11733,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;bear&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to &quot;Round Bear Ears&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Paws&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Stubby Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Round Bear Ears&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Paws&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Stubby Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11735,9 +11743,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;wolf&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to &quot;Wolf Ears&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Paws&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Bushy Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Wolf Ears&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Paws&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Bushy Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Knotted&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11745,9 +11753,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;goat&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to &quot;Goat Ears&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Hooves&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Short Goat Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Goat Ears&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Hooves&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Short Goat Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11755,9 +11763,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;mouse&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to &quot;Big Round Ears&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Paws&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Mouse Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Big Round Ears&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Paws&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Mouse Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11765,15 +11773,15 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;pig&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to &quot;Pig Ears&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Trotters&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Curly Tail&quot;&gt;&gt;
-                        &lt;&lt;set _npc.body.bodymaterial to &quot;Hide&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Pig Ears&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Trotters&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Curly Tail&quot;&gt;&gt;
+                        &lt;&lt;set _npc.body.Bodymaterial to &quot;Hide&quot;&gt;&gt;
 
 					&lt;&lt;case &quot;fox&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to &quot;Fox Ears&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Paws&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Poofy Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Fox Ears&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Paws&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Poofy Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals ==&quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Knotted&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11786,16 +11794,16 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 			/* ----- SCALIE NPCS ----- */
 			&lt;&lt;case &quot;Scalie&quot;&gt;&gt;
-				&lt;&lt;set _npc.body.bodymaterial to &quot;Scales&quot;&gt;&gt;
-				&lt;&lt;set _npc.body.feet         to &quot;Clawed Feet&quot;&gt;&gt;
-				&lt;&lt;set _npc.body.face         to &quot;Snout&quot;&gt;&gt;
-				&lt;&lt;set _npc.body.tail         to &quot;Thick Scaled Tail&quot;&gt;&gt;
+				&lt;&lt;set _npc.body.Bodymaterial to &quot;Scales&quot;&gt;&gt;
+				&lt;&lt;set _npc.body.Feet         to &quot;Clawed Feet&quot;&gt;&gt;
+				&lt;&lt;set _npc.body.Face         to &quot;Snout&quot;&gt;&gt;
+				&lt;&lt;set _npc.body.Tail         to &quot;Thick Scaled Tail&quot;&gt;&gt;
 
 				&lt;&lt;switch _sub&gt;&gt;
 					&lt;&lt;case &quot;lizard&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to null&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Clawed Feet&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Long Lizard Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to null&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Clawed Feet&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Long Lizard Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11803,9 +11811,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;dragon&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to &quot;Horned Frills&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Draconic Claws&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Spiked Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Horned Frills&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Draconic Claws&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Spiked Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11813,9 +11821,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;alligator&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to null&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Clawed Feet&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Spiked Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to null&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Clawed Feet&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Spiked Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11823,9 +11831,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;crocodile&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to null&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Clawed Feet&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Spiked Tail&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to null&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Clawed Feet&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Spiked Tail&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11838,17 +11846,17 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 			/* ----- AVIAN NPCS ----- */
 			&lt;&lt;case &quot;Avian&quot;&gt;&gt;
-				&lt;&lt;set _npc.body.bodymaterial to &quot;Feathers&quot;&gt;&gt;
-				&lt;&lt;set _npc.body.feet         to &quot;Talons&quot;&gt;&gt;
-				&lt;&lt;set _npc.body.face         to &quot;Beak&quot;&gt;&gt;
-				&lt;&lt;set _npc.body.tail         to &quot;Tailfeathers&quot;&gt;&gt;
+				&lt;&lt;set _npc.body.Bodymaterial to &quot;Feathers&quot;&gt;&gt;
+				&lt;&lt;set _npc.body.Feet         to &quot;Talons&quot;&gt;&gt;
+				&lt;&lt;set _npc.body.Face         to &quot;Beak&quot;&gt;&gt;
+				&lt;&lt;set _npc.body.Tail         to &quot;Tailfeathers&quot;&gt;&gt;
                 
 
 				&lt;&lt;switch _sub&gt;&gt;
 					&lt;&lt;case &quot;duck&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Webbed Feet&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to null&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Tailfeathers&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Webbed Feet&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to null&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Tailfeathers&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11856,9 +11864,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;parrot&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Talons&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to null&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Tailfeathers&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Talons&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to null&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Tailfeathers&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11866,9 +11874,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;chicken&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Claws&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to null&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Tailfeathers&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Claws&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to null&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Tailfeathers&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -11876,9 +11884,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                         &lt;&lt;/if&gt;&gt;
 
 					&lt;&lt;case &quot;eagle&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.feet to &quot;Talons&quot;&gt;&gt;
-						&lt;&lt;set _npc.body.ears to null&gt;&gt;
-						&lt;&lt;set _npc.body.tail to &quot;Tailfeathers&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Talons&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to null&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Tailfeathers&quot;&gt;&gt;
                         &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
                         	&lt;&lt;if !_npc.genitaltype&gt;&gt;
 								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
@@ -12097,9 +12105,9 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         &lt;&lt;if _m is 0&gt;&gt;
             &lt;&lt;set $physique.label = &quot;Thin&quot;&gt;&gt;
         &lt;&lt;elseif _m is 1&gt;&gt;
-            &lt;&lt;set $physique.label = &quot;Toned&quot;&gt;&gt;
-        &lt;&lt;elseif _m is 2&gt;&gt;
             &lt;&lt;set $physique.label = &quot;Lithe&quot;&gt;&gt;
+        &lt;&lt;elseif _m is 2&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Toned&quot;&gt;&gt;
         &lt;&lt;elseif _m is 3&gt;&gt;
             &lt;&lt;set $physique.label = &quot;Muscular&quot;&gt;&gt;    
         &lt;&lt;/if&gt;&gt;
@@ -12117,145 +12125,15 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
         &lt;&lt;if _m is 0&gt;&gt;
             &lt;&lt;set $physique.label = &quot;Round&quot;&gt;&gt;
         &lt;&lt;elseif _m is 1&gt;&gt;
-            &lt;&lt;set $physique.label = &quot;Full-Figured&quot;&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Portly&quot;&gt;&gt;
         &lt;&lt;elseif _m is 2&gt;&gt;
-            &lt;&lt;set $physique.label = &quot;Well-padded&quot;&gt;&gt;
+            &lt;&lt;set $physique.label = &quot;Stocky&quot;&gt;&gt;
         &lt;&lt;elseif _m is 3&gt;&gt;
-            &lt;&lt;set $physique.label = &quot;Stocky&quot;&gt;&gt;    
+            &lt;&lt;set $physique.label = &quot;Jacked&quot;&gt;&gt;    
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set $mc.physique = $physique.label&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-    
-
-&lt;&lt;widget &quot;SetNPCBodyType&quot;&gt;&gt;
-	/* choose NPC: arg 0 or $ui.npc */
-	&lt;&lt;set _npc = (_args.length &gt; 0) ? _args[0] : $ui.npc&gt;&gt;
-	&lt;&lt;if !_npc&gt;&gt;
-		[Error] No NPC given to SetNPCBodyType.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;set _w = _npc.bodyweight&gt;&gt;
-	&lt;&lt;set _m = _npc.bodymusc&gt;&gt;
-
-	&lt;&lt;set _npc.bodytype = &quot;Average&quot;&gt;&gt;
-
-	&lt;&lt;switch _w&gt;&gt;
-		/* SKINNY */
-		&lt;&lt;case &quot;Skinny&quot;&gt;&gt;
-			&lt;&lt;switch _m&gt;&gt;
-				&lt;&lt;case &quot;Soft&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Gaunt&quot;&gt;&gt;
-				&lt;&lt;case &quot;Light Muscles&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Petite&quot;&gt;&gt;
-				&lt;&lt;case &quot;Toned&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Slender&quot;&gt;&gt;
-				&lt;&lt;case &quot;Muscular&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Lean&quot;&gt;&gt;
-				&lt;&lt;case &quot;Ripped&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Defined&quot;&gt;&gt;
-			&lt;&lt;/switch&gt;&gt;
-
-		/* SLENDER */
-		&lt;&lt;case &quot;Slender&quot;&gt;&gt;
-			&lt;&lt;switch _m&gt;&gt;
-				&lt;&lt;case &quot;Soft&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Slim&quot;&gt;&gt;
-				&lt;&lt;case &quot;Light Muscles&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Thin&quot;&gt;&gt;
-				&lt;&lt;case &quot;Toned&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Spry&quot;&gt;&gt;
-				&lt;&lt;case &quot;Muscular&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Lithe&quot;&gt;&gt;
-				&lt;&lt;case &quot;Ripped&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Cut&quot;&gt;&gt;
-			&lt;&lt;/switch&gt;&gt;
-
-		/* AVERAGE */
-		&lt;&lt;case &quot;Average&quot;&gt;&gt;
-			&lt;&lt;switch _m&gt;&gt;
-				&lt;&lt;case &quot;Soft&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Chubby&quot;&gt;&gt;
-				&lt;&lt;case &quot;Light Muscles&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Average&quot;&gt;&gt;
-				&lt;&lt;case &quot;Toned&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Fit&quot;&gt;&gt;
-				&lt;&lt;case &quot;Muscular&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Strong&quot;&gt;&gt;
-				&lt;&lt;case &quot;Ripped&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Athletic&quot;&gt;&gt;
-			&lt;&lt;/switch&gt;&gt;
-
-		/* LARGE */
-		&lt;&lt;case &quot;Large&quot;&gt;&gt;
-			&lt;&lt;switch _m&gt;&gt;
-				&lt;&lt;case &quot;Soft&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Fat&quot;&gt;&gt;
-				&lt;&lt;case &quot;Light Muscles&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Plump&quot;&gt;&gt;
-				&lt;&lt;case &quot;Toned&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Burly&quot;&gt;&gt;
-				&lt;&lt;case &quot;Muscular&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Powerful&quot;&gt;&gt;
-				&lt;&lt;case &quot;Ripped&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Buff&quot;&gt;&gt;
-			&lt;&lt;/switch&gt;&gt;
-
-		/* HUGE */
-		&lt;&lt;case &quot;Huge&quot;&gt;&gt;
-			&lt;&lt;switch _m&gt;&gt;
-				&lt;&lt;case &quot;Soft&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Obese&quot;&gt;&gt;
-				&lt;&lt;case &quot;Light Muscles&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Chunky&quot;&gt;&gt;
-				&lt;&lt;case &quot;Toned&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Robust&quot;&gt;&gt;
-				&lt;&lt;case &quot;Muscular&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Thick&quot;&gt;&gt;
-				&lt;&lt;case &quot;Ripped&quot;&gt;&gt;&lt;&lt;set _npc.bodytype = &quot;Jacked&quot;&gt;&gt;
-			&lt;&lt;/switch&gt;&gt;
-	&lt;&lt;/switch&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-
-&lt;&lt;widget &quot;SetMCBodyType&quot;&gt;&gt;
-	/* read categories */
-	&lt;&lt;set _w = $mc.bodyweight&gt;&gt;
-	&lt;&lt;set _m = $mc.bodymusc&gt;&gt;
-
-	/* default */
-	&lt;&lt;set $mc.bodytype = &quot;Average&quot;&gt;&gt;
-
-	&lt;&lt;switch _w&gt;&gt;
-		/* SKINNY */
-		&lt;&lt;case &quot;Skinny&quot;&gt;&gt;
-			&lt;&lt;switch _m&gt;&gt;
-				&lt;&lt;case &quot;Soft&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Gaunt&quot;&gt;&gt;
-				&lt;&lt;case &quot;Light Muscles&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Petite&quot;&gt;&gt;
-				&lt;&lt;case &quot;Toned&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Slender&quot;&gt;&gt;
-				&lt;&lt;case &quot;Muscular&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Lean&quot;&gt;&gt;
-				&lt;&lt;case &quot;Ripped&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Defined&quot;&gt;&gt;
-			&lt;&lt;/switch&gt;&gt;
-
-		/* SLENDER */
-		&lt;&lt;case &quot;Slender&quot;&gt;&gt;
-			&lt;&lt;switch _m&gt;&gt;
-				&lt;&lt;case &quot;Soft&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Slim&quot;&gt;&gt;
-				&lt;&lt;case &quot;Light Muscles&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Thin&quot;&gt;&gt;
-				&lt;&lt;case &quot;Toned&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Spry&quot;&gt;&gt;
-				&lt;&lt;case &quot;Muscular&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Lithe&quot;&gt;&gt;
-				&lt;&lt;case &quot;Ripped&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Cut&quot;&gt;&gt;
-			&lt;&lt;/switch&gt;&gt;
-
-		/* AVERAGE */
-		&lt;&lt;case &quot;Average&quot;&gt;&gt;
-			&lt;&lt;switch _m&gt;&gt;
-				&lt;&lt;case &quot;Soft&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Chubby&quot;&gt;&gt;
-				&lt;&lt;case &quot;Light Muscles&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Average&quot;&gt;&gt;
-				&lt;&lt;case &quot;Toned&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Fit&quot;&gt;&gt;
-				&lt;&lt;case &quot;Muscular&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Strong&quot;&gt;&gt;
-				&lt;&lt;case &quot;Ripped&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Athletic&quot;&gt;&gt;
-			&lt;&lt;/switch&gt;&gt;
-
-		/* LARGE */
-		&lt;&lt;case &quot;Large&quot;&gt;&gt;
-			&lt;&lt;switch _m&gt;&gt;
-				&lt;&lt;case &quot;Soft&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Fat&quot;&gt;&gt;
-				&lt;&lt;case &quot;Light Muscles&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Plump&quot;&gt;&gt;
-				&lt;&lt;case &quot;Toned&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Burly&quot;&gt;&gt;
-				&lt;&lt;case &quot;Muscular&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Powerful&quot;&gt;&gt;
-				&lt;&lt;case &quot;Ripped&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Buff&quot;&gt;&gt;
-			&lt;&lt;/switch&gt;&gt;
-
-		/* HUGE */
-		&lt;&lt;case &quot;Huge&quot;&gt;&gt;
-			&lt;&lt;switch _m&gt;&gt;
-				&lt;&lt;case &quot;Soft&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Obese&quot;&gt;&gt;
-				&lt;&lt;case &quot;Light Muscles&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Chunky&quot;&gt;&gt;
-				&lt;&lt;case &quot;Toned&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Robust&quot;&gt;&gt;
-				&lt;&lt;case &quot;Muscular&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Thick&quot;&gt;&gt;
-				&lt;&lt;case &quot;Ripped&quot;&gt;&gt;&lt;&lt;set $mc.bodytype = &quot;Jacked&quot;&gt;&gt;
-			&lt;&lt;/switch&gt;&gt;
-	&lt;&lt;/switch&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 

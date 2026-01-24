@@ -3,6 +3,7 @@
 setup.species = [
     "Human", "Anthro",
 ];
+
 setup.genders= [
     "Male", "Female",
 ];
@@ -15,13 +16,22 @@ setup.haircolor= [
     "Black", "Brown", "Blonde", "Red", "White", "Grey", "Blue", "Green", "Purple",
 ];
 
+setup.hairstyle=[
+    "Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads" ,"Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair","Bald",
+]
+
 setup.skincolor= [
     "Pale", "Fair", "Tan", "Olive", "Brown", "Ebony",
+];
+
+setup.unusualskincolor=[
+    "Red","Blue","Yellow","Green","Blue","Orange","Purple","White","Black","Pink",
 ];
 
 setup.height=[
     "Very Short", "Short", "Average", "Tall", "Very Tall",
 ];
+
 setup.anthroGroup= [
     "Furry", "Scalie", "Avian",
 ];
@@ -51,10 +61,10 @@ setup.breastsize=[
 ];
 
 setup.physique=[
-    "Skinny","Lean","Wiry","Ripped",
-    "Thin","Toned","Lithe","Muscular",
-    "Plump","Thick","Brawny","Ample",
-    "Round","Full figured","Portly","Stocky",
+    "Skinny", "Lean", "Wiry", "Ripped",
+    "Thin", "Lithe", "Toned", "Muscular",
+    "Plump", "Thick", "Brawny", "Ample",
+    "Round", "Portly", "Stocky", "Jacked",
 ];
 
 setup.assSize=[
@@ -63,6 +73,22 @@ setup.assSize=[
 
 setup.height=[
     "Very short", "Short", "Average", "Somewhat tall", "Tall",  "Very tall", "Towering",
+];
+
+setup.penistype= [
+    "Phimosis","Uncut", "Cut"
+];
+
+setup.penislength=[
+    "Tiny", "Small", "Average", "Large", "Huge",
+];
+
+setup.vaginatype=[
+    "Very Tight", "Tight", "Loose", "Gaping",
+];
+
+setup.sexu= [
+    "Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"
 ];
 
 /* body parts database */

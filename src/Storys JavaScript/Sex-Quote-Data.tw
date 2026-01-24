@@ -479,37 +479,38 @@ setup.faceonchestQuotes = {
 /* ----- FEEL STOMACH ----- */
 setup.feelstomachQuotes = {
   give: {
-    Gaunt: [
+    Skinny: [
       "Your belly's light, almost hollow.",
 			"Barely anything to rub.",
 			"I love how delicate it feels."
     ],
-    Petite: [
-      "It feels small and gentle under my hand.",
-			"Soft touch fits your tiny frame.",
-			"Your tiny belly is adorable to touch."
-    ],
-    Slender: [
-      "Feels so smooth.",
-			"You're so tight and lean here."
-    ],
     Lean: [
+      "Light frame. My hand fits perfectly.",
+			"It's all smooth and narrow.",
+      "Feels so smooth.",
+			"You're so tight and lean here.",
       "Firm, love how it feels against my hand.",
 			"You've got clean definition."
     ],
-    Defined: [
+    Petite: [
+      "It feels small and gentle under my hand.",
+			"Your tiny belly is adorable to touch."
+    ],
+    Wiry: [
       "Your lines show even when relaxed.",
 			"It's like it was carved from a statue."
     ],
-    Slim: [
+    Ripped: [
+      "Your midline shows clearly.",
+			"I can feel the lines of your muscles clearly.",
+      "Nice and firm.",
+			"You've got a healthy body."
+    ],
+    Thin: [
       "So flat and smooth.",
 			"I love how flat it feels here."
     ],
-    Thin: [
-      "Light frame. My hand fits perfectly.",
-			"It's all smooth and narrow."
-    ],
-    Spry: [
+    Toned: [
       "Your belly feels very firm.",
 			"Feels good.",
 			"Your belly's got a nice feel to it."
@@ -518,71 +519,49 @@ setup.feelstomachQuotes = {
       "Nice muscles under here.",
 			"Flexible and firm."
     ],
-    Cut: [
-      "Your midline shows clearly.",
-			"I can feel the lines of your muscles clearly."
-    ],
-    Chubby: [
-      "Love how soft and warm it is here, like a pillow.",
-			"Nice cushion under my hand."
-    ],
-    Average: [
-      "Nice and smooth.",
-			"I like the way you feel under my hand."
-    ],
-    Fit: [
-      "Nice and firm.",
-			"You've got a healthy body."
-    ],
-    Strong: [
-      "You've got a nice solid core.",
-			"So much strength behind this."
-    ],
-    Athletic: [
-      "Nice and smooth muscles.",
-			"Really nice definition.",
-			"You've got a good tone."
-    ],
-    Fat: [
-      "There's a lot to love here!",
-			"So soft..."
-    ],
-    Plump: [
-      "Nice and round.",
-			"I love how it jiggles!"
-    ],
-    Burly: [
-      "These muscles are so thick!",
-			"You've got real heft here… it feels good to touch."
-    ],
-    Powerful: [
-      "Love these thick abs!",
-			"Such strength."
-    ],
-    Buff: [
-      "It's as solid as a rock!",
-			"Nothing but pure muscle, amazing!"
-    ],
-    Obese: [
-      "Look at it jiggle.",
-			"I love how your belly feels."
-    ],
-    Chunky: [
-      "Thick and plush.",
-			"I could use it like a pillow."
-    ],
-    Robust: [
+    Muscular: [
       "Nice and solid frame.",
 			"Such a sturdy build."
     ],
+    Plump: [
+      "Love how soft and warm it is here, like a pillow.",
+			"Nice cushion under my hand.",
+      "Look at it jiggle.",
+			"I love how your belly feels."
+    ],
     Thick: [
-      "You can grind meat with these abs!",
-			"Your belly is solid strength!"
+      "Nice and smooth.",
+			"I like the way you feel under my hand.",
+      "There's a lot to love here!",
+			"So soft..."
+    ],
+    Brawny: [
+      "Nice and smooth muscles.",
+			"Really nice definition."
+    ],
+    Ample: [
+			"You've got a good tone.",
+      "These muscles are so thick!",
+			"You've got real heft here… it feels good to touch."
+    ],
+    Round: [
+      "Nice and round.",
+			"I love how it jiggles!"
+    ],
+    Portly: [
+      "Thick and plush.",
+			"I could use it like a pillow."
+    ],
+    Stocky: [
+      "You've got a nice solid core.",
+			"So much strength behind this."
     ],
     Jacked: [
       "Wow, look at these abs!",
 			"Such sexy abs!",
-			"You're ripped!"
+			"You can grind meat with these abs!",
+      "It's as solid as a rock!",
+			"Nothing but pure muscle, amazing!"
     ]
   },
 
@@ -603,6 +582,7 @@ setup.feelstomachQuotes = {
     ]
   }
 };
+
 /* ----- FINGER ASS ----- */
 setup.fingerassQuotes = {
   give: {
