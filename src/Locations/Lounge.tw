@@ -2,6 +2,9 @@
 
 
 <<set $gamelocation to "Lounge">>
+<<unset $spawnPools>>
+
+
 
 A nice place to rest, relax, and socialize. There are some people mingling around the place.
 
@@ -9,9 +12,10 @@ A nice place to rest, relax, and socialize. There are some people mingling aroun
 <<SpawnPoolOnce "OC" $OCPool>>
 <<SpawnPoolOnce "CB" $CBPool>>
 <<SpawnPoolOnce "AB" $ABPool>>
-<<SpawnRandomNPCs 3>>
+<<SpawnRandomNPCs 20>>
 
 <<include "SNPC-List">>
+
 </div>
 
 <div id="npcsex-actions-bar">

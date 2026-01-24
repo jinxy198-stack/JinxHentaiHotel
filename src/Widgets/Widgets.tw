@@ -53,14 +53,20 @@
 
 /* select by id into $ui.npc */
 <<widget "WithNPC">>
-	<<set _id to _args[0]>>
-	<<set $ui.npc to $npcs.find(n => n.id === _id)>>
+	<<set _arg = _args[0]>>
+
+	<<if typeof _arg is "object">>
+		<<set $ui.npc = _arg>>
+	<<else>>
+		<<set $ui.npc = $npcs.find(n => n.id === _arg)>>
+	<</if>>
+
 	<<if !$ui.npc>>
-		/* optional: guard to avoid opening an empty dialog */
 		<<print "NPC not found.">>
 		<<return>>
 	<</if>>
 <</widget>>
+
 
 
 <<widget "EnsureSpeciesData">>

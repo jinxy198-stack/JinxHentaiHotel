@@ -46,6 +46,7 @@
 	<</for>>
 <</widget>>
 
+
 <<widget "MakeRandomNPC">>
 /* Fully procedural NPC generator using npcPools */
 
@@ -195,48 +196,80 @@
 <</widget>>
 
 <<widget "SpawnRandomNPCs">>
-	/* Spawns N fully randomized NPCs */
+<<set _randomCount = _args[0] || 0>>
 
-	<<if _args.length == 0>>
-		[Error] No count provided to SpawnRandomNPCs.
-		<<return>>
-	<</if>>
+/* reset room list */
+<<set $roomNPCs = []>>
 
-	<<set _count = _args[0]>>
+/* ensure globals exist */
+<<set $npcs = $npcs || []>>
+<<set $npcSeq = $npcSeq || 0>>
 
-	<<for _i = 0; _i < _count; _i++>>
-		<<MakeRandomNPC>>
+/* ---- SPAWN POOL NPCs ---- */
+<<if $spawnPools>>
+	<<set _keys = Object.keys($spawnPools)>>
+
+	<<for _k = 0; _k < _keys.length; _k++>>
+		<<set _pool = $spawnPools[_keys[_k]]>>
+
+		<<if _pool>>
+			<<set _templates = Array.isArray(_pool) ? _pool : Object.values(_pool)>>
+
+			<<for _i = 0; _i < _templates.length; _i++>>
+				<<set _before = $npcs.length>>
+				<<MakeSNPC _templates[_i]>>
+
+				<<if $npcs.length > _before>>
+					<<set _npc = $npcs[$npcs.length - 1]>>
+					<<set _dummy = $roomNPCs.push(_npc)>>
+				<</if>>
+			<</for>>
+		<</if>>
 	<</for>>
+<</if>>
+
+/* ---- SPAWN RANDOM FILLER NPCs ---- */
+<<for _i = 0; _i < _randomCount; _i++>>
+	<<set _before = $npcs.length>>
+	<<MakeRandomNPC>>
+
+	<<if $npcs.length > _before>>
+		<<set _npc = $npcs[$npcs.length - 1]>>
+		<<set _dummy = $roomNPCs.push(_npc)>>
+	<</if>>
+<</for>>
+/* ---- REMOVE DUPLICATES ---- */
+<<set _seen = {}>>
+<<set $roomNPCs = $roomNPCs.filter(n => {
+	if (!n || !_seen[n.id]) {
+		_seen[n.id] = true;
+		return true;
+	}
+	return false;
+})>>
+
+/* ---- RANDOMIZE ORDER ---- */
+<<set $roomNPCs = $roomNPCs.sort(() => Math.random() - 0.5)>>
 <</widget>>
+
 
 
 <<widget "SpawnPoolOnce">>
-/* Spawns an NPC pool only once per game using a flag */
+<<set _key = _args[0]>>
+<<set _pool = _args[1]>>
 
-  <<set _poolKey = _args[0]>>
-  <<set _poolArr = _args[1]>>
+<<if !$spawnPools>>
+  <<set $spawnPools = {}>>
+<</if>>
 
-  /* Persistent flags container */
-  <<set $flags = $flags or {}>>
-  <<set $flags.spawnedPools = $flags.spawnedPools or {}>>
+<<if !_pool || !Array.isArray(_pool)>>
+  <<return>>
+<</if>>
 
-  /* Prevent duplicate spawning */
-  <<if $flags.spawnedPools[_poolKey]>>
-    <<set $flags.spawnedPools[_poolKey] = true>>
-  <</if>>
-  <<set $flags.spawnedPools[_poolKey] = true>>
-
-  <<if !_poolArr or !_poolArr.length>>
-    [Error] Pool is empty: <<= _poolKey>>
-    <<return>>
-  <</if>>
-
-  /* Spawn each template once */
-  <<for _spawnPool_idx = 0; _spawnPool_idx < _poolArr.length; _spawnPool_idx++>>
-    <<set _spawnPool_tpl = _poolArr[_spawnPool_idx]>>
-    <<MakeSNPC _spawnPool_tpl>>
-  <</for>>
+<<set $spawnPools[_key] = _pool>>
+<<MakeSNPC $spawnPools[_key]>>
 <</widget>>
+
 
 
 <<widget "check-attraction" $mc _n>>

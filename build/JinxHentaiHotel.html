@@ -5908,6 +5908,9 @@ You are in the lobby of the hotel, classical music plays as you watch people fro
 [[Lounge]]
 [[Hotel Portal]]
 [[Elevator]]</tw-passagedata><tw-passagedata pid="42" name="Lounge" tags="nobr" position="500,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lounge&quot;&gt;&gt;
+&lt;&lt;unset $spawnPools&gt;&gt;
+
+
 
 A nice place to rest, relax, and socialize. There are some people mingling around the place.
 
@@ -5915,9 +5918,10 @@ A nice place to rest, relax, and socialize. There are some people mingling aroun
 &lt;&lt;SpawnPoolOnce &quot;OC&quot; $OCPool&gt;&gt;
 &lt;&lt;SpawnPoolOnce &quot;CB&quot; $CBPool&gt;&gt;
 &lt;&lt;SpawnPoolOnce &quot;AB&quot; $ABPool&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 3&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 20&gt;&gt;
 
 &lt;&lt;include &quot;SNPC-List&quot;&gt;&gt;
+
 &lt;/div&gt;
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
@@ -6401,7 +6405,58 @@ On the other side there was a door to your bathroom.
     virgin: false,
     sexpref: &quot;Switch&quot;,
     origin: &quot;Unknown&quot;
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="SNPC-List" tags="" position="625,500" size="100,100">&lt;&lt;include &quot;NPC-List-Body&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="npc template sample" tags="" position="1925,450" size="100,100">*/
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="SNPC-List" tags="nobr" position="100,725" size="100,100">&lt;span id=&quot;list&quot;&gt;
+&lt;&lt;if !$roomNPCs || !$roomNPCs.length&gt;&gt;
+	&lt;em&gt;No one is here.&lt;/em&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;for _i = 0; _i &lt; $roomNPCs.length; _i++&gt;&gt;
+	&lt;&lt;set _n = $roomNPCs[_i]&gt;&gt;
+	&lt;&lt;PronounsSet&gt;&gt;
+
+	&lt;div class=&quot;npc-card&quot;&gt;
+		&lt;b&gt;[&lt;&lt;print _i + 1&gt;&gt;] &lt;/b&gt;
+		_n.name&lt;&lt;if _n.surname&gt;&gt; _n.surname&lt;&lt;/if&gt;&gt;
+		— _n.species
+		&lt;&lt;if _n.species is &quot;Anthro&quot;&gt;&gt;
+			/ _n.anthro.group / _n.anthro.subtype
+		&lt;&lt;/if&gt;&gt;
+		· _n.gender
+		&lt;br&gt;
+
+		&lt;i&gt;Age:&lt;/i&gt; _n.age&lt;br&gt;
+		&lt;i&gt;Origin:&lt;/i&gt; _n.origin&lt;br&gt;
+		&lt;i&gt;Personality:&lt;/i&gt; _n.personality
+		· &lt;i&gt;Sex Preference:&lt;/i&gt; _n.sexpref
+		&lt;br&gt;
+
+		&lt;div class=&quot;npc-actions&quot;&gt;
+		&lt;&lt;capture _n&gt;&gt;
+			&lt;&lt;button &quot;Inspect&quot;&gt;&gt;
+				&lt;&lt;WithNPC _n&gt;&gt;
+				&lt;&lt;run Dialog
+					.create(&quot;NPC: &quot; + $ui.npc.name)
+					.wikiPassage(&quot;UI-NPC-Inspect&quot;)
+					.open()
+				&gt;&gt;
+			&lt;&lt;/button&gt;&gt;
+			&lt;br&gt;
+
+			&lt;&lt;button &quot;Talk&quot;&gt;&gt;
+				&lt;&lt;WithNPC _n&gt;&gt;
+				&lt;&lt;run Dialog
+					.create(&quot;Talk to &quot; + $ui.npc.name)
+					.wikiPassage(&quot;UI-NPC-Talk&quot;)
+					.open()
+				&gt;&gt;
+			&lt;&lt;/button&gt;&gt;
+		&lt;&lt;/capture&gt;&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;hr&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;/span&gt;</tw-passagedata><tw-passagedata pid="52" name="npc template sample" tags="" position="1925,450" size="100,100">*/
 &lt;&lt;set $characterTemplate = {
     name: &quot;&quot;,
     nickname: &quot;&quot;,
@@ -11360,6 +11415,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;/for&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
+
 &lt;&lt;widget &quot;MakeRandomNPC&quot;&gt;&gt;
 /* Fully procedural NPC generator using npcPools */
 
@@ -11509,48 +11565,80 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;SpawnRandomNPCs&quot;&gt;&gt;
-	/* Spawns N fully randomized NPCs */
+&lt;&lt;set _randomCount = _args[0] || 0&gt;&gt;
 
-	&lt;&lt;if _args.length == 0&gt;&gt;
-		[Error] No count provided to SpawnRandomNPCs.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
+/* reset room list */
+&lt;&lt;set $roomNPCs = []&gt;&gt;
 
-	&lt;&lt;set _count = _args[0]&gt;&gt;
+/* ensure globals exist */
+&lt;&lt;set $npcs = $npcs || []&gt;&gt;
+&lt;&lt;set $npcSeq = $npcSeq || 0&gt;&gt;
 
-	&lt;&lt;for _i = 0; _i &lt; _count; _i++&gt;&gt;
-		&lt;&lt;MakeRandomNPC&gt;&gt;
+/* ---- SPAWN POOL NPCs ---- */
+&lt;&lt;if $spawnPools&gt;&gt;
+	&lt;&lt;set _keys = Object.keys($spawnPools)&gt;&gt;
+
+	&lt;&lt;for _k = 0; _k &lt; _keys.length; _k++&gt;&gt;
+		&lt;&lt;set _pool = $spawnPools[_keys[_k]]&gt;&gt;
+
+		&lt;&lt;if _pool&gt;&gt;
+			&lt;&lt;set _templates = Array.isArray(_pool) ? _pool : Object.values(_pool)&gt;&gt;
+
+			&lt;&lt;for _i = 0; _i &lt; _templates.length; _i++&gt;&gt;
+				&lt;&lt;set _before = $npcs.length&gt;&gt;
+				&lt;&lt;MakeSNPC _templates[_i]&gt;&gt;
+
+				&lt;&lt;if $npcs.length &gt; _before&gt;&gt;
+					&lt;&lt;set _npc = $npcs[$npcs.length - 1]&gt;&gt;
+					&lt;&lt;set _dummy = $roomNPCs.push(_npc)&gt;&gt;
+				&lt;&lt;/if&gt;&gt;
+			&lt;&lt;/for&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/for&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+/* ---- SPAWN RANDOM FILLER NPCs ---- */
+&lt;&lt;for _i = 0; _i &lt; _randomCount; _i++&gt;&gt;
+	&lt;&lt;set _before = $npcs.length&gt;&gt;
+	&lt;&lt;MakeRandomNPC&gt;&gt;
+
+	&lt;&lt;if $npcs.length &gt; _before&gt;&gt;
+		&lt;&lt;set _npc = $npcs[$npcs.length - 1]&gt;&gt;
+		&lt;&lt;set _dummy = $roomNPCs.push(_npc)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+/* ---- REMOVE DUPLICATES ---- */
+&lt;&lt;set _seen = {}&gt;&gt;
+&lt;&lt;set $roomNPCs = $roomNPCs.filter(n =&gt; {
+	if (!n || !_seen[n.id]) {
+		_seen[n.id] = true;
+		return true;
+	}
+	return false;
+})&gt;&gt;
+
+/* ---- RANDOMIZE ORDER ---- */
+&lt;&lt;set $roomNPCs = $roomNPCs.sort(() =&gt; Math.random() - 0.5)&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
+
 
 
 &lt;&lt;widget &quot;SpawnPoolOnce&quot;&gt;&gt;
-/* Spawns an NPC pool only once per game using a flag */
+&lt;&lt;set _key = _args[0]&gt;&gt;
+&lt;&lt;set _pool = _args[1]&gt;&gt;
 
-  &lt;&lt;set _poolKey = _args[0]&gt;&gt;
-  &lt;&lt;set _poolArr = _args[1]&gt;&gt;
+&lt;&lt;if !$spawnPools&gt;&gt;
+  &lt;&lt;set $spawnPools = {}&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-  /* Persistent flags container */
-  &lt;&lt;set $flags = $flags or {}&gt;&gt;
-  &lt;&lt;set $flags.spawnedPools = $flags.spawnedPools or {}&gt;&gt;
+&lt;&lt;if !_pool || !Array.isArray(_pool)&gt;&gt;
+  &lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-  /* Prevent duplicate spawning */
-  &lt;&lt;if $flags.spawnedPools[_poolKey]&gt;&gt;
-    &lt;&lt;set $flags.spawnedPools[_poolKey] = true&gt;&gt;
-  &lt;&lt;/if&gt;&gt;
-  &lt;&lt;set $flags.spawnedPools[_poolKey] = true&gt;&gt;
-
-  &lt;&lt;if !_poolArr or !_poolArr.length&gt;&gt;
-    [Error] Pool is empty: &lt;&lt;= _poolKey&gt;&gt;
-    &lt;&lt;return&gt;&gt;
-  &lt;&lt;/if&gt;&gt;
-
-  /* Spawn each template once */
-  &lt;&lt;for _spawnPool_idx = 0; _spawnPool_idx &lt; _poolArr.length; _spawnPool_idx++&gt;&gt;
-    &lt;&lt;set _spawnPool_tpl = _poolArr[_spawnPool_idx]&gt;&gt;
-    &lt;&lt;MakeSNPC _spawnPool_tpl&gt;&gt;
-  &lt;&lt;/for&gt;&gt;
+&lt;&lt;set $spawnPools[_key] = _pool&gt;&gt;
+&lt;&lt;MakeSNPC $spawnPools[_key]&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
+
 
 
 &lt;&lt;widget &quot;check-attraction&quot; $mc _n&gt;&gt;
@@ -12139,14 +12227,20 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 /* select by id into $ui.npc */
 &lt;&lt;widget &quot;WithNPC&quot;&gt;&gt;
-	&lt;&lt;set _id to _args[0]&gt;&gt;
-	&lt;&lt;set $ui.npc to $npcs.find(n =&gt; n.id === _id)&gt;&gt;
+	&lt;&lt;set _arg = _args[0]&gt;&gt;
+
+	&lt;&lt;if typeof _arg is &quot;object&quot;&gt;&gt;
+		&lt;&lt;set $ui.npc = _arg&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set $ui.npc = $npcs.find(n =&gt; n.id === _arg)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
 	&lt;&lt;if !$ui.npc&gt;&gt;
-		/* optional: guard to avoid opening an empty dialog */
 		&lt;&lt;print &quot;NPC not found.&quot;&gt;&gt;
 		&lt;&lt;return&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
+
 
 
 &lt;&lt;widget &quot;EnsureSpeciesData&quot;&gt;&gt;
