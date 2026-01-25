@@ -14,15 +14,20 @@
 	<<set _mode = "receive">>
 <<else>>
 	<<return>>
-<</if>><<set _pref = _n.sexpref || "Neutral">>
+<</if>>
+<<set _pref = _n.sexpref || "Neutral">>
+
+<<set _personality = _n.personality>>
 
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.cuddleQuotes.give[_pref]
+	<<set _pool = setup.cuddleQuotes.give[_personality]
+	||setup.cuddleQuotes.give[_pref]
 	|| setup.cuddleQuotes.give.Neutral>>
 <<else>>
-	<<set _pool = setup.cuddleQuotes.receive[_pref] 
+	<<set _pool = setup.cuddleQuotes.receive[_personality]
+	||setup.cuddleQuotes.receive[_pref] 
 	|| setup.cuddleQuotes.receive.Neutral>>
 <</if>>
 
@@ -31,7 +36,4 @@
 <<else>>
 	[Error] No Cuddle quote pool found.
 <</if>>
-
-
-
 

@@ -14,21 +14,26 @@
 	<<set _mode = "receive">>
 <<else>>
 	<<return>>
-<</if>><<set _pref = _n.sexpref || "Neutral">>
+<</if>>
+<<set _pref = _n.sexpref || "Neutral">>
 <<set _msize = $mc.penislength>>
 <<set _mage  = $mc.ageGroup>>
 <<set _action = $sex.action>>
 
+<<set _personality = _n.personality>>
+
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.suckfootQuotes.give[_pref] 
+
+	<<set _pool = setup.suckfootQuotes.give[_personality] 
+	|| setup.suckfootQuotes.give[_pref] 
 	|| setup.suckfootQuotes.give.Neutral>>
+
 <<else>>
 	<<set _pool = setup.suckfootQuotes.receive[_pref] 
 	|| setup.suckfootQuotes.receive.Neutral>>
 <</if>>
-
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>

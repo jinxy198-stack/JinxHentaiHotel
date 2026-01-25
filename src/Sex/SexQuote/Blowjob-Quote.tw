@@ -14,20 +14,26 @@
 	<<set _mode = "receive">>
 <<else>>
 	<<return>>
-<</if>><<set _pref = _n.sexpref || "Neutral">>
+<</if>>
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _personality = _n.personality>>
 
 <<set _pool = null>>
 
+
 <<if _mode == "give">>
-	<<set _pool = setup.blowjobQuotes.give[_pref]
+	<<set _pool = setup.blowjobQuotes.give[_personality]
+	|| setup.blowjobQuotes.give[_pref]
 	|| setup.blowjobQuotes.give.Neutral>>
 <<else>>
 	<<set _pool = setup.blowjobQuotes.receive[_pref] 
 	|| setup.blowjobQuotes.receive.Neutral>>
 <</if>>
 
+
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>
 <<else>>
 	[Error] No Blowjob quote pool found.
 <</if>>
+

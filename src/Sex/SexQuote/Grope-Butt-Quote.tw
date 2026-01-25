@@ -23,6 +23,8 @@
 
 <<set _pool = null>>
 
+<<set _personality = _n.personality>>
+
 <<if _mode == "give">>
 	<<set _pool =
 		(
@@ -34,12 +36,12 @@
 			setup.gropebuttQuotes.give[_nsize]
 			&& setup.gropebuttQuotes.give[_nsize].Neutral
 		)
-
 	>>
 <<else>>
 	<<set _pool =
 		(
-			setup.gropebuttQuotes.receive[_msize]
+			setup.gropebuttQuotes.receive[_personality]
+			|| setup.gropebuttQuotes.receive[_msize]
 			&& setup.gropebuttQuotes.receive[_msize][_pref]
 		)
 		|| 
@@ -49,6 +51,7 @@
 		)
 	>>
 <</if>>
+
 
 <<if Array.isArray(_pool) && _pool.length>>
 	<<= either(..._pool)>>

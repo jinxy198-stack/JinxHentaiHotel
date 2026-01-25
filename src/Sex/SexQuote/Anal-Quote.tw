@@ -6,6 +6,7 @@
 
 <<set _pref = _n.sexpref || "Switch">>
 <<set _msize = $mc.penislength || "Average">>
+<<set _personality = _n.personality>>
 <<if !$sex or !$sex.roles or !_n>>
 	<<return>>
 <</if>>
@@ -20,8 +21,7 @@
 <<set _position = $sex.position >>
 
 <<set _pool = null>>
-
-<<if _mode == "give">>
+	<<if _mode == "give">>
 	<<set _pool =
 		(
 			setup.analQuotes.give[_position]
@@ -29,15 +29,16 @@
 		)
 		|| setup.analQuotes.give.Neutral
 	>>
-<<else>>
+	<<else>>
 	<<set _pool =
 		(
 			setup.analQuotes.receive[_position]
-			&& setup.analQuotes.receive[_position][_pref]
+			|| setup.analQuotes.receive[_position][_personality]
+			|| setup.analQuotes.receive[_position][_pref]
 		)
 		|| setup.analQuotes.receive.Neutral
 	>>
-<</if>>
+	<</if>>
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>

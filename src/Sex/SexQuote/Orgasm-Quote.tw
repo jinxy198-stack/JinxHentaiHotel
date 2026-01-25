@@ -1,15 +1,29 @@
 :: Orgasm-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
-<<set _mode   = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
+	<<set _mode = "give">>
+<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
+	<<set _mode = "receive">>
+<<else>>
+	<<return>>
+<</if>>
+
 <<set _pref   = _n.sexpref || "Switch">>
 <<set _action = $sex.action>>
 <<set _pool   = null>>
 
-<<set _entry = setup.orgasmQuotes[_mode] && setup.orgasmQuotes[_mode][_action] || setup.orgasmQuotes[_mode].default>>
+<<set _personality = _n.personality>>
 
-<<if Array.isArray(_entry)>>
-	<<set _pool = _entry>>
+<<if _mode == "give">>
+	<<set _pool = setup.orgasmQuotes.give[_action][_pref]
+	||setup.orgasmQuotes.give[_action][_pref] 
+	|| setup.orgasmQuotes.give.default>>
+
 <<else>>
-	<<set _pool = (_entry && _entry[_pref]) || null>>
+	<<set _pool = setup.orgasmQuotes.receive[_action][_personality]
+	|| setup.orgasmQuotes.receive[_action][_pref]
+	|| setup.orgasmQuotes.receive.default>>
+
 <</if>>
 
 <<if _pool && _pool.length>>

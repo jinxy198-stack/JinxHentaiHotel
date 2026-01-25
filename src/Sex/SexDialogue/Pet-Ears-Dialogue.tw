@@ -3,17 +3,17 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 <<if $sex.roles.dom.name == _n.name>>
-	<<if $mc.body.Ears=="Long Bunny Ears">>
-    	<<= either(
- 		"_n.name pets your <<= $mc.body.Ears.toLowerCase()>>."
-    	)>>
-	<</if>>    
+	
+    <<= either(
+ 	"_n.name pets your <<= $mc.body.Ears.toLowerCase()>>."
+    )>>
+	    
 <<elseif $sex.roles.sub.name == _n.name>>
-	<<if _n.body.Ears =="Long Bunny Ears">>
-    	<<= either(
-    	"You pet _n.name's <<= _n.body.Ears.toLowerCase()>>."
-    	)>>
-    <</if>>
+	
+    <<= either(
+    "You pet _n.name's <<= _n.body.Ears.toLowerCase()>>."
+    )>>
+    
 <</if>>
 
 

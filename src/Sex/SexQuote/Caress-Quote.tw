@@ -13,19 +13,20 @@
 <<set _mmaterial = ($mc && $mc.body && $mc.body.Bodymaterial) ? $mc.body.Bodymaterial : "Skin">>
 <<set _nmaterial = (_n && _n.body && _n.body.Bodymaterial) ? _n.body.Bodymaterial : "Skin">>
 
+<<set _personality = _n.personality>>
+
 <<if _mode == "give">>
 	<<set _pool = setup.caressQuotes.give[_mmaterial]
 	&& setup.caressQuotes.give[_mmaterial][_pref]
 	|| setup.caressQuotes.give[_pref]>>
 <<else>>
-			<<run _pool =
-				(
-					setup.caressQuotes.receive[_nmaterial]
-					&& setup.caressQuotes.receive[_nmaterial][_pref]
-				)
-				|| setup.caressQuotes.receive.Neutral
-			>>
+	<<set _pool = setup.caressQuotes.receive[_personality]
+		||setup.caressQuotes.receive[_nmaterial]
+		&& setup.caressQuotes.receive[_nmaterial][_pref]
+		|| setup.caressQuotes.receive.Neutral
+	>>
 <</if>>
+
 
 <<if Array.isArray(_pool) && _pool.length>>
 	<<= either(..._pool)>>

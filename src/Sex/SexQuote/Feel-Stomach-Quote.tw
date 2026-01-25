@@ -18,17 +18,19 @@
 <</if>>
 <<set _body = $mc.physique || "Average">>
 <<set _material = _n.body.Bodymaterial || null>>
+<<set _personality = _n.personality>>
 
 <<set _pool = null>>
+
 
 <<if _mode == "give">>
 	<<set _pool = setup.feelstomachQuotes.give[_body]
 	|| setup.feelstomachQuotes.give.Neutral>>
 <<else>>
-	<<set _pool = setup.feelstomachQuotes.receive[_material] 
+	<<set _pool = setup.feelstomachQuotes.receive[_personality] 
+	|| setup.feelstomachQuotes.receive[_material] 
 	|| setup.feelstomachQuotes.receive.Neutral>>
 <</if>>
-
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>

@@ -17,6 +17,7 @@
 <</if>><<set _pref = _n.sexpref || "Neutral">>
 <<set _size = $mc.penislength || "Average">>
 <<set _age  = ($mc.ageGroup == "Child") ? "Child" : "Adult">>
+<<set _personality = _n.personality>>
 
 <<set _pool = null>>
 
@@ -26,7 +27,13 @@
 		|| setup.handjobQuotes.give.Neutral
 	>>
 <<else>>
-	<<if _size == "Tiny">>
+	
+	<<if _personality == "Childlike">>
+		<<set _pool =
+			setup.handjobQuotes.receive[_personality]
+		>>
+	
+	<<elseif _size == "Tiny">>
 		<<set _pool =
 			(
 				setup.handjobQuotes.receive[_pref]

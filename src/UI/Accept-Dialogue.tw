@@ -23,6 +23,8 @@
 "Alright! Let's do this!"
 <<elseif _n.personality == "Playful">>
 "Oh yeah..."
+<<elseif _n.personality == "Childlike">>
+"Yay! This'll be fun!"
 <<else>>
 "Ok"
 <</if>>

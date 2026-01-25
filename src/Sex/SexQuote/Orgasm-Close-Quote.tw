@@ -1,16 +1,28 @@
 :: Orgasm-Close-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
 /* When you or NPC are close to orgasm */
-<<set _mode   = ($sex.roles.dom.name == _n.name) ? "give" : "receive">>
+
+<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
+	<<set _mode = "give">>
+<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
+	<<set _mode = "receive">>
+<<else>>
+	<<return>>
+<</if>>
 <<set _pref   = _n.sexpref || "Switch">>
 <<set _action = $sex.action>>
 <<set _pool   = null>>
+<<set _personality = _n.personality>>
 
-<<set _entry = setup.orgasmcloseQuotes[_mode] && setup.orgasmcloseQuotes[_mode][_action] || setup.orgasmcloseQuotes[_mode].default>>
+<<if _mode == "give">>
+	<<set _pool = setup.orgasmcloseQuotes.give[_action][_personality] 
+	|| setup.orgasmcloseQuotes.give[_action][_pref]
+	|| setup.orgasmcloseQuotes.give.default>>
 
-<<if Array.isArray(_entry)>>
-	<<set _pool = _entry>>
 <<else>>
-	<<set _pool = (_entry && _entry[_pref]) || null>>
+	<<set _pool = setup.orgasmcloseQuotes.receive[_personality]
+	|| setup.orgasmcloseQuotes.receive[_action][_pref]
+	|| setup.orgasmcloseQuotes.receive.default>>
+
 <</if>>
 
 <<if _pool && _pool.length>>

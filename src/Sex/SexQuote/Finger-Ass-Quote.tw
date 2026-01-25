@@ -14,7 +14,10 @@
 	<<set _mode = "receive">>
 <<else>>
 	<<return>>
-<</if>><<set _pref = _n.sexpref || "Neutral">>
+<</if>>
+<<set _pref = _n.sexpref || "Neutral">>
+
+<<set _personality = _n.personality>>
 
 <<set _pool = null>>
 
@@ -22,7 +25,8 @@
 	<<set _pool = setup.fingerassQuotes.give[_pref]
 	|| setup.fingerassQuotes.give.Neutral>>
 <<else>>
-	<<set _pool = setup.fingerassQuotes.receive[_pref] 
+	<<set _pool = setup.fingerassQuotes.receive[_personality]
+	|| setup.fingerassQuotes.receive[_pref] 
 	|| setup.fingerassQuotes.receive.Neutral>>
 <</if>>
 

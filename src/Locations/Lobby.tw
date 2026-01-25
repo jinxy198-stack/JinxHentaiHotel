@@ -1,15 +1,24 @@
-:: Lobby {"position":"375,1150","size":"100,100"}
+:: Lobby [nobr]{"position":"375,1150","size":"100,100"}
 <<set $gamelocation to "Lobby">>
 You are in the lobby of the hotel, classical music plays as you watch people from various worlds go about their business.
+<br>
+<div class="room-hotel">
+<<SpawnPoolOnce "OC" $OCPool>>
+<<SpawnPoolOnce "CB" $CBPool>>
+<<SpawnPoolOnce "AB" $ABPool>>
+<<SpawnRandomNPCs 20>>
 
+<<include "SNPC-List">>
+
+</div>
 
 
 <div id="npcsex-actions-bar">
 <<button "Hotel Portal">>
     <<goto "Hotel Portal">>
 <</button>>
-<<button "Lobby">>
-    <<goto "Lobby">>
+<<button "Lounge">>
+    <<goto "Lounge">>
 <</button>>
 <<button "Elevator">>
     <<goto "Elevator">>

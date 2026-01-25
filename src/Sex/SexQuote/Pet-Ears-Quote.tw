@@ -14,7 +14,9 @@
 	<<set _mode = "receive">>
 <<else>>
 	<<return>>
-<</if>><<set _pref = _n.sexpref || "Neutral">>
+<</if>>
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _personality = _n.personality>>
 
 <<set _pool = null>>
 
@@ -22,8 +24,10 @@
 	<<set _pool = setup.petearsQuotes.give[_pref]
 	|| setup.petearsQuotes.give.Neutral>>
 <<else>>
-	<<set _pool = setup.petearsQuotes.receive[_pref] 
+	<<set _pool = setup.petearsQuotes.receive[_personality] 
+	|| setup.petearsQuotes.receive[_pref] 
 	|| setup.petearsQuotes.receive.Neutral>>
+
 <</if>>
 
 

@@ -19,19 +19,25 @@
 
 <<set _pool = null>>
 
+<<set _personality = _n.personality>>
+
+
 <<if _mode == "give">>
-	<<set _pool = setup.footjobQuotes.give[_pref] 
+	<<set _pool = setup.footjobQuotes.give[_personality] 
+	|| setup.footjobQuotes.give[_pref] 
 	|| setup.footjobQuotes.give.Neutral>>
 <<else>>
-	
 		<<run _pool =
 			(
-				setup.footjobQuotes.receive[_pref]
+				setup.footjobQuotes.receive[_personality]
+				|| setup.footjobQuotes.receive[_pref]
 				&& setup.footjobQuotes.receive[_pref][_size]
 			)
 			|| setup.footjobQuotes.receive.Neutral
 		>>
 <</if>>
+
+
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>

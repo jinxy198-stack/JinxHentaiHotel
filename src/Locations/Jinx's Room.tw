@@ -1,4 +1,4 @@
-:: Jinx's Room {"position":"125,975","size":"100,100"}
+:: Jinx's Room [nobr]{"position":"125,975","size":"100,100"}
 <<set $gamelocation to "Jinx's Room">>
 
 You enter the room.
@@ -6,9 +6,9 @@ The room seems to be in the process of maintenence, and at the end of the room, 
 <span class="Jinx">
 Welcome my acolyte, do you have question's for me?
 </span>
-
-<<button "Sex">><<PopupJinxQ "Sex" "Sex">><</button>>
-<<button "Emissary?">><<PopupJinxQ "emissary" "Emissary?">><</button>>
+<br>
+<<button "Sex">><<PopupJinxQ "Sex" "Sex">><</button>> <br>
+<<button "Emissary?">><<PopupJinxQ "emissary" "Emissary?">><</button>> <br>
 <<button "Door?">><<PopupJinxQ "Door" "Door">><</button>>
 
 <div id="npcsex-actions-bar">

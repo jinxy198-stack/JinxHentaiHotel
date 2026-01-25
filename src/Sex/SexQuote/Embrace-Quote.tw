@@ -16,13 +16,17 @@
 	<<return>>
 <</if>><<set _pref = _n.sexpref || "Neutral">>
 
+<<set _personality = _n.personality>>
 <<set _pool = null>>
 
+
 <<if _mode == "give">>
-	<<set _pool = setup.embraceQuotes.give[_pref]
+	<<set _pool = setup.embraceQuotes.give[_personality]
+	|| setup.embraceQuotes.give[_pref]
 	|| setup.embraceQuotes.give.Neutral>>
 <<else>>
-	<<set _pool = setup.embraceQuotes.receive[_pref] 
+	<<set _pool = setup.embraceQuotes.receive[_personality] 
+	|| setup.embraceQuotes.receive[_pref] 
 	|| setup.embraceQuotes.receive.Neutral>>
 <</if>>
 

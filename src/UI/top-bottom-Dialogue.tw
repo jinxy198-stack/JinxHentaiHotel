@@ -50,6 +50,8 @@
     "Hmph"
     <<elseif _n.personality== "Energetic">>
     "Hope you can match my pace!"
+    <<else>>
+    "Ok, I'll top."
     <</if>>
 <<elseif $sex.roles.sub.name is _n.name>>
 	<<if _n.personality =="Tough">>
@@ -102,6 +104,8 @@
     "Hmph"
     <<elseif _n.personality== "Energetic">>
     "I normally prefer to be active but sure!"
+    <<else>>
+    "Ok, you top."
     <</if>>
 <</if>>
 

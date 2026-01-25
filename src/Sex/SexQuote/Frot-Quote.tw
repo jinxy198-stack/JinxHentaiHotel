@@ -19,15 +19,17 @@
 /* Use later */
 <<set _msize = $mc.penislength>>
 <<set _nsize = _n.penislength>>
-
+<<set _personality = _n.personality>>
 
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.frotQuotes.give[_pref]
+	<<set _pool = setup.frotQuotes.give[_personality]
+	|| setup.frotQuotes.give[_pref]
 	|| setup.frotQuotes.give.Neutral>>
 <<else>>
-	<<set _pool = setup.frotQuotes.receive[_pref] 
+	<<set _pool = setup.frotQuotes.receive[_personality] 
+	|| setup.frotQuotes.receive[_pref] 
 	|| setup.frotQuotes.receive.Neutral>>
 <</if>>
 
