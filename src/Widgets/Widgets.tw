@@ -68,7 +68,6 @@
 <</widget>>
 
 
-
 <<widget "EnsureSpeciesData">>
 	<<set $mc = $mc or {}>>
 	<<set $mc.species = $mc.species or setup.species[0]>>
@@ -346,7 +345,7 @@
 ***************************/
 <<widget "BodyBuild">>
     <<set 
-        _height to ["Very Short", "Short", "Average", "Tall", "Very Tall"],
+        _height to setup.height,
         _breast to setup.breastsize
     >>
 <</widget>>
@@ -357,20 +356,20 @@
 <<widget "Randomiser">>
     <<set
     	$mc.species to either (setup.species),
-        $mc.name to either ("Suzette", "Maribelle", "Francine", "Thomas", "Charles", "Alfonso", "Riley", "Blake", "Taylor","Jay","Susan","Micheal","Jamie","Kris"),
+        $mc.name to either (setup.names),
         $mc.surname to either("Vanilla", "Kerr", "Silva"),
         $mc.gender to either(setup.genders),
         $mc.sexpref to either("Dom","Sub","Switch"),
-        $mc.sexu to either("Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"),
+        $mc.sexu to either(setup.sexu),
         $mc.pronouns to either("She/Her", "He/Him", "They/Them (singular)", "They/Them (plural)"),
         $mc.age to random(6, 78),
         $heterochromia to either(true, false),
         $skin.color to either(setup.skincolor),
         $mc.bodyheight to either(setup.height),
         $mc.physique to either(setup.physique),
-        $mc.assSize to either("Flat","Tiny","Small","Round","Large","Huge"),
-       $mc.personality to either("Friendly", "Shy",  "Confident", "Sarcastic", "Serious", "Optimistic", "Pessimistic", "Caring", "Aggressive", "Lazy", "Energetic", "Intelligent", "Naive", "Funny", "Calm", "Anxious", "Rebellious", "Loyal", "Greedy"),
-       $mc.species to either(setup.species)
+        $mc.assSize to either(setup.assSize),
+        $mc.personality to either("Friendly", "Shy",  "Confident", "Sarcastic", "Serious", "Optimistic", "Pessimistic", "Caring", "Aggressive", "Lazy", "Energetic", "Intelligent", "Naive", "Funny", "Calm", "Anxious", "Rebellious", "Loyal", "Greedy"),
+        $mc.species to either(setup.species)
     >>
         <<if $mc.species is "Anthro">>
             <<set $skin.color to null>>
@@ -390,10 +389,10 @@
    	    <<AgeGroupSet>>
         <<setGenitals>>
         <<if $mc.genitals is "Penis">>
-    	    <<set $mc.genitaltype to either("Cut", "Uncut","Phimosis")>>
-            <<set $mc.penislength to either("Tiny","Small","Average","Large","Huge")>>
+    	    <<set $mc.genitaltype to either(setup.penistype)>>
+            <<set $mc.penislength to either(setup.penislength)>>
         <<elseif $mc.genitals is "Vagina">>
-    	    <<set $mc.genitaltype to either ("Very Tight", "Tight", "Loose", "Gaping")>>
+    	    <<set $mc.genitaltype to either (setup.vaginatype)>>
             <<set $mc.penislength to null>>
         <</if>>
         <<if $heterochromia is false>>
