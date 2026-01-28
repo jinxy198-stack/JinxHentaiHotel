@@ -47,15 +47,15 @@
     <th>Eyes:</th>
     <td id="mc-eyes">$mc.eyes</td>
   </tr>
-  <<if $hair.length or $hair.texture or $hair.colour or $hair.do or $hair.bangs or $hair.shave>>
+  <<if $mc.hair.length or $mc.hair.texture or $mc.hair.color or $mc.hair.do or $mc.hair.bangs or $mc.hair.shave>>
   <tr id="hair">
     <th>Hair:</th>
     <td>
       <span id="mc-hairnat">
-        <<if $hair.length and $hair.length is "bald">>
+        <<if $mc.hair.length and $mc.hair.length is "bald">>
           You are bald.
         <<else>>
-          You have $hair.style $hair.colour hair
+          You have $mc.hair.style $mc.hair.color hair
         <</if>>
       </span>
     </td>
@@ -74,7 +74,7 @@
   <colgroup><col style="width:220px"><col style="width:auto"></colgroup>
 
   <!-- Skin / Body material row -->
-  <tr id="skin-colour">
+  <tr id="skin-color">
     <th><<if $mc.species and $mc.species.toLowerCase() is "anthro">>Body Material:<</if>><<if not ($mc.species and $mc.species.toLowerCase() is "anthro")>>Skin:<</if>></th>
     <td id="mc-skin">
       <<if $mc.species and $mc.species.toLowerCase() is "anthro">>
@@ -82,9 +82,9 @@
         $mc.anthro.color
         $mc.anthro.pattern
       <<else>>
-        $skin.color
+        $mc.skin.color
       <</if>>
-      <<if $skin.features>> $skin.features<</if>>
+      <<if $mc.skin.features>> $mc.skin.features<</if>>
     </td>
   </tr>
   <!-- Anthro-only body part summary -->

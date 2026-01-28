@@ -1,6 +1,5 @@
 :: Widgets [widget nobr] {"position":"400,25","size":"100,100"}
 
-
 <<widget "ResolvePhysique">>
 	<<set _m = $physique.muscle>>
 	<<set _p = $physique.plump>>
@@ -364,7 +363,7 @@
         $mc.pronouns to either("She/Her", "He/Him", "They/Them (singular)", "They/Them (plural)"),
         $mc.age to random(6, 78),
         $heterochromia to either(true, false),
-        $skin.color to either(setup.skincolor),
+        $mc.skin.color to either(setup.skincolor),
         $mc.bodyheight to either(setup.height),
         $mc.physique to either(setup.physique),
         $mc.assSize to either(setup.assSize),
@@ -372,7 +371,7 @@
         $mc.species to either(setup.species)
     >>
         <<if $mc.species is "Anthro">>
-            <<set $skin.color to null>>
+            <<set $mc.skin.color to null>>
     	    <<set $mc.anthro.group to either(setup.anthroGroup)>>
             <<set $mc.anthro.color to either(setup.furScalesColors)>>
             <<set $mc.anthro.pattern to either(setup.anthroPatterns)>>
@@ -404,9 +403,9 @@
                 $mc.eyes to _eyesleft + " and " + _eyesright >>
         <</if>>
             <<set 
-                $hair to {},
-                $hair.style to either("Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads" ,"Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky Anime", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair"),
-                $hair.colour to either(setup.haircolor)>>
+                $mc.hair to {},
+                $mc.hair.style to either("Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads" ,"Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky Anime", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair"),
+                $mc.hair.color to either(setup.haircolor)>>
 
     <<if $mc.gender is "Female">>
     	<<set $mc.breastsize to either (setup.breastsize)>>
@@ -498,11 +497,11 @@
 <</widget>>
 
 <<widget "PopupSkinChecker">>
-    <<if $skin.features.includes("Viligo")>><<set _vitiligo to true>><</if>>
-    <<if $skin.features.includes("Freckles")>><<set _freckles to true>><</if>>
-    <<if $skin.features.includes("Eczema")>><<set _eczema to true>><</if>>
-    <<if $skin.features.includes("Beauty Marks")>><<set _beatymarks to true>><</if>>
-    <<if $skin.features.includes("Albinism")>><<set _albinism to true>><</if>>
+    <<if $mc.skin.features.includes("Viligo")>><<set _vitiligo to true>><</if>>
+    <<if $mc.skin.features.includes("Freckles")>><<set _freckles to true>><</if>>
+    <<if $mc.skin.features.includes("Eczema")>><<set _eczema to true>><</if>>
+    <<if $mc.skin.features.includes("Beauty Marks")>><<set _beatymarks to true>><</if>>
+    <<if $mc.skin.features.includes("Albinism")>><<set _albinism to true>><</if>>
 <</widget>>
 
   
@@ -534,40 +533,47 @@
 <</widget>>
 
 
-
 <<widget "PreSet">>
-    <<set 
-        $mc.name to "Gary",
-        $mc.nickname to "Sexy",
-        $mc.surname to "Stu",
-        $mc.species to "Human",
-        $mc.gender to "Male",
-        $mc.trans to "Cisgender",
-        $mc.sexu to "Bisexual",
-        $mc.pronouns to "He/Him (singular)",
-        $mc.age to "27",
-        $heterochromia to false,
-        $mc.eyes to "Brown",
-        $hair to {},
-        $hair.length to "Short",
-        $hair.colour to "Black",
-        $hair.style to "Buzz cut",
-        $facefeatures to ["A mole"],
-        $skin.color to "Tan",
-        $skin.features to [],
-        $mc.bodyheight to "Average",
-        $mc.physique to "Thin",
-        $mc.personality to "Kind",
-        $mc.genitals to "Penis",
-        $mc.penislength to "Average",
-        $mc.genitaltype to "Cut",
-        $mc.assSize to "Average",
-        $mc.sexpref to "Versatile",
-        $mc.virgin to true
-    >>
-    <<AgeGroupSet>>
-    <<MC-Create-body>>
-    
+
+<<set $mc.name = "Gary">>
+<<set $mc.nickname = "Sexy">>
+<<set $mc.surname = "Stu">>
+<<set $mc.species = "Human">>
+<<set $mc.gender = "Male">>
+<<set $mc.trans = "Cisgender">>
+<<set $mc.sexu = "Bisexual">>
+<<set $mc.pronouns = "He/Him (singular)">>
+<<set $mc.age = 27>>
+
+<<set $mc.heterochromia = false>>
+<<set $mc.eyes = "Brown">>
+
+<<set $mc.hair = {
+    length: "Short",
+    color: "Black",
+    style: "Buzz cut"
+}>>
+
+<<set $mc.facefeatures = ["A mole"]>>
+
+<<set $mc.skin = {
+    color: "Tan",
+    features: []
+}>>
+
+<<set $mc.bodyheight = "Average">>
+<<set $mc.physique = "Thin">>
+<<set $mc.personality = "Kind">>
+<<set $mc.genitals = "Penis">>
+<<set $mc.penislength = "Average">>
+<<set $mc.genitaltype = "Cut">>
+<<set $mc.assSize = "Average">>
+<<set $mc.sexpref = "Versatile">>
+<<set $mc.virgin = true>>
+
+<<AgeGroupSet>>
+<<MC-Create-body>>
+
 <</widget>>
 
 <<widget "LittleBoy">>
@@ -583,13 +589,13 @@
         $mc.age to "10",
         $heterochromia to false,
         $mc.eyes to "Brown",
-        $hair to {},
-        $hair.length to "Short",
-        $hair.colour to "Black",
-        $hair.style to "Buzz cut",
+        $mc.hair to {},
+        $mc.hair.length to "Short",
+        $mc.hair.color to "Black",
+        $mc.hair.style to "Buzz cut",
         $facefeatures to ["A mole"],
-        $skin.color to "Tan",
-        $skin.features to [],
+        $mc.skin.color to "Tan",
+        $mc.skin.features to [],
         $mc.bodyheight to "Short",
         $mc.physique to "Thin",
         $mc.personality to "Kind",
@@ -617,13 +623,13 @@
         $mc.age to "10",
         $heterochromia to false,
         $mc.eyes to "Brown",
-        $hair to {},
-        $hair.length to "Short",
-        $hair.colour to "Black",
-        $hair.style to "Buzz cut",
+        $mc.hair to {},
+        $mc.hair.length to "Short",
+        $mc.hair.color to "Black",
+        $mc.hair.style to "Buzz cut",
         $facefeatures to ["A mole"],
-        $skin.color to "Tan",
-        $skin.features to [],
+        $mc.skin.color to "Tan",
+        $mc.skin.features to [],
         $mc.bodyheight to "Short",
         $mc.physique to "Thin",
         $mc.breastsize to "Flat",
@@ -651,13 +657,13 @@
         $mc.age to "16",
         $heterochromia to false,
         $mc.eyes to "Brown",
-        $hair to {},
-        $hair.length to "Short",
-        $hair.colour to "Black",
-        $hair.style to "Buzz cut",
+        $mc.hair to {},
+        $mc.hair.length to "Short",
+        $mc.hair.color to "Black",
+        $mc.hair.style to "Buzz cut",
         $facefeatures to ["A mole"],
-        $skin.color to "Tan",
-        $skin.features to [],
+        $mc.skin.color to "Tan",
+        $mc.skin.features to [],
         $mc.bodyheight to "Average",
         $mc.physique to "Thin",
         $mc.personality to "Kind",
@@ -684,13 +690,13 @@
         $mc.age to "16",
         $heterochromia to false,
         $mc.eyes to "Brown",
-        $hair to {},
-        $hair.length to "Short",
-        $hair.colour to "Black",
-        $hair.style to "Buzz cut",
+        $mc.hair to {},
+        $mc.hair.length to "Short",
+        $mc.hair.color to "Black",
+        $mc.hair.style to "Buzz cut",
         $facefeatures to ["A mole"],
-        $skin.color to "Tan",
-        $skin.features to [],
+        $mc.skin.color to "Tan",
+        $mc.skin.features to [],
         $mc.bodyheight to "Average",
         $mc.physique to "Thin",
         $mc.breastsize to "Small",
@@ -717,13 +723,13 @@
         $mc.age to "27",
         $heterochromia to false,
         $mc.eyes to "Brown",
-        $hair to {},
-        $hair.length to "Short",
-        $hair.colour to "Black",
-        $hair.style to "Buzz cut",
+        $mc.hair to {},
+        $mc.hair.length to "Short",
+        $mc.hair.color to "Black",
+        $mc.hair.style to "Buzz cut",
         $facefeatures to ["A mole"],
-        $skin.color to "Tan",
-        $skin.features to [],
+        $mc.skin.color to "Tan",
+        $mc.skin.features to [],
         $mc.bodyheight to "Tall",
         $mc.physique to "Thin",
         $mc.breastsize to "Large",
@@ -751,13 +757,13 @@
         $mc.age to "27",
         $heterochromia to false,
         $mc.eyes to "Brown",
-        $hair to {},
-        $hair.length to "Short",
-        $hair.colour to "Black",
-        $hair.style to "Buzz cut",
+        $mc.hair to {},
+        $mc.hair.length to "Short",
+        $mc.hair.color to "Black",
+        $mc.hair.style to "Buzz cut",
         $facefeatures to ["A mole"],
-        $skin.color to "Tan",
-        $skin.features to [],
+        $mc.skin.color to "Tan",
+        $mc.skin.features to [],
         $mc.bodyheight to "Tall",
         $mc.physique to "Thin",
         $mc.personality to "Kind",

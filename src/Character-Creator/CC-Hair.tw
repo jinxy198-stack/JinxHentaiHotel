@@ -5,64 +5,64 @@
 <<button "Short Hair">> 
 	<<removeclass ".hairmed,.hairlong,.hairmisc" "visible">> 
 	<<addclass ".hairshort" "visible">> 
-    <<set $hair = ($hair is "bald") ? {} : $hair>> 
-    <<set $hair.length = "Short">>
+    <<set $mc.hair = ($mc.hair is "bald") ? {} : $mc.hair>> 
+    <<set $mc.hair.length = "Short">>
 <</button>>
 
 <<button "Medium Hair">>
 	<<removeclass ".hairshort,.hairlong,.hairmisc" "visible">>
 	<<addclass ".hairmed" "visible">>
-    <<set $hair = ($hair is "bald") ? {} : $hair>>
-    <<set $hair.length = "Medium">>
+    <<set $mc.hair = ($mc.hair is "bald") ? {} : $mc.hair>>
+    <<set $mc.hair.length = "Medium">>
 <</button>>
 
 <<button "Long Hair">>
 	<<removeclass ".hairshort,.hairmed,.hairmisc" "visible">>
 	<<addclass ".hairlong" "visible">>
-    <<set $hair = ($hair is "bald") ? {} : $hair>>
-    <<set $hair.length = "Long">>
+    <<set $mc.hair = ($mc.hair is "bald") ? {} : $mc.hair>>
+    <<set $mc.hair.length = "Long">>
 <</button>>
 
 <<button "Misc Hair">>
 	<<removeclass ".hairshort,.hairmed,.hairlong" "visible">>
 	<<addclass ".hairmisc" "visible">>
-    <<set $hair = ($hair is "bald") ? {} : $hair>>
-    <<set $hair.length = "Misc">>
+    <<set $mc.hair = ($mc.hair is "bald") ? {} : $mc.hair>>
+    <<set $mc.hair.length = "Misc">>
 <</button>>
 
 <<button "No, I am bald.">>
 	<<removeclass ".hairshort,.hairmed,.hairlong,.hairmisc" "visible">>
-	<<set $hair to "bald">>
+	<<set $mc.hair to "bald">>
 <</button>>
  <</nobr>> 
     
 <span class="hairshort"> 
 //What is your natural hair style?// 
-<<listbox "$hair.style">> <<optionsfrom _hairshort>> <</listbox>> 
-//What is your natural hair colour?// 
-<<listbox "$hair.colour">> <<optionsfrom _haircolour>> <</listbox>> 
+<<listbox "$mc.hair.style">> <<optionsfrom _hairshort>> <</listbox>> 
+//What is your natural hair color?// 
+<<listbox "$mc.hair.color">> <<optionsfrom _haircolour>> <</listbox>> 
 </span>
     
     <span class="hairmed"> 
     //What is your natural hair style?// 
-    <<listbox "$hair.style">> <<optionsfrom _hairmed>> <</listbox>> 
-//What is your natural hair colour?//
-<<listbox "$hair.colour">> <<optionsfrom _haircolour>> <</listbox>> 
+    <<listbox "$mc.hair.style">> <<optionsfrom _hairmed>> <</listbox>> 
+//What is your natural hair color?//
+<<listbox "$mc.hair.color">> <<optionsfrom _haircolour>> <</listbox>> 
 </span>
 
 <span class="hairlong">
 //What is your natural hair style?// 
-<<listbox "$hair.style">> <<optionsfrom _hairlong>> <</listbox>>
-//What is your natural hair colour?// 
-<<listbox "$hair.colour">> 
+<<listbox "$mc.hair.style">> <<optionsfrom _hairlong>> <</listbox>>
+//What is your natural hair color?// 
+<<listbox "$mc.hair.color">> 
 <<optionsfrom _haircolour>> <</listbox>> 
 </span>
 
 <span class="hairmisc"> 
 //What is your natural hair style?// 
-<<listbox "$hair.style">> <<optionsfrom _hairmisc>> <</listbox>>
-//What is your natural hair colour?// 
-<<listbox "$hair.colour">> 
+<<listbox "$mc.hair.style">> <<optionsfrom _hairmisc>> <</listbox>>
+//What is your natural hair color?// 
+<<listbox "$mc.hair.color">> 
 <<optionsfrom _haircolour>> <</listbox>> </span> 
 
 <span id="cover"></span> 

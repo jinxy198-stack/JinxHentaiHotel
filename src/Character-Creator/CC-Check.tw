@@ -63,9 +63,9 @@ Please review the character page below and confirm the traits chosen are correct
 <th><u><strong>Hair:</strong></u></th> 
 <td> 
 <span id="mc-hairnat"> 
-<<if $hair is "bald">> You are $hair. 
+<<if $mc.hair is "bald">> You are $mc.hair. 
 <<else>> 
-You have $hair.colour hair. Your hair is styled in a $hair.style . 
+You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style . 
 <</if>>
 </span> 
 </td> 
@@ -79,9 +79,9 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
 </table>
 <h3>Body</h3>
 <table>
-    <tr id="skin-colour">
+    <tr id="skin-color">
         <th> 
-            <<if $skin.color>>
+            <<if $mc.skin.color>>
                 <u><strong>Skin:</strong></u>
             <<elseif $mc.anthro.group is "Furry">> 
                 <u><strong>Fur:</strong></u>
@@ -92,8 +92,8 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
             <</if>>
         </th>
         <td id="mc-skin">
-            <<if $skin.color>>
-                $skin.color 
+            <<if $mc.skin.color>>
+                $mc.skin.color 
             <<elseif $mc.anthro.color>>
                 $mc.anthro.color 
                 <br>
@@ -102,8 +102,8 @@ You have $hair.colour hair. Your hair is styled in a $hair.style .
             <<else>>
                 ERROR NO SKIN OR BODY COLOR FOUND!
             <</if>>     
-        <<if $skin.features>>
-            $skin.features
+        <<if $mc.skin.features>>
+            $mc.skin.features
         <</if>></td>
     </tr>
     <tr id="body-build">

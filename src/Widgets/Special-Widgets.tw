@@ -624,7 +624,7 @@
 
 
 <<widget "MC-Create-body">>
-	<<set $mc.body to{
+	<<set $mc.body = {
     	Head: "head",
     	Face:"face",
     	Arms: "arms",

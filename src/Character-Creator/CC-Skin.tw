@@ -1,13 +1,13 @@
 :: CC-Skin [creation-page] {"position":"800,225","size":"100,100"}
 <h1>Choose your Skin Characteristics</h1>\
 <<if $mc.species is "Human">>
- Your skin colour is: 
-* <label><<radiobutton "$skin.color" "Pale" checked >>Pale</label>
-* <label><<radiobutton "$skin.color" "Fair" >>Fair</label>
-* <label><<radiobutton "$skin.color" "Tan" >>Tan</label>
-* <label><<radiobutton "$skin.color" "Olive" >>Olive</label>
-* <label><<radiobutton "$skin.color" "Brown" >>Brown</label>
-* <label><<radiobutton "$skin.color" "Ebony">>Ebony</label>
+ Your skin color is: 
+* <label><<radiobutton "$mc.skin.color" "Pale" checked >>Pale</label>
+* <label><<radiobutton "$mc.skin.color" "Fair" >>Fair</label>
+* <label><<radiobutton "$mc.skin.color" "Tan" >>Tan</label>
+* <label><<radiobutton "$mc.skin.color" "Olive" >>Olive</label>
+* <label><<radiobutton "$mc.skin.color" "Brown" >>Brown</label>
+* <label><<radiobutton "$mc.skin.color" "Ebony">>Ebony</label>
 
 //Does your skin have any notable features?//
 * <label><<checkbox "_vitiligo" false true>> Viligo</label>
@@ -40,12 +40,12 @@ Pattern
 
 <<button [[Confirm|Index-CC]]>>
   <<set $flags.skinChosen = true>>
-    <<set $skin.features to []>>
-    <<if _vitiligo>><<run $skin.features.push("Viligo")>><</if>>
-    <<if _freckles>><<run $skin.features.push("Freckles")>><</if>>
-    <<if _eczema>><<run $skin.features.push("Eczema")>><</if>>
-    <<if _beatymarks>><<run $skin.features.push("Beauty Marks")>><</if>>
-    <<if _albinism>><<run $skin.features.push("Albinism")>><</if>>
+    <<set $mc.skin.features to []>>
+    <<if _vitiligo>><<run $mc.skin.features.push("Viligo")>><</if>>
+    <<if _freckles>><<run $mc.skin.features.push("Freckles")>><</if>>
+    <<if _eczema>><<run $mc.skin.features.push("Eczema")>><</if>>
+    <<if _beatymarks>><<run $mc.skin.features.push("Beauty Marks")>><</if>>
+    <<if _albinism>><<run $mc.skin.features.push("Albinism")>><</if>>
 <</button>>
 
 

@@ -421,27 +421,28 @@ setup.sexpositions = {
 
 };
 
-setup.sexacts = {
-// positions: array of positions this act is possible for the average person in
-    // action type: array of "tease" or "penetrate" or "continue" or "end" for circumstances under which this act can be selected
-    //      (tease engages parts, penetrate... penetrates and requires teasing first, continues require prior penetration, end ends engagement)
-    //      (attack causes pain, explicitly hostile... impact too causes pain but is sex play)
-    // subject parts: body parts that the person actively doing the thing needs
-    // object parts: body parts that the person 'receiving' the thing needs
-    // masturbation: is this possible to do to oneself
-    // take virginity: array of parts this act takes virginity from
-    // skills required: array of skill requirements for subject to choose action (mostly Disinhib to tease/penetrate, sex skills for better continue techniques)
-    // subject skills improved: array of skills participating in this act will improve for subject
-    // object skills improved: array of skills participating in this act will improve for object
-    // subject arousal: increase arousal by this (orgasm at 1000, may be modified by other factors)
-    // object arousal: increase arousal by this
-    // subject arousal cap: don't increase arousal if it's already over this number (prevent some otherwise arousing acts from leading to orgasm)
-    // object arousal cap: don't increase arousal if it's already over this number
-    // remember as: make a sex memory ('given'/'received' is what it's recorded as for top, bottom is automatically reversed)
-    // ignoreforideas: if the player selecting this act should NOT cause the NPC to consider which idea it matches (basically, use for sex acts that don't correspond to an idea or shouldn't interrupt an ongoing idea)
-    // act label substitution: used to replace Pussy and other non-inclusive nouns for bits
-    // kink: a matching kinkcontent string (used to block the act)
 
+
+// positions: array of positions this act is possible for the average person in
+// action type: array of "tease" or "penetrate" or "continue" or "end" for circumstances under which this act can be selected
+//(tease engages parts, penetrate... penetrates and requires teasing first, continues require prior penetration, end ends engagement)
+//(attack causes pain, explicitly hostile... impact too causes pain but is sex play)
+// subject parts: body parts that the person actively doing the thing needs
+// object parts: body parts that the person 'receiving' the thing needs
+// masturbation: is this possible to do to oneself
+// take virginity: array of parts this act takes virginity from
+// skills required: array of skill requirements for subject to choose action (mostly Disinhib to tease/penetrate, sex skills for better continue techniques)
+// subject skills improved: array of skills participating in this act will improve for subject
+// object skills improved: array of skills participating in this act will improve for object
+// subject arousal: increase arousal by this (orgasm at 1000, may be modified by other factors)
+// object arousal: increase arousal by this
+// subject arousal cap: don't increase arousal if it's already over this number (prevent some otherwise arousing acts from leading to orgasm)
+// object arousal cap: don't increase arousal if it's already over this number
+// remember as: make a sex memory ('given'/'received' is what it's recorded as for top, bottom is automatically reversed)
+// ignoreforideas: if the player selecting this act should NOT cause the NPC to consider which idea it matches (basically, use for sex acts that don't correspond to an idea or shouldn't interrupt an ongoing idea)
+// act label substitution: used to replace Pussy and other non-inclusive nouns for bits
+
+setup.sexacts = {
     "Kiss":
     {
         "positions": [  "Missionary", "Laid Across On Back", "Laid Across On Stomach", "Mating Press", "Cowgirl", "Perched", "Standing", "Standing From Behind", "Astride Lap", "Spooning", "Against Wall"],
