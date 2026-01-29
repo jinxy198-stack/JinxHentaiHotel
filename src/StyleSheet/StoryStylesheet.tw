@@ -1,5 +1,38 @@
 :: StoryStylesheet [stylesheet]
 
+
+.sex-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  padding: 0;
+  margin: 0.5em 0;
+  list-style: none;
+}
+
+.sex-item {
+  display: inline-flex;
+}
+
+.sex-item a,
+.sex-item button {
+  padding: 0.4em 0.7em;
+  border-radius: 4px;
+  background: #222;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sex-item a:hover,
+.sex-item button:hover {
+  background: #444;
+}
+
+
+
+
 /* Make sure the PositionBlock never extends under the sidebar */
 .position-block{
   box-sizing:border-box;

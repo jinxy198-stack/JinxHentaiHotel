@@ -1,4 +1,6 @@
 :: Special-Widgets [widget nobr] {"position":"400,150","size":"100,100"}
+
+
 <<widget "MakeSNPC">>
 /* Creates a single Story NPC from a provided template and registers it globally */
 	<<if _args.length == 0>>
@@ -366,6 +368,7 @@
 	<<set _npc.body = Object.assign({
 		Head: "head",
 		Face: "face",
+		mouth: "mouth",
 		Arms: "arms",
 		Legs: "legs",
 		Hands: "hands",
@@ -627,6 +630,7 @@
 	<<set $mc.body = {
     	Head: "head",
     	Face:"face",
+		mouth:"mouth",
     	Arms: "arms",
     	Legs: "legs",
    		Hands: "hands",
@@ -639,7 +643,7 @@
     	Fingers: "fingers",
     	Hips: "hips",
     	Lips:"lips",
-    	Tongue:"tongue",
+    	Tongue:"tongue"
     }>>
 
 	/* --- APPLY BODY PART DATABASE --- */
@@ -661,6 +665,9 @@
 		<<set $mc.anthro.color = "" >>
 		<<set $mc.anthro.pattern = "" >>
 	<</if>>
+
+
+
 <</widget>>
 
 <<widget "MCalternatebody">>

@@ -1,5 +1,117 @@
 :: Widgets [widget nobr] {"position":"400,25","size":"100,100"}
 
+<<widget "RoomRelocationUI">>
+<h3>Relocate</h3>
+
+<<set _roomDef = setup.RoomTypes.db[$room.type]>>
+<<set _keys = Object.keys(_roomDef.contents)>>
+
+<ul class="inline-list relocation">
+<<for _i = 0; _i < _keys.length; _i++>>
+    <<set _furnKey = _keys[_i]>>
+    <<set _furn = setup.RoomTypes.furniture[_furnKey]>>
+
+    <<if _furn>>
+    <<capture _furnKey, _furn>>
+    <li>
+        <<button _furn.label>>
+            <<set $debugLastRelocation = _furnKey>>
+            <<set $room.location = _furnKey>>
+            <<set $room.furnitureFlags = _furn.flags || []>>
+            <<set $sex.furnitureFlags = $room.furnitureFlags>>
+            <<run setup.ensureValidSexPosition($sex)>>
+
+            <<replace "#sex-container">>
+                <<RoomRelocationUI>>
+                <<SexEncounterUI>>
+            <</replace>>
+        <</button>>
+
+        <<if $room.location is _furnKey>>
+            <span class="current-location"> (current)</span>
+        <</if>>
+    </li>
+    <</capture>>
+    <</if>>
+<</for>>
+</ul>
+<</widget>>
+
+
+
+<<widget "SexEncounterUI">>
+<div id="sexUI">
+
+<h3>Current</h3>
+<b>Position:</b> <<print $sex.position>><br>
+<b>Role:</b> <<print $sex.role>><br>
+<b>Act:</b> <<if $sex.act>><<print $sex.act>><<else>>  —<</if>>
+<br>
+<b>Phase:</b> <<print $sex.phase>><br>
+<<if $sex.penetration>>
+  <b>Penetration:</b> <<print $sex.penetration.subjectPart>> → <<print $sex.penetration.objectPart>><br>
+<</if>>
+
+<hr>
+<div id="npcsex-actions-bar">
+<<set _positions = setup.getAvailablePositions($sex) || []>>
+<h3>Available Positions</h3>
+
+<<if _positions.length === 0>>
+  <i>None (based on parts/role).</i>
+<<else>>
+    <ul class="sex-list">
+        <<for _i = 0; _i < _positions.length; _i++>>
+            <<set _p = _positions[_i]>>
+            <<if _p === $sex.position>>
+                <li><strong><<print _p>></strong></li>
+            <<else>>
+                <<capture _p>>
+                    <li>
+                        <<button _p>>
+                        <<set $sex.position = _p>>
+                        <<replace "#sexUI">>
+                            <<SexEncounterUI>>
+                        <</replace>>
+                        <</button>>
+                    </li>
+                <</capture>>
+            <</if>>
+        <</for>>
+    </ul>
+<</if>>
+
+<<set _acts = setup.getAvailableSexActs($sex) || []>>
+<h3>Available Acts</h3>
+
+<<if _acts.length === 0>>
+  <i>None (for this position/phase/parts).</i>
+<<else>>
+    <ul class="sex-list">
+        <<for _i = 0; _i < _acts.length; _i++>>
+        <<set _a = _acts[_i]>>
+        <<if _a === $sex.act>>
+                <li><strong><<print _a>></strong></li>
+        <<else>>
+        <<capture _a>>
+            <li>
+                <<button _a>>
+                    <<run setup.applySexAct($sex, _a)>>
+                    <<replace "#sexUI">>
+                        <<SexEncounterUI>>
+                    <</replace>>
+                <</button>>
+            </li>
+        <</capture>>
+        <</if>>
+        <</for>>
+    </ul>
+<</if>>
+</div>
+</div>
+<</widget>>
+
+
 <<widget "ResolvePhysique">>
 	<<set _m = $physique.muscle>>
 	<<set _p = $physique.plump>>

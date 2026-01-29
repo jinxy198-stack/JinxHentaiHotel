@@ -1,0 +1,237 @@
+:: sexHelpers [script]
+
+setup.getRoomFurnitureFlags = function (roomKey) {
+    const room = setup.RoomTypes.db[roomKey];
+    if (!room) return [];
+
+    const flags = [];
+
+    Object.keys(room.contents).forEach(furnKey => {
+        const furn = setup.RoomTypes.furniture[furnKey];
+        if (furn && furn.flags) {
+            flags.push(...furn.flags);
+        }
+    });
+
+    return [...new Set(flags)];
+};
+
+setup.syncSexWithRoom = function (sex, room) {
+    sex.location = room.location;
+    sex.furnitureFlags = room.furnitureFlags;
+};
+
+
+
+setup.partAliases = {
+    asshole: "anus",
+    ass: "butt",
+    breasts: "chest",
+    tits: "breasts",
+    feet: "foot"
+};
+
+setup.normalizeBodyparts = function(actor) {
+    const parts = Object.keys(actor.body)
+        .map(p => p.toLowerCase())
+        .map(p => setup.partAliases[p] || p);
+
+    if (actor.genitals) {
+        parts.push(actor.genitals.toLowerCase());
+    }
+
+    actor.bodyparts = [...new Set(parts)];
+};
+
+
+
+setup.isPositionValid = function (positionKey, sex) {
+    const pos = setup.sexpositions[positionKey];
+    if (!pos) return false;
+
+    const s = sex.subject.bodyparts || [];
+    const o = sex.object.bodyparts || [];
+
+    const topParts = pos.top || [];
+    const bottomParts = pos.bottom || [];
+
+    // BODY CHECK (existing)
+    let bodyOK = false;
+
+    if (pos.equal) {
+        bodyOK =
+            (topParts.some(p => s.includes(p)) && bottomParts.some(p => o.includes(p))) ||
+            (topParts.some(p => o.includes(p)) && bottomParts.some(p => s.includes(p)));
+    } else if (sex.role === "top") {
+        bodyOK = topParts.some(p => s.includes(p)) && bottomParts.some(p => o.includes(p));
+    } else if (sex.role === "bottom") {
+        bodyOK = topParts.some(p => o.includes(p)) && bottomParts.some(p => s.includes(p));
+    }
+
+    if (!bodyOK) return false;
+
+    // FURNITURE CHECK (NEW)
+    if (pos.furniture && pos.furniture.length > 0) {
+    if (!sex.furnitureFlags) return false;
+    return pos.furniture.some(f => sex.furnitureFlags.includes(f));
+    }
+
+
+    return true;
+};
+
+
+
+setup.getAvailablePositions = function(sex) {
+    return Object.keys(setup.sexpositions)
+        .filter(p => setup.sexpositions[p].primary)
+        .filter(p => setup.isPositionValid(p, sex));
+};
+
+
+setup.actAllowsPosition = function(act, sex) {
+    return act.positions.some(p => {
+        const [pos, role] = p.split(":");
+        if (pos !== sex.position) return false;
+        if (!role) return true;
+        if (role === sex.role) return true;
+        if (sex.role === "equal") return true;
+        return false;
+    });
+};
+
+
+setup.hasParts = function(actor, parts) {
+    if (!actor.bodyparts) return false;
+    return parts.every(p => actor.bodyparts.includes(p));
+};
+
+
+
+setup.getAvailableSexActs = function (sex) {
+    return Object.entries(setup.sexacts)
+        .filter(([_, act]) => {
+            const types = act["action type"];
+
+            // END acts: special handling
+            if (types.includes("end")) {
+                return (
+                    sex.phase === "continue" &&
+                    setup.isEndActValid(act, sex)
+                );
+            }
+
+            // Normal phase logic
+            const allowed = setup.getAllowedActTypesForPhase(sex.phase);
+            if (!types.some(t => allowed.includes(t))) return false;
+
+            if (!setup.actAllowsPosition(act, sex)) return false;
+            if (!setup.hasParts(sex.subject, act["subject parts"])) return false;
+            if (!setup.hasParts(sex.object, act["object parts"])) return false;
+
+            return true;
+        })
+        .map(([name]) => name);
+};
+
+
+setup.applySexAct = function (sex, actKey) {
+    const act = setup.sexacts[actKey];
+    if (!act) return;
+
+    sex.history.push(actKey);
+    sex.act = actKey;
+
+    const types = act["action type"];
+
+    // END always wins
+    if (types.includes("end")) {
+        sex.penetration = null;
+        sex.phase = "tease";
+        return;
+    }
+
+    // PENETRATION starts penetration & moves to continue
+    if (types.includes("penetrate")) {
+        sex.penetration = {
+            subjectPart: act["subject parts"] && act["subject parts"][0] ? act["subject parts"][0] : null,
+            objectPart: act["object parts"] && act["object parts"][0] ? act["object parts"][0] : null
+
+        };
+        sex.phase = "continue";
+        return;
+    }
+
+    // CONTINUE keeps penetration going
+    if (types.includes("continue")) {
+        sex.phase = "continue";
+        return;
+    }
+
+    // TEASE keeps tease phase
+    if (types.includes("tease")) {
+        sex.phase = "tease";
+    }
+};
+
+
+setup.getAllowedActTypesForPhase = function (phase) {
+    switch (phase) {
+        case "tease":
+            return ["tease", "penetrate"];
+        case "continue":
+            return ["continue", "end"];
+        default:
+            return ["tease"];
+    }
+};
+
+setup.roomHasFurniture = function (sex, required) {
+    if (!required || required.length === 0) return true;
+    if (!sex.furnitureFlags) return false;
+
+    return required.some(f => sex.furnitureFlags.includes(f));
+};
+
+setup.ensureValidSexPosition = function (sex) {
+    const available = setup.getAvailablePositions(sex) || [];
+
+    // No valid positions at all
+    if (available.length === 0) {
+        sex.position = null;
+        sex.act = null;
+        sex.penetration = null;
+        sex.phase = "tease";
+        return;
+    }
+
+    // Current position still valid → do nothing
+    if (sex.position && available.includes(sex.position)) {
+        return;
+    }
+
+    // Otherwise, force fallback
+    sex.position = available[0];
+    sex.act = null;
+    sex.penetration = null;
+    sex.phase = "tease";
+};
+
+
+setup.isEndActValid = function (act, sex) {
+    if (!sex.penetration) return false;
+
+    const sp = sex.penetration.subjectPart;
+    const op = sex.penetration.objectPart;
+
+    const aSub = act["subject parts"]?.[0];
+    const aObj = act["object parts"]?.[0];
+
+    // direct match
+    if (aSub === sp && aObj === op) return true;
+
+    // reversed match
+    if (aSub === op && aObj === sp) return true;
+
+    return false;
+};

@@ -4,8 +4,6 @@
 	plump: 4,
 	label: "Average"
 }>>
-
-
 <<set $npcSeq = 0>>
 <<set $npcs = []>>
 <<set $ui = {}>>
@@ -162,3 +160,4 @@
 
 <<set $flags = $flags || {}>>
 <<set $flags.skinChosen = false>>
+

@@ -227,8 +227,8 @@ setup.sexpositions = {
     "Cowgirl":
     {
         label: "cowgirl",
-        "top": ["anus"],
-        "bottom": ["penis"],
+        "top": ["penis"],
+        "bottom": ["anus"],
         "bottom cum locations": [],
         "top cum locations": ["crotch", "stomach"],
         "force bottom cum location": true,
@@ -426,26 +426,21 @@ setup.sexpositions = {
 // positions: array of positions this act is possible for the average person in
 // action type: array of "tease" or "penetrate" or "continue" or "end" for circumstances under which this act can be selected
 //(tease engages parts, penetrate... penetrates and requires teasing first, continues require prior penetration, end ends engagement)
-//(attack causes pain, explicitly hostile... impact too causes pain but is sex play)
 // subject parts: body parts that the person actively doing the thing needs
 // object parts: body parts that the person 'receiving' the thing needs
 // masturbation: is this possible to do to oneself
 // take virginity: array of parts this act takes virginity from
-// skills required: array of skill requirements for subject to choose action (mostly Disinhib to tease/penetrate, sex skills for better continue techniques)
-// subject skills improved: array of skills participating in this act will improve for subject
-// object skills improved: array of skills participating in this act will improve for object
 // subject arousal: increase arousal by this (orgasm at 1000, may be modified by other factors)
 // object arousal: increase arousal by this
 // subject arousal cap: don't increase arousal if it's already over this number (prevent some otherwise arousing acts from leading to orgasm)
 // object arousal cap: don't increase arousal if it's already over this number
 // remember as: make a sex memory ('given'/'received' is what it's recorded as for top, bottom is automatically reversed)
-// ignoreforideas: if the player selecting this act should NOT cause the NPC to consider which idea it matches (basically, use for sex acts that don't correspond to an idea or shouldn't interrupt an ongoing idea)
 // act label substitution: used to replace Pussy and other non-inclusive nouns for bits
 
 setup.sexacts = {
     "Kiss":
     {
-        "positions": [  "Missionary", "Laid Across On Back", "Laid Across On Stomach", "Mating Press", "Cowgirl", "Perched", "Standing", "Standing From Behind", "Astride Lap", "Spooning", "Against Wall"],
+        "positions": [ "Missionary", "Laid Across On Back", "Laid Across On Stomach", "Mating Press", "Cowgirl", "Perched", "Standing", "Standing From Behind", "Astride Lap", "Spooning", "Against Wall"],
         "action type": ["tease"],
         "subject parts": ["mouth"],
         "object parts": ["mouth"],
@@ -461,7 +456,7 @@ setup.sexacts = {
     },
     "Grope Breasts":
     {
-        "positions": [  "Missionary:top", "Laid Across On Back:top", "Mounted On X-Cross:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom", "Mounted On X-Cross Oral Service:top"],
+        "positions": [  "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["hand"],
         "object parts": ["breasts"],
@@ -477,7 +472,7 @@ setup.sexacts = {
     },
     "Tease Nipples":
     {
-        "positions": [  "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["hand"],
         "object parts": ["nipples"],
@@ -493,8 +488,8 @@ setup.sexacts = {
     },
     "Kiss Nipple":
     {
-        "positions": [  "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Cowgirl:top", "Kneeling Over:bottom", "Standing", "Astride Lap", "Against Wall"],
-        "action type": ["impact"],
+        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Cowgirl:top", "Kneeling Over:bottom", "Standing", "Astride Lap", "Against Wall"],
+        "action type": ["tease"],
         "subject parts": ["mouth"],
         "object parts": ["nipples"],
         "masturbation": false,
@@ -521,13 +516,12 @@ setup.sexacts = {
     },
     "Suck Nipple":
     {
-        "positions": [  "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Cowgirl:top", "Kneeling Over:bottom", "Perched", "Standing", "Astride Lap:bottom", "Against Wall"],
+        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Cowgirl:top", "Kneeling Over:bottom", "Perched", "Standing", "Astride Lap:bottom", "Against Wall"],
         "action type": ["tease"],
         "subject parts": ["mouth"],
         "object parts": ["nipples"],
         "masturbation": false,
         "take virginity": [],
-        "skills required": {"Disinhibition": 1},
         "subject arousal": 10,
         "object arousal": 40,
         "subject arousal cap": 600,
@@ -543,7 +537,7 @@ setup.sexacts = {
     //      starts
     "Rub Pussy":
     {
-        "positions": [  "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Doggy:bottom", "Bent Over:top", "Perched:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind:top", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Doggy:bottom", "Bent Over:top", "Perched:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind:top", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["hand"],
         "object parts": ["vagina"],
@@ -568,9 +562,6 @@ setup.sexacts = {
         "object parts": ["hand"],
         "masturbation": false,
         "take virginity": [],
-        "skills required": {"Disinhibition": 1},
-        "object skills improved": ["Hand"],
-        "subject skills improved": [],
         "subject arousal": 40,
         "object arousal":  10,
         "object arousal cap": 300,
@@ -578,15 +569,12 @@ setup.sexacts = {
     },
     "Finger Pussy":
     {
-        "positions": [  "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy:top", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:bottom", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy:top", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:bottom", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["penetrate", "continue"],
         "subject parts": ["hand"],
         "object parts": ["vagina"],
         "masturbation": true,
         "take virginity": [],
-        "skills required": {"Disinhibition": 1},
-        "subject skills improved": ["Hand"],
-        "object skills improved": [],
         "subject arousal": 10,
         "object arousal":  45,
         "subject arousal cap": 300,
@@ -603,8 +591,6 @@ setup.sexacts = {
         "object parts": ["clitoris"],
         "masturbation": true,
         "take virginity": [],
-        "subject skills improved": ["Hand"],
-        "object skills improved": [],
         "subject arousal": 10,
         "object arousal": 50,
         "subject arousal cap": 300,
@@ -622,9 +608,6 @@ setup.sexacts = {
         "object parts": ["vagina"],
         "masturbation": true,
         "take virginity": [],
-        "skills required": {"Disinhibition": 1},
-        "subject skills improved": ["Oral"],
-        "object skills improved": [],
         "subject arousal": 10,
         "object arousal":  50,
         "subject arousal cap": 300,
@@ -642,8 +625,6 @@ setup.sexacts = {
         "object parts": ["clitoris"],
         "masturbation": false,
         "take virginity": [],
-        "subject skills improved": ["Oral"],
-        "object skills improved": [],
         "subject arousal": 10,
         "object arousal": 60,
         "subject arousal cap": 300,
@@ -661,8 +642,6 @@ setup.sexacts = {
         "object parts": ["mouth"],
         "masturbation": false,
         "take virginity": [],
-        "subject skills improved": ["Vaginal"],
-        "object skills improved": ["Oral"],
         "subject arousal": 50,
         "object arousal": 10,
         "object arousal cap": 300,
@@ -679,9 +658,6 @@ setup.sexacts = {
         "object parts": ["vagina"],
         "masturbation": true,
         "take virginity": [],
-        "skills required": {},
-        "object skills improved": [],
-        "subject skills improved": [],
         "subject arousal": 0,
         "object arousal": 0,
     },
@@ -693,9 +669,6 @@ setup.sexacts = {
         "object parts": ["hand"],
         "masturbation": false,
         "take virginity": [],
-        "skills required": {},
-        "object skills improved": [],
-        "subject skills improved": [],
         "subject arousal": 0,
         "object arousal": 0,
     },
@@ -844,7 +817,7 @@ setup.sexacts = {
     },
     "Rub Cock Against Feet":
     {
-        "positions": [  "Missionary:top", "Laid Across On Back:top", "Kneeling:bottom", "Perched:top"],
+        "positions": [ "Missionary:top", "Laid Across On Back:top", "Kneeling:bottom", "Perched:top"],
         "action type": ["tease"],
         "subject parts": ["penis"],
         "object parts": ["foot"],
@@ -856,7 +829,7 @@ setup.sexacts = {
     },
     "Rub Pussy Against Feet":
     {
-        "positions": [  "Missionary:top", "Laid Across On Back:top", "Kneeling:bottom", "Perched:top"],
+        "positions": [ "Missionary:top", "Laid Across On Back:top", "Kneeling:bottom", "Perched:top"],
         "action type": ["tease"],
         "subject parts": ["vagina"],
         "object parts": ["foot"],
@@ -1441,7 +1414,7 @@ setup.sexacts = {
     //      starts
     "Tease Ass With Cock":
     {
-        "positions": [  "Missionary:top", "Prone Bone:top", "Mating Press:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl:bottom", "Standing From Behind:top", "Astride Lap:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Laid Across On Back:top", "Laid Across On Stomach:top"],
+        "positions": [ "Missionary:top", "Prone Bone:top", "Mating Press:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl:bottom", "Standing From Behind:top", "Astride Lap:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Laid Across On Back:top", "Laid Across On Stomach:top"],
         "action type": ["tease"],
         "subject parts": ["penis"],
         "object parts": ["anus"],
@@ -1454,7 +1427,7 @@ setup.sexacts = {
     },
     "Cocktease With Ass":
     {
-        "positions": [  "Missionary:bottom", "Prone Bone:bottom", "Mating Press:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Cowgirl:top", "Reverse Cowgirl:top", "Standing From Behind:bottom", "Astride Lap:top", "Spooning:bottom", "Double Decker:bottom", "Against Wall From Behind:bottom", "Laid Across On Back:bottom", "Laid Across On Stomach:bottom"],
+        "positions": [ "Missionary:bottom", "Prone Bone:bottom", "Mating Press:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Cowgirl:top", "Reverse Cowgirl:top", "Standing From Behind:bottom", "Astride Lap:top", "Spooning:bottom", "Double Decker:bottom", "Against Wall From Behind:bottom", "Laid Across On Back:bottom", "Laid Across On Stomach:bottom"],
         "action type": ["tease"],
         "subject parts": ["anus"],
         "object parts": ["penis"],
@@ -1467,7 +1440,7 @@ setup.sexacts = {
     },
     "Rub Butthole":
     {
-        "positions": [  "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["hand"],
         "object parts": ["anus"],
@@ -1512,9 +1485,6 @@ setup.sexacts = {
         "object parts": ["anus"],
         "masturbation": true,
         "take virginity": [],
-        "skills required": {"Disinhibition": 3},
-        "subject skills improved": ["Hand"],
-        "object skills improved": ["Anal"],
         "subject arousal": 5,
         "object arousal": 35,
         "subject arousal cap": 300,
@@ -1608,7 +1578,7 @@ setup.sexacts = {
     // other stuff
     "Fuck Tits":
     {
-        "positions": [  "Kneeling:top", "Straddling Chest:top"],
+        "positions": ["Kneeling:top", "Straddling Chest:top"],
         "action type": ["tease"],
         "subject parts": ["penis"],
         "object parts": ["breasts"],
