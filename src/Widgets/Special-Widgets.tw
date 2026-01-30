@@ -366,15 +366,15 @@
 	/* Initializes default body part map */
 
 	<<set _npc.body = Object.assign({
-		Head: "head",
-		Face: "face",
-		mouth: "mouth",
-		Arms: "arms",
-		Legs: "legs",
-		Hands: "hands",
-		Hand: "hand",
+		Head: "Head",
+		Face: "Face",
+		Mouth: "Mouth",
+		Arms: "Arms",
+		Legs: "Legs",
+		Hands: "Hands",
+		Hand: "Hand",
 		Feet: "feet",
-		Butt: "butt",
+		Butt: "Butt",
 		Ass: "ass",
 		Asshole: "asshole",
 		Finger: "finger",
@@ -432,8 +432,6 @@
 								<<set _npc.genitaltype = either( "Knotted", "Cut", "Uncut")>>
 							<</if>>
                         <</if>>
-                        
-
 					<<case "bunny">>
 						<<set _npc.body.Ears to "Long Bunny Ears">>
 						<<set _npc.body.Feet to "Paws">>
@@ -443,7 +441,6 @@
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
 							<</if>>
                         <</if>>
-
 					<<case "feline">>
 						<<set _npc.body.Ears to "Feline Ears">>
 						<<set _npc.body.Feet to "Soft Paws">>
@@ -453,7 +450,6 @@
 								<<set _npc.genitaltype = either( "Barbed", "Cut", "Uncut")>>
 							<</if>>
                         <</if>>
-
 					<<case "bear">>
 						<<set _npc.body.Ears to "Round Bear Ears">>
 						<<set _npc.body.Feet to "Paws">>
@@ -463,7 +459,6 @@
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
 							<</if>>
                         <</if>>
-
 					<<case "wolf">>
 						<<set _npc.body.Ears to "Wolf Ears">>
 						<<set _npc.body.Feet to "Paws">>
@@ -473,7 +468,6 @@
 								<<set _npc.genitaltype = either( "Knotted", "Cut", "Uncut")>>
 							<</if>>
                         <</if>>
-
 					<<case "goat">>
 						<<set _npc.body.Ears to "Goat Ears">>
 						<<set _npc.body.Feet to "Hooves">>
@@ -483,7 +477,6 @@
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
 							<</if>>
                         <</if>>
-
 					<<case "mouse">>
 						<<set _npc.body.Ears to "Big Round Ears">>
 						<<set _npc.body.Feet to "Paws">>
@@ -493,13 +486,11 @@
 								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
 							<</if>>
                         <</if>>
-
 					<<case "pig">>
 						<<set _npc.body.Ears to "Pig Ears">>
 						<<set _npc.body.Feet to "Trotters">>
 						<<set _npc.body.Tail to "Curly Tail">>
                         <<set _npc.body.Bodymaterial to "Hide">>
-
 					<<case "fox">>
 						<<set _npc.body.Ears to "Fox Ears">>
 						<<set _npc.body.Feet to "Paws">>
@@ -509,7 +500,7 @@
 								<<set _npc.genitaltype = either( "Knotted", "Cut", "Uncut")>>
 							<</if>>
                         <</if>>
-                        
+                    
                     <<default>>
 						/* keep generic furry defaults */
 				<</switch>>
@@ -628,22 +619,22 @@
 
 <<widget "MC-Create-body">>
 	<<set $mc.body = {
-    	Head: "head",
-    	Face:"face",
-		mouth:"mouth",
-    	Arms: "arms",
-    	Legs: "legs",
-   		Hands: "hands",
-    	Hand: "hand",
-    	Feet: "feet",
-    	Butt: "butt",
-    	Ass: "ass",
-    	Asshole: "asshole",
-    	Finger: "finger",
-    	Fingers: "fingers",
-    	Hips: "hips",
-    	Lips:"lips",
-    	Tongue:"tongue"
+    	Head: "Head",
+    	Face:"Face",
+		Mouth:"Mouth",
+    	Arms: "Arms",
+    	Legs: "Legs",
+   		Hands: "Hands",
+    	Hand: "Hand",
+    	Feet: "Feet",
+    	Butt: "Butt",
+    	Ass: "Ass",
+    	Asshole: "Asshole",
+    	Finger: "Finger",
+    	Fingers: "Fingers",
+    	Hips: "Hips",
+    	Lips:"Lips",
+    	Tongue:"Tongue"
     }>>
 
 	/* --- APPLY BODY PART DATABASE --- */

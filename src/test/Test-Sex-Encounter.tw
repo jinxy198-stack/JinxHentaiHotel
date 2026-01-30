@@ -1,62 +1,74 @@
 :: Test-Sex-Encounter [nobr]
 
-<<set _npc = $Yoichi_CB>>
-
-<<if !_npc>>
-	ERROR: _npc not set
+<<if !$ui || !$ui.npc>>
+	ERROR: ui.npc not set
 	<<return>>
 <</if>>
-
-<<PronounsSet>>
-<<AgeGroupNPC>>
-<<make-petname>>
-<<create-body _npc>>
-<<set $mc.bodyparts = Object.keys($mc.body)>>
-
-
-/* normalize for sex system */
-<<set _npc.bodyparts = Object.keys(_npc.body)>>
+<<set _npc = $ui.npc>>
 <<set _n = _npc>>
-
 <<run setup.normalizeBodyparts($mc)>>
 <<run setup.normalizeBodyparts(_n)>>
 
-Name: $mc.name <br>
-/*$mc.bodyparts <br>*/
-Genitals: $mc.genitals<br>
-
-Name: _n.name  <br>
-Has mouth: <<print _n.body.mouth ? "yes" : "no">>  <br>
-/*_n.bodyparts <br> */
-Genitals: _n.genitals  
-<br>
-<<if !$sex>>
-<<set $sex = {
-    position: "Standing",
-    role: "top",
-    subject: $mc,
-    object: _n,
-    engagedParts: { subject: [], object: [] },
-    penetration: null,
-    phase: "tease",
-    history: []
-}>>
-<</if>>
-
-<<if !$room>>
-<<set $room = {
-    type: "bedroom",
-    location: "large floor",
-    furnitureFlags: setup.getRoomFurnitureFlags("bedroom")
-}>>
-<</if>>
-
-<<if !$sex.furnitureFlags>>
-<<set $sex.furnitureFlags = $room.furnitureFlags>>
+<<if !$mc.bodyparts && $mc.body>>
+	<<set $mc.bodyparts = Object.keys($mc.body)>>
 <</if>>
 
 <hr>
-<br>
+
+/* ensure room exists BEFORE UI */
+<<if !$room>>
+<<set $room = {
+  type: "bedroom",
+  location: "large floor",
+  furnitureFlags: setup.getRoomFurnitureFlags("bedroom")
+}>>
+<</if>>
+
+/* ensure sex exists */
+
+/* <<set $sex = {
+  position: "Standing",
+  role: "top",
+  subject: $mc,
+  object: _n,
+  engagedParts: { subject: [], object: [] },
+  penetration: null,
+  phase: "tease",
+  history: []
+}>> */
+<<SexMemory>>
+/* local convenience copy */
+	<<set _sexCount = $npcMemory[_key].sexCount>>
+
+<<set $sex.position = "Standing">>
+<<set $sex.subject = $mc>>
+<<set $sex.object = _n>>
+<<set $sex.engagedParts= { subject: [], object: [] }>>
+<<set $sex.penetration = null>>
+<<set $sex.phase = "tease">>
+<<set $sex.history= []>>
+<<set $sex.action= "Staring">>
+
+
+<<if $sex.roles.dom.name == $mc.name>>
+  <<set $sex.role = "top">>
+<<else>>
+  <<set $sex.role = "bottom">>
+<</if>>
+
+
+/* ALWAYS rebind subject/object to current */
+<<set $sex.subject = $mc>>
+<<set $sex.object  = _n>>
+
+/* keep furniture flags synced */
+<<set $room.furnitureFlags = $room.furnitureFlags || setup.getRoomFurnitureFlags($room.type)>>
+<<set $sex.furnitureFlags  = $room.furnitureFlags>>
+
+MC parts: <<print $mc.bodyparts.join(", ")>><br>
+NPC parts: <<print _n.bodyparts.join(", ")>><br>
+
+<<set _n.arousal = _n.arousal or 0>>
 /* <<print JSON.stringify($sex)>> <br>*/
 /* <<print setup.getAvailablePositions($sex)>> <br>*/
  /* <<print setup.getAvailableSexActs($sex)>> <br>*/
@@ -64,8 +76,19 @@ Genitals: _n.genitals
 /* <<print JSON.stringify(setup.getAvailablePositions($sex))>> */
 /*<b>Last relocation pressed:</b> <<print $debugLastRelocation>>*/
 
+/* Arousal bar*/
+<div class="status-line">
+			<span class="status-label">Arousal: </span>
+			<span class="status-value">
+				<progress id="arousal-bar" value="<<=_n.arousal>>" max="100"></progress>
+				<span id="arousal-pct"><<= _n.arousal >>%</span>
+			</span>
+</div>
+
+
 <div id= "sex-container">
 <<RoomRelocationUI>>
+<br>
 <<SexEncounterUI>>
 </div>
 

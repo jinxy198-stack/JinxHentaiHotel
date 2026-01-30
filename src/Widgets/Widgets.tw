@@ -914,3 +914,25 @@
     return mcH > npcH ? 1 : mcH < npcH ? -1 : 0;
     <</script>>
 <</widget>>
+
+
+<<widget "SexMemory">>
+    /* ensure global memory object exists */
+	<<set $npcMemory = $npcMemory or {}>>
+    /* choose a key for this NPC */
+    <<set _key = _n.id or _n.name>>
+
+	/* ensure memory entry exists */
+	<<set $npcMemory[_key] = $npcMemory[_key] or {}>>
+
+	/* ensure properties exist */
+	<<set $npcMemory[_key].interacted = $npcMemory[_key].interacted or false>>
+	<<set $npcMemory[_key].times      = $npcMemory[_key].times      or 0>>
+	<<set $npcMemory[_key].sexCount   = $npcMemory[_key].sexCount   or 0>>
+
+	/* update values */
+	<<set $npcMemory[_key].interacted = true>>
+	<<set $npcMemory[_key].times     += 1>>
+	<<set $npcMemory[_key].sexCount  += 1>>
+    
+<</widget>>

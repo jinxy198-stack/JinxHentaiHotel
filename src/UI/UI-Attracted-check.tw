@@ -18,7 +18,8 @@
 <<button "Go have sex">>
 	<<WithNPC _n.id>>
     <<run Dialog.close()>>
-	<<goto "UI-NPC-Sex">>
+	/*<<goto "UI-NPC-Sex">>*/
+	<<goto "Test-Sex-Encounter">>
 <</button>>
 <<else>>
 <<include "Reject-Dialogue">>

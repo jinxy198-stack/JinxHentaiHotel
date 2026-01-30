@@ -22,7 +22,6 @@ setup.syncSexWithRoom = function (sex, room) {
 };
 
 
-
 setup.partAliases = {
     asshole: "anus",
     ass: "butt",
@@ -32,64 +31,123 @@ setup.partAliases = {
 };
 
 setup.normalizeBodyparts = function(actor) {
-    const parts = Object.keys(actor.body)
-        .map(p => p.toLowerCase())
-        .map(p => setup.partAliases[p] || p);
+    if (!actor || !actor.body) return;
+
+    const parts = Object.keys(actor.body);
 
     if (actor.genitals) {
-        parts.push(actor.genitals.toLowerCase());
+        parts.push(actor.genitals);
     }
 
     actor.bodyparts = [...new Set(parts)];
 };
 
+setup.getEncounterSize = function (sex) {
+    let count = 0;
+    if (sex.subject) count++;
+    if (sex.object) count++;
+
+    if (Array.isArray(sex.participants)) {
+        count += sex.participants.length;
+    }
+
+    return count;
+};
+
+setup.partEquals = function (a, b) {
+    if (!a || !b) return false;
+    return a.localeCompare(b, undefined, { sensitivity: "accent" }) === 0;
+};
+
+setup.partMatches = function(actor, required) {
+    if (!actor || !actor.bodyparts || !required) return false;
+
+    const req = required.toLowerCase();
+
+    return actor.bodyparts.some(p => {
+        const part = p.toLowerCase();
+        return (
+            part === req ||
+            setup.partAliases[part] === req
+        );
+    });
+};
+
+setup.hasParts = function(actor, parts) {
+    if (!actor || !actor.bodyparts) return false;
+    if (!parts || parts.length === 0) return true;
+
+    return parts.some(p => setup.partMatches(actor, p));
+};
 
 
 setup.isPositionValid = function (positionKey, sex) {
     const pos = setup.sexpositions[positionKey];
     if (!pos) return false;
 
-    const s = sex.subject.bodyparts || [];
-    const o = sex.object.bodyparts || [];
+    const subject = sex.subject;
+    const object  = sex.object;
 
     const topParts = pos.top || [];
     const bottomParts = pos.bottom || [];
 
-    // BODY CHECK (existing)
     let bodyOK = false;
 
     if (pos.equal) {
         bodyOK =
-            (topParts.some(p => s.includes(p)) && bottomParts.some(p => o.includes(p))) ||
-            (topParts.some(p => o.includes(p)) && bottomParts.some(p => s.includes(p)));
-    } else if (sex.role === "top") {
-        bodyOK = topParts.some(p => s.includes(p)) && bottomParts.some(p => o.includes(p));
-    } else if (sex.role === "bottom") {
-        bodyOK = topParts.some(p => o.includes(p)) && bottomParts.some(p => s.includes(p));
+            (topParts.some(p => setup.partMatches(subject, p)) &&
+             bottomParts.some(p => setup.partMatches(object, p))) ||
+            (topParts.some(p => setup.partMatches(object, p)) &&
+             bottomParts.some(p => setup.partMatches(subject, p)));
+    }
+    else if (sex.role === "top") {
+        bodyOK =
+            topParts.some(p => setup.partMatches(subject, p)) &&
+            bottomParts.some(p => setup.partMatches(object, p));
+    }
+    else if (sex.role === "bottom") {
+        bodyOK =
+            topParts.some(p => setup.partMatches(object, p)) &&
+            bottomParts.some(p => setup.partMatches(subject, p));
     }
 
     if (!bodyOK) return false;
 
-    // FURNITURE CHECK (NEW)
-    if (pos.furniture && pos.furniture.length > 0) {
-    if (!sex.furnitureFlags) return false;
-    return pos.furniture.some(f => sex.furnitureFlags.includes(f));
+    if (pos.furniture?.length) {
+        if (!sex.furnitureFlags?.length) return false;
+        if (!pos.furniture.some(f => sex.furnitureFlags.includes(f))) {
+            return false;
+        }
     }
-
 
     return true;
 };
 
 
 
-setup.getAvailablePositions = function(sex) {
+setup.getAvailablePositions = function (sex) {
+    const size = setup.getEncounterSize(sex);
+
     return Object.keys(setup.sexpositions)
-        .filter(p => setup.sexpositions[p].primary)
-        .filter(p => setup.isPositionValid(p, sex));
+        .filter(posKey => {
+            const pos = setup.sexpositions[posKey];
+
+            // 1-on-1 encounter → primary only
+            if (size <= 2) {
+                return pos.primary === true;
+            }
+
+            // Multi-partner → primary + secondary
+            return pos.primary === true || pos.secondary === true;
+        })
+        .filter(posKey => setup.isPositionValid(posKey, sex));
 };
 
 
+
 setup.actAllowsPosition = function(act, sex) {
+    if (!act.positions || !Array.isArray(act.positions)) return true;
+
     return act.positions.some(p => {
         const [pos, role] = p.split(":");
         if (pos !== sex.position) return false;
@@ -100,11 +158,6 @@ setup.actAllowsPosition = function(act, sex) {
     });
 };
 
-
-setup.hasParts = function(actor, parts) {
-    if (!actor.bodyparts) return false;
-    return parts.every(p => actor.bodyparts.includes(p));
-};
 
 
 
@@ -136,11 +189,18 @@ setup.getAvailableSexActs = function (sex) {
 
 
 setup.applySexAct = function (sex, actKey) {
+    if (!sex || !actKey) return;
+
+    if (!Array.isArray(sex.history)) {
+        sex.history = [];
+    }
+
     const act = setup.sexacts[actKey];
     if (!act) return;
 
     sex.history.push(actKey);
     sex.act = actKey;
+
 
     const types = act["action type"];
 
@@ -219,7 +279,8 @@ setup.ensureValidSexPosition = function (sex) {
 
 
 setup.isEndActValid = function (act, sex) {
-    if (!sex.penetration) return false;
+    if (!sex || !sex.penetration) return false;
+    if (!sex.penetration.subjectPart || !sex.penetration.objectPart) return false;
 
     const sp = sex.penetration.subjectPart;
     const op = sex.penetration.objectPart;
@@ -227,11 +288,11 @@ setup.isEndActValid = function (act, sex) {
     const aSub = act["subject parts"]?.[0];
     const aObj = act["object parts"]?.[0];
 
-    // direct match
-    if (aSub === sp && aObj === op) return true;
+    if (!aSub || !aObj) return false;
 
-    // reversed match
+    if (aSub === sp && aObj === op) return true;
     if (aSub === op && aObj === sp) return true;
 
     return false;
 };
+
