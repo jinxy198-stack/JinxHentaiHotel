@@ -456,7 +456,7 @@ setup.sexacts = {
     },
     "Grope Breasts":
     {
-        "positions": [  "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Breasts"],
@@ -910,7 +910,7 @@ setup.sexacts = {
         "object arousal cap": 300,
         "remember as": ["footjob", "received"],
     },
-    "Rub With Feet":
+    "Rub Pussy With Feet":
     {
         "positions": [  "Missionary:bottom", "Kneeling:top", "Perched:bottom", "Laid Across On Back:bottom"],
         "action type": ["penetrate"],
@@ -1438,7 +1438,7 @@ setup.sexacts = {
         "subject dialogue tags": ["teasing cock with ass"],
         "object dialogue tags": ["cock teased with ass"],
     },
-    "Rub Butthole":
+    "Rub Butthole": /* You rub your fingers on their ass */
     {
         "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
@@ -1453,7 +1453,7 @@ setup.sexacts = {
         "object dialogue tags": ["anus rubbed"],
     },
     //      penetration
-    "Enter Ass":
+    "Enter Ass": /* You enter their ass*/
     {
         "positions": [  "Missionary:top", "Prone Bone:top", "Mating Press:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl:bottom", "Standing From Behind:top", "Astride Lap:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Laid Across On Back:top", "Laid Across On Stomach:top"],
         "action type": ["penetrate"],
@@ -1575,8 +1575,8 @@ setup.sexacts = {
         "object arousal": 0,
     },
 
-    // other stuff
-    "Fuck Tits":
+    /* other stuff */
+    "Fuck Tits": /* You use your cock on their tits */
     {
         "positions": ["Kneeling:top", "Straddling Chest:top"],
         "action type": ["tease"],
@@ -1590,9 +1590,9 @@ setup.sexacts = {
         "subject dialogue tags": ["fucking tits"],
         "object dialogue tags": ["tits fucked"],
     },
-    "Use Tits On Cock":
+    "Use Tits On Cock": /* You use your tits on their cock */
     {
-        "positions": [  "Kneeling:bottom", "Straddling Chest:bottom"],
+        "positions": ["Kneeling:bottom", "Straddling Chest:bottom"],
         "action type": ["tease"],
         "subject parts": ["Breasts"],
         "object parts": ["Penis"],
@@ -1602,7 +1602,7 @@ setup.sexacts = {
         "subject arousal cap": 400,
         "remember as": ["titfuck", "received"],
     },
-    "Hotdog":
+    "Hotdog": /* You rub cock on their ass */
     {
         "positions": [  "Standing From Behind:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top"],
         "action type": ["tease"],
@@ -1616,7 +1616,7 @@ setup.sexacts = {
         "subject dialogue tags": ["hotdogging"],
         "object dialogue tags": ["hotdogged"],
     },
-    "Rub Ass On Cock":
+    "Rub Ass On Cock": /* You rub your ass on their cock */
     {
         "positions": [  "Standing From Behind:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Spooning:bottom", "Double Decker:bottom", "Against Wall From Behind:bottom"],
         "action type": ["tease"],
@@ -1627,5 +1627,17 @@ setup.sexacts = {
         "object arousal":  40,
         "subject arousal cap": 400,
         "remember as": ["hotdogging", "received"],
+    },
+    "Pet Ears": /* Either you or they pet ears. */
+    {
+        "positions": [ "Standing"],
+        "action type": ["tease"],
+        "subject parts": ["Hands", "Ears"],
+        "object parts": ["Ears", "Hands"],
+        "take virginity": [],
+        "subject arousal": 10,
+        "object arousal":  40,
+        "subject arousal cap": 400,
+        "remember as": ["petting", "received"],
     },
 };

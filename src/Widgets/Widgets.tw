@@ -54,6 +54,10 @@
 
 <hr>
 <div id="npcsex-actions-bar">
+  <button id="npcsex-toggle" aria-expanded="true">
+    ▼ Actions
+  </button>
+<div class="npcsex-content">
 <<set _positions = setup.getAvailablePositions($sex) || []>>
 <h3>Available Positions</h3>
 
@@ -108,6 +112,9 @@
     </ul>
 <</if>>
 </div>
+
+</div>
+
 </div>
 <</widget>>
 
@@ -934,5 +941,5 @@
 	<<set $npcMemory[_key].interacted = true>>
 	<<set $npcMemory[_key].times     += 1>>
 	<<set $npcMemory[_key].sexCount  += 1>>
-    
-<</widget>>
+
+<</widget>> 

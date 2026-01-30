@@ -2706,6 +2706,14 @@ window.SugarCubeInput = function (el) {
   });
   
 })();
+
+
+
+
+setup.rir = function(min, max, inclusive=false)
+{
+    return Math.floor(State.random() * (max - min + (inclusive ? 1 : 0)) + min);
+}
 /* twine-user-script #5: "database_dialogue" */
 setup.Dialogue = {};
 
@@ -3939,7 +3947,7 @@ setup.sexacts = {
     },
     "Grope Breasts":
     {
-        "positions": [  "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Breasts"],
@@ -4393,7 +4401,7 @@ setup.sexacts = {
         "object arousal cap": 300,
         "remember as": ["footjob", "received"],
     },
-    "Rub With Feet":
+    "Rub Pussy With Feet":
     {
         "positions": [  "Missionary:bottom", "Kneeling:top", "Perched:bottom", "Laid Across On Back:bottom"],
         "action type": ["penetrate"],
@@ -4921,7 +4929,7 @@ setup.sexacts = {
         "subject dialogue tags": ["teasing cock with ass"],
         "object dialogue tags": ["cock teased with ass"],
     },
-    "Rub Butthole":
+    "Rub Butthole": /* You rub your fingers on their ass */
     {
         "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
@@ -4936,7 +4944,7 @@ setup.sexacts = {
         "object dialogue tags": ["anus rubbed"],
     },
     //      penetration
-    "Enter Ass":
+    "Enter Ass": /* You enter their ass*/
     {
         "positions": [  "Missionary:top", "Prone Bone:top", "Mating Press:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl:bottom", "Standing From Behind:top", "Astride Lap:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Laid Across On Back:top", "Laid Across On Stomach:top"],
         "action type": ["penetrate"],
@@ -5058,8 +5066,8 @@ setup.sexacts = {
         "object arousal": 0,
     },
 
-    // other stuff
-    "Fuck Tits":
+    /* other stuff */
+    "Fuck Tits": /* You use your cock on their tits */
     {
         "positions": ["Kneeling:top", "Straddling Chest:top"],
         "action type": ["tease"],
@@ -5073,9 +5081,9 @@ setup.sexacts = {
         "subject dialogue tags": ["fucking tits"],
         "object dialogue tags": ["tits fucked"],
     },
-    "Use Tits On Cock":
+    "Use Tits On Cock": /* You use your tits on their cock */
     {
-        "positions": [  "Kneeling:bottom", "Straddling Chest:bottom"],
+        "positions": ["Kneeling:bottom", "Straddling Chest:bottom"],
         "action type": ["tease"],
         "subject parts": ["Breasts"],
         "object parts": ["Penis"],
@@ -5085,7 +5093,7 @@ setup.sexacts = {
         "subject arousal cap": 400,
         "remember as": ["titfuck", "received"],
     },
-    "Hotdog":
+    "Hotdog": /* You rub cock on their ass */
     {
         "positions": [  "Standing From Behind:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top"],
         "action type": ["tease"],
@@ -5099,7 +5107,7 @@ setup.sexacts = {
         "subject dialogue tags": ["hotdogging"],
         "object dialogue tags": ["hotdogged"],
     },
-    "Rub Ass On Cock":
+    "Rub Ass On Cock": /* You rub your ass on their cock */
     {
         "positions": [  "Standing From Behind:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Spooning:bottom", "Double Decker:bottom", "Against Wall From Behind:bottom"],
         "action type": ["tease"],
@@ -5111,8 +5119,96 @@ setup.sexacts = {
         "subject arousal cap": 400,
         "remember as": ["hotdogging", "received"],
     },
+    "Pet Ears": /* Either you or they pet ears. */
+    {
+        "positions": [ "Standing"],
+        "action type": ["tease"],
+        "subject parts": ["Hands", "Ears"],
+        "object parts": ["Ears", "Hands"],
+        "take virginity": [],
+        "subject arousal": 10,
+        "object arousal":  40,
+        "subject arousal cap": 400,
+        "remember as": ["petting", "received"],
+    },
 };
 /* twine-user-script #11: "sexHelpers" */
+setup.getTopBottomActors = function (sex, pos) {
+    let topActor = null;
+    let bottomActor = null;
+
+    if (pos.equal) {
+        // equal positions: role decides
+        if (sex.role === "top") {
+            topActor = sex.subject;
+            bottomActor = sex.object;
+        } else if (sex.role === "bottom") {
+            topActor = sex.object;
+            bottomActor = sex.subject;
+        }
+    } else {
+        // non-equal positions
+        if (sex.role === "top") {
+            topActor = sex.subject;
+            bottomActor = sex.object;
+        } else if (sex.role === "bottom") {
+            topActor = sex.object;
+            bottomActor = sex.subject;
+        }
+    }
+
+    return { topActor, bottomActor };
+};
+
+
+
+setup.updateCumLocations = function (sex) {
+    if (!sex || !sex.position) {
+        sex.subject.cumLocation = [];
+        sex.object.cumLocation = [];
+        return;
+    }
+
+    const pos = setup.sexpositions[sex.position];
+    if (!pos) {
+        sex.subject.cumLocation = [];
+        sex.object.cumLocation = [];
+        return;
+    }
+
+    const top = Array.isArray(pos["top cum locations"])
+        ? pos["top cum locations"]
+        : [];
+
+    const bottom = Array.isArray(pos["bottom cum locations"])
+        ? pos["bottom cum locations"]
+        : [];
+
+    if (sex.role === "equal") {
+        sex.subject.cumLocation = [...new Set([...top, ...bottom])];
+        sex.object.cumLocation  = [...new Set([...top, ...bottom])];
+        return;
+    }
+
+    if (sex.role === "top") {
+        sex.subject.cumLocation = [...top];
+        sex.object.cumLocation  = [...bottom];
+        return;
+    }
+
+    if (sex.role === "bottom") {
+        sex.subject.cumLocation = [...bottom];
+        sex.object.cumLocation  = [...top];
+        return;
+    }
+
+    sex.subject.cumLocation = [];
+    sex.object.cumLocation  = [];
+};
+
+
+
+
 setup.getRoomFurnitureFlags = function (roomKey) {
     const room = setup.RoomTypes.db[roomKey];
     if (!room) return [];
@@ -5133,7 +5229,6 @@ setup.syncSexWithRoom = function (sex, room) {
     sex.location = room.location;
     sex.furnitureFlags = room.furnitureFlags;
 };
-
 
 
 setup.partAliases = {
@@ -5195,7 +5290,6 @@ setup.hasParts = function(actor, parts) {
 };
 
 
-
 setup.isPositionValid = function (positionKey, sex) {
     const pos = setup.sexpositions[positionKey];
     if (!pos) return false;
@@ -5240,7 +5334,6 @@ setup.isPositionValid = function (positionKey, sex) {
 
 
 
-
 setup.getAvailablePositions = function (sex) {
     const size = setup.getEncounterSize(sex);
 
@@ -5273,8 +5366,6 @@ setup.actAllowsPosition = function(act, sex) {
         return false;
     });
 };
-
-
 
 
 
@@ -5326,6 +5417,7 @@ setup.applySexAct = function (sex, actKey) {
     if (types.includes("end")) {
         sex.penetration = null;
         sex.phase = "tease";
+        setup.updateCumLocations(sex);
         return;
     }
 
@@ -5337,18 +5429,21 @@ setup.applySexAct = function (sex, actKey) {
 
         };
         sex.phase = "continue";
+        setup.updateCumLocations(sex);
         return;
     }
 
     // CONTINUE keeps penetration going
     if (types.includes("continue")) {
         sex.phase = "continue";
+        setup.updateCumLocations(sex);
         return;
     }
 
     // TEASE keeps tease phase
     if (types.includes("tease")) {
         sex.phase = "tease";
+        setup.updateCumLocations(sex);
     }
 };
 
@@ -5385,6 +5480,7 @@ setup.ensureValidSexPosition = function (sex) {
 
     // Current position still valid → do nothing
     if (sex.position && available.includes(sex.position)) {
+        setup.updateCumLocations(sex);
         return;
     }
 
@@ -5393,6 +5489,7 @@ setup.ensureValidSexPosition = function (sex) {
     sex.act = null;
     sex.penetration = null;
     sex.phase = "tease";
+    setup.updateCumLocations(sex);
 };
 
 
@@ -12808,6 +12905,20 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
   &lt;b&gt;Penetration:&lt;/b&gt; &lt;&lt;print $sex.penetration.subjectPart&gt;&gt; → &lt;&lt;print $sex.penetration.objectPart&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
 
+&lt;&lt;print JSON.stringify({
+  position: $sex.position,
+  role: $sex.role,
+  topCum: setup.sexpositions[$sex.position]?.[&quot;top cum locations&quot;],
+  bottomCum: setup.sexpositions[$sex.position]?.[&quot;bottom cum locations&quot;],
+  subject: $sex.subject.cumLocation,
+  object: $sex.object.cumLocation
+}, null, 2)&gt;&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
 &lt;hr&gt;
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 &lt;&lt;set _positions = setup.getAvailablePositions($sex) || []&gt;&gt;
@@ -13690,7 +13801,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set $npcMemory[_key].interacted = true&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].times     += 1&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].sexCount  += 1&gt;&gt;
-    
+
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="heighttest" tags="" position="350,1725" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 
@@ -13738,17 +13849,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 }&gt;&gt; */
 &lt;&lt;SexMemory&gt;&gt;
 /* local convenience copy */
-	&lt;&lt;set _sexCount = $npcMemory[_key].sexCount&gt;&gt;
-
-&lt;&lt;set $sex.position = &quot;Standing&quot;&gt;&gt;
-&lt;&lt;set $sex.subject = $mc&gt;&gt;
-&lt;&lt;set $sex.object = _n&gt;&gt;
-&lt;&lt;set $sex.engagedParts= { subject: [], object: [] }&gt;&gt;
-&lt;&lt;set $sex.penetration = null&gt;&gt;
-&lt;&lt;set $sex.phase = &quot;tease&quot;&gt;&gt;
-&lt;&lt;set $sex.history= []&gt;&gt;
-&lt;&lt;set $sex.action= &quot;Staring&quot;&gt;&gt;
-
+&lt;&lt;set _sexCount = $npcMemory[_key].sexCount&gt;&gt;
 
 &lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
   &lt;&lt;set $sex.role = &quot;top&quot;&gt;&gt;
@@ -13756,6 +13857,14 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
   &lt;&lt;set $sex.role = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
+&lt;&lt;set $sex.position = &quot;Standing&quot;&gt;&gt;
+&lt;&lt;set $sex.subject = $sex.roles.dom.name&gt;&gt;
+&lt;&lt;set $sex.object = $sex.roles.sub.name&gt;&gt;
+&lt;&lt;set $sex.engagedParts= { subject: [], object: [] }&gt;&gt;
+&lt;&lt;set $sex.penetration = null&gt;&gt;
+&lt;&lt;set $sex.phase = &quot;tease&quot;&gt;&gt;
+&lt;&lt;set $sex.history= []&gt;&gt;
+&lt;&lt;set $sex.action= &quot;Staring&quot;&gt;&gt;
 
 /* ALWAYS rebind subject/object to current */
 &lt;&lt;set $sex.subject = $mc&gt;&gt;
@@ -13769,12 +13878,6 @@ MC parts: &lt;&lt;print $mc.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt;
 NPC parts: &lt;&lt;print _n.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt;
 
 &lt;&lt;set _n.arousal = _n.arousal or 0&gt;&gt;
-/* &lt;&lt;print JSON.stringify($sex)&gt;&gt; &lt;br&gt;*/
-/* &lt;&lt;print setup.getAvailablePositions($sex)&gt;&gt; &lt;br&gt;*/
- /* &lt;&lt;print setup.getAvailableSexActs($sex)&gt;&gt; &lt;br&gt;*/
-/* &lt;&lt;print Object.keys(setup.sexacts)&gt;&gt; */
-/* &lt;&lt;print JSON.stringify(setup.getAvailablePositions($sex))&gt;&gt; */
-/*&lt;b&gt;Last relocation pressed:&lt;/b&gt; &lt;&lt;print $debugLastRelocation&gt;&gt;*/
 
 /* Arousal bar*/
 &lt;div class=&quot;status-line&quot;&gt;
@@ -13786,10 +13889,11 @@ NPC parts: &lt;&lt;print _n.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt;
 &lt;/div&gt;
 
 
+
 &lt;div id= &quot;sex-container&quot;&gt;
 &lt;&lt;RoomRelocationUI&gt;&gt;
 &lt;br&gt;
-&lt;&lt;SexEncounterUI&gt;&gt;
+ &lt;&lt;SexEncounterUI&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="135" name="testroom" tags="nobr" position="600,1725" size="100,100">&lt;&lt;goto &quot;Test-Sex-Encounter&quot;&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */

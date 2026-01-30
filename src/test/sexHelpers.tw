@@ -1,5 +1,81 @@
 :: sexHelpers [script]
 
+setup.getTopBottomActors = function (sex, pos) {
+    let topActor = null;
+    let bottomActor = null;
+
+    if (pos.equal) {
+        // equal positions: role decides
+        if (sex.role === "top") {
+            topActor = sex.subject;
+            bottomActor = sex.object;
+        } else if (sex.role === "bottom") {
+            topActor = sex.object;
+            bottomActor = sex.subject;
+        }
+    } else {
+        // non-equal positions
+        if (sex.role === "top") {
+            topActor = sex.subject;
+            bottomActor = sex.object;
+        } else if (sex.role === "bottom") {
+            topActor = sex.object;
+            bottomActor = sex.subject;
+        }
+    }
+
+    return { topActor, bottomActor };
+};
+
+
+
+setup.updateCumLocations = function (sex) {
+    if (!sex || !sex.position) {
+        sex.subject.cumLocation = [];
+        sex.object.cumLocation = [];
+        return;
+    }
+
+    const pos = setup.sexpositions[sex.position];
+    if (!pos) {
+        sex.subject.cumLocation = [];
+        sex.object.cumLocation = [];
+        return;
+    }
+
+    const top = Array.isArray(pos["top cum locations"])
+        ? pos["top cum locations"]
+        : [];
+
+    const bottom = Array.isArray(pos["bottom cum locations"])
+        ? pos["bottom cum locations"]
+        : [];
+
+    if (sex.role === "equal") {
+        sex.subject.cumLocation = [...new Set([...top, ...bottom])];
+        sex.object.cumLocation  = [...new Set([...top, ...bottom])];
+        return;
+    }
+
+    if (sex.role === "top") {
+        sex.subject.cumLocation = [...top];
+        sex.object.cumLocation  = [...bottom];
+        return;
+    }
+
+    if (sex.role === "bottom") {
+        sex.subject.cumLocation = [...bottom];
+        sex.object.cumLocation  = [...top];
+        return;
+    }
+
+    sex.subject.cumLocation = [];
+    sex.object.cumLocation  = [];
+};
+
+
+
+
 setup.getRoomFurnitureFlags = function (roomKey) {
     const room = setup.RoomTypes.db[roomKey];
     if (!room) return [];
@@ -208,6 +284,7 @@ setup.applySexAct = function (sex, actKey) {
     if (types.includes("end")) {
         sex.penetration = null;
         sex.phase = "tease";
+        setup.updateCumLocations(sex);
         return;
     }
 
@@ -219,18 +296,21 @@ setup.applySexAct = function (sex, actKey) {
 
         };
         sex.phase = "continue";
+        setup.updateCumLocations(sex);
         return;
     }
 
     // CONTINUE keeps penetration going
     if (types.includes("continue")) {
         sex.phase = "continue";
+        setup.updateCumLocations(sex);
         return;
     }
 
     // TEASE keeps tease phase
     if (types.includes("tease")) {
         sex.phase = "tease";
+        setup.updateCumLocations(sex);
     }
 };
 
@@ -267,6 +347,7 @@ setup.ensureValidSexPosition = function (sex) {
 
     // Current position still valid → do nothing
     if (sex.position && available.includes(sex.position)) {
+        setup.updateCumLocations(sex);
         return;
     }
 
@@ -275,6 +356,7 @@ setup.ensureValidSexPosition = function (sex) {
     sex.act = null;
     sex.penetration = null;
     sex.phase = "tease";
+    setup.updateCumLocations(sex);
 };
 
 

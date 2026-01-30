@@ -38,17 +38,7 @@
 }>> */
 <<SexMemory>>
 /* local convenience copy */
-	<<set _sexCount = $npcMemory[_key].sexCount>>
-
-<<set $sex.position = "Standing">>
-<<set $sex.subject = $mc>>
-<<set $sex.object = _n>>
-<<set $sex.engagedParts= { subject: [], object: [] }>>
-<<set $sex.penetration = null>>
-<<set $sex.phase = "tease">>
-<<set $sex.history= []>>
-<<set $sex.action= "Staring">>
-
+<<set _sexCount = $npcMemory[_key].sexCount>>
 
 <<if $sex.roles.dom.name == $mc.name>>
   <<set $sex.role = "top">>
@@ -56,6 +46,14 @@
   <<set $sex.role = "bottom">>
 <</if>>
 
+<<set $sex.position = "Standing">>
+<<set $sex.subject = $sex.roles.dom.name>>
+<<set $sex.object = $sex.roles.sub.name>>
+<<set $sex.engagedParts= { subject: [], object: [] }>>
+<<set $sex.penetration = null>>
+<<set $sex.phase = "tease">>
+<<set $sex.history= []>>
+<<set $sex.action= "Staring">>
 
 /* ALWAYS rebind subject/object to current */
 <<set $sex.subject = $mc>>
@@ -69,12 +67,6 @@ MC parts: <<print $mc.bodyparts.join(", ")>><br>
 NPC parts: <<print _n.bodyparts.join(", ")>><br>
 
 <<set _n.arousal = _n.arousal or 0>>
-/* <<print JSON.stringify($sex)>> <br>*/
-/* <<print setup.getAvailablePositions($sex)>> <br>*/
- /* <<print setup.getAvailableSexActs($sex)>> <br>*/
-/* <<print Object.keys(setup.sexacts)>> */
-/* <<print JSON.stringify(setup.getAvailablePositions($sex))>> */
-/*<b>Last relocation pressed:</b> <<print $debugLastRelocation>>*/
 
 /* Arousal bar*/
 <div class="status-line">
@@ -86,9 +78,10 @@ NPC parts: <<print _n.bodyparts.join(", ")>><br>
 </div>
 
 
+
 <div id= "sex-container">
 <<RoomRelocationUI>>
 <br>
-<<SexEncounterUI>>
+ <<SexEncounterUI>>
 </div>
 

@@ -98,3 +98,7 @@ window.SugarCubeInput = function (el) {
 
 
 
+setup.rir = function(min, max, inclusive=false)
+{
+    return Math.floor(State.random() * (max - min + (inclusive ? 1 : 0)) + min);
+}
