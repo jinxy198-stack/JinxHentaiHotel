@@ -13,8 +13,6 @@
 	<<set $mc.bodyparts = Object.keys($mc.body)>>
 <</if>>
 
-<hr>
-
 /* ensure room exists BEFORE UI */
 <<if !$room>>
 <<set $room = {
@@ -63,21 +61,16 @@
 <<set $room.furnitureFlags = $room.furnitureFlags || setup.getRoomFurnitureFlags($room.type)>>
 <<set $sex.furnitureFlags  = $room.furnitureFlags>>
 
-MC parts: <<print $mc.bodyparts.join(", ")>><br>
-NPC parts: <<print _n.bodyparts.join(", ")>><br>
+/* MC parts: <<print $mc.bodyparts.join(", ")>><br>
+NPC parts: <<print _n.bodyparts.join(", ")>><br> */
 
 <<set _n.arousal = _n.arousal or 0>>
+<<set $mc.arousal = $mc.arousal or 0>>
 
 /* Arousal bar*/
-<div class="status-line">
-			<span class="status-label">Arousal: </span>
-			<span class="status-value">
-				<progress id="arousal-bar" value="<<=_n.arousal>>" max="100"></progress>
-				<span id="arousal-pct"><<= _n.arousal >>%</span>
-			</span>
+<div id="arousal-ui">
+    <<ArousalUI>>
 </div>
-
-
 
 <div id= "sex-container">
 <<RoomRelocationUI>>

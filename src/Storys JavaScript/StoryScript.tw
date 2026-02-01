@@ -98,7 +98,12 @@ window.SugarCubeInput = function (el) {
 
 
 
-setup.rir = function(min, max, inclusive=false)
-{
-    return Math.floor(State.random() * (max - min + (inclusive ? 1 : 0)) + min);
-}
+$(document).on("click", "#npcsex-toggle", function () {
+  const bar = document.getElementById("npcsex-actions-bar");
+
+  const expanded = bar.classList.toggle("expanded");
+  bar.classList.toggle("minimized", !expanded);
+
+  this.textContent = expanded ? "▼ Actions" : "▲ Actions";
+  this.setAttribute("aria-expanded", expanded);
+});

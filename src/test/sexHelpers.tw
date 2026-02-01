@@ -1,11 +1,60 @@
 :: sexHelpers [script]
 
+/*
+ * Applies arousal changes from a sex act to the current subject and object.
+ * Respects optional arousal caps defined on the act.
+ * Safely initializes arousal values if missing.
+ */
+setup.applyArousalFromAct = function (sex, act) {
+  if (!sex || !act) return;
+
+  const subject = sex.subject;
+  const object  = sex.object;
+  if (!subject || !object) return;
+
+  // Ensure arousal values exist and are numeric
+  if (typeof subject.arousal !== "number") subject.arousal = 0;
+  if (typeof object.arousal  !== "number") object.arousal  = 0;
+
+  // Apply subject arousal, respecting optional cap
+  if (typeof act["subject arousal"] === "number") {
+    const cap = act["subject arousal cap"];
+    if (cap === undefined || subject.arousal < cap) {
+      subject.arousal += act["subject arousal"];
+    }
+  }
+
+  // Apply object arousal, respecting optional cap
+  if (typeof act["object arousal"] === "number") {
+    const cap = act["object arousal cap"];
+    if (cap === undefined || object.arousal < cap) {
+      object.arousal += act["object arousal"];
+    }
+  }
+};
+
+/*
+ * Updates the NPC arousal UI elements (progress bar + numeric text).
+ * Fails safely if elements are missing.
+ */
+setup.updateNpcArousalUI = function (value) {
+  const bar = document.getElementById("npc-arousal-bar");
+  const text = document.getElementById("npc-arousal-text");
+  if (bar) bar.value = value;
+  if (text) text.textContent = value;
+};
+
+/*
+ * Determines which actor is considered "top" and "bottom"
+ * based on the current position and role.
+ * Returns an object: { topActor, bottomActor }
+ */
 setup.getTopBottomActors = function (sex, pos) {
     let topActor = null;
     let bottomActor = null;
 
+    // Equal positions rely entirely on role
     if (pos.equal) {
-        // equal positions: role decides
         if (sex.role === "top") {
             topActor = sex.subject;
             bottomActor = sex.object;
@@ -13,8 +62,9 @@ setup.getTopBottomActors = function (sex, pos) {
             topActor = sex.object;
             bottomActor = sex.subject;
         }
-    } else {
-        // non-equal positions
+    } 
+    // Non-equal positions still follow role assignment
+    else {
         if (sex.role === "top") {
             topActor = sex.subject;
             bottomActor = sex.object;
@@ -27,8 +77,10 @@ setup.getTopBottomActors = function (sex, pos) {
     return { topActor, bottomActor };
 };
 
-
-
+/*
+ * Updates valid cum locations for subject and object
+ * based on the current sex position and role.
+ */
 setup.updateCumLocations = function (sex) {
     if (!sex || !sex.position) {
         sex.subject.cumLocation = [];
@@ -43,20 +95,17 @@ setup.updateCumLocations = function (sex) {
         return;
     }
 
-    const top = Array.isArray(pos["top cum locations"])
-        ? pos["top cum locations"]
-        : [];
+    const top = Array.isArray(pos["top cum locations"]) ? pos["top cum locations"] : [];
+    const bottom = Array.isArray(pos["bottom cum locations"]) ? pos["bottom cum locations"] : [];
 
-    const bottom = Array.isArray(pos["bottom cum locations"])
-        ? pos["bottom cum locations"]
-        : [];
-
+    // Equal role gets combined options
     if (sex.role === "equal") {
         sex.subject.cumLocation = [...new Set([...top, ...bottom])];
         sex.object.cumLocation  = [...new Set([...top, ...bottom])];
         return;
     }
 
+    // Role-based assignment
     if (sex.role === "top") {
         sex.subject.cumLocation = [...top];
         sex.object.cumLocation  = [...bottom];
@@ -69,13 +118,15 @@ setup.updateCumLocations = function (sex) {
         return;
     }
 
+    // Fallback
     sex.subject.cumLocation = [];
     sex.object.cumLocation  = [];
 };
 
-
-
-
+/*
+ * Collects all furniture flags present in a room.
+ * Used for validating positions and acts.
+ */
 setup.getRoomFurnitureFlags = function (roomKey) {
     const room = setup.RoomTypes.db[roomKey];
     if (!room) return [];
@@ -92,12 +143,17 @@ setup.getRoomFurnitureFlags = function (roomKey) {
     return [...new Set(flags)];
 };
 
+/*
+ * Synchronizes sex state with the current room context.
+ */
 setup.syncSexWithRoom = function (sex, room) {
     sex.location = room.location;
     sex.furnitureFlags = room.furnitureFlags;
 };
 
-
+/*
+ * Maps informal or alternate body part names to canonical ones.
+ */
 setup.partAliases = {
     asshole: "anus",
     ass: "butt",
@@ -106,6 +162,10 @@ setup.partAliases = {
     feet: "foot"
 };
 
+/*
+ * Builds a normalized bodyparts list for an actor,
+ * including genitals if present.
+ */
 setup.normalizeBodyparts = function(actor) {
     if (!actor || !actor.body) return;
 
@@ -118,6 +178,9 @@ setup.normalizeBodyparts = function(actor) {
     actor.bodyparts = [...new Set(parts)];
 };
 
+/*
+ * Returns total number of participants in the encounter.
+ */
 setup.getEncounterSize = function (sex) {
     let count = 0;
     if (sex.subject) count++;
@@ -130,11 +193,18 @@ setup.getEncounterSize = function (sex) {
     return count;
 };
 
+/*
+ * Case-insensitive body part equality check.
+ */
 setup.partEquals = function (a, b) {
     if (!a || !b) return false;
     return a.localeCompare(b, undefined, { sensitivity: "accent" }) === 0;
 };
 
+/*
+ * Checks if an actor has a required body part,
+ * accounting for aliases.
+ */
 setup.partMatches = function(actor, required) {
     if (!actor || !actor.bodyparts || !required) return false;
 
@@ -149,6 +219,10 @@ setup.partMatches = function(actor, required) {
     });
 };
 
+/*
+ * Checks whether an actor has at least one
+ * of the required body parts.
+ */
 setup.hasParts = function(actor, parts) {
     if (!actor || !actor.bodyparts) return false;
     if (!parts || parts.length === 0) return true;
@@ -156,7 +230,10 @@ setup.hasParts = function(actor, parts) {
     return parts.some(p => setup.partMatches(actor, p));
 };
 
-
+/*
+ * Validates whether a sex position can be used
+ * given body parts, roles, and furniture constraints.
+ */
 setup.isPositionValid = function (positionKey, sex) {
     const pos = setup.sexpositions[positionKey];
     if (!pos) return false;
@@ -199,8 +276,10 @@ setup.isPositionValid = function (positionKey, sex) {
     return true;
 };
 
-
-
+/*
+ * Returns all valid sex positions for the current encounter.
+ * Filters by encounter size and position validity.
+ */
 setup.getAvailablePositions = function (sex) {
     const size = setup.getEncounterSize(sex);
 
@@ -208,19 +287,18 @@ setup.getAvailablePositions = function (sex) {
         .filter(posKey => {
             const pos = setup.sexpositions[posKey];
 
-            // 1-on-1 encounter → primary only
             if (size <= 2) {
                 return pos.primary === true;
             }
 
-            // Multi-partner → primary + secondary
             return pos.primary === true || pos.secondary === true;
         })
         .filter(posKey => setup.isPositionValid(posKey, sex));
 };
 
-
-
+/*
+ * Checks whether an act is allowed in the current position and role.
+ */
 setup.actAllowsPosition = function(act, sex) {
     if (!act.positions || !Array.isArray(act.positions)) return true;
 
@@ -234,15 +312,15 @@ setup.actAllowsPosition = function(act, sex) {
     });
 };
 
-
-
-
+/*
+ * Returns all valid sex acts for the current state.
+ * Handles phase logic, end acts, body parts, and position constraints.
+ */
 setup.getAvailableSexActs = function (sex) {
     return Object.entries(setup.sexacts)
         .filter(([_, act]) => {
             const types = act["action type"];
 
-            // END acts: special handling
             if (types.includes("end")) {
                 return (
                     sex.phase === "continue" &&
@@ -250,7 +328,6 @@ setup.getAvailableSexActs = function (sex) {
                 );
             }
 
-            // Normal phase logic
             const allowed = setup.getAllowedActTypesForPhase(sex.phase);
             if (!types.some(t => allowed.includes(t))) return false;
 
@@ -263,24 +340,20 @@ setup.getAvailableSexActs = function (sex) {
         .map(([name]) => name);
 };
 
-
+/*
+ * Applies a selected sex act and updates encounter state.
+ */
 setup.applySexAct = function (sex, actKey) {
-    if (!sex || !actKey) return;
-
-    if (!Array.isArray(sex.history)) {
-        sex.history = [];
-    }
-
     const act = setup.sexacts[actKey];
     if (!act) return;
 
     sex.history.push(actKey);
     sex.act = actKey;
 
+    setup.applyArousalFromAct(sex, act);
 
     const types = act["action type"];
 
-    // END always wins
     if (types.includes("end")) {
         sex.penetration = null;
         sex.phase = "tease";
@@ -288,33 +361,40 @@ setup.applySexAct = function (sex, actKey) {
         return;
     }
 
-    // PENETRATION starts penetration & moves to continue
     if (types.includes("penetrate")) {
         sex.penetration = {
-            subjectPart: act["subject parts"] && act["subject parts"][0] ? act["subject parts"][0] : null,
-            objectPart: act["object parts"] && act["object parts"][0] ? act["object parts"][0] : null
-
+            subjectPart: act["subject parts"]?.[0] ?? null,
+            objectPart: act["object parts"]?.[0] ?? null
         };
         sex.phase = "continue";
         setup.updateCumLocations(sex);
         return;
     }
 
-    // CONTINUE keeps penetration going
     if (types.includes("continue")) {
         sex.phase = "continue";
         setup.updateCumLocations(sex);
         return;
     }
 
-    // TEASE keeps tease phase
     if (types.includes("tease")) {
         sex.phase = "tease";
         setup.updateCumLocations(sex);
     }
+
+    setup.updateBindings();
 };
 
+/*
+ * Checks whether an actor has reached orgasm threshold.
+ */
+setup.checkOrgasm = function (actor) {
+    return actor.arousal >= 1000;
+};
 
+/*
+ * Returns which act types are allowed for a given phase.
+ */
 setup.getAllowedActTypesForPhase = function (phase) {
     switch (phase) {
         case "tease":
@@ -326,6 +406,9 @@ setup.getAllowedActTypesForPhase = function (phase) {
     }
 };
 
+/*
+ * Checks if the current room contains required furniture.
+ */
 setup.roomHasFurniture = function (sex, required) {
     if (!required || required.length === 0) return true;
     if (!sex.furnitureFlags) return false;
@@ -333,10 +416,13 @@ setup.roomHasFurniture = function (sex, required) {
     return required.some(f => sex.furnitureFlags.includes(f));
 };
 
+/*
+ * Ensures the current sex position remains valid.
+ * Falls back to the first valid position if needed.
+ */
 setup.ensureValidSexPosition = function (sex) {
     const available = setup.getAvailablePositions(sex) || [];
 
-    // No valid positions at all
     if (available.length === 0) {
         sex.position = null;
         sex.act = null;
@@ -345,13 +431,11 @@ setup.ensureValidSexPosition = function (sex) {
         return;
     }
 
-    // Current position still valid → do nothing
     if (sex.position && available.includes(sex.position)) {
         setup.updateCumLocations(sex);
         return;
     }
 
-    // Otherwise, force fallback
     sex.position = available[0];
     sex.act = null;
     sex.penetration = null;
@@ -359,7 +443,10 @@ setup.ensureValidSexPosition = function (sex) {
     setup.updateCumLocations(sex);
 };
 
-
+/*
+ * Validates whether an END act correctly matches
+ * the current penetration configuration.
+ */
 setup.isEndActValid = function (act, sex) {
     if (!sex || !sex.penetration) return false;
     if (!sex.penetration.subjectPart || !sex.penetration.objectPart) return false;
@@ -377,4 +464,3 @@ setup.isEndActValid = function (act, sex) {
 
     return false;
 };
-

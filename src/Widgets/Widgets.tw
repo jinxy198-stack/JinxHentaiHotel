@@ -53,70 +53,110 @@
 <</if>>
 
 <hr>
+/* for changing dialogue with each button press*/
+<div class="npcsex-root">
+	<div id="intro" class="intro">
+		<<if _sexCount == 1>>
+		You both enter your room. You both strip naked, showing off your bare bodies to one another. You both know what you're in for but it's always a bit awkward with someone you haven't done it with.
+		<<elseif _sexCount >= 5>>
+		You and <<= _n.name >> go to your hotel room. Almost professionally you both strip until you are both nude. <<= $proset.theyUp >> appears up for whatever you have in mind.
+        <<else>>
+        WTF THIS SHOULDN'T BE HERE! THERE IS A ERROR IN THE GAME!
+		<</if>>
+	</div>
+
+	<div id="log">Awaiting your move…</div>
+	<hr>
+</div>
+
+
+
 <div id="npcsex-actions-bar">
   <button id="npcsex-toggle" aria-expanded="true">
     ▼ Actions
   </button>
-<div class="npcsex-content">
-<<set _positions = setup.getAvailablePositions($sex) || []>>
-<h3>Available Positions</h3>
+    <div class="npcsex-content">
+    <<set _positions = setup.getAvailablePositions($sex) || []>>
+    <h3>Available Positions</h3>
 
-<<if _positions.length === 0>>
-  <i>None (based on parts/role).</i>
-<<else>>
-    <ul class="sex-list">
-        <<for _i = 0; _i < _positions.length; _i++>>
-            <<set _p = _positions[_i]>>
-            <<if _p === $sex.position>>
-                <li><strong><<print _p>></strong></li>
+    <<if _positions.length === 0>>
+    <i>None (based on parts/role).</i>
+    <<else>>
+        <ul class="sex-list">
+            <<for _i = 0; _i < _positions.length; _i++>>
+                <<set _p = _positions[_i]>>
+                <<if _p === $sex.position>>
+                    <li><strong><<print _p>></strong></li>
+                <<else>>
+                    <<capture _p>>
+                        <li>
+                            <<button _p>>
+                            <<set $sex.position = _p>>
+                            <<replace "#sexUI">>
+                                <<SexEncounterUI>>
+                            <</replace>>
+                            <</button>>
+                        </li>
+                    <</capture>>
+                <</if>>
+            <</for>>
+        </ul>
+    <</if>>
+
+    <<set _acts = setup.getAvailableSexActs($sex) || []>>
+    <h3>Available Acts</h3>
+
+    <<if _acts.length === 0>>
+    <i>None (for this position/phase/parts).</i>
+    <<else>>
+        <ul class="sex-list">
+            <<for _i = 0; _i < _acts.length; _i++>>
+            <<set _a = _acts[_i]>>
+            <<if _a === $sex.act>>
+                <li><strong><<print _a>></strong></li>
             <<else>>
-                <<capture _p>>
-                    <li>
-                        <<button _p>>
-                        <<set $sex.position = _p>>
+            <<capture _a>>
+                <li>
+                    <<button _a>>
+                        <<run
+                            const act = setup.sexacts[_a];
+                            setup.applySexAct($sex, _a);
+                            setup.applyArousalFromAct($sex, act);
+                            setup.updateBindings();
+                            setup.updateCumLocations($sex);
+                        >>
                         <<replace "#sexUI">>
                             <<SexEncounterUI>>
                         <</replace>>
-                        <</button>>
-                    </li>
-                <</capture>>
+
+                        <<replace "#arousal-ui">>
+                            <<ArousalUI>>
+                        <</replace>>
+
+                    <</button>>
+                </li>
+            <</capture>>
             <</if>>
-        <</for>>
-    </ul>
-<</if>>
+            <</for>>
+        </ul>
 
-<<set _acts = setup.getAvailableSexActs($sex) || []>>
-<h3>Available Acts</h3>
 
-<<if _acts.length === 0>>
-  <i>None (for this position/phase/parts).</i>
-<<else>>
-    <ul class="sex-list">
-        <<for _i = 0; _i < _acts.length; _i++>>
-        <<set _a = _acts[_i]>>
-        <<if _a === $sex.act>>
-                <li><strong><<print _a>></strong></li>
-        <<else>>
-        <<capture _a>>
-            <li>
-                <<button _a>>
-                    <<run setup.applySexAct($sex, _a)>>
-                    <<replace "#sexUI">>
-                        <<SexEncounterUI>>
-                    <</replace>>
-                <</button>>
-            </li>
-        <</capture>>
-        <</if>>
-        <</for>>
-    </ul>
-<</if>>
-</div>
-
+    <</if>>
+    </div>
 </div>
 
 </div>
 <</widget>>
+
+<<widget "ArousalUI">>
+<div id="arousal-ui">
+    <div class="status-line"><b>NPC Arousal:</b><<print $sex.object.arousal>>/1000</div>
+    
+    <div class="status-line"><b>Player Arousal:</b><<print $sex.subject.arousal>>/1000</div>
+</div>
+<</widget>>
+
+
 
 
 <<widget "ResolvePhysique">>

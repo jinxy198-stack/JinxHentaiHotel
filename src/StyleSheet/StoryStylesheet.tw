@@ -44,15 +44,15 @@
 
 html, body{
   background: radial-gradient(circle at top, #222 0, #050509 55%, #000 100%);
-  color:#eee;
+  color: #eee;
 }
 
 /* Frame the story area next to the sidebar */
 #story{
-  max-width:960px;
+  max-width:auto;
   margin:1.5rem 1.5rem 1.5rem 21rem;
   padding:1.5rem 2rem;
-  background:linear-gradient(135deg, rgba(10,10,20,.96), rgba(5,5,10,.98));
+  background:linear-gradient(135deg, rgba(10, 10, 20, 0.96), rgba(5,5,10,.98));
   border-radius:16px;
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.04),
@@ -70,7 +70,7 @@ html, body{
 
 /* Location styling */
 .room-hotel{
-  border-left:3px solid #ff7be9;
+  border-left:3px solid rgb(0, 233, 250);
   padding-left:0.75rem;
 }
 
@@ -192,6 +192,38 @@ button.active-choice{
     padding-bottom:6rem;
   }
 }
+
+
+/* toggle button */
+#npcsex-toggle {
+  width: 100%;
+  background: #222;
+  color: #fff;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+}
+
+/* expanded state */
+#npcsex-actions-bar.expanded {
+  height: 35vh;          /* adjust as needed */
+}
+
+/* minimized state */
+#npcsex-actions-bar.minimized {
+  height: 32px;          /* just the button */
+}
+
+/* scrolling content */
+.npcsex-content {
+  overflow-y: auto;
+  max-height: calc(35vh - 32px);
+  padding: 8px;
+}
+
+
+
+
 
 /* Mobile: keep current sticky behavior + margins */
 @media (max-width:900px){
@@ -422,6 +454,16 @@ progress::-moz-progress-bar{
 }
 
 /* ========== Glitch / glitchy text ========== */
+
+@media (prefers-reduced-motion: reduce){
+  .glitch::before,
+  .glitch::after,
+  .glitchy::before,
+  .glitchy::after{
+    animation:none;
+  }
+}
+
 
 .glitch,
 .glitchy{
@@ -802,7 +844,7 @@ h2, h3{ margin:4px 0; }
 /* Generic status line block (non-UI-NPC-Sex specific) */
 .status-line{
   display:grid;
-  grid-template-columns:100px auto;
+  grid-template-columns:140px auto;
   align-items:center;
 }
 
@@ -823,6 +865,7 @@ h2, h3{ margin:4px 0; }
   gap:1rem;
 }
 
+
 .index-flex > div{
   background:rgba(255,255,255,0.04);
   padding:12px;
@@ -841,13 +884,36 @@ h2, h3{ margin:4px 0; }
   border-radius:10px;
   padding:12px;
   transition:0.2s ease;
-  color:#dfffe9;
+  color: #dfffe9;
   font-weight:600;
 }
 
 /* Optional: checkmark before the label */
 .index-flex div.green::before{
   content:"✔ ";
-  color:#8fffbf;
+  color: #8fffbf;
   font-weight:900;
 }
+ /* For coloring text */
+.red{
+  color:rgb(255, 0, 0);
+}
+.blue{
+  color:rgb(12, 52, 185);
+}
+.green{
+  color:rgb(52, 138, 52);
+}
+.purple{
+  color:rgb(128, 3, 177);
+}
+.yellow{
+  color:rgb(255, 238, 0);
+}
+.orange{
+  color:rgb(255, 136, 0);
+}
+.pink{
+  color:rgb(255, 0, 200);
+}
+
