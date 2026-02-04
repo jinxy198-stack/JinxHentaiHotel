@@ -1,0 +1,15 @@
+:: Squatting-Before-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+    <<if $mc.genitals == "penis">>
+    You squat down in front of _n.name, your dick is in $proset.their face.
+    <<else>>
+    You squat down, your pussy is in $proset.their face.
+    <</if>>
+<<else>>
+    <<if _n.genitals=="penis">>
+    _n.name squats down beside you, $proset.their penis is in your face.
+    <<else>>
+    _n.name squats down beside you, $proset.their pussy is in your face.
+    <</if>>
+<</if>>

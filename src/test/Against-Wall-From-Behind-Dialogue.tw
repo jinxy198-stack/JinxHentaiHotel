@@ -1,0 +1,8 @@
+:: Against-Wall-From-Behind-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+You're standing behind _n.name as they brace themself against the $room.location.
+
+<<else>>
+You're braced against the $room.location with _n.name behind you.
+<</if>>

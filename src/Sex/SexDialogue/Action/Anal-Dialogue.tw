@@ -2,9 +2,8 @@
 
 <<set _npc = _n>>
 <<PronounsSet>>
-<<if !$seenActions.Anal>>
-<<set $seenActions.Anal = true>>
-	<<if $position == "Cowgirl">>
+
+	<<if $sex.position == "Cowgirl">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
 				"You sink down onto _n.name's <<= _n.genitals.toLowerCase() >> , letting out a moan as you lean down and grab _n.name's head in both hands, before pulling _n.name up into a passionate kiss.",
@@ -44,7 +43,7 @@
         	)>>
 		<</if>>
 
-	<<elseif $position == "Missionary">>
+	<<elseif $sex.position == "Missionary">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
         		"_n.name fucks you in the missionary position."
@@ -54,7 +53,7 @@
         		"You fuck _n.name in the missionary position."
         	)>>
 		<</if>>
-	<<elseif $position == "Doggystyle">>
+	<<elseif $sex.position == "Doggystyle">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
         		"You are being fucked doggystyle."
@@ -64,7 +63,7 @@
         		"You are fucking _n.name doggystyle"
         	)>>
 		<</if>>
-	<<elseif $position == "Lean against wall">>
+	<<elseif $sex.position== "Lean against wall">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
 				"_n.name gets into position and pushes $proset.their dick into you. _n.name sighs as $proset.their cock buries itself deeper into you."
@@ -75,8 +74,8 @@
         	)>>
 		<</if>>	
 	<</if>>
-<<else>>
-	<<if $position == "Cowgirl">>
+
+	<<if $sex.position == "Cowgirl">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
 				"You continue to ride _n.name"
@@ -90,7 +89,7 @@
 				"You lay back, enjoying the feeling of $proset.their ass gripping your dick."
 			)>>
 		<</if>>	
-	<<elseif $position == "Doggystyle">>
+	<<elseif $sex.position == "Doggystyle">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
 				"_n.name fucks your ass like a dog.",
@@ -101,7 +100,7 @@
 				"You hump _n.name's ass like a dog."
 			)>>
 		<</if>>	
-	<<elseif $position == "Missionary">>
+	<<elseif $sex.position == "Missionary">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
 				"Your body rocks back and forth on the bed as $proset.they thrusts into you with force."
@@ -114,4 +113,3 @@
 	<<else>>
 		You both keep on fucking.
 	<</if>>
-<</if>>

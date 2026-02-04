@@ -1,0 +1,8 @@
+:: Double-Decker-Dialogue [nobro]
+
+<<if $sex.role == "top">>
+You are underneath _n.name as $proset.they stretch out on their back on the $room.location.
+
+<<else>>
+You are on your back on the $room.location atop _n.name.
+<</if>>

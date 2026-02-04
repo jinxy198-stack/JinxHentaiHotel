@@ -1,0 +1,8 @@
+:: Kneeling-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+_n.name is kneeling before you.
+
+<<else>>
+You're kneeling before _n.name, looking up at their _n.genitals.
+<</if>>

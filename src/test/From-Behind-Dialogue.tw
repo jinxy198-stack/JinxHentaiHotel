@@ -1,0 +1,7 @@
+:: From-Behind-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+You're behind _n.name, who is on all fours.
+<<else>>
+You're on all fours with _n.name behind you.
+<</if>>

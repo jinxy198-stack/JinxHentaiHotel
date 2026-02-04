@@ -1,0 +1,9 @@
+:: Mating-Press-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+
+You're on top of _n.name on the $room.location, $proset.their legs pushed back towards $proset.their head
+
+<<else>>
+You're on your back $room.location with _n.name on top of you, your legs pushed back towards your head.
+<</if>>

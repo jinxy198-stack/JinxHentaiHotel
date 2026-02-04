@@ -1,20 +1,43 @@
 :: PositionDialogue [nobr Dialogue] {"position":"1100,1025","size":"100,100"}
-<<set _p = $position or "">>
+<<set _p = $sex.position or $position>>
 
 /* POSITION (prints once per change) */
 <<if $sex._printedPos != _p>>
 	<<switch _p>>
-		<<case "Cowgirl">><<include "Cowgirl-Dialogue">>
-		<<case "Sitting">><<include "Sitting-Dialogue">>
-        <<case "Standing">><<include "Standing-Dialogue">>
-		<<case "Missionary">><<include "Missionary-Dialogue">>
-		<<case "Doggystyle">><<include "Doggystyle-Dialogue">>
-        <<case "SixtyNine">><<include "SixtyNine-Dialogue">>
-        <<case "Sit on Face">><<include "Facesit-Dialogue">>
-        <<case "Sit on Lap">><<include "Sit-On-Lap-Dialogue">>
+		<<case "Standing">><<include "Standing-Dialogue">>
+        <<case "Against Wall">><<include "Against-Wall-Dialogue">>
+        <<case "Sitting">><<include "Sitting-Dialogue">>
+        <<case "Perched Oral Service">><<include "Perched-Oral-Service-Dialogue">>
+        <<case "Underneath Oral Service">><<include "Underneath-Oral-Service-Dialogue">>
+        <<case "Standing From Behind">><<include "Standing-From-Behind-Dialogue">>
+        <<case "Against Wall From Behind">><<include "Against-Wall-From-Behind-Dialogue">>
+        <<case "Missionary">><<include "Missionary-Dialogue">>
+        <<case "Mating Press">><<include "Mating-Press-Dialogue">>
+        <<case "From Behind">><<include "From-Behind-Dialogue">>
+        <<case "Doggy">><<include "Doggystyle-Dialogue">>
+        <<case "Bent Over">><<include "Bent-Over-Dialogue">>
+        <<case "Prone Bone">><<include "Prone-Bone-Dialogue">>
+        <<case "Spooning">><<include "Spooning-Dialogue">>
+        <<case "Double Decker">><<include "Double-Decker-Dialogue">>
+        <<case "Kneeling Between Thighs">><<include "Kneeling-Between-Thighs-Dialogue">>
+        <<case "Cowgirl">><<include "Cowgirl-Dialogue">>
+        <<case "Reverse Cowgirl">><<include "ReverseCowgirl-Dialogue">>
+        <<case "Astride Lap">><<include "Sit-On-Lap-Dialogue">>
+        <<case "Riding Face">><<include "Facesit-Dialogue">>
+        <<case "Kneeling">><<include "Kneeling-Dialogue">>
+        <<case "Squatting Before">><<include "Squatting-Before-Dialogue">>
+        <<case "Kneeling Over">><<include "Kneeling-Over-Dialogue">>
+        <<case "Kneeling By Face">><<include "Kneeling-By-Face-Dialogue">>
+        <<case "Sixty-Nine">><<include "SixtyNine-Dialogue">>
+        <<case "Straddling Chest">><<include "Straddling-Chest-Dialogue">>
+        <<case "Oral Service">><<include "Oral-Service-Dialogue">>
+        <<case "Prone Oral Service">><<include "Prone-Oral-Service-Dialogue">>
+        <<case "Laid Across On Back">><<include "Laid-Across-On-Back-Dialogue">>
+        <<case "Laid Across On Stomach">><<include "Laid-Across-On-Stomach-Dialogue">>
+        <<case "Laid Across Oral Service">><<include "Laid-Across-Oral-Service-Dialogue">>
+        
         <<case "Oral Front">><<include "Stand-Front-Oral-Dialogue">>
         <<case "Oral Back">><<include "Stand-Back-Oral-Dialogue">>
-        <<case "Lean against wall">><<include "Against-Wall-Dialogue">>
 	<</switch>>
 	<<set $sex._printedPos = _p>>
 <</if>>

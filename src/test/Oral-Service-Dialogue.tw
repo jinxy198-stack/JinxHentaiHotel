@@ -1,0 +1,7 @@
+:: Oral-Service-Dialogue [nobr]
+    <<if $sex.role == "top">>
+    You're lying back on the $room.location with _n.name face between your thighs.
+    <<else>>
+    Your face is between _n.name thighs as $proset.they lie back on the $room.location.
+    <</if>>
+

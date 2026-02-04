@@ -1,0 +1,22 @@
+:: Standing-From-Behind-Dialogue
+
+
+<<if $sex.previousPosition == "Standing">>
+    <<if $sex.role == "top">>
+    You grasp _n.name by the hips and turn them around.
+    <<else>>
+    _n.name grasps you by the hips and turns you around.
+    <</if>>
+<<elseif $sex.previousPosition =="Kneeling">>
+    <<if $sex.role == "top">>
+    You pull _n.name to their feet, then grasp $proset.them by the hips and turn them to face away from you.
+    <<else>>
+    You rise to your feet, then turn to face away from _n.name.
+    <</if>>
+<<else>>
+    <<if $sex.role == "top">>
+    You grasp _n.name by the hips and turn them to face away from you.
+    <<else>>
+    _n.name grabs you by the hips and turn you to face away from you.
+    <</if>>
+<</if>>

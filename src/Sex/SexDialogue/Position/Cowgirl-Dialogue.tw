@@ -12,7 +12,7 @@
 	<<= either(
 		"Dropping down and quickly lying on your back, you put on the most enticing look you can muster as you plead, ",
 		"Jumping down over the top of you, " + _n.name + " lowers " + $proset.themself + " down over your groin, bringing " + $proset.their + " crotch to yours as " + $proset.they + " straddle you in the cowgirl position. Leaning forward a little, " + $proset.they + " grin down at you, ",
-		"Allowing you to push " + $proset.them + " down, " + _n.name + " reaches up and takes a firm grip on your " + $mc.body.Hips + ", before pulling you down so that you're straddling " + $proset.them + " in the cowgirl position. Looking up into your " + $mc.eyes + " eyes, " + $proset.they + " says, ",
+		"Allowing you to push  $proset.them down, _n.name reaches up and takes a firm grip on your $mc.body.Hips, before pulling you down so that you're straddling $proset.them in the cowgirl position. Looking up into your <<= $mc.eyes.toLowerCase() >> eyes, $proset.they smiles ",
 		"_n.name climbed on top of you."
 	)>>
 	<br>

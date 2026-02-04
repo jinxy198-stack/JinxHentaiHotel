@@ -1,0 +1,29 @@
+:: Stop-Dialogue [nobr]
+
+<<if $sex.act =="Release Cock">>
+You release _n.name's cock.
+<<elseif $sex.act =="Tug Cock Free">>
+You pull your cock free from _n.name.
+<<elseif $sex.act =="Release Cock From Feet">>
+You move your feet away from _n.name's cock.
+<<elseif $sex.act =="Tug Cock Free Of Feet">>
+You tug your cock free from _n.name's feet.
+<<elseif $sex.act =="Move Feet Away From Pussy">>
+You move your feet away from _n.name's pussy.
+<<elseif $sex.act =="Pull Away From Feet">>
+You pull your pussy away from _n.name's feet.
+<<elseif $sex.act =="Pull Out Of Mouth">>
+You pull your cock out of _n.name's mouth.
+<<elseif $sex.act =="Pull Mouth Off Of Cock">>
+You pull your mouth off of _n.name's cock
+<<elseif $sex.act =="Pull Out">>
+You pull your cock out of _n.name's pussy
+<<elseif $sex.act =="Pull Off">>
+You pull your pussy off of _n.name's cock.
+<<elseif $sex.act =="Pull Out Of Ass">>
+You pull out of _m.name's ass.
+<<elseif $sex.act =="Pull Ass Off Of Cock">>
+You pull your ass off of _n.name's cock.
+<<elseif $sex.act =="Stop Fingering Ass">>
+You stop fingering _n.name's ass.
+<</if>>

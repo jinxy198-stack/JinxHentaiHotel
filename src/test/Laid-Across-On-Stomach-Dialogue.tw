@@ -1,0 +1,11 @@
+:: Laid-Across-On-Stomach-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+You push _n.name onto their chest on the $room.location and you step up behind $proset.them.
+<<else>>
+_n.name pushes you onto your chest on the $room.location and steps up behind you.
+    <<if $mc.body =="tail">>
+    Your tail wags in anticipation.
+
+    <</if>>
+<</if>>

@@ -1,0 +1,8 @@
+:: Spooning-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+You're nestled up against _n.name's back, spooning on the $room.location.
+
+<<else>>
+You're on your side with _n.name nestled up against your back, spooning on the $room.location.
+<</if>>

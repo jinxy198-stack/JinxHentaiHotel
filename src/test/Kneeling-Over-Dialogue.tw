@@ -1,0 +1,7 @@
+:: Kneeling-Over-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+You lie back and pull _n.name over to kneel next to you.
+<<else>>
+_n.name stretches out on $proset.their back and pulls you over to kneel next to them.
+<</if>>

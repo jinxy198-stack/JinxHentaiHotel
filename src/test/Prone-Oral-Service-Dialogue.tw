@@ -1,0 +1,6 @@
+:: Prone-Oral-Service-Dialogue [nobr]
+    <<if $sex.role == "top">>
+    Your face is between _n.name's parted thighs as $proset.they lie back against the $room.location.
+    <<else>>
+    You lie back on the $room.location with _n.name between your thighs.
+    <</if>>

@@ -1,0 +1,7 @@
+:: Bent-Over-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+You bend _n.name over on the $room.location and step up behind $proset.them.
+<<else>>
+_n.names bends you over on the $room.location and steps up behind you.
+<</if>>

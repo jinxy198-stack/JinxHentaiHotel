@@ -1,28 +1,106 @@
 :: NPCSexDialogue [nobr Dialogue] {"position":"1000,1025","size":"100,100"}
 <<silently>>
-	<<set _n = $ui.npc>>
-	<<if !_n>><<return>><</if>>
-	<<set _a = ($sex and $sex.action) or "none">>
+	/*<<set _n = $ui.npc>>
+	<<if !_n>><<return>><</if>> */
+	/* <<set _a = ($sex and $sex.action) or "none">> */
+    <<set _a = $sex.act or "none">>
 <</silently>>
 
 <<switch _a>>
 	<<case "Kiss">><<include "Kiss-Dialogue">>
-	<<case "Caress">><<include "Caress-Dialogue">>
+    <<case "Grope Breasts">><<include "Grope-Breast-Dialogue">>
+    <<case "Tease Nipples">><<include "Nipple-Acts-Dialogue">>
+    <<case "Kiss Nipple">><<include "Nipple-Acts-Dialogue">>
+    <<case "Lick Nipple">><<include "Nipple-Acts-Dialogue">>
+    <<case "Suck Nipple">><<include "Nipple-Acts-Dialogue">>
+    <<case "Rub Pussy">><<include "Rub-Pussy-Dialogue">>
+    <<case "Pull Hand To Pussy">><<include "Pull-Hand-To-Pussy-Dialogue">>
+    <<case "Finger Pussy">><<include "Finger-Vagina-Dialogue">>
+    <<case "Rub Clit">><<include "Rub-Clit-Dialogue">>
+    <<case "Lick Pussy">><<include "Cunnilingus-Dialogue">>
+    <<case "Suck Clit">><<include "Suck-Clit-Dialogue">>
+    <<case "Ride Face">><<include "Ride-Face-Dialogue">>
+    <<case "Stop Fingering">><<include "Stop-Dialogue">>
+    <<case "Pull Off Of Finger">><<include "Stop-Dialogue">>
+    <<case "Fondle Balls">><<include "Balls-Dialogue">>
+    <<case "Lick Balls">><<include "Balls-Dialogue">>
+    <<case "Suck Balls">><<include "Balls-Dialogue">>
+    <<case "Lick Ass">><<include "Rimjob-Dialogue">>
+    <<case "Lick Cock">><<include "Lick-Cock-Dialogue">>
+    <<case "Rub Cock On Face">><<include "Rub-Cock-On-Face-Dialogue">>
+    <<case "Tease Cock With Fingers">><<include "Tease-Cock-With-Fingers-Dialogue">>
+    <<case "Rub Cock Against Hand">><<include "Rub-Cock-Against-Hand-Dialogue">>
+    <<case "Tease Cock With Feet">><<include "Feet-Acts-Dialogue">>
+    <<case "Tease Pussy With Feet">><<include "Feet-Acts-Dialogue">>
+    <<case "Rub Cock Against Feet">><<include "Feet-Acts-Dialogue">>
+    <<case "Rub Pussy Against Feet">><<include "Feet-Acts-Dialogue">>
+    <<case "Lick Foot">><<include "Lick-Foot-Dialogue">>
+    <<case "Grip Cock">><<include "Handjob-Dialogue">>
+    <<case "Wrap Hand Around Cock">><<include "Handjob-Dialogue">>
+    <<case "Grip Cock With Feet">><<include "Feet-Acts-Dialogue">>
+    <<case "Pull Feet Around Cock">><<include "Feet-Acts-Dialogue">>
+    <<case "Rub Pussy With Feet">><<include "Feet-Acts-Dialogue">>
+    <<case "Pull Feet To Pussy">><<include "Feet-Acts-Dialogue">>
+    <<case "Take Cock Between Lips">><<include "Blowjob-Dialogue">>
+    <<case "Enter Mouth">><<include "Blowjob-Dialogue">>
+    <<case "Stroke Shaft">><<include "">>
+    <<case "Stroke Shaft With Feet">><<include "Footjob-Dialogue">>
+    <<case "Fuck Feet">><<include "Footjob-Dialogue">>
+    <<case "Stroke Pussy With Feet">><<include "Feet-Acts-Dialogue">>
+    <<case "Rub Against Feet">><<include "Feet-Acts-Dialogue">>
+    <<case "Pump Shaft">><<include "">>
+    <<case "Fuck Fist">><<include "">>
+    <<case "Tease Frenulum">><<include "">>
+    <<case "Suck Cock">><<include "Blowjob-Dialogue">>
+    <<case "Deepthroat">><<include "Blowjob-Dialogue">>
+    <<case "Fuck Mouth">><<include "Blowjob-Dialogue">>
+    <<case "Release Cock">><<include "Stop-Dialogue">>
+    <<case "Tug Cock Free">><<include "Stop-Dialogue">>
+    <<case "Release Cock From Feet">><<include "Stop-Dialogue">>
+    <<case "Tug Cock Free Of Feet">><<include "Stop-Dialogue">>
+    <<case "Move Feet Away From Pussy">><<include "Stop-Dialogue">>
+    <<case "Pull Away From Feet">><<include "Stop-Dialogue">>
+    <<case "Pull Out Of Mouth">><<include "Stop-Dialogue">>
+    <<case "Pull Mouth Off Of Cock">><<include "Stop-Dialogue">>
+    <<case "Tease Pussy With Cock">><<include "">>
+    <<case "Cocktease With Pussy">><<include "">>
+    <<case "Enter Pussy">><<include "Vaginal-Dialogue">>
+    <<case "Push Cock In">><<include "Vaginal-Dialogue">>
+    <<case "Fuck Pussy">><<include "Vaginal-Dialogue">>
+    <<case "Take Cock">><<include "">>
+    <<case "Hump Back">><<include "">>
+    <<case "Ride Cock">><<include "">>
+    <<case "Squeeze Cock">><<include "">>
+    <<case "Rabbitfuck">><<include "">>
+    <<case "Deep Stroke">><<include "">>
+    <<case "Pull Out">><<include "Stop-Dialogue">>
+    <<case "Pull Off">><<include "Stop-Dialogue">>
     <<case "Frot">><<include "Frot-Dialogue">>
-	<<case "Grope Breast">><<include "Grope-Breast-Dialogue">>
-	<<case "Anal">><<include "Anal-Dialogue">>
-	<<case "Vaginal">><<include "Vaginal-Dialogue">>
-	<<case "Cunnilingus">><<include "Cunnilingus-Dialogue">>
-	<<case "Blowjob">><<include "Blowjob-Dialogue">>
+    <<case "Trib">><<include "Trib-Dialogue">>
+    <<case "Tease Ass With Cock">><<include "">>
+    <<case "Cocktease With Ass">><<include "">>
+    <<case "Rub Butthole">><<include "">>
+    <<case "Enter Ass">><<include "Anal-Dialogue">>
+    <<case "Push Cock In Ass">><<include "Anal-Dialogue">>
+    <<case "Finger Ass">><<include "Finger-Ass-Dialogue">>
+    <<case "Fuck Ass">><<include "Anal-Dialogue">>
+    <<case "Take Cock In Ass">><<include "Anal-Dialogue">>
+    <<case "Hump Ass Back">><<include "Anal-Dialogue">>
+    <<case "Pull Out Of Ass">><<include "Stop-Dialogue">>
+    <<case "Pull Ass Off Of Cock">><<include "Stop-Dialogue">>
+    <<case "Stop Fingering Ass">><<include "Stop-Dialogue">>
+    <<case "Pull Ass Off Of Finger">><<include "Stop-Dialogue">>
+    <<case "Fuck Tits">><<include "Boobjob-Dialogue">>
+    <<case "Use Tits On Cock">><<include "Boobjob-Dialogue">>
+    <<case "Hotdog">><<include "Hotdog-Dialogue">>
+    <<case "Rub Ass On Cock">><<include "Hotdog-Dialogue">>
+    
+	<<case "Caress">><<include "Caress-Dialogue">>
 	<<case "Handjob">><<include "Handjob-Dialogue">>
-    <<case "Footjob">><<include "Footjob-Dialogue">>
     <<case "Rimjob">><<include "Rimjob-Dialogue">>
 	<<case "Cuddle">><<include "Cuddle-Dialogue">>
-    <<case "Finger Ass">><<include "Finger-Ass-Dialogue">>
-    <<case "Finger Pussy">><<include "Finger-Vagina-Dialogue">>
     <<case "Grope Butt">><<include "Grope-Butt-Dialogue">>
     <<case "Suck Foot">><<include "SuckFoot-Dialogue">>
-    <<case "Boobjob">><<include "Boobjob-Dialogue">>
     <<case "Pet Ears">><<include "Pet-Ears-Dialogue">>
     <<case "Touch Stomach">><<include "Feel-Stomach-Dialogue">>
     <<case "Press Face on Chest">><<include "Face-On-Chest-Dialogue">>

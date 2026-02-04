@@ -1,0 +1,7 @@
+:: Laid-Across-Oral-Service-Dialogue [nobr]
+
+    <<if $sex.role == "top">>
+    You push _n.name back on the $room.location and step up towards $proset.their head.
+    <<else>>
+    You lie back on the $room.location as _n.name steps up towards your head.
+    <</if>>

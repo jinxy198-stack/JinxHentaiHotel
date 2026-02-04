@@ -2,9 +2,6 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if !$seenActions.Kiss>>
-<<set $seenActions.Kiss = true>>
-
 	<<= either(
 	"_n.name leans in and kisses you softly.",
 	"You peck _n.name on the lips.",
@@ -14,9 +11,7 @@
 	"With a grin, you lean down into _n.name's chest, breathing in _n.name's scent before pressing your lips against _n.name's.",
 	"Leaning down, you let out a moan as you press your lips against _n.name's and start to eagerly kiss _n.name."
 	)>>
-
 	<br>
-
 	<<= either(
 	"_n.name lets out an eager moan in response.",
 	"_n.name enthusiastically presses themself against you and thrusts $proset.their tongue into your mouth as $proset.they eagerly return your affection.",
@@ -28,6 +23,4 @@
 	"With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips."
 	)>>
 
-<<else>>
 	You two kiss again.
-<</if>>

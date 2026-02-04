@@ -1,0 +1,15 @@
+:: Kneeling-By-Face-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+    <<if $mc.genitals == "penis">>
+    You kneel down, your dick is in $proset.their face.
+    <<else>>
+    You kneel down, your pussy is in $proset.their face.
+    <</if>>
+<<else>>
+    <<if _n.genitals=="penis">>
+    _n.name kneels down beside your head, $proset.their penis is in your face.
+    <<else>>
+    _n.name kneels down beside your head, $proset.their pussy is in your face.
+    <</if>>
+<</if>>

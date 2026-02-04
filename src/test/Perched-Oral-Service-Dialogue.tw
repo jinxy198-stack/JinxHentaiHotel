@@ -1,0 +1,7 @@
+:: Perched-Oral-Service-Dialogue [nobr]
+
+    <<if $sex.role == "top">>
+    _n.name is kneeling between your thighs as you are perched on the $room.location.
+    <<else>>
+    You are kneeling between _n.name's parted thighs as $proset.they are on the $room.location.
+    <</if>>

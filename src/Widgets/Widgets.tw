@@ -1,5 +1,12 @@
 :: Widgets [widget nobr] {"position":"400,25","size":"100,100"}
 
+<<widget "SexDialogueRunner">>
+    <<include "PositionDialogue">>
+    <br>
+    <<include "NPCSexDialogue">>
+<</widget>>
+
+
 <<widget "RoomRelocationUI">>
 <h3>Relocate</h3>
 
@@ -20,6 +27,8 @@
             <<set $room.furnitureFlags = _furn.flags || []>>
             <<set $sex.furnitureFlags = $room.furnitureFlags>>
             <<run setup.ensureValidSexPosition($sex)>>
+            <<set $sex._printedPos = null>>
+
 
             <<replace "#sex-container">>
                 <<RoomRelocationUI>>
@@ -44,8 +53,9 @@
 
 <h3>Current</h3>
 <b>Position:</b> <<print $sex.position>><br>
+<b>Previous Position:</b> <<print $sex.previousPosition || "None">><br>
 <b>Role:</b> <<print $sex.role>><br>
-<b>Act:</b> <<if $sex.act>><<print $sex.act>><<else>>  —<</if>>
+<b>Act:</b> <<if $sex.act>><<print $sex.act>><<else>> None<</if>>
 <br>
 <b>Phase:</b> <<print $sex.phase>><br>
 <<if $sex.penetration>>
@@ -54,7 +64,7 @@
 
 <hr>
 /* for changing dialogue with each button press*/
-<div class="npcsex-root">
+<div id="npcsex-dialogue">
 	<div id="intro" class="intro">
 		<<if _sexCount == 1>>
 		You both enter your room. You both strip naked, showing off your bare bodies to one another. You both know what you're in for but it's always a bit awkward with someone you haven't done it with.
@@ -91,10 +101,17 @@
                     <<capture _p>>
                         <li>
                             <<button _p>>
+                            <<set $sex.previousPosition = $sex.position>>
                             <<set $sex.position = _p>>
+                            <<set $sex._printedPos = null>>
                             <<replace "#sexUI">>
                                 <<SexEncounterUI>>
                             <</replace>>
+                            
+                           <<replace "#npcsex-dialogue">>
+                                <<SexDialogueRunner>>
+                            <</replace>>
+
                             <</button>>
                         </li>
                     <</capture>>
@@ -129,6 +146,10 @@
                             <<SexEncounterUI>>
                         <</replace>>
 
+                        <<replace "#npcsex-dialogue">>
+                            <<SexDialogueRunner>>
+                        <</replace>>
+
                         <<replace "#arousal-ui">>
                             <<ArousalUI>>
                         <</replace>>
@@ -144,6 +165,8 @@
     <</if>>
     </div>
 </div>
+
+
 
 </div>
 <</widget>>

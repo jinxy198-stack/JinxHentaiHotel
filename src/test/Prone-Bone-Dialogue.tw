@@ -1,0 +1,8 @@
+:: Prone-Bone-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+You role <span class="red">_n.name</span> onto their stomach on the $room.location and you mount them.
+
+<<else>>
+You roll onto your stomach on the $room.location as <span class="red">_n.name</span> mounts you.
+<</if>>

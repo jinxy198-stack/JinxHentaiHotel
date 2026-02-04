@@ -1,0 +1,7 @@
+:: Straddling-Chest-Dialogue [nobr]
+
+<<if $sex.roles =="top">>
+You're on the $sex.location, straddling _n.name's chest.
+<<else>>
+_n.name is straddling your chest.
+<</if>>
