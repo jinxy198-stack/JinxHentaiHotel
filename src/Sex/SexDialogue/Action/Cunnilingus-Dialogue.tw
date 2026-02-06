@@ -1,9 +1,8 @@
 :: Cunnilingus-Dialogue [nobr Dialogue] {"position":"900,1475","size":"100,100"}
 <<set _npc = _n>>
 <<PronounsSet>>
-<<if !$seenActions.Cunnilingus>>
-<<set $seenActions.Cunnilingus = true>>
-	<<if $sex.roles.sub.name == _n.name>>
+<<if $sex.act == "Lick Pussy">>
+	<<if $sex.role == "top">>
 		<<= either(
 			"Shifting your $mc.body.Hips, you reposition yourself to eagerly grind your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.Lips.toLowerCase()>>.",
 			"With a quick shift of your <<= $mc.body.Hips.toLowerCase()>>, you let out a moan as you greedily press your <<= $mc.genitals.toLowerCase()>> down against _n.name's <<= _n.body.Tongue.toLowerCase()>>.",
@@ -12,7 +11,7 @@
 			"With a quick shift of your <<= $mc.body.Hips.toLowerCase()>>, you let out a moan as you press your <<= $mc.genitals.toLowerCase()>> down against _n.name's <<= _n.body.Tongue.toLowerCase()>>.",
 			"Pressing your $mc.genitals down against _n.name's mouth, you reposition so that you are grinding your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.Lips.toLowerCase()>>."
 		)>>
-	<<elseif $sex.roles.dom.name == _n.name>>
+	<<else>>
 		<<= either(
 			"_n.name repositions themself to eagerly grind $proset.their <<= _n.genitals.toLowerCase() >> against your <<= $mc.body.Lips.toLowerCase()>>.",
 			"With a quick shift of $proset.their <<= _n.body.Hips.toLowerCase()>>, _n.name lets out a moan as $proset.they greedily press $proset.their <<= _n.genitals.toLowerCase()>> down against your <<= $mc.body.Tongue.toLowerCase()>>.",
@@ -22,18 +21,16 @@
 			"Pressing $proset.their <<= _n.genitals.toLowerCase()>> down against your mouth, $proset.they reposition $proset.themself so that $proset.they are grinding $proset.their <<= _n.genitals.toLowerCase() >> against your <<= $mc.body.Lips.toLowerCase()>>."
 		)>>
 	<</if>>
-<<else>>
-
-	<<if $sex.roles.dom.name == _n.name>>
-		<<= either(
- 		"You continue to eat out their <<= _n.genitals.toLowerCase() >>."
-    	)>>
-	<<elseif $sex.roles.sub.name == _n.name>>
-		<<= either(
-    	"_n.name continues to eat you out."
-    	)>>
+<<elseif $sex.act == "Suck Clit">>
+	<<if $sex.role == "top">>
+	You suck on _n.name's clit.
+	<<else>>
+	_n.name sucks on your clit.
+	<</if>>
+<<elseif $sex.act == "Ride Face">>
+	<<if $sex.role == "top">>
+		You grind your pussy on _n.name's face.
+	<<else>>
+		_n.name grinds their pussy on your face.
 	<</if>>
 <</if>>
-
-
-

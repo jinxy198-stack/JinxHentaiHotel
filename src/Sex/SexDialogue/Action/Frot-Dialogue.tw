@@ -2,8 +2,6 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if !$seenActions.Frot>>
-<<set $seenActions.Frot = true>>
 	<<if $position is "Sit on Lap">>
 		<<if $sex.roles.sub.name == _n.name>>
 			<<= either(
@@ -39,7 +37,7 @@
 			)>>
 		<</if>>
 	<</if>>	
-<<else>>
+
 		<<if $sex.roles.sub.name == _n.name>>
 			<<= either(
 				"Gently bucking $proset.their own _n.body.Hips in response, _n.name lets out a moan as $proset.they mirror your movements and softly rub $proset.their <<= _n.genitals.toLowerCase() >> against yours.",
@@ -71,6 +69,6 @@
 				"You both shiver from the pleasure from your cocks each time _n.name thrusts."
 			)>>
 		<</if>>	
-<</if>>
+
 
 

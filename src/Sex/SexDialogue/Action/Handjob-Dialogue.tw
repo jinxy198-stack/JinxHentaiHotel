@@ -2,7 +2,7 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if $sex.roles.dom.name == _n.name>>
+<<if $sex.role == "top">>
 	<<= either(
 	"Reaching down between $proset.their _n.body.Legs, you wrap your $mc.body.Fingers around $proset.their <<= _n.genitals.toLowerCase()>>, letting out a soft moan as you start slowly stroking up and down its length.",
 	"You drop one of your $mc.body.Hands down between $proset.their _n.body.Legs, and, taking hold of $proset.their <<= _n.genitals.toLowerCase()>>, you start slowly jerking $proset.them off.",
@@ -28,7 +28,7 @@
     <</if>>
     
     
-<<elseif $sex.roles.sub.name == _n.name>>
+<<else>>
 	<<= either(
     "_n.name wraps their <<= _n.body.Hand.toLowerCase()>> around your <<= $mc.genitals.toLowerCase()>> and jerks you off.",
     "_n.name jerks you off."

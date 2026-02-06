@@ -4,8 +4,7 @@
 <<PronounsSet>>
 
 
-<<if !$seenActions.Footjob>>
-<<set $seenActions.Footjob = true>>
+
 	<<if $sex.roles.dom.name == _n.name>>
 		<<= either(
 			"Gently sliding your <<= $mc.body.Feet.toLowerCase()>> up and down around _n.name's <<= _n.genitals.toLowerCase()>>, you let out a soft moan as you give $proset.them a footjob.",
@@ -37,7 +36,7 @@
 			"_n.name picks up the pace, sliding their <<= _n.body.Feet.toLowerCase()>> up agaisnt your <<= $mc.genitals.toLowerCase()>>."
 		)>>
 	<</if>>
-<<else>>
+
 	<<if $sex.roles.dom.name == _n.name>>
 		<<= either(
 			"_n.name lets out a moan, eagerly bucking $proset.their _n.body.Hips forward as $proset.they start eagerly fucking your <<= $mc.body.Feet.toLowerCase()>>.",
@@ -50,4 +49,3 @@
 			"$proset.they giggle softly to $proset.themself as $proset.their feet glide up and down the length of your <<= $mc.genitals.toLowerCase()>>."
 		)>>
 	<</if>>	
-<</if>>

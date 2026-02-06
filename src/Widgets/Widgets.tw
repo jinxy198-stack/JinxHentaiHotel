@@ -1,4 +1,4 @@
-:: Widgets [widget nobr] {"position":"400,25","size":"100,100"}
+:: Widgets [widget nobr] 
 
 <<widget "SexDialogueRunner">>
     <<include "PositionDialogue">>
@@ -29,7 +29,6 @@
             <<run setup.ensureValidSexPosition($sex)>>
             <<set $sex._printedPos = null>>
 
-
             <<replace "#sex-container">>
                 <<RoomRelocationUI>>
                 <<SexEncounterUI>>
@@ -47,21 +46,20 @@
 <</widget>>
 
 
-
 <<widget "SexEncounterUI">>
 <div id="sexUI">
-
-<h3>Current</h3>
-<b>Position:</b> <<print $sex.position>><br>
-<b>Previous Position:</b> <<print $sex.previousPosition || "None">><br>
-<b>Role:</b> <<print $sex.role>><br>
-<b>Act:</b> <<if $sex.act>><<print $sex.act>><<else>> None<</if>>
-<br>
-<b>Phase:</b> <<print $sex.phase>><br>
-<<if $sex.penetration>>
-  <b>Penetration:</b> <<print $sex.penetration.subjectPart>> → <<print $sex.penetration.objectPart>><br>
-<</if>>
-
+    <div id= "UI-Stats">
+        <h3>Current</h3>
+        <b>Position:</b> <<print $sex.position>><br>
+        <b>Previous Position:</b> <<print $sex.previousPosition || "None">><br>
+        <b>Role:</b> <<print $sex.role>><br>
+        <b>Act:</b> <<if $sex.act>><<print $sex.act>><<else>> None<</if>>
+        <br>
+        <b>Phase:</b> <<print $sex.phase>><br>
+        <<if $sex.penetration>>
+            <b>Penetration:</b> <<print $sex.penetration.subjectPart>> → <<print $sex.penetration.objectPart>><br>
+        <</if>>
+    </div>
 <hr>
 /* for changing dialogue with each button press*/
 <div id="npcsex-dialogue">
@@ -985,7 +983,6 @@
     <</script>>
 <</widget>>
 
-
 <<widget "SexMemory">>
     /* ensure global memory object exists */
 	<<set $npcMemory = $npcMemory or {}>>
@@ -1004,5 +1001,4 @@
 	<<set $npcMemory[_key].interacted = true>>
 	<<set $npcMemory[_key].times     += 1>>
 	<<set $npcMemory[_key].sexCount  += 1>>
-
 <</widget>> 

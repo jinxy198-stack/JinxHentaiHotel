@@ -2,11 +2,11 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if $sex.roles.dom.name == _n.name>>
+<<if $sex.role == "top">>
 	<<= either(
  	"_n.name presses their hand against your belly"
     )>>
-<<elseif $sex.roles.sub.name == _n.name>>
+<<else>>
 	<<= either(
     "You press your hand against _n.name's belly"
     )>>

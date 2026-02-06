@@ -1,0 +1,11 @@
+:: Rub-Pussy-Dialogue [nobr]
+
+<<if $sex.role == "top">>
+
+You rub _n.name's <span class= "yellow"><<= _n.genitals.toLowerCase()>></span> with your fingers.
+
+<<else>>
+
+_n.name rubs your <span class= "yellow"><<= $mc.genitals.toLowerCase()>></span> with their fingers.
+
+<</if>>

@@ -2,8 +2,7 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if !$seenActions.FingerAss>>
-<<set $seenActions.FingerAss = true>>
+
     <<if $sex.roles.dom.name == _n.name>>
 	    <<= either(
  	    "_n.name fingers your ass."
@@ -11,19 +10,19 @@
     <<elseif $sex.roles.sub.name == _n.name>>
 	    <<= either(
         "You finger _n.name's ass.",
-        "_n.name shivers as I placed my $mc.body.Fingers against $proset.their asshole. I then wiggled my way in. It was hot and tight but so smooth. $proset.theyUp let out a moan. I caress their thigh to calm them."
+        "_n.name shivers as you place your $mc.body.Fingers against $proset.their asshole. You then wiggled my way in. It was hot and tight but so smooth. $proset.theyUp let out a moan. You caress their thigh to calm them."
         )>>
     <</if>>
-<<else>>
+
     <<if $sex.roles.dom.name == _n.name>>
         <<= either(
             "They continue fingering me."
         )>>
     <<elseif $sex.roles.sub.name == _n.name>>
         <<= either(
-            "I continue fingering them.",
-            "I slide my $mc.body.Fingers back and forth, caressing the walls of _n.name's inside. $proset.theyUp continues to tense. $proset.theyUp appears to enjoy it very much.",
+            "You continue fingering them.",
+            "You slide you $mc.body.Fingers back and forth, caressing the walls of _n.name's inside. $proset.theyUp continues to tense. $proset.theyUp appears to enjoy it very much.",
         )>>
     <</if>>
-<</if>>
+
 

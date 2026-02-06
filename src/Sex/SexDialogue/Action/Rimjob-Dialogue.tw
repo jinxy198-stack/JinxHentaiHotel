@@ -1,7 +1,7 @@
 :: Rimjob-Dialogue [nobr Dialogue] {"position":"1000,1575","size":"100,100"}
 <<set _npc = _n>>
 <<PronounsSet>>
-<<if $sex.roles.dom.name == _n.name>>
+<<if $sex.role == "top">>
 	<<if $position is "Cowgirl">>
         <<= either(
  	        "You lick up and down the crack of the ass pressing down on your mouth."
@@ -11,7 +11,7 @@
  	        "You eat out _n.name's ass."
         )>>
     <</if>>
-<<elseif $sex.roles.sub.name == _n.name>>
+<<else>>
 	<<= either(
     "_n.name eats out your ass."
     )>>
