@@ -8,6 +8,7 @@
 
 
 <<widget "RoomRelocationUI">>
+
 <h3>Relocate</h3>
 
 <<set _roomDef = setup.RoomTypes.db[$room.type]>>
@@ -43,6 +44,7 @@
     <</if>>
 <</for>>
 </ul>
+
 <</widget>>
 
 

@@ -149,11 +149,13 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 html, body{
   background: radial-gradient(circle at top, #222 0, #050509 55%, #000 100%);
   color: #eee;
+  line-height:1.55;
+  font-size:15px;
 }
 
 /* Frame the story area next to the sidebar */
 #story{
-  max-width:auto;
+  max-width:1400px;
   margin:1.5rem 1.5rem 1.5rem 21rem;
   padding:1.5rem 2rem;
   background:linear-gradient(135deg, rgba(10, 10, 20, 0.96), rgba(5,5,10,.98));
@@ -161,7 +163,7 @@ html, body{
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.04),
     0 0 40px rgba(0,0,0,0.9);
-  text-align:left;
+  text-align:auto;
   overflow-x:hidden;
 }
 
@@ -787,8 +789,10 @@ progress::-moz-progress-bar{
 table.nsfw{ margin-top:8px; }
 
 /* Subsection headers */
-h2, h3{ margin:4px 0; }
-
+h1, h2, h3{
+  letter-spacing:0.04em;
+  margin:0.4em 0 0.2em;
+}
 /* Section wrapper around stats */
 .stats-section{
   margin:16px 0 24px;
@@ -1021,18 +1025,29 @@ h2, h3{ margin:4px 0; }
   color:rgb(255, 0, 200);
 }
 
-#UI-Stats,
+#sex-container,
 #arousal-ui {
   display: inline-block;
   vertical-align: top;
 }
 
-#UI-Stats {
-  width: 70%;
+
+#npcsex-dialogue {
+  max-width: 100%;
+  padding-right: 2rem;
 }
 
-#arousal-ui {
-  width: 28%;
+
+#story {
+  max-width: 1500px;
+}
+
+#passages {
+  max-width: none;
+}
+
+#npcsex-dialogue #log {
+  max-width: 110ch;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "Setup-Init" */
 window.setup = window.setup || {};
 /* twine-user-script #2: "Eventdb" */
@@ -13314,7 +13329,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;set _npc.petname = &quot;pet&quot;&gt;&gt;	
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="Widgets" tags="widget nobr" position="400,25" size="100,100">&lt;&lt;widget &quot;SexDialogueRunner&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="Widgets" tags="widget nobr" position="225,2100" size="100,100">&lt;&lt;widget &quot;SexDialogueRunner&quot;&gt;&gt;
     &lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;
     &lt;br&gt;
     &lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;
@@ -13322,6 +13337,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 
 &lt;&lt;widget &quot;RoomRelocationUI&quot;&gt;&gt;
+
 &lt;h3&gt;Relocate&lt;/h3&gt;
 
 &lt;&lt;set _roomDef = setup.RoomTypes.db[$room.type]&gt;&gt;
@@ -13357,22 +13373,23 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 &lt;/ul&gt;
+
 &lt;&lt;/widget&gt;&gt;
 
 
 &lt;&lt;widget &quot;SexEncounterUI&quot;&gt;&gt;
 &lt;div id=&quot;sexUI&quot;&gt;
-    &lt;div id= &quot;UI&quot;&gt;
-    &lt;h3&gt;Current&lt;/h3&gt;
-    &lt;b&gt;Position:&lt;/b&gt; &lt;&lt;print $sex.position&gt;&gt;&lt;br&gt;
-    &lt;b&gt;Previous Position:&lt;/b&gt; &lt;&lt;print $sex.previousPosition || &quot;None&quot;&gt;&gt;&lt;br&gt;
-    &lt;b&gt;Role:&lt;/b&gt; &lt;&lt;print $sex.role&gt;&gt;&lt;br&gt;
-    &lt;b&gt;Act:&lt;/b&gt; &lt;&lt;if $sex.act&gt;&gt;&lt;&lt;print $sex.act&gt;&gt;&lt;&lt;else&gt;&gt; None&lt;&lt;/if&gt;&gt;
-    &lt;br&gt;
-    &lt;b&gt;Phase:&lt;/b&gt; &lt;&lt;print $sex.phase&gt;&gt;&lt;br&gt;
-    &lt;&lt;if $sex.penetration&gt;&gt;
-    &lt;b&gt;Penetration:&lt;/b&gt; &lt;&lt;print $sex.penetration.subjectPart&gt;&gt; → &lt;&lt;print $sex.penetration.objectPart&gt;&gt;&lt;br&gt;
-    &lt;&lt;/if&gt;&gt;
+    &lt;div id= &quot;UI-Stats&quot;&gt;
+        &lt;h3&gt;Current&lt;/h3&gt;
+        &lt;b&gt;Position:&lt;/b&gt; &lt;&lt;print $sex.position&gt;&gt;&lt;br&gt;
+        &lt;b&gt;Previous Position:&lt;/b&gt; &lt;&lt;print $sex.previousPosition || &quot;None&quot;&gt;&gt;&lt;br&gt;
+        &lt;b&gt;Role:&lt;/b&gt; &lt;&lt;print $sex.role&gt;&gt;&lt;br&gt;
+        &lt;b&gt;Act:&lt;/b&gt; &lt;&lt;if $sex.act&gt;&gt;&lt;&lt;print $sex.act&gt;&gt;&lt;&lt;else&gt;&gt; None&lt;&lt;/if&gt;&gt;
+        &lt;br&gt;
+        &lt;b&gt;Phase:&lt;/b&gt; &lt;&lt;print $sex.phase&gt;&gt;&lt;br&gt;
+        &lt;&lt;if $sex.penetration&gt;&gt;
+            &lt;b&gt;Penetration:&lt;/b&gt; &lt;&lt;print $sex.penetration.subjectPart&gt;&gt; → &lt;&lt;print $sex.penetration.objectPart&gt;&gt;&lt;br&gt;
+        &lt;&lt;/if&gt;&gt;
     &lt;/div&gt;
 &lt;hr&gt;
 /* for changing dialogue with each button press*/
@@ -14297,7 +14314,6 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     &lt;&lt;/script&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
-
 &lt;&lt;widget &quot;SexMemory&quot;&gt;&gt;
     /* ensure global memory object exists */
 	&lt;&lt;set $npcMemory = $npcMemory or {}&gt;&gt;
@@ -14316,7 +14332,6 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set $npcMemory[_key].interacted = true&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].times     += 1&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].sexCount  += 1&gt;&gt;
-
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="heighttest" tags="" position="350,2100" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 
@@ -14395,7 +14410,7 @@ NPC parts: &lt;&lt;print _n.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt; */
 
 /* Arousal bar*/
 &lt;div id=&quot;arousal-ui&quot;&gt;
-    &lt;&lt;ArousalUI&gt;&gt;
+  &lt;&lt;ArousalUI&gt;&gt;
 &lt;/div&gt;
 
 &lt;div id= &quot;sex-container&quot;&gt;

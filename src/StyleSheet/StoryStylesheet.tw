@@ -45,11 +45,13 @@
 html, body{
   background: radial-gradient(circle at top, #222 0, #050509 55%, #000 100%);
   color: #eee;
+  line-height:1.55;
+  font-size:15px;
 }
 
 /* Frame the story area next to the sidebar */
 #story{
-  max-width:auto;
+  max-width:1400px;
   margin:1.5rem 1.5rem 1.5rem 21rem;
   padding:1.5rem 2rem;
   background:linear-gradient(135deg, rgba(10, 10, 20, 0.96), rgba(5,5,10,.98));
@@ -57,7 +59,7 @@ html, body{
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.04),
     0 0 40px rgba(0,0,0,0.9);
-  text-align:left;
+  text-align:auto;
   overflow-x:hidden;
 }
 
@@ -683,8 +685,10 @@ progress::-moz-progress-bar{
 table.nsfw{ margin-top:8px; }
 
 /* Subsection headers */
-h2, h3{ margin:4px 0; }
-
+h1, h2, h3{
+  letter-spacing:0.04em;
+  margin:0.4em 0 0.2em;
+}
 /* Section wrapper around stats */
 .stats-section{
   margin:16px 0 24px;
@@ -917,21 +921,30 @@ h2, h3{ margin:4px 0; }
   color:rgb(255, 0, 200);
 }
 
-#UI-Stats,
+#sex-container,
 #arousal-ui {
   display: inline-block;
   vertical-align: top;
 }
 
-#UI-Stats {
-  width: 70%;
+
+#npcsex-dialogue {
+  max-width: 100%;
+  padding-right: 2rem;
 }
 
-#arousal-ui {
-  width: 28%;
+
+#story {
+  max-width: 1500px;
 }
 
+#passages {
+  max-width: none;
+}
 
+#npcsex-dialogue #log {
+  max-width: 110ch;
+}
 
 
 
