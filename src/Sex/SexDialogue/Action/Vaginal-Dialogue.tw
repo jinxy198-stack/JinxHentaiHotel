@@ -2,9 +2,6 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if !$seenActions.Vaginal>>
-<<set $seenActions.Vaginal = true>>
-
 	<<if $position == "Cowgirl">>
 		<<if $sex.roles.dom.name == _n.name>>
 			<<= either(
@@ -83,33 +80,26 @@
 	<<else>>
 		YOU HAVENT REACHED A FINISHED SECTION! GO BACK!!!!!!!!
 	<</if>>
-<<else>>
-	<<if $position == "Cowgirl">>
-		<<if $sex.roles.dom.name == _n.name>>
-			DOM COWGIRL VAGINAL
-		<<elseif $sex.roles.sub.name == _n.name>>
-			SUB COWGIRL VAGINAL
-		<</if>>
-	<<elseif $position == "Missionary">>
-		<<if $sex.roles.dom.name == _n.name>>
-			DOM MISSIONARY VAGINAL
-		<<elseif $sex.roles.sub.name == _n.name>>
-			SUB MISSIONARY VAGINAL
-		<</if>>
-	<<elseif $position == "Doggy Style">>
-		<<if $sex.roles.dom.name == _n.name>>
-    		<<= either(
-				"DOM DOGGY STYLE VAGINAL"
-    		)>>
-    	<<elseif $sex.roles.sub.name == _n.name>>	
-			SUB DOGGY STYLE VAGINAL
-		<</if>>
-	<<elseif $position == "Standing">>
-		<<if $sex.roles.dom.name == _n.name>>
-			DOM STANDING VAGINAL
-		<<elseif $sex.roles.sub.name == _n.name>>
-			SUB STANDING VAGINAL
-		<</if>>
-	<</if>>
-<</if>>
 
+	
+
+
+<<if $sex.act == "Enter Pussy">>
+You enter pussy.
+<<elseif $sex.act== "Push Cock In">>
+You push cock in.
+<<elseif $sex.act== "Fuck Pussy">>
+You fuck pussy.
+<<elseif $sex.act== "Take Cock">>
+ You take cock.
+<<elseif $sex.act== "Hump Back">>
+ You hump back.
+<<elseif $sex.act== "Ride Cock">>
+You ride cock.
+<<elseif $sex.act== "Squeeze Cock">>
+You squeeze cock.
+<<elseif $sex.act== "Rabbitfuck">>
+You rabbit fuck.
+<<elseif $sex.act== "Deep Stroke">>
+You deep stroke.
+<</if>>

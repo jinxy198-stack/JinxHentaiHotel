@@ -206,15 +206,14 @@ button.active-choice{
   cursor: pointer;
 }
 
-/* expanded state */
-#npcsex-actions-bar.expanded {
-  height: 35vh;          /* adjust as needed */
+#npcsex-actions-bar {
+  transition: transform 0.25s ease;
 }
 
-/* minimized state */
 #npcsex-actions-bar.minimized {
-  height: 32px;          /* just the button */
+  transform: translateY(85%);
 }
+
 
 /* scrolling content */
 .npcsex-content {
@@ -938,13 +937,21 @@ h1, h2, h3{
   max-width: 1500px;
 }
 
-#passages {
-  max-width: none;
+#passages{
+  max-width: 1100px !important;
+  width: 100%;
+  margin: 0 auto;
 }
+
 
 #npcsex-dialogue #log {
   max-width: 110ch;
 }
 
-
+.sex-encounter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 1em;
+  max-width: 1200px;
+}
 

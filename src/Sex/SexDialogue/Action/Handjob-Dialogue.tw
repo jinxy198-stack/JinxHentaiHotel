@@ -2,8 +2,11 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if $sex.role == "top">>
-	<<= either(
+
+
+
+<<if $sex.act == "Grip Cock">>
+<<= either(
 	"Reaching down between $proset.their _n.body.Legs, you wrap your $mc.body.Fingers around $proset.their <<= _n.genitals.toLowerCase()>>, letting out a soft moan as you start slowly stroking up and down its length.",
 	"You drop one of your $mc.body.Hands down between $proset.their _n.body.Legs, and, taking hold of $proset.their <<= _n.genitals.toLowerCase()>>, you start slowly jerking $proset.them off.",
 	"Teasing your $mc.body.Fingers over $proset.their <<= _n.genitals.toLowerCase()>> , you let out a soft moan as you start gently stroking up and down its throbbing length.",
@@ -23,20 +26,24 @@
 	"A delighted moan bursts out from between $proset.their _n.body.Lips, and $proset.they start eagerly thrusting $proset.their _n.body.Hips out against $proset.their touch as $proset.they begs you to continue giving $proset.them a handjob.",	
 	"Moaning in delight, _n.name buck $proset.their _n.body.Hips forwards, eagerly imploring you to continue giving $proset.them a handjob."
 	)>>
-    <<if _n.genitaltype == "Uncut">>
+	<<if _n.genitaltype == "Uncut">>
     Their foreskin is pulled back and forth from the movement.
     <</if>>
-    
-    
-<<else>>
+<<elseif $sex.act =="Wrap Hand Around Cock">>
 	<<= either(
-    "_n.name wraps their <<= _n.body.Hand.toLowerCase()>> around your <<= $mc.genitals.toLowerCase()>> and jerks you off.",
-    "_n.name jerks you off."
+    "_n.name wraps their <<= _n.body.Hand.toLowerCase()>> around your <<= $mc.genitals.toLowerCase()>>."
 	)>>
     
    	<<if $mc.genitaltype == "Uncut">>
     Your foreskin is pulled back and forth from the movement.
     <</if>>
+<<elseif $sex.act =="Stroke Shaft">>
+You stroke the shaft.
+<<elseif $sex.act =="Pump Shaft">>
+You pump the shaft.
+<<elseif $sex.act =="Fuck Fist">>
+"_n.name jerks you off."
+<<elseif $sex.act =="Tease Tip">>
+You tease the tip.
+
 <</if>>
-
-

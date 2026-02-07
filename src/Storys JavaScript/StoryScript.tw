@@ -97,13 +97,12 @@ window.SugarCubeInput = function (el) {
 
 
 
-
+/* Toggle button*/
 $(document).on("click", "#npcsex-toggle", function () {
   const bar = document.getElementById("npcsex-actions-bar");
 
-  const expanded = bar.classList.toggle("expanded");
-  bar.classList.toggle("minimized", !expanded);
+  const minimized = bar.classList.toggle("minimized");
 
-  this.textContent = expanded ? "▼ Actions" : "▲ Actions";
-  this.setAttribute("aria-expanded", expanded);
+  this.textContent = minimized ? "▲ Actions" : "▼ Actions";
+  this.setAttribute("aria-expanded", !minimized);
 });

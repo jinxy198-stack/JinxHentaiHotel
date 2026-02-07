@@ -2,14 +2,22 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if $sex.role == "top">>
-	<<= either(
- 	"_n.name finger's your <<= $mc.genitals.toLowerCase()>>."
-    )>>
-<<else>>
-	<<= either(
-    "You finger _n.name's <<= _n.genitals.toLowerCase()>>"
-    )>>
-<</if>>
+<<if $sex.act == "Finger Pussy">>
+    <<if $sex.role == "top">>
+	    <<= either(
+ 	    "_n.name finger's your <<= $mc.genitals.toLowerCase()>>."
+        )>>
+    <<else>>
+	    <<= either(
+        "You finger _n.name's <<= _n.genitals.toLowerCase()>>"
+        )>>
+    <</if>>
 
+<<elseif $sex.act =="Pull Hand To Pussy">>
+You pull their hand to your pussy.
+<<elseif $sex.act=="Rub Clit">>  
+    You rub clit.
+
+
+<</if>>
 

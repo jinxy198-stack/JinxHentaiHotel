@@ -71,10 +71,8 @@ NPC parts: <<print _n.bodyparts.join(", ")>><br> */
 <div id="arousal-ui">
   <<ArousalUI>>
 </div>
-
+<br>
 <div id= "sex-container">
 <<RoomRelocationUI>>
-<br>
- <<SexEncounterUI>>
-</div>
-
+<<SexEncounterUI>>
+</div> 
