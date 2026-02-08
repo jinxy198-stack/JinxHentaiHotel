@@ -151,15 +151,6 @@ setup.syncSexWithRoom = function (sex, room) {
     sex.furnitureFlags = room.furnitureFlags;
 };
 
-/*
- * Maps informal or alternate body part names to canonical ones.
- */
-
-setup.partAliases = {
-    breasts: "breasts",
-    chest: "chest",
-    
-};
 
 /*
  * Builds a normalized bodyparts list for an actor,
@@ -212,8 +203,7 @@ setup.partMatches = function(actor, required) {
     return actor.bodyparts.some(p => {
         const part = p.toLowerCase();
         return (
-            part === req ||
-            setup.partAliases[part] === req
+            part === req 
         );
     });
 };

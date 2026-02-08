@@ -12,7 +12,7 @@
 <<if !$mc.bodyparts && $mc.body>>
 	<<set $mc.bodyparts = Object.keys($mc.body)>>
 <</if>>
-
+<<set $gamelocation = "Your Room">>
 /* ensure room exists BEFORE UI */
 <<if !$room>>
 <<set $room = {
@@ -23,17 +23,6 @@
 <</if>>
 
 /* ensure sex exists */
-
-/* <<set $sex = {
-  position: "Standing",
-  role: "top",
-  subject: $mc,
-  object: _n,
-  engagedParts: { subject: [], object: [] },
-  penetration: null,
-  phase: "tease",
-  history: []
-}>> */
 <<SexMemory>>
 /* local convenience copy */
 <<set _sexCount = $npcMemory[_key].sexCount>>
@@ -61,8 +50,8 @@
 <<set $room.furnitureFlags = $room.furnitureFlags || setup.getRoomFurnitureFlags($room.type)>>
 <<set $sex.furnitureFlags  = $room.furnitureFlags>>
 
-/* MC parts: <<print $mc.bodyparts.join(", ")>><br>
-NPC parts: <<print _n.bodyparts.join(", ")>><br> */
+MC parts: <<print $mc.bodyparts.join(", ")>><br>
+NPC parts: <<print _n.bodyparts.join(", ")>><br> 
 
 <<set _n.arousal = _n.arousal or 0>>
 <<set $mc.arousal = $mc.arousal or 0>>
@@ -76,3 +65,9 @@ NPC parts: <<print _n.bodyparts.join(", ")>><br> */
 <<RoomRelocationUI>>
 <<SexEncounterUI>>
 </div> 
+
+<<button "End Session">>
+			<<set $lastNpc = _n>>      <!-- remember who you were with -->
+			<<set $sex = null >>  <!-- optional reset -->
+			<<goto "Your Room">> <!-- or "Your Room" or whatever -->
+		<</button>>
