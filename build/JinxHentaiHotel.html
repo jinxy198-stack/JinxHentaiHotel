@@ -8016,7 +8016,7 @@ change from _n to $n
 				&lt;&lt;set $sex.stage = &quot;Aftercare&quot;&gt;&gt;
 				&lt;&lt;set $sex.action = &quot;Cuddle&quot;&gt;&gt;
 				&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(4) : (setup.addAffection(4), setup.updateBindings())&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 				&lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 			&lt;&lt;/button&gt;&gt;
 		&lt;&lt;button &quot;End Session&quot;&gt;&gt;
@@ -8034,7 +8034,7 @@ change from _n to $n
 		&lt;&lt;set $sex.action = &quot;Kiss&quot;&gt;&gt;
 		&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())&gt;&gt;
 		&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
-		&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+		&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
         &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
         &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8047,7 +8047,7 @@ change from _n to $n
 	&lt;&lt;set $sex.action = &quot;Caress&quot;&gt;&gt;
 	&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())&gt;&gt;
 	&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
-		&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+		&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
         &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
         &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8060,7 +8060,7 @@ change from _n to $n
 		&lt;&lt;set $sex.action = &quot;Embrace&quot;&gt;&gt;
 		&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())&gt;&gt;
 		&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
-			&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 			&lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 			&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 			&lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8074,7 +8074,7 @@ change from _n to $n
 		&lt;&lt;set $sex.action = &quot;Touch Stomach&quot;&gt;&gt;
 		&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())&gt;&gt;
 		&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
-			&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 			&lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 			&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 			&lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8088,7 +8088,7 @@ change from _n to $n
 		&lt;&lt;set $sex.action = &quot;Pet Ears&quot;&gt;&gt;
 		&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())&gt;&gt;
 		&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
-		&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+		&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8103,7 +8103,7 @@ change from _n to $n
 			&lt;&lt;set $sex.action = &quot;Frot&quot;&gt;&gt;
 			&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())&gt;&gt;
 			&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
-			&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
             &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 			&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
             &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8119,7 +8119,7 @@ change from _n to $n
 			&lt;&lt;set $sex.action = &quot;Grope Breast&quot;&gt;&gt;
 			&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())&gt;&gt;
 			&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
-			&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
             &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 			&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
             &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8136,7 +8136,7 @@ change from _n to $n
 				&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
 				&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 				&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
 				&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8150,7 +8150,7 @@ change from _n to $n
 				&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
 				&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 				&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
 				&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8164,7 +8164,7 @@ change from _n to $n
 				&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
 				&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 				&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
 				&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8179,7 +8179,7 @@ change from _n to $n
 			&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
 			&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
             &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-			&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
             &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 			&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
 			&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8194,7 +8194,7 @@ change from _n to $n
 		&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 3)&gt;&gt;
 		&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
         &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-		&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+		&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
         &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
 		&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8213,7 +8213,7 @@ change from _n to $n
 				&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 5)&gt;&gt;
 				&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 				&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
 				&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8234,7 +8234,7 @@ change from _n to $n
 				&lt;&lt;run setup.bumpAffection ? setup.bumpAffection(5) : (setup.addAffection(5), setup.updateBindings())&gt;&gt;
 				&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 5)&gt;&gt;
 				&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 				&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
 				&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8254,7 +8254,7 @@ change from _n to $n
 				&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 5)&gt;&gt;
 				&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 				&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
 				&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8274,7 +8274,7 @@ change from _n to $n
 				&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 5)&gt;&gt;
 				&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 				&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
 				&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8294,7 +8294,7 @@ change from _n to $n
 				&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 5)&gt;&gt;
 				&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 				&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
 				&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -8314,7 +8314,7 @@ change from _n to $n
 				&lt;&lt;set _n.arousal = Math.min(100, _n.arousal + 5)&gt;&gt;
 				&lt;&lt;replace &quot;#sex-stage&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Stage&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;&lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#sexaction&quot;&gt;&gt;&lt;b&gt;Current Action: &lt;/b&gt;&lt;&lt;= $sex.action &gt;&gt;&lt;&lt;/replace&gt;&gt;
 				&lt;&lt;run $(&quot;#arousal-bar&quot;).prop(&quot;value&quot;, _n.arousal); $(&quot;#arousal-pct&quot;).text(_n.arousal + &quot;%&quot;);&gt;&gt;
 				&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -9464,7 +9464,7 @@ You squeeze cock.
 You rabbit fuck.
 &lt;&lt;elseif $sex.act== &quot;Deep Stroke&quot;&gt;&gt;
 You deep stroke.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="NPCSexDialogue" tags="nobr Dialogue" position="1000,1025" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="ActDialogue" tags="nobr Dialogue" position="1000,1025" size="100,100">&lt;&lt;silently&gt;&gt;
 	/*&lt;&lt;set _n = $ui.npc&gt;&gt;
 	&lt;&lt;if !_n&gt;&gt;&lt;&lt;return&gt;&gt;&lt;&lt;/if&gt;&gt; */
 	/* &lt;&lt;set _a = ($sex and $sex.action) or &quot;none&quot;&gt;&gt; */
@@ -13394,7 +13394,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="Widgets" tags="widget nobr" position="975,2100" size="100,100">&lt;&lt;widget &quot;SexDialogueRunner&quot;&gt;&gt;
     &lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;
     &lt;br&gt;
-    &lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;
+    &lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 
@@ -13570,7 +13570,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
                     &lt;&lt;SexEncounterUI&gt;&gt;
 			    &lt;&lt;/replace&gt;&gt;
                 &lt;&lt;replace &quot;#npcsex-dialogue&quot;&gt;&gt;
-                    &lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;
+                    &lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
 				&lt;&lt;/replace&gt;&gt;
 				
                 &lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;
@@ -13605,7 +13605,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 										&lt;&lt;/replace&gt;&gt;
 										&lt;&lt;replace &quot;#npcsex-dialogue&quot;&gt;&gt;
 											/*&lt;&lt;SexDialogueRunner&gt;&gt; */
-                                            &lt;&lt;include &quot;NPCSexDialogue&quot;&gt;&gt;
+                                            &lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
 										&lt;&lt;/replace&gt;&gt;
 										&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;
 											&lt;&lt;ArousalUI&gt;&gt;

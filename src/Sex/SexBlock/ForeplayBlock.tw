@@ -8,7 +8,7 @@
 		<<set $sex.action = "Kiss">>
 		<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
 		<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
-		<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+		<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
         <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 		<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
         <<replace "#intro">><</replace>>
@@ -21,7 +21,7 @@
 	<<set $sex.action = "Caress">>
 	<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
 	<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
-		<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+		<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
         <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 		<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
         <<replace "#intro">><</replace>>
@@ -34,7 +34,7 @@
 		<<set $sex.action = "Embrace">>
 		<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
 		<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
-			<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+			<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
 			<<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 			<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
 			<<replace "#intro">><</replace>>
@@ -48,7 +48,7 @@
 		<<set $sex.action = "Touch Stomach">>
 		<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
 		<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
-			<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+			<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
 			<<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 			<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
 			<<replace "#intro">><</replace>>
@@ -62,7 +62,7 @@
 		<<set $sex.action = "Pet Ears">>
 		<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
 		<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
-		<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+		<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
 		<<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 		<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
 		<<replace "#intro">><</replace>>
@@ -77,7 +77,7 @@
 			<<set $sex.action = "Frot">>
 			<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
 			<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
-			<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+			<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
             <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 			<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
             <<replace "#intro">><</replace>>
@@ -93,7 +93,7 @@
 			<<set $sex.action = "Grope Breast">>
 			<<run setup.bumpAffection ? setup.bumpAffection(3) : (setup.addAffection(3), setup.updateBindings())>>
 			<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
-			<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+			<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
             <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 			<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
             <<replace "#intro">><</replace>>
@@ -110,7 +110,7 @@
 				<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
 				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
                 <<replace "#intro">><</replace>>
-				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+				<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
                 <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
 				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
@@ -124,7 +124,7 @@
 				<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
 				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
                 <<replace "#intro">><</replace>>
-				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+				<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
                 <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
 				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
@@ -138,7 +138,7 @@
 				<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
 				<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
                 <<replace "#intro">><</replace>>
-				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+				<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
                 <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 				<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
 				<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
@@ -153,7 +153,7 @@
 			<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
 			<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
             <<replace "#intro">><</replace>>
-			<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+			<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
             <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 			<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
 			<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>
@@ -168,7 +168,7 @@
 		<<set _n.arousal = Math.min(100, _n.arousal + 3)>>
 		<<replace "#sex-stage">><<include "Sex-Stage">><</replace>>
         <<replace "#intro">><</replace>>
-		<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+		<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
         <<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 		<<run $("#arousal-bar").prop("value", _n.arousal); $("#arousal-pct").text(_n.arousal + "%");>>
 		<<replace "#aftercare">><<include "OrgasmCloseBlock">><</replace>>

@@ -3,7 +3,7 @@
 <<widget "SexDialogueRunner">>
     <<include "PositionDialogue">>
     <br>
-    <<include "NPCSexDialogue">>
+    <<include "ActDialogue">>
 <</widget>>
 
 
@@ -179,7 +179,7 @@
                     <<SexEncounterUI>>
 			    <</replace>>
                 <<replace "#npcsex-dialogue">>
-                    <<include "NPCSexDialogue">>
+                    <<include "ActDialogue">>
 				<</replace>>
 				
                 <<replace "#arousal-ui">>
@@ -214,7 +214,7 @@
 										<</replace>>
 										<<replace "#npcsex-dialogue">>
 											/*<<SexDialogueRunner>> */
-                                            <<include "NPCSexDialogue">>
+                                            <<include "ActDialogue">>
 										<</replace>>
 										<<replace "#arousal-ui">>
 											<<ArousalUI>>

@@ -5,7 +5,7 @@
 				<<set $sex.stage = "Aftercare">>
 				<<set $sex.action = "Cuddle">>
 				<<run setup.bumpAffection ? setup.bumpAffection(4) : (setup.addAffection(4), setup.updateBindings())>>
-				<<replace "#log">><<include "NPCSexDialogue">><<include "Sex-Quote">><</replace>>
+				<<replace "#log">><<include "ActDialogue">><<include "Sex-Quote">><</replace>>
 				<<replace "#sexaction">><b>Current Action: </b><<= $sex.action >><</replace>>
 			<</button>>
 		<<button "End Session">>
