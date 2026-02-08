@@ -373,17 +373,35 @@
 		Legs: "Legs",
 		Hands: "Hands",
 		Hand: "Hand",
-		Feet: "feet",
-		Butt: "Butt",
-		Ass: "ass",
-		Asshole: "asshole",
-		Finger: "finger",
-		Fingers: "fingers",
-		Hips: "hips",
-		Lips: "lips",
-		Tongue: "tongue",
+		Feet: "Feet",
+		Ass: "Ass",
+		Asshole: "Asshole",
+		Nipples: "Nipples",
+		Crotch: "Crotch",
+		Thigh: "Thigh",
+		Finger: "Finger",
+		Fingers: "Fingers",
+		Hips: "Hips",
+		Lips: "Lips",
+		Tongue: "Tongue",
         Bodymaterial: "Skin"
 	}, _npc.body || {})>>
+
+	/* Assign genitals based on gender */
+	<<if _npc.gender>>
+		<<set _g = _npc.gender>>
+
+		<<if _npc.gender == "Male">>
+			<<set _npc.body.Penis = "Penis">>
+			<<set _npc.body.Balls = "Balls">>
+			<<set _npc.body.Chest = "Chest">>
+
+		<<elseif _npc.gender == "Female">>
+			<<set _npc.body.Vagina = "Vagina">>
+			<<set _npc.body.Clitoris = "Clit">>
+			<<set _npc.body.Breasts = "Breasts">>
+		<</if>>
+	<</if>>
 
 
 	/* Override for anthro */
@@ -627,9 +645,11 @@
    		Hands: "Hands",
     	Hand: "Hand",
     	Feet: "Feet",
-    	Butt: "Butt",
     	Ass: "Ass",
     	Asshole: "Asshole",
+		Nipples: "Nipples",
+		Crotch: "Crotch",
+		Thigh: "Thigh",
     	Finger: "Finger",
     	Fingers: "Fingers",
     	Hips: "Hips",

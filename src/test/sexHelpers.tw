@@ -154,12 +154,11 @@ setup.syncSexWithRoom = function (sex, room) {
 /*
  * Maps informal or alternate body part names to canonical ones.
  */
+
 setup.partAliases = {
-    asshole: "anus",
-    ass: "butt",
-    breasts: "chest",
-    tits: "breasts",
-    feet: "foot"
+    breasts: "breasts",
+    chest: "chest",
+    
 };
 
 /*
