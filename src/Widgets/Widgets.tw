@@ -1,11 +1,5 @@
 :: Widgets [widget nobr] 
 
-<<widget "SexDialogueRunner">>
-    <<include "PositionDialogue">>
-    <br>
-    <<include "ActDialogue">>
-<</widget>>
-
 
 <<widget "RoomRelocationUI">>
 
@@ -33,6 +27,11 @@
             <<replace "#sex-container">>
                 <<RoomRelocationUI>>
                 <<SexEncounterUI>>
+                <<button "End Session">>
+			        <<set $lastNpc = _n>>      <!-- remember who you were with -->
+			        <<set $sex = null >>  <!-- optional reset -->
+			        <<goto "Your Room">> <!-- or "Your Room" or whatever -->
+                <</button>>
             <</replace>>
         <</button>>
 
@@ -138,26 +137,6 @@
 										<<replace "#sexUI">>
                                         
 											<<SexEncounterUI>> 
-                                            /* try to fix the buttons 
-                                            <div id="UI-Stats">
-		                                        <h3>Current</h3>
-		                                        <b>Position:</b> <<print $sex.position>><br>
-		                                        <b>Previous Position:</b> <<print $sex.previousPosition || "None">><br>
-		                                        <b>Role:</b> <<print $sex.role>><br>
-		                                        <b>Act:</b>
-		                                        <<if $sex.act>>
-			                                        <<print $sex.act>>
-		                                        <<else>>
-			                                        None
-		                                        <</if>>
-		                                        <br>
-		                                        <b>Phase:</b> <<print $sex.phase>><br>
-		                                        <<if $sex.penetration>>
-			                                        <b>Penetration:</b>
-			                                        <<print $sex.penetration.subjectPart>> → <<print $sex.penetration.objectPart>><br>
-		                                        <</if>>
-	                                        </div>
-                                                */
 										<</replace>>
 
 										<<replace "#npcsex-dialogue">>
@@ -196,8 +175,12 @@
 				<ul class="sex-list">
 					<<for _i = 0; _i < _acts.length; _i++>>
 						<<set _a = _acts[_i]>>
-						<<if _a === $sex.act>>
-							<li><strong><<print _a>></strong></li>
+                        <<set _actDef = setup.sexacts[_a]>>
+
+						<<if _a === $sex.act && !_actDef["action type"].includes("continue")>>
+							<li>
+                                <strong><<print _a>></strong>
+                            </li>
 						<<else>>
 							<<capture _a>>
 								<li>
@@ -213,7 +196,6 @@
                                             <<SexEncounterUI>>
 										<</replace>>
 										<<replace "#npcsex-dialogue">>
-											/*<<SexDialogueRunner>> */
                                             <<include "ActDialogue">>
 										<</replace>>
 										<<replace "#arousal-ui">>

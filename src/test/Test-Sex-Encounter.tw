@@ -50,8 +50,8 @@
 <<set $room.furnitureFlags = $room.furnitureFlags || setup.getRoomFurnitureFlags($room.type)>>
 <<set $sex.furnitureFlags  = $room.furnitureFlags>>
 
-MC parts: <<print $mc.bodyparts.join(", ")>><br>
-NPC parts: <<print _n.bodyparts.join(", ")>><br> 
+/*MC parts: <<print $mc.bodyparts.join(", ")>><br>
+NPC parts: <<print _n.bodyparts.join(", ")>><br> */
 
 <<set _n.arousal = _n.arousal or 0>>
 <<set $mc.arousal = $mc.arousal or 0>>
@@ -64,10 +64,10 @@ NPC parts: <<print _n.bodyparts.join(", ")>><br>
 <div id= "sex-container">
 <<RoomRelocationUI>>
 <<SexEncounterUI>>
+<<button "End Session">>
+			        <<set $lastNpc = _n>>      <!-- remember who you were with -->
+			        <<set $sex = null >>  <!-- optional reset -->
+			        <<goto "Your Room">> <!-- or "Your Room" or whatever -->
+<</button>>
 </div> 
 
-<<button "End Session">>
-			<<set $lastNpc = _n>>      <!-- remember who you were with -->
-			<<set $sex = null >>  <!-- optional reset -->
-			<<goto "Your Room">> <!-- or "Your Room" or whatever -->
-		<</button>>

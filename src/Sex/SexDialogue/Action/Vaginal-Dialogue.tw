@@ -2,9 +2,21 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-	<<if $position == "Cowgirl">>
-		<<if $sex.roles.dom.name == _n.name>>
-			<<= either(
+<<if $sex.act == "Enter Pussy">>
+	<<if $sex.postion == "Cowgirl">>
+		_n.name lowers their pussy onto your cock.
+	<<elseif $position == "Missionary">>
+
+	<<elseif $position == "Doggy">>
+
+	<<else>>
+		<<= either(
+			"You line up your <<= $mc.genitals.toLowerCase()>> with _n.name's <<= _n.genitals.toLowerCase()>> before pushing into them."
+		)>>
+	<</if>>
+<<elseif $sex.act== "Push Cock In">>
+	<<if $sex.postion == "Cowgirl">>
+		<<= either(
 			"You sink down onto _n.name's <<= _n.genitals.toLowerCase() >> , letting out a happy squeal as your feel _n.name sink deep inside your pussy.",
 			"Bottoming out on _n.name's <<= _n.genitals.toLowerCase() >> , your lean down and grab  _n.name's head in both hands, before pulling _n.name up into a passionate kiss.",
 			"With a moan, you slid down onto _n.name's <<= _n.genitals.toLowerCase() >> , leaning down into _n.name's _n.breasts and breathing in _n.name's scent before pressing your lips against _n.name's.",
@@ -17,8 +29,52 @@
 			"You reach down and roughly grab _n.name's <<= _n.genitals.toLowerCase() >> , before shuffling around to get into a good position. After taking a moment to tease the head between your outer labia, you let out a moan as you forcefully drop down and penetrate your <<= $mc.genitals.toLowerCase() >> on _n.name's <<= _n.genitals.toLowerCase() >> .",
 			"Shuffling around into a better position, you line the head of _n.name's <<= _n.genitals.toLowerCase() >> up between your $mc.body.Legs, and with a single movement, you roughly drop down, penetrating your <<= $mc.genitals.toLowerCase() >> on _n.name's <<= _n.genitals.toLowerCase() >> .",
     		"You reach down to take hold of _n.name's <<= _n.genitals.toLowerCase() >> , before shuffling around to get into a good position. After taking a moment to tease the head over your ass, you let out a little moan as you slowly drop down and penetrate your $mc.assSize ass on _n.name's <<= _n.genitals.toLowerCase() >> ."
-			)>>
-			<<= either(
+		)>>
+	<<elseif $position == "Missionary">>
+
+	<<elseif $position == "Doggy">>
+
+	<<elseif $position == "Standing">>
+
+	<<else>>
+		<<= either(
+			"_n.name line's up their <<= _n.genitals.toLowerCase()>> with your <<= $mc.genitals.toLowerCase()>> before pushing in."
+		)>>
+	<</if>>
+	
+<<elseif $sex.act== "Fuck Pussy">>
+	<<if $sex.postion =="Doggy">>
+		<<= either(
+    		"Reaching forward, you gently take hold of _n.name's hair, and while continuing to rhythmically slide your <<= $mc.genitals.toLowerCase() >> in and out of $proset.their <<= _n.genitals.toLowerCase() >> , you slowly pull back, causing _n.name to lift $proset.their head and let out a moan.",
+        	"Taking a gentle hold of _n.name's hair in one $mc.body.Hand, you simultaneously pull $proset.their head back while burying your <<= $mc.genitals.toLowerCase() >> deep into $proset.their _n.ass softly giggling to yourself as _n.name lets out moan.",
+			"Taking a gentle hold of _n.name's hair in one $mc.body.Hand, you simultaneously pull $proset.their head back while burying your <<= $mc.genitals.toLowerCase() >> deep into $proset.their _n.ass smirking to yourself as _n.name lets out moan.",
+			"Tracing your $mc.body.Fingers up the length of _n.name's back, you reach forwards and take a gentle hold of $proset.their hair, before pulling $proset.their head back and causing $proset.them to let out a moan."
+    	)>>
+	<<elseif $sex.position == "Missionary">>
+		"You fuck _n.name in the missionary position"	
+	<<else>>
+		You fuck pussy.
+	<</if>>
+
+<<elseif $sex.act== "Take Cock">>
+ 	<<if $sex.postion =="Doggy">>
+		<<= either(
+    	"_n.name fucks you doggy style"
+    	)>>
+	<<elseif $sex.position == "Missionary">>
+		<<= either(
+        	"You bite your lip and let out a moan, before raising your ass and spreading your legs in order to help _n.name sink their <<= _n.genitals.toLowerCase()>> deeper into your $mc.assSize ass.",
+			"You spread her legs and raise your $mc.ass for _n.name, helping $proset.them to thrust $proset.their <<= _n.genitals.toLowerCase()>> deep into your $mc.assSize ass.",
+			"Pulling your $mc.feet back and to each side, you help _n.name to thrust $proset.their <<= _n.genitals.toLowerCase() >> deep into your $mc.assSize by raising your ass and spreading your legs.",
+			"You spread your legs and raise your ass, looking up at _n.name and biting your lip as $proset.they continue fucking your <<= $mc.assSize.toLowerCase() >> ass."
+        )>>	
+	<<else>>
+		You take cock.	
+ 	<</if>>
+<<elseif $sex.act== "Hump Back">>
+ You hump back.
+<<elseif $sex.act== "Ride Cock">> /*Needs fixing. */
+	<<= either(
 			"_n.name lets out a moan as $proset.they enter you, eagerly bucking $proset.their _n.body.Hips up as _n.name starts fucking your <<= $mc.genitals.toLowerCase() >>.",
 			"With a moan, _n.name eagerly thrusts $proset.their _n.body.Hips up into your groin, sinking $proset.their <<= _n.genitals.toLowerCase() >> into your <<= $mc.genitals.toLowerCase() >> as _n.name start energetically fucking you.",
 			"_n.name lets out a moan as $proset.they enter you, bucking _n.name's _n.body.Hips up as _n.name starts fucking your <<= $mc.genitals.toLowerCase() >>.",
@@ -35,67 +91,7 @@
 			"Using your legs, you rapidly bounce yourself up and down, slamming _n.name's <<= _n.genitals.toLowerCase() >> in and out of your <<= $mc.genitals.toLowerCase() >> as you moan out loud.",
 			"Placing your $mc.body.Hands down on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out shuddering, a moan as you impale yourself on _n.name's <<= _n.genitals.toLowerCase() >> .",
 			"Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a moan as you spear your <<= $mc.genitals.toLowerCase() >> on _n.name's <<= _n.genitals.toLowerCase() >> ."
-			)>>
-		<<elseif $sex.roles.sub.name == _n.name>>
-			"_n.name bounced up and down on your dick."
-		<</if>>
-	<<elseif $position == "Missionary">>
-		<<if $sex.roles.dom.name == _n.name>>
-    		<<= either(
-        	"You bite your lip and let out a moan, before raising your ass and spreading your legs in order to help _n.name sink their <<= _n.genitals.toLowerCase()>> deeper into your $mc.assSize ass.",
-			"You spread her legs and raise your $mc.ass for _n.name, helping $proset.them to thrust $proset.their <<= _n.genitals.toLowerCase()>> deep into your $mc.assSize ass.",
-			"Pulling your $mc.feet back and to each side, you help _n.name to thrust $proset.their <<= _n.genitals.toLowerCase() >> deep into your $mc.assSize by raising your ass and spreading your legs.",
-			"You spread your legs and raise your ass, looking up at _n.name and biting your lip as $proset.they continue fucking your <<= $mc.assSize.toLowerCase() >> ass."
-        	)>>
-    	<<elseif $sex.roles.sub.name == _n.name>>
-    		"You fuck _n.name in the missionary position"
-    	<</if>>
-	<<elseif $position == "Doggy Style">>
-		<<if $sex.roles.dom.name == _n.name>>
-    		<<= either(
-    		"_n.name fucks you doggy style"
-    		)>>
-    	<<elseif $sex.roles.sub.name == _n.name>>
-    		<<= either(
-    		"Reaching forward, you gently take hold of _n.name's hair, and while continuing to rhythmically slide your <<= $mc.genitals.toLowerCase() >> in and out of $proset.their <<= _n.genitals.toLowerCase() >> , you slowly pull back, causing _n.name to lift $proset.their head and let out a moan.",
-        	"Taking a gentle hold of _n.name's hair in one $mc.body.Hand, you simultaneously pull $proset.their head back while burying your <<= $mc.genitals.toLowerCase() >> deep into $proset.their _n.ass softly giggling to yourself as _n.name lets out moan.",
-			"Taking a gentle hold of _n.name's hair in one $mc.body.Hand, you simultaneously pull $proset.their head back while burying your <<= $mc.genitals.toLowerCase() >> deep into $proset.their _n.ass smirking to yourself as _n.name lets out moan.",
-			"Tracing your $mc.body.Fingers up the length of _n.name's back, you reach forwards and take a gentle hold of $proset.their hair, before pulling $proset.their head back and causing $proset.them to let out a moan."
-    		)>>
-    	<</if>>
-	<<elseif $position == "Standing">>
-		<<if $sex.roles.dom.name == _n.name>>
-			<<= either(
-			"_n.name line's up their <<= _n.genitals.toLowerCase()>> with your <<= $mc.genitals.toLowerCase()>> before pushing in."
-			)>>
-		<<elseif $sex.roles.sub.name == _n.name >>
-			<<= either(
-			"You line up your <<= $mc.genitals.toLowerCase()>> with _n.name's <<= _n.genitals.toLowerCase()>> before pushing in."
-			)>>
-			<<= either(
-			"_n.name moans and hugs you.",
-			"_n.name moans and gives your <<= $mc.assSize.toLowerCase() ass a squeeze."
-			)>>
-		<</if>>
-	<<else>>
-		YOU HAVENT REACHED A FINISHED SECTION! GO BACK!!!!!!!!
-	<</if>>
-
-	
-
-
-<<if $sex.act == "Enter Pussy">>
-You enter pussy.
-<<elseif $sex.act== "Push Cock In">>
-You push cock in.
-<<elseif $sex.act== "Fuck Pussy">>
-You fuck pussy.
-<<elseif $sex.act== "Take Cock">>
- You take cock.
-<<elseif $sex.act== "Hump Back">>
- You hump back.
-<<elseif $sex.act== "Ride Cock">>
-You ride cock.
+		)>>
 <<elseif $sex.act== "Squeeze Cock">>
 You squeeze cock.
 <<elseif $sex.act== "Rabbitfuck">>
