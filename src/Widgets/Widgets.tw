@@ -30,6 +30,7 @@
                 <<button "End Session">>
 			        <<set $lastNpc = _n>>      <!-- remember who you were with -->
 			        <<set $sex = null >>  <!-- optional reset -->
+                    <<set $n = null >>
 			        <<goto "Your Room">> <!-- or "Your Room" or whatever -->
                 <</button>>
             <</replace>>

@@ -1,0 +1,14 @@
+::Debug-State [nobr]
+
+<pre>
+<<print JSON.stringify(State.variables, null, 2)>>
+</pre>
+
+
+/*
+Example of how to use.
+
+	<<include "Debug-State">>
+
+
+*/

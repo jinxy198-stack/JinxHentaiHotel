@@ -453,3 +453,26 @@ setup.isEndActValid = function (act, sex) {
 
     return false;
 };
+
+
+setup.updateSubjectObject = function (sex) {
+    if (!sex) return;
+
+    const mc = State.variables.mc;
+    const n  = State.variables.n;
+
+    if (!mc || !n) return;
+
+    if (sex.role === "top") {
+        sex.subject = mc;
+        sex.object  = n;
+    }
+    else if (sex.role === "bottom") {
+        sex.subject = n;
+        sex.object  = mc;
+    }
+    else {
+        sex.subject = mc;
+        sex.object  = n;
+    }
+};

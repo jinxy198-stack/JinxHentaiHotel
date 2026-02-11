@@ -6,6 +6,9 @@
 <</if>>
 <<set _npc = $ui.npc>>
 <<set _n = _npc>>
+/* This is to be set to null at the end of each encounter.*/
+<<set $n = _n>>
+
 <<run setup.normalizeBodyparts($mc)>>
 <<run setup.normalizeBodyparts(_n)>>
 
@@ -27,34 +30,49 @@
 /* local convenience copy */
 <<set _sexCount = $npcMemory[_key].sexCount>>
 
-<<if $sex.roles.dom.name == $mc.name>>
-  <<set $sex.role = "top">>
-<<else>>
-  <<set $sex.role = "bottom">>
-<</if>>
-
 <<set $sex.position = "Standing">>
-<<set $sex.subject = $sex.roles.dom.name>>
-<<set $sex.object = $sex.roles.sub.name>>
+<<set $sex.subject = null>>
+<<set $sex.object = null>>
 <<set $sex.engagedParts= { subject: [], object: [] }>>
 <<set $sex.penetration = null>>
 <<set $sex.phase = "tease">>
 <<set $sex.history= []>>
-<<set $sex.action= "Staring">>
+<<set $sex.action= "Waiting">>
+
+
+<<if $sex.roles.dom.name == $mc.name>>
+  <<set $sex.role = "top">>
+  <<run setup.updateSubjectObject($sex)>>
+<<else>>
+  <<set $sex.role = "bottom">>
+  <<run setup.updateSubjectObject($sex)>>
+<</if>>
 
 /* ALWAYS rebind subject/object to current */
-<<set $sex.subject = $mc>>
-<<set $sex.object  = _n>> 
+/*<<set $sex.subject = $mc>>
+<<set $sex.object  = _n>> */
+
+
 
 /* keep furniture flags synced */
 <<set $room.furnitureFlags = $room.furnitureFlags || setup.getRoomFurnitureFlags($room.type)>>
 <<set $sex.furnitureFlags  = $room.furnitureFlags>>
 
 /* Debug checking to confirm things exist */
-MC parts: <<print $mc.bodyparts.join(", ")>><br>
-NPC parts: <<print _n.bodyparts.join(", ")>><br> 
-Sex Subject:<<print $sex.subject.name>><br>
+/*MC parts: <<print $mc.bodyparts.join(", ")>><br>
+NPC parts: <<print _n.bodyparts.join(", ")>><br> */
+Sex Subject: <<print $sex.subject.name>><br>
 Sex Object: <<print $sex.object.name>><br>
+<<button "Inspect">>
+	<<WithNPC _n>>
+	<<run Dialog
+		.create("NPC: " + $ui.npc.name)
+		.wikiPassage("UI-NPC-Inspect")
+		.open()
+	>>
+<</button>>
+<br>
+
 
 
 /*Arousal meter for both $mc and _n */

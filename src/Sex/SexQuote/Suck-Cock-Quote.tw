@@ -1,0 +1,25 @@
+<<set _pref = _n.sexpref >>
+<<set _mage  = $mc.ageGroup  || "Adult">>
+<<set _nage  = _n.ageGroup  || "Adult">>
+<<set _personality = _n.personality>>
+
+<<set _pool = null>>
+
+<<if $sex.role == "bottom">>
+	<<set _mode = "bottom">>
+<<elseif $sex.role == "top">>
+	<<set _mode = "top">>
+<</if>>
+
+<<if _mode == "top">>
+	<<set _pool = setup.SuckCockQuotes.top>>
+<<elseif _mode == "bottom">>
+	<<set _pool = setup.SuckCockQuotes.bottom[_pref]>>
+<</if>>
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Enter Mouth pool found.
+	(mode=<<=_mode>>, pref=<<=_pref>>, nsize=<<=_nsize>>, msize=<<=_msize>>, nage=<<=_nage>>, mage=<<=_mage>>)
+<</if>>

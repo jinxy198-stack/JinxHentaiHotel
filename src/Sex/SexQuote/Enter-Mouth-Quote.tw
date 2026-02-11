@@ -1,5 +1,5 @@
-:: Blowjob-Quote [nobr Dialogue] {"position":"1600,1600","size":"100,100"}
-<<if !setup.blowjobQuotes>>
+:: Enter-Mouth-Quote [nobr Dialogue] {"position":"1600,1600","size":"100,100"}
+/*<<if !setup.blowjobQuotes>>
 	[Error] setup.blowjobQuotes is missing. Define it in StoryInit.
 	<<return>>
 <</if>>
@@ -37,3 +37,27 @@
 	[Error] No Blowjob quote pool found.
 <</if>>
 
+*/
+
+<<set _pref = _n.sexpref >>
+<<set _mage  = $mc.ageGroup  || "Adult">>
+<<set _nage  = _n.ageGroup  || "Adult">>
+<<set _personality = _n.personality>>
+
+<<set _pool = null>>
+
+<<if $sex.role == "bottom">>
+	<<set _mode = "bottom">>
+<<elseif $sex.role == "top">>
+	<<set _mode = "top">>
+<</if>>
+
+
+	<<set _pool = setup.EnterMouthQuotes.top>>
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Enter Mouth pool found.
+	(mode=<<=_mode>>, pref=<<=_pref>>, nsize=<<=_nsize>>, msize=<<=_msize>>, nage=<<=_nage>>, mage=<<=_mage>>)
+<</if>>
