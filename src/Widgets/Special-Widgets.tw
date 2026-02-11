@@ -665,6 +665,21 @@
 		<</if>>
 	<</for>>
 
+	/* Assign genitals based on gender */
+	<<if $mc.gender>>
+		<<set _g = $mc.gender>>
+
+		<<if $mc.gender == "Male">>
+			<<set $mc.body.Penis = "Penis">>
+			<<set $mc.body.Balls = "Balls">>
+			<<set $mc.body.Chest = "Chest">>
+
+		<<elseif $mc.gender == "Female">>
+			<<set $mc.body.Vagina = "Vagina">>
+			<<set $mc.body.Clitoris = "Clit">>
+			<<set $mc.body.Breasts = "Breasts">>
+		<</if>>
+	<</if>>
 
     <<if $mc.species is "Anthro">>
     <<MCalternatebody>>

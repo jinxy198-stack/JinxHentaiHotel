@@ -1,5 +1,5 @@
 :: Grope-Breast-Quote [nobr Dialogue] {"position":"1600,1500","size":"100,100"}
-<<if !setup.gropebreastQuotes>>
+/*<<if !setup.gropebreastQuotes>>
 	[Error] setup.gropebreastQuotes is missing. Define it in StoryInit.
 	<<return>>
 <</if>>
@@ -8,9 +8,9 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
+<<if $sex.role == "bottom">>
 	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
+<<elseif $sex.role == "top">>
 	<<set _mode = "receive">>
 <<else>>
 	<<return>>
@@ -42,5 +42,20 @@
 	[Error] No grope breast quote pool found.
 	(mode=<<=_mode>>, pref=<<=_pref>>, nsize=<<=_nsize>>, msize=<<=_msize>>, nage=<<=_nage>>, mage=<<=_mage>>)
 <</if>>
+*/
+<<set _pref = _n.sexpref || "Switch">>
+<<set _msize = $mc.breastsize >>
+<<set _nsize = _n.breastsize >>
+<<set _mage  = $mc.ageGroup  || "Adult">>
+<<set _nage  = _n.ageGroup  || "Adult">>
 
 
+<<if $sex.role =="top">>
+	<<set _pool = setup.gropebreastQuotes.give[_pref][_msize][_mage] 
+	|| setup.gropebreastQuotes.give.Neutral>>
+<<elseif $sex.role =="bottom">>
+	<<set _pool = setup.gropebreastQuotes.receive[_pref][_msize][_mage] 
+	|| setup.gropebreastQuotes.give.Neutral>>
+<<else>>
+ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT'S CREATOR
+<</if>>

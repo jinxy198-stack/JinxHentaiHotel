@@ -1,112 +1,111 @@
 :: Sex-Quote [Dialogue nobr] {"position":"1600,1200","size":"100,100"}
 <!-- only what the npc says -->
+
+<<set _a = $sex.act or "none">>
 <br>
 <b><<= _n.name >>: </b>
 
-<<if $sex.action == "Kiss">>
-	<<if $sex.roles.dom.name == _n.name>>
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Mmm",
-				"Mmmph",
-				"Mmmmm"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"Mmm",
-				"Mmmph",
-				"Mmmmm"
-			)>>
-		<<else>>
-			<<= either(
-				"Mmm",
-				"Mmmph",
-				"Mmmmm"
-			)>>
-		<</if>>
-	<<elseif $sex.roles.sub.name == _n.name>>
-		<<if _n.sexpref == "Dominant">>
-			<<= either(
-				"Mmm",
-				"Mmmph",
-				"Mmmmm"
-			)>>
-		<<elseif _n.sexpref == "Submissive">>
-			<<= either(
-				"Mmm",
-				"Mmmph",
-				"Mmmmm"
-			)>>
-		<<else>>
-			<<= either(
-				"Mmm",
-				"Mmmph",
-				"Mmmmm"
-			)>>
-		<</if>>
-	<</if>>
-
-<<elseif $sex.action == "Touch Stomach">>
-	<<include "Feel-Stomach-Quote">>
-
-<<elseif $sex.action == "Face on chest">>
-	<<include "Face-on-Chest-Quote">>
-
-<<elseif $sex.action == "Pet Ears">>
-	<<include "Pet-Ears-Quote">>
+<<switch _a>>
+	<<case "Kiss">><<include "Kiss-Quote">>
+    <<case "Grope Breasts">><<include "Grope-Breast-Quote">>
+    <<case "Tease Nipples">><<include "Nipple-Acts-Quote">>
+    <<case "Kiss Nipple">><<include "Nipple-Acts-Quote">>
+    <<case "Lick Nipple">><<include "Nipple-Acts-Quote">>
+    <<case "Suck Nipple">><<include "Nipple-Acts-Quote">>
+    <<case "Rub Pussy">><<include "Rub-Pussy-Quote">>
+    <<case "Pull Hand To Pussy">><<include "Finger-Vagina-Quote">>
+    <<case "Finger Pussy">><<include "Finger-Vagina-Quote">>
+    <<case "Rub Clit">><<include "Finger-Vagina-Quote">>
+    <<case "Lick Pussy">><<include "Cunnilingus-Quote">>
+    <<case "Suck Clit">><<include "Cunnilingus-Quote">>
+    <<case "Ride Face">><<include "Cunnilingus-Quote">>
+    <<case "Stop Fingering">><<include "Stop-Quote">>
+    <<case "Pull Off Of Finger">><<include "Stop-Quote">>
+    <<case "Fondle Balls">><<include "Balls-Quote">>
+    <<case "Lick Balls">><<include "Balls-Quote">>
+    <<case "Suck Balls">><<include "Balls-Quote">>
+    <<case "Lick Ass">><<include "Rimjob-Quote">>
+    <<case "Lick Cock">><<include "Lick-Cock-Quote">>
+    <<case "Rub Cock On Face">><<include "Tease-Cock-Quote">>
+    <<case "Tease Cock With Fingers">><<include "Tease-Cock-Quote">>
+    <<case "Rub Cock Against Hand">><<include "Tease-Cock-Quote">>
+    <<case "Tease Cock With Feet">><<include "Feet-Acts-Quote">>
+    <<case "Tease Pussy With Feet">><<include "Feet-Acts-Quote">>
+    <<case "Rub Cock Against Feet">><<include "Feet-Acts-Quote">>
+    <<case "Rub Pussy Against Feet">><<include "Feet-Acts-Quote">>
+    <<case "Lick Foot">><<include "Lick-Foot-Quote">>
+    <<case "Grip Cock">><<include "Handjob-Quote">>
+    <<case "Wrap Hand Around Cock">><<include "Handjob-Quote">>
+    <<case "Grip Cock With Feet">><<include "Feet-Acts-Quote">>
+    <<case "Pull Feet Around Cock">><<include "Feet-Acts-Quote">>
+    <<case "Rub Pussy With Feet">><<include "Feet-Acts-Quote">>
+    <<case "Pull Feet To Pussy">><<include "Feet-Acts-Quote">>
+    <<case "Take Cock Between Lips">><<include "Blowjob-Quote">>
+    <<case "Enter Mouth">><<include "Blowjob-Quote">>
+    <<case "Stroke Shaft">><<include "Handjob-Quote">>
+    <<case "Stroke Shaft With Feet">><<include "Footjob-Quote">>
+    <<case "Fuck Feet">><<include "Footjob-Quote">>
+    <<case "Stroke Pussy With Feet">><<include "Feet-Acts-Quote">>
+    <<case "Rub Against Feet">><<include "Feet-Acts-Quote">>
+    <<case "Pump Shaft">><<include "Handjob-Quote">>
+    <<case "Fuck Fist">><<include "Handjob-Quote">>
+    <<case "Tease Tip">><<include "Handjob-Quote">>
+    <<case "Suck Cock">><<include "Blowjob-Quote">>
+    <<case "Suck Each Other Off">><<include "Blowjob-Quote">>
+    <<case "Deepthroat">><<include "Blowjob-Quote">>
+    <<case "Fuck Mouth">><<include "Blowjob-Quote">>
+    <<case "Release Cock">><<include "Stop-Quote">>
+    <<case "Tug Cock Free">><<include "Stop-Quote">>
+    <<case "Release Cock From Feet">><<include "Stop-Quote">>
+    <<case "Tug Cock Free Of Feet">><<include "Stop-Quote">>
+    <<case "Move Feet Away From Pussy">><<include "Stop-Quote">>
+    <<case "Pull Away From Feet">><<include "Stop-Quote">>
+    <<case "Pull Out Of Mouth">><<include "Stop-Quote">>
+    <<case "Pull Mouth Off Of Cock">><<include "Stop-Quote">>
+    <<case "Tease Pussy With Cock">><<include "Tease-Pussy-Quote">>
+    <<case "Cocktease With Pussy">><<include "Tease-Pussy-Quote">>
+    <<case "Enter Pussy">><<include "Vaginal-Quote">>
+    <<case "Push Cock In">><<include "Vaginal-Quote">>
+    <<case "Fuck Pussy">><<include "Vaginal-Quote">>
+    <<case "Take Cock">><<include "Vaginal-Quote">>
+    <<case "Hump Back">><<include "Vaginal-Quote">>
+    <<case "Ride Cock">><<include "Vaginal-Quote">>
+    <<case "Squeeze Cock">><<include "Vaginal-Quote">>
+    <<case "Rabbitfuck">><<include "Vaginal-Quote">>
+    <<case "Deep Stroke">><<include "Vaginal-Quote">>
+    <<case "Pull Out">><<include "Stop-Quote">>
+    <<case "Pull Off">><<include "Stop-Quote">>
+    <<case "Frot">><<include "Frot-Quote">>
+    <<case "Trib">><<include "Trib-Quote">>
+    <<case "Tease Ass With Cock">><<include "Tease-Ass-Quote">>
+    <<case "Cocktease With Ass">><<include "Tease-Ass-Quote">>
+    <<case "Rub Butthole">><<include "Rub-Butt-Quote">>
+    <<case "Enter Ass">><<include "Anal-Quote">>
+    <<case "Push Cock In Ass">><<include "Anal-Quote">>
+    <<case "Finger Ass">><<include "Finger-Ass-Quote">>
+    <<case "Fuck Ass">><<include "Anal-Quote">>
+    <<case "Take Cock In Ass">><<include "Anal-Quote">>
+    <<case "Hump Ass Back">><<include "Anal-Quote">>
+    <<case "Pull Out Of Ass">><<include "Stop-Quote">>
+    <<case "Pull Ass Off Of Cock">><<include "Stop-Quote">>
+    <<case "Stop Fingering Ass">><<include "Stop-Quote">>
+    <<case "Pull Ass Off Of Finger">><<include "Stop-Quote">>
+    <<case "Fuck Tits">><<include "Boobjob-Quote">>
+    <<case "Use Tits On Cock">><<include "Boobjob-Quote">>
+    <<case "Hotdog">><<include "Hotdog-Quote">>
+    <<case "Rub Ass On Cock">><<include "Hotdog-Quote">>
     
-<<elseif $sex.action == "Embrace">>
-	<<include "Embrace-Quote">>
-
-<<elseif $sex.action == "Caress">>
-	<<include "Caress-Quote">>
-	
-<<elseif $sex.action == "Frot">>
-	<<include "Frot-Quote">>
-
-<<elseif $sex.action == "Grope Breast">>
-	<<include "Grope-Breast-Quote">>
-
-/* check for different positions */
-<<elseif $sex.action == "Anal">>
-	<<include "Anal-Quote">>
-
-/* check for different age groups? */
-<<elseif $sex.action == "Vaginal">>
-	<<include "Vaginal-Quote">>
-
-<<elseif $sex.action == "Cunnilingus">>
-	<<include "Cunnilingus-Quote">>
-
-<<elseif $sex.action == "Blowjob">>
-	<<include "Blowjob-Quote">>
-
-<<elseif $sex.action == "Handjob">>
-	<<include "Handjob-Quote">> 
-
-<<elseif $sex.action == "Footjob">>
-	<<include "Footjob-Quote">>
-
-<<elseif $sex.action == "Suck Foot">>
-	<<include "Suck-Foot-Quote">>
-    
-<<elseif $sex.action == "Rimjob">>
-	<<include "Rimjob-Quote">>
-
-<<elseif $sex.action == "Cuddle">>
-	<<include "Cuddle-Quote">>
-    
-<<elseif $sex.action == "Grope Butt">>
-	<<include "Grope-Butt-Quote">>
-
-<<elseif $sex.action == "Finger Ass">>
-	<<include "Finger-Ass-Quote">>
-	
-<<elseif $sex.action == "Finger Pussy">>
-	<<include "Finger-Pussy-Quote">>	
-
-<<elseif $sex.action == "Orgasm">>
-	<<include "Orgasm-Quote">>
-<</if>>
+	<<case "Caress">><<include "Caress-Quote">>
+	<<case "Handjob">><<include "Handjob-Quote">>
+    <<case "Rimjob">><<include "Rimjob-Quote">>
+	<<case "Cuddle">><<include "Cuddle-Quote">>
+    <<case "Grope Butt">><<include "Grope-Butt-Quote">>
+    <<case "Suck Foot">><<include "SuckFoot-Quote">>
+    <<case "Pet Ears">><<include "Pet-Ears-Quote">>
+    <<case "Touch Stomach">><<include "Feel-Stomach-Quote">>
+    <<case "Press Face on Chest">><<include "Face-On-Chest-Quote">>
+    <<case "Embrace">><<include "Embrace-Quote">>
+<</switch>>
 
 
+<br>

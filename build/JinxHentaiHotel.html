@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="155" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
+	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="156" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
 .sex-list {
   display: flex;
   flex-wrap: wrap;
@@ -3599,7 +3599,8 @@ setup.RoomTypes.furniture = {
         flags: ["vertical surface", "unconventional"],
     },
 };
-/* twine-user-script #10: "database_sex" */
+/* twine-user-script #10: "database_sex-Quote" */
+/* twine-user-script #11: "database_sex" */
 setup.sexpositions = {
     // label: player-readable label
     // frequency: how often an NPC chooses this position
@@ -4055,7 +4056,7 @@ setup.sexacts = {
         "subject dialogue tags": ["kissing"],
         "object dialogue tags": ["kissing"],
     },
-    "Grope Breasts":
+    "Grope Breasts": /* Either you of the other grope's the other's breast */
     {
         "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
@@ -5258,7 +5259,7 @@ setup.sexacts = {
         "remember as": ["petting", "received"],
     },
 };
-/* twine-user-script #11: "sexHelpers" */
+/* twine-user-script #12: "sexHelpers" */
 /*
  * Applies arousal changes from a sex act to the current subject and object.
  * Respects optional arousal caps defined on the act.
@@ -9251,13 +9252,13 @@ You pull their hand to your pussy.
 		&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="Grope-Breast-Dialogue" tags="nobr Dialogue" position="1100,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
-&lt;&lt;if $sex.role == top&gt;&gt;
+&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;= either(
-    &quot;Reaching up to _n.name&#39;s chest, they lets out a soft moan as you start fondling and groping $proset.their _n.breastsize breasts,&quot;
+        &quot;Reaching up to _n.name&#39;s chest, they lets out a soft moan as you start fondling and groping $proset.their &lt;&lt;= _n.breastsize.toLowerCase() &gt;&gt; breasts,&quot;
     )&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;= either(
-    &quot;Reaching up to your chest, you let out a moan as $proset.they start eagerly fondling and groping your &lt;&lt;= $mc.breastsize.toLowerCase() &gt;&gt; breasts,&quot;
+        &quot;Reaching up to your chest, you let out a moan as $proset.they start eagerly fondling and groping your &lt;&lt;= $mc.breastsize.toLowerCase() &gt;&gt; breasts,&quot;
     )&gt;&gt;
     &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="Grope-Butt-Dialogue" tags="nobr Dialogue" position="1000,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
@@ -10360,7 +10361,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Frot quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">/*&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
 	[Error] setup.gropebreastQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10369,9 +10370,9 @@ _n.name is straddling your chest.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
+&lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
@@ -10402,6 +10403,23 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No grope breast quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
+&lt;&lt;/if&gt;&gt;
+*/
+&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;set _msize = $mc.breastsize &gt;&gt;
+&lt;&lt;set _nsize = _n.breastsize &gt;&gt;
+&lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
+
+
+&lt;&lt;if $sex.role ==&quot;top&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.gropebreastQuotes.give[_pref][_msize][_mage] 
+	|| setup.gropebreastQuotes.give.Neutral&gt;&gt;
+&lt;&lt;elseif $sex.role ==&quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.gropebreastQuotes.receive[_pref][_msize][_mage] 
+	|| setup.gropebreastQuotes.give.Neutral&gt;&gt;
+&lt;&lt;else&gt;&gt;
+ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;if !setup.gropebuttQuotes&gt;&gt;
 	[Error] setup.gropebuttQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -10519,7 +10537,11 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No handjob quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">/* When you or NPC are close to orgasm */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="Kiss-Quote" tags="nobr" position="725,1850" size="100,100">&lt;&lt;= either(
+		&quot;Mmm&quot;,
+		&quot;Mmmph&quot;,
+		&quot;Mmmmm&quot;
+	)&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">/* When you or NPC are close to orgasm */
 
 &lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
@@ -10550,7 +10572,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm Close quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
 &lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
@@ -10581,7 +10603,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if !setup.petearsQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if !setup.petearsQuotes&gt;&gt;
 	[Error] setup.petearsQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10617,7 +10639,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Pet Ears quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;if !setup.rimjobQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;if !setup.rimjobQuotes&gt;&gt;
 	[Error] setup.rimjobQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10651,115 +10673,116 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Rimjob quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="Sex-Quote" tags="Dialogue nobr" position="1600,1200" size="100,100">&lt;!-- only what the npc says --&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="Sex-Quote" tags="Dialogue nobr" position="1600,1200" size="100,100">&lt;!-- only what the npc says --&gt;
+
+&lt;&lt;set _a = $sex.act or &quot;none&quot;&gt;&gt;
 &lt;br&gt;
 &lt;b&gt;&lt;&lt;= _n.name &gt;&gt;: &lt;/b&gt;
 
-&lt;&lt;if $sex.action == &quot;Kiss&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmm&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmmmm&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmm&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmmmm&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmm&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmmmm&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;if _n.sexpref == &quot;Dominant&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmm&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmmmm&quot;
-			)&gt;&gt;
-		&lt;&lt;elseif _n.sexpref == &quot;Submissive&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmm&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmmmm&quot;
-			)&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= either(
-				&quot;Mmm&quot;,
-				&quot;Mmmph&quot;,
-				&quot;Mmmmm&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Touch Stomach&quot;&gt;&gt;
-	&lt;&lt;include &quot;Feel-Stomach-Quote&quot;&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Face on chest&quot;&gt;&gt;
-	&lt;&lt;include &quot;Face-on-Chest-Quote&quot;&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Pet Ears&quot;&gt;&gt;
-	&lt;&lt;include &quot;Pet-Ears-Quote&quot;&gt;&gt;
+&lt;&lt;switch _a&gt;&gt;
+	&lt;&lt;case &quot;Kiss&quot;&gt;&gt;&lt;&lt;include &quot;Kiss-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Grope Breasts&quot;&gt;&gt;&lt;&lt;include &quot;Grope-Breast-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Nipples&quot;&gt;&gt;&lt;&lt;include &quot;Nipple-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Kiss Nipple&quot;&gt;&gt;&lt;&lt;include &quot;Nipple-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Nipple&quot;&gt;&gt;&lt;&lt;include &quot;Nipple-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Nipple&quot;&gt;&gt;&lt;&lt;include &quot;Nipple-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Rub-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Hand To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Vagina-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Finger Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Vagina-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Clit&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Vagina-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Cunnilingus-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Clit&quot;&gt;&gt;&lt;&lt;include &quot;Cunnilingus-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Ride Face&quot;&gt;&gt;&lt;&lt;include &quot;Cunnilingus-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stop Fingering&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fondle Balls&quot;&gt;&gt;&lt;&lt;include &quot;Balls-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Balls&quot;&gt;&gt;&lt;&lt;include &quot;Balls-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Balls&quot;&gt;&gt;&lt;&lt;include &quot;Balls-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Ass&quot;&gt;&gt;&lt;&lt;include &quot;Rimjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;&lt;&lt;include &quot;Lick-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Cock With Fingers&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Cock Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Pussy Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;&lt;&lt;include &quot;Lick-Foot-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Grip Cock&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Wrap Hand Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Grip Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Feet Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Feet To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Take Cock Between Lips&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Enter Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stroke Shaft&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stroke Shaft With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stroke Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pump Shaft&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Fist&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Tip&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Cock&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Each Other Off&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Deepthroat&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Release Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tug Cock Free&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Release Cock From Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tug Cock Free Of Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Move Feet Away From Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Away From Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Out Of Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Mouth Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Pussy With Cock&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Cocktease With Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Enter Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Push Cock In&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Take Cock&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Hump Back&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Ride Cock&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Squeeze Cock&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rabbitfuck&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Deep Stroke&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Out&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Off&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Frot&quot;&gt;&gt;&lt;&lt;include &quot;Frot-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Trib&quot;&gt;&gt;&lt;&lt;include &quot;Trib-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Ass With Cock&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Cocktease With Ass&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Butthole&quot;&gt;&gt;&lt;&lt;include &quot;Rub-Butt-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Enter Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Push Cock In Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Finger Ass&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Ass-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Take Cock In Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Hump Ass Back&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Out Of Ass&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Ass Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stop Fingering Ass&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Ass Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Tits&quot;&gt;&gt;&lt;&lt;include &quot;Boobjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Use Tits On Cock&quot;&gt;&gt;&lt;&lt;include &quot;Boobjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Hotdog&quot;&gt;&gt;&lt;&lt;include &quot;Hotdog-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Ass On Cock&quot;&gt;&gt;&lt;&lt;include &quot;Hotdog-Quote&quot;&gt;&gt;
     
-&lt;&lt;elseif $sex.action == &quot;Embrace&quot;&gt;&gt;
-	&lt;&lt;include &quot;Embrace-Quote&quot;&gt;&gt;
+	&lt;&lt;case &quot;Caress&quot;&gt;&gt;&lt;&lt;include &quot;Caress-Quote&quot;&gt;&gt;
+	&lt;&lt;case &quot;Handjob&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rimjob&quot;&gt;&gt;&lt;&lt;include &quot;Rimjob-Quote&quot;&gt;&gt;
+	&lt;&lt;case &quot;Cuddle&quot;&gt;&gt;&lt;&lt;include &quot;Cuddle-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Grope Butt&quot;&gt;&gt;&lt;&lt;include &quot;Grope-Butt-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Foot&quot;&gt;&gt;&lt;&lt;include &quot;SuckFoot-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pet Ears&quot;&gt;&gt;&lt;&lt;include &quot;Pet-Ears-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Touch Stomach&quot;&gt;&gt;&lt;&lt;include &quot;Feel-Stomach-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Press Face on Chest&quot;&gt;&gt;&lt;&lt;include &quot;Face-On-Chest-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Embrace&quot;&gt;&gt;&lt;&lt;include &quot;Embrace-Quote&quot;&gt;&gt;
+&lt;&lt;/switch&gt;&gt;
 
-&lt;&lt;elseif $sex.action == &quot;Caress&quot;&gt;&gt;
-	&lt;&lt;include &quot;Caress-Quote&quot;&gt;&gt;
-	
-&lt;&lt;elseif $sex.action == &quot;Frot&quot;&gt;&gt;
-	&lt;&lt;include &quot;Frot-Quote&quot;&gt;&gt;
 
-&lt;&lt;elseif $sex.action == &quot;Grope Breast&quot;&gt;&gt;
-	&lt;&lt;include &quot;Grope-Breast-Quote&quot;&gt;&gt;
-
-/* check for different positions */
-&lt;&lt;elseif $sex.action == &quot;Anal&quot;&gt;&gt;
-	&lt;&lt;include &quot;Anal-Quote&quot;&gt;&gt;
-
-/* check for different age groups? */
-&lt;&lt;elseif $sex.action == &quot;Vaginal&quot;&gt;&gt;
-	&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Cunnilingus&quot;&gt;&gt;
-	&lt;&lt;include &quot;Cunnilingus-Quote&quot;&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Blowjob&quot;&gt;&gt;
-	&lt;&lt;include &quot;Blowjob-Quote&quot;&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Handjob&quot;&gt;&gt;
-	&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt; 
-
-&lt;&lt;elseif $sex.action == &quot;Footjob&quot;&gt;&gt;
-	&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Suck Foot&quot;&gt;&gt;
-	&lt;&lt;include &quot;Suck-Foot-Quote&quot;&gt;&gt;
-    
-&lt;&lt;elseif $sex.action == &quot;Rimjob&quot;&gt;&gt;
-	&lt;&lt;include &quot;Rimjob-Quote&quot;&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Cuddle&quot;&gt;&gt;
-	&lt;&lt;include &quot;Cuddle-Quote&quot;&gt;&gt;
-    
-&lt;&lt;elseif $sex.action == &quot;Grope Butt&quot;&gt;&gt;
-	&lt;&lt;include &quot;Grope-Butt-Quote&quot;&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Finger Ass&quot;&gt;&gt;
-	&lt;&lt;include &quot;Finger-Ass-Quote&quot;&gt;&gt;
-	
-&lt;&lt;elseif $sex.action == &quot;Finger Pussy&quot;&gt;&gt;
-	&lt;&lt;include &quot;Finger-Pussy-Quote&quot;&gt;&gt;	
-
-&lt;&lt;elseif $sex.action == &quot;Orgasm&quot;&gt;&gt;
-	&lt;&lt;include &quot;Orgasm-Quote&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="Suck-Foot-Quote" tags="nobr Dialogue" position="1800,1600" size="100,100">&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="152" name="Suck-Foot-Quote" tags="nobr Dialogue" position="1800,1600" size="100,100">&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
 	[Error] setup.suckfootQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10799,7 +10822,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Suck Foot quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="Vaginal-Quote" tags="nobr Dialogue" position="1600,1400" size="100,100">&lt;&lt;if !setup.vaginalQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="Vaginal-Quote" tags="nobr Dialogue" position="1600,1400" size="100,100">&lt;&lt;if !setup.vaginalQuotes&gt;&gt;
 	[Error] setup.vaginalQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10831,7 +10854,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Vaginal quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="StoryCaption" tags="" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="StoryCaption" tags="" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
 &lt;b&gt;Location: &lt;/b&gt;$gamelocation
 &lt;&lt;/if&gt;&gt;
 
@@ -10839,7 +10862,7 @@ _n.name is straddling your chest.
 &lt;&lt;button &quot;Credits&quot;&gt;&gt;&lt;&lt;PopupCredits&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
+&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
 	muscle: 4,
 	plump: 4,
 	label: &quot;Average&quot;
@@ -10999,7 +11022,7 @@ _n.name is straddling your chest.
 
 
 &lt;&lt;set $flags = $flags || {}&gt;&gt;
-&lt;&lt;set $flags.skinChosen = false&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
+&lt;&lt;set $flags.skinChosen = false&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
 
 &lt;&lt;set $devMode = true&gt;&gt;
 &lt;div&gt;
@@ -11027,7 +11050,7 @@ Updated as of 1/16/2026
 &lt;&lt;button [[Testroom|Test-Sex-Encounter]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt; 
 
 &lt;&lt;/if&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="156" name="Statistics" tags="nobr" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="157" name="Statistics" tags="nobr" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
 &lt;table class=&quot;stats-table&quot;&gt;
   &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
   &lt;tr id=&quot;name&quot;&gt;
@@ -11175,7 +11198,7 @@ Updated as of 1/16/2026
 		&lt;&lt;print _val&gt;&gt;
 	&lt;/li&gt;
 &lt;&lt;/for&gt;&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="157" name="Tutorial" tags="" position="25,275" size="100,100">You and the person you brought to your room will engage in a session of sex. How you engage in it is up to you.
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="158" name="Tutorial" tags="" position="25,275" size="100,100">You and the person you brought to your room will engage in a session of sex. How you engage in it is up to you.
 
 You can choose who will be the bottom and who will be the top. Note that will not mean that you will determine who is the dom and who is the sub, that will depend on the personality. Certain actions will be locked depending on your role, you cannot be the top and suck off the other&#39;s dick.
 For example, you can have a submissive feminine twink be the one to fuck you or you can have a big muscular dom be fucked by you.
@@ -11194,7 +11217,7 @@ Intercourse is the stage where the meat of the game is. The actions there will b
 Orgasm is the part where your control is limited. Depending on what you are doing, you can choose where to have your orgasm or the npc. Note that to save on complexity it will be treated as a simultenious orgasm between you and the NPC.
 Following the Orgasm you are automatically put into the Aftercare stage. It is an optional stage where you can choose to enjoy the afterglow with the NPC or just finish the sex.
 
-Only when you reach the Aftercare stage will you be allowed to end the session.</tw-passagedata><tw-passagedata pid="158" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
+Only when you reach the Aftercare stage will you be allowed to end the session.</tw-passagedata><tw-passagedata pid="159" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
 &quot;Yes. I&#39;m ready — and I want you to be fully present with me&quot;
 &lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
 &quot;Yes! That sounds exciting — I&#39;m totally in the mood for you.&quot;
@@ -11222,7 +11245,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &quot;Yay! This&#39;ll be fun!&quot;
 &lt;&lt;else&gt;&gt;
 &quot;Ok&quot;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
     &quot;Not interested. But I&#39;m content simply sharing this moment with you.&quot;
 &lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
     &quot;Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.&quot;
@@ -11250,7 +11273,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     &quot;Oh, sorry nevermind! I got ahead of myself!&quot;
 &lt;&lt;else&gt;&gt;
     &quot;No&quot;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="UI-Attracted-check" tags="" position="900,500" size="100,100">&lt;&lt;check-attraction $mc _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="UI-Attracted-check" tags="" position="900,500" size="100,100">&lt;&lt;check-attraction $mc _n&gt;&gt;
 &lt;b&gt;$mc.name: &lt;/b&gt;
 * $mc.gender
 * $mc.sexu
@@ -11274,7 +11297,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;include &quot;Reject-Dialogue&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="UI-NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;silently&gt;&gt;&lt;&lt;set _n = $ui.npc&gt;&gt;&lt;&lt;/silently&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="UI-NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;silently&gt;&gt;&lt;&lt;set _n = $ui.npc&gt;&gt;&lt;&lt;/silently&gt;&gt;
 &lt;b&gt;Name:&lt;/b&gt; &lt;&lt;=_n.name&gt;&gt; &lt;&lt;if _n.surname&gt;&gt;&lt;&lt;=_n.surname&gt;&gt;&lt;&lt;/if&gt;&gt; &lt;&lt;if _n.nickname&gt;&gt;
 &lt;br&gt;
 &lt;b&gt;Nickname: &lt;/b&gt;&quot;&lt;&lt;=_n.nickname&gt;&gt;&quot;&lt;&lt;/if&gt;&gt;
@@ -11320,7 +11343,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 
 
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="UI-NPC-Sex" tags="nobr" position="1025,475" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="UI-NPC-Sex" tags="nobr" position="1025,475" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;set _n = $ui.npc&gt;&gt;
 	&lt;&lt;if !_n&gt;&gt;[Error] No active NPC selected.&lt;&lt;return&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -11404,7 +11427,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 		&lt;br&gt;
 		&lt;span id=&quot;aftercare&quot;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;/span&gt;
 	&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="163" name="UI-NPC-Talk" tags="nobr" position="750,500" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;silently&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="164" name="UI-NPC-Talk" tags="nobr" position="750,500" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;silently&gt;&gt;
 &lt;&lt;set _n = $ui.npc&gt;&gt;
 &lt;&lt;set _lines = {
   Default: [&quot;Hello&quot;,&quot;Hi&quot;],
@@ -11459,7 +11482,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/button&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
 	&lt;&lt;if _n.personality ==&quot;Tough&quot;&gt;&gt;
     “You want me in charge? Good, I don&#39;t do half-measures.”
     &lt;&lt;elseif _n.personality== &quot;Sassy&quot;&gt;&gt;
@@ -11567,7 +11590,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     &lt;&lt;else&gt;&gt;
     &quot;Ok, you top.&quot;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="Adjective-Widget" tags="widget nobr" position="600,2100" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="166" name="Adjective-Widget" tags="widget nobr" position="725,2100" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;
 
@@ -11585,7 +11608,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 /* &lt;&lt;set $NPCList[_n].penisdesc to &quot;tiny penis&quot;&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;thick cock&quot;,&quot;hefty cock&quot;,&quot;big cock&quot;,&quot;large cock&quot;,&quot;veiny cock&quot;,&quot;meaty cock&quot;)&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;massive cock&quot;,&quot;huge cock&quot;,&quot;humongous cock&quot;,&quot;immense cock&quot;,&quot;gigantic cock&quot;,&quot;enormous cock&quot;)&gt;&gt;
-*/</tw-passagedata><tw-passagedata pid="166" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
+*/</tw-passagedata><tw-passagedata pid="167" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
 &lt;&lt;widget &quot;AnalQuote&quot;&gt;&gt;
 	/* guard */
 	&lt;&lt;if !setup.analQuotes&gt;&gt;
@@ -12597,7 +12620,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;else&gt;&gt;
 		[Error] VaginalQuote: empty dialogue pool.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
 /* Creates a single Story NPC from a provided template and registers it globally */
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No template provided to MakeSNPC.
@@ -13261,6 +13284,21 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/for&gt;&gt;
 
+	/* Assign genitals based on gender */
+	&lt;&lt;if $mc.gender&gt;&gt;
+		&lt;&lt;set _g = $mc.gender&gt;&gt;
+
+		&lt;&lt;if $mc.gender == &quot;Male&quot;&gt;&gt;
+			&lt;&lt;set $mc.body.Penis = &quot;Penis&quot;&gt;&gt;
+			&lt;&lt;set $mc.body.Balls = &quot;Balls&quot;&gt;&gt;
+			&lt;&lt;set $mc.body.Chest = &quot;Chest&quot;&gt;&gt;
+
+		&lt;&lt;elseif $mc.gender == &quot;Female&quot;&gt;&gt;
+			&lt;&lt;set $mc.body.Vagina = &quot;Vagina&quot;&gt;&gt;
+			&lt;&lt;set $mc.body.Clitoris = &quot;Clit&quot;&gt;&gt;
+			&lt;&lt;set $mc.body.Breasts = &quot;Breasts&quot;&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
     &lt;&lt;if $mc.species is &quot;Anthro&quot;&gt;&gt;
     &lt;&lt;MCalternatebody&gt;&gt;
@@ -13421,7 +13459,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;set _npc.petname = &quot;pet&quot;&gt;&gt;	
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="Widgets" tags="widget nobr" position="975,2100" size="100,100">&lt;&lt;widget &quot;RoomRelocationUI&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="Widgets" tags="widget nobr" position="1100,2100" size="100,100">&lt;&lt;widget &quot;RoomRelocationUI&quot;&gt;&gt;
 
 &lt;h3&gt;Relocate&lt;/h3&gt;
 
@@ -13617,6 +13655,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 										&lt;&lt;/replace&gt;&gt;
 										&lt;&lt;replace &quot;#npcsex-dialogue&quot;&gt;&gt;
                                             &lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
+                                            &lt;&lt;include &quot;Sex-Quote&quot;&gt;&gt;
 										&lt;&lt;/replace&gt;&gt;
 										&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;
 											&lt;&lt;ArousalUI&gt;&gt;
@@ -14472,7 +14511,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set $npcMemory[_key].interacted = true&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].times     += 1&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].sexCount  += 1&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="heighttest" tags="" position="1100,2100" size="100,100">//example test:
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="heighttest" tags="" position="1225,2100" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 
 &lt;&lt;if _h is 1&gt;&gt;
@@ -14481,7 +14520,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
   NPC taller
 &lt;&lt;else&gt;&gt;
   Same height
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="Test-Sex-Encounter" tags="nobr" position="1225,2100" size="100,100">&lt;&lt;if !$ui || !$ui.npc&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="Test-Sex-Encounter" tags="nobr" position="100,2225" size="100,100">&lt;&lt;if !$ui || !$ui.npc&gt;&gt;
 	ERROR: ui.npc not set
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -14510,8 +14549,12 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 &lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
   &lt;&lt;set $sex.role = &quot;top&quot;&gt;&gt;
+  &lt;&lt;set $sex.subject = $mc&gt;&gt;
+  &lt;&lt;set $sex.object  = _n&gt;&gt; 
 &lt;&lt;else&gt;&gt;
   &lt;&lt;set $sex.role = &quot;bottom&quot;&gt;&gt;
+  &lt;&lt;set $sex.subject = _n&gt;&gt;
+  &lt;&lt;set $sex.object  = $mc&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set $sex.position = &quot;Standing&quot;&gt;&gt;
@@ -14524,16 +14567,20 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;set $sex.action= &quot;Staring&quot;&gt;&gt;
 
 /* ALWAYS rebind subject/object to current */
-&lt;&lt;set $sex.subject = $mc&gt;&gt;
-&lt;&lt;set $sex.object  = _n&gt;&gt;
+
 
 /* keep furniture flags synced */
 &lt;&lt;set $room.furnitureFlags = $room.furnitureFlags || setup.getRoomFurnitureFlags($room.type)&gt;&gt;
 &lt;&lt;set $sex.furnitureFlags  = $room.furnitureFlags&gt;&gt;
 
-/*MC parts: &lt;&lt;print $mc.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt;
-NPC parts: &lt;&lt;print _n.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt; */
+/* Debug checking to confirm things exist */
+MC parts: &lt;&lt;print $mc.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt;
+NPC parts: &lt;&lt;print _n.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt; 
+Sex Subject:&lt;&lt;print $sex.subject.name&gt;&gt;&lt;br&gt;
+Sex Object: &lt;&lt;print $sex.object.name&gt;&gt;&lt;br&gt;
 
+
+/*Arousal meter for both $mc and _n */
 &lt;&lt;set _n.arousal = _n.arousal or 0&gt;&gt;
 &lt;&lt;set $mc.arousal = $mc.arousal or 0&gt;&gt;
 

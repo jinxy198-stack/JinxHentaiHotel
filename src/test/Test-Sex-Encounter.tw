@@ -44,15 +44,20 @@
 
 /* ALWAYS rebind subject/object to current */
 <<set $sex.subject = $mc>>
-<<set $sex.object  = _n>>
+<<set $sex.object  = _n>> 
 
 /* keep furniture flags synced */
 <<set $room.furnitureFlags = $room.furnitureFlags || setup.getRoomFurnitureFlags($room.type)>>
 <<set $sex.furnitureFlags  = $room.furnitureFlags>>
 
-/*MC parts: <<print $mc.bodyparts.join(", ")>><br>
-NPC parts: <<print _n.bodyparts.join(", ")>><br> */
+/* Debug checking to confirm things exist */
+MC parts: <<print $mc.bodyparts.join(", ")>><br>
+NPC parts: <<print _n.bodyparts.join(", ")>><br> 
+Sex Subject:<<print $sex.subject.name>><br>
+Sex Object: <<print $sex.object.name>><br>
 
+
+/*Arousal meter for both $mc and _n */
 <<set _n.arousal = _n.arousal or 0>>
 <<set $mc.arousal = $mc.arousal or 0>>
 
