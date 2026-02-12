@@ -228,7 +228,7 @@ setup.sexpositions = {
     {
         label: "cowgirl",
         "top": ["Penis"],
-        "bottom": ["Asshole"],
+        "bottom": ["Vagina", "Asshole"],
         "bottom cum locations": [],
         "top cum locations": ["Crotch", "Stomach"],
         "force bottom cum location": true,
@@ -241,8 +241,8 @@ setup.sexpositions = {
     "Reverse Cowgirl":
     {
         label: "cowgirl",
-        "top": ["Asshole"],
-        "bottom": ["Penis"],
+        "top": ["Penis"],
+        "bottom": ["Vagina","Asshole"],
         "bottom cum locations": [],
         "top cum locations": ["Crotch", "Thigh"],
         "force bottom cum location": true,
@@ -365,19 +365,6 @@ setup.sexpositions = {
         "secondary positions": ["Kneeling By Face"],
         furniture: ["horizontal surface"],
     },
-    "Prone Oral Service": 
-    {
-        label: "prone oral service",
-        "top": ["Mouth"],
-        "bottom": ["Penis", "Vagina"],
-        "top cum locations": [],
-        "bottom cum locations": ["Face", "Chest", "Breasts"],
-        "label top": "giving",
-        "label bottom": "receiving",
-        primary: true,
-        "secondary positions": ["Kneeling By Face"],
-        furniture: ["horizontal surface"],
-    }, 
     "Laid Across On Back":
     {
         label: "laid across",
@@ -455,7 +442,7 @@ setup.sexacts = {
     },
     "Grope Breasts": /* Either you of the other grope's the other's breast */
     {
-        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Breasts"],
@@ -471,7 +458,7 @@ setup.sexacts = {
     },
     "Tease Nipples":
     {
-        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Nipples"],
@@ -536,7 +523,7 @@ setup.sexacts = {
     //      starts
     "Rub Pussy":
     {
-        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Doggy:bottom", "Bent Over:top", "Perched:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind:top", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Doggy:bottom", "Bent Over:top", "Perched:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind:top", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Vagina"],
@@ -555,7 +542,7 @@ setup.sexacts = {
     },
     "Pull Hand To Pussy":
     {
-        "positions": [ "Missionary", "Laid Across On Back:bottom",  "Mating Press:bottom", "Sixty-Nine", "From Behind", "Doggy:bottom", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:top", "Prone Oral Service:bottom", "Spooning:bottom", "Squatting Before:top", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Missionary", "Laid Across On Back:bottom",  "Mating Press:bottom", "Sixty-Nine", "From Behind", "Doggy:bottom", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:top", "Spooning:bottom", "Squatting Before:top", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["tease"],
         "subject parts": ["Vagina"],
         "object parts": ["Hand"],
@@ -568,7 +555,7 @@ setup.sexacts = {
     },
     "Finger Pussy":
     {
-        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy:top", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:bottom", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy:top", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom",  "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:bottom", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["penetrate", "continue"],
         "subject parts": ["Hand"],
         "object parts": ["Vagina"],
@@ -584,7 +571,7 @@ setup.sexacts = {
     },
     "Rub Clit":
     {
-        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy:top", "Bent Over:top", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:bottom", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy:top", "Bent Over:top", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:bottom", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Clitoris"],
@@ -601,7 +588,7 @@ setup.sexacts = {
     },
     "Lick Pussy":
     {
-        "positions": [ "Riding Face:bottom", "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Squatting Before:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Riding Face:bottom", "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Squatting Before:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Vagina"],
@@ -618,7 +605,7 @@ setup.sexacts = {
     },
     "Suck Clit":
     {
-        "positions": [ "Riding Face:bottom", "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Squatting Before:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Riding Face:bottom", "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Squatting Before:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Clitoris"],
@@ -635,7 +622,7 @@ setup.sexacts = {
     },
     "Ride Face":
     {
-        "positions": [ "Riding Face:top", "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Prone Oral Service:bottom", "Squatting Before:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Riding Face:top", "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Squatting Before:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["tease"],
         "subject parts": ["Vagina"],
         "object parts": ["Mouth"],
@@ -675,7 +662,7 @@ setup.sexacts = {
     //      teases/foreplay
     "Fondle Balls": /* you fondle their balls or reverse */
     {
-        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Spooning:top", "Kneeling By Face", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Balls"],
@@ -691,7 +678,7 @@ setup.sexacts = {
     },
     "Lick Balls":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Balls"],
@@ -707,7 +694,7 @@ setup.sexacts = {
     },
     "Suck Balls":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Balls"],
@@ -723,7 +710,7 @@ setup.sexacts = {
     },
     "Lick Ass":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Asshole"],
@@ -739,7 +726,7 @@ setup.sexacts = {
     },
     "Lick Cock":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Penis"],
@@ -753,7 +740,7 @@ setup.sexacts = {
     },
     "Rub Cock On Face":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Prone Oral Service:bottom", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Oral Service:top",  "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["tease"],
         "subject parts": ["Penis"],
         "object parts": ["Mouth"],
@@ -767,7 +754,7 @@ setup.sexacts = {
     },
     "Tease Cock With Fingers":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Perched", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom",  "Perched", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Penis"],
@@ -779,7 +766,7 @@ setup.sexacts = {
     },
     "Rub Cock Against Hand":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Prone Oral Service:bottom", "Perched", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Riding Face:top", "Against Wall", "Against Wall From Behind:bottom", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Perched", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Riding Face:top", "Against Wall", "Against Wall From Behind:bottom", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["tease"],
         "subject parts": ["Penis"],
         "object parts": ["Hand"],
@@ -855,7 +842,7 @@ setup.sexacts = {
     //      penetrations
     "Grip Cock": /* You grip their cock */
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom",  "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["penetrate"],
         "subject parts": ["Hand"],
         "object parts": ["Penis"],
@@ -870,7 +857,7 @@ setup.sexacts = {
     },
     "Wrap Hand Around Cock": /* they wrap their hand around your penis */
     {
-        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Prone Oral Service:bottom", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Riding Face:top", "Perched", "Against Wall", "Against Wall From Behind:bottom", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Riding Face:top", "Perched", "Against Wall", "Against Wall From Behind:bottom", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["penetrate"],
         "subject parts": ["Penis"],
         "object parts": ["Hand"],
@@ -940,7 +927,7 @@ setup.sexacts = {
     },
     "Take Cock Between Lips": /* You take their cock in your mouth. */
     {
-        "positions": [ "Sixty-Nine: bottom", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine:bottom", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["penetrate"],
         "subject parts": ["Mouth"],
         "object parts": ["Penis"],
@@ -955,7 +942,7 @@ setup.sexacts = {
     },
     "Enter Mouth": /* They put your cock in their mouth */
     {
-        "positions": [ "Sixty-Nine: top", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Prone Oral Service:top", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine:top", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["penetrate"],
         "subject parts": ["Penis"],
         "object parts": ["Mouth"],
@@ -971,7 +958,7 @@ setup.sexacts = {
     //      continues
     "Stroke Shaft":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom",  "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["continue"],
         "subject parts": ["Hand"],
         "object parts": ["Penis"],
@@ -1038,7 +1025,7 @@ setup.sexacts = {
     },
     "Pump Shaft":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom",  "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["continue"],
         "subject parts": ["Hand"],
         "object parts": ["Penis"],
@@ -1052,7 +1039,7 @@ setup.sexacts = {
     },
     "Fuck Fist":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Prone Oral Service:bottom", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Riding Face:top", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Riding Face:top", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["continue"],
         "subject parts": ["Penis"],
         "object parts": ["Hand"],
@@ -1064,7 +1051,7 @@ setup.sexacts = {
     },
     "Tease Tip":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom",  "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["continue"],
         "subject parts": ["Hand"],
         "object parts": ["Penis"],
@@ -1078,7 +1065,7 @@ setup.sexacts = {
     },
     "Suck Cock":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine:bottom", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["continue"],
         "subject parts": ["Mouth"],
         "object parts": ["Penis"],
@@ -1092,7 +1079,7 @@ setup.sexacts = {
     },
     "Deepthroat":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["continue"],
         "subject parts": ["Mouth"],
         "object parts": ["Penis"],
@@ -1106,7 +1093,7 @@ setup.sexacts = {
     },
     "Fuck Mouth":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Prone Oral Service:bottom", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine:top", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["continue"],
         "subject parts": ["Penis"],
         "object parts": ["Mouth"],
@@ -1118,9 +1105,10 @@ setup.sexacts = {
         "subject dialogue tags": ["taking blowjob"],
         "object dialogue tags": ["giving blowjob"],
     },
+
     "Suck Each Other Off":
     {
-        "positions": [ "Sixty-Nine",],
+        "positions": [ "Sixty-Nine"],
         "action type": ["continue"],
         "subject parts": ["Penis", "Mouth"],
         "object parts": ["Mouth", "Penis"],
@@ -1131,6 +1119,49 @@ setup.sexacts = {
         "object arousal cap": 300,
         "subject dialogue tags": ["sucking each other"],
         "object dialogue tags": ["sucking each other"],
+        equal: true,
+    },
+
+    "Eat Each Other Out":
+    {
+        "positions": ["Sixty-Nine"],
+        "action type": ["continue"],
+        "subject parts": ["vagina", "mouth"],
+        "object parts": ["mouth", "vagina"],
+        "masturbation": false,
+        "take virginity": [],
+        "object arousal": 10,
+        "subject arousal": 50,
+        "object arousal cap": 300,
+        equal: true,
+        
+    },
+    "Suck And Lick Each Other":
+    {
+        positions: ["Sixty-Nine"],
+        "action type": ["continue"],
+        "subject parts": ["penis", "mouth"],
+        "object parts": ["mouth", "vagina"],
+        "masturbation": false,
+        "take virginity": [],
+        "object arousal": 10,
+        "subject arousal": 50,
+        "object arousal cap": 300,
+        equal: true,
+        
+    },
+    "Lick And Suck Each Other":
+    {
+        positions: ["Sixty-Nine"],
+        "action type": ["continue"],
+        "subject parts": ["vagina", "mouth"],
+        "object parts": ["mouth", "penis"],
+        "masturbation": false,
+        "take virginity": [],
+        "object arousal": 10,
+        "subject arousal": 50,
+        "object arousal cap": 300,
+        equal: true,
     },
 
 
@@ -1259,7 +1290,7 @@ setup.sexacts = {
     //      penetration
     "Enter Pussy":
     {
-        "positions": [ "Missionary:top", "Mating Press:top", "Prone Bone:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl:bottom", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Spooning:top", "Double Decker:top", "Kneeling Between Thighs:top", "Perched:top", "Against Wall", "Against Wall From Behind:top", "Laid Across On Back:top", "Laid Across On Stomach:top"],
+        "positions": [ "Missionary:top", "Mating Press:top", "Prone Bone:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:top", "Reverse Cowgirl:top", "Standing:top", "Standing From Behind:top", "Astride Lap:bottom", "Spooning:top", "Double Decker:top", "Kneeling Between Thighs:top", "Perched:top", "Against Wall", "Against Wall From Behind:top", "Laid Across On Back:top", "Laid Across On Stomach:top"],
         "action type": ["penetrate"],
         "subject parts": ["Penis"],
         "object parts": ["Vagina"],
@@ -1272,7 +1303,7 @@ setup.sexacts = {
     },
     "Push Cock In":
     {
-        "positions": [ "Missionary:bottom", "Mating Press:bottom", "Prone Bone:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Cowgirl:top", "Reverse Cowgirl:top", "Standing", "Standing From Behind:bottom", "Astride Lap:top", "Spooning:bottom", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Perched:bottom", "Against Wall", "Against Wall From Behind:bottom", "Laid Across On Back:bottom", "Laid Across On Stomach:bottom"],
+        "positions": [ "Missionary:bottom", "Mating Press:bottom", "Prone Bone:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Cowgirl:bottom", "Reverse Cowgirl:bottom", "Standing:bottom", "Standing From Behind:bottom", "Astride Lap:top", "Spooning:bottom", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Perched:bottom", "Against Wall", "Against Wall From Behind:bottom", "Laid Across On Back:bottom", "Laid Across On Stomach:bottom"],
         "action type": ["penetrate"],
         "subject parts": ["Vagina"],
         "object parts": ["Penis"],
@@ -1455,7 +1486,7 @@ setup.sexacts = {
     },
     "Rub Butthole": /* You rub your fingers on their ass */
     {
-        "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Asshole"],
@@ -1494,7 +1525,7 @@ setup.sexacts = {
     },
     "Finger Ass":
     {
-        "positions": [  "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
+        "positions": [  "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
         "action type": ["penetrate", "continue"],
         "subject parts": ["Hand"],
         "object parts": ["Asshole"],
@@ -1655,4 +1686,6 @@ setup.sexacts = {
         "subject arousal cap": 400,
         "remember as": ["petting", "received"],
     },
+
+
 };

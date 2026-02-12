@@ -49,6 +49,7 @@
 		"Moaning in delight, _n.name wraps $proset.their _n.body.Lips around your <<= $mc.genitals.toLowerCase() >>, licking and sucking your <<= $mc.genitals.toLowerCase()>> as $proset.they continue making muffled moaning noises."
 	)>>
 <<elseif $sex.act == "Suck Cock">>
+	
 	<<= either(
 		"You suckle on _n.name's <<= _n.genitals.toLowerCase()>>.",
 		"_n.name moaned with pleasure as you continued to blow $proset.them.",

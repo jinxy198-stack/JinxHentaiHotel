@@ -1,5 +1,5 @@
 :: Finger-Ass-Quote [nobr Dialogue] {"position":"1900,1200","size":"100,100"}
-<<if !setup.fingerassQuotes>>
+/*<<if !setup.fingerassQuotes>>
 	[Error] setup.fingerassQuotes is missing. Define it in StoryInit.
 	<<return>>
 <</if>>
@@ -36,5 +36,29 @@
 <<else>>
 	[Error] No Finger Ass quote pool found.
 <</if>>
+*/
+
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _personality = _n.personality>>
+
+<<if $sex.role == "bottom">>
+	<<set _mode = "bottom">>
+<<elseif $sex.role == "top">>
+	<<set _mode = "top">>
+<</if>>
+
+<<if _mode == "bottom">>
+	<<set _pool = setup.FingerAssQuotes.bottom[_pref]>>
+<<elseif _mode == "top">>
+	<<set _pool = setup.FingerAssQuotes.top[_personality]
+	|| setup.FingerAssQuotes.top[_pref]
+	>>
+<</if>>
 
 
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Finger Ass quote pool found.
+	(mode=<<=_mode>>, pref=<<=_pref>>, personality=<<=_personality>>, nage=<<=_nage>>, mage=<<=_mage>>)
+<</if>>

@@ -224,45 +224,39 @@ setup.hasParts = function(actor, parts) {
  * given body parts, roles, and furniture constraints.
  */
 setup.isPositionValid = function (positionKey, sex) {
-    const pos = setup.sexpositions[positionKey];
-    if (!pos) return false;
+  const pos = setup.sexpositions[positionKey];
+  if (!pos) return false;
 
-    const subject = sex.subject;
-    const object  = sex.object;
+  // Decide who is physically top/bottom based on MC role rule in updateSubjectObject:
+  // role "top"    => subject=MC (top), object=NPC (bottom)
+  // role "bottom" => subject=NPC (top), object=MC (bottom)
+  const topActor    = (sex.role === "top") ? sex.subject : sex.subject; // NPC is top when MC is bottom (subject is NPC)
+  const bottomActor = (sex.role === "top") ? sex.object  : sex.object;  // MC is bottom when role is bottom (object is MC)
 
-    const topParts = pos.top || [];
-    const bottomParts = pos.bottom || [];
+  const topParts = pos.top || [];
+  const bottomParts = pos.bottom || [];
 
-    let bodyOK = false;
+  let bodyOK = false;
 
-    if (pos.equal) {
-        bodyOK =
-            (topParts.some(p => setup.partMatches(subject, p)) &&
-             bottomParts.some(p => setup.partMatches(object, p))) ||
-            (topParts.some(p => setup.partMatches(object, p)) &&
-             bottomParts.some(p => setup.partMatches(subject, p)));
-    }
-    else if (sex.role === "top") {
-        bodyOK =
-            topParts.some(p => setup.partMatches(subject, p)) &&
-            bottomParts.some(p => setup.partMatches(object, p));
-    }
-    else if (sex.role === "bottom") {
-        bodyOK =
-            topParts.some(p => setup.partMatches(object, p)) &&
-            bottomParts.some(p => setup.partMatches(subject, p));
-    }
+  if (pos.equal) {
+    bodyOK =
+      (setup.hasParts(sex.subject, topParts) && setup.hasParts(sex.object, bottomParts)) ||
+      (setup.hasParts(sex.object, topParts) && setup.hasParts(sex.subject, bottomParts));
+  } else {
+    // Consistent: pos.top always checked on topActor, pos.bottom on bottomActor
+    bodyOK =
+      setup.hasParts(topActor, topParts) &&
+      setup.hasParts(bottomActor, bottomParts);
+  }
 
-    if (!bodyOK) return false;
+  if (!bodyOK) return false;
 
-    if (pos.furniture?.length) {
-        if (!sex.furnitureFlags?.length) return false;
-        if (!pos.furniture.some(f => sex.furnitureFlags.includes(f))) {
-            return false;
-        }
-    }
+  if (pos.furniture?.length) {
+    if (!sex.furnitureFlags?.length) return false;
+    if (!pos.furniture.some(f => sex.furnitureFlags.includes(f))) return false;
+  }
 
-    return true;
+  return true;
 };
 
 /*
@@ -321,13 +315,75 @@ setup.getAvailableSexActs = function (sex) {
             if (!types.some(t => allowed.includes(t))) return false;
 
             if (!setup.actAllowsPosition(act, sex)) return false;
-            if (!setup.hasParts(sex.subject, act["subject parts"])) return false;
-            if (!setup.hasParts(sex.object, act["object parts"])) return false;
+            if (!setup.actMeetsPartRequirements(sex, act)) return false;
+
 
             return true;
         })
         .map(([name]) => name);
 };
+
+
+
+// Resolve physical top/bottom actors consistently from your current binding scheme.
+// If your updateSubjectObject already binds subject/object based on MC role,
+// you can treat: subject = topActor, object = bottomActor OR vice-versa.
+// Choose ONE convention and stick with it.
+// This version assumes: subject = topActor, object = bottomActor.
+setup.getTopBottomActors = function(sex) {
+  return {
+    top: sex.subject,
+    bottom: sex.object
+  };
+};
+
+// Returns true if actor has any of the listed parts (empty list = true)
+setup.actorHasAnyParts = function(actor, parts) {
+  return setup.hasParts(actor, parts);
+};
+
+// Role-stable act requirement check.
+// Supports either the old keys ("subject parts"/"object parts") OR new keys ("top parts"/"bottom parts").
+setup.actMeetsPartRequirements = function(sex, act) {
+  const { top, bottom } = setup.getTopBottomActors(sex);
+
+  // New preferred schema
+  if (act["top parts"] || act["bottom parts"]) {
+    if (!setup.actorHasAnyParts(top, act["top parts"])) return false;
+    if (!setup.actorHasAnyParts(bottom, act["bottom parts"])) return false;
+    return true;
+  }
+
+  // Backward compatible schema (current)
+  if (!setup.actMeetsParts(sex, act)) return false;
+
+  return true;
+};
+
+// In your current architecture, $sex.role is the MC's role.
+// So the MC is:
+// - subject when role is "top"
+// - object  when role is "bottom"
+setup.getActActor = function (sex) {
+  return sex.role === "top" ? sex.subject : sex.object;
+};
+
+setup.getActPartner = function (sex) {
+  return sex.role === "top" ? sex.object : sex.subject;
+};
+
+// Checks act requirements using actor/partner mapping (MC-centric).
+setup.actMeetsParts = function (sex, act) {
+  const actor   = setup.getActActor(sex);
+  const partner = setup.getActPartner(sex);
+
+  if (!setup.hasParts(actor, act["subject parts"])) return false;
+  if (!setup.hasParts(partner, act["object parts"])) return false;
+
+  return true;
+};
+
+
 
 /*
  * Applies a selected sex act and updates encounter state.

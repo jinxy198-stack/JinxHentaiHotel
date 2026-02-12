@@ -1,0 +1,24 @@
+:: Enter-Pussy-Quote [nobr]
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _size = $mc.penislength>>
+<<set _age  = $mc.ageGroup>>
+
+<<set _pool = null>>
+
+<<if $sex.role == "bottom">>
+	<<set _mode = "bottom">>
+<<elseif $sex.role == "top">>
+	<<set _mode = "top">>
+<</if>>
+
+<<if _mode == "top">>
+	<<set _pool = setup.PushCockInQuotes.top[_pref]>>
+<<elseif _mode =="bottom">>
+	<<set _pool = setup.EnterPussyQuotes.bottom[_pref]>>
+<</if>>
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Vaginal quote pool found.
+<</if>>

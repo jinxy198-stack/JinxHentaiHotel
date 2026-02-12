@@ -1,3 +1,5 @@
+::Suck-Cock-Quote [nobr]
+
 <<set _pref = _n.sexpref >>
 <<set _mage  = $mc.ageGroup  || "Adult">>
 <<set _nage  = _n.ageGroup  || "Adult">>
@@ -12,7 +14,7 @@
 <</if>>
 
 <<if _mode == "top">>
-	<<set _pool = setup.SuckCockQuotes.top>>
+	<<set _pool = setup.FuckMouthQuotes.top>>
 <<elseif _mode == "bottom">>
 	<<set _pool = setup.SuckCockQuotes.bottom[_pref]>>
 <</if>>

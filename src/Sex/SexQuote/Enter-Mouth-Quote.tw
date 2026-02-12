@@ -52,8 +52,11 @@
 	<<set _mode = "top">>
 <</if>>
 
-
+<<if _mode == "top">>
 	<<set _pool = setup.EnterMouthQuotes.top>>
+<<elseif _mode == "bottom">>
+	<<set _pool = setup.TakeCockBetweenLipsQuotes.bottom[_pref]>>
+<</if>>
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>

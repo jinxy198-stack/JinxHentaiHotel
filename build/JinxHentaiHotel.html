@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="157" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
+	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="158" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
 .sex-list {
   display: flex;
   flex-wrap: wrap;
@@ -1414,9 +1414,8 @@ setup.TakeCockBetweenLipsQuotes = {
   bottom: {
     Dominant:["Yeah, take it!"],
     Submissive: ["Ohh, wow, it's warm."],
-    Swith: ["Ah, that's nice"]
-  },
-  top: ["<i>MMPH MM MMMM </i>"]
+    Switch: ["Ah, that's nice"]
+  }
 
 };
 
@@ -1424,13 +1423,14 @@ setup.SuckCockQuotes = {
   bottom: {
     Dominant:["Yeah, take it!"],
     Submissive: ["Ohh, wow, it's warm."],
-    Swith: ["Ah, that's nice"]
-  },
-  top: ["<i>MMPH MM MMMM </i>"]
+    Switch: ["Ah, that's nice"]
+  }
 
 };
 
-
+setup.FuckMouthQuotes = {
+  top: ["<i>MMPH MM MMMM </i>"]
+};
 
 
 /* ----- BOOBJOB ----- */
@@ -1837,8 +1837,8 @@ setup.feelstomachQuotes = {
 };
 
 /* ----- FINGER ASS ----- */
-setup.fingerassQuotes = {
-  give: {
+setup.FingerAssQuotes = {
+  bottom: {
     Dominant: [
       "Yeah, lets get it nice and stretched"
     ],
@@ -1849,7 +1849,7 @@ setup.fingerassQuotes = {
       "It's warm."
     ]
   },
-  receive: {
+  top: {
     Childlike: [
     "Press the Butt-on for funny noises! Baaa-aah...",
     "Press the Butt-on for funny noises! Mooo--ooh~",
@@ -1949,7 +1949,7 @@ setup.footjobQuotes = {
 
 /* ----- FROT ----- */
 setup.frotQuotes = {
-  give: {
+  bottom: {
     Childlike:[
     "Kissy kissy PPs! Hahaha~!",
     "Wub wub~ Nnh...~"
@@ -1968,8 +1968,7 @@ setup.frotQuotes = {
       "Ah!"
     ]
   },
-  receive: {
-
+  top: {
     Childlike:[
     "Kissy kissy PPs! Hahaha~!",
     "Wub wub~ Nnh...~"
@@ -2728,6 +2727,24 @@ setup.vaginalQuotes = {
       "It's inside me!"
     ]
   }
+};
+
+
+setup.EnterPussyQuotes = {
+  bottom: {
+    Dominant:["ENTER PUSSY DOM"],
+    Submissive: ["ENTER PUSSY SUB"],
+    Switch: ["ENTER PUSSY SWITCH"]
+  }
+
+};
+setup.PushCockInQuotes = {
+  top: {
+    Dominant:["PUSH COCK IN DOM"],
+    Submissive: ["PUSH COCK IN SUB"],
+    Switch: ["PUSH COCK IN SWITCH"]
+  }
+
 };
 /* twine-user-script #4: "StoryScript" */
 /* for the body slider */
@@ -3841,7 +3858,7 @@ setup.sexpositions = {
     {
         label: "cowgirl",
         "top": ["Penis"],
-        "bottom": ["Asshole"],
+        "bottom": ["Vagina", "Asshole"],
         "bottom cum locations": [],
         "top cum locations": ["Crotch", "Stomach"],
         "force bottom cum location": true,
@@ -3854,8 +3871,8 @@ setup.sexpositions = {
     "Reverse Cowgirl":
     {
         label: "cowgirl",
-        "top": ["Asshole"],
-        "bottom": ["Penis"],
+        "top": ["Penis"],
+        "bottom": ["Vagina","Asshole"],
         "bottom cum locations": [],
         "top cum locations": ["Crotch", "Thigh"],
         "force bottom cum location": true,
@@ -3977,20 +3994,6 @@ setup.sexpositions = {
         primary: true,
         "secondary positions": ["Kneeling By Face"],
         furniture: ["horizontal surface"],
-        deprecated: true,
-    },
-    "Prone Oral Service":
-    {
-        label: "prone oral service",
-        "top": ["Mouth"],
-        "bottom": ["Penis", "Vagina"],
-        "top cum locations": [],
-        "bottom cum locations": ["Face", "Chest", "Breasts"],
-        "label top": "giving",
-        "label bottom": "receiving",
-        primary: true,
-        "secondary positions": ["Kneeling By Face"],
-        furniture: ["horizontal surface"],
     },
     "Laid Across On Back":
     {
@@ -4005,7 +4008,7 @@ setup.sexpositions = {
         "secondary positions": ["Laid Across Oral Service"],
         furniture: ["bench"],
     },
-    "Laid Across On Stomach":
+    "Laid Across On Stomach": 
     {
         label: "laid across",
         "top": ["Penis"],
@@ -4069,7 +4072,7 @@ setup.sexacts = {
     },
     "Grope Breasts": /* Either you of the other grope's the other's breast */
     {
-        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Breasts"],
@@ -4085,7 +4088,7 @@ setup.sexacts = {
     },
     "Tease Nipples":
     {
-        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:top", "Laid Across On Back:top", "Mating Press:top", "Perched", "Prone Bone:top", "From Behind:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:top", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Spooning:top", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Nipples"],
@@ -4150,7 +4153,7 @@ setup.sexacts = {
     //      starts
     "Rub Pussy":
     {
-        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Doggy:bottom", "Bent Over:top", "Perched:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind:top", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind:top", "Doggy:bottom", "Bent Over:top", "Perched:top", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind:top", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Vagina"],
@@ -4169,7 +4172,7 @@ setup.sexacts = {
     },
     "Pull Hand To Pussy":
     {
-        "positions": [ "Missionary", "Laid Across On Back:bottom",  "Mating Press:bottom", "Sixty-Nine", "From Behind", "Doggy:bottom", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:top", "Prone Oral Service:bottom", "Spooning:bottom", "Squatting Before:top", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Missionary", "Laid Across On Back:bottom",  "Mating Press:bottom", "Sixty-Nine", "From Behind", "Doggy:bottom", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:top", "Spooning:bottom", "Squatting Before:top", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["tease"],
         "subject parts": ["Vagina"],
         "object parts": ["Hand"],
@@ -4182,7 +4185,7 @@ setup.sexacts = {
     },
     "Finger Pussy":
     {
-        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy:top", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:bottom", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy:top", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom",  "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:bottom", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["penetrate", "continue"],
         "subject parts": ["Hand"],
         "object parts": ["Vagina"],
@@ -4198,7 +4201,7 @@ setup.sexacts = {
     },
     "Rub Clit":
     {
-        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy:top", "Bent Over:top", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:bottom", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy:top", "Bent Over:top", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind", "Astride Lap", "Riding Face:bottom", "Oral Service:bottom", "Spooning:top", "Kneeling By Face:top", "Squatting Before:bottom", "Double Decker:bottom", "Kneeling Between Thighs:top", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Clitoris"],
@@ -4215,7 +4218,7 @@ setup.sexacts = {
     },
     "Lick Pussy":
     {
-        "positions": [ "Riding Face:bottom", "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Squatting Before:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Riding Face:bottom", "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Squatting Before:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Vagina"],
@@ -4232,7 +4235,7 @@ setup.sexacts = {
     },
     "Suck Clit":
     {
-        "positions": [ "Riding Face:bottom", "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Squatting Before:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Riding Face:bottom", "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Squatting Before:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Clitoris"],
@@ -4249,7 +4252,7 @@ setup.sexacts = {
     },
     "Ride Face":
     {
-        "positions": [ "Riding Face:top", "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Prone Oral Service:bottom", "Squatting Before:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Riding Face:top", "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Squatting Before:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["tease"],
         "subject parts": ["Vagina"],
         "object parts": ["Mouth"],
@@ -4289,7 +4292,7 @@ setup.sexacts = {
     //      teases/foreplay
     "Fondle Balls": /* you fondle their balls or reverse */
     {
-        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary", "Laid Across On Back:top", "Laid Across On Stomach:top", "Mating Press:top", "Prone Bone:top", "Sixty-Nine", "From Behind", "Doggy", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Standing From Behind:top", "Astride Lap", "Oral Service:bottom", "Spooning:top", "Kneeling By Face", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Balls"],
@@ -4305,7 +4308,7 @@ setup.sexacts = {
     },
     "Lick Balls":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Balls"],
@@ -4321,7 +4324,7 @@ setup.sexacts = {
     },
     "Suck Balls":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Balls"],
@@ -4337,7 +4340,7 @@ setup.sexacts = {
     },
     "Lick Ass":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Asshole"],
@@ -4353,7 +4356,7 @@ setup.sexacts = {
     },
     "Lick Cock":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Mouth"],
         "object parts": ["Penis"],
@@ -4367,7 +4370,7 @@ setup.sexacts = {
     },
     "Rub Cock On Face":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Prone Oral Service:bottom", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Oral Service:top",  "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["tease"],
         "subject parts": ["Penis"],
         "object parts": ["Mouth"],
@@ -4381,7 +4384,7 @@ setup.sexacts = {
     },
     "Tease Cock With Fingers":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Perched", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom",  "Perched", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Penis"],
@@ -4393,7 +4396,7 @@ setup.sexacts = {
     },
     "Rub Cock Against Hand":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Prone Oral Service:bottom", "Perched", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Riding Face:top", "Against Wall", "Against Wall From Behind:bottom", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Perched", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Riding Face:top", "Against Wall", "Against Wall From Behind:bottom", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["tease"],
         "subject parts": ["Penis"],
         "object parts": ["Hand"],
@@ -4469,7 +4472,7 @@ setup.sexacts = {
     //      penetrations
     "Grip Cock": /* You grip their cock */
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom",  "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["penetrate"],
         "subject parts": ["Hand"],
         "object parts": ["Penis"],
@@ -4484,7 +4487,7 @@ setup.sexacts = {
     },
     "Wrap Hand Around Cock": /* they wrap their hand around your penis */
     {
-        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Prone Oral Service:bottom", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Riding Face:top", "Perched", "Against Wall", "Against Wall From Behind:bottom", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Riding Face:top", "Perched", "Against Wall", "Against Wall From Behind:bottom", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["penetrate"],
         "subject parts": ["Penis"],
         "object parts": ["Hand"],
@@ -4554,7 +4557,7 @@ setup.sexacts = {
     },
     "Take Cock Between Lips": /* You take their cock in your mouth. */
     {
-        "positions": [ "Sixty-Nine: bottom", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine:bottom", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["penetrate"],
         "subject parts": ["Mouth"],
         "object parts": ["Penis"],
@@ -4569,7 +4572,7 @@ setup.sexacts = {
     },
     "Enter Mouth": /* They put your cock in their mouth */
     {
-        "positions": [ "Sixty-Nine: top", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Prone Oral Service:top", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine:top", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["penetrate"],
         "subject parts": ["Penis"],
         "object parts": ["Mouth"],
@@ -4585,7 +4588,7 @@ setup.sexacts = {
     //      continues
     "Stroke Shaft":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom",  "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["continue"],
         "subject parts": ["Hand"],
         "object parts": ["Penis"],
@@ -4652,7 +4655,7 @@ setup.sexacts = {
     },
     "Pump Shaft":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom",  "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["continue"],
         "subject parts": ["Hand"],
         "object parts": ["Penis"],
@@ -4666,7 +4669,7 @@ setup.sexacts = {
     },
     "Fuck Fist":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Prone Oral Service:bottom", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Riding Face:top", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Standing", "Astride Lap", "Oral Service:top", "Spooning:bottom", "Kneeling By Face:top", "Squatting Before:top", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Riding Face:top", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["continue"],
         "subject parts": ["Penis"],
         "object parts": ["Hand"],
@@ -4678,7 +4681,7 @@ setup.sexacts = {
     },
     "Tease Tip":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom",  "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Riding Face:bottom", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["continue"],
         "subject parts": ["Hand"],
         "object parts": ["Penis"],
@@ -4692,7 +4695,7 @@ setup.sexacts = {
     },
     "Suck Cock":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine:bottom", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["continue"],
         "subject parts": ["Mouth"],
         "object parts": ["Penis"],
@@ -4706,7 +4709,7 @@ setup.sexacts = {
     },
     "Deepthroat":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
         "action type": ["continue"],
         "subject parts": ["Mouth"],
         "object parts": ["Penis"],
@@ -4720,7 +4723,7 @@ setup.sexacts = {
     },
     "Fuck Mouth":
     {
-        "positions": [ "Sixty-Nine", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Prone Oral Service:bottom", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine:top", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
         "action type": ["continue"],
         "subject parts": ["Penis"],
         "object parts": ["Mouth"],
@@ -4732,9 +4735,10 @@ setup.sexacts = {
         "subject dialogue tags": ["taking blowjob"],
         "object dialogue tags": ["giving blowjob"],
     },
+
     "Suck Each Other Off":
     {
-        "positions": [ "Sixty-Nine",],
+        "positions": [ "Sixty-Nine"],
         "action type": ["continue"],
         "subject parts": ["Penis", "Mouth"],
         "object parts": ["Mouth", "Penis"],
@@ -4745,6 +4749,49 @@ setup.sexacts = {
         "object arousal cap": 300,
         "subject dialogue tags": ["sucking each other"],
         "object dialogue tags": ["sucking each other"],
+        equal: true,
+    },
+
+    "Eat Each Other Out":
+    {
+        "positions": ["Sixty-Nine"],
+        "action type": ["continue"],
+        "subject parts": ["vagina", "mouth"],
+        "object parts": ["mouth", "vagina"],
+        "masturbation": false,
+        "take virginity": [],
+        "object arousal": 10,
+        "subject arousal": 50,
+        "object arousal cap": 300,
+        equal: true,
+        
+    },
+    "Suck And Lick Each Other":
+    {
+        positions: ["Sixty-Nine"],
+        "action type": ["continue"],
+        "subject parts": ["penis", "mouth"],
+        "object parts": ["mouth", "vagina"],
+        "masturbation": false,
+        "take virginity": [],
+        "object arousal": 10,
+        "subject arousal": 50,
+        "object arousal cap": 300,
+        equal: true,
+        
+    },
+    "Lick And Suck Each Other":
+    {
+        positions: ["Sixty-Nine"],
+        "action type": ["continue"],
+        "subject parts": ["vagina", "mouth"],
+        "object parts": ["mouth", "penis"],
+        "masturbation": false,
+        "take virginity": [],
+        "object arousal": 10,
+        "subject arousal": 50,
+        "object arousal cap": 300,
+        equal: true,
     },
 
 
@@ -4873,7 +4920,7 @@ setup.sexacts = {
     //      penetration
     "Enter Pussy":
     {
-        "positions": [ "Missionary:top", "Mating Press:top", "Prone Bone:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl:bottom", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Spooning:top", "Double Decker:top", "Kneeling Between Thighs:top", "Perched:top", "Against Wall", "Against Wall From Behind:top", "Laid Across On Back:top", "Laid Across On Stomach:top"],
+        "positions": [ "Missionary:top", "Mating Press:top", "Prone Bone:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:top", "Reverse Cowgirl:top", "Standing:top", "Standing From Behind:top", "Astride Lap:bottom", "Spooning:top", "Double Decker:top", "Kneeling Between Thighs:top", "Perched:top", "Against Wall", "Against Wall From Behind:top", "Laid Across On Back:top", "Laid Across On Stomach:top"],
         "action type": ["penetrate"],
         "subject parts": ["Penis"],
         "object parts": ["Vagina"],
@@ -4886,7 +4933,7 @@ setup.sexacts = {
     },
     "Push Cock In":
     {
-        "positions": [ "Missionary:bottom", "Mating Press:bottom", "Prone Bone:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Cowgirl:top", "Reverse Cowgirl:top", "Standing", "Standing From Behind:bottom", "Astride Lap:top", "Spooning:bottom", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Perched:bottom", "Against Wall", "Against Wall From Behind:bottom", "Laid Across On Back:bottom", "Laid Across On Stomach:bottom"],
+        "positions": [ "Missionary:bottom", "Mating Press:bottom", "Prone Bone:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Cowgirl:bottom", "Reverse Cowgirl:bottom", "Standing:bottom", "Standing From Behind:bottom", "Astride Lap:top", "Spooning:bottom", "Double Decker:bottom", "Kneeling Between Thighs:bottom", "Perched:bottom", "Against Wall", "Against Wall From Behind:bottom", "Laid Across On Back:bottom", "Laid Across On Stomach:bottom"],
         "action type": ["penetrate"],
         "subject parts": ["Vagina"],
         "object parts": ["Penis"],
@@ -5069,7 +5116,7 @@ setup.sexacts = {
     },
     "Rub Butthole": /* You rub your fingers on their ass */
     {
-        "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Asshole"],
@@ -5108,7 +5155,7 @@ setup.sexacts = {
     },
     "Finger Ass":
     {
-        "positions": [  "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Prone Oral Service:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
+        "positions": [  "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
         "action type": ["penetrate", "continue"],
         "subject parts": ["Hand"],
         "object parts": ["Asshole"],
@@ -5269,6 +5316,8 @@ setup.sexacts = {
         "subject arousal cap": 400,
         "remember as": ["petting", "received"],
     },
+
+
 };
 /* twine-user-script #12: "sexHelpers" */
 /*
@@ -5495,45 +5544,39 @@ setup.hasParts = function(actor, parts) {
  * given body parts, roles, and furniture constraints.
  */
 setup.isPositionValid = function (positionKey, sex) {
-    const pos = setup.sexpositions[positionKey];
-    if (!pos) return false;
+  const pos = setup.sexpositions[positionKey];
+  if (!pos) return false;
 
-    const subject = sex.subject;
-    const object  = sex.object;
+  // Decide who is physically top/bottom based on MC role rule in updateSubjectObject:
+  // role "top"    => subject=MC (top), object=NPC (bottom)
+  // role "bottom" => subject=NPC (top), object=MC (bottom)
+  const topActor    = (sex.role === "top") ? sex.subject : sex.subject; // NPC is top when MC is bottom (subject is NPC)
+  const bottomActor = (sex.role === "top") ? sex.object  : sex.object;  // MC is bottom when role is bottom (object is MC)
 
-    const topParts = pos.top || [];
-    const bottomParts = pos.bottom || [];
+  const topParts = pos.top || [];
+  const bottomParts = pos.bottom || [];
 
-    let bodyOK = false;
+  let bodyOK = false;
 
-    if (pos.equal) {
-        bodyOK =
-            (topParts.some(p => setup.partMatches(subject, p)) &&
-             bottomParts.some(p => setup.partMatches(object, p))) ||
-            (topParts.some(p => setup.partMatches(object, p)) &&
-             bottomParts.some(p => setup.partMatches(subject, p)));
-    }
-    else if (sex.role === "top") {
-        bodyOK =
-            topParts.some(p => setup.partMatches(subject, p)) &&
-            bottomParts.some(p => setup.partMatches(object, p));
-    }
-    else if (sex.role === "bottom") {
-        bodyOK =
-            topParts.some(p => setup.partMatches(object, p)) &&
-            bottomParts.some(p => setup.partMatches(subject, p));
-    }
+  if (pos.equal) {
+    bodyOK =
+      (setup.hasParts(sex.subject, topParts) && setup.hasParts(sex.object, bottomParts)) ||
+      (setup.hasParts(sex.object, topParts) && setup.hasParts(sex.subject, bottomParts));
+  } else {
+    // Consistent: pos.top always checked on topActor, pos.bottom on bottomActor
+    bodyOK =
+      setup.hasParts(topActor, topParts) &&
+      setup.hasParts(bottomActor, bottomParts);
+  }
 
-    if (!bodyOK) return false;
+  if (!bodyOK) return false;
 
-    if (pos.furniture?.length) {
-        if (!sex.furnitureFlags?.length) return false;
-        if (!pos.furniture.some(f => sex.furnitureFlags.includes(f))) {
-            return false;
-        }
-    }
+  if (pos.furniture?.length) {
+    if (!sex.furnitureFlags?.length) return false;
+    if (!pos.furniture.some(f => sex.furnitureFlags.includes(f))) return false;
+  }
 
-    return true;
+  return true;
 };
 
 /*
@@ -5592,13 +5635,75 @@ setup.getAvailableSexActs = function (sex) {
             if (!types.some(t => allowed.includes(t))) return false;
 
             if (!setup.actAllowsPosition(act, sex)) return false;
-            if (!setup.hasParts(sex.subject, act["subject parts"])) return false;
-            if (!setup.hasParts(sex.object, act["object parts"])) return false;
+            if (!setup.actMeetsPartRequirements(sex, act)) return false;
+
 
             return true;
         })
         .map(([name]) => name);
 };
+
+
+
+// Resolve physical top/bottom actors consistently from your current binding scheme.
+// If your updateSubjectObject already binds subject/object based on MC role,
+// you can treat: subject = topActor, object = bottomActor OR vice-versa.
+// Choose ONE convention and stick with it.
+// This version assumes: subject = topActor, object = bottomActor.
+setup.getTopBottomActors = function(sex) {
+  return {
+    top: sex.subject,
+    bottom: sex.object
+  };
+};
+
+// Returns true if actor has any of the listed parts (empty list = true)
+setup.actorHasAnyParts = function(actor, parts) {
+  return setup.hasParts(actor, parts);
+};
+
+// Role-stable act requirement check.
+// Supports either the old keys ("subject parts"/"object parts") OR new keys ("top parts"/"bottom parts").
+setup.actMeetsPartRequirements = function(sex, act) {
+  const { top, bottom } = setup.getTopBottomActors(sex);
+
+  // New preferred schema
+  if (act["top parts"] || act["bottom parts"]) {
+    if (!setup.actorHasAnyParts(top, act["top parts"])) return false;
+    if (!setup.actorHasAnyParts(bottom, act["bottom parts"])) return false;
+    return true;
+  }
+
+  // Backward compatible schema (current)
+  if (!setup.actMeetsParts(sex, act)) return false;
+
+  return true;
+};
+
+// In your current architecture, $sex.role is the MC's role.
+// So the MC is:
+// - subject when role is "top"
+// - object  when role is "bottom"
+setup.getActActor = function (sex) {
+  return sex.role === "top" ? sex.subject : sex.object;
+};
+
+setup.getActPartner = function (sex) {
+  return sex.role === "top" ? sex.object : sex.subject;
+};
+
+// Checks act requirements using actor/partner mapping (MC-centric).
+setup.actMeetsParts = function (sex, act) {
+  const actor   = setup.getActActor(sex);
+  const partner = setup.getActPartner(sex);
+
+  if (!setup.hasParts(actor, act["subject parts"])) return false;
+  if (!setup.hasParts(partner, act["object parts"])) return false;
+
+  return true;
+};
+
+
 
 /*
  * Applies a selected sex act and updates encounter state.
@@ -8935,6 +9040,7 @@ You suck their balls
 		&quot;Moaning in delight, _n.name wraps $proset.their _n.body.Lips around your &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt;, licking and sucking your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt; as $proset.they continue making muffled moaning noises.&quot;
 	)&gt;&gt;
 &lt;&lt;elseif $sex.act == &quot;Suck Cock&quot;&gt;&gt;
+	
 	&lt;&lt;= either(
 		&quot;You suckle on _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;.&quot;,
 		&quot;_n.name moaned with pleasure as you continued to blow $proset.them.&quot;,
@@ -9786,11 +9892,7 @@ You role &lt;span class=&quot;red&quot;&gt;_n.name&lt;/span&gt; onto their stoma
 
 &lt;&lt;else&gt;&gt;
 You roll onto your stomach on the $room.location as &lt;span class=&quot;red&quot;&gt;_n.name&lt;/span&gt; mounts you.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="Prone-Oral-Service-Dialogue" tags="nobr" position="850,1475" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
-    Your face is between _n.name&#39;s parted thighs as $proset.they lie back against the $room.location.
-    &lt;&lt;else&gt;&gt;
-    You lie back on the $room.location with _n.name between your thighs.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="Pronebone-Dialogue" tags="nobr Dialogue" position="1425,1075" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="Pronebone-Dialogue" tags="nobr Dialogue" position="1425,1075" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -9801,12 +9903,12 @@ You roll onto your stomach on the $room.location as &lt;span class=&quot;red&quo
 	&quot;Taking hold of $proset.their shoulders, you push $proset.them down so that $proset.they are lying on their front.&quot;
     )&gt;&gt;
     &quot; Kneeling down between $proset.their _n.body.Legs, you smirk as you hover over their body.&quot;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="1100,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="975,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You&#39;re on top of _n.name on the $room.location, straddling $proset.their hips, facing away to give them a view of your ass.
 &lt;&lt;else&gt;&gt;
 _n.name is on top of you on the $room.location, straddling your hips, facing away to give you a view of their ass.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="Sit-On-Lap-Dialogue" tags="Dialogue nobr" position="1075,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="Sit-On-Lap-Dialogue" tags="Dialogue nobr" position="1075,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
@@ -9817,10 +9919,10 @@ _n.name is on top of you on the $room.location, straddling your hips, facing awa
 	&lt;&lt;=either(
     &quot;You get _n.name to sit on your lap.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="Sitting-Dialogue" tags="nobr Dialogue" position="775,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="Sitting-Dialogue" tags="nobr Dialogue" position="775,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
-You and _n.name sit on the bed.</tw-passagedata><tw-passagedata pid="122" name="SixtyNine-Dialogue" tags="Dialogue nobr" position="775,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+You and _n.name sit on the bed.</tw-passagedata><tw-passagedata pid="121" name="SixtyNine-Dialogue" tags="Dialogue nobr" position="775,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -9840,12 +9942,12 @@ You and _n.name sit on the bed.</tw-passagedata><tw-passagedata pid="122" name="
 &lt;&lt;/if&gt;&gt;
 
 /*    
-&quot;Allowing $proset.them to push you down, you reach up and take a firm grip on $proset.their _n.hips, before roughly tugging $proset.them down so that they&#39;re over the top of you in a reversed all-fours position.” */</tw-passagedata><tw-passagedata pid="123" name="Spooning-Dialogue" tags="nobr" position="350,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&quot;Allowing $proset.them to push you down, you reach up and take a firm grip on $proset.their _n.hips, before roughly tugging $proset.them down so that they&#39;re over the top of you in a reversed all-fours position.” */</tw-passagedata><tw-passagedata pid="122" name="Spooning-Dialogue" tags="nobr" position="225,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You&#39;re nestled up against _n.name&#39;s back, spooning on the $room.location.
 
 &lt;&lt;else&gt;&gt;
 You&#39;re on your side with _n.name nestled up against your back, spooning on the $room.location.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Squatting-Before-Dialogue" tags="nobr" position="475,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Squatting-Before-Dialogue" tags="nobr" position="350,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     &lt;&lt;if $mc.genitals == &quot;penis&quot;&gt;&gt;
     You squat down in front of _n.name, your dick is in $proset.their face.
     &lt;&lt;else&gt;&gt;
@@ -9857,7 +9959,7 @@ You&#39;re on your side with _n.name nestled up against your back, spooning on t
     &lt;&lt;else&gt;&gt;
     _n.name squats down beside you, $proset.their pussy is in your face.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Stand-Back-Oral-Dialogue" tags="Dialogue nobr" position="975,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Stand-Back-Oral-Dialogue" tags="Dialogue nobr" position="975,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -9877,7 +9979,7 @@ You&#39;re on your side with _n.name nestled up against your back, spooning on t
 	&lt;&lt;= either(
 		&quot;So cute, like my &quot; + (($mc.assSize &amp;&amp; $mc.assSize.toLowerCase) ? $mc.assSize.toLowerCase() : &quot;average&quot;) + &quot; ass?&quot;
 	)&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="Stand-Front-Oral-Dialogue" tags="nobr Dialogue" position="875,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Stand-Front-Oral-Dialogue" tags="nobr Dialogue" position="875,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
@@ -9891,11 +9993,11 @@ You&#39;re on your side with _n.name nestled up against your back, spooning on t
     )&gt;&gt;
     &lt;br&gt;
     &quot;So cute, you like my &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;?&quot;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="Standing-Dialogue" tags="nobr Dialogue" position="1175,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="Standing-Dialogue" tags="nobr Dialogue" position="1175,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 
-You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid="128" name="Standing-From-Behind-Dialogue" tags="nobr" position="975,1600" size="100,100">&lt;&lt;if $sex.previousPosition == &quot;Standing&quot;&gt;&gt;
+You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid="127" name="Standing-From-Behind-Dialogue" tags="nobr" position="850,1600" size="100,100">&lt;&lt;if $sex.previousPosition == &quot;Standing&quot;&gt;&gt;
     &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     You grasp _n.name by the hips and turn them around.
     &lt;&lt;else&gt;&gt;
@@ -9913,15 +10015,15 @@ You and _n.name stand back up, face to face.</tw-passagedata><tw-passagedata pid
     &lt;&lt;else&gt;&gt;
     _n.name grabs you by the hips and turn you to face away from you.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="Straddling-Chest-Dialogue" tags="nobr" position="1100,1600" size="100,100">&lt;&lt;if $sex.roles ==&quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="Straddling-Chest-Dialogue" tags="nobr" position="975,1600" size="100,100">&lt;&lt;if $sex.roles ==&quot;top&quot;&gt;&gt;
 You&#39;re on the $sex.location, straddling _n.name&#39;s chest.
 &lt;&lt;else&gt;&gt;
 _n.name is straddling your chest.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="Underneath-Oral-Service-Dialogue" tags="nobr" position="1225,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="Underneath-Oral-Service-Dialogue" tags="nobr" position="1100,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     _n.name is kneeling between your parted thighs as you sit at the $room.location.
     &lt;&lt;else&gt;&gt;
     You are kneeling between _n.name&#39;s parted thighs as they sit at the $room.location.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="PositionDialogue" tags="nobr Dialogue" position="1100,1025" size="100,100">&lt;&lt;set _p = $sex.position or $position&gt;&gt;
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="PositionDialogue" tags="nobr Dialogue" position="1100,1025" size="100,100">&lt;&lt;set _p = $sex.position or $position&gt;&gt;
 
 /* POSITION (prints once per change) */
 &lt;&lt;if $sex._printedPos != _p&gt;&gt;
@@ -9953,7 +10055,7 @@ _n.name is straddling your chest.
         &lt;&lt;case &quot;Sixty-Nine&quot;&gt;&gt;&lt;&lt;include &quot;SixtyNine-Dialogue&quot;&gt;&gt;
         &lt;&lt;case &quot;Straddling Chest&quot;&gt;&gt;&lt;&lt;include &quot;Straddling-Chest-Dialogue&quot;&gt;&gt;
         &lt;&lt;case &quot;Oral Service&quot;&gt;&gt;&lt;&lt;include &quot;Oral-Service-Dialogue&quot;&gt;&gt;
-        &lt;&lt;case &quot;Prone Oral Service&quot;&gt;&gt;&lt;&lt;include &quot;Prone-Oral-Service-Dialogue&quot;&gt;&gt;
+        
         &lt;&lt;case &quot;Laid Across On Back&quot;&gt;&gt;&lt;&lt;include &quot;Laid-Across-On-Back-Dialogue&quot;&gt;&gt;
         &lt;&lt;case &quot;Laid Across On Stomach&quot;&gt;&gt;&lt;&lt;include &quot;Laid-Across-On-Stomach-Dialogue&quot;&gt;&gt;
         &lt;&lt;case &quot;Laid Across Oral Service&quot;&gt;&gt;&lt;&lt;include &quot;Laid-Across-Oral-Service-Dialogue&quot;&gt;&gt;
@@ -9962,7 +10064,7 @@ _n.name is straddling your chest.
         &lt;&lt;case &quot;Oral Back&quot;&gt;&gt;&lt;&lt;include &quot;Stand-Back-Oral-Dialogue&quot;&gt;&gt;
 	&lt;&lt;/switch&gt;&gt;
 	&lt;&lt;set $sex._printedPos = _p&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="Anal-Quote" tags="nobr Dialogue" position="1600,1300" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="Anal-Quote" tags="nobr Dialogue" position="1600,1300" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
 	[Error] setup.analQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10007,7 +10109,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Anal quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -10041,7 +10143,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Caress quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, material=&lt;&lt;=_material&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="Cuddle-Quote" tags="nobr Dialogue" position="1800,1700" size="100,100">&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="Cuddle-Quote" tags="nobr Dialogue" position="1800,1700" size="100,100">&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
 	[Error] setup.cuddleQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10077,7 +10179,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Cuddle quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;if !setup.cunnilingusQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;if !setup.cunnilingusQuotes&gt;&gt;
 	[Error] setup.cunnilingusQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10109,7 +10211,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Cunnilingus quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="Embrace-Quote" tags="nobr Dialogue" position="1700,1500" size="100,100">&lt;&lt;if !setup.embraceQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="Embrace-Quote" tags="nobr Dialogue" position="1700,1500" size="100,100">&lt;&lt;if !setup.embraceQuotes&gt;&gt;
 	[Error] setup.embraceQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10145,7 +10247,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Embrace quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="Enter-Mouth-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">/*&lt;&lt;if !setup.blowjobQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="Enter-Mouth-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">/*&lt;&lt;if !setup.blowjobQuotes&gt;&gt;
 	[Error] setup.blowjobQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10198,14 +10300,39 @@ _n.name is straddling your chest.
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-
+&lt;&lt;if _mode == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _pool = setup.EnterMouthQuotes.top&gt;&gt;
+&lt;&lt;elseif _mode == &quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.TakeCockBetweenLipsQuotes.bottom[_pref]&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Enter Mouth pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="Enter-Pussy-Quote" tags="nobr" position="850,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _size = $mc.penislength&gt;&gt;
+&lt;&lt;set _age  = $mc.ageGroup&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
+&lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
+	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _mode == &quot;top&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.PushCockInQuotes.top[_pref]&gt;&gt;
+&lt;&lt;elseif _mode ==&quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.EnterPussyQuotes.bottom[_pref]&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Vaginal quote pool found.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="Face-on-Chest-Quote" tags="nobr Dialogue" position="1700,1600" size="100,100">&lt;&lt;if !setup.faceonchestQuotes&gt;&gt;
 	[Error] setup.faceonchestQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -10281,7 +10408,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Feel Stomach quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">&lt;&lt;if !setup.fingerassQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">/*&lt;&lt;if !setup.fingerassQuotes&gt;&gt;
 	[Error] setup.fingerassQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10317,6 +10444,32 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Finger Ass quote pool found.
+&lt;&lt;/if&gt;&gt;
+*/
+
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _personality = _n.personality&gt;&gt;
+
+&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
+&lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
+	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _mode == &quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.FingerAssQuotes.bottom[_pref]&gt;&gt;
+&lt;&lt;elseif _mode == &quot;top&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.FingerAssQuotes.top[_personality]
+	|| setup.FingerAssQuotes.top[_pref]
+	&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Finger Ass quote pool found.
+	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="Finger-Pussy-Quote" tags="nobr Dialogue" position="1800,1200" size="100,100">&lt;&lt;if !setup.fingervaginaQuotes&gt;&gt;
 	[Error] setup.fingervaginaQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -10393,7 +10546,8 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No footjob quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;if !setup.frotQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">/*
+&lt;&lt;if !setup.frotQuotes&gt;&gt;
 	[Error] setup.frotQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10409,28 +10563,34 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-
+*/
 /* Use later */
 &lt;&lt;set _msize = $mc.penislength&gt;&gt;
 &lt;&lt;set _nsize = _n.penislength&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
-
+&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
+&lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
+	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
-&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.frotQuotes.give[_personality]
-	|| setup.frotQuotes.give[_pref]
-	|| setup.frotQuotes.give.Neutral&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool = setup.frotQuotes.receive[_personality] 
-	|| setup.frotQuotes.receive[_pref] 
-	|| setup.frotQuotes.receive.Neutral&gt;&gt;
+&lt;&lt;if _mode == &quot;top&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.frotQuotes.top[_personality]
+	|| setup.frotQuotes.top[_pref]
+	|| setup.frotQuotes.top.Neutral&gt;&gt;
+&lt;&lt;elseif _mode ==&quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.frotQuotes.bottom[_personality] 
+	|| setup.frotQuotes.bottom[_pref] 
+	|| setup.frotQuotes.bottom.Neutral&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Frot quote pool found.
+	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">/*&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
 	[Error] setup.gropebreastQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -10781,79 +10941,79 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
     &lt;&lt;case &quot;Ride Face&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Stop Fingering&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fondle Balls&quot;&gt;&gt;&lt;&lt;include &quot;Balls-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Balls&quot;&gt;&gt;&lt;&lt;include &quot;Balls-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Suck Balls&quot;&gt;&gt;&lt;&lt;include &quot;Balls-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Ass&quot;&gt;&gt;&lt;&lt;include &quot;Rimjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;&lt;&lt;include &quot;Lick-Cock-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Cock With Fingers&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Cock Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Pussy Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;&lt;&lt;include &quot;Lick-Foot-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Grip Cock&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Wrap Hand Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Grip Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Feet Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Feet To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Take Cock Between Lips&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fondle Balls&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Balls&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Balls&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Ass&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Cock With Fingers&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Cock Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Pussy Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Grip Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Wrap Hand Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Grip Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Feet Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Feet To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Take Cock Between Lips&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Mouth-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Enter Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Mouth-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stroke Shaft&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stroke Shaft With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stroke Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pump Shaft&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Fist&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Tip&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stroke Shaft&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stroke Shaft With Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stroke Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pump Shaft&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Fist&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Tip&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Cock&quot;&gt;&gt;&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Suck Each Other Off&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Deepthroat&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Release Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tug Cock Free&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Release Cock From Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tug Cock Free Of Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Move Feet Away From Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Away From Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Out Of Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Mouth Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Pussy With Cock&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Pussy-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Cocktease With Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Pussy-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Enter Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Push Cock In&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Take Cock&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Hump Back&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Ride Cock&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Squeeze Cock&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rabbitfuck&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Deep Stroke&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Out&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Off&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Each Other Off&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Deepthroat&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Release Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tug Cock Free&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Release Cock From Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tug Cock Free Of Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Move Feet Away From Pussy&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Away From Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Out Of Mouth&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Mouth Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Pussy With Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Cocktease With Pussy&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Enter Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Push Cock In&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Pussy&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Take Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Hump Back&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Ride Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Squeeze Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rabbitfuck&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Deep Stroke&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Out&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Off&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Frot&quot;&gt;&gt;&lt;&lt;include &quot;Frot-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Trib&quot;&gt;&gt;&lt;&lt;include &quot;Trib-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Ass With Cock&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Cocktease With Ass&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Butthole&quot;&gt;&gt;&lt;&lt;include &quot;Rub-Butt-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Enter Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Push Cock In Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Ass With Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Cocktease With Ass&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Butthole&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Enter Ass&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Push Cock In Ass&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Finger Ass&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Ass-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Take Cock In Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Hump Ass Back&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Out Of Ass&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Ass Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stop Fingering Ass&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Ass Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Tits&quot;&gt;&gt;&lt;&lt;include &quot;Boobjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Use Tits On Cock&quot;&gt;&gt;&lt;&lt;include &quot;Boobjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Hotdog&quot;&gt;&gt;&lt;&lt;include &quot;Hotdog-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Ass On Cock&quot;&gt;&gt;&lt;&lt;include &quot;Hotdog-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Ass&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Take Cock In Ass&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Hump Ass Back&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Out Of Ass&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Ass Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stop Fingering Ass&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Ass Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Tits&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Use Tits On Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Hotdog&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Ass On Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     
 	&lt;&lt;case &quot;Caress&quot;&gt;&gt;&lt;&lt;include &quot;Caress-Quote&quot;&gt;&gt;
 	&lt;&lt;case &quot;Handjob&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
@@ -10868,7 +11028,31 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;/switch&gt;&gt;
 
 
-&lt;br&gt;</tw-passagedata><tw-passagedata pid="153" name="Suck-Foot-Quote" tags="nobr Dialogue" position="1800,1600" size="100,100">&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="153" name="Suck-Cock-Quote" tags="nobr" position="350,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
+&lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _personality = _n.personality&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
+&lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
+	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _mode == &quot;top&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.FuckMouthQuotes.top&gt;&gt;
+&lt;&lt;elseif _mode == &quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.SuckCockQuotes.bottom[_pref]&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool)&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Enter Mouth pool found.
+	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="Suck-Foot-Quote" tags="nobr Dialogue" position="1800,1600" size="100,100">&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
 	[Error] setup.suckfootQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10908,7 +11092,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Suck Foot quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="Vaginal-Quote" tags="nobr Dialogue" position="1600,1400" size="100,100">&lt;&lt;if !setup.vaginalQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="Vaginal-Quote" tags="nobr Dialogue" position="1600,1400" size="100,100">&lt;&lt;if !setup.vaginalQuotes&gt;&gt;
 	[Error] setup.vaginalQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10923,7 +11107,8 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength&gt;&gt;
 &lt;&lt;set _age  = $mc.ageGroup&gt;&gt;
 
@@ -10940,7 +11125,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Vaginal quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="StoryCaption" tags="" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="StoryCaption" tags="" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
 &lt;b&gt;Location: &lt;/b&gt;$gamelocation
 &lt;&lt;/if&gt;&gt;
 
@@ -10948,7 +11133,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;button &quot;Credits&quot;&gt;&gt;&lt;&lt;PopupCredits&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
+&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
 	muscle: 4,
 	plump: 4,
 	label: &quot;Average&quot;
@@ -11108,7 +11293,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 
 
 &lt;&lt;set $flags = $flags || {}&gt;&gt;
-&lt;&lt;set $flags.skinChosen = false&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
+&lt;&lt;set $flags.skinChosen = false&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
 
 &lt;&lt;set $devMode = true&gt;&gt;
 &lt;div&gt;
@@ -11136,7 +11321,7 @@ Updated as of 1/16/2026
 &lt;&lt;button [[Testroom|Test-Sex-Encounter]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt; 
 
 &lt;&lt;/if&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="158" name="Statistics" tags="nobr" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="159" name="Statistics" tags="nobr" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
 &lt;table class=&quot;stats-table&quot;&gt;
   &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
   &lt;tr id=&quot;name&quot;&gt;
@@ -11284,7 +11469,7 @@ Updated as of 1/16/2026
 		&lt;&lt;print _val&gt;&gt;
 	&lt;/li&gt;
 &lt;&lt;/for&gt;&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="159" name="Tutorial" tags="" position="25,275" size="100,100">You and the person you brought to your room will engage in a session of sex. How you engage in it is up to you.
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="160" name="Tutorial" tags="" position="25,275" size="100,100">You and the person you brought to your room will engage in a session of sex. How you engage in it is up to you.
 
 You can choose who will be the bottom and who will be the top. Note that will not mean that you will determine who is the dom and who is the sub, that will depend on the personality. Certain actions will be locked depending on your role, you cannot be the top and suck off the other&#39;s dick.
 For example, you can have a submissive feminine twink be the one to fuck you or you can have a big muscular dom be fucked by you.
@@ -11303,7 +11488,7 @@ Intercourse is the stage where the meat of the game is. The actions there will b
 Orgasm is the part where your control is limited. Depending on what you are doing, you can choose where to have your orgasm or the npc. Note that to save on complexity it will be treated as a simultenious orgasm between you and the NPC.
 Following the Orgasm you are automatically put into the Aftercare stage. It is an optional stage where you can choose to enjoy the afterglow with the NPC or just finish the sex.
 
-Only when you reach the Aftercare stage will you be allowed to end the session.</tw-passagedata><tw-passagedata pid="160" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
+Only when you reach the Aftercare stage will you be allowed to end the session.</tw-passagedata><tw-passagedata pid="161" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
 &quot;Yes. I&#39;m ready — and I want you to be fully present with me&quot;
 &lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
 &quot;Yes! That sounds exciting — I&#39;m totally in the mood for you.&quot;
@@ -11331,7 +11516,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &quot;Yay! This&#39;ll be fun!&quot;
 &lt;&lt;else&gt;&gt;
 &quot;Ok&quot;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
     &quot;Not interested. But I&#39;m content simply sharing this moment with you.&quot;
 &lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
     &quot;Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.&quot;
@@ -11359,7 +11544,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     &quot;Oh, sorry nevermind! I got ahead of myself!&quot;
 &lt;&lt;else&gt;&gt;
     &quot;No&quot;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="UI-Attracted-check" tags="" position="900,500" size="100,100">&lt;&lt;check-attraction $mc _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="UI-Attracted-check" tags="" position="900,500" size="100,100">&lt;&lt;check-attraction $mc _n&gt;&gt;
 &lt;b&gt;$mc.name: &lt;/b&gt;
 * $mc.gender
 * $mc.sexu
@@ -11383,7 +11568,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;include &quot;Reject-Dialogue&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="UI-NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;silently&gt;&gt;&lt;&lt;set _n = $ui.npc&gt;&gt;&lt;&lt;/silently&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="UI-NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;silently&gt;&gt;&lt;&lt;set _n = $ui.npc&gt;&gt;&lt;&lt;/silently&gt;&gt;
 &lt;b&gt;Name:&lt;/b&gt; &lt;&lt;=_n.name&gt;&gt; &lt;&lt;if _n.surname&gt;&gt;&lt;&lt;=_n.surname&gt;&gt;&lt;&lt;/if&gt;&gt; &lt;&lt;if _n.nickname&gt;&gt;
 &lt;br&gt;
 &lt;b&gt;Nickname: &lt;/b&gt;&quot;&lt;&lt;=_n.nickname&gt;&gt;&quot;&lt;&lt;/if&gt;&gt;
@@ -11429,7 +11614,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 
 
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="UI-NPC-Sex" tags="nobr" position="1025,475" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="UI-NPC-Sex" tags="nobr" position="1025,475" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;set _n = $ui.npc&gt;&gt;
 	&lt;&lt;if !_n&gt;&gt;[Error] No active NPC selected.&lt;&lt;return&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -11513,7 +11698,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 		&lt;br&gt;
 		&lt;span id=&quot;aftercare&quot;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;/span&gt;
 	&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="165" name="UI-NPC-Talk" tags="nobr" position="750,500" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;silently&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="166" name="UI-NPC-Talk" tags="nobr" position="750,500" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;silently&gt;&gt;
 &lt;&lt;set _n = $ui.npc&gt;&gt;
 &lt;&lt;set _lines = {
   Default: [&quot;Hello&quot;,&quot;Hi&quot;],
@@ -11568,7 +11753,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;/button&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="166" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
 	&lt;&lt;if _n.personality ==&quot;Tough&quot;&gt;&gt;
     “You want me in charge? Good, I don&#39;t do half-measures.”
     &lt;&lt;elseif _n.personality== &quot;Sassy&quot;&gt;&gt;
@@ -11676,7 +11861,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     &lt;&lt;else&gt;&gt;
     &quot;Ok, you top.&quot;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="Adjective-Widget" tags="widget nobr" position="850,2100" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="Adjective-Widget" tags="widget nobr" position="975,2100" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;
 
@@ -11694,7 +11879,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 /* &lt;&lt;set $NPCList[_n].penisdesc to &quot;tiny penis&quot;&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;thick cock&quot;,&quot;hefty cock&quot;,&quot;big cock&quot;,&quot;large cock&quot;,&quot;veiny cock&quot;,&quot;meaty cock&quot;)&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;massive cock&quot;,&quot;huge cock&quot;,&quot;humongous cock&quot;,&quot;immense cock&quot;,&quot;gigantic cock&quot;,&quot;enormous cock&quot;)&gt;&gt;
-*/</tw-passagedata><tw-passagedata pid="168" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
+*/</tw-passagedata><tw-passagedata pid="169" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
 &lt;&lt;widget &quot;AnalQuote&quot;&gt;&gt;
 	/* guard */
 	&lt;&lt;if !setup.analQuotes&gt;&gt;
@@ -12706,7 +12891,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;else&gt;&gt;
 		[Error] VaginalQuote: empty dialogue pool.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
 /* Creates a single Story NPC from a provided template and registers it globally */
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No template provided to MakeSNPC.
@@ -13545,7 +13730,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;set _npc.petname = &quot;pet&quot;&gt;&gt;	
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="Widgets" tags="widget nobr" position="1225,2100" size="100,100">&lt;&lt;widget &quot;RoomRelocationUI&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="Widgets" tags="widget nobr" position="100,2225" size="100,100">&lt;&lt;widget &quot;RoomRelocationUI&quot;&gt;&gt;
 
 &lt;h3&gt;Relocate&lt;/h3&gt;
 
@@ -14598,7 +14783,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 	&lt;&lt;set $npcMemory[_key].interacted = true&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].times     += 1&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].sexCount  += 1&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="heighttest" tags="" position="100,2225" size="100,100">//example test:
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="heighttest" tags="" position="225,2225" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 
 &lt;&lt;if _h is 1&gt;&gt;
@@ -14607,7 +14792,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
   NPC taller
 &lt;&lt;else&gt;&gt;
   Same height
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="Test-Sex-Encounter" tags="nobr" position="225,2225" size="100,100">&lt;&lt;if !$ui || !$ui.npc&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="173" name="Test-Sex-Encounter" tags="nobr" position="350,2225" size="100,100">&lt;&lt;if !$ui || !$ui.npc&gt;&gt;
 	ERROR: ui.npc not set
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -14637,7 +14822,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 /* local convenience copy */
 &lt;&lt;set _sexCount = $npcMemory[_key].sexCount&gt;&gt;
 
-&lt;&lt;set $sex.position = &quot;Standing&quot;&gt;&gt;
+&lt;&lt;set $sex.position = &quot;Cowgirl&quot;&gt;&gt;
 &lt;&lt;set $sex.subject = null&gt;&gt;
 &lt;&lt;set $sex.object = null&gt;&gt;
 &lt;&lt;set $sex.engagedParts= { subject: [], object: [] }&gt;&gt;
@@ -14667,7 +14852,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 /* Debug checking to confirm things exist */
 /*MC parts: &lt;&lt;print $mc.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt;
-NPC parts: &lt;&lt;print _n.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt; */
+NPC parts: &lt;&lt;print _n.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt; 
 Sex Subject: &lt;&lt;print $sex.subject.name&gt;&gt;&lt;br&gt;
 Sex Object: &lt;&lt;print $sex.object.name&gt;&gt;&lt;br&gt;
 &lt;&lt;button &quot;Inspect&quot;&gt;&gt;
@@ -14678,8 +14863,7 @@ Sex Object: &lt;&lt;print $sex.object.name&gt;&gt;&lt;br&gt;
 		.open()
 	&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;br&gt;
-
+&lt;br&gt; */
 
 
 /*Arousal meter for both $mc and _n */

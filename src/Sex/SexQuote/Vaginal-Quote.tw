@@ -14,7 +14,8 @@
 	<<set _mode = "receive">>
 <<else>>
 	<<return>>
-<</if>><<set _pref = _n.sexpref || "Neutral">>
+<</if>>
+<<set _pref = _n.sexpref || "Neutral">>
 <<set _size = $mc.penislength>>
 <<set _age  = $mc.ageGroup>>
 

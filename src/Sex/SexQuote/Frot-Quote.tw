@@ -1,4 +1,5 @@
 :: Frot-Quote [nobr Dialogue] {"position":"1600,1700","size":"100,100"}
+/*
 <<if !setup.frotQuotes>>
 	[Error] setup.frotQuotes is missing. Define it in StoryInit.
 	<<return>>
@@ -15,28 +16,34 @@
 <<else>>
 	<<return>>
 <</if>><<set _pref = _n.sexpref || "Neutral">>
-
+*/
 /* Use later */
 <<set _msize = $mc.penislength>>
 <<set _nsize = _n.penislength>>
+<<set _pref = _n.sexpref || "Neutral">>
 <<set _personality = _n.personality>>
-
+<<if $sex.role == "bottom">>
+	<<set _mode = "bottom">>
+<<elseif $sex.role == "top">>
+	<<set _mode = "top">>
+<</if>>
 <<set _pool = null>>
 
-<<if _mode == "give">>
-	<<set _pool = setup.frotQuotes.give[_personality]
-	|| setup.frotQuotes.give[_pref]
-	|| setup.frotQuotes.give.Neutral>>
-<<else>>
-	<<set _pool = setup.frotQuotes.receive[_personality] 
-	|| setup.frotQuotes.receive[_pref] 
-	|| setup.frotQuotes.receive.Neutral>>
+<<if _mode == "top">>
+	<<set _pool = setup.frotQuotes.top[_personality]
+	|| setup.frotQuotes.top[_pref]
+	|| setup.frotQuotes.top.Neutral>>
+<<elseif _mode =="bottom">>
+	<<set _pool = setup.frotQuotes.bottom[_personality] 
+	|| setup.frotQuotes.bottom[_pref] 
+	|| setup.frotQuotes.bottom.Neutral>>
 <</if>>
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>
 <<else>>
 	[Error] No Frot quote pool found.
+	(mode=<<=_mode>>, pref=<<=_pref>>, personality=<<=_personality>>, nage=<<=_nage>>, mage=<<=_mage>>)
 <</if>>
 
 

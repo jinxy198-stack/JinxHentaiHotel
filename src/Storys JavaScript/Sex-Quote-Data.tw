@@ -250,9 +250,8 @@ setup.TakeCockBetweenLipsQuotes = {
   bottom: {
     Dominant:["Yeah, take it!"],
     Submissive: ["Ohh, wow, it's warm."],
-    Swith: ["Ah, that's nice"]
-  },
-  top: ["<i>MMPH MM MMMM </i>"]
+    Switch: ["Ah, that's nice"]
+  }
 
 };
 
@@ -260,13 +259,14 @@ setup.SuckCockQuotes = {
   bottom: {
     Dominant:["Yeah, take it!"],
     Submissive: ["Ohh, wow, it's warm."],
-    Swith: ["Ah, that's nice"]
-  },
-  top: ["<i>MMPH MM MMMM </i>"]
+    Switch: ["Ah, that's nice"]
+  }
 
 };
 
-
+setup.FuckMouthQuotes = {
+  top: ["<i>MMPH MM MMMM </i>"]
+};
 
 
 /* ----- BOOBJOB ----- */
@@ -673,8 +673,8 @@ setup.feelstomachQuotes = {
 };
 
 /* ----- FINGER ASS ----- */
-setup.fingerassQuotes = {
-  give: {
+setup.FingerAssQuotes = {
+  bottom: {
     Dominant: [
       "Yeah, lets get it nice and stretched"
     ],
@@ -685,7 +685,7 @@ setup.fingerassQuotes = {
       "It's warm."
     ]
   },
-  receive: {
+  top: {
     Childlike: [
     "Press the Butt-on for funny noises! Baaa-aah...",
     "Press the Butt-on for funny noises! Mooo--ooh~",
@@ -785,7 +785,7 @@ setup.footjobQuotes = {
 
 /* ----- FROT ----- */
 setup.frotQuotes = {
-  give: {
+  bottom: {
     Childlike:[
     "Kissy kissy PPs! Hahaha~!",
     "Wub wub~ Nnh...~"
@@ -804,8 +804,7 @@ setup.frotQuotes = {
       "Ah!"
     ]
   },
-  receive: {
-
+  top: {
     Childlike:[
     "Kissy kissy PPs! Hahaha~!",
     "Wub wub~ Nnh...~"
@@ -1564,4 +1563,22 @@ setup.vaginalQuotes = {
       "It's inside me!"
     ]
   }
+};
+
+
+setup.EnterPussyQuotes = {
+  bottom: {
+    Dominant:["ENTER PUSSY DOM"],
+    Submissive: ["ENTER PUSSY SUB"],
+    Switch: ["ENTER PUSSY SWITCH"]
+  }
+
+};
+setup.PushCockInQuotes = {
+  top: {
+    Dominant:["PUSH COCK IN DOM"],
+    Submissive: ["PUSH COCK IN SUB"],
+    Switch: ["PUSH COCK IN SWITCH"]
+  }
+
 };
