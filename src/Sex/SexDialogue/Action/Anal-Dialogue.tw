@@ -6,7 +6,7 @@
 <<if $sex.act =="Enter Ass">>
 	<<if $sex.position == "Cowgirl">>
 		<<= either(
-			"You both moan out as _n.name slides $proset.their ass onto my <<= $mc.genitals.toLowerCase() >>. Soon their butt fully rested on my thighs."
+			"You both moan out as _n.name slides $proset.their ass onto your <<= $mc.genitals.toLowerCase() >>. Soon their butt fully rested on your thighs."
         )>>
 	<<elseif $sex.position == "Reverse Cowgirl">>
 		_n.name lowers their ass onto your $mc.genitals.
@@ -55,13 +55,15 @@
 		_n.name enters your ass in the pronebone position.
 	<<elseif $sex.position== "Spooning">>
 		_n.name enters your ass in the spooning position.
+	<<else>>
+		_n.name enters your ass.	
 	<</if>>
 <<elseif $sex.act == "Fuck Ass">>
 	<<if $sex.position == "Cowgirl">>
 		<<= either(
 			"_n.name bounced up and down on your <<= $mc.genitals.toLowerCase() >> in a controlled motion.",
-			"_n.name's paced increased, pushing my <<= $mc.genitals.toLowerCase() >> deeper into $proset.their hole.",
-			"The sight of _n.name bouncing on my <<= $mc.genitals.toLowerCase() >>, their blissful expression, it turned me on.",
+			"_n.name's paced increased, pushing your <<= $mc.genitals.toLowerCase() >> deeper into $proset.their hole.",
+			"The sight of _n.name bouncing on your <<= $mc.genitals.toLowerCase() >>, their blissful expression, it turned me on.",
 			"_n.name leans forward, putting $proset.their small hands on your bare chest. Balanced like this, $proset.they begins bouncing $proset.their ass up and down the length of your cock.",
 			"You lay back, enjoying the feeling of $proset.their ass gripping your dick."
 		)>>

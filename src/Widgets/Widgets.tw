@@ -22,7 +22,7 @@
             <<set $room.furnitureFlags = _furn.flags || []>>
             <<set $sex.furnitureFlags = $room.furnitureFlags>>
             <<run setup.ensureValidSexPosition($sex)>>
-            <<set $sex._printedPos = null>>
+            
 
             <<replace "#sex-container">>
                 <<RoomRelocationUI>>
@@ -34,6 +34,11 @@
 			        <<goto "Your Room">> <!-- or "Your Room" or whatever -->
                 <</button>>
             <</replace>>
+
+            <<replace "#npcsex-dialogue">>
+                <<include "PositionDialogue">>
+			<</replace>>
+
         <</button>>
 
         <<if $room.location is _furnKey>>
@@ -133,7 +138,7 @@
 									<<button _p>>
 										<<set $sex.previousPosition = $sex.position>>
 										<<set $sex.position = _p>>
-										<<set $sex._printedPos = null>>
+										
 
 										<<replace "#sexUI">>
 											<<SexEncounterUI>> 

@@ -2,7 +2,7 @@
 <<set _p = $sex.position or $position>>
 
 /* POSITION (prints once per change) */
-<<if $sex._printedPos != _p>>
+
 	<<switch _p>>
 		<<case "Standing">><<include "Standing-Dialogue">>
         <<case "Against Wall">><<include "Against-Wall-Dialogue">>
@@ -39,7 +39,6 @@
         <<case "Oral Front">><<include "Stand-Front-Oral-Dialogue">>
         <<case "Oral Back">><<include "Stand-Back-Oral-Dialogue">>
 	<</switch>>
-	<<set $sex._printedPos = _p>>
-<</if>>
+
 
 
