@@ -44,38 +44,6 @@ setup.updateNpcArousalUI = function (value) {
   if (text) text.textContent = value;
 };
 
-/*
- * Determines which actor is considered "top" and "bottom"
- * based on the current position and role.
- * Returns an object: { topActor, bottomActor }
- */
-setup.getTopBottomActors = function (sex, pos) {
-    let topActor = null;
-    let bottomActor = null;
-
-    // Equal positions rely entirely on role
-    if (pos.equal) {
-        if (sex.role === "top") {
-            topActor = sex.subject;
-            bottomActor = sex.object;
-        } else if (sex.role === "bottom") {
-            topActor = sex.object;
-            bottomActor = sex.subject;
-        }
-    } 
-    // Non-equal positions still follow role assignment
-    else {
-        if (sex.role === "top") {
-            topActor = sex.subject;
-            bottomActor = sex.object;
-        } else if (sex.role === "bottom") {
-            topActor = sex.object;
-            bottomActor = sex.subject;
-        }
-    }
-
-    return { topActor, bottomActor };
-};
 
 /*
  * Updates valid cum locations for subject and object
@@ -304,10 +272,19 @@ setup.getAvailableSexActs = function (sex) {
         .filter(([_, act]) => {
             const types = act["action type"];
 
+            // END acts already do a penetration validity check
             if (types.includes("end")) {
                 return (
                     sex.phase === "continue" &&
                     setup.isEndActValid(act, sex)
+                );
+            }
+
+            // NEW: CONTINUE acts must match current penetration
+            if (types.includes("continue")) {
+                return (
+                    sex.phase === "continue" &&
+                    setup.isContinueActValid(act, sex)
                 );
             }
 
@@ -316,7 +293,6 @@ setup.getAvailableSexActs = function (sex) {
 
             if (!setup.actAllowsPosition(act, sex)) return false;
             if (!setup.actMeetsPartRequirements(sex, act)) return false;
-
 
             return true;
         })
@@ -383,6 +359,10 @@ setup.actMeetsParts = function (sex, act) {
   return true;
 };
 
+setup.afterSexStateChange = function (sex) {
+  setup.updateCumLocations(sex);
+  setup.updateBindings?.(); // safe-call if it exists
+};
 
 
 /*
@@ -402,9 +382,9 @@ setup.applySexAct = function (sex, actKey) {
     if (types.includes("end")) {
         sex.penetration = null;
         sex.phase = "tease";
-        setup.updateCumLocations(sex);
+        setup.afterSexStateChange(sex);
         return;
-    }
+        }
 
     if (types.includes("penetrate")) {
         sex.penetration = {
@@ -412,19 +392,20 @@ setup.applySexAct = function (sex, actKey) {
             objectPart: act["object parts"]?.[0] ?? null
         };
         sex.phase = "continue";
-        setup.updateCumLocations(sex);
+        setup.afterSexStateChange(sex);
         return;
     }
 
     if (types.includes("continue")) {
         sex.phase = "continue";
-        setup.updateCumLocations(sex);
+        setup.afterSexStateChange(sex);
         return;
     }
 
     if (types.includes("tease")) {
         sex.phase = "tease";
-        setup.updateCumLocations(sex);
+        setup.afterSexStateChange(sex);
+        return;
     }
 
     setup.updateBindings();
@@ -493,22 +474,52 @@ setup.ensureValidSexPosition = function (sex) {
  * the current penetration configuration.
  */
 setup.isEndActValid = function (act, sex) {
+  if (!sex || !sex.penetration) return false;
+  if (!sex.penetration.subjectPart || !sex.penetration.objectPart) return false;
+
+  const sp = sex.penetration.subjectPart;
+  const op = sex.penetration.objectPart;
+
+  const aSub = act["subject parts"]?.[0];
+  const aObj = act["object parts"]?.[0];
+  if (!aSub || !aObj) return false;
+
+  // Strict match (direction matters)
+  if (aSub === sp && aObj === op) return true;
+
+  // Only allow inverse if the act explicitly says it's symmetric
+  if (act["either direction"] === true || act.equal === true) {
+    if (aSub === op && aObj === sp) return true;
+  }
+
+  return false;
+};
+
+
+
+setup.isContinueActValid = function (act, sex) {
+    // Must currently be penetrating something
     if (!sex || !sex.penetration) return false;
     if (!sex.penetration.subjectPart || !sex.penetration.objectPart) return false;
 
-    const sp = sex.penetration.subjectPart;
-    const op = sex.penetration.objectPart;
-
+    // Act must declare what it continues (use first required parts)
     const aSub = act["subject parts"]?.[0];
     const aObj = act["object parts"]?.[0];
-
     if (!aSub || !aObj) return false;
 
-    if (aSub === sp && aObj === op) return true;
-    if (aSub === op && aObj === sp) return true;
+    // Strict match (direction matters):
+    return (
+        aSub === sex.penetration.subjectPart &&
+        aObj === sex.penetration.objectPart
+    );
 
-    return false;
+    // If you ever want "either direction counts", use:
+    // return (
+    //   (aSub === sp && aObj === op) ||
+    //   (aSub === op && aObj === sp)
+    // );
 };
+
 
 
 setup.updateSubjectObject = function (sex) {
