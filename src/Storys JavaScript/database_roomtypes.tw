@@ -135,7 +135,7 @@ setup.RoomTypes.furniture = {
     {
         label: "bed",
         preposition: "on",
-        flags: ["horizontal surface", "seat"],
+        flags: ["horizontal surface", "seat", "bench"], /* added bench */
     },
     "futon":
     {

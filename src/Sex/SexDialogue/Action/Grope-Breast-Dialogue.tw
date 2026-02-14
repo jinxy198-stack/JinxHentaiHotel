@@ -2,15 +2,26 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if $sex.role == "top">>
-	<<= either(
-        "Reaching up to _n.name's chest, they lets out a soft moan as you start fondling and groping $proset.their <<= _n.breastsize.toLowerCase() >> breasts,"
-    )>>
-<<else>>
-	<<= either(
-        "Reaching up to your chest, you let out a moan as $proset.they start eagerly fondling and groping your <<= $mc.breastsize.toLowerCase() >> breasts,"
-    )>>
+<<if $sex.previousPosition =="Pronebone">>
+    <<if $sex.role == "top">>
+	    <<= either(
+            "You reach under _n.name and grope their breasts."
+        )>>
+    <<else>>
+	    <<= either(
+            "_n.name reaches under you and gropes your breasts"
+        )>>
     <</if>>
-
+<<else>>
+    <<if $sex.role == "top">>
+	    <<= either(
+            "Reaching up to _n.name's chest, they lets out a soft moan as you start fondling and groping $proset.their <<= _n.breastsize.toLowerCase() >> breasts,"
+        )>>
+    <<else>>
+	    <<= either(
+            "Reaching up to your chest, you let out a moan as $proset.they start eagerly fondling and groping your <<= $mc.breastsize.toLowerCase() >> breasts,"
+        )>>
+    <</if>>
+<</if>>
 
 

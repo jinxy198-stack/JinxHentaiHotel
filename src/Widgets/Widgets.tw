@@ -97,7 +97,7 @@
 			<</if>>
 		</div>
 
-		<div id="log">Awaiting your move…</div>
+		<div id="log"><<include "PositionDialogue">></div>
 
 		<hr>
 	</div>
@@ -136,12 +136,10 @@
 										<<set $sex._printedPos = null>>
 
 										<<replace "#sexUI">>
-                                        
 											<<SexEncounterUI>> 
 										<</replace>>
 
 										<<replace "#npcsex-dialogue">>
-											/*<<SexDialogueRunner>> */
                                             <<include "PositionDialogue">>
 										<</replace>>
 									<</button>>

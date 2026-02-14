@@ -3,8 +3,6 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-
-
 	<<if $sex.roles.dom.name == _n.name>>
 		<<= either(
 			"Gently sliding your <<= $mc.body.Feet.toLowerCase()>> up and down around _n.name's <<= _n.genitals.toLowerCase()>>, you let out a soft moan as you give $proset.them a footjob.",

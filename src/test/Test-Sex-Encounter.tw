@@ -30,7 +30,7 @@
 /* local convenience copy */
 <<set _sexCount = $npcMemory[_key].sexCount>>
 
-<<set $sex.position = "Cowgirl">>
+<<set $sex.position = "Standing">>
 <<set $sex.subject = null>>
 <<set $sex.object = null>>
 <<set $sex.engagedParts= { subject: [], object: [] }>>

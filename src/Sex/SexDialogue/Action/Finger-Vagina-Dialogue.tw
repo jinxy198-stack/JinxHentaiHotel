@@ -14,9 +14,18 @@
     <</if>>
 
 <<elseif $sex.act =="Pull Hand To Pussy">>
-You pull their hand to your pussy.
+You pull their hand to your pussy to finger you.
 <<elseif $sex.act=="Rub Clit">>  
     You rub clit.
+    <<if $sex.role == "top">>
+	    <<= either(
+ 	    "You rub _n.name's clit."
+        )>>
+    <<else>>
+	    <<= either(
+        "_n.name rubs your clit."
+        )>>
+    <</if>>
 
 
 <</if>>

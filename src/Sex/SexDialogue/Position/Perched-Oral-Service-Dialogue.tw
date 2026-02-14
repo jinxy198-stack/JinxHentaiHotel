@@ -1,5 +1,5 @@
 :: Perched-Oral-Service-Dialogue [nobr]
-
+    /* Other person is on a higher surface? */
     <<if $sex.role == "top">>
     _n.name is kneeling between your thighs as you are perched on the $room.location.
     <<else>>
