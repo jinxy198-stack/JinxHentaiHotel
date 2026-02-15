@@ -22,12 +22,12 @@
 
 
 <<if _mode == "give">>
-	<<set _pool = setup.blowjobQuotes.give[_personality]
-	|| setup.blowjobQuotes.give[_pref]
-	|| setup.blowjobQuotes.give.Neutral>>
+	<<set _pool = setup.blowjobQuotes.bottom[_personality]
+	|| setup.blowjobQuotes.bottom[_pref]
+	|| setup.blowjobQuotes.bottom.Neutral>>
 <<else>>
-	<<set _pool = setup.blowjobQuotes.receive[_pref] 
-	|| setup.blowjobQuotes.receive.Neutral>>
+	<<set _pool = setup.blowjobQuotes.top[_pref] 
+	|| setup.blowjobQuotes.top.Neutral>>
 <</if>>
 
 

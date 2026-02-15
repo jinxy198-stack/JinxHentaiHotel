@@ -22,12 +22,12 @@
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.fingerassQuotes.give[_pref]
-	|| setup.fingerassQuotes.give.Neutral>>
+	<<set _pool = setup.fingerassQuotes.bottom[_pref]
+	|| setup.fingerassQuotes.bottom.Neutral>>
 <<else>>
-	<<set _pool = setup.fingerassQuotes.receive[_personality]
-	|| setup.fingerassQuotes.receive[_pref] 
-	|| setup.fingerassQuotes.receive.Neutral>>
+	<<set _pool = setup.fingerassQuotes.top[_personality]
+	|| setup.fingerassQuotes.top[_pref] 
+	|| setup.fingerassQuotes.top.Neutral>>
 <</if>>
 
 

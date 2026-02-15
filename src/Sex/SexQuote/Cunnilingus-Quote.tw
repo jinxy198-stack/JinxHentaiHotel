@@ -1,29 +1,22 @@
 :: Cunnilingus-Quote [nobr Dialogue] {"position":"1800,1300","size":"100,100"}
-<<if !setup.cunnilingusQuotes>>
-	[Error] setup.cunnilingusQuotes is missing. Define it in StoryInit.
-	<<return>>
+
+
+<<if $sex.role == "bottom">>
+	<<set _mode = "bottom">>
+<<elseif $sex.role == "top">>
+	<<set _mode = "top">>
 <</if>>
 
-<<if !$sex or !$sex.roles or !_n>>
-	<<return>>
-<</if>>
-
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>><<set _pref = _n.sexpref || "Neutral">>
+<<set _pref = _n.sexpref || "Neutral">>
 
 <<set _pool = null>>
 
-<<if _mode == "give">>
-	<<set _pool = setup.cunnilingusQuotes.give[_pref]
-	|| setup.cunnilingusQuotes.give.Neutral>>
-<<else>>
-	<<set _pool = setup.cunnilingusQuotes.receive[_pref] 
-	|| setup.cunnilingusQuotes.receive.Neutral>>
+<<if _mode == "bottom">>
+	<<set _pool = setup.cunnilingusQuotes.bottom[_pref]
+	|| setup.cunnilingusQuotes.bottom.Neutral>>
+<<elseif _mode == "top">>
+	<<set _pool = setup.cunnilingusQuotes.top[_pref] 
+	|| setup.cunnilingusQuotes.top.Neutral>>
 <</if>>
 
 
@@ -31,6 +24,7 @@
 	<<= either(..._pool)>>
 <<else>>
 	[Error] No Cunnilingus quote pool found.
+	(mode=<<=_mode>>, pref=<<=_pref>>)
 <</if>>
 
 

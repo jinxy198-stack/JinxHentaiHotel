@@ -22,13 +22,13 @@
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.cuddleQuotes.give[_personality]
-	||setup.cuddleQuotes.give[_pref]
-	|| setup.cuddleQuotes.give.Neutral>>
+	<<set _pool = setup.cuddleQuotes.bottom[_personality]
+	||setup.cuddleQuotes.bottom[_pref]
+	|| setup.cuddleQuotes.bottom.Neutral>>
 <<else>>
-	<<set _pool = setup.cuddleQuotes.receive[_personality]
-	||setup.cuddleQuotes.receive[_pref] 
-	|| setup.cuddleQuotes.receive.Neutral>>
+	<<set _pool = setup.cuddleQuotes.top[_personality]
+	||setup.cuddleQuotes.top[_pref] 
+	|| setup.cuddleQuotes.top.Neutral>>
 <</if>>
 
 <<if _pool && _pool.length>>

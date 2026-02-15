@@ -17,11 +17,11 @@
 <</if>>
 /* add stuff for age and size? */
 <<if _mode == "bottom">>
-	<<set _pool = setup.vaginalQuotes.give[_pref] 
-    || setup.vaginalQuotes.give.Neutral>>
+	<<set _pool = setup.vaginalQuotes.bottom[_pref] 
+    || setup.vaginalQuotes.bottom.Neutral>>
 <<elseif _mode =="top">>
-	<<set _pool = setup.vaginalQuotes.receive[_pref] 
-    || setup.vaginalQuotes.receive.Neutral>>
+	<<set _pool = setup.vaginalQuotes.top[_pref] 
+    || setup.vaginalQuotes.top.Neutral>>
 <</if>>
 
 

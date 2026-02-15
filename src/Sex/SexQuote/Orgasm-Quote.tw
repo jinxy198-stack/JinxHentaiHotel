@@ -15,14 +15,14 @@
 <<set _personality = _n.personality>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.orgasmQuotes.give[_action][_pref]
-	||setup.orgasmQuotes.give[_action][_pref] 
-	|| setup.orgasmQuotes.give.default>>
+	<<set _pool = setup.orgasmQuotes.bottom[_action][_pref]
+	||setup.orgasmQuotes.bottom[_action][_pref] 
+	|| setup.orgasmQuotes.bottom.default>>
 
 <<else>>
-	<<set _pool = setup.orgasmQuotes.receive[_action][_personality]
-	|| setup.orgasmQuotes.receive[_action][_pref]
-	|| setup.orgasmQuotes.receive.default>>
+	<<set _pool = setup.orgasmQuotes.top[_action][_personality]
+	|| setup.orgasmQuotes.top[_action][_pref]
+	|| setup.orgasmQuotes.top.default>>
 
 <</if>>
 

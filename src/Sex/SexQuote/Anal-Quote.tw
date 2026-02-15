@@ -24,19 +24,19 @@
 	<<if _mode == "give">>
 	<<set _pool =
 		(
-			setup.analQuotes.give[_position]
-			&& setup.analQuotes.give[_position][_pref]
+			setup.analQuotes.bottom[_position]
+			&& setup.analQuotes.bottom[_position][_pref]
 		)
-		|| setup.analQuotes.give.Neutral
+		|| setup.analQuotes.bottom.Neutral
 	>>
 	<<else>>
 	<<set _pool =
 		(
-			setup.analQuotes.receive[_position]
-			|| setup.analQuotes.receive[_position][_personality]
-			|| setup.analQuotes.receive[_position][_pref]
+			setup.analQuotes.top[_position]
+			|| setup.analQuotes.top[_position][_personality]
+			|| setup.analQuotes.top[_position][_pref]
 		)
-		|| setup.analQuotes.receive.Neutral
+		|| setup.analQuotes.top.Neutral
 	>>
 	<</if>>
 

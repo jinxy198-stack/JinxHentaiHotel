@@ -1,31 +1,21 @@
 :: Rimjob-Quote [nobr Dialogue] {"position":"1800,1500","size":"100,100"}
-<<if !setup.rimjobQuotes>>
-	[Error] setup.rimjobQuotes is missing. Define it in StoryInit.
-	<<return>>
-<</if>>
 
-<<if !$sex or !$sex.roles or !_n>>
-	<<return>>
-<</if>>
-
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
+<<if $sex.role == "bottom">>
+	<<set _mode = "bottom">>
+<<elseif $sex.role == "top">>
+	<<set _mode = "top">>
 <</if>>
 <<set _pref = _n.sexpref || "Neutral">>
 <<set _personality = _n.personality>>
 
 <<set _pool = null>>
 
-<<if _mode == "give">>
-	<<set _pool = setup.rimjobQuotes.give[_pref]
-	|| setup.rimjobQuotes.give.Neutral>>
-<<else>>
-	<<set _pool = setup.rimjobQuotes.receive[_pref] 
-	|| setup.rimjobQuotes.receive.Neutral>>
+<<if _mode == "bottom">>
+	<<set _pool = setup.rimjobQuotes.bottom[_pref]
+	|| setup.rimjobQuotes.bottom.Neutral>>
+<<elseif _mode == "top">>
+	<<set _pool = setup.rimjobQuotes.top[_pref] 
+	|| setup.rimjobQuotes.top.Neutral>>
 <</if>>
 
 
@@ -33,6 +23,7 @@
 	<<= either(..._pool)>>
 <<else>>
 	[Error] No Rimjob quote pool found.
+	(mode=<<=_mode>>, pref=<<=_pref>>,personality=<<=_personality>> )
 <</if>>
 
 

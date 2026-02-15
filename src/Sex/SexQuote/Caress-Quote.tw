@@ -16,14 +16,14 @@
 <<set _personality = _n.personality>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.caressQuotes.give[_mmaterial]
-	&& setup.caressQuotes.give[_mmaterial][_pref]
-	|| setup.caressQuotes.give[_pref]>>
+	<<set _pool = setup.caressQuotes.bottom[_mmaterial]
+	&& setup.caressQuotes.bottom[_mmaterial][_pref]
+	|| setup.caressQuotes.bottom[_pref]>>
 <<else>>
-	<<set _pool = setup.caressQuotes.receive[_personality]
-		||setup.caressQuotes.receive[_nmaterial]
-		&& setup.caressQuotes.receive[_nmaterial][_pref]
-		|| setup.caressQuotes.receive.Neutral
+	<<set _pool = setup.caressQuotes.top[_personality]
+		||setup.caressQuotes.top[_nmaterial]
+		&& setup.caressQuotes.top[_nmaterial][_pref]
+		|| setup.caressQuotes.top.Neutral
 	>>
 <</if>>
 

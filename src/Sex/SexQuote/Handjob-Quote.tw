@@ -1,54 +1,44 @@
 :: Handjob-Quote [nobr Dialogue] {"position":"1700,1700","size":"100,100"}
-<<if !setup.handjobQuotes>>
-	[Error] setup.handjobQuotes is missing. Define it in StoryInit.
-	<<return>>
-<</if>>
 
-<<if !$sex or !$sex.roles or !_n>>
-	<<return>>
-<</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>><<set _pref = _n.sexpref || "Neutral">>
+<<if $sex.role == "bottom">>
+	<<set _mode = "bottom">>
+<<elseif $sex.role == "top">>
+	<<set _mode = "top">>
+<</if>>
+<<set _pref = _n.sexpref || "Neutral">>
 <<set _size = $mc.penislength || "Average">>
-<<set _age  = ($mc.ageGroup == "Child") ? "Child" : "Adult">>
+<<set _age  = $mc.ageGroup>>
 <<set _personality = _n.personality>>
 
 <<set _pool = null>>
 
-<<if _mode == "give">>
+<<if _mode == "top">>
 	<<set _pool =
-		setup.handjobQuotes.give[_pref]
-		|| setup.handjobQuotes.give.Neutral
+		setup.handjobQuotes.bottom[_pref]
+		|| setup.handjobQuotes.bottom.Neutral
 	>>
-<<else>>
-	
+<<elseif _mode == "bottom">>
 	<<if _personality == "Childlike">>
 		<<set _pool =
-			setup.handjobQuotes.receive[_personality]
+			setup.handjobQuotes.top[_personality]
 		>>
-	
 	<<elseif _size == "Tiny">>
 		<<set _pool =
 			(
-				setup.handjobQuotes.receive[_pref]
-				&& setup.handjobQuotes.receive[_pref].Tiny
-				&& setup.handjobQuotes.receive[_pref].Tiny[_age]
+				setup.handjobQuotes.top[_pref]
+				&& setup.handjobQuotes.top[_pref].Tiny
+				&& setup.handjobQuotes.top[_pref].Tiny[_age]
 			)
-			|| setup.handjobQuotes.receive.Neutral
+			|| setup.handjobQuotes.top.Neutral
 		>>
 	<<else>>
 		<<set _pool =
 			(
-				setup.handjobQuotes.receive[_pref]
-				&& setup.handjobQuotes.receive[_pref][_size]
+				setup.handjobQuotes.top[_pref]
+				&& setup.handjobQuotes.top[_pref][_size]
 			)
-			|| setup.handjobQuotes.receive.Neutral
+			|| setup.handjobQuotes.top.Neutral
 		>>
 	<</if>>
 <</if>>
@@ -57,5 +47,6 @@
 	<<= either(..._pool)>>
 <<else>>
 	[Error] No handjob quote pool found.
+	(mode=<<=_mode>>, pref=<<=_pref>>, age=<<=_age>>, size=<<=_size>>,personality=<<=_personality>>)
 <</if>>
 

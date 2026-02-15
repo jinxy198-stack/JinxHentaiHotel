@@ -1,0 +1,56 @@
+::Enter-Ass-Quote [nobr]
+
+
+<<set _pref = _n.sexpref || "Switch">>
+<<set _msize = $mc.penislength || "Average">>
+<<set _personality = _n.personality>>
+
+<<if $sex.role == "bottom">>
+	<<set _mode = "bottom">>
+<<elseif $sex.role == "top">>
+	<<set _mode = "top">>
+<</if>>
+<<set _position = $sex.position >>
+
+<<set _pool = null>>
+
+<<if _mode == "bottom">>
+	<<set _pool = setup.analQuotes.bottom[_position][_pref] 
+    || setup.analQuotes.bottom.Neutral>>
+<<elseif _mode == "top">>
+  <<set _pool =
+        (setup.analQuotes.top[_position] && setup.analQuotes.top[_position][_personality])
+        || (setup.analQuotes.top[_position] && setup.analQuotes.top[_position][_pref])
+        || setup.analQuotes.top[_position]
+        || setup.analQuotes.top[_pref]
+        || setup.analQuotes.top.Neutral
+  >>
+<</if>>
+
+
+/*
+<<if _mode == "give">>
+	<<set _pool =
+		(
+			setup.analQuotes.bottom[_position]
+			&& setup.analQuotes.bottom[_position][_pref]
+		)
+		|| setup.analQuotes.bottom.Neutral
+	>>
+	<<else>>
+	<<set _pool =
+		(
+			setup.analQuotes.top[_position]
+			|| setup.analQuotes.top[_position][_personality]
+			|| setup.analQuotes.top[_position][_pref]
+		)
+		|| setup.analQuotes.top.Neutral
+	>>
+<</if>> */
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No Anal quote pool found.
+    (mode=<<=_mode>>, pref=<<=_pref>>, nsize=<<=_nsize>>, msize=<<=_msize>>, personality=<<=_personality>>)
+<</if>>

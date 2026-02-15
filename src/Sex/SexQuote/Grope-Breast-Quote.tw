@@ -24,15 +24,15 @@
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.gropebreastQuotes.give[_pref][_msize][_mage] 
-	|| setup.gropebreastQuotes.give.Neutral>>
+	<<set _pool = setup.gropebreastQuotes.bottom[_pref][_msize][_mage] 
+	|| setup.gropebreastQuotes.bottom.Neutral>>
 <<else>>
 		<<run _pool =
 			(
-				setup.gropebreastQuotes.receive[_pref]
-				&& setup.gropebreastQuotes.receive[_pref][_nsize][_nage]
+				setup.gropebreastQuotes.top[_pref]
+				&& setup.gropebreastQuotes.top[_pref][_nsize][_nage]
 			)
-			|| setup.gropebreastQuotes.receive.Neutral
+			|| setup.gropebreastQuotes.top.Neutral
 		>>
 <</if>>
 
@@ -59,12 +59,12 @@
 <</if>>
 
 <<if $sex.role =="top">>
-	<<set _pool = setup.gropebreastQuotes.receive[_pref][_nsize][_nage] 
-	|| setup.gropebreastQuotes.receive[_pref][_nsize]
-	|| setup.gropebreastQuotes.receive.Neutral>>
+	<<set _pool = setup.gropebreastQuotes.top[_pref][_nsize][_nage] 
+	|| setup.gropebreastQuotes.top[_pref][_nsize]
+	|| setup.gropebreastQuotes.top.Neutral>>
 <<elseif $sex.role =="bottom">>
-	<<set _pool = setup.gropebreastQuotes.give[_pref][_msize][_mage] 
-	|| setup.gropebreastQuotes.give.Neutral>>
+	<<set _pool = setup.gropebreastQuotes.bottom[_pref][_msize][_mage] 
+	|| setup.gropebreastQuotes.bottom.Neutral>>
 <<else>>
 ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT'S CREATOR
 <</if>>
