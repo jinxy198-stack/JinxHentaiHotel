@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="158" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
+	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="160" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
 .sex-list {
   display: flex;
   flex-wrap: wrap;
@@ -1061,9 +1061,7 @@ h1, h2, h3{
   grid-template-columns: minmax(0, 1fr) 280px;
   gap: 1em;
   max-width: 1200px;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "Setup-Init" */
-window.setup = window.setup || {};
-/* twine-user-script #2: "Eventdb" */
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "Eventdb" */
 if (!("Events" in setup)) setup.Events = {};
 
 // the event database!
@@ -1163,7 +1161,7 @@ setup.Events.db =
 [
 
 ]
-/* twine-user-script #3: "Sex-Quote-Data" */
+/* twine-user-script #2: "Sex-Quote-Data" */
 /* ----- ANAL ----- */
 setup.analQuotes = {
   bottom: {
@@ -1209,7 +1207,7 @@ setup.analQuotes = {
     },
     Dominant: [
       "Shit, you know how to move!",
-			"Ah, $mc.name.",
+			"Ah, <span class="mc">$mc.name.</span>",
 			"Mm, yeah, you like that, $mc.name?",
 			"You feel so fucking good around me!",
 			"You feel so tight, $mc.name. You were made for this!",
@@ -2715,7 +2713,7 @@ setup.PushCockInQuotes = {
   }
 
 };
-/* twine-user-script #4: "StoryScript" */
+/* twine-user-script #3: "StoryScript" */
 /* for the body slider */
 window.SugarCubeInput = function (el) {
 	const path = el.dataset.var;
@@ -2822,7 +2820,7 @@ $(document).on("click", "#npcsex-toggle", function () {
   this.textContent = minimized ? "▲ Actions" : "▼ Actions";
   this.setAttribute("aria-expanded", !minimized);
 });
-/* twine-user-script #5: "database_dialogue" */
+/* twine-user-script #4: "database_dialogue" */
 setup.Dialogue = {};
 
 setup.Dialogue.db = [
@@ -2864,7 +2862,7 @@ setup.Dialogue.db = [
     }
 
 ]
-/* twine-user-script #6: "database_food" */
+/* twine-user-script #5: "database_food" */
 setup.food=
 {
     "Hot dog":{
@@ -3261,7 +3259,7 @@ setup.snack={
         "flags": []
     },
 };
-/* twine-user-script #7: "database_names" */
+/* twine-user-script #6: "database_names" */
 setup.names=[
     "Alex", "Ash", "Aspen", "Avery", "Aris", "Atlas", "Aiden", "Angel", "Arden", "Ari", "Azul", "Bailey","Blair", "Blake", "Brook", "Bryce","Briar", "Bellamy", "Bex", "Blue", "Bowie", "Cameron", "Casey","Charlie", "Chris", "Corey", "Cove", "Cypress", "Carter", "Calyx", "Cy", "Dakota", "Dallas", "Darcy", "Devin", "Drew", "Delta", "Denali", "Dior", "Dusty", "Elliot", "Emerson", "Eden", "Echo", "Evan", "Elian","Ellis", "Ember", "Ever", "Ezri", "Finley", "Frankie", "Fallon", "Fox", "Flynn", "Fable", "Frost", "Florin", "Gray", "Gale", "Gemini", "Glenn", "Greer", "Goldie","Genesis", "Grove", "Harper", "Hayden", "Hollis", "Hunter","Harlow", "Halo", "Haven", "Hero", "Indigo", "Ira","Izzy", "Iman", "Io", "Iris", "Ivory", "Jordan", "Jamie", "Jesse", "Jaden", "Jules", "Justice", "Jory", "Jinx", "Kai", "Kendall", "Kennedy", "Kit", "Knox", "Kieran", "Kestrel", "Kyrie", "Logan", "Lane", "Lennox", "Luca", "Leslie", "Lake", "Lux", "Lior","Linden", "Morgan", "Micah", "Marley", "Mason", "Max", "Milan", "Monroe", "Moon","Merritt", "Noel", "Nova", "Nico", "Navy", "Nile", "North", "Nyx", "Oakley", "Ocean", "Orion", "Onyx", "Ollie", "Opal", "Parker", "Phoenix", "Peyton", "Perry", "Prism", "Poet", "Pike", "Quinn", "Quest", "Quincy", "Riley", "River", "Rowan","Reese", "Robin", "Ren", "Rogue", "Rain", "Sage", "Sky", "Sawyer", "Spencer", "Sidney", "Shiloh", "Sol", "Storm", "Sutton", "Taylor", "Tatum", "Theo", "Tristan", "True", "Timber", "Tonic", "Uma", "Urban", "Val", "Vesper", "Vale","Venus", "Vireo", "Wren", "Winter", "Wilder", "West", "Whitley", "Xan", "Xavi","Xen", "Yael", "Yves", "Yuki", "Zion", "Zane", "Zephyr", "Zuri", "Zen",
 ];
@@ -3269,7 +3267,7 @@ setup.names=[
 setup.surnames = [
     "Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Mudd", "Rodriguez", "Wilson", "Martinez", "Seo", "Anderson", "Taylor", "Tan", "Thomas", "Yun", "Hernandez", "Moore", "Martin", "Han", "Jackson", "Jang", "Thompson", "White", "Lopez", "Lee", "Gonzalez", "Harris", "Clark", "Lewis", "Ohn", "Robinson", "Sharma", "Walker", "Yoon", "Perez", "Hall", "Young", "Allen", "Taniguchi", "Sanchez", "Hoang", "Wright", "King", "Scott", "Green", "Baker", "Adams", "Nelson", "Hill", "Ramirez", "Campbell", "Ashborne", "Mitchell", "Kang", "Roberts", "Carter", "Phillips", "Evans", "Turner", "Yoo", "Torres", "Parker", "Collins", "Solarin", "Edwards", "Lim", "Stewart", "Flores", "Nishimura", "Uba", "Morris", "Wormwood", "Nguyen", "Murphy", "Rivera", "Cook", "Rogers", "On", "Morgan", "Kumar", "Peterson", "Cooper", "Reed", "Amaechi", "Bailey", "Magoro", "Bell", "Ri", "Gomez", "Kelly", "Howard", "Fāng", "Im", "Ward", "Okonjo", "Diaz", "Rockets", "Jo", "Richardson", "Wood", "Watson", "Brooks", "Cho", "Bennett", "Gray", "James", "Reyes", "Cruz", "Jiǎng", "Hughes", "Price", "Myers", "Fujita", "Cuī", "Okar", "Long", "Foster", "Sanders", "Ross", "Morales", "Xiè", "Powell", "Sullivan", "Russell", "Akenzua", "Ortiz", "Jenkins", "Gutierrez", "Perry", "Jīn", "Butler", "Son", "Barnes", "Goto", "Fisher", "Henderson", "Ip", "Coleman", "Simmons", "Patterson", "Jordan", "Reynolds", "Acharya", "Hamilton", "Graham", "Kim", "Gonzales", "Alexander", "Ramos", "Wallace", "Griffin", "West", "Bái", "Cole", "Hayes", "Dīng", "Chavez", "Ota", "Gibson", "Bryant", "Ellis", "Stevens", "Murray", "Ford", "Marshall", "Owens", "McDonald", "Harrison", "Attah", "Ruiz", "Kennedy", "Wells", "Alvarez", "Woods", "Mendoza", "Castillo", "Olson", "Bedi", "Webb", "Lager", "Washington", "Guān", "Tucker", "Freeman", "Burns", "Henry", "Vasquez", "Snyder", "Murakami", "Simpson", "Xióng", "Crawford", "Jimenez", "Porter", "Mason", "Shaw", "Gordon", "Wagner", "Hunter", "Romero", "Hicks", "Okoye", "Dixon", "Hunt", "Palmer", "Robertson", "Hwang", "Black", "Shào", "Holmes", "Stone", "Meyer", "Sū", "Boyd", "Wèi", "Mills", "Okada", "Warren", "Fox", "Rose", "Onishi", "Rice", "Moreno", "Schmidt", "Patel", "Béchamel", "Ferguson", "Nichols", "Whitlock", "Herrera", "Silvervein", "Saito", "Medina", "Mehta", "Ryan", "Ebonhart", "Fernandez", "Weaver", "Daniels", "Okiro", "Chou", "Stephens", "Gardner", "Payne", "Blackthorne", "Kelley", "Balewa", "Darke", "Kingsley", "Dunn", "Pierce", "Arnold", "Tran", "Spencer", "Peters", "Hawkins", "Kwon", "Larkspur", "Grant", "Savage", "Merriweather", "Winterbourne", "Hansen", "Brightmore", "Ashworth", "Castro", "Ibori", "Hoffman", "Clearwater", "Hart", "Elliott", "Sakurai", "Cunningham", "Knight", "Shin", "Bradley", "Xu", "Carroll", "Hudson", "Joshi", "Duncan", "Armstrong", "Berry", "Andrews", "Takada", "Johnston", "Ray", "Kingswell", "Lane", "Riley", "Carpenter", "Haverford", "Perkins", "Greycliff", "Chéng", "Aguilar", "Harada", "Silva", "Thorne", "Richards", "Willis", "Matthews", "Ando", "Chapman", "Lawrence", "Lǚ", "Garza", "Vargas", "Watkins", "Wheeler", "Yuán", "Yakubu", "Northwood", "Dellinger", "Larson", "Carlson", "Harper", "George", "Sy", "Greene", "Gildemar", "Burke", "Endive", "Crenshaw", "Guzman", "Morrison", "Munoz", "Cài", "Jacobs", "Obrien", "Yè", "Kulkarni", "Silverman", "Lawson", "Franklin", "Cloudhaven", "Hawkwell", "Lynch", "Won", "Bishop", "Carr", "Salazar", "Austin", "Mendez", "Zēng", "Gilbert", "Hara", "Jensen", "Williamson", "Kapoor", "Montgomery", "Chu", "Harvey", "Oliver", "Chinen", "Howell", "Dean", "Hanson", "Weber", "Garrett", "Jung", "Sims", "Burton", "Fuller", "Soto", "McCoy", "Jeong", "Welch", "Chen", "Schultz", "Walters", "Reid", "Fields", "Coldridge", "Walsh", "Little", "Fowler", "Duskwood", "Bowman", "Davidson", "May", "Day", "Schneider", "Péng", "Newman", "Calvert", "Penrose", "Brewer", "Yu", "Lucas", "Holland", "Wong", "Banks", "Santos", "Sylla", "Curtis", "Pearson", "Delgado", "Valdez", "Arief", "Pena", "Bello", "Rios", "Douglas", "Sandoval", "Pān", "Barrett", "Hopkins", "Keller", "Guerrero", "Stanley", "Bates", "Greycliffe", "Hong", "Alvarado", "Beck", "Ortega", "Wade", "Estrada", "Contreras", "Agarwal", "Ryu", "Barnett", "Caldwell", "Santiago", "Kante", "Lambert", "Powers", "Chambers", "Nunez", "Craig", "Leonard", "Lowe", "Rhodes", "Byrd", "Dela Cruz", "Mangosteen", "Gregory", "Blackthorn", "Shelton", "Frazier", "Becker", "Oakenshield", "Yú", "Maldonado", "Nakayama", "Fleming", "Vega", "Sutton", "Song", "Cohen", "Jennings", "Parks", "Konate", "McDaniel", "Watts", "Barker", "Norris", "Thiam", "Vaughn", "Ahn", "Vazquez", "Holt", "Schwartz", "Abdullah", "Steele", "Marchand", "Benson", "Eom", "Neal", "Dominguez", "Ishikawa", "Horton", "Terry", "Leung", "Yap", "Wolfe", "Hale", "Lyons", "Graves", "Beckett", "Haynes", "He", "Miles", "Jain", "Park", "Warner", "Chun", "Padilla", "Everhart", "Bush", "Thornton", "McCarthy", "Mann", "Zimmerman", "Sow", "Erickson", "Jeon", "Fletcher", "McKinney", "Bumpus", "Hollingsworth", "Page", "Dawson", "Joseph", "Desai", "Pembroke", "Marquez", "Reeves", "An", "Klein", "Espinoza", "Guo", "Baldwin", "Moran", "Wada", "Sugawara", "Love", "Diouf", "Robbins", "Higgins", "Montclair", "Ball", "Cortez", "Le", "Hollander", "Griffith", "Yarmouth", "Bowen", "Sharp", "Sinha", "Xiao", "Ramsey", "Quimby", "Hardy", "Devereux", "Mellark", "Swanson", "Barber", "Acosta", "Luna", "Chandler", "Traoré", "Blair", "Daniel", "Hasegawa", "Cross", "Simon", "Malik", "Dennis", "Stormrider", "Ueda", "Oconnor", "Quinn", "Leong", "Navarro", "Moss", "Ogawa", "Strathmore", "Fitzgerald", "Everdeen", "Doyle", "McLaughlin", "Loxley", "Rojas", "Rodgers", "Stevenson", "Singh", "Yang", "Deng", "Figueroa", "Harmon", "Newton", "Koné", "Paul", "Manning", "Garner", "McGee", "Ueno", "Reese", "Francis", "Burgess", "Adkins", "Goodman", "Curry", "Hashimoto", "Brady", "Phan", "Christensen", "Choudhary", "Camara", "Potter", "Walton", "Goodwin", "Mullins", "Molina", "Webster", "Ikeda", "Fischer", "Campos", "Avila", "Sherman", "Trotter", "Todd", "Chang", "Blake", "Malone", "Wolf", "Hodges", "Juarez", "Gill", "Farmer", "Ong", "Hines", "Gallagher", "Duran", "Féng", "Whitlocke", "Vexley", "Hubbard", "Huynh", "Cannon", "Hán", "Miranda", "Wang", "Saunders", "Tate", "Mack", "Odair", "Montclaire", "Hammond", "Ironwood", "Carrillo", "Townsend", "Wise", "Ingram", "Barton", "Mejia", "Ayala", "Schroeder", "Koh", "Fenchway", "Beaver", "Hampton", "Rowe", "Luó", "Parsons", "Pae", "Frank", "Waters", "Pemboke", "Pendleton", "Redfern", "Fairefax", "Strickland", "Otsuka", "Osborne", "Maxwell", "Chan", "Deleon", "Fairfax", "Godwin", "Norman", "Dèng", "Harrington", "Paek", "Casey", "Patton", "Logan", "Hawthorne", "Bowers", "Min", "Mueller", "Ju", "Glover", "Konishi", "Floyd", "Gāo", "Hartman", "Buchanan", "Cobb", "Abe", "French", "Kramer", "McCormick", "Clarke", "Clutterbuck", "Tyler", "Mǎ", "Gibbs", "Moody", "Táng", "Conner", "Sparks", "McGuire", "Leon", "Choudhury", "Bauer", "Mori", "Norton", "Pope", "Flynn", "Hogan", "Nagai", "Robles", "Cáo", "Salinas", "Yates", "Lindsey", "Lloyd", "Marsh", "Ravenshade", "McBride", "Owen", "Solis", "Baek", "Pham", "Lang", "Pratt", "Lara", "Go", "Kagamine", "Brock", "Ballard", "Trujillo", "Shaffer", "Luo", "Drake", "Azarian", "Woo", "Roman", "Aguirre", "Morton", "Gao", "Wolfhart", "Stokes", "Lamb", "Pacheco", "Patrick", "Mistbrook", "Nomura", "Shepherd", "Hú", "Cain", "Burnett", "Hé", "Hess", "Li", "Picadillo", "Cervantes", "Verma", "Olsen", "Briggs", "Ochoa", "Duskwalker", "Cabrera", "Velasquez", "Zhū", "Montoya", "Roth", "Tsumugi", "Meyers", "Cardenas", "Whitestag", "Ironcrest", "Lín", "Fuentes", "Weiss", "Hoover", "Mun", "Stonemere", "Carroway", "Osgoode", "Wilkins", "Nicholson", "Underwood", "Short", "Carson", "Morrow", "Ko", "Hardman", "Holloway", "Summers", "Yamazaki", "Bryan", "Petersen", "McKenzie", "Serrano", "Ashcroft", "Northcott", "Aquanaut", "Hatsune", "Sòng", "Carey", "Clayton", "Wintermere", "Poole", "Calderon", "Guō", "Gallegos", "Greer", "Rivas", "Swett", "Radcliffe", "Guerra", "Ma", "Bae", "Decker", "Ellsworth", "Carrow", "Stratton", "Llewellyn", "Collier", "Wall", "Heo", "Whitaker", "Bass", "Emberstone", "Winthrop", "Flowers", "Davenport", "Varma", "Conley", "Houston", "Huff", "Copeland", "Hood", "Ashdown", "Goldleaf", "Monroe", "Massey", "Maeda", "Roberson", "Combs", "Franco", "Vu", "Bexley", "Larsen", "Randall", "Skinner", "Wilkinson", "Kirby", "Cameron", "Castorlin", "Bridges", "Anthony", "Richard", "Kirk", "Das", "Bruce", "Singleton", "Wickham", "Montrose", "Mathis", "Bradford", "Boone", "Darkwater", "Lawless", "Abbott", "Charles", "Thalberg", "Allison", "Hallowell", "Beaumont", "Ashford", "Sweeney", "Banerjee", "Atkinson", "Horn", "Brightforge", "Jefferson", "Rosales", "York", "Shim", "Christian", "Nam", "Phelps", "Drummond", "Farrell", "Ashbourne", "Merryfield", "Bellerose", "Aldridge", "Castaneda", "Nash", "Kinoshita", "Bond", "Wyatt", "Foley", "Chase", "Gates", "Vincent", "Mathews", "Zhu", "Hodge", "Garrison", "Moonshadow", "Trevino", "Isley", "Calderwood", "Villarreal", "Heath", "Dalton", "Valencia", "Callahan", "Ghosh", "Hensley", "Atkins", "Dragonblood", "Thornbrook", "Huffman", "Roy", "Boyer", "Frobisher", "Shields", "Lin", "Starling", "Grimes", "Glenn", "Cline", "Lovelace", "Delacruz", "Camacho", "Dillon", "Parrish", "Oneill", "Melton", "Booth", "Kane", "Berg", "Harrell", "Fuji", "Ashfield", "Wiggins", "Brennan", "Salas", "Ainsworth", "Kimura", "Marks", "Russo", "Sim", "Shimizu", "Trelawney", "Pembry", "Sawyer", "Baxter", "Fukuda", "Golden", "Hutchinson", "Seong", "Liu", "Walter", "McDowell", "Penumbra", "Nightingale", "Matsui", "Wiley", "Rich", "Honeychurch", "Peaseblossom", "Johns", "Kikuchi", "Suarez", "Bui", "Hobbs", "Beard", "Gilmore", "Ibarra", "Cheon", "Keith", "Starwhisper", "Co", "Macias", "Khan", "Andrade", "Ware", "Stephenson", "Cha", "Henson", "Xú", "Wilkerson", "Dyer", "McClure", "Kwok", "Huckleberry", "Blackwell", "Harrows", "Dela Rosa", "Mercado", "Tanner", "Gubbins", "Koizumi", "Endo", "Eaton", "Clay", "Pots", "Barron", "Hayashi", "Evers", "Duskendale", "Beasley", "Sūn", "Oneal", "Preston", "Small", "Wu", "Zamora", "Nishida", "Macdonald", "Vance", "Snow", "McClain", "Capulong", "Stafford", "Orozco", "Barry", "Jin", "Alcott", "English", "Shannon", "Fujwara", "Kline", "Ha", "Beauchamp", "Coldwell", "Jacobson", "Woodard", "Windham", "Huang", "Kemp", "Mosley", "Prince", "Merritt", "Chatterjee", "Hurst", "Sedgwick", "Rowntree", "Winrow", "Renshaw", "Villanueva", "Salleh", "Fudge", "Chiba", "Nolan", "Katō", "Lam", "Yoder", "Sato", "McCullough", "Inoue", "Waguri", "Lester", "Pringle", "Ravenscroft", "Moneypenny", "Aokii", "Santana", "Valenzuela", "Winters", "Matsumoto", "Kwak", "Barrera", "Cresta", "Leach", "Orr", "Berger", "Bose", "McKee", "Strong", "Conway", "Stein", "Whitehead", "Escobar", "Nair", "Knox", "Meadows", "Kamui", "Solomon", "Velez", "Odonnell", "Kerr", "Stout", "Blankenship", "Windrider", "Browning", "Kent", "Lozano", "Bartlett", "Thornfield", "Christophers", "Baggins", "Takagi", "Pruitt", "Buck", "Itō", "Barr", "Gaines", "Roh", "Durham", "Gentry", "Pang", "Rao", "McIntyre", "Sloan", "Gwak", "Melendez", "Rocha", "Herman", "Chae", "LaRue", "Moon", "Gotobed", "Shadowmere", "Hendricks", "Rangel", "Stark", "Lowery", "Hardin", "Hull", "Sasaki", "Wycliffe", "Sellers", "Arai", "Gu", "Ellison", "Shibata", "Calhoun", "Gillespie", "Mora", "Knapp", "McCall", "Morse", "Ellington", "Dorsey", "Weeks", "Nielsen", "Livingston", "Leblanc", "McLean", "Yamada", "Bradshaw", "Glass", "Satō", "Middleton", "Buckley", "Schaefer", "Frost", "Howe", "House", "McIntosh", "Pennington", "Reilly", "Hebert", "Wú", "McFarland", "Zhōu", "Hickman", "Noble", "Beaureguard", "Spears", "Conrad", "Bannerman", "Arias", "Galvan", "Velazquez", "Rawlins", "Frederick", "Randolph", "Cantu", "Fitzpatrick", "Mahoney", "Peck", "Diallo", "Suzuki", "Villa", "Michael", "Ono", "Donovan", "McConnell", "Walls", "Boyle", "Mayer", "Zuniga", "Giles", "Pineda", "Pace", "Hurley", "Mays", "McMillan", "Godric", "Crosby", "Yamaguchi", "Razak", "Ayers", "Case", "Yoshida", "Bentley", "Ademola", "Shepard", "Everett", "Pugh", "David", "McMahon", "Dunlap", "Huáng", "Bender", "Hahn", "Harding", "Yáng", "Duskbloom", "Takahashi", "Kaneko", "Danjuma", "Acevedo", "LeGustambos", "Raymond", "Glace", "Iyer", "Blackburn", "Chén", "Di Angelo", "Duffy", "Nnamani", "Landry", "Dougherty", "Que", "Bautista", "Shah", "Potts", "Arroyo", "Kojima", "Kimple", "Valentine", "Meza", "Gould", "Vaughan", "Fry", "Rush", "Avery", "Nightbloom", "Ito", "Frostveil", "Herring", "Ironsi", "Blackwood", "Dodson", "Clements", "Sampson", "Tapia", "Tanaka", "Falana", "Bean", "Lynn", "Crane", "Farley", "Rahman", "Cisneros", "Lurkin", "Benton", "Ashley", "McKay", "Finley", "Best", "Blevins", "Friedman", "Zhào", "Moses", "Ayim", "Sosa", "Blanchard", "Huber", "Frye", "Krueger", "Bernard", "Rosario", "Rubio", "Mullen", "Watanabe", "Benjamin", "Haley", "Chung", "Moyer", "Choi", "Horne", "Woodward", "Ali", "Fairchild", "Nixon", "Hayden", "Rivers", "Nakamura", "Estes", "McCarty", "Richmond", "Stuart", "Maynard", "Brandt", "Chaudfroid", "O'connell", "Sagespark", "Hanna", "Hu", "Sanford", "Sheppard", "Church", "Burch", "Levy", "Rasmussen", "Coffey", "Ponce", "Ryang", "Faulkner", "Donaldson", "Schmitt", "Novak", "Costa", "Montes", "Booker", "Cordova", "Kicklighter", "Waller", "Yamamoto", "Silverbranch", "Arellano", "Maddox", "Mata", "Bonilla", "Stanton", "Compton", "Kaufman", "Poverly", "Dudley", "McPherson", "Beltran", "McCann", "Wigglesworth", "Chateaubriand", "Stopframe", "Villegas", "Proctor", "Hester", "Yim", "Cantrell", "Daugherty", "Cherry", "Bray", "Davila", "Rowland", "Zhāng", "Levine", "Elsher", "Reddy", "Duskbane", "Bilzerian", "Yearwood", "Madden", "Spence", "Good", "Irwin", "Werner", "Krause", "Whitney", "Baird", "Hooper", "Castellan", "Pollard", "Sun", "Strongblossom", "Zavala", "Jarvis", "Lǐ", "Holden", "Kato", "Haas", "Hendrix", "McGrath", "Ahmad", "Bird", "Lucero", "Terrell", "Riggs", "Ishii", "Kincaid", "Gibraltar", "Emberfall", "Joyce", "Berringer", "Mercer", "Megurine", "Rollins", "Galloway", "Duke", "Pamplemousse", "Desdinova", "Odom", "Langley", "Morcant", "Andersen", "Downs", "Hatfield", "Mortimer", "Benitez", "Archer", "Huerta", "Travis", "McNeil", "Hinton", "Zhang", "Applegate", "Hays", "Kaur", "Mayo", "Fritz", "Pomeroy", "Everard", "Branch", "Mooney", "Ewing", "Ritter", "Fairbairn", "Tredwell", "Esparza", "Frey", "Bromley", "Ramsbottom", "Cranford", "Hathersage", "Tillinghast", "Stanhope", "Oakhurst", "Ashby", "Carleton", "Braun", "Liú", "Riddle", "Haney", "Wáng", "Silvershaw", "Mohamed", "Kaiser", "Holder", "Chaney", "Mo", "Marwood", "McKnight", "Gamble", "Carlotta", "Vang", "Cooley", "Carney", "Cowan", "Aldebury", "Featherstone", "Aldwyn", "Ismail", "Forbes", "Ferrell", "Shadowblood", "Chiltern", "Radnor", "Islington", "Fairchilde", "Davies", "Barajas", "Shea", "Varnham", "Penhaligon", "Spindlewick", "Osborn", "Bright", "Cuevas", "Bolton", "Murillo", "Lutz", "Duarte", "Kidd", "Key", "Cooke", "Nocturn", "McClean", "Cullen", "Everleigh", "Grayson", "Linnaeus", "Littlewood", "Kobayashi", "Devlin", "Dearbourne", "Ng", "Dagwood", "Wolfram", "Walden", "Lowell", "Cleary", "Attwell", "Sonnet", "Burrows", "Benedict", "Chow", "Chau", "Kyung", "Sinclair", "Evermore", "Trilby", "Theodosia", "Everly", "Heavenly", "Gupta", "Loveletter", "Lionheart", "Lundi", "Pendragon", "Tennyson", "Bradbury", "Keets", "Poet", "Locke", "Sprocket", "Moonbeam"
 ];
-/* twine-user-script #8: "database_people" */
+/* twine-user-script #7: "database_people" */
 setup.species = [
     "Human", "Anthro",
 ];
@@ -3379,7 +3377,7 @@ setup.bodyparts = {
     Lips: "lips",
     Tongue: "tongue"
 };
-/* twine-user-script #9: "database_roomtypes" */
+/* twine-user-script #8: "database_roomtypes" */
 setup.RoomTypes = {};
 
 setup.RoomTypes.db = {
@@ -3596,8 +3594,8 @@ setup.RoomTypes.furniture = {
         flags: ["vertical surface", "unconventional"],
     },
 };
-/* twine-user-script #10: "database_sex-Quote" */
-/* twine-user-script #11: "database_sex" */
+/* twine-user-script #9: "database_sex-Quote" */
+/* twine-user-script #10: "database_sex" */
 setup.sexpositions = {
     // label: player-readable label
     // frequency: how often an NPC chooses this position
@@ -5353,7 +5351,7 @@ setup.sexacts = {
 
 
 };
-/* twine-user-script #12: "sexHelpers" */
+/* twine-user-script #11: "sexHelpers" */
 /*
  * Applies arousal changes from a sex act to the current subject and object.
  * Respects optional arousal caps defined on the act.
@@ -5928,11 +5926,217 @@ Now get up $mc.name .&quot;
 
 Remember to follow the golden rule:
 
-Consent is required.</tw-passagedata><tw-passagedata pid="4" name="CC-Confirm" tags="" position="25,400" size="100,100">&lt;h1&gt;Hi $mc.name!&lt;/h1&gt;
+Consent is required.</tw-passagedata><tw-passagedata pid="4" name="CC-Confirm" tags="" position="25,400" size="100,100">&lt;h1&gt;Hi &lt;span class=&quot;mc&quot;&gt;$mc.name!&lt;/span&gt;&lt;/h1&gt;
 &lt;h2&gt;Your adventure is about to start...&lt;/h2&gt;
 
 
-[[Beginning]]</tw-passagedata><tw-passagedata pid="5" name="CC-Age" tags="creation-page" position="1175,100" size="100,100">&lt;h1&gt;Indicate your Age&lt;/h1&gt;\
+[[Beginning]]</tw-passagedata><tw-passagedata pid="5" name="Credits" tags="" position="150,25" size="100,100">The following are assets and characters I do not claim to own yet use them in the creation and development of the game. 
+The &#39;&#39;Character Creator Template&#39;&#39; section was created by manonamora on Twine 2/Tweego with SugarCube (2.37.3). Heavily modified but was very important for development.
+
+
+
+Applebridge is a original work created by online artist Nearphotison.
+Camp Buddy is a Yaoi Visual Novel game created by BLit&#39;s Games.
+
+Kevin Snowpaw is an OC created by KevinSnowpaw.
+Carla and Carlos Lovelie are twin OC&#39;s created by LewdmasterLora
+Joshua is a OC created by DragonSoul.</tw-passagedata><tw-passagedata pid="6" name="Disclaimer" tags="" position="275,25" size="100,100">Warning, this game will contain many simulated sexual interactions that is meant to appeal to many different kinks and fetishes including underage and zoophilia. I don&#39;t intend on restricting the content but I can give you the option to not engage when scenarios you do not like occurs.
+While I cannot list all the content that is or will be included I can list what I will not include in the game (might grow over time):
+*Noncon
+*Watersports
+*Scat
+*ABDL
+*gore (sexualized)
+*Snuff
+
+Also this game will include characters from existing media. I do not claim to own these characters and they will be noted in the Credits as well as where they are from.
+
+While in this game you can potentially interact in consensual sexual activity with a minor or feral creatures I do not reflect this thought in real life and do not tolerate anyone using my game as an excuse to perform illegal activities that harm others.
+Use your own discretion.</tw-passagedata><tw-passagedata pid="7" name="Lexicon" tags="" position="150,150" size="100,100">A log of relevant information to review in case you don&#39;t know.
+
+ Species:
+    *Human- Plain humanoid
+    *Furry- A humanoid creature with features that resemble a mammal.
+    *Avian- A humanoid creature with features that resemble a bird like animal.
+    *Scalie- A humanoid creature with features that resemble a reptilian animal.
+    
+ 	Sex- It can be broken up into several phases:
+ 		*Foreplay- The beggining which helps you and your partner get in the mood, involves touching, kissing, and fondling areas to arouse.
+    	*Intercourse- The part that everyone thinks of when it comes to sex. Mainly involves penetration of some kind until you reach orgasm.
+    	*Aftercare- After orgasm you both begin to wind down from the intense session. You might be in the mood for closeness or intimacy.
+    Sexual Role- roles taken during sexual activity. Broken up into several roles:
+    	*Top: The one desiring to penatrate the partner.
+        *Bottom: The one desiring to be penetrated during sex.
+        *Versatile: A special middle ground where the person desires being both a top and a bottom.
+    Sex Dynamic- The dynamic of power and authority during sex, can either be the Dom or the Sub
+Note: Dom does not always mean Top and Sub does not always mean Bottom.</tw-passagedata><tw-passagedata pid="8" name="Statistics" tags="nobr" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
+&lt;table class=&quot;stats-table&quot;&gt;
+  &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
+  &lt;tr id=&quot;name&quot;&gt;
+    &lt;th&gt;First Name:&lt;/th&gt;
+    &lt;td id=&quot;mc-name&quot;&gt;$mc.name&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;&lt;if $mc.nickname&gt;&gt;
+  &lt;tr id=&quot;nickname&quot;&gt;
+    &lt;th&gt;Nickname:&lt;/th&gt;
+    &lt;td id=&quot;mc-nick&quot;&gt;$mc.nickname&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;tr id=&quot;surname&quot;&gt;
+    &lt;th&gt;Surname:&lt;/th&gt;
+    &lt;td id=&quot;mc-surb&quot;&gt;$mc.surname&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr id=&quot;age&quot;&gt;
+    &lt;th&gt;Age:&lt;/th&gt;
+    &lt;td id=&quot;mc-age&quot;&gt;$mc.age&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr id=&quot;agegroup&quot;&gt;
+    &lt;th&gt;Age Group:&lt;/th&gt;
+    &lt;td id=&quot;mc-agegroup&quot;&gt;$mc.ageGroup&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr id=&quot;species&quot;&gt;
+    &lt;th&gt;Species:&lt;/th&gt;
+    &lt;td id=&quot;mc-species&quot;&gt;$mc.species&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;&lt;if $mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;
+  &lt;tr id=&quot;anthro-type&quot;&gt;
+    &lt;th&gt;Anthro Type:&lt;/th&gt;
+    &lt;td id=&quot;mc-anthro&quot;&gt;
+      &lt;&lt;if $mc.anthro and $mc.anthro.group&gt;&gt;$mc.anthro.group&lt;&lt;/if&gt;&gt;
+      &lt;&lt;if $mc.anthro and $mc.anthro.subtype&gt;&gt; $mc.anthro.subtype&lt;&lt;/if&gt;&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;&lt;/if&gt;&gt;
+&lt;/table&gt;
+
+&lt;h2&gt;Physical Traits:&lt;/h2&gt;
+&lt;h3&gt;Face and Hair:&lt;/h3&gt;
+&lt;table class=&quot;stats-table&quot;&gt;
+  &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
+  &lt;tr id=&quot;eyes&quot;&gt;
+    &lt;th&gt;Eyes:&lt;/th&gt;
+    &lt;td id=&quot;mc-eyes&quot;&gt;$mc.eyes&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;&lt;if $mc.hair.length or $mc.hair.texture or $mc.hair.color or $mc.hair.do or $mc.hair.bangs or $mc.hair.shave&gt;&gt;
+  &lt;tr id=&quot;hair&quot;&gt;
+    &lt;th&gt;Hair:&lt;/th&gt;
+    &lt;td&gt;
+      &lt;span id=&quot;mc-hairnat&quot;&gt;
+        &lt;&lt;if $mc.hair.length and $mc.hair.length is &quot;bald&quot;&gt;&gt;
+          You are bald.
+        &lt;&lt;else&gt;&gt;
+          You have $mc.hair.style $mc.hair.color hair
+        &lt;&lt;/if&gt;&gt;
+      &lt;/span&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;&lt;if $facefeatures&gt;&gt;
+  &lt;tr id=&quot;facial-features&quot;&gt;
+    &lt;th&gt;Facial Features:&lt;/th&gt;
+    &lt;td id=&quot;mc-facefeatures&quot;&gt;$facefeatures&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;&lt;/if&gt;&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;Body:&lt;/h3&gt;
+&lt;table class=&quot;stats-table&quot;&gt;
+  &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
+
+  &lt;!-- Skin / Body material row --&gt;
+  &lt;tr id=&quot;skin-color&quot;&gt;
+    &lt;th&gt;&lt;&lt;if $mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;Body Material:&lt;&lt;/if&gt;&gt;&lt;&lt;if not ($mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;)&gt;&gt;Skin:&lt;&lt;/if&gt;&gt;&lt;/th&gt;
+    &lt;td id=&quot;mc-skin&quot;&gt;
+      &lt;&lt;if $mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;
+        $mc.body.Bodymaterial
+        $mc.anthro.color
+        $mc.anthro.pattern
+      &lt;&lt;else&gt;&gt;
+        $mc.skin.color
+      &lt;&lt;/if&gt;&gt;
+      &lt;&lt;if $mc.skin.features&gt;&gt; $mc.skin.features&lt;&lt;/if&gt;&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;!-- Anthro-only body part summary --&gt;
+  &lt;&lt;if $mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;
+  &lt;tr id=&quot;anthro-parts&quot;&gt;
+    &lt;th&gt;Anthro Parts:&lt;/th&gt;
+    &lt;td id=&quot;mc-anthroparts&quot;&gt;
+      Ears: $mc.body.Ears
+      Tail: $mc.body.Tail
+      Feet: $mc.body.Feet
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;!-- Build still uses the existing height/weight/musc system --&gt;
+  &lt;tr id=&quot;body-build&quot;&gt;
+    &lt;th&gt;Build:&lt;/th&gt;
+    &lt;td id=&quot;mc-build&quot;&gt;
+      Height: $mc.bodyheight &lt;br&gt;
+      Physique: $mc.physique &lt;br&gt;
+      &lt;&lt;if $mc.breastsize&gt;&gt;Breast Size: $mc.breastsize&lt;&lt;/if&gt;&gt;  
+
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h2&gt;Personality&lt;/h2&gt;
+&lt;table class=&quot;stats-table&quot;&gt;
+  &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
+  &lt;tr id=&quot;perso&quot;&gt;
+    &lt;th&gt;Personality:&lt;/th&gt;
+    &lt;td id=&quot;mc-perso&quot;&gt;$mc.personality&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h2&gt;NSFW Options&lt;/h2&gt;
+&lt;table class=&quot;stats-table nsfw&quot;&gt;
+  &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Genitals:&lt;/th&gt;
+    &lt;td id=&quot;mc-genitals&quot;&gt;$mc.genitals&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;&lt;if $mc.genitaltype&gt;&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Genital type:&lt;/th&gt;
+    &lt;td id=&quot;mc-genitaltype&quot;&gt;$mc.genitaltype&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Ass size:&lt;/th&gt;
+    &lt;td id=&quot;mc-assSize&quot;&gt;$mc.assSize&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;b&gt;List of body parts:&lt;/b&gt;
+&lt;br&gt;
+&lt;ul&gt;
+&lt;&lt;for _key, _val range $mc.body&gt;&gt;
+	&lt;li&gt;
+		&lt;strong&gt;&lt;&lt;print _key&gt;&gt;&lt;/strong&gt; :
+		&lt;&lt;print _val&gt;&gt;
+	&lt;/li&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="9" name="Tutorial" tags="" position="25,275" size="100,100">You and the person you brought to your room will engage in a session of sex. How you engage in it is up to you.
+
+You can choose who will be the bottom and who will be the top. Note that will not mean that you will determine who is the dom and who is the sub, that will depend on the personality. Certain actions will be locked depending on your role, you cannot be the top and suck off the other&#39;s dick.
+For example, you can have a submissive feminine twink be the one to fuck you or you can have a big muscular dom be fucked by you.
+
+The actions selected is not determining what you are doing but rather what is going to happen. (Remember, consent is a two way street)
+You will be give the option to choose what location in the room you want the two of you to be in and you can choose what position to be in. Certain positions are only availble depending on the location.
+(You can&#39;t just stand on your bed!)
+
+Sex will be broken up into seperate states: Foreplay, Intercourse, Orgasm, and Aftercare.
+
+The progress bar is your arousal meter, not for you specifcally but both you and your partner.
+Doing certain actions will make it go up until it reaches 100. Once you reach 100 you will be sent to the Orgasm stage and locked out of actions in the Foreplay and Intercourse stage.
+
+Foreplay is what you start with, certain actions are restricted until you move on to the next stage. Think of it like this &quot;How are you going to have anal sex if you aren&#39;t hard enough?&quot;
+Intercourse is the stage where the meat of the game is. The actions there will build up much more than in Foreplay.
+Orgasm is the part where your control is limited. Depending on what you are doing, you can choose where to have your orgasm or the npc. Note that to save on complexity it will be treated as a simultenious orgasm between you and the NPC.
+Following the Orgasm you are automatically put into the Aftercare stage. It is an optional stage where you can choose to enjoy the afterglow with the NPC or just finish the sex.
+
+Only when you reach the Aftercare stage will you be allowed to end the session.</tw-passagedata><tw-passagedata pid="10" name="CC-Age" tags="creation-page" position="1175,100" size="100,100">&lt;h1&gt;Indicate your Age&lt;/h1&gt;\
 
 //What is your age?//
 *  Age: &lt;&lt;numberbox &quot;_agenumber&quot; 18 autofocus&gt;&gt; 
@@ -5941,7 +6145,7 @@ Consent is required.</tw-passagedata><tw-passagedata pid="4" name="CC-Confirm" t
     &lt;&lt;AgeGroupSet&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-* [[I&#39;d rather not share my age|Index-CC][$mc.age to &quot;{/}&quot;]]</tw-passagedata><tw-passagedata pid="6" name="CC-Build" tags="creation-page nobr" position="1050,225" size="100,100">&lt;&lt;BodyBuild&gt;&gt;
+* [[I&#39;d rather not share my age|Index-CC][$mc.age to &quot;{/}&quot;]]</tw-passagedata><tw-passagedata pid="11" name="CC-Build" tags="creation-page nobr" position="1050,225" size="100,100">&lt;&lt;BodyBuild&gt;&gt;
 &lt;h1&gt;Set up the frame of the body&lt;/h1&gt;
 Tall, short, wide, thin... there are many ways to define how a body is framed. Below are examples of setting the PC&#39;s height, type, and musculature.
 &lt;br&gt;
@@ -5998,14 +6202,14 @@ $(document).one(&quot;:passagerender&quot;, function (ev) {
 &lt;&lt;/script&gt;&gt;
 
 
-&lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="CC-Check" tags="nobr" position="200,400" size="100,100">&lt;&lt;MC-Create-body&gt;&gt;
+&lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="CC-Check" tags="nobr" position="200,400" size="100,100">&lt;&lt;MC-Create-body&gt;&gt;
 &lt;h1&gt;Is this Correct?&lt;/h1&gt;
 Please review the character page below and confirm the traits chosen are correct.  
 &lt;h2&gt;Basic Info&lt;/h2&gt;
 &lt;table&gt;
     &lt;tr id=&quot;name&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;First Name:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-name&quot;&gt;$mc.name&lt;/td&gt;
+        &lt;td id=&quot;mc-name&quot;&gt;&lt;span class=&quot;mc&quot;&gt;$mc.name&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;&lt;if $mc.nickname&gt;&gt;
     &lt;tr id=&quot;nickname&quot;&gt;
@@ -6174,7 +6378,7 @@ List of body parts:
     &lt;&lt;button &quot;YES!&quot;&gt;&gt;&lt;&lt;goto &quot;CC-Confirm&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;&lt;button &quot;Go back&quot;&gt;&gt;&lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 	&lt;&lt;button [[Randomize|CC-Check]]&gt;&gt;&lt;&lt;Randomiser&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="8" name="CC-Eyes" tags="creation-page" position="1300,100" size="100,100">&lt;h1&gt;Choose your Eye Colour(s)&lt;/h1&gt;\
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="CC-Eyes" tags="creation-page" position="1300,100" size="100,100">&lt;h1&gt;Choose your Eye Colour(s)&lt;/h1&gt;\
 
 Do your eyes have &lt;&lt;link &quot;the same color&quot;&gt;&gt;&lt;&lt;set $heterochromia to false&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt; or &lt;&lt;link &quot;different colours&quot;&gt;&gt;&lt;&lt;set $heterochromia to true&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;?
 
@@ -6197,7 +6401,7 @@ Do your eyes have &lt;&lt;link &quot;the same color&quot;&gt;&gt;&lt;&lt;set $he
             &lt;&lt;set $mc.eyes to _eyesleft + &quot; and &quot; + _eyesright&gt;&gt;
         &lt;&lt;/button&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="CC-FacialFeatures" tags="creation-page" position="1425,100" size="100,100">&lt;h1&gt;Options for Facial Features&lt;/h1&gt;\
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="CC-FacialFeatures" tags="creation-page" position="1425,100" size="100,100">&lt;h1&gt;Options for Facial Features&lt;/h1&gt;\
 
 //What facial feature(s) is(are) applicable to you?//
 * &lt;label&gt;&lt;&lt;checkbox &quot;_moustache&quot; false true&gt;&gt; a full moustache&lt;/label&gt;
@@ -6231,7 +6435,7 @@ Do your eyes have &lt;&lt;link &quot;the same color&quot;&gt;&gt;&lt;&lt;set $he
 * &lt;label&gt;&lt;&lt;checkbox &quot;_toothgap&quot; false true&gt;&gt; tooth gap&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;checkbox &quot;_acne&quot; false true&gt;&gt; acne&lt;/label&gt;
 
-&lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;AllThisInAnArray&gt;&gt;&lt;&lt;set $pages.facefeat to true&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="CC-Gender" tags="creation-page" position="925,100" size="100,100">&lt;h1&gt;Set your Gender Identity&lt;/h1&gt;\
+&lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;AllThisInAnArray&gt;&gt;&lt;&lt;set $pages.facefeat to true&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="CC-Gender" tags="creation-page" position="925,100" size="100,100">&lt;h1&gt;Set your Gender Identity&lt;/h1&gt;\
 //What term do you use to describe your gender?//
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.gender&quot; &quot;Male&quot; checked&gt;&gt; Male&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.gender&quot; &quot;Female&quot;&gt;&gt; Female&lt;/label&gt;
@@ -6247,7 +6451,7 @@ Do your eyes have &lt;&lt;link &quot;the same color&quot;&gt;&gt;&lt;&lt;set $he
 &lt;&lt;button &quot;Confirm&quot;&gt;&gt;
     &lt;&lt;set $pages.gender to true&gt;&gt;
         &lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="CC-Genitals" tags="creation-page" position="925,225" size="100,100">Decide your genitals
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="CC-Genitals" tags="creation-page" position="925,225" size="100,100">Decide your genitals
 &lt;&lt;if $mc.gender is &quot;Male&quot;&gt;&gt;
 Because you chose male you have a penis. 
 &lt;&lt;set $mc.genitals to &quot;Penis&quot;&gt;&gt;
@@ -6291,7 +6495,7 @@ Decide your ass size
 
 &lt;&lt;button &quot;Confirm&quot;&gt;&gt;
         &lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="CC-Hair" tags="creation-page" position="1175,225" size="100,100">&lt;&lt;HairOptions&gt;&gt; 
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="CC-Hair" tags="creation-page" position="1175,225" size="100,100">&lt;&lt;HairOptions&gt;&gt; 
 &lt;h1&gt;Let&#39;s Talk Hair!&lt;/h1&gt;
 //How long is your hair? (if no hair, choose misc)// &lt;&lt;nobr&gt;&gt; 
 &lt;&lt;button &quot;Short Hair&quot;&gt;&gt; 
@@ -6359,27 +6563,23 @@ Decide your ass size
 
 &lt;span id=&quot;cover&quot;&gt;&lt;/span&gt; 
 
-&lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;set $pages.hair to true&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="CC-Kinks" tags="creation-page" position="550,225" size="100,100">Empty for now
+&lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;set $pages.hair to true&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="CC-Kinks" tags="creation-page" position="550,225" size="100,100">Empty for now
 
 &lt;&lt;button &quot;Confirm&quot;&gt;&gt;
     &lt;&lt;set $pages.kinks to true&gt;&gt;
         &lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="CC-Name" tags="creation-page" position="550,100" size="100,100">&lt;h1&gt;Choose your Name&lt;/h1&gt;\
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="CC-Name" tags="creation-page" position="550,100" size="100,100">&lt;h1&gt;Choose your Name&lt;/h1&gt;\
 
 //What is your name?//
 &lt;&lt;textbox &quot;$mc.name&quot; &quot;&quot;&gt;&gt;
 &lt;&lt;button &quot;Confirm&quot;&gt;&gt;
-    &lt;&lt;if $mc.name.toLowerCase().trim() == &quot;manon&quot;&gt;&gt;
-        &lt;&lt;replace &quot;#error&quot;&gt;&gt;Yeah, can&#39;t use that one, buddy!&lt;&lt;/replace&gt;&gt;
-    &lt;&lt;else&gt;&gt;
-        &lt;&lt;if !$mc.name.trim()&gt;&gt;
-            &lt;&lt;set $mc.name = &quot;No-Name&quot;&gt;&gt;
-        &lt;&lt;/if&gt;&gt;
-        &lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;
+    &lt;&lt;if !$mc.name.trim()&gt;&gt;
+        &lt;&lt;set $mc.name = &quot;No-Name&quot;&gt;&gt;
     &lt;&lt;/if&gt;&gt;
+    &lt;&lt;goto &quot;Index-CC&quot;&gt;&gt; 
 &lt;&lt;/button&gt;&gt;
 
-Once you are set on a name (by typing in the texbox and pressing the confirm button), you will be sent back to the menu of traits.</tw-passagedata><tw-passagedata pid="15" name="CC-Nickname" tags="creation-page" position="675,100" size="100,100">&lt;h1&gt;Choose your Nickname&lt;/h1&gt;\
+Once you are set on a name (by typing in the texbox and pressing the confirm button), you will be sent back to the menu of traits.</tw-passagedata><tw-passagedata pid="20" name="CC-Nickname" tags="creation-page" position="675,100" size="100,100">&lt;h1&gt;Choose your Nickname&lt;/h1&gt;\
 
 //Do you go by a nickname?//
 * &lt;&lt;linkappend &quot;Yes, I do!&quot;&gt;&gt;:
@@ -6391,7 +6591,7 @@ Once you are set on a name (by following one of the listed options and), you wil
 /*  
     I&#39;m only setting the nickname to a &quot;fake thing&quot; for the &gt;No&lt; option for the sake of the trait menu and the checking page.
     You may want to ensure the variable is unset before the game starts if the player chose no nickname or left the textbox empty.
-*/</tw-passagedata><tw-passagedata pid="16" name="CC-Personality" tags="creation-page" position="1425,225" size="100,100">&lt;h1&gt;Choose your Personality&lt;/h1&gt;\
+*/</tw-passagedata><tw-passagedata pid="21" name="CC-Personality" tags="creation-page" position="1425,225" size="100,100">&lt;h1&gt;Choose your Personality&lt;/h1&gt;\
 
 //What term do you use to describe your personality?//
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Adventerous&quot; checked&gt;&gt; Adventurous&lt;/label&gt;
@@ -6404,7 +6604,7 @@ Once you are set on a name (by following one of the listed options and), you wil
 
 &lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;
     &lt;&lt;set $pages.perso to true&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="CC-Pronouns" tags="creation-page" position="1050,0" size="100,100">&lt;h1&gt;Choose your Pronouns Set&lt;/h1&gt;\
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="CC-Pronouns" tags="creation-page" position="1050,0" size="100,100">&lt;h1&gt;Choose your Pronouns Set&lt;/h1&gt;\
 
 
 //What pronoun set are you most comfortable with?//
@@ -6420,7 +6620,7 @@ Once you are set on a name (by following one of the listed options and), you wil
 
         &lt;&lt;PronounsSet&gt;&gt;
         &lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="CC-Skin" tags="creation-page" position="800,225" size="100,100">&lt;h1&gt;Choose your Skin Characteristics&lt;/h1&gt;\
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="CC-Skin" tags="creation-page" position="800,225" size="100,100">&lt;h1&gt;Choose your Skin Characteristics&lt;/h1&gt;\
 &lt;&lt;if $mc.species is &quot;Human&quot;&gt;&gt;
  Your skin color is: 
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.skin.color&quot; &quot;Pale&quot; checked &gt;&gt;Pale&lt;/label&gt;
@@ -6467,7 +6667,7 @@ Pattern
     &lt;&lt;if _eczema&gt;&gt;&lt;&lt;run $mc.skin.features.push(&quot;Eczema&quot;)&gt;&gt;&lt;&lt;/if&gt;&gt;
     &lt;&lt;if _beatymarks&gt;&gt;&lt;&lt;run $mc.skin.features.push(&quot;Beauty Marks&quot;)&gt;&gt;&lt;&lt;/if&gt;&gt;
     &lt;&lt;if _albinism&gt;&gt;&lt;&lt;run $mc.skin.features.push(&quot;Albinism&quot;)&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="CC-Species" tags="creation-page" position="1050,100" size="100,100">&lt;&lt;EnsureSpeciesData&gt;&gt; 
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="CC-Species" tags="creation-page" position="1050,100" size="100,100">&lt;&lt;EnsureSpeciesData&gt;&gt; 
 
 &lt;h1&gt;Let&#39;s Talk Species!&lt;/h1&gt;
 Your species defines you in many ways — choose wisely.
@@ -6496,13 +6696,13 @@ Your species defines you in many ways — choose wisely.
 		&lt;&lt;replace &quot;#mc-species&quot;&gt;&gt;&lt;&lt;print $mc.species or &quot;—&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 		&lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="CC-Surname" tags="creation-page" position="800,100" size="100,100">&lt;h1&gt;Choose your Surname&lt;/h1&gt;\
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="CC-Surname" tags="creation-page" position="800,100" size="100,100">&lt;h1&gt;Choose your Surname&lt;/h1&gt;\
 
 //What is your surname?//
 
  Surname: &lt;&lt;textbox &quot;$mc.surname&quot; &quot;&quot; autofocus&gt;&gt; &lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-Once you are set on a name (by clicking one of the listed options), you will be sent back to the menu of traits.</tw-passagedata><tw-passagedata pid="21" name="CC-sexPreference" tags="creation-page" position="675,225" size="100,100">What role do you normally play as during sex?
+Once you are set on a name (by clicking one of the listed options), you will be sent back to the menu of traits.</tw-passagedata><tw-passagedata pid="26" name="CC-sexPreference" tags="creation-page" position="675,225" size="100,100">What role do you normally play as during sex?
 
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.sexpref&quot; &quot;Dominant&quot;&gt;&gt;Dominant&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.sexpref&quot; &quot;Switch&quot;&gt;&gt;Switch&lt;/label&gt;
@@ -6511,7 +6711,7 @@ Once you are set on a name (by clicking one of the listed options), you will be 
 &lt;&lt;button &quot;Confirm&quot;&gt;&gt;
     &lt;&lt;set $pages.sexpref to true&gt;&gt;
         &lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Index-CC" tags="" position="350,275" size="100,100">Note: It is suggested to do the customization in order, as skipping some parts can lead to bugs. Will attempt to fix later.
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Index-CC" tags="" position="350,275" size="100,100">Note: It is suggested to do the customization in order, as skipping some parts can lead to bugs. Will attempt to fix later.
 
 &lt;h1&gt;Create your character&lt;/h1&gt;
 
@@ -6606,17 +6806,7 @@ Once you are set on a name (by clicking one of the listed options), you will be 
 &lt;/div&gt;
 */
 &lt;&lt;button [[Review Choices|CC-Check]]&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;CheckIfDone&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Credits" tags="" position="150,25" size="100,100">The following are assets and characters I do not claim to own yet use them in the creation and development of the game. 
-The &#39;&#39;Character Creator Template&#39;&#39; section was created by manonamora on Twine 2/Tweego with SugarCube (2.37.3). Heavily modified but was very important for development.
-
-
-
-Applebridge is a original work created by online artist Nearphotison.
-Camp Buddy is a Yaoi Visual Novel game created by BLit&#39;s Games.
-
-Kevin Snowpaw is an OC created by KevinSnowpaw.
-Carla and Carlos Lovelie are twin OC&#39;s created by LewdmasterLora
-Joshua is a OC created by DragonSoul.</tw-passagedata><tw-passagedata pid="24" name="Debug-State" tags="nobr" position="475,350" size="100,100">&lt;pre&gt;
+&lt;&lt;CheckIfDone&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Debug-State" tags="nobr" position="975,350" size="100,100">&lt;pre&gt;
 &lt;&lt;print JSON.stringify(State.variables, null, 2)&gt;&gt;
 &lt;/pre&gt;
 
@@ -6627,24 +6817,12 @@ Example of how to use.
 	&lt;&lt;include &quot;Debug-State&quot;&gt;&gt;
 
 
-*/</tw-passagedata><tw-passagedata pid="25" name="Disclaimer" tags="" position="275,25" size="100,100">Warning, this game will contain many simulated sexual interactions that is meant to appeal to many different kinks and fetishes including underage and zoophilia. I don&#39;t intend on restricting the content but I can give you the option to not engage when scenarios you do not like occurs.
-While I cannot list all the content that is or will be included I can list what I will not include in the game (might grow over time):
-*Noncon
-*Watersports
-*Scat
-*ABDL
-*gore (sexualized)
-*Snuff
-
-Also this game will include characters from existing media. I do not claim to own these characters and they will be noted in the Credits as well as where they are from.
-
-While in this game you can potentially interact in consensual sexual activity with a minor or feral creatures I do not reflect this thought in real life and do not tolerate anyone using my game as an excuse to perform illegal activities that harm others.
-Use your own discretion.</tw-passagedata><tw-passagedata pid="26" name="DoneQuestions" tags="" position="100,700" size="100,100">&lt;span class= &quot;Jinx&quot;&gt;
+*/</tw-passagedata><tw-passagedata pid="29" name="DoneQuestions" tags="" position="100,700" size="100,100">&lt;span class= &quot;Jinx&quot;&gt;
 Alright, well then if you don&#39;t got any more questions then we can begin. Go and have fun! 
 If you are looking for some ass then I would suggest checking out the lounge on the ground floor.
 &lt;/span&gt;
 
-[[Your Room]]</tw-passagedata><tw-passagedata pid="27" name="Event_EatFood" tags="nobr" position="850,350" size="100,100">&lt;&lt;set _food = setup.food[$lastEaten]&gt;&gt;
+[[Your Room]]</tw-passagedata><tw-passagedata pid="30" name="Event_EatFood" tags="nobr" position="1225,350" size="100,100">&lt;&lt;set _food = setup.food[$lastEaten]&gt;&gt;
 
 You decide to eat &lt;&lt;print _food.aoran ? _food.aoran : &quot;a&quot;&gt;&gt; $lastEaten.
 
@@ -6658,7 +6836,7 @@ You decide to eat &lt;&lt;print _food.aoran ? _food.aoran : &quot;a&quot;&gt;&gt
 
 &lt;&lt;link &quot;Continue&quot;&gt;&gt;
 	&lt;&lt;goto $returnPassage&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Sleep" tags="nobr" position="975,350" size="100,100">&lt;&lt;set _loc to $gamelocation&gt;&gt;
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="Sleep" tags="nobr" position="100,475" size="100,100">&lt;&lt;set _loc to $gamelocation&gt;&gt;
 
 &lt;&lt;set _getuppassage to _loc&gt;&gt;
 
@@ -6669,14 +6847,14 @@ You go to sleep on your bed.
 &lt;&lt;link &quot;Continue&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Wakeup&quot;&gt;&gt;
 &lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Wakeup" tags="nobr" position="1100,350" size="100,100">&lt;&lt;set _loc to $gamelocation&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Wakeup" tags="nobr" position="225,475" size="100,100">&lt;&lt;set _loc to $gamelocation&gt;&gt;
 &lt;&lt;set _getuppassage to _loc&gt;&gt;
 
 You wake up
 &lt;br&gt;
 
 &lt;&lt;link &quot;Get up&quot; _getuppassage&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;br&gt;</tw-passagedata><tw-passagedata pid="30" name="J-Q-popup" tags="Popup" position="250,750" size="100,100">&lt;&lt;switch _topic&gt;&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="33" name="J-Q-popup" tags="Popup" position="250,750" size="100,100">&lt;&lt;switch _topic&gt;&gt;
 	&lt;&lt;case &quot;god&quot;&gt;&gt;
 		&lt;span class=&quot;Jinx&quot;&gt;Yes. I am a god. Specifically the god of joy and sex.&lt;/span&gt;
         &lt;span class=&quot;mc&quot;&gt; &quot;Yeah you just said that...&quot;&lt;/span&gt;
@@ -6709,24 +6887,7 @@ You wake up
 		&lt;span class=&quot;Jinx&quot;&gt;Ask a question.&lt;/span&gt;
 &lt;&lt;/switch&gt;&gt;
 &lt;br&gt;
-&lt;&lt;button &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="Lexicon" tags="" position="150,150" size="100,100">A log of relevant information to review in case you don&#39;t know.
-
- Species:
-    *Human- Plain humanoid
-    *Furry- A humanoid creature with features that resemble a mammal.
-    *Avian- A humanoid creature with features that resemble a bird like animal.
-    *Scalie- A humanoid creature with features that resemble a reptilian animal.
-    
- 	Sex- It can be broken up into several phases:
- 		*Foreplay- The beggining which helps you and your partner get in the mood, involves touching, kissing, and fondling areas to arouse.
-    	*Intercourse- The part that everyone thinks of when it comes to sex. Mainly involves penetration of some kind until you reach orgasm.
-    	*Aftercare- After orgasm you both begin to wind down from the intense session. You might be in the mood for closeness or intimacy.
-    Sexual Role- roles taken during sexual activity. Broken up into several roles:
-    	*Top: The one desiring to penatrate the partner.
-        *Bottom: The one desiring to be penetrated during sex.
-        *Versatile: A special middle ground where the person desires being both a top and a bottom.
-    Sex Dynamic- The dynamic of power and authority during sex, can either be the Dom or the Sub
-Note: Dom does not always mean Top and Sub does not always mean Bottom.</tw-passagedata><tw-passagedata pid="32" name="Arcade" tags="nobr" position="225,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Arcade&quot;&gt;&gt;
+&lt;&lt;button &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="Arcade" tags="nobr" position="475,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Arcade&quot;&gt;&gt;
 You enter a large arcade. Lined from wall to wall are all sorts of video games, some retro, some modern, and some next generation.
 
 WORK IN PROGESS
@@ -6735,7 +6896,7 @@ WORK IN PROGESS
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="33" name="Bathroom" tags="nobr" position="525,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Bathroom&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="35" name="Bathroom" tags="nobr" position="525,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Bathroom&quot;&gt;&gt;
 
 
 &lt;p&gt; You step through the doorway into a clean, polished bathroom. Soft overhead lighting reflects off the marble tiles, giving the room a muted glow. The air is cool and lightly scented. A wide mirror stretches across the wall, framed by smooth metal edging. The sink basin sits beneath it, carved from a single piece of stone, with neatly arranged toiletries placed with precision. The glass shower enclosure stands to the side, its chrome fixtures catching the light. Everything is orderly, quiet, and waiting for you to use it.
@@ -6765,7 +6926,7 @@ WORK IN PROGESS
     &lt;&lt;goto &quot;Your Room&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="Brothel" tags="nobr" position="475,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Brothel&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="Brothel" tags="nobr" position="725,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Brothel&quot;&gt;&gt;
 
 You enter a lavish brothel.
 You see a sign explaining the place.
@@ -6775,7 +6936,7 @@ You see a sign explaining the place.
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="35" name="Cafe" tags="nobr" position="600,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Cafe&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="37" name="Cafe" tags="nobr" position="850,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Cafe&quot;&gt;&gt;
 
 You enter a large cafe for eating.
 
@@ -6810,7 +6971,7 @@ You enter a large cafe for eating.
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="Elevator" tags="nobr" position="375,975" size="100,100">&lt;&lt;set $gamelocation to &quot;Elevator&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="38" name="Elevator" tags="nobr" position="375,975" size="100,100">&lt;&lt;set $gamelocation to &quot;Elevator&quot;&gt;&gt;
 You enter the elevator. Some buttons are lit up, indicating you can go there, other&#39;s are currently not available yet.
 &lt;br&gt;
 &lt;div class=&quot;room-hotel&quot;&gt;
@@ -6826,7 +6987,7 @@ You enter the elevator. Some buttons are lit up, indicating you can go there, ot
 /*[[Zoo]] &lt;br&gt; */
 [[Jinx&#39;s Room]] &lt;br&gt;
 [[Resident Hallway|Hotel Hallway]] &lt;br&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="37" name="Garden" tags="nobr" position="850,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Garden&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="39" name="Garden" tags="nobr" position="1100,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Garden&quot;&gt;&gt;
 
 You enter a beautiful garden.
 
@@ -6837,7 +6998,7 @@ WORK IN PROGESS
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="38" name="Gym" tags="nobr" position="975,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Gym&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="40" name="Gym" tags="nobr" position="1225,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Gym&quot;&gt;&gt;
 
 You enter a gym. People are working out.
 
@@ -6848,7 +7009,7 @@ WORK IN PROGESS
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="39" name="Hotel Hallway" tags="nobr" position="400,850" size="100,100">&lt;&lt;set $gamelocation to &quot;Hotel Hallway&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="41" name="Hotel Hallway" tags="nobr" position="400,850" size="100,100">&lt;&lt;set $gamelocation to &quot;Hotel Hallway&quot;&gt;&gt;
 
 You are in the hotel hallway, doors to other rooms are on each side but you cannot enter them.
 &lt;br&gt;
@@ -6864,7 +7025,7 @@ At the end of the hall is an elevator.
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="40" name="Hotel Portal" tags="nobr" position="375,1375" size="100,100">&lt;&lt;set $gamelocation to &quot;Hotel Portal&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="42" name="Hotel Portal" tags="nobr" position="375,1375" size="100,100">&lt;&lt;set $gamelocation to &quot;Hotel Portal&quot;&gt;&gt;
 You see the portal to travel the multiverse, it is currently out of order.
 
 &lt;br&gt;
@@ -6875,7 +7036,7 @@ You see the portal to travel the multiverse, it is currently out of order.
 &lt;/div&gt;
 
 End of game so far.
-More to be added later.</tw-passagedata><tw-passagedata pid="41" name="Jinx&#39;s Room" tags="nobr" position="125,975" size="100,100">&lt;&lt;set $gamelocation to &quot;Jinx&#39;s Room&quot;&gt;&gt;
+More to be added later.</tw-passagedata><tw-passagedata pid="43" name="Jinx&#39;s Room" tags="nobr" position="125,975" size="100,100">&lt;&lt;set $gamelocation to &quot;Jinx&#39;s Room&quot;&gt;&gt;
 
 You enter the room.
 The room seems to be in the process of maintenence, and at the end of the room, Jinx sits on the throne.
@@ -6891,7 +7052,7 @@ Welcome my acolyte, do you have question&#39;s for me?
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="42" name="Lobby" tags="nobr" position="375,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lobby&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="44" name="Lobby" tags="nobr" position="375,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lobby&quot;&gt;&gt;
 You are in the lobby of the hotel, classical music plays as you watch people from various worlds go about their business.
 &lt;br&gt;
 &lt;div class=&quot;room-hotel&quot;&gt;
@@ -6915,7 +7076,7 @@ You are in the lobby of the hotel, classical music plays as you watch people fro
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="Lounge" tags="nobr" position="500,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lounge&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="Lounge" tags="nobr" position="500,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lounge&quot;&gt;&gt;
 &lt;&lt;unset $spawnPools&gt;&gt;
 
 
@@ -6935,7 +7096,7 @@ A nice place to rest, relax, and socialize. There are some people mingling aroun
 &lt;&lt;button &quot;Lobby&quot;&gt;&gt;
     &lt;&lt;goto &quot;Lobby&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="44" name="Pool" tags="nobr" position="475,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Pool&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="Pool" tags="nobr" position="725,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Pool&quot;&gt;&gt;
 
 The smell of chlorine entered your nose before you saw the pool area. On the side was a hottub. There was also the entrance to the showers.
 
@@ -6945,7 +7106,7 @@ WORK IN PROGESS
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="Spa" tags="nobr" position="600,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Spa&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="47" name="Spa" tags="nobr" position="850,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Spa&quot;&gt;&gt;
 
 
 WORK IN PROGESS
@@ -6954,7 +7115,7 @@ WORK IN PROGESS
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="Your Room" tags="nobr" position="400,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Room&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="48" name="Your Room" tags="nobr" position="400,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Room&quot;&gt;&gt;
 You are in your hotel room. It looks like the love suite of a luxury hotel, complete with a heart shaped bed. Next to the bed is a phone for calling up people you know for a &#39;good time&#39;.
 To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic.
 On the other side there was a door to your bathroom.
@@ -6987,7 +7148,7 @@ On the other side there was a door to your bathroom.
 
 &lt;&lt;/if&gt;&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="47" name="ApplebridgeNPC" tags="init nobr" position="475,400" size="100,100">/% Applebridge %/
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="49" name="ApplebridgeNPC" tags="init nobr" position="475,400" size="100,100">/% Applebridge %/
 &lt;&lt;set $CoryP = {
     name: &quot;Cory&quot;,
     nickname: &quot;&quot;,
@@ -7091,7 +7252,7 @@ On the other side there was a door to your bathroom.
     personality: &quot;Shy&quot;,
     sexpref: &quot;Submissive&quot;,
     origin: &quot;Applebridge&quot;
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="CampBuddyNPC" tags="init nobr" position="475,400" size="100,100">/%Camp Buddy %/
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="CampBuddyNPC" tags="init nobr" position="475,400" size="100,100">/%Camp Buddy %/
 &lt;&lt;set $Yoichi_CB = {
     name: &quot;Yoichi&quot;,
     nickname: &quot;&quot;,
@@ -7248,7 +7409,7 @@ On the other side there was a door to your bathroom.
     virgin: false,
     sexpref: &quot;Switch&quot;,
     origin: &quot;Camp Buddy&quot;
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="NPC-List" tags="nobr" position="1100,600" size="100,100">&lt;span id=&quot;list&quot;&gt;
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="NPC-List" tags="nobr" position="100,725" size="100,100">&lt;span id=&quot;list&quot;&gt;
 &lt;&lt;if !$roomNPCs || !$roomNPCs.length&gt;&gt;
 	&lt;em&gt;No one is here.&lt;/em&gt;
 	&lt;&lt;return&gt;&gt;
@@ -7299,7 +7460,7 @@ On the other side there was a door to your bathroom.
 	&lt;/div&gt;
 	&lt;hr&gt;
 &lt;&lt;/for&gt;&gt;
-&lt;/span&gt;</tw-passagedata><tw-passagedata pid="50" name="OCNPC" tags="init nobr" position="475,400" size="100,100">/* already designated NPC&#39;s will have their information stored here. */
+&lt;/span&gt;</tw-passagedata><tw-passagedata pid="52" name="OCNPC" tags="init nobr" position="475,400" size="100,100">/* already designated NPC&#39;s will have their information stored here. */
 
 /*Kevin Snowpaw */
 &lt;&lt;set $KevinNpc = {
@@ -7450,7 +7611,7 @@ On the other side there was a door to your bathroom.
     virgin: false,
     sexpref: &quot;Switch&quot;,
     origin: &quot;Unknown&quot;
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="npc template sample" tags="" position="1925,450" size="100,100">&lt;&lt;set $characterTemplate = {
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="npc template sample" tags="" position="1925,450" size="100,100">&lt;&lt;set $characterTemplate = {
     name: &quot;&quot;,
     nickname: &quot;&quot;,
     surname: &quot;&quot;,
@@ -7479,7 +7640,7 @@ On the other side there was a door to your bathroom.
 	},
     Virgin: true or false,
     sexpref: &quot;&quot;
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Notes" tags="" position="1950,125" size="100,100">/* 
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="Notes" tags="" position="1950,125" size="100,100">/* 
 
 Fix the hair input for main character.
 change from _n to $n
@@ -7551,7 +7712,7 @@ change from _n to $n
     Lips
     Tongue
 
-*/</tw-passagedata><tw-passagedata pid="53" name="Respond-Dialogue" tags="nobr Dialogue" position="1375,1325" size="100,100">/* You respond to certain actions. */
+*/</tw-passagedata><tw-passagedata pid="55" name="Respond-Dialogue" tags="nobr Dialogue" position="1375,1325" size="100,100">/* You respond to certain actions. */
 &lt;br&gt;
 &lt;b&gt;&lt;&lt;=$mc.name&gt;&gt;: &lt;/b&gt;
 &lt;&lt;if $sex.action == &quot;Kiss&quot;&gt;&gt;
@@ -8215,7 +8376,7 @@ change from _n to $n
 		)&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="AftercareBlock" tags="nobr" position="1800,925" size="100,100">&lt;&lt;replace &quot;#actions&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="AftercareBlock" tags="nobr" position="1800,925" size="100,100">&lt;&lt;replace &quot;#actions&quot;&gt;&gt;
 
 			&lt;&lt;button &quot;Cuddle&quot;&gt;&gt;
 				&lt;&lt;set $sex.stage = &quot;Aftercare&quot;&gt;&gt;
@@ -8230,7 +8391,7 @@ change from _n to $n
             &lt;&lt;set $seenActions = {}&gt;&gt;
 			&lt;&lt;goto &quot;Your Room&quot;&gt;&gt;              
 		&lt;&lt;/button&gt;&gt;
-	&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="ForeplayBlock" tags="nobr" position="1675,800" size="100,100">&lt;&lt;set $seenActions = $seenActions or {}&gt;&gt;
+	&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="ForeplayBlock" tags="nobr" position="1675,800" size="100,100">&lt;&lt;set $seenActions = $seenActions or {}&gt;&gt;
 &lt;hr&gt;
 &lt;b&gt;Foreplay:&lt;/b&gt;
 
@@ -8405,7 +8566,7 @@ change from _n to $n
 		&lt;&lt;replace &quot;#aftercare&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;/button&gt;&gt; |
 	&lt;&lt;/if&gt;&gt;
-&lt;br&gt;</tw-passagedata><tw-passagedata pid="56" name="IntercourseBlock" tags="nobr" position="1800,800" size="100,100">&lt;b&gt;Intercourse:&lt;/b&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="58" name="IntercourseBlock" tags="nobr" position="1800,800" size="100,100">&lt;b&gt;Intercourse:&lt;/b&gt;
 
 &lt;&lt;if $mc.genitals == &quot;Penis&quot; and $sex.roles.sub.name == _n.name or _n.genitals == &quot;Penis&quot; and $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;if $position == &quot;Cowgirl&quot; or $position == &quot;Pronebone&quot; or $position == &quot;Sit on Lap&quot; or $position == &quot;Doggystyle&quot; or $position == &quot;Missionary&quot; or $position == &quot;Lean against wall&quot;&gt;&gt;
@@ -8526,7 +8687,7 @@ change from _n to $n
 			&lt;&lt;/if&gt;&gt;
 		&lt;&lt;/button&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="OrgasmBlock" tags="nobr" position="1675,925" size="100,100">&lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="OrgasmBlock" tags="nobr" position="1675,925" size="100,100">&lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;if $sex.action == &quot;Anal Orgasm&quot;&gt;&gt;
 		&lt;&lt;if $position == &quot;Cowgirl&quot;&gt;&gt;
 			You slam down one final time before _n.name lets out a moan and unloads into your ass. You feel the warmth fill you up.
@@ -8623,7 +8784,7 @@ Wanna have aftercare or end the session?
             &lt;&lt;set $seenActions = {}&gt;&gt;
 			&lt;&lt;goto &quot;Your Room&quot;&gt;&gt;              &lt;!-- or &quot;Your Room&quot; or whatever --&gt;
 		&lt;&lt;/button&gt;&gt;
-&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="58" name="OrgasmCloseBlock" tags="nobr" position="1550,925" size="100,100">&lt;&lt;if _n.arousal &gt;= 100&gt;&gt;
+&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="OrgasmCloseBlock" tags="nobr" position="1550,925" size="100,100">&lt;&lt;if _n.arousal &gt;= 100&gt;&gt;
     &lt;&lt;replace &quot;#actions&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace &quot;#positionList&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace &quot;#log&quot;&gt;&gt;You are close to orgasm 
@@ -8659,7 +8820,7 @@ Wanna have aftercare or end the session?
 		&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;OrgasmBlock&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;/button&gt;&gt;
     
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="PositionBlock" tags="nobr" position="1550,800" size="100,100">&lt;hr&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="PositionBlock" tags="nobr" position="1550,800" size="100,100">&lt;hr&gt;
     &lt;div id=&quot;positionList&quot; class=&quot;position-block&quot;&gt;
     Change location:
 	&lt;&lt;if $position != &quot;Standing&quot;&gt;&gt;
@@ -8798,7 +8959,7 @@ Wanna have aftercare or end the session?
 			&lt;&lt;/button&gt;&gt; |
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-    &lt;/div&gt;</tw-passagedata><tw-passagedata pid="60" name="Sex-Stage" tags="nobr" position="1325,725" size="100,100">&lt;&lt;silently&gt;&gt;
+    &lt;/div&gt;</tw-passagedata><tw-passagedata pid="62" name="Sex-Stage" tags="nobr" position="1325,725" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;set _n = $ui.npc&gt;&gt;
 	&lt;&lt;if !_n&gt;&gt;[Error] No active NPC.&lt;&lt;return&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -8814,7 +8975,7 @@ Wanna have aftercare or end the session?
     
 &lt;&lt;/silently&gt;&gt;
 
-&lt;span class=&quot;stage-pill&quot;&gt;&lt;&lt;= $sex.stage &gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="61" name="ActDialogue" tags="nobr Dialogue" position="1000,1025" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;span class=&quot;stage-pill&quot;&gt;&lt;&lt;= $sex.stage &gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="63" name="ActDialogue" tags="nobr Dialogue" position="1000,1025" size="100,100">&lt;&lt;silently&gt;&gt;
 	/*&lt;&lt;set _n = $ui.npc&gt;&gt;
 	&lt;&lt;if !_n&gt;&gt;&lt;&lt;return&gt;&gt;&lt;&lt;/if&gt;&gt; */
 	/* &lt;&lt;set _a = ($sex and $sex.action) or &quot;none&quot;&gt;&gt; */
@@ -8923,7 +9084,7 @@ Wanna have aftercare or end the session?
     &lt;&lt;case &quot;Touch Stomach&quot;&gt;&gt;&lt;&lt;include &quot;Feel-Stomach-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Press Face on Chest&quot;&gt;&gt;&lt;&lt;include &quot;Face-On-Chest-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Embrace&quot;&gt;&gt;&lt;&lt;include &quot;Embrace-Dialogue&quot;&gt;&gt;
-&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="Anal-Dialogue" tags="nobr Dialogue" position="1200,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="Anal-Dialogue" tags="nobr Dialogue" position="1200,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.act ==&quot;Enter Ass&quot;&gt;&gt;
@@ -9032,7 +9193,7 @@ Wanna have aftercare or end the session?
 
 
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="Balls-Dialogue" tags="nobr" position="350,850" size="100,100">&lt;&lt;if $sex.act ==&quot;Lick Balls&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="Balls-Dialogue" tags="nobr" position="600,850" size="100,100">&lt;&lt;if $sex.act ==&quot;Lick Balls&quot;&gt;&gt;
     &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
         _n.name licks your balls.
     &lt;&lt;elseif $sex.role == &quot;bottom&quot;&gt;&gt;
@@ -9052,7 +9213,7 @@ Wanna have aftercare or end the session?
         You suck their balls
     &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="Blowjob-Dialogue" tags="nobr Dialogue" position="1000,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="Blowjob-Dialogue" tags="nobr Dialogue" position="1000,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 	/*
@@ -9124,7 +9285,7 @@ Wanna have aftercare or end the session?
 &lt;&lt;elseif $sex.act == &quot;Suck Each Other Off&quot;&gt;&gt;
 	You suck each other off.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="Boobjob-Dialogue" tags="nobr Dialogue" position="1300,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="Boobjob-Dialogue" tags="nobr Dialogue" position="1300,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;= either(
@@ -9134,7 +9295,7 @@ Wanna have aftercare or end the session?
 	&lt;&lt;= either(
     &quot;You thrust your $mc.genitals between _n.name&#39;s _n.breastsize breasts.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="Caress-Dialogue" tags="Dialogue nobr" position="800,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="Caress-Dialogue" tags="Dialogue nobr" position="800,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -9168,7 +9329,7 @@ Wanna have aftercare or end the session?
 	&lt;&lt;if _n.physique == &quot;Gaunt&quot;&gt;&gt;
 	Their ribs stick out from their body due to how skinny they are.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="Cuddle-Dialogue" tags="Dialogue nobr" position="1100,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="Cuddle-Dialogue" tags="Dialogue nobr" position="1100,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.role==&quot;top&quot;&gt;&gt;
@@ -9180,7 +9341,7 @@ Wanna have aftercare or end the session?
     &quot;You wrap your arms around _n.name. They slink their face into your chest.&quot;,
     &quot;You both hug, _n.name snuggling up to you.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="Cunnilingus-Dialogue" tags="nobr Dialogue" position="900,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="Cunnilingus-Dialogue" tags="nobr Dialogue" position="900,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.act == &quot;Lick Pussy&quot;&gt;&gt;
 	&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
@@ -9214,7 +9375,7 @@ Wanna have aftercare or end the session?
 	&lt;&lt;else&gt;&gt;
 		_n.name grinds their pussy on your face.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="Embrace-Dialogue" tags="nobr Dialogue" position="1100,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Embrace-Dialogue" tags="nobr Dialogue" position="1100,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $position == &quot;Standing&quot;&gt;&gt;
@@ -9269,7 +9430,7 @@ Wanna have aftercare or end the session?
 	&lt;&lt;/if&gt;&gt;	
 &lt;&lt;else&gt;&gt;
 	You should not be able to read this, that means there&#39;s an error.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="Feel-Stomach-Dialogue" tags="nobr Dialogue" position="1000,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="Feel-Stomach-Dialogue" tags="nobr Dialogue" position="1000,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
@@ -9280,7 +9441,7 @@ Wanna have aftercare or end the session?
 	&lt;&lt;= either(
     &quot;You press your hand against _n.name&#39;s belly&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Feet-Acts-Dialogue" tags="nobr" position="100,975" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Cock With Feet&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="Feet-Acts-Dialogue" tags="nobr" position="350,975" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Cock With Feet&quot;&gt;&gt;
 You tease _n.name&#39;s cock with your feet
 &lt;&lt;elseif $sex.act == &quot;Tease Pussy With Feet&quot;&gt;&gt;
 You tease _n.name&#39;s pussy with your feet.
@@ -9301,7 +9462,7 @@ You stroke _n.name&#39;s pussy with your feet.
 &lt;&lt;elseif $sex.act == &quot;Rub Against Feet&quot;&gt;&gt;
 You rub your pussy against _n.name&#39;s feet.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="Finger-Ass-Dialogue" tags="Dialogue nobr" position="800,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Finger-Ass-Dialogue" tags="Dialogue nobr" position="800,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.act==&quot;Finger Ass&quot;&gt;&gt;
@@ -9326,7 +9487,7 @@ You rub your pussy against _n.name&#39;s feet.
             &quot;You slide you $mc.body.Fingers back and forth, caressing the walls of _n.name&#39;s inside. $proset.theyUp continues to tense. $proset.theyUp appears to enjoy it very much.&quot;,
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="Finger-Vagina-Dialogue" tags="Dialogue nobr" position="900,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="Finger-Vagina-Dialogue" tags="Dialogue nobr" position="900,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.act == &quot;Finger Pussy&quot;&gt;&gt;
@@ -9365,7 +9526,7 @@ You pull their hand to your pussy to finger you.
     &lt;&lt;/if&gt;&gt;
 
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Footjob-Dialogue" tags="Dialogue nobr" position="1300,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="Footjob-Dialogue" tags="Dialogue nobr" position="1300,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 	&lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
@@ -9411,7 +9572,7 @@ You pull their hand to your pussy to finger you.
 			&quot;You fuck _n.name&#39;s feet.&quot;,
 			&quot;$proset.they giggle softly to $proset.themself as $proset.their feet glide up and down the length of your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;.&quot;
 		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="Frot-Dialogue" tags="nobr Dialogue" position="1300,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+	&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="Frot-Dialogue" tags="nobr Dialogue" position="1300,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 	&lt;&lt;if $position is &quot;Sit on Lap&quot;&gt;&gt;
@@ -9480,7 +9641,7 @@ You pull their hand to your pussy to finger you.
 				&quot;Eagerly grinding your &lt;&lt;= $mc.genitals.toLowerCase() &gt;&gt; over _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt; , you let out a moan with each frantic pump of your $mc.body.Hips.&quot;,
 				&quot;You both shiver from the pleasure from your cocks each time _n.name thrusts.&quot;
 			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="Grope-Breast-Dialogue" tags="nobr Dialogue" position="1100,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+		&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="Grope-Breast-Dialogue" tags="nobr Dialogue" position="1100,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.previousPosition ==&quot;Pronebone&quot;&gt;&gt;
@@ -9503,7 +9664,7 @@ You pull their hand to your pussy to finger you.
             &quot;Reaching up to your chest, you let out a moan as $proset.they start eagerly fondling and groping your &lt;&lt;= $mc.breastsize.toLowerCase() &gt;&gt; breasts,&quot;
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="Grope-Butt-Dialogue" tags="nobr Dialogue" position="1000,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="Grope-Butt-Dialogue" tags="nobr Dialogue" position="1000,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
     &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
@@ -9514,7 +9675,7 @@ You pull their hand to your pussy to finger you.
 	    &lt;&lt;= either(
             &quot;You grab _n.name&#39;s &lt;&lt;= $mc.assSize.toLowerCase() &gt;&gt; ass.&quot;
         )&gt;&gt;
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="Handjob-Dialogue" tags="Dialogue nobr" position="900,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="Handjob-Dialogue" tags="Dialogue nobr" position="900,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 
@@ -9561,12 +9722,12 @@ You pump the shaft.
 &lt;&lt;elseif $sex.act ==&quot;Tease Tip&quot;&gt;&gt;
 You tease the tip.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="Hotdog-Dialogue" tags="nobr" position="1100,975" size="100,100">&lt;&lt;if  $sex.act == &quot;Hotdog&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Hotdog-Dialogue" tags="nobr" position="100,1100" size="100,100">&lt;&lt;if  $sex.act == &quot;Hotdog&quot;&gt;&gt;
 You push the cheeks of _n.name&#39;s _n.assSize ass together around your $mc.penislength cock as you thrust between them.
 
 &lt;&lt;elseif $sex.act == &quot;Rub Ass On Cock&quot;&gt;&gt;
 You roll your hips, rubbing _n.name&#39;s cock between your cheeks.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="Kiss-Dialogue" tags="Dialogue nobr" position="1225,975" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Kiss-Dialogue" tags="Dialogue nobr" position="225,1100" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 	&lt;&lt;= either(
@@ -9588,13 +9749,13 @@ You roll your hips, rubbing _n.name&#39;s cock between your cheeks.
 	&quot;_n.name presses themself against you, muffling your moans as $proset.they slide $proset.their tongue into your mouth.&quot;,
 	&quot;_n.name pushes $proset.their tongue deep into your mouth, moaning as $proset.they eagerly return the kiss.&quot;,
 	&quot;With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips.&quot;
-	)&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Lick-Cock-Dialogue" tags="nobr" position="100,1100" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+	)&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="Lick-Cock-Dialogue" tags="nobr" position="350,1100" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 _n.name licks your cock.
 &lt;&lt;else&gt;&gt;
 You begin to slowly use your tongue to slowly work around _n.name&#39;s tip, making sure you can feel and taste every part of it.
 
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Lick-Foot-Dialogue" tags="" position="225,1100" size="100,100">You lick foot.</tw-passagedata><tw-passagedata pid="83" name="Nipple-Acts-Dialogue" tags="nobr" position="350,1100" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Nipples&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="Lick-Foot-Dialogue" tags="" position="475,1100" size="100,100">You lick foot.</tw-passagedata><tw-passagedata pid="85" name="Nipple-Acts-Dialogue" tags="nobr" position="600,1100" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Nipples&quot;&gt;&gt;
     &lt;&lt;if $sex.roles == &quot;top&quot;&gt;&gt;
     You tease _n.name&#39;s nipples
     &lt;&lt;else&gt;&gt;
@@ -9618,7 +9779,7 @@ You begin to slowly use your tongue to slowly work around _n.name&#39;s tip, mak
     &lt;&lt;else&gt;&gt;
     _n.name sucks your nipples.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="Orgasm-Dialogue" tags="nobr" position="475,1100" size="100,100">You are about to cum.</tw-passagedata><tw-passagedata pid="85" name="Pet-Ears-Dialogue" tags="nobr Dialogue" position="1200,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="Orgasm-Dialogue" tags="nobr" position="725,1100" size="100,100">You are about to cum.</tw-passagedata><tw-passagedata pid="87" name="Pet-Ears-Dialogue" tags="nobr Dialogue" position="1200,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     &lt;&lt;= either(
@@ -9631,7 +9792,7 @@ You begin to slowly use your tongue to slowly work around _n.name&#39;s tip, mak
     &quot;You pet _n.name&#39;s &lt;&lt;= _n.body.Ears.toLowerCase()&gt;&gt;.&quot;
     )&gt;&gt;
     
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="Rimjob-Dialogue" tags="nobr Dialogue" position="1000,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="Rimjob-Dialogue" tags="nobr Dialogue" position="1000,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;if $position is &quot;Cowgirl&quot;&gt;&gt;
@@ -9647,7 +9808,7 @@ You begin to slowly use your tongue to slowly work around _n.name&#39;s tip, mak
 	&lt;&lt;= either(
     &quot;_n.name eats out your ass.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="Rub-Butt-Dialogue" tags="nobr" position="850,1100" size="100,100">You rub _n.name&#39;s ass.</tw-passagedata><tw-passagedata pid="88" name="Rub-Pussy-Dialogue" tags="nobr" position="975,1100" size="100,100">/*Add different dialogue based on positions */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="Rub-Butt-Dialogue" tags="nobr" position="1100,1100" size="100,100">You rub _n.name&#39;s ass.</tw-passagedata><tw-passagedata pid="90" name="Rub-Pussy-Dialogue" tags="nobr" position="1225,1100" size="100,100">/*Add different dialogue based on positions */
 &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 
 You rub _n.name&#39;s &lt;span class= &quot;yellow&quot;&gt;&lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;&lt;/span&gt; with your fingers.
@@ -9656,7 +9817,7 @@ You rub _n.name&#39;s &lt;span class= &quot;yellow&quot;&gt;&lt;&lt;= _n.genital
 
 _n.name rubs your &lt;span class= &quot;yellow&quot;&gt;&lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;&lt;/span&gt; with their fingers.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="Stop-Dialogue" tags="nobr" position="1100,1100" size="100,100">&lt;&lt;if $sex.act ==&quot;Release Cock&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Stop-Dialogue" tags="nobr" position="100,1225" size="100,100">&lt;&lt;if $sex.act ==&quot;Release Cock&quot;&gt;&gt;
 You release _n.name&#39;s cock.
 &lt;&lt;elseif $sex.act ==&quot;Stop Fingering&quot;&gt;&gt;
 You stop fingering.
@@ -9686,7 +9847,7 @@ You pull out of _n.name&#39;s ass.
 You pull your ass off of _n.name&#39;s cock.
 &lt;&lt;elseif $sex.act ==&quot;Stop Fingering Ass&quot;&gt;&gt;
 You stop fingering _n.name&#39;s ass.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="SuckFoot-Dialogue" tags="Dialogue nobr" position="800,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="SuckFoot-Dialogue" tags="Dialogue nobr" position="800,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -9711,11 +9872,11 @@ You stop fingering _n.name&#39;s ass.
     &quot;A moan bursts out from your mouth as $proset.they continue eagerly licking and kissing you $mc.body.Feet.&quot;,
     &quot;Moaning in delight, _n.name eagerly worships your $mc.body.Feet by planting a series of passionate kisses on them.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Tease-Ass-Dialogue" tags="nobr" position="100,1225" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Ass With Cock&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="Tease-Ass-Dialogue" tags="nobr" position="350,1225" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Ass With Cock&quot;&gt;&gt;
 You tease _n.name&#39;s ass with your cock.
 &lt;&lt;elseif $sex.act == &quot;Cocktease With Ass&quot;&gt;&gt;
 You tease _n.name&#39;s cock with your ass.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="Tease-Cock-Dialogue" tags="nobr" position="225,1225" size="100,100">&lt;&lt;if $sex.act==&quot;Rub Cock On Face&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="Tease-Cock-Dialogue" tags="nobr" position="475,1225" size="100,100">&lt;&lt;if $sex.act==&quot;Rub Cock On Face&quot;&gt;&gt;
     &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 	    &lt;&lt;= either(
  	    &quot;You rub your cock on their face.&quot;
@@ -9745,12 +9906,12 @@ You tease _n.name&#39;s cock with your ass.
             &quot;_n.name rubs their cock against your hand.&quot;
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="Tease-Pussy-Dialogue" tags="nobr" position="350,1225" size="100,100">&lt;&lt;if $sex.act == &quot;Tease Pussy With Cock&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="Tease-Pussy-Dialogue" tags="nobr" position="600,1225" size="100,100">&lt;&lt;if $sex.act == &quot;Tease Pussy With Cock&quot;&gt;&gt;
 You tease pussy with cock.
 &lt;&lt;elseif $sex.act == &quot;Cocktease With Pussy&quot;&gt;&gt;
 You tease their cock with your pussy.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="Trib-Dialogue" tags="nobr" position="475,1225" size="100,100">You grind your pussies together.</tw-passagedata><tw-passagedata pid="95" name="Vaginal-Dialogue" tags="nobr Dialogue" position="1200,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="Trib-Dialogue" tags="nobr" position="725,1225" size="100,100">You grind your pussies together.</tw-passagedata><tw-passagedata pid="97" name="Vaginal-Dialogue" tags="nobr Dialogue" position="1200,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.act == &quot;Enter Pussy&quot;&gt;&gt;
@@ -9849,7 +10010,7 @@ You squeeze cock.
 You rabbit fuck.
 &lt;&lt;elseif $sex.act== &quot;Deep Stroke&quot;&gt;&gt;
 You deep stroke.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="Against-Wall-Dialogue" tags="nobr Dialogue" position="975,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="Against-Wall-Dialogue" tags="nobr Dialogue" position="975,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 /*Suppoded to be facing each other against the wall. */
 &lt;&lt;if $sex.role== &quot;bottom&quot;&gt;&gt;
@@ -9861,16 +10022,16 @@ You deep stroke.
 	&quot;Taking hold of $proset.their shoulders, you push $proset.them up against a nearby wall.&quot;,
 	&quot;Grinding your body up against $proset.their back, _n.name feels your breath on $proset.their &quot;+ ((_n.body.Ears &amp;&amp; _n.body.Ears.toLowerCase) ? _n.body.Ears.toLowerCase() : &quot;ears&quot;)+&quot;.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="Against-Wall-From-Behind-Dialogue" tags="nobr" position="850,1225" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="Against-Wall-From-Behind-Dialogue" tags="nobr" position="1100,1225" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You&#39;re standing behind _n.name as they brace themself against the $room.location.
 
 &lt;&lt;else&gt;&gt;
 You&#39;re braced against the $room.location with _n.name behind you.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="Bent-Over-Dialogue" tags="nobr" position="975,1225" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="Bent-Over-Dialogue" tags="nobr" position="1225,1225" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You bend _n.name over on the $room.location and step up behind $proset.them.
 &lt;&lt;else&gt;&gt;
 _n.name bends you over on the $room.location and steps up behind you.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="Cowgirl-Dialogue" tags="Dialogue nobr" position="875,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="Cowgirl-Dialogue" tags="Dialogue nobr" position="875,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -9886,7 +10047,7 @@ _n.name bends you over on the $room.location and steps up behind you.
 		&quot;_n.name climbed on top of you.&quot;
 	)&gt;&gt;
 	&lt;br&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="Doggystyle-Dialogue" tags="nobr Dialogue" position="675,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="Doggystyle-Dialogue" tags="nobr Dialogue" position="675,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -9899,12 +10060,12 @@ _n.name bends you over on the $room.location and steps up behind you.
 	&lt;&lt;=either(
 	&quot;_n.name get on all fours like a dog, and present their _n.assSize ass to you.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="Double-Decker-Dialogue" tags="nobr" position="100,1350" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="Double-Decker-Dialogue" tags="nobr" position="350,1350" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You are underneath _n.name as $proset.they stretch out on their back on the $room.location.
 
 &lt;&lt;else&gt;&gt;
 You are on your back on the $room.location atop _n.name.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="Face-On-Chest-Dialogue" tags="nobr Dialogue" position="900,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="Face-On-Chest-Dialogue" tags="nobr Dialogue" position="900,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -9914,7 +10075,7 @@ You are on your back on the $room.location atop _n.name.
 	&lt;&lt;= either(
     &quot;You press your face against _n.name&#39;s chest.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="Facesit-Dialogue" tags="nobr Dialogue" position="1075,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="Facesit-Dialogue" tags="nobr Dialogue" position="1075,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.role==&quot;top&quot;&gt;&gt;
@@ -9925,18 +10086,18 @@ You are on your back on the $room.location atop _n.name.
 	&lt;&lt;=either(
     &quot;You push _n.name onto their back and then lower yourself over their face.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="From-Behind-Dialogue" tags="nobr" position="475,1350" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="From-Behind-Dialogue" tags="nobr" position="725,1350" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You&#39;re behind _n.name, who is on all fours.
 &lt;&lt;else&gt;&gt;
 You&#39;re on all fours with _n.name behind you.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="Kneeling-Between-Thighs-Dialogue" tags="nobr" position="600,1350" size="100,100">/* Same as Missionary? */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="Kneeling-Between-Thighs-Dialogue" tags="nobr" position="850,1350" size="100,100">/* Same as Missionary? */
 &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You part your thighs as _n.name kneels between them.
 
 &lt;&lt;else&gt;&gt;
 _n.name parts their thighs as you kneel between them.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="Kneeling-By-Face-Dialogue" tags="nobr" position="725,1350" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="Kneeling-By-Face-Dialogue" tags="nobr" position="975,1350" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     &lt;&lt;if $mc.genitals == &quot;penis&quot;&gt;&gt;
     You kneel down, your dick is in $proset.their face.
     &lt;&lt;else&gt;&gt;
@@ -9948,21 +10109,21 @@ _n.name parts their thighs as you kneel between them.
     &lt;&lt;else&gt;&gt;
     _n.name kneels down beside your head, $proset.their pussy is in your face.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="Kneeling-Dialogue" tags="nobr" position="850,1350" size="100,100">/* Should they both be kneeling? */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="109" name="Kneeling-Dialogue" tags="nobr" position="1100,1350" size="100,100">/* Should they both be kneeling? */
 &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 _n.name is kneeling before you.
 
 &lt;&lt;else&gt;&gt;
 You&#39;re kneeling before _n.name, looking up at their _n.genitals.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="Kneeling-Over-Dialogue" tags="nobr" position="975,1350" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="Kneeling-Over-Dialogue" tags="nobr" position="1225,1350" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You lie back and pull _n.name over to kneel next to you.
 &lt;&lt;else&gt;&gt;
 _n.name stretches out on $proset.their back and pulls you over to kneel next to them.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="109" name="Laid-Across-On-Back-Dialogue" tags="nobr" position="1100,1350" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="Laid-Across-On-Back-Dialogue" tags="nobr" position="100,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You push _n.name onto their back on the $room.location and step between their thighs.
 &lt;&lt;else&gt;&gt;
 You lie back on the $room.location and _n.name steps between your thighs.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="Laid-Across-On-Stomach-Dialogue" tags="nobr" position="1225,1350" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="Laid-Across-On-Stomach-Dialogue" tags="nobr" position="225,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You push _n.name onto their chest on the $room.location and you step up behind $proset.them.
 &lt;&lt;else&gt;&gt;
 _n.name pushes you onto your chest on the $room.location and steps up behind you.
@@ -9970,17 +10131,17 @@ _n.name pushes you onto your chest on the $room.location and steps up behind you
     Your tail wags in anticipation.
 
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="Laid-Across-Oral-Service-Dialogue" tags="nobr" position="100,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="Laid-Across-Oral-Service-Dialogue" tags="nobr" position="350,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     You push _n.name back on the $room.location and step up towards $proset.their head.
     &lt;&lt;else&gt;&gt;
     You lie back on the $room.location as _n.name steps up towards your head.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="Mating-Press-Dialogue" tags="nobr" position="225,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="Mating-Press-Dialogue" tags="nobr" position="475,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 
 You&#39;re on top of _n.name on the $room.location, $proset.their legs pushed back towards $proset.their head
 
 &lt;&lt;else&gt;&gt;
 You&#39;re on your back $room.location with _n.name on top of you, your legs pushed back towards your head.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="Missionary-Dialogue" tags="nobr Dialogue" position="675,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="Missionary-Dialogue" tags="nobr Dialogue" position="675,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -9998,26 +10159,26 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 		&quot;Much to your delight, you allow yourself to be pushed down onto your front, and as you present &quot; + $proset.them + &quot; with your &quot; + $mc.assSize + &quot; ass and groin, you moan,&quot;,
         &quot;You lie down on your bed as _n.name crawls between your legs.&quot;
 	)&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="Oral-Service-Dialogue" tags="nobr" position="475,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="Oral-Service-Dialogue" tags="nobr" position="725,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     You&#39;re lying back on the $room.location with _n.name face between your thighs.
     &lt;&lt;else&gt;&gt;
     Your face is between _n.name thighs as $proset.they lie back on the $room.location.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="Perched-Oral-Service-Dialogue" tags="nobr" position="600,1475" size="100,100">/* Other person is on a higher surface? */
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="Perched-Oral-Service-Dialogue" tags="nobr" position="850,1475" size="100,100">/* Other person is on a higher surface? */
     &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     _n.name is kneeling between your thighs as you are perched on the $room.location.
     &lt;&lt;else&gt;&gt;
     You are kneeling between _n.name&#39;s parted thighs as $proset.they are on the $room.location.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="Prone-Bone-Dialogue" tags="nobr" position="725,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="Prone-Bone-Dialogue" tags="nobr" position="975,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You role &lt;span class=&quot;red&quot;&gt;_n.name&lt;/span&gt; onto their stomach on the $room.location and you mount them.
 
 &lt;&lt;else&gt;&gt;
 You roll onto your stomach on the $room.location as &lt;span class=&quot;red&quot;&gt;_n.name&lt;/span&gt; mounts you.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="850,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="1100,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You&#39;re on top of _n.name on the $room.location, straddling $proset.their hips, facing away to give them a view of your ass.
 &lt;&lt;else&gt;&gt;
 _n.name is on top of you on the $room.location, straddling your hips, facing away to give you a view of their ass.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="Sit-On-Lap-Dialogue" tags="Dialogue nobr" position="1075,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="Sit-On-Lap-Dialogue" tags="Dialogue nobr" position="1075,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
@@ -10028,10 +10189,10 @@ _n.name is on top of you on the $room.location, straddling your hips, facing awa
 	&lt;&lt;=either(
     &quot;You get _n.name to sit on your lap.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="Sitting-Dialogue" tags="nobr Dialogue" position="775,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="Sitting-Dialogue" tags="nobr Dialogue" position="775,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
-You and _n.name sit on the $room.location.</tw-passagedata><tw-passagedata pid="120" name="SixtyNine-Dialogue" tags="Dialogue nobr" position="775,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+You and _n.name sit on the $room.location.</tw-passagedata><tw-passagedata pid="122" name="SixtyNine-Dialogue" tags="Dialogue nobr" position="775,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -10051,12 +10212,12 @@ You and _n.name sit on the $room.location.</tw-passagedata><tw-passagedata pid="
 &lt;&lt;/if&gt;&gt;
 
 /*    
-&quot;Allowing $proset.them to push you down, you reach up and take a firm grip on $proset.their _n.hips, before roughly tugging $proset.them down so that they&#39;re over the top of you in a reversed all-fours position.” */</tw-passagedata><tw-passagedata pid="121" name="Spooning-Dialogue" tags="nobr" position="100,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&quot;Allowing $proset.them to push you down, you reach up and take a firm grip on $proset.their _n.hips, before roughly tugging $proset.them down so that they&#39;re over the top of you in a reversed all-fours position.” */</tw-passagedata><tw-passagedata pid="123" name="Spooning-Dialogue" tags="nobr" position="350,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You&#39;re nestled up against _n.name&#39;s back, spooning on the $room.location.
 
 &lt;&lt;else&gt;&gt;
 You&#39;re on your side with _n.name nestled up against your back, spooning on the $room.location.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="Squatting-Before-Dialogue" tags="nobr" position="225,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Squatting-Before-Dialogue" tags="nobr" position="475,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     &lt;&lt;if $mc.genitals == &quot;penis&quot;&gt;&gt;
     You squat down in front of _n.name, your dick is in $proset.their face.
     &lt;&lt;else&gt;&gt;
@@ -10068,7 +10229,7 @@ You&#39;re on your side with _n.name nestled up against your back, spooning on t
     &lt;&lt;else&gt;&gt;
     _n.name squats down beside you, $proset.their pussy is in your face.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Stand-Back-Oral-Dialogue" tags="Dialogue nobr" position="975,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Stand-Back-Oral-Dialogue" tags="Dialogue nobr" position="975,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;= either(
@@ -10088,7 +10249,7 @@ You&#39;re on your side with _n.name nestled up against your back, spooning on t
 	&lt;&lt;= either(
 		&quot;So cute, like my &quot; + (($mc.assSize &amp;&amp; $mc.assSize.toLowerCase) ? $mc.assSize.toLowerCase() : &quot;average&quot;) + &quot; ass?&quot;
 	)&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Stand-Front-Oral-Dialogue" tags="nobr Dialogue" position="875,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="Stand-Front-Oral-Dialogue" tags="nobr Dialogue" position="875,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
@@ -10102,11 +10263,11 @@ You&#39;re on your side with _n.name nestled up against your back, spooning on t
     )&gt;&gt;
     &lt;br&gt;
     &quot;So cute, you like my &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;?&quot;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Standing-Dialogue" tags="nobr Dialogue" position="1175,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="Standing-Dialogue" tags="nobr Dialogue" position="1175,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 
-You and _n.name are standing, face to face.</tw-passagedata><tw-passagedata pid="126" name="Standing-From-Behind-Dialogue" tags="nobr" position="725,1600" size="100,100">&lt;&lt;if $sex.previousPosition == &quot;Standing&quot;&gt;&gt;
+You and _n.name are standing, face to face.</tw-passagedata><tw-passagedata pid="128" name="Standing-From-Behind-Dialogue" tags="nobr" position="975,1600" size="100,100">&lt;&lt;if $sex.previousPosition == &quot;Standing&quot;&gt;&gt;
     &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     You grasp _n.name by the hips and turn them around.
     &lt;&lt;else&gt;&gt;
@@ -10124,16 +10285,16 @@ You and _n.name are standing, face to face.</tw-passagedata><tw-passagedata pid=
     &lt;&lt;else&gt;&gt;
     _n.name grabs you by the hips and turn you to face away from you.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="Straddling-Chest-Dialogue" tags="nobr" position="850,1600" size="100,100">&lt;&lt;if $sex.roles ==&quot;top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="Straddling-Chest-Dialogue" tags="nobr" position="1100,1600" size="100,100">&lt;&lt;if $sex.roles ==&quot;top&quot;&gt;&gt;
 You&#39;re on the $sex.location, straddling _n.name&#39;s chest.
 &lt;&lt;else&gt;&gt;
 _n.name is straddling your chest.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="Underneath-Oral-Service-Dialogue" tags="nobr" position="975,1600" size="100,100">/* Not needed? */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="Underneath-Oral-Service-Dialogue" tags="nobr" position="1225,1600" size="100,100">/* Not needed? */
     &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     _n.name is kneeling between your parted thighs as you sit at the $room.location.
     &lt;&lt;else&gt;&gt;
     You are kneeling between _n.name&#39;s parted thighs as they sit at the $room.location.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="PositionDialogue" tags="nobr Dialogue" position="1100,1025" size="100,100">&lt;&lt;set _p = $sex.position or $position&gt;&gt;
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="PositionDialogue" tags="nobr Dialogue" position="1100,1025" size="100,100">&lt;&lt;set _p = $sex.position or $position&gt;&gt;
 
 /* POSITION (prints once per change) */
 
@@ -10172,7 +10333,7 @@ _n.name is straddling your chest.
         
         &lt;&lt;case &quot;Oral Front&quot;&gt;&gt;&lt;&lt;include &quot;Stand-Front-Oral-Dialogue&quot;&gt;&gt;
         &lt;&lt;case &quot;Oral Back&quot;&gt;&gt;&lt;&lt;include &quot;Stand-Back-Oral-Dialogue&quot;&gt;&gt;
-	&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="Anal-Quote" tags="nobr Dialogue" position="1600,1300" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
+	&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="Anal-Quote" tags="nobr Dialogue" position="1600,1300" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
 	[Error] setup.analQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10217,7 +10378,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Anal quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -10251,7 +10412,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Caress quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, material=&lt;&lt;=_material&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="Cuddle-Quote" tags="nobr Dialogue" position="1800,1700" size="100,100">&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="Cuddle-Quote" tags="nobr Dialogue" position="1800,1700" size="100,100">&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
 	[Error] setup.cuddleQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10287,7 +10448,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Cuddle quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -10311,7 +10472,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Cunnilingus quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="Embrace-Quote" tags="nobr Dialogue" position="1700,1500" size="100,100">&lt;&lt;if !setup.embraceQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="Embrace-Quote" tags="nobr Dialogue" position="1700,1500" size="100,100">&lt;&lt;if !setup.embraceQuotes&gt;&gt;
 	[Error] setup.embraceQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10347,7 +10508,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Embrace quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="Enter-Ass-Quote" tags="nobr" position="600,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="Enter-Ass-Quote" tags="nobr" position="850,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
 
@@ -10399,7 +10560,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Anal quote pool found.
     (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="Enter-Mouth-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">/*&lt;&lt;if !setup.blowjobQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="Enter-Mouth-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">/*&lt;&lt;if !setup.blowjobQuotes&gt;&gt;
 	[Error] setup.blowjobQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10463,7 +10624,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Enter Mouth pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="Enter-Pussy-Quote" tags="nobr" position="850,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="Enter-Pussy-Quote" tags="nobr" position="1100,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength&gt;&gt;
 &lt;&lt;set _age  = $mc.ageGroup&gt;&gt;
 
@@ -10485,7 +10646,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Vaginal quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="Face-on-Chest-Quote" tags="nobr Dialogue" position="1700,1600" size="100,100">&lt;&lt;if !setup.faceonchestQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="Face-on-Chest-Quote" tags="nobr Dialogue" position="1700,1600" size="100,100">&lt;&lt;if !setup.faceonchestQuotes&gt;&gt;
 	[Error] setup.faceonchestQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10523,7 +10684,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Face on Chest quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="Feel-Stomach-Quote" tags="Dialogue nobr" position="1700,1200" size="100,100">&lt;&lt;if !setup.feelstomachQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="Feel-Stomach-Quote" tags="Dialogue nobr" position="1700,1200" size="100,100">&lt;&lt;if !setup.feelstomachQuotes&gt;&gt;
 	[Error] setup.feelstomachQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10560,7 +10721,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Feel Stomach quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">/*&lt;&lt;if !setup.fingerassQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">/*&lt;&lt;if !setup.fingerassQuotes&gt;&gt;
 	[Error] setup.fingerassQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10622,7 +10783,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Finger Ass quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="Finger-Pussy-Quote" tags="nobr Dialogue" position="1800,1200" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Finger-Pussy-Quote" tags="nobr Dialogue" position="1800,1200" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -10645,7 +10806,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Finger Vagina quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -10680,7 +10841,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No footjob quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, _size=&lt;&lt;=_size&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">/*
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">/*
 &lt;&lt;if !setup.frotQuotes&gt;&gt;
 	[Error] setup.frotQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -10725,7 +10886,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Frot quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="Fuck-Pussy-Quote" tags="nobr" position="475,1850" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="Fuck-Pussy-Quote" tags="nobr" position="725,1850" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength&gt;&gt;
 &lt;&lt;set _tight = _n.genitaltype&gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
@@ -10754,7 +10915,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Fuck Pussy quote pool found.
     (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">/*&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">/*&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
 	[Error] setup.gropebreastQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10829,7 +10990,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No grope breast quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -10876,7 +11037,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Grope Butt quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="Handjob-Quote" tags="nobr Dialogue" position="1700,1700" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="Handjob-Quote" tags="nobr Dialogue" position="1700,1700" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -10923,11 +11084,11 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No handjob quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, age=&lt;&lt;=_age&gt;&gt;, size=&lt;&lt;=_size&gt;&gt;,personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="Kiss-Quote" tags="nobr" position="975,1850" size="100,100">&lt;&lt;= either(
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="Kiss-Quote" tags="nobr" position="1225,1850" size="100,100">&lt;&lt;= either(
 		&quot;Mmm&quot;,
 		&quot;Mmmph&quot;,
 		&quot;Mmmmm&quot;
-	)&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">/* When you or NPC are close to orgasm */
+	)&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">/* When you or NPC are close to orgasm */
 
 &lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
@@ -10958,7 +11119,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm Close quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
 	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
 &lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
 	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
@@ -10989,7 +11150,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -11015,7 +11176,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Pet Ears quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -11039,7 +11200,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Rimjob quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;,personality=&lt;&lt;=_personality&gt;&gt; )
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="Sex-Quote" tags="Dialogue nobr" position="1600,1200" size="100,100">&lt;!-- only what the npc says --&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="Sex-Quote" tags="Dialogue nobr" position="1600,1200" size="100,100">&lt;!-- only what the npc says --&gt;
 
 &lt;&lt;set _a = $sex.act or &quot;none&quot;&gt;&gt;
 &lt;br&gt;
@@ -11147,7 +11308,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;/switch&gt;&gt;
 
 
-&lt;br&gt;</tw-passagedata><tw-passagedata pid="154" name="Suck-Cock-Quote" tags="nobr" position="475,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="156" name="Suck-Cock-Quote" tags="nobr" position="725,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
@@ -11171,7 +11332,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Enter Mouth pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="Suck-Foot-Quote" tags="nobr Dialogue" position="1800,1600" size="100,100">&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="Suck-Foot-Quote" tags="nobr Dialogue" position="1800,1600" size="100,100">&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
 	[Error] setup.suckfootQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -11211,15 +11372,17 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Suck Foot quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="StoryCaption" tags="" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="StoryCaption" tags="nobr" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
 &lt;b&gt;Location: &lt;/b&gt;$gamelocation
 &lt;&lt;/if&gt;&gt;
-
+&lt;br&gt;
 &lt;&lt;button &quot;Lexicon&quot;&gt;&gt;&lt;&lt;PopupLexicon&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Credits&quot;&gt;&gt;&lt;&lt;PopupCredits&gt;&gt;&lt;&lt;/button&gt;&gt;
+
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
+
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
+&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
 	muscle: 4,
 	plump: 4,
 	label: &quot;Average&quot;
@@ -11368,7 +11531,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
     style: &quot;&quot;,
     color: &quot;&quot;
 }&gt;&gt;
-&lt;&lt;set $mc.virgin to true&gt;&gt;
+&lt;&lt;set $mc.virgin to false&gt;&gt;
 
 
 	/* This last one is only for practicality */
@@ -11379,7 +11542,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 
 
 &lt;&lt;set $flags = $flags || {}&gt;&gt;
-&lt;&lt;set $flags.skinChosen = false&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
+&lt;&lt;set $flags.skinChosen = false&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
 
 &lt;&lt;set $devMode = true&gt;&gt;
 &lt;div&gt;
@@ -11407,174 +11570,7 @@ Updated as of 1/16/2026
 &lt;&lt;button [[Testroom|Test-Sex-Encounter]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt; 
 
 &lt;&lt;/if&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="159" name="Statistics" tags="nobr" position="275,150" size="100,100">&lt;h2&gt;Basic Info&lt;/h2&gt;
-&lt;table class=&quot;stats-table&quot;&gt;
-  &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
-  &lt;tr id=&quot;name&quot;&gt;
-    &lt;th&gt;First Name:&lt;/th&gt;
-    &lt;td id=&quot;mc-name&quot;&gt;$mc.name&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;&lt;if $mc.nickname&gt;&gt;
-  &lt;tr id=&quot;nickname&quot;&gt;
-    &lt;th&gt;Nickname:&lt;/th&gt;
-    &lt;td id=&quot;mc-nick&quot;&gt;$mc.nickname&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;&lt;/if&gt;&gt;
-  &lt;tr id=&quot;surname&quot;&gt;
-    &lt;th&gt;Surname:&lt;/th&gt;
-    &lt;td id=&quot;mc-surb&quot;&gt;$mc.surname&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr id=&quot;age&quot;&gt;
-    &lt;th&gt;Age:&lt;/th&gt;
-    &lt;td id=&quot;mc-age&quot;&gt;$mc.age&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr id=&quot;agegroup&quot;&gt;
-    &lt;th&gt;Age Group:&lt;/th&gt;
-    &lt;td id=&quot;mc-agegroup&quot;&gt;$mc.ageGroup&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr id=&quot;species&quot;&gt;
-    &lt;th&gt;Species:&lt;/th&gt;
-    &lt;td id=&quot;mc-species&quot;&gt;$mc.species&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;&lt;if $mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;
-  &lt;tr id=&quot;anthro-type&quot;&gt;
-    &lt;th&gt;Anthro Type:&lt;/th&gt;
-    &lt;td id=&quot;mc-anthro&quot;&gt;
-      &lt;&lt;if $mc.anthro and $mc.anthro.group&gt;&gt;$mc.anthro.group&lt;&lt;/if&gt;&gt;
-      &lt;&lt;if $mc.anthro and $mc.anthro.subtype&gt;&gt; $mc.anthro.subtype&lt;&lt;/if&gt;&gt;
-    &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;&lt;/if&gt;&gt;
-&lt;/table&gt;
-
-&lt;h2&gt;Physical Traits:&lt;/h2&gt;
-&lt;h3&gt;Face and Hair:&lt;/h3&gt;
-&lt;table class=&quot;stats-table&quot;&gt;
-  &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
-  &lt;tr id=&quot;eyes&quot;&gt;
-    &lt;th&gt;Eyes:&lt;/th&gt;
-    &lt;td id=&quot;mc-eyes&quot;&gt;$mc.eyes&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;&lt;if $mc.hair.length or $mc.hair.texture or $mc.hair.color or $mc.hair.do or $mc.hair.bangs or $mc.hair.shave&gt;&gt;
-  &lt;tr id=&quot;hair&quot;&gt;
-    &lt;th&gt;Hair:&lt;/th&gt;
-    &lt;td&gt;
-      &lt;span id=&quot;mc-hairnat&quot;&gt;
-        &lt;&lt;if $mc.hair.length and $mc.hair.length is &quot;bald&quot;&gt;&gt;
-          You are bald.
-        &lt;&lt;else&gt;&gt;
-          You have $mc.hair.style $mc.hair.color hair
-        &lt;&lt;/if&gt;&gt;
-      &lt;/span&gt;
-    &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;&lt;/if&gt;&gt;
-  &lt;&lt;if $facefeatures&gt;&gt;
-  &lt;tr id=&quot;facial-features&quot;&gt;
-    &lt;th&gt;Facial Features:&lt;/th&gt;
-    &lt;td id=&quot;mc-facefeatures&quot;&gt;$facefeatures&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;&lt;/if&gt;&gt;
-&lt;/table&gt;
-
-&lt;h3&gt;Body:&lt;/h3&gt;
-&lt;table class=&quot;stats-table&quot;&gt;
-  &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
-
-  &lt;!-- Skin / Body material row --&gt;
-  &lt;tr id=&quot;skin-color&quot;&gt;
-    &lt;th&gt;&lt;&lt;if $mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;Body Material:&lt;&lt;/if&gt;&gt;&lt;&lt;if not ($mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;)&gt;&gt;Skin:&lt;&lt;/if&gt;&gt;&lt;/th&gt;
-    &lt;td id=&quot;mc-skin&quot;&gt;
-      &lt;&lt;if $mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;
-        $mc.body.Bodymaterial
-        $mc.anthro.color
-        $mc.anthro.pattern
-      &lt;&lt;else&gt;&gt;
-        $mc.skin.color
-      &lt;&lt;/if&gt;&gt;
-      &lt;&lt;if $mc.skin.features&gt;&gt; $mc.skin.features&lt;&lt;/if&gt;&gt;
-    &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;!-- Anthro-only body part summary --&gt;
-  &lt;&lt;if $mc.species and $mc.species.toLowerCase() is &quot;anthro&quot;&gt;&gt;
-  &lt;tr id=&quot;anthro-parts&quot;&gt;
-    &lt;th&gt;Anthro Parts:&lt;/th&gt;
-    &lt;td id=&quot;mc-anthroparts&quot;&gt;
-      Ears: $mc.body.Ears
-      Tail: $mc.body.Tail
-      Feet: $mc.body.Feet
-    &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;&lt;/if&gt;&gt;
-  &lt;!-- Build still uses the existing height/weight/musc system --&gt;
-  &lt;tr id=&quot;body-build&quot;&gt;
-    &lt;th&gt;Build:&lt;/th&gt;
-    &lt;td id=&quot;mc-build&quot;&gt;
-      Height: $mc.bodyheight &lt;br&gt;
-      Physique: $mc.physique &lt;br&gt;
-      &lt;&lt;if $mc.breastsize&gt;&gt;Breast Size: $mc.breastsize&lt;&lt;/if&gt;&gt;  
-
-    &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;
-
-&lt;h2&gt;Personality&lt;/h2&gt;
-&lt;table class=&quot;stats-table&quot;&gt;
-  &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
-  &lt;tr id=&quot;perso&quot;&gt;
-    &lt;th&gt;Personality:&lt;/th&gt;
-    &lt;td id=&quot;mc-perso&quot;&gt;$mc.personality&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;
-
-&lt;h2&gt;NSFW Options&lt;/h2&gt;
-&lt;table class=&quot;stats-table nsfw&quot;&gt;
-  &lt;colgroup&gt;&lt;col style=&quot;width:220px&quot;&gt;&lt;col style=&quot;width:auto&quot;&gt;&lt;/colgroup&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Genitals:&lt;/th&gt;
-    &lt;td id=&quot;mc-genitals&quot;&gt;$mc.genitals&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;&lt;if $mc.genitaltype&gt;&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Genital type:&lt;/th&gt;
-    &lt;td id=&quot;mc-genitaltype&quot;&gt;$mc.genitaltype&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;&lt;/if&gt;&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Ass size:&lt;/th&gt;
-    &lt;td id=&quot;mc-assSize&quot;&gt;$mc.assSize&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;
-
-&lt;b&gt;List of body parts:&lt;/b&gt;
-&lt;br&gt;
-&lt;ul&gt;
-&lt;&lt;for _key, _val range $mc.body&gt;&gt;
-	&lt;li&gt;
-		&lt;strong&gt;&lt;&lt;print _key&gt;&gt;&lt;/strong&gt; :
-		&lt;&lt;print _val&gt;&gt;
-	&lt;/li&gt;
-&lt;&lt;/for&gt;&gt;
-&lt;/ul&gt;</tw-passagedata><tw-passagedata pid="160" name="Tutorial" tags="" position="25,275" size="100,100">You and the person you brought to your room will engage in a session of sex. How you engage in it is up to you.
-
-You can choose who will be the bottom and who will be the top. Note that will not mean that you will determine who is the dom and who is the sub, that will depend on the personality. Certain actions will be locked depending on your role, you cannot be the top and suck off the other&#39;s dick.
-For example, you can have a submissive feminine twink be the one to fuck you or you can have a big muscular dom be fucked by you.
-
-The actions selected is not determining what you are doing but rather what is going to happen. (Remember, consent is a two way street)
-You will be give the option to choose what location in the room you want the two of you to be in and you can choose what position to be in. Certain positions are only availble depending on the location.
-(You can&#39;t just stand on your bed!)
-
-Sex will be broken up into seperate states: Foreplay, Intercourse, Orgasm, and Aftercare.
-
-The progress bar is your arousal meter, not for you specifcally but both you and your partner.
-Doing certain actions will make it go up until it reaches 100. Once you reach 100 you will be sent to the Orgasm stage and locked out of actions in the Foreplay and Intercourse stage.
-
-Foreplay is what you start with, certain actions are restricted until you move on to the next stage. Think of it like this &quot;How are you going to have anal sex if you aren&#39;t hard enough?&quot;
-Intercourse is the stage where the meat of the game is. The actions there will build up much more than in Foreplay.
-Orgasm is the part where your control is limited. Depending on what you are doing, you can choose where to have your orgasm or the npc. Note that to save on complexity it will be treated as a simultenious orgasm between you and the NPC.
-Following the Orgasm you are automatically put into the Aftercare stage. It is an optional stage where you can choose to enjoy the afterglow with the NPC or just finish the sex.
-
-Only when you reach the Aftercare stage will you be allowed to end the session.</tw-passagedata><tw-passagedata pid="161" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="161" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
 &quot;Yes. I&#39;m ready — and I want you to be fully present with me&quot;
 &lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
 &quot;Yes! That sounds exciting — I&#39;m totally in the mood for you.&quot;
@@ -11631,7 +11627,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 &lt;&lt;else&gt;&gt;
     &quot;No&quot;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="UI-Attracted-check" tags="" position="900,500" size="100,100">&lt;&lt;check-attraction $mc _n&gt;&gt;
-&lt;b&gt;$mc.name: &lt;/b&gt;
+&lt;span class=&quot;mc&quot;&gt;&lt;b&gt;$mc.name: &lt;/b&gt;&lt;/span&gt;
 * $mc.gender
 * $mc.sexu
 &lt;b&gt;_n.name: &lt;/b&gt;
@@ -14624,7 +14620,6 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
 
 &lt;&lt;AgeGroupSet&gt;&gt;
 &lt;&lt;MC-Create-body&gt;&gt;
-
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;LittleBoy&quot;&gt;&gt;
@@ -14728,6 +14723,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     &lt;&lt;AgeGroupSet&gt;&gt;
     &lt;&lt;MC-Create-body&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
+
 &lt;&lt;widget &quot;TeenGirl&quot;&gt;&gt;
     &lt;&lt;set 
         $mc.name to &quot;Mary&quot;,
@@ -14761,6 +14757,7 @@ Only when you reach the Aftercare stage will you be allowed to end the session.<
     &lt;&lt;AgeGroupSet&gt;&gt;
     &lt;&lt;MC-Create-body&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
+
 &lt;&lt;widget &quot;AdultWoman&quot;&gt;&gt;
     &lt;&lt;set 
         $mc.name to &quot;Mary&quot;,

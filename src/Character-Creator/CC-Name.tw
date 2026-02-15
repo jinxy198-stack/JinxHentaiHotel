@@ -4,14 +4,10 @@
 //What is your name?//
 <<textbox "$mc.name" "">>
 <<button "Confirm">>
-    <<if $mc.name.toLowerCase().trim() == "manon">>
-        <<replace "#error">>Yeah, can't use that one, buddy!<</replace>>
-    <<else>>
-        <<if !$mc.name.trim()>>
-            <<set $mc.name = "No-Name">>
-        <</if>>
-        <<goto "Index-CC">>
+    <<if !$mc.name.trim()>>
+        <<set $mc.name = "No-Name">>
     <</if>>
+    <<goto "Index-CC">> 
 <</button>>
 
 Once you are set on a name (by typing in the texbox and pressing the confirm button), you will be sent back to the menu of traits.

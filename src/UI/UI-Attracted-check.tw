@@ -1,6 +1,6 @@
 :: UI-Attracted-check {"position":"900,500","size":"100,100"}
 <<check-attraction $mc _n>>
-<b>$mc.name: </b>
+<span class="mc"><b>$mc.name: </b></span>
 * $mc.gender
 * $mc.sexu
 <b>_n.name: </b>

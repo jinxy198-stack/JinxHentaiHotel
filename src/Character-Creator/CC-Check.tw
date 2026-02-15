@@ -6,7 +6,7 @@ Please review the character page below and confirm the traits chosen are correct
 <table>
     <tr id="name">
         <th><u><strong>First Name:</strong></u></th>
-        <td id="mc-name">$mc.name</td>
+        <td id="mc-name"><span class="mc">$mc.name</span></td>
     </tr>
     <<if $mc.nickname>>
     <tr id="nickname">
