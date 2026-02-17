@@ -1,4 +1,4 @@
-:: Face-on-Chest-Quote [nobr Dialogue] {"position":"1700,1600","size":"100,100"}
+:: Face-On-Chest-Quote [nobr Dialogue] {"position":"1700,1600","size":"100,100"}
 <<if !setup.faceonchestQuotes>>
 	[Error] setup.faceonchestQuotes is missing. Define it in StoryInit.
 	<<return>>

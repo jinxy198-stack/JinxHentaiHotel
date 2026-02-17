@@ -1,4 +1,4 @@
-::Enter-Ass-Quote [nobr]
+::Tease-Ass-Cock-Quote [nobr]
 
 
 <<set _pref = _n.sexpref || "Switch">>
@@ -15,15 +15,15 @@
 <<set _pool = null>>
 
 <<if _mode == "bottom">>
-	<<set _pool = setup.EnterAssQuotes.bottom>>
+	<<set _pool = setup.TeaseAssCockQuotes>>
 <<elseif _mode == "top">>
-  <<set _pool = setup.EnterAssQuotes.top>>
+  <<set _pool = setup.TeaseAssCockQuotes>>
 <</if>>
 
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>
 <<else>>
-	[Error] No Anal quote pool found.
+	[Error] No Tease ass quote pool found.
     (mode=<<=_mode>>, pref=<<=_pref>>, nsize=<<=_nsize>>, msize=<<=_msize>>, personality=<<=_personality>>)
 <</if>>

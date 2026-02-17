@@ -1,0 +1,27 @@
+:: Tease-Cock-Pussy-Quote [nobr]
+
+<<set _pref = _n.sexpref >>
+<<set _mage  = $mc.ageGroup  || "Adult">>
+<<set _nage  = _n.ageGroup  || "Adult">>
+
+
+<<if $sex.role == "bottom">>
+	<<set _mode = "bottom">>
+<<elseif $sex.role == "top">>
+	<<set _mode = "top">>
+<</if>>
+
+<<if $sex.role =="top">>
+	<<set _pool = setup.TeaseCockWithPussyQuotes>>
+<<elseif $sex.role =="bottom">>
+	<<set _pool = setup.TeasePussyWithCockQuotes[_pref]>>
+<<else>>
+    ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT'S CREATOR
+<</if>>
+
+<<if _pool && _pool.length>>
+	<<= either(..._pool)>>
+<<else>>
+	[Error] No grope breast quote pool found.
+	(mode=<<=_mode>>, pref=<<=_pref>>)
+<</if>>

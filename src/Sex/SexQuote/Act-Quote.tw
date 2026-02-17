@@ -1,4 +1,4 @@
-:: Sex-Quote [Dialogue nobr] {"position":"1600,1200","size":"100,100"}
+:: Act-Quote [Dialogue nobr] {"position":"1600,1200","size":"100,100"}
 <!-- only what the npc says -->
 
 <<set _a = $sex.act or "none">>
@@ -11,7 +11,7 @@
     <<case "Tease Nipples">><<include "">>
     <<case "Kiss Nipple">><<include "">>
     <<case "Lick Nipple">><<include "">>
-    <<case "Suck Nipple">><<include "">>
+    <<case "Suck Nipple">><<include "Suck-Nipple-Quote">>
     <<case "Rub Pussy">><<include "">>
     <<case "Pull Hand To Pussy">><<include "">>
     <<case "Finger Pussy">><<include "Finger-Pussy-Quote">>
@@ -34,8 +34,8 @@
     <<case "Rub Cock Against Feet">><<include "">>
     <<case "Rub Pussy Against Feet">><<include "">>
     <<case "Lick Foot">><<include "">>
-    <<case "Grip Cock">><<include "">>
-    <<case "Wrap Hand Around Cock">><<include "">>
+    <<case "Grip Cock">><<include "Grab-Cock-Quote">>
+    <<case "Wrap Hand Around Cock">><<include "Grab-Cock-Quote">>
     <<case "Grip Cock With Feet">><<include "Footjob-Quote">>
     <<case "Pull Feet Around Cock">><<include "Footjob-Quote">>
     <<case "Rub Pussy With Feet">><<include "">>
@@ -49,7 +49,7 @@
     <<case "Rub Against Feet">><<include "">>
     <<case "Pump Shaft">><<include "Handjob-Quote">>
     <<case "Fuck Fist">><<include "Handjob-Quote">>
-    <<case "Tease Tip">><<include "">>
+    <<case "Tease Tip">><<include "Tease-Tip-Quote">>
     <<case "Suck Cock">><<include "Suck-Cock-Quote">>
     <<case "Deepthroat">><<include "">>
     <<case "Fuck Mouth">><<include "Suck-Cock-Quote">>
@@ -61,8 +61,8 @@
     <<case "Pull Away From Feet">><<include "">>
     <<case "Pull Out Of Mouth">><<include "">>
     <<case "Pull Mouth Off Of Cock">><<include "">> */
-    <<case "Tease Pussy With Cock">><<include "">>
-    <<case "Cocktease With Pussy">><<include "">>
+    <<case "Tease Pussy With Cock">><<include "Tease-Cock-Pussy-Quote">>
+    <<case "Cocktease With Pussy">><<include "Tease-Cock-Pussy-Quote">>
     <<case "Enter Pussy">><<include "Enter-Pussy-Quote">>
     <<case "Push Cock In">><<include "Enter-Pussy-Quote">>
     <<case "Fuck Pussy">><<include "Fuck-Pussy-Quote">>
@@ -90,10 +90,10 @@
     <<case "Pull Ass Off Of Cock">><<include "">>
     <<case "Stop Fingering Ass">><<include "">>
     <<case "Pull Ass Off Of Finger">><<include "">>*/
-    <<case "Fuck Tits">><<include "">>
-    <<case "Use Tits On Cock">><<include "">>
-    <<case "Hotdog">><<include "">>
-    <<case "Rub Ass On Cock">><<include "">>
+    <<case "Fuck Tits">><<include "Boobjob-Quote">>
+    <<case "Use Tits On Cock">><<include "Boobjob-Quote">>
+    <<case "Hotdog">><<include "Tease-Ass-Cock-Quote">>
+    <<case "Rub Ass On Cock">><<include "Tease-Ass-Cock-Quote">>
     
 	<<case "Caress">><<include "Caress-Quote">>
     <<case "Rimjob">><<include "Rimjob-Quote">>
