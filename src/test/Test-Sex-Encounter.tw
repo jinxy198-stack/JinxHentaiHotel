@@ -87,9 +87,9 @@ Sex Object: <<print $sex.object.name>><br>
 <<RoomRelocationUI>>
 <<SexEncounterUI>>
 <<button "End Session">>
-			        <<set $lastNpc = _n>>      <!-- remember who you were with -->
-			        <<set $sex = null >>  <!-- optional reset -->
-			        <<goto "Your Room">> <!-- or "Your Room" or whatever -->
+	<<set $lastNpc = _n>>      <!-- remember who you were with -->
+	<<set $sex = null >>  <!-- optional reset -->
+	<<goto "Your Room">> <!-- or "Your Room" or whatever -->
 <</button>>
 </div> 
 

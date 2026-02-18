@@ -1,20 +1,73 @@
-:: UI-Attracted-check {"position":"900,500","size":"100,100"}
+:: UI-Attracted-check [nobr] {"position":"900,500","size":"100,100"}
 <<check-attraction $mc _n>>
-<span class="mc"><b>$mc.name: </b></span>
-* $mc.gender
-* $mc.sexu
+<b>$mc.name: </b>
+<br>
+* <<if $mc.gender=="Male">>
+	<span class="blue">$mc.gender</span>
+<<elseif $mc.gender=="Female">>
+	<span class="pink">$mc.gender</span>
+<<else>>
+	<span class="green">$mc.gender</span>
+<</if>>
+<br>
+* 
+<<if $mc.sexu=="Heterosexual">>
+<span class="flag-text flag-heterosexual">$mc.sexu</span>
+<<elseif $mc.sexu=="Homosexual">>
+<span class="flag-text flag-homosexual">$mc.sexu</span>
+<<elseif $mc.sexu=="Bisexual">>
+<span class="flag-text flag-bisexual">$mc.sexu</span>
+<<elseif $mc.sexu=="Pansexual">>
+<span class="flag-text flag-pansexual">$mc.sexu</span>
+<<elseif $mc.sexu=="Asexual">>
+<span class="flag-text flag-asexual">$mc.sexu</span>
+<</if>>
+
+/*$mc.sexu*/
+<br>
 <b>_n.name: </b>
-* _n.gender
-* _n.sexu
+<br>
+* <<if _n.gender=="Male">>
+	<span class="blue">_n.gender</span>
+<<elseif _n.gender=="Female">>
+	<span class="pink">_n.gender</span>
+<<else>>
+	<span class="green">_n.gender</span>
+<</if>>
+<br>
+* 
+<<if _n.sexu=="Heterosexual">>
+<span class="flag-text flag-heterosexual flag-on-black">_n.sexu</span>
+<<elseif _n.sexu=="Homosexual">>
+<span class="flag-text flag-homosexual">_n.sexu</span>
+<<elseif _n.sexu=="Bisexual">>
+<span class="flag-text flag-bisexual">_n.sexu</span>
+<<elseif _n.sexu=="Pansexual">>
+<span class="flag-text flag-pansexual">_n.sexu</span>
+<<elseif _n.sexu=="Asexual">>
+<span class="flag-text flag-asexual flag-on-black">_n.sexu</span>
+<</if>>
+/*_n.sexu */
+
 <<if $attraction>><<pick-roles $mc _n>>
-<div id="role-line">Top: <<= $sex.roles.dom.name >> | Bottom: <<= $sex.roles.sub.name >></div>
+<div id="role-line">
+	Top: <<= $sex.roles.dom.name >>
+	| Bottom: <<= $sex.roles.sub.name >>
+</div>
 <<link "Swap roles">>
 	<<set [$sex.roles.dom, $sex.roles.sub] to [$sex.roles.sub, $sex.roles.dom]>>
-	<<replace "#role-line">>Top: <<= $sex.roles.dom.name >> | Bottom: <<= $sex.roles.sub.name >><</replace>>
+	<<replace "#role-line">>
+		Top: <<= $sex.roles.dom.name >> 
+		| Bottom: <<= $sex.roles.sub.name >>
+	<</replace>>
+	<br>
     <<replace "#top-bottom-chat">><<include "top-bottom-Dialogue">><</replace>>
 <</link>>
+<br>
 <<include "Accept-Dialogue">>
-<<nobr>><div id="top-bottom-chat"><<include "top-bottom-Dialogue">></div><</nobr>>
+<br>
+<div id="top-bottom-chat"><<include "top-bottom-Dialogue">></div>
+<br>
 <<button "Go have sex">>
 	<<WithNPC _n.id>>
     <<run Dialog.close()>>

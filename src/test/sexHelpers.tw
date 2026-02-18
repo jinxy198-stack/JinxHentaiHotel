@@ -496,7 +496,6 @@ setup.isEndActValid = function (act, sex) {
 };
 
 
-
 setup.isContinueActValid = function (act, sex) {
     // Must currently be penetrating something
     if (!sex || !sex.penetration) return false;

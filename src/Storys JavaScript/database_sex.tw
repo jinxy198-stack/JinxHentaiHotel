@@ -472,12 +472,25 @@ setup.sexacts = {
         "subject dialogue tags": ["groping breasts"],
         "object dialogue tags": ["breasts groped"],
     },
+
+    "Press Face on Chest": 
+    {
+        "positions": [ "Missionary", "Laid Across On Back", "Mating Press", "Sitting", "Cowgirl", "Kneeling Over", "Standing", "Astride Lap", "Against Wall","Face On Chest"],
+        "action type": ["penetrate"],
+        "subject parts": ["Head"],
+        "object parts": ["Chest"],
+        "take virginity": [],
+        "subject arousal": 10,
+        "object arousal":  10,
+        "subject arousal cap": 400,
+    },
+
     "Kiss Nipple":
     {
         "positions": [ "Missionary", "Laid Across On Back", "Mating Press", "Sitting", "Cowgirl", "Kneeling Over", "Standing", "Astride Lap", "Against Wall","Face On Chest"],
-        "action type": ["tease"],
-        "subject parts": ["Mouth"],
-        "object parts": ["Nipples"],
+        "action type": ["continue"],
+        "subject parts": ["Head"],
+        "object parts": ["Chest"],
         "masturbation": false,
         "take virginity": [],
         "subject arousal": 10,
@@ -489,9 +502,9 @@ setup.sexacts = {
     "Lick Nipple":
     {
         "positions": [ "Missionary", "Laid Across On Back", "Mating Press", "Sitting", "Cowgirl", "Kneeling Over", "Standing", "Astride Lap", "Against Wall","Face On Chest"],
-        "action type": ["tease"],
-        "subject parts": ["Tongue"],
-        "object parts": ["Nipples"],
+        "action type": ["continue"],
+        "subject parts": ["Head"],
+        "object parts": ["Chest"],
         "masturbation": false,
         "take virginity": [],
         "subject arousal": 10,
@@ -503,9 +516,9 @@ setup.sexacts = {
     "Suck Nipple":
     {
         "positions": [ "Missionary", "Laid Across On Back", "Mating Press", "Sitting", "Cowgirl", "Kneeling Over", "Standing", "Astride Lap", "Against Wall","Face On Chest"],
-        "action type": ["tease"],
-        "subject parts": ["Mouth"],
-        "object parts": ["Nipples"],
+        "action type": ["continue"],
+        "subject parts": ["Head"],
+        "object parts": ["Chest"],
         "masturbation": false,
         "take virginity": [],
         "subject arousal": 10,
@@ -1591,7 +1604,7 @@ setup.sexacts = {
     "Finger Ass(Continue)": 
     {
         "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
-        "action type": [ "continue"],
+        "action type": ["continue"],
         "subject parts": ["Hand"],
         "object parts": ["Asshole"],
         "masturbation": true,
@@ -1745,19 +1758,6 @@ setup.sexacts = {
         "action type": ["tease"],
         "subject parts": ["Hands"],
         "object parts": ["Ears"],
-        "take virginity": [],
-        "subject arousal": 10,
-        "object arousal":  40,
-        "subject arousal cap": 400,
-        "remember as": ["petting", "received"],
-    },
-
-    "Press Face on Chest": 
-    {
-        "positions": [ "Missionary", "Laid Across On Back", "Mating Press", "Sitting", "Cowgirl", "Kneeling Over", "Standing", "Astride Lap", "Against Wall","Face On Chest"],
-        "action type": ["penetrate"],
-        "subject parts": ["Head"],
-        "object parts": ["Chest","Breast"],
         "take virginity": [],
         "subject arousal": 10,
         "object arousal":  40,
