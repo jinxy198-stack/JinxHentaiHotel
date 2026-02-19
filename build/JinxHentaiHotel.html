@@ -210,32 +210,46 @@ button{
   text-transform:uppercase;
   letter-spacing:0.08em;
   border:1px solid rgba(255,255,255,0.15);
+  background:radial-gradient(circle at top, #0509eb, #060a23);
+  color:#fff;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 0 10px rgba(64, 93, 255, 0.4);
+  cursor:pointer;
+}
+/*button{
+  border-radius:999px;
+  padding:0.35rem 0.95rem;
+  font-size:0.9rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  border:1px solid rgba(255,255,255,0.15);
   background:radial-gradient(circle at top, #3a1480, #170623);
   color:#fff;
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.04),
     0 0 10px rgba(173, 64, 255, 0.4);
   cursor:pointer;
-}
+}*/
 
 button:hover,
 html[data-outlines] button:focus{
-  background:radial-gradient(circle at top, #5f22c0, #201032);
-  box-shadow:0 0 16px rgba(200, 120, 255, 0.7);
+  background:radial-gradient(circle at top, #222dc0, #101132);
+  box-shadow:0 0 16px rgba(120, 140, 255, 0.7);
   transform:translateY(-1px);
 }
 
 button:active{
   transform:translateY(0);
-  box-shadow:0 0 4px rgba(120, 60, 180, 0.5);
+  box-shadow:0 0 4px rgba(60, 78, 180, 0.5);
 }
 
 button.active-choice{
-  background:radial-gradient(circle at top, #6a28ff, #24063b);
+  background:radial-gradient(circle at top, #2836ff, #060e3b);
   border-color:rgba(255,255,255,0.35);
   box-shadow:
     inset 0 0 8px rgba(0,0,0,0.9),
-    0 0 14px rgba(180, 80, 255, 0.8);
+    0 0 14px rgba(80, 92, 255, 0.8);
   transform:none;
   filter:none;
 }
@@ -307,7 +321,7 @@ button.active-choice{
 /* toggle button */
 #npcsex-toggle {
   width: 100%;
-  background: #222;
+  background: #494e91;
   color: #fff;
   border: none;
   padding: 6px;
@@ -1028,10 +1042,17 @@ h1, h2, h3{
   color:rgb(255, 0, 200);
 }
 
-#sex-container,
-#arousal-ui {
-  display: inline-block;
+#sex-container {
+  display: flex;
   vertical-align: top;
+  justify-content: space-evenly;
+}
+
+#arousal-ui {
+  
+  vertical-align: top;
+  text-align:center;
+
 }
 
 
@@ -10448,10 +10469,10 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
     &lt;&lt;else&gt;&gt;
     You are kneeling between _n.name&#39;s parted thighs as $proset.they are on the $room.location.
     &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="Prone-Bone-Dialogue" tags="nobr" position="1225,1475" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
-You role &lt;span class=&quot;red&quot;&gt;_n.name&lt;/span&gt; onto their stomach on the $room.location and you mount them.
+You role _n.name onto their stomach on the $room.location and you mount them.
 
 &lt;&lt;else&gt;&gt;
-You roll onto your stomach on the $room.location as &lt;span class=&quot;red&quot;&gt;_n.name&lt;/span&gt; mounts you.
+You roll onto your stomach on the $room.location as _n.name mounts you.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="100,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You&#39;re on top of _n.name on the $room.location, straddling $proset.their hips, facing away to give them a view of your ass.
 &lt;&lt;else&gt;&gt;
@@ -14357,8 +14378,8 @@ Updated as of 1/16/2026
 	&lt;&lt;set _npc.petname = &quot;pet&quot;&gt;&gt;	
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="Widgets" tags="widget nobr" position="100,2350" size="100,100">&lt;&lt;widget &quot;RoomRelocationUI&quot;&gt;&gt;
-
-&lt;h3&gt;Relocate&lt;/h3&gt;
+&lt;div id=&quot;UI-Location&quot;&gt;
+&lt;h3&gt;&lt;u&gt;Relocate&lt;/u&gt;&lt;/h3&gt;
 
 &lt;&lt;set _roomDef = setup.RoomTypes.db[$room.type]&gt;&gt;
 &lt;&lt;set _keys = Object.keys(_roomDef.contents)&gt;&gt;
@@ -14380,14 +14401,14 @@ Updated as of 1/16/2026
             
 
             &lt;&lt;replace &quot;#sex-container&quot;&gt;&gt;
-                &lt;&lt;RoomRelocationUI&gt;&gt;
                 &lt;&lt;SexEncounterUI&gt;&gt;
-                &lt;&lt;button &quot;End Session&quot;&gt;&gt;
+                &lt;&lt;RoomRelocationUI&gt;&gt;
+                /*&lt;&lt;button &quot;End Session&quot;&gt;&gt;
 			        &lt;&lt;set $lastNpc = _n&gt;&gt;      &lt;!-- remember who you were with --&gt;
 			        &lt;&lt;set $sex = null &gt;&gt;  &lt;!-- optional reset --&gt;
                     &lt;&lt;set $n = null &gt;&gt;
 			        &lt;&lt;goto &quot;Your Room&quot;&gt;&gt; &lt;!-- or &quot;Your Room&quot; or whatever --&gt;
-                &lt;&lt;/button&gt;&gt;
+                &lt;&lt;/button&gt;&gt;*/
             &lt;&lt;/replace&gt;&gt;
 
             &lt;&lt;replace &quot;#npcsex-dialogue&quot;&gt;&gt;
@@ -14404,7 +14425,7 @@ Updated as of 1/16/2026
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 &lt;/ul&gt;
-
+&lt;/div&gt;
 &lt;&lt;/widget&gt;&gt;
 
 
@@ -14437,13 +14458,11 @@ Updated as of 1/16/2026
 		&lt;&lt;/if&gt;&gt;
 	&lt;/div&gt;
 
-	&lt;hr&gt;
 
 	&lt;!-- ===================== --&gt;
 	&lt;!-- DIALOGUE --&gt;
 	&lt;!-- ===================== --&gt;
-	&lt;div id=&quot;npcsex-dialogue&quot;&gt;
-
+	/*&lt;div id=&quot;npcsex-dialogue&quot;&gt;
 		&lt;div id=&quot;intro&quot; class=&quot;intro&quot;&gt;
 			&lt;&lt;if _sexCount == 1&gt;&gt;
 				You both enter your room. You both strip naked, showing off your bare bodies to one another.
@@ -14460,7 +14479,7 @@ Updated as of 1/16/2026
 		&lt;div id=&quot;log&quot;&gt;&lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;&lt;/div&gt;
 
 		&lt;hr&gt;
-	&lt;/div&gt;
+	&lt;/div&gt;*/
 
 	&lt;!-- ===================== --&gt;
 	&lt;!-- ACTION BAR --&gt;
@@ -14468,7 +14487,7 @@ Updated as of 1/16/2026
 	&lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 
 		&lt;button id=&quot;npcsex-toggle&quot; aria-expanded=&quot;true&quot;&gt;
-			▼ Actions
+			▼ &lt;b&gt;Actions&lt;/b&gt;
 		&lt;/button&gt;
 
 		&lt;div class=&quot;npcsex-content&quot;&gt;
@@ -14492,9 +14511,7 @@ Updated as of 1/16/2026
 								&lt;li&gt;
 									&lt;&lt;button _p&gt;&gt;
 										&lt;&lt;set $sex.previousPosition = $sex.position&gt;&gt;
-										&lt;&lt;set $sex.position = _p&gt;&gt;
-										
-
+										&lt;&lt;set $sex.position = _p&gt;&gt;									
 										&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;
 											&lt;&lt;SexEncounterUI&gt;&gt; 
 										&lt;&lt;/replace&gt;&gt;
@@ -14571,19 +14588,19 @@ Updated as of 1/16/2026
             &lt;&lt;/if&gt;&gt;
 		&lt;/div&gt;
 	&lt;/div&gt;
-
 &lt;/div&gt;
 &lt;&lt;/widget&gt;&gt;
 
 
 &lt;&lt;widget &quot;ArousalUI&quot;&gt;&gt;
 &lt;div id=&quot;arousal-ui&quot;&gt;
-    &lt;div class=&quot;status-line&quot;&gt;&lt;b&gt;NPC Arousal:&lt;/b&gt;&lt;&lt;print $sex.object.arousal&gt;&gt;/1000&lt;/div&gt;
-    
-    &lt;div class=&quot;status-line&quot;&gt;&lt;b&gt;Player Arousal:&lt;/b&gt;&lt;&lt;print $sex.subject.arousal&gt;&gt;/1000&lt;/div&gt;
+    &lt;span&gt;
+    &lt;hr&gt;
+    &lt;b&gt;NPC Arousal:&lt;/b&gt; &lt;&lt;print $sex.object.arousal&gt;&gt;/1000  ||
+    &lt;b&gt;Player Arousal:&lt;/b&gt; &lt;&lt;print $sex.subject.arousal&gt;&gt;/1000
+    &lt;/span&gt;
 &lt;/div&gt;
 &lt;&lt;/widget&gt;&gt;
-
 
 
 
@@ -15501,7 +15518,7 @@ Sex Object: &lt;&lt;print $sex.object.name&gt;&gt;&lt;br&gt;
 &lt;&lt;set $mc.arousal = $mc.arousal or 0&gt;&gt;
 
 /* Arousal bar*/
-&lt;div id=&quot;arousal-ui&quot;&gt;
+/*&lt;div id=&quot;arousal-ui&quot;&gt;
   &lt;&lt;ArousalUI&gt;&gt;
 &lt;/div&gt;
 &lt;br&gt;
@@ -15513,6 +15530,35 @@ Sex Object: &lt;&lt;print $sex.object.name&gt;&gt;&lt;br&gt;
 	&lt;&lt;set $sex = null &gt;&gt;  &lt;!-- optional reset --&gt;
 	&lt;&lt;goto &quot;Your Room&quot;&gt;&gt; &lt;!-- or &quot;Your Room&quot; or whatever --&gt;
 &lt;&lt;/button&gt;&gt;
+&lt;/div&gt; 
+*/
+
+&lt;div id= &quot;sex-container&quot;&gt;
+&lt;&lt;SexEncounterUI&gt;&gt;
+&lt;&lt;RoomRelocationUI&gt;&gt;
+&lt;/div&gt; 
+&lt;div id=&quot;arousal-ui&quot;&gt;
+  &lt;&lt;ArousalUI&gt;&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div id=&quot;npcsex-dialogue&quot;&gt;
+	
+	&lt;div id=&quot;intro&quot; class=&quot;intro&quot;&gt;
+			&lt;&lt;if _sexCount == 1&gt;&gt;
+				You both enter your room. You both strip naked, showing off your bare bodies to one another.
+				You both know what you&#39;re in for, but it&#39;s always a bit awkward with someone new.
+			&lt;&lt;elseif _sexCount &gt;= 5&gt;&gt;
+				You and &lt;&lt;= _n.name &gt;&gt; go to your hotel room.
+				Almost professionally, you both strip until you are nude.
+				&lt;&lt;= $proset.theyUp &gt;&gt; appears up for whatever you have in mind.
+			&lt;&lt;else&gt;&gt;
+				WTF THIS SHOULDN&#39;T BE HERE! THERE IS AN ERROR IN THE GAME!
+			&lt;&lt;/if&gt;&gt;
+	&lt;/div&gt;
+
+		&lt;div id=&quot;log&quot;&gt;&lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;&lt;/div&gt;
+
+		&lt;hr&gt;
 &lt;/div&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */

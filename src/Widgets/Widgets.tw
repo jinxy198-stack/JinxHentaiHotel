@@ -2,8 +2,8 @@
 
 
 <<widget "RoomRelocationUI">>
-
-<h3>Relocate</h3>
+<div id="UI-Location">
+<h3><u>Relocate</u></h3>
 
 <<set _roomDef = setup.RoomTypes.db[$room.type]>>
 <<set _keys = Object.keys(_roomDef.contents)>>
@@ -25,14 +25,14 @@
             
 
             <<replace "#sex-container">>
-                <<RoomRelocationUI>>
                 <<SexEncounterUI>>
-                <<button "End Session">>
+                <<RoomRelocationUI>>
+                /*<<button "End Session">>
 			        <<set $lastNpc = _n>>      <!-- remember who you were with -->
 			        <<set $sex = null >>  <!-- optional reset -->
                     <<set $n = null >>
 			        <<goto "Your Room">> <!-- or "Your Room" or whatever -->
-                <</button>>
+                <</button>>*/
             <</replace>>
 
             <<replace "#npcsex-dialogue">>
@@ -49,7 +49,7 @@
     <</if>>
 <</for>>
 </ul>
-
+</div>
 <</widget>>
 
 
@@ -82,13 +82,11 @@
 		<</if>>
 	</div>
 
-	<hr>
 
 	<!-- ===================== -->
 	<!-- DIALOGUE -->
 	<!-- ===================== -->
-	<div id="npcsex-dialogue">
-
+	/*<div id="npcsex-dialogue">
 		<div id="intro" class="intro">
 			<<if _sexCount == 1>>
 				You both enter your room. You both strip naked, showing off your bare bodies to one another.
@@ -105,7 +103,7 @@
 		<div id="log"><<include "PositionDialogue">></div>
 
 		<hr>
-	</div>
+	</div>*/
 
 	<!-- ===================== -->
 	<!-- ACTION BAR -->
@@ -113,7 +111,7 @@
 	<div id="npcsex-actions-bar">
 
 		<button id="npcsex-toggle" aria-expanded="true">
-			▼ Actions
+			▼ <b>Actions</b>
 		</button>
 
 		<div class="npcsex-content">
@@ -137,9 +135,7 @@
 								<li>
 									<<button _p>>
 										<<set $sex.previousPosition = $sex.position>>
-										<<set $sex.position = _p>>
-										
-
+										<<set $sex.position = _p>>									
 										<<replace "#sexUI">>
 											<<SexEncounterUI>> 
 										<</replace>>
@@ -216,19 +212,19 @@
             <</if>>
 		</div>
 	</div>
-
 </div>
 <</widget>>
 
 
 <<widget "ArousalUI">>
 <div id="arousal-ui">
-    <div class="status-line"><b>NPC Arousal:</b><<print $sex.object.arousal>>/1000</div>
-    
-    <div class="status-line"><b>Player Arousal:</b><<print $sex.subject.arousal>>/1000</div>
+    <span>
+    <hr>
+    <b>NPC Arousal:</b> <<print $sex.object.arousal>>/1000  ||
+    <b>Player Arousal:</b> <<print $sex.subject.arousal>>/1000
+    </span>
 </div>
 <</widget>>
-
 
 
 

@@ -106,32 +106,46 @@ button{
   text-transform:uppercase;
   letter-spacing:0.08em;
   border:1px solid rgba(255,255,255,0.15);
+  background:radial-gradient(circle at top, #0509eb, #060a23);
+  color:#fff;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 0 10px rgba(64, 93, 255, 0.4);
+  cursor:pointer;
+}
+/*button{
+  border-radius:999px;
+  padding:0.35rem 0.95rem;
+  font-size:0.9rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  border:1px solid rgba(255,255,255,0.15);
   background:radial-gradient(circle at top, #3a1480, #170623);
   color:#fff;
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.04),
     0 0 10px rgba(173, 64, 255, 0.4);
   cursor:pointer;
-}
+}*/
 
 button:hover,
 html[data-outlines] button:focus{
-  background:radial-gradient(circle at top, #5f22c0, #201032);
-  box-shadow:0 0 16px rgba(200, 120, 255, 0.7);
+  background:radial-gradient(circle at top, #222dc0, #101132);
+  box-shadow:0 0 16px rgba(120, 140, 255, 0.7);
   transform:translateY(-1px);
 }
 
 button:active{
   transform:translateY(0);
-  box-shadow:0 0 4px rgba(120, 60, 180, 0.5);
+  box-shadow:0 0 4px rgba(60, 78, 180, 0.5);
 }
 
 button.active-choice{
-  background:radial-gradient(circle at top, #6a28ff, #24063b);
+  background:radial-gradient(circle at top, #2836ff, #060e3b);
   border-color:rgba(255,255,255,0.35);
   box-shadow:
     inset 0 0 8px rgba(0,0,0,0.9),
-    0 0 14px rgba(180, 80, 255, 0.8);
+    0 0 14px rgba(80, 92, 255, 0.8);
   transform:none;
   filter:none;
 }
@@ -203,7 +217,7 @@ button.active-choice{
 /* toggle button */
 #npcsex-toggle {
   width: 100%;
-  background: #222;
+  background: #494e91;
   color: #fff;
   border: none;
   padding: 6px;
@@ -924,10 +938,17 @@ h1, h2, h3{
   color:rgb(255, 0, 200);
 }
 
-#sex-container,
-#arousal-ui {
-  display: inline-block;
+#sex-container {
+  display: flex;
   vertical-align: top;
+  justify-content: space-evenly;
+}
+
+#arousal-ui {
+  
+  vertical-align: top;
+  text-align:center;
+
 }
 
 
