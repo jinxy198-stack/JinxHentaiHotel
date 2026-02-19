@@ -126,7 +126,7 @@
 	/**********************
 	    AGE & BODY
 	**********************/
-	<<set _npc.age = setup.randint(18, 40)>>
+	<<set _npc.age = setup.randint(6, 40)>>
 	<<set _npc.heterochromia = either(true,false)>>
 
 	<<if _npc.heterochromia is false>>
@@ -257,19 +257,19 @@
 
 
 <<widget "SpawnPoolOnce">>
-<<set _key = _args[0]>>
-<<set _pool = _args[1]>>
+	<<set _key = _args[0]>>
+	<<set _pool = _args[1]>>
 
-<<if !$spawnPools>>
-  <<set $spawnPools = {}>>
-<</if>>
+	<<if !$spawnPools>>
+  		<<set $spawnPools = {}>>
+	<</if>>
 
-<<if !_pool || !Array.isArray(_pool)>>
-  <<return>>
-<</if>>
+	<<if !_pool || !Array.isArray(_pool)>>
+  	<<return>>
+	<</if>>
 
-<<set $spawnPools[_key] = _pool>>
-<<MakeSNPC $spawnPools[_key]>>
+	<<set $spawnPools[_key] = _pool>>
+	<<MakeSNPC $spawnPools[_key]>> 
 <</widget>>
 
 
@@ -438,7 +438,7 @@
     				<<set _npc.body.Tail to "Furry Tail">>
 				<</if>>
 
-                <<set _npc.body.Face		to "Snout">>
+                <<set _npc.body.Face to "Snout">>
 
 				<<switch _sub>>
 					<<case "canine">>
@@ -468,6 +468,15 @@
 								<<set _npc.genitaltype = either( "Barbed", "Cut", "Uncut")>>
 							<</if>>
                         <</if>>
+					<<case "lion">>
+						<<set _npc.body.Ears to "Feline Ears">>
+						<<set _npc.body.Feet to "Soft Paws">>
+						<<set _npc.body.Tail to "Long Feline Tail">>
+                        <<if _npc.genitals is "Penis">>
+                        	<<if !_npc.genitaltype>>
+								<<set _npc.genitaltype = either( "Barbed", "Cut", "Uncut")>>
+							<</if>>
+                        <</if>>	
 					<<case "bear">>
 						<<set _npc.body.Ears to "Round Bear Ears">>
 						<<set _npc.body.Feet to "Paws">>
@@ -518,7 +527,22 @@
 								<<set _npc.genitaltype = either( "Knotted", "Cut", "Uncut")>>
 							<</if>>
                         <</if>>
-                    
+                    <<case "deer">>
+						<<set _npc.body.Ears to "Deer Ears">>
+						<<set _npc.body.Feet to "Hooves">>
+						<<set _npc.body.Tail to "Bushy Tail">>
+                        <<if _npc.genitals =="Penis">>
+                        	<<if !_npc.genitaltype>>
+								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
+							<</if>>
+                        <</if>>
+						/*add antlers */
+						<<if !_npc.body.Horns>>
+							<<if _npc.age >= 13>>
+								<<set _npc.body.Horns to "Antlers">>
+							<</if>>
+    						
+						<</if>>
                     <<default>>
 						/* keep generic furry defaults */
 				<</switch>>
@@ -754,7 +778,22 @@
 						<<set $mc.body.Feet to "trotters">>
 						<<set $mc.body.Tail to "curly tail">>
                         <<set $mc.body.Bodymaterial to "hide">>
-
+					<<case "deer">>
+						<<set $mc.body.Ears to "Deer Ears">>
+						<<set $mc.body.Feet to "Hooves">>
+						<<set $mc.body.Tail to "Bushy Tail">>
+                        <<if $mc.genitals =="Penis">>
+                        	<<if !$mc.genitaltype>>
+								<<set $mc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
+							<</if>>
+                        <</if>>
+						/*add antlers */
+						<<if !$mc.body.Horns>>
+							<<if $mc.age >= 13>>
+								<<set $mc.body.Horns to "Antlers">>
+							<</if>>
+    						
+						<</if>>
 					<<default>>
 						/* keep generic furry defaults */
 				<</switch>>

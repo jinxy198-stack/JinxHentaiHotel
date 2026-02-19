@@ -3586,7 +3586,7 @@ setup.anthroGroup= [
 ];
 
 setup.furryTypes=[
-    "Canine", "Feline", "Bunny", "Fox", "Bear", "Goat", "Mouse", "Pig", "Other",
+    "Canine", "Feline","Lion", "Bunny", "Fox", "Bear", "Goat", "Mouse", "Pig", "Deer", "Other",
 ];
 
 setup.scalieTypes=[
@@ -3598,7 +3598,7 @@ setup.avianTypes=[
 ];
 
 setup.furScalesColors=[
-    "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Rainbow",
+    "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Purple", "Rainbow",
 ];
 
 setup.anthroPatterns=[
@@ -13663,7 +13663,7 @@ Updated as of 1/16/2026
 	/**********************
 	    AGE &amp; BODY
 	**********************/
-	&lt;&lt;set _npc.age = setup.randint(18, 40)&gt;&gt;
+	&lt;&lt;set _npc.age = setup.randint(6, 40)&gt;&gt;
 	&lt;&lt;set _npc.heterochromia = either(true,false)&gt;&gt;
 
 	&lt;&lt;if _npc.heterochromia is false&gt;&gt;
@@ -13794,19 +13794,19 @@ Updated as of 1/16/2026
 
 
 &lt;&lt;widget &quot;SpawnPoolOnce&quot;&gt;&gt;
-&lt;&lt;set _key = _args[0]&gt;&gt;
-&lt;&lt;set _pool = _args[1]&gt;&gt;
+	&lt;&lt;set _key = _args[0]&gt;&gt;
+	&lt;&lt;set _pool = _args[1]&gt;&gt;
 
-&lt;&lt;if !$spawnPools&gt;&gt;
-  &lt;&lt;set $spawnPools = {}&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if !$spawnPools&gt;&gt;
+  		&lt;&lt;set $spawnPools = {}&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if !_pool || !Array.isArray(_pool)&gt;&gt;
-  &lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if !_pool || !Array.isArray(_pool)&gt;&gt;
+  	&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set $spawnPools[_key] = _pool&gt;&gt;
-&lt;&lt;MakeSNPC $spawnPools[_key]&gt;&gt;
+	&lt;&lt;set $spawnPools[_key] = _pool&gt;&gt;
+	/*&lt;&lt;MakeSNPC $spawnPools[_key]&gt;&gt; */
 &lt;&lt;/widget&gt;&gt;
 
 
@@ -13975,7 +13975,7 @@ Updated as of 1/16/2026
     				&lt;&lt;set _npc.body.Tail to &quot;Furry Tail&quot;&gt;&gt;
 				&lt;&lt;/if&gt;&gt;
 
-                &lt;&lt;set _npc.body.Face		to &quot;Snout&quot;&gt;&gt;
+                &lt;&lt;set _npc.body.Face to &quot;Snout&quot;&gt;&gt;
 
 				&lt;&lt;switch _sub&gt;&gt;
 					&lt;&lt;case &quot;canine&quot;&gt;&gt;
@@ -14005,6 +14005,15 @@ Updated as of 1/16/2026
 								&lt;&lt;set _npc.genitaltype = either( &quot;Barbed&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
 							&lt;&lt;/if&gt;&gt;
                         &lt;&lt;/if&gt;&gt;
+					&lt;&lt;case &quot;lion&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Feline Ears&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Soft Paws&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Long Feline Tail&quot;&gt;&gt;
+                        &lt;&lt;if _npc.genitals is &quot;Penis&quot;&gt;&gt;
+                        	&lt;&lt;if !_npc.genitaltype&gt;&gt;
+								&lt;&lt;set _npc.genitaltype = either( &quot;Barbed&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
+							&lt;&lt;/if&gt;&gt;
+                        &lt;&lt;/if&gt;&gt;	
 					&lt;&lt;case &quot;bear&quot;&gt;&gt;
 						&lt;&lt;set _npc.body.Ears to &quot;Round Bear Ears&quot;&gt;&gt;
 						&lt;&lt;set _npc.body.Feet to &quot;Paws&quot;&gt;&gt;
@@ -14055,7 +14064,22 @@ Updated as of 1/16/2026
 								&lt;&lt;set _npc.genitaltype = either( &quot;Knotted&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
 							&lt;&lt;/if&gt;&gt;
                         &lt;&lt;/if&gt;&gt;
-                    
+                    &lt;&lt;case &quot;deer&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Ears to &quot;Deer Ears&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Feet to &quot;Hooves&quot;&gt;&gt;
+						&lt;&lt;set _npc.body.Tail to &quot;Bushy Tail&quot;&gt;&gt;
+                        &lt;&lt;if _npc.genitals ==&quot;Penis&quot;&gt;&gt;
+                        	&lt;&lt;if !_npc.genitaltype&gt;&gt;
+								&lt;&lt;set _npc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
+							&lt;&lt;/if&gt;&gt;
+                        &lt;&lt;/if&gt;&gt;
+						/*add antlers */
+						&lt;&lt;if !_npc.body.Horns&gt;&gt;
+							&lt;&lt;if _npc.age &gt;= 13&gt;&gt;
+								&lt;&lt;set _npc.body.Horns to &quot;Antlers&quot;&gt;&gt;
+							&lt;&lt;/if&gt;&gt;
+    						
+						&lt;&lt;/if&gt;&gt;
                     &lt;&lt;default&gt;&gt;
 						/* keep generic furry defaults */
 				&lt;&lt;/switch&gt;&gt;
@@ -14291,7 +14315,22 @@ Updated as of 1/16/2026
 						&lt;&lt;set $mc.body.Feet to &quot;trotters&quot;&gt;&gt;
 						&lt;&lt;set $mc.body.Tail to &quot;curly tail&quot;&gt;&gt;
                         &lt;&lt;set $mc.body.Bodymaterial to &quot;hide&quot;&gt;&gt;
-
+					&lt;&lt;case &quot;deer&quot;&gt;&gt;
+						&lt;&lt;set $mc.body.Ears to &quot;Deer Ears&quot;&gt;&gt;
+						&lt;&lt;set $mc.body.Feet to &quot;Hooves&quot;&gt;&gt;
+						&lt;&lt;set $mc.body.Tail to &quot;Bushy Tail&quot;&gt;&gt;
+                        &lt;&lt;if $mc.genitals ==&quot;Penis&quot;&gt;&gt;
+                        	&lt;&lt;if !$mc.genitaltype&gt;&gt;
+								&lt;&lt;set $mc.genitaltype = either( &quot;Tapered&quot;, &quot;Cut&quot;, &quot;Uncut&quot;)&gt;&gt;
+							&lt;&lt;/if&gt;&gt;
+                        &lt;&lt;/if&gt;&gt;
+						/*add antlers */
+						&lt;&lt;if !$mc.body.Horns&gt;&gt;
+							&lt;&lt;if $mc.age &gt;= 13&gt;&gt;
+								&lt;&lt;set $mc.body.Horns to &quot;Antlers&quot;&gt;&gt;
+							&lt;&lt;/if&gt;&gt;
+    						
+						&lt;&lt;/if&gt;&gt;
 					&lt;&lt;default&gt;&gt;
 						/* keep generic furry defaults */
 				&lt;&lt;/switch&gt;&gt;
