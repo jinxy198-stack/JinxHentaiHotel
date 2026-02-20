@@ -197,79 +197,85 @@
 	<<set _dummy = $npcs.push(_npc)>>
 <</widget>>
 
-<<widget "SpawnRandomNPCs">>
-<<set _randomCount = _args[0] || 0>>
+<<widget "SpawnPoolOnce">>
+	<<set _key   = _args[0]>>
+	<<set _pool  = _args[1]>>
+	<<set _limit = _args[2]>>  /* optional */
 
-/* reset room list */
-<<set $roomNPCs = []>>
+	<<if !$spawnPools>><<set $spawnPools = {}>><</if>>
+	<<if !_key || !Array.isArray(_pool)>><<return>><</if>>
 
-/* ensure globals exist */
-<<set $npcs = $npcs || []>>
-<<set $npcSeq = $npcSeq || 0>>
-
-/* ---- SPAWN POOL NPCs ---- */
-<<if $spawnPools>>
-	<<set _keys = Object.keys($spawnPools)>>
-
-	<<for _k = 0; _k < _keys.length; _k++>>
-		<<set _pool = $spawnPools[_keys[_k]]>>
-
-		<<if _pool>>
-			<<set _templates = Array.isArray(_pool) ? _pool : Object.values(_pool)>>
-
-			<<for _i = 0; _i < _templates.length; _i++>>
-				<<set _before = $npcs.length>>
-				<<MakeSNPC _templates[_i]>>
-
-				<<if $npcs.length > _before>>
-					<<set _npc = $npcs[$npcs.length - 1]>>
-					<<set _dummy = $roomNPCs.push(_npc)>>
-				<</if>>
-			<</for>>
-		<</if>>
-	<</for>>
-<</if>>
-
-/* ---- SPAWN RANDOM FILLER NPCs ---- */
-<<for _i = 0; _i < _randomCount; _i++>>
-	<<set _before = $npcs.length>>
-	<<MakeRandomNPC>>
-
-	<<if $npcs.length > _before>>
-		<<set _npc = $npcs[$npcs.length - 1]>>
-		<<set _dummy = $roomNPCs.push(_npc)>>
-	<</if>>
-<</for>>
-/* ---- REMOVE DUPLICATES ---- */
-<<set _seen = {}>>
-<<set $roomNPCs = $roomNPCs.filter(n => {
-	if (!n || !_seen[n.id]) {
-		_seen[n.id] = true;
-		return true;
-	}
-	return false;
-})>>
-
-/* ---- RANDOMIZE ORDER ---- */
-<<set $roomNPCs = $roomNPCs.sort(() => Math.random() - 0.5)>>
+	/* Store as an object so we can keep a limit alongside the templates */
+	<<set $spawnPools[_key] = {
+		templates : _pool,
+		limit     : (typeof _limit === "number" && _limit >= 0) ? _limit : null
+	}>>
 <</widget>>
 
 
+<<widget "SpawnRandomNPCs">>
+	<<set _total = _args[0] || 20>>
 
-<<widget "SpawnPoolOnce">>
-	<<set _key = _args[0]>>
-	<<set _pool = _args[1]>>
+	<<set $roomNPCs = []>>
+	<<set $npcs = $npcs || []>>
+	<<set $npcSeq = $npcSeq || 0>>
 
-	<<if !$spawnPools>>
-  		<<set $spawnPools = {}>>
+	/* Spawn a limited number from each registered pool */
+	<<if $spawnPools>>
+		<<set _keys = Object.keys($spawnPools)>>
+		<<for _k = 0; _k < _keys.length; _k++>>
+			<<set _poolObj = $spawnPools[_keys[_k]]>>
+
+			/* Backwards compat: if someone stored an array directly */
+			<<if Array.isArray(_poolObj)>>
+				<<set _templates = _poolObj>>
+				<<set _limit = null>>
+			<<else>>
+				<<set _templates = _poolObj.templates>>
+				<<set _limit = _poolObj.limit>>
+			<</if>>
+
+			<<if Array.isArray(_templates) && _templates.length>>
+				<<set _count = (_limit === null) ? _templates.length : Math.min(_limit, _templates.length)>>
+
+				/* build an index list [0..len-1], shuffle, take first _count */
+				<<set _idx = []>>
+				<<for _i = 0; _i < _templates.length; _i++>>
+					<<run _idx.push(_i)>>
+				<</for>>
+				<<run _idx.sort(() => Math.random() - 0.5)>>
+
+				<<for _j = 0; _j < _count; _j++>>
+					<<set _tpl = _templates[_idx[_j]]>>
+					<<MakeSNPC _tpl>>
+					<<run $roomNPCs.push($npcs[$npcs.length - 1])>>
+				<</for>>
+			<</if>>
+		<</for>>
 	<</if>>
 
-	<<if !_pool || !Array.isArray(_pool)>>
-  	<<return>>
+	/* Fill remaining slots with random NPCs up to _total */
+	<<set _need = _total - $roomNPCs.length>>
+	<<if _need > 0>>
+		<<for _t = 0; _t < _need; _t++>>
+			<<MakeRandomNPC>>
+			<<run $roomNPCs.push($npcs[$npcs.length - 1])>>
+		<</for>>
 	<</if>>
 
-	<<set $spawnPools[_key] = _pool>>
-	<<MakeSNPC $spawnPools[_key]>> 
+	/* De-dupe by id */
+	<<run (function(){
+		const seen = new Set();
+		$roomNPCs = $roomNPCs.filter(n => {
+			if (!n || !n.id) return true;
+			if (seen.has(n.id)) return false;
+			seen.add(n.id);
+			return true;
+		});
+	})()>>
+
+	/* Shuffle final */
+	<<run $roomNPCs.sort(() => Math.random() - 0.5)>>
 <</widget>>
 
 

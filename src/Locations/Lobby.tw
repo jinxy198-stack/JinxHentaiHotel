@@ -3,10 +3,10 @@
 You are in the lobby of the hotel, classical music plays as you watch people from various worlds go about their business.
 <br>
 <div class="room-hotel">
-<<SpawnPoolOnce "OC" $OCPool>>
-<<SpawnPoolOnce "CB" $CBPool>>
-<<SpawnPoolOnce "AB" $ABPool>>
-<<SpawnRandomNPCs 20>>
+<<SpawnPoolOnce "OC" $OCPool 2>>
+<<SpawnPoolOnce "CB" $CBPool 2>>
+<<SpawnPoolOnce "AB" $ABPool 2>>
+<<SpawnRandomNPCs 6>>
 
 <<include "NPC-List">>
 

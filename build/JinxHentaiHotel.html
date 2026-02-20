@@ -4853,7 +4853,7 @@ setup.sexacts = {
     },
     "Take Cock Between Lips": /* You take their cock in your mouth. */
     {
-        "positions": [ "Sixty-Nine:bottom", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
+        "positions": [ "Sixty-Nine:bottom", "Kneeling:bottom", "Kneeling Over:bottom", "Oral Service:bottom", "Kneeling By Face:bottom", "Squatting Before:bottom", "Riding Face:bottom", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom","Straddling Chest:bottom"],
         "action type": ["penetrate"],
         "subject parts": ["Mouth"],
         "object parts": ["Penis"],
@@ -4868,7 +4868,7 @@ setup.sexacts = {
     },
     "Enter Mouth": /* They put your cock in their mouth */
     {
-        "positions": [ "Sixty-Nine:top", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top"],
+        "positions": [ "Sixty-Nine:top", "Kneeling:top", "Kneeling Over:top", "Oral Service:top", "Kneeling By Face:top", "Squatting Before:top", "Riding Face:top", "Perched Oral Service:top", "Underneath Oral Service:top", "Laid Across Oral Service:top","Straddling Chest:top"],
         "action type": ["penetrate"],
         "subject parts": ["Penis"],
         "object parts": ["Mouth"],
@@ -7349,10 +7349,10 @@ Welcome my acolyte, do you have question&#39;s for me?
 You are in the lobby of the hotel, classical music plays as you watch people from various worlds go about their business.
 &lt;br&gt;
 &lt;div class=&quot;room-hotel&quot;&gt;
-&lt;&lt;SpawnPoolOnce &quot;OC&quot; $OCPool&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;CB&quot; $CBPool&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;AB&quot; $ABPool&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 20&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;OC&quot; $OCPool 2&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;CB&quot; $CBPool 2&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;AB&quot; $ABPool 2&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 6&gt;&gt;
 
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
@@ -7376,10 +7376,10 @@ You are in the lobby of the hotel, classical music plays as you watch people fro
 A nice place to rest, relax, and socialize. There are some people mingling around the place.
 
 &lt;div class=&quot;room-hotel&quot;&gt;
-&lt;&lt;SpawnPoolOnce &quot;OC&quot; $OCPool&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;CB&quot; $CBPool&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;AB&quot; $ABPool&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 10&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;OC&quot; $OCPool 2&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;CB&quot; $CBPool 2&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;AB&quot; $ABPool 2&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 7&gt;&gt;
 
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
@@ -7820,10 +7820,17 @@ On the other side there was a door to your bathroom.
     virgin: false,
     sexpref: &quot;Submissive&quot;,
     origin: &quot;Unknown&quot;,
-
+    traits: [
+    &quot;Elastic&quot;,
+    &quot;Will Not Top&quot;,
+    &quot;Glow In The Dark&quot;
+    ],
+    
     body:{
+        Horns: &quot;Horns&quot;,
         Tail: &quot;Long Scarftail&quot;
     }
+
 }&gt;&gt;
 
 /*Joshua  */
@@ -7944,6 +7951,7 @@ On the other side there was a door to your bathroom.
 
 Fix the hair input for main character.
 change from _n to $n
+Work on fixing spawning NPC&#39;s
 
     Species:
     Human
@@ -7993,24 +8001,19 @@ change from _n to $n
     Jinx is the god of lust and joy. They have chosen you to be their emissary across the multiverse. Their realm is the Jinx Hentai Hotel, a crossroad between all realms that resembles a luxury hotel with seemingly infinite rooms and floors. People between realms come and go as long as they have a sexual urge inside them. With the hotel you can also enter many different worlds and dimensions, from medival fantasy, to modern suburbia, to sci fi stations.
     Jinx encourages nearly all kinds of sexual debaturay and has bestowed upon you the gift of lust, it comes with conditions. For one, you cannot impregnate or get pregnant. Another drawback is that your soul is bound to the hotel, you cannot choose to escape your duty ever. Another one is that you are forbidden for committing nonconsensual sex under penalty of Jinx&#39;s wrath. The other party must consent or be willing first, if they change their mind halfway through then it doesn&#39;t count.
     
-    Bodyparts: 
-
-    Head
-    Head
-    Face
-    mouth
-    Arms
-    Legs
-    Hands
-    Hand
-    Feet
-    Ass
-    Asshole
-    Finger
-    Fingers
-    Hips
-    Lips
-    Tongue
+    Traits:
+    Elastic: Can stretch.
+    Flight: Can fly.
+    Super Strength: Unusual strength not equal to body type.
+    Super Speed: Litterally in the description.
+    Size Manipulation: Can change size.
+    Will Not Top: Won&#39;t do top anal penetration or vaginal penetration.
+    Will Not Bottom: Won&#39;t do any bottom anal penetration or vaginal penetration.
+    Flexible: Can contort in unsual ways.
+    Mute: Can&#39;t talk.
+    Blind: Can&#39;t see.
+    Magic: Knows magic (might expand)
+    Crude: Can Curse.
 
 */</tw-passagedata><tw-passagedata pid="57" name="Respond-Dialogue" tags="nobr Dialogue" position="1375,1325" size="100,100">/* You respond to certain actions. */
 &lt;br&gt;
@@ -12066,7 +12069,7 @@ Create your character to begin.
 &lt;center&gt;&lt;&lt;button [[Use the Randomiser|CC-Check]]&gt;&gt;&lt;&lt;Randomiser&gt;&gt;&lt;&lt;/button&gt;&gt; | &lt;&lt;button [[Use the Pre-Set|CC-Check]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/center&gt;
 
-Updated as of 1/16/2026
+&lt;span&gt; Updated as of 2/20/2026 &lt;/span&gt;
 
 &lt;&lt;if $devMode&gt;&gt;
 &lt;&lt;button [[Test as a Shota|Lounge]]&gt;&gt;&lt;&lt;LittleBoy&gt;&gt;&lt;&lt;/button&gt;&gt; 
@@ -12245,7 +12248,16 @@ Updated as of 1/16/2026
 &lt;br&gt;
 &lt;b&gt;Genitals:&lt;/b&gt; &lt;&lt;=_n.genitals&gt;&gt;&lt;&lt;if _n.genitals== &quot;Penis&quot;&gt;&gt; * &lt;b&gt;Length:&lt;/b&gt; &lt;&lt;=_n.penislength&gt;&gt; &lt;&lt;/if&gt;&gt; (&lt;&lt;=_n.genitaltype&gt;&gt;)
 &lt;br&gt;
+&lt;b&gt;Traits: &lt;/b&gt; &lt;&lt;if !_n.traits&gt;&gt;None&lt;&lt;else&gt;&gt;&lt;&lt;=_n.traits&gt;&gt;&lt;&lt;/if&gt;&gt;
+/*
+&lt;br&gt;
+&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Will Not Top&quot;)&gt;&gt;
+  They will not top
+&lt;&lt;else&gt;&gt;
 
+&lt;&lt;/if&gt;&gt;
+*/
+&lt;br&gt;
 &lt;b&gt;List of body parts:&lt;/b&gt;
 &lt;br&gt;
 &lt;ul&gt;
@@ -13734,79 +13746,85 @@ Updated as of 1/16/2026
 	&lt;&lt;set _dummy = $npcs.push(_npc)&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
-&lt;&lt;widget &quot;SpawnRandomNPCs&quot;&gt;&gt;
-&lt;&lt;set _randomCount = _args[0] || 0&gt;&gt;
+&lt;&lt;widget &quot;SpawnPoolOnce&quot;&gt;&gt;
+	&lt;&lt;set _key   = _args[0]&gt;&gt;
+	&lt;&lt;set _pool  = _args[1]&gt;&gt;
+	&lt;&lt;set _limit = _args[2]&gt;&gt;  /* optional */
 
-/* reset room list */
-&lt;&lt;set $roomNPCs = []&gt;&gt;
+	&lt;&lt;if !$spawnPools&gt;&gt;&lt;&lt;set $spawnPools = {}&gt;&gt;&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if !_key || !Array.isArray(_pool)&gt;&gt;&lt;&lt;return&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-/* ensure globals exist */
-&lt;&lt;set $npcs = $npcs || []&gt;&gt;
-&lt;&lt;set $npcSeq = $npcSeq || 0&gt;&gt;
-
-/* ---- SPAWN POOL NPCs ---- */
-&lt;&lt;if $spawnPools&gt;&gt;
-	&lt;&lt;set _keys = Object.keys($spawnPools)&gt;&gt;
-
-	&lt;&lt;for _k = 0; _k &lt; _keys.length; _k++&gt;&gt;
-		&lt;&lt;set _pool = $spawnPools[_keys[_k]]&gt;&gt;
-
-		&lt;&lt;if _pool&gt;&gt;
-			&lt;&lt;set _templates = Array.isArray(_pool) ? _pool : Object.values(_pool)&gt;&gt;
-
-			&lt;&lt;for _i = 0; _i &lt; _templates.length; _i++&gt;&gt;
-				&lt;&lt;set _before = $npcs.length&gt;&gt;
-				&lt;&lt;MakeSNPC _templates[_i]&gt;&gt;
-
-				&lt;&lt;if $npcs.length &gt; _before&gt;&gt;
-					&lt;&lt;set _npc = $npcs[$npcs.length - 1]&gt;&gt;
-					&lt;&lt;set _dummy = $roomNPCs.push(_npc)&gt;&gt;
-				&lt;&lt;/if&gt;&gt;
-			&lt;&lt;/for&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/for&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-/* ---- SPAWN RANDOM FILLER NPCs ---- */
-&lt;&lt;for _i = 0; _i &lt; _randomCount; _i++&gt;&gt;
-	&lt;&lt;set _before = $npcs.length&gt;&gt;
-	&lt;&lt;MakeRandomNPC&gt;&gt;
-
-	&lt;&lt;if $npcs.length &gt; _before&gt;&gt;
-		&lt;&lt;set _npc = $npcs[$npcs.length - 1]&gt;&gt;
-		&lt;&lt;set _dummy = $roomNPCs.push(_npc)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/for&gt;&gt;
-/* ---- REMOVE DUPLICATES ---- */
-&lt;&lt;set _seen = {}&gt;&gt;
-&lt;&lt;set $roomNPCs = $roomNPCs.filter(n =&gt; {
-	if (!n || !_seen[n.id]) {
-		_seen[n.id] = true;
-		return true;
-	}
-	return false;
-})&gt;&gt;
-
-/* ---- RANDOMIZE ORDER ---- */
-&lt;&lt;set $roomNPCs = $roomNPCs.sort(() =&gt; Math.random() - 0.5)&gt;&gt;
+	/* Store as an object so we can keep a limit alongside the templates */
+	&lt;&lt;set $spawnPools[_key] = {
+		templates : _pool,
+		limit     : (typeof _limit === &quot;number&quot; &amp;&amp; _limit &gt;= 0) ? _limit : null
+	}&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 
+&lt;&lt;widget &quot;SpawnRandomNPCs&quot;&gt;&gt;
+	&lt;&lt;set _total = _args[0] || 20&gt;&gt;
 
-&lt;&lt;widget &quot;SpawnPoolOnce&quot;&gt;&gt;
-	&lt;&lt;set _key = _args[0]&gt;&gt;
-	&lt;&lt;set _pool = _args[1]&gt;&gt;
+	&lt;&lt;set $roomNPCs = []&gt;&gt;
+	&lt;&lt;set $npcs = $npcs || []&gt;&gt;
+	&lt;&lt;set $npcSeq = $npcSeq || 0&gt;&gt;
 
-	&lt;&lt;if !$spawnPools&gt;&gt;
-  		&lt;&lt;set $spawnPools = {}&gt;&gt;
+	/* Spawn a limited number from each registered pool */
+	&lt;&lt;if $spawnPools&gt;&gt;
+		&lt;&lt;set _keys = Object.keys($spawnPools)&gt;&gt;
+		&lt;&lt;for _k = 0; _k &lt; _keys.length; _k++&gt;&gt;
+			&lt;&lt;set _poolObj = $spawnPools[_keys[_k]]&gt;&gt;
+
+			/* Backwards compat: if someone stored an array directly */
+			&lt;&lt;if Array.isArray(_poolObj)&gt;&gt;
+				&lt;&lt;set _templates = _poolObj&gt;&gt;
+				&lt;&lt;set _limit = null&gt;&gt;
+			&lt;&lt;else&gt;&gt;
+				&lt;&lt;set _templates = _poolObj.templates&gt;&gt;
+				&lt;&lt;set _limit = _poolObj.limit&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+
+			&lt;&lt;if Array.isArray(_templates) &amp;&amp; _templates.length&gt;&gt;
+				&lt;&lt;set _count = (_limit === null) ? _templates.length : Math.min(_limit, _templates.length)&gt;&gt;
+
+				/* build an index list [0..len-1], shuffle, take first _count */
+				&lt;&lt;set _idx = []&gt;&gt;
+				&lt;&lt;for _i = 0; _i &lt; _templates.length; _i++&gt;&gt;
+					&lt;&lt;run _idx.push(_i)&gt;&gt;
+				&lt;&lt;/for&gt;&gt;
+				&lt;&lt;run _idx.sort(() =&gt; Math.random() - 0.5)&gt;&gt;
+
+				&lt;&lt;for _j = 0; _j &lt; _count; _j++&gt;&gt;
+					&lt;&lt;set _tpl = _templates[_idx[_j]]&gt;&gt;
+					&lt;&lt;MakeSNPC _tpl&gt;&gt;
+					&lt;&lt;run $roomNPCs.push($npcs[$npcs.length - 1])&gt;&gt;
+				&lt;&lt;/for&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
-	&lt;&lt;if !_pool || !Array.isArray(_pool)&gt;&gt;
-  	&lt;&lt;return&gt;&gt;
+	/* Fill remaining slots with random NPCs up to _total */
+	&lt;&lt;set _need = _total - $roomNPCs.length&gt;&gt;
+	&lt;&lt;if _need &gt; 0&gt;&gt;
+		&lt;&lt;for _t = 0; _t &lt; _need; _t++&gt;&gt;
+			&lt;&lt;MakeRandomNPC&gt;&gt;
+			&lt;&lt;run $roomNPCs.push($npcs[$npcs.length - 1])&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
-	&lt;&lt;set $spawnPools[_key] = _pool&gt;&gt;
-	/*&lt;&lt;MakeSNPC $spawnPools[_key]&gt;&gt; */
+	/* De-dupe by id */
+	&lt;&lt;run (function(){
+		const seen = new Set();
+		$roomNPCs = $roomNPCs.filter(n =&gt; {
+			if (!n || !n.id) return true;
+			if (seen.has(n.id)) return false;
+			seen.add(n.id);
+			return true;
+		});
+	})()&gt;&gt;
+
+	/* Shuffle final */
+	&lt;&lt;run $roomNPCs.sort(() =&gt; Math.random() - 0.5)&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 

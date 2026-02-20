@@ -29,7 +29,16 @@
 <br>
 <b>Genitals:</b> <<=_n.genitals>><<if _n.genitals== "Penis">> * <b>Length:</b> <<=_n.penislength>> <</if>> (<<=_n.genitaltype>>)
 <br>
+<b>Traits: </b> <<if !_n.traits>>None<<else>><<=_n.traits>><</if>>
+/*
+<br>
+<<if Array.isArray(_n.traits) && _n.traits.includes("Will Not Top")>>
+  They will not top
+<<else>>
 
+<</if>>
+*/
+<br>
 <b>List of body parts:</b>
 <br>
 <ul>
