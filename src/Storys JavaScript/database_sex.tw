@@ -1558,6 +1558,10 @@ setup.sexacts = {
         "subject arousal": 50,
         "object arousal": 10,
         "remember as": ["ass-fucking", "received"],
+        "blocked traits": {
+            subject: [],   // if the *subject* has any of these traits, block
+            object:  ["Will Not Bottom"]                 // if the *object* has any of these traits, block
+        }
     },
     "Push Cock In Ass":
     {
@@ -1570,6 +1574,10 @@ setup.sexacts = {
         "subject arousal": 10,
         "object arousal": 50,
         "remember as": ["ass-fucking", "given"],
+        "blocked traits": {
+            subject: ["Will Not Top"],   // if the *subject* has any of these traits, block
+            object:  []                 // if the *object* has any of these traits, block
+        }
     },
     /*"Finger Ass": 
     {
@@ -1654,6 +1662,17 @@ setup.sexacts = {
         "object dialogue tags": ["fucked with ass"],
     },
     //      ends
+    "Pull Face Back":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Head"],
+        "object parts": ["Chest"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0,
+    },
     "Pull Out Of Ass":
     {
         "positions": [],

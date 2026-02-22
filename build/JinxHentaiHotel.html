@@ -5436,6 +5436,10 @@ setup.sexacts = {
         "subject arousal": 50,
         "object arousal": 10,
         "remember as": ["ass-fucking", "received"],
+        "blocked traits": {
+            subject: [],   // if the *subject* has any of these traits, block
+            object:  ["Will Not Bottom"]                 // if the *object* has any of these traits, block
+        }
     },
     "Push Cock In Ass":
     {
@@ -5448,6 +5452,10 @@ setup.sexacts = {
         "subject arousal": 10,
         "object arousal": 50,
         "remember as": ["ass-fucking", "given"],
+        "blocked traits": {
+            subject: ["Will Not Top"],   // if the *subject* has any of these traits, block
+            object:  []                 // if the *object* has any of these traits, block
+        }
     },
     /*"Finger Ass": 
     {
@@ -5532,6 +5540,17 @@ setup.sexacts = {
         "object dialogue tags": ["fucked with ass"],
     },
     //      ends
+    "Pull Face Back":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Head"],
+        "object parts": ["Chest"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0,
+    },
     "Pull Out Of Ass":
     {
         "positions": [],
@@ -5688,6 +5707,7 @@ setup.updateNpcArousalUI = function (value) {
   const text = document.getElementById("npc-arousal-text");
   if (bar) bar.value = value;
   if (text) text.textContent = value;
+
 };
 
 
@@ -6187,6 +6207,27 @@ setup.updateSubjectObject = function (sex) {
         sex.subject = mc;
         sex.object  = n;
     }
+};
+
+setup.hasTrait = function (npc, trait) {
+  return Array.isArray(npc?.traits) && npc.traits.includes(trait);
+};
+
+setup.hasAnyTrait = function (npc, traits) {
+  if (!Array.isArray(traits) || traits.length === 0) return false;
+  if (!Array.isArray(npc?.traits)) return false;
+  return traits.some(t => npc.traits.includes(t));
+};
+
+// Returns true if this act is blocked by subject/object traits
+setup.actBlockedByTraits = function (sex, act) {
+  const bt = act?.["blocked traits"];
+  if (!bt) return false;
+
+  const subjBlocked = setup.hasAnyTrait(sex?.subject, bt.subject);
+  const objBlocked  = setup.hasAnyTrait(sex?.object,  bt.object);
+
+  return subjBlocked || objBlocked;
 };</script><tw-tag name="creation-page" color="red"></tw-tag><tw-tag name="popup" color="blue"></tw-tag><tw-tag name="widget" color="green"></tw-tag><tw-tag name="Popup" color="yellow"></tw-tag><tw-tag name="Dialogue" color="blue"></tw-tag><tw-tag name="nobr" color="orange"></tw-tag><tw-passagedata pid="1" name="Accessory" tags="" position="1725,325" size="100,100">/*
 Watch
 Necklace
@@ -7466,7 +7507,10 @@ On the other side there was a door to your bathroom.
     physique: &quot;Toned&quot;, /* Musculature*/
     personality: &quot;Sassy&quot;,
     sexpref: &quot;Dominant&quot;,
-    origin: &quot;Applebridge&quot;
+    origin: &quot;Applebridge&quot;,
+    traits: [
+    &quot;Will Not Bottom&quot;
+    ],
 }&gt;&gt;
 
 &lt;&lt;set $JaidenB = {
@@ -7823,7 +7867,6 @@ On the other side there was a door to your bathroom.
     traits: [
     &quot;Elastic&quot;,
     &quot;Will Not Top&quot;,
-    &quot;Glow In The Dark&quot;
     ],
     
     body:{
@@ -9368,6 +9411,7 @@ Wanna have aftercare or end the session?
     &lt;&lt;case &quot;Fuck Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Take Cock In Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Hump Ass Back&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Face Back&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Out Of Ass&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Ass Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Stop Fingering Ass&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
@@ -10150,6 +10194,8 @@ You pull out of _n.name&#39;s ass.
 You pull your ass off of _n.name&#39;s cock.
 &lt;&lt;elseif $sex.act ==&quot;Stop Fingering Ass&quot;&gt;&gt;
 You stop fingering _n.name&#39;s ass.
+&lt;&lt;elseif $sex.act ==&quot;Pull Face Back&quot;&gt;&gt;
+You pull your face back.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="SuckFoot-Dialogue" tags="Dialogue nobr" position="800,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.roles.dom.name == _n.name&gt;&gt;
@@ -11908,6 +11954,11 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;set $lastNpc = null&gt;&gt;
 &lt;&lt;set $npcMemory = {}&gt;&gt;
 
+
+&lt;&lt;set $orgasm= {
+  object: false,
+  subject: false
+}&gt;&gt;
 
 /* pools */
 
@@ -14617,6 +14668,7 @@ Create your character to begin.
 						&lt;&lt;else&gt;&gt;
 							&lt;&lt;capture _a&gt;&gt;
 								&lt;li&gt;
+                                &lt;&lt;if !setup.actBlockedByTraits($sex, _actDef)&gt;&gt;
 									&lt;&lt;button _a&gt;&gt;
 										&lt;&lt;run
 											const act = setup.sexacts[_a];
@@ -14636,6 +14688,7 @@ Create your character to begin.
 											&lt;&lt;ArousalUI&gt;&gt;
 										&lt;&lt;/replace&gt;&gt;
 									&lt;&lt;/button&gt;&gt;
+                                &lt;&lt;/if&gt;&gt;    
 								&lt;/li&gt;
 							&lt;&lt;/capture&gt;&gt;
 						&lt;&lt;/if&gt;&gt;
@@ -14656,6 +14709,20 @@ Create your character to begin.
     &lt;b&gt;NPC Arousal:&lt;/b&gt; &lt;&lt;print $sex.object.arousal&gt;&gt;/1000  ||
     &lt;b&gt;Player Arousal:&lt;/b&gt; &lt;&lt;print $sex.subject.arousal&gt;&gt;/1000
     &lt;/span&gt;
+
+    &lt;&lt;if $sex.object.arousal &gt;=1000&gt;&gt;
+        &lt;&lt;set $orgasm.object to true&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+    &lt;&lt;if $sex.subject.arousal &gt;=1000&gt;&gt;
+        &lt;&lt;set $orgasm.subject to true&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+
+    &lt;&lt;if $orgasm.object&gt;&gt;
+        &lt;h1&gt;Object ORGASM! &lt;/h1&gt;
+    &lt;&lt;/if&gt;&gt;
+    &lt;&lt;if $orgasm.subject&gt;&gt;
+        &lt;h1&gt;Subject ORGASM! &lt;/h1&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;/widget&gt;&gt;
 
@@ -15573,6 +15640,9 @@ Sex Object: &lt;&lt;print $sex.object.name&gt;&gt;&lt;br&gt;
 /*Arousal meter for both $mc and _n */
 &lt;&lt;set _n.arousal = _n.arousal or 0&gt;&gt;
 &lt;&lt;set $mc.arousal = $mc.arousal or 0&gt;&gt;
+
+
+
 
 /* Arousal bar*/
 /*&lt;div id=&quot;arousal-ui&quot;&gt;

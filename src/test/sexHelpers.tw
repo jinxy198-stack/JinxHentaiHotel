@@ -42,6 +42,7 @@ setup.updateNpcArousalUI = function (value) {
   const text = document.getElementById("npc-arousal-text");
   if (bar) bar.value = value;
   if (text) text.textContent = value;
+
 };
 
 
@@ -543,3 +544,23 @@ setup.updateSubjectObject = function (sex) {
     }
 };
 
+setup.hasTrait = function (npc, trait) {
+  return Array.isArray(npc?.traits) && npc.traits.includes(trait);
+};
+
+setup.hasAnyTrait = function (npc, traits) {
+  if (!Array.isArray(traits) || traits.length === 0) return false;
+  if (!Array.isArray(npc?.traits)) return false;
+  return traits.some(t => npc.traits.includes(t));
+};
+
+// Returns true if this act is blocked by subject/object traits
+setup.actBlockedByTraits = function (sex, act) {
+  const bt = act?.["blocked traits"];
+  if (!bt) return false;
+
+  const subjBlocked = setup.hasAnyTrait(sex?.subject, bt.subject);
+  const objBlocked  = setup.hasAnyTrait(sex?.object,  bt.object);
+
+  return subjBlocked || objBlocked;
+};

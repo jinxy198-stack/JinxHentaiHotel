@@ -184,6 +184,7 @@
 						<<else>>
 							<<capture _a>>
 								<li>
+                                <<if !setup.actBlockedByTraits($sex, _actDef)>>
 									<<button _a>>
 										<<run
 											const act = setup.sexacts[_a];
@@ -203,6 +204,7 @@
 											<<ArousalUI>>
 										<</replace>>
 									<</button>>
+                                <</if>>    
 								</li>
 							<</capture>>
 						<</if>>
@@ -223,6 +225,21 @@
     <b>NPC Arousal:</b> <<print $sex.object.arousal>>/1000  ||
     <b>Player Arousal:</b> <<print $sex.subject.arousal>>/1000
     </span>
+
+    /*Indicator for when Arousal reaches it's max */
+    <<if $sex.object.arousal >=1000>>
+        <<set $orgasm.object to true>>
+    <</if>>
+    <<if $sex.subject.arousal >=1000>>
+        <<set $orgasm.subject to true>>
+    <</if>>
+
+    <<if $orgasm.object>>
+        <h1>Object ORGASM! </h1>
+    <</if>>
+    <<if $orgasm.subject>>
+        <h1>Subject ORGASM! </h1>
+    <</if>>
 </div>
 <</widget>>
 
