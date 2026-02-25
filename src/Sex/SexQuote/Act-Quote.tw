@@ -1,4 +1,4 @@
-:: Act-Quote [Dialogue nobr] {"position":"1600,1200","size":"100,100"}
+:: Act-Quote [Dialogue nobr] 
 <!-- only what the npc says -->
 
 <<set _a = $sex.act or "none">>
@@ -8,9 +8,9 @@
 <<switch _a>>
 	<<case "Kiss">><<include "Kiss-Quote">>
     <<case "Grope Breasts">><<include "Grope-Breast-Quote">>
-    <<case "Tease Nipples">><<include "">>
-    <<case "Kiss Nipple">><<include "">>
-    <<case "Lick Nipple">><<include "">>
+    <<case "Tease Nipples">><<include "Tease-Nipples-Quote">>
+    <<case "Kiss Nipple">><<include "Kiss-Nipple-Quote">>
+    <<case "Lick Nipple">><<include "Lick-Nipple-Quote">>
     <<case "Suck Nipple">><<include "Suck-Nipple-Quote">>
     <<case "Rub Pussy">><<include "">>
     <<case "Pull Hand To Pussy">><<include "">>
@@ -51,7 +51,7 @@
     <<case "Fuck Fist">><<include "Handjob-Quote">>
     <<case "Tease Tip">><<include "Tease-Tip-Quote">>
     <<case "Suck Cock">><<include "Suck-Cock-Quote">>
-    <<case "Deepthroat">><<include "">>
+    /*<<case "Deepthroat">><<include "">> */
     <<case "Fuck Mouth">><<include "Suck-Cock-Quote">>
     /*<<case "Release Cock">><<include "">>
     <<case "Tug Cock Free">><<include "">>
@@ -67,11 +67,11 @@
     <<case "Push Cock In">><<include "Enter-Pussy-Quote">>
     <<case "Fuck Pussy">><<include "Fuck-Pussy-Quote">>
     <<case "Take Cock">><<include "Fuck-Pussy-Quote">>
-    <<case "Hump Back">><<include "">>
+    /*<<case "Hump Back">><<include "">> */
     <<case "Ride Cock">><<include "Fuck-Pussy-Quote">>
-    <<case "Squeeze Cock">><<include "">>
+    /*<<case "Squeeze Cock">><<include "">>
     <<case "Rabbitfuck">><<include "">>
-    <<case "Deep Stroke">><<include "">>
+    <<case "Deep Stroke">><<include "">> */
     /*<<case "Pull Out">><<include "">>
     <<case "Pull Off">><<include "">>*/
     <<case "Frot">><<include "Frot-Quote">>
@@ -98,7 +98,6 @@
 	<<case "Caress">><<include "Caress-Quote">>
     <<case "Rimjob">><<include "Rimjob-Quote">>
 	<<case "Cuddle">><<include "Cuddle-Quote">>
-    <<case "Grope Butt">><<include "Grope-Butt-Quote">>
     <<case "Suck Foot">><<include "SuckFoot-Quote">>
     <<case "Pet Ears">><<include "Pet-Ears-Quote">>
     <<case "Touch Stomach">><<include "Feel-Stomach-Quote">>

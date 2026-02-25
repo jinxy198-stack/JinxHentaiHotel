@@ -12,33 +12,26 @@
 
 <<set _pool = null>>
 
-<<if _mode == "top">>
+<<if _mode == "bottom">>
 	<<set _pool =
 		setup.GrabCockQuotes.bottom[_pref]
 		|| setup.GrabCockQuotes.bottom.Neutral
 	>>
-<<elseif _mode == "bottom">>
+<<elseif _mode == "top">>
 	<<if _personality == "Childlike">>
 		<<set _pool =
 			setup.GrabCockQuotes.top[_personality]
-		>>
-	<<elseif _size == "Tiny">>
-		<<set _pool =
-			(
-				setup.GrabCockQuotes.top[_pref]
-				&& setup.GrabCockQuotes.top[_pref].Tiny
-				&& setup.GrabCockQuotes.top[_pref].Tiny[_age]
-			)
-			|| setup.GrabCockQuotes.top.Neutral
 		>>
 	<<else>>
 		<<set _pool =
 			(
 				setup.GrabCockQuotes.top[_pref]
 				&& setup.GrabCockQuotes.top[_pref][_size]
+				&& setup.GrabCockQuotes.top[_pref][_size][_age]
 			)
-			|| setup.GrabCockQuotes.top.Neutral
+			|| setup.GrabCockQuotes.top[_pref]
 		>>
+	
 	<</if>>
 <</if>>
 

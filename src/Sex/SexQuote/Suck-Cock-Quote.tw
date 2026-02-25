@@ -14,9 +14,9 @@
 <</if>>
 
 <<if _mode == "top">>
-	<<set _pool = setup.FuckMouthQuotes.top>>
+	<<set _pool = setup.SuckingQuotes>>
 <<elseif _mode == "bottom">>
-	<<set _pool = setup.SuckCockQuotes.bottom[_pref]>>
+	<<set _pool = setup.SuckCockQuotes[_pref]>>
 <</if>>
 
 <<if _pool && _pool.length>>

@@ -27,15 +27,10 @@
             <<replace "#sex-container">>
                 <<SexEncounterUI>>
                 <<RoomRelocationUI>>
-                /*<<button "End Session">>
-			        <<set $lastNpc = _n>>      <!-- remember who you were with -->
-			        <<set $sex = null >>  <!-- optional reset -->
-                    <<set $n = null >>
-			        <<goto "Your Room">> <!-- or "Your Room" or whatever -->
-                <</button>>*/
+
             <</replace>>
 
-            <<replace "#npcsex-dialogue">>
+            <<replace "#log">>
                 <<include "PositionDialogue">>
 			<</replace>>
 
@@ -51,7 +46,6 @@
 </ul>
 </div>
 <</widget>>
-
 
 <<widget "SexEncounterUI">>
 <div id="sexUI">
@@ -81,29 +75,6 @@
 			<<print $sex.penetration.subjectPart>> → <<print $sex.penetration.objectPart>><br>
 		<</if>>
 	</div>
-
-
-	<!-- ===================== -->
-	<!-- DIALOGUE -->
-	<!-- ===================== -->
-	/*<div id="npcsex-dialogue">
-		<div id="intro" class="intro">
-			<<if _sexCount == 1>>
-				You both enter your room. You both strip naked, showing off your bare bodies to one another.
-				You both know what you're in for, but it's always a bit awkward with someone new.
-			<<elseif _sexCount >= 5>>
-				You and <<= _n.name >> go to your hotel room.
-				Almost professionally, you both strip until you are nude.
-				<<= $proset.theyUp >> appears up for whatever you have in mind.
-			<<else>>
-				WTF THIS SHOULDN'T BE HERE! THERE IS AN ERROR IN THE GAME!
-			<</if>>
-		</div>
-
-		<div id="log"><<include "PositionDialogue">></div>
-
-		<hr>
-	</div>*/
 
 	<!-- ===================== -->
 	<!-- ACTION BAR -->
@@ -140,9 +111,12 @@
 											<<SexEncounterUI>> 
 										<</replace>>
 
-										<<replace "#npcsex-dialogue">>
+                                        <<replace "#intro">><br><</replace>>
+                                        <<replace "#log">>
                                             <<include "PositionDialogue">>
 										<</replace>>
+
+
 									<</button>>
 								</li>
 							<</capture>>
@@ -152,19 +126,6 @@
 			<</if>>
 
 			<!-- ACTS -->
-            <<if $sex.phase == "orgasm">>
-                
-                <<replace "#sexUI">>
-                    <<SexEncounterUI>>
-			    <</replace>>
-                <<replace "#npcsex-dialogue">>
-                    <<include "ActDialogue">>
-				<</replace>>
-				
-                <<replace "#arousal-ui">>
-					<<ArousalUI>>
-				<</replace>>
-            <<else>>
 			<<set _acts = setup.getAvailableSexActs($sex) || []>>
 
 			<h3>Available Acts</h3>
@@ -196,13 +157,24 @@
 										<<replace "#sexUI">>
                                             <<SexEncounterUI>>
 										<</replace>>
-										<<replace "#npcsex-dialogue">>
-                                            <<include "ActDialogue">>
-                                            <<include "Act-Quote">>
-										<</replace>>
-										<<replace "#arousal-ui">>
-											<<ArousalUI>>
-										<</replace>>
+
+                                        <<if $orgasm.object || $orgasm.subject>>
+                                            <<replace "#intro">>
+                                                <<include "OrgasmDialogue">>
+                                                <<include "Orgasm-Quote">>
+                                                You've reached orgasm.
+										    <</replace>>
+                                            <<replace "#log">><br><</replace>>
+										    <<replace "#arousal-ui">><<ArousalUI>><</replace>>
+                                        <<else>>
+										    <<replace "#intro">>
+                                                <<include "ActDialogue">>
+                                                <<include "Act-Quote">>
+										    <</replace>>
+                                            <<replace "#log">><br><</replace>>
+										    <<replace "#arousal-ui">><<ArousalUI>><</replace>>
+                                        <</if>>
+                                        
 									<</button>>
                                 <</if>>    
 								</li>
@@ -211,7 +183,6 @@
 					<</for>>
 				</ul>
 			    <</if>>
-            <</if>>
 		</div>
 	</div>
 </div>
@@ -219,27 +190,22 @@
 
 
 <<widget "ArousalUI">>
-<div id="arousal-ui">
-    <span>
+<div>
+  <span>
     <hr>
     <b>NPC Arousal:</b> <<print $sex.object.arousal>>/1000  ||
     <b>Player Arousal:</b> <<print $sex.subject.arousal>>/1000
-    </span>
+  </span>
 
-    /*Indicator for when Arousal reaches it's max */
-    <<if $sex.object.arousal >=1000>>
-        <<set $orgasm.object to true>>
-    <</if>>
-    <<if $sex.subject.arousal >=1000>>
-        <<set $orgasm.subject to true>>
-    <</if>>
+  <<if $sex.object.arousal >= 1000>>
+    <<set $orgasm.object = true>>
+  <</if>>
+  <<if $sex.subject.arousal >= 1000>>
+    <<set $orgasm.subject = true>>
+  <</if>>
 
-    <<if $orgasm.object>>
-        <h1>Object ORGASM! </h1>
-    <</if>>
-    <<if $orgasm.subject>>
-        <h1>Subject ORGASM! </h1>
-    <</if>>
+  <<if $orgasm.object>><h1>Object ORGASM!</h1><</if>>
+  <<if $orgasm.subject>><h1>Subject ORGASM!</h1><</if>>
 </div>
 <</widget>>
 

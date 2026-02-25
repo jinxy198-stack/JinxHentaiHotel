@@ -10,14 +10,13 @@
 
 <<set _pool = null>>
 
-<<if _mode == "bottom">>
-	<<set _pool = setup.rimjobQuotes.bottom[_pref]
-	|| setup.rimjobQuotes.bottom.Neutral>>
-<<elseif _mode == "top">>
-	<<set _pool = setup.rimjobQuotes.top[_pref] 
-	|| setup.rimjobQuotes.top.Neutral>>
+<<if _mode == "top">>
+	<<set _pool = setup.rimjobQuotes[_personality]
+	|| setup.rimjobQuotes[_pref]
+	>>
+<<elseif _mode == "bottom">>
+	<<set _pool = setup.MuffledQuotes>>
 <</if>>
-
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>

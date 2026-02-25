@@ -1,6 +1,7 @@
-:: Suck-Nipple-Quote [nobr]
+::Tease-Nipples-Quote [nobr]
 
-
+<<set _msize = $mc.penislength>>
+<<set _nsize = _n.penislength>>
 <<set _pref = _n.sexpref || "Neutral">>
 <<set _personality = _n.personality>>
 <<if $sex.role == "bottom">>
@@ -11,14 +12,14 @@
 <<set _pool = null>>
 
 <<if _mode == "top">>
-	<<set _pool = setup.SuckNippleQuotes>>
+	<<set _pool = setup.TeaseNippleQuotes.top>>
 <<elseif _mode =="bottom">>
-	<<set _pool = setup.MuffledQuotes>>
+	<<set _pool = setup.TeaseNippleQuotes.bottom>>
 <</if>>
 
 <<if _pool && _pool.length>>
 	<<= either(..._pool)>>
 <<else>>
-	[Error] No Suck Nipple quote pool found.
+	[Error] No Tease Nipple quote pool found.
 	(mode=<<=_mode>>, pref=<<=_pref>>, personality=<<=_personality>>, nage=<<=_nage>>, mage=<<=_mage>>)
 <</if>>
