@@ -28,20 +28,18 @@
 	<<= either(
     	"_n.name wraps their <<= _n.body.Hand.toLowerCase()>> around your <<= $mc.genitals.toLowerCase()>>."
 	)>>
-<<elseif $sex.act =="Stroke Shaft">>
+<<elseif $sex.act =="Pump Shaft">>
 	<<if $sex.role=="bottom">>
-		You stroke the shaft.
+		You pump their shaft.
 		<<if _n.genitaltype == "Uncut">>
     		Their foreskin is pulled back and forth from the movement.
     	<</if>>
 	<<elseif $sex.role =="top">>
-		They stroke your shaft.
+		They pump your shaft.
 		<<if $mc.genitaltype == "Uncut">>
     		Your foreskin is pulled back and forth from the movement.
     	<</if>>
 	<</if>>
-<<elseif $sex.act =="Pump Shaft">>
-	You pump the shaft.
 <<elseif $sex.act =="Fuck Fist">>
 	_n.name jerks you off.
 <<elseif $sex.act =="Tease Tip">>
