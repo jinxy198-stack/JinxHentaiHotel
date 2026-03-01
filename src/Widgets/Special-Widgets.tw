@@ -368,513 +368,9 @@
 	<</if>>
 <</widget>>
 
-<<widget "create-body" _npc>>
-	/* Initializes default body part map */
-
-	<<set _npc.body = Object.assign({
-		Head: "Head",
-		Face: "Face",
-		Mouth: "Mouth",
-		Arms: "Arms",
-		Legs: "Legs",
-		Hands: "Hands",
-		Hand: "Hand",
-		Feet: "Feet",
-		Ass: "Ass",
-		Asshole: "Asshole",
-		Nipples: "Nipples",
-		Crotch: "Crotch",
-		Thigh: "Thigh",
-		Finger: "Finger",
-		Fingers: "Fingers",
-		Hips: "Hips",
-		Lips: "Lips",
-		Tongue: "Tongue",
-        Bodymaterial: "Skin"
-	}, _npc.body || {})>>
-
-	/* Assign genitals based on gender */
-	<<if _npc.gender>>
-		<<set _g = _npc.gender>>
-
-		<<if _npc.gender == "Male">>
-			<<set _npc.body.Penis = "Penis">>
-			<<set _npc.body.Balls = "Balls">>
-			<<set _npc.body.Chest = "Chest">>
-
-		<<elseif _npc.gender == "Female">>
-			<<set _npc.body.Vagina = "Vagina">>
-			<<set _npc.body.Clitoris = "Clit">>
-			<<set _npc.body.Breasts = "Breasts">>
-		<</if>>
-	<</if>>
-
-
-	/* Override for anthro */
-	<<if _npc.species is "Anthro">>
-		<<alternatebody _npc>>
-	<</if>>
-
-	/* enforce: anthro color OR human skin, never both */
-	<<if _npc.species and _npc.species.toLowerCase() is "anthro">>
-		<<set _npc.skincolor = "">>
-		<<set _npc.skinfeatures = "">>
-	<<else>>
-		<<if _npc.anthro>>
-			<<set _npc.anthro.color = "">>
-			<<set _npc.anthro.pattern = "">>
-		<</if>>
-	<</if>>
-<</widget>>
-
-<<widget "alternatebody" _npc>>
-	<<if _npc and _npc.species and _npc.species.toLowerCase() is "anthro">>
-		<<set _group = _npc.anthro and _npc.anthro.group ? _npc.anthro.group : "Furry">>
-		<<set _sub   = _npc.anthro and _npc.anthro.subtype ? _npc.anthro.subtype.toLowerCase() : "">>
-
-		<<switch _group>>
-
-			/* ----- FURRY NPCS ----- */
-			<<case "Furry">>
-				/* generic furry defaults */
-				<<set _npc.body.Bodymaterial to "Fur">>
-				<<set _npc.body.Feet         to "Paws">>
-				<<set _npc.body.Ears         to "Furry Ears">>
-				<<if !_npc.body.Tail>>
-    				<<set _npc.body.Tail to "Furry Tail">>
-				<</if>>
-
-                <<set _npc.body.Face to "Snout">>
-
-				<<switch _sub>>
-					<<case "canine">>
-						<<set _npc.body.Ears to "Floopy Canine Ears">>
-						<<set _npc.body.Feet to "Paws">>
-						<<set _npc.body.Tail to "Bushy Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Knotted", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-					<<case "bunny">>
-						<<set _npc.body.Ears to "Long Bunny Ears">>
-						<<set _npc.body.Feet to "Paws">>
-						<<set _npc.body.Tail to "Cotton Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-					<<case "feline">>
-						<<set _npc.body.Ears to "Feline Ears">>
-						<<set _npc.body.Feet to "Soft Paws">>
-						<<set _npc.body.Tail to "Long Feline Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Barbed", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-					<<case "lion">>
-						<<set _npc.body.Ears to "Feline Ears">>
-						<<set _npc.body.Feet to "Soft Paws">>
-						<<set _npc.body.Tail to "Long Feline Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Barbed", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>	
-					<<case "bear">>
-						<<set _npc.body.Ears to "Round Bear Ears">>
-						<<set _npc.body.Feet to "Paws">>
-						<<set _npc.body.Tail to "Stubby Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-					<<case "wolf">>
-						<<set _npc.body.Ears to "Wolf Ears">>
-						<<set _npc.body.Feet to "Paws">>
-						<<set _npc.body.Tail to "Bushy Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Knotted", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-					<<case "goat">>
-						<<set _npc.body.Ears to "Goat Ears">>
-						<<set _npc.body.Feet to "Hooves">>
-						<<set _npc.body.Tail to "Short Goat Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-					<<case "mouse">>
-						<<set _npc.body.Ears to "Big Round Ears">>
-						<<set _npc.body.Feet to "Paws">>
-						<<set _npc.body.Tail to "Mouse Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-					<<case "pig">>
-						<<set _npc.body.Ears to "Pig Ears">>
-						<<set _npc.body.Feet to "Trotters">>
-						<<set _npc.body.Tail to "Curly Tail">>
-                        <<set _npc.body.Bodymaterial to "Hide">>
-					<<case "fox">>
-						<<set _npc.body.Ears to "Fox Ears">>
-						<<set _npc.body.Feet to "Paws">>
-						<<set _npc.body.Tail to "Poofy Tail">>
-                        <<if _npc.genitals =="Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Knotted", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-                    <<case "deer">>
-						<<set _npc.body.Ears to "Deer Ears">>
-						<<set _npc.body.Feet to "Hooves">>
-						<<set _npc.body.Tail to "Bushy Tail">>
-                        <<if _npc.genitals =="Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-						/*add antlers */
-						<<if !_npc.body.Horns>>
-							<<if _npc.age >= 13>>
-								<<set _npc.body.Horns to "Antlers">>
-							<</if>>
-    						
-						<</if>>
-                    <<default>>
-						/* keep generic furry defaults */
-				<</switch>>
-
-			/* ----- SCALIE NPCS ----- */
-			<<case "Scalie">>
-				<<set _npc.body.Bodymaterial to "Scales">>
-				<<set _npc.body.Feet         to "Clawed Feet">>
-				<<set _npc.body.Face         to "Snout">>
-				<<set _npc.body.Tail         to "Thick Scaled Tail">>
-
-				<<switch _sub>>
-					<<case "lizard">>
-						<<set _npc.body.Ears to null>>
-						<<set _npc.body.Feet to "Clawed Feet">>
-						<<set _npc.body.Tail to "Long Lizard Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-
-					<<case "dragon">>
-						<<set _npc.body.Ears to "Horned Frills">>
-						<<set _npc.body.Feet to "Draconic Claws">>
-						<<set _npc.body.Tail to "Spiked Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-
-					<<case "alligator">>
-						<<set _npc.body.Ears to null>>
-						<<set _npc.body.Feet to "Clawed Feet">>
-						<<set _npc.body.Tail to "Spiked Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-
-					<<case "crocodile">>
-						<<set _npc.body.Ears to null>>
-						<<set _npc.body.Feet to "Clawed Feet">>
-						<<set _npc.body.Tail to "Spiked Tail">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-
-					<<default>>
-						/* generic scalie defaults */
-				<</switch>>
-
-			/* ----- AVIAN NPCS ----- */
-			<<case "Avian">>
-				<<set _npc.body.Bodymaterial to "Feathers">>
-				<<set _npc.body.Feet         to "Talons">>
-				<<set _npc.body.Face         to "Beak">>
-				<<set _npc.body.Tail         to "Tailfeathers">>
-                
-
-				<<switch _sub>>
-					<<case "duck">>
-						<<set _npc.body.Feet to "Webbed Feet">>
-						<<set _npc.body.Ears to null>>
-						<<set _npc.body.Tail to "Tailfeathers">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-
-					<<case "parrot">>
-						<<set _npc.body.Feet to "Talons">>
-						<<set _npc.body.Ears to null>>
-						<<set _npc.body.Tail to "Tailfeathers">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-
-					<<case "chicken">>
-						<<set _npc.body.Feet to "Claws">>
-						<<set _npc.body.Ears to null>>
-						<<set _npc.body.Tail to "Tailfeathers">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-
-					<<case "eagle">>
-						<<set _npc.body.Feet to "Talons">>
-						<<set _npc.body.Ears to null>>
-						<<set _npc.body.Tail to "Tailfeathers">>
-                        <<if _npc.genitals is "Penis">>
-                        	<<if !_npc.genitaltype>>
-								<<set _npc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-
-					<<default>>
-						/* generic avian defaults */
-				<</switch>>
-
-			<<default>>
-				/* other groups: no automatic override */
-		<</switch>>
-	<</if>>
-<</widget>>
-
-
-<<widget "MC-Create-body">>
-	<<set $mc.body = {
-    	Head: "Head",
-    	Face:"Face",
-		Mouth:"Mouth",
-    	Arms: "Arms",
-    	Legs: "Legs",
-   		Hands: "Hands",
-    	Hand: "Hand",
-    	Feet: "Feet",
-    	Ass: "Ass",
-    	Asshole: "Asshole",
-		Nipples: "Nipples",
-		Crotch: "Crotch",
-		Thigh: "Thigh",
-    	Finger: "Finger",
-    	Fingers: "Fingers",
-    	Hips: "Hips",
-    	Lips:"Lips",
-    	Tongue:"Tongue",
-		Bodymaterial: "Skin"
-    }>>
-
-	/* --- APPLY BODY PART DATABASE --- */
-	<<for _k, _v range $mc.body>>
-		<<if setup.bodyparts[_k]>>
-			<<set $mc.body[_k] = setup.bodyparts[_k]>>
-		<</if>>
-	<</for>>
-
-	/* Assign genitals based on gender */
-	<<if $mc.gender>>
-		<<set _g = $mc.gender>>
-
-		<<if $mc.gender == "Male">>
-			<<set $mc.body.Penis = "Penis">>
-			<<set $mc.body.Balls = "Balls">>
-			<<set $mc.body.Chest = "Chest">>
-
-		<<elseif $mc.gender == "Female">>
-			<<set $mc.body.Vagina = "Vagina">>
-			<<set $mc.body.Clitoris = "Clit">>
-			<<set $mc.body.Breasts = "Breasts">>
-		<</if>>
-	<</if>>
-
-    <<if $mc.species is "Anthro">>
-    <<MCalternatebody>>
-    <</if>>
-    /* --- COLOR RULE: Anthro uses anthro.color only --- */
-	<<if $mc.species is "Anthro">>
-		<<set $mc.skincolor = "" >>
-		<<set $mc.skinfeatures = "" >>
-	<<else>>
-		<<set $mc.anthro.color = "" >>
-		<<set $mc.anthro.pattern = "" >>
-	<</if>>
 
 
 
-<</widget>>
-
-<<widget "MCalternatebody">>
-	<<if $mc.species and $mc.species.toLowerCase() is "anthro">>
-		<<set _group = $mc.anthro.group or "Furry">>
-		<<set _sub   = $mc.anthro.subtype ? $mc.anthro.subtype.toLowerCase() : "">>
-
-		<<switch _group>>
-
-			/* ----- FURRY ----- */
-			<<case "Furry">>
-				/* base furry defaults */
-				<<set $mc.body.Bodymaterial = "Fur">>
-				<<set $mc.body.Feet         = "paws">>
-				<<set $mc.body.Ears         = "furry ears">>
-				<<set $mc.body.Tail         = "furred tail">>
-                <<set $mc.body.Face			="snout">>
-
-				<<switch _sub>>
-					<<case "canine">>
-						<<set $mc.body.Ears to "canine ears">>
-						<<set $mc.body.Feet to "paws">>
-						<<set $mc.body.Tail to "bushy tail">>
-
-					<<case "bunny">>
-						<<set $mc.body.Ears to "long bunny ears">>
-						<<set $mc.body.Feet to "paws">>
-						<<set $mc.body.Tail to "cotton tail">>
-
-					<<case "feline">>
-						<<set $mc.body.Ears to "feline ears">>
-						<<set $mc.body.Feet to "paws">>
-						<<set $mc.body.Tail to "long feline tail">>
-
-					<<case "bear">>
-						<<set $mc.body.Ears to "round bear ears">>
-						<<set $mc.body.Feet to "paws">>
-						<<set $mc.body.Tail to "stubby tail">>
-
-					<<case "wolf">>
-						<<set $mc.body.Ears to "wolf ears">>
-						<<set $mc.body.Feet to "paws">>
-						<<set $mc.body.Tail to "bushy wolf tail">>
-
-					<<case "goat">>
-						<<set $mc.body.Ears to "goat ears">>
-						<<set $mc.body.Feet to "hooves">>
-						<<set $mc.body.Tail to "short goat tail">>
-
-					<<case "mouse">>
-						<<set $mc.body.Ears to "large round ears">>
-						<<set $mc.body.Feet to "small paws">>
-						<<set $mc.body.Tail to "thin mouse tail">>
-
-					<<case "pig">>
-						<<set $mc.body.Ears to "pig ears">>
-						<<set $mc.body.Feet to "trotters">>
-						<<set $mc.body.Tail to "curly tail">>
-                        <<set $mc.body.Bodymaterial to "hide">>
-					<<case "deer">>
-						<<set $mc.body.Ears to "Deer Ears">>
-						<<set $mc.body.Feet to "Hooves">>
-						<<set $mc.body.Tail to "Bushy Tail">>
-                        <<if $mc.genitals =="Penis">>
-                        	<<if !$mc.genitaltype>>
-								<<set $mc.genitaltype = either( "Tapered", "Cut", "Uncut")>>
-							<</if>>
-                        <</if>>
-						/*add antlers */
-						<<if !$mc.body.Horns>>
-							<<if $mc.age >= 13>>
-								<<set $mc.body.Horns to "Antlers">>
-							<</if>>
-    						
-						<</if>>
-					<<default>>
-						/* keep generic furry defaults */
-				<</switch>>
-
-			/* ----- SCALIE ----- */
-			<<case "Scalie">>
-				<<set $mc.body.Bodymaterial = "Scales">>
-				<<set $mc.body.Feet         = "clawed feet">>
-				<<set $mc.body.Tail         = "thick scaled tail">>
-                <<set $mc.body.Face			="snout">>
-
-				<<switch _sub>>
-					<<case "lizard">>
-						<<set $mc.body.Ears to null>>
-						<<set $mc.body.Feet to "scaled claws">>
-						<<set $mc.body.Tail to "long lizard tail">>
-
-					<<case "dragon">>
-						<<set $mc.body.Ears to "horned frills">>
-						<<set $mc.body.Feet to "claws">>
-						<<set $mc.body.Tail to "long spiked tail">>
-
-					<<case "alligator">>
-						<<set $mc.body.Ears to null>>
-						<<set $mc.body.Feet to "claws">>
-						<<set $mc.body.Tail to "tail">>
-
-					<<case "crocodile">>
-						<<set $mc.body.Ears to null>>
-						<<set $mc.body.Feet to "claws">>
-						<<set $mc.body.Tail to "tail">>
-
-					<<default>>
-						/* keep generic scalie defaults */
-				<</switch>>
-
-			/* ----- AVIAN ----- */
-			<<case "Avian">>
-				<<set $mc.body.Bodymaterial = "Feathers">>
-				<<set $mc.body.Feet         = "talons">>
-				<<set $mc.body.Face         = "beak">>
-				<<set $mc.body.Tail         = "tail feathers">>
-				<<set $mc.body.Lips to null>>
-
-				<<switch _sub>>
-					<<case "duck">>
-						<<set $mc.body.Feet to "webbed feet">>
-						<<set $mc.body.Ears to null>>
-						<<set $mc.body.Tail to "tail feathers">>
-
-					<<case "parrot">>
-						<<set $mc.body.Feet to "gripping talons">>
-						<<set $mc.body.Ears to null>>
-						<<set $mc.body.Tail to "tail feathers">>
-
-					<<case "chicken">>
-						<<set $mc.body.Feet to "talons">>
-						<<set $mc.body.Ears to null>>
-						<<set $mc.body.Tail to "tail feathers">>
-
-					<<case "eagle">>
-						<<set $mc.body.Feet to "talons">>
-						<<set $mc.body.Ears to null>>
-						<<set $mc.body.Tail to "tail feathers">>
-
-					<<default>>
-						/* keep generic avian defaults */
-				<</switch>>
-
-			<<default>>
-				/* other groups: do nothing */
-		<</switch>>
-	<</if>>
-
-<</widget>>
 
 <<widget "make-petname">>
 
@@ -888,3 +384,293 @@
 <</widget>>
 
 
+
+<<widget "create-body">>
+	/* Accepts: <<create-body $mc>> or <<create-body _npc>> or <<create-body _n>>.
+	   If called with no args, falls back to $mc. */
+
+	<<set _char = (_args.length > 0) ? _args[0] : $mc>>
+
+	<<if !_char or typeof _char !== "object">>
+		[Error] create-body: expected a character object, got <<= _char>>.
+	<<else>>
+
+		/* Base defaults (merge so you don't wipe pre-filled body fields) */
+		<<set _char.body = Object.assign({
+			Head: "Head",
+			Face: "Face",
+			Mouth: "Mouth",
+			Arms: "Arms",
+			Legs: "Legs",
+			Hands: "Hands",
+			Hand: "Hand",
+			Feet: "Feet",
+			Ass: "Ass",
+			Asshole: "Asshole",
+			Nipples: "Nipples",
+			Crotch: "Crotch",
+			Thigh: "Thigh",
+			Finger: "Finger",
+			Fingers: "Fingers",
+			Hips: "Hips",
+			Lips: "Lips",
+			Tongue: "Tongue",
+			Bodymaterial: "Skin"
+		}, _char.body || {})>>
+
+		/* If you have a bodyparts DB, apply it safely */
+		<<if setup.bodyparts>>
+			<<for _k, _v range _char.body>>
+				<<if setup.bodyparts[_k]>>
+					<<set _char.body[_k] = setup.bodyparts[_k]>>
+				<</if>>
+			<</for>>
+		<</if>>
+
+		/* Ensure genitals string (if set) also exists as a body key */
+		<<if _char.genitals>>
+			<<set _gKey = String(_char.genitals)>>
+			<<if !_char.body[_gKey]>>
+				<<set _char.body[_gKey] = _gKey>>
+			<</if>>
+		<</if>>
+
+		/* Gender defaults (won't override explicit parts if already set) */
+		<<if _char.gender>>
+			<<set _g = String(_char.gender).toLowerCase()>>
+
+			<<if _g is "male">>
+				<<set _char.body.Penis = _char.body.Penis || "Penis">>
+				<<set _char.body.Balls = _char.body.Balls || "Balls">>
+				<<set _char.body.Chest = _char.body.Chest || "Chest">>
+				<<set _char.genitals = _char.genitals || "Penis">>
+
+			<<elseif _g is "female">>
+				<<set _char.body.Vagina   = _char.body.Vagina   || "Vagina">>
+				<<set _char.body.Clitoris = _char.body.Clitoris || "Clit">>
+				<<set _char.body.Breasts  = _char.body.Breasts  || "Breasts">>
+				<<set _char.genitals = _char.genitals || "Vagina">>
+			<</if>>
+		<</if>>
+
+		/* Anthro override */
+		<<if _char.species and String(_char.species).toLowerCase() is "anthro">>
+			<<alternatebody _char>>
+		<</if>>
+
+		/* Enforce: anthro color OR human skin, never both */
+		<<if _char.species and String(_char.species).toLowerCase() is "anthro">>
+			<<set _char.skincolor = "">>
+			<<set _char.skinfeatures = "">>
+		<<else>>
+			<<if _char.anthro>>
+				<<set _char.anthro.color = "">>
+				<<set _char.anthro.pattern = "">>
+			<</if>>
+		<</if>>
+
+		/* Build bodyparts list (you already have this helper) */
+		<<run setup.normalizeBodyparts(_char)>>
+
+	<</if>>
+<</widget>>
+
+
+<<widget "alternatebody">>
+	<<set _char = _args[0]>>
+
+	<<if !_char or !_char.species or String(_char.species).toLowerCase() isnot "anthro">>
+		/* Not anthro: do nothing */
+	<<else>>
+	<<set _group = (_char.anthro and _char.anthro.group) ? _char.anthro.group : "Furry">>
+	<<set _sub   = (_char.anthro and _char.anthro.subtype) ? String(_char.anthro.subtype).toLowerCase() : "">>
+
+	<<set _hasPenis = !!(_char.body && _char.body.Penis)>>
+
+	<<switch _group>>
+
+		<<case "Furry">>
+			<<set _char.body.Bodymaterial to "Fur">>
+			<<set _char.body.Feet         to "Paws">>
+			<<set _char.body.Ears         to "Furry Ears">>
+			<<if !_char.body.Tail>>
+				<<set _char.body.Tail to "Furry Tail">>
+			<</if>>
+			<<set _char.body.Face to "Snout">>
+
+			<<switch _sub>>
+				<<case "canine">>
+					<<set _char.body.Ears to "Floopy Canine Ears">>
+					<<set _char.body.Feet to "Paws">>
+					<<set _char.body.Tail to "Bushy Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Knotted","Cut","Uncut")>>
+					<</if>>
+
+				<<case "bunny">>
+					<<set _char.body.Ears to "Long Bunny Ears">>
+					<<set _char.body.Feet to "Paws">>
+					<<set _char.body.Tail to "Cotton Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<case "feline">>
+					<<set _char.body.Ears to "Feline Ears">>
+					<<set _char.body.Feet to "Soft Paws">>
+					<<set _char.body.Tail to "Long Feline Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Barbed","Cut","Uncut")>>
+					<</if>>
+
+				<<case "lion">>
+					<<set _char.body.Ears to "Feline Ears">>
+					<<set _char.body.Feet to "Soft Paws">>
+					<<set _char.body.Tail to "Long Feline Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Barbed","Cut","Uncut")>>
+					<</if>>
+
+				<<case "bear">>
+					<<set _char.body.Ears to "Round Bear Ears">>
+					<<set _char.body.Feet to "Paws">>
+					<<set _char.body.Tail to "Stubby Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<case "wolf">>
+					<<set _char.body.Ears to "Wolf Ears">>
+					<<set _char.body.Feet to "Paws">>
+					<<set _char.body.Tail to "Bushy Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Knotted","Cut","Uncut")>>
+					<</if>>
+
+				<<case "goat">>
+					<<set _char.body.Ears to "Goat Ears">>
+					<<set _char.body.Feet to "Hooves">>
+					<<set _char.body.Tail to "Short Goat Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<case "mouse">>
+					<<set _char.body.Ears to "Big Round Ears">>
+					<<set _char.body.Feet to "Paws">>
+					<<set _char.body.Tail to "Mouse Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<case "pig">>
+					<<set _char.body.Ears to "Pig Ears">>
+					<<set _char.body.Feet to "Trotters">>
+					<<set _char.body.Tail to "Curly Tail">>
+					<<set _char.body.Bodymaterial to "Hide">>
+
+				<<case "fox">>
+					<<set _char.body.Ears to "Fox Ears">>
+					<<set _char.body.Feet to "Paws">>
+					<<set _char.body.Tail to "Poofy Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Knotted","Cut","Uncut")>>
+					<</if>>
+
+				<<case "deer">>
+					<<set _char.body.Ears to "Deer Ears">>
+					<<set _char.body.Feet to "Hooves">>
+					<<set _char.body.Tail to "Bushy Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+					<<if !_char.body.Horns and _char.age >= 13>>
+						<<set _char.body.Horns to "Antlers">>
+					<</if>>
+
+				<<default>>
+					/* keep generic furry defaults */
+			<</switch>>
+
+		<<case "Scalie">>
+			<<set _char.body.Bodymaterial to "Scales">>
+			<<set _char.body.Feet         to "Clawed Feet">>
+			<<set _char.body.Face         to "Snout">>
+			<<set _char.body.Tail         to "Thick Scaled Tail">>
+
+			<<switch _sub>>
+				<<case "lizard">>
+					<<set _char.body.Ears to null>>
+					<<set _char.body.Tail to "Long Lizard Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<case "dragon">>
+					<<set _char.body.Ears to "Horned Frills">>
+					<<set _char.body.Feet to "Draconic Claws">>
+					<<set _char.body.Tail to "Spiked Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<case "alligator">>
+					<<set _char.body.Ears to null>>
+					<<set _char.body.Tail to "Spiked Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<case "crocodile">>
+					<<set _char.body.Ears to null>>
+					<<set _char.body.Tail to "Spiked Tail">>
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<default>>
+					/* generic scalie defaults */
+			<</switch>>
+
+		<<case "Avian">>
+			<<set _char.body.Bodymaterial to "Feathers">>
+			<<set _char.body.Feet         to "Talons">>
+			<<set _char.body.Face         to "Beak">>
+			<<set _char.body.Tail         to "Tailfeathers">>
+			<<run delete _char.body.Ears>>
+
+			<<switch _sub>>
+				<<case "duck">>
+					<<set _char.body.Feet to "Webbed Feet">>
+					
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<case "parrot">>
+					
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<case "chicken">>
+					
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<case "eagle">>
+					
+					<<if _hasPenis and !_char.genitaltype>>
+						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
+					<</if>>
+
+				<<default>>
+					/* generic avian defaults */
+			<</switch>>
+
+		<<default>>
+			/* other groups: no automatic override */
+	<</switch>>
+	<</if>>
+<</widget>>

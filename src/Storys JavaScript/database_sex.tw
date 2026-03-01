@@ -483,6 +483,60 @@ setup.sexacts = {
         "subject dialogue tags": ["groping breasts"],
         "object dialogue tags": ["breasts groped"],
     },
+        /* other stuff */
+    "Fuck Tits": /* You use your cock on their tits */
+    {
+        "positions": ["Kneeling:top", "Straddling Chest:top"],
+        "action type": ["tease"],
+        "subject parts": ["Penis"],
+        "object parts": ["Breasts"],
+        "take virginity": [],
+        "subject arousal": 40,
+        "object arousal":  10,
+        "object arousal cap": 400,
+        "remember as": ["titfuck", "given"],
+        "subject dialogue tags": ["fucking tits"],
+        "object dialogue tags": ["tits fucked"],
+    },
+    "Use Tits On Cock": /* You use your tits on their cock */
+    {
+        "positions": ["Kneeling:bottom", "Straddling Chest:bottom"],
+        "action type": ["tease"],
+        "subject parts": ["Breasts"],
+        "object parts": ["Penis"],
+        "take virginity": [],
+        "subject arousal": 10,
+        "object arousal":  40,
+        "subject arousal cap": 400,
+        "remember as": ["titfuck", "received"],
+    },
+    "Hotdog": /* You rub your cock on their ass */
+    {
+        "positions": [ "Standing From Behind:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top"],
+        "action type": ["tease"],
+        "subject parts": ["Penis"],
+        "object parts": ["Ass"],
+        "take virginity": [],
+        "subject arousal": 40,
+        "object arousal":  10,
+        "object arousal cap": 400,
+        "remember as": ["hotdogging", "given"],
+        "subject dialogue tags": ["hotdogging"],
+        "object dialogue tags": ["hotdogged"],
+    },
+    "Rub Ass On Cock": /* You rub your ass on their cock */
+    {
+        "positions": [ "Standing From Behind:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Spooning:bottom", "Double Decker:bottom", "Against Wall From Behind:bottom"],
+        "action type": ["tease"],
+        "subject parts": ["Ass"],
+        "object parts": ["Penis"],
+        "take virginity": [],
+        "subject arousal": 10,
+        "object arousal":  40,
+        "subject arousal cap": 400,
+        "remember as": ["hotdogging", "received"],
+    },
+
 
     "Press Face on Chest": 
     {
@@ -1660,58 +1714,5 @@ setup.sexacts = {
     },
     
     
-    /* other stuff */
-    "Fuck Tits": /* You use your cock on their tits */
-    {
-        "positions": ["Kneeling:top", "Straddling Chest:top"],
-        "action type": ["tease"],
-        "subject parts": ["Penis"],
-        "object parts": ["Breasts"],
-        "take virginity": [],
-        "subject arousal": 40,
-        "object arousal":  10,
-        "object arousal cap": 400,
-        "remember as": ["titfuck", "given"],
-        "subject dialogue tags": ["fucking tits"],
-        "object dialogue tags": ["tits fucked"],
-    },
-    "Use Tits On Cock": /* You use your tits on their cock */
-    {
-        "positions": ["Kneeling:bottom", "Straddling Chest:bottom"],
-        "action type": ["tease"],
-        "subject parts": ["Breasts"],
-        "object parts": ["Penis"],
-        "take virginity": [],
-        "subject arousal": 10,
-        "object arousal":  40,
-        "subject arousal cap": 400,
-        "remember as": ["titfuck", "received"],
-    },
-    "Hotdog": /* You rub your cock on their ass */
-    {
-        "positions": [ "Standing From Behind:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top"],
-        "action type": ["tease"],
-        "subject parts": ["Penis"],
-        "object parts": ["Ass"],
-        "take virginity": [],
-        "subject arousal": 40,
-        "object arousal":  10,
-        "object arousal cap": 400,
-        "remember as": ["hotdogging", "given"],
-        "subject dialogue tags": ["hotdogging"],
-        "object dialogue tags": ["hotdogged"],
-    },
-    "Rub Ass On Cock": /* You rub your ass on their cock */
-    {
-        "positions": [ "Standing From Behind:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Spooning:bottom", "Double Decker:bottom", "Against Wall From Behind:bottom"],
-        "action type": ["tease"],
-        "subject parts": ["Ass"],
-        "object parts": ["Penis"],
-        "take virginity": [],
-        "subject arousal": 10,
-        "object arousal":  40,
-        "subject arousal cap": 400,
-        "remember as": ["hotdogging", "received"],
-    },
 
 };

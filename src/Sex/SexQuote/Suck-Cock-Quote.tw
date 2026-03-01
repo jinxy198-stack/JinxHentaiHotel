@@ -16,7 +16,8 @@
 <<if _mode == "top">>
 	<<set _pool = setup.SuckingQuotes>>
 <<elseif _mode == "bottom">>
-	<<set _pool = setup.SuckCockQuotes[_pref]>>
+	<<set _pool = setup.blowjobQuotes[_personality]
+	|| setup.blowjobQuotes[_pref]>>
 <</if>>
 
 <<if _pool && _pool.length>>

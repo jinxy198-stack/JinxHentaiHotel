@@ -1,5 +1,6 @@
 :: UI-NPC-Inspect [nobr] {"position":"900,375","size":"100,100"}
-<<silently>><<set _n = $ui.npc>><</silently>>
+<<set _n = $ui.npc>>
+
 <b>Name:</b> <<=_n.name>> <<if _n.surname>><<=_n.surname>><</if>> <<if _n.nickname>>
 <br>
 <b>Nickname: </b>"<<=_n.nickname>>"<</if>>
@@ -16,7 +17,9 @@
 <br>
 <b>Hair:</b> <<=_n.hair>><<if _n.haircolor>> / <<=_n.haircolor>><</if>>  
 <br>
+
 <<if _n.skincolor>> <b>Skin:</b> <<=_n.skincolor>> <<if _n.skinfeatures>>·  <b>Features:</b> <<=_n.skinfeatures>>  <</if>> <</if>>
+
 <br>
 <b>Physique:</b> <<=_n.physique>> * <b>Height:</b> <<=_n.bodyheight>>
 <<if _n.breastsize>>* <b>Breast Size:</b> _n.breastsize <</if>>
@@ -41,14 +44,15 @@
 <br>
 <b>List of body parts:</b>
 <br>
-<ul>
-<<for _key, _val range _n.body>>
-	<li>
-		<strong><<print _key>></strong> :
-		<<print _val>>
-	</li>
-<</for>>
-</ul>
+<<if _n.body>>
+	<ul>
+	<<for _key, _val range _n.body>>
+		<li><strong><<print _key>></strong>: <<print _val>></li>
+	<</for>>
+	</ul>
+<<else>>
+	<i>No body object found on this NPC.</i>
+<</if>>
 
 
 
