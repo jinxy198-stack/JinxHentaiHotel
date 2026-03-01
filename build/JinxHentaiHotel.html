@@ -4251,7 +4251,6 @@ setup.sexpositions = {
         "secondary positions": ["Laid Across On Back", "Laid Across On Stomach"],
         furniture: ["bench"],
     },
-    /* Add Face on Chest */
 
 };
 
@@ -4287,6 +4286,18 @@ setup.sexacts = {
         "remember as": ["kissed"],
         "subject dialogue tags": ["kissing"],
         "object dialogue tags": ["kissing"],
+    },
+    "Pet Ears": /* Either you or they pet ears. */
+    {
+        "positions": [ "Standing", "Sitting", "Standing From Behind","Spooning"],
+        "action type": ["tease"],
+        "subject parts": ["Hands"],
+        "object parts": ["Ears"],
+        "take virginity": [],
+        "subject arousal": 10,
+        "object arousal":  40,
+        "subject arousal cap": 400,
+        "remember as": ["petting", "received"],
     },
     "Grope Breasts": /* Either you of the other grope's the other's breast */
     {
@@ -4530,29 +4541,6 @@ setup.sexacts = {
         "subject dialogue tags": ["riding face"],
         "object dialogue tags": ["face ridden"],
     },
-    //      ends
-    "Stop Fingering":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Hand"],
-        "object parts": ["Vagina"],
-        "masturbation": true,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0,
-    },
-    "Pull Off Of Finger":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Vagina"],
-        "object parts": ["Hand"],
-        "masturbation": false,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0,
-    },
     // oral/hand cock service actions
     //      teases/foreplay
     "Fondle Balls": /* you fondle their balls or reverse */
@@ -4647,18 +4635,6 @@ setup.sexacts = {
         "subject dialogue tags": ["rubbing cock on face"],
         "object dialogue tags": ["face rubbed by cock"],
     },
-    "Tease Cock With Fingers": /* Check if necessary */
-    {
-        "positions": [ "Sixty-Nine", "Kneeling", "Kneeling Over", "Standing", "Astride Lap", "Oral Service",  "Perched", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Riding Face", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
-        "action type": ["tease"],
-        "subject parts": ["Hand"],
-        "object parts": ["Penis"],
-        "masturbation": true,
-        "take virginity": [],
-        "subject arousal": 10,
-        "object arousal": 30,
-        "subject arousal cap": 300,
-    },
     "Rub Cock Against Hand": /* Check if necessary */
     {
         "positions": [ "Sixty-Nine", "Kneeling", "Kneeling Over", "Standing", "Astride Lap", "Oral Service", "Perched", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Riding Face", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
@@ -4670,56 +4646,6 @@ setup.sexacts = {
         "subject arousal": 40,
         "object arousal": 10,
         "object arousal cap": 300
-    },
-    "Tease Cock With Feet": /* Check if necessary */
-    {
-        "positions": [ "Missionary", "Laid Across On Back", "Kneeling", "Perched"],
-        "action type": ["tease"],
-        "subject parts": ["Feet"],
-        "object parts": ["Penis"],
-        "masturbation": true,
-        "take virginity": [],
-        "subject arousal": 10,
-        "object arousal": 30,
-        "subject arousal cap": 300,
-    },
-    "Tease Pussy With Feet": /* You tease their pussy with your feet.*/
-    {
-        "positions": [ "Missionary", "Laid Across On Back", "Kneeling"],
-        "action type": ["tease"],
-        "subject parts": ["Feet"],
-        "object parts": ["Vagina"],
-        "masturbation": true,
-        "take virginity": [],
-        "subject arousal": 10,
-        "object arousal": 30,
-        "subject arousal cap": 300,
-        "act label substitution": ["object", "transgender male", "Tease Front Hole With Feet"],
-    },
-    "Rub Cock Against Feet": /*You rub your cock against their feet */
-    {
-        "positions": [ "Missionary", "Laid Across On Back", "Kneeling"],
-        "action type": ["tease"],
-        "subject parts": ["Penis"],
-        "object parts": ["Feet"],
-        "masturbation": false,
-        "take virginity": [],
-        "subject arousal": 40,
-        "object arousal": 10,
-        "object arousal cap": 300,
-    },
-    "Rub Pussy Against Feet": /* You rub your pussy against their feet.*/
-    {
-        "positions": [ "Missionary", "Laid Across On Back", "Kneeling"],
-        "action type": ["tease"],
-        "subject parts": ["Vagina"],
-        "object parts": ["Feet"],
-        "masturbation": false,
-        "take virginity": [],
-        "subject arousal": 40,
-        "object arousal": 10,
-        "object arousal cap": 300,
-        "act label substitution": ["subject", "transgender male", "Rub Front Hole Against Feet"],
     },
     "Lick Foot": /* You lick their foot*/
     {
@@ -4851,20 +4777,6 @@ setup.sexacts = {
         "object dialogue tags": ["giving blowjob"],
     },
     //      continues
-    "Stroke Shaft": /*Mix with Pump Shaft? */
-    {
-        "positions": [ "Sixty-Nine", "Kneeling:bottom", "Kneeling Over:bottom", "Standing", "Astride Lap", "Oral Service:bottom",  "Spooning:top", "Kneeling By Face:bottom", "Squatting Before:bottom", "Double Decker:top", "Kneeling Between Thighs:top", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across Oral Service:bottom"],
-        "action type": ["continue"],
-        "subject parts": ["Hand"],
-        "object parts": ["Penis"],
-        "masturbation": true,
-        "take virginity": [],
-        "subject arousal": 10,
-        "object arousal": 40,
-        "subject arousal cap": 300,
-        "subject dialogue tags": ["giving handjob"],
-        "object dialogue tags": ["receiving handjob"],
-    },
     "Stroke Shaft With Feet": /* You stroke their cock with your feet */
     {
         "positions": [ "Missionary:bottom", "Kneeling:bottom", "Perched:bottom", "Laid Across On Back:bottom"],
@@ -4905,6 +4817,56 @@ setup.sexacts = {
         "act label substitution": ["object", "transgender male", "Stroke Front Hole With Feet"],
         "subject dialogue tags": ["giving footjob"],
         "object dialogue tags": ["receiving footjob"],
+    },
+    "Tease Cock With Feet": /* Check if necessary */
+    {
+        "positions": [ "Missionary", "Laid Across On Back", "Kneeling", "Perched"],
+        "action type": ["continue"],
+        "subject parts": ["Feet"],
+        "object parts": ["Penis"],
+        "masturbation": true,
+        "take virginity": [],
+        "subject arousal": 10,
+        "object arousal": 30,
+        "subject arousal cap": 300,
+    },
+    "Tease Pussy With Feet": /* You tease their pussy with your feet.*/
+    {
+        "positions": [ "Missionary", "Laid Across On Back", "Kneeling"],
+        "action type": ["continue"],
+        "subject parts": ["Feet"],
+        "object parts": ["Vagina"],
+        "masturbation": true,
+        "take virginity": [],
+        "subject arousal": 10,
+        "object arousal": 30,
+        "subject arousal cap": 300,
+        "act label substitution": ["object", "transgender male", "Tease Front Hole With Feet"],
+    },
+    "Rub Cock Against Feet": /*You rub your cock against their feet */
+    {
+        "positions": [ "Missionary", "Laid Across On Back", "Kneeling"],
+        "action type": ["continue"],
+        "subject parts": ["Penis"],
+        "object parts": ["Feet"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 40,
+        "object arousal": 10,
+        "object arousal cap": 300,
+    },
+    "Rub Pussy Against Feet": /* You rub your pussy against their feet.*/
+    {
+        "positions": [ "Missionary", "Laid Across On Back", "Kneeling"],
+        "action type": ["continue"],
+        "subject parts": ["Vagina"],
+        "object parts": ["Feet"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 40,
+        "object arousal": 10,
+        "object arousal cap": 300,
+        "act label substitution": ["subject", "transgender male", "Rub Front Hole Against Feet"],
     },
     "Rub Against Feet": /*You rub your pussy against their feet */
     {
@@ -5060,97 +5022,6 @@ setup.sexacts = {
     },
 
 
-    //      ends
-    "Release Cock":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Hand"],
-        "object parts": ["Penis"],
-        "masturbation": true,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0
-    },
-    "Tug Cock Free":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Penis"],
-        "object parts": ["Hand"],
-        "masturbation": false,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0
-    },
-    "Release Cock From Feet":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Feet"],
-        "object parts": ["Penis"],
-        "masturbation": true,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0
-    },
-    "Tug Cock Free Of Feet":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Penis"],
-        "object parts": ["Feet"],
-        "masturbation": false,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0
-    },
-    "Move Feet Away From Pussy":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Feet"],
-        "object parts": ["Vagina"],
-        "masturbation": true,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0,
-        "act label substitution": ["object", "transgender male", "Move Feet Away From Front Hole"],
-    },
-    "Pull Away From Feet":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Vagina"],
-        "object parts": ["Feet"],
-        "masturbation": false,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0
-    },
-    "Pull Out Of Mouth":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Penis"],
-        "object parts": ["Mouth"],
-        "masturbation": false,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0,
-    },
-    "Pull Mouth Off Of Cock":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Mouth"],
-        "object parts": ["Penis"],
-        "masturbation": false,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0,
-    },
-
     // piv fucking actions
     //      teases
     "Tease Pussy With Cock": /* You tease their pussy with your cock */
@@ -5295,29 +5166,6 @@ setup.sexacts = {
         "subject dialogue tags": ["fucking pussy", "fucking pussy deep"],
         "object dialogue tags": ["pussy fucked", "pussy fucked deep"],
     },
-    //      ends
-    "Pull Out":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Penis"],
-        "object parts": ["Vagina"],
-        "masturbation": false,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0,
-    },
-    "Pull Off":
-    {
-        "positions": [],
-        "action type": ["end"],
-        "subject parts": ["Vagina"],
-        "object parts": ["Penis"],
-        "masturbation": false,
-        "take virginity": [],
-        "subject arousal": 0,
-        "object arousal": 0,
-    },
     // specifically m2m actions
     //   starts
     "Frot":
@@ -5426,21 +5274,6 @@ setup.sexacts = {
             object:  []                 // if the *object* has any of these traits, block
         }
     },
-    /*"Finger Ass": 
-    {
-        "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
-        "action type": ["penetrate", "continue"],
-        "subject parts": ["Hand"],
-        "object parts": ["Asshole"],
-        "masturbation": true,
-        "take virginity": [],
-        "subject arousal": 5,
-        "object arousal": 35,
-        "subject arousal cap": 300,
-        "remember as": ["anal fingerbang", "given"],
-        "subject dialogue tags": ["fingering ass"],
-        "object dialogue tags": ["ass fingered"],
-    },*/
     "Finger Ass": 
     {
         "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
@@ -5508,7 +5341,82 @@ setup.sexacts = {
         "subject dialogue tags": ["fucking with ass"],
         "object dialogue tags": ["fucked with ass"],
     },
+    /* other stuff */
+    "Fuck Tits": /* You use your cock on their tits */
+    {
+        "positions": ["Kneeling:top", "Straddling Chest:top"],
+        "action type": ["tease"],
+        "subject parts": ["Penis"],
+        "object parts": ["Breasts"],
+        "take virginity": [],
+        "subject arousal": 40,
+        "object arousal":  10,
+        "object arousal cap": 400,
+        "remember as": ["titfuck", "given"],
+        "subject dialogue tags": ["fucking tits"],
+        "object dialogue tags": ["tits fucked"],
+    },
+    "Use Tits On Cock": /* You use your tits on their cock */
+    {
+        "positions": ["Kneeling:bottom", "Straddling Chest:bottom"],
+        "action type": ["tease"],
+        "subject parts": ["Breasts"],
+        "object parts": ["Penis"],
+        "take virginity": [],
+        "subject arousal": 10,
+        "object arousal":  40,
+        "subject arousal cap": 400,
+        "remember as": ["titfuck", "received"],
+    },
+    "Hotdog": /* You rub your cock on their ass */
+    {
+        "positions": [ "Standing From Behind:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top"],
+        "action type": ["tease"],
+        "subject parts": ["Penis"],
+        "object parts": ["Ass"],
+        "take virginity": [],
+        "subject arousal": 40,
+        "object arousal":  10,
+        "object arousal cap": 400,
+        "remember as": ["hotdogging", "given"],
+        "subject dialogue tags": ["hotdogging"],
+        "object dialogue tags": ["hotdogged"],
+    },
+    "Rub Ass On Cock": /* You rub your ass on their cock */
+    {
+        "positions": [ "Standing From Behind:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Spooning:bottom", "Double Decker:bottom", "Against Wall From Behind:bottom"],
+        "action type": ["tease"],
+        "subject parts": ["Ass"],
+        "object parts": ["Penis"],
+        "take virginity": [],
+        "subject arousal": 10,
+        "object arousal":  40,
+        "subject arousal cap": 400,
+        "remember as": ["hotdogging", "received"],
+    },
     //      ends
+    "Stop Fingering":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Hand"],
+        "object parts": ["Vagina"],
+        "masturbation": true,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0,
+    },
+    "Pull Off Of Finger":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Vagina"],
+        "object parts": ["Hand"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0,
+    },
     "Pull Face Back":
     {
         "positions": [],
@@ -5564,72 +5472,118 @@ setup.sexacts = {
         "subject arousal": 0,
         "object arousal": 0,
     },
+    "Release Cock":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Hand"],
+        "object parts": ["Penis"],
+        "masturbation": true,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0
+    },
+    "Tug Cock Free":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Penis"],
+        "object parts": ["Hand"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0
+    },
+    "Release Cock From Feet":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Feet"],
+        "object parts": ["Penis"],
+        "masturbation": true,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0
+    },
+    "Tug Cock Free Of Feet":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Penis"],
+        "object parts": ["Feet"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0
+    },
+    "Move Feet Away From Pussy":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Feet"],
+        "object parts": ["Vagina"],
+        "masturbation": true,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0,
+        "act label substitution": ["object", "transgender male", "Move Feet Away From Front Hole"],
+    },
+    "Pull Away From Feet":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Vagina"],
+        "object parts": ["Feet"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0
+    },
+    "Pull Out Of Mouth":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Penis"],
+        "object parts": ["Mouth"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0,
+    },
+    "Pull Mouth Off Of Cock":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Mouth"],
+        "object parts": ["Penis"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0,
+    },
+    "Pull Out":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Penis"],
+        "object parts": ["Vagina"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0,
+    },
+    "Pull Off":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "subject parts": ["Vagina"],
+        "object parts": ["Penis"],
+        "masturbation": false,
+        "take virginity": [],
+        "subject arousal": 0,
+        "object arousal": 0,
+    },
 
-    /* other stuff */
-    "Fuck Tits": /* You use your cock on their tits */
-    {
-        "positions": ["Kneeling:top", "Straddling Chest:top"],
-        "action type": ["tease"],
-        "subject parts": ["Penis"],
-        "object parts": ["Breasts"],
-        "take virginity": [],
-        "subject arousal": 40,
-        "object arousal":  10,
-        "object arousal cap": 400,
-        "remember as": ["titfuck", "given"],
-        "subject dialogue tags": ["fucking tits"],
-        "object dialogue tags": ["tits fucked"],
-    },
-    "Use Tits On Cock": /* You use your tits on their cock */
-    {
-        "positions": ["Kneeling:bottom", "Straddling Chest:bottom"],
-        "action type": ["tease"],
-        "subject parts": ["Breasts"],
-        "object parts": ["Penis"],
-        "take virginity": [],
-        "subject arousal": 10,
-        "object arousal":  40,
-        "subject arousal cap": 400,
-        "remember as": ["titfuck", "received"],
-    },
-    "Hotdog": /* You rub your cock on their ass */
-    {
-        "positions": [ "Standing From Behind:top", "From Behind:top", "Doggy:top", "Bent Over:top", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top"],
-        "action type": ["tease"],
-        "subject parts": ["Penis"],
-        "object parts": ["Ass"],
-        "take virginity": [],
-        "subject arousal": 40,
-        "object arousal":  10,
-        "object arousal cap": 400,
-        "remember as": ["hotdogging", "given"],
-        "subject dialogue tags": ["hotdogging"],
-        "object dialogue tags": ["hotdogged"],
-    },
-    "Rub Ass On Cock": /* You rub your ass on their cock */
-    {
-        "positions": [ "Standing From Behind:bottom", "From Behind:bottom", "Doggy:bottom", "Bent Over:bottom", "Spooning:bottom", "Double Decker:bottom", "Against Wall From Behind:bottom"],
-        "action type": ["tease"],
-        "subject parts": ["Ass"],
-        "object parts": ["Penis"],
-        "take virginity": [],
-        "subject arousal": 10,
-        "object arousal":  40,
-        "subject arousal cap": 400,
-        "remember as": ["hotdogging", "received"],
-    },
-    "Pet Ears": /* Either you or they pet ears. */
-    {
-        "positions": [ "Standing", "Sitting", "Standing From Behind"],
-        "action type": ["tease"],
-        "subject parts": ["Hands"],
-        "object parts": ["Ears"],
-        "take virginity": [],
-        "subject arousal": 10,
-        "object arousal":  40,
-        "subject arousal cap": 400,
-        "remember as": ["petting", "received"],
-    },
 
 
 };
@@ -9315,7 +9269,6 @@ Wanna have aftercare or end the session?
     &lt;&lt;case &quot;Lick Ass&quot;&gt;&gt;&lt;&lt;include &quot;Rimjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;&lt;&lt;include &quot;Lick-Cock-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Cock With Fingers&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Tease Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
@@ -9330,7 +9283,6 @@ Wanna have aftercare or end the session?
     &lt;&lt;case &quot;Pull Feet To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Take Cock Between Lips&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Enter Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stroke Shaft&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Stroke Shaft With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Stroke Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
@@ -10019,22 +9971,20 @@ You pull their hand to your pussy to finger you.
 	&lt;&lt;= either(
     	&quot;_n.name wraps their &lt;&lt;= _n.body.Hand.toLowerCase()&gt;&gt; around your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;.&quot;
 	)&gt;&gt;
-&lt;&lt;elseif $sex.act ==&quot;Stroke Shaft&quot;&gt;&gt;
+&lt;&lt;elseif $sex.act ==&quot;Pump Shaft&quot;&gt;&gt;
 	&lt;&lt;if $sex.role==&quot;bottom&quot;&gt;&gt;
-		You stroke the shaft.
+		You pump their shaft.
 		&lt;&lt;if _n.genitaltype == &quot;Uncut&quot;&gt;&gt;
     		Their foreskin is pulled back and forth from the movement.
     	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;elseif $sex.role ==&quot;top&quot;&gt;&gt;
-		They stroke your shaft.
+		They pump your shaft.
 		&lt;&lt;if $mc.genitaltype == &quot;Uncut&quot;&gt;&gt;
     		Your foreskin is pulled back and forth from the movement.
     	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.act ==&quot;Pump Shaft&quot;&gt;&gt;
-	You pump the shaft.
 &lt;&lt;elseif $sex.act ==&quot;Fuck Fist&quot;&gt;&gt;
-	&quot;_n.name jerks you off.&quot;
+	_n.name jerks you off.
 &lt;&lt;elseif $sex.act ==&quot;Tease Tip&quot;&gt;&gt;
 	You tease the tip.
 
@@ -10202,16 +10152,6 @@ You tease _n.name&#39;s cock with your ass.
     &lt;&lt;elseif $sex.role == &quot;bottom&quot;&gt;&gt;
 	    &lt;&lt;= either(
         &quot;_n.name rubs their cock on your face.&quot;
-        )&gt;&gt;
-    &lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.act == &quot;Tease Cock With Fingers&quot;&gt;&gt;
-    &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
-	    &lt;&lt;= either(
- 	        &quot;_n.name teases your cock with their fingers.&quot;
-        )&gt;&gt;
-    &lt;&lt;elseif $sex.role == &quot;bottom&quot;&gt;&gt;
-	    &lt;&lt;= either(
-            &quot;You tease _n.name&#39;s cock with your fingers.&quot;
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $sex.act == &quot;Rub Cock Against Hand&quot;&gt;&gt;
@@ -10657,56 +10597,54 @@ _n.name is straddling your chest.
 
 &lt;&lt;set _a = $sex.act or &quot;none&quot;&gt;&gt;
 &lt;br&gt;
-&lt;b&gt;&lt;&lt;= _n.name &gt;&gt;: &lt;/b&gt;
+&lt;&lt;set _b = &quot;&lt;b&gt;_n.name:&lt;/b&gt;&quot;  &gt;&gt;
 
 &lt;&lt;switch _a&gt;&gt;
-	&lt;&lt;case &quot;Kiss&quot;&gt;&gt;&lt;&lt;include &quot;Kiss-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Grope Breasts&quot;&gt;&gt;&lt;&lt;include &quot;Grope-Breast-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Nipples&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Nipples-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Kiss Nipple&quot;&gt;&gt;&lt;&lt;include &quot;Kiss-Nipple-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Nipple&quot;&gt;&gt;&lt;&lt;include &quot;Lick-Nipple-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Suck Nipple&quot;&gt;&gt;&lt;&lt;include &quot;Suck-Nipple-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Pussy&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+	&lt;&lt;case &quot;Kiss&quot;&gt;&gt; _b &lt;&lt;include &quot;Kiss-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pet Ears&quot;&gt;&gt;_b&lt;&lt;include &quot;Pet-Ears-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Grope Breasts&quot;&gt;&gt;_b&lt;&lt;include &quot;Grope-Breast-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Nipples&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Nipples-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Press Face on Chest&quot;&gt;&gt;_b&lt;&lt;include &quot;Face-On-Chest-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Kiss Nipple&quot;&gt;&gt;_b&lt;&lt;include &quot;Kiss-Nipple-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Nipple&quot;&gt;&gt;_b&lt;&lt;include &quot;Lick-Nipple-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Nipple&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Nipple-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Hand To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Finger Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Pussy-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Clit&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Cunnilingus-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Suck Clit&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Ride Face&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stop Fingering&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fondle Balls&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Balls&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Suck Balls&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Ass&quot;&gt;&gt;&lt;&lt;include &quot;Rimjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Finger Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Finger-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Clit&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Cunnilingus-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Clit&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Ride Face&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fondle Balls&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Balls&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Balls&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Ass&quot;&gt;&gt;_b&lt;&lt;include &quot;Rimjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Cock With Fingers&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Cock Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Pussy Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Grip Cock&quot;&gt;&gt;&lt;&lt;include &quot;Grab-Cock-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Wrap Hand Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;Grab-Cock-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Grip Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Feet Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Feet To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Take Cock Between Lips&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Mouth-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Grip Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Grab-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Wrap Hand Around Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Grab-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Grip Cock With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Feet Around Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Pussy With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Feet To Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Take Cock Between Lips&quot;&gt;&gt;_b&lt;&lt;include &quot;Enter-Mouth-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Enter Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Mouth-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stroke Shaft&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stroke Shaft With Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stroke Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pump Shaft&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Fist&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Tip&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Tip-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Suck Cock&quot;&gt;&gt;&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stroke Shaft With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stroke Pussy With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Pussy With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Cock Against Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Pussy Against Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Against Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pump Shaft&quot;&gt;&gt;_b&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Fist&quot;&gt;&gt;_b&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Tip&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Tip-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
     /*&lt;&lt;case &quot;Deepthroat&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt; */
-    &lt;&lt;case &quot;Fuck Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Mouth&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
     /*&lt;&lt;case &quot;Release Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Tug Cock Free&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Release Cock From Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
@@ -10714,48 +10652,48 @@ _n.name is straddling your chest.
     &lt;&lt;case &quot;Move Feet Away From Pussy&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Away From Feet&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Out Of Mouth&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Mouth Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt; */
-    &lt;&lt;case &quot;Tease Pussy With Cock&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Pussy-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Cocktease With Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Pussy-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Enter Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Pussy-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Push Cock In&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Pussy-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Fuck-Pussy-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Take Cock&quot;&gt;&gt;&lt;&lt;include &quot;Fuck-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Mouth Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt; 
+    &lt;&lt;case &quot;Stop Fingering&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
+    &lt;&lt;case &quot;Tease Pussy With Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Cock-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Cocktease With Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Cock-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Enter Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Enter-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Push Cock In&quot;&gt;&gt;_b&lt;&lt;include &quot;Enter-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Fuck-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Take Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Fuck-Pussy-Quote&quot;&gt;&gt;
     /*&lt;&lt;case &quot;Hump Back&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt; */
-    &lt;&lt;case &quot;Ride Cock&quot;&gt;&gt;&lt;&lt;include &quot;Fuck-Pussy-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Ride Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Fuck-Pussy-Quote&quot;&gt;&gt;
     /*&lt;&lt;case &quot;Squeeze Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Rabbitfuck&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Deep Stroke&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt; */
     /*&lt;&lt;case &quot;Pull Out&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Off&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
-    &lt;&lt;case &quot;Frot&quot;&gt;&gt;&lt;&lt;include &quot;Frot-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Trib&quot;&gt;&gt;&lt;&lt;include &quot;Trib-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Ass With Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Cocktease With Ass&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Butthole&quot;&gt;&gt;&lt;&lt;include &quot;Grope-Butt-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Enter Ass&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Ass-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Push Cock In Ass&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Ass-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Finger Ass&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Ass-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Ass&quot;&gt;&gt;&lt;&lt;include &quot;Fuck-Ass-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Take Cock In Ass&quot;&gt;&gt;&lt;&lt;include &quot;Fuck-Ass-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Frot&quot;&gt;&gt;_b&lt;&lt;include &quot;Frot-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Trib&quot;&gt;&gt;_b&lt;&lt;include &quot;Trib-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Ass With Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Cocktease With Ass&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Butthole&quot;&gt;&gt;_b&lt;&lt;include &quot;Grope-Butt-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Enter Ass&quot;&gt;&gt;_b&lt;&lt;include &quot;Enter-Ass-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Push Cock In Ass&quot;&gt;&gt;_b&lt;&lt;include &quot;Enter-Ass-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Finger Ass&quot;&gt;&gt;_b&lt;&lt;include &quot;Finger-Ass-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Finger Ass(Continue)&quot;&gt;&gt;_b&lt;&lt;include &quot;Finger-Ass-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Ass&quot;&gt;&gt;_b&lt;&lt;include &quot;Fuck-Ass-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Take Cock In Ass&quot;&gt;&gt;_b&lt;&lt;include &quot;Fuck-Ass-Quote&quot;&gt;&gt;
     /* Add a Ride cock in ass quote? */
-    &lt;&lt;case &quot;Hump Ass Back&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    &lt;&lt;case &quot;Hump Ass Back&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
     /*&lt;&lt;case &quot;Pull Out Of Ass&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Ass Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stop Fingering Ass&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Ass Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
-    &lt;&lt;case &quot;Fuck Tits&quot;&gt;&gt;&lt;&lt;include &quot;Boobjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Use Tits On Cock&quot;&gt;&gt;&lt;&lt;include &quot;Boobjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Hotdog&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Cock-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Ass On Cock&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Tits&quot;&gt;&gt;_b&lt;&lt;include &quot;Boobjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Use Tits On Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Boobjob-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Hotdog&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Ass-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Ass On Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Ass-Cock-Quote&quot;&gt;&gt;
     
 	&lt;&lt;case &quot;Caress&quot;&gt;&gt;&lt;&lt;include &quot;Caress-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Rimjob&quot;&gt;&gt;&lt;&lt;include &quot;Rimjob-Quote&quot;&gt;&gt;
 	&lt;&lt;case &quot;Cuddle&quot;&gt;&gt;&lt;&lt;include &quot;Cuddle-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Foot&quot;&gt;&gt;&lt;&lt;include &quot;SuckFoot-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pet Ears&quot;&gt;&gt;&lt;&lt;include &quot;Pet-Ears-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Touch Stomach&quot;&gt;&gt;&lt;&lt;include &quot;Feel-Stomach-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Press Face on Chest&quot;&gt;&gt;&lt;&lt;include &quot;Face-On-Chest-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Embrace&quot;&gt;&gt;&lt;&lt;include &quot;Embrace-Quote&quot;&gt;&gt;
 &lt;&lt;/switch&gt;&gt;
 
@@ -11250,7 +11188,6 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 			|| setup.footjobQuotes.top.Neutral
 		&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-
 
 
 &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;

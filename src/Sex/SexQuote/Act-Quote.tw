@@ -3,104 +3,91 @@
 
 <<set _a = $sex.act or "none">>
 <br>
-<b><<= _n.name >>: </b>
+<<set _b = "<b>_n.name:</b>"  >>
 
 <<switch _a>>
-	<<case "Kiss">><<include "Kiss-Quote">>
-    <<case "Grope Breasts">><<include "Grope-Breast-Quote">>
-    <<case "Tease Nipples">><<include "Tease-Nipples-Quote">>
-    <<case "Kiss Nipple">><<include "Kiss-Nipple-Quote">>
-    <<case "Lick Nipple">><<include "Lick-Nipple-Quote">>
-    <<case "Suck Nipple">><<include "Suck-Nipple-Quote">>
-    <<case "Rub Pussy">><<include "">>
+	<<case "Kiss">> _b <<include "Kiss-Quote">>
+    <<case "Pet Ears">>_b<<include "Pet-Ears-Quote">>
+    <<case "Grope Breasts">>_b<<include "Grope-Breast-Quote">>
+    <<case "Tease Nipples">>_b<<include "Tease-Nipples-Quote">>
+    <<case "Press Face on Chest">>_b<<include "Face-On-Chest-Quote">>
+    <<case "Kiss Nipple">>_b<<include "Kiss-Nipple-Quote">>
+    <<case "Lick Nipple">>_b<<include "Lick-Nipple-Quote">>
+    <<case "Suck Nipple">>_b<<include "Suck-Nipple-Quote">>
+    <<case "Rub Pussy">>_b<<include "">>
     <<case "Pull Hand To Pussy">><<include "">>
-    <<case "Finger Pussy">><<include "Finger-Pussy-Quote">>
-    <<case "Rub Clit">><<include "">>
-    <<case "Lick Pussy">><<include "Cunnilingus-Quote">>
-    <<case "Suck Clit">><<include "">>
-    <<case "Ride Face">><<include "">>
-    <<case "Stop Fingering">><<include "">>
-    <<case "Pull Off Of Finger">><<include "">>
-    <<case "Fondle Balls">><<include "">>
-    <<case "Lick Balls">><<include "">>
-    <<case "Suck Balls">><<include "">>
-    <<case "Lick Ass">><<include "Rimjob-Quote">>
-    <<case "Lick Cock">><<include "">>
-    <<case "Rub Cock On Face">><<include "">>
-    <<case "Tease Cock With Fingers">><<include "">>
-    <<case "Rub Cock Against Hand">><<include "">>
-    <<case "Tease Cock With Feet">><<include "">>
-    <<case "Tease Pussy With Feet">><<include "">>
-    <<case "Rub Cock Against Feet">><<include "">>
-    <<case "Rub Pussy Against Feet">><<include "">>
-    <<case "Lick Foot">><<include "">>
-    <<case "Grip Cock">><<include "Grab-Cock-Quote">>
-    <<case "Wrap Hand Around Cock">><<include "Grab-Cock-Quote">>
-    <<case "Grip Cock With Feet">><<include "Footjob-Quote">>
-    <<case "Pull Feet Around Cock">><<include "Footjob-Quote">>
-    <<case "Rub Pussy With Feet">><<include "">>
-    <<case "Pull Feet To Pussy">><<include "">>
-    <<case "Take Cock Between Lips">><<include "Enter-Mouth-Quote">>
+    <<case "Finger Pussy">>_b<<include "Finger-Pussy-Quote">>
+    <<case "Rub Clit">>_b<<include "">>
+    <<case "Lick Pussy">>_b<<include "Cunnilingus-Quote">>
+    <<case "Suck Clit">>_b<<include "">>
+    <<case "Ride Face">>_b<<include "">>
+    <<case "Fondle Balls">>_b<<include "">>
+    <<case "Lick Balls">>_b<<include "">>
+    <<case "Suck Balls">>_b<<include "">>
+    <<case "Lick Asshole">>_b<<include "Rimjob-Quote">>
+    <<case "Lick Cock">>_b<<include "Lick-Cock-Quote">>
+    <<case "Rub Cock On Face">><<include "Rub-Cock-Face-Quote">>
+    <<case "Rub Cock Against Hand">>_b<<include "">>
+    <<case "Lick Foot">>_b<<include "">>
+    <<case "Grip Cock">>_b<<include "Grab-Cock-Quote">>
+    <<case "Wrap Hand Around Cock">>_b<<include "Grab-Cock-Quote">>
+    <<case "Grip Cock With Feet">>_b<<include "Footjob-Quote">>
+    <<case "Pull Feet Around Cock">>_b<<include "Footjob-Quote">>
+    <<case "Rub Pussy With Feet">>_b<<include "">>
+    <<case "Pull Feet To Pussy">>_b<<include "">>
+    <<case "Take Cock Between Lips">>_b<<include "Enter-Mouth-Quote">>
     <<case "Enter Mouth">><<include "Enter-Mouth-Quote">>
-    <<case "Stroke Shaft With Feet">><<include "Footjob-Quote">>
+    <<case "Stroke Shaft With Feet">>_b<<include "Footjob-Quote">>
     <<case "Fuck Feet">><<include "Footjob-Quote">>
-    <<case "Stroke Pussy With Feet">><<include "Footjob-Quote">>
-    <<case "Rub Against Feet">><<include "">>
-    <<case "Pump Shaft">><<include "Handjob-Quote">>
-    <<case "Fuck Fist">><<include "Handjob-Quote">>
-    <<case "Tease Tip">><<include "Tease-Tip-Quote">>
-    <<case "Suck Cock">><<include "Suck-Cock-Quote">>
+    <<case "Stroke Pussy With Feet">>_b<<include "Footjob-Quote">>
+    <<case "Tease Cock With Feet">>_b<<include "">>
+    <<case "Tease Pussy With Feet">>_b<<include "">>
+    <<case "Rub Cock Against Feet">>_b<<include "">>
+    <<case "Rub Pussy Against Feet">>_b<<include "">>
+    <<case "Rub Against Feet">>_b<<include "">>
+    <<case "Pump Shaft">>_b<<include "Handjob-Quote">>
+    <<case "Fuck Fist">>_b<<include "Handjob-Quote">>
+    <<case "Tease Tip">>_b<<include "Tease-Tip-Quote">>
+    <<case "Suck Cock">>_b<<include "Suck-Cock-Quote">>
     /*<<case "Deepthroat">><<include "">> */
-    <<case "Fuck Mouth">><<include "Suck-Cock-Quote">>
-    /*<<case "Release Cock">><<include "">>
-    <<case "Tug Cock Free">><<include "">>
-    <<case "Release Cock From Feet">><<include "">>
-    <<case "Tug Cock Free Of Feet">><<include "">>
-    <<case "Move Feet Away From Pussy">><<include "">>
-    <<case "Pull Away From Feet">><<include "">>
-    <<case "Pull Out Of Mouth">><<include "">>
-    <<case "Pull Mouth Off Of Cock">><<include "">> */
-    <<case "Tease Pussy With Cock">><<include "Tease-Cock-Pussy-Quote">>
-    <<case "Cocktease With Pussy">><<include "Tease-Cock-Pussy-Quote">>
-    <<case "Enter Pussy">><<include "Enter-Pussy-Quote">>
-    <<case "Push Cock In">><<include "Enter-Pussy-Quote">>
-    <<case "Fuck Pussy">><<include "Fuck-Pussy-Quote">>
-    <<case "Take Cock">><<include "Fuck-Pussy-Quote">>
+    <<case "Fuck Mouth">>_b<<include "Suck-Cock-Quote">>
+    <<case "Tease Pussy With Cock">>_b<<include "Tease-Cock-Pussy-Quote">>
+    <<case "Cocktease With Pussy">>_b<<include "Tease-Cock-Pussy-Quote">>
+    <<case "Enter Pussy">>_b<<include "Enter-Pussy-Quote">>
+    <<case "Push Cock In">>_b<<include "Enter-Pussy-Quote">>
+    <<case "Fuck Pussy">>_b<<include "Fuck-Pussy-Quote">>
+    <<case "Take Cock">>_b<<include "Fuck-Pussy-Quote">>
     /*<<case "Hump Back">><<include "">> */
-    <<case "Ride Cock">><<include "Fuck-Pussy-Quote">>
+    <<case "Ride Cock">>_b<<include "Fuck-Pussy-Quote">>
     /*<<case "Squeeze Cock">><<include "">>
     <<case "Rabbitfuck">><<include "">>
     <<case "Deep Stroke">><<include "">> */
-    /*<<case "Pull Out">><<include "">>
-    <<case "Pull Off">><<include "">>*/
-    <<case "Frot">><<include "Frot-Quote">>
-    <<case "Trib">><<include "Trib-Quote">>
-    <<case "Tease Ass With Cock">><<include "">>
-    <<case "Cocktease With Ass">><<include "">>
-    <<case "Rub Butthole">><<include "Grope-Butt-Quote">>
-    <<case "Enter Ass">><<include "Enter-Ass-Quote">>
-    <<case "Push Cock In Ass">><<include "Enter-Ass-Quote">>
-    <<case "Finger Ass">><<include "Finger-Ass-Quote">>
-    <<case "Fuck Ass">><<include "Fuck-Ass-Quote">>
-    <<case "Take Cock In Ass">><<include "Fuck-Ass-Quote">>
+    <<case "Frot">>_b<<include "Frot-Quote">>
+    <<case "Trib">>_b<<include "Trib-Quote">>
+    <<case "Tease Ass With Cock">>_b<<include "">>
+    <<case "Cocktease With Ass">>_b<<include "">>
+    <<case "Rub Butthole">>_b<<include "Grope-Butt-Quote">>
+    <<case "Enter Ass">>_b<<include "Enter-Ass-Quote">>
+    <<case "Push Cock In Ass">>_b<<include "Enter-Ass-Quote">>
+    <<case "Finger Ass">>_b<<include "Finger-Ass-Quote">>
+    <<case "Finger Ass(Continue)">>_b<<include "Finger-Ass-Quote">>
+    <<case "Fuck Ass">>_b<<include "Fuck-Ass-Quote">>
+    <<case "Take Cock In Ass">>_b<<include "Fuck-Ass-Quote">>
     /* Add a Ride cock in ass quote? */
-    <<case "Hump Ass Back">><<include "">>
+    <<case "Hump Ass Back">>_b<<include "">>
     /*<<case "Pull Out Of Ass">><<include "">>
     <<case "Pull Ass Off Of Cock">><<include "">>
-    <<case "Stop Fingering Ass">><<include "">>
     <<case "Pull Ass Off Of Finger">><<include "">>*/
-    <<case "Fuck Tits">><<include "Boobjob-Quote">>
-    <<case "Use Tits On Cock">><<include "Boobjob-Quote">>
-    <<case "Hotdog">><<include "Tease-Ass-Cock-Quote">>
-    <<case "Rub Ass On Cock">><<include "Tease-Ass-Cock-Quote">>
+    <<case "Fuck Tits">>_b<<include "Boobjob-Quote">>
+    <<case "Use Tits On Cock">>_b<<include "Boobjob-Quote">>
+    <<case "Hotdog">>_b<<include "Tease-Ass-Cock-Quote">>
+    <<case "Rub Ass On Cock">>_b<<include "Tease-Ass-Cock-Quote">>
     
 	<<case "Caress">><<include "Caress-Quote">>
     <<case "Rimjob">><<include "Rimjob-Quote">>
 	<<case "Cuddle">><<include "Cuddle-Quote">>
     <<case "Suck Foot">><<include "SuckFoot-Quote">>
-    <<case "Pet Ears">><<include "Pet-Ears-Quote">>
     <<case "Touch Stomach">><<include "Feel-Stomach-Quote">>
-    <<case "Press Face on Chest">><<include "Face-On-Chest-Quote">>
     <<case "Embrace">><<include "Embrace-Quote">>
 <</switch>>
 
