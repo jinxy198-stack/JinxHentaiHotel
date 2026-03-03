@@ -70,6 +70,8 @@
 
 		<b>Phase:</b> <<print $sex.phase>><br>
 
+        <b>Location:</b> <<print $room.location>><br>
+
 		<<if $sex.penetration>>
 			<b>Penetration:</b>
 			<<print $sex.penetration.subjectPart>> → <<print $sex.penetration.objectPart>><br>
@@ -111,11 +113,10 @@
 											<<SexEncounterUI>> 
 										<</replace>>
 
-                                        <<replace "#intro">><br><</replace>>
+                                        <<replace "#intro">><</replace>>
                                         <<replace "#log">>
                                             <<include "PositionDialogue">>
 										<</replace>>
-
 
 									<</button>>
 								</li>
@@ -171,7 +172,7 @@
                                                 <<include "ActDialogue">>
                                                 <<include "Act-Quote">>
 										    <</replace>>
-                                            <<replace "#log">><br><</replace>>
+                                            <<replace "#log">><</replace>>
 										    <<replace "#arousal-ui">><<ArousalUI>><</replace>>
                                         <</if>>
                                         
@@ -193,8 +194,8 @@
 <div>
   <span>
     <hr>
-    <b>NPC Arousal:</b> <<print $sex.object.arousal>>/1000  ||
-    <b>Player Arousal:</b> <<print $sex.subject.arousal>>/1000
+    <b>$sex.object.name Arousal:</b> <<print $sex.object.arousal>>/1000  ||
+    <b>$sex.subject.name Arousal:</b> <<print $sex.subject.arousal>>/1000
   </span>
 
   <<if $sex.object.arousal >= 1000>>
@@ -208,7 +209,6 @@
   <<if $orgasm.subject>><h1>Subject ORGASM!</h1><</if>>
 </div>
 <</widget>>
-
 
 
 

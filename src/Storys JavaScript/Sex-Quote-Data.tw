@@ -229,31 +229,16 @@ setup.TakeCockBetweenLipsQuotes = {
 
 
 /* ----- BOOBJOB ----- */
-setup.boobjobQuotes = {
+setup.BoobjobQuotes = {
   bottom: {
-    Dominant: [
-      ""
-    ],
-    Submissive: [
-      ""
-    ],
-    Neutral: [
-      ""
-    ]
+    Dominant: [ "BOTTOM DOM BOOBJOB" ],
+    Submissive: [ "BOTTOM SUB BOOBJOB" ],
+    Switch: [ "BOTTOM SWITCH BOOBJOB" ]
   },
-
   top: {
-    Dominant: [
-      ""
-    ],
-
-    Submissive: [
-      ""
-    ],
-
-    Neutral: [
-      ""
-    ]
+    Dominant: [ "TOP DOM BOOBJOB" ],
+    Submissive: [ "TOP SUB BOOBJOB" ],
+    Switch: [ "TOP SWITCH BOOBJOB" ]
   }
 };
 
@@ -767,7 +752,52 @@ setup.gropebreastQuotes = {
         Kid: ["Nothing quite like developing breasts. So lewd and cute."],
         Teen: ["Nothing quite like developing breasts. So lewd and cute."]
       },
-      Average: {
+      Pert: {
+        Kid: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Teen: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Adult: [
+          "Nice tits.",
+          "Such perfect perky breasts",
+          "Such nice breasts"
+        ]
+      },
+      Modest: {
+        Kid: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Teen: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Adult: [
+          "Nice tits.",
+          "Such perfect perky breasts",
+          "Such nice breasts"
+        ]
+      },
+      Perky: {
+        Kid: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Teen: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Adult: [
+          "Nice tits.",
+          "Such perfect perky breasts",
+          "Such nice breasts"
+        ]
+      },
+      Full: {
         Kid: [
           "Nice tits.",
           "Such nice breasts"
@@ -799,10 +829,21 @@ setup.gropebreastQuotes = {
           "Love your big breasts"
         ]
       },
-      Busty:[
+      Ample:[
         "Shit, these are big!",
 				"How do you carry these things?!"
-      ]
+      ],
+      Massive:[
+        "Shit, these are big!",
+				"How do you carry these things?!"
+      ],
+      Enormous:{
+        Kid: ["How the hell is someone your age able to carry these things?!"],
+        Teen: ["How the hell is someone your age able to carry these things?!"],
+        Adult: [ "Shit, these are big!",
+				"How do you carry these things?!"
+        ]
+      }
     },
     Submissive: {
       Flat: {
@@ -824,7 +865,9 @@ setup.gropebreastQuotes = {
         "Your breasts are so soft.",
 				"Wow, they are pretty big."
       ],
-      Busty: ["Whoa..."]
+      Ample: ["Whoa..."],
+      Massive: ["These sure are big!"],
+      Enormous: ["These sure are big!"]
     },
     Switch: {
       Flat: {
@@ -843,24 +886,31 @@ setup.gropebreastQuotes = {
         Adult: ["Your breasts are so soft."]
       },
       Large: ["Wow..."],
-      Busty: ["These sure are big!"]
+      Ample: ["These sure are big!"],
+      Massive: ["These sure are big!"],
+      Enormous: ["These sure are big!"]
     }
   },
   top: {
     Dominant: [
-      "That's right, play with my _n.breastsize breasts!",
+      "That's right, play with my <<= _n.breastsize.toLowerCase()>> breasts!",
       "That's right, play with my tits!"
     ],
     Submissive: [
       "You can play with them if you like."
     ],
     Switch: {
-     Flat: ["Like my breasts?"],
+      Flat: ["Like my breasts?"],
       Tiny: ["Like my breasts?"],
       Small: ["Like my breasts?"],
-      Average: ["Like my breasts?"],
+      Pert: ["Like my breasts?"],
+      Modest: ["Like my breasts?"],
+      Perky: ["Like my breasts?"],
+      Full: ["Like my breasts?"],
       Large: ["Like my breasts?"],
-      Busty: ["Like my breasts?"]
+      Ample: ["Like my breasts?"],
+      Massive: ["Like my breasts?"],
+      Enormous: ["Like my breasts?"]
     }
   }
 };

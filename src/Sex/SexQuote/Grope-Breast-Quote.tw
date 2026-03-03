@@ -57,11 +57,16 @@
 <</if>>
 
 <<if $sex.role =="top">>
-	<<set _pool = setup.gropebreastQuotes.top[_pref][_nsize][_nage] 
-	|| setup.gropebreastQuotes.top[_pref][_nsize]
-	|| setup.gropebreastQuotes.top.Neutral>>
+	<<set _pool = setup.gropebreastQuotes.top[_pref]
+	&& setup.gropebreastQuotes.top[_pref][_nsize]
+	&& setup.gropebreastQuotes.top[_pref][_nsize][_nage]
+	|| setup.gropebreastQuotes.top[_pref]
+	&& setup.gropebreastQuotes.top[_pref][_nsize]
+	|| setup.gropebreastQuotes.top[_pref]>>
 <<elseif $sex.role =="bottom">>
-	<<set _pool = setup.gropebreastQuotes.bottom[_pref][_msize][_mage] 
+	<<set _pool = setup.gropebreastQuotes.bottom[_pref]
+	&& setup.gropebreastQuotes.bottom[_pref][_msize]
+	&& setup.gropebreastQuotes.bottom[_pref][_msize][_mage]
 	|| setup.gropebreastQuotes.bottom.Neutral>>
 <<else>>
 ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT'S CREATOR

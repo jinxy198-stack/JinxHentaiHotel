@@ -13,12 +13,12 @@
 	<<set _mode = "top">>
 <</if>>
 
+
+
 <<if $sex.role =="top">>
-	<<set _pool = setup.BoobjobQuotes.top[_pref][_nsize]>>
+	<<set _pool = setup.BoobjobQuotes.top[_pref]>>
 <<elseif $sex.role =="bottom">>
 	<<set _pool = setup.BoobjobQuotes.bottom[_pref]>> 
-<<else>>
-ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT'S CREATOR
 <</if>>
 
 <<if _pool && _pool.length>>

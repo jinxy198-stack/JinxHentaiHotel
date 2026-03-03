@@ -1496,31 +1496,16 @@ setup.TakeCockBetweenLipsQuotes = {
 
 
 /* ----- BOOBJOB ----- */
-setup.boobjobQuotes = {
+setup.BoobjobQuotes = {
   bottom: {
-    Dominant: [
-      ""
-    ],
-    Submissive: [
-      ""
-    ],
-    Neutral: [
-      ""
-    ]
+    Dominant: [ "BOTTOM DOM BOOBJOB" ],
+    Submissive: [ "BOTTOM SUB BOOBJOB" ],
+    Switch: [ "BOTTOM SWITCH BOOBJOB" ]
   },
-
   top: {
-    Dominant: [
-      ""
-    ],
-
-    Submissive: [
-      ""
-    ],
-
-    Neutral: [
-      ""
-    ]
+    Dominant: [ "TOP DOM BOOBJOB" ],
+    Submissive: [ "TOP SUB BOOBJOB" ],
+    Switch: [ "TOP SWITCH BOOBJOB" ]
   }
 };
 
@@ -2034,7 +2019,52 @@ setup.gropebreastQuotes = {
         Kid: ["Nothing quite like developing breasts. So lewd and cute."],
         Teen: ["Nothing quite like developing breasts. So lewd and cute."]
       },
-      Average: {
+      Pert: {
+        Kid: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Teen: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Adult: [
+          "Nice tits.",
+          "Such perfect perky breasts",
+          "Such nice breasts"
+        ]
+      },
+      Modest: {
+        Kid: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Teen: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Adult: [
+          "Nice tits.",
+          "Such perfect perky breasts",
+          "Such nice breasts"
+        ]
+      },
+      Perky: {
+        Kid: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Teen: [
+          "Nice tits.",
+          "Such nice breasts"
+        ],
+        Adult: [
+          "Nice tits.",
+          "Such perfect perky breasts",
+          "Such nice breasts"
+        ]
+      },
+      Full: {
         Kid: [
           "Nice tits.",
           "Such nice breasts"
@@ -2066,10 +2096,21 @@ setup.gropebreastQuotes = {
           "Love your big breasts"
         ]
       },
-      Busty:[
+      Ample:[
         "Shit, these are big!",
 				"How do you carry these things?!"
-      ]
+      ],
+      Massive:[
+        "Shit, these are big!",
+				"How do you carry these things?!"
+      ],
+      Enormous:{
+        Kid: ["How the hell is someone your age able to carry these things?!"],
+        Teen: ["How the hell is someone your age able to carry these things?!"],
+        Adult: [ "Shit, these are big!",
+				"How do you carry these things?!"
+        ]
+      }
     },
     Submissive: {
       Flat: {
@@ -2091,7 +2132,9 @@ setup.gropebreastQuotes = {
         "Your breasts are so soft.",
 				"Wow, they are pretty big."
       ],
-      Busty: ["Whoa..."]
+      Ample: ["Whoa..."],
+      Massive: ["These sure are big!"],
+      Enormous: ["These sure are big!"]
     },
     Switch: {
       Flat: {
@@ -2110,24 +2153,31 @@ setup.gropebreastQuotes = {
         Adult: ["Your breasts are so soft."]
       },
       Large: ["Wow..."],
-      Busty: ["These sure are big!"]
+      Ample: ["These sure are big!"],
+      Massive: ["These sure are big!"],
+      Enormous: ["These sure are big!"]
     }
   },
   top: {
     Dominant: [
-      "That's right, play with my _n.breastsize breasts!",
+      "That's right, play with my <<= _n.breastsize.toLowerCase()>> breasts!",
       "That's right, play with my tits!"
     ],
     Submissive: [
       "You can play with them if you like."
     ],
     Switch: {
-     Flat: ["Like my breasts?"],
+      Flat: ["Like my breasts?"],
       Tiny: ["Like my breasts?"],
       Small: ["Like my breasts?"],
-      Average: ["Like my breasts?"],
+      Pert: ["Like my breasts?"],
+      Modest: ["Like my breasts?"],
+      Perky: ["Like my breasts?"],
+      Full: ["Like my breasts?"],
       Large: ["Like my breasts?"],
-      Busty: ["Like my breasts?"]
+      Ample: ["Like my breasts?"],
+      Massive: ["Like my breasts?"],
+      Enormous: ["Like my breasts?"]
     }
   }
 };
@@ -3868,6 +3918,19 @@ setup.sexpositions = {
         "secondary positions": ["Standing"],
         furniture: ["vertical surface"],
     },
+    "Against Wall From Behind":
+    {
+        label: "against the wall from behind",
+        "bottom": ["Penis", "Vagina"],
+        "top": ["Penis","Vagina"],
+        "bottom cum locations": [],
+        "top cum locations": ["Crotch", "Ass", "Thigh"],
+        "label top": "behind",
+        "label bottom": "against wall",
+        primary: true,
+        "secondary positions": ["Standing"],
+        furniture: ["vertical surface"],
+    },
     "Sitting":
     {
         label: "sitting",
@@ -3921,19 +3984,7 @@ setup.sexpositions = {
         "secondary positions": ["Standing"],
         furniture: ["small standing room", "large standing room"],
     },
-    "Against Wall From Behind":
-    {
-        label: "against the wall from behind",
-        "bottom": ["Penis", "Vagina"],
-        "top": ["Penis"],
-        "bottom cum locations": [],
-        "top cum locations": ["Crotch", "Ass", "Thigh"],
-        "label top": "behind",
-        "label bottom": "against wall",
-        primary: true,
-        "secondary positions": ["Standing"],
-        furniture: ["vertical surface"],
-    },
+    
     "Missionary":
     {
         label: "missionary",
@@ -4011,8 +4062,8 @@ setup.sexpositions = {
     "Prone Bone":
     {
         label: "prone bone",
-        "top": ["Penis"],
-        "bottom": ["Vagina", "Asshole"],
+        "top": [],
+        "bottom": [],
         "top cum locations": ["Crotch", "Ass", "Back"],
         "bottom cum locations": [],
         "label top": "on top",
@@ -4024,8 +4075,8 @@ setup.sexpositions = {
     "Spooning":
     {
         label: "spooning",
-        "top": ["Penis"],
-        "bottom": ["Vagina", "Asshole"],
+        "top": [],
+        "bottom": [],
         "top cum locations": ["Crotch", "Ass", "Back"],
         "bottom cum locations": [],
         "label top": "big spoon",
@@ -4278,7 +4329,7 @@ setup.sexacts = {
     },
     "Pet Ears": /* Either you or they pet ears. */
     {
-        "positions": [ "Standing", "Sitting", "Standing From Behind","Spooning"],
+        "positions": [ "Standing", "Sitting","Doggy", "Standing From Behind","Spooning"],
         "action type": ["tease"],
         "subject parts": ["Hands"],
         "object parts": ["Ears"],
@@ -4290,8 +4341,13 @@ setup.sexacts = {
     },
     "Grope Breasts": /* Either you of the other grope's the other's breast */
     {
-        "positions": [ "Missionary", "Laid Across On Back", "Mating Press", "Perched", "Prone Bone", "From Behind", "Cowgirl", "Reverse Cowgirl", "Kneeling Over", "Standing", "Standing From Behind", "Astride Lap",  "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Against Wall", "Underneath Oral Service", "Laid Across Oral Service"],
+        "positions": [ "Missionary", "Sittng", "Laid Across On Back", "Mating Press", "Perched", "Doggy", "From Behind", "Cowgirl", "Reverse Cowgirl", "Kneeling Over", "Standing", "Standing From Behind", "Astride Lap",  "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Against Wall", "Underneath Oral Service", "Laid Across Oral Service"],
+
         "action type": ["tease"],
+
+        "top parts": ["Hand"],
+        "bottom parts": ["Breasts"],
+
         "subject parts": ["Hand"],
         "object parts": ["Breasts"],
         "masturbation": true,
@@ -4305,7 +4361,7 @@ setup.sexacts = {
     },
     "Tease Nipples":
     {
-        "positions": [ "Missionary", "Laid Across On Back", "Mating Press", "Perched", "Prone Bone", "From Behind", "Cowgirl", "Reverse Cowgirl", "Kneeling Over", "Standing", "Standing From Behind", "Astride Lap", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Against Wall", "Underneath Oral Service", "Laid Across Oral Service"],
+        "positions": [ "Missionary","Sitting", "Laid Across On Back", "Mating Press", "Perched", "Prone Bone", "From Behind", "Cowgirl", "Reverse Cowgirl", "Kneeling Over", "Standing", "Standing From Behind", "Astride Lap", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Against Wall", "Underneath Oral Service", "Laid Across Oral Service"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Nipples"],
@@ -4379,7 +4435,7 @@ setup.sexacts = {
         "positions": [ "Missionary", "Laid Across On Back", "Mating Press", "Sitting", "Cowgirl", "Kneeling Over", "Standing", "Astride Lap", "Against Wall","Face On Chest"],
         "action type": ["penetrate"],
         "subject parts": ["Head"],
-        "object parts": ["Chest"],
+        "object parts": ["Chest","Breasts"],
         "take virginity": [],
         "subject arousal": 10,
         "object arousal":  10,
@@ -4472,10 +4528,14 @@ setup.sexacts = {
         "act label substitution": ["subject", "transgender male", "Pull Hand To Front Hole"],
     },
 
-    "Finger Pussy":
+    "Finger Pussy": /* bottom must have a vagina */
     {
-        "positions": [ "Missionary", "Laid Across On Back", "Laid Across On Stomach", "Mating Press", "Sixty-Nine", "From Behind", "Doggy", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Standing From Behind", "Astride Lap", "Riding Face", "Oral Service",  "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
+        "positions": [ "Missionary", "Laid Across On Back", "Laid Across On Stomach", "Mating Press", "Sixty-Nine", "From Behind", "Doggy", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Sitting", "Standing From Behind", "Astride Lap", "Riding Face", "Oral Service",  "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
         "action type": ["penetrate"],
+        
+        "top parts": ["Hand"],
+        "bottom parts": ["Vagina"],
+
         "subject parts": ["Hand"],
         "object parts": ["Vagina"],
         "masturbation": true,
@@ -4806,7 +4866,6 @@ setup.sexacts = {
 
 
 
-
     "Grip Cock With Feet": /* you grip their cock with your feet. */
     {
         "positions": [ "Missionary:bottom", "Kneeling:bottom", "Perched:bottom", "Laid Across On Back:bottom"],
@@ -4991,7 +5050,7 @@ setup.sexacts = {
         "object arousal": 10,
         "object arousal cap": 300,
     },
-        "Move Feet Away From Pussy":
+    "Move Feet Away From Pussy":
     {
         "positions": [],
         "action type": ["end"],
@@ -5114,12 +5173,12 @@ setup.sexacts = {
     "Suck Each Other Off": /* Mutual cocksucking */
     {
         "positions": [ "Sixty-Nine"],
-        "action type": ["continue"],
+        "action type": ["penetrate"],
         "subject parts": ["Penis", "Mouth"],
         "object parts": ["Mouth", "Penis"],
         "masturbation": false,
         "take virginity": [],
-        "object arousal": 10,
+        "object arousal": 50,
         "subject arousal": 50,
         "object arousal cap": 300,
         "subject dialogue tags": ["sucking each other"],
@@ -5129,12 +5188,12 @@ setup.sexacts = {
     "Eat Each Other Out": /* Mutual eat each other's vagina */
     {
         "positions": ["Sixty-Nine"],
-        "action type": ["continue"],
+        "action type": ["penetrate"],
         "subject parts": ["Vagina", "Mouth"],
         "object parts": ["Mouth", "Vagina"],
         "masturbation": false,
         "take virginity": [],
-        "object arousal": 10,
+        "object arousal": 50,
         "subject arousal": 50,
         "object arousal cap": 300,
         equal: true,
@@ -5143,12 +5202,12 @@ setup.sexacts = {
     "Suck And Lick Each Other": /* Mutual cock and pussy suck */
     {
         positions: ["Sixty-Nine"],
-        "action type": ["continue"],
+        "action type": ["penetrate"],
         "subject parts": ["Penis", "Mouth"],
         "object parts": ["Mouth", "Vagina"],
         "masturbation": false,
         "take virginity": [],
-        "object arousal": 10,
+        "object arousal": 50,
         "subject arousal": 50,
         "object arousal cap": 300,
         equal: true,
@@ -5157,12 +5216,12 @@ setup.sexacts = {
     "Lick And Suck Each Other": /*Mutual pussy and cock suck */
     {
         positions: ["Sixty-Nine"],
-        "action type": ["continue"],
+        "action type": ["penetrate"],
         "subject parts": ["Vagina", "Mouth"],
         "object parts": ["Mouth", "Penis"],
         "masturbation": false,
         "take virginity": [],
-        "object arousal": 10,
+        "object arousal": 50,
         "subject arousal": 50,
         "object arousal cap": 300,
         equal: true,
@@ -5350,7 +5409,7 @@ setup.sexacts = {
     },
     "Trib":
     {
-        "positions": [  "Missionary", "Astride Lap", "Laid Across On Back"],
+        "positions": [ "Missionary", "Astride Lap", "Laid Across On Back"],
         "action type": ["tease"],
         "subject parts": ["Vagina"],
         "object parts": ["Vagina"],
@@ -5390,7 +5449,7 @@ setup.sexacts = {
     },
     "Rub Butthole": /* You rub your fingers on their ass, might not be top specific? */
     {
-        "positions": [ "Missionary:bottom", "Prone Bone:bottom", "Mating Press:top", "Sixty-Nine:bottom", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl:bottom", "Kneeling:bottom", "Kneeling Over:bottom", "Standing:bottom", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:bottom", "Prone Bone:bottom", "Mating Press:top", "Sixty-Nine:bottom", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl:bottom", "Kneeling:bottom", "Kneeling Over:bottom", "Standing:bottom", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom","Sitting"],
         "action type": ["tease"],
         "subject parts": ["Hand"],
         "object parts": ["Asshole"],
@@ -5498,7 +5557,7 @@ setup.sexacts = {
 
     "Finger Ass": 
     {
-        "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom"],
+        "positions": [ "Missionary:bottom", "Prone Bone:top", "Mating Press:top", "Sixty-Nine", "From Behind:top", "Doggy:top", "Bent Over:top", "Cowgirl:bottom", "Reverse Cowgirl", "Kneeling:bottom", "Kneeling Over", "Standing", "Standing From Behind:top", "Astride Lap:bottom", "Oral Service:bottom", "Spooning:top", "Double Decker:top", "Against Wall From Behind:top", "Perched Oral Service:bottom", "Underneath Oral Service:bottom", "Laid Across On Back:top", "Laid Across On Stomach:top", "Laid Across Oral Service:bottom", "Sitting"],
         "action type": ["penetrate"],
         "subject parts": ["Hand"],
         "object parts": ["Asshole"],
@@ -9517,13 +9576,13 @@ Wanna have aftercare or end the session?
 
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="Boobjob-Dialogue" tags="nobr Dialogue" position="1300,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
-&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
  	&quot;_n.name thrusts their _n.genitals between your $mc.breastsize breasts.&quot;
     )&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;= either(
-    &quot;You thrust your $mc.genitals between _n.name&#39;s _n.breastsize breasts.&quot;
+    &quot;You thrust your $mc.genitals between _n.name&#39;s &lt;&lt;= _n.breastsize.toLowerCase()&gt;&gt; breasts.&quot;
     )&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="Caress-Dialogue" tags="Dialogue nobr" position="800,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
@@ -9721,22 +9780,22 @@ You rub your pussy against _n.name&#39;s feet.
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.act == &quot;Finger Pussy&quot;&gt;&gt;
-    &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+    &lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	    &lt;&lt;= either(
  	    &quot;_n.name puts their finger in your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;.&quot;
         )&gt;&gt;
-    &lt;&lt;else&gt;&gt;
+    &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	    &lt;&lt;= either(
         &quot;You put your finger in _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;&quot;
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $sex.act ==&quot;Finger Pussy(Continue)&quot;&gt;&gt;
-    &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+    &lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	    &lt;&lt;= either(
  	    &quot;_n.name finger&#39;s your &lt;&lt;= $mc.genitals.toLowerCase()&gt;&gt;.&quot;
         )&gt;&gt;
-    &lt;&lt;else&gt;&gt;
+    &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	    &lt;&lt;= either(
         &quot;You finger _n.name&#39;s &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;&quot;
         )&gt;&gt;
@@ -9744,7 +9803,6 @@ You rub your pussy against _n.name&#39;s feet.
 &lt;&lt;elseif $sex.act ==&quot;Pull Hand To Pussy&quot;&gt;&gt;
 You pull their hand to your pussy to finger you.
 &lt;&lt;elseif $sex.act==&quot;Rub Clit&quot;&gt;&gt;  
-    You rub clit.
     &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 	    &lt;&lt;= either(
  	    &quot;You rub _n.name&#39;s clit.&quot;
@@ -9874,7 +9932,7 @@ You pull their hand to your pussy to finger you.
 		&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="Grope-Breast-Dialogue" tags="nobr Dialogue" position="1100,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
-&lt;&lt;if $sex.previousPosition ==&quot;Pronebone&quot;&gt;&gt;
+&lt;&lt;if $sex.position ==&quot;Doggy&quot;&gt;&gt;
     &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 	    &lt;&lt;= either(
             &quot;You reach under _n.name and grope their breasts.&quot;
@@ -9884,16 +9942,26 @@ You pull their hand to your pussy to finger you.
             &quot;_n.name reaches under you and gropes your breasts&quot;
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;else&gt;&gt;
+&lt;&lt;elseif $sex.position == &quot;Cowgirl&quot;&gt;&gt;
     &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 	    &lt;&lt;= either(
-            &quot;Reaching up to _n.name&#39;s chest, they lets out a soft moan as you start fondling and groping $proset.their &lt;&lt;= _n.breastsize.toLowerCase() &gt;&gt; breasts,&quot;
+            &quot;Reaching up to _n.name&#39;s chest, they let out a soft moan as you start fondling and groping $proset.their &lt;&lt;= _n.breastsize.toLowerCase() &gt;&gt; breasts,&quot;
         )&gt;&gt;
     &lt;&lt;else&gt;&gt;
 	    &lt;&lt;= either(
-            &quot;Reaching up to your chest, you let out a moan as $proset.they start eagerly fondling and groping your &lt;&lt;= $mc.breastsize.toLowerCase() &gt;&gt; breasts,&quot;
+            &quot;Reaching down to your chest, you let out a moan as $proset.they start eagerly fondling and groping your &lt;&lt;= $mc.breastsize.toLowerCase() &gt;&gt; breasts,&quot;
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+    &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
+	    &lt;&lt;= either(
+            &quot;You reach over and grope _n.name&#39;s &lt;&lt;= _n.breastsize.toLowerCase() &gt;&gt; breasts,&quot;
+        )&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+	    &lt;&lt;= either(
+            &quot;_n.name reaches over and gropes your &lt;&lt;= $mc.breastsize.toLowerCase() &gt;&gt; breasts,&quot;
+        )&gt;&gt;
+    &lt;&lt;/if&gt;&gt;    
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Grope-Butt-Dialogue" tags="nobr Dialogue" position="1000,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
@@ -9908,27 +9976,22 @@ You pull their hand to your pussy to finger you.
     &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Handjob-Dialogue" tags="Dialogue nobr" position="900,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
-
 &lt;&lt;if $sex.act == &quot;Grip Cock&quot;&gt;&gt;
-&lt;&lt;= either(
-	&quot;Reaching down between $proset.their &lt;&lt;= _n.body.Legs.toLowerCase()&gt;&gt;, you wrap your &lt;&lt; $mc.body.Fingers.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, letting out a soft moan as you start slowly stroking up and down its length.&quot;,
-	&quot;You drop one of your $mc.body.Hands down between $proset.their &lt;&lt; _n.body.Legs.toLowerCase()&gt;&gt;, and, taking hold of $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, you start slowly jerking $proset.them off.&quot;,
-	&quot;Teasing your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; over $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt; , you let out a soft moan as you start gently stroking up and down its throbbing length.&quot;,
-	&quot;Reaching down between $proset.their &lt;&lt;= _n.body.Legs.toLowerCase()&gt;&gt;, you eagerly wrap your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, letting out a moan as you start rapidly stroking up and down its length.&quot;,
-	&quot;You drop one of your &lt;&lt;= $mc.body.Hands.toLowerCase()&gt;&gt; down between $proset.their &lt;&lt;= _n.body.Legs.toLowerCase()&gt;&gt;, and, taking hold of $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, you start eagerly jerking $proset.them off.&quot;,
-	&quot;Teasing your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; over $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, $proset.they let out a moan as you start rapidly stroking up and down $proset.their throbbing length.&quot;,
-	&quot;You gently slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down around $proset.their &lt;&lt;= _n.penislength.toLowerCase()&gt;&gt; cock, spreading $proset.their precum all over your shaft in the process.&quot;,
-	&quot;Using $proset.their precum as extra lubricant, you gently wrap your $mc.body.Fingers around $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt; and jerk $proset.them off.&quot;,
-	&quot;_n.name lets out a reassuring moan as you gently slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their precum-dripping &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;.&quot;,
-	&quot;Gently wrapping your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, you slowly start to slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down $proset.their &lt;&lt;= _n.penislength.toLowerCase()&gt;&gt; shaft.&quot;,
-	&quot;You gently wrap your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt;, leaning forwards and inhaling $proset.their scent as you gently slide your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; up and down around $proset.their &lt;&lt;= _n.penislength.toLowerCase()&gt;&gt; length.&quot;,
-	&quot;Gently pressing yourself against _n.name, you let out a moan as you softly slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;.&quot;,
-	&quot;You slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down around $proset.their &lt;&lt;= _n.penislength.toLowerCase()&gt;&gt; cock, spreading $proset.their precum all over $proset.their shaft in the process.&quot;,				
-	&quot;Using $proset.their precum as extra lubricant, you wrap your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt; and jerk $proset.them off.&quot;,	
-	&quot;$proset.they let out a moan as you slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their precum-dripping &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;.&quot;,
-	&quot;_n.name buck $proset.their &lt;&lt;= _n.body.Hips.toLowerCase()&gt;&gt; out in response, letting out a delighted moan as $proset.they start enthusiastically imploring you to continue giving $proset.them a handjob.&quot;,
-	&quot;A delighted moan bursts out from between $proset.their &lt;&lt;= _n.body.Lips.toLowerCase()&gt;&gt;, and $proset.they start eagerly thrusting $proset.their &lt;&lt;= _n.body.Hips.toLowerCase()&gt;&gt; out against $proset.their touch as $proset.they begs you to continue giving $proset.them a handjob.&quot;,	
-	&quot;Moaning in delight, _n.name buck $proset.their &lt;&lt;= _n.body.Hips.toLowerCase()&gt;&gt; forward, eagerly imploring you to continue giving $proset.them a handjob.&quot; 
+	&lt;&lt;= either(
+		&quot;Reaching down between $proset.their &lt;&lt;= _n.body.Legs.toLowerCase()&gt;&gt;, you wrap your &lt;&lt; $mc.body.Fingers.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, letting out a soft moan as you start slowly stroking up and down its length.&quot;,
+		&quot;You drop one of your $mc.body.Hands down between $proset.their &lt;&lt; _n.body.Legs.toLowerCase()&gt;&gt;, and, taking hold of $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, you start slowly jerking $proset.them off.&quot;,
+		&quot;Reaching down between $proset.their &lt;&lt;= _n.body.Legs.toLowerCase()&gt;&gt;, you eagerly wrap your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, letting out a moan as you start rapidly stroking up and down its length.&quot;,
+		&quot;You drop one of your &lt;&lt;= $mc.body.Hands.toLowerCase()&gt;&gt; down between $proset.their &lt;&lt;= _n.body.Legs.toLowerCase()&gt;&gt;, and, taking hold of $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, you start eagerly jerking $proset.them off.&quot;,
+		&quot;Teasing your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; over $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, $proset.they let out a moan as you start rapidly stroking up and down $proset.their throbbing length.&quot;,
+		&quot;Using $proset.their precum as extra lubricant, you gently wrap your $mc.body.Fingers around $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt; and jerk $proset.them off.&quot;,
+		&quot;Gently wrapping your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, you slowly start to slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down $proset.their &lt;&lt;= _n.penislength.toLowerCase()&gt;&gt; shaft.&quot;,
+		&quot;You gently wrap your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= _n.genitals.toLowerCase() &gt;&gt;, leaning forward and inhaling $proset.their scent as you gently slide your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; up and down around $proset.their &lt;&lt;= _n.penislength.toLowerCase()&gt;&gt; length.&quot;,
+		&quot;Gently pressing yourself against _n.name, you let out a moan as you softly slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;.&quot;,
+		&quot;You slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down around $proset.their &lt;&lt;= _n.penislength.toLowerCase()&gt;&gt; cock, spreading $proset.their precum all over $proset.their shaft in the process.&quot;,				
+		&quot;Using $proset.their precum as extra lubricant, you wrap your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt; and jerk $proset.them off.&quot;,	
+		&quot;_n.name buck $proset.their &lt;&lt;= _n.body.Hips.toLowerCase()&gt;&gt; out in response, letting out a delighted moan as $proset.they start enthusiastically imploring you to continue giving $proset.them a handjob.&quot;,
+		&quot;A delighted moan bursts out from between $proset.their &lt;&lt;= _n.body.Lips.toLowerCase()&gt;&gt;, and $proset.they start eagerly thrusting $proset.their &lt;&lt;= _n.body.Hips.toLowerCase()&gt;&gt; out against $proset.their touch as $proset.they begs you to continue giving $proset.them a handjob.&quot;,	
+		&quot;Moaning in delight, _n.name buck $proset.their &lt;&lt;= _n.body.Hips.toLowerCase()&gt;&gt; forward, eagerly imploring you to continue giving $proset.them a handjob.&quot; 
 	)&gt;&gt;
 &lt;&lt;elseif $sex.act ==&quot;Wrap Hand Around Cock&quot;&gt;&gt;
 	&lt;&lt;= either(
@@ -9936,7 +9999,12 @@ You pull their hand to your pussy to finger you.
 	)&gt;&gt;
 &lt;&lt;elseif $sex.act ==&quot;Pump Shaft&quot;&gt;&gt;
 	&lt;&lt;if $sex.role==&quot;bottom&quot;&gt;&gt;
-		You pump their shaft.
+		&lt;&lt;= either(
+			&quot;Teasing your &lt;&lt;= $mc.body.Fingers.toLowerCase()&gt;&gt; over $proset.their &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;, _n.name let out a soft moan as you start gently stroking up and down their throbbing length.&quot;,
+			&quot;$proset.they let out a moan as you slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their precum-dripping &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;.&quot;,
+			&quot;_n.name lets out a reassuring moan as you gently slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their precum-dripping &lt;&lt;= _n.genitals.toLowerCase()&gt;&gt;.&quot;,
+			&quot;You gently slide your &lt;&lt;= $mc.body.Hand.toLowerCase()&gt;&gt; up and down around $proset.their &lt;&lt;= _n.penislength.toLowerCase()&gt;&gt; cock, spreading $proset.their precum all over your shaft in the process.&quot;
+		)&gt;&gt;
 		&lt;&lt;if _n.genitaltype == &quot;Uncut&quot;&gt;&gt;
     		Their foreskin is pulled back and forth from the movement.
     	&lt;&lt;/if&gt;&gt;
@@ -9950,7 +10018,6 @@ You pull their hand to your pussy to finger you.
 	_n.name jerks you off.
 &lt;&lt;elseif $sex.act ==&quot;Tease Tip&quot;&gt;&gt;
 	You tease the tip.
-
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="Hotdog-Dialogue" tags="nobr" position="350,1100" size="100,100">&lt;&lt;if  $sex.act == &quot;Hotdog&quot;&gt;&gt;
 You push the cheeks of _n.name&#39;s _n.assSize ass together around your $mc.penislength cock as you thrust between them.
 
@@ -10392,10 +10459,10 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
     &lt;&lt;else&gt;&gt;
     You are kneeling between _n.name&#39;s parted thighs as $proset.they are on the $room.location.
     &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="Prone-Bone-Dialogue" tags="nobr" position="100,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
-You role _n.name onto their stomach on the $room.location and you mount them.
+You role _n.name onto their stomach on the $room.location and you lay on them.
 
 &lt;&lt;else&gt;&gt;
-You roll onto your stomach on the $room.location as _n.name mounts you.
+You roll onto your stomach on the $room.location as _n.name lays on you.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="225,1600" size="100,100">&lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
 You&#39;re on top of _n.name on the $room.location, straddling $proset.their hips, facing away to give them a view of your ass.
 &lt;&lt;else&gt;&gt;
@@ -10508,8 +10575,8 @@ You and _n.name are standing, face to face.</tw-passagedata><tw-passagedata pid=
     &lt;&lt;else&gt;&gt;
     _n.name grabs you by the hips and turn you to face away from you.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="Straddling-Chest-Dialogue" tags="nobr" position="225,1725" size="100,100">&lt;&lt;if $sex.roles ==&quot;top&quot;&gt;&gt;
-You&#39;re on the $sex.location, straddling _n.name&#39;s chest.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="Straddling-Chest-Dialogue" tags="nobr" position="225,1725" size="100,100">&lt;&lt;if $sex.role ==&quot;top&quot;&gt;&gt;
+You&#39;re on the $room.location, straddling _n.name&#39;s chest.
 &lt;&lt;else&gt;&gt;
 _n.name is straddling your chest.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="Underneath-Oral-Service-Dialogue" tags="nobr" position="350,1725" size="100,100">/* Not needed? */
@@ -10706,12 +10773,12 @@ _n.name is straddling your chest.
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
+
+
 &lt;&lt;if $sex.role ==&quot;top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.BoobjobQuotes.top[_pref][_nsize]&gt;&gt;
+	&lt;&lt;set _pool = setup.BoobjobQuotes.top[_pref]&gt;&gt;
 &lt;&lt;elseif $sex.role ==&quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _pool = setup.BoobjobQuotes.bottom[_pref]&gt;&gt; 
-&lt;&lt;else&gt;&gt;
-ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
@@ -11328,11 +11395,16 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $sex.role ==&quot;top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.gropebreastQuotes.top[_pref][_nsize][_nage] 
-	|| setup.gropebreastQuotes.top[_pref][_nsize]
-	|| setup.gropebreastQuotes.top.Neutral&gt;&gt;
+	&lt;&lt;set _pool = setup.gropebreastQuotes.top[_pref]
+	&amp;&amp; setup.gropebreastQuotes.top[_pref][_nsize]
+	&amp;&amp; setup.gropebreastQuotes.top[_pref][_nsize][_nage]
+	|| setup.gropebreastQuotes.top[_pref]
+	&amp;&amp; setup.gropebreastQuotes.top[_pref][_nsize]
+	|| setup.gropebreastQuotes.top[_pref]&gt;&gt;
 &lt;&lt;elseif $sex.role ==&quot;bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.gropebreastQuotes.bottom[_pref][_msize][_mage] 
+	&lt;&lt;set _pool = setup.gropebreastQuotes.bottom[_pref]
+	&amp;&amp; setup.gropebreastQuotes.bottom[_pref][_msize]
+	&amp;&amp; setup.gropebreastQuotes.bottom[_pref][_msize][_mage]
 	|| setup.gropebreastQuotes.bottom.Neutral&gt;&gt;
 &lt;&lt;else&gt;&gt;
 ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
@@ -14207,6 +14279,8 @@ Create your character to begin.
 
 		&lt;b&gt;Phase:&lt;/b&gt; &lt;&lt;print $sex.phase&gt;&gt;&lt;br&gt;
 
+        &lt;b&gt;Location:&lt;/b&gt; &lt;&lt;print $room.location&gt;&gt;&lt;br&gt;
+
 		&lt;&lt;if $sex.penetration&gt;&gt;
 			&lt;b&gt;Penetration:&lt;/b&gt;
 			&lt;&lt;print $sex.penetration.subjectPart&gt;&gt; → &lt;&lt;print $sex.penetration.objectPart&gt;&gt;&lt;br&gt;
@@ -14248,11 +14322,10 @@ Create your character to begin.
 											&lt;&lt;SexEncounterUI&gt;&gt; 
 										&lt;&lt;/replace&gt;&gt;
 
-                                        &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;br&gt;&lt;&lt;/replace&gt;&gt;
+                                        &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
                                         &lt;&lt;replace &quot;#log&quot;&gt;&gt;
                                             &lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;
 										&lt;&lt;/replace&gt;&gt;
-
 
 									&lt;&lt;/button&gt;&gt;
 								&lt;/li&gt;
@@ -14308,7 +14381,7 @@ Create your character to begin.
                                                 &lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
                                                 &lt;&lt;include &quot;Act-Quote&quot;&gt;&gt;
 										    &lt;&lt;/replace&gt;&gt;
-                                            &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;br&gt;&lt;&lt;/replace&gt;&gt;
+                                            &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 										    &lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
                                         &lt;&lt;/if&gt;&gt;
                                         
@@ -14330,8 +14403,8 @@ Create your character to begin.
 &lt;div&gt;
   &lt;span&gt;
     &lt;hr&gt;
-    &lt;b&gt;NPC Arousal:&lt;/b&gt; &lt;&lt;print $sex.object.arousal&gt;&gt;/1000  ||
-    &lt;b&gt;Player Arousal:&lt;/b&gt; &lt;&lt;print $sex.subject.arousal&gt;&gt;/1000
+    &lt;b&gt;$sex.object.name Arousal:&lt;/b&gt; &lt;&lt;print $sex.object.arousal&gt;&gt;/1000  ||
+    &lt;b&gt;$sex.subject.name Arousal:&lt;/b&gt; &lt;&lt;print $sex.subject.arousal&gt;&gt;/1000
   &lt;/span&gt;
 
   &lt;&lt;if $sex.object.arousal &gt;= 1000&gt;&gt;
@@ -14345,7 +14418,6 @@ Create your character to begin.
   &lt;&lt;if $orgasm.subject&gt;&gt;&lt;h1&gt;Subject ORGASM!&lt;/h1&gt;&lt;&lt;/if&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;/widget&gt;&gt;
-
 
 
 
@@ -15229,7 +15301,8 @@ Create your character to begin.
 &lt;&lt;set $sex.penetration = null&gt;&gt;
 &lt;&lt;set $sex.phase = &quot;tease&quot;&gt;&gt;
 &lt;&lt;set $sex.history= []&gt;&gt;
-&lt;&lt;set $sex.action= &quot;Waiting&quot;&gt;&gt;
+&lt;&lt;set $sex.act= &quot;Waiting&quot;&gt;&gt;
+
 
 
 &lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
@@ -15246,9 +15319,11 @@ Create your character to begin.
 
 
 
-/* keep furniture flags synced */
-&lt;&lt;set $room.furnitureFlags = $room.furnitureFlags || setup.getRoomFurnitureFlags($room.type)&gt;&gt;
+/* keep furniture flags synced (LOCATION-specific) */
+&lt;&lt;set _furnObj = setup.RoomTypes.furniture[$room.location]&gt;&gt;
+&lt;&lt;set $room.furnitureFlags = (_furnObj &amp;&amp; _furnObj.flags) ? _furnObj.flags : []&gt;&gt;
 &lt;&lt;set $sex.furnitureFlags  = $room.furnitureFlags&gt;&gt;
+
 
 /* Debug checking to confirm things exist */
 /*MC parts: &lt;&lt;print $mc.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt;
@@ -15266,6 +15341,7 @@ Sex Object: &lt;&lt;print $sex.object.name&gt;&gt;&lt;br&gt;
 &lt;br&gt; */
 
 
+
 /*Arousal meter for both $mc and _n */
 &lt;&lt;set _n.arousal = _n.arousal or 0&gt;&gt;
 &lt;&lt;set $mc.arousal = $mc.arousal or 0&gt;&gt;
@@ -15273,14 +15349,7 @@ Sex Object: &lt;&lt;print $sex.object.name&gt;&gt;&lt;br&gt;
 
 
 
-/* Arousal bar*/
-/*&lt;div id=&quot;arousal-ui&quot;&gt;
-  &lt;&lt;ArousalUI&gt;&gt;
-&lt;/div&gt;
-&lt;br&gt;
-&lt;div id= &quot;sex-container&quot;&gt;
-&lt;&lt;RoomRelocationUI&gt;&gt;
-&lt;&lt;SexEncounterUI&gt;&gt;
+/*
 &lt;&lt;button &quot;End Session&quot;&gt;&gt;
 	&lt;&lt;set $lastNpc = _n&gt;&gt;      &lt;!-- remember who you were with --&gt;
 	&lt;&lt;set $sex = null &gt;&gt;  &lt;!-- optional reset --&gt;

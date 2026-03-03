@@ -37,7 +37,8 @@
 <<set $sex.penetration = null>>
 <<set $sex.phase = "tease">>
 <<set $sex.history= []>>
-<<set $sex.action= "Waiting">>
+<<set $sex.act= "Waiting">>
+
 
 
 <<if $sex.roles.dom.name == $mc.name>>
@@ -54,9 +55,11 @@
 
 
 
-/* keep furniture flags synced */
-<<set $room.furnitureFlags = $room.furnitureFlags || setup.getRoomFurnitureFlags($room.type)>>
+/* keep furniture flags synced (LOCATION-specific) */
+<<set _furnObj = setup.RoomTypes.furniture[$room.location]>>
+<<set $room.furnitureFlags = (_furnObj && _furnObj.flags) ? _furnObj.flags : []>>
 <<set $sex.furnitureFlags  = $room.furnitureFlags>>
+
 
 /* Debug checking to confirm things exist */
 /*MC parts: <<print $mc.bodyparts.join(", ")>><br>
@@ -74,6 +77,7 @@ Sex Object: <<print $sex.object.name>><br>
 <br> */
 
 
+
 /*Arousal meter for both $mc and _n */
 <<set _n.arousal = _n.arousal or 0>>
 <<set $mc.arousal = $mc.arousal or 0>>
@@ -81,14 +85,7 @@ Sex Object: <<print $sex.object.name>><br>
 
 
 
-/* Arousal bar*/
-/*<div id="arousal-ui">
-  <<ArousalUI>>
-</div>
-<br>
-<div id= "sex-container">
-<<RoomRelocationUI>>
-<<SexEncounterUI>>
+/*
 <<button "End Session">>
 	<<set $lastNpc = _n>>      <!-- remember who you were with -->
 	<<set $sex = null >>  <!-- optional reset -->
