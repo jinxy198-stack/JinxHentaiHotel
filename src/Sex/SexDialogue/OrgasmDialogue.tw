@@ -1,5 +1,14 @@
 ::OrgasmDialogue [nobr]
 
-<<if>>
-
+<<if $sex.subject.chosenCumLocation>>
+    <<set _cumLoc = $sex.subject.chosenCumLocation >>
+<<elseif = $sex.object.chosenCumLocation>>
+    <<set _cumLoc = $sex.object.chosenCumLocation >>
 <</if>>
+
+/*<<if _cumLoc == "in ass">>
+
+<</if>> */
+
+You cum
+

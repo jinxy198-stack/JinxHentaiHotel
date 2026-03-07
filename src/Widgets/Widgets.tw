@@ -81,11 +81,24 @@
 	<!-- ===================== -->
 	<!-- ACTION BAR -->
 	<!-- ===================== -->
+
+
+
+
+
 	<div id="npcsex-actions-bar">
 
 		<button id="npcsex-toggle" aria-expanded="true">
 			▼ <b>Actions</b>
 		</button>
+
+    <<run setup.updateCumLocations($sex)>>
+    <<if setup.shouldShowCumPanel($sex)>>
+	    <div class="npcsex-content">
+            <<CumLocationButtons>>
+        </div>
+    <<else>>
+
 
 		<div class="npcsex-content">
 
@@ -108,7 +121,8 @@
 								<li>
 									<<button _p>>
 										<<set $sex.previousPosition = $sex.position>>
-										<<set $sex.position = _p>>									
+										<<set $sex.position= _p>>
+
 										<<replace "#sexUI">>
 											<<SexEncounterUI>> 
 										<</replace>>
@@ -117,6 +131,7 @@
                                         <<replace "#log">>
                                             <<include "PositionDialogue">>
 										<</replace>>
+                                        <<replace "#arousal-ui">><<ArousalUI>><</replace>>
 
 									<</button>>
 								</li>
@@ -130,7 +145,6 @@
 			<<set _acts = setup.getAvailableSexActs($sex) || []>>
 
 			<h3>Available Acts</h3>
-
 			    <<if _acts.length === 0>>
 				<i>None (for this position/phase/parts).</i>
 			    <<else>>
@@ -159,22 +173,12 @@
                                             <<SexEncounterUI>>
 										<</replace>>
 
-                                        <<if $orgasm.object || $orgasm.subject>>
-                                            <<replace "#intro">>
-                                                <<include "OrgasmDialogue">>
-                                                <<include "Orgasm-Quote">>
-                                                You've reached orgasm.
-										    <</replace>>
-                                            <<replace "#log">><br><</replace>>
-										    <<replace "#arousal-ui">><<ArousalUI>><</replace>>
-                                        <<else>>
 										    <<replace "#intro">>
                                                 <<include "ActDialogue">>
                                                 <<include "Act-Quote">>
 										    <</replace>>
                                             <<replace "#log">><</replace>>
 										    <<replace "#arousal-ui">><<ArousalUI>><</replace>>
-                                        <</if>>
                                         
 									<</button>>
                                 <</if>>    
@@ -185,7 +189,11 @@
 				</ul>
 			    <</if>>
 		</div>
+        <</if>>
+
+
 	</div>
+  
 </div>
 <</widget>>
 
@@ -205,13 +213,64 @@
     <<set $orgasm.subject = true>>
   <</if>>
 
-  <<if $orgasm.object>><h1>Object ORGASM!</h1><</if>>
-  <<if $orgasm.subject>><h1>Subject ORGASM!</h1><</if>>
+    <br>$sex.subject.cumLocation <br>
+    $sex.object.cumLocation <br>
+    
+
 </div>
 <</widget>>
 
 
+<<widget "CumLocationButtons">>
+	/* Usage:
+	   <<CumLocationButtons "subject">> or <<CumLocationButtons "object">>
+	   Assumes setup.updateCumLocations($sex) has run recently.
+	*/
+	<<set _who = _args[0] || "subject">>
+	<<set _actor = ($sex && $sex[_who]) ? $sex[_who] : null>>
 
+	<<if !_actor>>
+		<span class="error">[Error] Missing $sex.<<print _who>> actor.</span>
+		<<return>>
+	<</if>>
+
+	/* Ensure cumLocation is an array */
+	<<set _opts = Array.isArray(_actor.cumLocation) ? _actor.cumLocation : []>>
+
+	<<if _opts.length is 0>>
+		<span class="muted">No cum locations available.</span>
+		<<return>>
+	<</if>>
+
+	<div class="cumloc-ui">
+		<b>Choose cum location (<<print _who>>):</b>
+		<ul class="sex-list">
+		<<for _i = 0; _i < _opts.length; _i++>>
+			<<set _loc = _opts[_i]>>
+			<<capture _who, _loc>>
+				<li>
+					<<button  "Cum _loc">>
+						/* Store chosen location */
+						<<set $sex.cum = $sex.cum || {}>>
+						<<set $sex.cum[_who] = _loc>>
+
+						/* Optional: also store on actor for convenience */
+						<<set $sex[_who].chosenCumLocation = _loc>>
+
+						/* Refresh UI area if you have one */
+						<<replace "#intro">>
+                            <<include "OrgasmDialogue">><br>
+                            <<include "Orgasm-Quote">>
+						<</replace>>
+                        
+                        <<replace "#log">><</replace>>
+					<</button>>
+				</li>
+			<</capture>>
+		<</for>>
+		</ul>
+	</div>
+<</widget>>
 
 
 

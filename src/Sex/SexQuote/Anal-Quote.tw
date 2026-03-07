@@ -33,7 +33,7 @@
 	<<set _pool =
 		(
 			setup.analQuotes.top[_position]
-			|| setup.analQuotes.top[_position][_personality]
+			&& setup.analQuotes.top[_position][_personality]
 			|| setup.analQuotes.top[_position][_pref]
 		)
 		|| setup.analQuotes.top.Neutral

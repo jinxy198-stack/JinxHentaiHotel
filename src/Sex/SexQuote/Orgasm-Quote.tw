@@ -1,28 +1,28 @@
 :: Orgasm-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
+<<if $sex.role == "bottom">>
+	<<set _mode = "bottom">>
+<<elseif $sex.role == "top">>
+	<<set _mode = "top">>
 <</if>>
 
 <<set _pref   = _n.sexpref || "Switch">>
-<<set _action = $sex.action>>
+<<set _action = $sex.act>>
 <<set _pool   = null>>
 
 <<set _personality = _n.personality>>
 
-<<if _mode == "give">>
-	<<set _pool = setup.orgasmQuotes.bottom[_action][_pref]
-	||setup.orgasmQuotes.bottom[_action][_pref] 
-	|| setup.orgasmQuotes.bottom.default>>
+<<if _mode == "bottom">>
+	<<set _pool = setup.orgasmQuotes.bottom[_loc]
+	&& setup.orgasmQuotes.bottom[_loc][_pref] 
+	|| setup.orgasmQuotes.bottom.default[_pref]>>
 
-<<else>>
-	<<set _pool = setup.orgasmQuotes.top[_action][_personality]
-	|| setup.orgasmQuotes.top[_action][_pref]
-	|| setup.orgasmQuotes.top.default>>
+<<elseif _mode =="top">>
+	<<set _pool = setup.orgasmQuotes.top[_loc]
+	&& setup.orgasmQuotes.top[_loc][_personality]
+	|| setup.orgasmQuotes.top[_loc]
+	&& setup.orgasmQuotes.top[_loc][_pref]
+	|| setup.orgasmQuotes.top.default[_pref]>>
 
 <</if>>
 
@@ -30,6 +30,6 @@
 	<<= either(..._pool)>>
 <<else>>
 	[Error] No Orgasm quote pool found.
-	(mode=<<=_mode>>, action=<<=_action>>, pref=<<=_pref>>)
+	(mode=<<=_mode>>, action=<<=_action>>, pref=<<=_pref>>,personality=<<=_personality>>, cum location=<<= _loc >> )
 <</if>>
 

@@ -31,7 +31,7 @@ setup.analQuotes = {
         "Ah, so good!"
       ]
     },
-    Doggystyle: {
+    Doggy: {
       Dominant: [
         "Yeah! Take it!"
       ],
@@ -65,7 +65,7 @@ setup.analQuotes = {
         "Use my ass...",
         "Oh... fuck my ass... please..."
       ],
-      Neutral: [
+      Switch: [
         "This feels so good!",
 				"Ah! Ah! Ah!",
 				"Ah, $mc.name.",
@@ -77,7 +77,6 @@ setup.analQuotes = {
       ]
   },
   top: {
-    /* ----- Positions ----- */
     Cowgirl: {
       Childlike:[
       "Whee, hehe! Bouncy, bouncy!",
@@ -1344,7 +1343,7 @@ setup.suckfootQuotes = {
 /* ----- ORGASM ----- */
 setup.orgasmQuotes = {
   bottom: {
-    "Anal Orgasm": {
+    "in ass": {
       Dominant: [
         "I'm cumming!",
         "I'll fill you up nicely",
@@ -1374,7 +1373,7 @@ setup.orgasmQuotes = {
     }
   },
   top: {
-    "Anal Orgasm": {
+    "in ass": {
       Childlike: [
       "Relax n let a load off $mc.name~ Mmm...~",
       "Hee hee, Yayy! I feel extra warm inside now!",
@@ -1392,7 +1391,7 @@ setup.orgasmQuotes = {
         "M-my ass... you filled me up so much!"
       ]
     },
-    "Frot Orgasm": {
+    "on penis": {
       Childlike:[
       "Have some Cumfetti! Happy Birthday! Hehehe!",
       "You need more colors! Here you go hehehe~!"
@@ -1401,11 +1400,27 @@ setup.orgasmQuotes = {
       Submissive: ["A-Ahhh...!"],
       Switch: ["A-Ahhh...!"]
     },
+    "on face": {
+      Dominant: ["Really made a mess of your face."],
+      Submissive: ["Really made a mess of your face."],
+      Switch: ["Really made a mess of your face."]
+    },
+    "on self": {
+      Dominant: ["Now you're nice and messy."],
+      Submissive: ["Now you're nice and messy."],
+      Switch: ["Now you're nice and messy."]
+    },
      /* DEFAULT FALLBACK */
     default: {
       Dominant: ["Damn, enjoyed yourself?"],
-      Submissive: ["Wow, that was nice."],
-      Switch: ["Phew..."]
+      Submissive: [
+        "Wow, that was nice.",
+        "That was awesome."
+      ],
+      Switch: [
+        "Phew...",
+        "That was awesome."
+      ]
     }
   }
 };

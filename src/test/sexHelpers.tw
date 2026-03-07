@@ -31,6 +31,7 @@ setup.applyArousalFromAct = function (sex, act) {
       object.arousal += act["object arousal"];
     }
   }
+  setup.checkForClimax(sex);
 };
 
 /*
@@ -51,46 +52,190 @@ setup.updateNpcArousalUI = function (value) {
  * based on the current sex position and role.
  */
 setup.updateCumLocations = function (sex) {
-    if (!sex || !sex.position) {
-        sex.subject.cumLocation = [];
-        sex.object.cumLocation = [];
+    // safe setters
+    function setEmpty(sex) {
+        if (sex?.subject) sex.subject.cumLocation = [];
+        if (sex?.object)  sex.object.cumLocation  = [];
+    }
+    if (!sex || !sex.subject || !sex.object || !sex.position) {
+        setEmpty(sex);
         return;
     }
-
-    const pos = setup.sexpositions[sex.position];
+    const pos = setup.sexpositions?.[sex.position];
     if (!pos) {
-        sex.subject.cumLocation = [];
-        sex.object.cumLocation = [];
+        setEmpty(sex);
         return;
     }
+    // --- 1) Base lists from position ---
+    const topBase = Array.isArray(pos["top cum locations"]) ? pos["top cum locations"] : [];
+    const botBase = Array.isArray(pos["bottom cum locations"]) ? pos["bottom cum locations"] : [];
+    // Compute base assignment using your existing role rules
+    let subjectBase = [];
+    let objectBase  = [];
 
-    const top = Array.isArray(pos["top cum locations"]) ? pos["top cum locations"] : [];
-    const bottom = Array.isArray(pos["bottom cum locations"]) ? pos["bottom cum locations"] : [];
-
-    // Equal role gets combined options
     if (sex.role === "equal") {
-        sex.subject.cumLocation = [...new Set([...top, ...bottom])];
-        sex.object.cumLocation  = [...new Set([...top, ...bottom])];
+        const combined = [...new Set([...topBase, ...botBase])];
+        subjectBase = combined.slice();
+        objectBase  = combined.slice();
+    } else if (sex.role === "top") {
+        subjectBase = topBase.slice();
+        objectBase  = botBase.slice();
+    } else if (sex.role === "bottom") {
+        subjectBase = botBase.slice();
+        objectBase  = topBase.slice();
+    } else {
+        // fallback
+        setEmpty(sex);
         return;
     }
 
-    // Role-based assignment
-    if (sex.role === "top") {
-        sex.subject.cumLocation = [...top];
-        sex.object.cumLocation  = [...bottom];
-        return;
+    // --- 2) Optional additions from current act in setup.sexacts ---
+    // If you want “all acts valid for this position” instead of only current act,
+    // we can extend this later—but this is the safest/fastest first step.
+    const actKey = sex.act;
+    const act = actKey ? setup.sexacts?.[actKey] : null;
+
+    // Helper: merge + dedupe
+    function mergeUnique(baseArr, addArr) {
+    if (!Array.isArray(addArr) || addArr.length === 0) return baseArr;
+        return [...new Set([...baseArr, ...addArr])];
     }
 
-    if (sex.role === "bottom") {
-        sex.subject.cumLocation = [...bottom];
-        sex.object.cumLocation  = [...top];
-        return;
+    // Determine who is the "top actor" vs "bottom actor" for this position+role
+    // (mirrors your helper idea; kept inline to keep this wiki self-contained)
+    const posEqual = !!pos.equal;
+    let topActor = null, bottomActor = null;
+
+    if (posEqual) {
+        if (sex.role === "top") { topActor = sex.subject; bottomActor = sex.object; }
+        else if (sex.role === "bottom") { topActor = sex.object; bottomActor = sex.subject; }
+    } else {
+        if (sex.role === "top") { topActor = sex.subject; bottomActor = sex.object; }
+        else if (sex.role === "bottom") { topActor = sex.object; bottomActor = sex.subject; }
     }
 
-    // Fallback
-    sex.subject.cumLocation = [];
-    sex.object.cumLocation  = [];
+    // Start with base
+    let subjectFinal = subjectBase;
+    let objectFinal  = objectBase;
+
+    if (act) {
+        // A) Direct subject/object additions
+        subjectFinal = mergeUnique(subjectFinal, act["subject cum locations"]);
+        objectFinal  = mergeUnique(objectFinal,  act["object cum locations"]);
+
+        // B) Generic "cum locations" applies to the ejaculating actor
+        // By default, assume the TOP actor is the ejaculator if they have a Penis,
+        // otherwise fall back to subject (keeps it predictable).
+        const actCum = act["cum locations"];
+
+        if (Array.isArray(actCum) && actCum.length) {
+            // Try to pick a likely ejaculator in a simple/robust way
+            let ejaculator = null;
+
+            // If you track penetration, prefer that
+            if (sex.penetration && sex.penetration.subjectPart) {
+                // penetration.subjectPart belongs to sex.subject by your UI convention
+                // (if your penetration object differs, tweak this mapping)
+                ejaculator = sex.subject;
+            } else {
+                // fallback heuristic: topActor if present, else subject
+                ejaculator = topActor || sex.subject;
+            }
+
+            if (ejaculator === sex.subject) {
+                subjectFinal = mergeUnique(subjectFinal, actCum);
+            } else if (ejaculator === sex.object) {
+                objectFinal = mergeUnique(objectFinal, actCum);
+            } else {
+                // if unknown, just give both the additional options
+                subjectFinal = mergeUnique(subjectFinal, actCum);
+                objectFinal  = mergeUnique(objectFinal, actCum);
+            }
+        }
+        // C) Act can optionally define top/bottom cum locations (same keys as positions)
+        const actTop = Array.isArray(act["top cum locations"]) ? act["top cum locations"] : [];
+        const actBot = Array.isArray(act["bottom cum locations"]) ? act["bottom cum locations"] : [];
+
+        if (sex.role === "equal") {
+            const combined = [...new Set([...actTop, ...actBot])];
+            subjectFinal = mergeUnique(subjectFinal, combined);
+            objectFinal  = mergeUnique(objectFinal, combined);
+        } else if (sex.role === "top") {
+            // subject is top-role in your current mapping
+            subjectFinal = mergeUnique(subjectFinal, actTop);
+            objectFinal  = mergeUnique(objectFinal, actBot);
+        } else if (sex.role === "bottom") {
+            subjectFinal = mergeUnique(subjectFinal, actBot);
+            objectFinal  = mergeUnique(objectFinal, actTop);
+        }
+    }
+
+    // --- 3) Write back ---
+    sex.subject.cumLocation = subjectFinal;
+    sex.object.cumLocation  = objectFinal;
 };
+
+setup.shouldShowCumPanel = function (sex) {
+  if (!sex || !sex.subject || !sex.object) return false;
+
+  // ✅ Example criteria options (pick what matches your system):
+  // A) Phase based:
+  if (sex.phase === "climax") return true;
+
+  // B) Or: arousal threshold:
+  // if ((sex.subject.arousal || 0) >= 900) return true;
+
+  // C) Or: you set a flag when a climax is triggered:
+  // if (sex.cumReady === true) return true;
+
+  return false;
+};
+
+setup.setSexPhase = function (sex, phase) {
+  if (!sex) return;
+  sex.phase = phase;
+};
+
+/* Optional: move to next phase */
+setup.advanceSexPhase = function (sex) {
+  if (!sex) return;
+  const idx = setup.sexPhases.indexOf(sex.phase);
+  if (idx === -1) { sex.phase = setup.sexPhases[0]; return; }
+  sex.phase = setup.sexPhases[Math.min(idx + 1, setup.sexPhases.length - 1)];
+};
+
+setup.checkForClimax = function (sex) {
+  if (!sex || !sex.subject || !sex.object) return false;
+
+  // Don’t re-trigger if already in climax/aftercare
+  if (sex.phase === "climax" || sex.phase === "aftercare") return false;
+
+  // Pick thresholds that match your balance
+  const THRESH = 1000;
+
+  const sA = (typeof sex.subject.arousal === "number") ? sex.subject.arousal : 0;
+  const oA = (typeof sex.object.arousal  === "number") ? sex.object.arousal  : 0;
+
+  // Trigger if either hits threshold
+  if (sA >= THRESH || oA >= THRESH) {
+    sex.phase = "climax";
+
+    // Optional: flag who is climaxing (useful for UI)
+    sex.climax = sex.climax || {};
+    sex.climax.subject = (sA >= THRESH);
+    sex.climax.object  = (oA >= THRESH);
+
+    // Optional: open cum selection immediately
+    sex.cumReady = true;
+
+    return true;
+  }
+
+  return false;
+};
+
+
+
 
 /*
  * Collects all furniture flags present in a room.
