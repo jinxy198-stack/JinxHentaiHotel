@@ -4,5 +4,8 @@
 You push the cheeks of _n.name's _n.assSize ass together around your $mc.penislength cock as you thrust between them.
 
 <<elseif $sex.act == "Rub Ass On Cock">>
-You roll your hips, rubbing _n.name's cock between your cheeks.
+<<= either(
+    "You roll your hips, rubbing _n.name's cock between your cheeks.",
+    "You clench your cheeks against _n.name's <<= _n.genitals.toLowerCase() >>, squeezing it."
+)>>
 <</if>>

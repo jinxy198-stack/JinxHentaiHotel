@@ -46,7 +46,10 @@
 	<<elseif $sex.position == "Reverse Cowgirl">>
 		you lower your ass onto _n.name's _n.genitals.	
 	<<elseif $sex.position == "Missionary">>
-		_n.name enters your ass in the missionary position.
+		<<= either(
+		"_n.name enters your ass in the missionary position.",
+		"_n.name grunts as $proset.they enter your ass."
+		)>>
 	<<elseif $sex.position == "Doggy">>
 		_n.name enters your ass in the doggystyle position.
 	<<elseif $sex.position== "Lean against wall">>
@@ -102,6 +105,11 @@
 	<<elseif $sex.position == "Doggy">>
 		<<= either(
 			"_n.name fucks your ass like a dog.",
+			"$proset.they begin to pick up a rhythm, thrusting into you over and over. Each time $proset.they do, your body is jostled forwards by the impact."
+		)>>
+	<<elseif $sex.position == "Lean against wall">>
+		<<= either(
+			"_n.name thrusts into you, slamming $proset.their hips against your butt as they pumped their dick in and out.",
 			"$proset.they begin to pick up a rhythm, thrusting into you over and over. Each time $proset.they do, your body is jostled forwards by the impact."
 		)>>
 	<</if>>

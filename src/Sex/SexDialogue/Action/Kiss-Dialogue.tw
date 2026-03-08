@@ -1,7 +1,6 @@
 :: Kiss-Dialogue [Dialogue nobr]
 <<set _npc = _n>>
 <<PronounsSet>>
-
 	<<= either(
 	"_n.name leans in and kisses you softly.",
 	"You peck _n.name on the lips.",

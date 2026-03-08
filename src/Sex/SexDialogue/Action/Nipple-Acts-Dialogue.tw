@@ -1,27 +1,27 @@
 :: Nipple-Acts-Dialogue [nobr]
 
 <<if $sex.act =="Tease Nipples">>
-    <<if $sex.roles == "top">>
+    <<if $sex.role == "top">>
     You tease _n.name's nipples
-    <<else>>
+    <<elseif $sex.role == "bottom">>
     _n.name teases your nipples
     <</if>>
 <<elseif $sex.act == "Kiss Nipple">>
-    <<if $sex.roles == "top">>
+    <<if $sex.role == "top">>
     You kiss _n.name's nipples
-    <<else>>
+    <<elseif $sex.role == "bottom">>
     _n.name kisses your nipples.
     <</if>>
 <<elseif $sex.act == "Lick Nipple">>
-    <<if $sex.roles == "top">>
+    <<if $sex.role == "top">>
     You lick _n.name's nipples.
-    <<else>>
+    <<elseif $sex.role == "bottom">>
     _n.name licks your nipples.
     <</if>>
 <<elseif $sex.act == "Suck Nipple">>
-    <<if $sex.roles == "top">>
+    <<if $sex.role == "top">>
     You suck _n.name's nipples
-    <<else>>
+    <<elseif $sex.role == "bottom">>
     _n.name sucks your nipples.
     <</if>>
 <</if>>

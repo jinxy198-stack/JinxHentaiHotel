@@ -6,9 +6,12 @@
     <<set _cumLoc = $sex.object.chosenCumLocation >>
 <</if>>
 
-/*<<if _cumLoc == "in ass">>
+<<if _cumLoc == "in ass">>
+_n.name shoots into your ass.
+<<elseif _cumLoc == "in air">> 
+You feel yourself release
 
-<</if>> */
+<</if>> 
 
 You cum
 
