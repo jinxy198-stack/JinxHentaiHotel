@@ -84,8 +84,6 @@
 
 
 
-
-
 	<div id="npcsex-actions-bar">
 
 		<button id="npcsex-toggle" aria-expanded="true">
@@ -97,6 +95,9 @@
 	    <div class="npcsex-content">
             <<CumLocationButtons>>
         </div>
+
+        
+
     <<else>>
 
 
@@ -173,13 +174,21 @@
                                             <<SexEncounterUI>>
 										<</replace>>
 
+                                    <<if $sex.phase=="climax">>
+                                        <<replace "#intro">>
+                                            <<include "Orgasm-Close-Dialogue">><br>
+                                            <<include "Orgasm-Close-Quote">>
+		                                <</replace>>
+                                    <<else>>
+                                        <<replace "#log">><</replace>>
+
 										    <<replace "#intro">>
                                                 <<include "ActDialogue">>
                                                 <<include "Act-Quote">>
 										    <</replace>>
                                             <<replace "#log">><</replace>>
 										    <<replace "#arousal-ui">><<ArousalUI>><</replace>>
-                                        
+                                    <</if>>    
 									<</button>>
                                 <</if>>    
 								</li>
@@ -241,6 +250,7 @@
 		<span class="muted">No cum locations available.</span>
 		<<return>>
 	<</if>>
+
 
 	<div class="cumloc-ui">
 		<b>Choose cum location (<<print _who>>):</b>

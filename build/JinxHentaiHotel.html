@@ -2658,7 +2658,12 @@ setup.orgasmQuotes = {
         "M-my ass... you filled me up so much!"
       ]
     },
-    "Frot Orgasm": {
+    "in pussy":{
+        Dominant:["Fuck, fill me up!"],
+        Submissive:["OOOHHHH!"],
+        Switch:["Oh Yeah!"],
+    },
+    "on penis": {
       Childlike:[
       "Have some Cumfetti! Happy Birthday! Hehehe!",
       "You need more colors! Here you go hehehe~!"
@@ -2667,11 +2672,27 @@ setup.orgasmQuotes = {
       Submissive: ["A-Ahhh...!"],
       Switch: ["A-Ahhh...!"]
     },
+    "on face": {
+      Dominant: ["Really made a mess of your face."],
+      Submissive: ["Really made a mess of your face."],
+      Switch: ["Really made a mess of your face."]
+    },
+    "on self": {
+      Dominant: ["Now you're nice and messy."],
+      Submissive: ["Now you're nice and messy."],
+      Switch: ["Now you're nice and messy."]
+    },
      /* DEFAULT FALLBACK */
     default: {
       Dominant: ["Damn, enjoyed yourself?"],
-      Submissive: ["Wow, that was nice."],
-      Switch: ["Phew..."]
+      Submissive: [
+        "Wow, that was nice.",
+        "That was awesome."
+      ],
+      Switch: [
+        "Phew...",
+        "That was awesome."
+      ]
     }
   }
 };
@@ -2679,7 +2700,7 @@ setup.orgasmQuotes = {
 /* ----- ORGASM CLOSE ----- */
 setup.orgasmcloseQuotes = {
   bottom: {
-    Anal: {  
+    "Take Cock In Ass": {  
       Dominant: [
       "I'm gonna cum in your ass!",
       "I'm gonna pump you full of my cum!",
@@ -2692,7 +2713,7 @@ setup.orgasmcloseQuotes = {
       ],
       Switch: ["I'm gonna cum in your ass!", "I'm cumming!","Aaaah!!"]
     },
-    Handjob: {
+    "Pump Shaft": {
       Childlike:["I'm ready for some facepaint!"],
       Dominant: ["Don't stop jerking it, I'm so close!"],
       Submissive: ["Faster, I'm almost there!"],
@@ -2703,7 +2724,7 @@ setup.orgasmcloseQuotes = {
       Submissive: ["I can feel it, you're close? I am as well."],
       Switch: ["I can feel it, you're close? I am as well."]
     }, 
-    Blowjob: {
+    "Suck Cock": {
       Childlike:[
       "Ima.. color your insides..! Nngh.!",
       "Here cums some trademark.. Oooey Goooey! Aaah..!",
@@ -2713,7 +2734,7 @@ setup.orgasmcloseQuotes = {
       Submissive: ["I'm gonna cum!"],
       Switch: ["I'm gonna cum!"]
     },
-    Footjob: {
+    "Stroke Shaft With Feet": {
       Dominant:["I'm gonna cum on your feet!"],
       Submissive: ["I'm gonna cum on your feet!"],
       Switch: ["I'm gonna cum on your feet!"]
@@ -2730,7 +2751,7 @@ setup.orgasmcloseQuotes = {
     "Mmh..! Getting close to the finish line...!",
     "I-im about to be a fruit gusher...!"
     ],
-    Anal: {  
+    "Fuck Ass": {  
       Dominant: [
         "Cum in my ass!",
         "Fill my ass with your spunk!"
@@ -2773,17 +2794,17 @@ setup.orgasmcloseQuotes = {
         "I'm so close"
       ]
     },
-    Blowjob: {
+    "Fuck Mouth": {
       Dominant:["MMPH"],
       Submissive: ["MMPH"],
       Switch: ["MMPH"]
     },
-    Cunnilingus: {
+    "Lick Pussy": {
       Dominant:["MMPH"],
       Submissive: ["MMPH"],
       Switch: ["MMPH"]
     },
-    Footjob: {
+    "Fuck Feet": {
       Dominant:["Cum on my feet!"],
       Submissive: ["Please, cum on my feet!"],
       Switch: ["Cum on my feet!"]
@@ -4551,7 +4572,6 @@ setup.sexacts = {
         "object arousal cap": 300,
         "act label substitution": ["subject", "transgender male", "Pull Hand To Front Hole"],
     },
-
     "Finger Pussy": /* bottom must have a vagina */
     {
         "positions": [ "Missionary", "Laid Across On Back", "Laid Across On Stomach", "Mating Press", "Sixty-Nine", "From Behind", "Doggy", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Sitting", "Standing From Behind", "Astride Lap", "Riding Face", "Oral Service",  "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
@@ -8340,6 +8360,15 @@ Work on fixing spawning NPC&#39;s
     Magic: Knows magic (might expand)
     Crude: Can Curse.
 
+*/
+
+
+/*
+He strokes your hair making you feel warm inside,
+He strokes you making you feel warm inside,
+He brushes your cheek with his hand.
+
+&quot;You&#39;re making me feel funny down there.&quot;
 */</tw-passagedata><tw-passagedata pid="57" name="Respond-Dialogue" tags="nobr Dialogue" position="1375,1325" size="100,100">/* You respond to certain actions. */
 &lt;br&gt;
 &lt;b&gt;&lt;&lt;=$mc.name&gt;&gt;: &lt;/b&gt;
@@ -9609,15 +9638,27 @@ Wanna have aftercare or end the session?
 
 &lt;&lt;switch _a&gt;&gt;
 	&lt;&lt;case &quot;Kiss&quot;&gt;&gt;&lt;&lt;include &quot;Kiss-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pet Ears&quot;&gt;&gt;&lt;&lt;include &quot;Pet-Ears-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Grope Breasts&quot;&gt;&gt;&lt;&lt;include &quot;Grope-Breast-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Tease Nipples&quot;&gt;&gt;&lt;&lt;include &quot;Nipple-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Tits&quot;&gt;&gt;&lt;&lt;include &quot;Boobjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Use Tits On Cock&quot;&gt;&gt;&lt;&lt;include &quot;Boobjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Hotdog&quot;&gt;&gt;&lt;&lt;include &quot;Hotdog-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Ass On Cock&quot;&gt;&gt;&lt;&lt;include &quot;Hotdog-Dialogue&quot;&gt;&gt;
+
+    &lt;&lt;case &quot;Press Face on Chest&quot;&gt;&gt;&lt;&lt;include &quot;Face-On-Chest-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Kiss Nipple&quot;&gt;&gt;&lt;&lt;include &quot;Nipple-Acts-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Nipple&quot;&gt;&gt;&lt;&lt;include &quot;Nipple-Acts-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Nipple&quot;&gt;&gt;&lt;&lt;include &quot;Nipple-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Face Back&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+
     &lt;&lt;case &quot;Rub Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Rub-Pussy-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Hand To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Vagina-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Finger Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Vagina-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Finger Pussy(Continue)&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Vagina-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stop Fingering&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+
     &lt;&lt;case &quot;Rub Clit&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Vagina-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Cunnilingus-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Clit&quot;&gt;&gt;&lt;&lt;include &quot;Cunnilingus-Dialogue&quot;&gt;&gt;
@@ -9629,32 +9670,50 @@ Wanna have aftercare or end the session?
     &lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;&lt;&lt;include &quot;Lick-Cock-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Cock Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Pussy Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;&lt;&lt;include &quot;Lick-Foot-Dialogue&quot;&gt;&gt;
+
     &lt;&lt;case &quot;Grip Cock&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Wrap Hand Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Grip Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Feet Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Feet To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Take Cock Between Lips&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Enter Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stroke Shaft With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stroke Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pump Shaft&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Fist&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Tease Tip&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Release Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tug Cock Free&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+
+    &lt;&lt;case &quot;Grip Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Feet Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stroke Shaft With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Fuck Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Cock Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Release Cock From Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tug Cock Free Of Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+
+    &lt;&lt;case &quot;Rub Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Feet To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stroke Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Tease Pussy With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Pussy Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Rub Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Move Feet Away From Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Away From Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+    
+    &lt;&lt;case &quot;Take Cock Between Lips&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Enter Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Cock&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Suck Each Other Off&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Deepthroat&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Out Of Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Mouth Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+
+    &lt;&lt;case &quot;Suck Each Other Off&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Eat Each Other Out&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck And Lick Each Other&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick and Suck Each Other&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
+
     &lt;&lt;case &quot;Tease Pussy With Cock&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Pussy-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Cocktease With Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Pussy-Dialogue&quot;&gt;&gt;
+
     &lt;&lt;case &quot;Enter Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Push Cock In&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Dialogue&quot;&gt;&gt;
@@ -9664,49 +9723,41 @@ Wanna have aftercare or end the session?
     &lt;&lt;case &quot;Squeeze Cock&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Rabbitfuck&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Deep Stroke&quot;&gt;&gt;&lt;&lt;include &quot;Vaginal-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Out&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Pull Off&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     
     &lt;&lt;case &quot;Frot&quot;&gt;&gt;&lt;&lt;include &quot;Frot-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Trib&quot;&gt;&gt;&lt;&lt;include &quot;Trib-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Tease Ass With Cock&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Cocktease With Ass&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Rub Butthole&quot;&gt;&gt;&lt;&lt;include &quot;Rub-Butt-Dialogue&quot;&gt;&gt;
+
     &lt;&lt;case &quot;Enter Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Push Cock In Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Finger Ass&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Ass-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Finger Ass(Continue)&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Ass-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Take Cock In Ass&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Hump Ass Back&quot;&gt;&gt;&lt;&lt;include &quot;Anal-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Fuck Tits&quot;&gt;&gt;&lt;&lt;include &quot;Boobjob-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Use Tits On Cock&quot;&gt;&gt;&lt;&lt;include &quot;Boobjob-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Hotdog&quot;&gt;&gt;&lt;&lt;include &quot;Hotdog-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Ass On Cock&quot;&gt;&gt;&lt;&lt;include &quot;Hotdog-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pet Ears&quot;&gt;&gt;&lt;&lt;include &quot;Pet-Ears-Dialogue&quot;&gt;&gt;
-    
-    &lt;&lt;case &quot;Pull Face Back&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Out Of Ass&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Ass Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+
+    &lt;&lt;case &quot;Finger Ass&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Ass-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Finger Ass(Continue)&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Ass-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Stop Fingering Ass&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Ass Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Out&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Off&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Release Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tug Cock Free&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Release Cock From Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tug Cock Free Of Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Move Feet Away From Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Away From Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Out Of Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Mouth Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Stop Fingering&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+    
+    
+    
+    
+    
+    
+    
 
 	&lt;&lt;case &quot;Caress&quot;&gt;&gt;&lt;&lt;include &quot;Caress-Dialogue&quot;&gt;&gt;
 	&lt;&lt;case &quot;Cuddle&quot;&gt;&gt;&lt;&lt;include &quot;Cuddle-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Grope Butt&quot;&gt;&gt;&lt;&lt;include &quot;Grope-Butt-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Foot&quot;&gt;&gt;&lt;&lt;include &quot;SuckFoot-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Touch Stomach&quot;&gt;&gt;&lt;&lt;include &quot;Feel-Stomach-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Press Face on Chest&quot;&gt;&gt;&lt;&lt;include &quot;Face-On-Chest-Dialogue&quot;&gt;&gt;
+    
     &lt;&lt;case &quot;Embrace&quot;&gt;&gt;&lt;&lt;include &quot;Embrace-Dialogue&quot;&gt;&gt;
 &lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="Anal-Dialogue" tags="nobr Dialogue" position="1200,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
@@ -10410,7 +10461,7 @@ You begin to slowly use your tongue to slowly work around _n.name&#39;s tip, mak
     &lt;&lt;else&gt;&gt;
     _n.name sucks your nipples.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="Orgasm-Dialogue" tags="nobr" position="975,1100" size="100,100">You are about to cum.</tw-passagedata><tw-passagedata pid="89" name="Pet-Ears-Dialogue" tags="nobr Dialogue" position="1200,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="Orgasm-Close-Dialogue" tags="nobr" position="975,1100" size="100,100">You are close to orgasm.</tw-passagedata><tw-passagedata pid="89" name="Pet-Ears-Dialogue" tags="nobr Dialogue" position="1200,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.role == &quot;top&quot;&gt;&gt;
     &lt;&lt;= either(
@@ -11880,24 +11931,25 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">/* When you or NPC are close to orgasm */
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
+&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
+&lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
+	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+
 &lt;&lt;set _pref   = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-&lt;&lt;set _action = $sex.action&gt;&gt;
+&lt;&lt;set _action = $sex.act&gt;&gt;
 &lt;&lt;set _pool   = null&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
 
-&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.orgasmcloseQuotes.bottom[_action][_personality] 
-	|| setup.orgasmcloseQuotes.bottom[_action][_pref]
+&lt;&lt;if _mode == &quot;bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.orgasmcloseQuotes.bottom[_action]
+	&amp;&amp; setup.orgasmcloseQuotes.bottom[_action][_personality] 
+	|| setup.orgasmcloseQuotes.bottom[_action]
+	&amp;&amp; setup.orgasmcloseQuotes.bottom[_action][_pref]
 	|| setup.orgasmcloseQuotes.bottom.default&gt;&gt;
 
-&lt;&lt;else&gt;&gt;
+&lt;&lt;elseif _mode ==&quot;top&quot;&gt;&gt;
 	&lt;&lt;set _pool = setup.orgasmcloseQuotes.top[_personality]
 	|| setup.orgasmcloseQuotes.top[_action][_pref]
 	|| setup.orgasmcloseQuotes.top.default&gt;&gt;
@@ -14618,8 +14670,6 @@ Create your character to begin.
 
 
 
-
-
 	&lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 
 		&lt;button id=&quot;npcsex-toggle&quot; aria-expanded=&quot;true&quot;&gt;
@@ -14631,6 +14681,9 @@ Create your character to begin.
 	    &lt;div class=&quot;npcsex-content&quot;&gt;
             &lt;&lt;CumLocationButtons&gt;&gt;
         &lt;/div&gt;
+
+        
+
     &lt;&lt;else&gt;&gt;
 
 
@@ -14707,13 +14760,21 @@ Create your character to begin.
                                             &lt;&lt;SexEncounterUI&gt;&gt;
 										&lt;&lt;/replace&gt;&gt;
 
+                                    &lt;&lt;if $sex.phase==&quot;climax&quot;&gt;&gt;
+                                        &lt;&lt;replace &quot;#intro&quot;&gt;&gt;
+                                            &lt;&lt;include &quot;Orgasm-Close-Dialogue&quot;&gt;&gt;&lt;br&gt;
+                                            &lt;&lt;include &quot;Orgasm-Close-Quote&quot;&gt;&gt;
+		                                &lt;&lt;/replace&gt;&gt;
+                                    &lt;&lt;else&gt;&gt;
+                                        &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+
 										    &lt;&lt;replace &quot;#intro&quot;&gt;&gt;
                                                 &lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
                                                 &lt;&lt;include &quot;Act-Quote&quot;&gt;&gt;
 										    &lt;&lt;/replace&gt;&gt;
                                             &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 										    &lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
-                                        
+                                    &lt;&lt;/if&gt;&gt;    
 									&lt;&lt;/button&gt;&gt;
                                 &lt;&lt;/if&gt;&gt;    
 								&lt;/li&gt;
@@ -14775,6 +14836,7 @@ Create your character to begin.
 		&lt;span class=&quot;muted&quot;&gt;No cum locations available.&lt;/span&gt;
 		&lt;&lt;return&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
+
 
 	&lt;div class=&quot;cumloc-ui&quot;&gt;
 		&lt;b&gt;Choose cum location (&lt;&lt;print _who&gt;&gt;):&lt;/b&gt;
