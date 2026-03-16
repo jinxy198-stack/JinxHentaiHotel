@@ -55,7 +55,7 @@
 	<!-- ===================== -->
 	<div id="UI-Stats">
 		<h3><u>Info</u></h3>
-
+        
 		<b>Current Position:</b> <<print $sex.position>><br>
 		<b>Previous Position:</b> <<print $sex.previousPosition || "None">><br>
 		<b>Role:</b> <<print $sex.role>><br>
@@ -76,8 +76,9 @@
 			<b>Penetration:</b>
 			<<print $sex.penetration.subjectPart>> → <<print $sex.penetration.objectPart>><br>
 		<</if>>
+        
 	</div>
-
+    
 	<!-- ===================== -->
 	<!-- ACTION BAR -->
 	<!-- ===================== -->
@@ -146,6 +147,57 @@
 			<<set _acts = setup.getAvailableSexActs($sex) || []>>
 
 			<h3>Available Acts</h3>
+            <<if $sex.phase == "aftercare">>
+                <ul class="sex-list">
+					<<for _i = 0; _i < _acts.length; _i++>>
+						<<set _a = _acts[_i]>>
+                        <<set _actDef = setup.sexacts[_a]>>
+
+						
+							<<capture _a>>
+								<li>
+                                <<if !setup.actBlockedByTraits($sex, _actDef)>>
+									<<button _a>>
+										<<run
+											const act = setup.sexacts[_a];
+											setup.applySexAct($sex, _a);
+											setup.applyArousalFromAct($sex, act);
+											setup.updateBindings();
+											setup.updateCumLocations($sex);
+										>>
+										<<replace "#sexUI">>
+                                            <<SexEncounterUI>>
+										<</replace>>
+
+                                    <<if $sex.phase=="climax">>
+                                        <<replace "#intro">>
+                                            <<include "Orgasm-Close-Dialogue">><br>
+                                            <<include "Orgasm-Close-Quote">>
+		                                <</replace>>
+                                    <<else>>
+                                        <<replace "#log">><</replace>>
+
+										<<replace "#intro">>
+                                            <<include "ActDialogue">>
+                                            <<include "Act-Quote">>
+										<</replace>>
+                                        <<replace "#log">><</replace>>
+										<<replace "#arousal-ui">><<ArousalUI>><</replace>>
+                                    <</if>>    
+									<</button>>
+                                <</if>>    
+								</li>
+							<</capture>>
+						
+					<</for>>    
+                    <<button "End Session">>
+			        <<set $lastNpc = $ui.npc>>      <!-- remember who you were with -->
+			        <<set $sex = { stage: "foreplay", log: [] }>>  <!-- optional reset -->
+                    <<set $seenActions = {}>>
+			        <<goto "Your Room">>              
+		            <</button>>
+                </ul>
+            <<else>>
 			    <<if _acts.length === 0>>
 				<i>None (for this position/phase/parts).</i>
 			    <<else>>
@@ -182,12 +234,12 @@
                                     <<else>>
                                         <<replace "#log">><</replace>>
 
-										    <<replace "#intro">>
-                                                <<include "ActDialogue">>
-                                                <<include "Act-Quote">>
-										    <</replace>>
-                                            <<replace "#log">><</replace>>
-										    <<replace "#arousal-ui">><<ArousalUI>><</replace>>
+										<<replace "#intro">>
+                                            <<include "ActDialogue">>
+                                            <<include "Act-Quote">>
+										<</replace>>
+                                        <<replace "#log">><</replace>>
+										<<replace "#arousal-ui">><<ArousalUI>><</replace>>
                                     <</if>>    
 									<</button>>
                                 <</if>>    
@@ -197,9 +249,13 @@
 					<</for>>
 				</ul>
 			    <</if>>
+
+            <</if>>
+
 		</div>
         <</if>>
 
+        
 
 	</div>
   
@@ -221,10 +277,11 @@
   <<if $sex.subject.arousal >= 1000>>
     <<set $orgasm.subject = true>>
   <</if>>
-
-    <br>$sex.subject.cumLocation <br>
-    $sex.object.cumLocation <br>
-    
+    <br>
+    <<if $devMode>>
+        $sex.subject.cumLocation <br>
+        $sex.object.cumLocation <br>
+    <</if>>
 
 </div>
 <</widget>>
@@ -267,6 +324,8 @@
 						/* Optional: also store on actor for convenience */
 						<<set $sex[_who].chosenCumLocation = _loc>>
 
+                        <<set $sex.phase = "aftercare">>
+
 						/* Refresh UI area if you have one */
 						<<replace "#intro">>
                             <<include "OrgasmDialogue">><br>
@@ -274,6 +333,18 @@
 						<</replace>>
                         
                         <<replace "#log">><</replace>>
+
+                        <<replace "#sexUI">>
+                         <<SexEncounterUI>> 
+                        <</replace>>
+                        /*sets new phase? */
+                        <<run
+							const act = setup.sexacts[_a];
+							setup.applySexAct($sex, _a);
+							setup.applyArousalFromAct($sex, act);
+							setup.updateBindings();
+							setup.updateCumLocations($sex);
+						>>
 					<</button>>
 				</li>
 			<</capture>>

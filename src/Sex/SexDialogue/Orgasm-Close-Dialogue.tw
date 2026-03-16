@@ -1,0 +1,7 @@
+:: Orgasm-Close-Dialogue [nobr]
+
+<<if $sex.climax.subject >>
+You are close to orgasm.
+<<elseif $sex.climax.object>>
+_n.name is close to orgasm.
+<</if>>

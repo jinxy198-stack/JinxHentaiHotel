@@ -1,6 +1,5 @@
 :: AftercareBlock [nobr] {"position":"1800,925","size":"100,100"}
-	<<replace "#actions">>
-
+	
 			<<button "Cuddle">>
 				<<set $sex.stage = "Aftercare">>
 				<<set $sex.action = "Cuddle">>
@@ -14,7 +13,6 @@
             <<set $seenActions = {}>>
 			<<goto "Your Room">>              
 		<</button>>
-	<</replace>>
 
 
 

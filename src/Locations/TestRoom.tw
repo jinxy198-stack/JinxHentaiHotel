@@ -1,0 +1,18 @@
+:: TestRoom [nobr]
+
+<<set $gamelocation to "Test Room">>
+<<unset $spawnPools>>
+
+
+This room is for testing features of the game, it should no be visible to the average player.
+
+<div class="room-hotel">
+
+<<SpawnRandomNPCs 20>>
+
+<<include "NPC-List">>
+
+</div>
+
+
+

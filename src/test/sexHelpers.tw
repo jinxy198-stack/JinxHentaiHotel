@@ -204,6 +204,7 @@ setup.advanceSexPhase = function (sex) {
   sex.phase = setup.sexPhases[Math.min(idx + 1, setup.sexPhases.length - 1)];
 };
 
+/*checks if a character reached climax */
 setup.checkForClimax = function (sex) {
   if (!sex || !sex.subject || !sex.object) return false;
 
@@ -434,6 +435,13 @@ setup.getAvailableSexActs = function (sex) {
                 );
             }
 
+            // for aftercare
+            if (types.includes("aftercare")) {
+                return (
+                    sex.phase === "aftercare"
+                );
+            }
+
             const allowed = setup.getAllowedActTypesForPhase(sex.phase);
             if (!types.some(t => allowed.includes(t))) return false;
 
@@ -553,6 +561,11 @@ setup.applySexAct = function (sex, actKey) {
         setup.afterSexStateChange(sex);
         return;
     }
+    if (types.includes("climax")) {
+        sex.phase = "aftercare";
+        setup.afterSexStateChange(sex);
+        return;
+    }
 
     setup.updateBindings();
 };
@@ -573,6 +586,8 @@ setup.getAllowedActTypesForPhase = function (phase) {
             return ["tease", "penetrate"];
         case "continue":
             return ["continue", "end"];
+        case "aftercare":
+            return ["aftercare"]    
         default:
             return ["tease"];
     }

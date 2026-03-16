@@ -21,7 +21,9 @@
 	<<elseif $sex.position== "Prone Bone">>
 		You enter _n.name's ass in the prone bone position.
 	<<elseif $sex.position== "Spooning">>
-		You enter _n.name's ass in the spooning position.	
+		You enter _n.name's ass in the spooning position.
+	<<else>>
+		You enter their ass.
 	<</if>>
 <<elseif $sex.act == "Push Cock In Ass">>
 	<<if $sex.position == "Cowgirl">>

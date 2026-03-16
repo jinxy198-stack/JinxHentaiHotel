@@ -12,7 +12,18 @@
 <<set _pool   = null>>
 <<set _personality = _n.personality>>
 
-<<if _mode == "bottom">>
+
+
+<<if $sex.climax.subject && $sex.climax.object>>
+	<<set _pool = ["Let's cum together!"]>>
+<<elseif $sex.climax.subject>>
+	<<set _pool = setup.orgasmcloseQuotes.top[_personality]
+	|| setup.orgasmcloseQuotes.top[_action]
+	&& setup.orgasmcloseQuotes.top[_action][_pref]
+	|| setup.orgasmcloseQuotes.top[_action]
+	|| setup.orgasmcloseQuotes.top.default>>
+
+<<elseif $sex.climax.object>>
 	<<set _pool = setup.orgasmcloseQuotes.bottom[_action]
 	|| setup.orgasmcloseQuotes.bottom[_action]
 	&& setup.orgasmcloseQuotes.bottom[_action][_personality] 
@@ -20,17 +31,10 @@
 	&& setup.orgasmcloseQuotes.bottom[_action][_pref]
 	|| setup.orgasmcloseQuotes.bottom.default>>
 
-<<elseif _mode =="top">>
-	<<set _pool = setup.orgasmcloseQuotes.top[_personality]
-	|| setup.orgasmcloseQuotes.top[_action]
-	|| setup.orgasmcloseQuotes.top[_action]
-	&& setup.orgasmcloseQuotes.top[_action][_pref]
-	|| setup.orgasmcloseQuotes.top.default>>
-
 <</if>>
 
 <<if _pool && _pool.length>>
-	<<= either(..._pool)>>
+	"<<= either(..._pool)>>"
 <<else>>
 	[Error] No Orgasm Close quote pool found.
 	(mode=<<=_mode>>, action=<<=_action>>, pref=<<=_pref>>)

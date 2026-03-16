@@ -22,7 +22,7 @@
 		You moan and groan as you shoot your load into _n.name's _n.genitaltype _n.genitals.
 	<<elseif $sex.action == "Blowjob Orgasm">>
 		<<= either(	
-			"$proset.their tongue swirls around your head some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.",
+			"$proset.their tongue swirls around your <<= $mc.genital.toLowerCase>> some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.",
 			"With a cry of pleasure, you empty your balls into _n.name's hungry mouth."
 		)>>
 	<<elseif $sex.action == "Handjob Orgasm">>

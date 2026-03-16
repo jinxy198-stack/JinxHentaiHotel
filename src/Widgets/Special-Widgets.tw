@@ -64,18 +64,18 @@
 	<<set _p = $npcPools || {}>>
 
 	/* Localized fallback pools */
-	<<set _names       = _p.givenNames    || ["Alex", "Taylor", "Morgan", "Riley"]>>
-	<<set _surnames    = _p.surnames      || ["Smith", "Jones", "Brown", "Lee"]>>
+	<<set _names       = _p.givenNames    || setup.names>>
+	<<set _surnames    = _p.surnames      || setup.surnames>>
 	<<set _genders     = _p.genders       || ["Male", "Female"]>>
-	<<set _eyesPool    = _p.eyes          || ["Brown", "Blue", "Green", "Hazel"]>>
-	<<set _hairPool    = _p.hair          || ["Short", "Medium", "Long", "Curly"]>>
-	<<set _hairColor   = _p.haircolor     || ["Black", "Brown", "Blonde", "Red"]>>
+	<<set _eyesPool    = _p.eyes          || setup.eyecolor>>
+	<<set _hairPool    = _p.hair          || setup.hairstyle>>
+	<<set _hairColor   = _p.haircolor     || setup.haircolor>>
 	<<set _facePool    = _p.facefeatures  || ["Scar", "Freckles", "Mole"]>>
-	<<set _skinColor   = _p.skincolor     || ["Pale", "Tan", "Brown", "Dark"]>>
+	<<set _skinColor   = _p.skincolor     || setup.skincolor>>
 	<<set _skinFeat    = _p.skinfeatures  || ["Scars", "Freckles"]>>
 	<<set _heightPool  = _p.bodyheight    || ["Very Short", "Short" ,"Average", "Tall", "Very Tall"]>>
-	<<set _physiquePool  = _p.physique    || ["Skinny", "Lean", "Wiry", "Ripped", "Thin", "Toned", "Lithe","muscular","Plump", "Thick-bodied", "Brawny", "Ample","Round", "Full figured", "Well-padded", "Stocky"]>>
-	<<set _persPool    = _p.personalities || ["Kind", "Tough", "Calm", "Jolly", "Timid", "Brave", "Sassy", "Mean"]>>
+	<<set _physiquePool  = _p.physique    || setup.physique>>
+	<<set _persPool    = _p.personalities || setup.pick(setup.personalities)>>
 	<<set _assPool	   = _p.assSize		  || ["Flat", "Tiny", "Small", "Round", "Large", "Huge"]>>
 	<<set _sexuPool    = _p.sexu          || ["Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"]>>
 	<<set _speciesPool = _p.species       || ["Human", "Anthro"]>>
@@ -87,10 +87,10 @@
 	<<set _npc.nickname = "">>
 	<<set _npc.surname  = setup.pick(_surnames)>>
 	
-    <<set _npc.species = setup.pick(_speciesPool)>>
+    <<set _npc.species = setup.pick(setup.species)>>
     
 	/* Gender, pronouns, genitals */
-	<<set _npc.gender = setup.pick(_genders)>>
+	<<set _npc.gender = setup.pick(setup.genders)>>
 	<<if _npc.gender is "Male">>
 		<<set _npc.pronouns   = "He/Him">>
 		<<set _npc.genitals   = "Penis">>
@@ -126,19 +126,19 @@
 	/**********************
 	    AGE & BODY
 	**********************/
-	<<set _npc.age = setup.randint(6, 40)>>
+	<<set _npc.age = setup.randint(6, 50)>>
 	<<set _npc.heterochromia = either(true,false)>>
 
 	<<if _npc.heterochromia is false>>
-		<<set _npc.eyes		= setup.pick(_eyesPool)>>
+		<<set _npc.eyes		= setup.pick(setup.eyecolor)>>
 	<<else>>	
 		<<set 
-            _eyesleft = setup.pick(_eyesPool),
-            _eyesright = setup.pick(_eyesPool),
+            _eyesleft = setup.pick(setup.eyecolor),
+            _eyesright = setup.pick(setup.eyecolor),
             _npc.eyes to _eyesleft + " and " + _eyesright >>
 	<</if>>
-	<<set _npc.hair		= setup.pick(_hairPool)>>
-	<<set _npc.haircolor	 = setup.pick(_hairColor)>>
+	<<set _npc.hair		= setup.pick(setup.hairstyle)>>
+	<<set _npc.haircolor	 = setup.pick(setup.haircolor)>>
 	<<set _npc.facefeatures 	= setup.pick(_facePool)>>
 	<<set _npc.skincolor    = setup.pick(_skinColor)>>
 	<<set _npc.skinfeatures 	= setup.pick(_skinFeat)>>
@@ -371,7 +371,6 @@
 
 
 
-
 <<widget "make-petname">>
 
 <<if _npc.pronouns is "He/Him">>
@@ -482,13 +481,12 @@
 	<<if !_char or !_char.species or String(_char.species).toLowerCase() isnot "anthro">>
 		/* Not anthro: do nothing */
 	<<else>>
-	<<set _group = (_char.anthro and _char.anthro.group) ? _char.anthro.group : "Furry">>
-	<<set _sub   = (_char.anthro and _char.anthro.subtype) ? String(_char.anthro.subtype).toLowerCase() : "">>
+		<<set _group = (_char.anthro and _char.anthro.group) ? _char.anthro.group : "Furry">>
+		<<set _sub   = (_char.anthro and _char.anthro.subtype) ? String(_char.anthro.subtype).toLowerCase() : "">>
 
-	<<set _hasPenis = !!(_char.body && _char.body.Penis)>>
+		<<set _hasPenis = !!(_char.body && _char.body.Penis)>>
 
 	<<switch _group>>
-
 		<<case "Furry">>
 			<<set _char.body.Bodymaterial to "Fur">>
 			<<set _char.body.Feet         to "Paws">>
@@ -637,7 +635,9 @@
 			<<set _char.body.Feet         to "Talons">>
 			<<set _char.body.Face         to "Beak">>
 			<<set _char.body.Tail         to "Tailfeathers">>
+			<<set _char.body.Arms         to "Winged Arms">>
 			<<run delete _char.body.Ears>>
+			<<run delete _char.body.Lips>>
 
 			<<switch _sub>>
 				<<case "duck">>
@@ -672,5 +672,9 @@
 		<<default>>
 			/* other groups: no automatic override */
 	<</switch>>
+	/* Fallback in case genitaltype has not been created for males */
+		<<if _hasPenis and !_char.genitaltype>>
+			<<set _char.genitaltype = setup.pick(setup.penistype)>>
+		<</if>>
 	<</if>>
 <</widget>>

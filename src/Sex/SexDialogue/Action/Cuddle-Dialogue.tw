@@ -3,11 +3,11 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if $sex.role=="top">>
+<<if $sex.role=="bottom">>
 	<<= either(
  	"_n.name wrap their arms around you. You lay your head on their chest."
     )>>
-<<else>>
+<<elseif $sex.role == "top">>
 	<<= either(
     "You wrap your arms around _n.name. They slink their face into your chest.",
     "You both hug, _n.name snuggling up to you."

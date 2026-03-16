@@ -15,6 +15,8 @@ Create your character to begin.
 <span> Updated as of 2/20/2026 </span>
 
 <<if $devMode>>
+<<button [[Test|TestRoom]]>><<LittleBoy>><</button>> 
+
 <<button [[Test as a Shota|Lounge]]>><<LittleBoy>><</button>> 
 <<button [[Test as a Loli|Lounge]]>><<LittleGirl>><</button>> 
 <<button [[Test as a Teen Boy|Lounge]]>><<TeenBoy>><</button>> 
@@ -22,10 +24,6 @@ Create your character to begin.
 <<button [[Test as a Adult Woman|Lounge]]>><<AdultWoman>><</button>>  
 <<button [[Test as a Adult Man|Lounge]]>><<AdultMan>><</button>> 
 
- 
-<<button [[Test|Your Room]]>><<PreSet>><</button>> 
-
-<<button [[Testroom|Test-Sex-Encounter]]>><<PreSet>><</button>> 
 
 <</if>>
 </div>
