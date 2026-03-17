@@ -444,12 +444,12 @@ setup.sexacts = {
         "subject dialogue tags": ["kissing"],
         "object dialogue tags": ["kissing"],
     },
-    "Pet Ears": /* Either you or they pet ears. */
+    "Pet Ears": /* Either you or they pet ears. */ 
     {
         "positions": [ "Standing", "Sitting","Doggy", "Standing From Behind","Spooning"],
+        /* Anthro ears? */
         "action type": ["tease"],
-        "subject parts": ["Hands"],
-        "object parts": ["Ears"],
+        
 
         "top parts": ["Hand"],
         "bottom parts": ["Ears"],
@@ -1021,18 +1021,38 @@ setup.sexacts = {
     {
         "positions": [ "Sixty-Nine", "Kneeling", "Kneeling Over", "Standing", "Astride Lap", "Oral Service", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Riding Face", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
         "action type": ["continue"],
-        "subject parts": ["Hand"],
-        "object parts": ["Penis"],
+        "top parts": ["Hand"],
+        "bottom parts": ["Penis"],
         "top cum locations": [],
         "bottom cum locations": ["on hand"],
         "masturbation": true,
         "take virginity": [],
         "subject arousal": 10,
-        "object arousal": 50,
+        "object arousal": 30,
         "subject arousal cap": 300,
-        "subject dialogue tags": ["giving footjob"],
-        "object dialogue tags": ["receiving footjob"],
+        "subject dialogue tags": ["giving handjob"],
+        "object dialogue tags": ["receiving handjob"],
     },
+
+    "Play with Foreskin": { /* Right now only works if the bottom is uncut? */
+        "positions": [ "Sixty-Nine", "Kneeling", "Kneeling Over", "Standing", "Astride Lap", "Oral Service", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Riding Face", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
+        "action type": ["continue"],
+        "top parts": ["Hand"],
+        "bottom parts": ["Penis"],
+        "top genitaltype": [],
+        "bottom genitaltype": ["Uncut"],
+        "top cum locations": [],
+        "bottom cum locations": ["on hand"],
+        "masturbation": true,
+        "take virginity": [],
+        "subject arousal": 10,
+        "object arousal": 30,
+        "subject arousal cap": 300,
+        "subject dialogue tags": ["giving handjob"],
+        "object dialogue tags": ["receiving handjob"]
+    },
+
+
     "Release Cock":
     {
         "positions": [],

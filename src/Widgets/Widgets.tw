@@ -76,8 +76,31 @@
 			<b>Penetration:</b>
 			<<print $sex.penetration.subjectPart>> → <<print $sex.penetration.objectPart>><br>
 		<</if>>
+
         
 	</div>
+    <<if $devMode>>
+        /* Debug checking to confirm things exist */
+        MC parts: <<print $mc.bodyparts.join(", ")>><br>
+        NPC parts: <<print _n.bodyparts.join(", ")>><br> 
+        Sex Subject: <<print $sex.subject.name>><br>
+        Sex Object: <<print $sex.object.name>><br>
+        SubjectGenital: <<print $sex.subject.genitaltype>><br>
+        ObjectGenital: <<print $sex.object.genitaltype>><br>
+        Sex Top: <br>
+        Sex Bottom: <br>
+        topGenital: <br>
+        bottomGenital: <br>
+        <<button "Inspect">>
+	        <<WithNPC _n>>
+	        <<run Dialog
+		        .create("NPC: " + $ui.npc.name)
+		        .wikiPassage("UI-NPC-Inspect")
+		        .open()
+	        >>
+        <</button>>
+        <br> 
+        <</if>>
     
 	<!-- ===================== -->
 	<!-- ACTION BAR -->

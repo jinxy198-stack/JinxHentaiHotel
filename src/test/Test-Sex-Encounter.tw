@@ -61,20 +61,7 @@
 <<set $sex.furnitureFlags  = $room.furnitureFlags>>
 
 
-/* Debug checking to confirm things exist */
-/*MC parts: <<print $mc.bodyparts.join(", ")>><br>
-NPC parts: <<print _n.bodyparts.join(", ")>><br> 
-Sex Subject: <<print $sex.subject.name>><br>
-Sex Object: <<print $sex.object.name>><br>
-<<button "Inspect">>
-	<<WithNPC _n>>
-	<<run Dialog
-		.create("NPC: " + $ui.npc.name)
-		.wikiPassage("UI-NPC-Inspect")
-		.open()
-	>>
-<</button>>
-<br> */
+
 
 
 
@@ -83,16 +70,6 @@ Sex Object: <<print $sex.object.name>><br>
 <<set $mc.arousal = $mc.arousal or 0>>
 
 
-
-
-/*
-<<button "End Session">>
-	<<set $lastNpc = _n>>      <!-- remember who you were with -->
-	<<set $sex = null >>  <!-- optional reset -->
-	<<goto "Your Room">> <!-- or "Your Room" or whatever -->
-<</button>>
-</div> 
-*/
 
 
 	<div id= "sex-container">

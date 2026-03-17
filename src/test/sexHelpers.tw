@@ -477,18 +477,43 @@ setup.actorHasAnyParts = function(actor, parts) {
 setup.actMeetsPartRequirements = function(sex, act) {
   const { top, bottom } = setup.getTopBottomActors(sex);
 
-  // New preferred schema
+  // New preferred schema: role-stable parts
   if (act["top parts"] || act["bottom parts"]) {
     if (!setup.actorHasAnyParts(top, act["top parts"])) return false;
     if (!setup.actorHasAnyParts(bottom, act["bottom parts"])) return false;
-    return true;
+  } else {
+    // Backward compatible schema
+    if (!setup.actMeetsParts(sex, act)) return false;
   }
 
-  // Backward compatible schema (current)
-  if (!setup.actMeetsParts(sex, act)) return false;
+  // New preferred schema: role-stable genitaltype
+  if (act["top genitaltype"] || act["bottom genitaltype"]) {
+    if (!setup.actorHasGenitalType(subject, act["top genitaltype"])) return false;
+    if (!setup.actorHasGenitalType(object, act["bottom genitaltype"])) return false;
+  }
 
   return true;
 };
+
+setup.actorHasGenitalType = function(actor, genitaltype) {
+  if (!actor || !actor.genitaltype) return false;
+  if (!genitaltype || genitaltype.length === 0) return true;
+
+  return genitaltype.some(gt => setup.genitaltypeMatches(actor, gt));
+};
+
+setup.genitaltypeMatches = function(actor, required) {
+  if (!actor || !actor.genitaltype || !required) return false;
+
+  const req = required.toLowerCase();
+
+  return actor.genitaltype.some(gt =>
+    String(gt).toLowerCase() === req
+  );
+};
+
+
+
 
 // In your current architecture, $sex.role is the MC's role.
 // So the MC is:
