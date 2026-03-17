@@ -4367,7 +4367,6 @@ setup.sexacts = {
         /* Anthro ears? */
         "action type": ["tease"],
         
-
         "top parts": ["Hand"],
         "bottom parts": ["Ears"],
 
@@ -6863,24 +6862,26 @@ Note: Dom does not always mean Top and Sub does not always mean Bottom.</tw-pass
 &lt;&lt;/for&gt;&gt;
 &lt;/ul&gt;</tw-passagedata><tw-passagedata pid="9" name="Tutorial" tags="" position="25,275" size="100,100">You and the person you brought to your room will engage in a session of sex. How you engage in it is up to you.
 
-You can choose who will be the bottom and who will be the top. Note that will not mean that you will determine who is the dom and who is the sub, that will depend on the personality. Certain actions will be locked depending on your role, you cannot be the top and suck off the other&#39;s dick.
-For example, you can have a submissive feminine twink be the one to fuck you or you can have a big muscular dom be fucked by you.
+You and your partner&#39;s arousal will be measured by two different meters, from 0 to 1000. Each action builds up both meters by a certain amount until one or the other reaches its max.
 
-The actions selected is not determining what you are doing but rather what is going to happen. (Remember, consent is a two way street)
-You will be give the option to choose what location in the room you want the two of you to be in and you can choose what position to be in. Certain positions are only availble depending on the location.
-(You can&#39;t just stand on your bed!)
 
-Sex will be broken up into seperate states: Foreplay, Intercourse, Orgasm, and Aftercare.
+Every act, every position, and every location will be determined by you (Even what the NPC will do).
+Certain actions are only availabled based on the type of physical features on you or the NPC, the position, the location, and the role you two are in.
 
-The progress bar is your arousal meter, not for you specifcally but both you and your partner.
-Doing certain actions will make it go up until it reaches 100. Once you reach 100 you will be sent to the Orgasm stage and locked out of actions in the Foreplay and Intercourse stage.
+You can select a location in the room that you and the npc can move to. The current position will change to fit the new location and new positions or actions will be available based on it. 
+As with location, available actions will change based on position. 
 
-Foreplay is what you start with, certain actions are restricted until you move on to the next stage. Think of it like this &quot;How are you going to have anal sex if you aren&#39;t hard enough?&quot;
-Intercourse is the stage where the meat of the game is. The actions there will build up much more than in Foreplay.
-Orgasm is the part where your control is limited. Depending on what you are doing, you can choose where to have your orgasm or the npc. Note that to save on complexity it will be treated as a simultenious orgasm between you and the NPC.
-Following the Orgasm you are automatically put into the Aftercare stage. It is an optional stage where you can choose to enjoy the afterglow with the NPC or just finish the sex.
+Actions are broken up into several phases: Tease, Penetration, Continue, End, Climax, and Aftercare.
 
-Only when you reach the Aftercare stage will you be allowed to end the session.</tw-passagedata><tw-passagedata pid="10" name="CC-Age" tags="creation-page" position="1175,100" size="100,100">&lt;h1&gt;Indicate your Age&lt;/h1&gt;\
+Tease is the initial phase you start with, involving some small actions that really don&#39;t do much but boost arousal. 
+Penatrate is the more interesting one. The action involves a certain body part coming into contact with another bodypart. This will open several special actions that will only be available based on what body parts are involved. This is what leads into the Continue phase.
+Continue is simply actions that only exist when you are either in the Penetrate phase or already in the Continue phase. You are indefinetly put into a loop of selecting Continue actions until you either reach the Climax phase, or select a End phase button.
+End is what lets you stop the Continue or Penetrate action you are currently doing so you can select something different. It will not boost any arousal and will take you back to the Tease Phase.
+Climax only occurs when one of the arousals reach its max. It overrides any current action and you are forced to choose where to cum or where the NPC will cum.
+    The locations to cum will depend on what position you are in and what action you are doing.
+Aftercare is the phase that comes right after selecting where you want to cum. In this phase you can either end the session or you and your partner can enjoy the afterglow together.     
+
+Note that some actions will only build up arousal a certain amount before you are blocked from using that action to build up any more arousal for the rest of the session. (So you cannot pet someone&#39;s ears from begginning to end before they cum.)</tw-passagedata><tw-passagedata pid="10" name="CC-Age" tags="creation-page" position="1175,100" size="100,100">&lt;h1&gt;Indicate your Age&lt;/h1&gt;\
 
 //What is your age?//
 *  Age: &lt;&lt;numberbox &quot;_agenumber&quot; 18 autofocus&gt;&gt; 
@@ -9794,6 +9795,7 @@ Wanna have aftercare or end the session?
     &lt;&lt;case &quot;Pump Shaft&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Fist&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Tease Tip&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Play with Foreskin&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Release Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Tug Cock Free&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
 
@@ -10541,6 +10543,11 @@ You pull their hand to your pussy to finger you.
 	_n.name jerks you off.
 &lt;&lt;elseif $sex.act ==&quot;Tease Tip&quot;&gt;&gt;
 	You tease the tip.
+&lt;&lt;elseif $sex.act ==&quot;Tease Tip&quot;&gt;&gt;
+	&lt;&lt;if &gt;&gt;
+	&lt;&lt;else&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="Hotdog-Dialogue" tags="nobr" position="600,1100" size="100,100">&lt;&lt;if  $sex.act == &quot;Hotdog&quot;&gt;&gt;
 You push the cheeks of _n.name&#39;s _n.assSize ass together around your $mc.penislength cock as you thrust between them.
 
@@ -11234,37 +11241,37 @@ _n.name is straddling your chest.
     &lt;&lt;case &quot;Kiss Nipple&quot;&gt;&gt;_b&lt;&lt;include &quot;Kiss-Nipple-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Nipple&quot;&gt;&gt;_b&lt;&lt;include &quot;Lick-Nipple-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Nipple&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Nipple-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Hand To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
+    /*&lt;&lt;case &quot;Rub Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
+    /*&lt;&lt;case &quot;Pull Hand To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
     &lt;&lt;case &quot;Finger Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Finger-Pussy-Quote&quot;&gt;&gt;
     /* &lt;&lt;case &quot;Rub Clit&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt; */
     &lt;&lt;case &quot;Lick Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Cunnilingus-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Suck Clit&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Ride Face&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    /*&lt;&lt;case &quot;Suck Clit&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
+    /*&lt;&lt;case &quot;Ride Face&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
     /* &lt;&lt;case &quot;Fondle Balls&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt; */
     /* &lt;&lt;case &quot;Lick Balls&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt; */
     /* &lt;&lt;case &quot;Suck Balls&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt; */
     &lt;&lt;case &quot;Lick Asshole&quot;&gt;&gt;_b&lt;&lt;include &quot;Rimjob-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Lick-Cock-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;Rub-Cock-Face-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    /*&lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
+    /*&lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
     &lt;&lt;case &quot;Grip Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Grab-Cock-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Wrap Hand Around Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Grab-Cock-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Grip Cock With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Feet Around Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Pussy With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Feet To Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    /*&lt;&lt;case &quot;Rub Pussy With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
+    /*&lt;&lt;case &quot;Pull Feet To Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
     &lt;&lt;case &quot;Take Cock Between Lips&quot;&gt;&gt;_b&lt;&lt;include &quot;Enter-Mouth-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Enter Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Mouth-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Stroke Shaft With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Stroke Pussy With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Tease Pussy With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Cock Against Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Pussy Against Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Against Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;
+    /*&lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
+    /*&lt;&lt;case &quot;Tease Pussy With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
+    /*&lt;&lt;case &quot;Rub Cock Against Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
+    /*&lt;&lt;case &quot;Rub Pussy Against Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
+    /*&lt;&lt;case &quot;Rub Against Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
     &lt;&lt;case &quot;Pump Shaft&quot;&gt;&gt;_b&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Fist&quot;&gt;&gt;_b&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Tease Tip&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Tip-Quote&quot;&gt;&gt;
@@ -12458,7 +12465,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;UI-NPC-Sex&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="174" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
+&lt;&lt;if passage() is &quot;Test-Sex-Encounter&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="174" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
 	muscle: 4,
 	plump: 4,
 	label: &quot;Average&quot;
@@ -14869,18 +14876,7 @@ Create your character to begin.
 			&lt;b&gt;Penetration:&lt;/b&gt;
 			&lt;&lt;print $sex.penetration.topPart&gt;&gt; → &lt;&lt;print $sex.penetration.bottomPart&gt;&gt;&lt;br&gt;
 		&lt;&lt;/if&gt;&gt;
-
-        
-	&lt;/div&gt;
-    &lt;&lt;if $devMode&gt;&gt;
-        /* Debug checking to confirm things exist */
-        MC parts: &lt;&lt;print $mc.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt;
-        NPC parts: &lt;&lt;print _n.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt; 
-        Sex Top: &lt;&lt;print $sex.top.name&gt;&gt;&lt;br&gt;
-        Sex Bottom: &lt;&lt;print $sex.bottom.name&gt;&gt;&lt;br&gt;
-        TopGenital: &lt;&lt;print $sex.top.genitaltype&gt;&gt;&lt;br&gt;
-        BottomGenital: &lt;&lt;print $sex.bottom.genitaltype&gt;&gt;&lt;br&gt;
-        &lt;&lt;button &quot;Inspect&quot;&gt;&gt;
+        &lt;&lt;button &quot;Inspect NPC&quot;&gt;&gt;
 	        &lt;&lt;WithNPC _n&gt;&gt;
 	        &lt;&lt;run Dialog
 		        .create(&quot;NPC: &quot; + $ui.npc.name)
@@ -14888,7 +14884,19 @@ Create your character to begin.
 		        .open()
 	        &gt;&gt;
         &lt;&lt;/button&gt;&gt;
-        &lt;br&gt; 
+        &lt;br&gt;
+
+        
+	&lt;/div&gt;
+    &lt;&lt;if $devMode&gt;&gt;
+        /* Debug checking to confirm things exist */
+        /*MC parts: &lt;&lt;print $mc.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt;
+        NPC parts: &lt;&lt;print _n.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt; */
+        /*Sex Top: &lt;&lt;print $sex.top.name&gt;&gt;&lt;br&gt;
+        Sex Bottom: &lt;&lt;print $sex.bottom.name&gt;&gt;&lt;br&gt;
+        TopGenital: &lt;&lt;print $sex.top.genitaltype&gt;&gt;&lt;br&gt;
+        BottomGenital: &lt;&lt;print $sex.bottom.genitaltype&gt;&gt;&lt;br&gt;
+         */
         &lt;&lt;/if&gt;&gt;
     
 	&lt;!-- ===================== --&gt;

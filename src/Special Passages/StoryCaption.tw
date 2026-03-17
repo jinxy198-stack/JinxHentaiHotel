@@ -9,6 +9,6 @@
 <<button "Your Stats">><<PopupStats>><</button>>
 
 <<button "Disclaimer">><<PopupDisc>><</button>>
-<<if passage() is "UI-NPC-Sex">><<button "How to play">><<PopupTutorial>><</button>><</if>>
+<<if passage() is "Test-Sex-Encounter">><<button "How to play">><<PopupTutorial>><</button>><</if>>
 
 

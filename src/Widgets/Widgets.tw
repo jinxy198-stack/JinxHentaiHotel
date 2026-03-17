@@ -76,18 +76,7 @@
 			<b>Penetration:</b>
 			<<print $sex.penetration.topPart>> → <<print $sex.penetration.bottomPart>><br>
 		<</if>>
-
-        
-	</div>
-    <<if $devMode>>
-        /* Debug checking to confirm things exist */
-        MC parts: <<print $mc.bodyparts.join(", ")>><br>
-        NPC parts: <<print _n.bodyparts.join(", ")>><br> 
-        Sex Top: <<print $sex.top.name>><br>
-        Sex Bottom: <<print $sex.bottom.name>><br>
-        TopGenital: <<print $sex.top.genitaltype>><br>
-        BottomGenital: <<print $sex.bottom.genitaltype>><br>
-        <<button "Inspect">>
+        <<button "Inspect NPC">>
 	        <<WithNPC _n>>
 	        <<run Dialog
 		        .create("NPC: " + $ui.npc.name)
@@ -95,7 +84,19 @@
 		        .open()
 	        >>
         <</button>>
-        <br> 
+        <br>
+
+        
+	</div>
+    <<if $devMode>>
+        /* Debug checking to confirm things exist */
+        /*MC parts: <<print $mc.bodyparts.join(", ")>><br>
+        NPC parts: <<print _n.bodyparts.join(", ")>><br> */
+        /*Sex Top: <<print $sex.top.name>><br>
+        Sex Bottom: <<print $sex.bottom.name>><br>
+        TopGenital: <<print $sex.top.genitaltype>><br>
+        BottomGenital: <<print $sex.bottom.genitaltype>><br>
+         */
         <</if>>
     
 	<!-- ===================== -->
