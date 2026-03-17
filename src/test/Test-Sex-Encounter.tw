@@ -31,9 +31,9 @@
 <<set _sexCount = $npcMemory[_key].sexCount>>
 
 <<set $sex.position = "Standing">>
-<<set $sex.subject = null>>
-<<set $sex.object = null>>
-<<set $sex.engagedParts= { subject: [], object: [] }>>
+<<set $sex.top = null>>
+<<set $sex.bottom = null>>
+<<set $sex.engagedParts= { top: [], bottom: [] }>>
 <<set $sex.penetration = null>>
 <<set $sex.phase = "tease">>
 <<set $sex.history= []>>
@@ -43,15 +43,15 @@
 
 <<if $sex.roles.dom.name == $mc.name>>
   <<set $sex.role = "top">>
-  <<run setup.updateSubjectObject($sex)>>
+  <<run setup.updateTopBottom($sex)>>
 <<else>>
   <<set $sex.role = "bottom">>
-  <<run setup.updateSubjectObject($sex)>>
+  <<run setup.updateTopBottom($sex)>>
 <</if>>
 
-/* ALWAYS rebind subject/object to current */
-/*<<set $sex.subject = $mc>>
-<<set $sex.object  = _n>> */
+/* ALWAYS rebind top/bottom to current */
+/*<<set $sex.top = $mc>>
+<<set $sex.bottom  = _n>> */
 
 
 

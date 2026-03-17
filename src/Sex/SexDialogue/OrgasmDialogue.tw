@@ -1,9 +1,9 @@
 ::OrgasmDialogue [nobr]
 
-<<if $sex.subject.chosenCumLocation>>
-    <<set _cumLoc = $sex.subject.chosenCumLocation >>
-<<elseif = $sex.object.chosenCumLocation>>
-    <<set _cumLoc = $sex.object.chosenCumLocation >>
+<<if $sex.top.chosenCumLocation>>
+    <<set _cumLoc = $sex.top.chosenCumLocation >>
+<<elseif = $sex.bottom.chosenCumLocation>>
+    <<set _cumLoc = $sex.bottom.chosenCumLocation >>
 <</if>>
 
 <<if _cumLoc == "in ass">>
@@ -52,21 +52,21 @@
 		)>>
     <</if>> 
 <<elseif _cumLoc == "on hand">>
-    <<if $sex.climax.subject >>
+    <<if $sex.climax.top >>
         You cum on their hand.
-    <<elseif $sex.climax.object>>
+    <<elseif $sex.climax.bottom>>
         _n.name cums on your hand.
     <</if>>
 <<elseif _cumLoc == "on stomach">>
-    <<if $sex.climax.subject >>
+    <<if $sex.climax.top >>
         You cum on their stomach.
-    <<elseif $sex.climax.object>>
+    <<elseif $sex.climax.bottom>>
         _n.name cums on your stomach.
     <</if>>
 <<else>>
-    <<if $sex.climax.subject >>
+    <<if $sex.climax.top >>
         You cum.
-    <<elseif $sex.climax.object>>
+    <<elseif $sex.climax.bottom>>
         _n.name cums.
     <</if>>
 <</if>> 

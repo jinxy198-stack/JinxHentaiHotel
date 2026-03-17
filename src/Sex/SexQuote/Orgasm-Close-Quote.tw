@@ -14,16 +14,16 @@
 
 
 
-<<if $sex.climax.subject && $sex.climax.object>>
+<<if $sex.climax.top && $sex.climax.bottom>>
 	<<set _pool = ["Let's cum together!"]>>
-<<elseif $sex.climax.subject>>
+<<elseif $sex.climax.top>>
 	<<set _pool = setup.orgasmcloseQuotes.top[_personality]
 	|| setup.orgasmcloseQuotes.top[_action]
 	&& setup.orgasmcloseQuotes.top[_action][_pref]
 	|| setup.orgasmcloseQuotes.top[_action]
 	|| setup.orgasmcloseQuotes.top.default>>
 
-<<elseif $sex.climax.object>>
+<<elseif $sex.climax.bottom>>
 	<<set _pool = setup.orgasmcloseQuotes.bottom[_action]
 	|| setup.orgasmcloseQuotes.bottom[_action]
 	&& setup.orgasmcloseQuotes.bottom[_action][_personality] 
