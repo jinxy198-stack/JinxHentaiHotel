@@ -57,16 +57,13 @@ setup.height=[
 ];
 
 setup.furScalesColors=[
-    "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Purple", "Rainbow",
+    "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Purple", "Rainbow", "tan",
 ];
 
 setup.anthroPatterns=[
     "Solid", "Striped", "Spotted", "Patterned",
 ];
 
-setup.breastsize=[
-    "Flat", "Tiny", "Small", "Pert", "Modest", "Perky", "Full", "Large", "Ample", "Massive", "Enormous",
-];
 
 setup.physique=[
     "Skinny", "Lean", "Wiry", "Ripped",
@@ -75,12 +72,16 @@ setup.physique=[
     "Round", "Portly", "Stocky", "Jacked",
 ];
 
+setup.height=[
+    "Very short", "Short", "Average", "Tall", "Very tall", "Towering",
+];
+
 setup.assSize=[
     "Flat", "Skinny", "Slender", "Slim", "Tight", "Modest", "Round", "Muscular", "Plump", "Curvaceous", "Portly", "Thick", "Large", "Huge",
 ];
 
-setup.height=[
-    "Very short", "Short", "Average", "Tall", "Very tall", "Towering",
+setup.breastsize=[
+    "Flat", "Tiny", "Small", "Pert", "Modest", "Perky", "Full", "Large", "Ample", "Massive", "Enormous",
 ];
 
 setup.penistype= [
@@ -103,7 +104,7 @@ setup.sexu= [
 setup.bodyparts = {
     Head: "Head",
     Face: "Face",
-    mouth: "Mouth",
+    Mouth: "Mouth",
     Arms: "Arms",
     Legs: "Legs",
     Hands: "Hands",
@@ -119,5 +120,5 @@ setup.bodyparts = {
 };
 
 setup.personalities= [
-      "Brave", "Shy", "Relaxed", "Playful", "Good", "Evil", "Kind", "Logical", "Studious", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Quiet", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean", "Energetic","Childlike"
+      "Brave", "Shy", "Relaxed", "Playful", "Good", "Evil", "Kind", "Logical", "Studious","Nerdy", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean", "Energetic", "Selfish", "Confident", "Childlike"
 ];

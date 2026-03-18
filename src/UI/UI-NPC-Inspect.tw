@@ -18,17 +18,21 @@
 <b>Hair:</b> <<=_n.hair>><<if _n.haircolor>> / <<=_n.haircolor>><</if>>  
 <br>
 
-<<if _n.skincolor>> <b>Skin:</b> <<=_n.skincolor>> <<if _n.skinfeatures>>·  <b>Features:</b> <<=_n.skinfeatures>>  <</if>> <</if>>
+<<if _n.skincolor>> 
+	<b>Skin:</b> <<=_n.skincolor>> 
+	<<if _n.skinfeatures>>
+	·  <b>Features:</b> <<=_n.skinfeatures>>  
+	<</if>> 
+	<br>
+<</if>>
 
-<br>
+
 <b>Physique:</b> <<=_n.physique>> * <b>Height:</b> <<=_n.bodyheight>>
 <<if _n.breastsize>>* <b>Breast Size:</b> _n.breastsize <</if>>
 <br>
 <b>Personality:</b> <<=_n.personality>>
 <br>
-<b>Sexuality:</b> <<=_n.sexu>>
-<br>
-<b>Sex Role:</b> <<=_n.sexpref>>
+<b>Sexuality:</b> <<=_n.sexu>> * <b>Sex Role:</b> <<=_n.sexpref>>
 <br>
 <b>Genitals:</b> <<=_n.genitals>><<if _n.genitals== "Penis">> * <b>Length:</b> <<=_n.penislength>> <</if>> (<<=_n.genitaltype>>)
 <br>
@@ -43,7 +47,6 @@
 */
 <br>
 <b>List of body parts:</b>
-<br>
 <<if _n.body>>
 	<ul>
 	<<for _key, _val range _n.body>>

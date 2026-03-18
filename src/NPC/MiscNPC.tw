@@ -1,3 +1,172 @@
 ::MiscNPC [init nobr]
 
 /*For random npc's not part of any fandom list */
+
+/*Alvin */
+<<set $Alvin = {
+    name: "Alvin",
+    nickname: "Al",
+    surname: "Seville",
+    species: "Anthro",
+    anthro: {
+    	group: "Furry",
+        subtype: "Chipmunk",  
+        color: "Tan",
+        pattern: "Solid"
+    },         
+    gender: "Male",
+    trans: "cisgender",
+    sexu: "Bisexual",
+    pronouns: "He/Him",
+    age: 8,
+    heterochromia: false,
+    eyes: "Blue",
+    hair: "Curly Crop",
+    haircolor: "Tan",
+    facefeatures: [],
+    bodyheight: "Very Short",
+    physique: "Lithe",
+    personality: "Energetic",
+    genitals: "Penis",
+    genitaltype: "Cut",
+    penislength:"Small",
+    assSize: "Modest",
+    virgin: false,
+    sexpref: "Switch",
+    origin: "Alvin and the Chipmunks",
+    traits: [
+        "Virtuoso", "Celebrity"
+    ],
+    body:{
+    }
+
+}>>
+
+/*Simon */
+<<set $Simon = {
+    name: "Simon",
+    nickname: "Si",
+    surname: "Seville",
+    species: "Anthro",
+    anthro: {
+    	group: "Furry",
+        subtype: "Chipmunk",  
+        color: "Tan",
+        pattern: "Solid"
+    },         
+    gender: "Male",
+    trans: "cisgender",
+    sexu: "Bisexual",
+    pronouns: "He/Him",
+    age: 8,
+    heterochromia: false,
+    eyes: "Blue",
+    hair: "Spiky",
+    haircolor: "Tan",
+    facefeatures: [],
+    accessory: "Glasses",
+    bodyheight: "Very Short",
+    physique: "Lean",
+    personality: "Nerdy",
+    genitals: "Penis",
+    genitaltype: "Cut",
+    penislength:"Average",
+    assSize: "Slim",
+    virgin: false,
+    sexpref: "Switch",
+    origin: "Alvin and the Chipmunks",
+    traits: [
+        "Virtuoso", "Celebrity"
+    ],
+    body:{
+    }
+
+}>>
+
+/*Theodore */
+
+<<set $Theodore = {
+    name: "Theodore",
+    nickname: "Theo",
+    surname: "Seville",
+    species: "Anthro",
+    anthro: {
+    	group: "Furry",
+        subtype: "Chipmunk",  
+        color: "Tan",
+        pattern: "Solid"
+    },         
+    gender: "Male",
+    trans: "cisgender",
+    sexu: "Bisexual",
+    pronouns: "He/Him",
+    age: 8,
+    heterochromia: false,
+    eyes: "Green",
+    hair: "Spiky",
+    haircolor: "Tan",
+    facefeatures: [],
+    accessory: [],
+    bodyheight: "Very Short",
+    physique: "Plump",
+    personality: "Kind",
+    genitals: "Penis",
+    genitaltype: "Cut",
+    penislength:"Small",
+    assSize: "Portly",
+    virgin: false,
+    sexpref: "Switch",
+    origin: "Alvin and the Chipmunks",
+    traits: [
+        "Virtuoso", "Celebrity"
+    ],
+    body:{
+    }
+}>>
+
+/*Ben Tennyson */
+<<set $BenTen = {
+    name: "Ben",
+    nickname: "",
+    surname: "Tennyson",
+    species: "Human",
+    gender: "Male",
+    trans: "Cisgender",
+    sexu: "Bisexual",  
+    genitals: "Penis",
+    genitaltype: "Cut", 
+    penislength: "Large",
+    assSize: "Round",
+    pronouns: "He/Him",
+    age: 16,
+    eyes: "Green",
+    hair: "Unkempt",
+    haircolor: "Brown",
+    facefeatures: "",
+    accessory: "Watch",
+    skincolor: "Fair",
+    skinfeatures: "",
+    bodyheight: "Short",
+    physique: "Toned", 
+    personality: "Cocky",
+    sexpref: "Switch",
+    origin: "Ben 10",
+    traits: [],
+}>>
+
+/*Ryuko Matoi */
+
+/* Monkey D. Luffy */
+
+/* Allister */
+
+/* Killua Zoldyck*/
+
+/* Cheetara */
+
+/* Cat Noir */
+
+/* TK Takeru */
+
+/* Ashido Mina */
+

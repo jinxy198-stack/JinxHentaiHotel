@@ -3634,16 +3634,13 @@ setup.height=[
 ];
 
 setup.furScalesColors=[
-    "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Purple", "Rainbow",
+    "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Purple", "Rainbow", "tan",
 ];
 
 setup.anthroPatterns=[
     "Solid", "Striped", "Spotted", "Patterned",
 ];
 
-setup.breastsize=[
-    "Flat", "Tiny", "Small", "Pert", "Modest", "Perky", "Full", "Large", "Ample", "Massive", "Enormous",
-];
 
 setup.physique=[
     "Skinny", "Lean", "Wiry", "Ripped",
@@ -3652,12 +3649,16 @@ setup.physique=[
     "Round", "Portly", "Stocky", "Jacked",
 ];
 
+setup.height=[
+    "Very short", "Short", "Average", "Tall", "Very tall", "Towering",
+];
+
 setup.assSize=[
     "Flat", "Skinny", "Slender", "Slim", "Tight", "Modest", "Round", "Muscular", "Plump", "Curvaceous", "Portly", "Thick", "Large", "Huge",
 ];
 
-setup.height=[
-    "Very short", "Short", "Average", "Tall", "Very tall", "Towering",
+setup.breastsize=[
+    "Flat", "Tiny", "Small", "Pert", "Modest", "Perky", "Full", "Large", "Ample", "Massive", "Enormous",
 ];
 
 setup.penistype= [
@@ -3696,7 +3697,7 @@ setup.bodyparts = {
 };
 
 setup.personalities= [
-      "Brave", "Shy", "Relaxed", "Playful", "Good", "Evil", "Kind", "Logical", "Studious", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Quiet", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean", "Energetic","Childlike"
+      "Brave", "Shy", "Relaxed", "Playful", "Good", "Evil", "Kind", "Logical", "Studious","Nerdy", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean", "Energetic", "Selfish", "Confident", "Childlike"
 ];
 /* twine-user-script #8: "database_roomtypes" */
 setup.RoomTypes = {};
@@ -7868,6 +7869,7 @@ This room is for testing features of the game, it should no be visible to the av
 
 &lt;div class=&quot;room-hotel&quot;&gt;
 
+&lt;&lt;SpawnPoolOnce &quot;Misc&quot; $MiscPool 3&gt;&gt;
 &lt;&lt;SpawnRandomNPCs 20&gt;&gt;
 
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
@@ -8169,7 +8171,130 @@ On the other side there was a door to your bathroom.
     virgin: false,
     sexpref: &quot;Switch&quot;,
     origin: &quot;Camp Buddy&quot;
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="MiscNPC" tags="init nobr" position="225,725" size="100,100">/*For random npc&#39;s not part of any fandom list */</tw-passagedata><tw-passagedata pid="53" name="NPC-List" tags="nobr" position="350,725" size="100,100">&lt;span id=&quot;list&quot;&gt;
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="MiscNPC" tags="init nobr" position="225,725" size="100,100">/*For random npc&#39;s not part of any fandom list */
+
+/*Alvin */
+&lt;&lt;set $Alvin = {
+    name: &quot;Alvin&quot;,
+    nickname: &quot;Al&quot;,
+    surname: &quot;Seville&quot;,
+    species: &quot;Anthro&quot;,
+    anthro: {
+    	group: &quot;Furry&quot;,
+        subtype: &quot;Chipmunk&quot;,  
+        color: &quot;Tan&quot;,
+        pattern: &quot;Solid&quot;
+    },         
+    gender: &quot;Male&quot;,
+    trans: &quot;cisgender&quot;,
+    sexu: &quot;Bisexual&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 8,
+    heterochromia: false,
+    eyes: &quot;Blue&quot;,
+    hair: &quot;Curly Crop&quot;,
+    haircolor: &quot;Tan&quot;,
+    facefeatures: [],
+    bodyheight: &quot;Very Short&quot;,
+    physique: &quot;Lithe&quot;,
+    personality: &quot;Energetic&quot;,
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;,
+    penislength:&quot;Small&quot;,
+    assSize: &quot;Modest&quot;,
+    virgin: false,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;Alvin and the Chipmunks&quot;,
+    traits: [
+        &quot;Virtuoso&quot;, &quot;Celebrity&quot;
+    ],
+    body:{
+    }
+
+}&gt;&gt;
+
+/*Simon */
+&lt;&lt;set $Simon = {
+    name: &quot;Simon&quot;,
+    nickname: &quot;Si&quot;,
+    surname: &quot;Seville&quot;,
+    species: &quot;Anthro&quot;,
+    anthro: {
+    	group: &quot;Furry&quot;,
+        subtype: &quot;Chipmunk&quot;,  
+        color: &quot;Tan&quot;,
+        pattern: &quot;Solid&quot;
+    },         
+    gender: &quot;Male&quot;,
+    trans: &quot;cisgender&quot;,
+    sexu: &quot;Bisexual&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 8,
+    heterochromia: false,
+    eyes: &quot;Blue&quot;,
+    hair: &quot;Spiky&quot;,
+    haircolor: &quot;Tan&quot;,
+    facefeatures: [],
+    accessory: &quot;Glasses&quot;,
+    bodyheight: &quot;Very Short&quot;,
+    physique: &quot;Lean&quot;,
+    personality: &quot;Nerdy&quot;,
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;,
+    penislength:&quot;Small&quot;,
+    assSize: &quot;Slim&quot;,
+    virgin: false,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;Alvin and the Chipmunks&quot;,
+    traits: [
+        &quot;Virtuoso&quot;, &quot;Celebrity&quot;
+    ],
+    body:{
+    }
+
+}&gt;&gt;
+
+/*Theodore */
+
+&lt;&lt;set $Theodore = {
+    name: &quot;Theodore&quot;,
+    nickname: &quot;Theo&quot;,
+    surname: &quot;Seville&quot;,
+    species: &quot;Anthro&quot;,
+    anthro: {
+    	group: &quot;Furry&quot;,
+        subtype: &quot;Chipmunk&quot;,  
+        color: &quot;Tan&quot;,
+        pattern: &quot;Solid&quot;
+    },         
+    gender: &quot;Male&quot;,
+    trans: &quot;cisgender&quot;,
+    sexu: &quot;Bisexual&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 8,
+    heterochromia: false,
+    eyes: &quot;Green&quot;,
+    hair: &quot;Spiky&quot;,
+    haircolor: &quot;Tan&quot;,
+    facefeatures: [],
+    accessory: [],
+    bodyheight: &quot;Very Short&quot;,
+    physique: &quot;Plump&quot;,
+    personality: &quot;Kind&quot;,
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;,
+    penislength:&quot;Small&quot;,
+    assSize: &quot;Portly&quot;,
+    virgin: false,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;Alvin and the Chipmunks&quot;,
+    traits: [
+        &quot;Virtuoso&quot;, &quot;Celebrity&quot;
+    ],
+    body:{
+    }
+
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="NPC-List" tags="nobr" position="350,725" size="100,100">&lt;span id=&quot;list&quot;&gt;
 &lt;&lt;if !$roomNPCs || !$roomNPCs.length&gt;&gt;
 	&lt;em&gt;No one is here.&lt;/em&gt;
 	&lt;&lt;return&gt;&gt;
@@ -12478,8 +12603,8 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 
 
 &lt;&lt;set $orgasm= {
-  object: false,
-  subject: false
+  bottom: false,
+  top: false
 }&gt;&gt;
 
 /* pools */
@@ -12507,6 +12632,12 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
   $JaidenB,
   $LorraineD,
   $OliverT
+]&gt;&gt;
+/* Misc Character */
+&lt;&lt;set $MiscPool = [
+  $Alvin,
+  $Simon,
+  $Theodore
 ]&gt;&gt;
 
 &lt;&lt;set $npcPools = {
@@ -12808,17 +12939,21 @@ Create your character to begin.
 &lt;b&gt;Hair:&lt;/b&gt; &lt;&lt;=_n.hair&gt;&gt;&lt;&lt;if _n.haircolor&gt;&gt; / &lt;&lt;=_n.haircolor&gt;&gt;&lt;&lt;/if&gt;&gt;  
 &lt;br&gt;
 
-&lt;&lt;if _n.skincolor&gt;&gt; &lt;b&gt;Skin:&lt;/b&gt; &lt;&lt;=_n.skincolor&gt;&gt; &lt;&lt;if _n.skinfeatures&gt;&gt;·  &lt;b&gt;Features:&lt;/b&gt; &lt;&lt;=_n.skinfeatures&gt;&gt;  &lt;&lt;/if&gt;&gt; &lt;&lt;/if&gt;&gt;
+&lt;&lt;if _n.skincolor&gt;&gt; 
+	&lt;b&gt;Skin:&lt;/b&gt; &lt;&lt;=_n.skincolor&gt;&gt; 
+	&lt;&lt;if _n.skinfeatures&gt;&gt;
+	·  &lt;b&gt;Features:&lt;/b&gt; &lt;&lt;=_n.skinfeatures&gt;&gt;  
+	&lt;&lt;/if&gt;&gt; 
+	&lt;br&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;br&gt;
+
 &lt;b&gt;Physique:&lt;/b&gt; &lt;&lt;=_n.physique&gt;&gt; * &lt;b&gt;Height:&lt;/b&gt; &lt;&lt;=_n.bodyheight&gt;&gt;
 &lt;&lt;if _n.breastsize&gt;&gt;* &lt;b&gt;Breast Size:&lt;/b&gt; _n.breastsize &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
 &lt;b&gt;Personality:&lt;/b&gt; &lt;&lt;=_n.personality&gt;&gt;
 &lt;br&gt;
-&lt;b&gt;Sexuality:&lt;/b&gt; &lt;&lt;=_n.sexu&gt;&gt;
-&lt;br&gt;
-&lt;b&gt;Sex Role:&lt;/b&gt; &lt;&lt;=_n.sexpref&gt;&gt;
+&lt;b&gt;Sexuality:&lt;/b&gt; &lt;&lt;=_n.sexu&gt;&gt; * &lt;b&gt;Sex Role:&lt;/b&gt; &lt;&lt;=_n.sexpref&gt;&gt;
 &lt;br&gt;
 &lt;b&gt;Genitals:&lt;/b&gt; &lt;&lt;=_n.genitals&gt;&gt;&lt;&lt;if _n.genitals== &quot;Penis&quot;&gt;&gt; * &lt;b&gt;Length:&lt;/b&gt; &lt;&lt;=_n.penislength&gt;&gt; &lt;&lt;/if&gt;&gt; (&lt;&lt;=_n.genitaltype&gt;&gt;)
 &lt;br&gt;
@@ -12833,7 +12968,6 @@ Create your character to begin.
 */
 &lt;br&gt;
 &lt;b&gt;List of body parts:&lt;/b&gt;
-&lt;br&gt;
 &lt;&lt;if _n.body&gt;&gt;
 	&lt;ul&gt;
 	&lt;&lt;for _key, _val range _n.body&gt;&gt;

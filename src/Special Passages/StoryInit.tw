@@ -12,8 +12,8 @@
 
 
 <<set $orgasm= {
-  object: false,
-  subject: false
+  bottom: false,
+  top: false
 }>>
 
 /* pools */
@@ -41,6 +41,12 @@
   $JaidenB,
   $LorraineD,
   $OliverT
+]>>
+/* Misc Character */
+<<set $MiscPool = [
+  $Alvin,
+  $Simon,
+  $Theodore
 ]>>
 
 <<set $npcPools = {
