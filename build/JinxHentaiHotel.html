@@ -3681,7 +3681,7 @@ setup.sexu= [
 setup.bodyparts = {
     Head: "Head",
     Face: "Face",
-    mouth: "Mouth",
+    Mouth: "Mouth",
     Arms: "Arms",
     Legs: "Legs",
     Hands: "Hands",
@@ -7869,7 +7869,7 @@ This room is for testing features of the game, it should no be visible to the av
 
 &lt;div class=&quot;room-hotel&quot;&gt;
 
-&lt;&lt;SpawnPoolOnce &quot;Misc&quot; $MiscPool 3&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;Misc&quot; $MiscPool 5&gt;&gt;
 &lt;&lt;SpawnRandomNPCs 20&gt;&gt;
 
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
@@ -8199,7 +8199,7 @@ On the other side there was a door to your bathroom.
     physique: &quot;Lithe&quot;,
     personality: &quot;Energetic&quot;,
     genitals: &quot;Penis&quot;,
-    genitaltype: &quot;Uncut&quot;,
+    genitaltype: &quot;Cut&quot;,
     penislength:&quot;Small&quot;,
     assSize: &quot;Modest&quot;,
     virgin: false,
@@ -8240,8 +8240,8 @@ On the other side there was a door to your bathroom.
     physique: &quot;Lean&quot;,
     personality: &quot;Nerdy&quot;,
     genitals: &quot;Penis&quot;,
-    genitaltype: &quot;Uncut&quot;,
-    penislength:&quot;Small&quot;,
+    genitaltype: &quot;Cut&quot;,
+    penislength:&quot;Average&quot;,
     assSize: &quot;Slim&quot;,
     virgin: false,
     sexpref: &quot;Switch&quot;,
@@ -8255,7 +8255,6 @@ On the other side there was a door to your bathroom.
 }&gt;&gt;
 
 /*Theodore */
-
 &lt;&lt;set $Theodore = {
     name: &quot;Theodore&quot;,
     nickname: &quot;Theo&quot;,
@@ -8282,7 +8281,7 @@ On the other side there was a door to your bathroom.
     physique: &quot;Plump&quot;,
     personality: &quot;Kind&quot;,
     genitals: &quot;Penis&quot;,
-    genitaltype: &quot;Uncut&quot;,
+    genitaltype: &quot;Cut&quot;,
     penislength:&quot;Small&quot;,
     assSize: &quot;Portly&quot;,
     virgin: false,
@@ -8293,8 +8292,53 @@ On the other side there was a door to your bathroom.
     ],
     body:{
     }
+}&gt;&gt;
 
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="NPC-List" tags="nobr" position="350,725" size="100,100">&lt;span id=&quot;list&quot;&gt;
+/*Ben Tennyson */
+&lt;&lt;set $BenTen = {
+    name: &quot;Ben&quot;,
+    nickname: &quot;&quot;,
+    surname: &quot;Tennyson&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    trans: &quot;Cisgender&quot;,
+    sexu: &quot;Bisexual&quot;,  
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Cut&quot;, 
+    penislength: &quot;Large&quot;,
+    assSize: &quot;Round&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 16,
+    eyes: &quot;Green&quot;,
+    hair: &quot;Unkempt&quot;,
+    haircolor: &quot;Brown&quot;,
+    facefeatures: &quot;&quot;,
+    accessory: &quot;Watch&quot;,
+    skincolor: &quot;Fair&quot;,
+    skinfeatures: &quot;&quot;,
+    bodyheight: &quot;Short&quot;,
+    physique: &quot;Toned&quot;, 
+    personality: &quot;Cocky&quot;,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;Ben 10&quot;,
+    traits: [],
+}&gt;&gt;
+
+/*Ryuko Matoi */
+
+/* Monkey D. Luffy */
+
+/* Allister */
+
+/* Killua Zoldyck*/
+
+/* Cheetara */
+
+/* Cat Noir */
+
+/* TK Takeru */
+
+/* Ashido Mina */</tw-passagedata><tw-passagedata pid="53" name="NPC-List" tags="nobr" position="350,725" size="100,100">&lt;span id=&quot;list&quot;&gt;
 &lt;&lt;if !$roomNPCs || !$roomNPCs.length&gt;&gt;
 	&lt;em&gt;No one is here.&lt;/em&gt;
 	&lt;&lt;return&gt;&gt;
