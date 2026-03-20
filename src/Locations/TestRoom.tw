@@ -8,7 +8,7 @@ This room is for testing features of the game, it should no be visible to the av
 
 <div class="room-hotel">
 
-<<SpawnPoolOnce "fullPool" $fullPool 20>>
+<<SpawnPoolOnce "fullPool" $fullPool 1>>
 <<SpawnRandomNPCs 20>>
 
 <<include "NPC-List">>
