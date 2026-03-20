@@ -197,6 +197,9 @@
 	<<set _dummy = $npcs.push(_npc)>>
 <</widget>>
 
+
+
+
 <<widget "SpawnPoolOnce">>
 	<<set _key   = _args[0]>>
 	<<set _pool  = _args[1]>>

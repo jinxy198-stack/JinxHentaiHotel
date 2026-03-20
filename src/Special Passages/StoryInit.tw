@@ -18,6 +18,7 @@
 
 /* pools */
 
+
 /* Camp Buddy */
 <<set $CBPool = [
   $Yoichi_CB,
@@ -173,3 +174,10 @@
 <<set $flags = $flags || {}>>
 <<set $flags.skinChosen = false>>
 
+/* A pool of every character pool */
+<<set $fullPool = []
+	.concat($CBPool || [])
+	.concat($OCPool || [])
+	.concat($ABPool || [])
+  .concat($MiscPool || [])
+>>

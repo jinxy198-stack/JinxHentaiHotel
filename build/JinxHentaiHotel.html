@@ -7829,10 +7829,9 @@ You are in the lobby of the hotel, classical music plays as you watch people fro
 A nice place to rest, relax, and socialize. There are some people mingling around the place.
 
 &lt;div class=&quot;room-hotel&quot;&gt;
-&lt;&lt;SpawnPoolOnce &quot;OC&quot; $OCPool 2&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;CB&quot; $CBPool 2&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;AB&quot; $ABPool 2&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 7&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 20&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 20&gt;&gt;
+
 
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
@@ -7869,10 +7868,17 @@ This room is for testing features of the game, it should no be visible to the av
 
 &lt;div class=&quot;room-hotel&quot;&gt;
 
-&lt;&lt;SpawnPoolOnce &quot;Misc&quot; $MiscPool 5&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 20&gt;&gt;
 &lt;&lt;SpawnRandomNPCs 20&gt;&gt;
 
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
+
+/* Debug tester */
+Pool exists: &lt;&lt;= Array.isArray($fullPool) &gt;&gt;
+Pool size: &lt;&lt;= $fullPool ? $fullPool.length : 0 &gt;&gt;
+Spawn keys: &lt;&lt;= $spawnPools ? Object.keys($spawnPools).join(&quot;, &quot;) : &quot;none&quot; &gt;&gt;
+Room NPCs: &lt;&lt;= $roomNPCs ? $roomNPCs.length : 0 &gt;&gt;
+
 
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="49" name="Your Room" tags="nobr" position="400,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Room&quot;&gt;&gt;
 You are in your hotel room. It looks like the love suite of a luxury hotel, complete with a heart shaped bed. Next to the bed is a phone for calling up people you know for a &#39;good time&#39;.
@@ -12653,6 +12659,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 
 /* pools */
 
+
 /* Camp Buddy */
 &lt;&lt;set $CBPool = [
   $Yoichi_CB,
@@ -12806,7 +12813,15 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 
 
 &lt;&lt;set $flags = $flags || {}&gt;&gt;
-&lt;&lt;set $flags.skinChosen = false&gt;&gt;</tw-passagedata><tw-passagedata pid="175" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
+&lt;&lt;set $flags.skinChosen = false&gt;&gt;
+
+/* A pool of every character pool */
+&lt;&lt;set $fullPool = []
+	.concat($CBPool || [])
+	.concat($OCPool || [])
+	.concat($ABPool || [])
+  .concat($MiscPool || [])
+&gt;&gt;</tw-passagedata><tw-passagedata pid="175" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
 
 &lt;&lt;set $devMode = true&gt;&gt;
 &lt;div&gt;
@@ -14499,6 +14514,9 @@ Create your character to begin.
 
 	&lt;&lt;set _dummy = $npcs.push(_npc)&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
+
+
+
 
 &lt;&lt;widget &quot;SpawnPoolOnce&quot;&gt;&gt;
 	&lt;&lt;set _key   = _args[0]&gt;&gt;

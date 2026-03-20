@@ -8,10 +8,9 @@
 A nice place to rest, relax, and socialize. There are some people mingling around the place.
 
 <div class="room-hotel">
-<<SpawnPoolOnce "OC" $OCPool 2>>
-<<SpawnPoolOnce "CB" $CBPool 2>>
-<<SpawnPoolOnce "AB" $ABPool 2>>
-<<SpawnRandomNPCs 7>>
+<<SpawnPoolOnce "fullPool" $fullPool 20>>
+<<SpawnRandomNPCs 20>>
+
 
 <<include "NPC-List">>
 
