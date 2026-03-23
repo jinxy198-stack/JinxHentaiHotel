@@ -43,6 +43,12 @@
   $LorraineD,
   $OliverT
 ]>>
+
+/*Undertale/Deltarune */
+<<set $UTDRPool = [
+  $FriskShota
+]>>
+
 /* Misc Character */
 <<set $MiscPool = [
   $Alvin,
@@ -180,4 +186,5 @@
 	.concat($OCPool || [])
 	.concat($ABPool || [])
   .concat($MiscPool || [])
+  .concat($UTDRPool || [])
 >>

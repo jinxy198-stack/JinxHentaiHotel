@@ -1,15 +1,15 @@
 :: CC-Genitals [creation-page] {"position":"925,225","size":"100,100"}
-Decide your genitals
+//Decide your genitals//
 <<if $mc.gender is "Male">>
-Because you chose male you have a penis. 
+//Because you chose male you have a penis. //
 <<set $mc.genitals to "Penis">>
 <<if $mc.species != "Anthro">>
-Choose a human penis type
+//Choose a human penis type//
 *<label><<radiobutton "$mc.genitaltype" "Cut" checked>> cut</label>
 *<label><<radiobutton "$mc.genitaltype" "Uncut">> uncut</label>
 *<label><<radiobutton "$mc.genitaltype" "Phimosis">> phimosis</label>
 <<else>>
-What type of penis do you want?
+//What type of penis do you want?//
 *<label><<radiobutton "$mc.genitaltype" "Knotted" checked>> Knotted</label>
 *<label><<radiobutton "$mc.genitaltype" "Barbed">> Barbed</label>
 *<label><<radiobutton "$mc.genitaltype" "Tapered">> Tapered</label>
@@ -17,15 +17,15 @@ What type of penis do you want?
 *<label><<radiobutton "$mc.genitaltype" "Sheathed">> Sheathed</label>
 
 <</if>>
-Also, what's it's length?
+//Also, what's it's length?//
 *<label><<radiobutton "$mc.penislength" "Tiny" checked>> tiny</label>
 *<label><<radiobutton "$mc.penislength" "Small" checked>> small</label>
 *<label><<radiobutton "$mc.penislength" "Average" checked>> average</label>
 *<label><<radiobutton "$mc.penislength" "Large" checked>> large</label>
 *<label><<radiobutton "$mc.penislength" "Huge" checked>> huge</label>
 <<elseif $mc.gender is "Female">>
-Because you chose female you have a vagina.
-Choose the tightness
+//Because you chose female you have a vagina.//
+//Choose the tightness//
 <<set $mc.genitals to "Vagina">>
 *<label><<radiobutton "$mc.genitaltype" "Very Tight">> very tight</label>
 *<label><<radiobutton "$mc.genitaltype" "Tight">>tight</label>
@@ -33,7 +33,7 @@ Choose the tightness
 *<label><<radiobutton "$mc.genitaltype" "Gaping">> gaping</label>
 <</if>>
 
-Decide your ass size
+//Decide your ass size//
 *<label><<radiobutton "$mc.assSize" "Flat">> flat</label>
 *<label><<radiobutton "$mc.assSize" "Small">> small</label>
 *<label><<radiobutton "$mc.assSize" "Average">> average</label>

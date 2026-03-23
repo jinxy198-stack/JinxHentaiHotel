@@ -1,5 +1,28 @@
 :: Widgets [widget nobr] 
 
+/* gets the room based on your location and issues where you start at */
+<<widget "GetRoom">>
+    <<if $location =="Your Room">>
+        <<set $room = {
+        type: "bedroom",
+        location: "large floor",
+        furnitureFlags: setup.getRoomFurnitureFlags("bedroom")
+        }>>
+    <<elseif $location == "Bathroom">>
+        <<set $room = {
+        type: "bathroom",
+        location: "large floor",
+        furnitureFlags: setup.getRoomFurnitureFlags("bathroom")
+        }>>
+    <<elseif $location == "Lounge">>
+        <<set $room = {
+        type: "lounge",
+        location: "large floor",
+        furnitureFlags: setup.getRoomFurnitureFlags("lounge")
+        }>>    
+    <</if>>    
+<</widget>>
+
 
 <<widget "RoomRelocationUI">>
 <div id="UI-Location">
@@ -116,9 +139,7 @@
 	    <div class="npcsex-content">
             <<CumLocationButtons>>
         </div>
-
         
-
     <<else>>
 
 
@@ -172,7 +193,6 @@
 					<<for _i = 0; _i < _acts.length; _i++>>
 						<<set _a = _acts[_i]>>
                         <<set _actDef = setup.sexacts[_a]>>
-
 						
 							<<capture _a>>
 								<li>
@@ -208,13 +228,12 @@
                                 <</if>>    
 								</li>
 							<</capture>>
-						
 					<</for>>    
                     <<button "End Session">>
-			        <<set $lastNpc = $ui.npc>>      <!-- remember who you were with -->
-			        <<set $sex = { stage: "foreplay", log: [] }>>  <!-- optional reset -->
-                    <<set $seenActions = {}>>
-			        <<goto "Your Room">>              
+			            <<set $lastNpc = $ui.npc>>      <!-- remember who you were with -->
+			            <<set $sex = { stage: "foreplay", log: [] }>>  <!-- optional reset -->
+                        <<set $seenActions = {}>>
+			            <<goto "Your Room">>              
 		            <</button>>
                 </ul>
             <<else>>
@@ -249,14 +268,22 @@
                                     <<if $sex.phase=="climax">>
                                         <<replace "#intro">>
                                             <<include "Orgasm-Close-Dialogue">><br>
-                                            <<include "Orgasm-Close-Quote">>
+                                            <<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
+                                                <<include "Act-Quote-Mute">>
+                                            <<else>>
+                                                <<include "Orgasm-Close-Quote">>
+                                            <</if>>
 		                                <</replace>>
                                     <<else>>
                                         <<replace "#log">><</replace>>
 
 										<<replace "#intro">>
                                             <<include "ActDialogue">>
-                                            <<include "Act-Quote">>
+                                            <<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
+                                                <<include "Act-Quote-Mute">>
+                                            <<else>>
+                                                <<include "Act-Quote">>
+                                            <</if>>    
 										<</replace>>
                                         <<replace "#log">><</replace>>
 										<<replace "#arousal-ui">><<ArousalUI>><</replace>>
@@ -349,7 +376,11 @@
 						/* Refresh UI area if you have one */
 						<<replace "#intro">>
                             <<include "OrgasmDialogue">><br>
-                            <<include "Orgasm-Quote">>
+                            <<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
+                                <<include "Act-Quote-Mute">>
+                            <<else>>
+                                <<include "Orgasm-Quote">>
+                            <</if>>
 						<</replace>>
                         
                         <<replace "#log">><</replace>>
@@ -630,26 +661,12 @@
             $proset.them="them",
             $proset.their="their",
             $proset.theirs="theirs",
-            $proset.themselves=_self,
+            $proset.theyUp="They",
+            $proset.themUp="Them",
+            $proset.theirUp="Their",
+            $proset.theirsUp="Theirs",
+            $proset.themselvesUp=_self,
             $proset.plural=_isPlural>>
-
-		<<case "ae/aer">>
-			<<set 
-            $proset.they="ae",
-            $proset.them="aer",
-            $proset.their="aer",
-            $proset.theirs="aers",
-            $proset.themselves="aerself",
-            $proset.plural=false>>
-
-		<<case "e/em">>
-			<<set 
-            $proset.they="e",
-            $proset.them="em",
-            $proset.their="eir",
-            $proset.theirs="eirs",
-            $proset.themselves="emself",
-            $proset.plural=false>>
 
 		<<default>>
 			/* Safe fallback */

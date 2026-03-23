@@ -15,14 +15,10 @@
 <<if !$mc.bodyparts && $mc.body>>
 	<<set $mc.bodyparts = Object.keys($mc.body)>>
 <</if>>
-<<set $gamelocation = "Your Room">>
+
 /* ensure room exists BEFORE UI */
 <<if !$room>>
-<<set $room = {
-  type: "bedroom",
-  location: "large floor",
-  furnitureFlags: setup.getRoomFurnitureFlags("bedroom")
-}>>
+	<<GetRoom>> 
 <</if>>
 
 /* ensure sex exists */
@@ -44,7 +40,7 @@
 <<if $sex.roles.dom.name == $mc.name>>
   <<set $sex.role = "top">>
   <<run setup.updateTopBottom($sex)>>
-<<else>>
+<<elseif $sex.roles.dom.name == _n.name>>
   <<set $sex.role = "bottom">>
   <<run setup.updateTopBottom($sex)>>
 <</if>>

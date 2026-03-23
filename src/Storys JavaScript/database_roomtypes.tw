@@ -15,7 +15,7 @@ setup.RoomTypes.db = {
     "bathroom": {
         name: "bathroom",
         contents: {
-            "large floor": {useMultiplier: 0.1},
+            "large floor": {},
             "wall": {},
             "toilet": {},
             "shower":{},
@@ -96,6 +96,15 @@ setup.RoomTypes.db = {
             "chair": {},
             "table": {},
             "bar": {},
+        },
+    },
+    "private room": {
+        name: "private room",
+        contents: {
+            "large floor": {},
+            "wall": {},
+            "door": {},
+            "futon": {},
         },
     },
 };

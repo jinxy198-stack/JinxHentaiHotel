@@ -88,25 +88,27 @@
 	<<set _npc.surname  = setup.pick(_surnames)>>
 	
     <<set _npc.species = setup.pick(setup.species)>>
+
     
 	/* Gender, pronouns, genitals */
 	<<set _npc.gender = setup.pick(setup.genders)>>
 	<<if _npc.gender is "Male">>
-		<<set _npc.pronouns   = "He/Him">>
 		<<set _npc.genitals   = "Penis">>
         <<if _npc.species is "Human">>
 			<<set _npc.genitaltype = setup.pick(setup.penistype)>>
         <</if>>
 		<<set _npc.penislength = setup.pick(setup.penislength)>>
 	<<elseif _npc.gender is "Female">>
-		<<set _npc.pronouns   = "She/Her">>
 		<<set _npc.genitals   = "Vagina">>
 		<<set _npc.genitaltype = setup.pick(setup.vaginatype)>>
 		<<set _npc.breastsize   = setup.pick(setup.breastsize)>>
 	<</if>>
-
-	<<set _npc.trans = "Cisgender">>
-
+	<<set _npc.pronouns = setup.pick(setup.pronouns)>>
+	<<if (_npc.gender is "Male" && _npc.pronouns is "He/Him")|| (_npc.gender is "Female" && _npc.pronouns is "She/Her")>>
+		<<set _npc.trans = "Cisgender">>
+	<<else>>
+		<<set _npc.trans =  setup.pick("Transgender", "Nonbinary")>>
+	<</if>>
 	/**********************
 	    SEXUALITY / PREFS
 	**********************/

@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="175" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
+	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="176" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet" */
 .sex-list {
   display: flex;
   flex-wrap: wrap;
@@ -3587,6 +3587,9 @@ setup.speciesnnew = [
 setup.genders= [
     "Male", "Female",
 ];
+setup.pronouns= [
+    "He/Him", "She/Her", "They/Them",
+];
 
 setup.anthroGroup= [
     "Furry", "Scalie", "Avian",
@@ -3634,7 +3637,7 @@ setup.height=[
 ];
 
 setup.furScalesColors=[
-    "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Purple", "Rainbow", "tan",
+    "Black", "Brown", "Grey", "White", "Golden", "Red", "Blue", "Green","Purple", "Rainbow", "Tan",
 ];
 
 setup.anthroPatterns=[
@@ -3715,7 +3718,7 @@ setup.RoomTypes.db = {
     "bathroom": {
         name: "bathroom",
         contents: {
-            "large floor": {useMultiplier: 0.1},
+            "large floor": {},
             "wall": {},
             "toilet": {},
             "shower":{},
@@ -3796,6 +3799,15 @@ setup.RoomTypes.db = {
             "chair": {},
             "table": {},
             "bar": {},
+        },
+    },
+    "private room": {
+        name: "private room",
+        contents: {
+            "large floor": {},
+            "wall": {},
+            "door": {},
+            "futon": {},
         },
     },
 };
@@ -4723,8 +4735,8 @@ setup.sexacts = {
         "bottom dialogue tags": ["face ridden"],
     },
     // oral/hand cock service actions
-
-    "Fondle Balls": /* you fondle their balls or reverse */
+    /* you fondle their balls or reverse */
+    /*"Fondle Balls": 
     {
         "positions": [ "Missionary", "Laid Across On Back", "Laid Across On Stomach", "Mating Press", "Prone Bone", "Sixty-Nine", "From Behind", "Doggy", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Standing From Behind", "Astride Lap", "Oral Service", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Riding Face", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
         "action type": ["tease"],
@@ -4777,7 +4789,7 @@ setup.sexacts = {
         "top dialogue tags": ["licking balls"],
         "bottom dialogue tags": ["balls licked"],
         coexist: true,
-    },
+    },*/
     "Lick Asshole":
     {
         "positions": [ "Sixty-Nine", "Kneeling", "Kneeling Over", "Oral Service", "Kneeling By Face", "Squatting Before", "Riding Face", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
@@ -5849,7 +5861,7 @@ setup.sexacts = {
 
 
 
-    "Kiss":
+    "Aftercare Kiss":
     {
         "positions": [],
         "action type": ["aftercare"],
@@ -6664,7 +6676,6 @@ Remember to follow the golden rule:
 Consent is required.</tw-passagedata><tw-passagedata pid="3" name="CC-Confirm" tags="" position="25,400" size="100,100">&lt;h1&gt;Hi &lt;span class=&quot;mc&quot;&gt;$mc.name!&lt;/span&gt;&lt;/h1&gt;
 &lt;h2&gt;Your adventure is about to start...&lt;/h2&gt;
 
-Testing option, Do you want underage characters in your game?
 
 [[Beginning]]</tw-passagedata><tw-passagedata pid="4" name="Credits" tags="" position="150,25" size="100,100">The following are assets and characters I do not claim to own yet use them in the creation and development of the game. 
 The &#39;&#39;Character Creator Template&#39;&#39; section was created by manonamora on Twine 2/Tweego with SugarCube (2.37.3). Heavily modified but was very important for development.
@@ -6874,7 +6885,7 @@ Climax only occurs when one of the arousals reach its max. It overrides any curr
     The locations to cum will depend on what position you are in and what action you are doing.
 Aftercare is the phase that comes right after selecting where you want to cum. In this phase you can either end the session or you and your partner can enjoy the afterglow together.     
 
-Note that some actions will only build up arousal a certain amount before you are blocked from using that action to build up any more arousal for the rest of the session. (So you cannot pet someone&#39;s ears from begginning to end before they cum.)</tw-passagedata><tw-passagedata pid="9" name="Accessory" tags="" position="1725,325" size="100,100">/*
+Note that some actions will only build up arousal a certain amount before you are blocked from using that action to build up any more arousal for the rest of the session. (So you cannot pet someone&#39;s ears from begginning to end before they cum.)</tw-passagedata><tw-passagedata pid="9" name="CC-Accessory" tags="creation-page" position="1725,325" size="100,100">/*
 Watch
 Necklace
 Earrings
@@ -6951,7 +6962,7 @@ $(document).one(&quot;:passagerender&quot;, function (ev) {
 
 &lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="CC-Check" tags="nobr" position="200,400" size="100,100">&lt;&lt;create-body&gt;&gt;
 &lt;h1&gt;Is this Correct?&lt;/h1&gt;
-Please review the character page below and confirm the traits chosen are correct.  
+//Please review the character page below and confirm the options chosen are correct.// 
 &lt;h2&gt;Basic Info&lt;/h2&gt;
 &lt;table&gt;
     &lt;tr id=&quot;name&quot;&gt;
@@ -7188,7 +7199,7 @@ Do your eyes have &lt;&lt;link &quot;the same color&quot;&gt;&gt;&lt;&lt;set $he
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.gender&quot; &quot;Female&quot;&gt;&gt; Female&lt;/label&gt;
 
 
-//What do you identify as?//
+//What do you identify your sexuality as?//
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.sexu&quot; &quot;Heterosexual&quot; checked&gt;&gt; Heterosexual&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.sexu&quot; &quot;Homosexual&quot;&gt;&gt; Homosexual&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.sexu&quot; &quot;Bisexual&quot;&gt;&gt; Bisexual&lt;/label&gt;
@@ -7198,17 +7209,17 @@ Do your eyes have &lt;&lt;link &quot;the same color&quot;&gt;&gt;&lt;&lt;set $he
 &lt;&lt;button &quot;Confirm&quot;&gt;&gt;
     &lt;&lt;set $pages.gender to true&gt;&gt;
         &lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="CC-Genitals" tags="creation-page" position="925,225" size="100,100">Decide your genitals
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="CC-Genitals" tags="creation-page" position="925,225" size="100,100">//Decide your genitals//
 &lt;&lt;if $mc.gender is &quot;Male&quot;&gt;&gt;
-Because you chose male you have a penis. 
+//Because you chose male you have a penis. //
 &lt;&lt;set $mc.genitals to &quot;Penis&quot;&gt;&gt;
 &lt;&lt;if $mc.species != &quot;Anthro&quot;&gt;&gt;
-Choose a human penis type
+//Choose a human penis type//
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.genitaltype&quot; &quot;Cut&quot; checked&gt;&gt; cut&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.genitaltype&quot; &quot;Uncut&quot;&gt;&gt; uncut&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.genitaltype&quot; &quot;Phimosis&quot;&gt;&gt; phimosis&lt;/label&gt;
 &lt;&lt;else&gt;&gt;
-What type of penis do you want?
+//What type of penis do you want?//
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.genitaltype&quot; &quot;Knotted&quot; checked&gt;&gt; Knotted&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.genitaltype&quot; &quot;Barbed&quot;&gt;&gt; Barbed&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.genitaltype&quot; &quot;Tapered&quot;&gt;&gt; Tapered&lt;/label&gt;
@@ -7216,15 +7227,15 @@ What type of penis do you want?
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.genitaltype&quot; &quot;Sheathed&quot;&gt;&gt; Sheathed&lt;/label&gt;
 
 &lt;&lt;/if&gt;&gt;
-Also, what&#39;s it&#39;s length?
+//Also, what&#39;s it&#39;s length?//
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.penislength&quot; &quot;Tiny&quot; checked&gt;&gt; tiny&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.penislength&quot; &quot;Small&quot; checked&gt;&gt; small&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.penislength&quot; &quot;Average&quot; checked&gt;&gt; average&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.penislength&quot; &quot;Large&quot; checked&gt;&gt; large&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.penislength&quot; &quot;Huge&quot; checked&gt;&gt; huge&lt;/label&gt;
 &lt;&lt;elseif $mc.gender is &quot;Female&quot;&gt;&gt;
-Because you chose female you have a vagina.
-Choose the tightness
+//Because you chose female you have a vagina.//
+//Choose the tightness//
 &lt;&lt;set $mc.genitals to &quot;Vagina&quot;&gt;&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.genitaltype&quot; &quot;Very Tight&quot;&gt;&gt; very tight&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.genitaltype&quot; &quot;Tight&quot;&gt;&gt;tight&lt;/label&gt;
@@ -7232,7 +7243,7 @@ Choose the tightness
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.genitaltype&quot; &quot;Gaping&quot;&gt;&gt; gaping&lt;/label&gt;
 &lt;&lt;/if&gt;&gt;
 
-Decide your ass size
+//Decide your ass size//
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.assSize&quot; &quot;Flat&quot;&gt;&gt; flat&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.assSize&quot; &quot;Small&quot;&gt;&gt; small&lt;/label&gt;
 *&lt;label&gt;&lt;&lt;radiobutton &quot;$mc.assSize&quot; &quot;Average&quot;&gt;&gt; average&lt;/label&gt;
@@ -7338,9 +7349,7 @@ Once you are set on a name (by following one of the listed options and), you wil
 /*  
     I&#39;m only setting the nickname to a &quot;fake thing&quot; for the &gt;No&lt; option for the sake of the trait menu and the checking page.
     You may want to ensure the variable is unset before the game starts if the player chose no nickname or left the textbox empty.
-*/</tw-passagedata><tw-passagedata pid="21" name="CC-Personality" tags="creation-page" position="1425,225" size="100,100">&lt;h1&gt;Choose your Personality&lt;/h1&gt;\
-
-//What term do you use to describe your personality?//
+*/</tw-passagedata><tw-passagedata pid="21" name="CC-Personality" tags="creation-page" position="1425,225" size="100,100">//What term do you use to describe your personality?//
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Adventerous&quot; checked&gt;&gt; Adventurous&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Kind&quot;&gt;&gt;Kind&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Shy&quot;&gt;&gt;Shy&lt;/label&gt;
@@ -7869,17 +7878,19 @@ This room is for testing features of the game, it should no be visible to the av
 
 &lt;div class=&quot;room-hotel&quot;&gt;
 
-&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 1&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 20&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;FRISK&quot; $UTDRPool 1&gt;&gt;
+
+&lt;&lt;SpawnRandomNPCs 5&gt;&gt;
 
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
 /* Debug tester */
+&lt;&lt;if $devMode&gt;&gt;
 Pool exists: &lt;&lt;= Array.isArray($fullPool) &gt;&gt;
 Pool size: &lt;&lt;= $fullPool ? $fullPool.length : 0 &gt;&gt;
 Spawn keys: &lt;&lt;= $spawnPools ? Object.keys($spawnPools).join(&quot;, &quot;) : &quot;none&quot; &gt;&gt;
 Room NPCs: &lt;&lt;= $roomNPCs ? $roomNPCs.length : 0 &gt;&gt;
-
+&lt;&lt;/if&gt;&gt;
 
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="49" name="Your Room" tags="nobr" position="400,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Room&quot;&gt;&gt;
 You are in your hotel room. It looks like the love suite of a luxury hotel, complete with a heart shaped bed. Next to the bed is a phone for calling up people you know for a &#39;good time&#39;.
@@ -8558,6 +8569,34 @@ On the other side there was a door to your bathroom.
 /*Asriel Dreemurr */
 
 /* Frisk*/
+&lt;&lt;set $FriskShota = {
+    name: &quot;Frisk&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    trans: &quot;Nonbinary&quot;,
+    sexu: &quot;Pansexual&quot;,
+    pronouns: &quot;They/Them&quot;,
+    age: 11,
+    heterochromia: false,
+    eyes: &quot;Red&quot;,
+    hair: &quot;Bowl Cut&quot;,
+    skincolor: &quot;Tan&quot;,
+    haircolour: &quot;Brown&quot;,
+    bodyheight: &quot;Short&quot;,
+    physique: &quot;Thin&quot;,
+    personality: &quot;Kind&quot;,
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;,
+    penislength:&quot;Small&quot;,
+    assSize: &quot;Round&quot;,
+    virgin: false,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;Undertale&quot;,
+    traits: [
+    &quot;Mute&quot;
+    ],
+}&gt;&gt;
+
 /*Chara */
 /* Kris*/
 /* Ralsei*/</tw-passagedata><tw-passagedata pid="56" name="npc template sample" tags="" position="1925,450" size="100,100">&lt;&lt;set $characterTemplate = {
@@ -11402,7 +11441,7 @@ _n.name is straddling your chest.
         
         &lt;&lt;case &quot;Oral Front&quot;&gt;&gt;&lt;&lt;include &quot;Stand-Front-Oral-Dialogue&quot;&gt;&gt;
         &lt;&lt;case &quot;Oral Back&quot;&gt;&gt;&lt;&lt;include &quot;Stand-Back-Oral-Dialogue&quot;&gt;&gt;
-	&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="Act-Quote" tags="Dialogue nobr" position="725,1725" size="100,100">&lt;!-- only what the npc says --&gt;
+	&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="Act-Quote-Mute" tags="nobr" position="725,1725" size="100,100">/* For when the npc is mute and not capable of speech. */</tw-passagedata><tw-passagedata pid="137" name="Act-Quote" tags="Dialogue nobr" position="850,1725" size="100,100">&lt;!-- only what the npc says --&gt;
 
 &lt;&lt;set _a = $sex.act or &quot;none&quot;&gt;&gt;
 &lt;br&gt;
@@ -11428,8 +11467,8 @@ _n.name is straddling your chest.
     /* &lt;&lt;case &quot;Lick Balls&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt; */
     /* &lt;&lt;case &quot;Suck Balls&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt; */
     &lt;&lt;case &quot;Lick Asshole&quot;&gt;&gt;_b&lt;&lt;include &quot;Rimjob-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Lick-Cock-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;Rub-Cock-Face-Quote&quot;&gt;&gt;
+    /*&lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Lick-Cock-Quote&quot;&gt;&gt;*/
+    /*&lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;Rub-Cock-Face-Quote&quot;&gt;&gt;*/
     /*&lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
     /*&lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
     &lt;&lt;case &quot;Grip Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Grab-Cock-Quote&quot;&gt;&gt;
@@ -11488,9 +11527,7 @@ _n.name is straddling your chest.
     &lt;&lt;case &quot;Touch Stomach&quot;&gt;&gt;&lt;&lt;include &quot;Feel-Stomach-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Embrace&quot;&gt;&gt;&lt;&lt;include &quot;Embrace-Quote&quot;&gt;&gt;
 &lt;&lt;/switch&gt;&gt;
-
-
-&lt;br&gt;</tw-passagedata><tw-passagedata pid="137" name="Anal-Quote" tags="nobr Dialogue" position="1600,1300" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="138" name="Anal-Quote" tags="nobr Dialogue" position="1600,1300" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
 	[Error] setup.analQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -11535,7 +11572,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Anal quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="Boobjob-Quote" tags="nobr" position="975,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="Boobjob-Quote" tags="nobr" position="1100,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
 &lt;&lt;set _msize = $mc.breastsize || &quot;None&quot;&gt;&gt;
 &lt;&lt;set _nsize = _n.breastsize || &quot;None&quot;&gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
@@ -11561,7 +11598,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No boobjob quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -11595,7 +11632,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Caress quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, material=&lt;&lt;=_material&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="Cuddle-Quote" tags="nobr Dialogue" position="1800,1700" size="100,100">&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="Cuddle-Quote" tags="nobr Dialogue" position="1800,1700" size="100,100">&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
 	[Error] setup.cuddleQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -11631,7 +11668,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Cuddle quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -11655,7 +11692,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Cunnilingus quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="Embrace-Quote" tags="nobr Dialogue" position="1700,1500" size="100,100">&lt;&lt;if !setup.embraceQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Embrace-Quote" tags="nobr Dialogue" position="1700,1500" size="100,100">&lt;&lt;if !setup.embraceQuotes&gt;&gt;
 	[Error] setup.embraceQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -11691,7 +11728,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Embrace quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Enter-Ass-Quote" tags="nobr" position="350,1850" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="Enter-Ass-Quote" tags="nobr" position="475,1850" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
 
@@ -11716,7 +11753,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Anal quote pool found.
     (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="Enter-Mouth-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="Enter-Mouth-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
@@ -11740,7 +11777,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Enter Mouth pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="Enter-Pussy-Quote" tags="nobr" position="600,1850" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="Enter-Pussy-Quote" tags="nobr" position="725,1850" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength&gt;&gt;
 &lt;&lt;set _age  = $mc.ageGroup&gt;&gt;
 
@@ -11762,7 +11799,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Vaginal quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="Face-On-Chest-Quote" tags="nobr Dialogue" position="1700,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="Face-On-Chest-Quote" tags="nobr Dialogue" position="1700,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 
 &lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
@@ -11791,7 +11828,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Face on Chest quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="Feel-Stomach-Quote" tags="Dialogue nobr" position="1700,1200" size="100,100">&lt;&lt;if !setup.feelstomachQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="Feel-Stomach-Quote" tags="Dialogue nobr" position="1700,1200" size="100,100">&lt;&lt;if !setup.feelstomachQuotes&gt;&gt;
 	[Error] setup.feelstomachQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -11828,7 +11865,7 @@ _n.name is straddling your chest.
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Feel Stomach quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">/*&lt;&lt;if !setup.fingerassQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">/*&lt;&lt;if !setup.fingerassQuotes&gt;&gt;
 	[Error] setup.fingerassQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -11890,7 +11927,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Finger Ass quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="Finger-Pussy-Quote" tags="nobr Dialogue" position="1800,1200" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="Finger-Pussy-Quote" tags="nobr Dialogue" position="1800,1200" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -11913,7 +11950,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Finger Vagina quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -11947,7 +11984,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No footjob quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, _size=&lt;&lt;=_size&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">/*
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">/*
 &lt;&lt;if !setup.frotQuotes&gt;&gt;
 	[Error] setup.frotQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -11992,7 +12029,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Frot quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="Fuck-Ass-Quote" tags="nobr" position="225,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="Fuck-Ass-Quote" tags="nobr" position="350,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
 
@@ -12025,7 +12062,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Anal quote pool found.
     (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;,position=&lt;&lt;=_position&gt;&gt; nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="Fuck-Pussy-Quote" tags="nobr" position="350,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="Fuck-Pussy-Quote" tags="nobr" position="475,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength&gt;&gt;
 &lt;&lt;set _tight = _n.genitaltype&gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
@@ -12054,7 +12091,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No Fuck Pussy quote pool found.
     (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="Grab-Cock-Quote" tags="nobr" position="475,1975" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="Grab-Cock-Quote" tags="nobr" position="600,1975" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -12094,7 +12131,7 @@ _n.name is straddling your chest.
 &lt;&lt;else&gt;&gt;
 	[Error] No grab cock quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, age=&lt;&lt;=_age&gt;&gt;, size=&lt;&lt;=_size&gt;&gt;,personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">/*&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">/*&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
 	[Error] setup.gropebreastQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12172,7 +12209,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No grope breast quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -12219,7 +12256,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Grope Butt quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="Handjob-Quote" tags="nobr Dialogue" position="1700,1700" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="Handjob-Quote" tags="nobr Dialogue" position="1700,1700" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -12266,7 +12303,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No handjob quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, age=&lt;&lt;=_age&gt;&gt;, size=&lt;&lt;=_size&gt;&gt;,personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="Kiss-Nipple-Quote" tags="nobr" position="975,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="Kiss-Nipple-Quote" tags="nobr" position="1100,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
 &lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
@@ -12286,11 +12323,11 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Kiss Nipple quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="Kiss-Quote" tags="nobr" position="1100,1975" size="100,100">&lt;&lt;= either(
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="Kiss-Quote" tags="nobr" position="1225,1975" size="100,100">&lt;&lt;= either(
 		&quot;Mmm&quot;,
 		&quot;Mmmph&quot;,
 		&quot;Mmmmm&quot;
-	)&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="Lick-Nipple-Quote" tags="nobr" position="1225,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+	)&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="Lick-Nipple-Quote" tags="nobr" position="100,2100" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
 &lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
@@ -12310,7 +12347,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Lick Nipple quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">/* When you or NPC are close to orgasm */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">/* When you or NPC are close to orgasm */
 
 &lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
@@ -12349,7 +12386,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm Close quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -12380,7 +12417,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;,personality=&lt;&lt;=_personality&gt;&gt;, cum location=&lt;&lt;= _loc &gt;&gt; )
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -12406,7 +12443,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Pet Ears quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;top&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;top&quot;&gt;&gt;
@@ -12429,7 +12466,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Rimjob quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;,personality=&lt;&lt;=_personality&gt;&gt; )
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="Suck-Cock-Quote" tags="nobr" position="600,2100" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="166" name="Suck-Cock-Quote" tags="nobr" position="725,2100" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
@@ -12454,7 +12491,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Enter Mouth pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="166" name="Suck-Foot-Quote" tags="nobr Dialogue" position="1800,1600" size="100,100">&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="Suck-Foot-Quote" tags="nobr Dialogue" position="1800,1600" size="100,100">&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
 	[Error] setup.suckfootQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12494,7 +12531,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 	&lt;&lt;= either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Suck Foot quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="Suck-Nipple-Quote" tags="nobr" position="850,2100" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="Suck-Nipple-Quote" tags="nobr" position="975,2100" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
 &lt;&lt;if $sex.role == &quot;bottom&quot;&gt;&gt;
 	&lt;&lt;set _mode = &quot;bottom&quot;&gt;&gt;
@@ -12514,7 +12551,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Suck Nipple quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="Tease-Ass-Cock-Quote" tags="nobr" position="975,2100" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="Tease-Ass-Cock-Quote" tags="nobr" position="1100,2100" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
 
@@ -12539,7 +12576,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Tease ass quote pool found.
     (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="Tease-Cock-Pussy-Quote" tags="nobr" position="1100,2100" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="Tease-Cock-Pussy-Quote" tags="nobr" position="1225,2100" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
 
@@ -12563,7 +12600,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No grope breast quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="Tease-Nipples-Quote" tags="nobr" position="1225,2100" size="100,100">&lt;&lt;set _msize = $mc.penislength&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="Tease-Nipples-Quote" tags="nobr" position="100,2225" size="100,100">&lt;&lt;set _msize = $mc.penislength&gt;&gt;
 &lt;&lt;set _nsize = _n.penislength&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
@@ -12585,7 +12622,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Tease Nipple quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="Tease-Tip-Quote" tags="nobr" position="100,2225" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="Tease-Tip-Quote" tags="nobr" position="225,2225" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
 
@@ -12609,7 +12646,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Tease tip quote pool found.
     (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="Trib-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;set _msize = $mc.penislength&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="173" name="Trib-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;set _msize = $mc.penislength&gt;&gt;
 &lt;&lt;set _nsize = _n.penislength&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
@@ -12631,7 +12668,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;else&gt;&gt;
 	[Error] No Trib quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="173" name="StoryCaption" tags="nobr" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="174" name="StoryCaption" tags="nobr" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
 &lt;b&gt;Location: &lt;/b&gt;$gamelocation
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
@@ -12641,7 +12678,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;Test-Sex-Encounter&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="174" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
+&lt;&lt;if passage() is &quot;Test-Sex-Encounter&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="175" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
 	muscle: 4,
 	plump: 4,
 	label: &quot;Average&quot;
@@ -12685,6 +12722,12 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
   $LorraineD,
   $OliverT
 ]&gt;&gt;
+
+/*Undertale/Deltarune */
+&lt;&lt;set $UTDRPool = [
+  $FriskShota
+]&gt;&gt;
+
 /* Misc Character */
 &lt;&lt;set $MiscPool = [
   $Alvin,
@@ -12822,7 +12865,8 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 	.concat($OCPool || [])
 	.concat($ABPool || [])
   .concat($MiscPool || [])
-&gt;&gt;</tw-passagedata><tw-passagedata pid="175" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
+  .concat($UTDRPool || [])
+&gt;&gt;</tw-passagedata><tw-passagedata pid="176" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
 
 &lt;&lt;set $devMode = true&gt;&gt;
 &lt;div&gt;
@@ -12848,63 +12892,71 @@ Create your character to begin.
 
 
 &lt;&lt;/if&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="176" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
-&quot;Yes. I&#39;m ready — and I want you to be fully present with me&quot;
-&lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
-&quot;Yes! That sounds exciting — I&#39;m totally in the mood for you.&quot;
-&lt;&lt;elseif _n.personality == &quot;Timid&quot;&gt;&gt;
-&quot;I… yes. Only if you stay close to me the whole time.&quot;
-&lt;&lt;elseif _n.personality == &quot;Tough&quot;&gt;&gt;
-&quot;Heh. You&#39;re bold. Fine — I&#39;ll bite. Just try to keep up.&quot;
-&lt;&lt;elseif _n.personality == &quot;Brave&quot;&gt;&gt;
-&quot;Yeah! Let&#39;s do this!&quot;
-&lt;&lt;elseif _n.personality == &quot;Kind&quot;&gt;&gt;
-&quot;Yes… I want to be that close with you.&quot;
-&lt;&lt;elseif _n.personality == &quot;Active&quot;&gt;&gt;
-&quot;Alright! I like this energy, let&#39;s work up a sweat!&quot;
-&lt;&lt;elseif _n.personality == &quot;Logical&quot;&gt;&gt;
-&quot;Logically — I want you as well. I approve of this.&quot;
-&lt;&lt;elseif _n.personality == &quot;Sassy&quot;&gt;&gt;
-&quot;Yes — obviously. Took you long enough to say it.&quot;
-&lt;&lt;elseif _n.personality == &quot;Mean&quot;&gt;&gt;
-&quot;Fine then, you&#39;re lucky I find you attractive.&quot;
-&lt;&lt;elseif _n.personality == &quot;Energetic&quot;&gt;&gt;
-&quot;Alright! Let&#39;s do this!&quot;
-&lt;&lt;elseif _n.personality == &quot;Playful&quot;&gt;&gt;
-&quot;Oh yeah...&quot;
-&lt;&lt;elseif _n.personality == &quot;Childlike&quot;&gt;&gt;
-&quot;Yay! This&#39;ll be fun!&quot;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="177" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+    They nod.
 &lt;&lt;else&gt;&gt;
-&quot;Ok&quot;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="177" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
-    &quot;Not interested. But I&#39;m content simply sharing this moment with you.&quot;
-&lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
-    &quot;Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.&quot;
-&lt;&lt;elseif _n.personality == &quot;Timid&quot;&gt;&gt;
-    &quot;I-I&#39;m sorry. I don&#39;t want to… but I&#39;m grateful you asked gently.&quot;
-&lt;&lt;elseif _n.personality == &quot;Tough&quot;&gt;&gt;
-    &quot;Not happening. So drop it.&quot;
-&lt;&lt;elseif _n.personality == &quot;Brave&quot;&gt;&gt;
-    &quot;Gonna have to decline. It&#39;s just not going to work out.&quot;
-&lt;&lt;elseif _n.personality == &quot;Kind&quot;&gt;&gt;
-    &quot;I appreciate it but I must decline.&quot;
-&lt;&lt;elseif _n.personality == &quot;Active&quot;&gt;&gt;
-    &quot;Love the enthusiasm but I&#39;m gonna pass.&quot;
-&lt;&lt;elseif _n.personality == &quot;Logical&quot;&gt;&gt;
-    &quot;I decline. The conditions are not ideal for full engagement.&quot;
-&lt;&lt;elseif _n.personality == &quot;Sassy&quot;&gt;&gt;
-    &quot;No — don&#39;t look so shocked. I got other things to do anyway&quot;
-&lt;&lt;elseif _n.personality == &quot;Mean&quot;&gt;&gt;
-    &quot;With you? Absolutely not!&quot;
-&lt;&lt;elseif _n.personality == &quot;Energetic&quot;&gt;&gt;
-    &quot;Mmmm, no thanks. Sorry.&quot;
-&lt;&lt;elseif _n.personality == &quot;Playful&quot;&gt;&gt;
-    &quot;Nah, I don&#39;t feel like playing with you.&quot;
-&lt;&lt;elseif _n.personality == &quot;Childlike&quot;&gt;&gt;
-    &quot;Oh, sorry nevermind! I got ahead of myself!&quot;
+    &lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
+    &quot;Yes. I&#39;m ready — and I want you to be fully present with me&quot;
+    &lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
+    &quot;Yes! That sounds exciting — I&#39;m totally in the mood for you.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Timid&quot;&gt;&gt;
+    &quot;I… yes. Only if you stay close to me the whole time.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Tough&quot;&gt;&gt;
+    &quot;Heh. You&#39;re bold. Fine — I&#39;ll bite. Just try to keep up.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Brave&quot;&gt;&gt;
+    &quot;Yeah! Let&#39;s do this!&quot;
+    &lt;&lt;elseif _n.personality == &quot;Kind&quot;&gt;&gt;
+    &quot;Yes… I want to be that close with you.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Active&quot;&gt;&gt;
+    &quot;Alright! I like this energy, let&#39;s work up a sweat!&quot;
+    &lt;&lt;elseif _n.personality == &quot;Logical&quot;&gt;&gt;
+    &quot;Logically — I want you as well. I approve of this.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Sassy&quot;&gt;&gt;
+    &quot;Yes — obviously. Took you long enough to say it.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Mean&quot;&gt;&gt;
+    &quot;Fine then, you&#39;re lucky I find you attractive.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Energetic&quot;&gt;&gt;
+    &quot;Alright! Let&#39;s do this!&quot;
+    &lt;&lt;elseif _n.personality == &quot;Playful&quot;&gt;&gt;
+    &quot;Oh yeah...&quot;
+    &lt;&lt;elseif _n.personality == &quot;Childlike&quot;&gt;&gt;
+    &quot;Yay! This&#39;ll be fun!&quot;
+    &lt;&lt;else&gt;&gt;
+    &quot;Ok&quot;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="178" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+    They shake their head.
 &lt;&lt;else&gt;&gt;
-    &quot;No&quot;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="178" name="UI-Attracted-check" tags="nobr" position="900,500" size="100,100">&lt;&lt;check-attraction $mc _n&gt;&gt;
+    &lt;&lt;if _n.personality ==&quot;Calm&quot;&gt;&gt;
+        &quot;Not interested. But I&#39;m content simply sharing this moment with you.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Jolly&quot;&gt;&gt;
+        &quot;Not right now — but don&#39;t worry, I&#39;m still enjoying you being here.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Timid&quot;&gt;&gt;
+        &quot;I-I&#39;m sorry. I don&#39;t want to… but I&#39;m grateful you asked gently.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Tough&quot;&gt;&gt;
+        &quot;Not happening. So drop it.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Brave&quot;&gt;&gt;
+        &quot;Gonna have to decline. It&#39;s just not going to work out.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Kind&quot;&gt;&gt;
+        &quot;I appreciate it but I must decline.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Active&quot;&gt;&gt;
+        &quot;Love the enthusiasm but I&#39;m gonna pass.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Logical&quot;&gt;&gt;
+        &quot;I decline. The conditions are not ideal for full engagement.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Sassy&quot;&gt;&gt;
+        &quot;No — don&#39;t look so shocked. I got other things to do anyway&quot;
+    &lt;&lt;elseif _n.personality == &quot;Mean&quot;&gt;&gt;
+        &quot;With you? Absolutely not!&quot;
+    &lt;&lt;elseif _n.personality == &quot;Energetic&quot;&gt;&gt;
+        &quot;Mmmm, no thanks. Sorry.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Playful&quot;&gt;&gt;
+        &quot;Nah, I don&#39;t feel like playing with you.&quot;
+    &lt;&lt;elseif _n.personality == &quot;Childlike&quot;&gt;&gt;
+        &quot;Oh, sorry nevermind! I got ahead of myself!&quot;
+    &lt;&lt;else&gt;&gt;
+        &quot;No&quot;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="179" name="UI-Attracted-check" tags="nobr" position="900,500" size="100,100">&lt;&lt;check-attraction $mc _n&gt;&gt;
 &lt;b&gt;$mc.name: &lt;/b&gt;
 &lt;br&gt;
 * &lt;&lt;if $mc.gender==&quot;Male&quot;&gt;&gt;
@@ -12977,11 +13029,12 @@ Create your character to begin.
 	&lt;&lt;WithNPC _n.id&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
 	/*&lt;&lt;goto &quot;UI-NPC-Sex&quot;&gt;&gt;*/
+	&lt;&lt;set $gamelocation = &quot;Your Room&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Test-Sex-Encounter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;include &quot;Reject-Dialogue&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="179" name="UI-NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;set _n = $ui.npc&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="UI-NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;set _n = $ui.npc&gt;&gt;
 
 &lt;b&gt;Name:&lt;/b&gt; &lt;&lt;=_n.name&gt;&gt; &lt;&lt;if _n.surname&gt;&gt;&lt;&lt;=_n.surname&gt;&gt;&lt;&lt;/if&gt;&gt; &lt;&lt;if _n.nickname&gt;&gt;
 &lt;br&gt;
@@ -13043,7 +13096,7 @@ Create your character to begin.
 
 
 
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="UI-NPC-Sex" tags="nobr" position="1025,475" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="UI-NPC-Sex" tags="nobr" position="1025,475" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;set _n = $ui.npc&gt;&gt;
 	&lt;&lt;if !_n&gt;&gt;[Error] No active NPC selected.&lt;&lt;return&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -13127,171 +13180,190 @@ Create your character to begin.
 		&lt;br&gt;
 		&lt;span id=&quot;aftercare&quot;&gt;&lt;&lt;include &quot;OrgasmCloseBlock&quot;&gt;&gt;&lt;/span&gt;
 	&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="181" name="UI-NPC-Talk" tags="nobr" position="750,500" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;silently&gt;&gt;
-&lt;&lt;set _n = $ui.npc&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="182" name="UI-NPC-Talk" tags="nobr" position="225,2350" size="100,100">&lt;&lt;set _n = $ui.npc&gt;&gt;
+
 &lt;&lt;set _lines = {
-  Default: [&quot;Hello&quot;,&quot;Hi&quot;],
-  Calm: [&quot;We can take our time.&quot;,&quot;No rush.&quot;,&quot;Your presence is steady. Peaceful. I welcome it.&quot;],
-  Jolly: [&quot;Hey there! Great to see you!&quot;,&quot;Isn&#39;t today perfect?&quot;],
-  Timid: [&quot;Ah s-sorry… you startled me. But I&#39;m happy you&#39;re here.&quot;],
-  Tough: [&quot;Hey. Don&#39;t waste my time. Speak if you&#39;ve got something worth saying.&quot;],
-  Brave: [&quot;You&#39;re here. Good. I was ready for something to happen.&quot;],
-  Kind: [&quot;Hi!&quot;,&quot;You look well.&quot;,&quot;Hey, seeing you always makes me happy.&quot;],
-  Active: [&quot;There you are — I was seconds from coming to get you myself.&quot;],
-  Logical: [&quot;You arrived precisely when I anticipated. Efficient...&quot;],
-  Sassy: [&quot;Oh? About time you showed up. I&#39;ve been waiting awhile.&quot;],
-  Mean: [&quot;Well there you are, lil brat!&quot;],
-  Energetic: [&quot;Hey, $mc.name!&quot;],
-  Playful: [&quot;Hey, $mc.name! Hope you&#39;re in the mood for playing around.&quot;],
-  Childlike: [&quot;Hiya! You lookin for some sticky snuggly funtime?&quot;]
+	Default: [&quot;Hello&quot;,&quot;Hi&quot;],
+	Calm: [&quot;We can take our time.&quot;,&quot;No rush.&quot;,&quot;Your presence is steady. Peaceful. I welcome it.&quot;],
+	Jolly: [&quot;Hey there! Great to see you!&quot;,&quot;Isn&#39;t today perfect?&quot;],
+	Timid: [&quot;Ah s-sorry… you startled me. But I&#39;m happy you&#39;re here.&quot;],
+	Tough: [&quot;Hey. Don&#39;t waste my time. Speak if you&#39;ve got something worth saying.&quot;],
+	Brave: [&quot;You&#39;re here. Good. I was ready for something to happen.&quot;],
+	Kind: [&quot;Hi!&quot;,&quot;You look well.&quot;,&quot;Hey, seeing you always makes me happy.&quot;],
+	Active: [&quot;There you are — I was seconds from coming to get you myself.&quot;],
+	Logical: [&quot;You arrived precisely when I anticipated. Efficient...&quot;],
+	Sassy: [&quot;Oh? About time you showed up. I&#39;ve been waiting awhile.&quot;],
+	Mean: [&quot;Well there you are, lil brat!&quot;],
+	Energetic: [&quot;Hey, $mc.name!&quot;],
+	Playful: [&quot;Hey, $mc.name! Hope you&#39;re in the mood for playing around.&quot;],
+	Childlike: [&quot;Hiya! You lookin for some sticky snuggly funtime?&quot;]
 }&gt;&gt;
 
-&lt;&lt;set _pool = _lines[_n.personality] or _lines.Default&gt;&gt;
-&lt;&lt;set _line = _pool[random(0, _pool.length - 1)]&gt;&gt;
-&lt;&lt;set _key = _n.id or _n.name&gt;&gt;
+&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+	&lt;&lt;set _line = &quot;They wave.&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _pool = _lines[_n.personality] || _lines.Default&gt;&gt;
+	&lt;&lt;set _line = _pool[random(0, _pool.length - 1)]&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _key = _n.id || _n.name&gt;&gt;
 &lt;&lt;set _mem = $npcMemory[_key]&gt;&gt;
-&lt;&lt;/silently&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 
 &lt;&lt;if !_mem or !_mem.interacted&gt;&gt;
-	/* first time */
 	&lt;&lt;= either(
 		_n.name + &quot; looks you over curiously.&quot;,
 		_n.name + &quot; gives you a cautious nod.&quot;
 	)&gt;&gt;
 &lt;&lt;elseif _mem.times &lt; 5&gt;&gt;
-	/* early repeat interactions */
 	&lt;&lt;= either(
 		_n.name + &quot; greets you with a familiar look.&quot;,
 		_n.name + &quot; seems more relaxed around you this time.&quot;
 	)&gt;&gt;
 &lt;&lt;else&gt;&gt;
-	/* long-term familiarity */
 	&lt;&lt;= either(
 		_n.name + &quot; barely glances up before smirking at you.&quot;,
 		&quot;You and &quot; + _n.name + &quot; fall back into your usual rhythm without a word.&quot;
 	)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
-&lt;&lt;print &#39;&quot;&#39; + _line.replace(&#39;$mc.name&#39;, $mc.name) + &#39;&quot;&#39; &gt;&gt;
+
+&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+	&lt;&lt;print _line&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;print &#39;&quot;&#39; + _line.replace(&#39;$mc.name&#39;, $mc.name) + &#39;&quot;&#39; &gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
 &lt;br&gt;
 &lt;br&gt;
-/* setup sex interactions */
+
 &lt;&lt;button &quot;Wanna have sex in my room?&quot;&gt;&gt;
 	&lt;&lt;WithNPC _n.id&gt;&gt;
 	&lt;&lt;run Dialog.create(&quot;Propose sex with &quot; + $ui.npc.name).wikiPassage(&quot;UI-Attracted-check&quot;).open()&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="182" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
-	&lt;&lt;if _n.personality ==&quot;Tough&quot;&gt;&gt;
-    “You want me in charge? Good, I don&#39;t do half-measures.”
-    &lt;&lt;elseif _n.personality== &quot;Sassy&quot;&gt;&gt;
-    &quot;You want me to take over? Fine, hope you&#39;re ready to be handled properly.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Brave&quot;&gt;&gt;
-    &quot;Alright, I&#39;ll top&quot;
-    &lt;&lt;elseif _n.personality== &quot;Shy&quot;&gt;&gt;
-    &quot;M-me… on top? I-I don&#39;t know if I can… but… I&#39;ll do my best…&quot;
-    &lt;&lt;elseif _n.personality== &quot;Relaxed&quot;&gt;&gt;
-    &quot;You want me to lead? Sure. I&#39;ll keep it slow,  unless you ask otherwise.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Playful&quot;&gt;&gt;
-    &quot;So you&#39;re letting me top? Heh, this will be fun.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Good&quot;&gt;&gt;
-    &quot;You want me to take the lead? Very well, I&#39;ll take care of you&quot;
-    &lt;&lt;elseif _n.personality== &quot;Evil&quot;&gt;&gt;
-    &quot;Oh I&#39;m gonna enjoy you submitting to me.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Kind&quot;&gt;&gt;
-    &quot;You want me to lead? Then I&#39;ll take care of you, we will both feel good.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Logical&quot;&gt;&gt;
-    &quot;You want me to lead? Very well if it&#39;s what will give the most satisfaction for both.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Studious&quot;&gt;&gt;
-    &quot;You want me to top? I&#39;ve studied plenty, I won&#39;t disappoint.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Active&quot;&gt;&gt;
-    &quot;You&#39;re letting me take initiative? Perfect, I don&#39;t waste time hesitating.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Lonely&quot;&gt;&gt;
-    &quot;You&#39;re leaving it to me? …Fine.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Timid&quot;&gt;&gt;
-    &quot;You want me to take control…? I… I&#39;ll try.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Stubborn&quot;&gt;&gt;
-    &quot;I&#39;m on top and that&#39;s final!&quot;
-    &lt;&lt;elseif _n.personality== &quot;Serious&quot;&gt;&gt;
-    &quot;You trust me to lead? Then I&#39;ll carry this with full intent. No games.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Jolly&quot;&gt;&gt;
-    &quot;So I get to lead? Nice — I&#39;ll make sure you enjoy every second!&quot;
-    &lt;&lt;elseif _n.personality== &quot;Naive&quot;&gt;&gt;
-    &quot;You want me to lead? I&#39;ll do it, just tell me if I do something wrong.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Modest&quot;&gt;&gt;
-    &quot;I&#39;m not a pro but I&#39;ll take the lead if it&#39;s what you want.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Quiet&quot;&gt;&gt;
-    &quot;...alright&quot;
-    &lt;&lt;elseif _n.personality== &quot;Bashful&quot;&gt;&gt;
-    *Blushes*
-    &lt;&lt;elseif _n.personality== &quot;Calm&quot;&gt;&gt;
-    &quot;Alright, relax and trust me.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Flamboyant&quot;&gt;&gt;
-    &quot;Fabulous — I&#39;ll make this unforgettable.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Mean&quot;&gt;&gt;
-    &quot;Hmph&quot;
-    &lt;&lt;elseif _n.personality== &quot;Energetic&quot;&gt;&gt;
-    &quot;Hope you can match my pace!&quot;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
+	&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+        They nod, they are willing to top.
     &lt;&lt;else&gt;&gt;
-    &quot;Ok, I&#39;ll top.&quot;
+        &lt;&lt;if _n.personality ==&quot;Tough&quot;&gt;&gt;
+        “You want me in charge? Good, I don&#39;t do half-measures.”
+        &lt;&lt;elseif _n.personality== &quot;Sassy&quot;&gt;&gt;
+        &quot;You want me to take over? Fine, hope you&#39;re ready to be handled properly.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Brave&quot;&gt;&gt;
+        &quot;Alright, I&#39;ll top&quot;
+        &lt;&lt;elseif _n.personality== &quot;Shy&quot;&gt;&gt;
+        &quot;M-me… on top? I-I don&#39;t know if I can… but… I&#39;ll do my best…&quot;
+        &lt;&lt;elseif _n.personality== &quot;Relaxed&quot;&gt;&gt;
+        &quot;You want me to lead? Sure. I&#39;ll keep it slow,  unless you ask otherwise.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Playful&quot;&gt;&gt;
+        &quot;So you&#39;re letting me top? Heh, this will be fun.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Good&quot;&gt;&gt;
+        &quot;You want me to take the lead? Very well, I&#39;ll take care of you&quot;
+        &lt;&lt;elseif _n.personality== &quot;Evil&quot;&gt;&gt;
+        &quot;Oh I&#39;m gonna enjoy you submitting to me.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Kind&quot;&gt;&gt;
+        &quot;You want me to lead? Then I&#39;ll take care of you, we will both feel good.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Logical&quot;&gt;&gt;
+        &quot;You want me to lead? Very well if it&#39;s what will give the most satisfaction for both.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Studious&quot;&gt;&gt;
+        &quot;You want me to top? I&#39;ve studied plenty, I won&#39;t disappoint.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Active&quot;&gt;&gt;
+        &quot;You&#39;re letting me take initiative? Perfect, I don&#39;t waste time hesitating.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Lonely&quot;&gt;&gt;
+        &quot;You&#39;re leaving it to me? …Fine.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Timid&quot;&gt;&gt;
+        &quot;You want me to take control…? I… I&#39;ll try.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Stubborn&quot;&gt;&gt;
+        &quot;I&#39;m on top and that&#39;s final!&quot;
+        &lt;&lt;elseif _n.personality== &quot;Serious&quot;&gt;&gt;
+        &quot;You trust me to lead? Then I&#39;ll carry this with full intent. No games.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Jolly&quot;&gt;&gt;
+        &quot;So I get to lead? Nice — I&#39;ll make sure you enjoy every second!&quot;
+        &lt;&lt;elseif _n.personality== &quot;Naive&quot;&gt;&gt;
+        &quot;You want me to lead? I&#39;ll do it, just tell me if I do something wrong.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Modest&quot;&gt;&gt;
+        &quot;I&#39;m not a pro but I&#39;ll take the lead if it&#39;s what you want.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Quiet&quot;&gt;&gt;
+        &quot;...alright&quot;
+        &lt;&lt;elseif _n.personality== &quot;Bashful&quot;&gt;&gt;
+        *Blushes*
+        &lt;&lt;elseif _n.personality== &quot;Calm&quot;&gt;&gt;
+        &quot;Alright, relax and trust me.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Flamboyant&quot;&gt;&gt;
+        &quot;Fabulous — I&#39;ll make this unforgettable.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Mean&quot;&gt;&gt;
+        &quot;Hmph&quot;
+        &lt;&lt;elseif _n.personality== &quot;Energetic&quot;&gt;&gt;
+        &quot;Hope you can match my pace!&quot;
+        &lt;&lt;else&gt;&gt;
+        &quot;Ok, I&#39;ll top.&quot;
+        &lt;&lt;/if&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $sex.roles.sub.name is _n.name&gt;&gt;
-	&lt;&lt;if _n.personality ==&quot;Tough&quot;&gt;&gt;
-     “Oh? You think you can handle me? Fine, just don&#39;t expect me to go easy on you.”
-     &lt;&lt;elseif _n.personality== &quot;Sassy&quot;&gt;&gt;
-    &quot;Oh? So you&#39;re the boss now? Heh. Don&#39;t get sloppy.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Brave&quot;&gt;&gt;
-    &quot;Hah, you&#39;re taking charge? Then you better keep up. I don&#39;t follow the weak.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Shy&quot;&gt;&gt;
-    &quot;O-okay… if you want me.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Relaxed&quot;&gt;&gt;
-    &quot;Alright, alright… take the wheel then. Just don&#39;t make me do extra effort&quot;
-    &lt;&lt;elseif _n.personality== &quot;Playful&quot;&gt;&gt;
-    &quot;You wanna top? This will be fun!&quot;
-    &lt;&lt;elseif _n.personality== &quot;Good&quot;&gt;&gt;
-    &quot;Alright, just be sure to enjoy it.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Evil&quot;&gt;&gt;
-    &quot;Careful I might bite&quot;
-    &lt;&lt;elseif _n.personality== &quot;Kind&quot;&gt;&gt;
-    &quot;Ok, I trust you… just be gentle with me.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Logical&quot;&gt;&gt;
-    &quot;Confident move. If you can maintain stable control, I have no objections.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Studious&quot;&gt;&gt;
-    &quot;You&#39;re taking charge? Alright show me.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Active&quot;&gt;&gt;
-    &quot;Good — don&#39;t hold back.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Lonely&quot;&gt;&gt;
-    &quot;“Please, make me feel good.”&quot;
-    &lt;&lt;elseif _n.personality== &quot;Timid&quot;&gt;&gt;
-    &quot;I-I want it, but please be gentle.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Stubborn&quot;&gt;&gt;
-    &quot;Tch, think you can break me? Give it your best shot then!&quot;
-    &lt;&lt;elseif _n.personality== &quot;Serious&quot;&gt;&gt;
-    &quot;Understood. If you take command, then execute it properly, I won&#39;t tolerate hesitation.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Jolly&quot;&gt;&gt;
-    &quot;Haha, then use me as you see fit!&quot;
-    &lt;&lt;elseif _n.personality== &quot;Naive&quot;&gt;&gt;
-    &quot;Oh, you&#39;re really taking charge? Then I&#39;ll follow your lead&quot;
-    &lt;&lt;elseif _n.personality== &quot;Modest&quot;&gt;&gt;
-    &quot;…If you&#39;re leading, then I&#39;ll simply trust your judgment.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Quiet&quot;&gt;&gt;
-    &quot;Ok&quot;
-    &lt;&lt;elseif _n.personality== &quot;Bashful&quot;&gt;&gt;
-    *Blushes*
-    &lt;&lt;elseif _n.personality== &quot;Calm&quot;&gt;&gt;
-    &quot;Alright. I&#39;ll follow your pace, no need to rush.&quot;
-    &lt;&lt;elseif _n.personality== &quot;Flamboyant&quot;&gt;&gt;
-    &quot;Go ahead darling, treat me like a star!&quot;
-    &lt;&lt;elseif _n.personality== &quot;Mean&quot;&gt;&gt;
-    &quot;Hmph&quot;
-    &lt;&lt;elseif _n.personality== &quot;Energetic&quot;&gt;&gt;
-    &quot;I normally prefer to be active but sure!&quot;
+    &lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+        &lt;&lt;if _n.personality ==&quot;Bashful&quot;&gt;&gt;
+        *Blushes*
+        &lt;&lt;else&gt;&gt;
+            They nod, they are willing to bottom.
+        &lt;&lt;/if&gt;&gt;
     &lt;&lt;else&gt;&gt;
-    &quot;Ok, you top.&quot;
+	    &lt;&lt;if _n.personality ==&quot;Tough&quot;&gt;&gt;
+        &quot;Oh? You think you can handle me? Fine, just don&#39;t expect me to go easy on you.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Sassy&quot;&gt;&gt;
+        &quot;Oh? So you&#39;re the boss now? Heh. Don&#39;t get sloppy.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Brave&quot;&gt;&gt;
+        &quot;Hah, you&#39;re taking charge? Then you better keep up. I don&#39;t follow the weak.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Shy&quot;&gt;&gt;
+        &quot;O-okay… if you want me.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Relaxed&quot;&gt;&gt;
+        &quot;Alright, alright… take the wheel then. Just don&#39;t make me do extra effort&quot;
+        &lt;&lt;elseif _n.personality== &quot;Playful&quot;&gt;&gt;
+        &quot;You wanna top? This will be fun!&quot;
+        &lt;&lt;elseif _n.personality== &quot;Good&quot;&gt;&gt;
+        &quot;Alright, just be sure to enjoy it.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Evil&quot;&gt;&gt;
+        &quot;Careful I might bite&quot;
+        &lt;&lt;elseif _n.personality== &quot;Kind&quot;&gt;&gt;
+        &quot;Ok, I trust you… just be gentle with me.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Logical&quot;&gt;&gt;
+        &quot;Confident move. If you can maintain stable control, I have no objections.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Studious&quot;&gt;&gt;
+        &quot;You&#39;re taking charge? Alright show me.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Active&quot;&gt;&gt;
+        &quot;Good — don&#39;t hold back.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Lonely&quot;&gt;&gt;
+        &quot;Please, make me feel good.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Timid&quot;&gt;&gt;
+        &quot;I-I want it, but please be gentle.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Stubborn&quot;&gt;&gt;
+        &quot;Tch, think you can break me? Give it your best shot then!&quot;
+        &lt;&lt;elseif _n.personality== &quot;Serious&quot;&gt;&gt;
+        &quot;Understood. If you take command, then execute it properly, I won&#39;t tolerate hesitation.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Jolly&quot;&gt;&gt;
+        &quot;Haha, then use me as you see fit!&quot;
+        &lt;&lt;elseif _n.personality== &quot;Naive&quot;&gt;&gt;
+        &quot;Oh, you&#39;re really taking charge? Then I&#39;ll follow your lead&quot;
+        &lt;&lt;elseif _n.personality== &quot;Modest&quot;&gt;&gt;
+        &quot;…If you&#39;re leading, then I&#39;ll simply trust your judgment.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Quiet&quot;&gt;&gt;
+        &quot;Ok&quot;
+        &lt;&lt;elseif _n.personality== &quot;Bashful&quot;&gt;&gt;
+        *Blushes*
+        &lt;&lt;elseif _n.personality== &quot;Calm&quot;&gt;&gt;
+        &quot;Alright. I&#39;ll follow your pace, no need to rush.&quot;
+        &lt;&lt;elseif _n.personality== &quot;Flamboyant&quot;&gt;&gt;
+        &quot;Go ahead darling, treat me like a star!&quot;
+        &lt;&lt;elseif _n.personality== &quot;Mean&quot;&gt;&gt;
+        &quot;Hmph&quot;
+        &lt;&lt;elseif _n.personality== &quot;Energetic&quot;&gt;&gt;
+        &quot;I normally prefer to be active but sure!&quot;
+        &lt;&lt;else&gt;&gt;
+        &quot;Ok, you top.&quot;
+        &lt;&lt;/if&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="Adjective-Widget" tags="widget nobr" position="350,2350" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
-
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="Adjective-Widget" tags="widget nobr" position="475,2350" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
+&quot;growls&quot;, &quot;whines&quot;,&quot;yips&quot;,&quot;bark&quot;,&quot;roar&quot;,&quot;chitters&quot;,&quot;squeaks&quot;,&quot;chirps&quot;,&quot;screech&quot;,&quot;whinnies&quot;
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;CumAdj&quot;&gt;&gt;
@@ -13308,7 +13380,7 @@ Create your character to begin.
 /* &lt;&lt;set $NPCList[_n].penisdesc to &quot;tiny penis&quot;&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;thick cock&quot;,&quot;hefty cock&quot;,&quot;big cock&quot;,&quot;large cock&quot;,&quot;veiny cock&quot;,&quot;meaty cock&quot;)&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;massive cock&quot;,&quot;huge cock&quot;,&quot;humongous cock&quot;,&quot;immense cock&quot;,&quot;gigantic cock&quot;,&quot;enormous cock&quot;)&gt;&gt;
-*/</tw-passagedata><tw-passagedata pid="184" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
+*/</tw-passagedata><tw-passagedata pid="185" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
 &lt;&lt;widget &quot;AnalQuote&quot;&gt;&gt;
 	/* guard */
 	&lt;&lt;if !setup.analQuotes&gt;&gt;
@@ -14320,7 +14392,7 @@ Create your character to begin.
 	&lt;&lt;else&gt;&gt;
 		[Error] VaginalQuote: empty dialogue pool.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="186" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
 /* Creates a single Story NPC from a provided template and registers it globally */
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No template provided to MakeSNPC.
@@ -14407,25 +14479,27 @@ Create your character to begin.
 	&lt;&lt;set _npc.surname  = setup.pick(_surnames)&gt;&gt;
 	
     &lt;&lt;set _npc.species = setup.pick(setup.species)&gt;&gt;
+
     
 	/* Gender, pronouns, genitals */
 	&lt;&lt;set _npc.gender = setup.pick(setup.genders)&gt;&gt;
 	&lt;&lt;if _npc.gender is &quot;Male&quot;&gt;&gt;
-		&lt;&lt;set _npc.pronouns   = &quot;He/Him&quot;&gt;&gt;
 		&lt;&lt;set _npc.genitals   = &quot;Penis&quot;&gt;&gt;
         &lt;&lt;if _npc.species is &quot;Human&quot;&gt;&gt;
 			&lt;&lt;set _npc.genitaltype = setup.pick(setup.penistype)&gt;&gt;
         &lt;&lt;/if&gt;&gt;
 		&lt;&lt;set _npc.penislength = setup.pick(setup.penislength)&gt;&gt;
 	&lt;&lt;elseif _npc.gender is &quot;Female&quot;&gt;&gt;
-		&lt;&lt;set _npc.pronouns   = &quot;She/Her&quot;&gt;&gt;
 		&lt;&lt;set _npc.genitals   = &quot;Vagina&quot;&gt;&gt;
 		&lt;&lt;set _npc.genitaltype = setup.pick(setup.vaginatype)&gt;&gt;
 		&lt;&lt;set _npc.breastsize   = setup.pick(setup.breastsize)&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;set _npc.trans = &quot;Cisgender&quot;&gt;&gt;
-
+	&lt;&lt;set _npc.pronouns = setup.pick(setup.pronouns)&gt;&gt;
+	&lt;&lt;if (_npc.gender is &quot;Male&quot; &amp;&amp; _npc.pronouns is &quot;He/Him&quot;)|| (_npc.gender is &quot;Female&quot; &amp;&amp; _npc.pronouns is &quot;She/Her&quot;)&gt;&gt;
+		&lt;&lt;set _npc.trans = &quot;Cisgender&quot;&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _npc.trans =  setup.pick(&quot;Transgender&quot;, &quot;Nonbinary&quot;)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	/**********************
 	    SEXUALITY / PREFS
 	**********************/
@@ -14999,7 +15073,31 @@ Create your character to begin.
 			&lt;&lt;set _char.genitaltype = setup.pick(setup.penistype)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="186" name="Widgets" tags="widget nobr" position="725,2350" size="100,100">&lt;&lt;widget &quot;RoomRelocationUI&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="187" name="Widgets" tags="widget nobr" position="850,2350" size="100,100">/* gets the room based on your location and issues where you start at */
+&lt;&lt;widget &quot;GetRoom&quot;&gt;&gt;
+    &lt;&lt;if $location ==&quot;Your Room&quot;&gt;&gt;
+        &lt;&lt;set $room = {
+        type: &quot;bedroom&quot;,
+        location: &quot;large floor&quot;,
+        furnitureFlags: setup.getRoomFurnitureFlags(&quot;bedroom&quot;)
+        }&gt;&gt;
+    &lt;&lt;elseif $location == &quot;Bathroom&quot;&gt;&gt;
+        &lt;&lt;set $room = {
+        type: &quot;bathroom&quot;,
+        location: &quot;large floor&quot;,
+        furnitureFlags: setup.getRoomFurnitureFlags(&quot;bathroom&quot;)
+        }&gt;&gt;
+    &lt;&lt;elseif $location == &quot;Lounge&quot;&gt;&gt;
+        &lt;&lt;set $room = {
+        type: &quot;lounge&quot;,
+        location: &quot;large floor&quot;,
+        furnitureFlags: setup.getRoomFurnitureFlags(&quot;lounge&quot;)
+        }&gt;&gt;    
+    &lt;&lt;/if&gt;&gt;    
+&lt;&lt;/widget&gt;&gt;
+
+
+&lt;&lt;widget &quot;RoomRelocationUI&quot;&gt;&gt;
 &lt;div id=&quot;UI-Location&quot;&gt;
 &lt;h3&gt;&lt;u&gt;Relocate&lt;/u&gt;&lt;/h3&gt;
 
@@ -15114,9 +15212,7 @@ Create your character to begin.
 	    &lt;div class=&quot;npcsex-content&quot;&gt;
             &lt;&lt;CumLocationButtons&gt;&gt;
         &lt;/div&gt;
-
         
-
     &lt;&lt;else&gt;&gt;
 
 
@@ -15170,7 +15266,6 @@ Create your character to begin.
 					&lt;&lt;for _i = 0; _i &lt; _acts.length; _i++&gt;&gt;
 						&lt;&lt;set _a = _acts[_i]&gt;&gt;
                         &lt;&lt;set _actDef = setup.sexacts[_a]&gt;&gt;
-
 						
 							&lt;&lt;capture _a&gt;&gt;
 								&lt;li&gt;
@@ -15206,13 +15301,12 @@ Create your character to begin.
                                 &lt;&lt;/if&gt;&gt;    
 								&lt;/li&gt;
 							&lt;&lt;/capture&gt;&gt;
-						
 					&lt;&lt;/for&gt;&gt;    
                     &lt;&lt;button &quot;End Session&quot;&gt;&gt;
-			        &lt;&lt;set $lastNpc = $ui.npc&gt;&gt;      &lt;!-- remember who you were with --&gt;
-			        &lt;&lt;set $sex = { stage: &quot;foreplay&quot;, log: [] }&gt;&gt;  &lt;!-- optional reset --&gt;
-                    &lt;&lt;set $seenActions = {}&gt;&gt;
-			        &lt;&lt;goto &quot;Your Room&quot;&gt;&gt;              
+			            &lt;&lt;set $lastNpc = $ui.npc&gt;&gt;      &lt;!-- remember who you were with --&gt;
+			            &lt;&lt;set $sex = { stage: &quot;foreplay&quot;, log: [] }&gt;&gt;  &lt;!-- optional reset --&gt;
+                        &lt;&lt;set $seenActions = {}&gt;&gt;
+			            &lt;&lt;goto &quot;Your Room&quot;&gt;&gt;              
 		            &lt;&lt;/button&gt;&gt;
                 &lt;/ul&gt;
             &lt;&lt;else&gt;&gt;
@@ -15247,14 +15341,22 @@ Create your character to begin.
                                     &lt;&lt;if $sex.phase==&quot;climax&quot;&gt;&gt;
                                         &lt;&lt;replace &quot;#intro&quot;&gt;&gt;
                                             &lt;&lt;include &quot;Orgasm-Close-Dialogue&quot;&gt;&gt;&lt;br&gt;
-                                            &lt;&lt;include &quot;Orgasm-Close-Quote&quot;&gt;&gt;
+                                            &lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+                                                &lt;&lt;include &quot;Act-Quote-Mute&quot;&gt;&gt;
+                                            &lt;&lt;else&gt;&gt;
+                                                &lt;&lt;include &quot;Orgasm-Close-Quote&quot;&gt;&gt;
+                                            &lt;&lt;/if&gt;&gt;
 		                                &lt;&lt;/replace&gt;&gt;
                                     &lt;&lt;else&gt;&gt;
                                         &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 
 										&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
                                             &lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
-                                            &lt;&lt;include &quot;Act-Quote&quot;&gt;&gt;
+                                            &lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+                                                &lt;&lt;include &quot;Act-Quote-Mute&quot;&gt;&gt;
+                                            &lt;&lt;else&gt;&gt;
+                                                &lt;&lt;include &quot;Act-Quote&quot;&gt;&gt;
+                                            &lt;&lt;/if&gt;&gt;    
 										&lt;&lt;/replace&gt;&gt;
                                         &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 										&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -15347,7 +15449,11 @@ Create your character to begin.
 						/* Refresh UI area if you have one */
 						&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
                             &lt;&lt;include &quot;OrgasmDialogue&quot;&gt;&gt;&lt;br&gt;
-                            &lt;&lt;include &quot;Orgasm-Quote&quot;&gt;&gt;
+                            &lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+                                &lt;&lt;include &quot;Act-Quote-Mute&quot;&gt;&gt;
+                            &lt;&lt;else&gt;&gt;
+                                &lt;&lt;include &quot;Orgasm-Quote&quot;&gt;&gt;
+                            &lt;&lt;/if&gt;&gt;
 						&lt;&lt;/replace&gt;&gt;
                         
                         &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -15628,26 +15734,12 @@ Create your character to begin.
             $proset.them=&quot;them&quot;,
             $proset.their=&quot;their&quot;,
             $proset.theirs=&quot;theirs&quot;,
-            $proset.themselves=_self,
+            $proset.theyUp=&quot;They&quot;,
+            $proset.themUp=&quot;Them&quot;,
+            $proset.theirUp=&quot;Their&quot;,
+            $proset.theirsUp=&quot;Theirs&quot;,
+            $proset.themselvesUp=_self,
             $proset.plural=_isPlural&gt;&gt;
-
-		&lt;&lt;case &quot;ae/aer&quot;&gt;&gt;
-			&lt;&lt;set 
-            $proset.they=&quot;ae&quot;,
-            $proset.them=&quot;aer&quot;,
-            $proset.their=&quot;aer&quot;,
-            $proset.theirs=&quot;aers&quot;,
-            $proset.themselves=&quot;aerself&quot;,
-            $proset.plural=false&gt;&gt;
-
-		&lt;&lt;case &quot;e/em&quot;&gt;&gt;
-			&lt;&lt;set 
-            $proset.they=&quot;e&quot;,
-            $proset.them=&quot;em&quot;,
-            $proset.their=&quot;eir&quot;,
-            $proset.theirs=&quot;eirs&quot;,
-            $proset.themselves=&quot;emself&quot;,
-            $proset.plural=false&gt;&gt;
 
 		&lt;&lt;default&gt;&gt;
 			/* Safe fallback */
@@ -16204,7 +16296,7 @@ Create your character to begin.
 	&lt;&lt;set $npcMemory[_key].interacted = true&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].times     += 1&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].sexCount  += 1&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="187" name="heighttest" tags="" position="850,2350" size="100,100">//example test:
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="188" name="heighttest" tags="" position="975,2350" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 
 &lt;&lt;if _h is 1&gt;&gt;
@@ -16213,7 +16305,7 @@ Create your character to begin.
   NPC taller
 &lt;&lt;else&gt;&gt;
   Same height
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="188" name="Test-Sex-Encounter" tags="nobr" position="975,2350" size="100,100">&lt;&lt;if !$ui || !$ui.npc&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="189" name="Test-Sex-Encounter" tags="nobr" position="1100,2350" size="100,100">&lt;&lt;if !$ui || !$ui.npc&gt;&gt;
 	ERROR: ui.npc not set
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -16228,14 +16320,10 @@ Create your character to begin.
 &lt;&lt;if !$mc.bodyparts &amp;&amp; $mc.body&gt;&gt;
 	&lt;&lt;set $mc.bodyparts = Object.keys($mc.body)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;set $gamelocation = &quot;Your Room&quot;&gt;&gt;
+
 /* ensure room exists BEFORE UI */
 &lt;&lt;if !$room&gt;&gt;
-&lt;&lt;set $room = {
-  type: &quot;bedroom&quot;,
-  location: &quot;large floor&quot;,
-  furnitureFlags: setup.getRoomFurnitureFlags(&quot;bedroom&quot;)
-}&gt;&gt;
+	&lt;&lt;GetRoom&gt;&gt; 
 &lt;&lt;/if&gt;&gt;
 
 /* ensure sex exists */
@@ -16257,7 +16345,7 @@ Create your character to begin.
 &lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
   &lt;&lt;set $sex.role = &quot;top&quot;&gt;&gt;
   &lt;&lt;run setup.updateTopBottom($sex)&gt;&gt;
-&lt;&lt;else&gt;&gt;
+&lt;&lt;elseif $sex.roles.dom.name == _n.name&gt;&gt;
   &lt;&lt;set $sex.role = &quot;bottom&quot;&gt;&gt;
   &lt;&lt;run setup.updateTopBottom($sex)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
