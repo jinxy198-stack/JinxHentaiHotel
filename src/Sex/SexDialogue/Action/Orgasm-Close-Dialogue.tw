@@ -1,0 +1,9 @@
+:: Orgasm-Close-Dialogue [nobr]
+
+<<if $sex.climax.top && $sex.climax.bottom>>
+You and _n.name are going to cum at the same time.
+<<elseif $sex.climax.top >>
+You are close to orgasm.
+<<elseif $sex.climax.bottom>>
+_n.name is close to orgasm.
+<</if>>

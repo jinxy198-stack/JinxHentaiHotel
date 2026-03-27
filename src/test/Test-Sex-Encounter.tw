@@ -17,9 +17,9 @@
 <</if>>
 
 /* ensure room exists BEFORE UI */
-<<if !$room>>
-	<<GetRoom>> 
-<</if>>
+
+	<<GetRoom>>
+
 
 /* ensure sex exists */
 <<SexMemory>>

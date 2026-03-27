@@ -334,6 +334,9 @@ setup.hasParts = function(actor, parts) {
     return parts.some(p => setup.partMatches(actor, p));
 };
 
+
+
+
 /*
  * Validates whether a sex position can be used
  * given body parts, roles, and furniture constraints.
@@ -472,27 +475,49 @@ setup.actorHasAnyParts = function(actor, parts) {
   return setup.hasParts(actor, parts);
 };
 
+
+setup.actorHasAllParts = function (actor, parts) {
+    if (!actor || !actor.bodyparts) return false;
+    if (!parts || parts.length === 0) return true;
+
+    return parts.every(p => setup.partMatches(actor, p));
+};
+
 // Role-stable act requirement check.
 // Supports either the old keys ("top parts"/"object parts") OR new keys ("top parts"/"bottom parts").
-setup.actMeetsPartRequirements = function(sex, act) {
-  const { top, bottom } = setup.getTopBottomActors(sex);
+setup.actorMeetsPartRequirement = function (actor, parts, mode) {
+    if (mode === "all") {
+        return setup.actorHasAllParts(actor, parts);
+    }
 
-  // New preferred schema: role-stable parts
-  if (act["top parts"] || act["bottom parts"]) {
-    if (!setup.actorHasAnyParts(top, act["top parts"])) return false;
-    if (!setup.actorHasAnyParts(bottom, act["bottom parts"])) return false;
-  } else {
-    // Backward compatible schema
-    if (!setup.actMeetsParts(sex, act)) return false;
-  }
+    // default behavior stays the same
+    return setup.hasParts(actor, parts);
+};
 
-  // New preferred schema: role-stable genitaltype
-  if (act["top genitaltype"] || act["bottom genitaltype"]) {
-    if (!setup.actorHasGenitalType(top, act["top genitaltype"])) return false;
-    if (!setup.actorHasGenitalType(bottom, act["bottom genitaltype"])) return false;
-  }
+setup.actMeetsPartRequirements = function (sex, act) {
+    const { top, bottom } = setup.getTopBottomActors(sex);
 
-  return true;
+    if (act["top parts"] || act["bottom parts"]) {
+        const topMode = act["top parts mode"] || "any";
+        const bottomMode = act["bottom parts mode"] || "any";
+
+        if (!setup.actorMeetsPartRequirement(top, act["top parts"], topMode)) {
+            return false;
+        }
+
+        if (!setup.actorMeetsPartRequirement(bottom, act["bottom parts"], bottomMode)) {
+            return false;
+        }
+    } else {
+        if (!setup.actMeetsParts(sex, act)) return false;
+    }
+
+    if (act["top genitaltype"] || act["bottom genitaltype"]) {
+        if (!setup.actorHasGenitalType(top, act["top genitaltype"])) return false;
+        if (!setup.actorHasGenitalType(bottom, act["bottom genitaltype"])) return false;
+    }
+
+    return true;
 };
 
 setup.actorHasGenitalType = function(actor, genitaltype) {
@@ -511,6 +536,10 @@ setup.genitaltypeMatches = function(actor, required) {
     String(gt).toLowerCase() === req
   );
 };
+
+
+
+
 
 
 

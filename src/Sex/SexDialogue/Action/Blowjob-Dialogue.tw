@@ -5,14 +5,9 @@
 	/*
 	<<if $position == "SixtyNine">>
 		<<if $sex.roles.dom.name == _n.name>>
-			<<= either(
-				"Your hot breath falls down onto $proset.their groin as you slowly lower your head down between $proset.their <<= _n.body.Legs.toLowerCase()>>, passionately kissing the head of $proset.their<<= _n.genitals.toLowerCase()>> before taking $proset.them into your mouth.",
-				"Gently lowering your head down between $proset.their <<= _n.body.Legs.toLowerCase()>>, you deliver a long, slow lick up the length of $proset.their<<= _n.genitals.toLowerCase()>> before taking the head into your mouth."
-			)>>
+			
 		<<elseif $sex.roles.sub.name == _n.name>>
-			<<= either(
-				"Using your knees to lift yourself up, you allow your <<= $mc.genitals.toLowerCase()>> to slide up and out of $proset.their mouth. A slimy strand of saliva links $proset.their <<= _n.body.Lips.toLowerCase()>> to the head of your <<= $mc.genitals.toLowerCase()>> for a brief moment before breaking to fall down over $proset.their face."
-			)>>
+			
 		<</if>>
 	<</if>>
 */
@@ -69,6 +64,12 @@
 	)>>
 
 <<elseif $sex.act == "Suck Each Other Off">>
-	You suck each other off.
-
+	You suck _n.name's _n.genitaltype _n.genitals while they suck your $mc.genitaltype $mc.genitals.
+<<elseif $sex.act == "Eat Each Other Out">>
+	You lick _n.name's _n.genitaltype _n.genitals while they lick your $mc.genitaltype $mc.genitals.
+<<elseif $sex.act == "Suck And Lick Each Other">>
+	You suck _n.name's _n.genitaltype _n.genitals while they lick your $mc.genitaltype $mc.genitals.
+<<elseif $sex.act == "Lick And Suck Each Other">>
+	You lick _n.name's _n.genitaltype _n.genitals while they suck your $mc.genitaltype $mc.genitals.
+	
 <</if>>

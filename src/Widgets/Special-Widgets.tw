@@ -104,10 +104,12 @@
 		<<set _npc.breastsize   = setup.pick(setup.breastsize)>>
 	<</if>>
 	<<set _npc.pronouns = setup.pick(setup.pronouns)>>
-	<<if (_npc.gender is "Male" && _npc.pronouns is "He/Him")|| (_npc.gender is "Female" && _npc.pronouns is "She/Her")>>
+	<<if (_npc.gender is "Male" and _npc.pronouns is "He/Him") or (_npc.gender is "Female" and _npc.pronouns is "She/Her")>>
 		<<set _npc.trans = "Cisgender">>
+	<<elseif _npc.pronouns is "They/Them">>
+		<<set _npc.trans = "Nonbinary">>
 	<<else>>
-		<<set _npc.trans =  setup.pick("Transgender", "Nonbinary")>>
+		<<set _npc.trans = "Transgender">>
 	<</if>>
 	/**********************
 	    SEXUALITY / PREFS

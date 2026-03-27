@@ -2,6 +2,8 @@
 <<set $gamelocation to "Lobby">>
 You are in the lobby of the hotel, classical music plays as you watch people from various worlds go about their business.
 <br>
+By the entrance you make out the offical greeting board that is meant for all new people.
+<<button "Read Greeting">><<Greeting">><</button>> <br>
 <div class="room-hotel">
 <<SpawnPoolOnce "OC" $OCPool 2>>
 <<SpawnPoolOnce "CB" $CBPool 2>>

@@ -1,7 +1,7 @@
 :: top-bottom-Dialogue [Dialogue nobr] {"position":"1000,900","size":"100,100"}
 <<if $sex.roles.dom.name is _n.name>>
 	<<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
-        They nod, they are willing to top.
+        They are willing to top.
     <<else>>
         <<if _n.personality =="Tough">>
         “You want me in charge? Good, I don't do half-measures.”
@@ -62,7 +62,7 @@
         <<if _n.personality =="Bashful">>
         *Blushes*
         <<else>>
-            They nod, they are willing to bottom.
+            They are willing to bottom.
         <</if>>
     <<else>>
 	    <<if _n.personality =="Tough">>

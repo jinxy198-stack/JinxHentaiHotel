@@ -32,12 +32,12 @@
 <<if !_mem or !_mem.interacted>>
 	<<= either(
 		_n.name + " looks you over curiously.",
-		_n.name + " gives you a cautious nod."
+		_n.name + " gives you a small nod."
 	)>>
 <<elseif _mem.times < 5>>
 	<<= either(
 		_n.name + " greets you with a familiar look.",
-		_n.name + " seems more relaxed around you this time."
+		_n.name + " seems more relaxed around you."
 	)>>
 <<else>>
 	<<= either(

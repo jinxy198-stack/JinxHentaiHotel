@@ -2,19 +2,19 @@
 
 /* gets the room based on your location and issues where you start at */
 <<widget "GetRoom">>
-    <<if $location =="Your Room">>
+    <<if $gamelocation =="Your Room">>
         <<set $room = {
         type: "bedroom",
         location: "large floor",
         furnitureFlags: setup.getRoomFurnitureFlags("bedroom")
         }>>
-    <<elseif $location == "Bathroom">>
+    <<elseif $gamelocation == "Bathroom">>
         <<set $room = {
         type: "bathroom",
         location: "large floor",
         furnitureFlags: setup.getRoomFurnitureFlags("bathroom")
         }>>
-    <<elseif $location == "Lounge">>
+    <<elseif $gamelocation == "Lounge">>
         <<set $room = {
         type: "lounge",
         location: "large floor",
@@ -230,10 +230,11 @@
 							<</capture>>
 					<</for>>    
                     <<button "End Session">>
+                        <<set _returnTo = $gamelocation || "Your Room">>
 			            <<set $lastNpc = $ui.npc>>      <!-- remember who you were with -->
 			            <<set $sex = { stage: "foreplay", log: [] }>>  <!-- optional reset -->
                         <<set $seenActions = {}>>
-			            <<goto "Your Room">>              
+			            <<goto _returnTo>>             
 		            <</button>>
                 </ul>
             <<else>>
@@ -899,13 +900,13 @@
 <</widget>>
 
   
-  <<widget "PopupJinxQ">>
+<<widget "PopupJinxQ">>
  	<<set _topic = $args[0]>>
 	<<set _title = ($args.length > 1) ? $args[1] : "Jinx">>
 	<<run Dialog.setup(_title)>>
 	<<run Dialog.wiki("<<include 'J-Q-popup'>>")>>
 	<<run Dialog.open()>>
-  <</widget>>
+<</widget>>
 
 <<widget "PopupLexicon">>
     <<run Dialog.create("Lexicon").wikiPassage("Lexicon").open();>>
@@ -924,6 +925,10 @@
 <</widget>>
 <<widget "PopupBrothelSign">>
     <<run Dialog.create("Brothel").wikiPassage("BrothelSign").open();>>
+<</widget>>
+
+<<widget "PopupGreeting">>
+    <<run Dialog.create("Greeting").wikiPassage("Greeting").open();>>
 <</widget>>
 
 
