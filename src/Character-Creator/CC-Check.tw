@@ -1,5 +1,6 @@
 :: CC-Check [nobr]{"position":"200,400","size":"100,100"}
 <<create-body>>
+
 <h1>Is this Correct?</h1>
 //Please review the character page below and confirm the options chosen are correct.// 
 <h2>Basic Info</h2>
@@ -29,6 +30,10 @@
         <th><u><strong>Pronouns:</strong></u></th>
         <td id="mc-pro">$mc.pronouns</td>
     </tr>
+    <tr id="Identity">
+        <th><u><strong>Identity:</strong></u></th>
+        <td id="mc-identiy">$mc.trans</td>
+    </tr>
     <tr id="age">
         <th><u><strong>Age:</strong></u></th>
         <td id="mc-age">$mc.age</td>
@@ -52,7 +57,7 @@
     </tr>
     <</if>>
 </table>
-<h2>Physical Traits:</h2>
+<h2>Physical:</h2>
 <h3>Face and Hair:</h3>
 <table>
     <tr id="eyes">
@@ -117,11 +122,19 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
         </td>
     </tr>
 </table>
-<h2>Personality</h2>
+<h2>Mental</h2>
 <table>
     <tr id="perso">
         <th><u><strong>Personality:</strong></u></th>
         <td id="mc-perso">$mc.personality</td>
+    </tr>
+    <tr id="trait">
+        <th><u><strong>Trait:</strong></u></th>
+        <<if !$mc.traits>>
+        No traits found
+        <<else>>
+        <td id="mc-perso">$mc.traits</td>
+        <</if>>
     </tr>
 </table>
 <h2>NSFW Options</h2>

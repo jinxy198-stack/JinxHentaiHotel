@@ -1,0 +1,54 @@
+:: CC-Trait [creation-page]
+What are the types of traits you want? (some will affect gameplay)
+They are not limited by physical or mental
+<<nobr>>
+
+
+<<set _willNotTop = $mc.traits.includes("Will Not Top")>>
+<<set _willNotBottom = $mc.traits.includes("Will Not Bottom")>>
+<<set _HatesKids = $mc.traits.includes("Hates Kids")>>
+<</nobr>>
+// You will be locked out of any action involving you doing anal or vaginal penetration as a top.//
+* <label><<checkbox "_willNotTop" false true>> Will not Top</label>
+
+// You will be locked out of any action involving you doing anal or vaginal penetration as a bottom.//
+* <label><<checkbox "_willNotBottom" false true>> Will not Bottom</label>
+
+// Characters under 18 will not exist in the game (if your character is under 18 then that is excluded).//
+* <label><<checkbox "_HatesKids" false true>> Hates Kids</label>
+
+// Characters that are not human will not exist in the game (if your character is not human then it will be excluded).//
+* <label><<checkbox "_HatesFurries" false true>> Hates Furries</label>
+
+<div id="traitError"></div>
+
+<<button "Confirm">>
+	<<if _willNotTop and _willNotBottom>>
+		<<replace "#traitError">>
+			<span class="error">You cannot choose both "Will not Top" and "Will not Bottom".</span>
+		<</replace>>
+	<<else>>
+		/* remove old copies of just these two traits */
+		<<set $mc.traits = $mc.traits.filter(t => t !== "Will Not Top" && t !== "Will Not Bottom")>>
+
+		/* push selected traits */
+		<<if _willNotTop>>
+			<<run $mc.traits.push("Will Not Top")>>
+		<</if>>
+
+		<<if _willNotBottom>>
+			<<run $mc.traits.push("Will Not Bottom")>>
+		<</if>>
+        <<if _HatesKids>>
+			<<run $mc.traits.push("Hates Kids")>>
+            <<set $shota to false>>
+		<</if>>
+        <<if _HatesFurries>>
+			<<run $mc.traits.push("Hates Furries")>>
+            <<set $furry to false>>
+		<</if>>
+
+		<<set $pages.trait = true>>
+		<<goto "Index-CC">>
+	<</if>>
+<</button>>

@@ -1,4 +1,10 @@
 :: StoryInit {"position":"25,25","size":"100,100"}
+
+/*If true then young characters can exist in the game. */
+<<set $shota to true>>
+/* If true then Furry characters can exist in the game */
+<<set $furry to true>>
+
 <<set $physique = {
 	muscle: 4,
 	plump: 4,

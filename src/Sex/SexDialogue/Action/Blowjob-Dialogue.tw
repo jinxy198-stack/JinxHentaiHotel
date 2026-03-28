@@ -33,9 +33,9 @@
 <<elseif $sex.act == "Enter Mouth">> 
 	/* They put your cock in their mouth */
 	<<= either(
-		"Reaching down to grab _n.name's head, you line the head of your <<= $mc.genitals.toLowerCase()>> up to $proset.their <<= _n.body.Lips.toLowerCase()>> before gently pushing your <<= $mc.body.Hips.toLowerCase()>> forwards and sliding your <<= $mc.genitals.toLowerCase()>> into $proset.their mouth.",
-		"Reaching down to take hold of _n.name's head, you push the head of your <<= $mc.genitals.toLowerCase() >> against _n.name's <<= _n.body.Lips.toLowerCase()>> before slowly bucking your <<= $mc.body.Hips.toLowerCase()>> into $proset.their <<= _n.body.Face.toLowerCase()>> and gently sliding your <<= $mc.genitals.toLowerCase() >> into $proset.their mouth.",
-		"Reaching down to grab $proset.their head, you line the head of your <<= $mc.genitals.toLowerCase() >> up to $proset.their _n.body.Lips before pushing your $mc.body.Hips forwards and sliding your <<= $mc.genitals.toLowerCase() >> into $proset.their mouth.",
+		"Reaching down to grab _n.name's head, you line the head of your <<= $mc.genitals.toLowerCase()>> up to $proset.their <<= _n.body.Lips.toLowerCase()>> before gently pushing your <<= $mc.body.Hip.toLowerCase()>>s forwards and sliding your <<= $mc.genitals.toLowerCase()>> into $proset.their mouth.",
+		"Reaching down to take hold of _n.name's head, you push the head of your <<= $mc.genitals.toLowerCase() >> against _n.name's <<= _n.body.Lips.toLowerCase()>> before slowly bucking your <<= $mc.body.Hip.toLowerCase()>>s into $proset.their <<= _n.body.Face.toLowerCase()>> and gently sliding your <<= $mc.genitals.toLowerCase() >> into $proset.their mouth.",
+		"Reaching down to grab $proset.their head, you line the head of your <<= $mc.genitals.toLowerCase() >> up to $proset.their _n.body.Lips before pushing your <<= $mc.body.Hip.toLowerCase()>> forwards and sliding your <<= $mc.genitals.toLowerCase() >> into $proset.their mouth.",
 		"_n.name eagerly wraps $proset.their _n.body.Lips around your <<= $mc.genitals.toLowerCase() >>, letting out a muffled moan as $proset.they enthusiastically bob $proset.their head up and down.",
 		"A muffled moan drifts out from _n.name's mouth and, eagerly wrapping $proset.their _n.body.Lips around your <<= $mc.genitals.toLowerCase() >>, $proset.they enthusiastically continue to give you head.",
 		"Moaning in delight, _n.name eagerly wraps $proset.their <<= _n.body.Lips.toLowerCase()>> around your <<= $mc.genitals.toLowerCase() >>, eagerly licking and sucking your <<= $mc.genitals.toLowerCase() >> as $proset.they continue making muffled moaning noises.",
@@ -54,11 +54,11 @@
 	You expertley take the cock deep into your mouth.
 <<elseif $sex.act == "Fuck Mouth">>
 	<<= either(
-		"You eagerly thrust your <<= $mc.genitals.toLowerCase() >> past $proset.their <<= _n.body.Lips.toLowerCase()>>, letting out a moan as you greedily pump your <<= $mc.body.Hips.toLowerCase()>> into $proset.their <<= _n.body.Face.toLowerCase()>>.",
-		"You desperately buck your $mc.body.Hips into $proset.their <<= _n.body.Face.toLowerCase()>>, letting out a moan as you eagerly fuck $proset.their throat.",
+		"You eagerly thrust your <<= $mc.genitals.toLowerCase() >> past $proset.their <<= _n.body.Lips.toLowerCase()>>, letting out a moan as you greedily pump your <<= $mc.body.Hip.toLowerCase()>>s into $proset.their <<= _n.body.Face.toLowerCase()>>.",
+		"You desperately buck your <<= $mc.body.Hip.toLowerCase()>>s into $proset.their <<= _n.body.Face.toLowerCase()>>, letting out a moan as you eagerly fuck $proset.their throat.",
 		"Enthusiastically bucking your hips into $proset.their <<= _n.body.Face.toLowerCase()>>, you let out a moan as you continue happily receiving your blowjob.",
-		"You thrust your <<= $mc.genitals.toLowerCase() >> past $proset.their _n.body.Lips, letting out a moan as you pump your $mc.body.Hips into $proset.their _n.body.Face.",
-		"You buck your <<= $mc.body.Hips.toLowerCase()>> into $proset.their <<= _n.body.Face.toLowerCase()>>, letting out a moan as you fuck $proset.their throat.",
+		"You thrust your <<= $mc.genitals.toLowerCase() >> past $proset.their _n.body.Lips, letting out a moan as you pump your <<= $mc.body.Hip.toLowerCase()>>s into $proset.their _n.body.Face.",
+		"You buck your <<= $mc.body.Hip.toLowerCase()>>s into $proset.their <<= _n.body.Face.toLowerCase()>>, letting out a moan as you fuck $proset.their throat.",
 		"Bucking your hips into $proset.their <<= _n.body.Face.toLowerCase()>>, you let out a moan as you continue happily receiving a blowjob.",
 		"Inside $proset.their mouth, you can feel that practiced tongue of $proset.them swirling around your tip."
 	)>>

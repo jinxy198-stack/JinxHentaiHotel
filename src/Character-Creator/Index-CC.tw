@@ -37,7 +37,7 @@ Note: It is suggested to do the customization in order, as skipping some parts c
 </div>
 
 
-<h2>Physical Traits</h2>
+<h2>Physical</h2>
 
 <h3>Face and Hair</h3>
 <div class="index-flex">
@@ -67,11 +67,15 @@ Note: It is suggested to do the customization in order, as skipping some parts c
     </div>
 </div>
 
-<h2>Personality</h2>
+<h2>Mental</h2>
 <div class="index-flex">
     <div id="perso">
         PERSONALITY
         <<button [[Choose|CC-Personality]]>><</button>>
+    </div>
+    <div id="trait">
+        Trait
+        <<button [[Choose|CC-Trait]]>><</button>>
     </div>
 </div>
 
@@ -80,12 +84,13 @@ Note: It is suggested to do the customization in order, as skipping some parts c
 	<div id = "genitals">
 		GENITALS 
     	<<button [[Choose|CC-Genitals]]>><</button>>
-     </div>
+    </div>
      
-     <div id = "sexpref">
+    <div id = "sexpref">
      	SEX PREFERENCE
         <<button[[Choose|CC-sexPreference]]>><</button>>
-     </div>
+    </div>
+</div>    
 /*
 <div id = "kinks">
      	KINKS
@@ -93,7 +98,7 @@ Note: It is suggested to do the customization in order, as skipping some parts c
      </div>
 </div>
 */
-<<button [[Review Choices|CC-Check]]>><</button>>
+<<button [[Review Choices|CC-Check]]>><<create-body>><<SetTrans>><</button>>
 <<CheckIfDone>>
 
 

@@ -681,6 +681,16 @@
 	<</switch>>
 <</widget>>
 
+<<widget "SetTrans">>
+    <<if ($mc.gender is "Male" and $mc.pronouns is "He/Him") or ($mc.gender is "Female" and $mc.pronouns is "She/Her")>>
+		<<set $mc.trans = "Cisgender">>
+	<<elseif $mc.pronouns is "They/Them">>
+		<<set $mc.trans = "Nonbinary">>
+	<<else>>
+		<<set $mc.trans = "Transgender">>
+	<</if>>
+<</widget>>
+
 /*************************** 
     HAIR WIDGET
 ***************************/
@@ -704,31 +714,14 @@
 <<widget "AllThisInAnArray">>
     <<set $facefeatures to []>>
     <<if _moustache>><<run $facefeatures.push("a moustache")>><</if>>
-    <<if _goatee>><<run $facefeatures.push("a goatee")>><</if>>
     <<if _fullbeard>><<run $facefeatures.push("a full beard")>><</if>>
     <<if _sideburns>><<run $facefeatures.push("some sideburns")>><</if>>
     <<if _shadow>><<run $facefeatures.push("shadow")>><</if>>
     <<if _patch>><<run $facefeatures.push("soul patch")>><</if>>
-    <<if _handlebar>><<run $facefeatures.push("a handle bar")>><</if>>
     <<if _wrinkles>><<run $facefeatures.push("wrinkles")>><</if>>
     <<if _mole>><<run $facefeatures.push("a mole")>><</if>>
-    <<if _brow>><<run $facefeatures.push("a unibrow")>><</if>>
-    <<if _thickbrow>><<run $facefeatures.push("thick brows")>><</if>>
-    <<if _thinbrow>><<run $facefeatures.push("thin brows")>><</if>>
-    <<if _noeyelash>><<run $facefeatures.push("no eye lashes")>><</if>>
-    <<if _buttonnose>><<run $facefeatures.push("a Button nose")>><</if>>
-    <<if _romannose>><<run $facefeatures.push("a Roman nose")>><</if>>
-    <<if _crooked>><<run $facefeatures.push("a Crooked nose")>><</if>>
-    <<if _widenose>><<run $facefeatures.push("a Wide nose")>><</if>>
-    <<if _hawknose>><<run $facefeatures.push("a Hawk nose")>><</if>>
-    <<if _pointchin>><<run $facefeatures.push("a pointy chin")>><</if>>
-    <<if _roundchin>><<run $facefeatures.push("a rounded chin")>><</if>>
-    <<if _squarejawe>><<run $facefeatures.push("a square jaw")>><</if>>
-    <<if _pronouncedcheeks>><<run $facefeatures.push("pronounced cheeks")>><</if>>
     <<if _bm>><<run $facefeatures.push("a beauty mark")>><</if>>
     <<if _freckles>><<run $facefeatures.push("freckles")>><</if>>
-    <<if _fangs>><<run $facefeatures.push("fangs")>><</if>>  
-    <<if _toothgap>><<run $facefeatures.push("tooth gap")>><</if>>  
     <<if _acne>><<run $facefeatures.push("acne")>><</if>>  
 <</widget>>
 
@@ -754,33 +747,36 @@
         $mc.gender to either(setup.genders),
         $mc.sexpref to either("Dom","Sub","Switch"),
         $mc.sexu to either(setup.sexu),
-        $mc.pronouns to either("She/Her", "He/Him", "They/Them (singular)", "They/Them (plural)"),
+        $mc.pronouns to either("She/Her", "He/Him", "They/Them"),
         $mc.age to random(6, 78),
         $heterochromia to either(true, false),
         $mc.skin.color to either(setup.skincolor),
         $mc.bodyheight to either(setup.height),
         $mc.physique to either(setup.physique),
         $mc.assSize to either(setup.assSize),
-        $mc.personality to either("Friendly", "Shy",  "Confident", "Sarcastic", "Serious", "Optimistic", "Pessimistic", "Caring", "Aggressive", "Lazy", "Energetic", "Intelligent", "Naive", "Funny", "Calm", "Anxious", "Rebellious", "Loyal", "Greedy"),
+        $mc.personality to either(setup.personalities),
         $mc.species to either(setup.species)
     >>
-        <<if $mc.species is "Anthro">>
-            <<set $mc.skin.color to null>>
-    	    <<set $mc.anthro.group to either(setup.anthroGroup)>>
-            <<set $mc.anthro.color to either(setup.furScalesColors)>>
-            <<set $mc.anthro.pattern to either(setup.anthroPatterns)>>
-            <<if $mc.anthro.group is "Furry">>
-        	    <<set $mc.anthro.subtype to either (setup.furryTypes)>>
-            <<elseif $mc.anthro.group is "Scalie">>
-        	    <<set $mc.anthro.subtype to either (setup.scalieTypes)>>
-            <<elseif $mc.anthro.group is "Avian">>
-        	    <<set $mc.anthro.subtype to either(setup.avianTypes)>>
-            <</if>>
+
+
+    <<if $mc.species is "Anthro">>
+        <<set $mc.skin.color to null>>
+    	<<set $mc.anthro.group to either(setup.anthroGroup)>>
+        <<set $mc.anthro.color to either(setup.furScalesColors)>>
+        <<set $mc.anthro.pattern to either(setup.anthroPatterns)>>
+        <<if $mc.anthro.group is "Furry">>
+        	<<set $mc.anthro.subtype to either (setup.furryTypes)>>
+        <<elseif $mc.anthro.group is "Scalie">>
+        	<<set $mc.anthro.subtype to either (setup.scalieTypes)>>
+        <<elseif $mc.anthro.group is "Avian">>
+        	<<set $mc.anthro.subtype to either(setup.avianTypes)>>
         <</if>>
-        /*<<MC-Create-body>>*/
+    <</if>>
+
         <<create-body $mc>>
         <<PronounsSet>>
    	    <<AgeGroupSet>>
+        <<SetTrans>>
         <<setGenitals>>
         <<if $mc.genitals is "Penis">>
     	    <<set $mc.genitaltype to either(setup.penistype)>>
@@ -848,6 +844,9 @@
         <<if $pages.perso>>
             <<addclass "#perso" "green">>
         <</if>>
+        <<if $pages.trait>>
+            <<addclass "#trait" "green">>
+        <</if>>
         <<if $mc.genitals>>
             <<addclass "#genitals" "green">>
         <</if>>
@@ -873,21 +872,9 @@
     <<if $facefeatures.includes("a unibrow")>><<set _brow to true>><</if>>
     <<if $facefeatures.includes("thick brows")>><<set _thickbrow to true>><</if>>
     <<if $facefeatures.includes("thin brows")>><<set _thinbrow to true>><</if>>
-    <<if $facefeatures.includes("no eye lashes")>><<set _noeyelash to true>><</if>>
-    <<if $facefeatures.includes("a Button nose")>><<set _buttonnose to true>><</if>>
-    <<if $facefeatures.includes("a Roman nose")>><<set _romannose to true>><</if>>
-    <<if $facefeatures.includes("a Crooked nose")>><<set _crooked to true>><</if>>
-    <<if $facefeatures.includes("a Wide nose")>><<set _widenose to true>><</if>>
-    <<if $facefeatures.includes("a Hawk nose")>><<set _hawknose to true>><</if>>
-    <<if $facefeatures.includes("a pointy chin")>><<set _pointchin to true>><</if>>
-    <<if $facefeatures.includes("a rounded chin")>><<set _roundchin to true>><</if>>
-    <<if $facefeatures.includes("a square jaw")>><<set _squarejawe to true>><</if>>
-    <<if $facefeatures.includes("pronounced cheeks")>><<set _pronouncedcheeks to true>><</if>>
     <<if $facefeatures.includes("a beauty mark")>><<set _bm to true>><</if>>
     <<if $facefeatures.includes("freckles")>><<set _freckles to true>><</if>>
     <<if $facefeatures.includes("fluff hair")>><<set _facehair to true>><</if>>
-    <<if $facefeatures.includes("fangs")>><<set _fangs to true>><</if>>
-    <<if $facefeatures.includes("tooth gap")>><<set _toothgap to true>><</if>>
     <<if $facefeatures.includes("acne")>><<set _acne to true>><</if>>
 <</widget>>
 
@@ -933,46 +920,37 @@
 
 
 <<widget "PreSet">>
-
-<<set $mc.name = "Gary">>
-<<set $mc.nickname = "Sexy">>
-<<set $mc.surname = "Stu">>
-<<set $mc.species = "Human">>
-<<set $mc.gender = "Male">>
-<<set $mc.trans = "Cisgender">>
-<<set $mc.sexu = "Bisexual">>
-<<set $mc.pronouns = "He/Him (singular)">>
-<<set $mc.age = 27>>
-
-<<set $mc.heterochromia = false>>
-<<set $mc.eyes = "Brown">>
-
-<<set $mc.hair = {
-    length: "Short",
-    color: "Black",
-    style: "Buzz cut"
-}>>
-
-<<set $mc.facefeatures = ["A mole"]>>
-
-<<set $mc.skin = {
-    color: "Tan",
-    features: []
-}>>
-
-<<set $mc.bodyheight = "Average">>
-<<set $mc.physique = "Thin">>
-<<set $mc.personality = "Kind">>
-<<set $mc.genitals = "Penis">>
-<<set $mc.penislength = "Average">>
-<<set $mc.genitaltype = "Cut">>
-<<set $mc.assSize = "Average">>
-<<set $mc.sexpref = "Versatile">>
-<<set $mc.virgin = true>>
-
-<<AgeGroupSet>>
-/*<<MC-Create-body>>*/
-<<create-body $mc>>
+    <<set 
+        $mc.name to "Gary",
+        $mc.nickname to "Sexy",
+        $mc.surname to "Stu",
+        $mc.species to "Human",
+        $mc.gender to "Male",
+        $mc.sexu to "Bisexual",
+        $mc.pronouns to "He/Him ",
+        $mc.age to "27",
+        $heterochromia to false,
+        $mc.eyes to "Brown",
+        $mc.hair to {},
+        $mc.hair.length to "Short",
+        $mc.hair.color to "Black",
+        $mc.hair.style to "Buzz cut",
+        $facefeatures to ["A mole"],
+        $mc.skin.color to "Tan",
+        $mc.skin.features to [],
+        $mc.bodyheight to "Average",
+        $mc.physique to "Thin",
+        $mc.personality to "Kind",
+        $mc.genitals to "Penis",
+        $mc.penislength to "Average",
+        $mc.genitaltype to "Cut",
+        $mc.assSize to "Average",
+        $mc.sexpref to "Versatile",
+        $mc.virgin to true
+    >>
+    <<AgeGroupSet>>
+    <<SetTrans>>
+    <<create-body $mc>>
 <</widget>>
 
 <<widget "LittleBoy">>
@@ -982,7 +960,6 @@
         $mc.surname to "Stu",
         $mc.species to "Human",
         $mc.gender to "Male",
-        $mc.trans to "Cisgender",
         $mc.sexu to "Bisexual",
         $mc.pronouns to "He/Him ",
         $mc.age to "10",
@@ -1006,7 +983,7 @@
         $mc.virgin to true
     >>
     <<AgeGroupSet>>
-    /*<<MC-Create-body>>*/
+    <<SetTrans>>
     <<create-body $mc>>
 <</widget>>
 
@@ -1017,7 +994,6 @@
         $mc.surname to "Stu",
         $mc.species to "Human",
         $mc.gender to "Female",
-        $mc.trans to "Cisgender",
         $mc.sexu to "Bisexual",
         $mc.pronouns to "She/Her ",
         $mc.age to "10",
@@ -1041,7 +1017,7 @@
         $mc.virgin to true
     >>
     <<AgeGroupSet>>
-    /*<<MC-Create-body>>*/
+    <<SetTrans>>
     <<create-body $mc>>
 <</widget>>
 
@@ -1052,7 +1028,6 @@
         $mc.surname to "Stu",
         $mc.species to "Human",
         $mc.gender to "Male",
-        $mc.trans to "Cisgender",
         $mc.sexu to "Bisexual",
         $mc.pronouns to "He/Him ",
         $mc.age to "16",
@@ -1076,7 +1051,7 @@
         $mc.virgin to true
     >>
     <<AgeGroupSet>>
-    /*<<MC-Create-body>>*/
+    <<SetTrans>>
     <<create-body $mc>>
 <</widget>>
 
@@ -1087,7 +1062,6 @@
         $mc.surname to "Stu",
         $mc.species to "Human",
         $mc.gender to "Female",
-        $mc.trans to "Cisgender",
         $mc.sexu to "Bisexual",
         $mc.pronouns to "She/Her ",
         $mc.age to "16",
@@ -1111,7 +1085,7 @@
         $mc.virgin to true
     >>
     <<AgeGroupSet>>
-    /*<<MC-Create-body>> */
+    <<SetTrans>>
     <<create-body $mc>> 
 <</widget>>
 
@@ -1122,7 +1096,6 @@
         $mc.surname to "Stu",
         $mc.species to "Human",
         $mc.gender to "Female",
-        $mc.trans to "Cisgender",
         $mc.sexu to "Bisexual",
         $mc.pronouns to "She/Her ",
         $mc.age to "27",
@@ -1146,7 +1119,7 @@
         $mc.virgin to true
     >>
     <<AgeGroupSet>>
-    /*<<MC-Create-body>>*/
+    <<SetTrans>>
     <<create-body $mc>>
 <</widget>>
 
@@ -1157,7 +1130,6 @@
         $mc.surname to "Stu",
         $mc.species to "Human",
         $mc.gender to "Male",
-        $mc.trans to "Cisgender",
         $mc.sexu to "Bisexual",
         $mc.pronouns to "He/Him ",
         $mc.age to "27",
@@ -1181,7 +1153,7 @@
         $mc.virgin to true
     >>
     <<AgeGroupSet>>
-    /*<<MC-Create-body>>*/
+    <<SetTrans>>
     <<create-body $mc>>
 <</widget>>
 

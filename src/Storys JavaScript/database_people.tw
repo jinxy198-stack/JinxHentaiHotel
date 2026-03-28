@@ -6,6 +6,9 @@ setup.species = [
 setup.speciesnnew = [
     "Human", "Anthro", "Fantasy",
 ];
+setup.speciesnoFurry = [
+    "Human",
+];
 
 setup.genders= [
     "Male", "Female",
@@ -44,7 +47,7 @@ setup.haircolor= [
 ];
 
 setup.hairstyle=[
-    "Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads" ,"Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair", "Bald",
+    "Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long Bob", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads" ,"Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair", "Bald",
 ]
 
 setup.skincolor= [
@@ -108,20 +111,22 @@ setup.bodyparts = {
     Head: "Head",
     Face: "Face",
     Mouth: "Mouth",
-    Arms: "Arms",
-    Legs: "Legs",
-    Hands: "Hands",
+    Arm: "Arm",
+    Leg: "Leg",
     Hand: "Hand",
     Feet: "Feet",
     Ass: "Ass",
     Asshole: "Asshole",
     Finger: "Finger",
-    Fingers: "Fingers",
-    Hips: "Hips",
-    Lips: "Lips",
+    Hip: "Hip",
+    Lips: "Lip",
     Tongue: "Tongue"
 };
 
 setup.personalities= [
       "Brave", "Shy", "Relaxed", "Playful", "Good", "Evil", "Kind", "Logical", "Studious","Nerdy", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean", "Energetic", "Selfish", "Confident", "Childlike"
+];
+
+setup.accessory= [
+    "Watch", "Glasses", "Necklace", "Head Band"
 ];

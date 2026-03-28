@@ -16,6 +16,14 @@
     <th>Surname:</th>
     <td id="mc-surb">$mc.surname</td>
   </tr>
+  <tr id="pronouns">
+    <th>Pronouns:</th>
+    <td id="mc-pronouns">$mc.pronouns</td>
+  </tr>
+  <tr id="identity">
+    <th>Identity:</th>
+    <td id="mc-identity">$mc.trans</td>
+  </tr>
   <tr id="age">
     <th>Age:</th>
     <td id="mc-age">$mc.age</td>
@@ -55,7 +63,7 @@
         <<if $mc.hair.length and $mc.hair.length is "bald">>
           You are bald.
         <<else>>
-          You have $mc.hair.style $mc.hair.color hair
+          You have $mc.hair.color $mc.hair.style hair
         <</if>>
       </span>
     </td>
@@ -87,17 +95,21 @@
       <<if $mc.skin.features>> $mc.skin.features<</if>>
     </td>
   </tr>
-  <!-- Anthro-only body part summary -->
-  <<if $mc.species and $mc.species.toLowerCase() is "anthro">>
-  <tr id="anthro-parts">
-    <th>Anthro Parts:</th>
+  <hr>
+  <tr id="body-parts">
+    <th>Body Parts:</th>
     <td id="mc-anthroparts">
-      Ears: $mc.body.Ears
-      Tail: $mc.body.Tail
-      Feet: $mc.body.Feet
+      <ul>
+        <<for _key, _val range $mc.body>>
+	        <li>
+		        <strong><<print _key>></strong> :
+		        <<print _val>>
+	        </li>
+        <</for>>
+      </ul>
     </td>
   </tr>
-  <</if>>
+ <hr>
   <!-- Build still uses the existing height/weight/musc system -->
   <tr id="body-build">
     <th>Build:</th>
@@ -105,19 +117,27 @@
       Height: $mc.bodyheight <br>
       Physique: $mc.physique <br>
       <<if $mc.breastsize>>Breast Size: $mc.breastsize<</if>>  
-
+      
     </td>
   </tr>
 </table>
 
-<h2>Personality</h2>
+<h2>Mental</h2>
 <table class="stats-table">
   <colgroup><col style="width:220px"><col style="width:auto"></colgroup>
   <tr id="perso">
     <th>Personality:</th>
     <td id="mc-perso">$mc.personality</td>
   </tr>
-</table>
+  <tr id="trait">
+        <th>Trait:</th>
+        <<if !$mc.traits>>
+        No traits found
+        <<else>>
+        <td id="mc-perso">$mc.traits</td>
+        <</if>>
+    </tr>
+</table>    
 
 <h2>NSFW Options</h2>
 <table class="stats-table nsfw">
@@ -138,13 +158,4 @@
   </tr>
 </table>
 
-<b>List of body parts:</b>
-<br>
-<ul>
-<<for _key, _val range $mc.body>>
-	<li>
-		<strong><<print _key>></strong> :
-		<<print _val>>
-	</li>
-<</for>>
-</ul>
+
