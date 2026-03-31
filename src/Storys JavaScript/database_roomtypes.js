@@ -1,4 +1,4 @@
-::database_roomtypes [script]
+
 
 setup.RoomTypes = {};
 

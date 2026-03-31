@@ -1,4 +1,4 @@
-:: database_food [script]
+
 setup.food=
 {
     "Hot dog":{

@@ -1,4 +1,4 @@
-:: database_sex [script]
+
 setup.sexPhases = ["tease", "penetration", "climax", "continue","end"];
 
 
