@@ -61,24 +61,24 @@
 	<<set _npc.id = ++$npcSeq>>
 
 	/* Shortcut reference to pool config */
-	<<set _p = $npcPools || {}>>
+	
 
 	/* Localized fallback pools */
-	<<set _names       = _p.givenNames    || setup.names>>
-	<<set _surnames    = _p.surnames      || setup.surnames>>
-	<<set _genders     = _p.genders       || ["Male", "Female"]>>
-	<<set _eyesPool    = _p.eyes          || setup.eyecolor>>
-	<<set _hairPool    = _p.hair          || setup.hairstyle>>
-	<<set _hairColor   = _p.haircolor     || setup.haircolor>>
-	<<set _facePool    = _p.facefeatures  || ["Scar", "Freckles", "Mole"]>>
-	<<set _skinColor   = _p.skincolor     || setup.skincolor>>
-	<<set _skinFeat    = _p.skinfeatures  || ["Scars", "Freckles"]>>
-	<<set _heightPool  = _p.bodyheight    || ["Very Short", "Short" ,"Average", "Tall", "Very Tall"]>>
-	<<set _physiquePool  = _p.physique    || setup.physique>>
-	<<set _persPool    = _p.personalities || setup.pick(setup.personalities)>>
-	<<set _assPool	   = _p.assSize		  || ["Flat", "Tiny", "Small", "Round", "Large", "Huge"]>>
-	<<set _sexuPool    = _p.sexu          || ["Heterosexual", "Homosexual", "Bisexual", "Pansexual"]>>
-	<<set _speciesPool = _p.species       >>
+	<<set _names       =  setup.names>>
+	<<set _surnames    =  setup.surnames>>
+	<<set _genders     =  setup.genders>>
+	<<set _eyesPool    =  setup.eyecolor>>
+	<<set _hairPool    =  setup.hairstyle>>
+	<<set _hairColor   =  setup.haircolor>>
+	<<set _facePool    =  ["Scar", "Freckles", "Mole"]>>
+	<<set _skinColor   =  setup.skincolor>>
+	<<set _skinFeat    =  ["Scars", "Freckles"]>>
+	<<set _heightPool  =  setup.height>>
+	<<set _physiquePool  =  setup.physique>>
+	<<set _persPool    =  setup.personalities>>
+	<<set _assPool	   =  setup.assSize>>
+	<<set _sexuPool    =  setup.sexu>>
+	<<set _speciesPool = setup.species>>
 
 	/**********************
 	    BASIC IDENTITY
@@ -142,23 +142,21 @@
 	<<set _npc.heterochromia = either(true,false)>>
 
 	<<if _npc.heterochromia is false>>
-		<<set _npc.eyes		= setup.pick(setup.eyecolor)>>
+		<<set _npc.eyes		= setup.pick(_eyesPool)>>
 	<<else>>	
 		<<set 
             _eyesleft = setup.pick(setup.eyecolor),
             _eyesright = setup.pick(setup.eyecolor),
             _npc.eyes to _eyesleft + " and " + _eyesright >>
 	<</if>>
-	<<set _npc.hair		= setup.pick(setup.hairstyle)>>
-	<<set _npc.haircolor	 = setup.pick(setup.haircolor)>>
+	<<set _npc.hair		= setup.pick(_hairPool)>>
+	<<set _npc.haircolor	 = setup.pick(_hairColor)>>
 	<<set _npc.facefeatures 	= setup.pick(_facePool)>>
 	<<set _npc.skincolor    = setup.pick(_skinColor)>>
 	<<set _npc.skinfeatures 	= setup.pick(_skinFeat)>>
-
 	<<set _npc.bodyheight   = setup.pick(_heightPool)>>
 	<<set _npc.physique   = setup.pick(_physiquePool)>>
 	<<set _npc.personality  = setup.pick(_persPool)>>
-
 	<<set _npc.assSize      = setup.pick(_assPool)>>
 	<<set _npc.virgin       = either(true,false)>>
 	<<set _npc.origin       = "Random Person">>
@@ -176,7 +174,6 @@
 
 	<<if _npc.species is "Anthro">>
 		<<set _npc.anthro = _npc.anthro || {}>>
-
 		<<set _group = setup.pick($nonHumanTraitsOptions.anthroType)>>
 		<<set _npc.anthro.group = _group>>
 
@@ -187,16 +184,16 @@
 				<<set _sub = setup.pick($nonHumanTraitsOptions.scalieType)>>
 			<<case "Avian">>
 				<<set _sub = setup.pick($nonHumanTraitsOptions.avianType)>>
+				
 			<<default>>
 				<<set _sub = "Other">>
 		<</switch>>
 
 		<<set _npc.anthro.subtype = _sub>>
-		<<set _npc.anthro.color   = setup.pick($anthroColors)>>
-		<<set _npc.anthro.pattern = setup.pick($anthroPatterns)>>
-		<<set _npc.anthro.wings   = (_group is "Avian")>>
+		<<set _npc.anthro.color   = setup.pick(setup.furScalesColors)>>
+		<<set _npc.anthro.pattern = setup.pick(setup.anthroPatterns)>>
+		
 	<</if>>
-
 
 	/**********************
 	    FINALIZE NPC
@@ -205,18 +202,14 @@
 	<<AgeGroupNPC>>
 	<<make-petname>>
 	<<create-body _npc>>
-
 	<<set _dummy = $npcs.push(_npc)>>
 <</widget>>
-
-
 
 
 <<widget "SpawnPoolOnce">>
 	<<set _key   = _args[0]>>
 	<<set _pool  = _args[1]>>
 	<<set _limit = _args[2]>>  /* optional */
-
 	<<if !$spawnPools>><<set $spawnPools = {}>><</if>>
 	<<if !_key || !Array.isArray(_pool)>><<return>><</if>>
 
@@ -230,7 +223,6 @@
 
 <<widget "SpawnRandomNPCs">>
 	<<set _total = _args[0] || 20>>
-
 	<<set $roomNPCs = []>>
 	<<set $npcs = $npcs || []>>
 	<<set $npcSeq = $npcSeq || 0>>
@@ -630,7 +622,7 @@
 					<<if _hasPenis and !_char.genitaltype>>
 						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
 					<</if>>
-
+					<<set _char.anthro.wings   = setup.pick($anthroWingspans)>>
 				<<case "alligator">>
 					<<set _char.body.Ears to null>>
 					<<set _char.body.Tail to "Spiked Tail">>
@@ -665,13 +657,13 @@
 					<<if _hasPenis and !_char.genitaltype>>
 						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
 					<</if>>
-
+					<<set _char.anthro.wings   = setup.pick($anthroWingspans)>>
 				<<case "parrot">>
 					
 					<<if _hasPenis and !_char.genitaltype>>
 						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
 					<</if>>
-
+					<<set _char.anthro.wings   = setup.pick($anthroWingspans)>>
 				<<case "chicken">>
 					
 					<<if _hasPenis and !_char.genitaltype>>
@@ -683,9 +675,9 @@
 					<<if _hasPenis and !_char.genitaltype>>
 						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
 					<</if>>
-
+					<<set _char.anthro.wings   = setup.pick($anthroWingspans)>>
 				<<default>>
-					/* generic avian defaults */
+					<<set _char.anthro.wings   = setup.pick($anthroWingspans)>>
 			<</switch>>
 
 		<<default>>
