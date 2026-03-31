@@ -1,7 +1,6 @@
 :: Start {"position":"175,275","size":"100,100"}
 
 /*keep true if you want the test buttons to appear */
-
 <<set $devMode = true>>
 <div>
 <h1>Welcome to Jinx Hentai Hotel!</h1>
@@ -12,7 +11,7 @@ Create your character to begin.
 <center><<button [[Use the Randomiser|CC-Check]]>><<Randomiser>><</button>> | <<button [[Use the Pre-Set|CC-Check]]>><<PreSet>><</button>>
 </center>
 
-<span> Updated as of 2/20/2026 </span>
+<span> Updated as of 3/28/2026 </span>
 
 <<if $devMode>>
 <<button [[Test|TestRoom]]>><<LittleBoy>><</button>> 
@@ -23,7 +22,6 @@ Create your character to begin.
 <<button [[Test as a Teen Girl|Lounge]]>><<TeenGirl>><</button>>
 <<button [[Test as a Adult Woman|Lounge]]>><<AdultWoman>><</button>>  
 <<button [[Test as a Adult Man|Lounge]]>><<AdultMan>><</button>> 
-
 
 <</if>>
 </div>

@@ -217,20 +217,6 @@ button{
     0 0 10px rgba(64, 93, 255, 0.4);
   cursor:pointer;
 }
-/*button{
-  border-radius:999px;
-  padding:0.35rem 0.95rem;
-  font-size:0.9rem;
-  text-transform:uppercase;
-  letter-spacing:0.08em;
-  border:1px solid rgba(255,255,255,0.15);
-  background:radial-gradient(circle at top, #3a1480, #170623);
-  color:#fff;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.04),
-    0 0 10px rgba(173, 64, 255, 0.4);
-  cursor:pointer;
-}*/
 
 button:hover,
 html[data-outlines] button:focus{
@@ -1166,6 +1152,145 @@ h1, h2, h3{
   -webkit-text-stroke: .1px rgba(255,255,255,0.75);
 
   
+}
+
+
+
+
+
+.tooltip-term {
+	position: relative;
+	display: inline-block;
+	color: #8fd3ff;
+	cursor: help;
+	border-bottom: 1px dotted #8fd3ff;
+  z-index: 1;
+}
+
+.tooltip-term::after {
+	content: attr(data-tooltip);
+	position: absolute;
+	left: 50%;
+	bottom: 125%;
+	transform: translateX(-50%);
+	min-width: 180px;
+	max-width: 260px;
+	padding: 0.4em 0.6em;
+	border-radius: 6px;
+	background: rgba(20, 20, 20, 0.95);
+	color: #fff;
+	font-size: 0.9em;
+	line-height: 1.3;
+	text-align: center;
+	white-space: normal;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.15s ease;
+	z-index: 9999;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.tooltip-term::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: 115%;
+	transform: translateX(-50%);
+	border: 6px solid transparent;
+	border-top-color: rgba(20, 20, 20, 0.95);
+	opacity: 0;
+	transition: opacity 0.15s ease;
+	z-index: 9999;
+}
+
+.tooltip-term:hover::after,
+.tooltip-term:hover::before,
+.tooltip-term:focus::after,
+.tooltip-term:focus::before {
+	opacity: 1;
+}
+
+
+
+
+
+
+/* make the inspect popup roomier */
+#ui-dialog {
+	width: min(820px, 92vw);
+  overflow: visible !important;
+  margin-top: 2rem;
+}
+
+#ui-dialog-body {
+	max-height: 75vh;
+	overflow-y: auto;
+	padding: 1rem 1.25rem 1.5rem;
+}
+
+/* inspect card */
+.npc-inspect {
+	background: linear-gradient(180deg, rgba(30,30,48,0.96), rgba(10,10,18,0.98));
+	border: 1px solid rgba(255,255,255,0.12);
+	border-radius: 14px;
+	padding: 1rem;
+	box-shadow:
+		0 0 0 1px rgba(255,255,255,0.03),
+		0 0 22px rgba(90, 120, 255, 0.18);
+}
+
+.npc-inspect-header {
+	margin-bottom: 1rem;
+	padding-bottom: 0.75rem;
+	border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.npc-inspect-header h2 {
+	margin: 0;
+	font-size: 1.4rem;
+}
+
+.npc-inspect-subtitle {
+	margin-top: 0.25rem;
+	opacity: 0.8;
+	font-style: italic;
+}
+
+.npc-inspect-section {
+	margin-top: 1rem;
+	padding: 0.75rem;
+	background: rgba(255,255,255,0.04);
+	border: 1px solid rgba(255,255,255,0.08);
+	border-radius: 10px;
+}
+
+.npc-inspect-section-title {
+	margin-bottom: 0.6rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	font-size: 0.85rem;
+	color: #9fc2ff;
+}
+
+.npc-inspect-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 0.5rem 1rem;
+}
+
+.npc-tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.45rem;
+}
+
+.npc-tag {
+	display: inline-block;
+	padding: 0.2rem 0.55rem;
+	border-radius: 999px;
+	background: rgba(90, 120, 255, 0.14);
+	border: 1px solid rgba(140, 170, 255, 0.25);
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "Eventdb" */
 if (!("Events" in setup)) setup.Events = {};
 
@@ -3576,7 +3701,9 @@ setup.names=[
 setup.surnames = [
     "Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Mudd", "Rodriguez", "Wilson", "Martinez", "Seo", "Anderson", "Taylor", "Tan", "Thomas", "Yun", "Hernandez", "Moore", "Martin", "Han", "Jackson", "Jang", "Thompson", "White", "Lopez", "Lee", "Gonzalez", "Harris", "Clark", "Lewis", "Ohn", "Robinson", "Sharma", "Walker", "Yoon", "Perez", "Hall", "Young", "Allen", "Taniguchi", "Sanchez", "Hoang", "Wright", "King", "Scott", "Green", "Baker", "Adams", "Nelson", "Hill", "Ramirez", "Campbell", "Ashborne", "Mitchell", "Kang", "Roberts", "Carter", "Phillips", "Evans", "Turner", "Yoo", "Torres", "Parker", "Collins", "Solarin", "Edwards", "Lim", "Stewart", "Flores", "Nishimura", "Uba", "Morris", "Wormwood", "Nguyen", "Murphy", "Rivera", "Cook", "Rogers", "On", "Morgan", "Kumar", "Peterson", "Cooper", "Reed", "Amaechi", "Bailey", "Magoro", "Bell", "Ri", "Gomez", "Kelly", "Howard", "Fāng", "Im", "Ward", "Okonjo", "Diaz", "Rockets", "Jo", "Richardson", "Wood", "Watson", "Brooks", "Cho", "Bennett", "Gray", "James", "Reyes", "Cruz", "Jiǎng", "Hughes", "Price", "Myers", "Fujita", "Cuī", "Okar", "Long", "Foster", "Sanders", "Ross", "Morales", "Xiè", "Powell", "Sullivan", "Russell", "Akenzua", "Ortiz", "Jenkins", "Gutierrez", "Perry", "Jīn", "Butler", "Son", "Barnes", "Goto", "Fisher", "Henderson", "Ip", "Coleman", "Simmons", "Patterson", "Jordan", "Reynolds", "Acharya", "Hamilton", "Graham", "Kim", "Gonzales", "Alexander", "Ramos", "Wallace", "Griffin", "West", "Bái", "Cole", "Hayes", "Dīng", "Chavez", "Ota", "Gibson", "Bryant", "Ellis", "Stevens", "Murray", "Ford", "Marshall", "Owens", "McDonald", "Harrison", "Attah", "Ruiz", "Kennedy", "Wells", "Alvarez", "Woods", "Mendoza", "Castillo", "Olson", "Bedi", "Webb", "Lager", "Washington", "Guān", "Tucker", "Freeman", "Burns", "Henry", "Vasquez", "Snyder", "Murakami", "Simpson", "Xióng", "Crawford", "Jimenez", "Porter", "Mason", "Shaw", "Gordon", "Wagner", "Hunter", "Romero", "Hicks", "Okoye", "Dixon", "Hunt", "Palmer", "Robertson", "Hwang", "Black", "Shào", "Holmes", "Stone", "Meyer", "Sū", "Boyd", "Wèi", "Mills", "Okada", "Warren", "Fox", "Rose", "Onishi", "Rice", "Moreno", "Schmidt", "Patel", "Béchamel", "Ferguson", "Nichols", "Whitlock", "Herrera", "Silvervein", "Saito", "Medina", "Mehta", "Ryan", "Ebonhart", "Fernandez", "Weaver", "Daniels", "Okiro", "Chou", "Stephens", "Gardner", "Payne", "Blackthorne", "Kelley", "Balewa", "Darke", "Kingsley", "Dunn", "Pierce", "Arnold", "Tran", "Spencer", "Peters", "Hawkins", "Kwon", "Larkspur", "Grant", "Savage", "Merriweather", "Winterbourne", "Hansen", "Brightmore", "Ashworth", "Castro", "Ibori", "Hoffman", "Clearwater", "Hart", "Elliott", "Sakurai", "Cunningham", "Knight", "Shin", "Bradley", "Xu", "Carroll", "Hudson", "Joshi", "Duncan", "Armstrong", "Berry", "Andrews", "Takada", "Johnston", "Ray", "Kingswell", "Lane", "Riley", "Carpenter", "Haverford", "Perkins", "Greycliff", "Chéng", "Aguilar", "Harada", "Silva", "Thorne", "Richards", "Willis", "Matthews", "Ando", "Chapman", "Lawrence", "Lǚ", "Garza", "Vargas", "Watkins", "Wheeler", "Yuán", "Yakubu", "Northwood", "Dellinger", "Larson", "Carlson", "Harper", "George", "Sy", "Greene", "Gildemar", "Burke", "Endive", "Crenshaw", "Guzman", "Morrison", "Munoz", "Cài", "Jacobs", "Obrien", "Yè", "Kulkarni", "Silverman", "Lawson", "Franklin", "Cloudhaven", "Hawkwell", "Lynch", "Won", "Bishop", "Carr", "Salazar", "Austin", "Mendez", "Zēng", "Gilbert", "Hara", "Jensen", "Williamson", "Kapoor", "Montgomery", "Chu", "Harvey", "Oliver", "Chinen", "Howell", "Dean", "Hanson", "Weber", "Garrett", "Jung", "Sims", "Burton", "Fuller", "Soto", "McCoy", "Jeong", "Welch", "Chen", "Schultz", "Walters", "Reid", "Fields", "Coldridge", "Walsh", "Little", "Fowler", "Duskwood", "Bowman", "Davidson", "May", "Day", "Schneider", "Péng", "Newman", "Calvert", "Penrose", "Brewer", "Yu", "Lucas", "Holland", "Wong", "Banks", "Santos", "Sylla", "Curtis", "Pearson", "Delgado", "Valdez", "Arief", "Pena", "Bello", "Rios", "Douglas", "Sandoval", "Pān", "Barrett", "Hopkins", "Keller", "Guerrero", "Stanley", "Bates", "Greycliffe", "Hong", "Alvarado", "Beck", "Ortega", "Wade", "Estrada", "Contreras", "Agarwal", "Ryu", "Barnett", "Caldwell", "Santiago", "Kante", "Lambert", "Powers", "Chambers", "Nunez", "Craig", "Leonard", "Lowe", "Rhodes", "Byrd", "Dela Cruz", "Mangosteen", "Gregory", "Blackthorn", "Shelton", "Frazier", "Becker", "Oakenshield", "Yú", "Maldonado", "Nakayama", "Fleming", "Vega", "Sutton", "Song", "Cohen", "Jennings", "Parks", "Konate", "McDaniel", "Watts", "Barker", "Norris", "Thiam", "Vaughn", "Ahn", "Vazquez", "Holt", "Schwartz", "Abdullah", "Steele", "Marchand", "Benson", "Eom", "Neal", "Dominguez", "Ishikawa", "Horton", "Terry", "Leung", "Yap", "Wolfe", "Hale", "Lyons", "Graves", "Beckett", "Haynes", "He", "Miles", "Jain", "Park", "Warner", "Chun", "Padilla", "Everhart", "Bush", "Thornton", "McCarthy", "Mann", "Zimmerman", "Sow", "Erickson", "Jeon", "Fletcher", "McKinney", "Bumpus", "Hollingsworth", "Page", "Dawson", "Joseph", "Desai", "Pembroke", "Marquez", "Reeves", "An", "Klein", "Espinoza", "Guo", "Baldwin", "Moran", "Wada", "Sugawara", "Love", "Diouf", "Robbins", "Higgins", "Montclair", "Ball", "Cortez", "Le", "Hollander", "Griffith", "Yarmouth", "Bowen", "Sharp", "Sinha", "Xiao", "Ramsey", "Quimby", "Hardy", "Devereux", "Mellark", "Swanson", "Barber", "Acosta", "Luna", "Chandler", "Traoré", "Blair", "Daniel", "Hasegawa", "Cross", "Simon", "Malik", "Dennis", "Stormrider", "Ueda", "Oconnor", "Quinn", "Leong", "Navarro", "Moss", "Ogawa", "Strathmore", "Fitzgerald", "Everdeen", "Doyle", "McLaughlin", "Loxley", "Rojas", "Rodgers", "Stevenson", "Singh", "Yang", "Deng", "Figueroa", "Harmon", "Newton", "Koné", "Paul", "Manning", "Garner", "McGee", "Ueno", "Reese", "Francis", "Burgess", "Adkins", "Goodman", "Curry", "Hashimoto", "Brady", "Phan", "Christensen", "Choudhary", "Camara", "Potter", "Walton", "Goodwin", "Mullins", "Molina", "Webster", "Ikeda", "Fischer", "Campos", "Avila", "Sherman", "Trotter", "Todd", "Chang", "Blake", "Malone", "Wolf", "Hodges", "Juarez", "Gill", "Farmer", "Ong", "Hines", "Gallagher", "Duran", "Féng", "Whitlocke", "Vexley", "Hubbard", "Huynh", "Cannon", "Hán", "Miranda", "Wang", "Saunders", "Tate", "Mack", "Odair", "Montclaire", "Hammond", "Ironwood", "Carrillo", "Townsend", "Wise", "Ingram", "Barton", "Mejia", "Ayala", "Schroeder", "Koh", "Fenchway", "Beaver", "Hampton", "Rowe", "Luó", "Parsons", "Pae", "Frank", "Waters", "Pemboke", "Pendleton", "Redfern", "Fairefax", "Strickland", "Otsuka", "Osborne", "Maxwell", "Chan", "Deleon", "Fairfax", "Godwin", "Norman", "Dèng", "Harrington", "Paek", "Casey", "Patton", "Logan", "Hawthorne", "Bowers", "Min", "Mueller", "Ju", "Glover", "Konishi", "Floyd", "Gāo", "Hartman", "Buchanan", "Cobb", "Abe", "French", "Kramer", "McCormick", "Clarke", "Clutterbuck", "Tyler", "Mǎ", "Gibbs", "Moody", "Táng", "Conner", "Sparks", "McGuire", "Leon", "Choudhury", "Bauer", "Mori", "Norton", "Pope", "Flynn", "Hogan", "Nagai", "Robles", "Cáo", "Salinas", "Yates", "Lindsey", "Lloyd", "Marsh", "Ravenshade", "McBride", "Owen", "Solis", "Baek", "Pham", "Lang", "Pratt", "Lara", "Go", "Kagamine", "Brock", "Ballard", "Trujillo", "Shaffer", "Luo", "Drake", "Azarian", "Woo", "Roman", "Aguirre", "Morton", "Gao", "Wolfhart", "Stokes", "Lamb", "Pacheco", "Patrick", "Mistbrook", "Nomura", "Shepherd", "Hú", "Cain", "Burnett", "Hé", "Hess", "Li", "Picadillo", "Cervantes", "Verma", "Olsen", "Briggs", "Ochoa", "Duskwalker", "Cabrera", "Velasquez", "Zhū", "Montoya", "Roth", "Tsumugi", "Meyers", "Cardenas", "Whitestag", "Ironcrest", "Lín", "Fuentes", "Weiss", "Hoover", "Mun", "Stonemere", "Carroway", "Osgoode", "Wilkins", "Nicholson", "Underwood", "Short", "Carson", "Morrow", "Ko", "Hardman", "Holloway", "Summers", "Yamazaki", "Bryan", "Petersen", "McKenzie", "Serrano", "Ashcroft", "Northcott", "Aquanaut", "Hatsune", "Sòng", "Carey", "Clayton", "Wintermere", "Poole", "Calderon", "Guō", "Gallegos", "Greer", "Rivas", "Swett", "Radcliffe", "Guerra", "Ma", "Bae", "Decker", "Ellsworth", "Carrow", "Stratton", "Llewellyn", "Collier", "Wall", "Heo", "Whitaker", "Bass", "Emberstone", "Winthrop", "Flowers", "Davenport", "Varma", "Conley", "Houston", "Huff", "Copeland", "Hood", "Ashdown", "Goldleaf", "Monroe", "Massey", "Maeda", "Roberson", "Combs", "Franco", "Vu", "Bexley", "Larsen", "Randall", "Skinner", "Wilkinson", "Kirby", "Cameron", "Castorlin", "Bridges", "Anthony", "Richard", "Kirk", "Das", "Bruce", "Singleton", "Wickham", "Montrose", "Mathis", "Bradford", "Boone", "Darkwater", "Lawless", "Abbott", "Charles", "Thalberg", "Allison", "Hallowell", "Beaumont", "Ashford", "Sweeney", "Banerjee", "Atkinson", "Horn", "Brightforge", "Jefferson", "Rosales", "York", "Shim", "Christian", "Nam", "Phelps", "Drummond", "Farrell", "Ashbourne", "Merryfield", "Bellerose", "Aldridge", "Castaneda", "Nash", "Kinoshita", "Bond", "Wyatt", "Foley", "Chase", "Gates", "Vincent", "Mathews", "Zhu", "Hodge", "Garrison", "Moonshadow", "Trevino", "Isley", "Calderwood", "Villarreal", "Heath", "Dalton", "Valencia", "Callahan", "Ghosh", "Hensley", "Atkins", "Dragonblood", "Thornbrook", "Huffman", "Roy", "Boyer", "Frobisher", "Shields", "Lin", "Starling", "Grimes", "Glenn", "Cline", "Lovelace", "Delacruz", "Camacho", "Dillon", "Parrish", "Oneill", "Melton", "Booth", "Kane", "Berg", "Harrell", "Fuji", "Ashfield", "Wiggins", "Brennan", "Salas", "Ainsworth", "Kimura", "Marks", "Russo", "Sim", "Shimizu", "Trelawney", "Pembry", "Sawyer", "Baxter", "Fukuda", "Golden", "Hutchinson", "Seong", "Liu", "Walter", "McDowell", "Penumbra", "Nightingale", "Matsui", "Wiley", "Rich", "Honeychurch", "Peaseblossom", "Johns", "Kikuchi", "Suarez", "Bui", "Hobbs", "Beard", "Gilmore", "Ibarra", "Cheon", "Keith", "Starwhisper", "Co", "Macias", "Khan", "Andrade", "Ware", "Stephenson", "Cha", "Henson", "Xú", "Wilkerson", "Dyer", "McClure", "Kwok", "Huckleberry", "Blackwell", "Harrows", "Dela Rosa", "Mercado", "Tanner", "Gubbins", "Koizumi", "Endo", "Eaton", "Clay", "Pots", "Barron", "Hayashi", "Evers", "Duskendale", "Beasley", "Sūn", "Oneal", "Preston", "Small", "Wu", "Zamora", "Nishida", "Macdonald", "Vance", "Snow", "McClain", "Capulong", "Stafford", "Orozco", "Barry", "Jin", "Alcott", "English", "Shannon", "Fujwara", "Kline", "Ha", "Beauchamp", "Coldwell", "Jacobson", "Woodard", "Windham", "Huang", "Kemp", "Mosley", "Prince", "Merritt", "Chatterjee", "Hurst", "Sedgwick", "Rowntree", "Winrow", "Renshaw", "Villanueva", "Salleh", "Fudge", "Chiba", "Nolan", "Katō", "Lam", "Yoder", "Sato", "McCullough", "Inoue", "Waguri", "Lester", "Pringle", "Ravenscroft", "Moneypenny", "Aokii", "Santana", "Valenzuela", "Winters", "Matsumoto", "Kwak", "Barrera", "Cresta", "Leach", "Orr", "Berger", "Bose", "McKee", "Strong", "Conway", "Stein", "Whitehead", "Escobar", "Nair", "Knox", "Meadows", "Kamui", "Solomon", "Velez", "Odonnell", "Kerr", "Stout", "Blankenship", "Windrider", "Browning", "Kent", "Lozano", "Bartlett", "Thornfield", "Christophers", "Baggins", "Takagi", "Pruitt", "Buck", "Itō", "Barr", "Gaines", "Roh", "Durham", "Gentry", "Pang", "Rao", "McIntyre", "Sloan", "Gwak", "Melendez", "Rocha", "Herman", "Chae", "LaRue", "Moon", "Gotobed", "Shadowmere", "Hendricks", "Rangel", "Stark", "Lowery", "Hardin", "Hull", "Sasaki", "Wycliffe", "Sellers", "Arai", "Gu", "Ellison", "Shibata", "Calhoun", "Gillespie", "Mora", "Knapp", "McCall", "Morse", "Ellington", "Dorsey", "Weeks", "Nielsen", "Livingston", "Leblanc", "McLean", "Yamada", "Bradshaw", "Glass", "Satō", "Middleton", "Buckley", "Schaefer", "Frost", "Howe", "House", "McIntosh", "Pennington", "Reilly", "Hebert", "Wú", "McFarland", "Zhōu", "Hickman", "Noble", "Beaureguard", "Spears", "Conrad", "Bannerman", "Arias", "Galvan", "Velazquez", "Rawlins", "Frederick", "Randolph", "Cantu", "Fitzpatrick", "Mahoney", "Peck", "Diallo", "Suzuki", "Villa", "Michael", "Ono", "Donovan", "McConnell", "Walls", "Boyle", "Mayer", "Zuniga", "Giles", "Pineda", "Pace", "Hurley", "Mays", "McMillan", "Godric", "Crosby", "Yamaguchi", "Razak", "Ayers", "Case", "Yoshida", "Bentley", "Ademola", "Shepard", "Everett", "Pugh", "David", "McMahon", "Dunlap", "Huáng", "Bender", "Hahn", "Harding", "Yáng", "Duskbloom", "Takahashi", "Kaneko", "Danjuma", "Acevedo", "LeGustambos", "Raymond", "Glace", "Iyer", "Blackburn", "Chén", "Di Angelo", "Duffy", "Nnamani", "Landry", "Dougherty", "Que", "Bautista", "Shah", "Potts", "Arroyo", "Kojima", "Kimple", "Valentine", "Meza", "Gould", "Vaughan", "Fry", "Rush", "Avery", "Nightbloom", "Ito", "Frostveil", "Herring", "Ironsi", "Blackwood", "Dodson", "Clements", "Sampson", "Tapia", "Tanaka", "Falana", "Bean", "Lynn", "Crane", "Farley", "Rahman", "Cisneros", "Lurkin", "Benton", "Ashley", "McKay", "Finley", "Best", "Blevins", "Friedman", "Zhào", "Moses", "Ayim", "Sosa", "Blanchard", "Huber", "Frye", "Krueger", "Bernard", "Rosario", "Rubio", "Mullen", "Watanabe", "Benjamin", "Haley", "Chung", "Moyer", "Choi", "Horne", "Woodward", "Ali", "Fairchild", "Nixon", "Hayden", "Rivers", "Nakamura", "Estes", "McCarty", "Richmond", "Stuart", "Maynard", "Brandt", "Chaudfroid", "O'connell", "Sagespark", "Hanna", "Hu", "Sanford", "Sheppard", "Church", "Burch", "Levy", "Rasmussen", "Coffey", "Ponce", "Ryang", "Faulkner", "Donaldson", "Schmitt", "Novak", "Costa", "Montes", "Booker", "Cordova", "Kicklighter", "Waller", "Yamamoto", "Silverbranch", "Arellano", "Maddox", "Mata", "Bonilla", "Stanton", "Compton", "Kaufman", "Poverly", "Dudley", "McPherson", "Beltran", "McCann", "Wigglesworth", "Chateaubriand", "Stopframe", "Villegas", "Proctor", "Hester", "Yim", "Cantrell", "Daugherty", "Cherry", "Bray", "Davila", "Rowland", "Zhāng", "Levine", "Elsher", "Reddy", "Duskbane", "Bilzerian", "Yearwood", "Madden", "Spence", "Good", "Irwin", "Werner", "Krause", "Whitney", "Baird", "Hooper", "Castellan", "Pollard", "Sun", "Strongblossom", "Zavala", "Jarvis", "Lǐ", "Holden", "Kato", "Haas", "Hendrix", "McGrath", "Ahmad", "Bird", "Lucero", "Terrell", "Riggs", "Ishii", "Kincaid", "Gibraltar", "Emberfall", "Joyce", "Berringer", "Mercer", "Megurine", "Rollins", "Galloway", "Duke", "Pamplemousse", "Desdinova", "Odom", "Langley", "Morcant", "Andersen", "Downs", "Hatfield", "Mortimer", "Benitez", "Archer", "Huerta", "Travis", "McNeil", "Hinton", "Zhang", "Applegate", "Hays", "Kaur", "Mayo", "Fritz", "Pomeroy", "Everard", "Branch", "Mooney", "Ewing", "Ritter", "Fairbairn", "Tredwell", "Esparza", "Frey", "Bromley", "Ramsbottom", "Cranford", "Hathersage", "Tillinghast", "Stanhope", "Oakhurst", "Ashby", "Carleton", "Braun", "Liú", "Riddle", "Haney", "Wáng", "Silvershaw", "Mohamed", "Kaiser", "Holder", "Chaney", "Mo", "Marwood", "McKnight", "Gamble", "Carlotta", "Vang", "Cooley", "Carney", "Cowan", "Aldebury", "Featherstone", "Aldwyn", "Ismail", "Forbes", "Ferrell", "Shadowblood", "Chiltern", "Radnor", "Islington", "Fairchilde", "Davies", "Barajas", "Shea", "Varnham", "Penhaligon", "Spindlewick", "Osborn", "Bright", "Cuevas", "Bolton", "Murillo", "Lutz", "Duarte", "Kidd", "Key", "Cooke", "Nocturn", "McClean", "Cullen", "Everleigh", "Grayson", "Linnaeus", "Littlewood", "Kobayashi", "Devlin", "Dearbourne", "Ng", "Dagwood", "Wolfram", "Walden", "Lowell", "Cleary", "Attwell", "Sonnet", "Burrows", "Benedict", "Chow", "Chau", "Kyung", "Sinclair", "Evermore", "Trilby", "Theodosia", "Everly", "Heavenly", "Gupta", "Loveletter", "Lionheart", "Lundi", "Pendragon", "Tennyson", "Bradbury", "Keets", "Poet", "Locke", "Sprocket", "Moonbeam"
 ];
-/* twine-user-script #7: "database_people" */
+/* twine-user-script #7: "database_people.js" */
+
+
 setup.species = [
     "Human", "Anthro",
 ];
@@ -3701,13 +3828,30 @@ setup.bodyparts = {
 };
 
 setup.personalities= [
-      "Brave", "Shy", "Relaxed", "Playful", "Good", "Evil", "Kind", "Logical", "Studious","Nerdy", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean", "Energetic", "Selfish", "Confident", "Childlike"
+      "Brave", "Shy", "Relaxed", "Playful", "Good", "Evil", "Kind", "Logical", "Studious","Nerdy", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean", "Energetic", "Selfish", "Confident", "Childlike", "Cheeky"
 ];
 
 setup.accessory= [
     "Watch", "Glasses", "Necklace", "Head Band"
 ];
-/* twine-user-script #8: "database_roomtypes" */
+/* twine-user-script #8: "database_personality.js" */
+setup.personalityTips = {
+	Calm: "Steady, patient, and unlikely to rush things.",
+	Jolly: "Cheerful, upbeat, and usually playful.",
+	Timid: "Shy, hesitant, and easily flustered.",
+	Tough: "Blunt, resilient, and hard to intimidate.",
+	Brave: "Bold, assertive, and willing to take risks.",
+	Kind: "Gentle, considerate, and caring.",
+	Dominant: "Likes control and tends to take the lead.",
+	Submissive: "Prefers yielding control or following someone else's lead."
+};
+
+setup.traitTips = {
+	"Mute": "This character cannot speak.",
+	"Will Not Top": "They will not perform penetrative actions as the active/top partner.",
+	"Will Not Bottom": "They will not receive penetrative actions as the passive/bottom partner."
+};
+/* twine-user-script #9: "database_roomtypes" */
 setup.RoomTypes = {};
 
 setup.RoomTypes.db = {
@@ -3933,7 +4077,7 @@ setup.RoomTypes.furniture = {
         flags: ["vertical surface", "unconventional"],
     },
 };
-/* twine-user-script #9: "database_sex" */
+/* twine-user-script #10: "database_sex" */
 setup.sexPhases = ["tease", "penetration", "climax", "continue","end"];
 
 
@@ -5914,7 +6058,7 @@ setup.sexacts = {
         "bottom arousal": 0,
     },
 };
-/* twine-user-script #10: "sexHelpers" */
+/* twine-user-script #11: "sexHelpers" */
 /*
  * Applies arousal changes from a sex act to the current top and object.
  * Respects optional arousal caps defined on the act.
@@ -6956,7 +7100,6 @@ Note that some actions will only build up arousal a certain amount before you ar
 
 * [[I&#39;d rather not share my age|Index-CC][$mc.age to &quot;{/}&quot;]]</tw-passagedata><tw-passagedata pid="11" name="CC-Build" tags="creation-page nobr" position="1050,225" size="100,100">&lt;&lt;BodyBuild&gt;&gt;
 &lt;h1&gt;Set up the frame of the body&lt;/h1&gt;
-Tall, short, wide, thin... there are many ways to define how a body is framed. Below are examples of setting the PC&#39;s height, type, and musculature.
 &lt;br&gt;
 //How tall are you?// &lt;&lt;listbox &quot;$mc.bodyheight&quot;&gt;&gt;&lt;&lt;optionsfrom _height&gt;&gt;&lt;&lt;/listbox&gt;&gt;
 &lt;br&gt;
@@ -6973,9 +7116,6 @@ Tall, short, wide, thin... there are many ways to define how a body is framed. B
 	value=&quot;&lt;&lt;print $physique.muscle&gt;&gt;&quot;
 	data-var=&quot;$physique.muscle&quot;
 	oninput=&quot;SugarCubeInput(this)&quot;&gt;
-
-
-
 &lt;span id=&quot;muscleVal&quot;&gt;&lt;/span&gt;
 
 &lt;br&gt;&lt;br&gt;
@@ -6985,9 +7125,6 @@ Tall, short, wide, thin... there are many ways to define how a body is framed. B
 	value=&quot;&lt;&lt;print $physique.plump&gt;&gt;&quot;
 	data-var=&quot;$physique.plump&quot;
 	oninput=&quot;SugarCubeInput(this)&quot;&gt;
-
-
-
 &lt;span id=&quot;plumpVal&quot;&gt;&lt;/span&gt;
 
 &lt;hr&gt;
@@ -7381,7 +7518,7 @@ Do your eyes have &lt;&lt;link &quot;the same color&quot;&gt;&gt;&lt;&lt;set $he
     &lt;&lt;goto &quot;Index-CC&quot;&gt;&gt; 
 &lt;&lt;/button&gt;&gt;
 
-Once you are set on a name (by typing in the texbox and pressing the confirm button), you will be sent back to the menu of traits.</tw-passagedata><tw-passagedata pid="20" name="CC-Nickname" tags="creation-page" position="675,100" size="100,100">&lt;h1&gt;Choose your Nickname&lt;/h1&gt;\
+Once you are set on a name you will be sent back to the menu of traits.</tw-passagedata><tw-passagedata pid="20" name="CC-Nickname" tags="creation-page" position="675,100" size="100,100">&lt;h1&gt;Choose your Nickname&lt;/h1&gt;\
 
 //Do you go by a nickname?//
 * &lt;&lt;linkappend &quot;Yes, I do!&quot;&gt;&gt;:
@@ -7389,15 +7526,21 @@ Once you are set on a name (by typing in the texbox and pressing the confirm but
 &lt;&lt;/linkappend&gt;&gt;
 * [[No|Index-CC][$mc.nickname to &quot;{/}&quot;]]
 
-Once you are set on a name (by following one of the listed options and), you will be sent back to the menu of traits.
+Once you are set on a name you will be sent back to the menu of traits.
 /*  
     I&#39;m only setting the nickname to a &quot;fake thing&quot; for the &gt;No&lt; option for the sake of the trait menu and the checking page.
     You may want to ensure the variable is unset before the game starts if the player chose no nickname or left the textbox empty.
 */</tw-passagedata><tw-passagedata pid="21" name="CC-Personality" tags="creation-page" position="1425,225" size="100,100">//What term do you use to describe your personality?//
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Brave&quot; checked&gt;&gt; Brave&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Shy&quot; checked&gt;&gt; Shy&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Relaxed&quot; checked&gt;&gt;Relaxed &lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Playful&quot; checked&gt;&gt; Playful&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Kind&quot; checked&gt;&gt; &lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Childlike&quot; checked&gt;&gt; Childlike&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Adventerous&quot; checked&gt;&gt; Adventurous&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Kind&quot;&gt;&gt;Kind&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Shy&quot;&gt;&gt;Shy&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Playful&quot;&gt;&gt;Playful&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Confident&quot;&gt;&gt;Confident&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Calm&quot;&gt;&gt;Calm&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Lazy&quot;&gt;&gt;Lazy&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Good&quot;&gt;&gt;Good&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Evil&quot;&gt;&gt;Evil&lt;/label&gt;
@@ -7410,10 +7553,8 @@ Once you are set on a name (by following one of the listed options and), you wil
 //What pronoun set are you most comfortable with?//
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;He/Him&quot; checked&gt;&gt;He/Him&lt;/label&gt;
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;She/Her&quot; &gt;&gt;She/Her&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;They/Them (singular)&quot;&gt;&gt;They/Them (singular)&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;They/Them (plural)&quot;&gt;&gt;They/Them (plural)&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;Ae/Aer&quot;&gt;&gt;Ae/Aer&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;E/Em&quot;&gt;&gt;E/Em&lt;/label&gt;
+* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.pronouns&quot; &quot;They/Them&quot;&gt;&gt;They/Them&lt;/label&gt;
+
 
 &lt;&lt;button &quot;Confirm&quot;&gt;&gt;
     &lt;&lt;set $pages.pronouns to true&gt;&gt;
@@ -7502,7 +7643,7 @@ Your species defines you in many ways — choose wisely.
 
  Surname: &lt;&lt;textbox &quot;$mc.surname&quot; &quot;&quot; autofocus&gt;&gt; &lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-Once you are set on a name (by clicking one of the listed options), you will be sent back to the menu of traits.</tw-passagedata><tw-passagedata pid="26" name="CC-Trait" tags="creation-page" position="725,350" size="100,100">What are the types of traits you want? (some will affect gameplay)
+Once you are set on a name, you will be sent back to the menu of traits.</tw-passagedata><tw-passagedata pid="26" name="CC-Trait" tags="creation-page" position="725,350" size="100,100">What are the types of traits you want? (some will affect gameplay)
 They are not limited by physical or mental
 &lt;&lt;nobr&gt;&gt;
 
@@ -7872,7 +8013,11 @@ You are in the hotel hallway, doors to other rooms are on each side but you cann
 &lt;br&gt;
 &lt;span class=&quot;glitch&quot; data-text=&quot;There is also a door that seems to be locked tight, it&#39;s best you do not enter.&quot;&gt;There is also a door that seems to be locked tight, it&#39;s best you do not enter.&lt;/span&gt;
 At the end of the hall is an elevator.
+&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 20&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 20&gt;&gt;
 
+
+&lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 &lt;&lt;button &quot;Your Room&quot;&gt;&gt;
@@ -8437,7 +8582,7 @@ On the other side there was a door to your bathroom.
     accessory: &quot;Watch&quot;,
     skincolor: &quot;Fair&quot;,
     skinfeatures: &quot;&quot;,
-    bodyheight: &quot;Short&quot;,
+    bodyheight: &quot;Average&quot;,
     physique: &quot;Toned&quot;, 
     personality: &quot;Cocky&quot;,
     sexpref: &quot;Switch&quot;,
@@ -8446,20 +8591,101 @@ On the other side there was a door to your bathroom.
 }&gt;&gt;
 
 /*Ryuko Matoi */
-
+&lt;&lt;set $Ryuko = {
+    name: &quot;Ryuko&quot;,
+    nickname: &quot;&quot;,
+    surname: &quot;Matoi&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Female&quot;,
+    trans: &quot;Cisgender&quot;,
+    sexu: &quot;Bisexual&quot;,  
+    genitals: &quot;Vagina&quot;,
+    genitaltype: &quot;Tight&quot;, 
+    breastsize: &quot;Ample&quot;,
+    assSize: &quot;Plump&quot;,
+    pronouns: &quot;She/Her&quot;,
+    age: 17,
+    eyes: &quot;Blue&quot;,
+    hair: &quot;Unkempt&quot;,
+    haircolor: &quot;Black&quot;,
+    facefeatures: &quot;&quot;,
+    accessory: &quot;&quot;,
+    skincolor: &quot;Fair&quot;,
+    skinfeatures: &quot;&quot;,
+    bodyheight: &quot;Average&quot;,
+    physique: &quot;Toned&quot;, 
+    personality: &quot;Stubborn&quot;,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;Kill La Kill&quot;,
+    traits: [],
+}&gt;&gt;
 /* Monkey D. Luffy */
-
-/* Allister */
+&lt;&lt;set $Luffy = {
+    name: &quot;Monkey D. Luffy&quot;,
+    nickname: &quot;&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    trans: &quot;Cisgender&quot;,
+    sexu: &quot;Bisexual&quot;,  
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Cut&quot;, 
+    penislength: &quot;Large&quot;,
+    assSize: &quot;Slim&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 19,
+    eyes: &quot;Black&quot;,
+    hair: &quot;Shaggy&quot;,
+    haircolor: &quot;Black&quot;,
+    bodyfeatures: &quot;Scar on their chest&quot;,
+    accessory: &quot;&quot;,
+    skincolor: &quot;Fair&quot;,
+    skinfeatures: &quot;&quot;,
+    bodyheight: &quot;Tall&quot;,
+    physique: &quot;Lithe&quot;, 
+    personality: &quot;Naive&quot;,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;One Piece&quot;,
+    traits: [&quot;Elastic&quot;],
+}&gt;&gt;
 
 /* Killua Zoldyck*/
-
+&lt;&lt;set $Killua = {
+    name: &quot;Killua&quot;,
+    nickname: &quot;Kil&quot;,
+    surname: &quot;Zoldyck&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    trans: &quot;Cisgender&quot;,
+    sexu: &quot;Bisexual&quot;,  
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;, 
+    penislength: &quot;Average&quot;,
+    assSize: &quot;Muscular&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 14,
+    eyes: &quot;Blue&quot;,
+    hair: &quot;Spiky&quot;,
+    haircolor: &quot;White&quot;,
+    facefeatures: &quot;&quot;,
+    accessory: &quot;&quot;,
+    skincolor: &quot;Very Pale&quot;,
+    skinfeatures: &quot;&quot;,
+    bodyheight: &quot;Short&quot;,
+    physique: &quot;Lean&quot;, 
+    personality: &quot;Cheeky&quot;,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;Hunter X Hunter&quot;,
+    traits: [],
+}&gt;&gt;
 /* Cheetara */
 
 /* Cat Noir */
 
 /* TK Takeru */
 
-/* Ashido Mina */</tw-passagedata><tw-passagedata pid="54" name="NPC-List" tags="nobr" position="475,725" size="100,100">&lt;span id=&quot;list&quot;&gt;
+/* Ashido Mina */
+
+/* Allister */</tw-passagedata><tw-passagedata pid="54" name="NPC-List" tags="nobr" position="475,725" size="100,100">&lt;span id=&quot;list&quot;&gt;
 &lt;&lt;if !$roomNPCs || !$roomNPCs.length&gt;&gt;
 	&lt;em&gt;No one is here.&lt;/em&gt;
 	&lt;&lt;return&gt;&gt;
@@ -12366,7 +12592,6 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
   .concat($MiscPool || [])
   .concat($UTDRPool || [])
 &gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
-
 &lt;&lt;set $devMode = true&gt;&gt;
 &lt;div&gt;
 &lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
@@ -12377,7 +12602,7 @@ Create your character to begin.
 &lt;center&gt;&lt;&lt;button [[Use the Randomiser|CC-Check]]&gt;&gt;&lt;&lt;Randomiser&gt;&gt;&lt;&lt;/button&gt;&gt; | &lt;&lt;button [[Use the Pre-Set|CC-Check]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/center&gt;
 
-&lt;span&gt; Updated as of 2/20/2026 &lt;/span&gt;
+&lt;span&gt; Updated as of 3/28/2026 &lt;/span&gt;
 
 &lt;&lt;if $devMode&gt;&gt;
 &lt;&lt;button [[Test|TestRoom]]&gt;&gt;&lt;&lt;LittleBoy&gt;&gt;&lt;&lt;/button&gt;&gt; 
@@ -12388,7 +12613,6 @@ Create your character to begin.
 &lt;&lt;button [[Test as a Teen Girl|Lounge]]&gt;&gt;&lt;&lt;TeenGirl&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button [[Test as a Adult Woman|Lounge]]&gt;&gt;&lt;&lt;AdultWoman&gt;&gt;&lt;&lt;/button&gt;&gt;  
 &lt;&lt;button [[Test as a Adult Man|Lounge]]&gt;&gt;&lt;&lt;AdultMan&gt;&gt;&lt;&lt;/button&gt;&gt; 
-
 
 &lt;&lt;/if&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="170" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
@@ -12534,42 +12758,79 @@ Create your character to begin.
 &lt;&lt;include &quot;Reject-Dialogue&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="173" name="UI-NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;set _n = $ui.npc&gt;&gt;
 
-&lt;b&gt;Name:&lt;/b&gt; &lt;&lt;=_n.name&gt;&gt; &lt;&lt;if _n.surname&gt;&gt;&lt;&lt;=_n.surname&gt;&gt;&lt;&lt;/if&gt;&gt; &lt;&lt;if _n.nickname&gt;&gt;
-&lt;br&gt;
-&lt;b&gt;Nickname: &lt;/b&gt;&quot;&lt;&lt;=_n.nickname&gt;&gt;&quot;&lt;&lt;/if&gt;&gt;
+&lt;b&gt;Name:&lt;/b&gt; &lt;&lt;=_n.name&gt;&gt; &lt;&lt;if _n.surname&gt;&gt;&lt;&lt;=_n.surname&gt;&gt;&lt;&lt;/if&gt;&gt; 
+&lt;&lt;if _n.nickname&gt;&gt;
+	&lt;br&gt;
+	&lt;b&gt;Nickname: &lt;/b&gt;&quot;&lt;&lt;=_n.nickname&gt;&gt;&quot;
+&lt;&lt;/if&gt;&gt;
 &lt;br&gt;
 &lt;b&gt;Gender:&lt;/b&gt; &lt;&lt;=_n.gender&gt;&gt; (&lt;&lt;=_n.pronouns&gt;&gt;)  (&lt;&lt;=_n.trans&gt;&gt;)
 &lt;br&gt;
-&lt;b&gt;Species: &lt;/b&gt;&lt;&lt;=_n.species&gt;&gt;&lt;&lt;if _n.species is &quot;Anthro&quot;&gt;&gt; — &lt;&lt;=_n.anthro.group&gt;&gt; / &lt;&lt;=_n.anthro.subtype&gt;&gt; / &lt;&lt;=_n.anthro.color&gt;&gt; &lt;&lt;=_n.body.Bodymaterial&gt;&gt;&lt;&lt;if _n.anthro.pattern&gt;&gt;(&lt;&lt;=_n.anthro.pattern&gt;&gt;)&lt;&lt;/if&gt;&gt; 
-&lt;br&gt;
-&lt;b&gt;Tail:&lt;/b&gt; &lt;&lt;=_n.body.Tail&gt;&gt; &lt;&lt;if _n.body.Ears&gt;&gt;* &lt;b&gt;Ears:&lt;/b&gt; &lt;&lt;=_n.body.Ears&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if _n.anthro.wings&gt;&gt;* &lt;b&gt;Wings:&lt;/b&gt; yes (&lt;&lt;=_n.anthro.wingspan&gt;&gt;)&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;  
+&lt;b&gt;Species: &lt;/b&gt;&lt;&lt;=_n.species&gt;&gt;
+&lt;&lt;if _n.species is &quot;Anthro&quot;&gt;&gt;
+	 — &lt;&lt;=_n.anthro.group&gt;&gt; / &lt;&lt;=_n.anthro.subtype&gt;&gt; / &lt;&lt;=_n.anthro.color&gt;&gt; &lt;&lt;=_n.body.Bodymaterial&gt;&gt;
+	&lt;&lt;if _n.anthro.pattern&gt;&gt;
+	 	(&lt;&lt;=_n.anthro.pattern&gt;&gt;)
+	&lt;&lt;/if&gt;&gt; 
+	&lt;br&gt;
+	&lt;b&gt;Tail:&lt;/b&gt; &lt;&lt;=_n.body.Tail&gt;&gt; 
+	&lt;&lt;if _n.body.Ears&gt;&gt;
+		* &lt;b&gt;Ears:&lt;/b&gt; &lt;&lt;=_n.body.Ears&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if _n.anthro.wings&gt;&gt;
+		* &lt;b&gt;Wings:&lt;/b&gt; yes (&lt;&lt;=_n.anthro.wingspan&gt;&gt;)
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;  
 &lt;br&gt;
 &lt;b&gt;Age:&lt;/b&gt; &lt;&lt;=_n.age&gt;&gt; (&lt;&lt;=_n.ageGroup&gt;&gt;)  
 &lt;br&gt;
 &lt;b&gt;Eye Color:&lt;/b&gt; &lt;&lt;=_n.eyes&gt;&gt; 
 &lt;br&gt;
-&lt;b&gt;Hair:&lt;/b&gt; &lt;&lt;=_n.hair&gt;&gt;&lt;&lt;if _n.haircolor&gt;&gt; / &lt;&lt;=_n.haircolor&gt;&gt;&lt;&lt;/if&gt;&gt;  
+&lt;b&gt;Hair:&lt;/b&gt; &lt;&lt;=_n.hair&gt;&gt;
+&lt;&lt;if _n.haircolor&gt;&gt;
+	/ &lt;&lt;=_n.haircolor&gt;&gt;
+&lt;&lt;/if&gt;&gt;  
 &lt;br&gt;
 
 &lt;&lt;if _n.skincolor&gt;&gt; 
 	&lt;b&gt;Skin:&lt;/b&gt; &lt;&lt;=_n.skincolor&gt;&gt; 
 	&lt;&lt;if _n.skinfeatures&gt;&gt;
-	·  &lt;b&gt;Features:&lt;/b&gt; &lt;&lt;=_n.skinfeatures&gt;&gt;  
+	· &lt;b&gt;Features:&lt;/b&gt; &lt;&lt;=_n.skinfeatures&gt;&gt;  
 	&lt;&lt;/if&gt;&gt; 
 	&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
 
 
 &lt;b&gt;Physique:&lt;/b&gt; &lt;&lt;=_n.physique&gt;&gt; * &lt;b&gt;Height:&lt;/b&gt; &lt;&lt;=_n.bodyheight&gt;&gt;
-&lt;&lt;if _n.breastsize&gt;&gt;* &lt;b&gt;Breast Size:&lt;/b&gt; _n.breastsize &lt;&lt;/if&gt;&gt;
+&lt;&lt;if _n.breastsize&gt;&gt;
+	* &lt;b&gt;Breast Size:&lt;/b&gt; _n.breastsize 
+&lt;&lt;/if&gt;&gt;
 &lt;br&gt;
-&lt;b&gt;Personality:&lt;/b&gt; &lt;&lt;=_n.personality&gt;&gt;
+&lt;&lt;if _n.personality&gt;&gt;
+	&lt;&lt;set _ptip = setup.personalityTips[_n.personality] || &quot;No description written yet.&quot;&gt;&gt;
+	&lt;br&gt;
+	&lt;b&gt;Personality:&lt;/b&gt;
+	&lt;&lt;tooltip _n.personality _ptip&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
 &lt;br&gt;
 &lt;b&gt;Sexuality:&lt;/b&gt; &lt;&lt;=_n.sexu&gt;&gt; * &lt;b&gt;Sex Role:&lt;/b&gt; &lt;&lt;=_n.sexpref&gt;&gt;
 &lt;br&gt;
-&lt;b&gt;Genitals:&lt;/b&gt; &lt;&lt;=_n.genitals&gt;&gt;&lt;&lt;if _n.genitals== &quot;Penis&quot;&gt;&gt; * &lt;b&gt;Length:&lt;/b&gt; &lt;&lt;=_n.penislength&gt;&gt; &lt;&lt;/if&gt;&gt; (&lt;&lt;=_n.genitaltype&gt;&gt;)
+&lt;b&gt;Genitals:&lt;/b&gt; &lt;&lt;=_n.genitals&gt;&gt;
+&lt;&lt;if _n.genitals== &quot;Penis&quot;&gt;&gt;
+* &lt;b&gt;Length:&lt;/b&gt; &lt;&lt;=_n.penislength&gt;&gt; 
+&lt;&lt;/if&gt;&gt; (&lt;&lt;=_n.genitaltype&gt;&gt;)
 &lt;br&gt;
-&lt;b&gt;Traits: &lt;/b&gt; &lt;&lt;if !_n.traits&gt;&gt;None&lt;&lt;else&gt;&gt;&lt;&lt;=_n.traits&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.length&gt;&gt;
+	&lt;br&gt;
+	&lt;b&gt;Traits:&lt;/b&gt;
+	&lt;&lt;for _i = 0; _i &lt; _n.traits.length; _i++&gt;&gt;
+		&lt;&lt;set _trait = _n.traits[_i]&gt;&gt;
+		&lt;&lt;set _traitTip = setup.traitTips[_trait] || &quot;No description written yet.&quot;&gt;&gt;
+		&lt;&lt;tooltip _trait _traitTip&gt;&gt;
+		&lt;&lt;if _i &lt; _n.traits.length - 1&gt;&gt;, &lt;&lt;/if&gt;&gt;
+	&lt;&lt;/for&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 /*
 &lt;br&gt;
 &lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Will Not Top&quot;)&gt;&gt;
@@ -13892,7 +14153,11 @@ Create your character to begin.
 	&lt;&lt;set _npc.nickname = &quot;&quot;&gt;&gt;
 	&lt;&lt;set _npc.surname  = setup.pick(_surnames)&gt;&gt;
 	
-    &lt;&lt;set _npc.species = setup.pick(setup.species)&gt;&gt;
+	&lt;&lt;if $furry&gt;&gt;
+		&lt;&lt;set _npc.species = setup.pick(setup.species)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _npc.species = setup.pick(setup.speciesnoFurry)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
     
 	/* Gender, pronouns, genitals */
@@ -15697,6 +15962,13 @@ Create your character to begin.
 	&lt;&lt;set $npcMemory[_key].interacted = true&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].times     += 1&gt;&gt;
 	&lt;&lt;set $npcMemory[_key].sexCount  += 1&gt;&gt;
+&lt;&lt;/widget&gt;&gt; 
+
+
+&lt;&lt;widget &quot;tooltip&quot;&gt;&gt;
+	&lt;&lt;set _label = _args[0]&gt;&gt;
+	&lt;&lt;set _tip = _args[1]&gt;&gt;
+	&lt;span class=&quot;tooltip-term&quot; tabindex=&quot;0&quot; @data-tooltip=&quot;_tip&quot;&gt;&lt;&lt;print _label&gt;&gt;&lt;/span&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="heighttest" tags="" position="1225,2225" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 

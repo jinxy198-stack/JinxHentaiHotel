@@ -1,42 +1,79 @@
 :: UI-NPC-Inspect [nobr] {"position":"900,375","size":"100,100"}
 <<set _n = $ui.npc>>
 
-<b>Name:</b> <<=_n.name>> <<if _n.surname>><<=_n.surname>><</if>> <<if _n.nickname>>
-<br>
-<b>Nickname: </b>"<<=_n.nickname>>"<</if>>
+<b>Name:</b> <<=_n.name>> <<if _n.surname>><<=_n.surname>><</if>> 
+<<if _n.nickname>>
+	<br>
+	<b>Nickname: </b>"<<=_n.nickname>>"
+<</if>>
 <br>
 <b>Gender:</b> <<=_n.gender>> (<<=_n.pronouns>>)  (<<=_n.trans>>)
 <br>
-<b>Species: </b><<=_n.species>><<if _n.species is "Anthro">> — <<=_n.anthro.group>> / <<=_n.anthro.subtype>> / <<=_n.anthro.color>> <<=_n.body.Bodymaterial>><<if _n.anthro.pattern>>(<<=_n.anthro.pattern>>)<</if>> 
-<br>
-<b>Tail:</b> <<=_n.body.Tail>> <<if _n.body.Ears>>* <b>Ears:</b> <<=_n.body.Ears>><</if>><<if _n.anthro.wings>>* <b>Wings:</b> yes (<<=_n.anthro.wingspan>>)<</if>><</if>>  
+<b>Species: </b><<=_n.species>>
+<<if _n.species is "Anthro">>
+	 — <<=_n.anthro.group>> / <<=_n.anthro.subtype>> / <<=_n.anthro.color>> <<=_n.body.Bodymaterial>>
+	<<if _n.anthro.pattern>>
+	 	(<<=_n.anthro.pattern>>)
+	<</if>> 
+	<br>
+	<b>Tail:</b> <<=_n.body.Tail>> 
+	<<if _n.body.Ears>>
+		* <b>Ears:</b> <<=_n.body.Ears>>
+	<</if>>
+	<<if _n.anthro.wings>>
+		* <b>Wings:</b> yes (<<=_n.anthro.wingspan>>)
+	<</if>>
+<</if>>  
 <br>
 <b>Age:</b> <<=_n.age>> (<<=_n.ageGroup>>)  
 <br>
 <b>Eye Color:</b> <<=_n.eyes>> 
 <br>
-<b>Hair:</b> <<=_n.hair>><<if _n.haircolor>> / <<=_n.haircolor>><</if>>  
+<b>Hair:</b> <<=_n.hair>>
+<<if _n.haircolor>>
+	/ <<=_n.haircolor>>
+<</if>>  
 <br>
 
 <<if _n.skincolor>> 
 	<b>Skin:</b> <<=_n.skincolor>> 
 	<<if _n.skinfeatures>>
-	·  <b>Features:</b> <<=_n.skinfeatures>>  
+	· <b>Features:</b> <<=_n.skinfeatures>>  
 	<</if>> 
 	<br>
 <</if>>
 
 
 <b>Physique:</b> <<=_n.physique>> * <b>Height:</b> <<=_n.bodyheight>>
-<<if _n.breastsize>>* <b>Breast Size:</b> _n.breastsize <</if>>
+<<if _n.breastsize>>
+	* <b>Breast Size:</b> _n.breastsize 
+<</if>>
 <br>
-<b>Personality:</b> <<=_n.personality>>
+<<if _n.personality>>
+	<<set _ptip = setup.personalityTips[_n.personality] || "No description written yet.">>
+	<br>
+	<b>Personality:</b>
+	<<tooltip _n.personality _ptip>>
+<</if>>
+
 <br>
 <b>Sexuality:</b> <<=_n.sexu>> * <b>Sex Role:</b> <<=_n.sexpref>>
 <br>
-<b>Genitals:</b> <<=_n.genitals>><<if _n.genitals== "Penis">> * <b>Length:</b> <<=_n.penislength>> <</if>> (<<=_n.genitaltype>>)
+<b>Genitals:</b> <<=_n.genitals>>
+<<if _n.genitals== "Penis">>
+* <b>Length:</b> <<=_n.penislength>> 
+<</if>> (<<=_n.genitaltype>>)
 <br>
-<b>Traits: </b> <<if !_n.traits>>None<<else>><<=_n.traits>><</if>>
+<<if Array.isArray(_n.traits) && _n.traits.length>>
+	<br>
+	<b>Traits:</b>
+	<<for _i = 0; _i < _n.traits.length; _i++>>
+		<<set _trait = _n.traits[_i]>>
+		<<set _traitTip = setup.traitTips[_trait] || "No description written yet.">>
+		<<tooltip _trait _traitTip>>
+		<<if _i < _n.traits.length - 1>>, <</if>>
+	<</for>>
+<</if>>
 /*
 <br>
 <<if Array.isArray(_n.traits) && _n.traits.includes("Will Not Top")>>

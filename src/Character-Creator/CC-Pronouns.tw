@@ -5,10 +5,8 @@
 //What pronoun set are you most comfortable with?//
 * <label><<radiobutton "$mc.pronouns" "He/Him" checked>>He/Him</label>
 * <label><<radiobutton "$mc.pronouns" "She/Her" >>She/Her</label>
-* <label><<radiobutton "$mc.pronouns" "They/Them (singular)">>They/Them (singular)</label>
-* <label><<radiobutton "$mc.pronouns" "They/Them (plural)">>They/Them (plural)</label>
-* <label><<radiobutton "$mc.pronouns" "Ae/Aer">>Ae/Aer</label>
-* <label><<radiobutton "$mc.pronouns" "E/Em">>E/Em</label>
+* <label><<radiobutton "$mc.pronouns" "They/Them">>They/Them</label>
+
 
 <<button "Confirm">>
     <<set $pages.pronouns to true>>

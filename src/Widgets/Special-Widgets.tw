@@ -87,7 +87,11 @@
 	<<set _npc.nickname = "">>
 	<<set _npc.surname  = setup.pick(_surnames)>>
 	
-    <<set _npc.species = setup.pick(setup.species)>>
+	<<if $furry>>
+		<<set _npc.species = setup.pick(setup.species)>>
+	<<else>>
+		<<set _npc.species = setup.pick(setup.speciesnoFurry)>>
+	<</if>>
 
     
 	/* Gender, pronouns, genitals */

@@ -113,20 +113,6 @@ button{
     0 0 10px rgba(64, 93, 255, 0.4);
   cursor:pointer;
 }
-/*button{
-  border-radius:999px;
-  padding:0.35rem 0.95rem;
-  font-size:0.9rem;
-  text-transform:uppercase;
-  letter-spacing:0.08em;
-  border:1px solid rgba(255,255,255,0.15);
-  background:radial-gradient(circle at top, #3a1480, #170623);
-  color:#fff;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.04),
-    0 0 10px rgba(173, 64, 255, 0.4);
-  cursor:pointer;
-}*/
 
 button:hover,
 html[data-outlines] button:focus{
@@ -1065,3 +1051,140 @@ h1, h2, h3{
 }
 
 
+
+
+
+.tooltip-term {
+	position: relative;
+	display: inline-block;
+	color: #8fd3ff;
+	cursor: help;
+	border-bottom: 1px dotted #8fd3ff;
+  z-index: 1;
+}
+
+.tooltip-term::after {
+	content: attr(data-tooltip);
+	position: absolute;
+	left: 50%;
+	bottom: 125%;
+	transform: translateX(-50%);
+	min-width: 180px;
+	max-width: 260px;
+	padding: 0.4em 0.6em;
+	border-radius: 6px;
+	background: rgba(20, 20, 20, 0.95);
+	color: #fff;
+	font-size: 0.9em;
+	line-height: 1.3;
+	text-align: center;
+	white-space: normal;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.15s ease;
+	z-index: 9999;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.tooltip-term::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: 115%;
+	transform: translateX(-50%);
+	border: 6px solid transparent;
+	border-top-color: rgba(20, 20, 20, 0.95);
+	opacity: 0;
+	transition: opacity 0.15s ease;
+	z-index: 9999;
+}
+
+.tooltip-term:hover::after,
+.tooltip-term:hover::before,
+.tooltip-term:focus::after,
+.tooltip-term:focus::before {
+	opacity: 1;
+}
+
+
+
+
+
+
+/* make the inspect popup roomier */
+#ui-dialog {
+	width: min(820px, 92vw);
+  overflow: visible !important;
+  margin-top: 2rem;
+}
+
+#ui-dialog-body {
+	max-height: 75vh;
+	overflow-y: auto;
+	padding: 1rem 1.25rem 1.5rem;
+}
+
+/* inspect card */
+.npc-inspect {
+	background: linear-gradient(180deg, rgba(30,30,48,0.96), rgba(10,10,18,0.98));
+	border: 1px solid rgba(255,255,255,0.12);
+	border-radius: 14px;
+	padding: 1rem;
+	box-shadow:
+		0 0 0 1px rgba(255,255,255,0.03),
+		0 0 22px rgba(90, 120, 255, 0.18);
+}
+
+.npc-inspect-header {
+	margin-bottom: 1rem;
+	padding-bottom: 0.75rem;
+	border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.npc-inspect-header h2 {
+	margin: 0;
+	font-size: 1.4rem;
+}
+
+.npc-inspect-subtitle {
+	margin-top: 0.25rem;
+	opacity: 0.8;
+	font-style: italic;
+}
+
+.npc-inspect-section {
+	margin-top: 1rem;
+	padding: 0.75rem;
+	background: rgba(255,255,255,0.04);
+	border: 1px solid rgba(255,255,255,0.08);
+	border-radius: 10px;
+}
+
+.npc-inspect-section-title {
+	margin-bottom: 0.6rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	font-size: 0.85rem;
+	color: #9fc2ff;
+}
+
+.npc-inspect-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 0.5rem 1rem;
+}
+
+.npc-tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.45rem;
+}
+
+.npc-tag {
+	display: inline-block;
+	padding: 0.2rem 0.55rem;
+	border-radius: 999px;
+	background: rgba(90, 120, 255, 0.14);
+	border: 1px solid rgba(140, 170, 255, 0.25);
+}

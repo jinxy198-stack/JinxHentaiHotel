@@ -1201,3 +1201,10 @@
 	<<set $npcMemory[_key].times     += 1>>
 	<<set $npcMemory[_key].sexCount  += 1>>
 <</widget>> 
+
+
+<<widget "tooltip">>
+	<<set _label = _args[0]>>
+	<<set _tip = _args[1]>>
+	<span class="tooltip-term" tabindex="0" @data-tooltip="_tip"><<print _label>></span>
+<</widget>>

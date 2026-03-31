@@ -5,7 +5,11 @@ You are in the hotel hallway, doors to other rooms are on each side but you cann
 <br>
 <span class="glitch" data-text="There is also a door that seems to be locked tight, it's best you do not enter.">There is also a door that seems to be locked tight, it's best you do not enter.</span>
 At the end of the hall is an elevator.
+<<SpawnPoolOnce "fullPool" $fullPool 20>>
+<<SpawnRandomNPCs 20>>
 
+
+<<include "NPC-List">>
 
 <div id="npcsex-actions-bar">
 <<button "Your Room">>
