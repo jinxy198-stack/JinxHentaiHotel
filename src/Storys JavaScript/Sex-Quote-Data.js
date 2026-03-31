@@ -1,4 +1,4 @@
-:: Sex-Quote-Data [init nobr script] {"position":"475,400","size":"100,100"}
+
 
 /* ----- ANAL ----- */
 setup.analQuotes = {

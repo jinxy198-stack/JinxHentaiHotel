@@ -1,4 +1,3 @@
-:: StoryScript [script]
 
 /* for the body slider */
 window.SugarCubeInput = function (el) {

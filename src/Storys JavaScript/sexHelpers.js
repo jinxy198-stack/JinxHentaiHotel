@@ -1,4 +1,3 @@
-:: sexHelpers [script]
 
 /*
  * Applies arousal changes from a sex act to the current top and object.
