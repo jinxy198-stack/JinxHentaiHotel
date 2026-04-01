@@ -2,7 +2,7 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 <<if $sex.act == "Lick Pussy">>
-	<<if $sex.role == "top">>
+	<<if $sex.role == "Top">>
 		<<= either(
 			"Shifting your $mc.body.Hips, you reposition yourself to eagerly grind your <<= $mc.genitals.toLowerCase()>> against _n.name's <<= _n.body.Lips.toLowerCase()>>.",
 			"With a quick shift of your <<= $mc.body.Hips.toLowerCase()>>, you let out a moan as you greedily press your <<= $mc.genitals.toLowerCase()>> down against _n.name's <<= _n.body.Tongue.toLowerCase()>>.",
@@ -22,13 +22,13 @@
 		)>>
 	<</if>>
 <<elseif $sex.act == "Suck Clit">>
-	<<if $sex.role == "top">>
+	<<if $sex.role == "Top">>
 	You suck on _n.name's clit.
 	<<else>>
 	_n.name sucks on your clit.
 	<</if>>
 <<elseif $sex.act == "Ride Face">>
-	<<if $sex.role == "top">>
+	<<if $sex.role == "Top">>
 		You grind your pussy on _n.name's face.
 	<<else>>
 		_n.name grinds their pussy on your face.

@@ -25,7 +25,7 @@
 		"_n.name squeezed your shaft, enjoying how it throbbed in their  <<= _n.body.hand.toLowerCase() >>."
 	)>>
 <<elseif $sex.act =="Pump Shaft">>
-	<<if $sex.role=="bottom">>
+	<<if $sex.role=="Bottom">>
 		<<= either(
 			"Teasing your <<= $mc.body.Fingers.toLowerCase() >> over $proset.their <<= _n.genitals.toLowerCase() >>, _n.name let out a soft moan as you start gently stroking up and down their throbbing length.",
 			"$proset.they let out a moan as you slide your <<= $mc.body.Hand.toLowerCase() >> up and down the length of $proset.their precum-dripping <<= _n.genitals.toLowerCase() >>.",
@@ -35,7 +35,7 @@
 		<<if _n.genitaltype == "Uncut">>
     		Their foreskin is pulled back and forth from the movement.
     	<</if>>
-	<<elseif $sex.role =="top">>
+	<<elseif $sex.role =="Top">>
 		<<= either(
 		"They pump your shaft.",
 		"You let out a soft moan as _n.name is slowly stroking up and down your length."

@@ -24,12 +24,12 @@
 
 
 <<if _mode == "give">>
-	<<set _pool = setup.feelstomachQuotes.bottom[_body]
-	|| setup.feelstomachQuotes.bottom.Neutral>>
+	<<set _pool = setup.feelstomachQuotes.Bottom[_body]
+	|| setup.feelstomachQuotes.Bottom.Neutral>>
 <<else>>
-	<<set _pool = setup.feelstomachQuotes.top[_personality] 
-	|| setup.feelstomachQuotes.top[_material] 
-	|| setup.feelstomachQuotes.top.Neutral>>
+	<<set _pool = setup.feelstomachQuotes.Top[_personality] 
+	|| setup.feelstomachQuotes.Top[_material] 
+	|| setup.feelstomachQuotes.Top.Neutral>>
 <</if>>
 
 <<if _pool && _pool.length>>

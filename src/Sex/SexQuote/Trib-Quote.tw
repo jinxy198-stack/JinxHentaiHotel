@@ -4,16 +4,16 @@
 <<set _nsize = _n.penislength>>
 <<set _pref = _n.sexpref || "Neutral">>
 <<set _personality = _n.personality>>
-<<if $sex.role == "bottom">>
-	<<set _mode = "bottom">>
-<<elseif $sex.role == "top">>
-	<<set _mode = "top">>
+<<if $sex.role == "Bottom">>
+	<<set _mode = "Bottom">>
+<<elseif $sex.role == "Top">>
+	<<set _mode = "Top">>
 <</if>>
 <<set _pool = null>>
 
-<<if _mode == "top">>
+<<if _mode == "Top">>
 	<<set _pool = setup.TribQuotes>>
-<<elseif _mode =="bottom">>
+<<elseif _mode =="Bottom">>
 	<<set _pool = setup.TribQuotes>>
 <</if>>
 

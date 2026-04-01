@@ -1,6 +1,6 @@
 :: Against-Wall-From-Behind-Dialogue [nobr]
 
-<<if $sex.role == "top">>
+<<if $sex.role == "Top">>
     <<= either(
         "You're standing behind _n.name as they brace themself against the $room.location."
     )>>

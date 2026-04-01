@@ -18,7 +18,7 @@
 
 /* ensure room exists BEFORE UI */
 
-	<<GetRoom>>
+<<GetRoom>>
 
 
 /* ensure sex exists */
@@ -27,9 +27,9 @@
 <<set _sexCount = $npcMemory[_key].sexCount>>
 
 <<set $sex.position = "Standing">>
-<<set $sex.top = null>>
-<<set $sex.bottom = null>>
-<<set $sex.engagedParts= { top: [], bottom: [] }>>
+<<set $sex.Top = null>>
+<<set $sex.Bottom = null>>
+<<set $sex.engagedParts= { Top: [], Bottom: [] }>>
 <<set $sex.penetration = null>>
 <<set $sex.phase = "tease">>
 <<set $sex.history= []>>
@@ -38,16 +38,16 @@
 
 
 <<if $sex.roles.dom.name == $mc.name>>
-  <<set $sex.role = "top">>
+  <<set $sex.role = "Top">>
   <<run setup.updateTopBottom($sex)>>
 <<elseif $sex.roles.dom.name == _n.name>>
-  <<set $sex.role = "bottom">>
+  <<set $sex.role = "Bottom">>
   <<run setup.updateTopBottom($sex)>>
 <</if>>
 
-/* ALWAYS rebind top/bottom to current */
-/*<<set $sex.top = $mc>>
-<<set $sex.bottom  = _n>> */
+/* ALWAYS rebind Top/Bottom to current */
+/*<<set $sex.Top = $mc>>
+<<set $sex.Bottom  = _n>> */
 
 
 

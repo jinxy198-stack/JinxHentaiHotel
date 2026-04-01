@@ -1,10 +1,10 @@
 :: Handjob-Quote [nobr Dialogue] {"position":"1700,1700","size":"100,100"}
 
 
-<<if $sex.role == "bottom">>
-	<<set _mode = "bottom">>
-<<elseif $sex.role == "top">>
-	<<set _mode = "top">>
+<<if $sex.role == "Bottom">>
+	<<set _mode = "Bottom">>
+<<elseif $sex.role == "Top">>
+	<<set _mode = "Top">>
 <</if>>
 <<set _pref = _n.sexpref || "Neutral">>
 <<set _size = $mc.penislength || "Average">>
@@ -13,32 +13,32 @@
 
 <<set _pool = null>>
 
-<<if _mode == "top">>
+<<if _mode == "Top">>
 	<<set _pool =
-		setup.handjobQuotes.bottom[_pref]
-		|| setup.handjobQuotes.bottom.Neutral
+		setup.handjobQuotes.Bottom[_pref]
+		|| setup.handjobQuotes.Bottom.Neutral
 	>>
-<<elseif _mode == "bottom">>
+<<elseif _mode == "Bottom">>
 	<<if _personality == "Childlike">>
 		<<set _pool =
-			setup.handjobQuotes.top[_personality]
+			setup.handjobQuotes.Top[_personality]
 		>>
 	<<elseif _size == "Tiny">>
 		<<set _pool =
 			(
-				setup.handjobQuotes.top[_pref]
-				&& setup.handjobQuotes.top[_pref].Tiny
-				&& setup.handjobQuotes.top[_pref].Tiny[_age]
+				setup.handjobQuotes.Top[_pref]
+				&& setup.handjobQuotes.Top[_pref].Tiny
+				&& setup.handjobQuotes.Top[_pref].Tiny[_age]
 			)
-			|| setup.handjobQuotes.top.Neutral
+			|| setup.handjobQuotes.Top.Neutral
 		>>
 	<<else>>
 		<<set _pool =
 			(
-				setup.handjobQuotes.top[_pref]
-				&& setup.handjobQuotes.top[_pref][_size]
+				setup.handjobQuotes.Top[_pref]
+				&& setup.handjobQuotes.Top[_pref][_size]
 			)
-			|| setup.handjobQuotes.top.Neutral
+			|| setup.handjobQuotes.Top.Neutral
 		>>
 	<</if>>
 <</if>>

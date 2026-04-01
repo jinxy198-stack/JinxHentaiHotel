@@ -21,13 +21,13 @@
 
 
 <<if _mode == "give">>
-	<<set _pool = setup.embraceQuotes.bottom[_personality]
-	|| setup.embraceQuotes.bottom[_pref]
-	|| setup.embraceQuotes.bottom.Neutral>>
+	<<set _pool = setup.embraceQuotes.Bottom[_personality]
+	|| setup.embraceQuotes.Bottom[_pref]
+	|| setup.embraceQuotes.Bottom.Neutral>>
 <<else>>
-	<<set _pool = setup.embraceQuotes.top[_personality] 
-	|| setup.embraceQuotes.top[_pref] 
-	|| setup.embraceQuotes.top.Neutral>>
+	<<set _pool = setup.embraceQuotes.Top[_personality] 
+	|| setup.embraceQuotes.Top[_pref] 
+	|| setup.embraceQuotes.Top.Neutral>>
 <</if>>
 
 

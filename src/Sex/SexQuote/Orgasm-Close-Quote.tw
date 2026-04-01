@@ -1,10 +1,10 @@
 :: Orgasm-Close-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
 /* When you or NPC are close to orgasm */
 
-<<if $sex.role == "bottom">>
-	<<set _mode = "bottom">>
-<<elseif $sex.role == "top">>
-	<<set _mode = "top">>
+<<if $sex.role == "Bottom">>
+	<<set _mode = "Bottom">>
+<<elseif $sex.role == "Top">>
+	<<set _mode = "Top">>
 <</if>>
 
 <<set _pref   = _n.sexpref || "Switch">>
@@ -14,22 +14,22 @@
 
 
 
-<<if $sex.climax.top && $sex.climax.bottom>>
+<<if $sex.climax.Top && $sex.climax.Bottom>>
 	<<set _pool = ["Let's cum together!"]>>
-<<elseif $sex.climax.top>>
-	<<set _pool = setup.orgasmcloseQuotes.top[_personality]
-	|| setup.orgasmcloseQuotes.top[_action]
-	&& setup.orgasmcloseQuotes.top[_action][_pref]
-	|| setup.orgasmcloseQuotes.top[_action]
-	|| setup.orgasmcloseQuotes.top.default>>
+<<elseif $sex.climax.Top>>
+	<<set _pool = setup.orgasmcloseQuotes.Top[_personality]
+	|| setup.orgasmcloseQuotes.Top[_action]
+	&& setup.orgasmcloseQuotes.Top[_action][_pref]
+	|| setup.orgasmcloseQuotes.Top[_action]
+	|| setup.orgasmcloseQuotes.Top.default>>
 
-<<elseif $sex.climax.bottom>>
-	<<set _pool = setup.orgasmcloseQuotes.bottom[_action]
-	|| setup.orgasmcloseQuotes.bottom[_action]
-	&& setup.orgasmcloseQuotes.bottom[_action][_personality] 
-	|| setup.orgasmcloseQuotes.bottom[_action]
-	&& setup.orgasmcloseQuotes.bottom[_action][_pref]
-	|| setup.orgasmcloseQuotes.bottom.default>>
+<<elseif $sex.climax.Bottom>>
+	<<set _pool = setup.orgasmcloseQuotes.Bottom[_action]
+	|| setup.orgasmcloseQuotes.Bottom[_action]
+	&& setup.orgasmcloseQuotes.Bottom[_action][_personality] 
+	|| setup.orgasmcloseQuotes.Bottom[_action]
+	&& setup.orgasmcloseQuotes.Bottom[_action][_pref]
+	|| setup.orgasmcloseQuotes.Bottom.default>>
 
 <</if>>
 

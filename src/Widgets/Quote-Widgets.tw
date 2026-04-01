@@ -28,18 +28,18 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.analQuotes.bottom[_position][_pref]
-		&& setup.analQuotes.bottom[_pref]
-			|| setup.analQuotes.bottom.Neutral
+		<<set _pool = setup.analQuotes.Bottom[_position][_pref]
+		&& setup.analQuotes.Bottom[_pref]
+			|| setup.analQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.analQuotes.top[_pref]
-					&& setup.analQuotes.top[_msize] /*Only if _msize is established */
-					&& setup.analQuotes.top [_position][_pref]
+					setup.analQuotes.Top[_pref]
+					&& setup.analQuotes.Top[_msize] /*Only if _msize is established */
+					&& setup.analQuotes.Top [_position][_pref]
 				)
-				|| setup.analQuotes.top.Neutral
+				|| setup.analQuotes.Top.Neutral
 			>>
 	<</if>>
 
@@ -76,15 +76,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.blowjobQuotes.bottom[_pref]
-			|| setup.blowjobQuotes.bottom.Neutral
+		<<set _pool = setup.blowjobQuotes.Bottom[_pref]
+			|| setup.blowjobQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.blowjobQuotes.top[_pref]
+					setup.blowjobQuotes.Top[_pref]
 				)
-				|| setup.blowjobQuotes.top.Neutral
+				|| setup.blowjobQuotes.Top.Neutral
 			>>
 	<</if>>
 
@@ -157,15 +157,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.cuddleQuotes.bottom[_pref]
-			|| setup.cuddleQuotes.bottom.Neutral
+		<<set _pool = setup.cuddleQuotes.Bottom[_pref]
+			|| setup.cuddleQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.cuddleQuotes.top[_pref]
+					setup.cuddleQuotes.Top[_pref]
 				)
-				|| setup.cuddleQuotes.top.Neutral
+				|| setup.cuddleQuotes.Top.Neutral
 			>>
 	<</if>>
 
@@ -202,15 +202,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.cunnilingusQuotes.bottom[_pref]
-			|| setup.cunnilingusQuotes.bottom.Neutral
+		<<set _pool = setup.cunnilingusQuotes.Bottom[_pref]
+			|| setup.cunnilingusQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.cunnilingusQuotes.top[_pref]
+					setup.cunnilingusQuotes.Top[_pref]
 				)
-				|| setup.cunnilingusQuotes.top.Neutral
+				|| setup.cunnilingusQuotes.Top.Neutral
 			>>
 	<</if>>
 
@@ -247,15 +247,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.embraceQuotes.bottom[_pref]
-			|| setup.embraceQuotes.bottom.Neutral
+		<<set _pool = setup.embraceQuotes.Bottom[_pref]
+			|| setup.embraceQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.embraceQuotes.top[_pref]
+					setup.embraceQuotes.Top[_pref]
 				)
-				|| setup.embraceQuotes.top.Neutral
+				|| setup.embraceQuotes.Top.Neutral
 			>>
 	<</if>>
 
@@ -295,16 +295,16 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.faceonchestQuotes.bottom[_pref]
-			|| setup.faceonchestQuotes.bottom.Neutral
+		<<set _pool = setup.faceonchestQuotes.Bottom[_pref]
+			|| setup.faceonchestQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.faceonchestQuotes.top[_pref]
-					setup.faceonchestQuotes.top[_nsize]
+					setup.faceonchestQuotes.Top[_pref]
+					setup.faceonchestQuotes.Top[_nsize]
 				)
-				|| setup.faceonchestQuotes.top.Neutral
+				|| setup.faceonchestQuotes.Top.Neutral
 			>>
 	<</if>>
 
@@ -346,15 +346,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.feelstomachQuotes.bottom[_body]
-			|| setup.feelstomachQuotes.bottom.Neutral
+		<<set _pool = setup.feelstomachQuotes.Bottom[_body]
+			|| setup.feelstomachQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.feelstomachQuotes.top[_material]
+					setup.feelstomachQuotes.Top[_material]
 				)
-				|| setup.feelstomachQuotes.top.Neutral.default
+				|| setup.feelstomachQuotes.Top.Neutral.default
 			>>
 	<</if>>
 
@@ -392,15 +392,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.fingerassQuotes.bottom[_pref]
-			|| setup.fingerassQuotes.bottom.Neutral
+		<<set _pool = setup.fingerassQuotes.Bottom[_pref]
+			|| setup.fingerassQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.fingerassQuotes.top[_pref]
+					setup.fingerassQuotes.Top[_pref]
 				)
-				|| setup.fingerassQuotes.top.Neutral.default
+				|| setup.fingerassQuotes.Top.Neutral.default
 			>>
 	<</if>>
 
@@ -438,15 +438,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.fingervaginaQuotes.bottom[_pref]
-			|| setup.fingervaginaQuotes.bottom.Neutral
+		<<set _pool = setup.fingervaginaQuotes.Bottom[_pref]
+			|| setup.fingervaginaQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.fingervaginaQuotes.top[_pref]
+					setup.fingervaginaQuotes.Top[_pref]
 				)
-				|| setup.fingervaginaQuotes.top.Neutral.default
+				|| setup.fingervaginaQuotes.Top.Neutral.default
 			>>
 	<</if>>
 
@@ -485,16 +485,16 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.footjobQuotes.bottom[_pref]
-			|| setup.footjobQuotes.bottom.Neutral
+		<<set _pool = setup.footjobQuotes.Bottom[_pref]
+			|| setup.footjobQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.footjobQuotes.top[_pref]
-					&& setup.footjobQuotes.top[_pref][_size]
+					setup.footjobQuotes.Top[_pref]
+					&& setup.footjobQuotes.Top[_pref][_size]
 				)
-				|| setup.footjobQuotes.top.Neutral.default
+				|| setup.footjobQuotes.Top.Neutral.default
 			>>
 	<</if>>
 
@@ -533,15 +533,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.frotQuotes.bottom[_pref]
-			|| setup.frotQuotes.bottom.Neutral
+		<<set _pool = setup.frotQuotes.Bottom[_pref]
+			|| setup.frotQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.frotQuotes.top[_pref]
+					setup.frotQuotes.Top[_pref]
 				)
-				|| setup.frotQuotes.top.Neutral.default
+				|| setup.frotQuotes.Top.Neutral.default
 			>>
 	<</if>>
 
@@ -582,15 +582,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-	<<set _pool = setup.gropebreastQuotes.bottom[_pref][_msize][_mage] 
-	|| setup.gropebreastQuotes.bottom.Neutral>>
+	<<set _pool = setup.gropebreastQuotes.Bottom[_pref][_msize][_mage] 
+	|| setup.gropebreastQuotes.Bottom.Neutral>>
 	<<else>>
 		<<run _pool =
 			(
-				setup.gropebreastQuotes.top[_pref]
-				&& setup.gropebreastQuotes.top[_pref][_nsize][_nage]
+				setup.gropebreastQuotes.Top[_pref]
+				&& setup.gropebreastQuotes.Top[_pref][_nsize][_nage]
 			)
-			|| setup.gropebreastQuotes.top.Neutral
+			|| setup.gropebreastQuotes.Top.Neutral
 		>>
 	<</if>>
 
@@ -634,26 +634,26 @@
 	<<if _mode == "give">>
 		<<set _pool =
 			(
-				setup.gropebuttQuotes.bottom[_nsize]
-				&& setup.gropebuttQuotes.bottom[_nsize][_pref]
+				setup.gropebuttQuotes.Bottom[_nsize]
+				&& setup.gropebuttQuotes.Bottom[_nsize][_pref]
 			)
 			|| 
 			(
-				setup.gropebuttQuotes.bottom[_nsize]
-				&& setup.gropebuttQuotes.bottom[_nsize].Neutral
+				setup.gropebuttQuotes.Bottom[_nsize]
+				&& setup.gropebuttQuotes.Bottom[_nsize].Neutral
 			)
 
 		>>
 	<<else>>
 		<<set _pool =
 			(
-				setup.gropebuttQuotes.top[_msize]
-				&& setup.gropebuttQuotes.top[_msize][_pref]
+				setup.gropebuttQuotes.Top[_msize]
+				&& setup.gropebuttQuotes.Top[_msize][_pref]
 			)
 			|| 
 			(
-				setup.gropebuttQuotes.bottom[_nsize]
-				&& setup.gropebuttQuotes.bottom[_nsize].Neutral
+				setup.gropebuttQuotes.Bottom[_nsize]
+				&& setup.gropebuttQuotes.Bottom[_nsize].Neutral
 			)
 
 		>>
@@ -694,26 +694,26 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.handjobQuotes.bottom[_pref]
-			|| setup.handjobQuotes.bottom.Neutral
+		<<set _pool = setup.handjobQuotes.Bottom[_pref]
+			|| setup.handjobQuotes.Bottom.Neutral
 		>>
 	<<else>>
 		<<if _msize == "tiny">>
 			<<run _pool =
 				(
-					setup.handjobQuotes.top[_pref]
-					&& setup.handjobQuotes.top[_pref].tiny
-					&& setup.handjobQuotes.top[_pref].tiny[_mage]
+					setup.handjobQuotes.Top[_pref]
+					&& setup.handjobQuotes.Top[_pref].tiny
+					&& setup.handjobQuotes.Top[_pref].tiny[_mage]
 				)
-				|| setup.handjobQuotes.top.Neutral
+				|| setup.handjobQuotes.Top.Neutral
 			>>
 		<<else>>
 			<<run _pool =
 				(
-					setup.handjobQuotes.top[_pref]
-					&& setup.handjobQuotes.top[_pref][_msize]
+					setup.handjobQuotes.Top[_pref]
+					&& setup.handjobQuotes.Top[_pref][_msize]
 				)
-				|| setup.handjobQuotes.top.Neutral
+				|| setup.handjobQuotes.Top.Neutral
 			>>
 		<</if>>
 	<</if>>
@@ -752,15 +752,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.petearsQuotes.bottom[_pref]
-			|| setup.petearsQuotes.bottom.Neutral
+		<<set _pool = setup.petearsQuotes.Bottom[_pref]
+			|| setup.petearsQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.petearsQuotes.top[_pref]
+					setup.petearsQuotes.Top[_pref]
 				)
-				|| setup.petearsQuotes.top.Neutral
+				|| setup.petearsQuotes.Top.Neutral
 			>>
 	<</if>>
 
@@ -797,15 +797,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.rimjobQuotes.bottom[_pref]
-			|| setup.rimjobQuotes.bottom.Neutral
+		<<set _pool = setup.rimjobQuotes.Bottom[_pref]
+			|| setup.rimjobQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.rimjobQuotes.top[_pref]
+					setup.rimjobQuotes.Top[_pref]
 				)
-				|| setup.rimjobQuotes.top.Neutral.default
+				|| setup.rimjobQuotes.Top.Neutral.default
 			>>
 
 	<</if>>
@@ -843,15 +843,15 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.suckfootQuotes.bottom[_pref]
-			|| setup.suckfootQuotes.bottom.Neutral
+		<<set _pool = setup.suckfootQuotes.Bottom[_pref]
+			|| setup.suckfootQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.suckfootQuotes.top[_pref]
+					setup.suckfootQuotes.Top[_pref]
 				)
-				|| setup.suckfootQuotes.top.Neutral.default
+				|| setup.suckfootQuotes.Top.Neutral.default
 			>>
 
 	<</if>>
@@ -892,17 +892,17 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.orgasmQuotes.bottom[_pref] 
-		&& setup.orgasmQuotes.bottom[_action][_pref]
-			|| setup.orgasmQuotes.bottom.Neutral
+		<<set _pool = setup.orgasmQuotes.Bottom[_pref] 
+		&& setup.orgasmQuotes.Bottom[_action][_pref]
+			|| setup.orgasmQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.orgasmQuotes.top[_pref]
-					&& setup.orgasmQuotes.bottom[_action][_pref]
+					setup.orgasmQuotes.Top[_pref]
+					&& setup.orgasmQuotes.Bottom[_action][_pref]
 				)
-				|| setup.orgasmQuotes.top.Neutral.default
+				|| setup.orgasmQuotes.Top.Neutral.default
 			>>
 
 	<</if>>
@@ -943,17 +943,17 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.orgasmcloseQuotes.bottom[_pref] 
-		&& setup.orgasmcloseQuotes.bottom[_action][_pref]
-			|| setup.orgasmcloseQuotes.bottom.Neutral
+		<<set _pool = setup.orgasmcloseQuotes.Bottom[_pref] 
+		&& setup.orgasmcloseQuotes.Bottom[_action][_pref]
+			|| setup.orgasmcloseQuotes.Bottom.Neutral
 		>>
 	<<else>>
 			<<run _pool =
 				(
-					setup.orgasmcloseQuotes.top[_pref]
-					&& setup.orgasmcloseQuotes.bottom[_action][_pref]
+					setup.orgasmcloseQuotes.Top[_pref]
+					&& setup.orgasmcloseQuotes.Bottom[_action][_pref]
 				)
-				|| setup.orgasmcloseQuotes.top.Neutral.default
+				|| setup.orgasmcloseQuotes.Top.Neutral.default
 			>>
 
 	<</if>>
@@ -992,16 +992,16 @@
 
 	/* resolve pool */
 	<<if _mode == "give">>
-		<<set _pool = setup.vaginalQuotes.bottom[_pref]
-			|| setup.vaginalQuotes.bottom.Neutral
+		<<set _pool = setup.vaginalQuotes.Bottom[_pref]
+			|| setup.vaginalQuotes.Bottom.Neutral
 		>>
 	<<else>>
 		<<run _pool =
 			(
-				setup.vaginalQuotes.top[_pref]
-				&& setup.vaginalQuotes.top[_pref][_msize]
+				setup.vaginalQuotes.Top[_pref]
+				&& setup.vaginalQuotes.Top[_pref][_msize]
 			)
-			|| setup.vaginalQuotes.top.Neutral.default
+			|| setup.vaginalQuotes.Top.Neutral.default
 		>>
 
 	<</if>>

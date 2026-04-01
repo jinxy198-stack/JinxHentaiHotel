@@ -1,9 +1,9 @@
 :: Footjob-Quote [nobr Dialogue] {"position":"1800,1400","size":"100,100"}
 
-<<if $sex.role == "bottom">>
-	<<set _mode = "bottom">>
-<<elseif $sex.role == "top">>
-	<<set _mode = "top">>
+<<if $sex.role == "Bottom">>
+	<<set _mode = "Bottom">>
+<<elseif $sex.role == "Top">>
+	<<set _mode = "Top">>
 <</if>>
 <<set _pref = _n.sexpref || "Neutral">>
 <<set _size = $mc.penislength || "average">>
@@ -13,18 +13,18 @@
 <<set _personality = _n.personality>>
 
 
-<<if _mode == "bottom">>
-	<<set _pool = setup.footjobQuotes.bottom[_personality] 
-	|| setup.footjobQuotes.bottom[_pref] 
-	|| setup.footjobQuotes.bottom.Neutral>>
-<<elseif _mode == "top">>
+<<if _mode == "Bottom">>
+	<<set _pool = setup.footjobQuotes.Bottom[_personality] 
+	|| setup.footjobQuotes.Bottom[_pref] 
+	|| setup.footjobQuotes.Bottom.Neutral>>
+<<elseif _mode == "Top">>
 		<<run _pool =
 			(
-				setup.footjobQuotes.top[_personality]
-				|| setup.footjobQuotes.top[_pref]
-				&& setup.footjobQuotes.top[_pref][_size]
+				setup.footjobQuotes.Top[_personality]
+				|| setup.footjobQuotes.Top[_pref]
+				&& setup.footjobQuotes.Top[_pref][_size]
 			)
-			|| setup.footjobQuotes.top.Neutral
+			|| setup.footjobQuotes.Top.Neutral
 		>>
 <</if>>
 

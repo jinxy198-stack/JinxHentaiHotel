@@ -1,7 +1,7 @@
 :: Kneeling-Dialogue [nobr]
 
 /* Should they both be kneeling? */
-<<if $sex.role == "top">>
+<<if $sex.role == "Top">>
 _n.name is kneeling before you.
 
 <<else>>

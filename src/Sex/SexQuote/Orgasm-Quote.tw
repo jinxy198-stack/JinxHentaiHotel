@@ -1,9 +1,9 @@
 :: Orgasm-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
 
-<<if $sex.role == "bottom">>
-	<<set _mode = "bottom">>
-<<elseif $sex.role == "top">>
-	<<set _mode = "top">>
+<<if $sex.role == "Bottom">>
+	<<set _mode = "Bottom">>
+<<elseif $sex.role == "Top">>
+	<<set _mode = "Top">>
 <</if>>
 
 <<set _pref   = _n.sexpref || "Switch">>
@@ -12,17 +12,17 @@
 
 <<set _personality = _n.personality>>
 
-<<if _mode == "bottom">>
-	<<set _pool = setup.orgasmQuotes.bottom[_loc]
-	&& setup.orgasmQuotes.bottom[_loc][_pref] 
-	|| setup.orgasmQuotes.bottom.default[_pref]>>
+<<if _mode == "Bottom">>
+	<<set _pool = setup.orgasmQuotes.Bottom[_loc]
+	&& setup.orgasmQuotes.Bottom[_loc][_pref] 
+	|| setup.orgasmQuotes.Bottom.default[_pref]>>
 
-<<elseif _mode =="top">>
-	<<set _pool = setup.orgasmQuotes.top[_loc]
-	&& setup.orgasmQuotes.top[_loc][_personality]
-	|| setup.orgasmQuotes.top[_loc]
-	&& setup.orgasmQuotes.top[_loc][_pref]
-	|| setup.orgasmQuotes.top.default[_pref]>>
+<<elseif _mode =="Top">>
+	<<set _pool = setup.orgasmQuotes.Top[_loc]
+	&& setup.orgasmQuotes.Top[_loc][_personality]
+	|| setup.orgasmQuotes.Top[_loc]
+	&& setup.orgasmQuotes.Top[_loc][_pref]
+	|| setup.orgasmQuotes.Top.default[_pref]>>
 
 <</if>>
 

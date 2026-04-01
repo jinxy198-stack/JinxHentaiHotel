@@ -1,20 +1,20 @@
 :: Rimjob-Quote [nobr Dialogue] {"position":"1800,1500","size":"100,100"}
 
-<<if $sex.role == "bottom">>
-	<<set _mode = "bottom">>
-<<elseif $sex.role == "top">>
-	<<set _mode = "top">>
+<<if $sex.role == "Bottom">>
+	<<set _mode = "Bottom">>
+<<elseif $sex.role == "Top">>
+	<<set _mode = "Top">>
 <</if>>
 <<set _pref = _n.sexpref || "Neutral">>
 <<set _personality = _n.personality>>
 
 <<set _pool = null>>
 
-<<if _mode == "top">>
+<<if _mode == "Top">>
 	<<set _pool = setup.rimjobQuotes[_personality]
 	|| setup.rimjobQuotes[_pref]
 	>>
-<<elseif _mode == "bottom">>
+<<elseif _mode == "Bottom">>
 	<<set _pool = setup.MuffledQuotes>>
 <</if>>
 

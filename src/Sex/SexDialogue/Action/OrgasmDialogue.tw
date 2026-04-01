@@ -1,13 +1,13 @@
 ::OrgasmDialogue [nobr]
 
-<<if $sex.top.chosenCumLocation>>
-    <<set _cumLoc = $sex.top.chosenCumLocation >>
-<<elseif = $sex.bottom.chosenCumLocation>>
-    <<set _cumLoc = $sex.bottom.chosenCumLocation >>
+<<if $sex.Top.chosenCumLocation>>
+    <<set _cumLoc = $sex.Top.chosenCumLocation >>
+<<elseif = $sex.Bottom.chosenCumLocation>>
+    <<set _cumLoc = $sex.Bottom.chosenCumLocation >>
 <</if>>
 
 <<if _cumLoc == "in ass">>
-    <<if $sex.role == "top">>
+    <<if $sex.role == "Top">>
         <<if $sex.position == "Cowgirl">>
             _n.name slams down one final time before you let out a moan and unload into their ass. They shudder at the warmth filling them.
         <<else>>
@@ -17,7 +17,7 @@
         <br>
             Even after your balls have pumped their entire load into _n.name, your knot remains swollen, locking the two of you together.
         <</if>>
-    <<elseif $sex.role == "bottom">>
+    <<elseif $sex.role == "Bottom">>
         <<if $sex.position == "Cowgirl">>
             You slam down one final time before _n.name lets out a moan and unloads into your ass. You feel the warmth fill you up.
         <<elseif $sex.position == "Missionary">>
@@ -34,39 +34,39 @@
 <<elseif _cumLoc == "in air">> 
     You feel yourself release
 <<elseif _cumLoc == "in mouth">> 
-    <<if $sex.role == "top">>
+    <<if $sex.role == "Top">>
         <<= either(	
 			"$proset.their tongue swirls around your <<= $mc.genital.toLowerCase>> some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.",
 			"With a cry of pleasure, you empty your balls into _n.name's hungry mouth."
 		)>>
-    <<elseif $sex.role == "bottom">>
+    <<elseif $sex.role == "Bottom">>
         Before you know it, $proset.their cock swells in your mouth, and a hot stream of jizz shoots down your throat! You swallow as much as you can.
     <</if>>
 <<elseif _cumLoc == "in pussy">>
-    <<if $sex.role == "top">>
+    <<if $sex.role == "Top">>
         You moan and groan as you shoot your load into _n.name's _n.genitaltype _n.genitals.
-    <<elseif $sex.role == "bottom">>
+    <<elseif $sex.role == "Bottom">>
         <<= either(
 			"_n.name thrusts into you one last time before holding inside you and letting out a moan. You feel $proset.their cum shoot into your <<= $mc.genitals.toLowerCase() >>.",
 			"_n.name convulses and grinds against your <<= $mc.genitals.toLowerCase() >> before shooting $proset.their load."
 		)>>
     <</if>> 
 <<elseif _cumLoc == "on hand">>
-    <<if $sex.climax.top >>
+    <<if $sex.climax.Top >>
         You cum on their hand.
-    <<elseif $sex.climax.bottom>>
+    <<elseif $sex.climax.Bottom>>
         _n.name cums on your hand.
     <</if>>
 <<elseif _cumLoc == "on stomach">>
-    <<if $sex.climax.top >>
+    <<if $sex.climax.Top >>
         You cum on their stomach.
-    <<elseif $sex.climax.bottom>>
+    <<elseif $sex.climax.Bottom>>
         _n.name cums on your stomach.
     <</if>>
 <<else>>
-    <<if $sex.climax.top >>
+    <<if $sex.climax.Top >>
         You cum.
-    <<elseif $sex.climax.bottom>>
+    <<elseif $sex.climax.Bottom>>
         _n.name cums.
     <</if>>
 <</if>> 

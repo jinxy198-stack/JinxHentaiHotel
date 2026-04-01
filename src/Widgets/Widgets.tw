@@ -97,7 +97,7 @@
 
 		<<if $sex.penetration>>
 			<b>Penetration:</b>
-			<<print $sex.penetration.topPart>> → <<print $sex.penetration.bottomPart>><br>
+			<<print $sex.penetration.TopPart>> → <<print $sex.penetration.BottomPart>><br>
 		<</if>>
         <<button "Inspect NPC">>
 	        <<WithNPC _n>>
@@ -115,10 +115,10 @@
         /* Debug checking to confirm things exist */
         /*MC parts: <<print $mc.bodyparts.join(", ")>><br>
         NPC parts: <<print _n.bodyparts.join(", ")>><br> */
-        /*Sex Top: <<print $sex.top.name>><br>
-        Sex Bottom: <<print $sex.bottom.name>><br>
-        TopGenital: <<print $sex.top.genitaltype>><br>
-        BottomGenital: <<print $sex.bottom.genitaltype>><br>
+        /*Sex Top: <<print $sex.Top.name>><br>
+        Sex Bottom: <<print $sex.Bottom.name>><br>
+        TopGenital: <<print $sex.Top.genitaltype>><br>
+        BottomGenital: <<print $sex.Bottom.genitaltype>><br>
          */
         <</if>>
     
@@ -315,20 +315,20 @@
 <div>
   <span>
     <hr>
-    <b>$sex.bottom.name Arousal:</b> <<print $sex.bottom.arousal>>/1000  ||
-    <b>$sex.top.name Arousal:</b> <<print $sex.top.arousal>>/1000
+    <b>$sex.Bottom.name Arousal:</b> <<print $sex.Bottom.arousal>>/1000  ||
+    <b>$sex.Top.name Arousal:</b> <<print $sex.Top.arousal>>/1000
   </span>
 
-  <<if $sex.bottom.arousal >= 1000>>
-    <<set $orgasm.bottom = true>>
+  <<if $sex.Bottom.arousal >= 1000>>
+    <<set $orgasm.Bottom = true>>
   <</if>>
-  <<if $sex.top.arousal >= 1000>>
-    <<set $orgasm.top = true>>
+  <<if $sex.Top.arousal >= 1000>>
+    <<set $orgasm.Top = true>>
   <</if>>
     <br>
     <<if $devMode>>
-        $sex.top.cumLocation <br>
-        $sex.bottom.cumLocation <br>
+        $sex.Top.cumLocation <br>
+        $sex.Bottom.cumLocation <br>
     <</if>>
 
 </div>
@@ -337,10 +337,10 @@
 
 <<widget "CumLocationButtons">>
 	/* Usage:
-	   <<CumLocationButtons "top">> or <<CumLocationButtons "bottom">>
+	   <<CumLocationButtons "Top">> or <<CumLocationButtons "Bottom">>
 	   Assumes setup.updateCumLocations($sex) has run recently.
 	*/
-	<<set _who = _args[0] || "top">>
+	<<set _who = _args[0] || "Top">>
 	<<set _actor = ($sex && $sex[_who]) ? $sex[_who] : null>>
 
 	<<if !_actor>>

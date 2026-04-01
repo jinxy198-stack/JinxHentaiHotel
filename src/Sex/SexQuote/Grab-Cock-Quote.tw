@@ -1,9 +1,9 @@
 ::Grab-Cock-Quote [nobr]
 
-<<if $sex.role == "bottom">>
-	<<set _mode = "bottom">>
-<<elseif $sex.role == "top">>
-	<<set _mode = "top">>
+<<if $sex.role == "Bottom">>
+	<<set _mode = "Bottom">>
+<<elseif $sex.role == "Top">>
+	<<set _mode = "Top">>
 <</if>>
 <<set _pref = _n.sexpref || "Neutral">>
 <<set _size = $mc.penislength>>
@@ -12,24 +12,24 @@
 
 <<set _pool = null>>
 
-<<if _mode == "bottom">>
+<<if _mode == "Bottom">>
 	<<set _pool =
-		setup.GrabCockQuotes.bottom[_pref]
-		|| setup.GrabCockQuotes.bottom.Neutral
+		setup.GrabCockQuotes.Bottom[_pref]
+		|| setup.GrabCockQuotes.Bottom.Neutral
 	>>
-<<elseif _mode == "top">>
+<<elseif _mode == "Top">>
 	<<if _personality == "Childlike">>
 		<<set _pool =
-			setup.GrabCockQuotes.top[_personality]
+			setup.GrabCockQuotes.Top[_personality]
 		>>
 	<<else>>
 		<<set _pool =
 			(
-				setup.GrabCockQuotes.top[_pref]
-				&& setup.GrabCockQuotes.top[_pref][_size]
-				&& setup.GrabCockQuotes.top[_pref][_size][_age]
+				setup.GrabCockQuotes.Top[_pref]
+				&& setup.GrabCockQuotes.Top[_pref][_size]
+				&& setup.GrabCockQuotes.Top[_pref][_size][_age]
 			)
-			|| setup.GrabCockQuotes.top[_pref]
+			|| setup.GrabCockQuotes.Top[_pref]
 		>>
 	
 	<</if>>

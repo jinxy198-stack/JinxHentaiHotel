@@ -1,21 +1,21 @@
 :: Tease-Cock-Dialogue [nobr]
 
 <<if $sex.act=="Rub Cock On Face">>
-    <<if $sex.role == "top">>
+    <<if $sex.role == "Top">>
 	    <<= either(
  	    "You rub your cock on their face."
         )>>
-    <<elseif $sex.role == "bottom">>
+    <<elseif $sex.role == "Bottom">>
 	    <<= either(
         "_n.name rubs their cock on your face."
         )>>
     <</if>>
 <<elseif $sex.act == "Rub Cock Against Hand">>
-    <<if $sex.role == "top">>
+    <<if $sex.role == "Top">>
 	    <<= either(
  	        "You rub your cock against their hand."
         )>>
-    <<elseif $sex.role == "bottom">>
+    <<elseif $sex.role == "Bottom">>
 	    <<= either(
             "_n.name rubs their cock against your hand."
         )>>

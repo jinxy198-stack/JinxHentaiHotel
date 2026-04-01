@@ -2,7 +2,7 @@
 
 /* ----- ANAL ----- */
 setup.analQuotes = {
-  bottom: {
+  Bottom: {
     Cowgirl: {
       Dominant: [
         "Bounce on my cock!",
@@ -77,7 +77,7 @@ setup.analQuotes = {
         "A-Ahhh..."
       ]
   },
-  top: {
+  Top: {
     Cowgirl: {
       Childlike:[
       "Whee, hehe! Bouncy, bouncy!",
@@ -233,12 +233,12 @@ setup.TakeCockBetweenLipsQuotes = {
 
 /* ----- BOOBJOB ----- */
 setup.BoobjobQuotes = {
-  bottom: {
+  Bottom: {
     Dominant: [ "BOTTOM DOM BOOBJOB" ],
     Submissive: [ "BOTTOM SUB BOOBJOB" ],
     Switch: [ "BOTTOM SWITCH BOOBJOB" ]
   },
-  top: {
+  Top: {
     Dominant: [ "TOP DOM BOOBJOB" ],
     Submissive: [ "TOP SUB BOOBJOB" ],
     Switch: [ "TOP SWITCH BOOBJOB" ]
@@ -247,7 +247,7 @@ setup.BoobjobQuotes = {
 
 /* ----- CARESS ----- */
 setup.caressQuotes = {
-  bottom: {
+  Bottom: {
     Skin:{
       Dominant: ["You like me feeling you up?"],
       Submissive: ["Your skin is so smooth."],
@@ -269,7 +269,7 @@ setup.caressQuotes = {
       Switch: ["Your fur is so fluffy!"]
     }
   },
-  top: {
+  Top: {
     Childlike:[
       "That tickles, hehe!",
       "Aah~ That feels nice, $mc.name~",
@@ -299,7 +299,7 @@ setup.caressQuotes = {
 };
 /* ----- CUDDLE ----- */
 setup.cuddleQuotes = {
-  bottom: {
+  Bottom: {
 
     Childlike:[
     "Happy snugs after sticky fun! Yayy~!",
@@ -333,7 +333,7 @@ setup.cuddleQuotes = {
       "I just want to lie here and catch my breath with you."
     ]
   },
-  top: {
+  Top: {
     Childlike:[
     "Happy snugs after sticky fun! Yayy~!",
     "That was fun, $mc.name! Cum play again sometime, Hehe!"
@@ -369,7 +369,7 @@ setup.cuddleQuotes = {
 
 /* ----- CUNNILINGUS ----- */
 setup.cunnilingusQuotes = {
-  bottom: {
+  Bottom: {
     Dominant: [
       "That's right, keep eating me out!",
 			"Good _n.petname! Keep that $mc.body.Tongue of yours busy!",
@@ -392,7 +392,7 @@ setup.cunnilingusQuotes = {
 			"Mmmm"
     ]
   },
-  top: {
+  Top: {
     Dominant: [
       "Mmmf",
 			"Mmmph",
@@ -413,7 +413,7 @@ setup.cunnilingusQuotes = {
 
 /* ----- EMBRACE ----- */
 setup.embraceQuotes = {
-  bottom: {
+  Bottom: {
     Childlike:[
       "Snuggle Stuffins! Yayy..~! H-haah ha..~",
       "This is my.. A-aah.. fave kinda thing!"
@@ -429,7 +429,7 @@ setup.embraceQuotes = {
       "I like hugs!"
     ]
   },
-  top: {
+  Top: {
     Childlike:[
       "Snuggle Stuffins! Yayy..~! H-haah ha..~",
       "This is my.. A-aah.. fave kinda thing!"
@@ -474,7 +474,7 @@ setup.faceonchestQuotes = {
 
 /* ----- FEEL STOMACH ----- */
 setup.feelstomachQuotes = {
-  bottom: {
+  Bottom: {
     
     Skinny: [
       "Your belly's light, almost hollow.",
@@ -561,7 +561,7 @@ setup.feelstomachQuotes = {
 			"Nothing but pure muscle, amazing!"
     ]
   },
-  top: {
+  Top: {
     Childlike:[
       "That tickles, hehe!",
       "Aah~ That feels nice, $mc.name~",
@@ -584,7 +584,7 @@ setup.feelstomachQuotes = {
 
 /* ----- FINGER ASS ----- */
 setup.FingerAssQuotes = {
-  bottom: {
+  Bottom: {
     Dominant: [
       "Yeah, lets get it nice and stretched."
     ],
@@ -595,7 +595,7 @@ setup.FingerAssQuotes = {
       "It's warm."
     ]
   },
-  top: {
+  Top: {
     Childlike: [
       "Press the Butt-on for funny noises! Baaa-aah...",
       "Press the Butt-on for funny noises! Mooo--ooh~",
@@ -621,7 +621,7 @@ setup.FingerAssQuotes = {
 
 /* ----- FINGER VAGINA ----- */
 setup.fingerpussyQuotes = {
-  bottom: {
+  Bottom: {
     Dominant: [
       "Damn, you're wet!",
       "Ohh, you're so wet",
@@ -638,7 +638,7 @@ setup.fingerpussyQuotes = {
       "Your pussy's so wet"
     ]
   },
-  top: {
+  Top: {
     Dominant: [
       "Oh f-fuck!",
 			"That feels nice",
@@ -658,7 +658,7 @@ setup.fingerpussyQuotes = {
 
 /* ----- FOOTJOB ----- */
 setup.footjobQuotes = {
-  bottom: {
+  Bottom: {
     Childlike:["Wow! No hands needed! Nice, $mc.name!"],
     Dominant: ["Good, keep doing that."],
     Submissive: [
@@ -673,7 +673,7 @@ setup.footjobQuotes = {
 			"You really know how to handle your feet."
     ]
   },
-  top: {
+  Top: {
     Childlike:[
     "You're gettin the Beeeeeeans~!",
     "Look! No hands!"
@@ -695,7 +695,7 @@ setup.footjobQuotes = {
 
 /* ----- FROT ----- */
 setup.frotQuotes = {
-  bottom: {
+  Bottom: {
     Childlike:[
     "Kissy kissy PPs! Hahaha~!",
     "Wub wub~ Nnh...~"
@@ -711,7 +711,7 @@ setup.frotQuotes = {
     ],
     Switch: ["Ah!"]
   },
-  top: {
+  Top: {
     Childlike:[
     "Kissy kissy PPs! Hahaha~!",
     "Wub wub~ Nnh...~"
@@ -740,7 +740,7 @@ setup.TribQuotes = [
 
 /* ----- GROPE BREAST ----- */
 setup.gropebreastQuotes = {
-  bottom: {
+  Bottom: {
     Dominant: {
       Flat: {
         Kid: [
@@ -893,7 +893,7 @@ setup.gropebreastQuotes = {
       Enormous: ["These sure are big!"]
     }
   },
-  top: {
+  Top: {
     Dominant: [
       "That's right, play with my <<= _n.breastsize.toLowerCase()>> breasts!",
       "That's right, play with my tits!"
@@ -920,7 +920,7 @@ setup.gropebreastQuotes = {
 
 /* ----- GROPE BUTT ----- */
 setup.gropebuttQuotes = {
-  bottom: {  
+  Bottom: {  
     Flat: {  
       Dominant: [     
       "Yeah, you like this?"
@@ -997,7 +997,7 @@ setup.gropebuttQuotes = {
       ] 
     },
   },  
-  top: {
+  Top: {
     Childlike:[
     "Aah! Hehe!",
     "Fun to squish huh? Hahaha~!",
@@ -1068,7 +1068,7 @@ setup.gropebuttQuotes = {
 
 /* ----- HANDJOB ----- */
 setup.handjobQuotes = {
-  bottom: {
+  Bottom: {
     Dominant: [
       "Mmm, your hand feels good around my cock.",
       "Your hands are soft.",
@@ -1084,7 +1084,7 @@ setup.handjobQuotes = {
       "A-Ahhh, $mc.name..."
     ]
   },
-  top: {
+  Top: {
     Childlike:[
       "Lemme give you a hand buddy!"
     ],
@@ -1142,7 +1142,7 @@ setup.handjobQuotes = {
 };
 
 setup.GrabCockQuotes = {
-  bottom: {
+  Bottom: {
     Dominant: [
       "Mmm, your hand feels good around my cock.",
       "Your hands are soft."
@@ -1155,7 +1155,7 @@ setup.GrabCockQuotes = {
       "Mmm, that feels nice."
     ]
   },
-  top: {
+  Top: {
     Childlike:[
       "Lemme give you a *hand* buddy!"
     ],
@@ -1214,7 +1214,7 @@ setup.GrabCockQuotes = {
 
 /* ----- PET EARS ----- */
 setup.petearsQuotes = {
-  bottom: {
+  Bottom: {
     Dominant: [
       "They feel so soft."
     ],
@@ -1225,7 +1225,7 @@ setup.petearsQuotes = {
       "They feel so soft."
     ]
   },
-  top: {
+  Top: {
     Childlike:[
       "That tickles, hehe!",
       "Aah~ That feels nice, $mc.name~",
@@ -1274,7 +1274,7 @@ setup.rimjobQuotes = {
 
 /* ----- SUCK FOOT ----- */
 setup.suckfootQuotes = {
-  bottom: {
+  Bottom: {
     Childlike:[
     "H-hey, that tickles!!! Stoppit..!",
     "A-aah! N-n-not too much of that..! I might kick you on accident..!"
@@ -1294,7 +1294,7 @@ setup.suckfootQuotes = {
       "Mmm, that feels nice."
     ]
   },
-  top: {
+  Top: {
     Dominant: [
       "Mmmf",
 			"Mmmph",
@@ -1315,7 +1315,7 @@ setup.suckfootQuotes = {
 
 /* ----- ORGASM ----- */
 setup.orgasmQuotes = {
-  bottom: {
+  Bottom: {
     "in ass": {
       Dominant: [
         "I'm cumming!",
@@ -1356,7 +1356,7 @@ setup.orgasmQuotes = {
       Switch: ["Mmm, that was nice."]
     }
   },
-  top: {
+  Top: {
     "in ass": {
       Childlike: [
       "Relax n let a load off $mc.name~ Mmm...~",
@@ -1416,7 +1416,7 @@ setup.orgasmQuotes = {
 
 /* ----- ORGASM CLOSE ----- */
 setup.orgasmcloseQuotes = {
-  bottom: {
+  Bottom: {
     "Take Cock In Ass": {  
       Dominant: [
       "I'm gonna cum in your ass!",
@@ -1464,7 +1464,7 @@ setup.orgasmcloseQuotes = {
       Switch: ["I'm gonna cum!"]
     }
   },
-  top: {
+  Top: {
     Childlike: [
     "Mmh..! Getting close to the finish line...!",
     "I-im about to be a fruit gusher...!"
@@ -1538,7 +1538,7 @@ setup.orgasmcloseQuotes = {
 
 /* ----- VAGINAL ----- */
 setup.vaginalQuotes = {
-  bottom: {
+  Bottom: {
     Dominant: [
       "Good _n.petname! Feel my <<= $mc.genitals.toLowerCase() >> slide deep into your little pussy!",
 			"That's right, be a good _n.petname and moan for me! Feel my <<= $mc.genitals.toLowerCase() >> sliding deep into your cute little cunt!",
@@ -1576,7 +1576,7 @@ setup.vaginalQuotes = {
 			"It's so warm and wet in there..."
     ]
   },
-  top: {
+  Top: {
     Dominant: [
       "Don't stop! Harder! Fuck me! Yes, yes, yes!",
 			"Fuck my pussy!",
@@ -1612,7 +1612,7 @@ setup.vaginalQuotes = {
 
 
 setup.EnterPussyQuotes = {
-  bottom: {
+  Bottom: {
     Dominant:["It's inside me!"],
     Submissive: ["You feel so good inside me."],
     Switch: ["It's inside me!"]
@@ -1621,7 +1621,7 @@ setup.EnterPussyQuotes = {
 };
 
 setup.PushCockInQuotes = {
-  top: {
+  Top: {
     Dominant:[
       "Fuck, your tight little cunt feels amazing",
       "Fuck yes, give me all of that fucking pussy",
@@ -1694,8 +1694,8 @@ setup.LickNippleQuotes =[
 ];
 
 setup.TeaseNippleQuotes ={
-  top:["TEASE NIPPLE TOP"],
-  bottom:["A-aah..."]
+  Top:["TEASE NIPPLE TOP"],
+  Bottom:["A-aah..."]
 };
 
 
@@ -1716,11 +1716,11 @@ setup.MuffledQuotes=[
 ];
 
 setup.EnterAssQuotes ={
-  top:[
+  Top:[
     "Your cock feels so nice in my ass!",
     "Nghhh!!!"
   ],
-  bottom:[
+  Bottom:[
     "You feel so nice around my dick.",
     "Your butt is so warm.",
     "Hold still, I'm going in.",

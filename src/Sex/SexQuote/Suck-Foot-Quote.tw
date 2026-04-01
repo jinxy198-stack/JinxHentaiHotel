@@ -26,13 +26,13 @@
 
 <<if _mode == "give">>
 
-	<<set _pool = setup.suckfootQuotes.bottom[_personality] 
-	|| setup.suckfootQuotes.bottom[_pref] 
-	|| setup.suckfootQuotes.bottom.Neutral>>
+	<<set _pool = setup.suckfootQuotes.Bottom[_personality] 
+	|| setup.suckfootQuotes.Bottom[_pref] 
+	|| setup.suckfootQuotes.Bottom.Neutral>>
 
 <<else>>
-	<<set _pool = setup.suckfootQuotes.top[_pref] 
-	|| setup.suckfootQuotes.top.Neutral>>
+	<<set _pool = setup.suckfootQuotes.Top[_pref] 
+	|| setup.suckfootQuotes.Top.Neutral>>
 <</if>>
 
 <<if _pool && _pool.length>>

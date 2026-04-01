@@ -8,9 +8,9 @@
 	<<return>>
 <</if>>
 
-<<if $sex.role == "bottom">>
+<<if $sex.role == "Bottom">>
 	<<set _mode = "give">>
-<<elseif $sex.role == "top">>
+<<elseif $sex.role == "Top">>
 	<<set _mode = "receive">>
 <<else>>
 	<<return>>
@@ -24,15 +24,15 @@
 <<set _pool = null>>
 
 <<if _mode == "give">>
-	<<set _pool = setup.gropebreastQuotes.bottom[_pref][_msize][_mage] 
-	|| setup.gropebreastQuotes.bottom.Neutral>>
+	<<set _pool = setup.gropebreastQuotes.Bottom[_pref][_msize][_mage] 
+	|| setup.gropebreastQuotes.Bottom.Neutral>>
 <<else>>
 		<<run _pool =
 			(
-				setup.gropebreastQuotes.top[_pref]
-				&& setup.gropebreastQuotes.top[_pref][_nsize][_nage]
+				setup.gropebreastQuotes.Top[_pref]
+				&& setup.gropebreastQuotes.Top[_pref][_nsize][_nage]
 			)
-			|| setup.gropebreastQuotes.top.Neutral
+			|| setup.gropebreastQuotes.Top.Neutral
 		>>
 <</if>>
 
@@ -50,24 +50,20 @@
 <<set _nage  = _n.ageGroup  || "Adult">>
 
 
-<<if $sex.role == "bottom">>
-	<<set _mode = "bottom">>
-<<elseif $sex.role == "top">>
-	<<set _mode = "top">>
-<</if>>
 
-<<if $sex.role =="top">>
-	<<set _pool = setup.gropebreastQuotes.top[_pref]
-	&& setup.gropebreastQuotes.top[_pref][_nsize]
-	&& setup.gropebreastQuotes.top[_pref][_nsize][_nage]
-	|| setup.gropebreastQuotes.top[_pref]
-	&& setup.gropebreastQuotes.top[_pref][_nsize]
-	|| setup.gropebreastQuotes.top[_pref]>>
-<<elseif $sex.role =="bottom">>
-	<<set _pool = setup.gropebreastQuotes.bottom[_pref]
-	&& setup.gropebreastQuotes.bottom[_pref][_msize]
-	&& setup.gropebreastQuotes.bottom[_pref][_msize][_mage]
-	|| setup.gropebreastQuotes.bottom.Neutral>>
+
+<<if $sex.role =="Top">>
+	<<set _pool = setup.gropebreastQuotes.Top[_pref]
+	&& setup.gropebreastQuotes.Top[_pref][_nsize]
+	&& setup.gropebreastQuotes.Top[_pref][_nsize][_nage]
+	|| setup.gropebreastQuotes.Top[_pref]
+	&& setup.gropebreastQuotes.Top[_pref][_nsize]
+	|| setup.gropebreastQuotes.Top[_pref]>>
+<<elseif $sex.role =="Bottom">>
+	<<set _pool = setup.gropebreastQuotes.Bottom[_pref]
+	&& setup.gropebreastQuotes.Bottom[_pref][_msize]
+	&& setup.gropebreastQuotes.Bottom[_pref][_msize][_mage]
+	|| setup.gropebreastQuotes.Bottom.Neutral>>
 <<else>>
 ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT'S CREATOR
 <</if>>
@@ -76,5 +72,5 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT'S CREATOR
 	<<= either(..._pool)>>
 <<else>>
 	[Error] No grope breast quote pool found.
-	(mode=<<=_mode>>, pref=<<=_pref>>, nsize=<<=_nsize>>, msize=<<=_msize>>, nage=<<=_nage>>, mage=<<=_mage>>)
+	(role=<<=$sex.role>>, pref=<<=_pref>>, nsize=<<=_nsize>>, msize=<<=_msize>>, nage=<<=_nage>>, mage=<<=_mage>>)
 <</if>>
