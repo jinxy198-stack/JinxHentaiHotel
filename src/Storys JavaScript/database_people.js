@@ -123,7 +123,7 @@ setup.bodyparts = {
 };
 
 setup.personalities= [
-      "Brave", "Shy", "Relaxed", "Playful", "Good", "Evil", "Kind", "Logical", "Studious","Nerdy", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean", "Energetic", "Selfish", "Confident", "Childlike", "Cheeky"
+      "Brave", "Shy", "Relaxed", "Playful", "Kind", "Logical", "Studious","Nerdy", "Active", "Lonely", "Timid", "Stubborn", "Serious", "Tough", "Jolly", "Naive", "Modest", "Bashful", "Calm", "Sassy", "Flamboyant", "Mean", "Energetic", "Selfish", "Confident", "Childlike", "Cheeky"
 ];
 
 setup.accessory= [
