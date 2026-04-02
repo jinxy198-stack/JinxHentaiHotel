@@ -4,7 +4,7 @@
 
 <<if $sex.role=="Top">>
 	<<=either(
-	"_n.name pushes you onto your back and they lower themself over your face"
+	"_n.name pushes you onto your back and they lower themself over your face."
     )>>
 <<elseif $sex.role=="Bottom">>
 	<<=either(

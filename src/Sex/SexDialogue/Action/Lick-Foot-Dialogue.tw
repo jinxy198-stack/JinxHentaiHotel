@@ -1,3 +1,6 @@
 :: Lick-Foot-Dialogue
-
-You lick foot.
+<<if $sex.role == "Top">>
+_n.name licks your foot.
+<<else>>
+You lick _n.name's foot.
+<</if>>

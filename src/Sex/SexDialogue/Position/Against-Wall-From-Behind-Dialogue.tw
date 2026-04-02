@@ -6,7 +6,7 @@
     )>>
 <<else>>
     <<=either(
-        "You're braced against the $room.location with _n.name behind you."
+        "You're braced against the $room.location with _n.name behind you.",
         "_n.name leans you against the $room.location."
     )>>
 <</if>>
