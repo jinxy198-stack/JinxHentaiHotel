@@ -3,16 +3,16 @@
 <<PronounsSet>>
 <<if $sex.role == "Top">>
 	<<if $position is "Cowgirl">>
-        <<= either(
+        <<=either(
  	        "You lick up and down the crack of the ass pressing down on your mouth."
         )>>
     <<else>>
-        <<= either(
+        <<=either(
  	        "You eat out _n.name's ass."
         )>>
     <</if>>
 <<else>>
-	<<= either(
+	<<=either(
     "_n.name eats out your ass."
     )>>
 <</if>>

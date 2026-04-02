@@ -37,7 +37,7 @@
 <</if>>
 
 <<if _pool && _pool.length>>
-	<<= either(..._pool)>>
+	<<=either(..._pool)>>
 <<else>>
 	[Error] No grope breast quote pool found.
 	(mode=<<=_mode>>, pref=<<=_pref>>, nsize=<<=_nsize>>, msize=<<=_msize>>, nage=<<=_nage>>, mage=<<=_mage>>)
@@ -69,7 +69,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT'S CREATOR
 <</if>>
 
 <<if _pool && _pool.length>>
-	<<= either(..._pool)>>
+	<<=either(..._pool)>>
 <<else>>
 	[Error] No grope breast quote pool found.
 	(role=<<=$sex.role>>, pref=<<=_pref>>, nsize=<<=_nsize>>, msize=<<=_msize>>, nage=<<=_nage>>, mage=<<=_mage>>)

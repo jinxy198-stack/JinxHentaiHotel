@@ -30,17 +30,17 @@
 <<set _mem = $npcMemory[_key]>>
 
 <<if !_mem or !_mem.interacted>>
-	<<= either(
+	<<=either(
 		_n.name + " looks you over curiously.",
 		_n.name + " gives you a small nod."
 	)>>
 <<elseif _mem.times < 5>>
-	<<= either(
+	<<=either(
 		_n.name + " greets you with a familiar look.",
 		_n.name + " seems more relaxed around you."
 	)>>
 <<else>>
-	<<= either(
+	<<=either(
 		_n.name + " barely glances up before smirking at you.",
 		"You and " + _n.name + " fall back into your usual rhythm without a word."
 	)>>

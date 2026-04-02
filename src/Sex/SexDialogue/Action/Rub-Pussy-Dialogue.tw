@@ -2,10 +2,10 @@
 /*Add different dialogue based on positions */
 <<if $sex.role == "Top">>
 
-You rub _n.name's <<= _n.genitals.toLowerCase()>> with your fingers.
+You rub _n.name's <<=_n.genitals.toLowerCase()>> with your fingers.
 
 <<elseif $sex.role == "Bottom">>
 
-_n.name rubs your <<= $mc.genitals.toLowerCase()>> with their fingers.
+_n.name rubs your <<=$mc.genitals.toLowerCase()>> with their fingers.
 
 <</if>>

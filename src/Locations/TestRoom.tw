@@ -16,10 +16,10 @@ This room is for testing features of the game, it should no be visible to the av
 
 /* Debug tester */
 <<if $devMode>>
-Pool exists: <<= Array.isArray($fullPool) >>
-Pool size: <<= $fullPool ? $fullPool.length : 0 >>
-Spawn keys: <<= $spawnPools ? Object.keys($spawnPools).join(", ") : "none" >>
-Room NPCs: <<= $roomNPCs ? $roomNPCs.length : 0 >>
+Pool exists: <<=Array.isArray($fullPool) >>
+Pool size: <<=$fullPool ? $fullPool.length : 0 >>
+Spawn keys: <<=$spawnPools ? Object.keys($spawnPools).join(", ") : "none" >>
+Room NPCs: <<=$roomNPCs ? $roomNPCs.length : 0 >>
 <</if>>
 
 </div>

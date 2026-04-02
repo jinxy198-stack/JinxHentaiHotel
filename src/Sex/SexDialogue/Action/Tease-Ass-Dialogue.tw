@@ -1,12 +1,12 @@
 :: Tease-Ass-Dialogue [nobr]
 
 <<if $sex.act =="Tease Ass With Cock">>
-<<= either(
+<<=either(
     "You tease _n.name's ass with your cock."
 )>>
 <<elseif $sex.act == "Cocktease With Ass">>
-<<= either(
+<<=either(
     "You tease _n.name's cock with your ass.",
-    "You feel _n.name's <<= _n.genitals.toLowerCase()>> against your buttcheecks."
+    "You feel _n.name's <<=_n.genitals.toLowerCase()>> against your buttcheecks."
     )>>
 <</if>>

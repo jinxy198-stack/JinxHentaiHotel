@@ -32,7 +32,7 @@
 
 
 <<if _pool && _pool.length>>
-	<<= either(..._pool)>>
+	<<=either(..._pool)>>
 <<else>>
 	[Error] No Embrace quote pool found.
 <</if>>

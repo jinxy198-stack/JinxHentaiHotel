@@ -29,7 +29,7 @@
 
 
 <<if _pool && _pool.length>>
-	<<= either(..._pool)>>
+	<<=either(..._pool)>>
 <<else>>
 	[Error] No Anal quote pool found.
     (mode=<<=_mode>>, pref=<<=_pref>>,position=<<=_position>> nsize=<<=_nsize>>, msize=<<=_msize>>, personality=<<=_personality>>)

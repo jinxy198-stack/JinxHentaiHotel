@@ -51,14 +51,14 @@
 
 <<if $attraction>><<pick-roles $mc _n>>
 <div id="role-line">
-	Top: <<= $sex.roles.dom.name >>
-	Bottom: <<= $sex.roles.sub.name >>
+	Top: <<=$sex.roles.dom.name >>
+	Bottom: <<=$sex.roles.sub.name >>
 </div>
 <<link "Swap roles">>
 	<<set [$sex.roles.dom, $sex.roles.sub] to [$sex.roles.sub, $sex.roles.dom]>>
 	<<replace "#role-line">>
-		Top: <<= $sex.roles.dom.name >> 
-		Bottom: <<= $sex.roles.sub.name >>
+		Top: <<=$sex.roles.dom.name >> 
+		Bottom: <<=$sex.roles.sub.name >>
 	<</replace>>
 	<br>
     <<replace "#top-bottom-chat">><<include "top-bottom-Dialogue">><</replace>>

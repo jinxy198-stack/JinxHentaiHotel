@@ -4,34 +4,34 @@
 
 <<if $sex.act == "Finger Pussy">>
     <<if $sex.role == "Bottom">>
-	    <<= either(
- 	    "_n.name puts their finger in your <<= $mc.genitals.toLowerCase()>>."
+	    <<=either(
+ 	    "_n.name puts their finger in your <<=$mc.genitals.toLowerCase()>>."
         )>>
     <<elseif $sex.role == "Top">>
-	    <<= either(
-        "You put your finger in _n.name's <<= _n.genitals.toLowerCase()>>"
+	    <<=either(
+        "You put your finger in _n.name's <<=_n.genitals.toLowerCase()>>"
         )>>
     <</if>>
 
 <<elseif $sex.act =="Finger Pussy(Continue)">>
     <<if $sex.role == "Bottom">>
-	    <<= either(
- 	    "_n.name finger's your <<= $mc.genitals.toLowerCase()>>."
+	    <<=either(
+ 	    "_n.name finger's your <<=$mc.genitals.toLowerCase()>>."
         )>>
     <<elseif $sex.role == "Top">>
-	    <<= either(
-        "You finger _n.name's <<= _n.genitals.toLowerCase()>>"
+	    <<=either(
+        "You finger _n.name's <<=_n.genitals.toLowerCase()>>"
         )>>
     <</if>>
 <<elseif $sex.act =="Pull Hand To Pussy">>
 You pull their hand to your pussy to finger you.
 <<elseif $sex.act=="Rub Clit">>  
     <<if $sex.role == "Top">>
-	    <<= either(
+	    <<=either(
  	    "You rub _n.name's clit."
         )>>
     <<else>>
-	    <<= either(
+	    <<=either(
         "_n.name rubs your clit."
         )>>
     <</if>>

@@ -3,7 +3,7 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 <<if $sex.role== "Bottom">>
-	<<= either(
+	<<=either(
    "You drop down on all fours, facing away from _n.name.",
 	"You nod, crawling up onto your bed. You get on all fours, presenting your ass out towards _n.name."
     )>>
@@ -11,7 +11,7 @@
     <br>
 <<elseif $sex.role == "Top">>
 	<<=either(
-	"_n.name get on all fours like a dog, and present their <<= _n.assSize.toLowerCase() >> ass to you."
+	"_n.name get on all fours like a dog, and present their <<=_n.assSize.toLowerCase()>> ass to you."
     )>>
 <</if>>
 

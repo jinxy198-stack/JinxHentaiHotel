@@ -3,12 +3,12 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 <<if $sex.role == "Bottom">>
-	<<= either(
+	<<=either(
  	"_n.name thrusts their _n.genitals between your $mc.breastsize breasts."
     )>>
 <<else>>
-	<<= either(
-    "You thrust your $mc.genitals between _n.name's <<= _n.breastsize.toLowerCase()>> breasts."
+	<<=either(
+    "You thrust your $mc.genitals between _n.name's <<=_n.breastsize.toLowerCase()>> breasts."
     )>>
 <</if>>
 

@@ -398,7 +398,7 @@
 	<<set _char = (_args.length > 0) ? _args[0] : $mc>>
 
 	<<if !_char or typeof _char !== "object">>
-		[Error] create-body: expected a character object, got <<= _char>>.
+		[Error] create-body: expected a character object, got <<=_char>>.
 	<<else>>
 
 		/* Base defaults (merge so you don't wipe pre-filled body fields) */

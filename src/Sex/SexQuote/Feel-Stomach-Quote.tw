@@ -33,7 +33,7 @@
 <</if>>
 
 <<if _pool && _pool.length>>
-	<<= either(..._pool)>>
+	<<=either(..._pool)>>
 <<else>>
 	[Error] No Feel Stomach quote pool found.
 <</if>>

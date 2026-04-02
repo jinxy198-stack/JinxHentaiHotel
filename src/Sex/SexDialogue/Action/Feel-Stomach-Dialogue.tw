@@ -3,11 +3,11 @@
 <<PronounsSet>>
 
 <<if $sex.role == "Top">>
-	<<= either(
+	<<=either(
  	"_n.name presses their hand against your belly"
     )>>
 <<else>>
-	<<= either(
+	<<=either(
     "You press your hand against _n.name's belly"
     )>>
 <</if>>

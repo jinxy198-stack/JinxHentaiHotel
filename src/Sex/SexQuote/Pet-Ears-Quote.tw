@@ -24,7 +24,7 @@
 
 
 <<if _pool && _pool.length>>
-	<<= either(..._pool)>>
+	<<=either(..._pool)>>
 <<else>>
 	[Error] No Pet Ears quote pool found.
 <</if>>

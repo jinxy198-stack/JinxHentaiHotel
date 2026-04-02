@@ -1,7 +1,7 @@
 :: Kiss-Dialogue [Dialogue nobr]
 <<set _npc = _n>>
 <<PronounsSet>>
-	<<= either(
+	<<=either(
 	"_n.name leans in and kisses you softly.",
 	"You peck _n.name on the lips.",
 	"_n.name makes out with you.",
@@ -11,7 +11,7 @@
 	"Leaning down, you let out a moan as you press your lips against _n.name's and start to eagerly kiss _n.name."
 	)>>
 	<br>
-	<<= either(
+	<<=either(
 	"_n.name lets out an eager moan in response.",
 	"_n.name enthusiastically presses themself against you and thrusts $proset.their tongue into your mouth as $proset.they eagerly return your affection.",
 	"With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic kiss.",

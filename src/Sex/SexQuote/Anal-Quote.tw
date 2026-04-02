@@ -41,7 +41,7 @@
 	<</if>>
 
 <<if _pool && _pool.length>>
-	<<= either(..._pool)>>
+	<<=either(..._pool)>>
 <<else>>
 	[Error] No Anal quote pool found.
 <</if>>

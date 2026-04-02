@@ -2,7 +2,7 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 <<if $sex.roles.dom.name == _n.name>>
-	<<= either(
+	<<=either(
     "Eagerly bringing your head down to $proset.their _n.body.Feet, you press your $mc.body.Lips against them and start passionately kissing and licking them.",
     "You drop your head down to $proset.their _n.body.Feet, before eagerly pressing your $mc.body.Lips against them and starting to gently kiss and lick them.",
     "After planting a series of gentle kisses on $proset.their _n.body.Feet, you proceed to start lovingly licking them, they let out a series of soft moans in the process.",
@@ -14,11 +14,11 @@
     "Moaning in delight, _n.name eagerly pushes $proset.their _n.body.Feet against your mouth as $proset.they have them worshipped."
     )>>
 <<elseif $sex.roles.sub.name == _n.name>>
-	<<= either(
+	<<=either(
     "With a smirk, you eagerly push $proset.their head down to your $mc.body.Feet, before getting $proset.them to kiss them and start orally worshipping them.",
     "Pushing $proset.their head down to your $mc.body.Feet, you can't help but moan as you have $proset.them kiss and orally worship them."
     )>>
-    <<= either(
+    <<=either(
     "_n.name starts eagerly sliding $proset.their _n.body.Feet up and down over $proset.their $mc.body.Face in response, letting out a moan as $proset.they get you to worship $proset.their _n.body.Feet.",
     "_n.name eagerly lick and suck on your $mc.body.Toes, letting out a moan as $proset.they eagerly worship your $mc.body.Feet.",
     "A moan bursts out from your mouth as $proset.they continue eagerly licking and kissing you $mc.body.Feet.",

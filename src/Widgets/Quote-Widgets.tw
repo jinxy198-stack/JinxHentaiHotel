@@ -45,7 +45,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] Anal: empty dialogue pool.
 	<</if>>
@@ -90,7 +90,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] Blowjob: empty dialogue pool.
 	<</if>>
@@ -124,7 +124,7 @@
 	>>
 
 	<<if Array.isArray(_pool) && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] No Caress quote pool found.
 		(mode=<<=_mode>>, material=<<=_material>>, pref=<<=_pref>>)
@@ -171,7 +171,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] Cuddle: empty dialogue pool.
 	<</if>>
@@ -216,7 +216,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] Cunnilingus: empty dialogue pool.
 	<</if>>
@@ -261,7 +261,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] Embrace: empty dialogue pool.
 	<</if>>
@@ -310,7 +310,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] FaceOnChest: empty dialogue pool.
 	<</if>>
@@ -360,7 +360,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] FeelStomach: empty dialogue pool.
 	<</if>>
@@ -406,7 +406,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] FingerAss: empty dialogue pool.
 	<</if>>
@@ -452,7 +452,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] FingerVagina: empty dialogue pool.
 	<</if>>
@@ -500,7 +500,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] FootjobQuote: empty dialogue pool.
 	<</if>>
@@ -547,7 +547,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] FrotQuote: empty dialogue pool.
 	<</if>>
@@ -596,7 +596,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] GropeBreastQuote: empty dialogue pool.
 	<</if>>
@@ -660,7 +660,7 @@
 	<</if>>
 
 	<<if Array.isArray(_pool) && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] GropeButtQuote: empty dialogue pool.
 	<</if>>
@@ -720,7 +720,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] HandjobQuote: empty dialogue pool.
 	<</if>>
@@ -766,7 +766,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] PetEarsQuote: empty dialogue pool.
 	<</if>>
@@ -812,7 +812,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] RimjobQuote: empty dialogue pool.
 	<</if>>
@@ -858,7 +858,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] SuckfootQuote: empty dialogue pool.
 	<</if>>
@@ -909,7 +909,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] OrgasmQuote: empty dialogue pool.
 	<</if>>
@@ -960,7 +960,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] OrgasmCloseQuote: empty dialogue pool.
 	<</if>>
@@ -1008,7 +1008,7 @@
 
 	/* output */
 	<<if _pool && _pool.length>>
-		<<= either(..._pool)>>
+		<<=either(..._pool)>>
 	<<else>>
 		[Error] VaginalQuote: empty dialogue pool.
 	<</if>>

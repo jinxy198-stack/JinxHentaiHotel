@@ -3,12 +3,12 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 <<if $sex.roles.sub.name == _n.name>>
-	<<= either(
+	<<=either(
 		"Taking hold of " + _n.name + "'s shoulders, you push " + $proset.them + " down onto " + $proset.their + " back. Kneeling down between " + $proset.their + " " + _n.body.Legs + ", you pause and look down into " + $proset.their + " " + _n.eye.toLowerCase() + " eyes.",
 		_n.name + " lies down on your bed, lifting " + $proset.their + " feet in the air.",
 	)>>
 <<elseif $sex.roles.dom.name == _n.name>>
-	<<= either(
+	<<=either(
 		"Taking hold of " + _n.name + "'s shoulders, you push " + $proset.them + " down onto " + $proset.their + " knees. Kneeling down before " + $proset.them + ", you then lie down on your back, spreading your " + $mc.body.Legs + " and look up into " + _n.name + "'s " + _n.eye.toLowerCase() + " eyes as you moan,",
 		"Looking up at " + _n.name + ", you bite your lip and let out a moan, before spreading your legs and submissively presenting yourself, ready to be penetrated.",
 		"You spread your legs for " + _n.name + ", presenting yourself in anticipation of being penetrated.",

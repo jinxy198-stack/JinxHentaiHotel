@@ -2,21 +2,21 @@
 
 <<if $sex.act=="Rub Cock On Face">>
     <<if $sex.role == "Top">>
-	    <<= either(
+	    <<=either(
  	    "You rub your cock on their face."
         )>>
     <<elseif $sex.role == "Bottom">>
-	    <<= either(
+	    <<=either(
         "_n.name rubs their cock on your face."
         )>>
     <</if>>
 <<elseif $sex.act == "Rub Cock Against Hand">>
     <<if $sex.role == "Top">>
-	    <<= either(
+	    <<=either(
  	        "You rub your cock against their hand."
         )>>
     <<elseif $sex.role == "Bottom">>
-	    <<= either(
+	    <<=either(
             "_n.name rubs their cock against your hand."
         )>>
     <</if>>

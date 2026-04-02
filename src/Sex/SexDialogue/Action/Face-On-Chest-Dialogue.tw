@@ -3,11 +3,11 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 <<if $sex.role== "Bottom">>
-	<<= either(
+	<<=either(
  	"_n.name presses their face against your chest."
     )>>
 <<elseif $sex.role == "Top">>
-	<<= either(
+	<<=either(
     "You press your face against _n.name's chest."
     )>>
 <</if>>

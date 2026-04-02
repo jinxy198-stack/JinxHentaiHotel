@@ -35,8 +35,8 @@
     You feel yourself release
 <<elseif _cumLoc == "in mouth">> 
     <<if $sex.role == "Top">>
-        <<= either(	
-			"$proset.their tongue swirls around your <<= $mc.genital.toLowerCase>> some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.",
+        <<=either(	
+			"$proset.their tongue swirls around your <<=$mc.genital.toLowerCase>> some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.",
 			"With a cry of pleasure, you empty your balls into _n.name's hungry mouth."
 		)>>
     <<elseif $sex.role == "Bottom">>
@@ -46,9 +46,9 @@
     <<if $sex.role == "Top">>
         You moan and groan as you shoot your load into _n.name's _n.genitaltype _n.genitals.
     <<elseif $sex.role == "Bottom">>
-        <<= either(
-			"_n.name thrusts into you one last time before holding inside you and letting out a moan. You feel $proset.their cum shoot into your <<= $mc.genitals.toLowerCase() >>.",
-			"_n.name convulses and grinds against your <<= $mc.genitals.toLowerCase() >> before shooting $proset.their load."
+        <<=either(
+			"_n.name thrusts into you one last time before holding inside you and letting out a moan. You feel $proset.their cum shoot into your <<=$mc.genitals.toLowerCase()>>.",
+			"_n.name convulses and grinds against your <<=$mc.genitals.toLowerCase()>> before shooting $proset.their load."
 		)>>
     <</if>> 
 <<elseif _cumLoc == "on hand">>

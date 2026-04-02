@@ -27,9 +27,9 @@
 <</if>>
 
 <<if _pool && _pool.length>>
-	<<= either(..._pool)>>
+	<<=either(..._pool)>>
 <<else>>
 	[Error] No Orgasm quote pool found.
-	(mode=<<=_mode>>, action=<<=_action>>, pref=<<=_pref>>,personality=<<=_personality>>, cum location=<<= _loc >> )
+	(mode=<<=_mode>>, action=<<=_action>>, pref=<<=_pref>>,personality=<<=_personality>>, cum location=<<=_loc >> )
 <</if>>
 

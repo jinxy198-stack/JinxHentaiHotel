@@ -3,14 +3,14 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 <<if $sex.role == "Bottom">>
-    <<= either(
- 	"_n.name pets your <<= $mc.body.Ear.toLowerCase()>>."
+    <<=either(
+ 	"_n.name pets your <<=$mc.body.Ear.toLowerCase()>>."
     )>>
 	    
 <<elseif $sex.role == "Top">>
 	
-    <<= either(
-    "You pet _n.name's <<= _n.body.Ear.toLowerCase()>>."
+    <<=either(
+    "You pet _n.name's <<=_n.body.Ear.toLowerCase()>>."
     )>>
     
 <</if>>

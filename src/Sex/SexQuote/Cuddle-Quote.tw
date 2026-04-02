@@ -32,7 +32,7 @@
 <</if>>
 
 <<if _pool && _pool.length>>
-	<<= either(..._pool)>>
+	<<=either(..._pool)>>
 <<else>>
 	[Error] No Cuddle quote pool found.
 <</if>>
