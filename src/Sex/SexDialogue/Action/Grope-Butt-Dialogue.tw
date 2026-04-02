@@ -2,11 +2,11 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-    <<if $sex.roles.dom.name == _n.name>>
+    <<if $sex.role == "Bottom">>
 	    <<=either(
  	        "_n.name grabs your <<=$mc.assSize.toLowerCase()>> ass."
         )>>
-    <<elseif $sex.roles.sub.name == _n.name>>
+    <<elseif $sex.role == "Top">>
 	    <<=either(
             "You grab _n.name's <<=$mc.assSize.toLowerCase()>> ass."
         )>>

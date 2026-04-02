@@ -1,19 +1,19 @@
 :: Balls-Dialogue [nobr]
 
-<<if $sex.act =="Lick Balls">>
+<<if $sex.act == "Lick Balls">>
     <<if $sex.role == "Top">>
         _n.name licks your balls.
     <<elseif $sex.role == "Bottom">>
         You lick their balls
     <</if>>
-<<elseif $sex.act =="Fondle Balls">>
+<<elseif $sex.act == "Fondle Balls">>
     <<if $sex.role == "Top">>
         _n.name fondle's your balls.
     <<elseif $sex.role == "Bottom">>
         You fondle their balls
     <</if>>
 
-<<elseif $sex.act =="Suck Balls">>
+<<elseif $sex.act == "Suck Balls">>
     <<if $sex.role == "Top">>
         _n.name sucks your balls.
     <<elseif $sex.role == "Bottom">>

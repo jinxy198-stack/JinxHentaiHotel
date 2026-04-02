@@ -1,7 +1,7 @@
 :: SuckFoot-Dialogue [Dialogue nobr] {"position":"800,1775","size":"100,100"}
 <<set _npc = _n>>
 <<PronounsSet>>
-<<if $sex.roles.dom.name == _n.name>>
+<<if $sex.role == "Bottom">>
 	<<=either(
     "Eagerly bringing your head down to $proset.their _n.body.Feet, you press your $mc.body.Lips against them and start passionately kissing and licking them.",
     "You drop your head down to $proset.their _n.body.Feet, before eagerly pressing your $mc.body.Lips against them and starting to gently kiss and lick them.",
@@ -13,7 +13,7 @@
     "A moan bursts out from between $proset.their _n.body.Lips as $proset.they eagerly slide $proset.their _n.body.Feet up and down over your $mc.body.Face.",
     "Moaning in delight, _n.name eagerly pushes $proset.their _n.body.Feet against your mouth as $proset.they have them worshipped."
     )>>
-<<elseif $sex.roles.sub.name == _n.name>>
+<<elseif $sex.role == "Top">>
 	<<=either(
     "With a smirk, you eagerly push $proset.their head down to your $mc.body.Feet, before getting $proset.them to kiss them and start orally worshipping them.",
     "Pushing $proset.their head down to your $mc.body.Feet, you can't help but moan as you have $proset.them kiss and orally worship them."

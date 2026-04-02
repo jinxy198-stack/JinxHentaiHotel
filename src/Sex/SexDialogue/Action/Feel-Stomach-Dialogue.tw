@@ -6,7 +6,7 @@
 	<<=either(
  	"_n.name presses their hand against your belly"
     )>>
-<<else>>
+<<elseif $sex.role == "Bottom">>
 	<<=either(
     "You press your hand against _n.name's belly"
     )>>

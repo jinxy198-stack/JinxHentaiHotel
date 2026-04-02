@@ -2,7 +2,7 @@
 
 <<set _npc = _n>>
 <<PronounsSet>>
-<<if $sex.roles.dom.name == _n.name>>
+<<if $sex.role == "Bottom">>
 	<<=either(
 		"You kneel down behind " + _n.name + ", " + $proset.their + " " + ((_n.assSize && _n.assSize.toLowerCase) ? _n.assSize.toLowerCase() : "average") + " ass in front of you."
 	)>>
@@ -12,7 +12,7 @@
 		"Look at the size of that ass!"
 	)>>
 
-<<elseif $sex.roles.sub.name == _n.name>>
+<<elseif $sex.role == "Top">>
 	<<=either(
 		"Wanting " + _n.name + " to perform oral on you, you push " + $proset.them + " down so that " + $proset.they + " are kneeling behind you."
 	)>>

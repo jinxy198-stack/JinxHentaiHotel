@@ -3,42 +3,41 @@
 <<PronounsSet>>
 
 	<<if $position is "Sit on Lap">>
-		<<if $sex.roles.sub.name == _n.name>>
+		<<if $sex.role == "Top">>
 			<<=either(
 				"You turn yourself to face _n.name and line up your <<=$mc.genitals.toLowerCase() with _n.name's <<=_n.genitals.toLowerCase()>>."
 			)>>
-		<<elseif $sex.roles.dom.name == _n.name>>
+		<<elseif $sex.role == "Bottom">>
 			<<=either(
 				"_n.name turns to face you and line up their <<=_n.genitals.toLowerCase()>> with your <<=$mc.genitals.toLowerCase()>>."
 			)>>	
 		<</if>>
 	<<elseif $position is "Missionary">>
-		<<if $sex.roles.sub.name == _n.name>>
+		<<if $sex.role == "Top">>
 			<<=either(
 				"_n.name lays on their back as you crawl on top of them. You line up your <<=$mc.genitals.toLowerCase()>> with their <<=_n.genitals.toLowerCase()>> and rubbed them together."
 			)>>
-		<<elseif $sex.roles.dom.name == _n.name>>
+		<<elseif $sex.role == "Bottom">>
 			<<=either(
 				"With you on your back, _n.name climbed on top of you, gazes locked. You felt _n.name's <<=_n.genitals.toLowerCase()>> pressed against yours. _n.name began thrusting $proset.their hips against you, your cocks grinding and rubbing aginst each other."
 			)>>	
 		<</if>>			
 	<<else>>
-		<<if $sex.roles.sub.name == _n.name>>
+		<<if $sex.role == "Top">>
 			<<=either(
 				"Reaching down, you adjust your <<=$mc.genitals.toLowerCase()>> to line it up with _n.name's, before starting to slowly thrust, rubbing your shaft against $proset.theirs.",
 				"You draw _n.name in close, opening your legs to align your <<=$mc.genitals.toLowerCase()>> with $proset.theirs.",
 				"You draw _n.name in close, positioning yourself so that your groin is pressing against $proset.theirs. You then pull _n.name in eagerly, coaxing $proset.them to thrust and grind $proset.their <<=_n.genitals.toLowerCase()>> against you.",
 				"With a moan, you eagerly press your groin against $proset.theirs before starting to tease your <<=$mc.genitals.toLowerCase()>> up against them."
 			)>>
-		<<elseif $sex.roles.dom.name == _n.name>>
+		<<elseif $sex.role == "Bottom">>
 			<<=either(
 				"Reaching down, _n.name adjusts $proset.their <<=_n.genitals.toLowerCase()>> to line it up with yours, before starting to slowly thrust, rubbing $proset.their shaft against yours.",
 				"_n.name draws you in close, opening $proset.their legs to align $proset.their groin with yours."
 			)>>
 		<</if>>
 	<</if>>	
-
-		<<if $sex.roles.sub.name == _n.name>>
+		<<if $sex.role == "Top">>
 			<<=either(
 				"Gently bucking $proset.their own <<=_n.body.Hip.toLowerCase()>> in response, _n.name lets out a moan as $proset.they mirror your movements and softly rub $proset.their <<=_n.genitals.toLowerCase()>> against yours.",
 				"Responding with a gentle buck of $proset.their own <<=_n.body.Hip.toLowerCase()>>, _n.name starts mirroring your movements, helping to softly rub $proset.their <<=_n.genitals.toLowerCase()>> up and down over yours.",
@@ -55,7 +54,7 @@
 				"Moaning in pleasure, _n.name thrusts $proset.their <<=_n.body.Hip.toLowerCase()>> out, using your movements to help grind $proset.their own <<=_n.genitals.toLowerCase()>> against yours."
 			)>>
 		
-		<<elseif $sex.roles.dom.name == _n.name>>
+		<<elseif $sex.role == "Bottom">>
 			<<=either(
 				"Letting out a little moan with every thrust of your <<=$mc.body.Hip.toLowerCase()>>, you gently rub your <<=$mc.genitals.toLowerCase()>> up and down over _n.name's <<=_n.genitals.toLowerCase()>> .",
 				"You let out a series of soft sighs as you gently rub your <<=$mc.genitals.toLowerCase()>> up and down over _n.name's <<=_n.genitals.toLowerCase()>> .",
