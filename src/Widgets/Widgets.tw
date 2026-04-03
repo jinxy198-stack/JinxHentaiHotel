@@ -1,5 +1,9 @@
 :: Widgets [widget nobr] 
 
+<<widget "npcNoise">><<print setup.pick(setup.noise[_n.species] || setup.noise[_n.anthro.subtype])>><</widget>>
+
+
+
 /* gets the room based on your location and issues where you start at */
 <<widget "GetRoom">>
     <<if $gamelocation =="Your Room">>
@@ -71,6 +75,13 @@
 <</widget>>
 
 <<widget "SexEncounterUI">>
+    <<set _climaxquote = (Array.isArray(_n.traits) && _n.traits.includes("Mute"))
+	? "Act-Quote-React"
+	: either("Orgasm-Close-Quote", "Act-Quote-React")>>
+
+    <<set _quotePassage= (Array.isArray(_n.traits) && _n.traits.includes("Mute"))
+	? "Act-Quote-React"
+	: either("Act-Quote", "Act-Quote-React")>>
 <div id="sexUI">
 
 	<!-- ===================== -->
@@ -219,7 +230,7 @@
 
 										<<replace "#intro">>
                                             <<include "ActDialogue">>
-                                            <<include "Act-Quote">>
+                                            <<include _quotePassage>>
 										<</replace>>
                                         <<replace "#log">><</replace>>
 										<<replace "#arousal-ui">><<ArousalUI>><</replace>>
@@ -269,22 +280,14 @@
                                     <<if $sex.phase=="climax">>
                                         <<replace "#intro">>
                                             <<include "Orgasm-Close-Dialogue">><br>
-                                            <<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
-                                                <<include "Act-Quote-Mute">>
-                                            <<else>>
-                                                <<include "Orgasm-Close-Quote">>
-                                            <</if>>
+                                            <<include _climaxquote>>
 		                                <</replace>>
                                     <<else>>
                                         <<replace "#log">><</replace>>
 
 										<<replace "#intro">>
                                             <<include "ActDialogue">>
-                                            <<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
-                                                <<include "Act-Quote-Mute">>
-                                            <<else>>
-                                                <<include "Act-Quote">>
-                                            <</if>>    
+	                                        <<include _quotePassage>>
 										<</replace>>
                                         <<replace "#log">><</replace>>
 										<<replace "#arousal-ui">><<ArousalUI>><</replace>>
@@ -378,7 +381,7 @@
 						<<replace "#intro">>
                             <<include "OrgasmDialogue">><br>
                             <<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
-                                <<include "Act-Quote-Mute">>
+                                <<include "Act-Quote-React">>
                             <<else>>
                                 <<include "Orgasm-Quote">>
                             <</if>>

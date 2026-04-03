@@ -17,7 +17,6 @@
 <</if>>
 
 /* ensure room exists BEFORE UI */
-
 <<GetRoom>>
 
 
@@ -44,6 +43,7 @@
   <<set $sex.role = "Bottom">>
   <<run setup.updateTopBottom($sex)>>
 <</if>>
+	
 
 /* ALWAYS rebind Top/Bottom to current */
 /*<<set $sex.Top = $mc>>
@@ -59,12 +59,9 @@
 
 
 
-
-
 /*Arousal meter for both $mc and _n */
 <<set _n.arousal = _n.arousal or 0>>
 <<set $mc.arousal = $mc.arousal or 0>>
-
 
 
 

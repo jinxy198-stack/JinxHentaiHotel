@@ -1,5 +1,3 @@
-::database_dialogue [script]
-
 
 setup.Dialogue = {};
 
@@ -42,3 +40,16 @@ setup.Dialogue.db = [
     }
 
 ]
+
+setup.noise = {
+    Human: ["moan","groan","squeal"],
+    Lizard: ["hiss"],
+    Fox: ["yip"],
+    Goat:["bleat"],
+    Sheep:["bleat"],
+    Cow:["moo"],
+    Pig:["oink"],
+    Canine:["growl"],
+    Feline:["meow"],
+    Eagel:["screech"]
+}

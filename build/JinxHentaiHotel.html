@@ -3260,7 +3260,8 @@ $(document).on("click", "#npcsex-toggle", function () {
   this.textContent = minimized ? "▲ Actions" : "▼ Actions";
   this.setAttribute("aria-expanded", !minimized);
 });
-/* twine-user-script #4: "database_dialogue" */
+/* twine-user-script #4: "database_dialogue.js" */
+
 setup.Dialogue = {};
 
 setup.Dialogue.db = [
@@ -3302,6 +3303,19 @@ setup.Dialogue.db = [
     }
 
 ]
+
+setup.noise = {
+    Human: ["moan","groan","squeal"],
+    Lizard: ["hiss"],
+    Fox: ["yip"],
+    Goat:["bleat"],
+    Sheep:["bleat"],
+    Cow:["moo"],
+    Pig:["oink"],
+    Canine:["growl"],
+    Feline:["meow"],
+    Eagel:["screech"]
+}
 /* twine-user-script #5: "database_food.js" */
 
 setup.food=
@@ -3759,7 +3773,7 @@ setup.haircolor= [
 ];
 
 setup.hairstyle=[
-    "Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long Bob", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro","Cornrow", "Mullet", "Wolf Cut", "Mid-length Dreads" ,"Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Bald",
+    "Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long Bob", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro","Cornrow", "Mullet", "Wolf Cut", "Mid-length Dreads", "Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Bald",
 ]
 
 setup.skincolor= [
@@ -11161,7 +11175,18 @@ _n.name is straddling your chest.
         
         &lt;&lt;case &quot;Oral Front&quot;&gt;&gt;&lt;&lt;include &quot;Stand-Front-Oral-Dialogue&quot;&gt;&gt;
         &lt;&lt;case &quot;Oral Back&quot;&gt;&gt;&lt;&lt;include &quot;Stand-Back-Oral-Dialogue&quot;&gt;&gt;
-	&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="Act-Quote-Mute" tags="nobr" position="1100,1600" size="100,100">/* For when the npc is mute and not capable of speech. */</tw-passagedata><tw-passagedata pid="130" name="Act-Quote" tags="Dialogue nobr" position="1225,1600" size="100,100">&lt;!-- only what the npc says --&gt;
+	&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="Act-Quote-React" tags="nobr" position="1100,1600" size="100,100">/* Character non verbal reaction, also works if the character is mute. */
+
+
+&lt;br&gt;
+
+
+&lt;&lt;if $sex.act == &quot;Fuck Pussy&quot;&gt;&gt;
+    _n.name moans into the feeling of fucking a pussy.
+&lt;&lt;else&gt;&gt;
+    _n.name &lt;&lt;npcNoise&gt;&gt;s.
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="130" name="Act-Quote" tags="Dialogue nobr" position="1225,1600" size="100,100">&lt;!-- only what the npc says --&gt;
 
 &lt;&lt;set _a = $sex.act or &quot;none&quot;&gt;&gt;
 &lt;br&gt;
@@ -12665,6 +12690,7 @@ Create your character to begin.
   &lt;&lt;set $sex.role = &quot;Bottom&quot;&gt;&gt;
   &lt;&lt;run setup.updateTopBottom($sex)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+	
 
 /* ALWAYS rebind Top/Bottom to current */
 /*&lt;&lt;set $sex.Top = $mc&gt;&gt;
@@ -12680,12 +12706,9 @@ Create your character to begin.
 
 
 
-
-
 /*Arousal meter for both $mc and _n */
 &lt;&lt;set _n.arousal = _n.arousal or 0&gt;&gt;
 &lt;&lt;set $mc.arousal = $mc.arousal or 0&gt;&gt;
-
 
 
 
@@ -14787,7 +14810,11 @@ Create your character to begin.
 			&lt;&lt;set _char.genitaltype = setup.pick(setup.penistype)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="Widgets" tags="widget nobr" position="1225,2225" size="100,100">/* gets the room based on your location and issues where you start at */
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="Widgets" tags="widget nobr" position="1225,2225" size="100,100">&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;&lt;&lt;print setup.pick(setup.noise[_n.species] || setup.noise[_n.anthro.subtype])&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+
+
+/* gets the room based on your location and issues where you start at */
 &lt;&lt;widget &quot;GetRoom&quot;&gt;&gt;
     &lt;&lt;if $gamelocation ==&quot;Your Room&quot;&gt;&gt;
         &lt;&lt;set $room = {
@@ -14858,6 +14885,13 @@ Create your character to begin.
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;SexEncounterUI&quot;&gt;&gt;
+    &lt;&lt;set _climaxquote = (Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;))
+	? &quot;Act-Quote-React&quot;
+	: either(&quot;Orgasm-Close-Quote&quot;, &quot;Act-Quote-React&quot;)&gt;&gt;
+
+    &lt;&lt;set _quotePassage= (Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;))
+	? &quot;Act-Quote-React&quot;
+	: either(&quot;Act-Quote&quot;, &quot;Act-Quote-React&quot;)&gt;&gt;
 &lt;div id=&quot;sexUI&quot;&gt;
 
 	&lt;!-- ===================== --&gt;
@@ -15006,7 +15040,7 @@ Create your character to begin.
 
 										&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
                                             &lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
-                                            &lt;&lt;include &quot;Act-Quote&quot;&gt;&gt;
+                                            &lt;&lt;include _quotePassage&gt;&gt;
 										&lt;&lt;/replace&gt;&gt;
                                         &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 										&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -15056,22 +15090,14 @@ Create your character to begin.
                                     &lt;&lt;if $sex.phase==&quot;climax&quot;&gt;&gt;
                                         &lt;&lt;replace &quot;#intro&quot;&gt;&gt;
                                             &lt;&lt;include &quot;Orgasm-Close-Dialogue&quot;&gt;&gt;&lt;br&gt;
-                                            &lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
-                                                &lt;&lt;include &quot;Act-Quote-Mute&quot;&gt;&gt;
-                                            &lt;&lt;else&gt;&gt;
-                                                &lt;&lt;include &quot;Orgasm-Close-Quote&quot;&gt;&gt;
-                                            &lt;&lt;/if&gt;&gt;
+                                            &lt;&lt;include _climaxquote&gt;&gt;
 		                                &lt;&lt;/replace&gt;&gt;
                                     &lt;&lt;else&gt;&gt;
                                         &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 
 										&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
                                             &lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
-                                            &lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
-                                                &lt;&lt;include &quot;Act-Quote-Mute&quot;&gt;&gt;
-                                            &lt;&lt;else&gt;&gt;
-                                                &lt;&lt;include &quot;Act-Quote&quot;&gt;&gt;
-                                            &lt;&lt;/if&gt;&gt;    
+	                                        &lt;&lt;include _quotePassage&gt;&gt;
 										&lt;&lt;/replace&gt;&gt;
                                         &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 										&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -15165,7 +15191,7 @@ Create your character to begin.
 						&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
                             &lt;&lt;include &quot;OrgasmDialogue&quot;&gt;&gt;&lt;br&gt;
                             &lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
-                                &lt;&lt;include &quot;Act-Quote-Mute&quot;&gt;&gt;
+                                &lt;&lt;include &quot;Act-Quote-React&quot;&gt;&gt;
                             &lt;&lt;else&gt;&gt;
                                 &lt;&lt;include &quot;Orgasm-Quote&quot;&gt;&gt;
                             &lt;&lt;/if&gt;&gt;

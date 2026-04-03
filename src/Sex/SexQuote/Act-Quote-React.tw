@@ -1,0 +1,14 @@
+:: Act-Quote-React [nobr]
+
+/* Character non verbal reaction, also works if the character is mute. */
+
+
+<br>
+
+
+<<if $sex.act == "Fuck Pussy">>
+    _n.name <<npcNoise>>s into the feeling of fucking a pussy.
+<<else>>
+    _n.name <<npcNoise>>s.
+<</if>>
+<br>
