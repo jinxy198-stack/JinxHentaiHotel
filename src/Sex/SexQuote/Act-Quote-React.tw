@@ -5,10 +5,15 @@
 
 <br>
 
-
-<<if $sex.act == "Fuck Pussy">>
-    _n.name <<npcNoise>>s into the feeling of fucking a pussy.
+<<if $sex.phase == "climax">>
+    _n.name <<npcNoise>>s from the pleasure.
 <<else>>
-    _n.name <<npcNoise>>s.
+    <<if $sex.act == "Fuck Pussy">>
+        _n.name <<npcNoise>>s into the feeling of fucking a pussy.
+    <<elseif $sex.act == "Cuddle">>
+        _n.name smiles and leans in.
+    <<else>>
+        _n.name <<npcNoise>>s from the pleasure.
+    <</if>>
 <</if>>
 <br>

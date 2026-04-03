@@ -7,7 +7,11 @@
 <<set _nosleep to false>>
 
 <<if _loc is "Your Room">>
-You go to sleep on your bed.
+
+	You go to sleep on your bed.
+	<<if $lastNpc>>
+	_n.name joins you. You both snuggle together in a warm and content naked embrace.
+	<</if>>
 <<link "Continue">>
 	<<goto "Wakeup">>
 <</link>>

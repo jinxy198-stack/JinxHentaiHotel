@@ -12,7 +12,7 @@
         location: "large floor",
         furnitureFlags: setup.getRoomFurnitureFlags("bedroom")
         }>>
-    <<elseif $gamelocation == "Bathroom">>
+    <<elseif $gamelocation == "Your Bathroom">>
         <<set $room = {
         type: "bathroom",
         location: "large floor",
@@ -89,7 +89,7 @@
 	<!-- ===================== -->
 	<div id="UI-Stats">
 		<h3><u>Info</u></h3>
-        
+        <b>Current Room:</b> <<print $gamelocation>><br>
 		<b>Current Position:</b> <<print $sex.position>><br>
 		<b>Previous Position:</b> <<print $sex.previousPosition || "None">><br>
 		<b>Role:</b> <<print $sex.role>><br>

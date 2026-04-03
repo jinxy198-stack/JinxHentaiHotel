@@ -144,13 +144,13 @@ setup.RoomTypes.furniture = {
     {
         label: "bed",
         preposition: "on",
-        flags: ["horizontal surface", "seat", "bench"], /* added bench */
+        flags: ["horizontal surface", "large seat", "bench"], /* added bench */
     },
     "futon":
     {
         label: "futon",
         preposition: "on",
-        flags: ["horizontal surface", "seat"],
+        flags: ["horizontal surface", "small seat"],
     },
     "bench":
     {
@@ -162,7 +162,7 @@ setup.RoomTypes.furniture = {
     {
         label: "couch",
         preposition: "on",
-        flags: ["horizontal surface", "seat"],
+        flags: ["horizontal surface", "large seat"],
     },
     "sofa":
     {
@@ -186,7 +186,7 @@ setup.RoomTypes.furniture = {
     {
         label: "toilet",
         preposition: "on",
-        flags: ["seat"],
+        flags: ["small seat"],
     },
     "shower":
     {

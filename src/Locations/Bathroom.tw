@@ -28,5 +28,10 @@
 <<button "Go back">>
     <<goto "Your Room">>
 <</button>>
-
+<<if $lastNpc>>
+    <<button "Fuck _n.name in the bathroom">>
+    	<<WithNPC _n.id>>
+	    <<run Dialog.create("Propose sex with " + $ui.npc.name).wikiPassage("UI-Attracted-check").open()>>
+	<</button>>
+<</if>>    
 </div>

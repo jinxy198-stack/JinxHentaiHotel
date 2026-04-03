@@ -59,7 +59,7 @@ setup.sexpositions = {
         "label Bottom": "seated",
         primary: true,
         "secondary positions": ["Standing", "Sit On Face"],
-        furniture: ["seat"],
+        furniture: ["large seat"],
     },
     "Perched Oral Service":
     {
@@ -72,7 +72,7 @@ setup.sexpositions = {
         "label Top": "seated",
         primary: true,
         "secondary positions": ["Standing", "Sit On Face"],
-        furniture: ["seat"],
+        furniture: ["small seat", "large seat"],
     },
     "Underneath Oral Service":
     {
@@ -171,7 +171,7 @@ setup.sexpositions = {
         "label Bottom": "bent over",
         primary: true,
         "secondary positions": ["Standing", "Standing Before"],
-        furniture: ["seat"],
+        furniture: ["small seat","large seat"],
         furniturePrepositionIncluded: true,
         "Top dialogue tags": ["from behind Top"],
         "Bottom dialogue tags": ["from behind Bottom"],
@@ -268,7 +268,7 @@ setup.sexpositions = {
         "label Bottom": "sitting",
         primary: true,
         "secondary positions": ["Squatting Before"],
-        furniture: ["horizontal surface", "seat"],
+        furniture: ["horizontal surface", " small seat"],
     },
     "Sit On Face":
     {

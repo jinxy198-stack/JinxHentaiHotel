@@ -4020,13 +4020,13 @@ setup.RoomTypes.furniture = {
     {
         label: "bed",
         preposition: "on",
-        flags: ["horizontal surface", "seat", "bench"], /* added bench */
+        flags: ["horizontal surface", "large seat", "bench"], /* added bench */
     },
     "futon":
     {
         label: "futon",
         preposition: "on",
-        flags: ["horizontal surface", "seat"],
+        flags: ["horizontal surface", "small seat"],
     },
     "bench":
     {
@@ -4038,7 +4038,7 @@ setup.RoomTypes.furniture = {
     {
         label: "couch",
         preposition: "on",
-        flags: ["horizontal surface", "seat"],
+        flags: ["horizontal surface", "large seat"],
     },
     "sofa":
     {
@@ -4062,7 +4062,7 @@ setup.RoomTypes.furniture = {
     {
         label: "toilet",
         preposition: "on",
-        flags: ["seat"],
+        flags: ["small seat"],
     },
     "shower":
     {
@@ -4163,7 +4163,7 @@ setup.sexpositions = {
         "label Bottom": "seated",
         primary: true,
         "secondary positions": ["Standing", "Sit On Face"],
-        furniture: ["seat"],
+        furniture: ["large seat"],
     },
     "Perched Oral Service":
     {
@@ -4176,7 +4176,7 @@ setup.sexpositions = {
         "label Top": "seated",
         primary: true,
         "secondary positions": ["Standing", "Sit On Face"],
-        furniture: ["seat"],
+        furniture: ["small seat", "large seat"],
     },
     "Underneath Oral Service":
     {
@@ -4275,7 +4275,7 @@ setup.sexpositions = {
         "label Bottom": "bent over",
         primary: true,
         "secondary positions": ["Standing", "Standing Before"],
-        furniture: ["seat"],
+        furniture: ["small seat","large seat"],
         furniturePrepositionIncluded: true,
         "Top dialogue tags": ["from behind Top"],
         "Bottom dialogue tags": ["from behind Bottom"],
@@ -4372,7 +4372,7 @@ setup.sexpositions = {
         "label Bottom": "sitting",
         primary: true,
         "secondary positions": ["Squatting Before"],
-        furniture: ["horizontal surface", "seat"],
+        furniture: ["horizontal surface", " small seat"],
     },
     "Sit On Face":
     {
@@ -6890,7 +6890,7 @@ Now get up $mc.name .&quot;
 Remember to follow the golden rule:
 
 Consent is required.</tw-passagedata><tw-passagedata pid="4" name="Credits" tags="" position="150,25" size="100,100">The following are assets and characters I do not claim to own yet use them in the creation and development of the game. 
-The &#39;&#39;Character Creator Template&#39;&#39; section was created by manonamora on Twine 2/Tweego with SugarCube (2.37.3). Heavily modified but was very important for development.
+The &#39;Character Creator &#39; section was created by manonamora on Twine 2/Tweego with SugarCube (2.37.3). Heavily modified but was very important for development.
 
 
 
@@ -6899,7 +6899,9 @@ Camp Buddy is a Yaoi Visual Novel game created by BLit&#39;s Games.
 
 Kevin Snowpaw is an OC created by KevinSnowpaw.
 Carla and Carlos Lovelie are twin OC&#39;s created by LewdmasterLora
-Joshua is a OC created by DragonSoul.</tw-passagedata><tw-passagedata pid="5" name="Disclaimer" tags="" position="275,25" size="100,100">Warning, this game will contain many simulated sexual interactions that is meant to appeal to many different kinks and fetishes including underage and zoophilia. I don&#39;t intend on restricting the content but I can give you the option to not engage when scenarios you do not like occurs.
+Joshua is a OC created by DragonSoul.
+
+Any other character that does not belong to me will have their source material referenced, otherwise it will be labled &quot;Random Person&quot;</tw-passagedata><tw-passagedata pid="5" name="Disclaimer" tags="" position="275,25" size="100,100">Warning, this game will contain many simulated sexual interactions that is meant to appeal to many different kinks and fetishes including underage and zoophilia. I don&#39;t intend on restricting the content but I can give you the option to not engage when scenarios you do not like occurs.
 While I cannot list all the content that is or will be included I can list what I will not include in the game (might grow over time):
 *Noncon
 *Watersports
@@ -7867,14 +7869,18 @@ You decide to eat &lt;&lt;print _food.aoran ? _food.aoran : &quot;a&quot;&gt;&gt
 &lt;&lt;set _nosleep to false&gt;&gt;
 
 &lt;&lt;if _loc is &quot;Your Room&quot;&gt;&gt;
-You go to sleep on your bed.
+
+	You go to sleep on your bed.
+	&lt;&lt;if $lastNpc&gt;&gt;
+	_n.name joins you. You both snuggle together in a warm and content naked embrace.
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;link &quot;Continue&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Wakeup&quot;&gt;&gt;
 &lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Wakeup" tags="nobr" position="350,475" size="100,100">&lt;&lt;set _loc to $gamelocation&gt;&gt;
 &lt;&lt;set _getuppassage to _loc&gt;&gt;
 
-You wake up
+You wake up &lt;&lt;if $lastNpc&gt;&gt;$lastNpc.name is sleeping next to you but soon after they open their eyes and look at yours.&lt;&lt;/if&gt;&gt;
 &lt;br&gt;
 
 &lt;&lt;link &quot;Get up&quot; _getuppassage&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -7949,7 +7955,12 @@ WORK IN PROGESS
 &lt;&lt;button &quot;Go back&quot;&gt;&gt;
     &lt;&lt;goto &quot;Your Room&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-
+&lt;&lt;if $lastNpc&gt;&gt;
+    &lt;&lt;button &quot;Fuck _n.name in the bathroom&quot;&gt;&gt;
+    	&lt;&lt;WithNPC _n.id&gt;&gt;
+	    &lt;&lt;run Dialog.create(&quot;Propose sex with &quot; + $ui.npc.name).wikiPassage(&quot;UI-Attracted-check&quot;).open()&gt;&gt;
+	&lt;&lt;/button&gt;&gt;
+&lt;&lt;/if&gt;&gt;    
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="37" name="Brothel" tags="nobr" position="850,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Brothel&quot;&gt;&gt;
 
 You enter a lavish brothel.
@@ -8189,13 +8200,13 @@ On the other side there was a door to your bathroom.
     &lt;&lt;goto &quot;Hotel Hallway&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;if $lastNpc&gt;&gt;
-&lt;&lt;button &quot;Go to the bathroom with _n.name&quot;&gt;&gt;
-    &lt;&lt;goto &quot;Bathroom&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+	&lt;&lt;button &quot;Go to the bathroom with _n.name&quot;&gt;&gt;
+    	&lt;&lt;goto &quot;Bathroom&quot;&gt;&gt;
+	&lt;&lt;/button&gt;&gt;
 &lt;&lt;else&gt;&gt;
-&lt;&lt;button &quot;Go to the bathroom&quot;&gt;&gt;
-    &lt;&lt;goto &quot;Bathroom&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+	&lt;&lt;button &quot;Go to the bathroom&quot;&gt;&gt;
+    	&lt;&lt;goto &quot;Bathroom&quot;&gt;&gt;
+	&lt;&lt;/button&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;
 
@@ -9870,13 +9881,13 @@ He brushes your cheek with his hand.
 		)&gt;&gt;
 		&lt;br&gt;
 		&lt;&lt;=either(
-			&quot;_n.name lets out a moan as $proset.they enter you, eagerly bucking _n.name&#39;s _n.body.Hips up as _n.name start fucking your $mc.assSize ass.&quot;,
-			&quot;With a moan, _n.name eagerly thrust _n.name&#39;s _n.body.Hips up into your $mc.assSize ass, sinking _n.name&#39;s &lt;&lt;=_n.genitals.toLowerCase()&gt;&gt; into your $mc.assSize ass as _n.name start energetically fucking you.&quot;,
+			&quot;_n.name lets out a moan as $proset.they enter you, eagerly bucking _n.name&#39;s &lt;&lt;=_n.body.Hip.toLowerCase()&gt;&gt; up as _n.name start fucking your $mc.assSize ass.&quot;,
+			&quot;With a moan, _n.name eagerly thrust _n.name&#39;s &lt;&lt;=_n.body.Hip.toLowerCase()&gt;&gt; up into your &lt;&lt;=$mc.assSize.toLowerCase()&gt;&gt; ass, sinking _n.name&#39;s &lt;&lt;=_n.genitals.toLowerCase()&gt;&gt; into your &lt;&lt;=$mc.assSize.toLowerCase()&gt;&gt; ass as _n.name start energetically fucking you.&quot;,
 			&quot;_n.name lets out a moan as $proset.they enter you, bucking $proset.their _n.body.Hips up as _n.name start fucking your $mc.assSize ass.&quot;,
 			&quot;With a moan, _n.name thrust $proset.their _n.body.Hips up into your $mc.assSize ass, sinking _n.name&#39;s &lt;&lt;=_n.genitals.toLowerCase()&gt;&gt; into your $mc.assSize ass as _n.name starts fucking you.&quot;
 		)&gt;&gt;
 	&lt;&lt;elseif $sex.position == &quot;Reverse Cowgirl&quot;&gt;&gt;
-		You lower your ass onto _n.name&#39;s _n.genitals.	
+		You lower your ass onto _n.name&#39;s &lt;&lt;=_n.genitals.toLowerCase()&gt;&gt;.	
 	&lt;&lt;elseif $sex.position == &quot;Missionary&quot;&gt;&gt;
 		&lt;&lt;=either(
 		&quot;_n.name enters your ass in the missionary position.&quot;,
@@ -9894,7 +9905,7 @@ He brushes your cheek with his hand.
 		_n.name enters your ass.	
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $sex.act == &quot;Fuck Ass&quot;&gt;&gt;
-	&lt;&lt;if $sex.position == &quot;Cowgirl&quot;&gt;&gt;
+	&lt;&lt;if $sex.position == &quot;Cowgirl&quot; || $sex.position == &quot;Reverse Cowgirl&quot;&gt;&gt;
 		&lt;&lt;=either(
 			&quot;_n.name bounced up and down on your &lt;&lt;=$mc.genitals.toLowerCase()&gt;&gt; in a controlled motion.&quot;,
 			&quot;_n.name&#39;s paced increased, pushing your &lt;&lt;=$mc.genitals.toLowerCase()&gt;&gt; deeper into $proset.their hole.&quot;,
@@ -9915,7 +9926,7 @@ He brushes your cheek with his hand.
 	&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $sex.act == &quot;Take Cock In Ass&quot;&gt;&gt;
-	&lt;&lt;if $sex.position == &quot;Cowgirl&quot;&gt;&gt;
+	&lt;&lt;if $sex.position == &quot;Cowgirl&quot; || $sex.position == &quot;Reverse Cowgirl&quot;&gt;&gt;
 		&lt;&lt;=either(
 			&quot;Using your legs, you slowly lift yourself up and down, sliding _n.name&#39;s &lt;&lt;=_n.genitals.toLowerCase()&gt;&gt; in and out of your $mc.assSize ass as you moan out loud.&quot;,
 			&quot;Leaning forwards, you use your $mc.body.Hands to support some of your weight as you slowly slide up and down on _n.name&#39;s &lt;&lt;=_n.genitals.toLowerCase()&gt;&gt;.&quot;,
@@ -10460,7 +10471,7 @@ You rub your pussy against _n.name&#39;s feet.
 &lt;&lt;elseif $sex.act ==&quot;Wrap Hand Around Cock&quot;&gt;&gt;
 	&lt;&lt;=either(
     	&quot;_n.name wraps their &lt;&lt;=_n.body.Hand.toLowerCase()&gt;&gt; around your &lt;&lt;=$mc.genitals.toLowerCase()&gt;&gt;.&quot;,
-		&quot;_n.name squeezed your shaft, enjoying how it throbbed in their  &lt;&lt;=_n.body.hand.toLowerCase()&gt;&gt;.&quot;
+		&quot;_n.name squeezed your shaft, enjoying how it throbbed in their  &lt;&lt;=_n.body.Hand.toLowerCase()&gt;&gt;.&quot;
 	)&gt;&gt;
 &lt;&lt;elseif $sex.act ==&quot;Pump Shaft&quot;&gt;&gt;
 	&lt;&lt;if $sex.role==&quot;Bottom&quot;&gt;&gt;
@@ -10489,8 +10500,11 @@ You rub your pussy against _n.name&#39;s feet.
 &lt;&lt;elseif $sex.act ==&quot;Tease Tip&quot;&gt;&gt;
 	You tease the tip of _n.name&#39;s &lt;&lt;=_n.genitals.toLowerCase()&gt;&gt;, giving extra stimulation.
 &lt;&lt;elseif $sex.act ==&quot;Play with Foreskin&quot;&gt;&gt;
-	You play with their foreskin, being the top?
-
+	&lt;&lt;if $sex.role==&quot;Bottom&quot;&gt;&gt;
+	You play with _n.name&#39;s foreskin.
+	&lt;&lt;elseif $sex.role ==&quot;Top&quot;&gt;&gt;
+	_n.name plays with your foreskin.
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="Hotdog-Dialogue" tags="nobr" position="975,975" size="100,100">&lt;&lt;if  $sex.act == &quot;Hotdog&quot;&gt;&gt;
 You push the cheeks of _n.name&#39;s _n.assSize ass together around your $mc.penislength cock as you thrust between them.
 
@@ -10859,7 +10873,7 @@ You rabbit fuck.
 You deep stroke.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="Against-Wall-Dialogue" tags="nobr Dialogue" position="975,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
-/*Suppoded to be facing each other against the wall. */
+/*Supposed to be facing each other against the wall. */
 &lt;&lt;if $sex.role== &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
    	&quot;You quickly move up against a nearby wall. Placing your hands up against the solid surface that&#39;s now in front of you, you push your &lt;&lt;=$mc.assSize.toLowerCase()&gt;&gt; ass out, shaking it at _n.name as you try to encourage $proset.them to fuck you like this.&quot;
@@ -10884,18 +10898,18 @@ You bend _n.name over on the $room.location and step up behind $proset.them.
 _n.name bends you over on the $room.location and steps up behind you.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="Cowgirl-Dialogue" tags="Dialogue nobr" position="875,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
-&lt;&lt;if $sex.role ==&quot;Top&quot;&gt;&gt;
+&lt;&lt;if $sex.role ==&quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
-		&quot;Taking hold of  _n.name&#39;s shoulders, you push  $proset.them  down onto $proset.their back. You then lower yourself down on top of  $proset.them , bringing your crotch down to bump against $proset.theirs as you straddle $proset.them in the cowgirl position. Once you&#39;ve made yourself comfortable, you grin down at _n.name.&quot;,
+		&quot;Taking hold of  _n.name&#39;s shoulders, you push $proset.them down onto $proset.their back. You then lower yourself down on top of  $proset.them, bringing your crotch down to bump against $proset.theirs as you straddle $proset.them in the cowgirl position. Once you&#39;ve made yourself comfortable, you grin down at _n.name.&quot;,
 		&quot;Lifting your $mc.body.Arms, you take hold of _n.name&#39;s shoulders, and with a little pressure, try to get $proset.them to drop down onto $proset.their back as you smirk. &quot;,
-		&quot;Taking hold of _n.name&#39;s shoulders, you pull $proset.them down with you as you lie down on your back. With a firm grip on _n.name&#39;s _n.body.Hips, you push $proset.them back so that they are straddling you in the cowgirl position. Once you&#39;ve made yourself comfortable, you look up at _n.name and smile.&quot;,
+		&quot;Taking hold of _n.name&#39;s shoulders, you pull $proset.them down with you as you lie down on your back. With a firm grip on _n.name&#39;s _n.body.Hip, you push $proset.them back so that they are straddling you in the cowgirl position. Once you&#39;ve made yourself comfortable, you look up at _n.name and smile.&quot;,
 		&quot;You climb on top of _n.name, sitting on their crotch.&quot;
 	)&gt;&gt;
-&lt;&lt;elseif $sex.role==&quot;Bottom&quot;&gt;&gt;
+&lt;&lt;elseif $sex.role==&quot;Top&quot;&gt;&gt;
 	&lt;&lt;=either(
-		&quot;Dropping down and quickly lying on your back, you put on the most enticing look you can muster as you plead, &quot;,
-		&quot;Jumping down over the top of you, &quot; + _n.name + &quot; lowers &quot; + $proset.themself + &quot; down over your groin, bringing &quot; + $proset.their + &quot; crotch to yours as &quot; + $proset.they + &quot; straddle you in the cowgirl position. Leaning forward a little, &quot; + $proset.they + &quot; grin down at you, &quot;,
-		&quot;Allowing you to push  $proset.them down, _n.name reaches up and takes a firm grip on your $mc.body.Hips, before pulling you down so that you&#39;re straddling $proset.them in the cowgirl position. Looking up into your &lt;&lt;=$mc.eye.toLowerCase()&gt;&gt; eyes, $proset.they smiles &quot;,
+		&quot;Dropping down and quickly lying on your back, _n.name gets on top and straddles your waist,&quot;,
+		&quot;Jumping down over the top of you, _n.name lowers $proset.themself down over your groin, bringing $proset.their crotch to yours as $proset.they straddle you in the cowgirl position. Leaning forward a little, $proset.they grin down at you,&quot;,
+		&quot;Allowing you to push  $proset.them down, _n.name reaches up and takes a firm grip on your $mc.body.Hips, before pulling you down so that you&#39;re straddling $proset.them in the cowgirl position. Looking up into your &lt;&lt;=$mc.eyes.toLowerCase()&gt;&gt; eyes, $proset.they smile&quot;,
 		&quot;_n.name climbed on top of you.&quot;
 	)&gt;&gt;
 	&lt;br&gt;
@@ -11015,9 +11029,9 @@ You role _n.name onto their stomach on the $room.location and you lay on them.
 
 &lt;&lt;else&gt;&gt;
 You roll onto your stomach on the $room.location as _n.name lays on you.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="725,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="725,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
 You&#39;re on top of _n.name on the $room.location, straddling $proset.their hips, facing away to give them a view of your ass.
-&lt;&lt;else&gt;&gt;
+&lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 _n.name is on top of you on the $room.location, straddling your hips, facing away to give you a view of their ass.
 
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="Sit-On-Lap-Dialogue" tags="Dialogue nobr" position="1075,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
@@ -11180,11 +11194,16 @@ _n.name is straddling your chest.
 
 &lt;br&gt;
 
-
-&lt;&lt;if $sex.act == &quot;Fuck Pussy&quot;&gt;&gt;
-    _n.name moans into the feeling of fucking a pussy.
+&lt;&lt;if $sex.phase == &quot;climax&quot;&gt;&gt;
+    _n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure.
 &lt;&lt;else&gt;&gt;
-    _n.name &lt;&lt;npcNoise&gt;&gt;s.
+    &lt;&lt;if $sex.act == &quot;Fuck Pussy&quot;&gt;&gt;
+        _n.name &lt;&lt;npcNoise&gt;&gt;s into the feeling of fucking a pussy.
+    &lt;&lt;elseif $sex.act == &quot;Cuddle&quot;&gt;&gt;
+        _n.name smiles and leans in.
+    &lt;&lt;else&gt;&gt;
+        _n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure.
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;</tw-passagedata><tw-passagedata pid="130" name="Act-Quote" tags="Dialogue nobr" position="1225,1600" size="100,100">&lt;!-- only what the npc says --&gt;
 
@@ -11201,8 +11220,6 @@ _n.name is straddling your chest.
     &lt;&lt;case &quot;Kiss Nipple&quot;&gt;&gt;_b&lt;&lt;include &quot;Kiss-Nipple-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Nipple&quot;&gt;&gt;_b&lt;&lt;include &quot;Lick-Nipple-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Nipple&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Nipple-Quote&quot;&gt;&gt;
-    /* &lt;&lt;case &quot;Rub Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt; */
-    /*&lt;&lt;case &quot;Pull Hand To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
     &lt;&lt;case &quot;Finger Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Finger-Pussy-Quote&quot;&gt;&gt;
     /* &lt;&lt;case &quot;Rub Clit&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt; */
     &lt;&lt;case &quot;Lick Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Cunnilingus-Quote&quot;&gt;&gt;
@@ -12154,7 +12171,7 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+	&quot;&lt;&lt;=either(..._pool)&gt;&gt;&quot;&quot;
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;,personality=&lt;&lt;=_personality&gt;&gt;, cum location=&lt;&lt;=_loc &gt;&gt; )
@@ -12663,7 +12680,6 @@ Create your character to begin.
 &lt;&lt;/if&gt;&gt;
 
 /* ensure room exists BEFORE UI */
-
 &lt;&lt;GetRoom&gt;&gt;
 
 
@@ -12723,10 +12739,10 @@ Create your character to begin.
 	&lt;div id=&quot;npcsex-dialogue&quot;&gt;
 		&lt;div id=&quot;intro&quot; class=&quot;intro&quot;&gt;
 			&lt;&lt;if _sexCount == 1&gt;&gt;
-				You both enter your room. You both strip naked, showing off your bare bodies to one another.
+				You both enter $gamelocation. You both strip naked, showing off your bare bodies to one another.
 				You both know what you&#39;re in for, but it&#39;s always a bit awkward with someone new.
-			&lt;&lt;elseif _sexCount &gt;= 5&gt;&gt;
-				You and &lt;&lt;=_n.name &gt;&gt; go to your hotel room.
+			&lt;&lt;elseif _sexCount &gt;= 2&gt;&gt;
+				You and &lt;&lt;=_n.name &gt;&gt; go to $gamelocation.
 				Almost professionally, you both strip until you are nude.
 				&lt;&lt;=$proset.theyUp &gt;&gt; appears up for whatever you have in mind.
 			&lt;&lt;else&gt;&gt;
@@ -12807,7 +12823,11 @@ Create your character to begin.
 &lt;&lt;button &quot;Go have sex&quot;&gt;&gt;
 	&lt;&lt;WithNPC _n.id&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
-	&lt;&lt;set $gamelocation = &quot;Your Room&quot;&gt;&gt;
+	&lt;&lt;if $gamelocation != &quot;Your Bathroom&quot;&gt;&gt;
+		&lt;&lt;set $gamelocation = &quot;Your Room&quot;&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set $gamelocation = $gamelocation&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;goto &quot;Test-Sex-Encounter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;else&gt;&gt;
@@ -14623,7 +14643,7 @@ Create your character to begin.
 		&lt;&lt;case &quot;Furry&quot;&gt;&gt;
 			&lt;&lt;set _char.body.Bodymaterial to &quot;Fur&quot;&gt;&gt;
 			&lt;&lt;set _char.body.Feet         to &quot;Paws&quot;&gt;&gt;
-			&lt;&lt;set _char.body.Ears         to &quot;Furry Ears&quot;&gt;&gt;
+			&lt;&lt;set _char.body.Ear         to &quot;Furry Ears&quot;&gt;&gt;
 			&lt;&lt;if !_char.body.Tail&gt;&gt;
 				&lt;&lt;set _char.body.Tail to &quot;Furry Tail&quot;&gt;&gt;
 			&lt;&lt;/if&gt;&gt;
@@ -14631,7 +14651,7 @@ Create your character to begin.
 
 			&lt;&lt;switch _sub&gt;&gt;
 				&lt;&lt;case &quot;canine&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Floopy Canine Ears&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Floopy Canine Ears&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Paw&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Bushy Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -14639,7 +14659,7 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;bunny&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Long Bunny Ears&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Long Bunny Ears&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Paw&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Cotton Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -14647,7 +14667,7 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;feline&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Feline Ears&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Feline Ears&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Soft Paw&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Long Feline Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -14655,7 +14675,7 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;lion&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Feline Ears&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Feline Ears&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Soft Paw&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Long Feline Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -14663,7 +14683,7 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;bear&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Round Bear Ears&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Round Bear Ears&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Paw&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Stubby Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -14671,7 +14691,7 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;wolf&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Wolf Ears&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Wolf Ears&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Paw&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Bushy Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -14679,7 +14699,7 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;goat&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Goat Ears&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Goat Ears&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Hoof&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Short Goat Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -14687,7 +14707,7 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;mouse&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Big Round Ears&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Big Round Ears&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Paw&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Mouse Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -14695,13 +14715,13 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;pig&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Pig Ears&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Pig Ears&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Trotter&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Curly Tail&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Bodymaterial to &quot;Hide&quot;&gt;&gt;
 
 				&lt;&lt;case &quot;fox&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Fox Ears&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Fox Ears&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Paw&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Poofy Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -14709,7 +14729,7 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;deer&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Deer Ear&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Deer Ear&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Hoof&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Bushy Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -14738,7 +14758,7 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;dragon&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to &quot;Horned Frills&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Horned Frills&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Draconic Claw&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Spiked Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -14746,14 +14766,14 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 					&lt;&lt;set _char.anthro.wings   = setup.pick($anthroWingspans)&gt;&gt;
 				&lt;&lt;case &quot;alligator&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to null&gt;&gt;
+					&lt;&lt;set _char.body.Ear to null&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Spiked Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
 						&lt;&lt;set _char.genitaltype = either(&quot;Tapered&quot;,&quot;Cut&quot;,&quot;Uncut&quot;)&gt;&gt;
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;crocodile&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ears to null&gt;&gt;
+					&lt;&lt;set _char.body.Ear to null&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Spiked Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
 						&lt;&lt;set _char.genitaltype = either(&quot;Tapered&quot;,&quot;Cut&quot;,&quot;Uncut&quot;)&gt;&gt;
@@ -14822,7 +14842,7 @@ Create your character to begin.
         location: &quot;large floor&quot;,
         furnitureFlags: setup.getRoomFurnitureFlags(&quot;bedroom&quot;)
         }&gt;&gt;
-    &lt;&lt;elseif $gamelocation == &quot;Bathroom&quot;&gt;&gt;
+    &lt;&lt;elseif $gamelocation == &quot;Your Bathroom&quot;&gt;&gt;
         &lt;&lt;set $room = {
         type: &quot;bathroom&quot;,
         location: &quot;large floor&quot;,
@@ -14899,7 +14919,7 @@ Create your character to begin.
 	&lt;!-- ===================== --&gt;
 	&lt;div id=&quot;UI-Stats&quot;&gt;
 		&lt;h3&gt;&lt;u&gt;Info&lt;/u&gt;&lt;/h3&gt;
-        
+        &lt;b&gt;Current Room:&lt;/b&gt; &lt;&lt;print $gamelocation&gt;&gt;&lt;br&gt;
 		&lt;b&gt;Current Position:&lt;/b&gt; &lt;&lt;print $sex.position&gt;&gt;&lt;br&gt;
 		&lt;b&gt;Previous Position:&lt;/b&gt; &lt;&lt;print $sex.previousPosition || &quot;None&quot;&gt;&gt;&lt;br&gt;
 		&lt;b&gt;Role:&lt;/b&gt; &lt;&lt;print $sex.role&gt;&gt;&lt;br&gt;

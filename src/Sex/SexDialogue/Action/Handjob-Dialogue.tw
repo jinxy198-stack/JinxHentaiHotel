@@ -22,7 +22,7 @@
 <<elseif $sex.act =="Wrap Hand Around Cock">>
 	<<=either(
     	"_n.name wraps their <<=_n.body.Hand.toLowerCase()>> around your <<=$mc.genitals.toLowerCase()>>.",
-		"_n.name squeezed your shaft, enjoying how it throbbed in their  <<=_n.body.hand.toLowerCase()>>."
+		"_n.name squeezed your shaft, enjoying how it throbbed in their  <<=_n.body.Hand.toLowerCase()>>."
 	)>>
 <<elseif $sex.act =="Pump Shaft">>
 	<<if $sex.role=="Bottom">>

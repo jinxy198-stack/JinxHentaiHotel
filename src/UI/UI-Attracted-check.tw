@@ -71,7 +71,11 @@
 <<button "Go have sex">>
 	<<WithNPC _n.id>>
     <<run Dialog.close()>>
-	<<set $gamelocation = "Your Room">>
+	<<if $gamelocation != "Your Bathroom">>
+		<<set $gamelocation = "Your Room">>
+	<<else>>
+		<<set $gamelocation = $gamelocation>>
+	<</if>>
 	<<goto "Test-Sex-Encounter">>
 <</button>>
 <<else>>

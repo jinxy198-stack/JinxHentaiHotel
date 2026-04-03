@@ -22,13 +22,13 @@ On the other side there was a door to your bathroom.
     <<goto "Hotel Hallway">>
 <</button>>
 <<if $lastNpc>>
-<<button "Go to the bathroom with _n.name">>
-    <<goto "Bathroom">>
-<</button>>
+	<<button "Go to the bathroom with _n.name">>
+    	<<goto "Bathroom">>
+	<</button>>
 <<else>>
-<<button "Go to the bathroom">>
-    <<goto "Bathroom">>
-<</button>>
+	<<button "Go to the bathroom">>
+    	<<goto "Bathroom">>
+	<</button>>
 
 <</if>>
 

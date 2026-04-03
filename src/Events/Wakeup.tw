@@ -3,7 +3,7 @@
 <<set _loc to $gamelocation>>
 <<set _getuppassage to _loc>>
 
-You wake up
+You wake up <<if $lastNpc>>$lastNpc.name is sleeping next to you but soon after they open their eyes and look at yours.<</if>>
 <br>
 
 <<link "Get up" _getuppassage>><</link>>
