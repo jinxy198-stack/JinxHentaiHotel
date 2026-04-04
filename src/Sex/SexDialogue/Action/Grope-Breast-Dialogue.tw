@@ -2,36 +2,39 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<if $sex.position =="Doggy">>
-    <<if $sex.role == "Top">>
-	    <<=either(
-            "You reach under _n.name and grope their breasts."
-        )>>
-    <<else>>
-	    <<=either(
-            "_n.name reaches under you and gropes your breasts"
-        )>>
-    <</if>>
+<<set _nBreastSize = String(_n.breastsize || '').toLowerCase()>>
+<<set _mcBreastSize = String($mc.breastsize || '').toLowerCase()>>
+
+<<if $sex.position == "Doggy">>
+	<<if $sex.role == "Top">>
+		<<= either(
+			"You reach under _n.name and grope $proset.their <<= setup.partLower(_n, 'Breasts', 'breasts') >>."
+		) >>
+	<<else>>
+		<<= either(
+			"_n.name reaches under you and gropes your <<= setup.partLower($mc, 'Breasts', 'breasts') >>."
+		) >>
+	<</if>>
+
 <<elseif $sex.position == "Cowgirl">>
-    <<if $sex.role == "Top">>
-	    <<=either(
-            "Reaching up to _n.name's chest, they let out a soft moan as you start fondling and groping $proset.their <<=_n.breastsize.toLowerCase()>> breasts,"
-        )>>
-    <<else>>
-	    <<=either(
-            "Reaching down to your chest, you let out a moan as $proset.they start eagerly fondling and groping your <<=$mc.breastsize.toLowerCase()>> breasts,"
-        )>>
-    <</if>>
+	<<if $sex.role == "Top">>
+		<<= either(
+			"Reaching up to _n.name's chest, you start fondling and groping $proset.their <<=_nBreastSize>> <<= setup.partLower(_n, 'Breasts', 'breasts') >>. _n.name lets out a soft moan."
+		) >>
+	<<else>>
+		<<= either(
+			"Reaching down to your chest, _n.name starts eagerly fondling and groping your <<=_mcBreastSize>> <<= setup.partLower($mc, 'Breasts', 'breasts') >>, drawing a moan from your lips."
+		) >>
+	<</if>>
+
 <<else>>
-    <<if $sex.role == "Top">>
-	    <<=either(
-            "You reach over and grope _n.name's <<=_n.breastsize.toLowerCase()>> breasts,"
-        )>>
-    <<else>>
-	    <<=either(
-            "_n.name reaches over and gropes your <<=$mc.breastsize.toLowerCase()>> breasts,"
-        )>>
-    <</if>>    
+	<<if $sex.role == "Top">>
+		<<= either(
+			"You reach over and grope _n.name's <<=_nBreastSize>> <<= setup.partLower(_n, 'Breasts', 'breasts') >>."
+		) >>
+	<<else>>
+		<<= either(
+			"_n.name reaches over and gropes your <<=_mcBreastSize>> <<= setup.partLower($mc, 'Breasts', 'breasts') >>."
+		) >>
+	<</if>>
 <</if>>
-
-

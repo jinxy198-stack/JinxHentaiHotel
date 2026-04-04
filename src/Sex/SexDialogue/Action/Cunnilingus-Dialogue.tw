@@ -1,36 +1,39 @@
 :: Cunnilingus-Dialogue [nobr Dialogue] {"position":"900,1475","size":"100,100"}
 <<set _npc = _n>>
 <<PronounsSet>>
+
 <<if $sex.act == "Lick Pussy">>
 	<<if $sex.role == "Top">>
-		<<=either(
-			"Shifting your $mc.body.Hips, you reposition yourself to eagerly grind your <<=$mc.genitals.toLowerCase()>> against _n.name's <<=_n.body.Lip.toLowerCase()>>.",
-			"With a quick shift of your <<=$mc.body.Hip.toLowerCase()>>, you let out a moan as you greedily press your <<=$mc.genitals.toLowerCase()>> down against _n.name's <<=_n.body.Tongue.toLowerCase()>>.",
-			"Eagerly pressing your <<=$mc.genitals.toLowerCase()>> down against _n.name's mouth, you reposition so that you are grinding your <<=$mc.genitals.toLowerCase()>> against _n.name's <<=_n.body.Lip.toLowerCase()>>.",
-			"Shifting your <<=$mc.body.Hip.toLowerCase()>>, you reposition yourself to grind your <<=$mc.genitals.toLowerCase()>> against _n.name's <<=_n.body.Lip.toLowerCase()>>.",
-			"With a quick shift of your <<=$mc.body.Hip.toLowerCase()>>, you let out a moan as you press your <<=$mc.genitals.toLowerCase()>> down against _n.name's <<=_n.body.Tongue.toLowerCase()>>.",
-			"Pressing your $mc.genitals down against _n.name's mouth, you reposition so that you are grinding your <<=$mc.genitals.toLowerCase()>> against _n.name's <<=_n.body.Lip.toLowerCase()>>."
-		)>>
+		<<= either(
+			"Shifting your <<= setup.partLower($mc, 'Hips', 'hips') >>, you reposition yourself to eagerly grind your <<= setup.partLower($mc, 'genitals', 'genitals') >> against _n.name's <<= setup.partLower(_n, 'Lips', 'lips') >>.",
+			"With a quick shift of your <<= setup.partLower($mc, 'Hips', 'hips') >>, you let out a moan as you greedily press your <<= setup.partLower($mc, 'genitals', 'genitals') >> down against _n.name's <<= setup.partLower(_n, 'Tongue', 'tongue') >>.",
+			"Eagerly pressing your <<= setup.partLower($mc, 'genitals', 'genitals') >> down against _n.name's mouth, you reposition so that you are grinding your <<= setup.partLower($mc, 'genitals', 'genitals') >> against _n.name's <<= setup.partLower(_n, 'Lips', 'lips') >>.",
+			"Shifting your <<= setup.partLower($mc, 'Hips', 'hips') >>, you reposition yourself to grind your <<= setup.partLower($mc, 'genitals', 'genitals') >> against _n.name's <<= setup.partLower(_n, 'Lips', 'lips') >>.",
+			"With a quick shift of your <<= setup.partLower($mc, 'Hips', 'hips') >>, you let out a moan as you press your <<= setup.partLower($mc, 'genitals', 'genitals') >> down against _n.name's <<= setup.partLower(_n, 'Tongue', 'tongue') >>.",
+			"Pressing your <<= setup.partLower($mc, 'genitals', 'genitals') >> down against _n.name's mouth, you reposition so that you are grinding your <<= setup.partLower($mc, 'genitals', 'genitals') >> against _n.name's <<= setup.partLower(_n, 'Lips', 'lips') >>."
+		) >>
 	<<else>>
-		<<=either(
-			"_n.name repositions themself to eagerly grind $proset.their <<=_n.genitals.toLowerCase()>> against your <<=$mc.body.Lip.toLowerCase()>>.",
-			"With a quick shift of $proset.their <<=_n.body.Hip.toLowerCase()>>, _n.name lets out a moan as $proset.they greedily press $proset.their <<=_n.genitals.toLowerCase()>> down against your <<=$mc.body.Tongue.toLowerCase()>>.",
-			"Eagerly pressing $proset.their <<=_n.genitals.toLowerCase()>> down against your mouth, $proset.they reposition $proset.themselves so that $proset.they are grinding $proset.their <<=_n.genitals.toLowerCase()>> against your <<=$mc.body.Lip.toLowerCase()>>.",
-			"Shifting $proset.their <<=_n.body.Hip.toLowerCase()>>, $proset.they reposition $proset.themselves to grind $proset.their <<=_n.genitals.toLowerCase()>> against your <<=$mc.body.Lip.toLowerCase()>>.",
-			"With a quick shift of $proset.their _n.body.Hips, $proset.they let out a moan as $proset.they press $proset.their <<=_n.genitals.toLowerCase()>> down against your $mc.body.Tongue.",
-			"Pressing $proset.their <<=_n.genitals.toLowerCase()>> down against your mouth, $proset.they reposition $proset.themself so that $proset.they are grinding $proset.their <<=_n.genitals.toLowerCase()>> against your <<=$mc.body.Lip.toLowerCase()>>."
-		)>>
+		<<= either(
+			"_n.name repositions $proset.themselves to eagerly grind $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> against your <<= setup.partLower($mc, 'Lips', 'lips') >>.",
+			"With a quick shift of $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >>, _n.name lets out a moan as $proset.they greedily press $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> down against your <<= setup.partLower($mc, 'Tongue', 'tongue') >>.",
+			"Eagerly pressing $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> down against your mouth, $proset.they reposition $proset.themselves so that $proset.they are grinding $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> against your <<= setup.partLower($mc, 'Lips', 'lips') >>.",
+			"Shifting $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >>, $proset.they reposition $proset.themselves to grind $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> against your <<= setup.partLower($mc, 'Lips', 'lips') >>.",
+			"With a quick shift of $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >>, $proset.they let out a moan as $proset.they press $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> down against your <<= setup.partLower($mc, 'Tongue', 'tongue') >>.",
+			"Pressing $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> down against your mouth, $proset.they reposition $proset.themselves so that $proset.they are grinding $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> against your <<= setup.partLower($mc, 'Lips', 'lips') >>."
+		) >>
 	<</if>>
+
 <<elseif $sex.act == "Suck Clit">>
 	<<if $sex.role == "Top">>
-	You suck on _n.name's clit.
+		You suck on _n.name's <<= setup.partLower(_n, 'Clitoris', 'clit') >>.
 	<<else>>
-	_n.name sucks on your clit.
+		_n.name sucks on your <<= setup.partLower($mc, 'Clitoris', 'clit') >>.
 	<</if>>
+
 <<elseif $sex.act == "Ride Face">>
 	<<if $sex.role == "Top">>
-		You grind your pussy on _n.name's face.
+		You grind your <<= setup.partLower($mc, 'genitals', 'pussy') >> on _n.name's face.
 	<<else>>
-		_n.name grinds their pussy on your face.
+		_n.name grinds $proset.their <<= setup.partLower(_n, 'genitals', 'pussy') >> on your face.
 	<</if>>
 <</if>>

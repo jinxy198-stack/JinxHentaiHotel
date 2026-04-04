@@ -195,15 +195,15 @@
 		)>>
     <<elseif $mc.sexpref == "Submissive">>
 		<<=either(
-			"My ass loves your <<=_n.genitals.toLowerCase()>> !",
+			"My ass loves your <<= setup.partLower(_n, 'genitals', 'genitals') >> !",
 			"Good _n.petname! Keep sliding that delicious cock of yours in and out of my ass!",
 			"What a good _n.petname! Enjoy my ass as your reward now!",
 			"You like feeling my slutty little asshole gripping down on your cock?!",
-			"Good _n.petname! Push your <<=_n.genitals.toLowerCase()>> deep into my ass!",
-			"Keep going! Get that <<=_n.genitals.toLowerCase()>> deep in my ass like a good _n.petname!",
+			"Good _n.petname! Push your <<= setup.partLower(_n, 'genitals', 'genitals') >> deep into my ass!",
+			"Keep going! Get that <<= setup.partLower(_n, 'genitals', 'genitals') >> deep in my ass like a good _n.petname!",
 			"Yes! Fuck my ass! Fuck me harder! Don't stop!",
 			"Don't stop! Harder! Fuck my ass! Yes, yes, yes!",
-			"Oh yes! Fuck my ass! I love your <<=_n.genitals.toLowerCase()>> !"
+			"Oh yes! Fuck my ass! I love your <<= setup.partLower(_n, 'genitals', 'genitals') >> !"
 		)>>    
 	<<else>>
 		<<=either(

@@ -8,7 +8,7 @@
         )>>
     <<elseif $sex.role == "Top">>
 	    <<=either(
-            "You grab _n.name's <<=$mc.assSize.toLowerCase()>> ass."
+            "You grab _n.name's <<=_n.assSize.toLowerCase()>> ass."
         )>>
     <</if>>
 

@@ -7,6 +7,6 @@
 <<elseif $sex.act == "Cocktease With Ass">>
 <<=either(
     "You tease _n.name's cock with your ass.",
-    "You feel _n.name's <<=_n.genitals.toLowerCase()>> against your buttcheecks."
+    "You feel _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> against your buttcheecks."
     )>>
 <</if>>

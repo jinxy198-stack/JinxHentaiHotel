@@ -12,8 +12,8 @@
 	<<=either(
 		"Dropping down and quickly lying on your back, _n.name gets on top and straddles your waist,",
 		"Jumping down over the top of you, _n.name lowers $proset.themself down over your groin, bringing $proset.their crotch to yours as $proset.they straddle you in the cowgirl position. Leaning forward a little, $proset.they grin down at you,",
-		"Allowing you to push  $proset.them down, _n.name reaches up and takes a firm grip on your <<=$mc.body.Hips.toLowerCase()>>, before pulling you down so that you're straddling $proset.them in the cowgirl position. Looking up into your <<=$mc.eyes.toLowerCase()>> eyes, $proset.they smile",
-		"Taking hold of _n.name's shoulders, you pull $proset.them down with you as you lie down on your back. With a firm grip on _n.name's <<=_n.body.Hip.toLowerCase()>>, you push $proset.them back so that they are straddling you in the cowgirl position. Once you've made yourself comfortable, you look up at _n.name and smile.",
+		"Allowing you to push  $proset.them down, _n.name reaches up and takes a firm grip on your <<= setup.partLower($mc, 'Hips', 'hips') >>, before pulling you down so that you're straddling $proset.them in the cowgirl position. Looking up into your <<=$mc.eyes.toLowerCase()>> eyes, $proset.they smile",
+		"Taking hold of _n.name's shoulders, you pull $proset.them down with you as you lie down on your back. With a firm grip on _n.name's <<= setup.partLower(_n, 'Hips', 'hips') >>, you push $proset.them back so that they are straddling you in the cowgirl position. Once you've made yourself comfortable, you look up at _n.name and smile.",
 		"_n.name climbed on top of you."
 	)>>
 	<br>

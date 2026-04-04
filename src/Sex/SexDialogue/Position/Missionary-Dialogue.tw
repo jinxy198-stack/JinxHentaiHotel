@@ -4,13 +4,13 @@
 <<PronounsSet>>
 <<if $sex.role == "Top">>
 	<<=either(
-		"Taking hold of _n.name's shoulders, you push $proset.them  down onto  $proset.their  back. Kneeling down between  $proset.their <<=_n.body.Leg.toLowerCase()>>, you pause and look down into  $proset.their <<=_n.eye.toLowerCase()>> eyes.",
+		"Taking hold of _n.name's shoulders, you push $proset.them  down onto  $proset.their  back. Kneeling down between  $proset.their <<=_n.body.Leg.toLowerCase()>>, you pause and look down into  $proset.their <<=_n.eyes.toLowerCase()>> eyes.",
 		"_n.name lies down on your bed, lifting $proset.their feet in the air.",
 	)>>
 <<elseif $sex.role == "Bottom">>
 	<<=either(
-		"Taking hold of _n.name's shoulders, you push $proset.them down onto $proset.their knees. Kneeling down before $proset.them, you then lie down on your back, spreading your <<=$mc.body.Leg.toLowerCase()>> and look up into _n.name's <<=_n.eye.toLowerCase()>> eyes as you moan",
-		"Looking up at _n.name, you bite your lip and let out a moan, before spreading your <<=$mc.body.Leg.toLowerCase()>> and submissively presenting yourself, ready to be penetrated.",
+		"Taking hold of _n.name's shoulders, you push $proset.them down onto $proset.their knees. Kneeling down before $proset.them, you then lie down on your back, spreading your <<=$mc.body.Leg.toLowerCase()>>s and look up into _n.name's <<=_n.eyes.toLowerCase()>> eyes as you moan",
+		"Looking up at _n.name, you bite your lip and let out a moan, before spreading your <<=$mc.body.Leg.toLowerCase()>>s and submissively presenting yourself, ready to be penetrated.",
 		"You spread your legs for _n.name, presenting yourself in anticipation of being penetrated.",
 		"Pulling your <<=$mc.body.Feet.toLowerCase()>> back and to each side, you spread your <<=$mc.body.Leg.toLowerCase()>>, enticing _n.name to penetrate you.",
 		"You spread your <<=$mc.body.Leg.toLowerCase()>>, looking up at _n.name and biting your lip as you entice $proset.them to penetrate you.",

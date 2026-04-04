@@ -4,11 +4,11 @@
 <<PronounsSet>>
 <<if $sex.role == "Bottom">>
 	<<=either(
- 	"_n.name thrusts their _n.genitals between your $mc.breastsize breasts."
+ 	"_n.name thrusts their _n.genitals between your <<= setup.partLower($mc, 'breastsize', 'breastsize') >>."
     )>>
 <<else>>
 	<<=either(
-    "You thrust your $mc.genitals between _n.name's <<=_n.breastsize.toLowerCase()>> breasts."
+    "You thrust your $mc.genitals between _n.name's <<= setup.partLower(_n, 'breastsize', 'breastsize') >> breasts."
     )>>
 <</if>>
 

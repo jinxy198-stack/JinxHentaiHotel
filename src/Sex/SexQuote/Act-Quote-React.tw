@@ -3,8 +3,6 @@
 /* Character non verbal reaction, also works if the character is mute. */
 
 
-<br>
-
 <<if $sex.phase == "climax">>
     _n.name <<npcNoise>>s from the pleasure.
 <<else>>

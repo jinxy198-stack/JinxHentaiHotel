@@ -3,39 +3,42 @@
 <<PronounsSet>>
 
 <<if $sex.act == "Finger Pussy">>
-    <<if $sex.role == "Bottom">>
-	    <<=either(
- 	    "_n.name puts their finger in your <<=$mc.genitals.toLowerCase()>>."
-        )>>
-    <<elseif $sex.role == "Top">>
-	    <<=either(
-        "You put your finger in _n.name's <<=_n.genitals.toLowerCase()>>"
-        )>>
-    <</if>>
+	<<if $sex.role == "Bottom">>
+		<<= either(
+			"_n.name slides $proset.their <<= setup.partLower(_n, 'Finger', 'finger') >> into your <<= setup.partLower($mc, 'Vagina', 'pussy') >>."
+		) >>
+	<<elseif $sex.role == "Top">>
+		<<= either(
+			"You slide your <<= setup.partLower($mc, 'Finger', 'finger') >> into _n.name's <<= setup.partLower(_n, 'Vagina', 'pussy') >>."
+		) >>
+	<</if>>
 
-<<elseif $sex.act =="Finger Pussy(Continue)">>
-    <<if $sex.role == "Bottom">>
-	    <<=either(
- 	    "_n.name finger's your <<=$mc.genitals.toLowerCase()>>."
-        )>>
-    <<elseif $sex.role == "Top">>
-	    <<=either(
-        "You finger _n.name's <<=_n.genitals.toLowerCase()>>"
-        )>>
-    <</if>>
-<<elseif $sex.act =="Pull Hand To Pussy">>
-    You pull their hand to your pussy to finger you.
-<<elseif $sex.act=="Rub Clit">>  
-    <<if $sex.role == "Top">>
-	    <<=either(
- 	    "You rub _n.name's clit."
-        )>>
-    <<else>>
-	    <<=either(
-        "_n.name rubs your clit."
-        )>>
-    <</if>>
+<<elseif $sex.act == "Finger Pussy(Continue)">>
+	<<if $sex.role == "Bottom">>
+		<<= either(
+			"_n.name fingers your <<= setup.partLower($mc, 'Vagina', 'pussy') >>.",
+			"_n.name keeps moving $proset.their <<= setup.partLower(_n, 'Finger', 'finger') >> in and out of your <<= setup.partLower($mc, 'Vagina', 'pussy') >>."
+		) >>
+	<<elseif $sex.role == "Top">>
+		<<= either(
+			"You finger _n.name's <<= setup.partLower(_n, 'Vagina', 'pussy') >>.",
+			"You keep moving your <<= setup.partLower($mc, 'Finger', 'finger') >> in and out of _n.name's <<= setup.partLower(_n, 'Vagina', 'pussy') >>."
+		) >>
+	<</if>>
 
+<<elseif $sex.act == "Pull Hand To Pussy">>
+	<<= either(
+		"You pull $proset.their hand to your <<= setup.partLower($mc, 'Vagina', 'pussy') >>, urging $proset.them to finger you."
+	) >>
 
+<<elseif $sex.act == "Rub Clit">>
+	<<if $sex.role == "Top">>
+		<<= either(
+			"You rub _n.name's <<= setup.partLower(_n, 'Clitoris', 'clit') >>."
+		) >>
+	<<else>>
+		<<= either(
+			"_n.name rubs your <<= setup.partLower($mc, 'Clitoris', 'clit') >>."
+		) >>
+	<</if>>
 <</if>>
-
