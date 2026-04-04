@@ -777,3 +777,36 @@ setup.actBlockedByTraits = function (sex, act) {
 
   return subjBlocked || objBlocked;
 };
+
+setup.resetSexSession = function () {
+    const V = State.variables;
+
+    if (V.mc) {
+        V.mc.arousal = 0;
+    }
+
+    if (V.ui && V.ui.npc) {
+        V.ui.npc.arousal = 0;
+    }
+
+    V.orgasm = { top: false, bottom: false };
+    V.seenActions = {};
+
+    V.sex = {
+        roles: V.sex?.roles || { dom: null, sub: null },
+        role: null,
+        top: null,
+        bottom: null,
+        position: "Standing",
+        engagedParts: { top: [], bottom: [] },
+        penetration: null,
+        phase: "tease",
+        history: [],
+        act: "Waiting",
+        furnitureFlags: [],
+        climax: {},
+        cumReady: false,
+        stage: "foreplay",
+        log: []
+    };
+};

@@ -1,75 +1,95 @@
 ::OrgasmDialogue [nobr]
 
-<<if $sex.Top.chosenCumLocation>>
-    <<set _cumLoc = $sex.Top.chosenCumLocation >>
-<<elseif = $sex.Bottom.chosenCumLocation>>
-    <<set _cumLoc = $sex.Bottom.chosenCumLocation >>
-<</if>>
+<<set _top = $sex.Top>>
+<<set _bottom = $sex.Bottom>>
 
-<<if _cumLoc == "in ass">>
-    <<if $sex.role == "Top">>
-        <<if $sex.position == "Cowgirl">>
-            _n.name slams down one final time before you let out a moan and unload into their ass. They shudder at the warmth filling them.
-        <<else>>
-            You shoot cum in their ass.
-        <</if>>
-        <<if $mc.genitaltype is "knotted">>
-        <br>
-            Even after your balls have pumped their entire load into _n.name, your knot remains swollen, locking the two of you together.
-        <</if>>
-    <<elseif $sex.role == "Bottom">>
-        <<if $sex.position == "Cowgirl">>
-            You slam down one final time before _n.name lets out a moan and unloads into your ass. You feel the warmth fill you up.
-        <<elseif $sex.position == "Missionary">>
-			_n.name thrusts into you one last time before holding inside you and letting out a moan. You feel $proset.their cum shoot into your ass.    
-        <<else>>
-            _n.name shoots into your ass.
-        <</if>>
-        <<if _n.genitaltype is "knotted">>
-        <br>
-            Even after your balls have pumped their entire load into _n.name, your knot remains swollen, locking the two of you together.
-        <</if>>
-    <</if>>
+<<set _topClimax = !!$sex.climax.Top>>
+<<set _bottomClimax = !!$sex.climax.Bottom>>
 
-<<elseif _cumLoc == "in air">> 
-    You feel yourself release
-<<elseif _cumLoc == "in mouth">> 
-    <<if $sex.role == "Top">>
-        <<=either(	
-			"$proset.their tongue swirls around your <<=$mc.genital.toLowerCase>> some more, and soon you hit your limit. You shoot your load down $proset.their throat, though some still spills out the corners of $proset.their mouth.",
-			"With a cry of pleasure, you empty your balls into _n.name's hungry mouth."
-		)>>
-    <<elseif $sex.role == "Bottom">>
-        Before you know it, $proset.their cock swells in your mouth, and a hot stream of jizz shoots down your throat! You swallow as much as you can.
-    <</if>>
-<<elseif _cumLoc == "in pussy">>
-    <<if $sex.role == "Top">>
-        You moan and groan as you shoot your load into _n.name's _n.genitaltype _n.genitals.
-    <<elseif $sex.role == "Bottom">>
-        <<=either(
-			"_n.name thrusts into you one last time before holding inside you and letting out a moan. You feel $proset.their cum shoot into your <<=$mc.genitals.toLowerCase()>>.",
-			"_n.name convulses and grinds against your <<=$mc.genitals.toLowerCase()>> before shooting $proset.their load."
-		)>>
-    <</if>> 
-<<elseif _cumLoc == "on hand">>
-    <<if $sex.climax.Top >>
-        You cum on their hand.
-    <<elseif $sex.climax.Bottom>>
-        _n.name cums on your hand.
-    <</if>>
-<<elseif _cumLoc == "on stomach">>
-    <<if $sex.climax.Top >>
-        You cum on their stomach.
-    <<elseif $sex.climax.Bottom>>
-        _n.name cums on your stomach.
-    <</if>>
-<<else>>
-    <<if $sex.climax.Top >>
-        You cum.
-    <<elseif $sex.climax.Bottom>>
-        _n.name cums.
-    <</if>>
-<</if>> 
+<<set _cumLoc = _top.chosenCumLocation || _bottom.chosenCumLocation || "">>
 
+<!-- optional: only if you still use _n / $proset elsewhere -->
+<<set _n = (_top === $mc) ? _bottom : _top>>
 
+<<set _mcGen = String($mc.genitals || $mc.genital || "genitals").toLowerCase()>>
+<<set _bottomGen = String(_bottom.genitals || _bottom.genital || "genitals").toLowerCase()>>
+<<set _bottomType = String(_bottom.genitaltype || "").toLowerCase()>>
 
+<<switch _cumLoc>>
+
+	<<case "in ass">>
+		<<if _topClimax>>
+			<<if $sex.position == "Cowgirl">>
+				<<gram _bottom "subjCap">> slams down one final time before you let out a moan and unload into <<gram _bottom "poss">> ass. <<gram _bottom "subjCap">> shudders at the warmth filling <<gram _bottom "poss">> insides.
+			<<else>>
+				<<gram _top "subjCap">> <<gverb _top "shoot" "shoots">> cum into <<gram _bottom "poss">> ass.
+			<</if>>
+
+			<<if $mc.genitaltype is "knotted">>
+				<br>
+				Even after your balls have pumped their entire load into <<gram _bottom "obj">>, your knot remains swollen, locking the two of you together.
+			<</if>>
+
+		<<elseif _bottomClimax>>
+			<<if $sex.position == "Cowgirl">>
+				<<gram _top "subjCap">> slams down one final time before <<gram _bottom "subj">> lets out a moan and unloads into your ass. You feel the warmth fill you up.
+			<<elseif $sex.position == "Missionary">>
+				<<gram _bottom "subjCap">> thrusts into you one last time before holding inside you and letting out a moan. You feel <<gram _bottom "poss">> cum shoot into your ass.
+			<<else>>
+				<<gram _bottom "subjCap">> <<gverb _bottom "shoot" "shoots">> into <<gram _top "poss">> ass.
+			<</if>>
+
+			<<if _bottom.genitaltype is "knotted">>
+				<br>
+				Even after <<gram _bottom "poss">> balls have pumped their entire load into <<gram _top "obj">>, <<gram _bottom "poss">> knot remains swollen, locking the two of you together.
+			<</if>>
+		<</if>>
+
+	<<case "in air">>
+		You feel yourself release.
+
+	<<case "in mouth">>
+		<<if _topClimax>>
+			<<gram _bottom "subjCap">> keeps working your <<=_mcGen>> until you hit your limit, and you shoot your load down <<gram _bottom "poss">> throat.
+		<<elseif _bottomClimax>>
+			Before you know it, <<gram _bottom "poss">> cock swells in your mouth, and a hot stream shoots down your throat. You swallow as much as you can.
+		<</if>>
+
+	<<case "in pussy">>
+		<<if _topClimax>>
+			<<gram _top "subjCap">> <<gverb _top "moan" "moans">> and <<gverb _top "groan" "groans">> as <<gram _top "subj">> <<gverb _top "shoot" "shoots">> <<gram _top "poss">> load into <<gram _bottom "poss">> <<=_bottomType>> <<=_bottomGen>>.
+		<<elseif _bottomClimax>>
+			<<gram _bottom "subjCap">> thrusts one last time before holding inside you and letting out a moan. You feel <<gram _bottom "poss">> cum shoot into your <<=_mcGen>>.
+		<</if>>
+
+	<<case "on hand">>
+		<<if _topClimax>>
+			<<gram _top "subjCap">> <<gverb _top "cum" "cums">> on <<gram _bottom "poss">> hand.
+		<<elseif _bottomClimax>>
+			<<gram _bottom "subjCap">> <<gverb _bottom "cum" "cums">> on <<gram _top "poss">> hand.
+		<</if>>
+
+	<<case "on stomach">>
+		<<if _topClimax>>
+			<<gram _top "subjCap">> <<gverb _top "cum" "cums">> on <<gram _bottom "poss">> stomach.
+		<<elseif _bottomClimax>>
+			<<gram _bottom "subjCap">> <<gverb _bottom "cum" "cums">> on <<gram _top "poss">> stomach.
+		<</if>>
+
+	<<case "on face">>
+		<<if _topClimax>>
+			<<gram _top "subjCap">> <<gverb _top "shoot" "shoots">> onto <<gram _bottom "poss">> face.
+		<<elseif _bottomClimax>>
+			<<gram _bottom "subjCap">> <<gverb _bottom "shoot" "shoots">> onto <<gram _top "poss">> face.
+		<</if>>
+
+	<<default>>
+		<<if _topClimax && _bottomClimax>>
+			You both cum.
+		<<elseif _topClimax>>
+			<<gram _top "subjCap">> <<gverb _top "cum" "cums">>.
+		<<elseif _bottomClimax>>
+			<<gram _bottom "subjCap">> <<gverb _bottom "cum" "cums">>.
+		<</if>>
+
+<</switch>>

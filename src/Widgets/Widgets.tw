@@ -3,6 +3,14 @@
 <<widget "npcNoise">><<print setup.pick(setup.noise[_n.species] || setup.noise[_n.anthro.subtype])>><</widget>>
 
 
+<<widget "gram">>
+	<<= setup.ref(_args[0], _args[1] || "subj") >>
+<</widget>>
+
+<<widget "gverb">>
+	<<= setup.verb(_args[0], _args[1], _args[2]) >>
+<</widget>>
+
 
 /* gets the room based on your location and issues where you start at */
 <<widget "GetRoom">>
@@ -243,9 +251,7 @@
                     <<button "End Session">>
                         <<set _returnTo = $gamelocation || "Your Room">>
 			            <<set $lastNpc = $ui.npc>>      <!-- remember who you were with -->
-			            <<set $sex = null>>  <!-- optional reset -->
-                        <<set $seenActions = {}>>
-
+			            <<run setup.resetSexSession()>>
 			            <<goto _returnTo>>             
 		            <</button>>
                 </ul>
@@ -322,13 +328,6 @@
     <b>$sex.Bottom.name Arousal:</b> <<print $sex.Bottom.arousal>>/1000  ||
     <b>$sex.Top.name Arousal:</b> <<print $sex.Top.arousal>>/1000
   </span>
-
-  <<if $sex.Bottom.arousal >= 1000>>
-    <<set $orgasm.Bottom = true>>
-  <</if>>
-  <<if $sex.Top.arousal >= 1000>>
-    <<set $orgasm.Top = true>>
-  <</if>>
     <br>
     <<if $devMode>>
         $sex.Top.cumLocation <br>

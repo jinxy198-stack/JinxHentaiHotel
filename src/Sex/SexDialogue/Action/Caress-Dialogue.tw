@@ -36,8 +36,12 @@
 
 	<<elseif _n.body.Bodymaterial == "Fur">>
 		<<= either(
-		"You feel the softness of $proset.their " + _n.anthro.color.toLowerCase() + " fur against your hand."
+		"You feel the softness of $proset.their <<=_n.anthro.color.toLowerCase()>> fur against your hand."
 		)>>
+	<<elseif _n.body.Bodymaterial == "Scales">>
+		You feel the smoothness of their of $proset.their <<=_n.anthro.color.toLowerCase()>> scales against your hand.
+	<<elseif _n.body.Bodymaterial == "Feathers">>
+		You feel the softness of their of $proset.their <<=_n.anthro.color.toLowerCase()>> feathers against your hand.	
 	<</if>>
 
 <</if>>

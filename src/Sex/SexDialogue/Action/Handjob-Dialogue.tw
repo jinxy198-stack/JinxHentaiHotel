@@ -5,7 +5,7 @@
 <<if $sex.act == "Grip Cock">>
 	<<=either(
 		"Reaching down between $proset.their <<=_n.body.Leg.toLowerCase()>>, you wrap your << $mc.body.Finger.toLowerCase()>> around $proset.their <<=_n.genitals.toLowerCase()>>",
-		"You drop one of your $mc.body.Hands down between $proset.their << _n.body.Leg.toLowerCase()>>, and, taking hold of $proset.their <<=_n.genitals.toLowerCase()>>, you start slowly jerking $proset.them off.",
+		"You drop one of your <<=$mc.body.Hand.toLowerCase()>> down between $proset.their <<=_n.body.Leg.toLowerCase()>> and, taking hold of $proset.their <<=_n.genitals.toLowerCase()>>, you start slowly jerking $proset.them off.",
 		"Reaching down between $proset.their <<=_n.body.Leg.toLowerCase()>>, you eagerly wrap your <<=$mc.body.Finger.toLowerCase()>> around $proset.their <<=_n.genitals.toLowerCase()>>, letting out a moan as you start rapidly stroking up and down its length.",
 		"You drop one of your <<=$mc.body.Hand.toLowerCase()>> down between $proset.their <<=_n.body.Leg.toLowerCase()>>, and, taking hold of $proset.their <<=_n.genitals.toLowerCase()>>, you start eagerly jerking $proset.them off.",
 		"Teasing your <<=$mc.body.Finger.toLowerCase()>> over $proset.their <<=_n.genitals.toLowerCase()>>, $proset.they let out a moan as you start rapidly stroking up and down $proset.their throbbing length.",
@@ -28,7 +28,7 @@
 	<<if $sex.role=="Bottom">>
 		<<=either(
 			"Teasing your <<=$mc.body.Finger.toLowerCase()>> over $proset.their <<=_n.genitals.toLowerCase()>>, _n.name let out a soft moan as you start gently stroking up and down their throbbing length.",
-			"$proset.they let out a moan as you slide your <<=$mc.body.Hand.toLowerCase()>> up and down the length of $proset.their precum-dripping <<=_n.genitals.toLowerCase()>>.",
+			"$proset.theyUP let out a moan as you slide your <<=$mc.body.Hand.toLowerCase()>> up and down the length of $proset.their precum-dripping <<=_n.genitals.toLowerCase()>>.",
 			"_n.name lets out a reassuring moan as you gently slide your <<=$mc.body.Hand.toLowerCase()>> up and down the length of $proset.their precum-dripping <<=_n.genitals.toLowerCase()>>.",
 			"You gently slide your <<=$mc.body.Hand.toLowerCase()>> up and down around $proset.their <<=_n.penislength.toLowerCase()>> cock, spreading $proset.their precum all over your shaft in the process."
 		)>>

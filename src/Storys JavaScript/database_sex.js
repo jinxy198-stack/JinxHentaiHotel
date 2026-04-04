@@ -897,7 +897,7 @@ setup.sexacts = {
 
     "Grip Cock": /* You grip their cock */
     {
-        "positions": [ "Sixty-Nine:Bottom", "Lap ride:Bottom", "Reverse Lap ride:Bottom", "Kneeling:Bottom", "Kneeling Over:Bottom", "Standing:Bottom", "Oral Service:Bottom",  "Spooning:Bottom", "Kneeling By Face:Bottom", "Squatting Before:Bottom", "Double Decker:Bottom", "Kneeling Between Thighs:Bottom", "Riding Face:Bottom", "Perched:Bottom", "Against Wall:Bottom", "Against Wall From Behind:Bottom", "Perched Oral Service:Bottom", "Underneath Oral Service:Bottom", "Laid Across Oral Service:Bottom"],
+        "positions": [ "Sixty-Nine:Bottom", "Lap ride:Bottom", "Reverse Lap ride:Bottom", "Kneeling:Bottom", "Kneeling Over:Bottom", "Standing:Bottom", "Oral Service:Bottom", "Spooning:Bottom", "Kneeling By Face:Bottom", "Squatting Before:Bottom", "Double Decker:Bottom", "Kneeling Between Thighs:Bottom", "Riding Face:Bottom", "Perched:Bottom", "Against Wall:Bottom", "Against Wall From Behind:Bottom", "Perched Oral Service:Bottom", "Underneath Oral Service:Bottom", "Laid Across Oral Service:Bottom"],
         "action type": ["penetrate"],
         "Top parts": ["Hand"],
         "Bottom parts": ["Penis"],
@@ -907,8 +907,8 @@ setup.sexacts = {
 
         "masturbation": true,
         "take virginity": [],
-        "Top arousal": 10,
-        "Bottom arousal": 20,
+        "Top arousal": 20,
+        "Bottom arousal": 10,
         "Top arousal cap": 300,
         "remember as": ["handjob", "given"],
         "Top dialogue tags": ["giving handjob"],
@@ -931,7 +931,7 @@ setup.sexacts = {
         "Bottom arousal cap": 300,
         "remember as": ["handjob", "received"],
     },
-    "Pump Shaft": /*You pump their shaft */
+    "Pump Shaft": /*Bottom pumps their shaft */
     {
         "positions": [ "Sixty-Nine:Bottom", "Lap ride:Bottom", "Reverse Lap ride:Bottom", "Kneeling:Bottom", "Kneeling Over:Bottom", "Standing:Bottom", "Oral Service:Bottom", "Spooning:Bottom", "Kneeling By Face:Bottom", "Squatting Before:Bottom", "Double Decker:Bottom", "Kneeling Between Thighs:Bottom", "Riding Face:Bottom", "Perched:Bottom", "Against Wall:Bottom", "Against Wall From Behind:Bottom", "Perched Oral Service:Bottom", "Underneath Oral Service:Bottom", "Laid Across Oral Service:Bottom"],
         "action type": ["continue"],
@@ -943,13 +943,13 @@ setup.sexacts = {
 
         "masturbation": true,
         "take virginity": [],
-        "Top arousal": 10,
-        "Bottom arousal": 55,
-        "Top arousal cap": 300,
+        "Top arousal": 50,
+        "Bottom arousal": 10,
+        "Bottom arousal cap": 300,
         "Top dialogue tags": ["giving handjob"],
         "Bottom dialogue tags": ["receiving handjob"],
     },
-    "Fuck Fist": /* You fuck their fist */
+    "Fuck Fist": /* Top fucks their fist */
     {
         "positions": [ "Sixty-Nine:Top", "Lap ride:Top", "Reverse Lap ride:Top", "Kneeling:Top", "Kneeling Over:Top", "Standing:Top", "Oral Service:Top", "Spooning:Top", "Kneeling By Face:Top", "Squatting Before:Top", "Double Decker:Top", "Kneeling Between Thighs:Top", "Riding Face:Top", "Perched:Top", "Against Wall:Top", "Against Wall From Behind:Top", "Perched Oral Service:Top", "Underneath Oral Service:Top", "Laid Across Oral Service:Top"],
         "action type": ["continue"],
@@ -973,9 +973,9 @@ setup.sexacts = {
         "Bottom cum locations": ["on hand"],
         "masturbation": true,
         "take virginity": [],
-        "Top arousal": 10,
-        "Bottom arousal": 30,
-        "Top arousal cap": 300,
+        "Top arousal": 30,
+        "Bottom arousal": 10,
+        "Bottom arousal cap": 300,
         "Top dialogue tags": ["giving handjob"],
         "Bottom dialogue tags": ["receiving handjob"],
     },
@@ -991,9 +991,9 @@ setup.sexacts = {
         "Bottom cum locations": ["on hand"],
         "masturbation": true,
         "take virginity": [],
-        "Top arousal": 10,
-        "Bottom arousal": 30,
-        "Top arousal cap": 300,
+        "Top arousal": 30,
+        "Bottom arousal": 10,
+        "Bottom arousal cap": 300,
         "Top dialogue tags": ["giving handjob"],
         "Bottom dialogue tags": ["receiving handjob"]
     },

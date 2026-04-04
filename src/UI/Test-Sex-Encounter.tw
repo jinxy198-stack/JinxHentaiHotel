@@ -36,11 +36,13 @@
 <<if $sex.roles.dom.name == $mc.name>>
   <<set $sex.role = "Top">>
   <<run setup.updateTopBottom($sex)>>
+
 <<elseif $sex.roles.dom.name == _n.name>>
   <<set $sex.role = "Bottom">>
   <<run setup.updateTopBottom($sex)>>
+
 <</if>>
-	
+
 <<set _h = "<<HeightCompare>>" >>	
 
 /* ALWAYS rebind Top/Bottom to current */
@@ -53,8 +55,8 @@
 <<set $sex.furnitureFlags  = $room.furnitureFlags>>
 
 /*Arousal meter for both $mc and _n */
-<<set _n.arousal = _n.arousal or 0>>
-<<set $mc.arousal = $mc.arousal or 0>>
+<<set _n.arousal = 0>>
+<<set $mc.arousal = 0>>
 
 	<div id= "sex-container">
 		<<SexEncounterUI>>
