@@ -1,11 +1,7 @@
 :: Cunnilingus-Quote [nobr Dialogue] {"position":"1800,1300","size":"100,100"}
 
 
-<<if $sex.role == "Bottom">>
-	<<set _mode = "Bottom">>
-<<elseif $sex.role == "Top">>
-	<<set _mode = "Top">>
-<</if>>
+<<set _mode = $sex.role>>
 
 <<set _pref = _n.sexpref || "Neutral">>
 

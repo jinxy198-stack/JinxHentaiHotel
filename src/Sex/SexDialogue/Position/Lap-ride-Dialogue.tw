@@ -1,0 +1,16 @@
+:: Lap-ride-Dialogue [nobr]
+
+<<if $sex.position =="Lap ride">>
+    <<if $sex.role =="Top">>
+        _n.name sits on your lap, looking at you.
+    <<elseif $sex.role == "Bottom">>
+        You sit on _n.name's lap, looking at them.
+    <</if>>
+<<elseif $sex.position =="Reverse Lap ride">>
+    <<if $sex.role =="Top">>
+        _n.name sits on your lap, facing away from you.
+    <<elseif $sex.role == "Bottom">>
+        You sit on _n.name's lap, facing away from them.
+    <</if>>
+
+<</if>>
