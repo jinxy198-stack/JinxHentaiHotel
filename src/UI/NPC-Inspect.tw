@@ -1,4 +1,4 @@
-:: UI-NPC-Inspect [nobr] {"position":"900,375","size":"100,100"}
+:: NPC-Inspect [nobr] {"position":"900,375","size":"100,100"}
 <<set _n = $ui.npc>>
 
 <b>Name:</b> <<=_n.name>> <<if _n.surname>><<=_n.surname>><</if>> 
@@ -44,7 +44,8 @@
 <</if>>
 
 
-<b>Physique:</b> <<=_n.physique>> * <b>Height:</b> <<=_n.bodyheight>>
+<b>Physique:</b> <<=_n.physique>> <br> 
+<b>Height:</b> <<=_n.bodyheight>>
 <<if _n.breastsize>>
 	* <b>Breast Size:</b> _n.breastsize 
 <</if>>
@@ -57,11 +58,11 @@
 <</if>>
 
 <br>
-<b>Sexuality:</b> <<=_n.sexu>> * <b>Sex Role:</b> <<=_n.sexpref>>
+<b>Sexuality:</b> <<=_n.sexu>> *** <b>Sex Role:</b> <<=_n.sexpref>>
 <br>
 <b>Genitals:</b> <<=_n.genitals>>
 <<if _n.genitals== "Penis">>
-* <b>Length:</b> <<=_n.penislength>> 
+*** <b>Length:</b> <<=_n.penislength>> 
 <</if>> (<<=_n.genitaltype>>)
 <br>
 <<if Array.isArray(_n.traits) && _n.traits.length>>

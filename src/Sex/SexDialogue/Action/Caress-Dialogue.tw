@@ -2,38 +2,44 @@
 
 <<set _npc = _n>>
 <<PronounsSet>>
-<<if $sex.roles.dom.name == _n.name>>
+<<if $sex.role == "Bottom">>
 	<<=either(
- 	"_n.name gently caresses your arm, testing your reaction."
+ 	"_n.name gently caresses your <<=$mc.body.Arm.toLowerCase()>>, testing your reaction."
     )>>
     <<=either(
     "A happy moan escapes from _n.name's mouth in response to this contact, causing you to smile in delight.",
     "The happy sigh which escapes your mouth is more than enough to let _n.name know that your gentle caress has had the desired effect.",
     "In response to this, you let out a happy moan, letting _n.name know that your gesture is much appreciated."
 	)>>
-<<elseif $sex.roles.sub.name == _n.name>>
+<<elseif $sex.role == "Top">>
 	<<=either(
-		"Wanting to make _n.name feel loved, you lift your $mc.body.Hand, before gently stroking your $mc.body.Fingers over $proset.their face.",
-    	"Lifting your $mc.body.Hand, you softly trace your $mc.body.Fingers over _n.name  cheek in order to make $proset.them feel loved.",
-    	"Seeking to put _n.name at ease, you raise your $mc.body.Hand, before using your $mc.body.Fingers to lovingly caress $proset.their face.",
-		"Your $mc.body.Fingers glides across _n.name's body."
+		"Wanting to make _n.name feel loved, you lift your <<=$mc.body.Hand.toLowerCase()>>, before gently stroking your <<=$mc.body.Finger.toLowerCase()>>s over $proset.their face.",
+    	"Lifting your <<=$mc.body.Hand.toLowerCase()>>, you softly trace your <<=$mc.body.Finger.toLowerCase()>>s over _n.name's  cheek in order to make $proset.them feel loved.",
+    	"Seeking to put _n.name at ease, you raise your <<=$mc.body.Hand.toLowerCase()>>, before using your $mc.body.Fingers to lovingly caress $proset.their face.",
+		"Your <<=$mc.body.Finger.toLowerCase()>> glides across _n.name's body."
 	)>>
 	
 	/* Describe body texture */
     <<if _n.body.Bodymaterial == "Skin">>
-		<<=either(
-		"You feel their silky smooth <<=_n.skincolor.toLowerCase()>> skin against your hand."
-		)>>
+		<<set _lines = [
+			"You feel their silky smooth <<=_n.skincolor.toLowerCase()>> skin against your hand.",
+			"Their skin is as smooth as silk."
+		]>>
+
+		<<if _n.phisique == "Toned">>
+			<<run _lines.push(
+				"Beneath their smooth skin, you can feel the firm definition of their toned body."
+			)>>
+	<</if>>
+
+	<<= either(..._lines)>>
+
 	<<elseif _n.body.Bodymaterial == "Fur">>
-		<<=either(
-		"You feel the softness of $proset.their <<=_n.anthro.color.toLowerCase()>> fur against your hand."
+		<<= either(
+		"You feel the softness of $proset.their " + _n.anthro.color.toLowerCase() + " fur against your hand."
 		)>>
 	<</if>>
-	
-	/* Describe body type */
-	<<if _n.physique == "Gaunt">>
-	Their ribs stick out from their body due to how skinny they are.
-	<</if>>
+
 <</if>>
 
 

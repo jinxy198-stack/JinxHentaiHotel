@@ -1,4 +1,4 @@
-:: UI-NPC-Talk [nobr]
+:: NPC-Talk [nobr]
 
 <<set _n = $ui.npc>>
 
@@ -56,7 +56,7 @@
 <br>
 <br>
 
-<<button "Wanna have sex in my room?">>
+<<button "Wanna have sex?">>
 	<<WithNPC _n.id>>
 	<<run Dialog.create("Propose sex with " + $ui.npc.name).wikiPassage("UI-Attracted-check").open()>>
 <</button>>

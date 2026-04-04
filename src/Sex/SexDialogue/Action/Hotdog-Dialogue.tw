@@ -1,7 +1,7 @@
 :: Hotdog-Dialogue [nobr]
 
-<<if  $sex.act == "Hotdog">>
-You push the cheeks of _n.name's _n.assSize ass together around your $mc.penislength cock as you thrust between them.
+<<if $sex.act == "Hotdog">>
+You push the cheeks of _n.name's <<=_n.assSize.toLowerCase()>> ass together around your <<=$mc.penislength.toLowerCase()>> cock as you thrust between them.
 
 <<elseif $sex.act == "Rub Ass On Cock">>
 <<=either(

@@ -1,8 +1,8 @@
 :: Double-Decker-Dialogue [nobr]
 
 <<if $sex.role == "Top">>
-You are underneath _n.name as $proset.they stretch out on their back on the $room.location.
+You are underneath _n.name as $proset.they stretch out on their back on the $room.location. They lay their back on you like a recliner.
 
 <<else>>
-You are on your back on the $room.location atop _n.name.
+You are on your back on the $room.location atop _n.name, laying on them like a recliner.
 <</if>>

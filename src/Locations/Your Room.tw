@@ -23,11 +23,11 @@ On the other side there was a door to your bathroom.
 <</button>>
 <<if $lastNpc>>
 	<<button "Go to the bathroom with _n.name">>
-    	<<goto "Bathroom">>
+    	<<goto "Your Bathroom">>
 	<</button>>
 <<else>>
 	<<button "Go to the bathroom">>
-    	<<goto "Bathroom">>
+    	<<goto "Your Bathroom">>
 	<</button>>
 
 <</if>>

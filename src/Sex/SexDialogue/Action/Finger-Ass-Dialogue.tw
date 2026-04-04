@@ -10,7 +10,7 @@
     <<elseif $sex.role == "Top">>
 	    <<=either(
         "You finger _n.name's ass.",
-        "_n.name shivers as you place your $mc.body.Fingers against $proset.their asshole. You then wiggled your way in. It was hot and tight but so smooth. $proset.theyUp let out a moan. You caress their thigh to calm them."
+        "_n.name shivers as you place your <<=$mc.body.Finger.toLowerCase()>> against $proset.their asshole. You then wiggled your way in. It was hot and tight but so smooth. $proset.theyUp let out a moan. You caress their thigh to calm them."
         )>>
     <</if>>
 <<elseif $sex.act == "Finger Ass(Continue)">>
@@ -21,7 +21,7 @@
     <<elseif $sex.role == "Top">>
         <<=either(
             "You continue fingering them.",
-            "You slide you $mc.body.Fingers back and forth, caressing the walls of _n.name's inside. $proset.theyUp continues to tense. $proset.theyUp appears to enjoy it very much.",
+            "You slide you <<=$mc.body.Finger.toLowerCase()>> back and forth, caressing the walls of _n.name's inside. $proset.theyUp continues to tense. $proset.theyUp appear to enjoy it very much.",
         )>>
     <</if>>
 <</if>>

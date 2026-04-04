@@ -114,7 +114,7 @@
 	        <<WithNPC _n>>
 	        <<run Dialog
 		        .create("NPC: " + $ui.npc.name)
-		        .wikiPassage("UI-NPC-Inspect")
+		        .wikiPassage("NPC-Inspect")
 		        .open()
 	        >>
         <</button>>
@@ -243,8 +243,9 @@
                     <<button "End Session">>
                         <<set _returnTo = $gamelocation || "Your Room">>
 			            <<set $lastNpc = $ui.npc>>      <!-- remember who you were with -->
-			            <<set $sex = { stage: "foreplay", log: [] }>>  <!-- optional reset -->
+			            <<set $sex = null>>  <!-- optional reset -->
                         <<set $seenActions = {}>>
+
 			            <<goto _returnTo>>             
 		            <</button>>
                 </ul>
@@ -1167,7 +1168,7 @@
 <</widget>>
 
 
-//to compare the heights of the pc and npc
+//to compare the heights of the mc and npc, or two npc's
 <<widget "HeightCompare">>
     <<script>>
     const rank = {

@@ -1,8 +1,17 @@
 :: Prone-Bone-Dialogue [nobr]
 
 <<if $sex.role == "Top">>
-You role _n.name onto their stomach on the $room.location and you lay on them.
-
-<<else>>
-You roll onto your stomach on the $room.location as _n.name lays on you.
+    You role _n.name onto their stomach on the $room.location and you lay on them.
+    <<if _h is 1>>
+        Your larger body nearly covers _n.name.
+    <<elseif _h is -1>>
+        The size difference between you two is pretty noticable.
+    <</if>>
+<<elseif $sex.role == "Bottom">>
+    You roll onto your stomach on the $room.location as _n.name lays on you.
+    <<if _h is 1>>
+        The size difference between you two is pretty noticable.
+    <<elseif _h is -1>>
+        _n.name's body nearly envelops you with how large they are.
+    <</if>>
 <</if>>
