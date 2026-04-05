@@ -1316,22 +1316,6 @@ setup.sexacts = {
         "Top dialogue tags": ["giving blowjob"],
         "Bottom dialogue tags": ["receiving blowjob"],
     },
-    "Deepthroat": /* Redundant?*/
-    {
-        "positions": [ "Kneeling:Bottom", "Kneeling Over:Bottom", "Oral Service:Bottom", "Kneeling By Face:Bottom", "Squatting Before:Bottom", "Riding Face:Bottom", "Perched Oral Service:Bottom", "Underneath Oral Service:Bottom", "Laid Across Oral Service:Bottom"],
-        "action type": ["continue"],
-        "Top parts": ["Mouth"],
-        "Bottom parts": ["Penis"],
-        "Top cum locations": [],
-        "Bottom cum locations": [],
-        "masturbation": false,
-        "take virginity": [],
-        "Top arousal": 10,
-        "Bottom arousal": 65,
-        "Top arousal cap": 300,
-        "Top dialogue tags": ["giving blowjob"],
-        "Bottom dialogue tags": ["receiving blowjob", "receiving deepthroat"],
-    },
     "Fuck Mouth": /*You fuck their mouth with your cock */
     {
         "positions": [  "Kneeling:Top", "Kneeling Over:Top", "Oral Service:Top", "Kneeling By Face:Top", "Squatting Before:Top", "Riding Face:Top", "Perched Oral Service:Top", "Underneath Oral Service:Top", "Laid Across Oral Service:Top"],

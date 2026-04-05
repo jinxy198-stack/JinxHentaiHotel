@@ -1,28 +1,39 @@
 :: Act-Quote-React [nobr]
 
-/* Character non verbal reaction, also works if the character is mute. */
-
+/* Character nonverbal reaction. Also works if the character is mute. */
 
 <<if $sex.phase == "climax">>
-    _n.name <<npcNoise>>s from the pleasure.
+	_n.name <<npcNoise>>s from the pleasure.
+
 <<else>>
-    <<if $sex.act == "Fuck Pussy">>
-        _n.name <<npcNoise>>s into the feeling of fucking a pussy.
-    <<elseif $sex.act == "Cuddle">>
-        _n.name smiles and leans in.
-    <<elseif $sex.act == "Kiss">>
-    <<=either(
-		"_n.name lets out an eager moan in response.",
-		"_n.name enthusiastically presses themself against you and thrusts $proset.their tongue into your mouth as $proset.they eagerly return your affection.",
-		"With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic kiss.",
-		"Letting out a soft moan, _n.name plants a series of gentle kisses on your lips before slowly sliding $proset.their tongue into your mouth.",
-		"With a soft hum, _n.name leans into you, gently pushing $proset.their tongue past your lips.",
-		"_n.name presses themself against you, muffling your moans as $proset.they slide $proset.their tongue into your mouth.",
-		"_n.name pushes $proset.their tongue deep into your mouth, moaning as $proset.they eagerly return the kiss.",
-		"With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips."
-	)>>    
-    <<else>>
-        _n.name <<npcNoise>>s from the pleasure.
-    <</if>>
+	<<if $sex.act == "Fuck Pussy">>
+		<<= either(
+			"_n.name <<npcNoise>>s at the feeling of fucking a pussy.",
+			"_n.name <<npcNoise>>s softly, lost in the feeling of fucking a pussy.",
+			"Pleasure washes over _n.name, making $proset.them <<npcNoise>> softly."
+		) >>
+
+	<<elseif $sex.act == "Cuddle">>
+		<<= either(
+			"_n.name smiles and leans in.",
+			"_n.name relaxes and nestles closer.",
+			"A soft smile crosses _n.name's face as $proset.they lean into you."
+		) >>
+
+	<<elseif $sex.act == "Kiss">>
+		<<= either(
+			"_n.name lets out an eager moan in response.",
+			"_n.name enthusiastically presses $proset.themself against you and thrusts $proset.their tongue into your mouth as $proset.they eagerly return your affection.",
+			"With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic kiss.",
+			"Letting out a soft moan, _n.name plants a series of gentle kisses on your lips before slowly sliding $proset.their tongue into your mouth.",
+			"With a soft hum, _n.name leans into you, gently pushing $proset.their tongue past your lips.",
+			"_n.name presses $proset.themself against you, muffling your moans as $proset.they slide $proset.their tongue into your mouth.",
+			"_n.name pushes $proset.their tongue deep into your mouth, moaning as $proset.they eagerly return the kiss.",
+			"With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips."
+		) >>
+
+	<<else>>
+		_n.name <<npcNoise>>s from the pleasure.
+	<</if>>
 <</if>>
 <br>

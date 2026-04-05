@@ -17,13 +17,14 @@
 		<<if _n.species is "Anthro">>
 			/ _n.anthro.group / _n.anthro.subtype
 		<</if>>
-		· _n.gender
+		*** _n.gender / _n.trans
 		<br>
 
 		<i>Age:</i> _n.age<br>
-		<i>Origin:</i> _n.origin<br>
-		<i>Personality:</i> _n.personality
-		· <i>Sex Preference:</i> _n.sexpref
+		
+		<i>Personality:</i> <<set _ptip = setup.personalityTips[_n.personality] || "No description written yet.">> <<tooltip _n.personality _ptip>>
+		*** <i>Sex Preference:</i> _n.sexpref<br>
+		<i>Origin:</i> _n.origin
 		<br>
 
 		<div class="npc-actions">

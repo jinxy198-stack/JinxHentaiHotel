@@ -35,11 +35,6 @@
 		"Your head bobs up and down as you focus fully on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>."
 	) >>
 
-<<elseif $sex.act == "Deepthroat">>
-	<<= either(
-		"You expertly take the cock deep into your mouth."
-	) >>
-
 <<elseif $sex.act == "Fuck Mouth">>
 	<<= either(
 		"You eagerly thrust your <<= setup.partLower($mc, 'genitals', 'genitals') >> past $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >>, letting out a moan as you greedily pump your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>.",

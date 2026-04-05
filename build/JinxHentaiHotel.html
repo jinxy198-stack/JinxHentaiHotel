@@ -5547,22 +5547,6 @@ setup.sexacts = {
         "Top dialogue tags": ["giving blowjob"],
         "Bottom dialogue tags": ["receiving blowjob"],
     },
-    "Deepthroat": /* Redundant?*/
-    {
-        "positions": [ "Kneeling:Bottom", "Kneeling Over:Bottom", "Oral Service:Bottom", "Kneeling By Face:Bottom", "Squatting Before:Bottom", "Riding Face:Bottom", "Perched Oral Service:Bottom", "Underneath Oral Service:Bottom", "Laid Across Oral Service:Bottom"],
-        "action type": ["continue"],
-        "Top parts": ["Mouth"],
-        "Bottom parts": ["Penis"],
-        "Top cum locations": [],
-        "Bottom cum locations": [],
-        "masturbation": false,
-        "take virginity": [],
-        "Top arousal": 10,
-        "Bottom arousal": 65,
-        "Top arousal cap": 300,
-        "Top dialogue tags": ["giving blowjob"],
-        "Bottom dialogue tags": ["receiving blowjob", "receiving deepthroat"],
-    },
     "Fuck Mouth": /*You fuck their mouth with your cock */
     {
         "positions": [  "Kneeling:Top", "Kneeling Over:Top", "Oral Service:Top", "Kneeling By Face:Top", "Squatting Before:Top", "Riding Face:Top", "Perched Oral Service:Top", "Underneath Oral Service:Top", "Laid Across Oral Service:Top"],
@@ -8807,13 +8791,14 @@ On the other side there was a door to your bathroom.
 		&lt;&lt;if _n.species is &quot;Anthro&quot;&gt;&gt;
 			/ _n.anthro.group / _n.anthro.subtype
 		&lt;&lt;/if&gt;&gt;
-		· _n.gender
+		*** _n.gender / _n.trans
 		&lt;br&gt;
 
 		&lt;i&gt;Age:&lt;/i&gt; _n.age&lt;br&gt;
-		&lt;i&gt;Origin:&lt;/i&gt; _n.origin&lt;br&gt;
-		&lt;i&gt;Personality:&lt;/i&gt; _n.personality
-		· &lt;i&gt;Sex Preference:&lt;/i&gt; _n.sexpref
+		
+		&lt;i&gt;Personality:&lt;/i&gt; &lt;&lt;set _ptip = setup.personalityTips[_n.personality] || &quot;No description written yet.&quot;&gt;&gt; &lt;&lt;tooltip _n.personality _ptip&gt;&gt;
+		*** &lt;i&gt;Sex Preference:&lt;/i&gt; _n.sexpref&lt;br&gt;
+		&lt;i&gt;Origin:&lt;/i&gt; _n.origin
 		&lt;br&gt;
 
 		&lt;div class=&quot;npc-actions&quot;&gt;
@@ -9841,7 +9826,6 @@ He brushes your cheek with his hand.
     &lt;&lt;case &quot;Take Cock Between Lips&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Enter Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Cock&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Deepthroat&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Out Of Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Mouth Off Of Cock&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
@@ -10090,11 +10074,6 @@ He brushes your cheek with his hand.
 		&quot;You suckle on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
 		&quot;_n.name moans with pleasure as you continue to blow $proset.them.&quot;,
 		&quot;Your head bobs up and down as you focus fully on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
-	) &gt;&gt;
-
-&lt;&lt;elseif $sex.act == &quot;Deepthroat&quot;&gt;&gt;
-	&lt;&lt;= either(
-		&quot;You expertly take the cock deep into your mouth.&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.act == &quot;Fuck Mouth&quot;&gt;&gt;
@@ -11480,30 +11459,41 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
         &lt;&lt;case &quot;Laid Across On Stomach&quot;&gt;&gt;&lt;&lt;include &quot;Laid-Across-On-Stomach-Dialogue&quot;&gt;&gt;
         &lt;&lt;case &quot;Laid Across Oral Service&quot;&gt;&gt;&lt;&lt;include &quot;Laid-Across-Oral-Service-Dialogue&quot;&gt;&gt;
         
-	&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="Act-Quote-React" tags="nobr" position="725,1600" size="100,100">/* Character non verbal reaction, also works if the character is mute. */
-
+	&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="Act-Quote-React" tags="nobr" position="725,1600" size="100,100">/* Character nonverbal reaction. Also works if the character is mute. */
 
 &lt;&lt;if $sex.phase == &quot;climax&quot;&gt;&gt;
-    _n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure.
+	_n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure.
+
 &lt;&lt;else&gt;&gt;
-    &lt;&lt;if $sex.act == &quot;Fuck Pussy&quot;&gt;&gt;
-        _n.name &lt;&lt;npcNoise&gt;&gt;s into the feeling of fucking a pussy.
-    &lt;&lt;elseif $sex.act == &quot;Cuddle&quot;&gt;&gt;
-        _n.name smiles and leans in.
-    &lt;&lt;elseif $sex.act == &quot;Kiss&quot;&gt;&gt;
-    &lt;&lt;=either(
-		&quot;_n.name lets out an eager moan in response.&quot;,
-		&quot;_n.name enthusiastically presses themself against you and thrusts $proset.their tongue into your mouth as $proset.they eagerly return your affection.&quot;,
-		&quot;With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic kiss.&quot;,
-		&quot;Letting out a soft moan, _n.name plants a series of gentle kisses on your lips before slowly sliding $proset.their tongue into your mouth.&quot;,
-		&quot;With a soft hum, _n.name leans into you, gently pushing $proset.their tongue past your lips.&quot;,
-		&quot;_n.name presses themself against you, muffling your moans as $proset.they slide $proset.their tongue into your mouth.&quot;,
-		&quot;_n.name pushes $proset.their tongue deep into your mouth, moaning as $proset.they eagerly return the kiss.&quot;,
-		&quot;With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips.&quot;
-	)&gt;&gt;    
-    &lt;&lt;else&gt;&gt;
-        _n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure.
-    &lt;&lt;/if&gt;&gt;
+	&lt;&lt;if $sex.act == &quot;Fuck Pussy&quot;&gt;&gt;
+		&lt;&lt;= either(
+			&quot;_n.name &lt;&lt;npcNoise&gt;&gt;s at the feeling of fucking a pussy.&quot;,
+			&quot;_n.name &lt;&lt;npcNoise&gt;&gt;s softly, lost in the feeling of fucking a pussy.&quot;,
+			&quot;Pleasure washes over _n.name, making $proset.them &lt;&lt;npcNoise&gt;&gt; softly.&quot;
+		) &gt;&gt;
+
+	&lt;&lt;elseif $sex.act == &quot;Cuddle&quot;&gt;&gt;
+		&lt;&lt;= either(
+			&quot;_n.name smiles and leans in.&quot;,
+			&quot;_n.name relaxes and nestles closer.&quot;,
+			&quot;A soft smile crosses _n.name&#39;s face as $proset.they lean into you.&quot;
+		) &gt;&gt;
+
+	&lt;&lt;elseif $sex.act == &quot;Kiss&quot;&gt;&gt;
+		&lt;&lt;= either(
+			&quot;_n.name lets out an eager moan in response.&quot;,
+			&quot;_n.name enthusiastically presses $proset.themself against you and thrusts $proset.their tongue into your mouth as $proset.they eagerly return your affection.&quot;,
+			&quot;With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic kiss.&quot;,
+			&quot;Letting out a soft moan, _n.name plants a series of gentle kisses on your lips before slowly sliding $proset.their tongue into your mouth.&quot;,
+			&quot;With a soft hum, _n.name leans into you, gently pushing $proset.their tongue past your lips.&quot;,
+			&quot;_n.name presses $proset.themself against you, muffling your moans as $proset.they slide $proset.their tongue into your mouth.&quot;,
+			&quot;_n.name pushes $proset.their tongue deep into your mouth, moaning as $proset.they eagerly return the kiss.&quot;,
+			&quot;With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips.&quot;
+		) &gt;&gt;
+
+	&lt;&lt;else&gt;&gt;
+		_n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure.
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;</tw-passagedata><tw-passagedata pid="127" name="Act-Quote" tags="Dialogue nobr" position="850,1600" size="100,100">&lt;!-- only what the npc says --&gt;
 
@@ -11550,7 +11540,6 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
     &lt;&lt;case &quot;Fuck Fist&quot;&gt;&gt;_b&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Tease Tip&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Tip-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
-    /*&lt;&lt;case &quot;Deepthroat&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt; */
     &lt;&lt;case &quot;Fuck Mouth&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Tease Pussy With Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Cock-Pussy-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Cocktease With Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Cock-Pussy-Quote&quot;&gt;&gt;
