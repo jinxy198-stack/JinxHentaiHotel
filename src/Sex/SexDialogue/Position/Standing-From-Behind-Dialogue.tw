@@ -1,22 +1,44 @@
 :: Standing-From-Behind-Dialogue [nobr]
 
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || _n>>
 
 <<if $sex.previousPosition == "Standing">>
-    <<if $sex.role == "Top">>
-    You grasp _n.name by the hips and turn them around.
-    <<elseif $sex.role == "Bottom">>
-    _n.name grasps you by the hips and turns you around.
-    <</if>>
-<<elseif $sex.previousPosition =="Kneeling">>
-    <<if $sex.role == "Top">>
-    You pull _n.name to their feet, then grasp $proset.them by the hips and turn them to face away from you.
-    <<elseif $sex.role == "Bottom">>
-    You rise to your feet, then turn to face away from _n.name.
-    <</if>>
+	<<if $sex.role == "Top">>
+		<<= either(
+			"<<gram _top 'subjCap'>> grasps <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> around.",
+			"<<gram _top 'subjCap'>> takes hold of <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> to face away."
+		) >>
+	<<elseif $sex.role == "Bottom">>
+		<<= either(
+			"<<gram _top 'subjCap'>> grasps <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> around.",
+			"<<gram _top 'subjCap'>> takes hold of <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> to face away."
+		) >>
+	<</if>>
+
+<<elseif $sex.previousPosition == "Kneeling">>
+	<<if $sex.role == "Top">>
+		<<= either(
+			"<<gram _top 'subjCap'>> pulls <<gram _bottom 'obj'>> to <<gram _bottom 'poss'>> feet, then grasps <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> to face away.",
+			"<<gram _top 'subjCap'>> helps <<gram _bottom 'obj'>> stand, then guides <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> until <<gram _bottom 'subj'>> is facing away."
+		) >>
+	<<elseif $sex.role == "Bottom">>
+		<<= either(
+			"<<gram _bottom 'subjCap'>> rises to <<gram _bottom 'poss'>> feet, then turns to face away from <<gram _top 'obj'>>.",
+			"<<gram _bottom 'subjCap'>> stands and turns around, presenting <<gram _bottom 'poss'>> back to <<gram _top 'obj'>>."
+		) >>
+	<</if>>
+
 <<else>>
-    <<if $sex.role == "Top">>
-    You grasp _n.name by the hips and turn them to face away from you.
-    <<elseif $sex.role == "Bottom">>
-    _n.name grabs you by the hips and turn you to face away from you.
-    <</if>>
+	<<if $sex.role == "Top">>
+		<<= either(
+			"<<gram _top 'subjCap'>> grasps <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> to face away.",
+			"<<gram _top 'subjCap'>> takes hold of <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >> and guides <<gram _bottom 'obj'>> around until <<gram _bottom 'subj'>> is facing away."
+		) >>
+	<<elseif $sex.role == "Bottom">>
+		<<= either(
+			"<<gram _top 'subjCap'>> grasps <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> to face away.",
+			"<<gram _top 'subjCap'>> grabs <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> until <<gram _bottom 'subj'>> is facing away."
+		) >>
+	<</if>>
 <</if>>

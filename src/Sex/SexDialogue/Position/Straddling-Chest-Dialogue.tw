@@ -1,7 +1,17 @@
 :: Straddling-Chest-Dialogue [nobr]
 
-<<if $sex.role =="Top">>
-You're on the $room.location, straddling _n.name's chest.
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || _n>>
+<<set _spot = $room.location || "floor">>
+
+<<if $sex.role == "Top">>
+	<<= either(
+		"<<gram _top 'subjCap'>> is on the <<=_spot>>, straddling <<gram _bottom 'poss'>> chest.",
+		"<<gram _top 'subjCap'>> settles onto the <<=_spot>>, straddling <<gram _bottom 'poss'>> chest."
+	) >>
 <<else>>
-_n.name is straddling your chest.
+	<<= either(
+		"<<gram _top 'subjCap'>> is straddling <<gram _bottom 'poss'>> chest.",
+		"<<gram _top 'subjCap'>> settles over <<gram _bottom 'poss'>> chest, pinning <<gram _bottom 'obj'>> beneath <<gram _top 'obj'>>."
+	) >>
 <</if>>

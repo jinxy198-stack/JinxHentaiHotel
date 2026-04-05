@@ -1,8 +1,10 @@
 :: Standing-Dialogue [nobr Dialogue] {"position":"1175,1225","size":"100,100"}
 <<set _npc = _n>>
-<<PronounsSet>>
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || _n>>
 
-
-You and _n.name are standing, face to face.
-
-
+<<= either(
+	"<<gram _top 'subjCap'>> and <<gram _bottom 'obj'>> stand face to face.",
+	"<<gram _top 'subjCap'>> stands face to face with <<gram _bottom 'obj'>>.",
+	"<<gram _top 'subjCap'>> and <<gram _bottom 'obj'>> remain standing, facing each other."
+) >>

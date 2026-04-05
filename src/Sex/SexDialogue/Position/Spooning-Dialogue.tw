@@ -1,8 +1,17 @@
 :: Spooning-Dialogue [nobr]
 
-<<if $sex.role == "Top">>
-You're nestled up against _n.name's back, spooning on the $room.location.
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || _n>>
+<<set _seat = $room.location || "floor">>
 
+<<if $sex.role == "Top">>
+	<<= either(
+		"<<gram _top 'subjCap'>> nestles up against <<gram _bottom 'poss'>> back, spooning on the <<=_seat>>.",
+		"<<gram _top 'subjCap'>> lies close behind <<gram _bottom 'obj'>>, the two of them spooning on the <<=_seat>>."
+	) >>
 <<else>>
-You're on your side with _n.name nestled up against your back, spooning on the $room.location.
+	<<= either(
+		"<<gram _bottom 'subjCap'>> lies on <<gram _bottom 'poss'>> side with <<gram _top 'obj'>> nestled against <<gram _bottom 'poss'>> back, spooning on the <<=_seat>>.",
+		"<<gram _bottom 'subjCap'>> rests on <<gram _bottom 'poss'>> side while <<gram _top 'subj'>> spoons close behind on the <<=_seat>>."
+	) >>
 <</if>>

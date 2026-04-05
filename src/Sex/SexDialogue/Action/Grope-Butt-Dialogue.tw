@@ -4,11 +4,11 @@
 
     <<if $sex.role == "Bottom">>
 	    <<=either(
- 	        "_n.name grabs your <<=$mc.assSize.toLowerCase()>> ass."
+ 	        "_n.name grabs your <<= setup.valueLower($mc, 'assSize', 'average') >> ass."
         )>>
     <<elseif $sex.role == "Top">>
 	    <<=either(
-            "You grab _n.name's <<=_n.assSize.toLowerCase()>> ass."
+            "You grab _n.name's <<= setup.valueLower(_n, 'assSize', 'average') >> ass."
         )>>
     <</if>>
 

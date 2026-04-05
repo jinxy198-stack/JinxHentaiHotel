@@ -11,7 +11,7 @@
     <br>
 <<elseif $sex.role == "Top">>
 	<<=either(
-	"_n.name get on all fours like a dog, and present their <<=_n.assSize.toLowerCase()>> ass to you."
+	"_n.name get on all fours like a dog, and present their <<= setup.partLower(_n, 'assSize', 'average') >> ass to you."
     )>>
     You mount yourself over _n.name.
     <<if _h is -1>>

@@ -3,7 +3,7 @@
 <<if $sex.act=="Rub Cock On Face">>
     <<if $sex.role == "Top">>
 	    <<=either(
- 	    "You rub your cock on their face."
+ 	    "You rub your cock on _n.name's face."
         )>>
     <<elseif $sex.role == "Bottom">>
 	    <<=either(
@@ -13,7 +13,7 @@
 <<elseif $sex.act == "Rub Cock Against Hand">>
     <<if $sex.role == "Top">>
 	    <<=either(
- 	        "You rub your cock against their hand."
+ 	        "You rub your cock against _n.name's hand."
         )>>
     <<elseif $sex.role == "Bottom">>
 	    <<=either(

@@ -1,15 +1,16 @@
 :: Squatting-Before-Dialogue [nobr]
 
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || _n>>
+
 <<if $sex.role == "Top">>
-    <<if $mc.genitals == "penis">>
-    You squat down in front of _n.name, your dick is in $proset.their face.
-    <<else>>
-    You squat down, your pussy is in $proset.their face.
-    <</if>>
-<<else>>
-    <<if _n.genitals=="penis">>
-    _n.name squats down beside you, $proset.their penis is in your face.
-    <<else>>
-    _n.name squats down beside you, $proset.their pussy is in your face.
-    <</if>>
+	<<= either(
+		"<<gram _top 'subjCap'>> squats down in front of <<gram _bottom 'obj'>>, bringing <<gram _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> right to <<gram _bottom 'poss'>> face.",
+		"<<gram _top 'subjCap'>> lowers <<gram _top 'obj'>>self in front of <<gram _bottom 'obj'>>, leaving <<gram _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> right in front of <<gram _bottom 'poss'>> face."
+	) >>
+<<elseif $sex.role == "Bottom">>
+	<<= either(
+		"<<gram _bottom 'subjCap'>> squats down in front of <<gram _top 'obj'>>, bringing <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> right to <<gram _top 'poss'>> face.",
+		"<<gram _bottom 'subjCap'>> lowers <<gram _bottom 'obj'>>self in front of <<gram _top 'obj'>>, leaving <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> right in front of <<gram _top 'poss'>> face."
+	) >>
 <</if>>

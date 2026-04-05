@@ -5,8 +5,8 @@
 <<if $sex.role =="Bottom">>
 	<<=either(
 		"Taking hold of  _n.name's shoulders, you push $proset.them down onto $proset.their back. You then lower yourself down on top of  $proset.them, bringing your crotch down to bump against $proset.theirs as you straddle $proset.them in the cowgirl position. Once you've made yourself comfortable, you grin down at _n.name.",
-		"Lifting your <<=$mc.body.Arms.toLowerCase()>>, you take hold of _n.name's shoulders, and with a little pressure, try to get $proset.them to drop down onto $proset.their back as you smirk. ",
-		"You climb on top of _n.name, sitting on their crotch."
+		"Lifting your <<= setup.partLower($mc, 'Arms', 'arms') >>, you take hold of _n.name's shoulders, and with a little pressure, try to get $proset.them to drop down onto $proset.their back as you smirk. ",
+		"You climb on top of _n.name, sitting your <<= setup.valueLower($mc, 'assSize', 'average') >> ass on their crotch."
 	)>>
 <<elseif $sex.role=="Top">>
 	<<=either(

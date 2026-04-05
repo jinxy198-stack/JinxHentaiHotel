@@ -2,23 +2,28 @@
 
 <<set _npc = _n>>
 <<PronounsSet>>
+
+<<set _nLegs = setup.partLower(_n, 'Legs', 'legs')>>
+<<set _mcLegs = setup.partLower($mc, 'Legs', 'legs')>>
+<<set _mcFeet = setup.partLower($mc, 'Feet', 'feet')>>
+<<set _nEyes = setup.valueLower(_n, 'eyes', 'eyes')>>
+
 <<if $sex.role == "Top">>
-	<<=either(
-		"Taking hold of _n.name's shoulders, you push $proset.them  down onto  $proset.their  back. Kneeling down between  $proset.their <<=_n.body.Leg.toLowerCase()>>, you pause and look down into  $proset.their <<=_n.eyes.toLowerCase()>> eyes.",
-		"_n.name lies down on your bed, lifting $proset.their feet in the air.",
-	)>>
+	<<= either(
+		"Taking hold of _n.name's shoulders, you push $proset.them down onto $proset.their back. Kneeling between $proset.their <<=_nLegs>>, you pause and look down into $proset.their <<=_nEyes>> eyes.",
+		"_n.name lies back on the bed and lifts $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> into the air for you.",
+		"You guide _n.name onto $proset.their back, settling yourself between $proset.their <<=_nLegs>> as you look down at $proset.them.",
+		"_n.name lies beneath you, spreading $proset.their <<=_nLegs>> as you move into position."
+	) >>
+
 <<elseif $sex.role == "Bottom">>
-	<<=either(
-		"Taking hold of _n.name's shoulders, you push $proset.them down onto $proset.their knees. Kneeling down before $proset.them, you then lie down on your back, spreading your <<=$mc.body.Leg.toLowerCase()>>s and look up into _n.name's <<=_n.eyes.toLowerCase()>> eyes as you moan",
-		"Looking up at _n.name, you bite your lip and let out a moan, before spreading your <<=$mc.body.Leg.toLowerCase()>>s and submissively presenting yourself, ready to be penetrated.",
-		"You spread your legs for _n.name, presenting yourself in anticipation of being penetrated.",
-		"Pulling your <<=$mc.body.Feet.toLowerCase()>> back and to each side, you spread your <<=$mc.body.Leg.toLowerCase()>>, enticing _n.name to penetrate you.",
-		"You spread your <<=$mc.body.Leg.toLowerCase()>>, looking up at _n.name and biting your lip as you entice $proset.them to penetrate you.",
-		"Much to your delight, $proset.they kneels down between your <<=$mc.body.Leg.toLowerCase()>>, and as $proset.they take hold of your <<=$mc.body.Leg.toLowerCase()>> to help push them apart, you moan,",
-		"Much to your delight, you allow yourself to be pushed down onto your front, and as you present $proset.them with your <<=$mc.assSize>> ass and groin, you moan,",
-        "You lie down on your bed as _n.name crawls between your <<=$mc.body.Leg.toLowerCase()>>."
-	)>>
+	<<= either(
+		"Looking up at _n.name, you bite your lip and let out a moan before spreading your <<=_mcLegs>> and presenting yourself, ready to be penetrated.",
+		"You spread your <<=_mcLegs>> for _n.name, presenting yourself in anticipation of being penetrated.",
+		"Pulling your <<=_mcFeet>> back to either side, you spread your <<=_mcLegs>>, enticing _n.name to penetrate you.",
+		"You spread your <<=_mcLegs>>, looking up at _n.name and biting your lip as you entice $proset.them to take you.",
+		"Much to your delight, _n.name kneels down between your <<=_mcLegs>>, and as $proset.they take hold of one to push it wider, you let out a moan.",
+		"You lie back on the bed as _n.name crawls between your <<=_mcLegs>>.",
+		"Lying on your back, you spread your <<=_mcLegs>> and look up at _n.name with a needy moan."
+	) >>
 <</if>>
-
-
-

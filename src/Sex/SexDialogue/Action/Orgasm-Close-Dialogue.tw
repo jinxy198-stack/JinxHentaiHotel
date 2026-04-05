@@ -1,17 +1,12 @@
 :: Orgasm-Close-Dialogue [nobr]
 
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || $mc>>
+
 <<if $sex.climax.Bottom && $sex.climax.Top>>
-You and _n.name are going to cum at the same time.
-<<elseif $sex.climax.Top >>
-    <<if $sex.Top.name == $mc.name>>
-        You are close to orgasm.
-    <<else>>
-        $sex.Top.name is close to orgasm.
-    <</if>>
+	<<gram _top "subjCap">> and <<gram _bottom "obj">> are both close to climax.
+<<elseif $sex.climax.Top>>
+	<<gram _top "subjCap">> <<= setup.be(_top) >> close to climax.
 <<elseif $sex.climax.Bottom>>
-    <<if $sex.Bottom.name == $mc.name>>
-        You are close to orgasm.
-    <<else>>
-        $sex.Bottom.name is close to orgasm.
-    <</if>>
+	<<gram _bottom "subjCap">> <<= setup.be(_bottom) >> close to climax.
 <</if>>

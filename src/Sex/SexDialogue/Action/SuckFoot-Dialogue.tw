@@ -1,29 +1,31 @@
 :: SuckFoot-Dialogue [Dialogue nobr] {"position":"800,1775","size":"100,100"}
 <<set _npc = _n>>
 <<PronounsSet>>
+
 <<if $sex.role == "Bottom">>
-	<<=either(
-    "Eagerly bringing your head down to $proset.their _n.body.Feet, you press your $mc.body.Lips against them and start passionately kissing and licking them.",
-    "You drop your head down to $proset.their _n.body.Feet, before eagerly pressing your $mc.body.Lips against them and starting to gently kiss and lick them.",
-    "After planting a series of gentle kisses on $proset.their _n.body.Feet, you proceed to start lovingly licking them, they let out a series of soft moans in the process.",
-    "Gently kissing and licking $proset.their _n.body.Toes, you let out a little moan as you lovingly worship $proset.their _n.body.Feet.",
-    "You let out a little moan as you press your $mc.body.Lips against $proset.their _n.body.Feet, before starting to lovingly kiss and lick them.",
-    )>>
-    <<=either(
-    "A moan bursts out from between $proset.their _n.body.Lips as $proset.they eagerly slide $proset.their _n.body.Feet up and down over your $mc.body.Face.",
-    "Moaning in delight, _n.name eagerly pushes $proset.their _n.body.Feet against your mouth as $proset.they have them worshipped."
-    )>>
+	<<= either(
+		"Eagerly lowering your head to $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >>, you press your <<= setup.partLower($mc, 'Lips', 'lips') >> against them and start passionately kissing and licking them.",
+		"You lower your head to $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> before eagerly pressing your <<= setup.partLower($mc, 'Lips', 'lips') >> against them and starting to gently kiss and lick them.",
+		"After planting a series of gentle kisses on $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >>, you begin lovingly licking them. _n.name lets out a series of soft moans in response.",
+		"Gently kissing and licking $proset.their <<= setup.partLower(_n, 'Toes', 'toes') >>, you let out a little moan as you lovingly worship $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >>.",
+		"You let out a little moan as you press your <<= setup.partLower($mc, 'Lips', 'lips') >> against $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> before starting to lovingly kiss and lick them."
+	) >>
+
+	<<= either(
+		"A moan bursts out from between $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> as $proset.they eagerly slide $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down over your <<= setup.partLower($mc, 'Face', 'face') >>.",
+		"Moaning in delight, _n.name eagerly presses $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> against your mouth as $proset.they enjoy having them worshipped."
+	) >>
+
 <<elseif $sex.role == "Top">>
-	<<=either(
-    "With a smirk, you eagerly push $proset.their head down to your $mc.body.Feet, before getting $proset.them to kiss them and start orally worshipping them.",
-    "Pushing $proset.their head down to your $mc.body.Feet, you can't help but moan as you have $proset.them kiss and orally worship them."
-    )>>
-    <<=either(
-    "_n.name starts eagerly sliding $proset.their _n.body.Feet up and down over $proset.their $mc.body.Face in response, letting out a moan as $proset.they get you to worship $proset.their _n.body.Feet.",
-    "_n.name eagerly lick and suck on your $mc.body.Toes, letting out a moan as $proset.they eagerly worship your $mc.body.Feet.",
-    "A moan bursts out from your mouth as $proset.they continue eagerly licking and kissing you $mc.body.Feet.",
-    "Moaning in delight, _n.name eagerly worships your $mc.body.Feet by planting a series of passionate kisses on them."
-    )>>
+	<<= either(
+		"With a smirk, you eagerly push _n.name's head down to your <<= setup.partLower($mc, 'Feet', 'feet') >>, getting $proset.them to kiss them and start orally worshipping them.",
+		"Pushing _n.name's head down to your <<= setup.partLower($mc, 'Feet', 'feet') >>, you cannot help but moan as you make $proset.them kiss and worship them with $proset.their mouth."
+	) >>
+
+	<<= either(
+		"_n.name starts eagerly sliding your <<= setup.partLower($mc, 'Feet', 'feet') >> up and down over $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, letting out a moan as $proset.they worship them.",
+		"_n.name eagerly licks and sucks on your <<= setup.partLower($mc, 'Toes', 'toes') >>, letting out a moan as $proset.they worship your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
+		"A moan bursts out from your mouth as _n.name continues eagerly licking and kissing your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
+		"Moaning in delight, _n.name eagerly worships your <<= setup.partLower($mc, 'Feet', 'feet') >> by planting a series of passionate kisses on them."
+	) >>
 <</if>>
-
-

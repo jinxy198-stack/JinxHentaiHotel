@@ -2,39 +2,35 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
-<<set _nBreastSize = String(_n.breastsize || '').toLowerCase()>>
-<<set _mcBreastSize = String($mc.breastsize || '').toLowerCase()>>
-
 <<if $sex.position == "Doggy">>
 	<<if $sex.role == "Top">>
 		<<= either(
-			"You reach under _n.name and grope $proset.their <<= setup.partLower(_n, 'Breasts', 'breasts') >>."
+			"You reach under _n.name and grope $proset.their <<= setup.valueLower(_n, 'breastsize', 'average') >> <<= setup.partLower(_n, 'Breasts', 'breasts') >>."
 		) >>
-	<<else>>
+	<<elseif $sex.role == "Bottom">>
 		<<= either(
 			"_n.name reaches under you and gropes your <<= setup.partLower($mc, 'Breasts', 'breasts') >>."
 		) >>
 	<</if>>
-
 <<elseif $sex.position == "Cowgirl">>
 	<<if $sex.role == "Top">>
 		<<= either(
-			"Reaching up to _n.name's chest, you start fondling and groping $proset.their <<=_nBreastSize>> <<= setup.partLower(_n, 'Breasts', 'breasts') >>. _n.name lets out a soft moan."
+			"Reaching up to _n.name's chest, you start fondling and groping $proset.their <<= setup.valueLower(_n, 'breastsize', 'average') >> <<= setup.partLower(_n, 'Breasts', 'breasts') >>. _n.name lets out a soft moan."
 		) >>
-	<<else>>
+	<<elseif $sex.role == "Bottom">>
 		<<= either(
-			"Reaching down to your chest, _n.name starts eagerly fondling and groping your <<=_mcBreastSize>> <<= setup.partLower($mc, 'Breasts', 'breasts') >>, drawing a moan from your lips."
+			"Reaching down to your chest, _n.name starts eagerly fondling and groping your <<= setup.valueLower($mc, 'breastsize', 'average') >> <<= setup.partLower($mc, 'Breasts', 'breasts') >>, drawing a moan from your lips."
 		) >>
 	<</if>>
 
 <<else>>
 	<<if $sex.role == "Top">>
 		<<= either(
-			"You reach over and grope _n.name's <<=_nBreastSize>> <<= setup.partLower(_n, 'Breasts', 'breasts') >>."
+			"You reach over and grope _n.name's <<= setup.valueLower(_n, 'breastsize', 'average') >> <<= setup.partLower(_n, 'Breasts', 'breasts') >>."
 		) >>
-	<<else>>
+	<<elseif $sex.role == "Bottom">>
 		<<= either(
-			"_n.name reaches over and gropes your <<=_mcBreastSize>> <<= setup.partLower($mc, 'Breasts', 'breasts') >>."
+			"_n.name reaches over and gropes your <<= setup.valueLower($mc, 'breastsize', 'average') >> <<= setup.partLower($mc, 'Breasts', 'breasts') >>."
 		) >>
 	<</if>>
 <</if>>

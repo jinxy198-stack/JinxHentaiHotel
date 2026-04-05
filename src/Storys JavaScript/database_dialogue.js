@@ -90,6 +90,34 @@ setup.partLower = function (char, key, fallback) {
 	return String(value).toLowerCase();
 };
 
+setup.value = function (char, key, fallback) {
+	if (!char) {
+		return String(fallback || "");
+	}
+
+	let value = char[key];
+
+	if (value == null) {
+		value = fallback || "";
+	}
+
+	return String(value);
+};
+
+setup.valueLower = function (char, key, fallback) {
+	if (!char) {
+		return String(fallback || "").toLowerCase();
+	}
+
+	let value = char[key];
+
+	if (value == null) {
+		value = fallback || "";
+	}
+
+	return String(value).toLowerCase();
+};
+
 setup.be = function (char, tense) {
 	const isMC = char === State.variables.mc;
 	tense = tense || "present";
@@ -151,3 +179,4 @@ setup.noise = {
     Feline:["meow"],
     Eagel:["screech"]
 }
+

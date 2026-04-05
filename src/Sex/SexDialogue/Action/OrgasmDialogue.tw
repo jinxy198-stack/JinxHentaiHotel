@@ -1,65 +1,75 @@
-::OrgasmDialogue [nobr]
+:: OrgasmDialogue [nobr]
 
-<<set _top = $sex.Top>>
-<<set _bottom = $sex.Bottom>>
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || $mc>>
 
-<<set _topClimax = !!$sex.climax.Top>>
-<<set _bottomClimax = !!$sex.climax.Bottom>>
+<<set _topClimax = !!($sex.climax && $sex.climax.Top)>>
+<<set _bottomClimax = !!($sex.climax && $sex.climax.Bottom)>>
 
 <<set _cumLoc = _top.chosenCumLocation || _bottom.chosenCumLocation || "">>
 
-<!-- optional: only if you still use _n / $proset elsewhere -->
-<<set _n = (_top === $mc) ? _bottom : _top>>
+<<set _topGen = setup.partLower(_top, 'genitals', _top.genital || 'genitals')>>
+<<set _bottomGen = setup.partLower(_bottom, 'genitals', _bottom.genital || 'genitals')>>
+<<set _topType = setup.valueLower(_top, 'genitaltype', 'genital')>>
+<<set _bottomType = setup.valueLower(_bottom, 'genitaltype', 'genital')>>
 
-<<set _mcGen = String($mc.genitals || $mc.genital || "genitals").toLowerCase()>>
-<<set _bottomGen = String(_bottom.genitals || _bottom.genital || "genitals").toLowerCase()>>
-<<set _bottomType = String(_bottom.genitaltype || "").toLowerCase()>>
+<<if _top === $mc || _bottom === $mc>>
+	<<set _pairLock = "the two of you">>
+<<else>>
+	<<set _pairLock = "the two of them">>
+<</if>>
 
 <<switch _cumLoc>>
 
 	<<case "in ass">>
 		<<if _topClimax>>
 			<<if $sex.position == "Cowgirl">>
-				<<gram _bottom "subjCap">> slams down one final time before you let out a moan and unload into <<gram _bottom "poss">> ass. <<gram _bottom "subjCap">> shudders at the warmth filling <<gram _bottom "poss">> insides.
+				<<gram _bottom "subjCap">> slams down one final time before <<gram _top "subj">> <<gverb _top "let" "lets">> out a moan and <<gverb _top "unload" "unloads">> into <<gram _bottom "poss">> ass. <<gram _bottom "subjCap">> shudders at the warmth filling <<gram _bottom "poss">> insides.
 			<<else>>
 				<<gram _top "subjCap">> <<gverb _top "shoot" "shoots">> cum into <<gram _bottom "poss">> ass.
 			<</if>>
 
-			<<if $mc.genitaltype is "knotted">>
+			<<if _top.genitaltype is "knotted">>
 				<br>
-				Even after your balls have pumped their entire load into <<gram _bottom "obj">>, your knot remains swollen, locking the two of you together.
+				Even after <<gram _top "poss">> balls have pumped their entire load into <<gram _bottom "obj">>, <<gram _top "poss">> knot remains swollen, locking <<=_pairLock>> together.
 			<</if>>
 
 		<<elseif _bottomClimax>>
 			<<if $sex.position == "Cowgirl">>
-				<<gram _top "subjCap">> slams down one final time before <<gram _bottom "subj">> lets out a moan and unloads into your ass. You feel the warmth fill you up.
+				<<gram _top "subjCap">> slams down one final time before <<gram _bottom "subj">> <<gverb _bottom "let" "lets">> out a moan and <<gverb _bottom "unload" "unloads">> into <<gram _top "poss">> ass. <<gram _top "subjCap">> shudders at the warmth filling <<gram _top "poss">> insides.
 			<<elseif $sex.position == "Missionary">>
-				<<gram _bottom "subjCap">> thrusts into you one last time before holding inside you and letting out a moan. You feel <<gram _bottom "poss">> cum shoot into your ass.
+				<<gram _bottom "subjCap">> thrusts one last time before holding still inside <<gram _top "obj">> and letting out a moan. <<gram _top "subjCap">> <<gverb _top "feel" "feels">> <<gram _bottom "poss">> cum shoot into <<gram _top "poss">> ass.
 			<<else>>
-				<<gram _bottom "subjCap">> <<gverb _bottom "shoot" "shoots">> into <<gram _top "poss">> ass.
+				<<gram _bottom "subjCap">> <<gverb _bottom "shoot" "shoots">> cum into <<gram _top "poss">> ass.
 			<</if>>
 
 			<<if _bottom.genitaltype is "knotted">>
 				<br>
-				Even after <<gram _bottom "poss">> balls have pumped their entire load into <<gram _top "obj">>, <<gram _bottom "poss">> knot remains swollen, locking the two of you together.
+				Even after <<gram _bottom "poss">> balls have pumped their entire load into <<gram _top "obj">>, <<gram _bottom "poss">> knot remains swollen, locking <<=_pairLock>> together.
 			<</if>>
 		<</if>>
 
 	<<case "in air">>
-		You feel yourself release.
+		<<if _topClimax && !_bottomClimax>>
+			<<gram _top "subjCap">> <<gverb _top "shoot" "shoots">> into the air.
+		<<elseif _bottomClimax && !_topClimax>>
+			<<gram _bottom "subjCap">> <<gverb _bottom "shoot" "shoots">> into the air.
+		<<else>>
+			Cum sprays into the air.
+		<</if>>
 
 	<<case "in mouth">>
 		<<if _topClimax>>
-			<<gram _bottom "subjCap">> keeps working your <<=_mcGen>> until you hit your limit, and you shoot your load down <<gram _bottom "poss">> throat.
+			<<gram _bottom "subjCap">> keeps working <<gram _top "poss">> <<=_topGen>> until <<gram _top "subj">> <<gverb _top "hit" "hits">> <<gram _top "poss">> limit, then <<gram _top "subj">> <<gverb _top "shoot" "shoots">> <<gram _top "poss">> load down <<gram _bottom "poss">> throat.
 		<<elseif _bottomClimax>>
-			Before you know it, <<gram _bottom "poss">> cock swells in your mouth, and a hot stream shoots down your throat. You swallow as much as you can.
+			A moment later, <<gram _bottom "poss">> <<=_bottomGen>> swells in <<gram _top "poss">> mouth, and a hot stream shoots down <<gram _top "poss">> throat. <<gram _top "subjCap">> <<gverb _top "swallow" "swallows">> as much as <<gram _top "subj">> can.
 		<</if>>
 
 	<<case "in pussy">>
 		<<if _topClimax>>
 			<<gram _top "subjCap">> <<gverb _top "moan" "moans">> and <<gverb _top "groan" "groans">> as <<gram _top "subj">> <<gverb _top "shoot" "shoots">> <<gram _top "poss">> load into <<gram _bottom "poss">> <<=_bottomType>> <<=_bottomGen>>.
 		<<elseif _bottomClimax>>
-			<<gram _bottom "subjCap">> thrusts one last time before holding inside you and letting out a moan. You feel <<gram _bottom "poss">> cum shoot into your <<=_mcGen>>.
+			<<gram _bottom "subjCap">> thrusts one last time before holding still inside <<gram _top "obj">> and letting out a moan. <<gram _top "subjCap">> <<gverb _top "feel" "feels">> <<gram _bottom "poss">> cum shoot into <<gram _top "poss">> <<=_topGen>>.
 		<</if>>
 
 	<<case "on hand">>
@@ -85,7 +95,11 @@
 
 	<<default>>
 		<<if _topClimax && _bottomClimax>>
-			You both cum.
+			<<if _top === $mc || _bottom === $mc>>
+				You both cum.
+			<<else>>
+				<<gram _top "subjCap">> and <<gram _bottom "subj">> cum together.
+			<</if>>
 		<<elseif _topClimax>>
 			<<gram _top "subjCap">> <<gverb _top "cum" "cums">>.
 		<<elseif _bottomClimax>>

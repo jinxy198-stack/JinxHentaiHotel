@@ -1569,48 +1569,6 @@ setup.sexacts = {
         "Top dialogue tags": ["riding cock"],
         "Bottom dialogue tags": ["cock ridden"],
     },
-    "Squeeze Cock": /* Use pussy to squeeze cock during vaginal sex */
-    {
-        "positions": [  "Missionary:Bottom", "Lap ride:Bottom", "Reverse Lap ride:Bottom", "Mating Press:Bottom", "Prone Bone:Bottom", "From Behind:Bottom", "Doggy:Bottom", "Bent Over:Bottom", "Perched:Bottom", "Cowgirl:Bottom", "Reverse Cowgirl:Bottom", "Standing:Bottom", "Standing From Behind:Bottom", "Spooning:Bottom", "Double Decker:Bottom", "Kneeling Between Thighs:Bottom", "Against Wall:Bottom", "Against Wall From Behind:Bottom", "Laid Across On Back:Bottom", "Laid Across On Stomach:Bottom"],
-        "action type": ["continue"],
-        "Top parts": ["Vagina"],
-        "Bottom parts": ["Penis"],
-        "Top cum locations": ["on cock"],
-        "Bottom cum locations": ["in pussy"],
-        "masturbation": false,
-        "Top arousal": 40,
-        "Bottom arousal": 65,
-        "Top dialogue tags": ["fucking cock"],
-        "Bottom dialogue tags": ["cock fucked"],
-    },
-    "Rabbitfuck": /* Top option for fast pace */
-    {
-        "positions": [  "Missionary:Top", "Mating Press:Top", "Prone Bone:Top", "From Behind:Top", "Doggy:Top", "Bent Over:Top", "Perched:Top", "Cowgirl:Top", "Reverse Cowgirl:Top", "Standing:Top", "Standing From Behind:Top", "Lap ride:Top", "Spooning:Top", "Double Decker:Top", "Kneeling Between Thighs:Top", "Against Wall:Top", "Against Wall From Behind:Top", "Laid Across On Back:Top", "Laid Across On Stomach:Top"],
-        "action type": ["continue"],
-        "Top parts": ["Penis"],
-        "Bottom parts": ["Vagina"],
-        "Top cum locations": ["in pussy"],
-        "Bottom cum locations": ["on cock"],
-        "masturbation": false,
-        "Top arousal": 50,
-        "Bottom arousal": 65,
-        "Top dialogue tags": ["fucking pussy", "fucking pussy fast"],
-        "Bottom dialogue tags": ["pussy fucked", "pussy fucked fast"],
-    },
-    "Deep Stroke": /*Top option for slow pace */
-    {
-        "positions": [  "Missionary:Top", "Mating Press:Top", "Prone Bone:Top", "From Behind:Top", "Doggy:Top", "Bent Over:Top", "Perched:Top", "Cowgirl:Top", "Reverse Cowgirl:Top", "Standing:Top", "Standing From Behind:Top", "Lap ride:Top", "Spooning:Top", "Double Decker:Top", "Kneeling Between Thighs:Top", "Against Wall:Top", "Against Wall From Behind:Top", "Laid Across On Back:Top", "Laid Across On Stomach"],
-        "action type": ["continue"],
-        "Top parts": ["Penis"],
-        "Bottom parts": ["Vagina"],
-        "Top cum locations": ["in pussy"],
-        "Bottom cum locations": ["on cock"],
-        "masturbation": false,
-        "Top arousal": 60,
-        "Bottom arousal": 60,
-        "Top dialogue tags": ["fucking pussy", "fucking pussy deep"],
-        "Bottom dialogue tags": ["pussy fucked", "pussy fucked deep"],
-    },
     "Pull Out":
     {
         "positions": [],

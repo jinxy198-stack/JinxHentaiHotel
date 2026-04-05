@@ -2,100 +2,135 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
+<<set _mcGen = setup.partLower($mc, 'genitals', 'genitals')>>
+<<set _nGen = setup.partLower(_n, 'genitals', 'genitals')>>
+<<set _mcVag = setup.partLower($mc, 'Vagina', 'pussy')>>
+<<set _nVag = setup.partLower(_n, 'Vagina', 'pussy')>>
+<<set _mcHips = setup.partLower($mc, 'Hips', 'hips')>>
+<<set _nHips = setup.partLower(_n, 'Hips', 'hips')>>
+<<set _mcHands = setup.partLower($mc, 'Hands', 'hands')>>
+<<set _mcLegs = setup.partLower($mc, 'Legs', 'legs')>>
+<<set _nBreasts = setup.partLower(_n, 'Breasts', 'breasts')>>
+<<set _nAss = setup.partLower(_n, 'Ass', 'ass')>>
+
 <<if $sex.act == "Enter Pussy">>
-	<<if $sex.postion == "Cowgirl">>
-		_n.name lowers their pussy onto your cock.
-	<<elseif $position == "Missionary">>
-
-	<<elseif $position == "Doggy">>
-
-	<<else>>
-		<<=either(
-			"You line up your <<= setup.partLower($mc, 'genitals', 'genitals') >> with _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> before pushing into them."
-		)>>
-	<</if>>
-<<elseif $sex.act== "Push Cock In">>
-	<<if $sex.postion == "Cowgirl">>
-		<<=either(
-			"You sink down onto _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> , letting out a happy squeal as your feel _n.name sink deep inside your pussy.",
-			"Bottoming out on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> , your lean down and grab  _n.name's head in both hands, before pulling _n.name up into a passionate kiss.",
-			"With a moan, you slid down onto _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> , leaning down into _n.name's _n.breasts and breathing in _n.name's scent before pressing your lips against _n.name's.",
-			"You let _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> slide even deeper into your $mc.genitals as your lean down and pull _n.name into a desperate kiss.",
-			"Leaning down, you let out a moan as you bury yourself on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> , before leaning forward and pressing your lips against _n.name's.",
-			"You reach down to take hold of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> , before shuffling around to get into a good position. After taking a moment to tease the head between your outer labia, you let out a little moan as you slowly drop down and penetrate your <<= setup.partLower($mc, 'genitals', 'genitals') >> on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> .",
-			"Shuffling around into a better position, you line the head of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> up between your $mc.body.Legs, and with a slow, steady movement, you gently drop down, penetrating your <<= setup.partLower($mc, 'genitals', 'genitals') >> on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> .",
-			"You reach down to take a firm hold of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> , before shuffling around to get into a good position. After taking a moment to tease the head between your outer labia, you let out a moan as you eagerly drop down and penetrate your <<= setup.partLower($mc, 'genitals', 'genitals') >> on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> .",
-			"Shuffling around into a better position, you line the head of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> up between your $mc.body.Legs, and with a single movement, you eagerly drop down,  penetrating your <<= setup.partLower($mc, 'genitals', 'genitals') >> on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> .",
-			"You reach down and roughly grab _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> , before shuffling around to get into a good position. After taking a moment to tease the head between your outer labia, you let out a moan as you forcefully drop down and penetrate your <<= setup.partLower($mc, 'genitals', 'genitals') >> on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> .",
-			"Shuffling around into a better position, you line the head of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> up between your $mc.body.Legs, and with a single movement, you roughly drop down, penetrating your <<= setup.partLower($mc, 'genitals', 'genitals') >> on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> .",
-    		"You reach down to take hold of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> , before shuffling around to get into a good position. After taking a moment to tease the head over your ass, you let out a little moan as you slowly drop down and penetrate your $mc.assSize ass on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> ."
-		)>>
-	<<elseif $position == "Missionary">>
-
-	<<elseif $position == "Doggy">>
-
-	<<elseif $position == "Standing">>
-
-	<<else>>
-		<<=either(
-			"_n.name line's up their <<= setup.partLower(_n, 'genitals', 'genitals') >> with your <<= setup.partLower($mc, 'genitals', 'genitals') >> before pushing in."
-		)>>
-	<</if>>
-	
-<<elseif $sex.act== "Fuck Pussy">>
-	<<if $sex.postion =="Doggy">>
-		<<=either(
-    		"Reaching forward, you gently take hold of _n.name's hair, and while continuing to rhythmically slide your <<= setup.partLower($mc, 'genitals', 'genitals') >> in and out of $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> , you slowly pull back, causing _n.name to lift $proset.their head and let out a moan.",
-        	"Taking a gentle hold of _n.name's hair in one $mc.body.Hand, you simultaneously pull $proset.their head back while burying your <<= setup.partLower($mc, 'genitals', 'genitals') >> deep into $proset.their _n.ass softly giggling to yourself as _n.name lets out moan.",
-			"Taking a gentle hold of _n.name's hair in one $mc.body.Hand, you simultaneously pull $proset.their head back while burying your <<= setup.partLower($mc, 'genitals', 'genitals') >> deep into $proset.their _n.ass smirking to yourself as _n.name lets out moan.",
-			"Tracing your $mc.body.Fingers up the length of _n.name's back, you reach forwards and take a gentle hold of $proset.their hair, before pulling $proset.their head back and causing $proset.them to let out a moan."
-    	)>>
+	<<if $sex.position == "Cowgirl">>
+		<<= either(
+			"_n.name lowers $proset.their <<= _nVag >> onto your <<= _mcGen >>."
+		) >>
 	<<elseif $sex.position == "Missionary">>
-		"You fuck _n.name in the missionary position"	
+		<<= either(
+			"You line up your <<= _mcGen >> with _n.name's <<= _nVag >> and slowly push into $proset.them in the missionary position.",
+			"You press forward in missionary, feeling _n.name's <<= _nVag >> slowly give way around your <<= _mcGen >>."
+		) >>
+	<<elseif $sex.position == "Doggy">>
+		<<= either(
+			"From behind, you line up your <<= _mcGen >> with _n.name's <<= _nVag >> and push into $proset.them.",
+			"You guide your <<= _mcGen >> to _n.name's <<= _nVag >> and thrust in from behind."
+		) >>
 	<<else>>
-		You fuck pussy.
+		<<= either(
+			"You line up your <<= _mcGen >> with _n.name's <<= _nVag >> before pushing into $proset.them."
+		) >>
 	<</if>>
 
-<<elseif $sex.act== "Take Cock">>
- 	<<if $sex.postion =="Doggy">>
-		<<=either(
-    	"_n.name fucks you doggy style"
-    	)>>
+<<elseif $sex.act == "Push Cock In">>
+	<<if $sex.position == "Cowgirl">>
+		<<= either(
+			"You sink down onto _n.name's <<= _nGen >>, letting out a happy squeal as you feel $proset.them sink deep inside your <<= _mcVag >>.",
+			"Bottoming out on _n.name's <<= _nGen >>, you lean down and grab _n.name's head in both your <<= _mcHands >> before pulling $proset.them into a passionate kiss.",
+			"With a moan, you slide down onto _n.name's <<= _nGen >>, leaning into _n.name's <<= _nBreasts >> and breathing in $proset.their scent before pressing your lips against $proset.theirs.",
+			"You let _n.name's <<= _nGen >> slide even deeper into your <<= _mcVag >> as you lean down and pull $proset.them into a desperate kiss.",
+			"Leaning down, you let out a moan as you bury yourself on _n.name's <<= _nGen >> before leaning forward and pressing your lips against $proset.theirs.",
+			"You reach down to take hold of _n.name's <<= _nGen >> before shuffling into a better position. After teasing the head between your outer lips, you let out a little moan as you slowly drop down and take $proset.them into your <<= _mcVag >>.",
+			"Shuffling into a better position, you line the head of _n.name's <<= _nGen >> up between your <<= _mcLegs >>, and with a slow, steady movement, you gently drop down, taking $proset.them into your <<= _mcVag >>.",
+			"You take a firm hold of _n.name's <<= _nGen >> before shuffling into a better position. After teasing the head between your outer lips, you let out a moan as you eagerly drop down and take $proset.them into your <<= _mcVag >>.",
+			"Shuffling into a better position, you line the head of _n.name's <<= _nGen >> up between your <<= _mcLegs >>, and with a single movement, you eagerly drop down, taking $proset.them into your <<= _mcVag >>.",
+			"You reach down and roughly grab _n.name's <<= _nGen >> before shuffling into a better position. After teasing the head between your outer lips, you let out a moan as you forcefully drop down and take $proset.them into your <<= _mcVag >>."
+		) >>
 	<<elseif $sex.position == "Missionary">>
-		<<=either(
-        	"You bite your lip and let out a moan, before raising your ass and spreading your legs in order to help _n.name sink their <<= setup.partLower(_n, 'genitals', 'genitals') >> deeper into your $mc.assSize ass.",
-			"You spread her legs and raise your $mc.ass for _n.name, helping $proset.them to thrust $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> deep into your $mc.assSize ass.",
-			"Pulling your $mc.feet back and to each side, you help _n.name to thrust $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> deep into your $mc.assSize by raising your ass and spreading your legs.",
-			"You spread your legs and raise your ass, looking up at _n.name and biting your lip as $proset.they continue fucking your <<=$mc.assSize.toLowerCase()>> ass."
-        )>>	
+		<<= either(
+			"_n.name lines up $proset.their <<= _nGen >> with your <<= _mcVag >> before pushing in.",
+			"_n.name presses into your <<= _mcVag >> in the missionary position, drawing a moan from you."
+		) >>
+	<<elseif $sex.position == "Doggy">>
+		<<= either(
+			"From behind, _n.name lines up $proset.their <<= _nGen >> with your <<= _mcVag >> before pushing in.",
+			"_n.name guides $proset.their <<= _nGen >> to your <<= _mcVag >> and thrusts inside."
+		) >>
+	<<elseif $sex.position == "Standing">>
+		<<= either(
+			"_n.name lines up $proset.their <<= _nGen >> with your <<= _mcVag >> before pushing in while you stand together."
+		) >>
 	<<else>>
-		You take cock.	
- 	<</if>>
-<<elseif $sex.act== "Hump Back">>
- You hump back.
-<<elseif $sex.act== "Ride Cock">> /*Needs fixing. */
-	<<=either(
-			"_n.name lets out a moan as $proset.they enter you, eagerly bucking $proset.their _n.body.Hips up as _n.name starts fucking your <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
-			"With a moan, _n.name eagerly thrusts $proset.their _n.body.Hips up into your groin, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into your <<= setup.partLower($mc, 'genitals', 'genitals') >> as _n.name start energetically fucking you.",
-			"_n.name lets out a moan as $proset.they enter you, bucking _n.name's _n.body.Hips up as _n.name starts fucking your <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
-			"With a moan, _n.name thrust $proset.their _n.body.Hips up into your groin, sinking _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> into your <<= setup.partLower($mc, 'genitals', 'genitals') >> as _n.name starts fucking you.",
-			"Using your legs, you slowly lift yourself up and down, sliding _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> in and out of your <<= setup.partLower($mc, 'genitals', 'genitals') >> as you moan out loud.",
-			"Lowering your $mc.body.Hands to your knees, you uses your $mc.body.Legs to slowly slide yourself up and down, letting out soft moan as you impale yourself on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> .",
-			"You slowly lift yourself up before sliding back down, letting out a soft moan as you spears your <<= setup.partLower($mc, 'genitals', 'genitals') >> on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-			"Using your legs, you lift yourself up and down, sliding _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> in and out of your <<= setup.partLower($mc, 'genitals', 'genitals') >> as you moan out loud.",
-			"Leaning forwards, you use your $mc.body.Hands to support some of your weight as you eagerly slide up and down on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> . As you lower your face towards _n.name, you get a waft of _n.name's scent, and you bites your lip as you breathe in the intoxicating aroma.",
-        	"Leaning forward, you use your $mc.body.Hands to support some of your weight as you start rapidly bucking up and down on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> . As you lower your face towards _n.name, you gets a waft of _n.name's scent, and you bite your lip as you breathes in the intoxicating aroma.",
-        	"Leaning forward, you use your $mc.body.Hands to support some of your weight as you slowly slide up and down on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> . As you lower your face towards _n.name, you gets a waft of $proset.their scent, and you bite your lip as you breathe in the intoxicating aroma.",
-			"Lowering your $mc.body.Hands to your knees, you use your $mc.body.Legs to enthusiastically slide yourself up and down, letting out a moan as you impale yourself on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> .",
-			"You lift yourself up before greedily sliding back down, letting out a moan  as you spear your <<= setup.partLower($mc, 'genitals', 'genitals') >> on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> .",
-			"Using your legs, you rapidly bounce yourself up and down, slamming _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> in and out of your <<= setup.partLower($mc, 'genitals', 'genitals') >> as you moan out loud.",
-			"Placing your $mc.body.Hands down on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out shuddering, a moan as you impale yourself on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> .",
-			"Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a moan as you spear your <<= setup.partLower($mc, 'genitals', 'genitals') >> on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> ."
-		)>>
-<<elseif $sex.act== "Squeeze Cock">>
-You squeeze cock.
-<<elseif $sex.act== "Rabbitfuck">>
-You rabbit fuck.
-<<elseif $sex.act== "Deep Stroke">>
-You deep stroke.
+		<<= either(
+			"_n.name lines up $proset.their <<= _nGen >> with your <<= _mcVag >> before pushing in."
+		) >>
+	<</if>>
+
+<<elseif $sex.act == "Fuck Pussy">>
+	<<if $sex.position == "Doggy">>
+		<<= either(
+			"Reaching forward, you gently take hold of _n.name's hair, and while continuing to rhythmically slide your <<= _mcGen >> in and out of $proset.their <<= _nVag >>, you slowly pull back, causing _n.name to lift $proset.their head and let out a moan.",
+			"Taking a gentle hold of _n.name's hair in one of your <<= _mcHands >>, you pull $proset.their head back while burying your <<= _mcGen >> deep in $proset.their <<= _nVag >>, softly giggling to yourself as _n.name lets out a moan.",
+			"Taking a gentle hold of _n.name's hair in one of your <<= _mcHands >>, you pull $proset.their head back while burying your <<= _mcGen >> deep in $proset.their <<= _nVag >>, smirking to yourself as _n.name moans.",
+			"Tracing your fingers up the length of _n.name's back, you reach forward and take a gentle hold of $proset.their hair before pulling $proset.their head back and drawing a moan from $proset.them."
+		) >>
+	<<elseif $sex.position == "Missionary">>
+		<<= either(
+			"You fuck _n.name in the missionary position.",
+			"You thrust into _n.name's <<= _nVag >> in a steady rhythm, holding $proset.them close beneath you."
+		) >>
+	<<else>>
+		<<= either(
+			"You fuck _n.name's <<= _nVag >>.",
+			"You keep thrusting into _n.name, drawing soft moans from $proset.them."
+		) >>
+	<</if>>
+
+<<elseif $sex.act == "Take Cock">>
+	<<if $sex.position == "Doggy">>
+		<<= either(
+			"_n.name fucks you doggy style.",
+			"From behind, _n.name thrusts steadily into your <<= _mcVag >>."
+		) >>
+	<<elseif $sex.position == "Missionary">>
+		<<= either(
+			"You bite your lip and let out a moan before raising your hips and spreading your legs to help _n.name sink $proset.their <<= _nGen >> deeper into your <<= _mcVag >>.",
+			"You spread your legs and raise your hips for _n.name, helping $proset.them thrust $proset.their <<= _nGen >> deep into your <<= _mcVag >>.",
+			"Pulling your feet back to either side, you help _n.name thrust $proset.their <<= _nGen >> deeper into your <<= _mcVag >> by raising your hips and spreading your legs.",
+			"You spread your legs and raise your hips, looking up at _n.name and biting your lip as $proset.they continue fucking your <<= _mcVag >>."
+		) >>
+	<<else>>
+		<<= either(
+			"You take _n.name's <<= _nGen >> into your <<= _mcVag >>.",
+			"_n.name keeps thrusting into your <<= _mcVag >>."
+		) >>
+	<</if>>
+
+<<elseif $sex.act == "Hump Back">>
+	<<= either(
+		"You hump back.",
+		"You push your hips back to meet the thrusts."
+	) >>
+
+<<elseif $sex.act == "Ride Cock">>
+	<<= either(
+		"_n.name lets out a moan as $proset.they enter you, eagerly bucking $proset.their <<= _nHips >> up as $proset.they start fucking your <<= _mcVag >>.",
+		"With a moan, _n.name eagerly thrusts $proset.their <<= _nHips >> up into your groin, sinking $proset.their <<= _nGen >> into your <<= _mcVag >> as $proset.they start energetically fucking you.",
+		"_n.name lets out a moan as $proset.they enter you, bucking $proset.their <<= _nHips >> up as $proset.they start fucking your <<= _mcVag >>.",
+		"With a moan, _n.name thrusts $proset.their <<= _nHips >> up into your groin, sinking $proset.their <<= _nGen >> into your <<= _mcVag >> as $proset.they start fucking you.",
+		"Using your <<= _mcLegs >>, you slowly lift yourself up and down, sliding _n.name's <<= _nGen >> in and out of your <<= _mcVag >> as you moan aloud.",
+		"Lowering your <<= _mcHands >> to your knees, you use your <<= _mcLegs >> to slowly slide yourself up and down, letting out a soft moan as you impale yourself on _n.name's <<= _nGen >>.",
+		"You slowly lift yourself up before sliding back down, letting out a soft moan as you spear your <<= _mcVag >> on _n.name's <<= _nGen >>.",
+		"Using your <<= _mcLegs >>, you lift yourself up and down, sliding _n.name's <<= _nGen >> in and out of your <<= _mcVag >> as you moan aloud.",
+		"Leaning forward, you use your <<= _mcHands >> to support some of your weight as you eagerly slide up and down on _n.name's <<= _nGen >>. As you lower your face toward _n.name, you catch a waft of $proset.their scent and bite your lip as you breathe in the intoxicating aroma.",
+		"Leaning forward, you use your <<= _mcHands >> to support some of your weight as you start rapidly bucking up and down on _n.name's <<= _nGen >>. As you lower your face toward _n.name, you catch a waft of $proset.their scent and bite your lip as you breathe in the intoxicating aroma.",
+		"Leaning forward, you use your <<= _mcHands >> to support some of your weight as you slowly slide up and down on _n.name's <<= _nGen >>. As you lower your face toward _n.name, you catch a waft of $proset.their scent and bite your lip as you breathe in the intoxicating aroma.",
+		"Lowering your <<= _mcHands >> to your knees, you use your <<= _mcLegs >> to enthusiastically slide yourself up and down, letting out a moan as you impale yourself on _n.name's <<= _nGen >>.",
+		"You lift yourself up before greedily sliding back down, letting out a moan as you spear your <<= _mcVag >> on _n.name's <<= _nGen >>.",
+		"Using your <<= _mcLegs >>, you rapidly bounce yourself up and down, slamming _n.name's <<= _nGen >> in and out of your <<= _mcVag >> as you moan aloud.",
+		"Placing your <<= _mcHands >> on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering moan as you impale yourself on _n.name's <<= _nGen >>.",
+		"Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a moan as you spear your <<= _mcVag >> on _n.name's <<= _nGen >>."
+	) >>
 <</if>>

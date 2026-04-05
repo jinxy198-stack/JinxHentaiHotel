@@ -2,16 +2,16 @@
 
 <<set _npc = _n>>
 <<PronounsSet>>
-/*Supposed to be facing each other against the wall. */
-<<if $sex.role== "Bottom">>
-	<<=either(
-   	"You quickly move up against a nearby wall. Placing your hands up against the solid surface that's now in front of you, you push your <<=$mc.assSize.toLowerCase()>> ass out, shaking it at _n.name as you try to encourage $proset.them to fuck you like this."
-    )>>
-<<elseif $sex.role=="Top">>
-	<<=either(
-	"Taking hold of $proset.their shoulders, you push $proset.them up against a nearby wall.",
-	"Grinding your body up against $proset.their back, _n.name feels your breath on $proset.their "+ ((_n.body.Ear && _n.body.Ear.toLowerCase) ? _n.body.Ear.toLowerCase() : "ear")+"."
-    )>>
+/* Supposed to be facing each other against the wall. */
+
+<<if $sex.role == "Bottom">>
+	<<= either(
+		"You quickly move up against a nearby wall. Placing your <<= setup.partLower($mc, 'Hands', 'hands') >> against the solid surface in front of you, you push your <<= setup.valueLower($mc, 'assSize', 'average') >> ass out and shake it at _n.name, trying to encourage $proset.them to fuck you like this."
+	) >>
+
+<<elseif $sex.role == "Top">>
+	<<= either(
+		"Taking hold of $proset.their shoulders, you push $proset.them up against a nearby wall.",
+		"Grinding your body against $proset.their back, _n.name feels your breath on the side of $proset.their <<= setup.partLower(_n, 'Ear', 'head') >>."
+	) >>
 <</if>>
-
-

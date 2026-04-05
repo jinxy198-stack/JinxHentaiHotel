@@ -1,9 +1,7 @@
 :: Lick-Cock-Dialogue [nobr]
 
 <<if $sex.role == "Top">>
-_n.name licks your cock.
-<<else>>
-You begin to slowly use your tongue to slowly work around _n.name's tip, making sure you can feel and taste every part of it.
-
-
+    _n.name licks your cock.
+<<elseif $sex.role == "Bottom">>
+    You begin to slowly use your tongue to slowly work around _n.name's tip, making sure you can feel and taste every part of it.
 <</if>>

@@ -1,6 +1,6 @@
 :: Lick-Foot-Dialogue
 <<if $sex.role == "Top">>
-_n.name licks your foot.
-<<else>>
-You lick _n.name's foot.
+    _n.name licks your foot.
+<<elseif $sex.role == "Bottom">>
+    You lick _n.name's foot.
 <</if>>

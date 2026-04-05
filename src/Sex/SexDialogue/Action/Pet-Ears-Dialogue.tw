@@ -2,17 +2,74 @@
 
 <<set _npc = _n>>
 <<PronounsSet>>
+
 <<if $sex.role == "Bottom">>
-    <<=either(
- 	"_n.name pets your <<=$mc.body.Ear.toLowerCase()>>."
-    )>>
-	    
+	<<set _earOwner = $mc>>
+	<<set _earMat = String((_earOwner.body && _earOwner.body.Bodymaterial) || "Skin")>>
+
+	<<set _lines = [
+		"_n.name gently pets your <<= setup.partLower($mc, 'Ear', 'ear') >>.",
+		"_n.name softly strokes your <<= setup.partLower($mc, 'Ear', 'ear') >>, drawing a pleased shiver from you.",
+		"With careful fingers, _n.name rubs at the base of your <<= setup.partLower($mc, 'Ear', 'ear') >>.",
+		"_n.name scratches lightly behind your <<= setup.partLower($mc, 'Ear', 'ear') >>.",
+		"A soft sigh escapes you as _n.name fondly pets your <<= setup.partLower($mc, 'Ear', 'ear') >>."
+	]>>
+
+	<<if _earMat == "Fur">>
+		<<run _lines.push(
+			"_n.name slowly strokes your soft furred <<= setup.partLower($mc, 'Ear', 'ear') >>.",
+			"The soft petting makes your furred <<= setup.partLower($mc, 'Ear', 'ear') >> twitch."
+		)>>
+	<<elseif _earMat == "Scales">>
+		<<run _lines.push(
+			"_n.name traces careful fingers along your scaled <<= setup.partLower($mc, 'Ear', 'ear') >>.",
+			"The touch glides smoothly over your scaled <<= setup.partLower($mc, 'Ear', 'ear') >>."
+		)>>
+	<<elseif _earMat == "Feathers">>
+		<<run _lines.push(
+			"_n.name gently smooths the feathers along your <<= setup.partLower($mc, 'Ear', 'ear') >>.",
+			"The delicate touch leaves your feathered <<= setup.partLower($mc, 'Ear', 'ear') >> quivering."
+		)>>
+	<<else>>
+		<<run _lines.push(
+			"_n.name's fingers glide over your <<= setup.partLower($mc, 'Ear', 'ear') >>, savoring the warmth of your skin."
+		)>>
+	<</if>>
+
+	<<= either(..._lines) >>
+
 <<elseif $sex.role == "Top">>
-	
-    <<=either(
-    "You pet _n.name's <<=_n.body.Ear.toLowerCase()>>."
-    )>>
-    
+	<<set _earOwner = _n>>
+	<<set _earMat = String((_earOwner.body && _earOwner.body.Bodymaterial) || "Skin")>>
+
+	<<set _lines = [
+		"You gently pet _n.name's <<= setup.partLower(_n, 'Ear', 'ear') >>.",
+		"You softly stroke _n.name's <<= setup.partLower(_n, 'Ear', 'ear') >>, earning a pleased reaction.",
+		"With careful fingers, you rub at the base of _n.name's <<= setup.partLower(_n, 'Ear', 'ear') >>.",
+		"You scratch lightly behind _n.name's <<= setup.partLower(_n, 'Ear', 'ear') >>.",
+		"You fondly pet _n.name's <<= setup.partLower(_n, 'Ear', 'ear') >>, enjoying the response it gets."
+	]>>
+
+	<<if _earMat == "Fur">>
+		<<run _lines.push(
+			"You slowly stroke the soft fur covering _n.name's <<= setup.partLower(_n, 'Ear', 'ear') >>.",
+			"_n.name's furred <<= setup.partLower(_n, 'Ear', 'ear') >> twitches beneath your touch."
+		)>>
+	<<elseif _earMat == "Scales">>
+		<<run _lines.push(
+			"You trace careful fingers along _n.name's scaled <<= setup.partLower(_n, 'Ear', 'ear') >>.",
+			"Your touch glides smoothly over _n.name's scaled <<= setup.partLower(_n, 'Ear', 'ear') >>."
+		)>>
+	<<elseif _earMat == "Feathers">>
+		<<run _lines.push(
+			"You gently smooth the feathers along _n.name's <<= setup.partLower(_n, 'Ear', 'ear') >>.",
+			"_n.name shivers as you stroke the feathers of $proset.their <<= setup.partLower(_n, 'Ear', 'ear') >>."
+		)>>
+	<<else>>
+		<<run _lines.push(
+			"Your fingers glide over _n.name's <<= setup.partLower(_n, 'Ear', 'ear') >>, enjoying the warmth of $proset.their skin."
+		)>>
+	<</if>>
+
+	<<= either(..._lines) >>
 <</if>>
-
-
