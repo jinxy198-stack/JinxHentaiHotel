@@ -79,7 +79,7 @@ setup.analQuotes = {
   },
   Top: {
     Cowgirl: {
-      Childlike:[
+      Childish:[
       "Whee, hehe! Bouncy, bouncy!",
       "Yeehaw, hehehe!",
       "Boingy Boingy Boingy~!"
@@ -96,7 +96,7 @@ setup.analQuotes = {
       ],
     },
     Doggystyle: {
-      Childlike:[
+      Childish:[
       "Arf Arf! hehehe!",
       "Gimme it Rrrruff and hard! Hehe- N-nnngh..!"
       ],
@@ -111,7 +111,7 @@ setup.analQuotes = {
       ]
     },
     Missionary: {
-      Childlike:[
+      Childish:[
         "Hehe! Lets hold hands! H-haaah...",
         "So--ohhh...~ close we could kiss, hehe!"
       ],
@@ -124,7 +124,7 @@ setup.analQuotes = {
         "Fuck me!"
       ],
     },
-    Childlike:[
+    Childish:[
     "Take me to poundtown, $mc.name!",
     "R-really butt-on mashing, $mc.name! H-haah...~"
     ],
@@ -177,7 +177,7 @@ setup.analQuotes = {
 
 /* ----- BLOWJOB ----- */
 setup.blowjobQuotes = {
-    Childlike:[
+    Childish:[
     "Taste the Rainbow~!",
     "Sausage for you! Eggs below! Hahaha~!"
     ],
@@ -270,7 +270,7 @@ setup.caressQuotes = {
     }
   },
   Top: {
-    Childlike:[
+    Childish:[
       "That tickles, hehe!",
       "Aah~ That feels nice, $mc.name~",
       "Purrrr....~"
@@ -301,7 +301,7 @@ setup.caressQuotes = {
 setup.cuddleQuotes = {
   Bottom: {
 
-    Childlike:[
+    Childish:[
     "Happy snugs after sticky fun! Yayy~!",
     "That was fun, $mc.name! Cum play again sometime, Hehe!"
     ],
@@ -334,7 +334,7 @@ setup.cuddleQuotes = {
     ]
   },
   Top: {
-    Childlike:[
+    Childish:[
     "Happy snugs after sticky fun! Yayy~!",
     "That was fun, $mc.name! Cum play again sometime, Hehe!"
     ],
@@ -414,7 +414,7 @@ setup.cunnilingusQuotes = {
 /* ----- EMBRACE ----- */
 setup.embraceQuotes = {
   Bottom: {
-    Childlike:[
+    Childish:[
       "Snuggle Stuffins! Yayy..~! H-haah ha..~",
       "This is my.. A-aah.. fave kinda thing!"
     ],
@@ -430,7 +430,7 @@ setup.embraceQuotes = {
     ]
   },
   Top: {
-    Childlike:[
+    Childish:[
       "Snuggle Stuffins! Yayy..~! H-haah ha..~",
       "This is my.. A-aah.. fave kinda thing!"
     ],
@@ -562,7 +562,7 @@ setup.feelstomachQuotes = {
     ]
   },
   Top: {
-    Childlike:[
+    Childish:[
       "That tickles, hehe!",
       "Aah~ That feels nice, $mc.name~",
       "Purrrr....~"
@@ -596,7 +596,7 @@ setup.FingerAssQuotes = {
     ]
   },
   Top: {
-    Childlike: [
+    Childish: [
       "Press the Butt-on for funny noises! Baaa-aah...",
       "Press the Butt-on for funny noises! Mooo--ooh~",
       "Press the Butt-on for funny noises! Quaaah..ck~",
@@ -659,7 +659,7 @@ setup.fingerpussyQuotes = {
 /* ----- FOOTJOB ----- */
 setup.footjobQuotes = {
   Bottom: {
-    Childlike:["Wow! No hands needed! Nice, $mc.name!"],
+    Childish:["Wow! No hands needed! Nice, $mc.name!"],
     Dominant: ["Good, keep doing that."],
     Submissive: [
       "Your feet are so soft.",
@@ -674,7 +674,7 @@ setup.footjobQuotes = {
     ]
   },
   Top: {
-    Childlike:[
+    Childish:[
     "You're gettin the Beeeeeeans~!",
     "Look! No hands!"
     ],
@@ -696,7 +696,7 @@ setup.footjobQuotes = {
 /* ----- FROT ----- */
 setup.frotQuotes = {
   Bottom: {
-    Childlike:[
+    Childish:[
     "Kissy kissy PPs! Hahaha~!",
     "Wub wub~ Nnh...~"
     ],
@@ -712,7 +712,7 @@ setup.frotQuotes = {
     Switch: ["Ah!"]
   },
   Top: {
-    Childlike:[
+    Childish:[
     "Kissy kissy PPs! Hahaha~!",
     "Wub wub~ Nnh...~"
     ],
@@ -998,7 +998,7 @@ setup.gropebuttQuotes = {
     },
   },  
   Top: {
-    Childlike:[
+    Childish:[
     "Aah! Hehe!",
     "Fun to squish huh? Hahaha~!",
     "Doubles as a good pillow!"
@@ -1085,7 +1085,7 @@ setup.handjobQuotes = {
     ]
   },
   Top: {
-    Childlike:[
+    Childish:[
       "Lemme give you a hand buddy!"
     ],
     Dominant: {
@@ -1156,7 +1156,7 @@ setup.GrabCockQuotes = {
     ]
   },
   Top: {
-    Childlike:[
+    Childish:[
       "Lemme give you a *hand* buddy!"
     ],
     Dominant: {
@@ -1226,7 +1226,7 @@ setup.petearsQuotes = {
     ]
   },
   Top: {
-    Childlike:[
+    Childish:[
       "That tickles, hehe!",
       "Aah~ That feels nice, $mc.name~",
       "Purrrr....~"
@@ -1248,7 +1248,7 @@ setup.petearsQuotes = {
 
 /* ----- RIMJOB ----- */
 setup.rimjobQuotes = {
-    Childlike:[
+    Childish:[
     "Pucker up 'n kiss my pucker! Hehehe!",
     "A-aah.. hope you're enjoying th-aah.. doughnut hole! Hehe!",
     "Taste the Rain-butt!"
@@ -1275,7 +1275,7 @@ setup.rimjobQuotes = {
 /* ----- SUCK FOOT ----- */
 setup.suckfootQuotes = {
   Bottom: {
-    Childlike:[
+    Childish:[
     "H-hey, that tickles!!! Stoppit..!",
     "A-aah! N-n-not too much of that..! I might kick you on accident..!"
     ],
@@ -1358,7 +1358,7 @@ setup.orgasmQuotes = {
   },
   Top: {
     "in ass": {
-      Childlike: [
+      Childish: [
       "Relax n let a load off $mc.name~ Mmm...~",
       "Hee hee, Yayy! I feel extra warm inside now!",
       "Yayyy! You crossed the finish line! Winner~!"
@@ -1381,7 +1381,7 @@ setup.orgasmQuotes = {
         Switch:["Oh Yeah!"]
     },
     "on penis": {
-      Childlike:[
+      Childish:[
       "Have some Cumfetti! Happy Birthday! Hehehe!",
       "You need more colors! Here you go hehehe~!"
       ],
@@ -1431,7 +1431,7 @@ setup.orgasmcloseQuotes = {
       Switch: ["I'm gonna cum in your ass!", "I'm cumming!","Aaaah!!"]
     },
     "Pump Shaft": {
-      Childlike:["I'm ready for some facepaint!"],
+      Childish:["I'm ready for some facepaint!"],
       Dominant: ["Don't stop jerking it, I'm so close!"],
       Submissive: ["Faster, I'm almost there!"],
       Switch: ["You're gonna jerk the cum out of me!"]
@@ -1440,7 +1440,7 @@ setup.orgasmcloseQuotes = {
       "I can feel it, you're close? I am as well."
     ], 
     "Suck Cock": {
-      Childlike:[
+      Childish:[
       "Ima.. color your insides..! Nngh.!",
       "Here cums some trademark.. Oooey Goooey! Aaah..!",
       "Crossing.. the finish line! Haaah..!"
@@ -1465,7 +1465,7 @@ setup.orgasmcloseQuotes = {
     }
   },
   Top: {
-    Childlike: [
+    Childish: [
     "Mmh..! Getting close to the finish line...!",
     "I-im about to be a fruit gusher...!"
     ],

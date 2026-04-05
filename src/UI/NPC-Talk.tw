@@ -16,7 +16,7 @@
 	Mean: ["Well there you are, lil brat!"],
 	Energetic: ["Hey, $mc.name!"],
 	Playful: ["Hey, $mc.name! Hope you're in the mood for playing around."],
-	Childlike: ["Hiya! You lookin for some sticky snuggly funtime?"]
+	Childish: ["Hiya! You lookin for some sticky snuggly funtime?"]
 }>>
 
 <<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>

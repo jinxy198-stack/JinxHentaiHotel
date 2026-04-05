@@ -15,7 +15,7 @@
 		|| setup.handjobQuotes.Bottom.Neutral
 	>>
 <<elseif _mode == "Bottom">>
-	<<if _personality == "Childlike">>
+	<<if _personality == "Childish">>
 		<<set _pool =
 			setup.handjobQuotes.Top[_personality]
 		>>

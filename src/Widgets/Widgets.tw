@@ -437,7 +437,7 @@
     <<elseif _p is 2>>
         <<if _m is 0>>
             <<set $physique.label = "Plump">>
-        <<elseif _m = 1>>
+        <<elseif _m is 1>>
             <<set $physique.label = "Thick">>
         <<elseif _m is 2>>
             <<set $physique.label = "Brawny">>

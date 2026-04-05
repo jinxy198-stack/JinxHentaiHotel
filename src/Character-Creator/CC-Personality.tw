@@ -1,19 +1,16 @@
 :: CC-Personality [creation-page] {"position":"1425,225","size":"100,100"}
 
 //What term do you use to describe your personality?//
-* <label><<radiobutton "$mc.personality" "Brave" checked>> Brave</label>
-* <label><<radiobutton "$mc.personality" "Shy" checked>> Shy</label>
-* <label><<radiobutton "$mc.personality" "Relaxed" checked>>Relaxed </label>
-* <label><<radiobutton "$mc.personality" "Playful" checked>> Playful</label>
-* <label><<radiobutton "$mc.personality" "Kind" checked>> </label>
-* <label><<radiobutton "$mc.personality" "Childlike" checked>> Childlike</label>
-* <label><<radiobutton "$mc.personality" "Adventerous" checked>> Adventurous</label>
-* <label><<radiobutton "$mc.personality" "Kind">>Kind</label>
-* <label><<radiobutton "$mc.personality" "Confident">>Confident</label>
-* <label><<radiobutton "$mc.personality" "Calm">>Calm</label>
-* <label><<radiobutton "$mc.personality" "Lazy">>Lazy</label>
-* <label><<radiobutton "$mc.personality" "Good">>Good</label>
-* <label><<radiobutton "$mc.personality" "Evil">>Evil</label>
+
+* <label><<radiobutton "$mc.personality" "Brave">><<tooltip "Brave" `setup.personalityTips['Brave'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Timid">><<tooltip "Timid" `setup.personalityTips['Timid'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Chill">><<tooltip "Chill" `setup.personalityTips['Chill'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Playful">><<tooltip "Playful" `setup.personalityTips['Playful'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Childish">><<tooltip "Childish" `setup.personalityTips['Childish'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Adventerous">><<tooltip "Adventerous" `setup.personalityTips['Adventerous'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Kind">><<tooltip "Kind" `setup.personalityTips['Kind'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Confident">><<tooltip "Confident" `setup.personalityTips['Confident'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Lazy">><<tooltip "Lazy" `setup.personalityTips['Lazy'] || "No description written yet."`>></label>
 
 <<button [[Confirm|Index-CC]]>>
     <<set $pages.perso to true>>

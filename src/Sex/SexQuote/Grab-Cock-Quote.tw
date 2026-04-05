@@ -14,7 +14,7 @@
 		|| setup.GrabCockQuotes.Bottom.Neutral
 	>>
 <<elseif _mode == "Top">>
-	<<if _personality == "Childlike">>
+	<<if _personality == "Childish">>
 		<<set _pool =
 			setup.GrabCockQuotes.Top[_personality]
 		>>
