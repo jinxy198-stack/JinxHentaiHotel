@@ -21,11 +21,11 @@
 
 <<set _pool = null>>
 
-<<if _mode == "give">>
+<<if $sex.role == "Bottom">>
 	<<set _pool = setup.cuddleQuotes.Bottom[_personality]
 	||setup.cuddleQuotes.Bottom[_pref]
 	|| setup.cuddleQuotes.Bottom.Neutral>>
-<<else>>
+<<elseif $sex.role == "Top">>
 	<<set _pool = setup.cuddleQuotes.Top[_personality]
 	||setup.cuddleQuotes.Top[_pref] 
 	|| setup.cuddleQuotes.Top.Neutral>>

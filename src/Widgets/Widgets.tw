@@ -715,17 +715,17 @@
     Depending on how your organise features, you may end up with multiple variables (regular variables and/or other arrays).
 */
 <<widget "AllThisInAnArray">>
-    <<set $facefeatures to []>>
-    <<if _moustache>><<run $facefeatures.push("a moustache")>><</if>>
-    <<if _fullbeard>><<run $facefeatures.push("a full beard")>><</if>>
-    <<if _sideburns>><<run $facefeatures.push("some sideburns")>><</if>>
-    <<if _shadow>><<run $facefeatures.push("shadow")>><</if>>
-    <<if _patch>><<run $facefeatures.push("soul patch")>><</if>>
-    <<if _wrinkles>><<run $facefeatures.push("wrinkles")>><</if>>
-    <<if _mole>><<run $facefeatures.push("a mole")>><</if>>
-    <<if _bm>><<run $facefeatures.push("a beauty mark")>><</if>>
-    <<if _freckles>><<run $facefeatures.push("freckles")>><</if>>
-    <<if _acne>><<run $facefeatures.push("acne")>><</if>>  
+    <<set $mc.facefeatures to []>>
+    <<if _moustache>><<run $mc.facefeatures.push("a moustache")>><</if>>
+    <<if _fullbeard>><<run $mc.facefeatures.push("a full beard")>><</if>>
+    <<if _sideburns>><<run $mc.facefeatures.push("some sideburns")>><</if>>
+    <<if _shadow>><<run $mc.facefeatures.push("shadow")>><</if>>
+    <<if _patch>><<run $mc.facefeatures.push("soul patch")>><</if>>
+    <<if _wrinkles>><<run $mc.facefeatures.push("wrinkles")>><</if>>
+    <<if _mole>><<run $mc.facefeatures.push("a mole")>><</if>>
+    <<if _bm>><<run $mc.facefeatures.push("a beauty mark")>><</if>>
+    <<if _freckles>><<run $mc.facefeatures.push("freckles")>><</if>>
+    <<if _acne>><<run $mc.facefeatures.push("acne")>><</if>>  
 <</widget>>
 
 
@@ -757,9 +757,16 @@
         $mc.bodyheight to either(setup.height),
         $mc.physique to either(setup.physique),
         $mc.assSize to either(setup.assSize),
-        $mc.personality to either(setup.personalities),
         $mc.species to either(setup.species)
     >>
+    <<set _pool = setup.personalities.slice()>>
+    <<set $mc.personality to []>>
+
+    <<for _i = 0; _i < 2 and _pool.length > 0; _i++>>
+	    <<set _pick = either(..._pool)>>
+	    <<run $mc.personality.push(_pick)>>
+	    <<run _pool.splice(_pool.indexOf(_pick), 1)>>
+    <</for>>
 
 
     <<if $mc.species is "Anthro">>
@@ -863,22 +870,22 @@
     CHANGE POPUP WIDGETS 
 ********************************/
 <<widget "FacialFeaturesPicked">>
-    <<if $facefeatures.includes("a moustache")>><<set _moustache to true>><</if>>
-    <<if $facefeatures.includes("a goatee")>><<set _goatee to true>><</if>>
-    <<if $facefeatures.includes("a full beard")>><<set _fullbeard to true>><</if>>
-    <<if $facefeatures.includes("some sideburns")>><<set _sideburns to true>><</if>>
-    <<if $facefeatures.includes("shadow")>><<set _shadow to true>><</if>>
-    <<if $facefeatures.includes("soul patch")>><<set _patch to true>><</if>>
-    <<if $facefeatures.includes("a handle bar")>><<set _handlebar to true>><</if>>
-    <<if $facefeatures.includes("wrinkles")>><<set _wrinkles to true>><</if>>
-    <<if $facefeatures.includes("a mole")>><<set _mole to true>><</if>>
-    <<if $facefeatures.includes("a unibrow")>><<set _brow to true>><</if>>
-    <<if $facefeatures.includes("thick brows")>><<set _thickbrow to true>><</if>>
-    <<if $facefeatures.includes("thin brows")>><<set _thinbrow to true>><</if>>
-    <<if $facefeatures.includes("a beauty mark")>><<set _bm to true>><</if>>
-    <<if $facefeatures.includes("freckles")>><<set _freckles to true>><</if>>
-    <<if $facefeatures.includes("fluff hair")>><<set _facehair to true>><</if>>
-    <<if $facefeatures.includes("acne")>><<set _acne to true>><</if>>
+    <<if $mc.facefeatures.includes("a moustache")>><<set _moustache to true>><</if>>
+    <<if $mc.facefeatures.includes("a goatee")>><<set _goatee to true>><</if>>
+    <<if $mc.facefeatures.includes("a full beard")>><<set _fullbeard to true>><</if>>
+    <<if $mc.facefeatures.includes("some sideburns")>><<set _sideburns to true>><</if>>
+    <<if $mc.facefeatures.includes("shadow")>><<set _shadow to true>><</if>>
+    <<if $mc.facefeatures.includes("soul patch")>><<set _patch to true>><</if>>
+    <<if $mc.facefeatures.includes("a handle bar")>><<set _handlebar to true>><</if>>
+    <<if $mc.facefeatures.includes("wrinkles")>><<set _wrinkles to true>><</if>>
+    <<if $mc.facefeatures.includes("a mole")>><<set _mole to true>><</if>>
+    <<if $mc.facefeatures.includes("a unibrow")>><<set _brow to true>><</if>>
+    <<if $mc.facefeatures.includes("thick brows")>><<set _thickbrow to true>><</if>>
+    <<if $mc.facefeatures.includes("thin brows")>><<set _thinbrow to true>><</if>>
+    <<if $mc.facefeatures.includes("a beauty mark")>><<set _bm to true>><</if>>
+    <<if $mc.facefeatures.includes("freckles")>><<set _freckles to true>><</if>>
+    <<if $mc.facefeatures.includes("fluff hair")>><<set _facehair to true>><</if>>
+    <<if $mc.facefeatures.includes("acne")>><<set _acne to true>><</if>>
 <</widget>>
 
 <<widget "PopupSkinChecker">>
@@ -930,7 +937,7 @@
         $mc.species to "Human",
         $mc.gender to "Male",
         $mc.sexu to "Bisexual",
-        $mc.pronouns to "He/Him ",
+        $mc.pronouns to "He/Him",
         $mc.age to "27",
         $heterochromia to false,
         $mc.eyes to "Brown",
@@ -938,7 +945,7 @@
         $mc.hair.length to "Short",
         $mc.hair.color to "Black",
         $mc.hair.style to "Buzz cut",
-        $facefeatures to ["A mole"],
+        $mc.facefeatures to ["A mole"],
         $mc.skin.color to "Tan",
         $mc.skin.features to [],
         $mc.bodyheight to "Average",
@@ -964,7 +971,7 @@
         $mc.species to "Human",
         $mc.gender to "Male",
         $mc.sexu to "Bisexual",
-        $mc.pronouns to "He/Him ",
+        $mc.pronouns to "He/Him",
         $mc.age to "10",
         $heterochromia to false,
         $mc.eyes to "Brown",
@@ -972,12 +979,11 @@
         $mc.hair.length to "Short",
         $mc.hair.color to "Black",
         $mc.hair.style to "Buzz cut",
-        $facefeatures to ["A mole"],
+        $mc.facefeatures to ["A mole"],
         $mc.skin.color to "Tan",
-        $mc.skin.features to [],
         $mc.bodyheight to "Short",
         $mc.physique to "Thin",
-        $mc.personality to "Kind",
+        $mc.personality to ["Kind"],
         $mc.genitals to "Penis",
         $mc.penislength to "Tiny",
         $mc.genitaltype to "Uncut",
@@ -998,7 +1004,7 @@
         $mc.species to "Human",
         $mc.gender to "Female",
         $mc.sexu to "Bisexual",
-        $mc.pronouns to "She/Her ",
+        $mc.pronouns to "She/Her",
         $mc.age to "10",
         $heterochromia to false,
         $mc.eyes to "Brown",
@@ -1006,7 +1012,7 @@
         $mc.hair.length to "Short",
         $mc.hair.color to "Black",
         $mc.hair.style to "Buzz cut",
-        $facefeatures to ["A mole"],
+        $mc.facefeatures to ["A mole"],
         $mc.skin.color to "Tan",
         $mc.skin.features to [],
         $mc.bodyheight to "Short",
@@ -1032,7 +1038,7 @@
         $mc.species to "Human",
         $mc.gender to "Male",
         $mc.sexu to "Bisexual",
-        $mc.pronouns to "He/Him ",
+        $mc.pronouns to "He/Him",
         $mc.age to "16",
         $heterochromia to false,
         $mc.eyes to "Brown",
@@ -1040,7 +1046,7 @@
         $mc.hair.length to "Short",
         $mc.hair.color to "Black",
         $mc.hair.style to "Buzz cut",
-        $facefeatures to ["A mole"],
+        $mc.facefeatures to ["A mole"],
         $mc.skin.color to "Tan",
         $mc.skin.features to [],
         $mc.bodyheight to "Average",
@@ -1066,7 +1072,7 @@
         $mc.species to "Human",
         $mc.gender to "Female",
         $mc.sexu to "Bisexual",
-        $mc.pronouns to "She/Her ",
+        $mc.pronouns to "She/Her",
         $mc.age to "16",
         $heterochromia to false,
         $mc.eyes to "Brown",
@@ -1074,7 +1080,7 @@
         $mc.hair.length to "Short",
         $mc.hair.color to "Black",
         $mc.hair.style to "Buzz cut",
-        $facefeatures to ["A mole"],
+        $mc.facefeatures to ["A mole"],
         $mc.skin.color to "Tan",
         $mc.skin.features to [],
         $mc.bodyheight to "Average",
@@ -1100,7 +1106,7 @@
         $mc.species to "Human",
         $mc.gender to "Female",
         $mc.sexu to "Bisexual",
-        $mc.pronouns to "She/Her ",
+        $mc.pronouns to "She/Her",
         $mc.age to "27",
         $heterochromia to false,
         $mc.eyes to "Brown",
@@ -1108,7 +1114,7 @@
         $mc.hair.length to "Short",
         $mc.hair.color to "Black",
         $mc.hair.style to "Buzz cut",
-        $facefeatures to ["A mole"],
+        $mc.facefeatures to ["A mole"],
         $mc.skin.color to "Tan",
         $mc.skin.features to [],
         $mc.bodyheight to "Tall",
@@ -1134,7 +1140,7 @@
         $mc.species to "Human",
         $mc.gender to "Male",
         $mc.sexu to "Bisexual",
-        $mc.pronouns to "He/Him ",
+        $mc.pronouns to "He/Him",
         $mc.age to "27",
         $heterochromia to false,
         $mc.eyes to "Brown",
@@ -1142,7 +1148,7 @@
         $mc.hair.length to "Short",
         $mc.hair.color to "Black",
         $mc.hair.style to "Buzz cut",
-        $facefeatures to ["A mole"],
+        $mc.facefeatures to ["A mole"],
         $mc.skin.color to "Tan",
         $mc.skin.features to [],
         $mc.bodyheight to "Tall",

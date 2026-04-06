@@ -7,7 +7,7 @@
 <table>
     <tr id="name">
         <th><u><strong>First Name:</strong></u></th>
-        <td id="mc-name"><span class="mc">$mc.name</span></td>
+        <td id="mc-name">$mc.name</td>
     </tr>
     <<if $mc.nickname>>
     <tr id="nickname">
@@ -75,10 +75,10 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
 </span> 
 </td> 
 </tr>
-    <<if $facefeatures>>
+    <<if $mc.facefeatures>>
     <tr id="facial-features">
         <th><u><strong>Facial Features:</strong></u></th>
-        <td id="mc-ffeat">$facefeatures</td>
+        <td id="mc-ffeat">$mc.facefeatures</td>
     </tr>
     <</if>>
 </table>

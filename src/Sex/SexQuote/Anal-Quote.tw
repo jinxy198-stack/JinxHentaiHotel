@@ -4,24 +4,18 @@
 	<<return>>
 <</if>>
 
-<<set _pref = _n.sexpref || "Switch">>
-<<set _msize = $mc.penislength || "Average">>
-<<set _personality = _n.personality>>
 <<if !$sex or !$sex.roles or !_n>>
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>
-<<set _position = $sex.position >>
+<<set _pref = _n.sexpref>>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 
+
+<<set _position = $sex.position>>
 <<set _pool = null>>
-	<<if _mode == "give">>
+
+<<if $sex.role == "Bottom">>
 	<<set _pool =
 		(
 			setup.analQuotes.Bottom[_position]
@@ -29,19 +23,33 @@
 		)
 		|| setup.analQuotes.Bottom.Neutral
 	>>
-	<<else>>
-	<<set _pool =
-		(
-			setup.analQuotes.Top[_position]
-			&& setup.analQuotes.Top[_position][_personality]
-			|| setup.analQuotes.Top[_position][_pref]
-		)
-		|| setup.analQuotes.Top.Neutral
-	>>
+<<elseif $sex.role == "Top">>
+	<<set _persMatches = []>>
+
+	<<if setup.analQuotes.Top[_position]>>
+		<<for _p range _personalities>>
+			<<if _p and setup.analQuotes.Top[_position][_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
 	<</if>>
 
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.analQuotes.Top[_position][_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			(
+				setup.analQuotes.Top[_position]
+				&& setup.analQuotes.Top[_position][_pref]
+			)
+			|| setup.analQuotes.Top.Neutral
+		>>
+	<</if>>
+<</if>>
+
 <<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+	<<= either(..._pool) >>
 <<else>>
 	[Error] No Anal quote pool found.
 <</if>>

@@ -156,7 +156,14 @@
 	<<set _npc.skinfeatures 	= setup.pick(_skinFeat)>>
 	<<set _npc.bodyheight   = setup.pick(_heightPool)>>
 	<<set _npc.physique   = setup.pick(_physiquePool)>>
-	<<set _npc.personality  = setup.pick(_persPool)>>
+	<<set _pool = _persPool.slice()>>
+<<set _npc.personality = []>>
+
+<<for _i = 0; _i < 2 and _pool.length > 0; _i++>>
+	<<set _pick = setup.pick(_pool)>>
+	<<run _npc.personality.push(_pick)>>
+	<<run _pool.splice(_pool.indexOf(_pick), 1)>>
+<</for>>
 	<<set _npc.assSize      = setup.pick(_assPool)>>
 	<<set _npc.virgin       = either(true,false)>>
 	<<set _npc.origin       = "Random Person">>

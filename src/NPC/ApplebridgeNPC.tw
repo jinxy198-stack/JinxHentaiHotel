@@ -23,11 +23,11 @@
     skinfeatures: "",
     bodyheight: "Average",
     physique: "Toned", /* Musculature*/
-    personality: "Sassy",
+    personality: "Brash",
     sexpref: "Dominant",
     origin: "Applebridge",
     traits: [
-    "Will Not Bottom"
+    "Will Not Bottom", "Sex Addict"
     ],
 }>>
 
@@ -77,7 +77,7 @@
     bodyheight: "Tall",
     physique: "Thick",
     breastsize:"Large",
-    personality: "Mean",
+    personality: "Brash",
     assSize: "Portly",
     sexpref: "Dominant",
     origin: "Applebridge"
@@ -104,7 +104,37 @@
     skinfeatures: "",
     bodyheight: "Short",
     physique: "Lean", 
-    personality: "Shy",
+    personality: ["Timid", "Modest"],
     sexpref: "Submissive",
-    origin: "Applebridge"
+    origin: "Applebridge",
+    traits: ["Gamer", "Athlete"]
+}>>
+
+<<set $LorenC = {
+    name: "Loren",
+    nickname: [],
+    surname: "Cox",
+    species: "Human",
+    gender: "Male",
+    trans: "Cisgender",
+    sexu: "Homosexual",  
+    genitals: "Penis",
+    genitaltype: "Uncut",
+    penislength: "Small",
+    assSize: "Plump",
+    pronouns: "He/Him",
+    age: 13,
+    eyes: "Blue",
+    hair: "Spiky",
+    haircolor: "Blonde",
+    skincolor: "Tan",
+    skinfeatures: "",
+    bodyheight: "Average",
+    physique: "Lithe", 
+    personality: ["Provocative", "Sassy", "Energetic"],
+    sexpref: "Submissive",
+    origin: "Applebridge",
+    traits: [
+    "Will Not Top", "Sex Addict"
+    ]
 }>>

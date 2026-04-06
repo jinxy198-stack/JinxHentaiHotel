@@ -4,8 +4,8 @@
 
 <<set _lines = {
 	Default: ["Hello","Hi"],
-	Calm: ["We can take our time.","No rush.","Your presence is steady. Peaceful. I welcome it."],
-	Jolly: ["Hey there! Great to see you!","Isn't today perfect?"],
+	Chill: ["What's up?"],
+	Upbeat: ["Hey there! Great to see you!","Isn't today perfect?"],
 	Timid: ["Ah s-sorry… you startled me. But I'm happy you're here."],
 	Tough: ["Hey. Don't waste my time. Speak if you've got something worth saying."],
 	Brave: ["You're here. Good. I was ready for something to happen."],
@@ -16,14 +16,32 @@
 	Mean: ["Well there you are, lil brat!"],
 	Energetic: ["Hey, $mc.name!"],
 	Playful: ["Hey, $mc.name! Hope you're in the mood for playing around."],
-	Childish: ["Hiya! You lookin for some sticky snuggly funtime?"]
+	Childish: ["Hiya! You lookin for some sticky snuggly funtime?"],
+	Provocative: ["Well hey there..."],
+	Stubborn: ["Oh, it's you."]
 }>>
 
 <<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
 	<<set _line = "They wave.">>
 <<else>>
-	<<set _pool = _lines[_n.personality] || _lines.Default>>
-	<<set _line = _pool[random(0, _pool.length - 1)]>>
+	<<set _validPers = []>>
+
+	<<if Array.isArray(_n.personality) && _n.personality.length>>
+		<<for _p range _n.personality>>
+			<<if _lines[_p]>>
+				<<run _validPers.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _validPers.length>>
+		<<set _chosenPers = setup.pick(_validPers)>>
+		<<set _pool = _lines[_chosenPers]>>
+	<<else>>
+		<<set _pool = _lines.Default>>
+	<</if>>
+
+	<<set _line = setup.pick(_pool)>>
 <</if>>
 
 <<set _key = _n.id || _n.name>>

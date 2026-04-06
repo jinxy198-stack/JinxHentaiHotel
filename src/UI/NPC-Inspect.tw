@@ -50,11 +50,15 @@
 	* <b>Breast Size:</b> _n.breastsize 
 <</if>>
 <br>
-<<if _n.personality>>
-	<<set _ptip = setup.personalityTips[_n.personality] || "No description written yet.">>
-	<br>
+<<if Array.isArray(_n.personality) && _n.personality.length>>
 	<b>Personality:</b>
-	<<tooltip _n.personality _ptip>>
+	<<for _i = 0; _i < _n.personality.length; _i++>>
+		<<set _personality = _n.personality[_i]>>
+		<<set _ptip = setup.personalityTips[_personality] || "No description written yet.">>
+		<<tooltip _personality _ptip>>
+		<<if _i < _n.personality.length - 1>>, <</if>>
+	<</for>>
+	<br>
 <</if>>
 
 <br>

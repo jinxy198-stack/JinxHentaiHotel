@@ -1,161 +1,108 @@
 :: Statistics [nobr]{"position":"275,150","size":"100,100"}
+
 <h2>Basic Info</h2>
-<table class="stats-table">
-  <colgroup><col style="width:220px"><col style="width:auto"></colgroup>
-  <tr id="name">
-    <th>First Name:</th>
-    <td id="mc-name">$mc.name</td>
-  </tr>
-  <<if $mc.nickname>>
-  <tr id="nickname">
-    <th>Nickname:</th>
-    <td id="mc-nick">$mc.nickname</td>
-  </tr>
-  <</if>>
-  <tr id="surname">
-    <th>Surname:</th>
-    <td id="mc-surb">$mc.surname</td>
-  </tr>
-  <tr id="pronouns">
-    <th>Pronouns:</th>
-    <td id="mc-pronouns">$mc.pronouns</td>
-  </tr>
-  <tr id="identity">
-    <th>Identity:</th>
-    <td id="mc-identity">$mc.trans</td>
-  </tr>
-  <tr id="age">
-    <th>Age:</th>
-    <td id="mc-age">$mc.age</td>
-  </tr>
-  <tr id="agegroup">
-    <th>Age Group:</th>
-    <td id="mc-agegroup">$mc.ageGroup</td>
-  </tr>
-  <tr id="species">
-    <th>Species:</th>
-    <td id="mc-species">$mc.species</td>
-  </tr>
-  <<if $mc.species and $mc.species.toLowerCase() is "anthro">>
-  <tr id="anthro-type">
-    <th>Anthro Type:</th>
-    <td id="mc-anthro">
-      <<if $mc.anthro and $mc.anthro.group>>$mc.anthro.group<</if>>
-      <<if $mc.anthro and $mc.anthro.subtype>> $mc.anthro.subtype<</if>>
-    </td>
-  </tr>
-  <</if>>
-</table>
 
-<h2>Physical Traits:</h2>
-<h3>Face and Hair:</h3>
-<table class="stats-table">
-  <colgroup><col style="width:220px"><col style="width:auto"></colgroup>
-  <tr id="eyes">
-    <th>Eyes:</th>
-    <td id="mc-eyes">$mc.eyes</td>
-  </tr>
-  <<if $mc.hair.length or $mc.hair.texture or $mc.hair.color or $mc.hair.do or $mc.hair.bangs or $mc.hair.shave>>
-  <tr id="hair">
-    <th>Hair:</th>
-    <td>
-      <span id="mc-hairnat">
-        <<if $mc.hair.length and $mc.hair.length is "bald">>
-          You are bald.
-        <<else>>
-          You have $mc.hair.color $mc.hair.style hair
-        <</if>>
-      </span>
-    </td>
-  </tr>
-  <</if>>
-  <<if $facefeatures>>
-  <tr id="facial-features">
-    <th>Facial Features:</th>
-    <td id="mc-facefeatures">$facefeatures</td>
-  </tr>
-  <</if>>
-</table>
+<b>Name:</b> <<= $mc.name >><<if $mc.surname>> <<= $mc.surname >><</if>><br>
 
-<h3>Body:</h3>
-<table class="stats-table">
-  <colgroup><col style="width:220px"><col style="width:auto"></colgroup>
+<<if $mc.nickname>>
+	<b>Nickname:</b> "<<= $mc.nickname >>"<br>
+<</if>>
 
-  <!-- Skin / Body material row -->
-  <tr id="skin-color">
-    <th><<if $mc.species and $mc.species.toLowerCase() is "anthro">>Body Material:<</if>><<if not ($mc.species and $mc.species.toLowerCase() is "anthro")>>Skin:<</if>></th>
-    <td id="mc-skin">
-      <<if $mc.species and $mc.species.toLowerCase() is "anthro">>
-        $mc.body.Bodymaterial
-        $mc.anthro.color
-        $mc.anthro.pattern
-      <<else>>
-        $mc.skin.color
-      <</if>>
-      <<if $mc.skin.features>> $mc.skin.features<</if>>
-    </td>
-  </tr>
-  <hr>
-  <tr id="body-parts">
-    <th>Body Parts:</th>
-    <td id="mc-anthroparts">
-      <ul>
-        <<for _key, _val range $mc.body>>
-	        <li>
-		        <strong><<print _key>></strong> :
-		        <<print _val>>
-	        </li>
-        <</for>>
-      </ul>
-    </td>
-  </tr>
- <hr>
-  <!-- Build still uses the existing height/weight/musc system -->
-  <tr id="body-build">
-    <th>Build:</th>
-    <td id="mc-build">
-      Height: $mc.bodyheight <br>
-      Physique: $mc.physique <br>
-      <<if $mc.breastsize>>Breast Size: $mc.breastsize<</if>>  
-      
-    </td>
-  </tr>
-</table>
+<b>Gender:</b> <<= $mc.gender >> (<<= $mc.pronouns >>) (<<= $mc.trans >>)<br>
+<b>Age:</b> <<= $mc.age >> (<<= $mc.ageGroup >>)<br>
+<b>Species:</b> <<= $mc.species >><br>
+
+<<if $mc.species is "Anthro">>
+	<b>Anthro Type:</b> <<= $mc.anthro.group >> / <<= $mc.anthro.subtype >><br>
+	<b>Body:</b> <<= $mc.anthro.color >> <<= $mc.body.Bodymaterial >>
+	<<if $mc.anthro.pattern>> (<<= $mc.anthro.pattern >>)<</if>><br>
+
+	<<if $mc.body.Tail>>
+		<b>Tail:</b> <<= $mc.body.Tail >><br>
+	<</if>>
+	<<if $mc.body.Ears>>
+		<b>Ears:</b> <<= $mc.body.Ears >><br>
+	<</if>>
+	<<if $mc.anthro.wings>>
+		<b>Wings:</b> <<= $mc.anthro.wings >><br>
+	<</if>>
+<</if>>
+
+<h2>Physical Traits</h2>
+
+<b>Eye Color:</b> <<= $mc.eyes >><br>
+
+<b>Hair:</b>
+<<if $mc.hair.length and $mc.hair.length is "bald">>
+	You are bald.
+<<else>>
+	<<= $mc.hair.color >> <<= $mc.hair.style >>
+<</if>><br>
+
+<<if $mc.facefeatures>>
+	<b>Facial Features:</b> <<= $mc.facefeatures >><br>
+<</if>>
+
+<h3>Body</h3>
+
+<<if $mc.species and $mc.species.toLowerCase() is "anthro">>
+	<b><<= $mc.body.Bodymaterial >>:</b> <<= $mc.anthro.color >>
+	<<if $mc.anthro.pattern>> <<= $mc.anthro.pattern >><</if>><br>
+<<else>>
+	<b>Skin:</b> <<= $mc.skin.color >><br>
+<</if>>
+
+<<if $mc.skin.features>>
+	<b>Features:</b> <<= $mc.skin.features >><br>
+<</if>>
+
+<b>Physique:</b> <<= $mc.physique >><br>
+<b>Height:</b> <<= $mc.bodyheight >><br>
+
+<<if $mc.breastsize>>
+	<b>Breast Size:</b> <<= $mc.breastsize >><br>
+<</if>>
+
+<b>List of body parts:</b>
+<<if $mc.body>>
+	<<set _parts = Object.values($mc.body).filter(Boolean)>>
+	<<= _parts.join(", ")>>
+<<else>>
+	<i>No body object found on the MC.</i>
+<</if>>
+<br>
 
 <h2>Mental</h2>
-<table class="stats-table">
-  <colgroup><col style="width:220px"><col style="width:auto"></colgroup>
-  <tr id="perso">
-    <th>Personality:</th>
-    <td id="mc-perso">$mc.personality</td>
-  </tr>
-  <tr id="trait">
-        <th>Trait:</th>
-        <<if !$mc.traits>>
-        No traits found
-        <<else>>
-        <td id="mc-perso">$mc.traits</td>
-        <</if>>
-    </tr>
-</table>    
+
+<<if Array.isArray($mc.personality) && $mc.personality.length>>
+	<b>Personality:</b>
+	<<for _i = 0; _i < $mc.personality.length; _i++>>
+		<<set _personality = $mc.personality[_i]>>
+		<<set _ptip = setup.personalityTips[_personality] || "No description written yet.">>
+		<<tooltip _personality _ptip>>
+		<<if _i < $mc.personality.length - 1>>, <</if>>
+	<</for>>
+	<br>
+<</if>>
+
+<<if Array.isArray($mc.traits) && $mc.traits.length>>
+	<b>Traits:</b>
+	<<for _i = 0; _i < $mc.traits.length; _i++>>
+		<<set _trait = $mc.traits[_i]>>
+		<<set _traitTip = setup.traitTips[_trait] || "No description written yet.">>
+		<<tooltip _trait _traitTip>>
+		<<if _i < $mc.traits.length - 1>>, <</if>>
+	<</for>>
+	<br>
+<</if>>
 
 <h2>NSFW Options</h2>
-<table class="stats-table nsfw">
-  <colgroup><col style="width:220px"><col style="width:auto"></colgroup>
-  <tr>
-    <th>Genitals:</th>
-    <td id="mc-genitals">$mc.genitals</td>
-  </tr>
-  <<if $mc.genitaltype>>
-  <tr>
-    <th>Genital type:</th>
-    <td id="mc-genitaltype">$mc.genitaltype</td>
-  </tr>
-  <</if>>
-  <tr>
-    <th>Ass size:</th>
-    <td id="mc-assSize">$mc.assSize</td>
-  </tr>
-</table>
 
+<b>Genitals:</b> <<= $mc.genitals >> (<<= $mc.genitaltype >>)<br>
+<<if $mc.genitals is "Penis">>
+	<b>Length:</b> <<= $mc.penislength >><br>
+<</if>>
 
+<b>Ass Size:</b> <<= $mc.assSize >><br>
+<b>Sexuality:</b> <<= $mc.sexu >><br>
+<b>Sex Role:</b> <<= $mc.sexpref >><br>

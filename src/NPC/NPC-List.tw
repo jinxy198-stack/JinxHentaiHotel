@@ -22,7 +22,7 @@
 
 		<i>Age:</i> _n.age<br>
 		
-		<i>Personality:</i> <<set _ptip = setup.personalityTips[_n.personality] || "No description written yet.">> <<tooltip _n.personality _ptip>>
+		<i>Personality:</i> <<= Array.isArray(_n.personality) ? _n.personality.join(", ") : _n.personality >>
 		*** <i>Sex Preference:</i> _n.sexpref<br>
 		<i>Origin:</i> _n.origin
 		<br>

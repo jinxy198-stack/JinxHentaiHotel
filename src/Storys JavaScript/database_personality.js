@@ -1,6 +1,5 @@
 setup.personalityTips = {
 	Chill: "Steady, patient, and unlikely to rush things.",
-	Jolly: "Cheerful, upbeat, and usually playful.",
 	Timid: "Shy, hesitant, and easily flustered.",
 	Tough: "Blunt, resilient, and hard to intimidate.",
 	Brave: "Bold, assertive, and willing to take risks.",
@@ -15,11 +14,29 @@ setup.personalityTips = {
 	Nerdy: "Passonate and knowledgable on a specific academic.",
 	Confident: "Sure of yourself and likes to take the lead.",
 	Naive: "A charming innocent view of the world, though you know enough.",
-	Flamboyant: "Strikingly bold, confident, showy, or attracting attention."
+	Flamboyant: "Strikingly bold, showy, or attracting attention.",
+	Brash: "Somewhat rude but still has some kindness inside.",
+	Sassy: "Likes to tease, and is slightly disrespectful.",
+	Logical: "Socially stunted but very rational.",
+	Modest: "Does not think themselves higher than others.",
+	Energetic: "Full of life and lots of energy to spare."
 };
 
 setup.traitTips = {
-	"Mute": "This character cannot speak.",
+	"Mute": "They character cannot speak.",
 	"Will Not Top": "They will not perform penetrative actions as the active/top partner.",
-	"Will Not Bottom": "They will not receive penetrative actions as the passive/bottom partner."
+	"Will Not Bottom": "They will not receive penetrative actions as the passive/bottom partner.",
+	"Flight": "Is capable of flight or levitation.",
+	"Elastic": "Is able to stretch or elongate their body.",
+	"Super Strength":"Stronger than they appear.",
+	"Blind": "They cannot see anything around them.",
+	"Ticklish": "Their body is sensitive and touching might make them laugh.",
+	"Sex Addict": "Always seeking sexual encounters.",
+	"Fighter": "Trained to fight.",
+	"Scholar": "Seeks to learn",
+	"Athlete": "Likes physical activities",
+	"Celebrity": "Popular among their peers",
+	"Glutton": "Enjoys eating food a lot.",
+	"Genius": "Noticably smarter than the average person.",
+	"Gamer": "Enjoy's playing games, (not exclusive to videogames)."
 };
