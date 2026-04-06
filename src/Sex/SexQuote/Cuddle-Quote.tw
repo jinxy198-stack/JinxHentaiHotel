@@ -8,32 +8,55 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>
 <<set _pref = _n.sexpref || "Neutral">>
-
-<<set _personality = _n.personality>>
-
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 <<set _pool = null>>
+<<set _persMatches = []>>
 
-<<if $sex.role == "Bottom">>
-	<<set _pool = setup.cuddleQuotes.Bottom[_personality]
-	||setup.cuddleQuotes.Bottom[_pref]
-	|| setup.cuddleQuotes.Bottom.Neutral>>
-<<elseif $sex.role == "Top">>
-	<<set _pool = setup.cuddleQuotes.Top[_personality]
-	||setup.cuddleQuotes.Top[_pref] 
-	|| setup.cuddleQuotes.Top.Neutral>>
+<<if $sex.role is "Bottom">>
+	<<if setup.cuddleQuotes.Bottom>>
+		<<for _p range _personalities>>
+			<<if _p and setup.cuddleQuotes.Bottom[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.cuddleQuotes.Bottom[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.cuddleQuotes.Bottom[_pref]
+			|| setup.cuddleQuotes.Bottom.Neutral
+		>>
+	<</if>>
+
+<<elseif $sex.role is "Top">>
+	<<set _persMatches = []>>
+
+	<<if setup.cuddleQuotes.Top>>
+		<<for _p range _personalities>>
+			<<if _p and setup.cuddleQuotes.Top[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.cuddleQuotes.Top[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.cuddleQuotes.Top[_pref]
+			|| setup.cuddleQuotes.Top.Neutral
+		>>
+	<</if>>
 <</if>>
 
-<<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+<<if Array.isArray(_pool) && _pool.length>>
+	<<= either(..._pool) >>
 <<else>>
 	[Error] No Cuddle quote pool found.
+	(mode=<<= $sex.role >>, pref=<<= _pref >>)
 <</if>>
-

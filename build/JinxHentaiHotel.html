@@ -11702,33 +11702,57 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _persMatches = []&gt;&gt;
 
-&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.cuddleQuotes.Bottom[_personality]
-	||setup.cuddleQuotes.Bottom[_pref]
-	|| setup.cuddleQuotes.Bottom.Neutral&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool = setup.cuddleQuotes.Top[_personality]
-	||setup.cuddleQuotes.Top[_pref] 
-	|| setup.cuddleQuotes.Top.Neutral&gt;&gt;
+&lt;&lt;if $sex.role is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;if setup.cuddleQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.cuddleQuotes.Bottom[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.cuddleQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.cuddleQuotes.Bottom[_pref]
+			|| setup.cuddleQuotes.Bottom.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif $sex.role is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.cuddleQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.cuddleQuotes.Top[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.cuddleQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.cuddleQuotes.Top[_pref]
+			|| setup.cuddleQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Cuddle quote pool found.
+	(mode=&lt;&lt;= $sex.role &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
 
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
