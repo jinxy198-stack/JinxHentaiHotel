@@ -1,35 +1,69 @@
 :: Footjob-Quote [nobr Dialogue] {"position":"1800,1400","size":"100,100"}
 
+<<if !setup.footjobQuotes>>
+	[Error] setup.footjobQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
+
 <<set _mode = $sex.role>>
 <<set _pref = _n.sexpref || "Neutral">>
-<<set _size = $mc.penislength || "average">>
+<<set _size = $mc.penislength || "Average">>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 
 <<set _pool = null>>
+<<set _persMatches = []>>
 
-<<set _personality = _n.personality>>
+<<if _mode is "Bottom">>
+	<<if setup.footjobQuotes.Bottom>>
+		<<for _p range _personalities>>
+			<<if _p and setup.footjobQuotes.Bottom[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
 
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.footjobQuotes.Bottom[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.footjobQuotes.Bottom[_pref]
+			|| setup.footjobQuotes.Bottom.Neutral
+		>>
+	<</if>>
 
-<<if _mode == "Bottom">>
-	<<set _pool = setup.footjobQuotes.Bottom[_personality] 
-	|| setup.footjobQuotes.Bottom[_pref] 
-	|| setup.footjobQuotes.Bottom.Neutral>>
-<<elseif _mode == "Top">>
-		<<run _pool =
+<<elseif _mode is "Top">>
+	<<set _persMatches = []>>
+
+	<<if setup.footjobQuotes.Top>>
+		<<for _p range _personalities>>
+			<<if _p and setup.footjobQuotes.Top[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.footjobQuotes.Top[_chosenPers]>>
+	<<else>>
+		<<set _pool =
 			(
-				setup.footjobQuotes.Top[_personality]
-				|| setup.footjobQuotes.Top[_pref]
+				setup.footjobQuotes.Top[_pref]
 				&& setup.footjobQuotes.Top[_pref][_size]
 			)
 			|| setup.footjobQuotes.Top.Neutral
 		>>
+	<</if>>
 <</if>>
 
-
-<<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+<<if Array.isArray(_pool) && _pool.length>>
+	<<= either(..._pool) >>
 <<else>>
 	[Error] No footjob quote pool found.
-	(mode=<<=_mode>>, pref=<<=_pref>>, personality=<<=_personality>>, _size=<<=_size>>)
+	(mode=<<= _mode >>, pref=<<= _pref >>, size=<<= _size >>)
 <</if>>
-
-

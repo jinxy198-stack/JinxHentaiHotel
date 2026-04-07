@@ -3,17 +3,41 @@
 
 <<set _pref = _n.sexpref || "Switch">>
 <<set _msize = $mc.penislength || "Average">>
-<<set _personality = _n.personality>>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 
 <<set _mode = $sex.role>>
 <<set _position = $sex.position >>
-
+<<set _persMatches = []>>
 <<set _pool = null>>
 
 <<if _mode == "Bottom">>
-	<<set _pool = setup.EnterAssQuotes.Bottom>>
+	<<if setup.EnterAssQuotes.Bottom>>
+		<<for _p range _personalities>>
+			<<if _p and setup.EnterAssQuotes.Bottom[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = EnterAssQuotes.Bottom[_chosenPers]>>
+	<<else>>
+		<<set _pool = setup.EnterAssQuotes.Bottom>>
+	<</if>>
 <<elseif _mode == "Top">>
-  <<set _pool = setup.EnterAssQuotes.Top>>
+	<<if setup.EnterAssQuotes.Top>>
+		<<for _p range _personalities>>
+			<<if _p and setup.EnterAssQuotess.Top[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = EnterAssQuotes.Top[_chosenPers]>>
+	<<else>>
+  		<<set _pool = setup.EnterAssQuotes.Top>>
+  <</if>>
 <</if>>
 
 

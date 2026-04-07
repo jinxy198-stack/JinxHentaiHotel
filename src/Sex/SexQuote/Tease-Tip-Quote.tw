@@ -1,23 +1,44 @@
 :: Tease-Tip-Quote [nobr]
 
-<<set _pref = _n.sexpref || "Switch">>
-<<set _msize = $mc.penislength || "Average">>
-<<set _personality = _n.personality>>
-
-<<set _mode = $sex.role>>
-<<set _position = $sex.position >>
-
-<<set _pool = null>>
-
-<<if _mode == "Bottom">>
-	<<set _pool = setup.TeaseTipQuotes>>
-<<elseif _mode == "Top">>
-	<<set _pool = setup.TeaseTipQuotes>>
+<<if !setup.TeaseTipQuotes>>
+	[Error] setup.TeaseTipQuotes is missing. Define it in StoryInit.
+	<<return>>
 <</if>>
 
-<<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
+
+<<set _mode = $sex.role>>
+<<set _pref = _n.sexpref || "Switch">>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _pool = null>>
+
+<<if Array.isArray(setup.TeaseTipQuotes)>>
+	<<set _pool = setup.TeaseTipQuotes>>
 <<else>>
-	[Error] No Tease tip quote pool found.
-    (mode=<<=_mode>>, pref=<<=_pref>>, personality=<<=_personality>>)
+	<<set _persMatches = []>>
+
+	<<for _p range _personalities>>
+		<<if _p and Array.isArray(setup.TeaseTipQuotes[_p])>>
+			<<run _persMatches.push(_p)>>
+		<</if>>
+	<</for>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.TeaseTipQuotes[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.TeaseTipQuotes[_pref]
+			|| setup.TeaseTipQuotes.Neutral
+		>>
+	<</if>>
+<</if>>
+
+<<if Array.isArray(_pool) && _pool.length>>
+	<<= either(..._pool) >>
+<<else>>
+	[Error] No Tease Tip quote pool found.
+	(mode=<<= _mode >>, pref=<<= _pref >>)
 <</if>>

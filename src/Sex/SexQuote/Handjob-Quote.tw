@@ -1,30 +1,52 @@
 :: Handjob-Quote [nobr Dialogue] {"position":"1700,1700","size":"100,100"}
 
+<<if !setup.handjobQuotes>>
+	[Error] setup.handjobQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
 
 <<set _mode = $sex.role>>
 <<set _pref = _n.sexpref || "Neutral">>
 <<set _size = $mc.penislength || "Average">>
-<<set _age  = $mc.ageGroup>>
-<<set _personality = _n.personality>>
+<<set _age = $mc.ageGroup || "Adult">>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 
 <<set _pool = null>>
 
-<<if _mode == "Top">>
+<<if _mode is "Top">>
 	<<set _pool =
 		setup.handjobQuotes.Bottom[_pref]
 		|| setup.handjobQuotes.Bottom.Neutral
 	>>
-<<elseif _mode == "Bottom">>
-	<<if _personality == "Childish">>
-		<<set _pool =
-			setup.handjobQuotes.Top[_personality]
-		>>
-	<<elseif _size == "Tiny">>
+
+<<elseif _mode is "Bottom">>
+	<<set _persMatches = []>>
+
+	<<if setup.handjobQuotes.Top>>
+		<<for _p range _personalities>>
+			<<if _p and Array.isArray(setup.handjobQuotes.Top[_p])>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.handjobQuotes.Top[_chosenPers]>>
+	<<elseif _size is "Tiny">>
 		<<set _pool =
 			(
 				setup.handjobQuotes.Top[_pref]
 				&& setup.handjobQuotes.Top[_pref].Tiny
 				&& setup.handjobQuotes.Top[_pref].Tiny[_age]
+			)
+			|| (
+				setup.handjobQuotes.Top[_pref]
+				&& setup.handjobQuotes.Top[_pref].Tiny
 			)
 			|| setup.handjobQuotes.Top.Neutral
 		>>
@@ -39,10 +61,9 @@
 	<</if>>
 <</if>>
 
-<<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+<<if Array.isArray(_pool) && _pool.length>>
+	<<= either(..._pool) >>
 <<else>>
 	[Error] No handjob quote pool found.
-	(mode=<<=_mode>>, pref=<<=_pref>>, age=<<=_age>>, size=<<=_size>>,personality=<<=_personality>>)
+	(mode=<<= _mode >>, pref=<<= _pref >>, age=<<= _age >>, size=<<= _size >>)
 <</if>>
-

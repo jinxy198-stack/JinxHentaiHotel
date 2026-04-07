@@ -8,26 +8,48 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>><<set _pref = _n.sexpref || "Neutral">>
+<<set _mode = $sex.role>>
+<<set _pref = _n.sexpref || "Neutral">>
 
-<<set _personality = _n.personality>>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 <<set _pool = null>>
+<<set _persMatches = []>>
 
 
-<<if _mode == "give">>
-	<<set _pool = setup.embraceQuotes.Bottom[_personality]
-	|| setup.embraceQuotes.Bottom[_pref]
-	|| setup.embraceQuotes.Bottom.Neutral>>
-<<else>>
-	<<set _pool = setup.embraceQuotes.Top[_personality] 
-	|| setup.embraceQuotes.Top[_pref] 
-	|| setup.embraceQuotes.Top.Neutral>>
+<<if _mode == "Top">>
+	<<if setup.embraceQuotes.Top>>
+		<<for _p range _personalities>>
+			<<if _p and setup.embraceQuotes.Top[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = embraceQuotes.Top[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.embraceQuotes.Top[_pref]
+			|| setup.embraceQuotes.Top.Neutral
+		>>
+	<</if>>
+<<elseif _mode == "Bottom">>
+	<<if setup.embraceQuotes.Bottom>>
+		<<for _p range _personalities>>
+			<<if _p and setup.embraceQuotes.Bottom[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = embraceQuotes.Bottom[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.embraceQuotes.Bottom[_pref]
+			|| setup.embraceQuotes.Bottom.Neutral
+		>>
+	<</if>>
 <</if>>
 
 

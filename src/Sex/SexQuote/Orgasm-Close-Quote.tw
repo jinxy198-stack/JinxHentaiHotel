@@ -1,37 +1,92 @@
 :: Orgasm-Close-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
-/* When you or NPC are close to orgasm */
+
+<<if !setup.orgasmcloseQuotes>>
+	[Error] setup.orgasmcloseQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
 
 <<set _mode = $sex.role>>
-
-<<set _pref   = _n.sexpref || "Switch">>
+<<set _pref = _n.sexpref || "Switch">>
 <<set _action = $sex.act>>
-<<set _pool   = null>>
-<<set _personality = _n.personality>>
-
-
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _pool = null>>
 
 <<if $sex.climax.Top && $sex.climax.Bottom>>
 	<<set _pool = ["Let's cum together!"]>>
+
 <<elseif $sex.climax.Top>>
-	<<set _pool = setup.orgasmcloseQuotes.Top[_personality]
-	|| setup.orgasmcloseQuotes.Top[_action]
-	&& setup.orgasmcloseQuotes.Top[_action][_pref]
-	|| setup.orgasmcloseQuotes.Top[_action]
-	|| setup.orgasmcloseQuotes.Top.default>>
+	<<set _persMatches = []>>
+
+	<<if setup.orgasmcloseQuotes.Top>>
+		<<for _p range _personalities>>
+			<<if _p and Array.isArray(setup.orgasmcloseQuotes.Top[_p])>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.orgasmcloseQuotes.Top[_chosenPers]>>
+	<<else>>
+		<<set _actionPool = setup.orgasmcloseQuotes.Top[_action]>>
+
+		<<if Array.isArray(_actionPool)>>
+			<<set _pool = _actionPool>>
+		<<else>>
+			<<set _pool =
+				(
+					_actionPool
+					&& _actionPool[_pref]
+				)
+				|| (
+					_actionPool
+					&& _actionPool.Neutral
+				)
+				|| setup.orgasmcloseQuotes.Top.default
+			>>
+		<</if>>
+	<</if>>
 
 <<elseif $sex.climax.Bottom>>
-	<<set _pool = setup.orgasmcloseQuotes.Bottom[_action]
-	|| setup.orgasmcloseQuotes.Bottom[_action]
-	&& setup.orgasmcloseQuotes.Bottom[_action][_personality] 
-	|| setup.orgasmcloseQuotes.Bottom[_action]
-	&& setup.orgasmcloseQuotes.Bottom[_action][_pref]
-	|| setup.orgasmcloseQuotes.Bottom.default>>
+	<<set _actionPool = setup.orgasmcloseQuotes.Bottom[_action]>>
+	<<set _persMatches = []>>
 
+	<<if _actionPool and !Array.isArray(_actionPool)>>
+		<<for _p range _personalities>>
+			<<if _p and Array.isArray(_actionPool[_p])>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = _actionPool[_chosenPers]>>
+	<<elseif Array.isArray(_actionPool)>>
+		<<set _pool = _actionPool>>
+	<<else>>
+		<<set _pool =
+			(
+				_actionPool
+				&& _actionPool[_pref]
+			)
+			|| (
+				_actionPool
+				&& _actionPool.Neutral
+			)
+			|| setup.orgasmcloseQuotes.Bottom.default
+		>>
+	<</if>>
 <</if>>
 
-<<if _pool && _pool.length>>
-	"<<=either(..._pool)>>"
+<<if Array.isArray(_pool) && _pool.length>>
+	"<<= either(..._pool) >>"
 <<else>>
 	[Error] No Orgasm Close quote pool found.
-	(mode=<<=_mode>>, action=<<=_action>>, pref=<<=_pref>>)
+	(mode=<<= _mode >>, action=<<= _action >>, pref=<<= _pref >>)
 <</if>>

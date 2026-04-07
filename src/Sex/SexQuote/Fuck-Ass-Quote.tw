@@ -1,32 +1,61 @@
 :: Fuck-Ass-Quote [nobr]
 
-<<set _pref = _n.sexpref || "Switch">>
-<<set _msize = $mc.penislength || "Average">>
-<<set _personality = _n.personality>>
-
-<<set _mode = $sex.role>>
-<<set _position = $sex.position >>
-
-<<set _pool = null>>
-
-<<if _mode == "Bottom">>
-	<<set _pool = setup.analQuotes.Bottom[_position]
-	&& setup.analQuotes.Bottom[_position][_pref] 
-    || setup.analQuotes.Bottom[_pref]>>
-<<elseif _mode == "Top">>
-  <<set _pool =
-        (setup.analQuotes.Top[_position] 
-		&& setup.analQuotes.Top[_position][_personality])
-        || (setup.analQuotes.Top[_position] 
-		&& setup.analQuotes.Top[_position][_pref])
-        || setup.analQuotes.Top[_pref]
-  >>
+<<if !setup.analQuotes>>
+	[Error] setup.analQuotes is missing. Define it in StoryInit.
+	<<return>>
 <</if>>
 
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
 
-<<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+<<set _pref = _n.sexpref || "Switch">>
+<<set _msize = $mc.penislength || "Average">>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+
+<<set _mode = $sex.role>>
+<<set _position = $sex.position>>
+<<set _pool = null>>
+
+<<if _mode is "Bottom">>
+	<<set _pool =
+		(
+			setup.analQuotes.Bottom[_position]
+			&& setup.analQuotes.Bottom[_position][_pref]
+		)
+		|| setup.analQuotes.Bottom[_pref]
+		|| setup.analQuotes.Bottom.Neutral
+	>>
+
+<<elseif _mode is "Top">>
+	<<set _persMatches = []>>
+
+	<<if setup.analQuotes.Top[_position]>>
+		<<for _p range _personalities>>
+			<<if _p and setup.analQuotes.Top[_position][_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.analQuotes.Top[_position][_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			(
+				setup.analQuotes.Top[_position]
+				&& setup.analQuotes.Top[_position][_pref]
+			)
+			|| setup.analQuotes.Top[_pref]
+			|| setup.analQuotes.Top.Neutral
+		>>
+	<</if>>
+<</if>>
+
+<<if Array.isArray(_pool) && _pool.length>>
+	<<= either(..._pool) >>
 <<else>>
 	[Error] No Anal quote pool found.
-    (mode=<<=_mode>>, pref=<<=_pref>>,position=<<=_position>> nsize=<<=_nsize>>, msize=<<=_msize>>, personality=<<=_personality>>)
+	(mode=<<= _mode >>, pref=<<= _pref >>, position=<<= _position >>, msize=<<= _msize >>)
 <</if>>

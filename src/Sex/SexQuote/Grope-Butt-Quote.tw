@@ -1,46 +1,81 @@
 :: Grope-Butt-Quote [nobr Dialogue] {"position":"1700,1300","size":"100,100"}
 
-<<set _mode = $sex.role>>
+<<if !setup.gropebuttQuotes>>
+	[Error] setup.gropebuttQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
 
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
+
+<<set _mode = $sex.role>>
 <<set _pref = _n.sexpref || "Neutral">>
 <<set _msize = $mc.assSize || "Round">>
 <<set _nsize = _n.assSize || "Round">>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 
 <<set _pool = null>>
+<<set _persMatches = []>>
 
-<<set _personality = _n.personality>>
+<<if _mode is "Bottom">>
+	<<if setup.gropebuttQuotes.Bottom>>
+		<<for _p range _personalities>>
+			<<if _p and Array.isArray(setup.gropebuttQuotes.Bottom[_p])>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
 
-<<if _mode == "Bottom">>
-	<<set _pool =
-		(
-			setup.gropebuttQuotes.Bottom[_nsize]
-			&& setup.gropebuttQuotes.Bottom[_nsize][_pref]
-		)
-		|| 
-		(
-			setup.gropebuttQuotes.Bottom[_nsize]
-			&& setup.gropebuttQuotes.Bottom[_nsize].Neutral
-		)
-	>>
-<<elseif _mode =="Top">>
-	<<set _pool =
-		(
-			setup.gropebuttQuotes.Top[_personality]
-			|| setup.gropebuttQuotes.Top[_msize]
-			&& setup.gropebuttQuotes.Top[_msize][_pref]
-		)
-		|| 
-		(
-			setup.gropebuttQuotes.Top[_nsize]
-			&& setup.gropebuttQuotes.Top[_nsize].Neutral
-		)
-	>>
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.gropebuttQuotes.Bottom[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			(
+				setup.gropebuttQuotes.Bottom[_msize]
+				&& setup.gropebuttQuotes.Bottom[_msize][_pref]
+			)
+			|| (
+				setup.gropebuttQuotes.Bottom[_msize]
+				&& setup.gropebuttQuotes.Bottom[_msize].Neutral
+			)
+			|| setup.gropebuttQuotes.Bottom.Neutral
+		>>
+	<</if>>
+
+<<elseif _mode is "Top">>
+	<<set _persMatches = []>>
+
+	<<if setup.gropebuttQuotes.Top>>
+		<<for _p range _personalities>>
+			<<if _p and Array.isArray(setup.gropebuttQuotes.Top[_p])>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.gropebuttQuotes.Top[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			(
+				setup.gropebuttQuotes.Top[_nsize]
+				&& setup.gropebuttQuotes.Top[_nsize][_pref]
+			)
+			|| (
+				setup.gropebuttQuotes.Top[_nsize]
+				&& setup.gropebuttQuotes.Top[_nsize].Neutral
+			)
+			|| setup.gropebuttQuotes.Top.Neutral
+		>>
+	<</if>>
 <</if>>
 
-
 <<if Array.isArray(_pool) && _pool.length>>
-	<<=either(..._pool)>>
+	<<= either(..._pool) >>
 <<else>>
 	[Error] No Grope Butt quote pool found.
-	(mode=<<=_mode>>, action=<<=_action>>, pref=<<=_pref>>, personality=<<=_personality>>, nsize=<<=_nsize>>, msize=<<=_msize>>)
+	(mode=<<= _mode >>, pref=<<= _pref >>, nsize=<<= _nsize >>, msize=<<= _msize >>)
 <</if>>

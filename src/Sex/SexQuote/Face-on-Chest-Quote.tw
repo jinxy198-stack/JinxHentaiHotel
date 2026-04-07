@@ -1,26 +1,36 @@
 :: Face-On-Chest-Quote [nobr Dialogue] {"position":"1700,1600","size":"100,100"}
 
 
-<<set _pref = _n.sexpref || "Neutral">>
-
-
-<<set _mode = $sex.role>>
-<<set _nsize = _n.breastsize || "Average">>
-<<set _msize = $mc.breastsize || "Average">>
+<<set _pref = _n.sexpref >>
+<<set _mode = $sex.role >>
+<<set _nsize = _n.breastsize >>
+<<set _msize = $mc.breastsize >>
 
 <<set _pool = null>>
 
-<<if _mode == "Bottom">>
-	<<set _pool = setup.MuffledQuotes>>
-<<else>>
-	<<run _pool =
-		(
-			setup.faceonchestQuotes[_pref]
+
+<<if _mode == "Top">>
+	<<if setup.faceonchestQuotes.Top>>
+		<<for _p range _personalities>>
+			<<if _p and setup.faceonchestQuotes.Top[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = faceonchestQuotes.Top[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.faceonchestQuotes.Top[_pref]
 			&& setup.faceonchestQuotes[_pref][_nsize]
-		)
-		|| setup.faceonchestQuotes.Neutral
-	>>
+			|| setup.faceonchestQuotes.Top.Neutral
+		>>
+	<</if>>
+<<elseif _mode == "Bottom">>
+	<<set _pool = setup.MuffledQuotes>>
 <</if>>
+
 
 <<if _pool && _pool.length>>
 	<<=either(..._pool)>>

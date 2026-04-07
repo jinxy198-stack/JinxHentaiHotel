@@ -11629,7 +11629,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
-
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 
 
 &lt;&lt;if $sex.role ==&quot;Top&quot;&gt;&gt;
@@ -11756,20 +11756,53 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
 
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _persMatches = []&gt;&gt;
 
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.cunnilingusQuotes.Bottom[_pref]
-	|| setup.cunnilingusQuotes.Bottom.Neutral&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.cunnilingusQuotes.Top[_pref] 
-	|| setup.cunnilingusQuotes.Top.Neutral&gt;&gt;
+
+&lt;&lt;if $sex.role is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;if setup.cunnilingusQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.cunnilingusQuotes.Bottom[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.cunnilingusQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.cunnilingusQuotes.Bottom[_pref]
+			|| setup.cunnilingusQuotes.Bottom.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif $sex.role is &quot;Top&quot;&gt;&gt;
+
+	&lt;&lt;if setup.cunnilingusQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.cunnilingusQuotes.Top[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = cunnilingusQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.cunnilingusQuotes.Top[_pref]
+			|| setup.cunnilingusQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Cunnilingus quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
@@ -11782,26 +11815,48 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
-&lt;&lt;set _personality = _n.personality&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _persMatches = []&gt;&gt;
 
 
-&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.embraceQuotes.Bottom[_personality]
-	|| setup.embraceQuotes.Bottom[_pref]
-	|| setup.embraceQuotes.Bottom.Neutral&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool = setup.embraceQuotes.Top[_personality] 
-	|| setup.embraceQuotes.Top[_pref] 
-	|| setup.embraceQuotes.Top.Neutral&gt;&gt;
+&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
+	&lt;&lt;if setup.embraceQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.embraceQuotes.Top[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = embraceQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.embraceQuotes.Top[_pref]
+			|| setup.embraceQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;elseif _mode == &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;if setup.embraceQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.embraceQuotes.Bottom[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = embraceQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.embraceQuotes.Bottom[_pref]
+			|| setup.embraceQuotes.Bottom.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 
@@ -11811,17 +11866,41 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	[Error] No Embrace quote pool found.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="Enter-Ass-Quote" tags="nobr" position="475,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _position = $sex.position &gt;&gt;
-
+&lt;&lt;set _persMatches = []&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.EnterAssQuotes.Bottom&gt;&gt;
+	&lt;&lt;if setup.EnterAssQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.EnterAssQuotes.Bottom[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = EnterAssQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool = setup.EnterAssQuotes.Bottom&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif _mode == &quot;Top&quot;&gt;&gt;
-  &lt;&lt;set _pool = setup.EnterAssQuotes.Top&gt;&gt;
+	&lt;&lt;if setup.EnterAssQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.EnterAssQuotess.Top[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = EnterAssQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+  		&lt;&lt;set _pool = setup.EnterAssQuotes.Top&gt;&gt;
+  &lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 
@@ -11833,16 +11912,46 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="Enter-Mouth-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _persMatches = []&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 
 &lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.EnterMouthQuotes&gt;&gt;
+	&lt;&lt;if setup.EnterMouthQuotes&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and EnterMouthQuotes[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = EnterMouthQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.EnterMouthQuotes.Top[_pref]
+			|| setup.EnterMouthQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.TakeCockBetweenLipsQuotes[_pref]&gt;&gt;
+	&lt;&lt;if setup.TakeCockBetweenLipsQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.TakeCockBetweenLipsQuotes.Bottom[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = TakeCockBetweenLipsQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.TakeCockBetweenLipsQuotes.Bottom[_pref]
+			|| setup.TakeCockBetweenLipsQuotes.Bottom.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
@@ -11854,40 +11963,83 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _size = $mc.penislength&gt;&gt;
 &lt;&lt;set _age  = $mc.ageGroup&gt;&gt;
 
-&lt;&lt;set _pool = null&gt;&gt;
-
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _persMatches = []&gt;&gt;
+
+
 &lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.PushCockInQuotes.Top[_pref]&gt;&gt;
-&lt;&lt;elseif _mode ==&quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.EnterPussyQuotes.Bottom[_pref]&gt;&gt;
+	&lt;&lt;if setup.PushCockInQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.PushCockInQuotes.Top[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = PushCockInQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.PushCockInQuotess.Top[_pref]
+			|| setup.PushCockInQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;elseif _mode == &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;if setup.EnterPussyQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.EnterPussyQuotes.Bottom[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = EnterPussyQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.EnterPussyQuotes.Bottom[_pref]
+			|| setup.EnterPussyQuotes.Bottom.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
 	&lt;&lt;=either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Vaginal quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="Face-On-Chest-Quote" tags="nobr Dialogue" position="1700,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _nsize = _n.breastsize || &quot;Average&quot;&gt;&gt;
-&lt;&lt;set _msize = $mc.breastsize || &quot;Average&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="Face-On-Chest-Quote" tags="nobr Dialogue" position="1700,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
+&lt;&lt;set _mode = $sex.role &gt;&gt;
+&lt;&lt;set _nsize = _n.breastsize &gt;&gt;
+&lt;&lt;set _msize = $mc.breastsize &gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.MuffledQuotes&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;run _pool =
-		(
-			setup.faceonchestQuotes[_pref]
+
+&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
+	&lt;&lt;if setup.faceonchestQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.faceonchestQuotes.Top[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = faceonchestQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.faceonchestQuotes.Top[_pref]
 			&amp;&amp; setup.faceonchestQuotes[_pref][_nsize]
-		)
-		|| setup.faceonchestQuotes.Neutral
-	&gt;&gt;
+			|| setup.faceonchestQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;elseif _mode == &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.MuffledQuotes&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+
 
 &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
 	&lt;&lt;=either(..._pool)&gt;&gt;
@@ -11903,13 +12055,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _body = $mc.physique || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _material = _n.body.Bodymaterial || null&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
@@ -11939,13 +12085,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
 &lt;&lt;set _personality = _n.personality&gt;&gt;
@@ -12007,308 +12147,539 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Finger Vagina quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if !setup.footjobQuotes&gt;&gt;
+	[Error] setup.footjobQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _size = $mc.penislength || &quot;average&quot;&gt;&gt;
+&lt;&lt;set _size = $mc.penislength || &quot;Average&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _persMatches = []&gt;&gt;
 
-&lt;&lt;set _personality = _n.personality&gt;&gt;
+&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;if setup.footjobQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.footjobQuotes.Bottom[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.footjobQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.footjobQuotes.Bottom[_pref]
+			|| setup.footjobQuotes.Bottom.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.footjobQuotes.Bottom[_personality] 
-	|| setup.footjobQuotes.Bottom[_pref] 
-	|| setup.footjobQuotes.Bottom.Neutral&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Top&quot;&gt;&gt;
-		&lt;&lt;run _pool =
+&lt;&lt;elseif _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.footjobQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.footjobQuotes.Top[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.footjobQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
 			(
-				setup.footjobQuotes.Top[_personality]
-				|| setup.footjobQuotes.Top[_pref]
+				setup.footjobQuotes.Top[_pref]
 				&amp;&amp; setup.footjobQuotes.Top[_pref][_size]
 			)
 			|| setup.footjobQuotes.Top.Neutral
 		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No footjob quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, _size=&lt;&lt;=_size&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">/*
-&lt;&lt;if !setup.frotQuotes&gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, size=&lt;&lt;= _size &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;if !setup.frotQuotes&gt;&gt;
 	[Error] setup.frotQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+&lt;&lt;if !$sex or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-*/
-/* Use later */
 &lt;&lt;set _msize = $mc.penislength&gt;&gt;
 &lt;&lt;set _nsize = _n.penislength&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _persMatches = []&gt;&gt;
 
-&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.frotQuotes.Top[_personality]
-	|| setup.frotQuotes.Top[_pref]
-	|| setup.frotQuotes.Top.Neutral&gt;&gt;
-&lt;&lt;elseif _mode ==&quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.frotQuotes.Bottom[_personality] 
-	|| setup.frotQuotes.Bottom[_pref] 
-	|| setup.frotQuotes.Bottom.Neutral&gt;&gt;
+&lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;if setup.frotQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.frotQuotes.Top[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.frotQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.frotQuotes.Top[_pref]
+			|| setup.frotQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.frotQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.frotQuotes.Bottom[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.frotQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.frotQuotes.Bottom[_pref]
+			|| setup.frotQuotes.Bottom.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Frot quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Fuck-Ass-Quote" tags="nobr" position="350,1850" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-&lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _position = $sex.position &gt;&gt;
-
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.analQuotes.Bottom[_position]
-	&amp;&amp; setup.analQuotes.Bottom[_position][_pref] 
-    || setup.analQuotes.Bottom[_pref]&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Top&quot;&gt;&gt;
-  &lt;&lt;set _pool =
-        (setup.analQuotes.Top[_position] 
-		&amp;&amp; setup.analQuotes.Top[_position][_personality])
-        || (setup.analQuotes.Top[_position] 
-		&amp;&amp; setup.analQuotes.Top[_position][_pref])
-        || setup.analQuotes.Top[_pref]
-  &gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, msize=&lt;&lt;= _msize &gt;&gt;, nsize=&lt;&lt;= _nsize &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Fuck-Ass-Quote" tags="nobr" position="350,1850" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
+	[Error] setup.analQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _position = $sex.position&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool =
+		(
+			setup.analQuotes.Bottom[_position]
+			&amp;&amp; setup.analQuotes.Bottom[_position][_pref]
+		)
+		|| setup.analQuotes.Bottom[_pref]
+		|| setup.analQuotes.Bottom.Neutral
+	&gt;&gt;
+
+&lt;&lt;elseif _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.analQuotes.Top[_position]&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.analQuotes.Top[_position][_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.analQuotes.Top[_position][_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			(
+				setup.analQuotes.Top[_position]
+				&amp;&amp; setup.analQuotes.Top[_position][_pref]
+			)
+			|| setup.analQuotes.Top[_pref]
+			|| setup.analQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Anal quote pool found.
-    (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;,position=&lt;&lt;=_position&gt;&gt; nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="Fuck-Pussy-Quote" tags="nobr" position="475,1850" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _size = $mc.penislength&gt;&gt;
-&lt;&lt;set _tight = _n.genitaltype&gt;&gt;
-&lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-/* add stuff for age and size? */
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.vaginalQuotes.Bottom[_pref] 
-    || setup.vaginalQuotes.Bottom.Neutral&gt;&gt;
-&lt;&lt;elseif _mode ==&quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.vaginalQuotes.Top[_pref] 
-    || setup.vaginalQuotes.Top.Neutral&gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, position=&lt;&lt;= _position &gt;&gt;, msize=&lt;&lt;= _msize &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="Fuck-Pussy-Quote" tags="nobr" position="475,1850" size="100,100">&lt;&lt;if !setup.vaginalQuotes&gt;&gt;
+	[Error] setup.vaginalQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _size = $mc.penislength || &quot;Average&quot;&gt;&gt;
+&lt;&lt;set _tight = _n.genitaltype || &quot;Normal&quot;&gt;&gt;
+&lt;&lt;set _mage = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _nage = _n.ageGroup || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _persMatches = []&gt;&gt;
+
+&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;if setup.vaginalQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.vaginalQuotes.Bottom[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.vaginalQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.vaginalQuotes.Bottom[_pref]
+			|| setup.vaginalQuotes.Bottom.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.vaginalQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and setup.vaginalQuotes.Top[_p]&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.vaginalQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.vaginalQuotes.Top[_pref]
+			|| setup.vaginalQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Fuck Pussy quote pool found.
-    (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="Grab-Cock-Quote" tags="nobr" position="600,1850" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, size=&lt;&lt;= _size &gt;&gt;, tight=&lt;&lt;= _tight &gt;&gt;, nage=&lt;&lt;= _nage &gt;&gt;, mage=&lt;&lt;= _mage &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="Grab-Cock-Quote" tags="nobr" position="600,1850" size="100,100">&lt;&lt;if !setup.GrabCockQuotes&gt;&gt;
+	[Error] setup.GrabCockQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _size = $mc.penislength&gt;&gt;
-&lt;&lt;set _age  = $mc.ageGroup&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
+&lt;&lt;set _size = $mc.penislength || &quot;Average&quot;&gt;&gt;
+&lt;&lt;set _age = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
+&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;set _pool =
 		setup.GrabCockQuotes.Bottom[_pref]
 		|| setup.GrabCockQuotes.Bottom.Neutral
 	&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;if _personality == &quot;Childish&quot;&gt;&gt;
-		&lt;&lt;set _pool =
-			setup.GrabCockQuotes.Top[_personality]
-		&gt;&gt;
+
+&lt;&lt;elseif _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.GrabCockQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.GrabCockQuotes.Top[_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.GrabCockQuotes.Top[_chosenPers]&gt;&gt;
 	&lt;&lt;else&gt;&gt;
-		&lt;&lt;set _pool =
-			(
-				setup.GrabCockQuotes.Top[_pref]
-				&amp;&amp; setup.GrabCockQuotes.Top[_pref][_size]
-				&amp;&amp; setup.GrabCockQuotes.Top[_pref][_size][_age]
-			)
-			|| setup.GrabCockQuotes.Top[_pref]
-		&gt;&gt;
-	
+		&lt;&lt;set _prefPool = setup.GrabCockQuotes.Top[_pref]&gt;&gt;
+
+		&lt;&lt;if Array.isArray(_prefPool)&gt;&gt;
+			&lt;&lt;set _pool = _prefPool&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;set _pool =
+				(
+					_prefPool
+					&amp;&amp; _prefPool[_size]
+					&amp;&amp; _prefPool[_size][_age]
+				)
+				|| (
+					_prefPool
+					&amp;&amp; _prefPool[_size]
+					&amp;&amp; _prefPool[_size].Neutral
+				)
+				|| (
+					_prefPool
+					&amp;&amp; _prefPool.Neutral
+				)
+				|| setup.GrabCockQuotes.Top.Neutral
+			&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No grab cock quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, age=&lt;&lt;=_age&gt;&gt;, size=&lt;&lt;=_size&gt;&gt;,personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">/*&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, age=&lt;&lt;= _age &gt;&gt;, size=&lt;&lt;= _size &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
 	[Error] setup.gropebreastQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+&lt;&lt;if !$sex or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-&lt;&lt;set _msize = $mc.breastsize &gt;&gt;
-&lt;&lt;set _nsize = _n.breastsize &gt;&gt;
-&lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
-
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.gropebreastQuotes.Bottom[_pref][_msize][_mage] 
-	|| setup.gropebreastQuotes.Bottom.Neutral&gt;&gt;
-&lt;&lt;else&gt;&gt;
-		&lt;&lt;run _pool =
-			(
-				setup.gropebreastQuotes.Top[_pref]
-				&amp;&amp; setup.gropebreastQuotes.Top[_pref][_nsize][_nage]
-			)
-			|| setup.gropebreastQuotes.Top.Neutral
-		&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	[Error] No grope breast quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;
-*/
-&lt;&lt;set _pref = _n.sexpref &gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.breastsize || &quot;None&quot;&gt;&gt;
 &lt;&lt;set _nsize = _n.breastsize || &quot;None&quot;&gt;&gt;
-&lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _mage = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _nage = _n.ageGroup || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 
+&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _persMatches = []&gt;&gt;
 
+&lt;&lt;if $sex.role is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;if setup.gropebreastQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.gropebreastQuotes.Top[_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.gropebreastQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			(
+				setup.gropebreastQuotes.Top[_pref]
+				&amp;&amp; setup.gropebreastQuotes.Top[_pref][_nsize]
+				&amp;&amp; setup.gropebreastQuotes.Top[_pref][_nsize][_nage]
+			)
+			|| (
+				setup.gropebreastQuotes.Top[_pref]
+				&amp;&amp; setup.gropebreastQuotes.Top[_pref][_nsize]
+			)
+			|| setup.gropebreastQuotes.Top[_pref]
+			|| setup.gropebreastQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.role ==&quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.gropebreastQuotes.Top[_pref]
-	&amp;&amp; setup.gropebreastQuotes.Top[_pref][_nsize]
-	&amp;&amp; setup.gropebreastQuotes.Top[_pref][_nsize][_nage]
-	|| setup.gropebreastQuotes.Top[_pref]
-	&amp;&amp; setup.gropebreastQuotes.Top[_pref][_nsize]
-	|| setup.gropebreastQuotes.Top[_pref]&gt;&gt;
-&lt;&lt;elseif $sex.role ==&quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.gropebreastQuotes.Bottom[_pref]
-	&amp;&amp; setup.gropebreastQuotes.Bottom[_pref][_msize]
-	&amp;&amp; setup.gropebreastQuotes.Bottom[_pref][_msize][_mage]
-	|| setup.gropebreastQuotes.Bottom.Neutral&gt;&gt;
+&lt;&lt;elseif $sex.role is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.gropebreastQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.gropebreastQuotes.Bottom[_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.gropebreastQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			(
+				setup.gropebreastQuotes.Bottom[_pref]
+				&amp;&amp; setup.gropebreastQuotes.Bottom[_pref][_msize]
+				&amp;&amp; setup.gropebreastQuotes.Bottom[_pref][_msize][_mage]
+			)
+			|| (
+				setup.gropebreastQuotes.Bottom[_pref]
+				&amp;&amp; setup.gropebreastQuotes.Bottom[_pref][_msize]
+			)
+			|| setup.gropebreastQuotes.Bottom[_pref]
+			|| setup.gropebreastQuotes.Bottom.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
 &lt;&lt;else&gt;&gt;
-ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
+	[Error] Sex role cannot be found.
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No grope breast quote pool found.
-	(role=&lt;&lt;=$sex.role&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
+	(role=&lt;&lt;= $sex.role &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, nsize=&lt;&lt;= _nsize &gt;&gt;, msize=&lt;&lt;= _msize &gt;&gt;, nage=&lt;&lt;= _nage &gt;&gt;, mage=&lt;&lt;= _mage &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;if !setup.gropebuttQuotes&gt;&gt;
+	[Error] setup.gropebuttQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.assSize || &quot;Round&quot;&gt;&gt;
 &lt;&lt;set _nsize = _n.assSize || &quot;Round&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _persMatches = []&gt;&gt;
 
-&lt;&lt;set _personality = _n.personality&gt;&gt;
+&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;if setup.gropebuttQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.gropebuttQuotes.Bottom[_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool =
-		(
-			setup.gropebuttQuotes.Bottom[_nsize]
-			&amp;&amp; setup.gropebuttQuotes.Bottom[_nsize][_pref]
-		)
-		|| 
-		(
-			setup.gropebuttQuotes.Bottom[_nsize]
-			&amp;&amp; setup.gropebuttQuotes.Bottom[_nsize].Neutral
-		)
-	&gt;&gt;
-&lt;&lt;elseif _mode ==&quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool =
-		(
-			setup.gropebuttQuotes.Top[_personality]
-			|| setup.gropebuttQuotes.Top[_msize]
-			&amp;&amp; setup.gropebuttQuotes.Top[_msize][_pref]
-		)
-		|| 
-		(
-			setup.gropebuttQuotes.Top[_nsize]
-			&amp;&amp; setup.gropebuttQuotes.Top[_nsize].Neutral
-		)
-	&gt;&gt;
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.gropebuttQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			(
+				setup.gropebuttQuotes.Bottom[_msize]
+				&amp;&amp; setup.gropebuttQuotes.Bottom[_msize][_pref]
+			)
+			|| (
+				setup.gropebuttQuotes.Bottom[_msize]
+				&amp;&amp; setup.gropebuttQuotes.Bottom[_msize].Neutral
+			)
+			|| setup.gropebuttQuotes.Bottom.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.gropebuttQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.gropebuttQuotes.Top[_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.gropebuttQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			(
+				setup.gropebuttQuotes.Top[_nsize]
+				&amp;&amp; setup.gropebuttQuotes.Top[_nsize][_pref]
+			)
+			|| (
+				setup.gropebuttQuotes.Top[_nsize]
+				&amp;&amp; setup.gropebuttQuotes.Top[_nsize].Neutral
+			)
+			|| setup.gropebuttQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-
 &lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Grope Butt quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="Handjob-Quote" tags="nobr Dialogue" position="1700,1700" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, nsize=&lt;&lt;= _nsize &gt;&gt;, msize=&lt;&lt;= _msize &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="Handjob-Quote" tags="nobr Dialogue" position="1700,1700" size="100,100">&lt;&lt;if !setup.handjobQuotes&gt;&gt;
+	[Error] setup.handjobQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength || &quot;Average&quot;&gt;&gt;
-&lt;&lt;set _age  = $mc.ageGroup&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
+&lt;&lt;set _age = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
-&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
+&lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
 	&lt;&lt;set _pool =
 		setup.handjobQuotes.Bottom[_pref]
 		|| setup.handjobQuotes.Bottom.Neutral
 	&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;if _personality == &quot;Childish&quot;&gt;&gt;
-		&lt;&lt;set _pool =
-			setup.handjobQuotes.Top[_personality]
-		&gt;&gt;
-	&lt;&lt;elseif _size == &quot;Tiny&quot;&gt;&gt;
+
+&lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.handjobQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.handjobQuotes.Top[_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.handjobQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;elseif _size is &quot;Tiny&quot;&gt;&gt;
 		&lt;&lt;set _pool =
 			(
 				setup.handjobQuotes.Top[_pref]
 				&amp;&amp; setup.handjobQuotes.Top[_pref].Tiny
 				&amp;&amp; setup.handjobQuotes.Top[_pref].Tiny[_age]
+			)
+			|| (
+				setup.handjobQuotes.Top[_pref]
+				&amp;&amp; setup.handjobQuotes.Top[_pref].Tiny
 			)
 			|| setup.handjobQuotes.Top.Neutral
 		&gt;&gt;
@@ -12323,171 +12694,393 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No handjob quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, age=&lt;&lt;=_age&gt;&gt;, size=&lt;&lt;=_size&gt;&gt;,personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="Kiss-Nipple-Quote" tags="nobr" position="1100,1850" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.KissNippleQuotes&gt;&gt;
-&lt;&lt;elseif _mode ==&quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.MuffledQuotes&gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, age=&lt;&lt;= _age &gt;&gt;, size=&lt;&lt;= _size &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="Kiss-Nipple-Quote" tags="nobr" position="1100,1850" size="100,100">&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _base = null&gt;&gt;
+
+&lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _base = setup.KissNippleQuotes&gt;&gt;
+&lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _base = setup.MuffledQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_base)&gt;&gt;
+	&lt;&lt;set _pool = _base&gt;&gt;
+&lt;&lt;elseif _base&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;for _p range _personalities&gt;&gt;
+		&lt;&lt;if _p and Array.isArray(_base[_p])&gt;&gt;
+			&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/for&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = _base[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool = _base.Neutral&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Kiss Nipple quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
+	(mode=&lt;&lt;= _mode &gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="Kiss-Quote" tags="nobr" position="1225,1850" size="100,100">&lt;&lt;=either(
-		&quot;Mmm&quot;,
-		&quot;Mmmph&quot;,
-		&quot;Mmmmm&quot;
-	)&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="Lick-Nipple-Quote" tags="nobr" position="100,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.LickNippleQuotes&gt;&gt;
-&lt;&lt;elseif _mode ==&quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.MuffledQuotes&gt;&gt;
+	&quot;Mmm&quot;,
+	&quot;Mmmph&quot;,
+	&quot;Mmmmm&quot;
+)&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="Lick-Nipple-Quote" tags="nobr" position="100,1975" size="100,100">&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _base = null&gt;&gt;
+
+&lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _base = setup.LickNippleQuotes&gt;&gt;
+&lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _base = setup.MuffledQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_base)&gt;&gt;
+	&lt;&lt;set _pool = _base&gt;&gt;
+&lt;&lt;elseif _base&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;for _p range _personalities&gt;&gt;
+		&lt;&lt;if _p and Array.isArray(_base[_p])&gt;&gt;
+			&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/for&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = _base[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool = _base.Neutral&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Lick Nipple quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">/* When you or NPC are close to orgasm */
+	(mode=&lt;&lt;= _mode &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if !setup.orgasmcloseQuotes&gt;&gt;
+	[Error] setup.orgasmcloseQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
-
-&lt;&lt;set _pref   = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _action = $sex.act&gt;&gt;
-&lt;&lt;set _pool   = null&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-
-
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if $sex.climax.Top &amp;&amp; $sex.climax.Bottom&gt;&gt;
 	&lt;&lt;set _pool = [&quot;Let&#39;s cum together!&quot;]&gt;&gt;
+
 &lt;&lt;elseif $sex.climax.Top&gt;&gt;
-	&lt;&lt;set _pool = setup.orgasmcloseQuotes.Top[_personality]
-	|| setup.orgasmcloseQuotes.Top[_action]
-	&amp;&amp; setup.orgasmcloseQuotes.Top[_action][_pref]
-	|| setup.orgasmcloseQuotes.Top[_action]
-	|| setup.orgasmcloseQuotes.Top.default&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.orgasmcloseQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.orgasmcloseQuotes.Top[_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.orgasmcloseQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _actionPool = setup.orgasmcloseQuotes.Top[_action]&gt;&gt;
+
+		&lt;&lt;if Array.isArray(_actionPool)&gt;&gt;
+			&lt;&lt;set _pool = _actionPool&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;set _pool =
+				(
+					_actionPool
+					&amp;&amp; _actionPool[_pref]
+				)
+				|| (
+					_actionPool
+					&amp;&amp; _actionPool.Neutral
+				)
+				|| setup.orgasmcloseQuotes.Top.default
+			&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $sex.climax.Bottom&gt;&gt;
-	&lt;&lt;set _pool = setup.orgasmcloseQuotes.Bottom[_action]
-	|| setup.orgasmcloseQuotes.Bottom[_action]
-	&amp;&amp; setup.orgasmcloseQuotes.Bottom[_action][_personality] 
-	|| setup.orgasmcloseQuotes.Bottom[_action]
-	&amp;&amp; setup.orgasmcloseQuotes.Bottom[_action][_pref]
-	|| setup.orgasmcloseQuotes.Bottom.default&gt;&gt;
+	&lt;&lt;set _actionPool = setup.orgasmcloseQuotes.Bottom[_action]&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
 
+	&lt;&lt;if _actionPool and !Array.isArray(_actionPool)&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(_actionPool[_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = _actionPool[_chosenPers]&gt;&gt;
+	&lt;&lt;elseif Array.isArray(_actionPool)&gt;&gt;
+		&lt;&lt;set _pool = _actionPool&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			(
+				_actionPool
+				&amp;&amp; _actionPool[_pref]
+			)
+			|| (
+				_actionPool
+				&amp;&amp; _actionPool.Neutral
+			)
+			|| setup.orgasmcloseQuotes.Bottom.default
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&quot;&lt;&lt;=either(..._pool)&gt;&gt;&quot;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&quot;&lt;&lt;= either(..._pool) &gt;&gt;&quot;
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm Close quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
-
-&lt;&lt;set _pref   = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-&lt;&lt;set _action = $sex.act&gt;&gt;
-&lt;&lt;set _pool   = null&gt;&gt;
-
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.orgasmQuotes.Bottom[_loc]
-	&amp;&amp; setup.orgasmQuotes.Bottom[_loc][_pref] 
-	|| setup.orgasmQuotes.Bottom.default[_pref]&gt;&gt;
-
-&lt;&lt;elseif _mode ==&quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.orgasmQuotes.Top[_loc]
-	&amp;&amp; setup.orgasmQuotes.Top[_loc][_personality]
-	|| setup.orgasmQuotes.Top[_loc]
-	&amp;&amp; setup.orgasmQuotes.Top[_loc][_pref]
-	|| setup.orgasmQuotes.Top.default[_pref]&gt;&gt;
-
+	(mode=&lt;&lt;= _mode &gt;&gt;, action=&lt;&lt;= _action &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if !setup.orgasmQuotes&gt;&gt;
+	[Error] setup.orgasmQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&quot;&lt;&lt;=either(..._pool)&gt;&gt;&quot;&quot;
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;set _action = $sex.act&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool =
+		(
+			setup.orgasmQuotes.Bottom[_loc]
+			&amp;&amp; setup.orgasmQuotes.Bottom[_loc][_pref]
+		)
+		|| (
+			setup.orgasmQuotes.Bottom[_loc]
+			&amp;&amp; setup.orgasmQuotes.Bottom[_loc].Neutral
+		)
+		|| (
+			setup.orgasmQuotes.Bottom.default
+			&amp;&amp; setup.orgasmQuotes.Bottom.default[_pref]
+		)
+		|| (
+			setup.orgasmQuotes.Bottom.default
+			&amp;&amp; setup.orgasmQuotes.Bottom.default.Neutral
+		)
+	&gt;&gt;
+
+&lt;&lt;elseif _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.orgasmQuotes.Top[_loc]&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.orgasmQuotes.Top[_loc][_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.orgasmQuotes.Top[_loc][_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			(
+				setup.orgasmQuotes.Top[_loc]
+				&amp;&amp; setup.orgasmQuotes.Top[_loc][_pref]
+			)
+			|| (
+				setup.orgasmQuotes.Top[_loc]
+				&amp;&amp; setup.orgasmQuotes.Top[_loc].Neutral
+			)
+			|| (
+				setup.orgasmQuotes.Top.default
+				&amp;&amp; setup.orgasmQuotes.Top.default[_pref]
+			)
+			|| (
+				setup.orgasmQuotes.Top.default
+				&amp;&amp; setup.orgasmQuotes.Top.default.Neutral
+			)
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&quot;&lt;&lt;= either(..._pool) &gt;&gt;&quot;
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, action=&lt;&lt;=_action&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;,personality=&lt;&lt;=_personality&gt;&gt;, cum location=&lt;&lt;=_loc &gt;&gt; )
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
-
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.petearsQuotes.Bottom[_pref]
-	|| setup.petearsQuotes.Bottom.Neutral&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.petearsQuotes.Top[_personality] 
-	|| setup.petearsQuotes.Top[_pref] 
-	|| setup.petearsQuotes.Top.Neutral&gt;&gt;
-
+	(mode=&lt;&lt;= _mode &gt;&gt;, action=&lt;&lt;= _action &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, cum location=&lt;&lt;= _loc &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if !setup.petearsQuotes&gt;&gt;
+	[Error] setup.petearsQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	[Error] No Pet Ears quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
-&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.rimjobQuotes[_personality]
-	|| setup.rimjobQuotes[_pref]
+&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool =
+		setup.petearsQuotes.Bottom[_pref]
+		|| setup.petearsQuotes.Bottom.Neutral
 	&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Bottom&quot;&gt;&gt;
+&lt;&lt;elseif _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;if setup.petearsQuotes.Top&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.petearsQuotes.Top[_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.petearsQuotes.Top[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.petearsQuotes.Top[_pref]
+			|| setup.petearsQuotes.Top.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Pet Ears quote pool found.
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;if !setup.rimjobQuotes&gt;&gt;
+	[Error] setup.rimjobQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;for _p range _personalities&gt;&gt;
+		&lt;&lt;if _p and Array.isArray(setup.rimjobQuotes[_p])&gt;&gt;
+			&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/for&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.rimjobQuotes[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.rimjobQuotes[_pref]
+			|| setup.rimjobQuotes.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;set _pool = setup.MuffledQuotes&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Rimjob quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;,personality=&lt;&lt;=_personality&gt;&gt; )
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="Suck-Cock-Quote" tags="nobr" position="725,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
-&lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-
-&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.SuckingQuotes&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.blowjobQuotes[_personality]
-	|| setup.blowjobQuotes[_pref]&gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="Suck-Cock-Quote" tags="nobr" position="725,1975" size="100,100">&lt;&lt;if !setup.SuckingQuotes or !setup.blowjobQuotes&gt;&gt;
+	[Error] Suck-Cock quote data is missing.
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _mage = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _nage = _n.ageGroup || &quot;Adult&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+
+&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+
+&lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.SuckingQuotes&gt;&gt;
+
+&lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;for _p range _personalities&gt;&gt;
+		&lt;&lt;if _p and Array.isArray(setup.blowjobQuotes[_p])&gt;&gt;
+			&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/for&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.blowjobQuotes[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.blowjobQuotes[_pref]
+			|| setup.blowjobQuotes.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Enter Mouth pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, nage=&lt;&lt;= _nage &gt;&gt;, mage=&lt;&lt;= _mage &gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="Suck-Foot-Quote" tags="nobr Dialogue" position="1800,1600" size="100,100">&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
 	[Error] setup.suckfootQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -12497,150 +13090,284 @@ ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _msize = $mc.penislength&gt;&gt;
-&lt;&lt;set _mage  = $mc.ageGroup&gt;&gt;
+&lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
+&lt;&lt;set _mage = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _action = $sex.action&gt;&gt;
-
-&lt;&lt;set _personality = _n.personality&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
-&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
+&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
 
-	&lt;&lt;set _pool = setup.suckfootQuotes.Bottom[_personality] 
-	|| setup.suckfootQuotes.Bottom[_pref] 
-	|| setup.suckfootQuotes.Bottom.Neutral&gt;&gt;
+	&lt;&lt;if setup.suckfootQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.suckfootQuotes.Bottom[_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.suckfootQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.suckfootQuotes.Bottom[_pref]
+			|| setup.suckfootQuotes.Bottom.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool = setup.suckfootQuotes.Top[_pref] 
-	|| setup.suckfootQuotes.Top.Neutral&gt;&gt;
+	&lt;&lt;set _pool =
+		setup.suckfootQuotes.Top[_pref]
+		|| setup.suckfootQuotes.Top.Neutral
+	&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Suck Foot quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="Suck-Nipple-Quote" tags="nobr" position="975,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.SuckNippleQuotes&gt;&gt;
-&lt;&lt;elseif _mode ==&quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.MuffledQuotes&gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="Suck-Nipple-Quote" tags="nobr" position="975,1975" size="100,100">&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _base = null&gt;&gt;
+
+&lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _base = setup.SuckNippleQuotes&gt;&gt;
+&lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _base = setup.MuffledQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_base)&gt;&gt;
+	&lt;&lt;set _pool = _base&gt;&gt;
+&lt;&lt;elseif _base&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;for _p range _personalities&gt;&gt;
+		&lt;&lt;if _p and Array.isArray(_base[_p])&gt;&gt;
+			&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/for&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = _base[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool = _base.Neutral&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Suck Nipple quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="Tease-Ass-Cock-Quote" tags="nobr" position="1100,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-&lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="Tease-Ass-Cock-Quote" tags="nobr" position="1100,1975" size="100,100">&lt;&lt;if !setup.TeaseAssCockQuotes&gt;&gt;
+	[Error] setup.TeaseAssCockQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _position = $sex.position &gt;&gt;
-
+&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
+&lt;&lt;if Array.isArray(setup.TeaseAssCockQuotes)&gt;&gt;
 	&lt;&lt;set _pool = setup.TeaseAssCockQuotes&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Top&quot;&gt;&gt;
-  &lt;&lt;set _pool = setup.TeaseAssCockQuotes&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;for _p range _personalities&gt;&gt;
+		&lt;&lt;if _p and Array.isArray(setup.TeaseAssCockQuotes[_p])&gt;&gt;
+			&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/for&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.TeaseAssCockQuotes[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.TeaseAssCockQuotes[_pref]
+			|| setup.TeaseAssCockQuotes.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
-	[Error] No Tease ass quote pool found.
-    (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="Tease-Cock-Pussy-Quote" tags="nobr" position="1225,1975" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
-&lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
-
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-
-&lt;&lt;if $sex.role ==&quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.TeaseCockWithPussyQuotes&gt;&gt;
-&lt;&lt;elseif $sex.role ==&quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.TeasePussyWithCockQuotes[_pref]&gt;&gt;
-&lt;&lt;else&gt;&gt;
-    ERROR, SEX ROLE CANNOT BE FOUND, EXIT THE GAME AND REPORT IT TO IT&#39;S CREATOR
+	[Error] No Tease Ass Cock quote pool found.
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="Tease-Cock-Pussy-Quote" tags="nobr" position="1225,1975" size="100,100">&lt;&lt;if !setup.TeaseCockWithPussyQuotes or !setup.TeasePussyWithCockQuotes&gt;&gt;
+	[Error] Tease Cock/Pussy quote data is missing.
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	[Error] No grope breast quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="Tease-Nipples-Quote" tags="nobr" position="100,2100" size="100,100">&lt;&lt;set _msize = $mc.penislength&gt;&gt;
-&lt;&lt;set _nsize = _n.penislength&gt;&gt;
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
-&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.TeaseNippleQuotes.Top&gt;&gt;
-&lt;&lt;elseif _mode ==&quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.TeaseNippleQuotes.Bottom&gt;&gt;
+&lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _pool = setup.TeaseCockWithPussyQuotes&gt;&gt;
+&lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool =
+		setup.TeasePussyWithCockQuotes[_pref]
+		|| setup.TeasePussyWithCockQuotes.Neutral
+	&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] Sex role cannot be found.
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Tease Cock/Pussy quote pool found.
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="Tease-Nipples-Quote" tags="nobr" position="100,2100" size="100,100">&lt;&lt;if !setup.TeaseNippleQuotes&gt;&gt;
+	[Error] setup.TeaseNippleQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _base = null&gt;&gt;
+
+&lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _base = setup.TeaseNippleQuotes.Top&gt;&gt;
+&lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _base = setup.TeaseNippleQuotes.Bottom&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_base)&gt;&gt;
+	&lt;&lt;set _pool = _base&gt;&gt;
+&lt;&lt;elseif _base&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;for _p range _personalities&gt;&gt;
+		&lt;&lt;if _p and Array.isArray(_base[_p])&gt;&gt;
+			&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/for&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = _base[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool = _base.Neutral&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Tease Nipple quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="Tease-Tip-Quote" tags="nobr" position="225,2100" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-&lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _position = $sex.position &gt;&gt;
-
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.TeaseTipQuotes&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.TeaseTipQuotes&gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="Tease-Tip-Quote" tags="nobr" position="225,2100" size="100,100">&lt;&lt;if !setup.TeaseTipQuotes&gt;&gt;
+	[Error] setup.TeaseTipQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if Array.isArray(setup.TeaseTipQuotes)&gt;&gt;
+	&lt;&lt;set _pool = setup.TeaseTipQuotes&gt;&gt;
 &lt;&lt;else&gt;&gt;
-	[Error] No Tease tip quote pool found.
-    (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="Trib-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;set _msize = $mc.penislength&gt;&gt;
-&lt;&lt;set _nsize = _n.penislength&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _pool = null&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
 
-&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.TribQuotes&gt;&gt;
-&lt;&lt;elseif _mode ==&quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.TribQuotes&gt;&gt;
+	&lt;&lt;for _p range _personalities&gt;&gt;
+		&lt;&lt;if _p and Array.isArray(setup.TeaseTipQuotes[_p])&gt;&gt;
+			&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/for&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.TeaseTipQuotes[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.TeaseTipQuotes[_pref]
+			|| setup.TeaseTipQuotes.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
+&lt;&lt;else&gt;&gt;
+	[Error] No Tease Tip quote pool found.
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="Trib-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;if !setup.TribQuotes&gt;&gt;
+	[Error] setup.TribQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
+
+&lt;&lt;if Array.isArray(setup.TribQuotes)&gt;&gt;
+	&lt;&lt;set _pool = setup.TribQuotes&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _persMatches = []&gt;&gt;
+
+	&lt;&lt;for _p range _personalities&gt;&gt;
+		&lt;&lt;if _p and Array.isArray(setup.TribQuotes[_p])&gt;&gt;
+			&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/for&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.TribQuotes[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool =
+			setup.TribQuotes[_pref]
+			|| setup.TribQuotes.Neutral
+		&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Trib quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="StoryCaption" tags="nobr" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
 &lt;b&gt;Location: &lt;/b&gt;$gamelocation
 &lt;&lt;/if&gt;&gt;
@@ -13362,13 +14089,7 @@ Create your character to begin.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;	&lt;&lt;set _position = $sex.position&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;	&lt;&lt;set _position = $sex.position&gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
 
@@ -13411,13 +14132,7 @@ Create your character to begin.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -13537,13 +14252,7 @@ Create your character to begin.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -13582,13 +14291,7 @@ Create your character to begin.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -13628,13 +14331,7 @@ Create your character to begin.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;	&lt;&lt;set _nsize = _n.breastsize || &quot;Average&quot;&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;	&lt;&lt;set _nsize = _n.breastsize || &quot;Average&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.breastsize || &quot;Average&quot;&gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
@@ -13727,13 +14424,7 @@ Create your character to begin.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -13773,13 +14464,7 @@ Create your character to begin.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -13820,13 +14505,7 @@ Create your character to begin.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
@@ -13869,13 +14548,7 @@ Create your character to begin.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;	&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;	&lt;&lt;set _pool = null&gt;&gt;
 
 	/* resolve pool */
 	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
@@ -13910,13 +14583,7 @@ Create your character to begin.
 &lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-	&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
 	/* normalize inputs */
 	&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.breastsize &gt;&gt;

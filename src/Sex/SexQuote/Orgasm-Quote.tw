@@ -1,30 +1,79 @@
 :: Orgasm-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
 
-<<set _mode = $sex.role>>
-
-<<set _pref   = _n.sexpref || "Switch">>
-<<set _action = $sex.act>>
-<<set _pool   = null>>
-
-<<set _personality = _n.personality>>
-
-<<if _mode == "Bottom">>
-	<<set _pool = setup.orgasmQuotes.Bottom[_loc]
-	&& setup.orgasmQuotes.Bottom[_loc][_pref] 
-	|| setup.orgasmQuotes.Bottom.default[_pref]>>
-
-<<elseif _mode =="Top">>
-	<<set _pool = setup.orgasmQuotes.Top[_loc]
-	&& setup.orgasmQuotes.Top[_loc][_personality]
-	|| setup.orgasmQuotes.Top[_loc]
-	&& setup.orgasmQuotes.Top[_loc][_pref]
-	|| setup.orgasmQuotes.Top.default[_pref]>>
-
+<<if !setup.orgasmQuotes>>
+	[Error] setup.orgasmQuotes is missing. Define it in StoryInit.
+	<<return>>
 <</if>>
 
-<<if _pool && _pool.length>>
-	"<<=either(..._pool)>>""
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
+
+<<set _mode = $sex.role>>
+<<set _pref = _n.sexpref || "Switch">>
+<<set _action = $sex.act>>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _pool = null>>
+
+<<if _mode is "Bottom">>
+	<<set _pool =
+		(
+			setup.orgasmQuotes.Bottom[_loc]
+			&& setup.orgasmQuotes.Bottom[_loc][_pref]
+		)
+		|| (
+			setup.orgasmQuotes.Bottom[_loc]
+			&& setup.orgasmQuotes.Bottom[_loc].Neutral
+		)
+		|| (
+			setup.orgasmQuotes.Bottom.default
+			&& setup.orgasmQuotes.Bottom.default[_pref]
+		)
+		|| (
+			setup.orgasmQuotes.Bottom.default
+			&& setup.orgasmQuotes.Bottom.default.Neutral
+		)
+	>>
+
+<<elseif _mode is "Top">>
+	<<set _persMatches = []>>
+
+	<<if setup.orgasmQuotes.Top[_loc]>>
+		<<for _p range _personalities>>
+			<<if _p and Array.isArray(setup.orgasmQuotes.Top[_loc][_p])>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.orgasmQuotes.Top[_loc][_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			(
+				setup.orgasmQuotes.Top[_loc]
+				&& setup.orgasmQuotes.Top[_loc][_pref]
+			)
+			|| (
+				setup.orgasmQuotes.Top[_loc]
+				&& setup.orgasmQuotes.Top[_loc].Neutral
+			)
+			|| (
+				setup.orgasmQuotes.Top.default
+				&& setup.orgasmQuotes.Top.default[_pref]
+			)
+			|| (
+				setup.orgasmQuotes.Top.default
+				&& setup.orgasmQuotes.Top.default.Neutral
+			)
+		>>
+	<</if>>
+<</if>>
+
+<<if Array.isArray(_pool) && _pool.length>>
+	"<<= either(..._pool) >>"
 <<else>>
 	[Error] No Orgasm quote pool found.
-	(mode=<<=_mode>>, action=<<=_action>>, pref=<<=_pref>>,personality=<<=_personality>>, cum location=<<=_loc >> )
+	(mode=<<= _mode >>, action=<<= _action >>, pref=<<= _pref >>, cum location=<<= _loc >>)
 <</if>>

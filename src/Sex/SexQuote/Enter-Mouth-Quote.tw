@@ -3,16 +3,46 @@
 <<set _pref = _n.sexpref >>
 <<set _mage  = $mc.ageGroup  || "Adult">>
 <<set _nage  = _n.ageGroup  || "Adult">>
-<<set _personality = _n.personality>>
-
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 <<set _pool = null>>
+<<set _persMatches = []>>
 
 <<set _mode = $sex.role>>
 
 <<if _mode == "Top">>
-	<<set _pool = setup.EnterMouthQuotes>>
+	<<if setup.EnterMouthQuotes>>
+		<<for _p range _personalities>>
+			<<if _p and EnterMouthQuotes[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = EnterMouthQuotes.Top[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.EnterMouthQuotes.Top[_pref]
+			|| setup.EnterMouthQuotes.Top.Neutral
+		>>
+	<</if>>
 <<elseif _mode == "Bottom">>
-	<<set _pool = setup.TakeCockBetweenLipsQuotes[_pref]>>
+	<<if setup.TakeCockBetweenLipsQuotes.Bottom>>
+		<<for _p range _personalities>>
+			<<if _p and setup.TakeCockBetweenLipsQuotes.Bottom[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = TakeCockBetweenLipsQuotes.Bottom[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.TakeCockBetweenLipsQuotes.Bottom[_pref]
+			|| setup.TakeCockBetweenLipsQuotes.Bottom.Neutral
+		>>
+	<</if>>
 <</if>>
 
 <<if _pool && _pool.length>>

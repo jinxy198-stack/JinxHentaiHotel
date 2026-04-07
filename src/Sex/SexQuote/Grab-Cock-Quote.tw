@@ -1,39 +1,72 @@
 ::Grab-Cock-Quote [nobr]
 
+<<if !setup.GrabCockQuotes>>
+	[Error] setup.GrabCockQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
+
 <<set _mode = $sex.role>>
 <<set _pref = _n.sexpref || "Neutral">>
-<<set _size = $mc.penislength>>
-<<set _age  = $mc.ageGroup>>
-<<set _personality = _n.personality>>
+<<set _size = $mc.penislength || "Average">>
+<<set _age = $mc.ageGroup || "Adult">>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 
 <<set _pool = null>>
 
-<<if _mode == "Bottom">>
+<<if _mode is "Bottom">>
 	<<set _pool =
 		setup.GrabCockQuotes.Bottom[_pref]
 		|| setup.GrabCockQuotes.Bottom.Neutral
 	>>
-<<elseif _mode == "Top">>
-	<<if _personality == "Childish">>
-		<<set _pool =
-			setup.GrabCockQuotes.Top[_personality]
-		>>
+
+<<elseif _mode is "Top">>
+	<<set _persMatches = []>>
+
+	<<if setup.GrabCockQuotes.Top>>
+		<<for _p range _personalities>>
+			<<if _p and Array.isArray(setup.GrabCockQuotes.Top[_p])>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.GrabCockQuotes.Top[_chosenPers]>>
 	<<else>>
-		<<set _pool =
-			(
-				setup.GrabCockQuotes.Top[_pref]
-				&& setup.GrabCockQuotes.Top[_pref][_size]
-				&& setup.GrabCockQuotes.Top[_pref][_size][_age]
-			)
-			|| setup.GrabCockQuotes.Top[_pref]
-		>>
-	
+		<<set _prefPool = setup.GrabCockQuotes.Top[_pref]>>
+
+		<<if Array.isArray(_prefPool)>>
+			<<set _pool = _prefPool>>
+		<<else>>
+			<<set _pool =
+				(
+					_prefPool
+					&& _prefPool[_size]
+					&& _prefPool[_size][_age]
+				)
+				|| (
+					_prefPool
+					&& _prefPool[_size]
+					&& _prefPool[_size].Neutral
+				)
+				|| (
+					_prefPool
+					&& _prefPool.Neutral
+				)
+				|| setup.GrabCockQuotes.Top.Neutral
+			>>
+		<</if>>
 	<</if>>
 <</if>>
 
-<<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+<<if Array.isArray(_pool) && _pool.length>>
+	<<= either(..._pool) >>
 <<else>>
 	[Error] No grab cock quote pool found.
-	(mode=<<=_mode>>, pref=<<=_pref>>, age=<<=_age>>, size=<<=_size>>,personality=<<=_personality>>)
+	(mode=<<= _mode >>, pref=<<= _pref >>, age=<<= _age >>, size=<<= _size >>)
 <</if>>

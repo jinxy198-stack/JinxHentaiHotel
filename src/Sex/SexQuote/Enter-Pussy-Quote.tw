@@ -3,14 +3,47 @@
 <<set _size = $mc.penislength>>
 <<set _age  = $mc.ageGroup>>
 
-<<set _pool = null>>
-
 <<set _mode = $sex.role>>
 
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _pool = null>>
+<<set _persMatches = []>>
+
+
 <<if _mode == "Top">>
-	<<set _pool = setup.PushCockInQuotes.Top[_pref]>>
-<<elseif _mode =="Bottom">>
-	<<set _pool = setup.EnterPussyQuotes.Bottom[_pref]>>
+	<<if setup.PushCockInQuotes.Top>>
+		<<for _p range _personalities>>
+			<<if _p and setup.PushCockInQuotes.Top[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = PushCockInQuotes.Top[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.PushCockInQuotess.Top[_pref]
+			|| setup.PushCockInQuotes.Top.Neutral
+		>>
+	<</if>>
+<<elseif _mode == "Bottom">>
+	<<if setup.EnterPussyQuotes.Bottom>>
+		<<for _p range _personalities>>
+			<<if _p and setup.EnterPussyQuotes.Bottom[_p]>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = EnterPussyQuotes.Bottom[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.EnterPussyQuotes.Bottom[_pref]
+			|| setup.EnterPussyQuotes.Bottom.Neutral
+		>>
+	<</if>>
 <</if>>
 
 <<if _pool && _pool.length>>

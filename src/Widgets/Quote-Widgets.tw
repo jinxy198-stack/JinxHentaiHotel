@@ -16,13 +16,7 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>	<<set _position = $sex.position>>
+<<set _mode = $sex.role>>	<<set _position = $sex.position>>
 
 	<<set _pool = null>>
 
@@ -65,13 +59,7 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>
+<<set _mode = $sex.role>>
 	<<set _pool = null>>
 
 	/* resolve pool */
@@ -191,13 +179,7 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>
+<<set _mode = $sex.role>>
 	<<set _pool = null>>
 
 	/* resolve pool */
@@ -236,13 +218,7 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>
+<<set _mode = $sex.role>>
 	<<set _pool = null>>
 
 	/* resolve pool */
@@ -282,13 +258,7 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>	<<set _nsize = _n.breastsize || "Average">>
+<<set _mode = $sex.role>>	<<set _nsize = _n.breastsize || "Average">>
 	<<set _msize = $mc.breastsize || "Average">>
 
 	<<set _pool = null>>
@@ -381,13 +351,7 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>
+<<set _mode = $sex.role>>
 	<<set _pool = null>>
 
 	/* resolve pool */
@@ -427,13 +391,7 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>
+<<set _mode = $sex.role>>
 	<<set _pool = null>>
 
 	/* resolve pool */
@@ -474,13 +432,7 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>
+<<set _mode = $sex.role>>
 	<<set _pool = null>>
 
 	/* resolve pool */
@@ -523,13 +475,7 @@
 	<<return>>
 <</if>>
 
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>	<<set _pool = null>>
+<<set _mode = $sex.role>>	<<set _pool = null>>
 
 	/* resolve pool */
 	<<if _mode == "give">>
@@ -564,13 +510,7 @@
 <<if !$sex or !$sex.roles or !_n>>
 	<<return>>
 <</if>>
-<<if $sex.roles.dom and $sex.roles.dom.name == _n.name>>
-	<<set _mode = "give">>
-<<elseif $sex.roles.sub and $sex.roles.sub.name == _n.name>>
-	<<set _mode = "receive">>
-<<else>>
-	<<return>>
-<</if>>
+<<set _mode = $sex.role>>
 	/* normalize inputs */
 	<<set _pref = _n.sexpref || "Switch">>
 	<<set _msize = $mc.breastsize >>

@@ -1,20 +1,42 @@
 :: Suck-Nipple-Quote [nobr]
 
-
-<<set _pref = _n.sexpref || "Neutral">>
-<<set _personality = _n.personality>>
-<<set _mode = $sex.role>>
-<<set _pool = null>>
-
-<<if _mode == "Top">>
-	<<set _pool = setup.SuckNippleQuotes>>
-<<elseif _mode =="Bottom">>
-	<<set _pool = setup.MuffledQuotes>>
+<<if !$sex or !_n>>
+	<<return>>
 <</if>>
 
-<<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+<<set _mode = $sex.role>>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _pool = null>>
+<<set _base = null>>
+
+<<if _mode is "Top">>
+	<<set _base = setup.SuckNippleQuotes>>
+<<elseif _mode is "Bottom">>
+	<<set _base = setup.MuffledQuotes>>
+<</if>>
+
+<<if Array.isArray(_base)>>
+	<<set _pool = _base>>
+<<elseif _base>>
+	<<set _persMatches = []>>
+
+	<<for _p range _personalities>>
+		<<if _p and Array.isArray(_base[_p])>>
+			<<run _persMatches.push(_p)>>
+		<</if>>
+	<</for>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = _base[_chosenPers]>>
+	<<else>>
+		<<set _pool = _base.Neutral>>
+	<</if>>
+<</if>>
+
+<<if Array.isArray(_pool) && _pool.length>>
+	<<= either(..._pool) >>
 <<else>>
 	[Error] No Suck Nipple quote pool found.
-	(mode=<<=_mode>>, pref=<<=_pref>>, personality=<<=_personality>>, nage=<<=_nage>>, mage=<<=_mage>>)
+	(mode=<<= _mode >>)
 <</if>>

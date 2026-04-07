@@ -1,25 +1,44 @@
 ::Tease-Ass-Cock-Quote [nobr]
 
-
-<<set _pref = _n.sexpref || "Switch">>
-<<set _msize = $mc.penislength || "Average">>
-<<set _personality = _n.personality>>
-
-<<set _mode = $sex.role>>
-<<set _position = $sex.position >>
-
-<<set _pool = null>>
-
-<<if _mode == "Bottom">>
-	<<set _pool = setup.TeaseAssCockQuotes>>
-<<elseif _mode == "Top">>
-  <<set _pool = setup.TeaseAssCockQuotes>>
+<<if !setup.TeaseAssCockQuotes>>
+	[Error] setup.TeaseAssCockQuotes is missing. Define it in StoryInit.
+	<<return>>
 <</if>>
 
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
 
-<<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+<<set _mode = $sex.role>>
+<<set _pref = _n.sexpref || "Switch">>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _pool = null>>
+
+<<if Array.isArray(setup.TeaseAssCockQuotes)>>
+	<<set _pool = setup.TeaseAssCockQuotes>>
 <<else>>
-	[Error] No Tease ass quote pool found.
-    (mode=<<=_mode>>, pref=<<=_pref>>, nsize=<<=_nsize>>, msize=<<=_msize>>, personality=<<=_personality>>)
+	<<set _persMatches = []>>
+
+	<<for _p range _personalities>>
+		<<if _p and Array.isArray(setup.TeaseAssCockQuotes[_p])>>
+			<<run _persMatches.push(_p)>>
+		<</if>>
+	<</for>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.TeaseAssCockQuotes[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.TeaseAssCockQuotes[_pref]
+			|| setup.TeaseAssCockQuotes.Neutral
+		>>
+	<</if>>
+<</if>>
+
+<<if Array.isArray(_pool) && _pool.length>>
+	<<= either(..._pool) >>
+<<else>>
+	[Error] No Tease Ass Cock quote pool found.
+	(mode=<<= _mode >>, pref=<<= _pref >>)
 <</if>>

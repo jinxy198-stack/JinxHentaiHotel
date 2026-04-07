@@ -1,24 +1,46 @@
 :: Rimjob-Quote [nobr Dialogue] {"position":"1800,1500","size":"100,100"}
 
+<<if !setup.rimjobQuotes>>
+	[Error] setup.rimjobQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
+
 <<set _mode = $sex.role>>
 <<set _pref = _n.sexpref || "Neutral">>
-<<set _personality = _n.personality>>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 
 <<set _pool = null>>
 
-<<if _mode == "Top">>
-	<<set _pool = setup.rimjobQuotes[_personality]
-	|| setup.rimjobQuotes[_pref]
-	>>
-<<elseif _mode == "Bottom">>
+<<if _mode is "Top">>
+	<<set _persMatches = []>>
+
+	<<for _p range _personalities>>
+		<<if _p and Array.isArray(setup.rimjobQuotes[_p])>>
+			<<run _persMatches.push(_p)>>
+		<</if>>
+	<</for>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.rimjobQuotes[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.rimjobQuotes[_pref]
+			|| setup.rimjobQuotes.Neutral
+		>>
+	<</if>>
+
+<<elseif _mode is "Bottom">>
 	<<set _pool = setup.MuffledQuotes>>
 <</if>>
 
-<<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+<<if Array.isArray(_pool) && _pool.length>>
+	<<= either(..._pool) >>
 <<else>>
 	[Error] No Rimjob quote pool found.
-	(mode=<<=_mode>>, pref=<<=_pref>>,personality=<<=_personality>> )
+	(mode=<<= _mode >>, pref=<<= _pref >>)
 <</if>>
-
-

@@ -1,23 +1,44 @@
 :: Trib-Quote [nobr Dialogue] {"position":"1600,1700","size":"100,100"}
 
-<<set _msize = $mc.penislength>>
-<<set _nsize = _n.penislength>>
-<<set _pref = _n.sexpref || "Neutral">>
-<<set _personality = _n.personality>>
+<<if !setup.TribQuotes>>
+	[Error] setup.TribQuotes is missing. Define it in StoryInit.
+	<<return>>
+<</if>>
+
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
+
 <<set _mode = $sex.role>>
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 <<set _pool = null>>
 
-<<if _mode == "Top">>
+<<if Array.isArray(setup.TribQuotes)>>
 	<<set _pool = setup.TribQuotes>>
-<<elseif _mode =="Bottom">>
-	<<set _pool = setup.TribQuotes>>
+<<else>>
+	<<set _persMatches = []>>
+
+	<<for _p range _personalities>>
+		<<if _p and Array.isArray(setup.TribQuotes[_p])>>
+			<<run _persMatches.push(_p)>>
+		<</if>>
+	<</for>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.TribQuotes[_chosenPers]>>
+	<<else>>
+		<<set _pool =
+			setup.TribQuotes[_pref]
+			|| setup.TribQuotes.Neutral
+		>>
+	<</if>>
 <</if>>
 
-<<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+<<if Array.isArray(_pool) && _pool.length>>
+	<<= either(..._pool) >>
 <<else>>
 	[Error] No Trib quote pool found.
-	(mode=<<=_mode>>, pref=<<=_pref>>, personality=<<=_personality>>, nage=<<=_nage>>, mage=<<=_mage>>)
+	(mode=<<= _mode >>, pref=<<= _pref >>)
 <</if>>
-
-
