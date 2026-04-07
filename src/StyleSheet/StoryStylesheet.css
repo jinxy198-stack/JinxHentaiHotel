@@ -29,8 +29,82 @@
 .sex-item button:hover {
   background: #444;
 }
+.arousal-ui {
+	margin: 0.35rem 0;
+	padding: 0.45rem 0.6rem;
+	border: 1px solid #555;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.04);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+	font-size: 0.9rem;
+}
 
+.arousal-title {
+	font-size: 0.9rem;
+	font-weight: bold;
+	margin-bottom: 0.4rem;
+	text-align: center;
+	letter-spacing: 0.02em;
+}
 
+.arousal-grid {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.arousal-card {
+	padding: 0.35rem 0.5rem;
+	border-radius: 6px;
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.arousal-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.2rem;
+	gap: 0.5rem;
+}
+
+.arousal-name {
+	font-weight: 600;
+}
+
+.arousal-value {
+	font-size: 0.82rem;
+	opacity: 0.9;
+}
+
+.arousal-bar {
+	width: 100%;
+	height: 8px;
+	background: rgba(255, 255, 255, 0.12);
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+.arousal-fill {
+	height: 100%;
+	border-radius: 999px;
+	transition: width 0.25s ease-in-out;
+}
+
+.arousal-fill.bottom {
+	background: linear-gradient(to right, #ff7eb3, #ff4d8d);
+}
+
+.arousal-fill.top {
+	background: linear-gradient(to right, #7ec8ff, #4d9dff);
+}
+
+.arousal-dev {
+	margin-top: 0.45rem;
+	padding-top: 0.35rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
+	font-size: 0.78rem;
+	opacity: 0.85;
+}
 
 
 /* Make sure the PositionBlock never extends under the sidebar */

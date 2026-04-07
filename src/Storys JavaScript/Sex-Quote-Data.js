@@ -927,10 +927,7 @@ setup.gropebuttQuotes = {
       ],
       Submissive: [
       "I love how your ass feels."
-      ],
-      Neutral: [
-      "I love how your ass feels."
-      ]   
+      ]  
     },
     Tiny: {  
       Dominant: [     
@@ -938,19 +935,13 @@ setup.gropebuttQuotes = {
       ],
       Submissive: [
       "I love how your ass feels."
-      ],
-      Neutral: [
-      "I love how your ass feels."
-      ]  
+      ] 
     },
     Small: {  
       Dominant: [   
       "I love how your ass feels."   
       ],
       Submissive: [
-      "I love how your ass feels."
-      ],
-      Neutral: [
       "I love how your ass feels."
       ]  
     },
@@ -964,10 +955,6 @@ setup.gropebuttQuotes = {
       Submissive: [
       "I love how round your ass is.",
       "I love how your ass feels."
-      ],
-      Neutral: [
-      "I love how round your ass is.",
-      "I love how your ass feels."
       ]   
   },
     Large: {  
@@ -978,10 +965,7 @@ setup.gropebuttQuotes = {
       ],
       Submissive: [
       "I love how your ass feels."
-      ],
-      Neutral: [
-      "I love how your ass feels."
-      ] 
+      ]
     },
     Huge: {  
       Dominant: [
@@ -991,11 +975,11 @@ setup.gropebuttQuotes = {
       ],
       Submissive: [
       "I love how your ass feels."
-      ],
-      Neutral: [
-      "I love how your ass feels."
-      ] 
+      ]
     },
+    Neutral: [
+      "I love how your ass feels."
+      ]  
   },  
   Top: {
     Childish:[

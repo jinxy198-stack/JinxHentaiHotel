@@ -23,7 +23,7 @@
     skinfeatures: "Scars",
     bodyheight: "Tall",
     physique: "Brawny" , 
-    personality: "Tough",
+    personality: ["Tough", "Brave", "Stubborn","Confident", "Brash","Provocative"],
     virgin: false,
     sexpref: "Dominant",
     origin: "Camp Buddy"
@@ -49,7 +49,7 @@
     skincolor: "Tan",
     bodyheight: "Tall",
     physique: "Lithe" , 
-    personality: "Naive",
+    personality: ["Naive", "Kind", "Confident"],
     virgin: false,
     sexpref: "Dominant",
     origin: "Camp Buddy"
@@ -75,10 +75,11 @@
     skincolor: "Pale",
     bodyheight: "Short",
     physique: "Skinny" , 
-    personality: "Timid",
+    personality: ["Timid", "Kind", "Terse","Nerdy"],
     virgin: false,
     sexpref: "Submissive",
-    origin: "Camp Buddy"
+    origin: "Camp Buddy",
+    traits: ["Scholar", "Genius", "Ticklish"]
 }>>
 
 <<set $Keitaro_CB = {
@@ -101,7 +102,7 @@
     skincolor: "Tan",
     bodyheight: "Average",
     physique: "Toned" , 
-    personality: "Kind",
+    personality: ["Kind", "Upbeat", "Modest"],
     virgin: false,
     sexpref: "Switch",
     origin: "Camp Buddy"
@@ -127,7 +128,7 @@
     skincolor: "Fair",
     bodyheight: "Average",
     physique: "Toned", 
-    personality: "Energetic",
+    personality: ["Energetic", "Playful"],
     virgin: false,
     sexpref: "Submissive",
     origin: "Camp Buddy"
@@ -153,7 +154,7 @@
     skincolor: "Fair",
     bodyheight: "Average",
     physique: "Ripped", 
-    personality: "Brave",
+    personality: ["Brave", "Tough", "Stubborn"],
     virgin: false,
     sexpref: "Switch",
     origin: "Camp Buddy"

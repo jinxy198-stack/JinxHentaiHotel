@@ -1,679 +1,403 @@
+(function () {
+  const CLIMAX_THRESHOLD = 1000;
 
-/*
- * Applies arousal changes from a sex act to the current Top and object.
- * Respects optional arousal caps defined on the act.
- * Safely initializes arousal values if missing.
- */
-setup.applyArousalFromAct = function (sex, act) {
-  if (!sex || !act) return;
+  function asArray(value) {
+    if (Array.isArray(value)) return value;
+    if (value == null) return [];
+    return [value];
+  }
 
-  const Top = sex.Top;
-  const Bottom  = sex.Bottom;
-  if (!Top || !Bottom) return;
+  function normalize(value) {
+    return String(value || "").trim().toLowerCase();
+  }
 
-  // Ensure arousal values exist and are numeric
-  if (typeof Top.arousal !== "number") Top.arousal = 0;
-  if (typeof Bottom.arousal  !== "number") Bottom.arousal  = 0;
+  function unique(list) {
+    return [...new Set(asArray(list).filter(v => v != null && v !== ""))];
+  }
 
-  // Apply Top arousal, respecting optional cap
-  if (typeof act["Top arousal"] === "number") {
-    const cap = act["Top arousal cap"];
-    if (cap === undefined || Top.arousal < cap) {
-      Top.arousal += act["Top arousal"];
+  function mergeUnique(...lists) {
+    return [...new Set(lists.flatMap(asArray).filter(v => v != null && v !== ""))];
+  }
+
+  function numeric(value, fallback = 0) {
+    return typeof value === "number" && !Number.isNaN(value) ? value : fallback;
+  }
+
+  function clearCumLocations(sex) {
+    if (sex?.Top) sex.Top.cumLocation = [];
+    if (sex?.Bottom) sex.Bottom.cumLocation = [];
+  }
+
+  function getRequiredBottomParts(act) {
+    return act?.["Bottom parts"] ?? act?.["object parts"] ?? [];
+  }
+
+  function getBottomPartsMode(act) {
+    return act?.["Bottom parts mode"] ?? act?.["object parts mode"] ?? "any";
+  }
+
+  /* =========================
+   * ACTOR HELPERS
+   * ========================= */
+
+  setup.getActors = function (sex) {
+    const top = sex?.Top || null;
+    const bottom = sex?.Bottom || null;
+
+    return {
+      top,
+      bottom,
+      active: sex?.role === "Bottom" ? bottom : top,
+      partner: sex?.role === "Bottom" ? top : bottom
+    };
+  };
+
+  setup.getTopBottomActors = function (sex) {
+    const { top, bottom } = setup.getActors(sex);
+    return { Top: top, Bottom: bottom };
+  };
+
+  setup.getActActor = function (sex) {
+    return setup.getActors(sex).active;
+  };
+
+  setup.getActPartner = function (sex) {
+    return setup.getActors(sex).partner;
+  };
+
+  setup.updateTopBottom = function (sex) {
+    if (!sex) return;
+
+    const V = State.variables;
+    const mc = V.mc;
+    const n = V.n;
+
+    if (!mc || !n) return;
+
+    if (sex.role === "Bottom") {
+      sex.Top = n;
+      sex.Bottom = mc;
+    } else {
+      sex.Top = mc;
+      sex.Bottom = n;
+    }
+  };
+
+  /* =========================
+   * BODY / GENITAL HELPERS
+   * ========================= */
+
+  setup.normalizeBodyparts = function (actor) {
+    if (!actor) return;
+
+    const bodyParts = Object.keys(actor.body || {});
+    if (actor.genitals) bodyParts.push(actor.genitals);
+
+    actor.bodyparts = unique(bodyParts);
+  };
+
+  setup.partMatches = function (actor, required) {
+    if (!actor || !required) return false;
+
+    const req = normalize(required);
+    const owned = asArray(actor.bodyparts).map(normalize);
+
+    return owned.includes(req);
+  };
+
+  setup.hasParts = function (actor, parts) {
+    const required = unique(parts).map(normalize);
+    if (!required.length) return true;
+    if (!actor || !actor.bodyparts) return false;
+
+    const owned = new Set(asArray(actor.bodyparts).map(normalize));
+    return required.some(part => owned.has(part));
+  };
+
+  setup.actorHasAnyParts = function (actor, parts) {
+    return setup.hasParts(actor, parts);
+  };
+
+  setup.actorHasAllParts = function (actor, parts) {
+    const required = unique(parts).map(normalize);
+    if (!required.length) return true;
+    if (!actor || !actor.bodyparts) return false;
+
+    const owned = new Set(asArray(actor.bodyparts).map(normalize));
+    return required.every(part => owned.has(part));
+  };
+
+  setup.actorMeetsPartRequirement = function (actor, parts, mode) {
+    return mode === "all"
+      ? setup.actorHasAllParts(actor, parts)
+      : setup.hasParts(actor, parts);
+  };
+
+  setup.genitaltypeMatches = function (actor, required) {
+    if (!actor || !required) return false;
+
+    const req = normalize(required);
+    const owned = asArray(actor.genitaltype).map(normalize);
+
+    return owned.includes(req);
+  };
+
+  setup.actorHasGenitalType = function (actor, genitaltypes) {
+    const required = unique(genitaltypes).map(normalize);
+    if (!required.length) return true;
+    if (!actor || !actor.genitaltype) return false;
+
+    const owned = new Set(asArray(actor.genitaltype).map(normalize));
+    return required.some(type => owned.has(type));
+  };
+
+  /* =========================
+   * AROUSAL / PHASE HELPERS
+   * ========================= */
+
+  function applyArousalDelta(actor, delta, cap) {
+    if (!actor || typeof delta !== "number") return;
+
+    actor.arousal = numeric(actor.arousal);
+
+    if (cap !== undefined && actor.arousal >= cap) return;
+
+    actor.arousal += delta;
+
+    if (typeof cap === "number" && actor.arousal > cap) {
+      actor.arousal = cap;
     }
   }
 
-  // Apply object arousal, respecting optional cap
-  if (typeof act["Bottom arousal"] === "number") {
-    const cap = act["Bottom arousal cap"];
-    if (cap === undefined || Bottom.arousal < cap) {
-      Bottom.arousal += act["Bottom arousal"];
-    }
-  }
-  setup.checkForClimax(sex);
-};
+  setup.applyArousalFromAct = function (sex, act) {
+    if (!sex || !act || !sex.Top || !sex.Bottom) return;
 
-/*
- * Updates the NPC arousal UI elements (progress bar + numeric text).
- * Fails safely if elements are missing.
- */
-setup.updateNpcArousalUI = function (value) {
-  const bar = document.getElementById("npc-arousal-bar");
-  const text = document.getElementById("npc-arousal-text");
-  if (bar) bar.value = value;
-  if (text) text.textContent = value;
+    applyArousalDelta(sex.Top, act["Top arousal"], act["Top arousal cap"]);
+    applyArousalDelta(sex.Bottom, act["Bottom arousal"], act["Bottom arousal cap"]);
 
-};
+    setup.checkForClimax(sex);
+  };
 
+  setup.checkForClimax = function (sex) {
+    if (!sex || !sex.Top || !sex.Bottom) return false;
+    if (sex.phase === "climax" || sex.phase === "aftercare") return false;
 
-/*
- * Updates valid cum locations for Top and Bottom
- * based on the current sex position and role.
- */
-setup.updateCumLocations = function (sex) {
-    // safe setters
-    function setEmpty(sex) {
-        if (sex?.Top) sex.Top.cumLocation = [];
-        if (sex?.Bottom)  sex.Bottom.cumLocation  = [];
-    }
-    if (!sex || !sex.Top || !sex.Bottom || !sex.position) {
-        setEmpty(sex);
-        return;
-    }
-    const pos = setup.sexpositions?.[sex.position];
-    if (!pos) {
-        setEmpty(sex);
-        return;
-    }
-    // --- 1) Base lists from position ---
-    const tBase = Array.isArray(pos["Top cum locations"]) ? pos["Top cum locations"] : [];
-    const bBase = Array.isArray(pos["Bottom cum locations"]) ? pos["Bottom cum locations"] : [];
-    // Compute base assignment using your existing role rules
-    let TopBase = [];
-    let BottomBase  = [];
+    const topArousal = numeric(sex.Top.arousal);
+    const bottomArousal = numeric(sex.Bottom.arousal);
 
-    if (sex.role === "equal") {
-        const combined = [...new Set([...tBase, ...bBase])];
-        TopBase = combined.slice();
-        BottomBase  = combined.slice();
-    } else if (sex.role === "Top") {
-        TopBase = tBase.slice();
-        BottomBase  = bBase.slice();
-    } else if (sex.role === "Bottom") {
-        TopBase = bBase.slice();
-        BottomBase  = tBase.slice();
-    } else {
-        // fallback
-        setEmpty(sex);
-        return;
-    }
+    const topClimax = topArousal >= CLIMAX_THRESHOLD;
+    const bottomClimax = bottomArousal >= CLIMAX_THRESHOLD;
 
-    // --- 2) Optional additions from current act in setup.sexacts ---
-    // If you want “all acts valid for this position” instead of only current act,
-    // we can extend this later—but this is the safest/fastest first step.
-    const actKey = sex.act;
-    const act = actKey ? setup.sexacts?.[actKey] : null;
+    if (!topClimax && !bottomClimax) return false;
 
-    // Helper: merge + dedupe
-    function mergeUnique(baseArr, addArr) {
-    if (!Array.isArray(addArr) || addArr.length === 0) return baseArr;
-        return [...new Set([...baseArr, ...addArr])];
-    }
-
-    // Determine who is the "Top actor" vs "Bottom actor" for this position+role
-    // (mirrors your helper idea; kept inline to keep this wiki self-contained)
-    const posEqual = !!pos.equal;
-    let TopActor = null, BottomActor = null;
-
-    if (posEqual) {
-        if (sex.role === "Top") { TopActor = sex.Top; BottomActor = sex.Bottom; }
-        else if (sex.role === "Bottom") { TopActor = sex.Bottom; BottomActor = sex.Top; }
-    } else {
-        if (sex.role === "Top") { TopActor = sex.Top; BottomActor = sex.Bottom; }
-        else if (sex.role === "Bottom") { TopActor = sex.Bottom; BottomActor = sex.Top; }
-    }
-
-    // Start with base
-    let TopFinal = TopBase;
-    let BottomFinal  = BottomBase;
-
-    if (act) {
-        // A) Direct Top/object additions
-        TopFinal = mergeUnique(TopFinal, act["Top cum locations"]);
-        BottomFinal  = mergeUnique(BottomFinal,  act["Bottom cum locations"]);
-
-        // B) Generic "cum locations" applies to the ejaculating actor
-        // By default, assume the TOP actor is the ejaculator if they have a Penis,
-        // otherwise fall back to Top (keeps it predictable).
-        const actCum = act["cum locations"];
-
-        if (Array.isArray(actCum) && actCum.length) {
-            // Try to pick a likely ejaculator in a simple/robust way
-            let ejaculator = null;
-
-            // If you track penetration, prefer that
-            if (sex.penetration && sex.penetration.TopPart) {
-                // penetration.TopPart belongs to sex.Top by your UI convention
-                // (if your penetration object differs, tweak this mapping)
-                ejaculator = sex.Top;
-            } else {
-                // fallback heuristic: TopActor if present, else Top
-                ejaculator = TopActor || sex.Top;
-            }
-
-            if (ejaculator === sex.Top) {
-                TopFinal = mergeUnique(TopFinal, actCum);
-            } else if (ejaculator === sex.Bottom) {
-                BottomFinal = mergeUnique(BottomFinal, actCum);
-            } else {
-                // if unknown, just give both the additional options
-                TopFinal = mergeUnique(TopFinal, actCum);
-                BottomFinal  = mergeUnique(BottomFinal, actCum);
-            }
-        }
-        // C) Act can optionally define Top/Bottom cum locations (same keys as positions)
-        const actTop = Array.isArray(act["Top cum locations"]) ? act["Top cum locations"] : [];
-        const actBot = Array.isArray(act["Bottom cum locations"]) ? act["Bottom cum locations"] : [];
-
-        if (sex.role === "equal") {
-            const combined = [...new Set([...actTop, ...actBot])];
-            TopFinal = mergeUnique(TopFinal, combined);
-            BottomFinal  = mergeUnique(BottomFinal, combined);
-        } else if (sex.role === "Top") {
-            // Top is Top-role in your current mapping
-            TopFinal = mergeUnique(TopFinal, actTop);
-            BottomFinal  = mergeUnique(BottomFinal, actBot);
-        } else if (sex.role === "Bottom") {
-            TopFinal = mergeUnique(TopFinal, actBot);
-            BottomFinal  = mergeUnique(BottomFinal, actTop);
-        }
-    }
-
-    // --- 3) Write back ---
-    sex.Top.cumLocation = TopFinal;
-    sex.Bottom.cumLocation  = BottomFinal;
-};
-
-setup.shouldShowCumPanel = function (sex) {
-  if (!sex || !sex.Top || !sex.Bottom) return false;
-
-  // ✅ Example criteria options (pick what matches your system):
-  // A) Phase based:
-  if (sex.phase === "climax") return true;
-
-  // B) Or: arousal threshold:
-  // if ((sex.Top.arousal || 0) >= 900) return true;
-
-  // C) Or: you set a flag when a climax is triggered:
-  // if (sex.cumReady === true) return true;
-
-  return false;
-};
-
-setup.setSexPhase = function (sex, phase) {
-  if (!sex) return;
-  sex.phase = phase;
-};
-
-/* Optional: move to next phase */
-setup.advanceSexPhase = function (sex) {
-  if (!sex) return;
-  const idx = setup.sexPhases.indexOf(sex.phase);
-  if (idx === -1) { sex.phase = setup.sexPhases[0]; return; }
-  sex.phase = setup.sexPhases[Math.min(idx + 1, setup.sexPhases.length - 1)];
-};
-
-/*checks if a character reached climax */
-setup.checkForClimax = function (sex) {
-  if (!sex || !sex.Top || !sex.Bottom) return false;
-
-  // Don’t re-trigger if already in climax/aftercare
-  if (sex.phase === "climax" || sex.phase === "aftercare") return false;
-
-  // Pick thresholds that match your balance
-  const THRESH = 1000;
-
-  const sA = (typeof sex.Top.arousal === "number") ? sex.Top.arousal : 0;
-  const oA = (typeof sex.Bottom.arousal  === "number") ? sex.Bottom.arousal  : 0;
-
-  // Trigger if either hits threshold
-  if (sA >= THRESH || oA >= THRESH) {
     sex.phase = "climax";
-
-    // Optional: flag who is climaxing (useful for UI)
-    sex.climax = sex.climax || {};
-    sex.climax.Top = (sA >= THRESH);
-    sex.climax.Bottom  = (oA >= THRESH);
-
-    // Optional: open cum selection immediately
+    sex.climax = {
+      Top: topClimax,
+      Bottom: bottomClimax
+    };
     sex.cumReady = true;
 
     return true;
-  }
+  };
 
-  return false;
-};
+  setup.checkOrgasm = function (actor) {
+    return numeric(actor?.arousal) >= CLIMAX_THRESHOLD;
+  };
 
+  setup.shouldShowCumPanel = function (sex) {
+    return !!(sex && (sex.phase === "climax" || sex.cumReady === true));
+  };
 
+  setup.setSexPhase = function (sex, phase) {
+    if (!sex) return;
+    sex.phase = phase;
+  };
 
+  setup.advanceSexPhase = function (sex) {
+    if (!sex) return;
 
-/*
- * Collects all furniture flags present in a room.
- * Used for validating positions and acts.
- */
-setup.getRoomFurnitureFlags = function (roomKey) {
-    const room = setup.RoomTypes.db[roomKey];
-    if (!room) return [];
+    const phases = setup.sexPhases || [];
+    const index = phases.indexOf(sex.phase);
 
-    const flags = [];
+    sex.phase = index === -1
+      ? phases[0]
+      : phases[Math.min(index + 1, phases.length - 1)];
+  };
 
-    Object.keys(room.contents).forEach(furnKey => {
-        const furn = setup.RoomTypes.furniture[furnKey];
-        if (furn && furn.flags) {
-            flags.push(...furn.flags);
+  setup.getAllowedActTypesForPhase = function (phase) {
+    switch (phase) {
+      case "tease":
+        return ["tease", "penetrate"];
+      case "continue":
+        return ["continue", "end"];
+      case "aftercare":
+        return ["aftercare"];
+      default:
+        return ["tease"];
+    }
+  };
+
+  /* =========================
+   * CUM LOCATION HELPERS
+   * ========================= */
+
+  setup.updateCumLocations = function (sex) {
+    if (!sex || !sex.Top || !sex.Bottom || !sex.position) {
+      clearCumLocations(sex);
+      return;
+    }
+
+    const pos = setup.sexpositions?.[sex.position];
+    if (!pos) {
+      clearCumLocations(sex);
+      return;
+    }
+
+    const posTop = unique(pos["Top cum locations"]);
+    const posBottom = unique(pos["Bottom cum locations"]);
+
+    let topLocations;
+    let bottomLocations;
+
+    if (sex.role === "equal") {
+      const combined = mergeUnique(posTop, posBottom);
+      topLocations = combined.slice();
+      bottomLocations = combined.slice();
+    } else if (sex.role === "Bottom") {
+      topLocations = posBottom.slice();
+      bottomLocations = posTop.slice();
+    } else {
+      topLocations = posTop.slice();
+      bottomLocations = posBottom.slice();
+    }
+
+    const act = setup.sexacts?.[sex.act];
+    if (act) {
+      const actTop = unique(act["Top cum locations"]);
+      const actBottom = unique(act["Bottom cum locations"]);
+
+      if (sex.role === "equal") {
+        const combined = mergeUnique(actTop, actBottom);
+        topLocations = mergeUnique(topLocations, combined);
+        bottomLocations = mergeUnique(bottomLocations, combined);
+      } else if (sex.role === "Bottom") {
+        topLocations = mergeUnique(topLocations, actBottom);
+        bottomLocations = mergeUnique(bottomLocations, actTop);
+      } else {
+        topLocations = mergeUnique(topLocations, actTop);
+        bottomLocations = mergeUnique(bottomLocations, actBottom);
+      }
+
+      const generalCum = unique(act["cum locations"]);
+      if (generalCum.length) {
+        const ejaculator = sex.penetration?.TopPart ? sex.Top : (setup.getActActor(sex) || sex.Top);
+
+        if (ejaculator === sex.Top) {
+          topLocations = mergeUnique(topLocations, generalCum);
+        } else if (ejaculator === sex.Bottom) {
+          bottomLocations = mergeUnique(bottomLocations, generalCum);
+        } else {
+          topLocations = mergeUnique(topLocations, generalCum);
+          bottomLocations = mergeUnique(bottomLocations, generalCum);
         }
+      }
+    }
+
+    sex.Top.cumLocation = topLocations;
+    sex.Bottom.cumLocation = bottomLocations;
+  };
+
+  /* =========================
+   * ROOM HELPERS
+   * ========================= */
+
+  setup.getRoomFurnitureFlags = function (roomKey) {
+    const room = setup.RoomTypes?.db?.[roomKey];
+    if (!room || !room.contents) return [];
+
+    const flags = Object.keys(room.contents).flatMap(key => {
+      return setup.RoomTypes?.furniture?.[key]?.flags || [];
     });
 
-    return [...new Set(flags)];
-};
+    return unique(flags);
+  };
 
-/*
- * Synchronizes sex state with the current room context.
- */
-setup.syncSexWithRoom = function (sex, room) {
+  setup.syncSexWithRoom = function (sex, room) {
+    if (!sex || !room) return;
     sex.location = room.location;
     sex.furnitureFlags = room.furnitureFlags;
-};
+  };
 
+  setup.roomHasFurniture = function (sex, required) {
+    const needed = unique(required);
+    if (!needed.length) return true;
+    if (!sex?.furnitureFlags) return false;
 
-/*
- * Builds a normalized bodyparts list for an actor,
- * including genitals if present.
- */
-setup.normalizeBodyparts = function(actor) {
-    if (!actor || !actor.body) return;
+    return needed.some(flag => sex.furnitureFlags.includes(flag));
+  };
 
-    const parts = Object.keys(actor.body);
+  /* =========================
+   * POSITION HELPERS
+   * ========================= */
 
-    if (actor.genitals) {
-        parts.push(actor.genitals);
-    }
-
-    actor.bodyparts = [...new Set(parts)];
-};
-
-/*
- * Returns total number of participants in the encounter.
- */
-setup.getEncounterSize = function (sex) {
+  setup.getEncounterSize = function (sex) {
     let count = 0;
-    if (sex.Top) count++;
-    if (sex.Bottom) count++;
-
-    if (Array.isArray(sex.participants)) {
-        count += sex.participants.length;
-    }
-
+    if (sex?.Top) count++;
+    if (sex?.Bottom) count++;
+    if (Array.isArray(sex?.participants)) count += sex.participants.length;
     return count;
-};
+  };
 
-/*
- * Case-insensitive body part equality check.
- */
-setup.partEquals = function (a, b) {
-    if (!a || !b) return false;
-    return a.localeCompare(b, undefined, { sensitivity: "accent" }) === 0;
-};
+  setup.isPositionValid = function (positionKey, sex) {
+    const pos = setup.sexpositions?.[positionKey];
+    if (!pos || !sex?.Top || !sex?.Bottom) return false;
 
-/*
- * Checks if an actor has a required body part,
- * accounting for aliases.
- */
-setup.partMatches = function(actor, required) {
-    if (!actor || !actor.bodyparts || !required) return false;
+    const topParts = pos.Top || [];
+    const bottomParts = pos.Bottom || [];
 
-    const req = required.toLowerCase();
-
-    return actor.bodyparts.some(p => {
-        const part = p.toLowerCase();
-        return (
-            part === req 
+    const bodyOK = pos.equal
+      ? (
+          (setup.hasParts(sex.Top, topParts) && setup.hasParts(sex.Bottom, bottomParts)) ||
+          (setup.hasParts(sex.Bottom, topParts) && setup.hasParts(sex.Top, bottomParts))
+        )
+      : (
+          setup.hasParts(sex.Top, topParts) &&
+          setup.hasParts(sex.Bottom, bottomParts)
         );
-    });
-};
 
-/*
- * Checks whether an actor has at least one
- * of the required body parts.
- */
-setup.hasParts = function(actor, parts) {
-    if (!actor || !actor.bodyparts) return false;
-    if (!parts || parts.length === 0) return true;
+    if (!bodyOK) return false;
 
-    return parts.some(p => setup.partMatches(actor, p));
-};
+    return setup.roomHasFurniture(sex, pos.furniture);
+  };
 
-
-
-
-/*
- * Validates whether a sex position can be used
- * given body parts, roles, and furniture constraints.
- */
-setup.isPositionValid = function (positionKey, sex) {
-  const pos = setup.sexpositions[positionKey];
-  if (!pos) return false;
-
-  // Decide who is physically Top/Bottom based on MC role rule in updateSubjectObject:
-  // role "Top"    => Top=MC (Top), Bottom=NPC (Bottom)
-  // role "Bottom" => Top=NPC (Top), Bottom=MC (Bottom)
-  const TopActor    = (sex.role === "Top") ? sex.Top : sex.Top; // NPC is Top when MC is Bottom (Top is NPC)
-  const BottomActor = (sex.role === "Bottom") ? sex.Bottom  : sex.Bottom;  // MC is Bottom when role is Bottom (object is MC)
-
-  const TopParts = pos.Top || [];
-  const BottomParts = pos.Bottom || [];
-
-  let bodyOK = false;
-
-  if (pos.equal) {
-    bodyOK =
-      (setup.hasParts(sex.Top, TopParts) && setup.hasParts(sex.Bottom, BottomParts)) ||
-      (setup.hasParts(sex.Bottom, TopParts) && setup.hasParts(sex.Top, BottomParts));
-  } else {
-    // Consistent: pos.Top always checked on TopActor, pos.Bottom on BottomActor
-    bodyOK =
-      setup.hasParts(TopActor, TopParts) &&
-      setup.hasParts(BottomActor, BottomParts);
-  }
-
-  if (!bodyOK) return false;
-
-  if (pos.furniture?.length) {
-    if (!sex.furnitureFlags?.length) return false;
-    if (!pos.furniture.some(f => sex.furnitureFlags.includes(f))) return false;
-  }
-
-  return true;
-};
-
-/*
- * Returns all valid sex positions for the current encounter.
- * Filters by encounter size and position validity.
- */
-setup.getAvailablePositions = function (sex) {
+  setup.getAvailablePositions = function (sex) {
     const size = setup.getEncounterSize(sex);
 
-    return Object.keys(setup.sexpositions)
-        .filter(posKey => {
-            const pos = setup.sexpositions[posKey];
-
-            if (size <= 2) {
-                return pos.primary === true;
-            }
-
-            return pos.primary === true || pos.secondary === true;
-        })
-        .filter(posKey => setup.isPositionValid(posKey, sex));
-};
-
-/*
- * Checks whether an act is allowed in the current position and role.
- */
-setup.actAllowsPosition = function(act, sex) {
-    if (!act.positions || !Array.isArray(act.positions)) return true;
-
-    return act.positions.some(p => {
-        const [pos, role] = p.split(":");
-        if (pos !== sex.position) return false;
-        if (!role) return true;
-        if (role === sex.role) return true;
-        if (sex.role === "equal") return true;
-        return false;
-    });
-};
-
-/*
- * Returns all valid sex acts for the current state.
- * Handles phase logic, end acts, body parts, and position constraints.
- */
-setup.getAvailableSexActs = function (sex) {
-    return Object.entries(setup.sexacts)
-        .filter(([_, act]) => {
-            const types = act["action type"];
-
-            // END acts already do a penetration validity check
-            if (types.includes("end")) {
-                return (
-                    sex.phase === "continue" &&
-                    setup.isEndActValid(act, sex)
-                );
-            }
-
-            // NEW: CONTINUE acts must match current penetration
-            if (types.includes("continue")) {
-                return (
-                    sex.phase === "continue" &&
-                    setup.isContinueActValid(act, sex)
-                );
-            }
-
-            // for aftercare
-            if (types.includes("aftercare")) {
-                return (
-                    sex.phase === "aftercare"
-                );
-            }
-
-            const allowed = setup.getAllowedActTypesForPhase(sex.phase);
-            if (!types.some(t => allowed.includes(t))) return false;
-
-            if (!setup.actAllowsPosition(act, sex)) return false;
-            if (!setup.actMeetsPartRequirements(sex, act)) return false;
-
-            return true;
-        })
-        .map(([name]) => name);
-};
-
-
-
-// Resolve physical Top/Bottom actors consistently from your current binding scheme.
-// If your updateSubjectObject already binds Top/object based on MC role,
-// you can treat: Top = TopActor, object = BottomActor OR vice-versa.
-// Choose ONE convention and stick with it.
-// This version assumes: Top = TopActor, object = BottomActor.
-setup.getTopBottomActors = function(sex) {
-  return {
-    Top: sex.Top,
-    Bottom: sex.Bottom
+    return Object.keys(setup.sexpositions || {})
+      .filter(key => {
+        const pos = setup.sexpositions[key];
+        return size <= 2
+          ? pos.primary === true
+          : pos.primary === true || pos.secondary === true;
+      })
+      .filter(key => setup.isPositionValid(key, sex));
   };
-};
 
-// Returns true if actor has any of the listed parts (empty list = true)
-setup.actorHasAnyParts = function(actor, parts) {
-  return setup.hasParts(actor, parts);
-};
+  setup.ensureValidSexPosition = function (sex) {
+    const available = setup.getAvailablePositions(sex);
 
-
-setup.actorHasAllParts = function (actor, parts) {
-    if (!actor || !actor.bodyparts) return false;
-    if (!parts || parts.length === 0) return true;
-
-    return parts.every(p => setup.partMatches(actor, p));
-};
-
-// Role-stable act requirement check.
-// Supports either the old keys ("Top parts"/"object parts") OR new keys ("Top parts"/"Bottom parts").
-setup.actorMeetsPartRequirement = function (actor, parts, mode) {
-    if (mode === "all") {
-        return setup.actorHasAllParts(actor, parts);
-    }
-
-    // default behavior stays the same
-    return setup.hasParts(actor, parts);
-};
-
-setup.actMeetsPartRequirements = function (sex, act) {
-    const { Top, Bottom } = setup.getTopBottomActors(sex);
-
-    if (act["Top parts"] || act["Bottom parts"]) {
-        const TopMode = act["Top parts mode"] || "any";
-        const BottomMode = act["Bottom parts mode"] || "any";
-
-        if (!setup.actorMeetsPartRequirement(Top, act["Top parts"], TopMode)) {
-            return false;
-        }
-
-        if (!setup.actorMeetsPartRequirement(Bottom, act["Bottom parts"], BottomMode)) {
-            return false;
-        }
-    } else {
-        if (!setup.actMeetsParts(sex, act)) return false;
-    }
-
-    if (act["Top genitaltype"] || act["Bottom genitaltype"]) {
-        if (!setup.actorHasGenitalType(Top, act["Top genitaltype"])) return false;
-        if (!setup.actorHasGenitalType(Bottom, act["Bottom genitaltype"])) return false;
-    }
-
-    return true;
-};
-
-setup.actorHasGenitalType = function(actor, genitaltype) {
-  if (!actor || !actor.genitaltype) return false;
-  if (!genitaltype || genitaltype.length === 0) return true;
-
-  return genitaltype.some(gt => setup.genitaltypeMatches(actor, gt));
-};
-
-setup.genitaltypeMatches = function(actor, required) {
-  if (!actor || !actor.genitaltype || !required) return false;
-
-  const req = required.toLowerCase();
-
-  return actor.genitaltype.some(gt =>
-    String(gt).toLowerCase() === req
-  );
-};
-
-
-
-
-
-
-
-
-// In your current architecture, $sex.role is the MC's role.
-// So the MC is:
-// - Top when role is "Top"
-// - object  when role is "Bottom"
-setup.getActActor = function (sex) {
-  return sex.role === "Top" ? sex.Top : sex.Bottom;
-};
-
-setup.getActPartner = function (sex) {
-  return sex.role === "Top" ? sex.Bottom : sex.Top;
-};
-
-// Checks act requirements using actor/partner mapping (MC-centric).
-setup.actMeetsParts = function (sex, act) {
-  const actor   = setup.getActActor(sex);
-  const partner = setup.getActPartner(sex);
-
-  if (!setup.hasParts(actor, act["Top parts"])) return false;
-  if (!setup.hasParts(partner, act["Bottom parts"])) return false;
-
-  return true;
-};
-
-setup.afterSexStateChange = function (sex) {
-  setup.updateCumLocations(sex);
-  setup.updateBindings?.(); // safe-call if it exists
-};
-
-
-/*
- * Applies a selected sex act and updates encounter state.
- */
-setup.applySexAct = function (sex, actKey) {
-    const act = setup.sexacts[actKey];
-    if (!act) return;
-
-    sex.history.push(actKey);
-    sex.act = actKey;
-
-    setup.applyArousalFromAct(sex, act);
-
-    const types = act["action type"];
-
-    if (types.includes("end")) {
-        sex.penetration = null;
-        sex.phase = "tease";
-        setup.afterSexStateChange(sex);
-        return;
-        }
-
-    if (types.includes("penetrate")) {
-        sex.penetration = {
-            TopPart: act["Top parts"]?.[0] ?? null,
-            BottomPart: act["Bottom parts"]?.[0] ?? null
-        };
-        sex.phase = "continue";
-        setup.afterSexStateChange(sex);
-        return;
-    }
-
-    if (types.includes("continue")) {
-        sex.phase = "continue";
-        setup.afterSexStateChange(sex);
-        return;
-    }
-
-    if (types.includes("tease")) {
-        sex.phase = "tease";
-        setup.afterSexStateChange(sex);
-        return;
-    }
-    if (types.includes("climax")) {
-        sex.phase = "aftercare";
-        setup.afterSexStateChange(sex);
-        return;
-    }
-
-    setup.updateBindings();
-};
-
-/*
- * Checks whether an actor has reached orgasm threshold.
- */
-setup.checkOrgasm = function (actor) {
-    return actor.arousal >= 1000;
-};
-
-/*
- * Returns which act types are allowed for a given phase.
- */
-setup.getAllowedActTypesForPhase = function (phase) {
-    switch (phase) {
-        case "tease":
-            return ["tease", "penetrate"];
-        case "continue":
-            return ["continue", "end"];
-        case "aftercare":
-            return ["aftercare"]    
-        default:
-            return ["tease"];
-    }
-};
-
-/*
- * Checks if the current room contains required furniture.
- */
-setup.roomHasFurniture = function (sex, required) {
-    if (!required || required.length === 0) return true;
-    if (!sex.furnitureFlags) return false;
-
-    return required.some(f => sex.furnitureFlags.includes(f));
-};
-
-/*
- * Ensures the current sex position remains valid.
- * Falls back to the first valid position if needed.
- */
-setup.ensureValidSexPosition = function (sex) {
-    const available = setup.getAvailablePositions(sex) || [];
-
-    if (available.length === 0) {
-        sex.position = null;
-        sex.act = null;
-        sex.penetration = null;
-        sex.phase = "tease";
-        return;
+    if (!available.length) {
+      sex.position = null;
+      sex.act = null;
+      sex.penetration = null;
+      sex.phase = "tease";
+      clearCumLocations(sex);
+      return;
     }
 
     if (sex.position && available.includes(sex.position)) {
-        setup.updateCumLocations(sex);
-        return;
+      setup.updateCumLocations(sex);
+      return;
     }
 
     sex.position = available[0];
@@ -681,132 +405,243 @@ setup.ensureValidSexPosition = function (sex) {
     sex.penetration = null;
     sex.phase = "tease";
     setup.updateCumLocations(sex);
-};
+  };
 
-/*
- * Validates whether an END act correctly matches
- * the current penetration configuration.
- */
-setup.isEndActValid = function (act, sex) {
-  if (!sex || !sex.penetration) return false;
-  if (!sex.penetration.TopPart || !sex.penetration.BottomPart) return false;
+  /* =========================
+   * ACT VALIDATION HELPERS
+   * ========================= */
 
-  const sp = sex.penetration.TopPart;
-  const op = sex.penetration.BottomPart;
+  setup.actAllowsPosition = function (act, sex) {
+    if (!Array.isArray(act?.positions) || !act.positions.length) return true;
 
-  const aSub = act["Top parts"]?.[0];
-  const aObj = act["Bottom parts"]?.[0];
-  if (!aSub || !aObj) return false;
+    return act.positions.some(entry => {
+      const [position, role] = String(entry).split(":");
+      if (position !== sex.position) return false;
+      if (!role) return true;
+      if (sex.role === "equal") return true;
+      return role === sex.role;
+    });
+  };
 
-  // Strict match (direction matters)
-  if (aSub === sp && aObj === op) return true;
+  setup.actMeetsParts = function (sex, act) {
+    const actor = setup.getActActor(sex);
+    const partner = setup.getActPartner(sex);
 
-  // Only allow inverse if the act explicitly says it's symmetric
-  if (act["either direction"] === true || act.equal === true) {
-    if (aSub === op && aObj === sp) return true;
-  }
-
-  return false;
-};
-
-
-setup.isContinueActValid = function (act, sex) {
-    // Must currently be penetrating something
-    if (!sex || !sex.penetration) return false;
-    if (!sex.penetration.TopPart || !sex.penetration.BottomPart) return false;
-
-    // Act must declare what it continues (use first required parts)
-    const aSub = act["Top parts"]?.[0];
-    const aObj = act["Bottom parts"]?.[0];
-    if (!aSub || !aObj) return false;
-
-    // Strict match (direction matters):
     return (
-        aSub === sex.penetration.TopPart &&
-        aObj === sex.penetration.BottomPart
+      setup.actorMeetsPartRequirement(actor, act["Top parts"], act["Top parts mode"]) &&
+      setup.actorMeetsPartRequirement(partner, getRequiredBottomParts(act), getBottomPartsMode(act))
     );
+  };
 
-    // If you ever want "either direction counts", use:
-    // return (
-    //   (aSub === sp && aObj === op) ||
-    //   (aSub === op && aObj === sp)
-    // );
-};
+  setup.actMeetsPartRequirements = function (sex, act) {
+    const { Top, Bottom } = setup.getTopBottomActors(sex);
 
-
-
-setup.updateTopBottom = function (sex) {
-    if (!sex) return;
-
-    const mc = State.variables.mc;
-    const n  = State.variables.n;
-
-    if (!mc || !n) return;
-
-    if (sex.role === "Top") {
-        sex.Top = mc;
-        sex.Bottom  = n;
+    if (!setup.actorMeetsPartRequirement(Top, act["Top parts"], act["Top parts mode"])) {
+      return false;
     }
-    else if (sex.role === "Bottom") {
-        sex.Top = n;
-        sex.Bottom  = mc;
+
+    if (!setup.actorMeetsPartRequirement(Bottom, getRequiredBottomParts(act), getBottomPartsMode(act))) {
+      return false;
     }
-    else {
-        sex.Top = mc;
-        sex.Bottom  = n;
+
+    if (!setup.actorHasGenitalType(Top, act["Top genitaltype"])) {
+      return false;
     }
-};
 
-setup.hasTrait = function (npc, trait) {
-  return Array.isArray(npc?.traits) && npc.traits.includes(trait);
-};
+    if (!setup.actorHasGenitalType(Bottom, act["Bottom genitaltype"])) {
+      return false;
+    }
 
-setup.hasAnyTrait = function (npc, traits) {
-  if (!Array.isArray(traits) || traits.length === 0) return false;
-  if (!Array.isArray(npc?.traits)) return false;
-  return traits.some(t => npc.traits.includes(t));
-};
+    return true;
+  };
 
-// Returns true if this act is blocked by Top/Bottom traits
-setup.actBlockedByTraits = function (sex, act) {
-  const bt = act?.["blocked traits"];
-  if (!bt) return false;
+  setup.isEndActValid = function (act, sex) {
+    if (!sex?.penetration?.TopPart || !sex?.penetration?.BottomPart) return false;
 
-  const subjBlocked = setup.hasAnyTrait(sex?.Top, bt.Top);
-  const objBlocked  = setup.hasAnyTrait(sex?.Bottom,  bt.Bottom);
+    const currentTop = sex.penetration.TopPart;
+    const currentBottom = sex.penetration.BottomPart;
 
-  return subjBlocked || objBlocked;
-};
+    const actTop = act?.["Top parts"]?.[0];
+    const actBottom = getRequiredBottomParts(act)?.[0];
 
-setup.resetSexSession = function () {
+    if (!actTop || !actBottom) return false;
+
+    if (actTop === currentTop && actBottom === currentBottom) return true;
+
+    if (act["either direction"] === true || act.equal === true) {
+      return actTop === currentBottom && actBottom === currentTop;
+    }
+
+    return false;
+  };
+
+  setup.isContinueActValid = function (act, sex) {
+    if (!sex?.penetration?.TopPart || !sex?.penetration?.BottomPart) return false;
+
+    const actTop = act?.["Top parts"]?.[0];
+    const actBottom = getRequiredBottomParts(act)?.[0];
+
+    if (!actTop || !actBottom) return false;
+
+    return (
+      actTop === sex.penetration.TopPart &&
+      actBottom === sex.penetration.BottomPart
+    );
+  };
+
+  setup.getAvailableSexActs = function (sex) {
+    const allowedTypes = setup.getAllowedActTypesForPhase(sex.phase);
+
+    return Object.entries(setup.sexacts || {})
+      .filter(([_, act]) => {
+        const types = asArray(act["action type"]);
+
+        if (types.includes("end")) {
+          return sex.phase === "continue" && setup.isEndActValid(act, sex);
+        }
+
+        if (types.includes("continue")) {
+          return sex.phase === "continue" && setup.isContinueActValid(act, sex);
+        }
+
+        if (types.includes("aftercare")) {
+          return sex.phase === "aftercare";
+        }
+
+        if (!types.some(type => allowedTypes.includes(type))) return false;
+        if (!setup.actAllowsPosition(act, sex)) return false;
+        if (!setup.actMeetsPartRequirements(sex, act)) return false;
+
+        return true;
+      })
+      .map(([name]) => name);
+  };
+
+  /* =========================
+   * ACT APPLICATION HELPERS
+   * ========================= */
+
+  setup.afterSexStateChange = function (sex) {
+    setup.updateCumLocations(sex);
+    setup.updateBindings?.();
+  };
+
+  setup.applySexAct = function (sex, actKey) {
+    const act = setup.sexacts?.[actKey];
+    if (!sex || !act) return;
+
+    sex.history = asArray(sex.history);
+    sex.history.push(actKey);
+    sex.act = actKey;
+
+    setup.applyArousalFromAct(sex, act);
+
+    const types = asArray(act["action type"]);
+    const nextBottomPart = getRequiredBottomParts(act)?.[0] ?? null;
+
+    if (types.includes("end")) {
+      sex.penetration = null;
+      sex.phase = "tease";
+      setup.afterSexStateChange(sex);
+      return;
+    }
+
+    if (types.includes("penetrate")) {
+      sex.penetration = {
+        TopPart: act["Top parts"]?.[0] ?? null,
+        BottomPart: nextBottomPart
+      };
+      sex.phase = "continue";
+      setup.afterSexStateChange(sex);
+      return;
+    }
+
+    if (types.includes("continue")) {
+      sex.phase = "continue";
+      setup.afterSexStateChange(sex);
+      return;
+    }
+
+    if (types.includes("aftercare") || types.includes("climax")) {
+      sex.phase = "aftercare";
+      sex.cumReady = false;
+      setup.afterSexStateChange(sex);
+      return;
+    }
+
+    if (types.includes("tease")) {
+      sex.phase = "tease";
+    }
+
+    setup.afterSexStateChange(sex);
+  };
+
+  /* =========================
+   * TRAIT HELPERS
+   * ========================= */
+
+  setup.hasTrait = function (npc, trait) {
+    return Array.isArray(npc?.traits) && npc.traits.includes(trait);
+  };
+
+  setup.hasAnyTrait = function (npc, traits) {
+    if (!Array.isArray(npc?.traits)) return false;
+    const needed = unique(traits);
+    if (!needed.length) return false;
+
+    return needed.some(trait => npc.traits.includes(trait));
+  };
+
+  setup.actBlockedByTraits = function (sex, act) {
+    const blocked = act?.["blocked traits"];
+    if (!blocked) return false;
+
+    return (
+      setup.hasAnyTrait(sex?.Top, blocked.Top) ||
+      setup.hasAnyTrait(sex?.Bottom, blocked.Bottom)
+    );
+  };
+
+  /* =========================
+   * SESSION RESET
+   * ========================= */
+
+  setup.resetSexSession = function () {
     const V = State.variables;
 
-    if (V.mc) {
-        V.mc.arousal = 0;
-    }
+    if (V.mc) V.mc.arousal = 0;
+    if (V.ui?.npc) V.ui.npc.arousal = 0;
 
-    if (V.ui && V.ui.npc) {
-        V.ui.npc.arousal = 0;
-    }
+    V.orgasm = {
+      top: false,
+      bottom: false,
+      Top: false,
+      Bottom: false
+    };
 
-    V.orgasm = { top: false, bottom: false };
     V.seenActions = {};
 
     V.sex = {
-        roles: V.sex?.roles || { dom: null, sub: null },
-        role: null,
-        top: null,
-        bottom: null,
-        position: "Standing",
-        engagedParts: { top: [], bottom: [] },
-        penetration: null,
-        phase: "tease",
-        history: [],
-        act: "Waiting",
-        furnitureFlags: [],
-        climax: {},
-        cumReady: false,
-        stage: "foreplay",
-        log: []
+      roles: V.sex?.roles || { dom: null, sub: null },
+      role: null,
+
+      Top: null,
+      Bottom: null,
+      top: null,
+      bottom: null,
+
+      position: "Standing",
+      previousPosition: null,
+      engagedParts: { top: [], bottom: [], Top: [], Bottom: [] },
+      penetration: null,
+      phase: "tease",
+      history: [],
+      act: null,
+      furnitureFlags: [],
+      climax: {},
+      cumReady: false,
+      stage: "foreplay",
+      log: []
     };
-};
+  };
+})();

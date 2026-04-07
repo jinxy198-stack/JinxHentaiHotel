@@ -136,8 +136,82 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 .sex-item button:hover {
   background: #444;
 }
+.arousal-ui {
+	margin: 0.35rem 0;
+	padding: 0.45rem 0.6rem;
+	border: 1px solid #555;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.04);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+	font-size: 0.9rem;
+}
 
+.arousal-title {
+	font-size: 0.9rem;
+	font-weight: bold;
+	margin-bottom: 0.4rem;
+	text-align: center;
+	letter-spacing: 0.02em;
+}
 
+.arousal-grid {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.arousal-card {
+	padding: 0.35rem 0.5rem;
+	border-radius: 6px;
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.arousal-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.2rem;
+	gap: 0.5rem;
+}
+
+.arousal-name {
+	font-weight: 600;
+}
+
+.arousal-value {
+	font-size: 0.82rem;
+	opacity: 0.9;
+}
+
+.arousal-bar {
+	width: 100%;
+	height: 8px;
+	background: rgba(255, 255, 255, 0.12);
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+.arousal-fill {
+	height: 100%;
+	border-radius: 999px;
+	transition: width 0.25s ease-in-out;
+}
+
+.arousal-fill.bottom {
+	background: linear-gradient(to right, #ff7eb3, #ff4d8d);
+}
+
+.arousal-fill.top {
+	background: linear-gradient(to right, #7ec8ff, #4d9dff);
+}
+
+.arousal-dev {
+	margin-top: 0.45rem;
+	padding-top: 0.35rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
+	font-size: 0.78rem;
+	opacity: 0.85;
+}
 
 
 /* Make sure the PositionBlock never extends under the sidebar */
@@ -2324,10 +2398,7 @@ setup.gropebuttQuotes = {
       ],
       Submissive: [
       "I love how your ass feels."
-      ],
-      Neutral: [
-      "I love how your ass feels."
-      ]   
+      ]  
     },
     Tiny: {  
       Dominant: [     
@@ -2335,19 +2406,13 @@ setup.gropebuttQuotes = {
       ],
       Submissive: [
       "I love how your ass feels."
-      ],
-      Neutral: [
-      "I love how your ass feels."
-      ]  
+      ] 
     },
     Small: {  
       Dominant: [   
       "I love how your ass feels."   
       ],
       Submissive: [
-      "I love how your ass feels."
-      ],
-      Neutral: [
       "I love how your ass feels."
       ]  
     },
@@ -2361,10 +2426,6 @@ setup.gropebuttQuotes = {
       Submissive: [
       "I love how round your ass is.",
       "I love how your ass feels."
-      ],
-      Neutral: [
-      "I love how round your ass is.",
-      "I love how your ass feels."
       ]   
   },
     Large: {  
@@ -2375,10 +2436,7 @@ setup.gropebuttQuotes = {
       ],
       Submissive: [
       "I love how your ass feels."
-      ],
-      Neutral: [
-      "I love how your ass feels."
-      ] 
+      ]
     },
     Huge: {  
       Dominant: [
@@ -2388,11 +2446,11 @@ setup.gropebuttQuotes = {
       ],
       Submissive: [
       "I love how your ass feels."
-      ],
-      Neutral: [
-      "I love how your ass feels."
-      ] 
+      ]
     },
+    Neutral: [
+      "I love how your ass feels."
+      ]  
   },  
   Top: {
     Childish:[
@@ -3978,7 +4036,7 @@ setup.bodyparts = {
 };
 
 setup.personalities= [
-      "Brave", "Playful", "Kind", "Logical", "Studious", "Nerdy", "Timid", "Stubborn", "Tough", "Naive", "Modest", "Chill", "Sassy", "Flamboyant", "Brash", "Energetic", "Selfish", "Confident", "Childish", "Bubbly", "Upbeat", "Blunt", "Provacative", "Lazy"
+      "Brave", "Playful", "Kind", "Logical", "Studious", "Nerdy", "Timid", "Stubborn", "Tough", "Naive", "Modest", "Chill", "Sassy", "Flamboyant", "Brash", "Energetic", "Selfish", "Confident", "Childish", "Bubbly", "Upbeat", "Blunt", "Provacative", "Lazy", "Terse"
 ];
 
 setup.accessory= [
@@ -3991,7 +4049,7 @@ setup.personalityTips = {
 	Tough: "Blunt, resilient, and hard to intimidate.",
 	Brave: "Bold, assertive, and willing to take risks.",
 	Kind: "Gentle, considerate, and caring.",
-	Childish: "Likes behaving immaturely.",
+	Childish: "Likes behaving immaturely, regardless of age.",
 	Playful: "Likes to fool around, lewd or not.",
 	Lazy: "Doesn't like to be very active.",
 	Provocative: "Sex is always on your mind and you want to focus on it.",
@@ -6131,682 +6189,406 @@ setup.sexacts = {
     },
 };
 /* twine-user-script #11: "sexHelpers.js" */
+(function () {
+  const CLIMAX_THRESHOLD = 1000;
 
-/*
- * Applies arousal changes from a sex act to the current Top and object.
- * Respects optional arousal caps defined on the act.
- * Safely initializes arousal values if missing.
- */
-setup.applyArousalFromAct = function (sex, act) {
-  if (!sex || !act) return;
+  function asArray(value) {
+    if (Array.isArray(value)) return value;
+    if (value == null) return [];
+    return [value];
+  }
 
-  const Top = sex.Top;
-  const Bottom  = sex.Bottom;
-  if (!Top || !Bottom) return;
+  function normalize(value) {
+    return String(value || "").trim().toLowerCase();
+  }
 
-  // Ensure arousal values exist and are numeric
-  if (typeof Top.arousal !== "number") Top.arousal = 0;
-  if (typeof Bottom.arousal  !== "number") Bottom.arousal  = 0;
+  function unique(list) {
+    return [...new Set(asArray(list).filter(v => v != null && v !== ""))];
+  }
 
-  // Apply Top arousal, respecting optional cap
-  if (typeof act["Top arousal"] === "number") {
-    const cap = act["Top arousal cap"];
-    if (cap === undefined || Top.arousal < cap) {
-      Top.arousal += act["Top arousal"];
+  function mergeUnique(...lists) {
+    return [...new Set(lists.flatMap(asArray).filter(v => v != null && v !== ""))];
+  }
+
+  function numeric(value, fallback = 0) {
+    return typeof value === "number" && !Number.isNaN(value) ? value : fallback;
+  }
+
+  function clearCumLocations(sex) {
+    if (sex?.Top) sex.Top.cumLocation = [];
+    if (sex?.Bottom) sex.Bottom.cumLocation = [];
+  }
+
+  function getRequiredBottomParts(act) {
+    return act?.["Bottom parts"] ?? act?.["object parts"] ?? [];
+  }
+
+  function getBottomPartsMode(act) {
+    return act?.["Bottom parts mode"] ?? act?.["object parts mode"] ?? "any";
+  }
+
+  /* =========================
+   * ACTOR HELPERS
+   * ========================= */
+
+  setup.getActors = function (sex) {
+    const top = sex?.Top || null;
+    const bottom = sex?.Bottom || null;
+
+    return {
+      top,
+      bottom,
+      active: sex?.role === "Bottom" ? bottom : top,
+      partner: sex?.role === "Bottom" ? top : bottom
+    };
+  };
+
+  setup.getTopBottomActors = function (sex) {
+    const { top, bottom } = setup.getActors(sex);
+    return { Top: top, Bottom: bottom };
+  };
+
+  setup.getActActor = function (sex) {
+    return setup.getActors(sex).active;
+  };
+
+  setup.getActPartner = function (sex) {
+    return setup.getActors(sex).partner;
+  };
+
+  setup.updateTopBottom = function (sex) {
+    if (!sex) return;
+
+    const V = State.variables;
+    const mc = V.mc;
+    const n = V.n;
+
+    if (!mc || !n) return;
+
+    if (sex.role === "Bottom") {
+      sex.Top = n;
+      sex.Bottom = mc;
+    } else {
+      sex.Top = mc;
+      sex.Bottom = n;
+    }
+  };
+
+  /* =========================
+   * BODY / GENITAL HELPERS
+   * ========================= */
+
+  setup.normalizeBodyparts = function (actor) {
+    if (!actor) return;
+
+    const bodyParts = Object.keys(actor.body || {});
+    if (actor.genitals) bodyParts.push(actor.genitals);
+
+    actor.bodyparts = unique(bodyParts);
+  };
+
+  setup.partMatches = function (actor, required) {
+    if (!actor || !required) return false;
+
+    const req = normalize(required);
+    const owned = asArray(actor.bodyparts).map(normalize);
+
+    return owned.includes(req);
+  };
+
+  setup.hasParts = function (actor, parts) {
+    const required = unique(parts).map(normalize);
+    if (!required.length) return true;
+    if (!actor || !actor.bodyparts) return false;
+
+    const owned = new Set(asArray(actor.bodyparts).map(normalize));
+    return required.some(part => owned.has(part));
+  };
+
+  setup.actorHasAnyParts = function (actor, parts) {
+    return setup.hasParts(actor, parts);
+  };
+
+  setup.actorHasAllParts = function (actor, parts) {
+    const required = unique(parts).map(normalize);
+    if (!required.length) return true;
+    if (!actor || !actor.bodyparts) return false;
+
+    const owned = new Set(asArray(actor.bodyparts).map(normalize));
+    return required.every(part => owned.has(part));
+  };
+
+  setup.actorMeetsPartRequirement = function (actor, parts, mode) {
+    return mode === "all"
+      ? setup.actorHasAllParts(actor, parts)
+      : setup.hasParts(actor, parts);
+  };
+
+  setup.genitaltypeMatches = function (actor, required) {
+    if (!actor || !required) return false;
+
+    const req = normalize(required);
+    const owned = asArray(actor.genitaltype).map(normalize);
+
+    return owned.includes(req);
+  };
+
+  setup.actorHasGenitalType = function (actor, genitaltypes) {
+    const required = unique(genitaltypes).map(normalize);
+    if (!required.length) return true;
+    if (!actor || !actor.genitaltype) return false;
+
+    const owned = new Set(asArray(actor.genitaltype).map(normalize));
+    return required.some(type => owned.has(type));
+  };
+
+  /* =========================
+   * AROUSAL / PHASE HELPERS
+   * ========================= */
+
+  function applyArousalDelta(actor, delta, cap) {
+    if (!actor || typeof delta !== "number") return;
+
+    actor.arousal = numeric(actor.arousal);
+
+    if (cap !== undefined && actor.arousal >= cap) return;
+
+    actor.arousal += delta;
+
+    if (typeof cap === "number" && actor.arousal > cap) {
+      actor.arousal = cap;
     }
   }
 
-  // Apply object arousal, respecting optional cap
-  if (typeof act["Bottom arousal"] === "number") {
-    const cap = act["Bottom arousal cap"];
-    if (cap === undefined || Bottom.arousal < cap) {
-      Bottom.arousal += act["Bottom arousal"];
-    }
-  }
-  setup.checkForClimax(sex);
-};
+  setup.applyArousalFromAct = function (sex, act) {
+    if (!sex || !act || !sex.Top || !sex.Bottom) return;
 
-/*
- * Updates the NPC arousal UI elements (progress bar + numeric text).
- * Fails safely if elements are missing.
- */
-setup.updateNpcArousalUI = function (value) {
-  const bar = document.getElementById("npc-arousal-bar");
-  const text = document.getElementById("npc-arousal-text");
-  if (bar) bar.value = value;
-  if (text) text.textContent = value;
+    applyArousalDelta(sex.Top, act["Top arousal"], act["Top arousal cap"]);
+    applyArousalDelta(sex.Bottom, act["Bottom arousal"], act["Bottom arousal cap"]);
 
-};
+    setup.checkForClimax(sex);
+  };
 
+  setup.checkForClimax = function (sex) {
+    if (!sex || !sex.Top || !sex.Bottom) return false;
+    if (sex.phase === "climax" || sex.phase === "aftercare") return false;
 
-/*
- * Updates valid cum locations for Top and Bottom
- * based on the current sex position and role.
- */
-setup.updateCumLocations = function (sex) {
-    // safe setters
-    function setEmpty(sex) {
-        if (sex?.Top) sex.Top.cumLocation = [];
-        if (sex?.Bottom)  sex.Bottom.cumLocation  = [];
-    }
-    if (!sex || !sex.Top || !sex.Bottom || !sex.position) {
-        setEmpty(sex);
-        return;
-    }
-    const pos = setup.sexpositions?.[sex.position];
-    if (!pos) {
-        setEmpty(sex);
-        return;
-    }
-    // --- 1) Base lists from position ---
-    const tBase = Array.isArray(pos["Top cum locations"]) ? pos["Top cum locations"] : [];
-    const bBase = Array.isArray(pos["Bottom cum locations"]) ? pos["Bottom cum locations"] : [];
-    // Compute base assignment using your existing role rules
-    let TopBase = [];
-    let BottomBase  = [];
+    const topArousal = numeric(sex.Top.arousal);
+    const bottomArousal = numeric(sex.Bottom.arousal);
 
-    if (sex.role === "equal") {
-        const combined = [...new Set([...tBase, ...bBase])];
-        TopBase = combined.slice();
-        BottomBase  = combined.slice();
-    } else if (sex.role === "Top") {
-        TopBase = tBase.slice();
-        BottomBase  = bBase.slice();
-    } else if (sex.role === "Bottom") {
-        TopBase = bBase.slice();
-        BottomBase  = tBase.slice();
-    } else {
-        // fallback
-        setEmpty(sex);
-        return;
-    }
+    const topClimax = topArousal >= CLIMAX_THRESHOLD;
+    const bottomClimax = bottomArousal >= CLIMAX_THRESHOLD;
 
-    // --- 2) Optional additions from current act in setup.sexacts ---
-    // If you want “all acts valid for this position” instead of only current act,
-    // we can extend this later—but this is the safest/fastest first step.
-    const actKey = sex.act;
-    const act = actKey ? setup.sexacts?.[actKey] : null;
+    if (!topClimax && !bottomClimax) return false;
 
-    // Helper: merge + dedupe
-    function mergeUnique(baseArr, addArr) {
-    if (!Array.isArray(addArr) || addArr.length === 0) return baseArr;
-        return [...new Set([...baseArr, ...addArr])];
-    }
-
-    // Determine who is the "Top actor" vs "Bottom actor" for this position+role
-    // (mirrors your helper idea; kept inline to keep this wiki self-contained)
-    const posEqual = !!pos.equal;
-    let TopActor = null, BottomActor = null;
-
-    if (posEqual) {
-        if (sex.role === "Top") { TopActor = sex.Top; BottomActor = sex.Bottom; }
-        else if (sex.role === "Bottom") { TopActor = sex.Bottom; BottomActor = sex.Top; }
-    } else {
-        if (sex.role === "Top") { TopActor = sex.Top; BottomActor = sex.Bottom; }
-        else if (sex.role === "Bottom") { TopActor = sex.Bottom; BottomActor = sex.Top; }
-    }
-
-    // Start with base
-    let TopFinal = TopBase;
-    let BottomFinal  = BottomBase;
-
-    if (act) {
-        // A) Direct Top/object additions
-        TopFinal = mergeUnique(TopFinal, act["Top cum locations"]);
-        BottomFinal  = mergeUnique(BottomFinal,  act["Bottom cum locations"]);
-
-        // B) Generic "cum locations" applies to the ejaculating actor
-        // By default, assume the TOP actor is the ejaculator if they have a Penis,
-        // otherwise fall back to Top (keeps it predictable).
-        const actCum = act["cum locations"];
-
-        if (Array.isArray(actCum) && actCum.length) {
-            // Try to pick a likely ejaculator in a simple/robust way
-            let ejaculator = null;
-
-            // If you track penetration, prefer that
-            if (sex.penetration && sex.penetration.TopPart) {
-                // penetration.TopPart belongs to sex.Top by your UI convention
-                // (if your penetration object differs, tweak this mapping)
-                ejaculator = sex.Top;
-            } else {
-                // fallback heuristic: TopActor if present, else Top
-                ejaculator = TopActor || sex.Top;
-            }
-
-            if (ejaculator === sex.Top) {
-                TopFinal = mergeUnique(TopFinal, actCum);
-            } else if (ejaculator === sex.Bottom) {
-                BottomFinal = mergeUnique(BottomFinal, actCum);
-            } else {
-                // if unknown, just give both the additional options
-                TopFinal = mergeUnique(TopFinal, actCum);
-                BottomFinal  = mergeUnique(BottomFinal, actCum);
-            }
-        }
-        // C) Act can optionally define Top/Bottom cum locations (same keys as positions)
-        const actTop = Array.isArray(act["Top cum locations"]) ? act["Top cum locations"] : [];
-        const actBot = Array.isArray(act["Bottom cum locations"]) ? act["Bottom cum locations"] : [];
-
-        if (sex.role === "equal") {
-            const combined = [...new Set([...actTop, ...actBot])];
-            TopFinal = mergeUnique(TopFinal, combined);
-            BottomFinal  = mergeUnique(BottomFinal, combined);
-        } else if (sex.role === "Top") {
-            // Top is Top-role in your current mapping
-            TopFinal = mergeUnique(TopFinal, actTop);
-            BottomFinal  = mergeUnique(BottomFinal, actBot);
-        } else if (sex.role === "Bottom") {
-            TopFinal = mergeUnique(TopFinal, actBot);
-            BottomFinal  = mergeUnique(BottomFinal, actTop);
-        }
-    }
-
-    // --- 3) Write back ---
-    sex.Top.cumLocation = TopFinal;
-    sex.Bottom.cumLocation  = BottomFinal;
-};
-
-setup.shouldShowCumPanel = function (sex) {
-  if (!sex || !sex.Top || !sex.Bottom) return false;
-
-  // ✅ Example criteria options (pick what matches your system):
-  // A) Phase based:
-  if (sex.phase === "climax") return true;
-
-  // B) Or: arousal threshold:
-  // if ((sex.Top.arousal || 0) >= 900) return true;
-
-  // C) Or: you set a flag when a climax is triggered:
-  // if (sex.cumReady === true) return true;
-
-  return false;
-};
-
-setup.setSexPhase = function (sex, phase) {
-  if (!sex) return;
-  sex.phase = phase;
-};
-
-/* Optional: move to next phase */
-setup.advanceSexPhase = function (sex) {
-  if (!sex) return;
-  const idx = setup.sexPhases.indexOf(sex.phase);
-  if (idx === -1) { sex.phase = setup.sexPhases[0]; return; }
-  sex.phase = setup.sexPhases[Math.min(idx + 1, setup.sexPhases.length - 1)];
-};
-
-/*checks if a character reached climax */
-setup.checkForClimax = function (sex) {
-  if (!sex || !sex.Top || !sex.Bottom) return false;
-
-  // Don’t re-trigger if already in climax/aftercare
-  if (sex.phase === "climax" || sex.phase === "aftercare") return false;
-
-  // Pick thresholds that match your balance
-  const THRESH = 1000;
-
-  const sA = (typeof sex.Top.arousal === "number") ? sex.Top.arousal : 0;
-  const oA = (typeof sex.Bottom.arousal  === "number") ? sex.Bottom.arousal  : 0;
-
-  // Trigger if either hits threshold
-  if (sA >= THRESH || oA >= THRESH) {
     sex.phase = "climax";
-
-    // Optional: flag who is climaxing (useful for UI)
-    sex.climax = sex.climax || {};
-    sex.climax.Top = (sA >= THRESH);
-    sex.climax.Bottom  = (oA >= THRESH);
-
-    // Optional: open cum selection immediately
+    sex.climax = {
+      Top: topClimax,
+      Bottom: bottomClimax
+    };
     sex.cumReady = true;
 
     return true;
-  }
+  };
 
-  return false;
-};
+  setup.checkOrgasm = function (actor) {
+    return numeric(actor?.arousal) >= CLIMAX_THRESHOLD;
+  };
 
+  setup.shouldShowCumPanel = function (sex) {
+    return !!(sex && (sex.phase === "climax" || sex.cumReady === true));
+  };
 
+  setup.setSexPhase = function (sex, phase) {
+    if (!sex) return;
+    sex.phase = phase;
+  };
 
+  setup.advanceSexPhase = function (sex) {
+    if (!sex) return;
 
-/*
- * Collects all furniture flags present in a room.
- * Used for validating positions and acts.
- */
-setup.getRoomFurnitureFlags = function (roomKey) {
-    const room = setup.RoomTypes.db[roomKey];
-    if (!room) return [];
+    const phases = setup.sexPhases || [];
+    const index = phases.indexOf(sex.phase);
 
-    const flags = [];
+    sex.phase = index === -1
+      ? phases[0]
+      : phases[Math.min(index + 1, phases.length - 1)];
+  };
 
-    Object.keys(room.contents).forEach(furnKey => {
-        const furn = setup.RoomTypes.furniture[furnKey];
-        if (furn && furn.flags) {
-            flags.push(...furn.flags);
+  setup.getAllowedActTypesForPhase = function (phase) {
+    switch (phase) {
+      case "tease":
+        return ["tease", "penetrate"];
+      case "continue":
+        return ["continue", "end"];
+      case "aftercare":
+        return ["aftercare"];
+      default:
+        return ["tease"];
+    }
+  };
+
+  /* =========================
+   * CUM LOCATION HELPERS
+   * ========================= */
+
+  setup.updateCumLocations = function (sex) {
+    if (!sex || !sex.Top || !sex.Bottom || !sex.position) {
+      clearCumLocations(sex);
+      return;
+    }
+
+    const pos = setup.sexpositions?.[sex.position];
+    if (!pos) {
+      clearCumLocations(sex);
+      return;
+    }
+
+    const posTop = unique(pos["Top cum locations"]);
+    const posBottom = unique(pos["Bottom cum locations"]);
+
+    let topLocations;
+    let bottomLocations;
+
+    if (sex.role === "equal") {
+      const combined = mergeUnique(posTop, posBottom);
+      topLocations = combined.slice();
+      bottomLocations = combined.slice();
+    } else if (sex.role === "Bottom") {
+      topLocations = posBottom.slice();
+      bottomLocations = posTop.slice();
+    } else {
+      topLocations = posTop.slice();
+      bottomLocations = posBottom.slice();
+    }
+
+    const act = setup.sexacts?.[sex.act];
+    if (act) {
+      const actTop = unique(act["Top cum locations"]);
+      const actBottom = unique(act["Bottom cum locations"]);
+
+      if (sex.role === "equal") {
+        const combined = mergeUnique(actTop, actBottom);
+        topLocations = mergeUnique(topLocations, combined);
+        bottomLocations = mergeUnique(bottomLocations, combined);
+      } else if (sex.role === "Bottom") {
+        topLocations = mergeUnique(topLocations, actBottom);
+        bottomLocations = mergeUnique(bottomLocations, actTop);
+      } else {
+        topLocations = mergeUnique(topLocations, actTop);
+        bottomLocations = mergeUnique(bottomLocations, actBottom);
+      }
+
+      const generalCum = unique(act["cum locations"]);
+      if (generalCum.length) {
+        const ejaculator = sex.penetration?.TopPart ? sex.Top : (setup.getActActor(sex) || sex.Top);
+
+        if (ejaculator === sex.Top) {
+          topLocations = mergeUnique(topLocations, generalCum);
+        } else if (ejaculator === sex.Bottom) {
+          bottomLocations = mergeUnique(bottomLocations, generalCum);
+        } else {
+          topLocations = mergeUnique(topLocations, generalCum);
+          bottomLocations = mergeUnique(bottomLocations, generalCum);
         }
+      }
+    }
+
+    sex.Top.cumLocation = topLocations;
+    sex.Bottom.cumLocation = bottomLocations;
+  };
+
+  /* =========================
+   * ROOM HELPERS
+   * ========================= */
+
+  setup.getRoomFurnitureFlags = function (roomKey) {
+    const room = setup.RoomTypes?.db?.[roomKey];
+    if (!room || !room.contents) return [];
+
+    const flags = Object.keys(room.contents).flatMap(key => {
+      return setup.RoomTypes?.furniture?.[key]?.flags || [];
     });
 
-    return [...new Set(flags)];
-};
+    return unique(flags);
+  };
 
-/*
- * Synchronizes sex state with the current room context.
- */
-setup.syncSexWithRoom = function (sex, room) {
+  setup.syncSexWithRoom = function (sex, room) {
+    if (!sex || !room) return;
     sex.location = room.location;
     sex.furnitureFlags = room.furnitureFlags;
-};
+  };
 
+  setup.roomHasFurniture = function (sex, required) {
+    const needed = unique(required);
+    if (!needed.length) return true;
+    if (!sex?.furnitureFlags) return false;
 
-/*
- * Builds a normalized bodyparts list for an actor,
- * including genitals if present.
- */
-setup.normalizeBodyparts = function(actor) {
-    if (!actor || !actor.body) return;
+    return needed.some(flag => sex.furnitureFlags.includes(flag));
+  };
 
-    const parts = Object.keys(actor.body);
+  /* =========================
+   * POSITION HELPERS
+   * ========================= */
 
-    if (actor.genitals) {
-        parts.push(actor.genitals);
-    }
-
-    actor.bodyparts = [...new Set(parts)];
-};
-
-/*
- * Returns total number of participants in the encounter.
- */
-setup.getEncounterSize = function (sex) {
+  setup.getEncounterSize = function (sex) {
     let count = 0;
-    if (sex.Top) count++;
-    if (sex.Bottom) count++;
-
-    if (Array.isArray(sex.participants)) {
-        count += sex.participants.length;
-    }
-
+    if (sex?.Top) count++;
+    if (sex?.Bottom) count++;
+    if (Array.isArray(sex?.participants)) count += sex.participants.length;
     return count;
-};
+  };
 
-/*
- * Case-insensitive body part equality check.
- */
-setup.partEquals = function (a, b) {
-    if (!a || !b) return false;
-    return a.localeCompare(b, undefined, { sensitivity: "accent" }) === 0;
-};
+  setup.isPositionValid = function (positionKey, sex) {
+    const pos = setup.sexpositions?.[positionKey];
+    if (!pos || !sex?.Top || !sex?.Bottom) return false;
 
-/*
- * Checks if an actor has a required body part,
- * accounting for aliases.
- */
-setup.partMatches = function(actor, required) {
-    if (!actor || !actor.bodyparts || !required) return false;
+    const topParts = pos.Top || [];
+    const bottomParts = pos.Bottom || [];
 
-    const req = required.toLowerCase();
-
-    return actor.bodyparts.some(p => {
-        const part = p.toLowerCase();
-        return (
-            part === req 
+    const bodyOK = pos.equal
+      ? (
+          (setup.hasParts(sex.Top, topParts) && setup.hasParts(sex.Bottom, bottomParts)) ||
+          (setup.hasParts(sex.Bottom, topParts) && setup.hasParts(sex.Top, bottomParts))
+        )
+      : (
+          setup.hasParts(sex.Top, topParts) &&
+          setup.hasParts(sex.Bottom, bottomParts)
         );
-    });
-};
 
-/*
- * Checks whether an actor has at least one
- * of the required body parts.
- */
-setup.hasParts = function(actor, parts) {
-    if (!actor || !actor.bodyparts) return false;
-    if (!parts || parts.length === 0) return true;
+    if (!bodyOK) return false;
 
-    return parts.some(p => setup.partMatches(actor, p));
-};
+    return setup.roomHasFurniture(sex, pos.furniture);
+  };
 
-
-
-
-/*
- * Validates whether a sex position can be used
- * given body parts, roles, and furniture constraints.
- */
-setup.isPositionValid = function (positionKey, sex) {
-  const pos = setup.sexpositions[positionKey];
-  if (!pos) return false;
-
-  // Decide who is physically Top/Bottom based on MC role rule in updateSubjectObject:
-  // role "Top"    => Top=MC (Top), Bottom=NPC (Bottom)
-  // role "Bottom" => Top=NPC (Top), Bottom=MC (Bottom)
-  const TopActor    = (sex.role === "Top") ? sex.Top : sex.Top; // NPC is Top when MC is Bottom (Top is NPC)
-  const BottomActor = (sex.role === "Bottom") ? sex.Bottom  : sex.Bottom;  // MC is Bottom when role is Bottom (object is MC)
-
-  const TopParts = pos.Top || [];
-  const BottomParts = pos.Bottom || [];
-
-  let bodyOK = false;
-
-  if (pos.equal) {
-    bodyOK =
-      (setup.hasParts(sex.Top, TopParts) && setup.hasParts(sex.Bottom, BottomParts)) ||
-      (setup.hasParts(sex.Bottom, TopParts) && setup.hasParts(sex.Top, BottomParts));
-  } else {
-    // Consistent: pos.Top always checked on TopActor, pos.Bottom on BottomActor
-    bodyOK =
-      setup.hasParts(TopActor, TopParts) &&
-      setup.hasParts(BottomActor, BottomParts);
-  }
-
-  if (!bodyOK) return false;
-
-  if (pos.furniture?.length) {
-    if (!sex.furnitureFlags?.length) return false;
-    if (!pos.furniture.some(f => sex.furnitureFlags.includes(f))) return false;
-  }
-
-  return true;
-};
-
-/*
- * Returns all valid sex positions for the current encounter.
- * Filters by encounter size and position validity.
- */
-setup.getAvailablePositions = function (sex) {
+  setup.getAvailablePositions = function (sex) {
     const size = setup.getEncounterSize(sex);
 
-    return Object.keys(setup.sexpositions)
-        .filter(posKey => {
-            const pos = setup.sexpositions[posKey];
-
-            if (size <= 2) {
-                return pos.primary === true;
-            }
-
-            return pos.primary === true || pos.secondary === true;
-        })
-        .filter(posKey => setup.isPositionValid(posKey, sex));
-};
-
-/*
- * Checks whether an act is allowed in the current position and role.
- */
-setup.actAllowsPosition = function(act, sex) {
-    if (!act.positions || !Array.isArray(act.positions)) return true;
-
-    return act.positions.some(p => {
-        const [pos, role] = p.split(":");
-        if (pos !== sex.position) return false;
-        if (!role) return true;
-        if (role === sex.role) return true;
-        if (sex.role === "equal") return true;
-        return false;
-    });
-};
-
-/*
- * Returns all valid sex acts for the current state.
- * Handles phase logic, end acts, body parts, and position constraints.
- */
-setup.getAvailableSexActs = function (sex) {
-    return Object.entries(setup.sexacts)
-        .filter(([_, act]) => {
-            const types = act["action type"];
-
-            // END acts already do a penetration validity check
-            if (types.includes("end")) {
-                return (
-                    sex.phase === "continue" &&
-                    setup.isEndActValid(act, sex)
-                );
-            }
-
-            // NEW: CONTINUE acts must match current penetration
-            if (types.includes("continue")) {
-                return (
-                    sex.phase === "continue" &&
-                    setup.isContinueActValid(act, sex)
-                );
-            }
-
-            // for aftercare
-            if (types.includes("aftercare")) {
-                return (
-                    sex.phase === "aftercare"
-                );
-            }
-
-            const allowed = setup.getAllowedActTypesForPhase(sex.phase);
-            if (!types.some(t => allowed.includes(t))) return false;
-
-            if (!setup.actAllowsPosition(act, sex)) return false;
-            if (!setup.actMeetsPartRequirements(sex, act)) return false;
-
-            return true;
-        })
-        .map(([name]) => name);
-};
-
-
-
-// Resolve physical Top/Bottom actors consistently from your current binding scheme.
-// If your updateSubjectObject already binds Top/object based on MC role,
-// you can treat: Top = TopActor, object = BottomActor OR vice-versa.
-// Choose ONE convention and stick with it.
-// This version assumes: Top = TopActor, object = BottomActor.
-setup.getTopBottomActors = function(sex) {
-  return {
-    Top: sex.Top,
-    Bottom: sex.Bottom
+    return Object.keys(setup.sexpositions || {})
+      .filter(key => {
+        const pos = setup.sexpositions[key];
+        return size <= 2
+          ? pos.primary === true
+          : pos.primary === true || pos.secondary === true;
+      })
+      .filter(key => setup.isPositionValid(key, sex));
   };
-};
 
-// Returns true if actor has any of the listed parts (empty list = true)
-setup.actorHasAnyParts = function(actor, parts) {
-  return setup.hasParts(actor, parts);
-};
+  setup.ensureValidSexPosition = function (sex) {
+    const available = setup.getAvailablePositions(sex);
 
-
-setup.actorHasAllParts = function (actor, parts) {
-    if (!actor || !actor.bodyparts) return false;
-    if (!parts || parts.length === 0) return true;
-
-    return parts.every(p => setup.partMatches(actor, p));
-};
-
-// Role-stable act requirement check.
-// Supports either the old keys ("Top parts"/"object parts") OR new keys ("Top parts"/"Bottom parts").
-setup.actorMeetsPartRequirement = function (actor, parts, mode) {
-    if (mode === "all") {
-        return setup.actorHasAllParts(actor, parts);
-    }
-
-    // default behavior stays the same
-    return setup.hasParts(actor, parts);
-};
-
-setup.actMeetsPartRequirements = function (sex, act) {
-    const { Top, Bottom } = setup.getTopBottomActors(sex);
-
-    if (act["Top parts"] || act["Bottom parts"]) {
-        const TopMode = act["Top parts mode"] || "any";
-        const BottomMode = act["Bottom parts mode"] || "any";
-
-        if (!setup.actorMeetsPartRequirement(Top, act["Top parts"], TopMode)) {
-            return false;
-        }
-
-        if (!setup.actorMeetsPartRequirement(Bottom, act["Bottom parts"], BottomMode)) {
-            return false;
-        }
-    } else {
-        if (!setup.actMeetsParts(sex, act)) return false;
-    }
-
-    if (act["Top genitaltype"] || act["Bottom genitaltype"]) {
-        if (!setup.actorHasGenitalType(Top, act["Top genitaltype"])) return false;
-        if (!setup.actorHasGenitalType(Bottom, act["Bottom genitaltype"])) return false;
-    }
-
-    return true;
-};
-
-setup.actorHasGenitalType = function(actor, genitaltype) {
-  if (!actor || !actor.genitaltype) return false;
-  if (!genitaltype || genitaltype.length === 0) return true;
-
-  return genitaltype.some(gt => setup.genitaltypeMatches(actor, gt));
-};
-
-setup.genitaltypeMatches = function(actor, required) {
-  if (!actor || !actor.genitaltype || !required) return false;
-
-  const req = required.toLowerCase();
-
-  return actor.genitaltype.some(gt =>
-    String(gt).toLowerCase() === req
-  );
-};
-
-
-
-
-
-
-
-
-// In your current architecture, $sex.role is the MC's role.
-// So the MC is:
-// - Top when role is "Top"
-// - object  when role is "Bottom"
-setup.getActActor = function (sex) {
-  return sex.role === "Top" ? sex.Top : sex.Bottom;
-};
-
-setup.getActPartner = function (sex) {
-  return sex.role === "Top" ? sex.Bottom : sex.Top;
-};
-
-// Checks act requirements using actor/partner mapping (MC-centric).
-setup.actMeetsParts = function (sex, act) {
-  const actor   = setup.getActActor(sex);
-  const partner = setup.getActPartner(sex);
-
-  if (!setup.hasParts(actor, act["Top parts"])) return false;
-  if (!setup.hasParts(partner, act["Bottom parts"])) return false;
-
-  return true;
-};
-
-setup.afterSexStateChange = function (sex) {
-  setup.updateCumLocations(sex);
-  setup.updateBindings?.(); // safe-call if it exists
-};
-
-
-/*
- * Applies a selected sex act and updates encounter state.
- */
-setup.applySexAct = function (sex, actKey) {
-    const act = setup.sexacts[actKey];
-    if (!act) return;
-
-    sex.history.push(actKey);
-    sex.act = actKey;
-
-    setup.applyArousalFromAct(sex, act);
-
-    const types = act["action type"];
-
-    if (types.includes("end")) {
-        sex.penetration = null;
-        sex.phase = "tease";
-        setup.afterSexStateChange(sex);
-        return;
-        }
-
-    if (types.includes("penetrate")) {
-        sex.penetration = {
-            TopPart: act["Top parts"]?.[0] ?? null,
-            BottomPart: act["Bottom parts"]?.[0] ?? null
-        };
-        sex.phase = "continue";
-        setup.afterSexStateChange(sex);
-        return;
-    }
-
-    if (types.includes("continue")) {
-        sex.phase = "continue";
-        setup.afterSexStateChange(sex);
-        return;
-    }
-
-    if (types.includes("tease")) {
-        sex.phase = "tease";
-        setup.afterSexStateChange(sex);
-        return;
-    }
-    if (types.includes("climax")) {
-        sex.phase = "aftercare";
-        setup.afterSexStateChange(sex);
-        return;
-    }
-
-    setup.updateBindings();
-};
-
-/*
- * Checks whether an actor has reached orgasm threshold.
- */
-setup.checkOrgasm = function (actor) {
-    return actor.arousal >= 1000;
-};
-
-/*
- * Returns which act types are allowed for a given phase.
- */
-setup.getAllowedActTypesForPhase = function (phase) {
-    switch (phase) {
-        case "tease":
-            return ["tease", "penetrate"];
-        case "continue":
-            return ["continue", "end"];
-        case "aftercare":
-            return ["aftercare"]    
-        default:
-            return ["tease"];
-    }
-};
-
-/*
- * Checks if the current room contains required furniture.
- */
-setup.roomHasFurniture = function (sex, required) {
-    if (!required || required.length === 0) return true;
-    if (!sex.furnitureFlags) return false;
-
-    return required.some(f => sex.furnitureFlags.includes(f));
-};
-
-/*
- * Ensures the current sex position remains valid.
- * Falls back to the first valid position if needed.
- */
-setup.ensureValidSexPosition = function (sex) {
-    const available = setup.getAvailablePositions(sex) || [];
-
-    if (available.length === 0) {
-        sex.position = null;
-        sex.act = null;
-        sex.penetration = null;
-        sex.phase = "tease";
-        return;
+    if (!available.length) {
+      sex.position = null;
+      sex.act = null;
+      sex.penetration = null;
+      sex.phase = "tease";
+      clearCumLocations(sex);
+      return;
     }
 
     if (sex.position && available.includes(sex.position)) {
-        setup.updateCumLocations(sex);
-        return;
+      setup.updateCumLocations(sex);
+      return;
     }
 
     sex.position = available[0];
@@ -6814,135 +6596,246 @@ setup.ensureValidSexPosition = function (sex) {
     sex.penetration = null;
     sex.phase = "tease";
     setup.updateCumLocations(sex);
-};
+  };
 
-/*
- * Validates whether an END act correctly matches
- * the current penetration configuration.
- */
-setup.isEndActValid = function (act, sex) {
-  if (!sex || !sex.penetration) return false;
-  if (!sex.penetration.TopPart || !sex.penetration.BottomPart) return false;
+  /* =========================
+   * ACT VALIDATION HELPERS
+   * ========================= */
 
-  const sp = sex.penetration.TopPart;
-  const op = sex.penetration.BottomPart;
+  setup.actAllowsPosition = function (act, sex) {
+    if (!Array.isArray(act?.positions) || !act.positions.length) return true;
 
-  const aSub = act["Top parts"]?.[0];
-  const aObj = act["Bottom parts"]?.[0];
-  if (!aSub || !aObj) return false;
+    return act.positions.some(entry => {
+      const [position, role] = String(entry).split(":");
+      if (position !== sex.position) return false;
+      if (!role) return true;
+      if (sex.role === "equal") return true;
+      return role === sex.role;
+    });
+  };
 
-  // Strict match (direction matters)
-  if (aSub === sp && aObj === op) return true;
+  setup.actMeetsParts = function (sex, act) {
+    const actor = setup.getActActor(sex);
+    const partner = setup.getActPartner(sex);
 
-  // Only allow inverse if the act explicitly says it's symmetric
-  if (act["either direction"] === true || act.equal === true) {
-    if (aSub === op && aObj === sp) return true;
-  }
-
-  return false;
-};
-
-
-setup.isContinueActValid = function (act, sex) {
-    // Must currently be penetrating something
-    if (!sex || !sex.penetration) return false;
-    if (!sex.penetration.TopPart || !sex.penetration.BottomPart) return false;
-
-    // Act must declare what it continues (use first required parts)
-    const aSub = act["Top parts"]?.[0];
-    const aObj = act["Bottom parts"]?.[0];
-    if (!aSub || !aObj) return false;
-
-    // Strict match (direction matters):
     return (
-        aSub === sex.penetration.TopPart &&
-        aObj === sex.penetration.BottomPart
+      setup.actorMeetsPartRequirement(actor, act["Top parts"], act["Top parts mode"]) &&
+      setup.actorMeetsPartRequirement(partner, getRequiredBottomParts(act), getBottomPartsMode(act))
     );
+  };
 
-    // If you ever want "either direction counts", use:
-    // return (
-    //   (aSub === sp && aObj === op) ||
-    //   (aSub === op && aObj === sp)
-    // );
-};
+  setup.actMeetsPartRequirements = function (sex, act) {
+    const { Top, Bottom } = setup.getTopBottomActors(sex);
 
-
-
-setup.updateTopBottom = function (sex) {
-    if (!sex) return;
-
-    const mc = State.variables.mc;
-    const n  = State.variables.n;
-
-    if (!mc || !n) return;
-
-    if (sex.role === "Top") {
-        sex.Top = mc;
-        sex.Bottom  = n;
+    if (!setup.actorMeetsPartRequirement(Top, act["Top parts"], act["Top parts mode"])) {
+      return false;
     }
-    else if (sex.role === "Bottom") {
-        sex.Top = n;
-        sex.Bottom  = mc;
+
+    if (!setup.actorMeetsPartRequirement(Bottom, getRequiredBottomParts(act), getBottomPartsMode(act))) {
+      return false;
     }
-    else {
-        sex.Top = mc;
-        sex.Bottom  = n;
+
+    if (!setup.actorHasGenitalType(Top, act["Top genitaltype"])) {
+      return false;
     }
-};
 
-setup.hasTrait = function (npc, trait) {
-  return Array.isArray(npc?.traits) && npc.traits.includes(trait);
-};
+    if (!setup.actorHasGenitalType(Bottom, act["Bottom genitaltype"])) {
+      return false;
+    }
 
-setup.hasAnyTrait = function (npc, traits) {
-  if (!Array.isArray(traits) || traits.length === 0) return false;
-  if (!Array.isArray(npc?.traits)) return false;
-  return traits.some(t => npc.traits.includes(t));
-};
+    return true;
+  };
 
-// Returns true if this act is blocked by Top/Bottom traits
-setup.actBlockedByTraits = function (sex, act) {
-  const bt = act?.["blocked traits"];
-  if (!bt) return false;
+  setup.isEndActValid = function (act, sex) {
+    if (!sex?.penetration?.TopPart || !sex?.penetration?.BottomPart) return false;
 
-  const subjBlocked = setup.hasAnyTrait(sex?.Top, bt.Top);
-  const objBlocked  = setup.hasAnyTrait(sex?.Bottom,  bt.Bottom);
+    const currentTop = sex.penetration.TopPart;
+    const currentBottom = sex.penetration.BottomPart;
 
-  return subjBlocked || objBlocked;
-};
+    const actTop = act?.["Top parts"]?.[0];
+    const actBottom = getRequiredBottomParts(act)?.[0];
 
-setup.resetSexSession = function () {
+    if (!actTop || !actBottom) return false;
+
+    if (actTop === currentTop && actBottom === currentBottom) return true;
+
+    if (act["either direction"] === true || act.equal === true) {
+      return actTop === currentBottom && actBottom === currentTop;
+    }
+
+    return false;
+  };
+
+  setup.isContinueActValid = function (act, sex) {
+    if (!sex?.penetration?.TopPart || !sex?.penetration?.BottomPart) return false;
+
+    const actTop = act?.["Top parts"]?.[0];
+    const actBottom = getRequiredBottomParts(act)?.[0];
+
+    if (!actTop || !actBottom) return false;
+
+    return (
+      actTop === sex.penetration.TopPart &&
+      actBottom === sex.penetration.BottomPart
+    );
+  };
+
+  setup.getAvailableSexActs = function (sex) {
+    const allowedTypes = setup.getAllowedActTypesForPhase(sex.phase);
+
+    return Object.entries(setup.sexacts || {})
+      .filter(([_, act]) => {
+        const types = asArray(act["action type"]);
+
+        if (types.includes("end")) {
+          return sex.phase === "continue" && setup.isEndActValid(act, sex);
+        }
+
+        if (types.includes("continue")) {
+          return sex.phase === "continue" && setup.isContinueActValid(act, sex);
+        }
+
+        if (types.includes("aftercare")) {
+          return sex.phase === "aftercare";
+        }
+
+        if (!types.some(type => allowedTypes.includes(type))) return false;
+        if (!setup.actAllowsPosition(act, sex)) return false;
+        if (!setup.actMeetsPartRequirements(sex, act)) return false;
+
+        return true;
+      })
+      .map(([name]) => name);
+  };
+
+  /* =========================
+   * ACT APPLICATION HELPERS
+   * ========================= */
+
+  setup.afterSexStateChange = function (sex) {
+    setup.updateCumLocations(sex);
+    setup.updateBindings?.();
+  };
+
+  setup.applySexAct = function (sex, actKey) {
+    const act = setup.sexacts?.[actKey];
+    if (!sex || !act) return;
+
+    sex.history = asArray(sex.history);
+    sex.history.push(actKey);
+    sex.act = actKey;
+
+    setup.applyArousalFromAct(sex, act);
+
+    const types = asArray(act["action type"]);
+    const nextBottomPart = getRequiredBottomParts(act)?.[0] ?? null;
+
+    if (types.includes("end")) {
+      sex.penetration = null;
+      sex.phase = "tease";
+      setup.afterSexStateChange(sex);
+      return;
+    }
+
+    if (types.includes("penetrate")) {
+      sex.penetration = {
+        TopPart: act["Top parts"]?.[0] ?? null,
+        BottomPart: nextBottomPart
+      };
+      sex.phase = "continue";
+      setup.afterSexStateChange(sex);
+      return;
+    }
+
+    if (types.includes("continue")) {
+      sex.phase = "continue";
+      setup.afterSexStateChange(sex);
+      return;
+    }
+
+    if (types.includes("aftercare") || types.includes("climax")) {
+      sex.phase = "aftercare";
+      sex.cumReady = false;
+      setup.afterSexStateChange(sex);
+      return;
+    }
+
+    if (types.includes("tease")) {
+      sex.phase = "tease";
+    }
+
+    setup.afterSexStateChange(sex);
+  };
+
+  /* =========================
+   * TRAIT HELPERS
+   * ========================= */
+
+  setup.hasTrait = function (npc, trait) {
+    return Array.isArray(npc?.traits) && npc.traits.includes(trait);
+  };
+
+  setup.hasAnyTrait = function (npc, traits) {
+    if (!Array.isArray(npc?.traits)) return false;
+    const needed = unique(traits);
+    if (!needed.length) return false;
+
+    return needed.some(trait => npc.traits.includes(trait));
+  };
+
+  setup.actBlockedByTraits = function (sex, act) {
+    const blocked = act?.["blocked traits"];
+    if (!blocked) return false;
+
+    return (
+      setup.hasAnyTrait(sex?.Top, blocked.Top) ||
+      setup.hasAnyTrait(sex?.Bottom, blocked.Bottom)
+    );
+  };
+
+  /* =========================
+   * SESSION RESET
+   * ========================= */
+
+  setup.resetSexSession = function () {
     const V = State.variables;
 
-    if (V.mc) {
-        V.mc.arousal = 0;
-    }
+    if (V.mc) V.mc.arousal = 0;
+    if (V.ui?.npc) V.ui.npc.arousal = 0;
 
-    if (V.ui && V.ui.npc) {
-        V.ui.npc.arousal = 0;
-    }
+    V.orgasm = {
+      top: false,
+      bottom: false,
+      Top: false,
+      Bottom: false
+    };
 
-    V.orgasm = { top: false, bottom: false };
     V.seenActions = {};
 
     V.sex = {
-        roles: V.sex?.roles || { dom: null, sub: null },
-        role: null,
-        top: null,
-        bottom: null,
-        position: "Standing",
-        engagedParts: { top: [], bottom: [] },
-        penetration: null,
-        phase: "tease",
-        history: [],
-        act: "Waiting",
-        furnitureFlags: [],
-        climax: {},
-        cumReady: false,
-        stage: "foreplay",
-        log: []
+      roles: V.sex?.roles || { dom: null, sub: null },
+      role: null,
+
+      Top: null,
+      Bottom: null,
+      top: null,
+      bottom: null,
+
+      position: "Standing",
+      previousPosition: null,
+      engagedParts: { top: [], bottom: [], Top: [], Bottom: [] },
+      penetration: null,
+      phase: "tease",
+      history: [],
+      act: null,
+      furnitureFlags: [],
+      climax: {},
+      cumReady: false,
+      stage: "foreplay",
+      log: []
     };
-};</script><tw-tag name="creation-page" color="red"></tw-tag><tw-tag name="popup" color="blue"></tw-tag><tw-tag name="widget" color="green"></tw-tag><tw-tag name="Popup" color="yellow"></tw-tag><tw-tag name="Dialogue" color="blue"></tw-tag><tw-tag name="nobr" color="orange"></tw-tag><tw-passagedata pid="1" name="Beginning" tags="" position="100,575" size="100,100">&lt;&lt;set $gamelocation to &quot;Hotel Room&quot;&gt;&gt;
+  };
+})();</script><tw-tag name="creation-page" color="red"></tw-tag><tw-tag name="popup" color="blue"></tw-tag><tw-tag name="widget" color="green"></tw-tag><tw-tag name="Popup" color="yellow"></tw-tag><tw-tag name="Dialogue" color="blue"></tw-tag><tw-tag name="nobr" color="orange"></tw-tag><tw-passagedata pid="1" name="Beginning" tags="" position="100,575" size="100,100">&lt;&lt;set $gamelocation to &quot;Hotel Room&quot;&gt;&gt;
 The first sensation you feel is soft fabric against your back. The next is a warm radiance against your front.
 
 &lt;span class=&quot;Jinx&quot;&gt;&quot;So, you&#39;re finally awake 
@@ -8251,12 +8144,11 @@ On the other side there was a door to your bathroom.
     skincolor: &quot;Brown&quot;,
     skinfeatures: &quot;&quot;,
     bodyheight: &quot;Average&quot;,
-    physique: &quot;Toned&quot;, /* Musculature*/
-    personality: &quot;Brash&quot;,
+    physique: &quot;Toned&quot;, 
+    personality: [&quot;Brash&quot;, &quot;Provocative&quot;, &quot;Tough&quot;, &quot;Sassy&quot;],
     sexpref: &quot;Dominant&quot;,
     origin: &quot;Applebridge&quot;,
-    traits: [
-    &quot;Will Not Bottom&quot;, &quot;Sex Addict&quot;
+    traits: [ &quot;Will Not Bottom&quot;, &quot;Sex Addict&quot;
     ],
 }&gt;&gt;
 
@@ -8266,7 +8158,7 @@ On the other side there was a door to your bathroom.
     species: &quot;Human&quot;,
     gender: &quot;Female&quot;,
     trans: &quot;Cisgender&quot;,
-    sexu: &quot;Bisexual&quot;,  /* sexual orientation */
+    sexu: &quot;Bisexual&quot;,  
     genitals: &quot;Vagina&quot;,
     genitaltype: &quot;Tight&quot;,
     pronouns: &quot;She/Her&quot;,
@@ -8279,7 +8171,7 @@ On the other side there was a door to your bathroom.
     bodyheight: &quot;Short&quot;,
     physique: &quot;Lean&quot;,
     breastsize:&quot;Flat&quot;,
-    personality: &quot;Kind&quot;,
+    personality: [&quot;Kind&quot;, &quot;Playful&quot;,&quot;Bubbly&quot;, &quot;Childish&quot;],
     assSize: &quot;Slim&quot;,
     sexpref: &quot;Switch&quot;,
     origin: &quot;Applebridge&quot;
@@ -8306,7 +8198,7 @@ On the other side there was a door to your bathroom.
     bodyheight: &quot;Tall&quot;,
     physique: &quot;Thick&quot;,
     breastsize:&quot;Large&quot;,
-    personality: &quot;Brash&quot;,
+    personality: [&quot;Brash&quot;],
     assSize: &quot;Portly&quot;,
     sexpref: &quot;Dominant&quot;,
     origin: &quot;Applebridge&quot;
@@ -8319,9 +8211,9 @@ On the other side there was a door to your bathroom.
     species: &quot;Human&quot;,
     gender: &quot;Male&quot;,
     trans: &quot;Cisgender&quot;,
-    sexu: &quot;Bisexual&quot;,  /* sexual orientation */
+    sexu: &quot;Bisexual&quot;,  
     genitals: &quot;Penis&quot;,
-    genitaltype: &quot;Phimosis&quot;, /*cut or uncut */
+    genitaltype: &quot;Phimosis&quot;, 
     penislength: &quot;Small&quot;,
     assSize: &quot;Round&quot;,
     pronouns: &quot;He/Him&quot;,
@@ -8333,7 +8225,7 @@ On the other side there was a door to your bathroom.
     skinfeatures: &quot;&quot;,
     bodyheight: &quot;Short&quot;,
     physique: &quot;Lean&quot;, 
-    personality: [&quot;Timid&quot;, &quot;Modest&quot;],
+    personality: [&quot;Timid&quot;, &quot;Modest&quot;,&quot;Chill&quot;],
     sexpref: &quot;Submissive&quot;,
     origin: &quot;Applebridge&quot;,
     traits: [&quot;Gamer&quot;, &quot;Athlete&quot;]
@@ -8389,7 +8281,7 @@ On the other side there was a door to your bathroom.
     skinfeatures: &quot;Scars&quot;,
     bodyheight: &quot;Tall&quot;,
     physique: &quot;Brawny&quot; , 
-    personality: &quot;Tough&quot;,
+    personality: [&quot;Tough&quot;, &quot;Brave&quot;, &quot;Stubborn&quot;,&quot;Confident&quot;, &quot;Brash&quot;,&quot;Provocative&quot;],
     virgin: false,
     sexpref: &quot;Dominant&quot;,
     origin: &quot;Camp Buddy&quot;
@@ -8415,7 +8307,7 @@ On the other side there was a door to your bathroom.
     skincolor: &quot;Tan&quot;,
     bodyheight: &quot;Tall&quot;,
     physique: &quot;Lithe&quot; , 
-    personality: &quot;Naive&quot;,
+    personality: [&quot;Naive&quot;, &quot;Kind&quot;, &quot;Confident&quot;],
     virgin: false,
     sexpref: &quot;Dominant&quot;,
     origin: &quot;Camp Buddy&quot;
@@ -8441,10 +8333,11 @@ On the other side there was a door to your bathroom.
     skincolor: &quot;Pale&quot;,
     bodyheight: &quot;Short&quot;,
     physique: &quot;Skinny&quot; , 
-    personality: &quot;Timid&quot;,
+    personality: [&quot;Timid&quot;, &quot;Kind&quot;, &quot;Terse&quot;,&quot;Nerdy&quot;],
     virgin: false,
     sexpref: &quot;Submissive&quot;,
-    origin: &quot;Camp Buddy&quot;
+    origin: &quot;Camp Buddy&quot;,
+    traits: [&quot;Scholar&quot;, &quot;Genius&quot;, &quot;Ticklish&quot;]
 }&gt;&gt;
 
 &lt;&lt;set $Keitaro_CB = {
@@ -8467,7 +8360,7 @@ On the other side there was a door to your bathroom.
     skincolor: &quot;Tan&quot;,
     bodyheight: &quot;Average&quot;,
     physique: &quot;Toned&quot; , 
-    personality: &quot;Kind&quot;,
+    personality: [&quot;Kind&quot;, &quot;Upbeat&quot;, &quot;Modest&quot;],
     virgin: false,
     sexpref: &quot;Switch&quot;,
     origin: &quot;Camp Buddy&quot;
@@ -8493,7 +8386,7 @@ On the other side there was a door to your bathroom.
     skincolor: &quot;Fair&quot;,
     bodyheight: &quot;Average&quot;,
     physique: &quot;Toned&quot;, 
-    personality: &quot;Energetic&quot;,
+    personality: [&quot;Energetic&quot;, &quot;Playful&quot;],
     virgin: false,
     sexpref: &quot;Submissive&quot;,
     origin: &quot;Camp Buddy&quot;
@@ -8519,7 +8412,7 @@ On the other side there was a door to your bathroom.
     skincolor: &quot;Fair&quot;,
     bodyheight: &quot;Average&quot;,
     physique: &quot;Ripped&quot;, 
-    personality: &quot;Brave&quot;,
+    personality: [&quot;Brave&quot;, &quot;Tough&quot;, &quot;Stubborn&quot;],
     virgin: false,
     sexpref: &quot;Switch&quot;,
     origin: &quot;Camp Buddy&quot;
@@ -8549,7 +8442,7 @@ On the other side there was a door to your bathroom.
     facefeatures: [],
     bodyheight: &quot;Very Short&quot;,
     physique: &quot;Lithe&quot;,
-    personality: &quot;Energetic&quot;,
+    personality: [&quot;Energetic&quot;, &quot;Confident&quot;, &quot;Playful&quot;],
     genitals: &quot;Penis&quot;,
     genitaltype: &quot;Cut&quot;,
     penislength:&quot;Small&quot;,
@@ -8590,7 +8483,7 @@ On the other side there was a door to your bathroom.
     accessory: &quot;Glasses&quot;,
     bodyheight: &quot;Very Short&quot;,
     physique: &quot;Lean&quot;,
-    personality: &quot;Nerdy&quot;,
+    personality: [&quot;Nerdy&quot;,&quot;Logical&quot;],
     genitals: &quot;Penis&quot;,
     genitaltype: &quot;Cut&quot;,
     penislength:&quot;Average&quot;,
@@ -8631,7 +8524,7 @@ On the other side there was a door to your bathroom.
     accessory: [],
     bodyheight: &quot;Very Short&quot;,
     physique: &quot;Plump&quot;,
-    personality: &quot;Kind&quot;,
+    personality: [&quot;Kind&quot;,&quot;Lazy&quot;,&quot;Chill&quot;,&quot;Childish&quot;],
     genitals: &quot;Penis&quot;,
     genitaltype: &quot;Cut&quot;,
     penislength:&quot;Small&quot;,
@@ -8670,7 +8563,7 @@ On the other side there was a door to your bathroom.
     skinfeatures: &quot;&quot;,
     bodyheight: &quot;Average&quot;,
     physique: &quot;Toned&quot;, 
-    personality: &quot;Confident&quot;,
+    personality: [&quot;Confident&quot;,&quot;Playful&quot;,&quot;Brave&quot;],
     sexpref: &quot;Switch&quot;,
     origin: &quot;Ben 10&quot;,
     traits: [],
@@ -8700,7 +8593,7 @@ On the other side there was a door to your bathroom.
     skinfeatures: &quot;&quot;,
     bodyheight: &quot;Average&quot;,
     physique: &quot;Toned&quot;, 
-    personality: &quot;Stubborn&quot;,
+    personality: [&quot;Stubborn&quot;, &quot;Brave&quot;, &quot;Tough&quot;],
     sexpref: &quot;Switch&quot;,
     origin: &quot;Kill La Kill&quot;,
     traits: [],
@@ -8728,7 +8621,7 @@ On the other side there was a door to your bathroom.
     skinfeatures: &quot;&quot;,
     bodyheight: &quot;Tall&quot;,
     physique: &quot;Lithe&quot;, 
-    personality: &quot;Naive&quot;,
+    personality: [&quot;Naive&quot;,&quot;Playful&quot;,&quot;&quot;],
     sexpref: &quot;Switch&quot;,
     origin: &quot;One Piece&quot;,
     traits: [&quot;Elastic&quot;],
@@ -8758,7 +8651,7 @@ On the other side there was a door to your bathroom.
     skinfeatures: &quot;&quot;,
     bodyheight: &quot;Short&quot;,
     physique: &quot;Lean&quot;, 
-    personality: &quot;Sassy&quot;,
+    personality: [&quot;Sassy&quot;,&quot;Playful&quot;,&quot;Tough&quot;],
     sexpref: &quot;Switch&quot;,
     origin: &quot;Hunter X Hunter&quot;,
     traits: [],
@@ -9788,7 +9681,6 @@ Work on fixing spawning NPC&#39;s
     &lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;&lt;&lt;include &quot;Lick-Foot-Dialogue&quot;&gt;&gt;
-
     &lt;&lt;case &quot;Grip Cock&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Wrap Hand Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pump Shaft&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
@@ -10478,14 +10370,14 @@ You rub your pussy against _n.name&#39;s feet.
 		
 		&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 			&lt;&lt;=either(
-				&quot;Letting out a little moan with every thrust of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you gently rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; .&quot;,
-				&quot;You let out a series of soft sighs as you gently rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; .&quot;,
+				&quot;Letting out a little moan with every thrust of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you gently rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+				&quot;You let out a series of soft sighs as you gently rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
 				&quot;Sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; , you let out a little moan with each pump of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;.&quot;,
-				&quot;Letting out a moan with each thrust of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you continue to rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; .&quot;,
-				&quot;You let out a series of lewd moans as you rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; .&quot;,
+				&quot;Letting out a moan with each thrust of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you continue to rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+				&quot;You let out a series of lewd moans as you rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
 				&quot;Rubbing your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; , you let out a moan with each pump of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;.&quot;,
-				&quot;Letting out a moan with each eager thrust of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you passionately rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; .&quot;,
-				&quot;You let out a series of lewd moans as you desperately grind your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; .&quot;,
+				&quot;Letting out a moan with each eager thrust of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you passionately rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+				&quot;You let out a series of lewd moans as you desperately grind your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
 				&quot;Eagerly grinding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; , you let out a moan with each frantic pump of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;.&quot;,
 				&quot;You both shiver from the pleasure from your cocks each time _n.name thrusts.&quot;
 			)&gt;&gt;
@@ -11509,10 +11401,6 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
     /*&lt;&lt;case &quot;Suck Clit&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
     /*&lt;&lt;case &quot;Ride Face&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
     &lt;&lt;case &quot;Lick Asshole&quot;&gt;&gt;_b&lt;&lt;include &quot;Rimjob-Quote&quot;&gt;&gt;
-    /*&lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Lick-Cock-Quote&quot;&gt;&gt;*/
-    /*&lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;Rub-Cock-Face-Quote&quot;&gt;&gt;*/
-    /*&lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
-    /*&lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
     &lt;&lt;case &quot;Grip Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Grab-Cock-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Wrap Hand Around Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Grab-Cock-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Grip Cock With Feet&quot;&gt;&gt;_b&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
@@ -11540,11 +11428,9 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
     &lt;&lt;case &quot;Push Cock In&quot;&gt;&gt;_b&lt;&lt;include &quot;Enter-Pussy-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Fuck-Pussy-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Take Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Fuck-Pussy-Quote&quot;&gt;&gt;
-    /*&lt;&lt;case &quot;Hump Back&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt; */
+    
     &lt;&lt;case &quot;Ride Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Fuck-Pussy-Quote&quot;&gt;&gt;
-    /*&lt;&lt;case &quot;Squeeze Cock&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rabbitfuck&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;
-    &lt;&lt;case &quot;Deep Stroke&quot;&gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt; */
+    
     &lt;&lt;case &quot;Frot&quot;&gt;&gt;_b&lt;&lt;include &quot;Frot-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Trib&quot;&gt;&gt;_b&lt;&lt;include &quot;Trib-Quote&quot;&gt;&gt;
     /* &lt;&lt;case &quot;Tease Ass With Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt; */
@@ -12014,7 +11900,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _mode = $sex.role &gt;&gt;
 &lt;&lt;set _nsize = _n.breastsize &gt;&gt;
 &lt;&lt;set _msize = $mc.breastsize &gt;&gt;
-
+&lt;&lt;set _persMatches = []&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
 
@@ -12076,40 +11962,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;=either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Feel Stomach quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">/*&lt;&lt;if !setup.fingerassQuotes&gt;&gt;
-	[Error] setup.fingerassQuotes is missing. Define it in StoryInit.
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-
-&lt;&lt;set _personality = _n.personality&gt;&gt;
-
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.fingerassQuotes.Bottom[_pref]
-	|| setup.fingerassQuotes.Bottom.Neutral&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;set _pool = setup.fingerassQuotes.Top[_personality]
-	|| setup.fingerassQuotes.Top[_pref] 
-	|| setup.fingerassQuotes.Top.Neutral&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	[Error] No Finger Ass quote pool found.
-&lt;&lt;/if&gt;&gt;
-*/
-
-&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
@@ -12128,25 +11981,36 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Finger Ass quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="Finger-Pussy-Quote" tags="nobr Dialogue" position="1800,1200" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-
-&lt;&lt;set _pool = null&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;if _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.fingerpussyQuotes.Bottom[_pref]
-	|| setup.fingervaginaQuotes.Bottom.Neutral&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.fingerpussyQuotes.Top[_pref] 
-	|| setup.fingervaginaQuotes.Top.Neutral&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="Finger-Pussy-Quote" tags="nobr Dialogue" position="1800,1200" size="100,100">&lt;&lt;if !setup.fingerpussyQuotes&gt;&gt;
+	[Error] setup.fingerpussyQuotes is missing. Define it in StoryInit.
+	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if !$sex or !_n&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;=either(..._pool)&gt;&gt;
+&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;set _pool = null&gt;&gt;
+&lt;&lt;set _mode = $sex.role&gt;&gt;
+
+&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;set _pool =
+		setup.fingerpussyQuotes.Bottom[_pref]
+		|| setup.fingerpussyQuotes.Bottom.Neutral
+	&gt;&gt;
+&lt;&lt;elseif _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;set _pool =
+		setup.fingerpussyQuotes.Top[_pref]
+		|| setup.fingerpussyQuotes.Top.Neutral
+	&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
+	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
-	[Error] No Finger Vagina quote pool found.
-	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
+	[Error] No Finger Pussy quote pool found.
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if !setup.footjobQuotes&gt;&gt;
 	[Error] setup.footjobQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -12828,7 +12692,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 					_actionPool
 					&amp;&amp; _actionPool.Neutral
 				)
-				|| setup.orgasmcloseQuotes.Top.default
+				|| setup.orgasmcloseQuotes.Top.default[_pref]
 			&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
@@ -12858,9 +12722,9 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 			)
 			|| (
 				_actionPool
-				&amp;&amp; _actionPool.Neutral
+				
 			)
-			|| setup.orgasmcloseQuotes.Bottom.default
+			|| setup.orgasmcloseQuotes.Bottom.default[_pref]
 		&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13425,7 +13289,8 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
   $CoryP,
   $JaidenB,
   $LorraineD,
-  $OliverT
+  $OliverT,
+  $LorenC
 ]&gt;&gt;
 
 /*Undertale/Deltarune */
@@ -13438,7 +13303,10 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
   $Alvin,
   $Simon,
   $Theodore,
-  $BenTen
+  $BenTen,
+  $Ryuko,
+  $Luffy,
+  $Killua
 ]&gt;&gt;
 
 /* helpers */
@@ -13858,7 +13726,7 @@ Create your character to begin.
 	&lt;div id=&quot;npcsex-dialogue&quot;&gt;
 		&lt;div id=&quot;intro&quot; class=&quot;intro&quot;&gt;
 			&lt;&lt;if _sexCount == 1&gt;&gt;
-				You both enter $gamelocation. You both strip naked, showing off your bare bodies to one another.
+				You both enter &lt;&lt;= $gamelocation.toLowerCase() &gt;&gt;. You both strip naked, showing off your bare bodies to one another.
 				You both know what you&#39;re in for, but it&#39;s always a bit awkward with someone new.
 				
 				&lt;&lt;if _h is 1&gt;&gt;
@@ -13869,7 +13737,7 @@ Create your character to begin.
   					_n.name and $mc.name are both the same height.
 				&lt;&lt;/if&gt;&gt;
 			&lt;&lt;elseif _sexCount &gt;= 2&gt;&gt;
-				You and &lt;&lt;=_n.name &gt;&gt; go to $gamelocation.
+				You and &lt;&lt;=_n.name &gt;&gt; go to &lt;&lt;= $gamelocation.toLowerCase() &gt;&gt;.
 				Almost professionally, you both strip until you are nude.
 				&lt;&lt;=$proset.theyUp &gt;&gt; appears up for whatever you have in mind.
 			&lt;&lt;else&gt;&gt;
@@ -15802,21 +15670,34 @@ Create your character to begin.
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;SexEncounterUI&quot;&gt;&gt;
-    &lt;&lt;set _climaxquote = (Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;))
-	? &quot;Act-Quote-React&quot;
-	: either(&quot;Orgasm-Close-Quote&quot;, &quot;Act-Quote-React&quot;)&gt;&gt;
+	&lt;&lt;set _isMute = Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
 
-    &lt;&lt;set _quotePassage= (Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;))
-	? &quot;Act-Quote-React&quot;
-	: either(&quot;Act-Quote&quot;, &quot;Act-Quote-React&quot;)&gt;&gt;
+	&lt;&lt;set _climaxQuotePassage = _isMute
+		? &quot;Act-Quote-React&quot;
+		: either(&quot;Orgasm-Close-Quote&quot;, &quot;Act-Quote-React&quot;)&gt;&gt;
+
+	&lt;&lt;set _aftercareQuotePassage = _isMute
+		? &quot;Act-Quote-React&quot;
+		: either(&quot;Orgasm-Quote&quot;, &quot;Act-Quote-React&quot;)&gt;&gt;
+
+	&lt;&lt;set _defaultQuotePassage = _isMute
+		? &quot;Act-Quote-React&quot;
+		: either(&quot;Act-Quote&quot;, &quot;Act-Quote-React&quot;)&gt;&gt;
+
+	&lt;&lt;set _positions = setup.getAvailablePositions($sex) || []&gt;&gt;
+	&lt;&lt;set _acts = setup.getAvailableSexActs($sex) || []&gt;&gt;
+
+	&lt;&lt;run setup.updateCumLocations($sex)&gt;&gt;
+
 &lt;div id=&quot;sexUI&quot;&gt;
 
 	&lt;!-- ===================== --&gt;
-	&lt;!-- UI STATS --&gt;
+	&lt;!-- INFO PANEL --&gt;
 	&lt;!-- ===================== --&gt;
 	&lt;div id=&quot;UI-Stats&quot;&gt;
 		&lt;h3&gt;&lt;u&gt;Info&lt;/u&gt;&lt;/h3&gt;
-        &lt;b&gt;Current Room:&lt;/b&gt; &lt;&lt;print $gamelocation&gt;&gt;&lt;br&gt;
+
+		&lt;b&gt;Current Room:&lt;/b&gt; &lt;&lt;print $gamelocation&gt;&gt;&lt;br&gt;
 		&lt;b&gt;Current Position:&lt;/b&gt; &lt;&lt;print $sex.position&gt;&gt;&lt;br&gt;
 		&lt;b&gt;Previous Position:&lt;/b&gt; &lt;&lt;print $sex.previousPosition || &quot;None&quot;&gt;&gt;&lt;br&gt;
 		&lt;b&gt;Role:&lt;/b&gt; &lt;&lt;print $sex.role&gt;&gt;&lt;br&gt;
@@ -15830,301 +15711,308 @@ Create your character to begin.
 		&lt;br&gt;
 
 		&lt;b&gt;Phase:&lt;/b&gt; &lt;&lt;print $sex.phase&gt;&gt;&lt;br&gt;
-
-        &lt;b&gt;Location:&lt;/b&gt; &lt;&lt;print $room.location&gt;&gt;&lt;br&gt;
+		&lt;b&gt;Location:&lt;/b&gt; &lt;&lt;print $room.location&gt;&gt;&lt;br&gt;
 
 		&lt;&lt;if $sex.penetration&gt;&gt;
 			&lt;b&gt;Penetration:&lt;/b&gt;
 			&lt;&lt;print $sex.penetration.TopPart&gt;&gt; → &lt;&lt;print $sex.penetration.BottomPart&gt;&gt;&lt;br&gt;
 		&lt;&lt;/if&gt;&gt;
-        &lt;&lt;button &quot;Inspect NPC&quot;&gt;&gt;
-	        &lt;&lt;WithNPC _n&gt;&gt;
-	        &lt;&lt;run Dialog
-		        .create(&quot;NPC: &quot; + $ui.npc.name)
-		        .wikiPassage(&quot;NPC-Inspect&quot;)
-		        .open()
-	        &gt;&gt;
-        &lt;&lt;/button&gt;&gt;
-        &lt;br&gt;
 
-        
+		&lt;&lt;button &quot;Inspect NPC&quot;&gt;&gt;
+			&lt;&lt;WithNPC _n&gt;&gt;
+			&lt;&lt;run Dialog
+				.create(&quot;NPC: &quot; + $ui.npc.name)
+				.wikiPassage(&quot;NPC-Inspect&quot;)
+				.open()
+			&gt;&gt;
+		&lt;&lt;/button&gt;&gt;
 	&lt;/div&gt;
-    &lt;&lt;if $devMode&gt;&gt;
-        /* Debug checking to confirm things exist */
-        /*MC parts: &lt;&lt;print $mc.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt;
-        NPC parts: &lt;&lt;print _n.bodyparts.join(&quot;, &quot;)&gt;&gt;&lt;br&gt; */
-        /*Sex Top: &lt;&lt;print $sex.Top.name&gt;&gt;&lt;br&gt;
-        Sex Bottom: &lt;&lt;print $sex.Bottom.name&gt;&gt;&lt;br&gt;
-        TopGenital: &lt;&lt;print $sex.Top.genitaltype&gt;&gt;&lt;br&gt;
-        BottomGenital: &lt;&lt;print $sex.Bottom.genitaltype&gt;&gt;&lt;br&gt;
-         */
-        &lt;&lt;/if&gt;&gt;
-    
+
+	&lt;&lt;if $devMode&gt;&gt;
+		/* Put debug output here if needed */
+	&lt;&lt;/if&gt;&gt;
+
 	&lt;!-- ===================== --&gt;
-	&lt;!-- ACTION BAR --&gt;
+	&lt;!-- ACTION PANEL --&gt;
 	&lt;!-- ===================== --&gt;
-
-
-
 	&lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 
 		&lt;button id=&quot;npcsex-toggle&quot; aria-expanded=&quot;true&quot;&gt;
 			▼ &lt;b&gt;Actions&lt;/b&gt;
 		&lt;/button&gt;
 
-    &lt;&lt;run setup.updateCumLocations($sex)&gt;&gt;
-    &lt;&lt;if setup.shouldShowCumPanel($sex)&gt;&gt;
-	    &lt;div class=&quot;npcsex-content&quot;&gt;
-            &lt;&lt;CumLocationButtons&gt;&gt;
-        &lt;/div&gt;
-        
-    &lt;&lt;else&gt;&gt;
+		&lt;&lt;if setup.shouldShowCumPanel($sex)&gt;&gt;
+			&lt;div class=&quot;npcsex-content&quot;&gt;
+				&lt;&lt;CumLocationButtons&gt;&gt;
+			&lt;/div&gt;
 
+		&lt;&lt;else&gt;&gt;
+			&lt;div class=&quot;npcsex-content&quot;&gt;
 
-		&lt;div class=&quot;npcsex-content&quot;&gt;
+				&lt;!-- POSITIONS --&gt;
+				&lt;h3&gt;Available Positions&lt;/h3&gt;
 
-			&lt;!-- POSITIONS --&gt;
-			&lt;&lt;set _positions = setup.getAvailablePositions($sex) || []&gt;&gt;
+				&lt;&lt;if _positions.length === 0&gt;&gt;
+					&lt;i&gt;None (based on parts/role).&lt;/i&gt;
+				&lt;&lt;else&gt;&gt;
+					&lt;ul class=&quot;sex-list&quot;&gt;
+						&lt;&lt;for _i = 0; _i &lt; _positions.length; _i++&gt;&gt;
+							&lt;&lt;set _p = _positions[_i]&gt;&gt;
 
-			&lt;h3&gt;Available Positions&lt;/h3&gt;
+							&lt;&lt;if _p === $sex.position&gt;&gt;
+								&lt;li&gt;&lt;strong&gt;&lt;&lt;print _p&gt;&gt;&lt;/strong&gt;&lt;/li&gt;
+							&lt;&lt;else&gt;&gt;
+								&lt;&lt;capture _p&gt;&gt;
+									&lt;li&gt;
+										&lt;&lt;button _p&gt;&gt;
+											&lt;&lt;set $sex.previousPosition = $sex.position&gt;&gt;
+											&lt;&lt;set $sex.position = _p&gt;&gt;
 
-			&lt;&lt;if _positions.length === 0&gt;&gt;
-				&lt;i&gt;None (based on parts/role).&lt;/i&gt;
-			&lt;&lt;else&gt;&gt;
-				&lt;ul class=&quot;sex-list&quot;&gt;
-					&lt;&lt;for _i = 0; _i &lt; _positions.length; _i++&gt;&gt;
-						&lt;&lt;set _p = _positions[_i]&gt;&gt;
+											&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
+											&lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+											&lt;&lt;replace &quot;#log&quot;&gt;&gt;
+												&lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;
+											&lt;&lt;/replace&gt;&gt;
+											&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
+										&lt;&lt;/button&gt;&gt;
+									&lt;/li&gt;
+								&lt;&lt;/capture&gt;&gt;
+							&lt;&lt;/if&gt;&gt;
+						&lt;&lt;/for&gt;&gt;
+					&lt;/ul&gt;
+				&lt;&lt;/if&gt;&gt;
 
-						&lt;&lt;if _p === $sex.position&gt;&gt;
-							&lt;li&gt;&lt;strong&gt;&lt;&lt;print _p&gt;&gt;&lt;/strong&gt;&lt;/li&gt;
-						&lt;&lt;else&gt;&gt;
-							&lt;&lt;capture _p&gt;&gt;
-								&lt;li&gt;
-									&lt;&lt;button _p&gt;&gt;
-										&lt;&lt;set $sex.previousPosition = $sex.position&gt;&gt;
-										&lt;&lt;set $sex.position= _p&gt;&gt;
+				&lt;!-- ACTS --&gt;
+				&lt;h3&gt;Available Acts&lt;/h3&gt;
 
-										&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;
-											&lt;&lt;SexEncounterUI&gt;&gt; 
-										&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;if $sex.phase == &quot;aftercare&quot;&gt;&gt;
+					&lt;&lt;if _acts.length === 0&gt;&gt;
+						&lt;i&gt;None (for this position/phase/parts).&lt;/i&gt;
+					&lt;&lt;else&gt;&gt;
+						&lt;ul class=&quot;sex-list&quot;&gt;
+							&lt;&lt;for _i = 0; _i &lt; _acts.length; _i++&gt;&gt;
+								&lt;&lt;set _a = _acts[_i]&gt;&gt;
+								&lt;&lt;set _actDef = setup.sexacts[_a]&gt;&gt;
 
-                                        &lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-                                        &lt;&lt;replace &quot;#log&quot;&gt;&gt;
-                                            &lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;
-										&lt;&lt;/replace&gt;&gt;
-                                        &lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
+								&lt;&lt;capture _a&gt;&gt;
+									&lt;li&gt;
+										&lt;&lt;if !setup.actBlockedByTraits($sex, _actDef)&gt;&gt;
+											&lt;&lt;button _a&gt;&gt;
+												&lt;&lt;run
+													const act = setup.sexacts[_a];
+													setup.applySexAct($sex, _a);
+													setup.applyArousalFromAct($sex, act);
+													setup.updateBindings();
+													setup.updateCumLocations($sex);
+												&gt;&gt;
 
-									&lt;&lt;/button&gt;&gt;
-								&lt;/li&gt;
-							&lt;&lt;/capture&gt;&gt;
-						&lt;&lt;/if&gt;&gt;
-					&lt;&lt;/for&gt;&gt;
-				&lt;/ul&gt;
-			&lt;&lt;/if&gt;&gt;
+												&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 
-			&lt;!-- ACTS --&gt;
-			&lt;&lt;set _acts = setup.getAvailableSexActs($sex) || []&gt;&gt;
+												&lt;&lt;if $sex.phase == &quot;climax&quot;&gt;&gt;
+													&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
+														&lt;&lt;include &quot;Orgasm-Close-Dialogue&quot;&gt;&gt;&lt;br&gt;
+														&lt;&lt;include _climaxQuotePassage&gt;&gt;
+													&lt;&lt;/replace&gt;&gt;
 
-			&lt;h3&gt;Available Acts&lt;/h3&gt;
-            &lt;&lt;if $sex.phase == &quot;aftercare&quot;&gt;&gt;
-                &lt;ul class=&quot;sex-list&quot;&gt;
-					&lt;&lt;for _i = 0; _i &lt; _acts.length; _i++&gt;&gt;
-						&lt;&lt;set _a = _acts[_i]&gt;&gt;
-                        &lt;&lt;set _actDef = setup.sexacts[_a]&gt;&gt;
-						
-							&lt;&lt;capture _a&gt;&gt;
-								&lt;li&gt;
-                                &lt;&lt;if !setup.actBlockedByTraits($sex, _actDef)&gt;&gt;
-									&lt;&lt;button _a&gt;&gt;
-										&lt;&lt;run
-											const act = setup.sexacts[_a];
-											setup.applySexAct($sex, _a);
-											setup.applyArousalFromAct($sex, act);
-											setup.updateBindings();
-											setup.updateCumLocations($sex);
-										&gt;&gt;
-										&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;
-                                            &lt;&lt;SexEncounterUI&gt;&gt;
-										&lt;&lt;/replace&gt;&gt;
+												&lt;&lt;elseif $sex.phase == &quot;aftercare&quot;&gt;&gt;
+													&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+													&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
+														&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
+														&lt;&lt;include _aftercareQuotePassage&gt;&gt;
+													&lt;&lt;/replace&gt;&gt;
+													&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+													&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 
-                                    &lt;&lt;if $sex.phase==&quot;climax&quot;&gt;&gt;
-                                        &lt;&lt;replace &quot;#intro&quot;&gt;&gt;
-                                            &lt;&lt;include &quot;Orgasm-Close-Dialogue&quot;&gt;&gt;&lt;br&gt;
-                                            &lt;&lt;include &quot;Orgasm-Close-Quote&quot;&gt;&gt;
-		                                &lt;&lt;/replace&gt;&gt;
-                                    &lt;&lt;else&gt;&gt;
-                                        &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+												&lt;&lt;else&gt;&gt;
+													&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+													&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
+														&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
+														&lt;&lt;include _defaultQuotePassage&gt;&gt;
+													&lt;&lt;/replace&gt;&gt;
+													&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+													&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
+												&lt;&lt;/if&gt;&gt;
+											&lt;&lt;/button&gt;&gt;
+										&lt;&lt;/if&gt;&gt;
+									&lt;/li&gt;
+								&lt;&lt;/capture&gt;&gt;
+							&lt;&lt;/for&gt;&gt;
 
-										&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
-                                            &lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
-                                            &lt;&lt;include _quotePassage&gt;&gt;
-										&lt;&lt;/replace&gt;&gt;
-                                        &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-										&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
-                                    &lt;&lt;/if&gt;&gt;    
-									&lt;&lt;/button&gt;&gt;
-                                &lt;&lt;/if&gt;&gt;    
-								&lt;/li&gt;
-							&lt;&lt;/capture&gt;&gt;
-					&lt;&lt;/for&gt;&gt;    
-                    &lt;&lt;button &quot;End Session&quot;&gt;&gt;
-                        &lt;&lt;set _returnTo = $gamelocation || &quot;Your Room&quot;&gt;&gt;
-			            &lt;&lt;set $lastNpc = $ui.npc&gt;&gt;      &lt;!-- remember who you were with --&gt;
-			            &lt;&lt;run setup.resetSexSession()&gt;&gt;
-			            &lt;&lt;goto _returnTo&gt;&gt;             
-		            &lt;&lt;/button&gt;&gt;
-                &lt;/ul&gt;
-            &lt;&lt;else&gt;&gt;
-			    &lt;&lt;if _acts.length === 0&gt;&gt;
-				&lt;i&gt;None (for this position/phase/parts).&lt;/i&gt;
-			    &lt;&lt;else&gt;&gt;
-				&lt;ul class=&quot;sex-list&quot;&gt;
-					&lt;&lt;for _i = 0; _i &lt; _acts.length; _i++&gt;&gt;
-						&lt;&lt;set _a = _acts[_i]&gt;&gt;
-                        &lt;&lt;set _actDef = setup.sexacts[_a]&gt;&gt;
-
-						&lt;&lt;if _a === $sex.act &amp;&amp; !_actDef[&quot;action type&quot;].includes(&quot;continue&quot;)&gt;&gt;
 							&lt;li&gt;
-                                &lt;strong&gt;&lt;&lt;print _a&gt;&gt;&lt;/strong&gt;
-                            &lt;/li&gt;
-						&lt;&lt;else&gt;&gt;
-							&lt;&lt;capture _a&gt;&gt;
-								&lt;li&gt;
-                                &lt;&lt;if !setup.actBlockedByTraits($sex, _actDef)&gt;&gt;
-									&lt;&lt;button _a&gt;&gt;
-										&lt;&lt;run
-											const act = setup.sexacts[_a];
-											setup.applySexAct($sex, _a);
-											setup.applyArousalFromAct($sex, act);
-											setup.updateBindings();
-											setup.updateCumLocations($sex);
-										&gt;&gt;
-										&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;
-                                            &lt;&lt;SexEncounterUI&gt;&gt;
-										&lt;&lt;/replace&gt;&gt;
+								&lt;&lt;button &quot;End Session&quot;&gt;&gt;
+									&lt;&lt;set _returnTo = $gamelocation || &quot;Your Room&quot;&gt;&gt;
+									&lt;&lt;set $lastNpc = $ui.npc&gt;&gt;
+									&lt;&lt;run setup.resetSexSession()&gt;&gt;
+									&lt;&lt;goto _returnTo&gt;&gt;
+								&lt;&lt;/button&gt;&gt;
+							&lt;/li&gt;
+						&lt;/ul&gt;
+					&lt;&lt;/if&gt;&gt;
 
-                                    &lt;&lt;if $sex.phase==&quot;climax&quot;&gt;&gt;
-                                        &lt;&lt;replace &quot;#intro&quot;&gt;&gt;
-                                            &lt;&lt;include &quot;Orgasm-Close-Dialogue&quot;&gt;&gt;&lt;br&gt;
-                                            &lt;&lt;include _climaxquote&gt;&gt;
-		                                &lt;&lt;/replace&gt;&gt;
-                                    &lt;&lt;else&gt;&gt;
-                                        &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+				&lt;&lt;else&gt;&gt;
+					&lt;&lt;if _acts.length === 0&gt;&gt;
+						&lt;i&gt;None (for this position/phase/parts).&lt;/i&gt;
+					&lt;&lt;else&gt;&gt;
+						&lt;ul class=&quot;sex-list&quot;&gt;
+							&lt;&lt;for _i = 0; _i &lt; _acts.length; _i++&gt;&gt;
+								&lt;&lt;set _a = _acts[_i]&gt;&gt;
+								&lt;&lt;set _actDef = setup.sexacts[_a]&gt;&gt;
 
-										&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
-                                            &lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
-	                                        &lt;&lt;include _quotePassage&gt;&gt;
-										&lt;&lt;/replace&gt;&gt;
-                                        &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-										&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
-                                    &lt;&lt;/if&gt;&gt;    
-									&lt;&lt;/button&gt;&gt;
-                                &lt;&lt;/if&gt;&gt;    
-								&lt;/li&gt;
-							&lt;&lt;/capture&gt;&gt;
-						&lt;&lt;/if&gt;&gt;
-					&lt;&lt;/for&gt;&gt;
-				&lt;/ul&gt;
-			    &lt;&lt;/if&gt;&gt;
+								&lt;&lt;if _a === $sex.act &amp;&amp; !_actDef[&quot;action type&quot;].includes(&quot;continue&quot;)&gt;&gt;
+									&lt;li&gt;&lt;strong&gt;&lt;&lt;print _a&gt;&gt;&lt;/strong&gt;&lt;/li&gt;
+								&lt;&lt;else&gt;&gt;
+									&lt;&lt;capture _a&gt;&gt;
+										&lt;li&gt;
+											&lt;&lt;if !setup.actBlockedByTraits($sex, _actDef)&gt;&gt;
+												&lt;&lt;button _a&gt;&gt;
+													&lt;&lt;run
+														const act = setup.sexacts[_a];
+														setup.applySexAct($sex, _a);
+														setup.applyArousalFromAct($sex, act);
+														setup.updateBindings();
+														setup.updateCumLocations($sex);
+													&gt;&gt;
 
-            &lt;&lt;/if&gt;&gt;
+													&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 
-		&lt;/div&gt;
-        &lt;&lt;/if&gt;&gt;
+													&lt;&lt;if $sex.phase == &quot;climax&quot;&gt;&gt;
+														&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
+															&lt;&lt;include &quot;Orgasm-Close-Dialogue&quot;&gt;&gt;&lt;br&gt;
+															&lt;&lt;include _climaxQuotePassage&gt;&gt;
+														&lt;&lt;/replace&gt;&gt;
 
-        
+													&lt;&lt;elseif $sex.phase == &quot;aftercare&quot;&gt;&gt;
+														&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+														&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
+															&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
+															&lt;&lt;include _aftercareQuotePassage&gt;&gt;
+														&lt;&lt;/replace&gt;&gt;
+														&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+														&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 
+													&lt;&lt;else&gt;&gt;
+														&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+														&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
+															&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
+															&lt;&lt;include _defaultQuotePassage&gt;&gt;
+														&lt;&lt;/replace&gt;&gt;
+														&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+														&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
+													&lt;&lt;/if&gt;&gt;
+												&lt;&lt;/button&gt;&gt;
+											&lt;&lt;/if&gt;&gt;
+										&lt;/li&gt;
+									&lt;&lt;/capture&gt;&gt;
+								&lt;&lt;/if&gt;&gt;
+							&lt;&lt;/for&gt;&gt;
+						&lt;/ul&gt;
+					&lt;&lt;/if&gt;&gt;
+				&lt;&lt;/if&gt;&gt;
+
+			&lt;/div&gt;
+		&lt;&lt;/if&gt;&gt;
 	&lt;/div&gt;
-  
 &lt;/div&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;RefreshSexDisplay&quot;&gt;&gt;
+	&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 
 &lt;&lt;widget &quot;ArousalUI&quot;&gt;&gt;
-&lt;div&gt;
-  &lt;span&gt;
-    &lt;hr&gt;
-    &lt;b&gt;$sex.Bottom.name Arousal:&lt;/b&gt; &lt;&lt;print $sex.Bottom.arousal&gt;&gt;/1000  ||
-    &lt;b&gt;$sex.Top.name Arousal:&lt;/b&gt; &lt;&lt;print $sex.Top.arousal&gt;&gt;/1000
-  &lt;/span&gt;
-    &lt;br&gt;
-    &lt;&lt;if $devMode&gt;&gt;
-        $sex.Top.cumLocation &lt;br&gt;
-        $sex.Bottom.cumLocation &lt;br&gt;
-    &lt;&lt;/if&gt;&gt;
+&lt;div class=&quot;arousal-ui&quot;&gt;
+	&lt;div class=&quot;arousal-title&quot;&gt;Arousal&lt;/div&gt;
 
+	&lt;div class=&quot;arousal-grid&quot;&gt;
+		&lt;div class=&quot;arousal-card&quot;&gt;
+			&lt;div class=&quot;arousal-row&quot;&gt;
+				&lt;span class=&quot;arousal-name&quot;&gt;&lt;&lt;print $sex.Bottom.name&gt;&gt;&lt;/span&gt;
+				&lt;span class=&quot;arousal-value&quot;&gt;&lt;&lt;print $sex.Bottom.arousal&gt;&gt;/1000&lt;/span&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;arousal-bar&quot;&gt;
+				&lt;div
+					class=&quot;arousal-fill bottom&quot;
+					@style=&quot;&#39;width:&#39; + Math.min(100, (($sex.Bottom.arousal || 0) / 1000) * 100) + &#39;%;&#39;&quot;&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;div class=&quot;arousal-card&quot;&gt;
+			&lt;div class=&quot;arousal-row&quot;&gt;
+				&lt;span class=&quot;arousal-name&quot;&gt;&lt;&lt;print $sex.Top.name&gt;&gt;&lt;/span&gt;
+				&lt;span class=&quot;arousal-value&quot;&gt;&lt;&lt;print $sex.Top.arousal&gt;&gt;/1000&lt;/span&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;arousal-bar&quot;&gt;
+				&lt;div
+					class=&quot;arousal-fill top&quot;
+					@style=&quot;&#39;width:&#39; + Math.min(100, (($sex.Top.arousal || 0) / 1000) * 100) + &#39;%;&#39;&quot;&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;&lt;if $devMode&gt;&gt;
+		&lt;div class=&quot;arousal-dev&quot;&gt;
+			&lt;div&gt;&lt;b&gt;Top Cum Locations:&lt;/b&gt; &lt;&lt;print $sex.Top.cumLocation&gt;&gt;&lt;/div&gt;
+			&lt;div&gt;&lt;b&gt;Bottom Cum Locations:&lt;/b&gt; &lt;&lt;print $sex.Bottom.cumLocation&gt;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;/widget&gt;&gt;
 
 
 &lt;&lt;widget &quot;CumLocationButtons&quot;&gt;&gt;
-	/* Usage:
-	   &lt;&lt;CumLocationButtons &quot;Top&quot;&gt;&gt; or &lt;&lt;CumLocationButtons &quot;Bottom&quot;&gt;&gt;
-	   Assumes setup.updateCumLocations($sex) has run recently.
-	*/
 	&lt;&lt;set _who = _args[0] || &quot;Top&quot;&gt;&gt;
-	&lt;&lt;set _actor = ($sex &amp;&amp; $sex[_who]) ? $sex[_who] : null&gt;&gt;
-
+	&lt;&lt;set _actor = $sex &amp;&amp; $sex[_who] ? $sex[_who] : null&gt;&gt;
+    &lt;&lt;set _climaxquote = _isMute ? &quot;Act-Quote-React&quot; : either(&quot;Orgasm-Quote&quot;, &quot;Act-Quote-React&quot;)&gt;&gt;
 	&lt;&lt;if !_actor&gt;&gt;
-		&lt;span class=&quot;error&quot;&gt;[Error] Missing $sex.&lt;&lt;print _who&gt;&gt; actor.&lt;/span&gt;
+		&lt;span class=&quot;error&quot;&gt;[Error] Missing actor for &lt;&lt;print _who&gt;&gt;.&lt;/span&gt;
 		&lt;&lt;return&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
-	/* Ensure cumLocation is an array */
 	&lt;&lt;set _opts = Array.isArray(_actor.cumLocation) ? _actor.cumLocation : []&gt;&gt;
 
-	&lt;&lt;if _opts.length is 0&gt;&gt;
-		&lt;span class=&quot;muted&quot;&gt;No cum locations available.&lt;/span&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-
-	&lt;div class=&quot;cumloc-ui&quot;&gt;
-		&lt;b&gt;Choose cum location (&lt;&lt;print _who&gt;&gt;):&lt;/b&gt;
+	&lt;&lt;if !_opts.length&gt;&gt;
+		&lt;i&gt;No cum locations available.&lt;/i&gt;
+	&lt;&lt;else&gt;&gt;
 		&lt;ul class=&quot;sex-list&quot;&gt;
-		&lt;&lt;for _i = 0; _i &lt; _opts.length; _i++&gt;&gt;
-			&lt;&lt;set _loc = _opts[_i]&gt;&gt;
-			&lt;&lt;capture _who, _loc&gt;&gt;
-				&lt;li&gt;
-					&lt;&lt;button  &quot;Cum _loc&quot;&gt;&gt;
-						/* Store chosen location */
-						&lt;&lt;set $sex.cum = $sex.cum || {}&gt;&gt;
-						&lt;&lt;set $sex.cum[_who] = _loc&gt;&gt;
+			&lt;&lt;for _i = 0; _i &lt; _opts.length; _i++&gt;&gt;
+				&lt;&lt;set _loc = _opts[_i]&gt;&gt;
+				&lt;&lt;capture _loc&gt;&gt;
+					&lt;li&gt;
+						&lt;&lt;button _loc&gt;&gt;
+							/* save selected location */
+							&lt;&lt;set _actor.selectedCumLocation = _loc&gt;&gt;
 
-						/* Optional: also store on actor for convenience */
-						&lt;&lt;set $sex[_who].chosenCumLocation = _loc&gt;&gt;
+							/* move out of climax */
+							&lt;&lt;set $sex.phase = &quot;aftercare&quot;&gt;&gt;
+							&lt;&lt;set $sex.cumReady = false&gt;&gt;
 
-                        &lt;&lt;set $sex.phase = &quot;aftercare&quot;&gt;&gt;
+							/* optional: climax act marker */
+							&lt;&lt;set $sex.act = &quot;Climax&quot;&gt;&gt;
 
-						/* Refresh UI area if you have one */
-						&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
-                            &lt;&lt;include &quot;OrgasmDialogue&quot;&gt;&gt;&lt;br&gt;
-                            &lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
-                                &lt;&lt;include &quot;Act-Quote-React&quot;&gt;&gt;
-                            &lt;&lt;else&gt;&gt;
-                                &lt;&lt;include &quot;Orgasm-Quote&quot;&gt;&gt;
-                            &lt;&lt;/if&gt;&gt;
-						&lt;&lt;/replace&gt;&gt;
-                        
-                        &lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+							/* refresh state */
+							&lt;&lt;run setup.updateCumLocations($sex)&gt;&gt;
+							&lt;&lt;run setup.updateBindings()&gt;&gt;
 
-                        &lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;
-                         &lt;&lt;SexEncounterUI&gt;&gt; 
-                        &lt;&lt;/replace&gt;&gt;
-                        /*sets new phase? */
-                        &lt;&lt;run
-							const act = setup.sexacts[_a];
-							setup.applySexAct($sex, _a);
-							setup.applyArousalFromAct($sex, act);
-							setup.updateBindings();
-							setup.updateCumLocations($sex);
-						&gt;&gt;
-					&lt;&lt;/button&gt;&gt;
-				&lt;/li&gt;
-			&lt;&lt;/capture&gt;&gt;
-		&lt;&lt;/for&gt;&gt;
+							/* redraw the action UI */
+							&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
+							&lt;&lt;replace &quot;#arousal-ui&quot;&gt;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
+
+							/* update text output */
+							&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+							&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
+								&lt;&lt;include &quot;OrgasmDialogue&quot;&gt;&gt;&lt;br&gt;
+								&lt;&lt;include &quot;Orgasm-Quote&quot;&gt;&gt;
+							&lt;&lt;/replace&gt;&gt;
+						&lt;&lt;/button&gt;&gt;
+					&lt;/li&gt;
+				&lt;&lt;/capture&gt;&gt;
+			&lt;&lt;/for&gt;&gt;
 		&lt;/ul&gt;
-	&lt;/div&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 

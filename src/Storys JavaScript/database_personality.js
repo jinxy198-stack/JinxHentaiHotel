@@ -4,7 +4,7 @@ setup.personalityTips = {
 	Tough: "Blunt, resilient, and hard to intimidate.",
 	Brave: "Bold, assertive, and willing to take risks.",
 	Kind: "Gentle, considerate, and caring.",
-	Childish: "Likes behaving immaturely.",
+	Childish: "Likes behaving immaturely, regardless of age.",
 	Playful: "Likes to fool around, lewd or not.",
 	Lazy: "Doesn't like to be very active.",
 	Provocative: "Sex is always on your mind and you want to focus on it.",

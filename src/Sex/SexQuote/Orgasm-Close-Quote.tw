@@ -47,7 +47,7 @@
 					_actionPool
 					&& _actionPool.Neutral
 				)
-				|| setup.orgasmcloseQuotes.Top.default
+				|| setup.orgasmcloseQuotes.Top.default[_pref]
 			>>
 		<</if>>
 	<</if>>
@@ -77,9 +77,9 @@
 			)
 			|| (
 				_actionPool
-				&& _actionPool.Neutral
+				
 			)
-			|| setup.orgasmcloseQuotes.Bottom.default
+			|| setup.orgasmcloseQuotes.Bottom.default[_pref]
 		>>
 	<</if>>
 <</if>>
