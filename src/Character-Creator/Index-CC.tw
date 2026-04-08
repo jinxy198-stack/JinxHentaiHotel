@@ -74,7 +74,7 @@ Note: It is suggested to do the customization in order, as skipping some parts c
         <<button [[Choose|CC-Personality]]>><</button>>
     </div>
     <div id="trait">
-        Trait
+        TRAIT
         <<button [[Choose|CC-Trait]]>><</button>>
     </div>
 </div>
@@ -91,14 +91,8 @@ Note: It is suggested to do the customization in order, as skipping some parts c
         <<button[[Choose|CC-sexPreference]]>><</button>>
     </div>
 </div>    
-/*
-<div id = "kinks">
-     	KINKS
-        <<button[[Choose|CC-Kinks]]>><</button>>
-     </div>
+<div id="npcsex-actions-bar">
+    <<button [[Review Choices|CC-Check]]>><<create-body>><<SetTrans>><</button>>
 </div>
-*/
-<<button [[Review Choices|CC-Check]]>><<create-body>><<SetTrans>><</button>>
 <<CheckIfDone>>
-
 

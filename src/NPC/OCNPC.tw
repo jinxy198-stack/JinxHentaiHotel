@@ -12,20 +12,20 @@
     	group: "Furry", 
         subtype: "Bunny", 
         color: "White"
-    },            /* start as object */
+    },            
     gender: "Male",
-    trans: "cisgender",
+    trans: "Cisgender",
     sexu: "Bisexual",
     pronouns: "He/Him",
     age: 8,
     heterochromia: false,
     eyes: "Blue",
     hair: "Bald",
-    haircolour: {},
-    facefeatures: {},      /* use {} not the string "{}" */
+    haircolor: {},
+    facefeatures: {},      
     bodyheight: "Very Short",
     physique: "Thin",
-    personality: "Kind",
+    personality: ["Kind", "Childish"],
     genitals: "Penis",
     genitaltype: "Uncut",
     penislength:"Small",
@@ -48,7 +48,7 @@
         pattern: "Patterned"
     },         
     gender: "Male",
-    trans: "cisgender",
+    trans: "Cisgender",
     sexu: "Homosexual",
     pronouns: "He/Him",
     age: 31,
@@ -59,7 +59,7 @@
     facefeatures: "Glowing Star on forehead",
     bodyheight: "Very Short",
     physique: "Plump",
-    personality: "Childish",
+    personality: ["Childish", "Naive", "Energetic"],
     genitals: "Penis",
     genitaltype: "Uncut",
     penislength:"Small",
@@ -70,14 +70,13 @@
     traits: [
     "Elastic",
     "Will Not Top",
-    "Flight"
+    "Flight",
+    "Rainbow Cum"
     ],
-    
     body:{
         Horns: "Horns",
         Tail: "Long Scarftail"
     }
-
 }>>
 
 /*Joshua  */
@@ -85,7 +84,7 @@
     name: "Joshua",
     species: "Human",
     gender: "Male",
-    trans: "cisgender",
+    trans: "Cisgender",
     sexu: "Bisexual",
     pronouns: "He/Him",
     age: 11,
@@ -93,10 +92,10 @@
     eyes: "Green",
     hair: "Bald",
     skincolor: "Tan",
-    haircolour: "Light Brown",
+    haircolor: "Light Brown",
     bodyheight: "Short",
     physique: "Thin",
-    personality: "Kind",
+    personality: ["Kind"],
     genitals: "Penis",
     genitaltype: "Cut",
     penislength:"Small",
@@ -112,18 +111,18 @@
     surname: "Lovelie",
     species: "Human",
     gender: "Male",
-    trans: "cisgender",
+    trans: "Cisgender",
     sexu: "Bisexual",
     pronouns: "He/Him",
     age: 9,
     heterochromia: false,
     eyes: "Green",
     hair: "Pageboy",
-    haircolour: "Light Brown",
+    haircolor: "Light Brown",
     skincolor: "Fair",
     bodyheight: "Very Short",
     physique: "Thin",
-    personality: "Playful",
+    personality: ["Playful","Childish"],
     genitals: "Penis",
     genitaltype: "Uncut",
     penislength:"Small",
@@ -139,18 +138,18 @@
     surname: "Lovelie",
     species: "Human",
     gender: "Female",
-    trans: "cisgender",
+    trans: "Cisgender",
     sexu: "Bisexual",
     pronouns: "She/Her",
     age: 9,
     heterochromia: false,
     eyes: "Green",
     hair: "Pigtails",
-    haircolour: "Light Brown",
+    haircolor: "Light Brown",
     skincolor: "Fair",
     bodyheight: "Very Short",
     physique: "Thin",
-    personality: "Playful",
+    personality: ["Playful", "Childish"],
     genitals: "Vagina",
     genitaltype: "Tight",
     breastsize:"Flat",
@@ -160,3 +159,34 @@
     origin: "Unknown"
 }>>
 
+/*Turbo Lovelie  */
+<<set $Turbo = {
+    name: "Jesse",
+    surname: "Brown",
+    nickname: "Turbo",
+    species: "Human",
+    gender: "Male",
+    trans: "Cisgender",
+    sexu: "Homosexual",
+    pronouns: "He/Him",
+    age: 10,
+    heterochromia: false,
+    eyes: "Green",
+    hair: "Combed",
+    haircolor: "Red",
+    skincolor: "Fair",
+    bodyheight: "Short",
+    physique: "Thin",
+    personality: ["Playful", "Provocative", "Energetic", "Brave"],
+    genitals: "Penis",
+    genitaltype: "Cut",
+    penislength:"Large",
+    assSize: "Plump",
+    virgin: false,
+    sexpref: "Switch",
+    accessory: "Headband",
+    origin: "Unknown",
+    traits: [
+    "Super Speed", "Gamer"
+    ]
+}>>

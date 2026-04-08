@@ -1,6 +1,5 @@
 
 
-
 .sex-list {
   display: flex;
   flex-wrap: wrap;
@@ -710,16 +709,18 @@ progress::-moz-progress-bar{
 .hairshort,
 .hairmed,
 .hairlong,
-.hairmisc{
-  display:none;
-  visibility:hidden;
+.hairmisc,
+.hairdetails {
+	display: none;
 }
 
-.visible{
-  display:block;
-  visibility:visible;
+.hairshort.visible,
+.hairmed.visible,
+.hairlong.visible,
+.hairmisc.visible,
+.hairdetails.visible {
+	display: block;
 }
-
 /* Base table styling for all passage tables */
 .passage table{
   width:100%;

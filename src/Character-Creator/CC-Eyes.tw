@@ -1,23 +1,23 @@
 :: CC-Eyes [creation-page] {"position":"1300,100","size":"100,100"}
-<h1>Choose your Eye Colour(s)</h1>\
+<h1>Choose your Eye Colour(s)</h1>
 
 Do your eyes have <<link "the same color">><<set $heterochromia to false>><<redo>><</link>> or <<link "different colours">><<set $heterochromia to true>><<redo>><</link>>?
 
-<<do>>\
-    <<if $heterochromia is false>>\
+<<do>>
+    <<if $heterochromia is false>>
         Eye Colours: <<cycle "$mc.eyes">>
             <<optionsfrom setup.eyecolor>>
         <</cycle>>
-        //Cycle through the options until you find the color you want.//
+        Cycle through the options until you find the color you want.
         <<button [[Confirm|Index-CC]]>><</button>>
-    <<elseif $heterochromia is true>>\
+    <<elseif $heterochromia is true>>
         Left: <<cycle "_eyesleft">>
             <<optionsfrom setup.eyecolor>>
         <</cycle>>
         Right: <<cycle "_eyesright">>
             <<optionsfrom setup.eyecolor>>
         <</cycle>>
-        //Cycle through the options until you find the colours you want.//
+        Cycle through the options until you find the colours you want.
         <<button [[Confirm|Index-CC]]>>
             <<set $mc.eyes to _eyesleft + " and " + _eyesright>>
         <</button>>

@@ -2,7 +2,7 @@
 <<BodyBuild>>
 <h1>Set up the frame of the body</h1>
 <br>
-//How tall are you?// <<listbox "$mc.bodyheight">><<optionsfrom _height>><</listbox>>
+How tall are you? <<listbox "$mc.bodyheight">><<optionsfrom _height>><</listbox>>
 <br>
 <<if $mc.gender is "Female">>
 //What is your breast size?

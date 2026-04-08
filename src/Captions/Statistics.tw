@@ -33,7 +33,7 @@
 <b>Eye Color:</b> <<= $mc.eyes >><br>
 
 <b>Hair:</b>
-<<if $mc.hair.length and $mc.hair.length is "bald">>
+<<if $mc.hair.length and $mc.hair.length is "Bald">>
 	You are bald.
 <<else>>
 	<<= $mc.hair.color >> <<= $mc.hair.style >>

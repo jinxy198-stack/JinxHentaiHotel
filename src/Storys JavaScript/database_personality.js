@@ -13,7 +13,7 @@ setup.personalityTips = {
 	Terse: "Speaks brief, concise, and to the point, often using few words.",
 	Nerdy: "Passonate and knowledgable on a specific academic.",
 	Confident: "Sure of yourself and likes to take the lead.",
-	Naive: "A charming innocent view of the world, though you know enough.",
+	Naive: "A charming innocent view of the world, though knows enough.",
 	Flamboyant: "Strikingly bold, showy, or attracting attention.",
 	Brash: "Somewhat rude but still has some kindness inside.",
 	Sassy: "Likes to tease, and is slightly disrespectful.",
@@ -26,6 +26,9 @@ setup.traitTips = {
 	"Mute": "They character cannot speak.",
 	"Will Not Top": "They will not perform penetrative actions as the active/top partner.",
 	"Will Not Bottom": "They will not receive penetrative actions as the passive/bottom partner.",
+	"Hates Kids": "If the player character has this then characters under 18 will not exist",
+	"Hates Adults": "If the player character has this then characters over 18 will not exist",
+	"Hates Furries": "If the player character has this then characters who are antho will not exist.",
 	"Flight": "Is capable of flight or levitation.",
 	"Elastic": "Is able to stretch or elongate their body.",
 	"Super Strength":"Stronger than they appear.",
@@ -38,5 +41,6 @@ setup.traitTips = {
 	"Celebrity": "Popular among their peers",
 	"Glutton": "Enjoys eating food a lot.",
 	"Genius": "Noticably smarter than the average person.",
-	"Gamer": "Enjoy's playing games, (not exclusive to videogames)."
+	"Gamer": "Enjoy's playing games, (not exclusive to videogames).",
+	"Rainbow Cum": "For some reason their cum is multicolored, and tastes kinda fruity."
 };

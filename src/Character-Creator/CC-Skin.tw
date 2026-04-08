@@ -1,7 +1,7 @@
 :: CC-Skin [creation-page] {"position":"800,225","size":"100,100"}
 <h1>Choose your Skin Characteristics</h1>\
 <<if $mc.species is "Human">>
- Your skin color is: 
+Your skin color is: 
 * <label><<radiobutton "$mc.skin.color" "Pale" checked >>Pale</label>
 * <label><<radiobutton "$mc.skin.color" "Fair" >>Fair</label>
 * <label><<radiobutton "$mc.skin.color" "Tan" >>Tan</label>
@@ -9,7 +9,7 @@
 * <label><<radiobutton "$mc.skin.color" "Brown" >>Brown</label>
 * <label><<radiobutton "$mc.skin.color" "Ebony">>Ebony</label>
 
-//Does your skin have any notable features?//
+Does your skin have any notable features?
 * <label><<checkbox "_vitiligo" false true>> Viligo</label>
 * <label><<checkbox "_freckles" false true>> Freckles</label>
 * <label><<checkbox "_eczema" false true>> Eczema</label>

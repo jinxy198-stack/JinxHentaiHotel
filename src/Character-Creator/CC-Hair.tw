@@ -1,73 +1,113 @@
-:: CC-Hair [creation-page] {"position":"1175,225","size":"100,100"}
-<<HairOptions>> 
+:: CC-Hair [creation-page nobr] {"position":"1175,225","size":"100,100"}
+<<HairOptions>>
+
+<<silently>>
+	<<if !$mc.hair>>
+		<<set $mc.hair = {}>>
+	<</if>>
+<</silently>>
+
 <h1>Let's Talk Hair!</h1>
-//How long is your hair? (if no hair, choose misc)// <<nobr>> 
-<<button "Short Hair">> 
-	<<removeclass ".hairmed,.hairlong,.hairmisc" "visible">> 
-	<<addclass ".hairshort" "visible">> 
-    <<set $mc.hair = ($mc.hair is "bald") ? {} : $mc.hair>> 
-    <<set $mc.hair.length = "Short">>
+How long is your hair? (If you have no hair, choose bald.)<br><br>
+
+
+
+<<button "Short Hair">>
+	<<removeclass ".hairshort,.hairmed,.hairlong,.hairmisc,.hairdetails" "visible">>
+	<<addclass ".hairshort,.hairdetails" "visible">>
+	<<replace "#hairError">><</replace>>
+	<<replace "#hairStatus">><</replace>>
+	<<if !$mc.hair or $mc.hair is "Bald" or typeof $mc.hair !== "object">>
+		<<set $mc.hair = {}>>
+	<</if>>
+	<<set $mc.hair.length = "Short">>
 <</button>>
 
 <<button "Medium Hair">>
-	<<removeclass ".hairshort,.hairlong,.hairmisc" "visible">>
-	<<addclass ".hairmed" "visible">>
-    <<set $mc.hair = ($mc.hair is "bald") ? {} : $mc.hair>>
-    <<set $mc.hair.length = "Medium">>
+	<<removeclass ".hairshort,.hairmed,.hairlong,.hairmisc,.hairdetails" "visible">>
+	<<addclass ".hairmed,.hairdetails" "visible">>
+	<<replace "#hairError">><</replace>>
+	<<replace "#hairStatus">><</replace>>
+	<<if !$mc.hair or $mc.hair is "Bald" or typeof $mc.hair !== "object">>
+		<<set $mc.hair = {}>>
+	<</if>>
+	<<set $mc.hair.length = "Medium">>
 <</button>>
 
 <<button "Long Hair">>
-	<<removeclass ".hairshort,.hairmed,.hairmisc" "visible">>
-	<<addclass ".hairlong" "visible">>
-    <<set $mc.hair = ($mc.hair is "bald") ? {} : $mc.hair>>
-    <<set $mc.hair.length = "Long">>
+	<<removeclass ".hairshort,.hairmed,.hairlong,.hairmisc,.hairdetails" "visible">>
+	<<addclass ".hairlong,.hairdetails" "visible">>
+	<<replace "#hairError">><</replace>>
+	<<replace "#hairStatus">><</replace>>
+	<<if !$mc.hair or $mc.hair is "Bald" or typeof $mc.hair !== "object">>
+		<<set $mc.hair = {}>>
+	<</if>>
+	<<set $mc.hair.length = "Long">>
 <</button>>
 
 <<button "Misc Hair">>
-	<<removeclass ".hairshort,.hairmed,.hairlong" "visible">>
-	<<addclass ".hairmisc" "visible">>
-    <<set $mc.hair = ($mc.hair is "bald") ? {} : $mc.hair>>
-    <<set $mc.hair.length = "Misc">>
+	<<removeclass ".hairshort,.hairmed,.hairlong,.hairmisc,.hairdetails" "visible">>
+	<<addclass ".hairmisc,.hairdetails" "visible">>
+	<<replace "#hairError">><</replace>>
+	<<replace "#hairStatus">><</replace>>
+	<<if !$mc.hair or $mc.hair is "Bald" or typeof $mc.hair !== "object">>
+		<<set $mc.hair = {}>>
+	<</if>>
+	<<set $mc.hair.length = "Misc">>
 <</button>>
 
 <<button "No, I am bald.">>
-	<<removeclass ".hairshort,.hairmed,.hairlong,.hairmisc" "visible">>
-	<<set $mc.hair to "bald">>
+	<<removeclass ".hairshort,.hairmed,.hairlong,.hairmisc,.hairdetails" "visible">>
+	<<replace "#hairError">><</replace>>
+	<<set $mc.hair = "Bald">>
+	<<replace "#hairStatus">>
+		You are bald.
+	<</replace>>
 <</button>>
- <</nobr>> 
-    
-<span class="hairshort"> 
-//What is your natural hair style?// 
-<<listbox "$mc.hair.style">> <<optionsfrom _hairshort>> <</listbox>> 
-//What is your natural hair color?// 
-<<listbox "$mc.hair.color">> <<optionsfrom _haircolour>> <</listbox>> 
-</span>
-    
-    <span class="hairmed"> 
-    //What is your natural hair style?// 
-    <<listbox "$mc.hair.style">> <<optionsfrom _hairmed>> <</listbox>> 
-//What is your natural hair color?//
-<<listbox "$mc.hair.color">> <<optionsfrom _haircolour>> <</listbox>> 
-</span>
+<div id="hairError"></div>
+<div id="hairStatus"></div>
+<div class="hairshort">
+	What is your natural hair style?<br>
+	<<listbox "$mc.hair.style">>
+		<<optionsfrom _hairshort>>
+	<</listbox>>
+</div>
 
-<span class="hairlong">
-//What is your natural hair style?// 
-<<listbox "$mc.hair.style">> <<optionsfrom _hairlong>> <</listbox>>
-//What is your natural hair color?// 
-<<listbox "$mc.hair.color">> 
-<<optionsfrom _haircolour>> <</listbox>> 
-</span>
+<div class="hairmed">
+	What is your natural hair style?<br>
+	<<listbox "$mc.hair.style">>
+		<<optionsfrom _hairmed>>
+	<</listbox>>
+</div>
 
-<span class="hairmisc"> 
-//What is your natural hair style?// 
-<<listbox "$mc.hair.style">> <<optionsfrom _hairmisc>> <</listbox>>
-//What is your natural hair color?// 
-<<listbox "$mc.hair.color">> 
-<<optionsfrom _haircolour>> <</listbox>> </span> 
+<div class="hairlong">
+	What is your natural hair style?<br>
+	<<listbox "$mc.hair.style">>
+		<<optionsfrom _hairlong>>
+	<</listbox>>
+</div>
 
-<span id="cover"></span> 
+<div class="hairmisc">
+	What is your natural hair style?<br>
+	<<listbox "$mc.hair.style">>
+		<<optionsfrom _hairmisc>>
+	<</listbox>>
+</div>
 
-<<button [[Confirm|Index-CC]]>><<set $pages.hair to true>><</button>>
+<div class="hairdetails">
+	What is your natural hair color?<br>
+	<<listbox "$mc.hair.color">>
+		<<optionsfrom _haircolor>>
+	<</listbox>>
+</div>
 
-
-
+<<button "Confirm">>
+	<<if $mc.hair is "Bald" or ($mc.hair.length and $mc.hair.style and $mc.hair.color)>>
+		<<set $pages.hair = true>>
+		<<goto "Index-CC">>
+	<<else>>
+		<<replace "#hairError">>
+			<span class="red">Please choose your hair type before continuing.</span>
+		<</replace>>
+	<</if>>
+<</button>>

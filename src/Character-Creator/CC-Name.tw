@@ -1,15 +1,20 @@
-:: CC-Name [creation-page] {"position":"550,100","size":"100,100"}
-<h1>Choose your Name</h1>\
+:: CC-Name [creation-page]
+<h1>Choose your Name</h1>
 
-//What is your name?//
+What is your name?
 <<textbox "$mc.name" "">>
+
+<div id="nameError"></div>
+
 <<button "Confirm">>
-    <<if !$mc.name.trim()>>
-        <<set $mc.name = "No-Name">>
-    <</if>>
-    <<goto "Index-CC">> 
+	<<if !$mc.name || !$mc.name.trim()>>
+		<<replace "#nameError">>
+			<span class="red">You must enter a name before continuing.</span>
+		<</replace>>
+	<<else>>
+		<<set $mc.name = $mc.name.trim()>>
+		<<goto "Index-CC">>
+	<</if>>
 <</button>>
 
-Once you are set on a name you will be sent back to the menu of traits.
-
-
+Once you are set on a name you will be sent back to the menu.
