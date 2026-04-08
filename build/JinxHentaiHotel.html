@@ -105,7 +105,125 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
 	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="165" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet.css" */
+/* =========================================================
+   Base layout
+   ========================================================= */
 
+html,
+body {
+  background: radial-gradient(circle at top, #222 0, #050509 55%, #000 100%);
+  color: #eee;
+  line-height: 1.55;
+  font-size: 15px;
+}
+
+#story {
+  max-width: 1500px;
+  margin: 1.5rem 1.5rem 1.5rem 21rem;
+  padding: 1.5rem 2rem 6rem;
+  background: linear-gradient(135deg, rgba(10, 10, 20, 0.96), rgba(5, 5, 10, 0.98));
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 0 40px rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+}
+
+#passages {
+  max-width: 1100px !important;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  #story {
+    margin: 1rem;
+  }
+}
+
+/* Make sure the PositionBlock never extends under the sidebar */
+.position-block {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* =========================================================
+   Common panel / room styling
+   ========================================================= */
+
+.room-hotel {
+  border-left: 3px solid rgb(0, 233, 250);
+  padding-left: 0.75rem;
+}
+
+.npc-card,
+.npcsex-root .npc-panel {
+  background: linear-gradient(145deg, rgba(20, 20, 35, 0.98), rgba(8, 8, 16, 0.98));
+  border-radius: 14px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.7);
+}
+
+.npc-name {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.npc-name::before {
+  content: "✦ ";
+}
+
+/* =========================================================
+   Global buttons
+   ========================================================= */
+
+button {
+  border-radius: 999px;
+  padding: 0.35rem 0.95rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: radial-gradient(circle at top, #0509eb, #060a23);
+  color: #fff;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 0 10px rgba(64, 93, 255, 0.4);
+  cursor: pointer;
+}
+
+button:hover,
+html[data-outlines] button:focus {
+  background: radial-gradient(circle at top, #222dc0, #101132);
+  box-shadow: 0 0 16px rgba(120, 140, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 0 4px rgba(60, 78, 180, 0.5);
+}
+
+button.active-choice {
+  background: radial-gradient(circle at top, #2836ff, #060e3b);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow:
+    inset 0 0 8px rgba(0, 0, 0, 0.9),
+    0 0 14px rgba(80, 92, 255, 0.8);
+  transform: none;
+  filter: none;
+}
+
+/* =========================================================
+   Sex list buttons
+   ========================================================= */
 
 .sex-list {
   display: flex;
@@ -135,252 +253,128 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 .sex-item button:hover {
   background: #444;
 }
+
+/* =========================================================
+   Arousal UI
+   ========================================================= */
+
 .arousal-ui {
-	margin: 0.35rem 0;
-	padding: 0.45rem 0.6rem;
-	border: 1px solid #555;
-	border-radius: 8px;
-	background: rgba(255, 255, 255, 0.04);
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-	font-size: 0.9rem;
+  margin: 0.35rem 0;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
 }
 
 .arousal-title {
-	font-size: 0.9rem;
-	font-weight: bold;
-	margin-bottom: 0.4rem;
-	text-align: center;
-	letter-spacing: 0.02em;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  text-align: center;
+  letter-spacing: 0.02em;
 }
 
 .arousal-grid {
-	display: flex;
-	flex-direction: column;
-	gap: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .arousal-card {
-	padding: 0.35rem 0.5rem;
-	border-radius: 6px;
-	background: rgba(255, 255, 255, 0.04);
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .arousal-row {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 0.2rem;
-	gap: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+  gap: 0.5rem;
 }
 
 .arousal-name {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .arousal-value {
-	font-size: 0.82rem;
-	opacity: 0.9;
+  font-size: 0.82rem;
+  opacity: 0.9;
 }
 
 .arousal-bar {
-	width: 100%;
-	height: 8px;
-	background: rgba(255, 255, 255, 0.12);
-	border-radius: 999px;
-	overflow: hidden;
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
 }
 
 .arousal-fill {
-	height: 100%;
-	border-radius: 999px;
-	transition: width 0.25s ease-in-out;
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.25s ease-in-out;
 }
 
 .arousal-fill.bottom {
-	background: linear-gradient(to right, #ff7eb3, #ff4d8d);
+  background: linear-gradient(to right, #ff7eb3, #ff4d8d);
 }
 
 .arousal-fill.top {
-	background: linear-gradient(to right, #7ec8ff, #4d9dff);
+  background: linear-gradient(to right, #7ec8ff, #4d9dff);
 }
 
 .arousal-dev {
-	margin-top: 0.45rem;
-	padding-top: 0.35rem;
-	border-top: 1px solid rgba(255, 255, 255, 0.15);
-	font-size: 0.78rem;
-	opacity: 0.85;
+  margin-top: 0.45rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.78rem;
+  opacity: 0.85;
 }
 
+/* =========================================================
+   UI-NPC-Sex layout
+   ========================================================= */
 
-/* Make sure the PositionBlock never extends under the sidebar */
-.position-block{
-  box-sizing:border-box;
-  max-width:100%;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  white-space:normal;
+#passage-UI-NPC-Sex {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 3rem);
 }
 
-html, body{
-  background: radial-gradient(circle at top, #222 0, #050509 55%, #000 100%);
-  color: #eee;
-  line-height:1.55;
-  font-size:15px;
-}
-
-/* Frame the story area next to the sidebar */
-#story{
-  max-width:1400px;
-  margin:1.5rem 1.5rem 1.5rem 21rem;
-  padding:1.5rem 2rem;
-  background:linear-gradient(135deg, rgba(10, 10, 20, 0.96), rgba(5,5,10,.98));
-  border-radius:16px;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.04),
-    0 0 40px rgba(0,0,0,0.9);
-  text-align:auto;
-  overflow-x:hidden;
-}
-
-/* ---------- UI-NPC-Sex layout (ADD HERE) ---------- */
-
-/* Mobile: when the screen is small, drop the big left margin */
-@media (max-width:900px){
-  #story{ margin:1rem; }
-}
-
-/* Location styling */
-.room-hotel{
-  border-left:3px solid rgb(0, 233, 250);
-  padding-left:0.75rem;
-}
-
-/* NPC card / panels */
-.npc-card,
-.npcsex-root .npc-panel{
-  background:linear-gradient(145deg, rgba(20,20,35,0.98), rgba(8,8,16,0.98));
-  border-radius:14px;
-  padding:0.75rem 1rem;
-  margin-bottom:0.75rem;
-  border:1px solid rgba(255,255,255,0.04);
-  box-shadow:0 0 18px rgba(0,0,0,0.7);
-}
-
-.npc-name{
-  font-weight:700;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  font-size:0.85rem;
-}
-
-.npc-name::before{
-  content:"✦ ";
-}
-
-/* Global buttons: neon hotel choices */
-button{
-  border-radius:999px;
-  padding:0.35rem 0.95rem;
-  font-size:0.9rem;
-  text-transform:uppercase;
-  letter-spacing:0.08em;
-  border:1px solid rgba(255,255,255,0.15);
-  background:radial-gradient(circle at top, #0509eb, #060a23);
-  color:#fff;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.04),
-    0 0 10px rgba(64, 93, 255, 0.4);
-  cursor:pointer;
-}
-
-button:hover,
-html[data-outlines] button:focus{
-  background:radial-gradient(circle at top, #222dc0, #101132);
-  box-shadow:0 0 16px rgba(120, 140, 255, 0.7);
-  transform:translateY(-1px);
-}
-
-button:active{
-  transform:translateY(0);
-  box-shadow:0 0 4px rgba(60, 78, 180, 0.5);
-}
-
-button.active-choice{
-  background:radial-gradient(circle at top, #2836ff, #060e3b);
-  border-color:rgba(255,255,255,0.35);
-  box-shadow:
-    inset 0 0 8px rgba(0,0,0,0.9),
-    0 0 14px rgba(80, 92, 255, 0.8);
-  transform:none;
-  filter:none;
-}
-
-
-
-
-
-/* ===== UI-NPC-Sex: non-overlapping layout ===== */
-
-/* Make the UI-NPC-Sex passage a flex column that fills the viewport */
-#passage-UI-NPC-Sex{
-  display:flex;
-  flex-direction:column;
-  min-height:calc(100vh - 3rem); /* adjust if needed */
-}
-
-/* The content area (everything above the bar) */
 #passage-UI-NPC-Sex .npcsex-root,
 #passage-UI-NPC-Sex #npcsex-text,
-#passage-UI-NPC-Sex .passage{
-  min-height:0; /* important for flex children */
+#passage-UI-NPC-Sex .passage {
+  min-height: 0;
 }
 
-/* Action bar sits after content and stays visible at bottom without overlaying */
-#npcsex-actions-bar{
-  position:sticky;
-  bottom:0;
-  z-index:10;
-
-  /* make it occupy layout space instead of overlaying content */
-  margin-top:auto;
-
-  /* match your styling */
-  padding:0.5rem 0;
-  text-align:center;
-  background:radial-gradient(
+#npcsex-actions-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin-top: auto;
+  padding: 0.5rem 0;
+  text-align: center;
+  background: radial-gradient(
     circle at top,
     rgba(255, 255, 255, 0.05),
     rgba(0, 0, 0, 0.95)
   );
-  border-top:1px solid rgba(255,255,255,0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow:
-    0 -2px 18px rgba(0,0,0,0.85),
+    0 -2px 18px rgba(0, 0, 0, 0.85),
     0 0 32px rgba(120, 40, 200, 0.45);
-  backdrop-filter:blur(6px);
+  backdrop-filter: blur(6px);
+  transition: transform 0.25s ease;
 }
 
-/* Desktop PC: fix action bar to bottom of viewport */
-@media (min-width: 901px){
-  #npcsex-actions-bar{
-    position:fixed;
-    bottom:0;
-
-    /* align with story column */
-    left:21rem;
-    right:1.5rem;
-
-    margin-top:0;
-  }
-
-  /* prevent content being hidden behind fixed bar */
-  #story{
-    padding-bottom:6rem;
-  }
+#npcsex-actions-bar.minimized {
+  transform: translateY(85%);
 }
 
-
-/* toggle button */
 #npcsex-toggle {
   width: 100%;
   background: #494e91;
@@ -390,332 +384,281 @@ button.active-choice{
   cursor: pointer;
 }
 
-#npcsex-actions-bar {
-  transition: transform 0.25s ease;
-}
-
-#npcsex-actions-bar.minimized {
-  transform: translateY(85%);
-}
-
-
-/* scrolling content */
 .npcsex-content {
   overflow-y: auto;
   max-height: calc(35vh - 32px);
   padding: 8px;
 }
 
-
-
-
-
-/* Mobile: keep current sticky behavior + margins */
-@media (max-width:900px){
-  #npcsex-actions-bar{
-    position:sticky;
-    bottom:0;
-    left:1rem;
-    right:1rem;
-  }
+.npcsex-actions-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 999px;
+  background: rgba(15, 15, 20, 0.95);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
 }
 
-/* Landscape: keep the same alignment (no “empty space” stretching look) */
-@media (orientation:landscape) and (max-height:500px) and (min-width:901px){
-  #npcsex-actions-bar{
-    left:21rem;
-    right:1.5rem;
-  }
+.npcsex-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
 }
 
-@media (orientation:landscape) and (max-height:500px) and (max-width:900px){
-  #npcsex-actions-bar{
-    left:1rem;
-    right:1rem;
-  }
+.npcsex-group.npcsex-side {
+  min-width: 110px;
+  text-align: right;
 }
 
-/* Ensure the bar width matches your story column automatically */
-/* Temporailiy removed */
-/* #npcsex-actions-bar{ */
-/*  left:auto; */
-/*  right:auto; */
-/* } */
-
-@media (max-width:900px){
-  #npcsex-actions-bar{
-    left:1rem;
-    right:1rem;
-  }
+.npcsex-group-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+  line-height: 1;
+  color: rgba(220, 210, 255, 0.88);
+  text-shadow: 0 0 6px rgba(150, 120, 255, 0.7);
 }
 
-/* Centered inner panel */
-.npcsex-actions-inner{
-  max-width:1100px;
-  margin:0 auto;
-  padding:0.5rem 1rem;
-  display:flex;
-  gap:0.75rem;
-  align-items:center;
-  justify-content:space-between;
-  border-radius:999px;
-  background:rgba(15, 15, 20, 0.95);
-  box-shadow:0 0 12px rgba(0, 0, 0, 0.75);
-}
-
-/* Each group (Position / Foreplay / etc.) */
-.npcsex-group{
-  display:flex;
-  flex-direction:column;
-  gap:0.25rem;
-  min-width:0;
-}
-
-/* Optional: keep help a bit narrower */
-.npcsex-group.npcsex-side{
-  min-width:110px;
-  text-align:right;
-}
-
-/* Group titles */
-.npcsex-group-title{
-  font-size:0.75rem;
-  text-transform:uppercase;
-  letter-spacing:0.08em;
-  opacity:0.75;
-  line-height:1;
-  color:rgba(220,210,255,0.88);
-  text-shadow:0 0 6px rgba(150,120,255,0.7);
-}
-
-/* Allow button lists inside to wrap nicely */
 #npcsex-actions-bar span,
-#npcsex-actions-bar div{
-  white-space:normal;
+#npcsex-actions-bar div {
+  white-space: normal;
 }
 
-/* Keep buttons/links tidy inside bar */
 #npcsex-actions-bar a.link-internal,
-#npcsex-actions-bar button{
-  margin:0.1rem 0.15rem;
+#npcsex-actions-bar button {
+  margin: 0.1rem 0.15rem;
 }
 
-/* Simple responsive tweak: stack into two rows on small screens */
-@media (max-width:900px){
-  .npcsex-actions-inner{
-    flex-wrap:wrap;
-    row-gap:0.5rem;
-    border-radius:1rem;
-    justify-content:center;
+@media (min-width: 901px) {
+  #npcsex-actions-bar {
+    position: fixed;
+    bottom: 0;
+    left: 21rem;
+    right: 1.5rem;
+    margin-top: 0;
   }
 }
 
-/* Landscape: limit bar height and allow scrolling inside it */
-@media (orientation:landscape) and (max-height:500px){
-  /* reserve less space because the bar is capped + scrollable */
-  .npcsex-root{
-    padding-bottom:calc(5rem + env(safe-area-inset-bottom, 0px));
+@media (max-width: 900px) {
+  #npcsex-actions-bar {
+    position: sticky;
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
   }
 
-   #passage-UI-NPC-Sex{
-    padding-bottom:calc(5rem + env(safe-area-inset-bottom, 0px));
+  .npcsex-actions-inner {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+    border-radius: 1rem;
+    justify-content: center;
   }
-  #passage-UI-NPC-Sex .npcsex-root{
-    padding-bottom:calc(5rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (orientation: landscape) and (max-height: 500px) and (min-width: 901px) {
+  #npcsex-actions-bar {
+    left: 21rem;
+    right: 1.5rem;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) and (max-width: 900px) {
+  #npcsex-actions-bar {
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .npcsex-root,
+  #passage-UI-NPC-Sex,
+  #passage-UI-NPC-Sex .npcsex-root {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
   }
 
-  #npcsex-actions-bar{
-    padding:0.25rem 0;
-    max-height:42vh;
-    overflow-y:auto;
-    -webkit-overflow-scrolling:touch;
+  #npcsex-actions-bar {
+    padding: 0.25rem 0;
+    max-height: 42vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .npcsex-actions-inner{
-    padding:0.35rem 0.6rem;
-    border-radius:1rem;
-    gap:0.4rem;
-    flex-wrap:wrap;
-    justify-content:center;
+  .npcsex-actions-inner {
+    padding: 0.35rem 0.6rem;
+    border-radius: 1rem;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
-  .npcsex-group-title{
-    font-size:0.68rem;
+  .npcsex-group-title {
+    font-size: 0.68rem;
   }
 
   #npcsex-actions-bar a.link-internal,
-  #npcsex-actions-bar button{
-    margin:0.05rem 0.1rem;
-  }
-
-  /* mobile landscape */
-  @media (max-width: 900px){
-    #npcsex-actions-bar{
-      left:1rem;
-      right:1rem;
-      width:auto;
-    }
+  #npcsex-actions-bar button {
+    margin: 0.05rem 0.1rem;
   }
 }
 
-/* ========== Status / meters ========== */
+/* =========================================================
+   Status / meters
+   ========================================================= */
 
-/* Tighten horizontal rules globally or scope to .npcsex-root */
-.passage hr{
-  margin:0.75rem 0;
-  border:0;
-  border-top:2px solid #666;
+.passage hr {
+  margin: 0.75rem 0;
+  border: 0;
+  border-top: 2px solid #666;
 }
 
-/* Optional: ensure no extra vertical gaps in this UI */
 .npcsex-root .intro,
 .npcsex-root #log,
-.npcsex-root .status-row{
-  margin:0;
-  padding:0;
+.npcsex-root .status-row {
+  margin: 0;
+  padding: 0;
 }
 
-/* compact status row */
-.status-row{
-  display:flex;
-  align-items:center;
-  gap:.75rem;
-  flex-wrap:wrap;
-  margin:.25em 0;
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 0.25em 0;
 }
 
-/* pill for the stage */
-.stage-chip{
-  display:inline-flex;
-  align-items:center;
-  gap:.5em;
-  padding:.25em .6em;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.25);
-  background:rgba(255,255,255,.06);
-  font-weight:600;
+.stage-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.25em 0.6em;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+  font-weight: 600;
 }
 
-/* arousal/affection progress inline with its % */
-.meter{
-  display:flex;
-  align-items:center;
-  gap:.5em;
-  min-width:240px;
+.meter {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  min-width: 240px;
 }
 
-.meter progress{
-  width:180px;
-  height:10px;
+.meter progress {
+  width: 180px;
+  height: 10px;
 }
 
-/* percentage alignment */
-#aff-pct{
-  min-width:3ch;
-  text-align:right;
+#aff-pct {
+  min-width: 3ch;
+  text-align: right;
 }
 
-/* nicer progress look (keeps colors generic) */
-progress{
-  -webkit-appearance:none;
-  appearance:none;
-  border:none;
-  background:transparent;
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: transparent;
 }
 
-progress::-webkit-progress-bar{
-  background:rgba(255,255,255,.12);
-  border-radius:8px;
+progress::-webkit-progress-bar {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
 }
 
-progress::-webkit-progress-value{
-  background:rgba(255,255,255,.6);
-  border-radius:8px;
+progress::-webkit-progress-value {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
 }
 
-progress::-moz-progress-bar{
-  background:rgba(255,255,255,.6);
-  border-radius:8px;
+progress::-moz-progress-bar {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
 }
 
-/* ========== Glitch / glitchy text ========== */
+/* =========================================================
+   Glitch / glitchy text
+   ========================================================= */
 
-@media (prefers-reduced-motion: reduce){
+@media (prefers-reduced-motion: reduce) {
   .glitch::before,
   .glitch::after,
   .glitchy::before,
-  .glitchy::after{
-    animation:none;
+  .glitchy::after {
+    animation: none;
   }
 }
 
-
 .glitch,
-.glitchy{
-  color:white;
-  position:relative;
+.glitchy {
+  color: white;
+  position: relative;
 }
 
-/* legacy clip-based glitch */
-.glitch::before{
-  content:attr(data-text);
-  width:calc(100% + 0.5em);
-  position:absolute;
-  left:-9px;
-  text-shadow:1px 0 blue;
-  top:-5px;
-  color:#FFD;
-  background:#111;
-  overflow:hidden;
-  clip:rect(0, 900px, 0, 0);
-  animation:noise-anim-2 3s infinite linear alternate-reverse;
+.glitch::before {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -9px;
+  text-shadow: 1px 0 blue;
+  top: -5px;
+  color: #FFD;
+  background: #111;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
 }
 
-.glitch::after{
-  content:attr(data-text);
-  width:calc(100% + 0.5em);
-  position:absolute;
-  left:-5px;
-  text-shadow:-1px 0 red;
-  top:-5px;
-  color:#DFF;
-  background:#111;
-  overflow:hidden;
-  clip:rect(0, 900px, 0, 0);
-  animation:noise-anim 2s infinite linear alternate-reverse;
+.glitch::after {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -5px;
+  text-shadow: -1px 0 red;
+  top: -5px;
+  color: #DFF;
+  background: #111;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
 }
 
-/* newer clip-path based glitch */
-.glitchy::before{
-  content:attr(data-text);
-  width:calc(100% + 0.5em);
-  position:absolute;
-  left:-9px;
-  text-shadow:1px 0 blue;
-  top:-5px;
-  color:#FFD;
-  background:#111;
-  overflow:hidden;
-  clip-path:polygon(0 0);
-  animation:noise-animY-2 3s infinite linear alternate-reverse;
+.glitchy::before {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -9px;
+  text-shadow: 1px 0 blue;
+  top: -5px;
+  color: #FFD;
+  background: #111;
+  overflow: hidden;
+  clip-path: polygon(0 0);
+  animation: noise-animY-2 3s infinite linear alternate-reverse;
 }
 
-.glitchy::after{
-  content:attr(data-text);
-  width:calc(100% + 0.5em);
-  position:absolute;
-  left:-5px;
-  text-shadow:-1px 0 red;
-  top:-5px;
-  color:#DFF;
-  background:#111;
-  overflow:hidden;
-  clip-path:polygon(0 0);
-  animation:noise-animY 2s infinite linear alternate-reverse;
+.glitchy::after {
+  content: attr(data-text);
+  width: calc(100% + 0.5em);
+  position: absolute;
+  left: -5px;
+  text-shadow: -1px 0 red;
+  top: -5px;
+  color: #DFF;
+  background: #111;
+  overflow: hidden;
+  clip-path: polygon(0 0);
+  animation: noise-animY 2s infinite linear alternate-reverse;
 }
 
-/* keyframes (unchanged, just grouped) */
-@keyframes noise-anim{
+@keyframes noise-anim {
   0%   { clip: rect(80px, 9999px, 16px, 0); }
   5%   { clip: rect(94px, 9999px, 17px, 0); }
   10%  { clip: rect(9px, 9999px, 92px, 0); }
@@ -739,7 +682,7 @@ progress::-moz-progress-bar{
   100% { clip: rect(10px, 9999px, 30px, 0); }
 }
 
-@keyframes noise-anim-2{
+@keyframes noise-anim-2 {
   0%   { clip: rect(84px, 9999px, 3px, 0); }
   5%   { clip: rect(31px, 9999px, 69px, 0); }
   10%  { clip: rect(37px, 9999px, 33px, 0); }
@@ -763,7 +706,7 @@ progress::-moz-progress-bar{
   100% { clip: rect(23px, 9999px, 75px, 0); }
 }
 
-@keyframes noise-animY{
+@keyframes noise-animY {
   0%   { clip-path: polygon(0 80px, 100% 80px, 100% 16px, 0 16px); }
   5%   { clip-path: polygon(0 94px, 100% 94px, 100% 17px, 0 17px); }
   10%  { clip-path: polygon(0 9px, 100% 9px, 100% 92px, 0 92px); }
@@ -787,7 +730,7 @@ progress::-moz-progress-bar{
   100% { clip-path: polygon(0 10px, 100% 10px, 100% 30px, 0 30px); }
 }
 
-@keyframes noise-animY-2{
+@keyframes noise-animY-2 {
   0%   { clip-path: polygon(0 84px, 100% 84px, 100% 3px, 0 3px); }
   5%   { clip-path: polygon(0 31px, 100% 31px, 100% 69px, 0 69px); }
   10%  { clip-path: polygon(0 37px, 100% 37px, 100% 33px, 0 33px); }
@@ -811,14 +754,16 @@ progress::-moz-progress-bar{
   100% { clip-path: polygon(0 23px, 100% 23px, 100% 75px, 0 75px); }
 }
 
-/* ========== Tables / stats / hair toggles ========== */
+/* =========================================================
+   Hair toggles
+   ========================================================= */
 
 .hairshort,
 .hairmed,
 .hairlong,
 .hairmisc,
 .hairdetails {
-	display: none;
+  display: none;
 }
 
 .hairshort.visible,
@@ -826,316 +771,329 @@ progress::-moz-progress-bar{
 .hairlong.visible,
 .hairmisc.visible,
 .hairdetails.visible {
-	display: block;
+  display: block;
 }
-/* Base table styling for all passage tables */
-.passage table{
-  width:100%;
-  border-collapse:collapse;
-  table-layout:fixed;
-  margin:0 0 16px 0;
-  background:transparent;
+
+/* =========================================================
+   Tables / stats
+   ========================================================= */
+
+.passage table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 0 0 16px 0;
+  background: transparent;
 }
 
 .passage th,
-.passage td{
-  padding:8px 10px;
-  vertical-align:middle;
-  border-bottom:1px solid rgba(0,0,0,0.12);
-  word-wrap:break-word;
-  overflow-wrap:anywhere;
+.passage td {
+  padding: 8px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
-/* Label column (th) */
-.passage th{
-  width:200px;
-  text-align:right;
-  padding-right:12px;
-  font-weight:600;
-  color:#999;
+.passage th {
+  width: 200px;
+  text-align: right;
+  padding-right: 12px;
+  font-weight: 600;
+  color: #999;
 }
 
-/* Value column(s) */
-.passage td{
-  text-align:left;
+.passage td {
+  text-align: left;
 }
 
-/* Last column */
-.passage td:last-child{
-  white-space:normal;
-  padding-left:10px;
+.passage td:last-child {
+  white-space: normal;
+  padding-left: 10px;
 }
 
-/* NSFW table */
-table.nsfw{ margin-top:8px; }
-
-/* Subsection headers */
-h1, h2, h3{
-  letter-spacing:0.04em;
-  margin:0.4em 0 0.2em;
-}
-/* Section wrapper around stats */
-.stats-section{
-  margin:16px 0 24px;
-  padding:12px;
-  border:1px solid rgba(0,0,0,0.08);
-  border-radius:10px;
-  background:rgba(0,0,0,0.02);
+table.nsfw {
+  margin-top: 8px;
 }
 
-@media (prefers-color-scheme:dark){
-  .stats-section{
-    border-color:rgba(255,255,255,0.14);
-    background:rgba(255,255,255,0.04);
+h1,
+h2,
+h3 {
+  letter-spacing: 0.04em;
+  margin: 0.4em 0 0.2em;
+}
+
+.stats-section {
+  margin: 16px 0 24px;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+@media (prefers-color-scheme: dark) {
+  .stats-section {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
   }
 }
 
-/* Stats tables */
-.passage table.stats-table{
-  width:100%;
-  border-collapse:collapse;
-  table-layout:fixed;
-  margin:0 0 12px 0;
-  background:transparent;
+.passage table.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 0 0 12px 0;
+  background: transparent;
 }
 
 .passage table.stats-table th,
-.passage table.stats-table td{
-  padding:8px 12px;
-  vertical-align:top;
-  border-bottom:1px solid rgba(0,0,0,0.10);
-  overflow-wrap:anywhere;
+.passage table.stats-table td {
+  padding: 8px 12px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+  overflow-wrap: anywhere;
 }
 
-.passage table.stats-table th{
-  text-align:right;
-  font-weight:600;
-  color:#222;
-  opacity:.9;
+.passage table.stats-table th {
+  text-align: right;
+  font-weight: 600;
+  color: #222;
+  opacity: 0.9;
 }
 
-.passage table.stats-table td{
-  text-align:left;
-  color:#111;
+.passage table.stats-table td {
+  text-align: left;
+  color: #111;
 }
 
-/* Zebra striping */
 .passage table.stats-table tr:nth-child(odd) td,
-.passage table.stats-table tr:nth-child(odd) th{
-  background:rgba(0,0,0,0.02);
+.passage table.stats-table tr:nth-child(odd) th {
+  background: rgba(0, 0, 0, 0.02);
 }
 
-/* Optional third-column actions */
-.passage table.stats-table td.action{
-  width:1%;
-  white-space:nowrap;
-  padding-left:8px;
+.passage table.stats-table td.action {
+  width: 1%;
+  white-space: nowrap;
+  padding-left: 8px;
 }
 
-/* Completed row: neon highlight for stats table rows */
 .passage table.stats-table tr.green th,
-.passage table.stats-table tr.green td{
-  background:radial-gradient(circle at left, rgba(40, 200, 140, 0.22), transparent);
-  border-bottom-color:rgba(80, 255, 180, 0.45);
+.passage table.stats-table tr.green td {
+  background: radial-gradient(circle at left, rgba(40, 200, 140, 0.22), transparent);
+  border-bottom-color: rgba(80, 255, 180, 0.45);
 }
 
-/* Left accent bar on the row itself */
-.passage table.stats-table tr.green{
-  box-shadow:inset 3px 0 0 rgba(80, 255, 180, 0.85);
+.passage table.stats-table tr.green {
+  box-shadow: inset 3px 0 0 rgba(80, 255, 180, 0.85);
 }
 
-/* Label cell tweak + checkmark */
-.passage table.stats-table tr.green th{
-  color:#e6fff5;
+.passage table.stats-table tr.green th {
+  color: #e6fff5;
 }
 
-.passage table.stats-table tr.green th::before{
-  content:"✔";
-  font-size:0.8em;
-  margin-right:0.35em;
-  opacity:0.85;
+.passage table.stats-table tr.green th::before {
+  content: "✔";
+  font-size: 0.8em;
+  margin-right: 0.35em;
+  opacity: 0.85;
 }
 
-@media (prefers-color-scheme:dark){
+@media (prefers-color-scheme: dark) {
   .passage table.stats-table th,
-  .passage table.stats-table td{
-    border-bottom-color:rgba(255,255,255,0.12);
+  .passage table.stats-table td {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
   }
-  .passage table.stats-table th{ color:#e6e6e6; }
-  .passage table.stats-table td{ color:#f2f2f2; }
+
+  .passage table.stats-table th {
+    color: #e6e6e6;
+  }
+
+  .passage table.stats-table td {
+    color: #f2f2f2;
+  }
+
   .passage table.stats-table tr:nth-child(odd) td,
-  .passage table.stats-table tr:nth-child(odd) th{
-    background:rgba(255,255,255,0.05);
+  .passage table.stats-table tr:nth-child(odd) th {
+    background: rgba(255, 255, 255, 0.05);
   }
 
   .passage table.stats-table tr.green th,
-  .passage table.stats-table tr.green td{
-    background:radial-gradient(circle at left, rgba(40, 200, 140, 0.25), transparent);
-    border-bottom-color:rgba(80, 255, 180, 0.55);
+  .passage table.stats-table tr.green td {
+    background: radial-gradient(circle at left, rgba(40, 200, 140, 0.25), transparent);
+    border-bottom-color: rgba(80, 255, 180, 0.55);
   }
 
-  .passage table.stats-table tr.green th{
-    color:#eafff9;
+  .passage table.stats-table tr.green th {
+    color: #eafff9;
   }
 }
 
-/* Mobile: relax fixed layout */
-@media (max-width:640px){
-  .passage table.stats-table{ table-layout:auto; }
+@media (max-width: 640px) {
+  .passage table.stats-table {
+    table-layout: auto;
+  }
 }
 
-/* ========== Dialogue speaker styles ========== */
+/* =========================================================
+   Dialogue speaker styles
+   ========================================================= */
 
-.Jinx{
-  font-weight:600;
-  letter-spacing:0.06em;
+.Jinx {
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-shadow:
-    0 0 6px rgba(120,180,255,0.9),
-    0 0 18px rgba(80,120,255,0.8);
-  color:#c9e2ff;
+    0 0 6px rgba(120, 180, 255, 0.9),
+    0 0 18px rgba(80, 120, 255, 0.8);
+  color: #c9e2ff;
 }
 
-.mc{
-  font-style:italic;
-  color:#ffd8f0;
+.mc {
+  font-style: italic;
+  color: #ffd8f0;
 }
 
-/* UI-NPC-Sex header alignment */
-#passage-UI-NPC-Sex .status-row{
-  display:flex;
-  align-items:center;
-  gap:16px 24px;
-  flex-wrap:wrap;
+/* =========================================================
+   UI-NPC-Sex header alignment
+   ========================================================= */
+
+#passage-UI-NPC-Sex .status-row {
+  display: flex;
+  align-items: center;
+  gap: 16px 24px;
+  flex-wrap: wrap;
 }
 
-#passage-UI-NPC-Sex .status-item{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
+#passage-UI-NPC-Sex .status-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-#passage-UI-NPC-Sex .label{ font-weight:600; }
-
-#passage-UI-NPC-Sex .value{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
+#passage-UI-NPC-Sex .label {
+  font-weight: 600;
 }
 
-#passage-UI-NPC-Sex .stage-pill{
-  display:inline-block;
-  padding:2px 8px;
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:8px;
-  line-height:1.2;
+#passage-UI-NPC-Sex .value {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Generic status line block (non-UI-NPC-Sex specific) */
-.status-line{
-  display:grid;
-  grid-template-columns:140px auto;
-  align-items:center;
+#passage-UI-NPC-Sex .stage-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  line-height: 1.2;
 }
 
-.status-label{
-  font-weight:600;
-  text-align:right;
-  white-space:nowrap;
+/* =========================================================
+   Generic status line block
+   ========================================================= */
+
+.status-line {
+  display: grid;
+  grid-template-columns: 140px auto;
+  align-items: center;
 }
 
-.status-value{
-  text-align:left;
-  min-height:1.2em;
+.status-label {
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
 }
 
-.index-flex{
-  display:flex;
-  flex-wrap:wrap;
-  gap:1rem;
+.status-value {
+  text-align: left;
+  min-height: 1.2em;
 }
 
+/* =========================================================
+   Index / creator boxes
+   ========================================================= */
 
-.index-flex > div{
-  background:rgba(255,255,255,0.04);
-  padding:12px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,0.08);
-  min-width:220px;
+.index-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-/* Character Creator completed box styling */
-.index-flex div.green{
-  background:linear-gradient(135deg, rgba(40, 200, 140, 0.25), rgba(0,0,0,0.10));
-  border:1px solid rgba(80, 255, 180, 0.55);
+.index-flex > div {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 220px;
+}
+
+.index-flex div.green {
+  background: linear-gradient(135deg, rgba(40, 200, 140, 0.25), rgba(0, 0, 0, 0.10));
+  border: 1px solid rgba(80, 255, 180, 0.55);
   box-shadow:
     inset 0 0 12px rgba(0, 0, 0, 0.6),
     0 0 8px rgba(80, 255, 180, 0.55);
-  border-radius:10px;
-  padding:12px;
-  transition:0.2s ease;
+  border-radius: 10px;
+  padding: 12px;
+  transition: 0.2s ease;
   color: #dfffe9;
-  font-weight:600;
+  font-weight: 600;
 }
 
-/* Optional: checkmark before the label */
-.index-flex div.green::before{
-  content:"✔ ";
+.index-flex div.green::before {
+  content: "✔ ";
   color: #8fffbf;
-  font-weight:900;
+  font-weight: 900;
 }
- /* For coloring text */
-.red{
-  color:rgb(255, 0, 0);
+
+/* =========================================================
+   Color utilities
+   ========================================================= */
+
+.red {
+  color: rgb(255, 0, 0);
 }
-.blue{
-  color:rgb(12, 52, 185);
+
+.blue {
+  color: rgb(12, 52, 185);
 }
-.green{
-  color:rgb(52, 138, 52);
+
+.green {
+  color: rgb(52, 138, 52);
 }
-.purple{
-  color:rgb(128, 3, 177);
+
+.purple {
+  color: rgb(128, 3, 177);
 }
-.yellow{
-  color:rgb(255, 238, 0);
+
+.yellow {
+  color: rgb(255, 238, 0);
 }
-.orange{
-  color:rgb(255, 136, 0);
+
+.orange {
+  color: rgb(255, 136, 0);
 }
-.pink{
-  color:rgb(255, 0, 200);
+
+.pink {
+  color: rgb(255, 0, 200);
 }
+
+/* =========================================================
+   Sex encounter layout helpers
+   ========================================================= */
 
 #sex-container {
   display: flex;
-  vertical-align: top;
   justify-content: space-evenly;
 }
 
 #arousal-ui {
-  
-  vertical-align: top;
-  text-align:center;
-
+  text-align: center;
 }
-
 
 #npcsex-dialogue {
   max-width: 100%;
   padding-right: 2rem;
 }
-
-
-#story {
-  max-width: 1500px;
-}
-
-#passages{
-  max-width: 1100px !important;
-  width: 100%;
-  margin: 0 auto;
-}
-
 
 #npcsex-dialogue #log {
   max-width: 110ch;
@@ -1148,10 +1106,11 @@ h1, h2, h3{
   max-width: 1200px;
 }
 
+/* =========================================================
+   Flag gradient text
+   ========================================================= */
 
-
-/* Utility: gradient text */
-.flag-text{
+.flag-text {
   font-weight: 700;
   background-clip: text;
   -webkit-background-clip: text;
@@ -1159,9 +1118,9 @@ h1, h2, h3{
   -webkit-text-fill-color: transparent;
 }
 
-/* Heterosexual (straight flag: black/white stripes) */
-.flag-heterosexual{
-  background-image: linear-gradient(90deg,
+.flag-heterosexual {
+  background-image: linear-gradient(
+    90deg,
     #000000 0%,
     #000000 20%,
     #FFFFFF 20%,
@@ -1175,9 +1134,9 @@ h1, h2, h3{
   );
 }
 
-/* Homosexual (Gay men / "MLM" flag: teal→white→blue) */
-.flag-homosexual{
-  background-image: linear-gradient(90deg,
+.flag-homosexual {
+  background-image: linear-gradient(
+    90deg,
     #078D70 0%,
     #26CEAA 16%,
     #99E8C2 33%,
@@ -1188,9 +1147,9 @@ h1, h2, h3{
   );
 }
 
-/* Bisexual */
-.flag-bisexual{
-  background-image: linear-gradient(90deg,
+.flag-bisexual {
+  background-image: linear-gradient(
+    90deg,
     #D60270 0%,
     #D60270 40%,
     #9B4F96 50%,
@@ -1199,9 +1158,9 @@ h1, h2, h3{
   );
 }
 
-/* Pansexual */
-.flag-pansexual{
-  background-image: linear-gradient(90deg,
+.flag-pansexual {
+  background-image: linear-gradient(
+    90deg,
     #FF218C 0%,
     #FF218C 33%,
     #FFD800 33%,
@@ -1211,9 +1170,9 @@ h1, h2, h3{
   );
 }
 
-/* Asexual */
-.flag-asexual{
-  background-image: linear-gradient(90deg,
+.flag-asexual {
+  background-image: linear-gradient(
+    90deg,
     #000000 0%,
     #000000 25%,
     #A3A3A3 25%,
@@ -1224,151 +1183,145 @@ h1, h2, h3{
     #800080 100%
   );
 }
-/* Extra readable on pure black backgrounds */
-.flag-on-black{
-  /* light outline so dark stripes stay visible */
-  -webkit-text-stroke: .1px rgba(255,255,255,0.75);
 
-  
+.flag-on-black {
+  -webkit-text-stroke: 0.1px rgba(255, 255, 255, 0.75);
 }
 
-
-
-
+/* =========================================================
+   Tooltips
+   ========================================================= */
 
 .tooltip-term {
-	position: relative;
-	display: inline-block;
-	color: #8fd3ff;
-	cursor: help;
-	border-bottom: 1px dotted #8fd3ff;
+  position: relative;
+  display: inline-block;
+  color: #8fd3ff;
+  cursor: help;
+  border-bottom: 1px dotted #8fd3ff;
   z-index: 1;
 }
 
 .tooltip-term::after {
-	content: attr(data-tooltip);
-	position: absolute;
-	left: 50%;
-	bottom: 125%;
-	transform: translateX(-50%);
-	min-width: 180px;
-	max-width: 260px;
-	padding: 0.4em 0.6em;
-	border-radius: 6px;
-	background: rgba(20, 20, 20, 0.95);
-	color: #fff;
-	font-size: 0.9em;
-	line-height: 1.3;
-	text-align: center;
-	white-space: normal;
-	opacity: 0;
-	pointer-events: none;
-	transition: opacity 0.15s ease;
-	z-index: 9999;
-	box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: 125%;
+  transform: translateX(-50%);
+  min-width: 180px;
+  max-width: 260px;
+  padding: 0.4em 0.6em;
+  border-radius: 6px;
+  background: rgba(20, 20, 20, 0.95);
+  color: #fff;
+  font-size: 0.9em;
+  line-height: 1.3;
+  text-align: center;
+  white-space: normal;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .tooltip-term::before {
-	content: "";
-	position: absolute;
-	left: 50%;
-	bottom: 115%;
-	transform: translateX(-50%);
-	border: 6px solid transparent;
-	border-top-color: rgba(20, 20, 20, 0.95);
-	opacity: 0;
-	transition: opacity 0.15s ease;
-	z-index: 9999;
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 115%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(20, 20, 20, 0.95);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 9999;
 }
 
 .tooltip-term:hover::after,
 .tooltip-term:hover::before,
 .tooltip-term:focus::after,
 .tooltip-term:focus::before {
-	opacity: 1;
+  opacity: 1;
 }
 
+/* =========================================================
+   Inspect dialog
+   ========================================================= */
 
-
-
-
-
-/* make the inspect popup roomier */
 #ui-dialog {
-	width: min(820px, 92vw);
+  width: min(820px, 92vw);
   overflow: visible !important;
   margin-top: 2rem;
 }
 
 #ui-dialog-body {
-	max-height: 75vh;
-	overflow-y: auto;
-	padding: 1rem 1.25rem 1.5rem;
+  max-height: 75vh;
+  overflow-y: auto;
+  padding: 1rem 1.25rem 1.5rem;
 }
 
-/* inspect card */
 .npc-inspect {
-	background: linear-gradient(180deg, rgba(30,30,48,0.96), rgba(10,10,18,0.98));
-	border: 1px solid rgba(255,255,255,0.12);
-	border-radius: 14px;
-	padding: 1rem;
-	box-shadow:
-		0 0 0 1px rgba(255,255,255,0.03),
-		0 0 22px rgba(90, 120, 255, 0.18);
+  background: linear-gradient(180deg, rgba(30, 30, 48, 0.96), rgba(10, 10, 18, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 22px rgba(90, 120, 255, 0.18);
 }
 
 .npc-inspect-header {
-	margin-bottom: 1rem;
-	padding-bottom: 0.75rem;
-	border-bottom: 1px solid rgba(255,255,255,0.12);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .npc-inspect-header h2 {
-	margin: 0;
-	font-size: 1.4rem;
+  margin: 0;
+  font-size: 1.4rem;
 }
 
 .npc-inspect-subtitle {
-	margin-top: 0.25rem;
-	opacity: 0.8;
-	font-style: italic;
+  margin-top: 0.25rem;
+  opacity: 0.8;
+  font-style: italic;
 }
 
 .npc-inspect-section {
-	margin-top: 1rem;
-	padding: 0.75rem;
-	background: rgba(255,255,255,0.04);
-	border: 1px solid rgba(255,255,255,0.08);
-	border-radius: 10px;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
 }
 
 .npc-inspect-section-title {
-	margin-bottom: 0.6rem;
-	font-weight: 700;
-	letter-spacing: 0.04em;
-	text-transform: uppercase;
-	font-size: 0.85rem;
-	color: #9fc2ff;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #9fc2ff;
 }
 
 .npc-inspect-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-	gap: 0.5rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.5rem 1rem;
 }
 
 .npc-tag-list {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.45rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
 }
 
 .npc-tag {
-	display: inline-block;
-	padding: 0.2rem 0.55rem;
-	border-radius: 999px;
-	background: rgba(90, 120, 255, 0.14);
-	border: 1px solid rgba(140, 170, 255, 0.25);
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(90, 120, 255, 0.14);
+  border: 1px solid rgba(140, 170, 255, 0.25);
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "Eventdb" */
 if (!("Events" in setup)) setup.Events = {};
 
