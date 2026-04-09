@@ -58,13 +58,6 @@
 			"You reach down and roughly grab _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, tease the head over your $mc.assSize ass, then forcefully drop down and take $proset.them into you.",
 			"Shuffling into a better position, you line the head of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> up between your cheeks, and with a single movement, you roughly drop down and take $proset.them into your ass."
 		) >>
-		<br>
-		<<= either(
-			"_n.name lets out a moan as $proset.they enter you, eagerly bucking $proset.their own <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
-			"With a moan, _n.name eagerly thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your <<= String($mc.assSize || 'ass').toLowerCase() >> ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start energetically fucking you.",
-			"_n.name lets out a moan as $proset.they enter you, bucking $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
-			"With a moan, _n.name thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your $mc.assSize ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start fucking you."
-		) >>
 	<<elseif $sex.position == "Reverse Cowgirl">>
 		<<= either(
 			"You lower your ass onto _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>."
@@ -102,7 +95,7 @@
 			"_n.name bounces up and down on your <<= setup.partLower($mc, 'genitals', 'genitals') >> in a controlled rhythm.",
 			"_n.name's pace increases, pushing your <<= setup.partLower($mc, 'genitals', 'genitals') >> deeper into $proset.their hole.",
 			"The sight of _n.name bouncing on your <<= setup.partLower($mc, 'genitals', 'genitals') >>, bliss written across $proset.their face, turns you on.",
-			"_n.name leans forward, putting $proset.their small hands on your bare chest. Balanced like this, $proset.they begin bouncing $proset.their ass up and down the length of your cock.",
+			"_n.name leans forward, putting $proset.their hands on your bare chest. Balanced like this, $proset.they begin bouncing $proset.their ass up and down the length of your cock.",
 			"You lie back, enjoying the feeling of $proset.their ass gripping your cock."
 		) >>
 	<<elseif $sex.position == "Doggy">>

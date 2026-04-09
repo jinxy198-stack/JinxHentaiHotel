@@ -11,9 +11,10 @@
  	        "You eat out _n.name's ass."
         )>>
     <</if>>
-<<else>>
+<<elseif $sex.role == "Bottom">>
 	<<=either(
-        "_n.name eats out your ass."
+        "_n.name eats out your ass.",
+        "_n.name buries their face in your <<= setup.partLower($mc, 'ass', 'ass') >> and gives it a lick."
     )>>
 <</if>>
 

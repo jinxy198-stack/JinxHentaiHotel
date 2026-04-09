@@ -406,9 +406,12 @@
 							/* optional: climax act marker */
 							<<set $sex.act = "Climax">>
 
+
 							/* refresh state */
 							<<run setup.updateCumLocations($sex)>>
 							<<run setup.updateBindings()>>
+
+                            <<set $sex.chosenCumLocation = _loc>>
 
 							/* redraw the action UI */
 							<<replace "#sexUI">><<SexEncounterUI>><</replace>>

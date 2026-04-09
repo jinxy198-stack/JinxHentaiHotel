@@ -37,8 +37,8 @@
     	<</if>>
 	<<elseif $sex.role =="Top">>
 		<<=either(
-		"They pump your shaft.",
-		"You let out a soft moan as _n.name is slowly stroking up and down your length."
+			"They pump your shaft.",
+			"You let out a soft moan as _n.name is slowly stroking up and down your length."
 		)>>
 		<<if $mc.genitaltype == "Uncut">>
     		Your foreskin is pulled back and forth from the movement.
@@ -52,8 +52,8 @@
 	You tease the tip of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, giving extra stimulation.
 <<elseif $sex.act =="Play with Foreskin">>
 	<<if $sex.role=="Bottom">>
-	You play with _n.name's foreskin.
+		You play with _n.name's foreskin.
 	<<elseif $sex.role =="Top">>
-	_n.name plays with your foreskin.
+		_n.name plays with your foreskin.
 	<</if>>
 <</if>>

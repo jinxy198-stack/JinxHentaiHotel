@@ -79,7 +79,7 @@ setup.sexpositions = {
         label: "sitting",
         "Bottom": ["Ass","Leg"],
         "Top": ["Ass","Leg"],
-        "Bottom cum locations": ["in air"],
+        "Bottom cum locations": ["in the air"],
         "Top cum locations": ["on butt", "on back"],
         "label Top": "seated",
         "label Bottom": "seated",

@@ -10,3 +10,17 @@
 <<elseif $sex.climax.Bottom>>
 	<<gram _bottom "subjCap">> <<= setup.be(_bottom) >> close to climax.
 <</if>>
+
+<<if $devMode>>
+	<<if $sex.climax>>
+		"sex climax is true"
+	<</if>>
+	<<if $sex.climax.Top>>
+		"Climax is top"
+	<</if>>
+	 
+	<<if $sex.climax.Bottom>>
+		"Climax is bottom"
+	<</if>>
+	
+<</if>>

@@ -6,7 +6,7 @@
 <<set _topClimax = !!($sex.climax && $sex.climax.Top)>>
 <<set _bottomClimax = !!($sex.climax && $sex.climax.Bottom)>>
 
-<<set _cumLoc = _top.chosenCumLocation || _bottom.chosenCumLocation || "">>
+<<set _cumLoc = $sex.chosenCumLocation || "">>
 
 <<set _topGen = setup.partLower(_top, 'genitals', _top.genital || 'genitals')>>
 <<set _bottomGen = setup.partLower(_bottom, 'genitals', _bottom.genital || 'genitals')>>
@@ -23,7 +23,7 @@
 
 	<<case "in ass">>
 		<<if _topClimax>>
-			<<if $sex.position == "Cowgirl">>
+			<<if ["Cowgirl", "Reverse Cowgirl"].includes($sex.position)>>
 				<<gram _bottom "subjCap">> slams down one final time before <<gram _top "subj">> <<gverb _top "let" "lets">> out a moan and <<gverb _top "unload" "unloads">> into <<gram _bottom "poss">> ass. <<gram _bottom "subjCap">> shudders at the warmth filling <<gram _bottom "poss">> insides.
 			<<else>>
 				<<gram _top "subjCap">> <<gverb _top "shoot" "shoots">> cum into <<gram _bottom "poss">> ass.
@@ -35,7 +35,7 @@
 			<</if>>
 
 		<<elseif _bottomClimax>>
-			<<if $sex.position == "Cowgirl">>
+			<<if ["Cowgirl", "Reverse Cowgirl"].includes($sex.position)>>
 				<<gram _top "subjCap">> slams down one final time before <<gram _bottom "subj">> <<gverb _bottom "let" "lets">> out a moan and <<gverb _bottom "unload" "unloads">> into <<gram _top "poss">> ass. <<gram _top "subjCap">> shudders at the warmth filling <<gram _top "poss">> insides.
 			<<elseif $sex.position == "Missionary">>
 				<<gram _bottom "subjCap">> thrusts one last time before holding still inside <<gram _top "obj">> and letting out a moan. <<gram _top "subjCap">> <<gverb _top "feel" "feels">> <<gram _bottom "poss">> cum shoot into <<gram _top "poss">> ass.
@@ -49,7 +49,7 @@
 			<</if>>
 		<</if>>
 
-	<<case "in air">>
+	<<case "in the air">>
 		<<if _topClimax && !_bottomClimax>>
 			<<gram _top "subjCap">> <<gverb _top "shoot" "shoots">> into the air.
 		<<elseif _bottomClimax && !_topClimax>>
@@ -57,6 +57,8 @@
 		<<else>>
 			Cum sprays into the air.
 		<</if>>
+	<<case "on crotch">>
+		<<gram _bottom "subjCap">> <<gverb _bottom "shoot" "shoots">> into your crotch?.
 
 	<<case "in mouth">>
 		<<if _topClimax>>

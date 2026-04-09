@@ -27,7 +27,7 @@
 <<elseif _mode == "Top">>
 	<<if setup.EnterAssQuotes.Top>>
 		<<for _p range _personalities>>
-			<<if _p and setup.EnterAssQuotess.Top[_p]>>
+			<<if _p and setup.EnterAssQuotes.Top[_p]>>
 				<<run _persMatches.push(_p)>>
 			<</if>>
 		<</for>>

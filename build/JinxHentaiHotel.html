@@ -4353,7 +4353,7 @@ setup.sexpositions = {
         label: "sitting",
         "Bottom": ["Ass","Leg"],
         "Top": ["Ass","Leg"],
-        "Bottom cum locations": ["in air"],
+        "Bottom cum locations": ["in the air"],
         "Top cum locations": ["on butt", "on back"],
         "label Top": "seated",
         "label Bottom": "seated",
@@ -9878,13 +9878,6 @@ Work on fixing spawning NPC&#39;s
 			&quot;You reach down and roughly grab _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, tease the head over your $mc.assSize ass, then forcefully drop down and take $proset.them into you.&quot;,
 			&quot;Shuffling into a better position, you line the head of _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up between your cheeks, and with a single movement, you roughly drop down and take $proset.them into your ass.&quot;
 		) &gt;&gt;
-		&lt;br&gt;
-		&lt;&lt;= either(
-			&quot;_n.name lets out a moan as $proset.they enter you, eagerly bucking $proset.their own &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
-			&quot;With a moan, _n.name eagerly thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your &lt;&lt;= String($mc.assSize || &#39;ass&#39;).toLowerCase() &gt;&gt; ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start energetically fucking you.&quot;,
-			&quot;_n.name lets out a moan as $proset.they enter you, bucking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
-			&quot;With a moan, _n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your $mc.assSize ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start fucking you.&quot;
-		) &gt;&gt;
 	&lt;&lt;elseif $sex.position == &quot;Reverse Cowgirl&quot;&gt;&gt;
 		&lt;&lt;= either(
 			&quot;You lower your ass onto _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
@@ -9922,7 +9915,7 @@ Work on fixing spawning NPC&#39;s
 			&quot;_n.name bounces up and down on your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; in a controlled rhythm.&quot;,
 			&quot;_n.name&#39;s pace increases, pushing your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; deeper into $proset.their hole.&quot;,
 			&quot;The sight of _n.name bouncing on your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, bliss written across $proset.their face, turns you on.&quot;,
-			&quot;_n.name leans forward, putting $proset.their small hands on your bare chest. Balanced like this, $proset.they begin bouncing $proset.their ass up and down the length of your cock.&quot;,
+			&quot;_n.name leans forward, putting $proset.their hands on your bare chest. Balanced like this, $proset.they begin bouncing $proset.their ass up and down the length of your cock.&quot;,
 			&quot;You lie back, enjoying the feeling of $proset.their ass gripping your cock.&quot;
 		) &gt;&gt;
 	&lt;&lt;elseif $sex.position == &quot;Doggy&quot;&gt;&gt;
@@ -10026,7 +10019,8 @@ Work on fixing spawning NPC&#39;s
 
 &lt;&lt;elseif $sex.act == &quot;Suck Each Other Off&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;You suck _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; while $proset.they suck your &lt;&lt;= setup.partLower($mc, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
+		&quot;You suck _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; while $proset.they suck your &lt;&lt;= setup.partLower($mc, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+		&quot;You both orally pleasure each other&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.act == &quot;Eat Each Other Out&quot;&gt;&gt;
@@ -10516,8 +10510,8 @@ You rub your pussy against _n.name&#39;s feet.
     	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;elseif $sex.role ==&quot;Top&quot;&gt;&gt;
 		&lt;&lt;=either(
-		&quot;They pump your shaft.&quot;,
-		&quot;You let out a soft moan as _n.name is slowly stroking up and down your length.&quot;
+			&quot;They pump your shaft.&quot;,
+			&quot;You let out a soft moan as _n.name is slowly stroking up and down your length.&quot;
 		)&gt;&gt;
 		&lt;&lt;if $mc.genitaltype == &quot;Uncut&quot;&gt;&gt;
     		Your foreskin is pulled back and forth from the movement.
@@ -10531,9 +10525,9 @@ You rub your pussy against _n.name&#39;s feet.
 	You tease the tip of _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, giving extra stimulation.
 &lt;&lt;elseif $sex.act ==&quot;Play with Foreskin&quot;&gt;&gt;
 	&lt;&lt;if $sex.role==&quot;Bottom&quot;&gt;&gt;
-	You play with _n.name&#39;s foreskin.
+		You play with _n.name&#39;s foreskin.
 	&lt;&lt;elseif $sex.role ==&quot;Top&quot;&gt;&gt;
-	_n.name plays with your foreskin.
+		_n.name plays with your foreskin.
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="Hotdog-Dialogue" tags="nobr" position="725,975" size="100,100">&lt;&lt;if $sex.act == &quot;Hotdog&quot;&gt;&gt;
 You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; ass together around your &lt;&lt;=$mc.penislength.toLowerCase()&gt;&gt; cock as you thrust between them.
@@ -10554,7 +10548,10 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 		&quot;With a grin, you lean down into _n.name&#39;s chest, breathing in _n.name&#39;s scent before pressing your lips against _n.name&#39;s.&quot;,
 		&quot;Leaning down, you let out a moan as you press your lips against _n.name&#39;s and start to eagerly kiss _n.name.&quot;
 	)&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="Lick-Cock-Dialogue" tags="nobr" position="975,975" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    _n.name licks your cock.
+    &lt;&lt;=either(
+        &quot;_n.name licks your cock.&quot;,
+        &quot;_n.name extends their tongue and licks your cockhead.&quot;
+    )&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
     You begin to slowly use your tongue to slowly work around _n.name&#39;s tip, making sure you can feel and taste every part of it.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="Lick-Foot-Dialogue" tags="" position="1100,975" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
@@ -10563,9 +10560,12 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
     You lick _n.name&#39;s foot.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="Nipple-Acts-Dialogue" tags="nobr" position="1225,975" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Nipples&quot;&gt;&gt;
     &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-        You tease _n.name&#39;s nipples
+        You tease _n.name&#39;s nipples.
     &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-        _n.name teases your nipples
+        &lt;&lt;=either(
+            &quot;_n.name teases your nipples.&quot;,
+            &quot;_n.name rubbed their finger against your nipples.&quot;
+        )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $sex.act == &quot;Kiss Nipple&quot;&gt;&gt;
     &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
@@ -10583,7 +10583,9 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
     &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
         You suck _n.name&#39;s nipples
     &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-        _n.name sucks your nipples.
+        &lt;&lt;=either(  
+            &quot;_n.name sucks your nipples.&quot;
+        )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Orgasm-Close-Dialogue" tags="nobr" position="100,1100" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
 &lt;&lt;set _bottom = $sex.Bottom || $mc&gt;&gt;
@@ -10594,13 +10596,27 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 	&lt;&lt;gram _top &quot;subjCap&quot;&gt;&gt; &lt;&lt;= setup.be(_top) &gt;&gt; close to climax.
 &lt;&lt;elseif $sex.climax.Bottom&gt;&gt;
 	&lt;&lt;gram _bottom &quot;subjCap&quot;&gt;&gt; &lt;&lt;= setup.be(_bottom) &gt;&gt; close to climax.
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $devMode&gt;&gt;
+	&lt;&lt;if $sex.climax&gt;&gt;
+		&quot;sex climax is true&quot;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;if $sex.climax.Top&gt;&gt;
+		&quot;Climax is top&quot;
+	&lt;&lt;/if&gt;&gt;
+	 
+	&lt;&lt;if $sex.climax.Bottom&gt;&gt;
+		&quot;Climax is bottom&quot;
+	&lt;&lt;/if&gt;&gt;
+	
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="OrgasmDialogue" tags="nobr" position="225,1100" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
 &lt;&lt;set _bottom = $sex.Bottom || $mc&gt;&gt;
 
 &lt;&lt;set _topClimax = !!($sex.climax &amp;&amp; $sex.climax.Top)&gt;&gt;
 &lt;&lt;set _bottomClimax = !!($sex.climax &amp;&amp; $sex.climax.Bottom)&gt;&gt;
 
-&lt;&lt;set _cumLoc = _top.chosenCumLocation || _bottom.chosenCumLocation || &quot;&quot;&gt;&gt;
+&lt;&lt;set _cumLoc = $sex.chosenCumLocation || &quot;&quot;&gt;&gt;
 
 &lt;&lt;set _topGen = setup.partLower(_top, &#39;genitals&#39;, _top.genital || &#39;genitals&#39;)&gt;&gt;
 &lt;&lt;set _bottomGen = setup.partLower(_bottom, &#39;genitals&#39;, _bottom.genital || &#39;genitals&#39;)&gt;&gt;
@@ -10617,7 +10633,7 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 
 	&lt;&lt;case &quot;in ass&quot;&gt;&gt;
 		&lt;&lt;if _topClimax&gt;&gt;
-			&lt;&lt;if $sex.position == &quot;Cowgirl&quot;&gt;&gt;
+			&lt;&lt;if [&quot;Cowgirl&quot;, &quot;Reverse Cowgirl&quot;].includes($sex.position)&gt;&gt;
 				&lt;&lt;gram _bottom &quot;subjCap&quot;&gt;&gt; slams down one final time before &lt;&lt;gram _top &quot;subj&quot;&gt;&gt; &lt;&lt;gverb _top &quot;let&quot; &quot;lets&quot;&gt;&gt; out a moan and &lt;&lt;gverb _top &quot;unload&quot; &quot;unloads&quot;&gt;&gt; into &lt;&lt;gram _bottom &quot;poss&quot;&gt;&gt; ass. &lt;&lt;gram _bottom &quot;subjCap&quot;&gt;&gt; shudders at the warmth filling &lt;&lt;gram _bottom &quot;poss&quot;&gt;&gt; insides.
 			&lt;&lt;else&gt;&gt;
 				&lt;&lt;gram _top &quot;subjCap&quot;&gt;&gt; &lt;&lt;gverb _top &quot;shoot&quot; &quot;shoots&quot;&gt;&gt; cum into &lt;&lt;gram _bottom &quot;poss&quot;&gt;&gt; ass.
@@ -10629,7 +10645,7 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 			&lt;&lt;/if&gt;&gt;
 
 		&lt;&lt;elseif _bottomClimax&gt;&gt;
-			&lt;&lt;if $sex.position == &quot;Cowgirl&quot;&gt;&gt;
+			&lt;&lt;if [&quot;Cowgirl&quot;, &quot;Reverse Cowgirl&quot;].includes($sex.position)&gt;&gt;
 				&lt;&lt;gram _top &quot;subjCap&quot;&gt;&gt; slams down one final time before &lt;&lt;gram _bottom &quot;subj&quot;&gt;&gt; &lt;&lt;gverb _bottom &quot;let&quot; &quot;lets&quot;&gt;&gt; out a moan and &lt;&lt;gverb _bottom &quot;unload&quot; &quot;unloads&quot;&gt;&gt; into &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; ass. &lt;&lt;gram _top &quot;subjCap&quot;&gt;&gt; shudders at the warmth filling &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; insides.
 			&lt;&lt;elseif $sex.position == &quot;Missionary&quot;&gt;&gt;
 				&lt;&lt;gram _bottom &quot;subjCap&quot;&gt;&gt; thrusts one last time before holding still inside &lt;&lt;gram _top &quot;obj&quot;&gt;&gt; and letting out a moan. &lt;&lt;gram _top &quot;subjCap&quot;&gt;&gt; &lt;&lt;gverb _top &quot;feel&quot; &quot;feels&quot;&gt;&gt; &lt;&lt;gram _bottom &quot;poss&quot;&gt;&gt; cum shoot into &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; ass.
@@ -10643,7 +10659,7 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 			&lt;&lt;/if&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 
-	&lt;&lt;case &quot;in air&quot;&gt;&gt;
+	&lt;&lt;case &quot;in the air&quot;&gt;&gt;
 		&lt;&lt;if _topClimax &amp;&amp; !_bottomClimax&gt;&gt;
 			&lt;&lt;gram _top &quot;subjCap&quot;&gt;&gt; &lt;&lt;gverb _top &quot;shoot&quot; &quot;shoots&quot;&gt;&gt; into the air.
 		&lt;&lt;elseif _bottomClimax &amp;&amp; !_topClimax&gt;&gt;
@@ -10651,6 +10667,8 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 		&lt;&lt;else&gt;&gt;
 			Cum sprays into the air.
 		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;case &quot;on crotch&quot;&gt;&gt;
+		&lt;&lt;gram _bottom &quot;subjCap&quot;&gt;&gt; &lt;&lt;gverb _bottom &quot;shoot&quot; &quot;shoots&quot;&gt;&gt; into your crotch?.
 
 	&lt;&lt;case &quot;in mouth&quot;&gt;&gt;
 		&lt;&lt;if _topClimax&gt;&gt;
@@ -10784,9 +10802,10 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
  	        &quot;You eat out _n.name&#39;s ass.&quot;
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;else&gt;&gt;
+&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
-        &quot;_n.name eats out your ass.&quot;
+        &quot;_n.name eats out your ass.&quot;,
+        &quot;_n.name buries their face in your &lt;&lt;= setup.partLower($mc, &#39;ass&#39;, &#39;ass&#39;) &gt;&gt; and gives it a lick.&quot;
     )&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="Rub-Butt-Dialogue" tags="nobr" position="600,1100" size="100,100">You rub _n.name&#39;s ass.</tw-passagedata><tw-passagedata pid="86" name="Rub-Pussy-Dialogue" tags="nobr" position="725,1100" size="100,100">/*Add different dialogue based on positions */
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
@@ -10798,37 +10817,37 @@ You rub _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;gen
 _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; with their fingers.
 
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="Stop-Dialogue" tags="nobr" position="850,1100" size="100,100">&lt;&lt;if $sex.act ==&quot;Release Cock&quot;&gt;&gt;
-You release _n.name&#39;s cock.
+    You release _n.name&#39;s cock.
 &lt;&lt;elseif $sex.act ==&quot;Stop Fingering&quot;&gt;&gt;
-You stop fingering.
+    You stop fingering.
 &lt;&lt;elseif $sex.act ==&quot;Pull Off Of Finger&quot;&gt;&gt;
-You pull off of finger.
+    You pull off of finger.
 &lt;&lt;elseif $sex.act ==&quot;Tug Cock Free&quot;&gt;&gt;
-You pull your cock free from _n.name.
+    You pull your cock free from _n.name.
 &lt;&lt;elseif $sex.act ==&quot;Release Cock From Feet&quot;&gt;&gt;
-You move your feet away from _n.name&#39;s cock.
+    You move your feet away from _n.name&#39;s cock.
 &lt;&lt;elseif $sex.act ==&quot;Tug Cock Free Of Feet&quot;&gt;&gt;
-You tug your cock free from _n.name&#39;s feet.
+    You tug your cock free from _n.name&#39;s feet.
 &lt;&lt;elseif $sex.act ==&quot;Move Feet Away From Pussy&quot;&gt;&gt;
-You move your feet away from _n.name&#39;s pussy.
+    You move your feet away from _n.name&#39;s pussy.
 &lt;&lt;elseif $sex.act ==&quot;Pull Away From Feet&quot;&gt;&gt;
-You pull your pussy away from _n.name&#39;s feet.
+    You pull your pussy away from _n.name&#39;s feet.
 &lt;&lt;elseif $sex.act ==&quot;Pull Out Of Mouth&quot;&gt;&gt;
-You pull your cock out of _n.name&#39;s mouth.
+    You pull your cock out of _n.name&#39;s mouth.
 &lt;&lt;elseif $sex.act ==&quot;Pull Mouth Off Of Cock&quot;&gt;&gt;
-You pull your mouth off of _n.name&#39;s cock
+    You pull your mouth off of _n.name&#39;s cock
 &lt;&lt;elseif $sex.act ==&quot;Pull Out&quot;&gt;&gt;
-You pull your cock out of _n.name&#39;s pussy
+    You pull your cock out of _n.name&#39;s pussy
 &lt;&lt;elseif $sex.act ==&quot;Pull Off&quot;&gt;&gt;
-You pull your pussy off of _n.name&#39;s cock.
+    You pull your pussy off of _n.name&#39;s cock.
 &lt;&lt;elseif $sex.act ==&quot;Pull Out Of Ass&quot;&gt;&gt;
-You pull out of _n.name&#39;s ass.
+    You pull out of _n.name&#39;s ass.
 &lt;&lt;elseif $sex.act ==&quot;Pull Ass Off Of Cock&quot;&gt;&gt;
-You pull your ass off of _n.name&#39;s cock.
+    You pull your ass off of _n.name&#39;s cock.
 &lt;&lt;elseif $sex.act ==&quot;Stop Fingering Ass&quot;&gt;&gt;
-You stop fingering _n.name&#39;s ass.
+    You stop fingering _n.name&#39;s ass.
 &lt;&lt;elseif $sex.act ==&quot;Pull Face Back&quot;&gt;&gt;
-You pull your face back.
+    You pull your face back.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="SuckFoot-Dialogue" tags="Dialogue nobr" position="800,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
@@ -11420,14 +11439,22 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 		&lt;&lt;= either(
 			&quot;_n.name lets out an eager moan in response.&quot;,
 			&quot;_n.name enthusiastically presses $proset.themself against you and thrusts $proset.their tongue into your mouth as $proset.they eagerly return your affection.&quot;,
-			&quot;With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic kiss.&quot;,
+			&quot;With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic tongue battle.&quot;,
 			&quot;Letting out a soft moan, _n.name plants a series of gentle kisses on your lips before slowly sliding $proset.their tongue into your mouth.&quot;,
 			&quot;With a soft hum, _n.name leans into you, gently pushing $proset.their tongue past your lips.&quot;,
 			&quot;_n.name presses $proset.themself against you, muffling your moans as $proset.they slide $proset.their tongue into your mouth.&quot;,
 			&quot;_n.name pushes $proset.their tongue deep into your mouth, moaning as $proset.they eagerly return the kiss.&quot;,
 			&quot;With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips.&quot;
 		) &gt;&gt;
-
+	&lt;&lt;elseif $sex.act == &quot;Push Cock In Ass&quot;&gt;&gt;
+		&lt;&lt;if $sex.position == &quot;Cowgirl&quot;&gt;&gt;
+			&lt;&lt;= either(
+				&quot;_n.name lets out a moan as $proset.they enter you, eagerly bucking $proset.their own &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
+				&quot;With a moan, _n.name eagerly thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your &lt;&lt;= String($mc.assSize || &#39;ass&#39;).toLowerCase() &gt;&gt; ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start energetically fucking you.&quot;,
+				&quot;_n.name lets out a moan as $proset.they enter you, bucking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
+				&quot;With a moan, _n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your $mc.assSize ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start fucking you.&quot;
+		) &gt;&gt;
+		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		_n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure.
 	&lt;&lt;/if&gt;&gt;
@@ -11828,7 +11855,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;elseif _mode == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;if setup.EnterAssQuotes.Top&gt;&gt;
 		&lt;&lt;for _p range _personalities&gt;&gt;
-			&lt;&lt;if _p and setup.EnterAssQuotess.Top[_p]&gt;&gt;
+			&lt;&lt;if _p and setup.EnterAssQuotes.Top[_p]&gt;&gt;
 				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
 			&lt;&lt;/if&gt;&gt;
 		&lt;&lt;/for&gt;&gt;
@@ -16051,9 +16078,12 @@ Create your character to begin.
 							/* optional: climax act marker */
 							&lt;&lt;set $sex.act = &quot;Climax&quot;&gt;&gt;
 
+
 							/* refresh state */
 							&lt;&lt;run setup.updateCumLocations($sex)&gt;&gt;
 							&lt;&lt;run setup.updateBindings()&gt;&gt;
+
+                            &lt;&lt;set $sex.chosenCumLocation = _loc&gt;&gt;
 
 							/* redraw the action UI */
 							&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
