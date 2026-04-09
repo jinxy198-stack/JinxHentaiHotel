@@ -1,9 +1,6 @@
 :: StoryInit {"position":"25,25","size":"100,100"}
 
-/*If true then young characters can exist in the game. */
-<<set $shota to true>>
-/* If true then Furry characters can exist in the game */
-<<set $furry to true>>
+
 
 <<set $physique = {
 	muscle: 4,
@@ -34,6 +31,7 @@
   $Taiga_CB,
   $Natsumi_CB
 ]>>
+
 /* Orginal Characters */
 <<set $OCPool = [
   $KevinNpc,
@@ -43,6 +41,7 @@
   $CarlosNpc,
   $Turbo
 ]>>
+
 /* Applebridge */
 <<set $ABPool = [
   $CoryP,
@@ -65,10 +64,9 @@
   $BenTen,
   $Ryuko,
   $Luffy,
-  $Killua,
+  $Killua
 
 ]>>
-
 /* helpers */
 
 <<run setup.pick  = (arr) => arr[Math.floor(Math.random() * arr.length)]>>
@@ -140,9 +138,10 @@
 
 /* A pool of every character pool */
 <<set $fullPool = []
-	.concat($CBPool || [])
-	.concat($OCPool || [])
-	.concat($ABPool || [])
-  .concat($MiscPool || [])
-  .concat($UTDRPool || [])
->>
+	  .concat($CBPool || [])
+	  .concat($OCPool || [])
+	  .concat($ABPool || [])
+    .concat($MiscPool || [])
+    .concat($UTDRPool || [])
+  >>
+

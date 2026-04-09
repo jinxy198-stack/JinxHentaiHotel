@@ -7,10 +7,12 @@ You decide to eat <<print _food.aoran ? _food.aoran : "a">> $lastEaten.
 <<if _food.consume>>
 <br><em><<print _food.consume>></em>
 <</if>>
-
-<<if _food.flags>>
-<br>Tags: <<print _food.flags.join(", ")>>
+<<if $devMode>>
+	<<if _food.flags>>
+	<br>Tags: <<print _food.flags.join(", ")>>
+	<</if>>
 <</if>>
+
 
 <<link "Continue">>
 	<<goto $returnPassage>>

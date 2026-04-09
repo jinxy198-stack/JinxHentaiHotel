@@ -1,19 +1,16 @@
 :: Lounge [nobr] {"position":"500,1150","size":"100,100"}
-
-
 <<set $gamelocation to "Lounge">>
 <<unset $spawnPools>>
-
+<<run setup.refreshFullPool()>>
+<<SpawnPoolOnce "fullPool" $fullPool 15>>
+<<SpawnRandomNPCs 15>>
 
 A nice place to rest, relax, and socialize. There are some people mingling around the place.
 
 <div class="room-hotel">
-<<SpawnPoolOnce "fullPool" $fullPool 20>>
-<<SpawnRandomNPCs 20>>
-
-
+<<SpawnPoolOnce "fullPool" $fullPool 15>>
+<<SpawnRandomNPCs 15>>
 <<include "NPC-List">>
-
 </div>
 
 <div id="npcsex-actions-bar">

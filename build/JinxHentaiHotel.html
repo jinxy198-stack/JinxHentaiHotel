@@ -3272,6 +3272,41 @@ $(document).on("click", "#npcsex-toggle", function () {
   this.textContent = minimized ? "▲ Actions" : "▼ Actions";
   this.setAttribute("aria-expanded", !minimized);
 });
+
+
+
+setup.refreshFullPool = function () {
+	const v = State.variables;
+
+	const traits = Array.isArray(v.mc?.traits) ? v.mc.traits : [];
+
+	let pool = [];
+	pool = pool.concat(v.CBPool || []);
+	pool = pool.concat(v.OCPool || []);
+	pool = pool.concat(v.ABPool || []);
+	pool = pool.concat(v.MiscPool || []);
+	pool = pool.concat(v.UTDRPool || []);
+
+	if (traits.includes("Hates Kids")) {
+		pool = pool.filter(function (npc) {
+			return npc && typeof npc.age === "number" && npc.age >= 18;
+		});
+	}
+
+	if (traits.includes("Hates Adults")) {
+		pool = pool.filter(function (npc) {
+			return npc && typeof npc.age === "number" && npc.age < 18;
+		});
+	}
+
+	if (traits.includes("Hates Furries")) {
+		pool = pool.filter(function (npc) {
+			return npc && npc.species === "Human";
+		});
+	}
+
+	v.fullPool = pool;
+};
 /* twine-user-script #4: "database_dialogue.js" */
 
 setup.isMC = function (char) {
@@ -7656,9 +7691,6 @@ They are not limited to physical or mental traits. &lt;br&gt;
 			&lt;&lt;run $mc.traits.push(&quot;Hates Furries&quot;)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 
-		&lt;&lt;set $shota = !_hatesKids&gt;&gt;
-		&lt;&lt;set $furry = !_hatesFurries&gt;&gt;
-
 		&lt;&lt;set $pages.trait = true&gt;&gt;
 		&lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
@@ -7789,10 +7821,12 @@ You decide to eat &lt;&lt;print _food.aoran ? _food.aoran : &quot;a&quot;&gt;&gt
 &lt;&lt;if _food.consume&gt;&gt;
 &lt;br&gt;&lt;em&gt;&lt;&lt;print _food.consume&gt;&gt;&lt;/em&gt;
 &lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if _food.flags&gt;&gt;
-&lt;br&gt;Tags: &lt;&lt;print _food.flags.join(&quot;, &quot;)&gt;&gt;
+&lt;&lt;if $devMode&gt;&gt;
+	&lt;&lt;if _food.flags&gt;&gt;
+	&lt;br&gt;Tags: &lt;&lt;print _food.flags.join(&quot;, &quot;)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+
 
 &lt;&lt;link &quot;Continue&quot;&gt;&gt;
 	&lt;&lt;goto $returnPassage&gt;&gt;
@@ -7911,13 +7945,13 @@ You enter the elevator. Some buttons are lit up, indicating you can go there, ot
 &lt;div class=&quot;room-hotel&quot;&gt;
 [[Ground Floor|Lobby]] &lt;br&gt;
 [[Jinx&#39;s Room]] &lt;br&gt;
-[[Arcade]] &lt;br&gt;
+/* [[Arcade]] &lt;br&gt; */
 [[Cafe]] &lt;br&gt;
-[[Gym]] &lt;br&gt;
-[[Pool]] &lt;br&gt;
-[[Garden]] &lt;br&gt;
-[[Brothel]] &lt;br&gt;
-[[Spa]] &lt;br&gt;
+/*[[Gym]] &lt;br&gt; */
+/* [[Pool]] &lt;br&gt; */
+/* [[Garden]] &lt;br&gt; */
+/*[[Brothel]] &lt;br&gt; */
+/*[[Spa]] &lt;br&gt; */
 /*[[Zoo]] &lt;br&gt; */
 [[Resident Hallway|Hotel Hallway]] &lt;br&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="38" name="Garden" tags="nobr" position="975,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Garden&quot;&gt;&gt;
@@ -7948,9 +7982,10 @@ You are in the hotel hallway, doors to other rooms are on each side but you cann
 &lt;br&gt;
 &lt;span class=&quot;glitch&quot; data-text=&quot;There is also a door that seems to be locked tight, it&#39;s best you do not enter.&quot;&gt;There is also a door that seems to be locked tight, it&#39;s best you do not enter.&lt;/span&gt;
 At the end of the hall is an elevator.
-&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 20&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 20&gt;&gt;
-
+&lt;&lt;unset $spawnPools&gt;&gt;
+&lt;&lt;run setup.refreshFullPool()&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 15&gt;&gt;
 
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
@@ -7995,10 +8030,10 @@ You are in the lobby of the hotel, classical music plays as you watch people fro
 By the entrance you make out the offical greeting board that is meant for all new people.
 &lt;&lt;button &quot;Read Greeting&quot;&gt;&gt;&lt;&lt;PopupGreeting &quot;Greeting&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;br&gt;
 &lt;div class=&quot;room-hotel&quot;&gt;
-&lt;&lt;SpawnPoolOnce &quot;OC&quot; $OCPool 2&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;CB&quot; $CBPool 2&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;AB&quot; $ABPool 2&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 6&gt;&gt;
+&lt;&lt;unset $spawnPools&gt;&gt;
+&lt;&lt;run setup.refreshFullPool()&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 15&gt;&gt;
 
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
@@ -8017,17 +8052,16 @@ By the entrance you make out the offical greeting board that is meant for all ne
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="44" name="Lounge" tags="nobr" position="500,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lounge&quot;&gt;&gt;
 &lt;&lt;unset $spawnPools&gt;&gt;
-
+&lt;&lt;run setup.refreshFullPool()&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 15&gt;&gt;
 
 A nice place to rest, relax, and socialize. There are some people mingling around the place.
 
 &lt;div class=&quot;room-hotel&quot;&gt;
-&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 20&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 20&gt;&gt;
-
-
+&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 15&gt;&gt;
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
-
 &lt;/div&gt;
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
@@ -8054,17 +8088,17 @@ WORK IN PROGESS
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="47" name="TestRoom" tags="nobr" position="850,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Test Room&quot;&gt;&gt;
-&lt;&lt;unset $spawnPools&gt;&gt;
+
 
 
 This room is for testing features of the game, it should no be visible to the average player.
 
 &lt;div class=&quot;room-hotel&quot;&gt;
 
-&lt;&lt;SpawnPoolOnce &quot;FRISK&quot; $UTDRPool 1&gt;&gt;
-
-&lt;&lt;SpawnRandomNPCs 5&gt;&gt;
-
+&lt;&lt;unset $spawnPools&gt;&gt;
+&lt;&lt;run setup.refreshFullPool()&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 20&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 20&gt;&gt;
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
 /* Debug tester */
@@ -13321,12 +13355,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;Test-Sex-Encounter&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="StoryInit" tags="" position="25,25" size="100,100">/*If true then young characters can exist in the game. */
-&lt;&lt;set $shota to true&gt;&gt;
-/* If true then Furry characters can exist in the game */
-&lt;&lt;set $furry to true&gt;&gt;
-
-&lt;&lt;set $physique = {
+&lt;&lt;if passage() is &quot;Test-Sex-Encounter&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
 	muscle: 4,
 	plump: 4,
 	label: &quot;Average&quot;
@@ -13355,6 +13384,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
   $Taiga_CB,
   $Natsumi_CB
 ]&gt;&gt;
+
 /* Orginal Characters */
 &lt;&lt;set $OCPool = [
   $KevinNpc,
@@ -13364,6 +13394,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
   $CarlosNpc,
   $Turbo
 ]&gt;&gt;
+
 /* Applebridge */
 &lt;&lt;set $ABPool = [
   $CoryP,
@@ -13386,10 +13417,9 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
   $BenTen,
   $Ryuko,
   $Luffy,
-  $Killua,
+  $Killua
 
 ]&gt;&gt;
-
 /* helpers */
 
 &lt;&lt;run setup.pick  = (arr) =&gt; arr[Math.floor(Math.random() * arr.length)]&gt;&gt;
@@ -13461,12 +13491,12 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 /* A pool of every character pool */
 &lt;&lt;set $fullPool = []
-	.concat($CBPool || [])
-	.concat($OCPool || [])
-	.concat($ABPool || [])
-  .concat($MiscPool || [])
-  .concat($UTDRPool || [])
-&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
+	  .concat($CBPool || [])
+	  .concat($OCPool || [])
+	  .concat($ABPool || [])
+    .concat($MiscPool || [])
+    .concat($UTDRPool || [])
+  &gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
 &lt;&lt;set $devMode = true&gt;&gt;
 &lt;div&gt;
 &lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
@@ -15111,10 +15141,12 @@ Create your character to begin.
 	/**********************
 	    AGE &amp; BODY
 	**********************/
-	&lt;&lt;if $shota&gt;&gt;
-		&lt;&lt;set _npc.age = setup.randint(6, 50)&gt;&gt;
+	&lt;&lt;if Array.isArray($mc.traits) &amp;&amp; $mc.traits.includes(&quot;Hates Kids&quot;)&gt;&gt;
+		&lt;&lt;set _npc.age = setup.randint(18, 50)&gt;&gt;
+	&lt;&lt;elseif Array.isArray($mc.traits) &amp;&amp; $mc.traits.includes(&quot;Hates Adults&quot;)&gt;&gt;
+		&lt;&lt;set _npc.age = setup.randint(6, 18)&gt;&gt;
 	&lt;&lt;else&gt;&gt;	
-		&lt;&lt;set _npc.age = setup.randint(18, 50)&gt;&gt;	
+		&lt;&lt;set _npc.age = setup.randint(6, 50)&gt;&gt;	
 	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set _npc.heterochromia = either(true,false)&gt;&gt;
 
@@ -15672,6 +15704,38 @@ Create your character to begin.
 			&lt;&lt;set _char.genitaltype = setup.pick(setup.penistype)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+
+&lt;&lt;widget &quot;RefreshFullPool&quot;&gt;&gt;
+	&lt;&lt;set _traits = Array.isArray($mc.traits) ? $mc.traits : []&gt;&gt;
+
+	&lt;&lt;set _pool = []&gt;&gt;
+	&lt;&lt;set _pool = _pool.concat($CBPool || [])&gt;&gt;
+	&lt;&lt;set _pool = _pool.concat($OCPool || [])&gt;&gt;
+	&lt;&lt;set _pool = _pool.concat($ABPool || [])&gt;&gt;
+	&lt;&lt;set _pool = _pool.concat($MiscPool || [])&gt;&gt;
+	&lt;&lt;set _pool = _pool.concat($UTDRPool || [])&gt;&gt;
+
+	&lt;&lt;if _traits.includes(&quot;Hates Kids&quot;)&gt;&gt;
+		&lt;&lt;set _pool = _pool.filter(function (_npc) {
+			return _npc &amp;&amp; _npc.age &gt;= 18;
+		})&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _traits.includes(&quot;Hates Adults&quot;)&gt;&gt;
+		&lt;&lt;set _pool = _pool.filter(function (_npc) {
+			return _npc &amp;&amp; _npc.age &lt; 18;
+		})&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _traits.includes(&quot;Hates Furries&quot;)&gt;&gt;
+		&lt;&lt;set _pool = _pool.filter(function (_npc) {
+			return _npc &amp;&amp; _npc.species === &quot;Human&quot;;
+		})&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;set $fullPool = _pool&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="176" name="Widgets" tags="widget nobr" position="725,2225" size="100,100">&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;&lt;&lt;print setup.pick(setup.noise[_n.species] || setup.noise[_n.anthro.subtype])&gt;&gt;&lt;&lt;/widget&gt;&gt;
 
 

@@ -71,9 +71,6 @@ They are not limited to physical or mental traits. <br>
 			<<run $mc.traits.push("Hates Furries")>>
 		<</if>>
 
-		<<set $shota = !_hatesKids>>
-		<<set $furry = !_hatesFurries>>
-
 		<<set $pages.trait = true>>
 		<<goto "Index-CC">>
 	<</if>>

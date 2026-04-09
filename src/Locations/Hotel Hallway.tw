@@ -5,9 +5,10 @@ You are in the hotel hallway, doors to other rooms are on each side but you cann
 <br>
 <span class="glitch" data-text="There is also a door that seems to be locked tight, it's best you do not enter.">There is also a door that seems to be locked tight, it's best you do not enter.</span>
 At the end of the hall is an elevator.
-<<SpawnPoolOnce "fullPool" $fullPool 20>>
-<<SpawnRandomNPCs 20>>
-
+<<unset $spawnPools>>
+<<run setup.refreshFullPool()>>
+<<SpawnPoolOnce "fullPool" $fullPool 15>>
+<<SpawnRandomNPCs 15>>
 
 <<include "NPC-List">>
 

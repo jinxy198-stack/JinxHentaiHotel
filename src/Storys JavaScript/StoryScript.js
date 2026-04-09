@@ -105,3 +105,38 @@ $(document).on("click", "#npcsex-toggle", function () {
   this.textContent = minimized ? "▲ Actions" : "▼ Actions";
   this.setAttribute("aria-expanded", !minimized);
 });
+
+
+
+setup.refreshFullPool = function () {
+	const v = State.variables;
+
+	const traits = Array.isArray(v.mc?.traits) ? v.mc.traits : [];
+
+	let pool = [];
+	pool = pool.concat(v.CBPool || []);
+	pool = pool.concat(v.OCPool || []);
+	pool = pool.concat(v.ABPool || []);
+	pool = pool.concat(v.MiscPool || []);
+	pool = pool.concat(v.UTDRPool || []);
+
+	if (traits.includes("Hates Kids")) {
+		pool = pool.filter(function (npc) {
+			return npc && typeof npc.age === "number" && npc.age >= 18;
+		});
+	}
+
+	if (traits.includes("Hates Adults")) {
+		pool = pool.filter(function (npc) {
+			return npc && typeof npc.age === "number" && npc.age < 18;
+		});
+	}
+
+	if (traits.includes("Hates Furries")) {
+		pool = pool.filter(function (npc) {
+			return npc && npc.species === "Human";
+		});
+	}
+
+	v.fullPool = pool;
+};
