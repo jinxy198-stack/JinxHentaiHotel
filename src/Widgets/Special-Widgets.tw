@@ -700,33 +700,3 @@
 <</widget>>
 
 
-<<widget "RefreshFullPool">>
-	<<set _traits = Array.isArray($mc.traits) ? $mc.traits : []>>
-
-	<<set _pool = []>>
-	<<set _pool = _pool.concat($CBPool || [])>>
-	<<set _pool = _pool.concat($OCPool || [])>>
-	<<set _pool = _pool.concat($ABPool || [])>>
-	<<set _pool = _pool.concat($MiscPool || [])>>
-	<<set _pool = _pool.concat($UTDRPool || [])>>
-
-	<<if _traits.includes("Hates Kids")>>
-		<<set _pool = _pool.filter(function (_npc) {
-			return _npc && _npc.age >= 18;
-		})>>
-	<</if>>
-
-	<<if _traits.includes("Hates Adults")>>
-		<<set _pool = _pool.filter(function (_npc) {
-			return _npc && _npc.age < 18;
-		})>>
-	<</if>>
-
-	<<if _traits.includes("Hates Furries")>>
-		<<set _pool = _pool.filter(function (_npc) {
-			return _npc && _npc.species === "Human";
-		})>>
-	<</if>>
-
-	<<set $fullPool = _pool>>
-<</widget>>

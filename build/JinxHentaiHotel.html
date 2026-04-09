@@ -8051,14 +8051,13 @@ By the entrance you make out the offical greeting board that is meant for all ne
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="44" name="Lounge" tags="nobr" position="500,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lounge&quot;&gt;&gt;
-&lt;&lt;unset $spawnPools&gt;&gt;
-&lt;&lt;run setup.refreshFullPool()&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 15&gt;&gt;
+
 
 A nice place to rest, relax, and socialize. There are some people mingling around the place.
 
 &lt;div class=&quot;room-hotel&quot;&gt;
+&lt;&lt;unset $spawnPools&gt;&gt;
+&lt;&lt;run setup.refreshFullPool()&gt;&gt;
 &lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
 &lt;&lt;SpawnRandomNPCs 15&gt;&gt;
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
@@ -15704,38 +15703,6 @@ Create your character to begin.
 			&lt;&lt;set _char.genitaltype = setup.pick(setup.penistype)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-
-&lt;&lt;widget &quot;RefreshFullPool&quot;&gt;&gt;
-	&lt;&lt;set _traits = Array.isArray($mc.traits) ? $mc.traits : []&gt;&gt;
-
-	&lt;&lt;set _pool = []&gt;&gt;
-	&lt;&lt;set _pool = _pool.concat($CBPool || [])&gt;&gt;
-	&lt;&lt;set _pool = _pool.concat($OCPool || [])&gt;&gt;
-	&lt;&lt;set _pool = _pool.concat($ABPool || [])&gt;&gt;
-	&lt;&lt;set _pool = _pool.concat($MiscPool || [])&gt;&gt;
-	&lt;&lt;set _pool = _pool.concat($UTDRPool || [])&gt;&gt;
-
-	&lt;&lt;if _traits.includes(&quot;Hates Kids&quot;)&gt;&gt;
-		&lt;&lt;set _pool = _pool.filter(function (_npc) {
-			return _npc &amp;&amp; _npc.age &gt;= 18;
-		})&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if _traits.includes(&quot;Hates Adults&quot;)&gt;&gt;
-		&lt;&lt;set _pool = _pool.filter(function (_npc) {
-			return _npc &amp;&amp; _npc.age &lt; 18;
-		})&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if _traits.includes(&quot;Hates Furries&quot;)&gt;&gt;
-		&lt;&lt;set _pool = _pool.filter(function (_npc) {
-			return _npc &amp;&amp; _npc.species === &quot;Human&quot;;
-		})&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;set $fullPool = _pool&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="176" name="Widgets" tags="widget nobr" position="725,2225" size="100,100">&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;&lt;&lt;print setup.pick(setup.noise[_n.species] || setup.noise[_n.anthro.subtype])&gt;&gt;&lt;&lt;/widget&gt;&gt;
 
 
