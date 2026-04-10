@@ -1,17 +1,21 @@
 :: Your Room [nobr] {"position":"400,725","size":"100,100"}
 <<set $gamelocation to "Your Room">>
-You are in your hotel room. It looks like the love suite of a luxury hotel, complete with a heart shaped bed. Next to the bed is a phone for calling up people you know for a 'good time'.
+You are in your hotel room. It looks like the master suite of a luxury hotel, complete with a large shaped bed. Next to the bed is a phone for calling up people you know for a 'good time'.
 To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic.
 On the other side there was a door to your bathroom.
 <br>
 <<if $lastNpc>>
 	<<set $ui.npc = $lastNpc>>
 	<<set _n = $ui.npc>>
-	<p>_n.name is here in your room. $proset.they will leave after you leave your room.</p>
-<br>
+	<p>_n.name is here in your room. $proset.they will leave after you leave your room.</p> <br>
 <</if>>
 <br>
-
+<<set _memorylink to {text: "Reflect on memories", link: "Bed-Reflect"}>>
+<<link _memorylink>><</link>>
+<br>
+<<set _phonelink to {text: "Bootycall someone.", link: "Booty-Call"}>>
+<<link _phonelink>><</link>>
+<br>
 <<set _sleeplink to {text: "Sleep", link: "Sleep"}>>
 <<link _sleeplink>><</link>>
 <br><br>

@@ -1,39 +1,55 @@
 :: Accept-Dialogue [Dialogue nobr] {"position":"950,775","size":"100,100"}
+
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+
 <<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
     They nod.
 <<else>>
-    <<if _n.personality =="Calm">>
-    "Yes. I'm ready — and I want you to be fully present with me"
-    <<elseif _n.personality == "Bubbly">>
-    "Yes! That sounds exciting I'm totally in the mood for you."
-    <<elseif _n.personality == "Timid">>
-    "I… yes. Only if you stay close to me the whole time."
-    <<elseif _n.personality == "Tough">>
-    "Heh. You're bold. Fine — I'll bite. Just try to keep up."
-    <<elseif _n.personality == "Brave">>
-    "Yeah! Let's do this!"
-    <<elseif _n.personality == "Kind">>
-    "Yes… I want to be that close with you."
-    <<elseif _n.personality == "Active">>
-    "Alright! I like this energy, let's work up a sweat!"
-    <<elseif _n.personality == "Lazy">>
-    "Sure, as long as it's not so tiring."
-    <<elseif _n.personality == "Logical">>
-    "Logically — I want you as well. I approve of this."
-    <<elseif _n.personality == "Sassy">>
-    "Yes — obviously. Took you long enough to say it."
-    <<elseif _n.personality == "Mean">>
-    "Fine then, you're lucky I find you attractive."
-    <<elseif _n.personality == "Energetic">>
-    "Alright! Let's do this!"
-    <<elseif _n.personality == "Playful">>
-    "Oh yeah..."
-    <<elseif _n.personality == "Childish">>
-    "Yay! This'll be fun!"
-    <<elseif _n.personality == "Modest">>
-    "Alright! If you're sure."
+    <<set _lines = []>>
+
+    <<for _p range _personalities>>
+        <<if _p is "Chill">>
+            <<run _lines.push("Sure. I'm down for it.")>>
+        <<elseif _p is "Bubbly">>
+            <<run _lines.push("Yes! That sounds exciting I'm totally in the mood for you.")>>
+        <<elseif _p is "Timid">>
+            <<run _lines.push("I… yes. Only if you stay close to me the whole time.")>>
+        <<elseif _p is "Tough">>
+            <<run _lines.push("Heh. You're bold. Fine I'll bite. Just try to keep up.")>>
+        <<elseif _p is "Brave">>
+            <<run _lines.push("Yeah! Let's do this!")>>
+        <<elseif _p is "Kind">>
+            <<run _lines.push("Yes… I want to do it with you.")>>
+        <<elseif _p is "Active">>
+            <<run _lines.push("Alright! Let's do this!")>>
+        <<elseif _p is "Lazy">>
+            <<run _lines.push("Sure, as long as it's not so tiring.")>>
+        <<elseif _p is "Logical">>
+            <<run _lines.push("It would make sense if we did, alright.")>>
+        <<elseif _p is "Nerdy">>
+            <<run _lines.push("Sure.")>>
+        <<elseif _p is "Sassy">>
+            <<run _lines.push("Yes, obviously. Took you long enough to say it.")>>
+        <<elseif _p is "Brash">>
+            <<run _lines.push("Fine then, you're lucky I find you attractive.")>>
+        <<elseif _p is "Energetic">>
+            <<run _lines.push("Alright! Let's do this!")>>
+        <<elseif _p is "Playful">>
+            <<run _lines.push("Sure, this will be fun!")>>
+        <<elseif _p is "Childish">>
+            <<run _lines.push("Yay! This'll be fun!")>>
+        <<elseif _p is "Modest">>
+            <<run _lines.push("Alright, if you're sure.")>>
+        <<elseif _p is "Naive">>
+            <<run _lines.push("Uh sure, sounds fun.")>>
+        <<elseif _p is "Stubborn">>
+            <<run _lines.push("Fine, I'm in the mood anyway.")>>
+        <</if>>
+    <</for>>
+
+    <<if _lines.length>>
+        "<<= either(..._lines)>>"
     <<else>>
-    "Ok"
+        "Ok."
     <</if>>
 <</if>>
-

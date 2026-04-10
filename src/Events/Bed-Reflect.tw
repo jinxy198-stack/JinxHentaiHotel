@@ -1,0 +1,27 @@
+:: Bed-Reflect [nobr]
+
+<<set _mems = setup.get_all_npc_memories()>>
+
+You lie back on your bed and let your thoughts wander.
+
+<<if _mems.length === 0>>
+	You do not have any intimate memories to reflect on yet.
+<<else>>
+	You think back on the people you have been with.
+
+	<ul>
+	<<for _i = 0; _i < _mems.length && _i < 10; _i++>>
+		<<set _m = _mems[_i]>>
+		<li>
+			You remember when you <<print _m.act>> <<print _m.npcName>>
+		</li>
+	<</for>>
+	</ul>
+<</if>>
+
+<div id="npcsex-actions-bar">
+<<button "Stop relfecting">>
+    <<goto "Your Room">>
+<</button>>
+
+</div>

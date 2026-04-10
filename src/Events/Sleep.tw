@@ -6,6 +6,8 @@
 
 <<set _nosleep to false>>
 
+<<set _n = $ui.npc>>
+
 <<if _loc is "Your Room">>
 
 	You go to sleep on your bed.

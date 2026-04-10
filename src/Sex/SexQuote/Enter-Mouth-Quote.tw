@@ -19,28 +19,26 @@
 	<</if>>
 	<<if _persMatches.length>>
 		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = EnterMouthQuotes.Top[_chosenPers]>>
+		<<set _pool = EnterMouthQuotes[_chosenPers]>>
 	<<else>>
 		<<set _pool =
-			setup.EnterMouthQuotes.Top[_pref]
-			|| setup.EnterMouthQuotes.Top.Neutral
+			setup.EnterMouthQuotes
 		>>
 	<</if>>
 <<elseif _mode == "Bottom">>
-	<<if setup.TakeCockBetweenLipsQuotes.Bottom>>
+	<<if setup.TakeCockBetweenLipsQuotes>>
 		<<for _p range _personalities>>
-			<<if _p and setup.TakeCockBetweenLipsQuotes.Bottom[_p]>>
+			<<if _p and setup.TakeCockBetweenLipsQuotes[_p]>>
 				<<run _persMatches.push(_p)>>
 			<</if>>
 		<</for>>
 	<</if>>
 	<<if _persMatches.length>>
 		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = TakeCockBetweenLipsQuotes.Bottom[_chosenPers]>>
+		<<set _pool = TakeCockBetweenLipsQuotes[_chosenPers]>>
 	<<else>>
 		<<set _pool =
-			setup.TakeCockBetweenLipsQuotes.Bottom[_pref]
-			|| setup.TakeCockBetweenLipsQuotes.Bottom.Neutral
+			setup.TakeCockBetweenLipsQuotes[_pref]
 		>>
 	<</if>>
 <</if>>

@@ -3,7 +3,7 @@
 /* Character nonverbal reaction. Also works if the character is mute. */
 
 <<if $sex.phase == "climax">>
-	_n.name <<npcNoise>>s from the pleasure.
+	_n.name <<npcNoise>>s from the pleasure of the climax.
 
 <<else>>
 	<<if $sex.act == "Fuck Pussy">>

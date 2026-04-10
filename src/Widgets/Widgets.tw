@@ -253,6 +253,7 @@
 
 							<li>
 								<<button "End Session">>
+                                    <<run setup.record_sex_memory($ui.npc, "had sex with")>>
 									<<set _returnTo = $gamelocation || "Your Room">>
 									<<set $lastNpc = $ui.npc>>
 									<<run setup.resetSexSession()>>

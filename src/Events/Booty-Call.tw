@@ -1,0 +1,27 @@
+:: Booty-Call [nobr]
+<<set _targets = setup.get_booty_call_targets()>>
+
+<<if _targets.length === 0>>
+	You do not have any contacts yet.
+<<else>>
+	You pick up the phone and think of who to call up for another fun time.
+
+	<ul>
+	<<for _i = 0; _i < _targets.length && _i < 10; _i++>>
+		<<set _t = _targets[_i]>>
+		<li>
+			<<button _t.npcName>>
+				<<set $bootyCallNpc = clone(_t.npc)>>
+				<<set $ui.npc = $bootyCallNpc>>
+				<<run Dialog.create("Propose sex with " + $bootyCallNpc.name).wikiPassage("UI-Attracted-check").open()>>
+			<</button>>
+		</li>
+	<</for>>
+	</ul>
+<</if>>
+
+<div id="npcsex-actions-bar">
+<<button "Put phone down">>
+	<<goto "Your Room">>
+<</button>>
+</div>

@@ -1,3 +1,4 @@
+
 setup.personalityTips = {
 	Chill: "Steady, patient, and unlikely to rush things.",
 	Timid: "Shy, hesitant, and easily flustered.",
@@ -19,11 +20,12 @@ setup.personalityTips = {
 	Sassy: "Likes to tease, and is slightly disrespectful.",
 	Logical: "Socially stunted but very rational.",
 	Modest: "Does not think themselves higher than others.",
-	Energetic: "Full of life and lots of energy to spare."
+	Energetic: "Full of life and lots of energy to spare.",
+	Stubborn: "Hard to convince to see things from other's point of view."
 };
 
 setup.traitTips = {
-	"Mute": "They character cannot speak.",
+	"Mute": "This character cannot speak.",
 	"Will Not Top": "They will not perform penetrative actions as the active/top partner.",
 	"Will Not Bottom": "They will not receive penetrative actions as the passive/bottom partner.",
 	"Hates Kids": "If the player character has this then characters under 18 will not exist",

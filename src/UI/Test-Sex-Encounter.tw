@@ -1,13 +1,25 @@
 :: Test-Sex-Encounter [nobr]
+<<if !$ui or typeof $ui !== "object">>
+	<<set $ui = {}>>
+<</if>>
 
-<<if !$ui || !$ui.npc>>
+<<if !$ui.npc and $bootyCallNpc>>
+	<<set $ui.npc = clone($bootyCallNpc)>>
+<</if>>
+
+<<if !$ui.npc and $lastNpc>>
+	<<set $ui.npc = clone($lastNpc)>>
+<</if>>
+
+<<if !$ui.npc>>
 	ERROR: ui.npc not set
 	<<return>>
 <</if>>
+
 <<set _npc = $ui.npc>>
 <<set _n = _npc>>
-/* This is to be set to null at the end of each encounter.*/
 <<set $n = _n>>
+<<set $bootyCallNpc = null>>
 
 <<run setup.normalizeBodyparts($mc)>>
 <<run setup.normalizeBodyparts(_n)>>
@@ -69,6 +81,7 @@
 	<div id="npcsex-dialogue">
 		<div id="intro" class="intro">
 			<<if _sexCount == 1>>
+				<<= $sex.count >>
 				You both enter <<= $gamelocation.toLowerCase() >>. You both strip naked, showing off your bare bodies to one another.
 				You both know what you're in for, but it's always a bit awkward with someone new.
 				

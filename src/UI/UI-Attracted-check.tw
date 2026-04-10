@@ -1,4 +1,16 @@
 :: UI-Attracted-check [nobr] {"position":"900,500","size":"100,100"}
+
+<<if $bootyCallNpc>>
+	<<set _n = $bootyCallNpc>>
+	<<set $ui.npc = _n>>
+<<elseif $ui && $ui.npc>>
+	<<set _n = $ui.npc>>
+<<else>>
+	No NPC selected.
+	<<return>>
+<</if>>
+
+<<set _key = _n.id || _n.name>>
 <<check-attraction $mc _n>>
 <b>$mc.name: </b>
 <br>
@@ -69,13 +81,24 @@
 <div id="top-bottom-chat"><<include "top-bottom-Dialogue">></div>
 <br>
 <<button "Go have sex">>
-	<<WithNPC _n.id>>
-    <<run Dialog.close()>>
+	<<if !$ui or typeof $ui !== "object">>
+		<<set $ui = {}>>
+	<</if>>
+
+	<<if $bootyCallNpc>>
+		<<set $ui.npc = clone($bootyCallNpc)>>
+		<<set $lastNpc = clone($bootyCallNpc)>>
+	<<else>>
+		<<WithNPC _n.id>>
+		<<set $lastNpc = $ui.npc>>
+	<</if>>
+
+	<<run Dialog.close()>>
+
 	<<if $gamelocation != "Your Bathroom">>
 		<<set $gamelocation = "Your Room">>
-	<<else>>
-		<<set $gamelocation = $gamelocation>>
 	<</if>>
+
 	<<goto "Test-Sex-Encounter">>
 <</button>>
 <<else>>

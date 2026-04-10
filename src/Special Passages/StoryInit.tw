@@ -145,3 +145,6 @@
     .concat($UTDRPool || [])
   >>
 
+<<if !$npcMemories>>
+	<<set $npcMemories = {}>>
+<</if>>

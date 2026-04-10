@@ -1,35 +1,44 @@
 :: Reject-Dialogue [Dialogue nobr] {"position":"1075,775","size":"100,100"}
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+
 <<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
     They shake their head.
 <<else>>
-    <<if _n.personality =="Calm">>
-        "Not interested. But I'm content simply sharing this moment with you."
-    <<elseif _n.personality == "Jolly">>
-        "Not right now — but don't worry, I'm still enjoying you being here."
-    <<elseif _n.personality == "Timid">>
-        "I-I'm sorry. I don't want to… but I'm grateful you asked gently."
-    <<elseif _n.personality == "Tough">>
-        "Not happening. So drop it."
-    <<elseif _n.personality == "Brave">>
-        "Gonna have to decline. It's just not going to work out."
-    <<elseif _n.personality == "Kind">>
-        "I appreciate it but I must decline."
-    <<elseif _n.personality == "Active">>
-        "Love the enthusiasm but I'm gonna pass."
-    <<elseif _n.personality == "Logical">>
-        "I decline. The conditions are not ideal for full engagement."
-    <<elseif _n.personality == "Sassy">>
-        "No — don't look so shocked. I got other things to do anyway"
-    <<elseif _n.personality == "Mean">>
-        "With you? Absolutely not!"
-    <<elseif _n.personality == "Energetic">>
-        "Mmmm, no thanks. Sorry."
-    <<elseif _n.personality == "Playful">>
-        "Nah, I don't feel like playing with you."
-    <<elseif _n.personality == "Childish">>
-        "Oh, sorry nevermind! I got ahead of myself!"
+    <<set _lines = []>>
+
+    <<for _p range _personalities>>
+        <<if _p is "Calm">>
+            <<run _lines.push("Not interested. But I'm content simply sharing this moment with you.")>>
+        <<elseif _p is "Jolly">>
+            <<run _lines.push("Not right now — but don't worry, I'm still enjoying you being here.")>>
+        <<elseif _p is "Timid">>
+            <<run _lines.push("I-I'm sorry. I don't want to… but I'm grateful you asked gently.")>>
+        <<elseif _p is "Tough">>
+            <<run _lines.push("Not happening. So drop it.")>>
+        <<elseif _p is "Brave">>
+            <<run _lines.push("Gonna have to decline. It's just not going to work out.")>>
+        <<elseif _p is "Kind">>
+            <<run _lines.push("I appreciate it but I must decline.")>>
+        <<elseif _p is "Active">>
+            <<run _lines.push("Love the enthusiasm but I'm gonna pass.")>>
+        <<elseif _p is "Logical">>
+            <<run _lines.push("I decline. The conditions are not ideal for full engagement.")>>
+        <<elseif _p is "Sassy">>
+            <<run _lines.push("No — don't look so shocked. I got other things to do anyway.")>>
+        <<elseif _p is "Mean">>
+            <<run _lines.push("With you? Absolutely not!")>>
+        <<elseif _p is "Energetic">>
+            <<run _lines.push("Mmmm, no thanks. Sorry.")>>
+        <<elseif _p is "Playful">>
+            <<run _lines.push("Nah, I don't feel like playing with you.")>>
+        <<elseif _p is "Childish">>
+            <<run _lines.push("Oh, sorry nevermind! I got ahead of myself!")>>
+        <</if>>
+    <</for>>
+
+    <<if _lines.length>>
+        <<= either(..._lines)>>
     <<else>>
-        "No"
+        "No."
     <</if>>
 <</if>>
-
