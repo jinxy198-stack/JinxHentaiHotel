@@ -114,6 +114,7 @@
 		<b>Current Position:</b> <<print $sex.position>><br>
 		<b>Previous Position:</b> <<print $sex.previousPosition || "None">><br>
 		<b>Role:</b> <<print $sex.role>><br>
+        
 
 		<b>Act:</b>
 		<<if $sex.act>>
@@ -142,7 +143,7 @@
 	</div>
 
 	<<if $devMode>>
-		/* Put debug output here if needed */
+		Encounter size: <<= setup.getEncounterSize($sex) >>
 	<</if>>
 
 	<!-- ===================== -->

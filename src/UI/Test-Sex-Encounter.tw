@@ -81,7 +81,6 @@
 	<div id="npcsex-dialogue">
 		<div id="intro" class="intro">
 			<<if _sexCount == 1>>
-				<<= $sex.count >>
 				You both enter <<= $gamelocation.toLowerCase() >>. You both strip naked, showing off your bare bodies to one another.
 				You both know what you're in for, but it's always a bit awkward with someone new.
 				

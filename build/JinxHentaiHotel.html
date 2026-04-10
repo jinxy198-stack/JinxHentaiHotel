@@ -13969,7 +13969,7 @@ Create your character to begin.
 	&lt;div id=&quot;npcsex-dialogue&quot;&gt;
 		&lt;div id=&quot;intro&quot; class=&quot;intro&quot;&gt;
 			&lt;&lt;if _sexCount == 1&gt;&gt;
-				&lt;&lt;= $sex.count &gt;&gt;
+				Encounter size: &lt;&lt;= setup.getEncounterSize($sex) &gt;&gt;
 				You both enter &lt;&lt;= $gamelocation.toLowerCase() &gt;&gt;. You both strip naked, showing off your bare bodies to one another.
 				You both know what you&#39;re in for, but it&#39;s always a bit awkward with someone new.
 				
