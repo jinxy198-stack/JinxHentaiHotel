@@ -1,8 +1,9 @@
 :: Tease-Pussy-Dialogue[nobr]
 
-<<if $sex.act == "Tease Pussy With Cock">>
-You tease _n.name's pussy with your cock.
-<<elseif $sex.act == "Cocktease With Pussy">>
-You tease _n.name's cock with your pussy.
 
-<</if>>
+    <<if $sex.role == "Top">>
+        You tease _n.name's pussy with your cock.
+    <<elseif $sex.role =="Bottom">>
+        _n.name teases your cock with their pussy.
+    <</if>>
+

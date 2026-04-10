@@ -168,7 +168,7 @@ setup.cleanText = function (str) {
 };
 
 setup.noise = {
-    Human: ["moan","groan","squeal"],
+    Human: ["moan","groan","cry","squeal"],
     Lizard: ["hiss"],
     Fox: ["yip"],
     Goat:["bleat"],

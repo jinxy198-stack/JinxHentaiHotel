@@ -1,0 +1,16 @@
+::Scissor-Dialogue [nobr]
+
+<<set _npc = _n>>
+<<PronounsSet>>
+
+
+<<if $sex.role == "Top">>
+	<<= either(
+        "You lie on your side with your upper leg planted and intersecting with _n.name's, lining up your crotches together."
+	) >>
+
+<<elseif $sex.role == "Bottom">>
+	<<= either(
+		"_n.name lie on their side with their upper leg planted and intersecting with yours, lining up your crotches together."
+	) >>
+<</if>>

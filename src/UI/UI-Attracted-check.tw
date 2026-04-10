@@ -59,7 +59,7 @@
 <<elseif _n.sexu=="Asexual">>
 <span class="flag-text flag-asexual flag-on-black">_n.sexu</span>
 <</if>>
-/*_n.sexu */
+
 
 <<if $attraction>><<pick-roles $mc _n>>
 <div id="role-line">
@@ -102,5 +102,6 @@
 	<<goto "Test-Sex-Encounter">>
 <</button>>
 <<else>>
+<br>
 <<include "Reject-Dialogue">>
 <</if>>
