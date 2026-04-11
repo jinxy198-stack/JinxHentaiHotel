@@ -3,7 +3,7 @@
 
 <<set _pref = _n.sexpref || "Switch">>
 <<set _msize = $mc.penislength || "Average">>
-<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _personalities = _n.personality>>
 
 <<set _mode = $sex.role>>
 <<set _position = $sex.position >>

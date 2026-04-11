@@ -21,86 +21,84 @@
 <<set $n = _n>>
 <<set $bootyCallNpc = null>>
 
-<<run setup.normalizeBodyparts($mc)>>
-<<run setup.normalizeBodyparts(_n)>>
-
-<<if !$mc.bodyparts && $mc.body>>
-	<<set $mc.bodyparts = Object.keys($mc.body)>>
-<</if>>
+/* normalize both actors once */
+<<run setup.normalizeActor($mc)>>
+<<run setup.normalizeActor(_n)>>
 
 /* ensure room exists BEFORE UI */
 <<GetRoom>>
 
 /* ensure sex exists */
 <<SexMemory>>
+
 /* local convenience copy */
 <<set _sexCount = $npcMemory[_key].sexCount>>
 
 <<set $sex.position = "Standing">>
 <<set $sex.Top = null>>
 <<set $sex.Bottom = null>>
-<<set $sex.engagedParts= { Top: [], Bottom: [] }>>
+<<set $sex.engagedParts = { Top: [], Bottom: [] }>>
 <<set $sex.penetration = null>>
 <<set $sex.phase = "tease">>
-<<set $sex.history= []>>
-<<set $sex.act= "Waiting">>
+<<set $sex.history = []>>
+<<set $sex.act = "Waiting">>
 
 <<if $sex.roles.dom.name == $mc.name>>
-  <<set $sex.role = "Top">>
-  <<run setup.updateTopBottom($sex)>>
-
+	<<set $sex.role = "Top">>
+	<<run setup.updateTopBottom($sex)>>
 <<elseif $sex.roles.dom.name == _n.name>>
-  <<set $sex.role = "Bottom">>
-  <<run setup.updateTopBottom($sex)>>
-
+	<<set $sex.role = "Bottom">>
+	<<run setup.updateTopBottom($sex)>>
 <</if>>
 
-<<set _h = "<<HeightCompare>>" >>
-<<set _s = "<<SizeCompare>>" >>	
+/* normalize Top/Bottom after role assignment */
+<<run setup.normalizeSexActors($sex)>>
 
-/* ALWAYS rebind Top/Bottom to current */
-/*<<set $sex.Top = $mc>>
-<<set $sex.Bottom  = _n>> */
+<<set _h = "<<HeightCompare>>">>
+<<set _s = "<<SizeCompare>>">>
 
 /* keep furniture flags synced (LOCATION-specific) */
 <<set _furnObj = setup.RoomTypes.furniture[$room.location]>>
 <<set $room.furnitureFlags = (_furnObj && _furnObj.flags) ? _furnObj.flags : []>>
-<<set $sex.furnitureFlags  = $room.furnitureFlags>>
+<<set $sex.furnitureFlags = $room.furnitureFlags>>
 
-/*Arousal meter for both $mc and _n */
+/* arousal meter for both */
 <<set _n.arousal = 0>>
 <<set $mc.arousal = 0>>
 
-	<div id= "sex-container">
-		<<SexEncounterUI>>
-		<<RoomRelocationUI>>
-	</div> 
-	<div id="arousal-ui">
-		<<ArousalUI>>
-	</div>
-	<hr>	
-	<div id="npcsex-dialogue">
-		<div id="intro" class="intro">
-			<<if _sexCount == 1>>
-				You both enter <<= $gamelocation.toLowerCase() >>. You both strip naked, showing off your bare bodies to one another.
-				You both know what you're in for, but it's always a bit awkward with someone new.
-				
-				<<if _h is 1>>
-  					$mc.name is taller.
-				<<elseif _h is -1>>
-  					_n.name is taller.
-				<<else>>
-  					_n.name and $mc.name are both the same height.
-				<</if>>
-			<<elseif _sexCount >= 2>>
-				You and <<=_n.name >> go to <<= $gamelocation.toLowerCase() >>.
-				Almost professionally, you both strip until you are nude.
-				<<=$proset.theyUp >> appears up for whatever you have in mind.
+<div id="sex-container">
+	<<SexEncounterUI>>
+	<<RoomRelocationUI>>
+</div>
+
+<div id="arousal-ui">
+	<<ArousalUI>>
+</div>
+
+<hr>
+
+<div id="npcsex-dialogue">
+	<div id="intro" class="intro">
+		<<if _sexCount == 1>>
+			You both enter <<= $gamelocation.toLowerCase() >>. You both strip naked, showing off your bare bodies to one another.
+			You both know what you're in for, but it's always a bit awkward with someone new.
+
+			<<if _h is 1>>
+				$mc.name is taller.
+			<<elseif _h is -1>>
+				_n.name is taller.
 			<<else>>
-				WTF THIS SHOULDN'T BE HERE! THERE IS AN ERROR IN THE GAME!
+				_n.name and $mc.name are both the same height.
 			<</if>>
-		</div>
-		<div id="log"><<include "PositionDialogue">></div>
-		<hr>
+		<<elseif _sexCount >= 2>>
+			You and <<=_n.name>> go to <<= $gamelocation.toLowerCase() >>.
+			Almost professionally, you both strip until you are nude.
+			<<=$proset.theyUp>> appears up for whatever you have in mind.
+		<<else>>
+			WTF THIS SHOULDN'T BE HERE! THERE IS AN ERROR IN THE GAME!
+		<</if>>
 	</div>
 
+	<div id="log"><<include "PositionDialogue">></div>
+	<hr>
+</div>

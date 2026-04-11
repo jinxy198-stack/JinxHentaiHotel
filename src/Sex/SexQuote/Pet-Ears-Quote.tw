@@ -11,7 +11,7 @@
 
 <<set _mode = $sex.role>>
 <<set _pref = _n.sexpref || "Neutral">>
-<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _personalities = _n.personality>>
 
 <<set _pool = null>>
 

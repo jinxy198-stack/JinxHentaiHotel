@@ -1,7 +1,7 @@
 :: Reject-Dialogue [Dialogue nobr] {"position":"1075,775","size":"100,100"}
-<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _personalities = _n.personality>>
 
-<<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
+<<if _n.traits.includes("Mute")>>
     They shake their head.
 <<else>>
     <<set _lines = []>>

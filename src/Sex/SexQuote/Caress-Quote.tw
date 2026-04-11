@@ -6,7 +6,7 @@
 <<set _pref = _n.sexpref || "Switch">>
 <<set _mmaterial = ($mc && $mc.body && $mc.body.Bodymaterial) ? $mc.body.Bodymaterial : "Skin">>
 <<set _nmaterial = (_n && _n.body && _n.body.Bodymaterial) ? _n.body.Bodymaterial : "Skin">>
-<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _personalities = _n.personality>>
 
 <<set _pool = null>>
 

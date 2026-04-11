@@ -3209,6 +3209,224 @@ setup.refreshFullPool = function () {
 };
 
 
+(function () {
+  const BODY_DEFAULTS = {
+    Head: "Head",
+    Face: "Face",
+    Mouth: "Mouth",
+    Arm: "Arm",
+    Leg: "Leg",
+    Hand: "Hand",
+    Feet: "Feet",
+    Ass: "Ass",
+    Asshole: "Asshole",
+    Nipples: "Nipples",
+    Crotch: "Crotch",
+    Thigh: "Thigh",
+    Finger: "Finger",
+    Hip: "Hip",
+    Lip: "Lip",
+    Tongue: "Tongue",
+    Bodymaterial: "Skin"
+  };
+
+  const PART_ALIASES = {
+    arm: ["arms"],
+    arms: ["arm"],
+
+    hand: ["hands"],
+    hands: ["hand"],
+
+    leg: ["legs"],
+    legs: ["leg"],
+
+    foot: ["feet"],
+    feet: ["foot"],
+
+    ear: ["ears"],
+    ears: ["ear"],
+
+    eye: ["eyes"],
+    eyes: ["eye"],
+
+    finger: ["fingers"],
+    fingers: ["finger"],
+
+    hip: ["hips"],
+    hips: ["hip"],
+
+    lip: ["lips"],
+    lips: ["lip"],
+
+    thigh: ["thighs"],
+    thighs: ["thigh"],
+
+    breast: ["breasts"],
+    breasts: ["breast"],
+
+    nipple: ["nipples"],
+    nipples: ["nipple"]
+  };
+
+  function cleanString(value, fallback = "") {
+    if (value == null) return fallback;
+    const out = String(value).trim();
+    return out === "" ? fallback : out;
+  }
+
+	function asArray(value) {
+  		if (value == null) return [];
+
+  		if (Array.isArray(value)) {
+    		return value;
+  		}
+
+  		return [value];
+	}
+	
+  function cleanArray(value) {
+    return [...new Set(
+      asArray(value)
+        .map(v => cleanString(v))
+        .filter(Boolean)
+    )];
+  }
+
+  function buildBodyparts(actor) {
+    const rawParts = Object.keys(actor.body || {});
+    const genitalParts = cleanArray(actor.genitalsList || actor.genitals);
+
+    const out = new Set();
+
+    rawParts.concat(genitalParts).forEach(part => {
+      const p = cleanString(part);
+      if (!p) return;
+
+      out.add(p);
+
+      const aliases = PART_ALIASES[p.toLowerCase()];
+      if (aliases) {
+        aliases.forEach(alias => out.add(alias));
+      }
+    });
+
+    actor.bodyparts = [...out];
+    return actor.bodyparts;
+  }
+
+  setup.normalizeActor = function (actor) {
+    if (!actor || typeof actor !== "object") return actor;
+
+    /* ---------- simple scalar defaults ---------- */
+    actor.name = cleanString(actor.name);
+    actor.surname = cleanString(actor.surname);
+    actor.species = cleanString(actor.species, "Human");
+    actor.gender = cleanString(actor.gender);
+    actor.trans = cleanString(actor.trans);
+    actor.pronouns = cleanString(actor.pronouns);
+    actor.sexpref = cleanString(actor.sexpref, "Neutral");
+    actor.bodyheight = cleanString(actor.bodyheight, "Average");
+    actor.physique = cleanString(actor.physique, "Average");
+    actor.origin = cleanString(actor.origin, "Unknown");
+
+    /* keep old field, add clearer alias */
+    actor.sexu = cleanString(actor.sexu, cleanString(actor.sexuality));
+    actor.sexuality = cleanString(actor.sexuality, actor.sexu);
+
+    /* ---------- normalize list-like fields ---------- */
+    actor.nicknameList = cleanArray(actor.nickname);
+    actor.nickname = actor.nicknameList[0] || cleanString(actor.nickname);
+
+    actor.traits = cleanArray(actor.traits);
+    actor.personality = cleanArray(actor.personality);
+    actor.genitaltype = cleanArray(actor.genitaltype);
+
+    /* support either one genital or many */
+    actor.genitalsList = cleanArray(actor.genitals);
+    actor.genitals = actor.genitalsList[0] || cleanString(actor.genitals);
+
+    /* ---------- body defaults ---------- */
+    actor.body = Object.assign({}, BODY_DEFAULTS, actor.body || {});
+
+    /* ensure genitals also exist as body keys */
+    actor.genitalsList.forEach(part => {
+      if (!actor.body[part]) {
+        actor.body[part] = part;
+      }
+    });
+
+    /* ---------- gender defaults ---------- */
+    const g = actor.gender.toLowerCase();
+
+    if (g === "male") {
+      delete actor.body.Breasts;
+      delete actor.body.Vagina;
+      delete actor.body.Clitoris;
+
+      actor.body.Penis = actor.body.Penis || "Penis";
+      actor.body.Balls = actor.body.Balls || "Balls";
+      actor.body.Chest = actor.body.Chest || "Chest";
+
+      if (!actor.genitals) {
+        actor.genitals = "Penis";
+        actor.genitalsList = ["Penis"];
+      }
+    }
+    else if (g === "female") {
+      delete actor.body.Chest;
+      delete actor.body.Penis;
+      delete actor.body.Balls;
+
+      actor.body.Vagina = actor.body.Vagina || "Vagina";
+      actor.body.Clitoris = actor.body.Clitoris || "Clit";
+      actor.body.Breasts = actor.body.Breasts || "Breasts";
+
+      if (!actor.genitals) {
+        actor.genitals = "Vagina";
+        actor.genitalsList = ["Vagina"];
+      }
+    }
+
+    /* ---------- optional anthro cleanup ---------- */
+    if (cleanString(actor.species).toLowerCase() === "anthro") {
+      actor.anthro = actor.anthro || {};
+      actor.skincolor = "";
+      actor.skinfeatures = cleanString(actor.skinfeatures);
+    }
+
+    /* ---------- rebuild bodyparts last ---------- */
+    buildBodyparts(actor);
+
+    actor._normalized = true;
+    return actor;
+  };
+
+  /* keep old helper name working */
+  setup.normalizeBodyparts = function (actor) {
+    if (!actor || typeof actor !== "object") return actor;
+    buildBodyparts(actor);
+    return actor;
+  };
+
+  setup.normalizeActors = function () {
+    for (let i = 0; i < arguments.length; i++) {
+      const item = arguments[i];
+
+      if (Array.isArray(item)) {
+        item.forEach(actor => setup.normalizeActor(actor));
+      } else {
+        setup.normalizeActor(item);
+      }
+    }
+  };
+
+  setup.normalizeSexActors = function (sex) {
+    if (!sex) return sex;
+    setup.normalizeActor(sex.Top);
+    setup.normalizeActor(sex.Bottom);
+    return sex;
+  };
+})();
 /* twine-user-script #3: "database_dialogue.js" */
 
 setup.isMC = function (char) {
@@ -9144,7 +9362,7 @@ On the other side there was a door to your bathroom.
     haircolor: &quot;Brown&quot;,
     bodyheight: &quot;Short&quot;,
     physique: &quot;Thin&quot;,
-    personality: &quot;Kind&quot;,
+    personality: [&quot;Kind&quot;],
     genitals: &quot;Penis&quot;,
     genitaltype: &quot;Uncut&quot;,
     penislength:&quot;Small&quot;,
@@ -9401,7 +9619,7 @@ Work on fixing spawning NPC&#39;s
 
 &lt;&lt;elseif $sex.action == &quot;Anal&quot;&gt;&gt;
 	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc..sexpref == &quot;Dominant&quot;&gt;&gt;
+	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
 		&lt;&lt;=either(
 			&quot;DOM-LINE-1 about BODY-PART.&quot;,
 			&quot;DOM-LINE-2 about BODY-PART.&quot;,
@@ -10287,7 +10505,7 @@ Work on fixing spawning NPC&#39;s
 			&quot;$proset.their skin is as smooth as silk.&quot;
 		]&gt;&gt;
 
-		&lt;&lt;if _n.phisique == &quot;Toned&quot;&gt;&gt;
+		&lt;&lt;if _n.physique == &quot;Toned&quot;&gt;&gt;
 			&lt;&lt;run _lines.push(
 				&quot;Beneath $proset.their smooth skin, you can feel the firm definition of $proset.their toned body.&quot;
 			)&gt;&gt;
@@ -10909,7 +11127,7 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 			&lt;&lt;gram _bottom &quot;subjCap&quot;&gt;&gt; keeps working &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; &lt;&lt;=_topGen&gt;&gt; until &lt;&lt;gram _top &quot;subj&quot;&gt;&gt; &lt;&lt;gverb _top &quot;hit&quot; &quot;hits&quot;&gt;&gt; &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; limit, then &lt;&lt;gram _top &quot;subj&quot;&gt;&gt; &lt;&lt;gverb _top &quot;shoot&quot; &quot;shoots&quot;&gt;&gt; &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; load down &lt;&lt;gram _bottom &quot;poss&quot;&gt;&gt; throat.
 		&lt;&lt;elseif _bottomClimax&gt;&gt;
 			A moment later, &lt;&lt;gram _bottom &quot;poss&quot;&gt;&gt; &lt;&lt;=_bottomGen&gt;&gt; swells in &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; mouth, and a hot stream shoots down &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; throat. &lt;&lt;gram _top &quot;subjCap&quot;&gt;&gt; &lt;&lt;gverb _top &quot;swallow&quot; &quot;swallows&quot;&gt;&gt; as much as &lt;&lt;gram _top &quot;subj&quot;&gt;&gt; can.
-			&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Rainbow Cum&quot;)&gt;&gt;
+			&lt;&lt;if _n.traits.includes(&quot;Rainbow Cum&quot;)&gt;&gt;
 			You taste the fruity rainbow flavor of their cum.
 			&lt;&lt;/if&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
@@ -11820,7 +12038,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _pref = _n.sexpref&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 
 &lt;&lt;set _position = $sex.position&gt;&gt;
@@ -11871,7 +12089,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 
 &lt;&lt;if $sex.role ==&quot;Top&quot;&gt;&gt;
@@ -11892,7 +12110,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _mmaterial = ($mc &amp;&amp; $mc.body &amp;&amp; $mc.body.Bodymaterial) ? $mc.body.Bodymaterial : &quot;Skin&quot;&gt;&gt;
 &lt;&lt;set _nmaterial = (_n &amp;&amp; _n.body &amp;&amp; _n.body.Bodymaterial) ? _n.body.Bodymaterial : &quot;Skin&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -11945,7 +12163,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _persMatches = []&gt;&gt;
 
@@ -11998,7 +12216,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
 
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _persMatches = []&gt;&gt;
 
@@ -12060,7 +12278,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _persMatches = []&gt;&gt;
 
@@ -12108,7 +12326,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	[Error] No Embrace quote pool found.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="Enter-Ass-Quote" tags="nobr" position="725,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _position = $sex.position &gt;&gt;
@@ -12154,7 +12372,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="Enter-Mouth-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _persMatches = []&gt;&gt;
 
@@ -12199,7 +12417,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _persMatches = []&gt;&gt;
 
@@ -12371,7 +12589,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength || &quot;Average&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _persMatches = []&gt;&gt;
@@ -12437,7 +12655,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _msize = $mc.penislength&gt;&gt;
 &lt;&lt;set _nsize = _n.penislength&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _persMatches = []&gt;&gt;
@@ -12499,7 +12717,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 &lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _position = $sex.position&gt;&gt;
@@ -12560,7 +12778,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _tight = _n.genitaltype || &quot;Normal&quot;&gt;&gt;
 &lt;&lt;set _mage = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _nage = _n.ageGroup || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _mode = $sex.role&gt;&gt;
@@ -12625,7 +12843,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _age = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -12695,7 +12913,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _nsize = _n.breastsize || &quot;None&quot;&gt;&gt;
 &lt;&lt;set _mage = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _nage = _n.ageGroup || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _persMatches = []&gt;&gt;
@@ -12780,7 +12998,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.assSize || &quot;Round&quot;&gt;&gt;
 &lt;&lt;set _nsize = _n.assSize || &quot;Round&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _persMatches = []&gt;&gt;
@@ -12858,7 +13076,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _size = $mc.penislength || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _age = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -12916,7 +13134,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _base = null&gt;&gt;
 
@@ -12959,7 +13177,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _base = null&gt;&gt;
 
@@ -13005,7 +13223,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _action = $sex.act&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if $sex.climax.Top &amp;&amp; $sex.climax.Bottom&gt;&gt;
@@ -13094,7 +13312,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _action = $sex.act&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
@@ -13169,7 +13387,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -13216,7 +13434,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -13260,7 +13478,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _mage = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _nage = _n.ageGroup || &quot;Adult&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _mode = $sex.role&gt;&gt;
@@ -13307,7 +13525,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _mage = $mc.ageGroup || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _action = $sex.action&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;set _pool = null&gt;&gt;
 
@@ -13349,7 +13567,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _base = null&gt;&gt;
 
@@ -13394,7 +13612,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if Array.isArray(setup.TeaseAssCockQuotes)&gt;&gt;
@@ -13464,7 +13682,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _base = null&gt;&gt;
 
@@ -13509,7 +13727,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if Array.isArray(setup.TeaseTipQuotes)&gt;&gt;
@@ -13550,7 +13768,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
 &lt;&lt;if Array.isArray(setup.TribQuotes)&gt;&gt;
@@ -13759,9 +13977,9 @@ Create your character to begin.
 &lt;&lt;button [[Test as a Adult Man|Lounge]]&gt;&gt;&lt;&lt;AdultMan&gt;&gt;&lt;&lt;/button&gt;&gt; 
 
 &lt;&lt;/if&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="169" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="169" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
-&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+&lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
     They nod.
 &lt;&lt;else&gt;&gt;
     &lt;&lt;set _lines = []&gt;&gt;
@@ -13893,7 +14111,7 @@ Create your character to begin.
 &lt;&lt;/if&gt;&gt;
 /*
 &lt;br&gt;
-&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Will Not Top&quot;)&gt;&gt;
+&lt;&lt;if _n.traits.includes(&quot;Will Not Top&quot;)&gt;&gt;
   They will not top
 &lt;&lt;else&gt;&gt;
 
@@ -13936,7 +14154,7 @@ Create your character to begin.
 	Stubborn: [&quot;Oh, it&#39;s you.&quot;]
 }&gt;&gt;
 
-&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+&lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
 	&lt;&lt;set _line = &quot;They wave.&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;set _validPers = []&gt;&gt;
@@ -13980,7 +14198,7 @@ Create your character to begin.
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
 
-&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+&lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
 	&lt;&lt;print _line&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;print &#39;&quot;&#39; + _line.replace(&#39;$mc.name&#39;, $mc.name) + &#39;&quot;&#39; &gt;&gt;
@@ -13995,9 +14213,9 @@ Create your character to begin.
 &lt;&lt;/button&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
-&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+&lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
     They shake their head.
 &lt;&lt;else&gt;&gt;
     &lt;&lt;set _lines = []&gt;&gt;
@@ -14059,88 +14277,87 @@ Create your character to begin.
 &lt;&lt;set $n = _n&gt;&gt;
 &lt;&lt;set $bootyCallNpc = null&gt;&gt;
 
-&lt;&lt;run setup.normalizeBodyparts($mc)&gt;&gt;
-&lt;&lt;run setup.normalizeBodyparts(_n)&gt;&gt;
-
-&lt;&lt;if !$mc.bodyparts &amp;&amp; $mc.body&gt;&gt;
-	&lt;&lt;set $mc.bodyparts = Object.keys($mc.body)&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+/* normalize both actors once */
+&lt;&lt;run setup.normalizeActor($mc)&gt;&gt;
+&lt;&lt;run setup.normalizeActor(_n)&gt;&gt;
 
 /* ensure room exists BEFORE UI */
 &lt;&lt;GetRoom&gt;&gt;
 
 /* ensure sex exists */
 &lt;&lt;SexMemory&gt;&gt;
+
 /* local convenience copy */
 &lt;&lt;set _sexCount = $npcMemory[_key].sexCount&gt;&gt;
 
 &lt;&lt;set $sex.position = &quot;Standing&quot;&gt;&gt;
 &lt;&lt;set $sex.Top = null&gt;&gt;
 &lt;&lt;set $sex.Bottom = null&gt;&gt;
-&lt;&lt;set $sex.engagedParts= { Top: [], Bottom: [] }&gt;&gt;
+&lt;&lt;set $sex.engagedParts = { Top: [], Bottom: [] }&gt;&gt;
 &lt;&lt;set $sex.penetration = null&gt;&gt;
 &lt;&lt;set $sex.phase = &quot;tease&quot;&gt;&gt;
-&lt;&lt;set $sex.history= []&gt;&gt;
-&lt;&lt;set $sex.act= &quot;Waiting&quot;&gt;&gt;
+&lt;&lt;set $sex.history = []&gt;&gt;
+&lt;&lt;set $sex.act = &quot;Waiting&quot;&gt;&gt;
 
 &lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-  &lt;&lt;set $sex.role = &quot;Top&quot;&gt;&gt;
-  &lt;&lt;run setup.updateTopBottom($sex)&gt;&gt;
-
+	&lt;&lt;set $sex.role = &quot;Top&quot;&gt;&gt;
+	&lt;&lt;run setup.updateTopBottom($sex)&gt;&gt;
 &lt;&lt;elseif $sex.roles.dom.name == _n.name&gt;&gt;
-  &lt;&lt;set $sex.role = &quot;Bottom&quot;&gt;&gt;
-  &lt;&lt;run setup.updateTopBottom($sex)&gt;&gt;
-
+	&lt;&lt;set $sex.role = &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;run setup.updateTopBottom($sex)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _h = &quot;&lt;&lt;HeightCompare&gt;&gt;&quot; &gt;&gt;
-&lt;&lt;set _s = &quot;&lt;&lt;SizeCompare&gt;&gt;&quot; &gt;&gt;	
+/* normalize Top/Bottom after role assignment */
+&lt;&lt;run setup.normalizeSexActors($sex)&gt;&gt;
 
-/* ALWAYS rebind Top/Bottom to current */
-/*&lt;&lt;set $sex.Top = $mc&gt;&gt;
-&lt;&lt;set $sex.Bottom  = _n&gt;&gt; */
+&lt;&lt;set _h = &quot;&lt;&lt;HeightCompare&gt;&gt;&quot;&gt;&gt;
+&lt;&lt;set _s = &quot;&lt;&lt;SizeCompare&gt;&gt;&quot;&gt;&gt;
 
 /* keep furniture flags synced (LOCATION-specific) */
 &lt;&lt;set _furnObj = setup.RoomTypes.furniture[$room.location]&gt;&gt;
 &lt;&lt;set $room.furnitureFlags = (_furnObj &amp;&amp; _furnObj.flags) ? _furnObj.flags : []&gt;&gt;
-&lt;&lt;set $sex.furnitureFlags  = $room.furnitureFlags&gt;&gt;
+&lt;&lt;set $sex.furnitureFlags = $room.furnitureFlags&gt;&gt;
 
-/*Arousal meter for both $mc and _n */
+/* arousal meter for both */
 &lt;&lt;set _n.arousal = 0&gt;&gt;
 &lt;&lt;set $mc.arousal = 0&gt;&gt;
 
-	&lt;div id= &quot;sex-container&quot;&gt;
-		&lt;&lt;SexEncounterUI&gt;&gt;
-		&lt;&lt;RoomRelocationUI&gt;&gt;
-	&lt;/div&gt; 
-	&lt;div id=&quot;arousal-ui&quot;&gt;
-		&lt;&lt;ArousalUI&gt;&gt;
-	&lt;/div&gt;
-	&lt;hr&gt;	
-	&lt;div id=&quot;npcsex-dialogue&quot;&gt;
-		&lt;div id=&quot;intro&quot; class=&quot;intro&quot;&gt;
-			&lt;&lt;if _sexCount == 1&gt;&gt;
-				You both enter &lt;&lt;= $gamelocation.toLowerCase() &gt;&gt;. You both strip naked, showing off your bare bodies to one another.
-				You both know what you&#39;re in for, but it&#39;s always a bit awkward with someone new.
-				
-				&lt;&lt;if _h is 1&gt;&gt;
-  					$mc.name is taller.
-				&lt;&lt;elseif _h is -1&gt;&gt;
-  					_n.name is taller.
-				&lt;&lt;else&gt;&gt;
-  					_n.name and $mc.name are both the same height.
-				&lt;&lt;/if&gt;&gt;
-			&lt;&lt;elseif _sexCount &gt;= 2&gt;&gt;
-				You and &lt;&lt;=_n.name &gt;&gt; go to &lt;&lt;= $gamelocation.toLowerCase() &gt;&gt;.
-				Almost professionally, you both strip until you are nude.
-				&lt;&lt;=$proset.theyUp &gt;&gt; appears up for whatever you have in mind.
+&lt;div id=&quot;sex-container&quot;&gt;
+	&lt;&lt;SexEncounterUI&gt;&gt;
+	&lt;&lt;RoomRelocationUI&gt;&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;arousal-ui&quot;&gt;
+	&lt;&lt;ArousalUI&gt;&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+
+&lt;div id=&quot;npcsex-dialogue&quot;&gt;
+	&lt;div id=&quot;intro&quot; class=&quot;intro&quot;&gt;
+		&lt;&lt;if _sexCount == 1&gt;&gt;
+			You both enter &lt;&lt;= $gamelocation.toLowerCase() &gt;&gt;. You both strip naked, showing off your bare bodies to one another.
+			You both know what you&#39;re in for, but it&#39;s always a bit awkward with someone new.
+
+			&lt;&lt;if _h is 1&gt;&gt;
+				$mc.name is taller.
+			&lt;&lt;elseif _h is -1&gt;&gt;
+				_n.name is taller.
 			&lt;&lt;else&gt;&gt;
-				WTF THIS SHOULDN&#39;T BE HERE! THERE IS AN ERROR IN THE GAME!
+				_n.name and $mc.name are both the same height.
 			&lt;&lt;/if&gt;&gt;
-		&lt;/div&gt;
-		&lt;div id=&quot;log&quot;&gt;&lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;&lt;/div&gt;
-		&lt;hr&gt;
-	&lt;/div&gt;</tw-passagedata><tw-passagedata pid="174" name="UI-Attracted-check" tags="nobr" position="900,500" size="100,100">&lt;&lt;if $bootyCallNpc&gt;&gt;
+		&lt;&lt;elseif _sexCount &gt;= 2&gt;&gt;
+			You and &lt;&lt;=_n.name&gt;&gt; go to &lt;&lt;= $gamelocation.toLowerCase() &gt;&gt;.
+			Almost professionally, you both strip until you are nude.
+			&lt;&lt;=$proset.theyUp&gt;&gt; appears up for whatever you have in mind.
+		&lt;&lt;else&gt;&gt;
+			WTF THIS SHOULDN&#39;T BE HERE! THERE IS AN ERROR IN THE GAME!
+		&lt;&lt;/if&gt;&gt;
+	&lt;/div&gt;
+
+	&lt;div id=&quot;log&quot;&gt;&lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;&lt;/div&gt;
+	&lt;hr&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="174" name="UI-Attracted-check" tags="nobr" position="900,500" size="100,100">&lt;&lt;if $bootyCallNpc&gt;&gt;
 	&lt;&lt;set _n = $bootyCallNpc&gt;&gt;
 	&lt;&lt;set $ui.npc = _n&gt;&gt;
 &lt;&lt;elseif $ui &amp;&amp; $ui.npc&gt;&gt;
@@ -14244,10 +14461,10 @@ Create your character to begin.
 &lt;&lt;else&gt;&gt;
 &lt;br&gt;
 &lt;&lt;include &quot;Reject-Dialogue&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="175" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="175" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
-	&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+	&lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
         They are willing to top.
     &lt;&lt;else&gt;&gt;
         &lt;&lt;set _lines = []&gt;&gt;
@@ -14303,7 +14520,7 @@ Create your character to begin.
     &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $sex.roles.sub.name is _n.name&gt;&gt;
-    &lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
+    &lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
         They are willing to bottom.
     &lt;&lt;else&gt;&gt;
         &lt;&lt;set _lines = []&gt;&gt;

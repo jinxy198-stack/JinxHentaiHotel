@@ -81,7 +81,7 @@
 <</if>>
 /*
 <br>
-<<if Array.isArray(_n.traits) && _n.traits.includes("Will Not Top")>>
+<<if _n.traits.includes("Will Not Top")>>
   They will not top
 <<else>>
 

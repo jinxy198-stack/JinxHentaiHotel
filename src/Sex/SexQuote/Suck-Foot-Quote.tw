@@ -13,7 +13,7 @@
 <<set _msize = $mc.penislength || "Average">>
 <<set _mage = $mc.ageGroup || "Adult">>
 <<set _action = $sex.action>>
-<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _personalities = _n.personality>>
 
 <<set _pool = null>>
 

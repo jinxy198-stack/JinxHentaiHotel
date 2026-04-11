@@ -21,7 +21,7 @@
 	Stubborn: ["Oh, it's you."]
 }>>
 
-<<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
+<<if _n.traits.includes("Mute")>>
 	<<set _line = "They wave.">>
 <<else>>
 	<<set _validPers = []>>
@@ -65,7 +65,7 @@
 <</if>>
 <br>
 
-<<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
+<<if _n.traits.includes("Mute")>>
 	<<print _line>>
 <<else>>
 	<<print '"' + _line.replace('$mc.name', $mc.name) + '"' >>

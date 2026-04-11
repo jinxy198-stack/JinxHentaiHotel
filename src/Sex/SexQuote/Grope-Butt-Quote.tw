@@ -13,7 +13,7 @@
 <<set _pref = _n.sexpref || "Neutral">>
 <<set _msize = $mc.assSize || "Round">>
 <<set _nsize = _n.assSize || "Round">>
-<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _personalities = _n.personality>>
 
 <<set _pool = null>>
 <<set _persMatches = []>>

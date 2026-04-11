@@ -14,7 +14,7 @@
 <<set _tight = _n.genitaltype || "Normal">>
 <<set _mage = $mc.ageGroup || "Adult">>
 <<set _nage = _n.ageGroup || "Adult">>
-<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _personalities = _n.personality>>
 
 <<set _pool = null>>
 <<set _mode = $sex.role>>

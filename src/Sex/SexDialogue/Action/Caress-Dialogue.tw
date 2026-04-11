@@ -29,7 +29,7 @@
 			"$proset.their skin is as smooth as silk."
 		]>>
 
-		<<if _n.phisique == "Toned">>
+		<<if _n.physique == "Toned">>
 			<<run _lines.push(
 				"Beneath $proset.their smooth skin, you can feel the firm definition of $proset.their toned body."
 			)>>

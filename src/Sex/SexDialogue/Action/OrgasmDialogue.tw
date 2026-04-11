@@ -65,7 +65,7 @@
 			<<gram _bottom "subjCap">> keeps working <<gram _top "poss">> <<=_topGen>> until <<gram _top "subj">> <<gverb _top "hit" "hits">> <<gram _top "poss">> limit, then <<gram _top "subj">> <<gverb _top "shoot" "shoots">> <<gram _top "poss">> load down <<gram _bottom "poss">> throat.
 		<<elseif _bottomClimax>>
 			A moment later, <<gram _bottom "poss">> <<=_bottomGen>> swells in <<gram _top "poss">> mouth, and a hot stream shoots down <<gram _top "poss">> throat. <<gram _top "subjCap">> <<gverb _top "swallow" "swallows">> as much as <<gram _top "subj">> can.
-			<<if Array.isArray(_n.traits) && _n.traits.includes("Rainbow Cum")>>
+			<<if _n.traits.includes("Rainbow Cum")>>
 			You taste the fruity rainbow flavor of their cum.
 			<</if>>
 		<</if>>

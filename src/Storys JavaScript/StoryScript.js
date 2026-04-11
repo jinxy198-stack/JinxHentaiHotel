@@ -142,3 +142,221 @@ setup.refreshFullPool = function () {
 };
 
 
+(function () {
+  const BODY_DEFAULTS = {
+    Head: "Head",
+    Face: "Face",
+    Mouth: "Mouth",
+    Arm: "Arm",
+    Leg: "Leg",
+    Hand: "Hand",
+    Feet: "Feet",
+    Ass: "Ass",
+    Asshole: "Asshole",
+    Nipples: "Nipples",
+    Crotch: "Crotch",
+    Thigh: "Thigh",
+    Finger: "Finger",
+    Hip: "Hip",
+    Lip: "Lip",
+    Tongue: "Tongue",
+    Bodymaterial: "Skin"
+  };
+
+  const PART_ALIASES = {
+    arm: ["arms"],
+    arms: ["arm"],
+
+    hand: ["hands"],
+    hands: ["hand"],
+
+    leg: ["legs"],
+    legs: ["leg"],
+
+    foot: ["feet"],
+    feet: ["foot"],
+
+    ear: ["ears"],
+    ears: ["ear"],
+
+    eye: ["eyes"],
+    eyes: ["eye"],
+
+    finger: ["fingers"],
+    fingers: ["finger"],
+
+    hip: ["hips"],
+    hips: ["hip"],
+
+    lip: ["lips"],
+    lips: ["lip"],
+
+    thigh: ["thighs"],
+    thighs: ["thigh"],
+
+    breast: ["breasts"],
+    breasts: ["breast"],
+
+    nipple: ["nipples"],
+    nipples: ["nipple"]
+  };
+
+  function cleanString(value, fallback = "") {
+    if (value == null) return fallback;
+    const out = String(value).trim();
+    return out === "" ? fallback : out;
+  }
+
+	function asArray(value) {
+  		if (value == null) return [];
+
+  		if (Array.isArray(value)) {
+    		return value;
+  		}
+
+  		return [value];
+	}
+	
+  function cleanArray(value) {
+    return [...new Set(
+      asArray(value)
+        .map(v => cleanString(v))
+        .filter(Boolean)
+    )];
+  }
+
+  function buildBodyparts(actor) {
+    const rawParts = Object.keys(actor.body || {});
+    const genitalParts = cleanArray(actor.genitalsList || actor.genitals);
+
+    const out = new Set();
+
+    rawParts.concat(genitalParts).forEach(part => {
+      const p = cleanString(part);
+      if (!p) return;
+
+      out.add(p);
+
+      const aliases = PART_ALIASES[p.toLowerCase()];
+      if (aliases) {
+        aliases.forEach(alias => out.add(alias));
+      }
+    });
+
+    actor.bodyparts = [...out];
+    return actor.bodyparts;
+  }
+
+  setup.normalizeActor = function (actor) {
+    if (!actor || typeof actor !== "object") return actor;
+
+    /* ---------- simple scalar defaults ---------- */
+    actor.name = cleanString(actor.name);
+    actor.surname = cleanString(actor.surname);
+    actor.species = cleanString(actor.species, "Human");
+    actor.gender = cleanString(actor.gender);
+    actor.trans = cleanString(actor.trans);
+    actor.pronouns = cleanString(actor.pronouns);
+    actor.sexpref = cleanString(actor.sexpref, "Neutral");
+    actor.bodyheight = cleanString(actor.bodyheight, "Average");
+    actor.physique = cleanString(actor.physique, "Average");
+    actor.origin = cleanString(actor.origin, "Unknown");
+
+    /* keep old field, add clearer alias */
+    actor.sexu = cleanString(actor.sexu, cleanString(actor.sexuality));
+    actor.sexuality = cleanString(actor.sexuality, actor.sexu);
+
+    /* ---------- normalize list-like fields ---------- */
+    actor.nicknameList = cleanArray(actor.nickname);
+    actor.nickname = actor.nicknameList[0] || cleanString(actor.nickname);
+
+    actor.traits = cleanArray(actor.traits);
+    actor.personality = cleanArray(actor.personality);
+    actor.genitaltype = cleanArray(actor.genitaltype);
+
+    /* support either one genital or many */
+    actor.genitalsList = cleanArray(actor.genitals);
+    actor.genitals = actor.genitalsList[0] || cleanString(actor.genitals);
+
+    /* ---------- body defaults ---------- */
+    actor.body = Object.assign({}, BODY_DEFAULTS, actor.body || {});
+
+    /* ensure genitals also exist as body keys */
+    actor.genitalsList.forEach(part => {
+      if (!actor.body[part]) {
+        actor.body[part] = part;
+      }
+    });
+
+    /* ---------- gender defaults ---------- */
+    const g = actor.gender.toLowerCase();
+
+    if (g === "male") {
+      delete actor.body.Breasts;
+      delete actor.body.Vagina;
+      delete actor.body.Clitoris;
+
+      actor.body.Penis = actor.body.Penis || "Penis";
+      actor.body.Balls = actor.body.Balls || "Balls";
+      actor.body.Chest = actor.body.Chest || "Chest";
+
+      if (!actor.genitals) {
+        actor.genitals = "Penis";
+        actor.genitalsList = ["Penis"];
+      }
+    }
+    else if (g === "female") {
+      delete actor.body.Chest;
+      delete actor.body.Penis;
+      delete actor.body.Balls;
+
+      actor.body.Vagina = actor.body.Vagina || "Vagina";
+      actor.body.Clitoris = actor.body.Clitoris || "Clit";
+      actor.body.Breasts = actor.body.Breasts || "Breasts";
+
+      if (!actor.genitals) {
+        actor.genitals = "Vagina";
+        actor.genitalsList = ["Vagina"];
+      }
+    }
+
+    /* ---------- optional anthro cleanup ---------- */
+    if (cleanString(actor.species).toLowerCase() === "anthro") {
+      actor.anthro = actor.anthro || {};
+      actor.skincolor = "";
+      actor.skinfeatures = cleanString(actor.skinfeatures);
+    }
+
+    /* ---------- rebuild bodyparts last ---------- */
+    buildBodyparts(actor);
+
+    actor._normalized = true;
+    return actor;
+  };
+
+  /* keep old helper name working */
+  setup.normalizeBodyparts = function (actor) {
+    if (!actor || typeof actor !== "object") return actor;
+    buildBodyparts(actor);
+    return actor;
+  };
+
+  setup.normalizeActors = function () {
+    for (let i = 0; i < arguments.length; i++) {
+      const item = arguments[i];
+
+      if (Array.isArray(item)) {
+        item.forEach(actor => setup.normalizeActor(actor));
+      } else {
+        setup.normalizeActor(item);
+      }
+    }
+  };
+
+  setup.normalizeSexActors = function (sex) {
+    if (!sex) return sex;
+    setup.normalizeActor(sex.Top);
+    setup.normalizeActor(sex.Bottom);
+    return sex;
+  };
+})();

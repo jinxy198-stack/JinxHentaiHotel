@@ -1,8 +1,8 @@
 :: top-bottom-Dialogue [Dialogue nobr] {"position":"1000,900","size":"100,100"}
-<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _personalities = _n.personality>>
 
 <<if $sex.roles.dom.name is _n.name>>
-	<<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
+	<<if _n.traits.includes("Mute")>>
         They are willing to top.
     <<else>>
         <<set _lines = []>>
@@ -58,7 +58,7 @@
     <</if>>
 
 <<elseif $sex.roles.sub.name is _n.name>>
-    <<if Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
+    <<if _n.traits.includes("Mute")>>
         They are willing to bottom.
     <<else>>
         <<set _lines = []>>
