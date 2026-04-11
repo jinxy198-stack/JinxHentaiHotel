@@ -168,7 +168,7 @@
 
 <<elseif $sex.action == "Anal">>
 	<<if $sex.roles.dom.name == $mc.name>>
-	<<if $mc..sexpref == "Dominant">>
+	<<if $mc.sexpref == "Dominant">>
 		<<=either(
 			"DOM-LINE-1 about BODY-PART.",
 			"DOM-LINE-2 about BODY-PART.",
