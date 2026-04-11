@@ -44,5 +44,9 @@ setup.traitTips = {
 	"Glutton": "Enjoys eating food a lot.",
 	"Genius": "Noticably smarter than the average person.",
 	"Gamer": "Enjoy's playing games, (not exclusive to videogames).",
-	"Rainbow Cum": "For some reason their cum is multicolored, and tastes kinda fruity."
+	"Rainbow Cum": "For some reason their cum is multicolored, and tastes kinda fruity.",
+	"Hero": "Fights injustice on a regular basis.",
+	"Criminal": "Commit's crimes on a regular basis",
+	"Nobel": "A person of high wealth and status",
+	"Outlander": "Not used to living in the comforts of civilzation."
 };

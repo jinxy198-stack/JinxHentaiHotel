@@ -3508,7 +3508,7 @@ setup.cleanText = function (str) {
 };
 
 setup.noise = {
-    Human: ["moan","groan","squeal"],
+    Human: ["moan","groan","cry","squeal"],
     Lizard: ["hiss"],
     Fox: ["yip"],
     Goat:["bleat"],
@@ -4108,7 +4108,11 @@ setup.traitTips = {
 	"Glutton": "Enjoys eating food a lot.",
 	"Genius": "Noticably smarter than the average person.",
 	"Gamer": "Enjoy's playing games, (not exclusive to videogames).",
-	"Rainbow Cum": "For some reason their cum is multicolored, and tastes kinda fruity."
+	"Rainbow Cum": "For some reason their cum is multicolored, and tastes kinda fruity.",
+	"Hero": "Fights injustice on a regular basis.",
+	"Criminal": "Commit's crimes on a regular basis",
+	"Nobel": "A person of high wealth and status",
+	"Outlander": "Not used to living in the comforts of civilzation."
 };
 /* twine-user-script #9: "database_roomtypes.js" */
 
@@ -6940,7 +6944,15 @@ We offer an eatery with cuisines of many cultures and worlds.
 We have an infinite amount of hotel rooms to retire to.
 We contain a strip club.
 
-Also while within this hotel it&#39;s impossible to impregnate or be impregnated by someone.</tw-passagedata><tw-passagedata pid="7" name="Lexicon" tags="" position="150,150" size="100,100">A log of relevant information to review in case you don&#39;t know.
+-Also while within this hotel it&#39;s impossible to impregnate or be impregnated by someone. The same applies to contracting or spreading STD&#39;s.
+-Keep in mind that while any severe injuries that occur within the hotel are not permanent, it will still cause pain so avoid doing so.
+-After numerous requests, we have given everyone the gift of Universal language, this does not extend to people who are mute or unable to articulate in any given language.
+
+-Maintenence is still underway within several floors of the hotel, please bear with us as they are adjusted.
+
+-Please be aware that you aknowledge that all sexual encounters conducted in this hotel is done under the all seeing prescense of our patron, the god Jinx. Do not fear, he prefers to simply observe than interfere unless someone breaks the rules.
+
+-The staff at the hotel will like to remind you that while we tolerate alot of freedom of hedonism and expect alot of bodily fluids to be expelled, we kindly advise you use the various restrooms to relive yourself instead of defecating in the elevator (Even our god has a limit and is not happy about his favorite sandals ruined).</tw-passagedata><tw-passagedata pid="7" name="Lexicon" tags="" position="150,150" size="100,100">A log of relevant information to review in case you don&#39;t know.
 
  Species:
     *Human- Plain humanoid
@@ -14080,7 +14092,7 @@ Create your character to begin.
 &lt;&lt;elseif _n.sexu==&quot;Asexual&quot;&gt;&gt;
 &lt;span class=&quot;flag-text flag-asexual flag-on-black&quot;&gt;_n.sexu&lt;/span&gt;
 &lt;&lt;/if&gt;&gt;
-/*_n.sexu */
+
 
 &lt;&lt;if $attraction&gt;&gt;&lt;&lt;pick-roles $mc _n&gt;&gt;
 &lt;div id=&quot;role-line&quot;&gt;
