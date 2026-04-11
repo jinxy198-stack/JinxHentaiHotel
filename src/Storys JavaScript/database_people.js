@@ -93,6 +93,10 @@ setup.penistype= [
     "Phimosis","Uncut", "Cut"
 ];
 
+setup.penistypeMore= [
+    "Tapered", "Knotted", "Barbed","Sheathed","Ribbed"
+];
+
 setup.penislength=[
     "Tiny", "Small", "Average", "Large", "Huge",
 ];

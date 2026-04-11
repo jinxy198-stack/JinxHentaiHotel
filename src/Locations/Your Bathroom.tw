@@ -8,8 +8,7 @@
 <<if $lastNpc>>
 <<set $ui.npc = $lastNpc>>
 <<set _n = $ui.npc>>
-<p> _n.name joins you in the bathroom.
-</p>
+<p><<YourBathroomEvent>></p>
 <br>
 <<linkreplace "Take a shower with _n.name">> 
 <p>_n.name joins you in the shower and you two wash yourselves. You both could hardly keep your hands off each other but eventually you are both squeaky clean.</p>

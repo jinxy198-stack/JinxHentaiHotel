@@ -7,7 +7,8 @@ On the other side there was a door to your bathroom.
 <<if $lastNpc>>
 	<<set $ui.npc = $lastNpc>>
 	<<set _n = $ui.npc>>
-	<p>_n.name is here in your room. $proset.they will leave after you leave your room.</p> <br>
+	<<YourRoomEvent>>
+	<br>
 <</if>>
 <br>
 <<set _memorylink to {text: "Reflect on memories", link: "Bed-Reflect"}>>

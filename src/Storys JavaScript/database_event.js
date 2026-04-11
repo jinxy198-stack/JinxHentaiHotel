@@ -125,3 +125,14 @@ setup.get_all_npc_memories = function () {
 
 	return all;
 };
+
+
+setup.YourRoomEvent = [
+	"$proset.theyUp will leave after you leave your room.",
+	"$proset.theyUp are lounging on your bed."
+];
+
+
+setup.YourBathroomEvent = [
+	"$proset.theyUp are checking themself out in the mirror."
+];

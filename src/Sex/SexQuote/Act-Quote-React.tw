@@ -3,26 +3,27 @@
 /* Character nonverbal reaction. Also works if the character is mute. */
 
 <<if $sex.phase == "climax">>
-	_n.name <<npcNoise>>s from the pleasure of the climax.
+	<<set _lines = [
+		"_n.name <<npcNoise>>s from the pleasure of the climax."
+	]>>
 
 <<else>>
 	<<if $sex.act == "Fuck Pussy">>
-		<<= either(
+		<<set _lines = [
 			"_n.name <<npcNoise>>s at the feeling of fucking a pussy.",
 			"_n.name <<npcNoise>>s softly, lost in the feeling of fucking a pussy.",
 			"Pleasure washes over _n.name, making $proset.them <<npcNoise>> softly."
-		) >>
+		]>>
 
 	<<elseif $sex.act == "Cuddle">>
-		<<= either(
+		<<set _lines = [
 			"_n.name smiles and leans in.",
 			"_n.name relaxes and nestles closer.",
 			"A soft smile crosses _n.name's face as $proset.they lean into you."
-		) >>
+		]>>
 
 	<<elseif $sex.act == "Kiss">>
-		<<= either(
-			"_n.name lets out an eager moan in response.",
+		<<set _lines = [
 			"_n.name enthusiastically presses $proset.themself against you and thrusts $proset.their tongue into your mouth as $proset.they eagerly return your affection.",
 			"With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic tongue battle.",
 			"Letting out a soft moan, _n.name plants a series of gentle kisses on your lips before slowly sliding $proset.their tongue into your mouth.",
@@ -30,18 +31,38 @@
 			"_n.name presses $proset.themself against you, muffling your moans as $proset.they slide $proset.their tongue into your mouth.",
 			"_n.name pushes $proset.their tongue deep into your mouth, moaning as $proset.they eagerly return the kiss.",
 			"With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips."
-		) >>
+		]>>
 	<<elseif $sex.act == "Push Cock In Ass">>
 		<<if $sex.position == "Cowgirl">>
-			<<= either(
-				"_n.name lets out a moan as $proset.they enter you, eagerly bucking $proset.their own <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
-				"With a moan, _n.name eagerly thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your <<= String($mc.assSize || 'ass').toLowerCase() >> ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start energetically fucking you.",
-				"_n.name lets out a moan as $proset.they enter you, bucking $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
-				"With a moan, _n.name thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your $mc.assSize ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start fucking you."
-		) >>
+			<<set _lines = [
+				"_n.name lets out a <<npcNoise>> as $proset.they enter you, eagerly bucking $proset.their own <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
+				"With a <<npcNoise>>, _n.name eagerly thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your <<= String($mc.assSize || 'ass').toLowerCase() >> ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start energetically fucking you.",
+				"_n.name lets out a <<npcNoise>> as $proset.they enter you, bucking $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
+				"With a <<npcNoise>>, _n.name thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your $mc.assSize ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start fucking you."
+		]>>
 		<</if>>
+	<<elseif $sex.act == "Enter Ass">>
+			<<set _lines = [
+				"_n.name moans feeling you slide inside of their ass."
+			]>>
+	<<elseif $sex.act == "Fuck Ass">>
+		<<set _lines = [
+			"_n.name moans feeling you fuck their ass."
+		]>>		
+		<<if _n.sexpref == "Submissive">>
+			<<run _lines.push(
+			"They eagerly buck their hips in response."
+			)>>
+		<<elseif _n.sexpref == "Dominant">>
+			<<run _lines.push(
+			"They grit their teeth, taking it up the ass is something they are not used to."
+			)>>
+		<</if>>	
 	<<else>>
-		_n.name <<npcNoise>>s from the pleasure.
+		<<set _lines = [
+			"_n.name <<npcNoise>>s from the pleasure."
+		]>>
 	<</if>>
 <</if>>
+<<= either(..._lines) >>
 <br>

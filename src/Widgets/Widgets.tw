@@ -773,7 +773,7 @@
         $mc.name to either (setup.names),
         $mc.surname to either("Vanilla", "Kerr", "Silva"),
         $mc.gender to either(setup.genders),
-        $mc.sexpref to either("Dom","Sub","Switch"),
+        $mc.sexpref to either("Dominant","Submissive","Switch"),
         $mc.sexu to either(setup.sexu),
         $mc.pronouns to either("She/Her", "He/Him", "They/Them"),
         $mc.age to random(6, 78),
@@ -1216,6 +1216,24 @@
     <</script>>
 <</widget>>
 
+//to compare the size of the mc and npc, or two npc's
+<<widget "SizeCompare">>
+    <<script>>
+    const rank = {
+    "Tiny": 1,
+    "Small": 2,
+    "Average": 3,
+    "Large": 4,
+    "Huge": 5
+    };
+
+    const mcS  = rank[$mc.penislength];
+    const npcS = rank[_n.penislength];
+
+    return mcS > npcS ? 1 : mcS < npcS ? -1 : 0;
+    <</script>>
+<</widget>>
+
 <<widget "SexMemory">>
     /* ensure global memory object exists */
 	<<set $npcMemory = $npcMemory or {}>>
@@ -1241,4 +1259,34 @@
 	<<set _label = _args[0]>>
 	<<set _tip = _args[1]>>
 	<span class="tooltip-term" tabindex="0" @data-tooltip="_tip"><<print _label>></span>
+<</widget>>
+
+<<widget "YourRoomEvent">>
+    <<if !_n>>
+		[Error] No NPC is here.
+		<<return>>
+	<</if>>
+    <<set _pool = null>>
+    <<set _pool = setup.YourRoomEvent>>
+    _n.name is here in your room.
+    <<if _pool && _pool.length>>
+		<p><<=either(..._pool)>></p>
+	<<else>>
+		[Error]: empty dialogue pool.
+	<</if>>
+<</widget>>
+
+<<widget "YourBathroomEvent">>
+    <<if !_n>>
+		[Error] No NPC is here.
+		<<return>>
+	<</if>>
+    <<set _pool = null>>
+    <<set _pool = setup.YourBathroomEvent>>
+    _n.name joins you in the bathroom.
+    <<if _pool && _pool.length>>
+		<p><<=either(..._pool)>></p>
+	<<else>>
+		[Error]: empty dialogue pool.
+	<</if>>
 <</widget>>

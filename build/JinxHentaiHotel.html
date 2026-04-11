@@ -1322,135 +1322,7 @@ h3 {
   border-radius: 999px;
   background: rgba(90, 120, 255, 0.14);
   border: 1px solid rgba(140, 170, 255, 0.25);
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "Eventdb.js" */
-
-
-setup.get_booty_call_targets = function () {
-	var v = State.variables;
-	var out = [];
-	var key, npc, mems, last;
-
-	if (!v.bootyCallContacts || typeof v.bootyCallContacts !== "object") {
-		return out;
-	}
-
-	for (key in v.bootyCallContacts) {
-		if (!Object.prototype.hasOwnProperty.call(v.bootyCallContacts, key)) {
-			continue;
-		}
-
-		npc = v.bootyCallContacts[key];
-		mems = v.npcMemories && v.npcMemories[key];
-
-		last = (Array.isArray(mems) && mems.length > 0)
-			? mems[mems.length - 1]
-			: null;
-
-		out.push({
-			npcId: key,
-			npcName: npc.name || "Someone",
-			npc: npc,
-			times: Array.isArray(mems) ? mems.length : 0,
-			lastTurn: last ? (last.turn || 0) : 0
-		});
-	}
-
-	out.sort(function (a, b) {
-		return (b.lastTurn || 0) - (a.lastTurn || 0);
-	});
-
-	return out;
-};
-
-
-setup.getNpcMemoryKey = function (person) {
-	if (!person) {
-		return null;
-	}
-
-	if (person.id != null) {
-		return String(person.id);
-	}
-
-	if (person.name != null) {
-		return String(person.name);
-	}
-
-	return null;
-};
-
-setup.cloneNpcForMemory = function (person) {
-	if (!person) {
-		return null;
-	}
-
-	/* deep clone so later changes do not break the saved version */
-	return JSON.parse(JSON.stringify(person));
-};
-
-setup.record_sex_memory = function (person, act) {
-	var v = State.variables;
-	var key;
-
-	if (!person) {
-		return;
-	}
-
-	if (!v.npcMemories || typeof v.npcMemories !== "object") {
-		v.npcMemories = {};
-	}
-
-	if (!v.bootyCallContacts || typeof v.bootyCallContacts !== "object") {
-		v.bootyCallContacts = {};
-	}
-
-	key = setup.getNpcMemoryKey(person);
-
-	if (!key) {
-		return;
-	}
-
-	if (!Array.isArray(v.npcMemories[key])) {
-		v.npcMemories[key] = [];
-	}
-
-	v.npcMemories[key].push({
-		npcId: key,
-		npcName: person.name || "Someone",
-		act: act || "had sex with",
-		position: v.sex && v.sex.position ? v.sex.position : null,
-		role: v.sex && v.sex.role ? v.sex.role : null,
-		location: v.gamelocation || null,
-		turn: State.turns
-	});
-
-	/* this is the important part for Booty-Call */
-	v.bootyCallContacts[key] = setup.cloneNpcForMemory(person);
-};
-setup.get_all_npc_memories = function () {
-	var v = State.variables;
-	var all = [];
-	var key, i;
-
-	if (!v.npcMemories || typeof v.npcMemories !== "object") {
-		return all;
-	}
-
-	for (key in v.npcMemories) {
-		if (Object.prototype.hasOwnProperty.call(v.npcMemories, key) && Array.isArray(v.npcMemories[key])) {
-			for (i = 0; i < v.npcMemories[key].length; i++) {
-				all.push(v.npcMemories[key][i]);
-			}
-		}
-	}
-
-	all.sort(function (a, b) {
-		return (b.turn || 0) - (a.turn || 0);
-	});
-
-	return all;
-};
-/* twine-user-script #2: "Sex-Quote-Data.js" */
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "Sex-Quote-Data.js" */
 
 
 /* ----- ANAL ----- */
@@ -3192,7 +3064,7 @@ setup.defaultMoan1Quotes=[
   "Ah! Ah! Ah!",
   "Fuck me!"
 ];
-/* twine-user-script #3: "StoryScript.js" */
+/* twine-user-script #2: "StoryScript.js" */
 
 /* for the body slider */
 window.SugarCubeInput = function (el) {
@@ -3337,7 +3209,7 @@ setup.refreshFullPool = function () {
 };
 
 
-/* twine-user-script #4: "database_dialogue.js" */
+/* twine-user-script #3: "database_dialogue.js" */
 
 setup.isMC = function (char) {
 	return char === State.variables.mc;
@@ -3521,6 +3393,145 @@ setup.noise = {
 	Anthro:["moan","groan","squeal"]
 }
 
+/* twine-user-script #4: "database_event.js" */
+
+
+setup.get_booty_call_targets = function () {
+	var v = State.variables;
+	var out = [];
+	var key, npc, mems, last;
+
+	if (!v.bootyCallContacts || typeof v.bootyCallContacts !== "object") {
+		return out;
+	}
+
+	for (key in v.bootyCallContacts) {
+		if (!Object.prototype.hasOwnProperty.call(v.bootyCallContacts, key)) {
+			continue;
+		}
+
+		npc = v.bootyCallContacts[key];
+		mems = v.npcMemories && v.npcMemories[key];
+
+		last = (Array.isArray(mems) && mems.length > 0)
+			? mems[mems.length - 1]
+			: null;
+
+		out.push({
+			npcId: key,
+			npcName: npc.name || "Someone",
+			npc: npc,
+			times: Array.isArray(mems) ? mems.length : 0,
+			lastTurn: last ? (last.turn || 0) : 0
+		});
+	}
+
+	out.sort(function (a, b) {
+		return (b.lastTurn || 0) - (a.lastTurn || 0);
+	});
+
+	return out;
+};
+
+
+setup.getNpcMemoryKey = function (person) {
+	if (!person) {
+		return null;
+	}
+
+	if (person.id != null) {
+		return String(person.id);
+	}
+
+	if (person.name != null) {
+		return String(person.name);
+	}
+
+	return null;
+};
+
+setup.cloneNpcForMemory = function (person) {
+	if (!person) {
+		return null;
+	}
+
+	/* deep clone so later changes do not break the saved version */
+	return JSON.parse(JSON.stringify(person));
+};
+
+setup.record_sex_memory = function (person, act) {
+	var v = State.variables;
+	var key;
+
+	if (!person) {
+		return;
+	}
+
+	if (!v.npcMemories || typeof v.npcMemories !== "object") {
+		v.npcMemories = {};
+	}
+
+	if (!v.bootyCallContacts || typeof v.bootyCallContacts !== "object") {
+		v.bootyCallContacts = {};
+	}
+
+	key = setup.getNpcMemoryKey(person);
+
+	if (!key) {
+		return;
+	}
+
+	if (!Array.isArray(v.npcMemories[key])) {
+		v.npcMemories[key] = [];
+	}
+
+	v.npcMemories[key].push({
+		npcId: key,
+		npcName: person.name || "Someone",
+		act: act || "had sex with",
+		position: v.sex && v.sex.position ? v.sex.position : null,
+		role: v.sex && v.sex.role ? v.sex.role : null,
+		location: v.gamelocation || null,
+		turn: State.turns
+	});
+
+	/* this is the important part for Booty-Call */
+	v.bootyCallContacts[key] = setup.cloneNpcForMemory(person);
+};
+setup.get_all_npc_memories = function () {
+	var v = State.variables;
+	var all = [];
+	var key, i;
+
+	if (!v.npcMemories || typeof v.npcMemories !== "object") {
+		return all;
+	}
+
+	for (key in v.npcMemories) {
+		if (Object.prototype.hasOwnProperty.call(v.npcMemories, key) && Array.isArray(v.npcMemories[key])) {
+			for (i = 0; i < v.npcMemories[key].length; i++) {
+				all.push(v.npcMemories[key][i]);
+			}
+		}
+	}
+
+	all.sort(function (a, b) {
+		return (b.turn || 0) - (a.turn || 0);
+	});
+
+	return all;
+};
+
+
+setup.YourRoomEvent = [
+	"$proset.theyUp will leave after you leave your room.",
+	"$proset.theyUp are lounging on your bed."
+];
+
+
+setup.YourBathroomEvent = [
+	"$proset.theyUp are checking themself out in the mirror."
+];
 /* twine-user-script #5: "database_food.js" */
 
 setup.food=
@@ -4023,6 +4034,10 @@ setup.breastsize=[
 
 setup.penistype= [
     "Phimosis","Uncut", "Cut"
+];
+
+setup.penistypeMore= [
+    "Tapered", "Knotted", "Barbed","Sheathed","Ribbed"
 ];
 
 setup.penislength=[
@@ -5569,7 +5584,7 @@ setup.sexacts = {
         "Top arousal cap": 300,
         "act label substitution": ["Bottom", "transgender male", "Tease Front Hole With Feet"],
     },
-     "Rub Pussy Against Feet": /* You rub your pussy against their feet.*/
+    "Rub Pussy Against Feet": /* You rub your pussy against their feet.*/
     {
         "positions": [ "Missionary", "Laid Across On Back", "Kneeling"],
         "action type": ["continue"],
@@ -5945,7 +5960,7 @@ setup.sexacts = {
     "Frot":
     {
         "positions": [ "Missionary", "Lap ride", "Standing", "Kneeling Between Thighs", "Perched", "Against Wall", "Laid Across On Back","Scissor"],
-        "action type": ["tease"],
+        "action type": ["penetrate"],
         "Top parts": ["Penis"],
         "Bottom parts": ["Penis"],
         "Top cum locations": ["on penis"],
@@ -5958,6 +5973,36 @@ setup.sexacts = {
         "Bottom dialogue tags": ["frotting"],
         "remember as": ["frotted"],
     },
+    "Continue Frotting":
+    {
+        "positions": [ "Missionary", "Lap ride", "Standing", "Kneeling Between Thighs", "Perched", "Against Wall", "Laid Across On Back","Scissor"],
+        "action type": ["continue"],
+        "Top parts": ["Penis"],
+        "Bottom parts": ["Penis"],
+        "Top cum locations": ["on penis"],
+        "Bottom cum locations": ["on penis"],
+        "masturbation": false,
+        "take virginity": [],
+        "Top arousal": 40,
+        "Bottom arousal": 40,
+        "Top dialogue tags": ["frotting"],
+        "Bottom dialogue tags": ["frotting"],
+        "remember as": ["frotted"],
+    },
+    "Stop Frotting":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "Top parts": ["Penis"],
+        "Bottom parts": ["Penis"],
+        "Top cum locations": [],
+        "Bottom cum locations": [],
+        "masturbation": false,
+        "take virginity": [],
+        "Top arousal": 0,
+        "Bottom arousal": 0,
+    },
+
     "Trib":
     {
         "positions": [ "Missionary", "Laid Across On Back","Scissor"],
@@ -6952,7 +6997,9 @@ We contain a strip club.
 
 -Please be aware that you aknowledge that all sexual encounters conducted in this hotel is done under the all seeing prescense of our patron, the god Jinx. Do not fear, he prefers to simply observe than interfere unless someone breaks the rules.
 
--The staff at the hotel will like to remind you that while we tolerate alot of freedom of hedonism and expect alot of bodily fluids to be expelled, we kindly advise you use the various restrooms to relive yourself instead of defecating in the elevator (Even our god has a limit and is not happy about his favorite sandals ruined).</tw-passagedata><tw-passagedata pid="7" name="Lexicon" tags="" position="150,150" size="100,100">A log of relevant information to review in case you don&#39;t know.
+-The staff at the hotel will like to remind you that while we tolerate alot of freedom of hedonism and expect alot of bodily fluids to be expelled, we kindly advise you use the various restrooms to relive yourself instead of defecating in the elevator (Even our god has a limit and is not happy about his favorite sandals ruined).
+
+For more information, please go to the library.</tw-passagedata><tw-passagedata pid="7" name="Lexicon" tags="" position="150,150" size="100,100">A log of relevant information to review in case you don&#39;t know.
 
  Species:
     *Human- Plain humanoid
@@ -8231,8 +8278,7 @@ Room NPCs: &lt;&lt;=$roomNPCs ? $roomNPCs.length : 0 &gt;&gt;
 &lt;&lt;if $lastNpc&gt;&gt;
 &lt;&lt;set $ui.npc = $lastNpc&gt;&gt;
 &lt;&lt;set _n = $ui.npc&gt;&gt;
-&lt;p&gt; _n.name joins you in the bathroom.
-&lt;/p&gt;
+&lt;p&gt;&lt;&lt;YourBathroomEvent&gt;&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;&lt;linkreplace &quot;Take a shower with _n.name&quot;&gt;&gt; 
 &lt;p&gt;_n.name joins you in the shower and you two wash yourselves. You both could hardly keep your hands off each other but eventually you are both squeaky clean.&lt;/p&gt;
@@ -8265,7 +8311,8 @@ On the other side there was a door to your bathroom.
 &lt;&lt;if $lastNpc&gt;&gt;
 	&lt;&lt;set $ui.npc = $lastNpc&gt;&gt;
 	&lt;&lt;set _n = $ui.npc&gt;&gt;
-	&lt;p&gt;_n.name is here in your room. $proset.they will leave after you leave your room.&lt;/p&gt; &lt;br&gt;
+	&lt;&lt;YourRoomEvent&gt;&gt;
+	&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
 &lt;&lt;set _memorylink to {text: &quot;Reflect on memories&quot;, link: &quot;Bed-Reflect&quot;}&gt;&gt;
@@ -9940,6 +9987,9 @@ Work on fixing spawning NPC&#39;s
     &lt;&lt;case &quot;Pull Off&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     
     &lt;&lt;case &quot;Frot&quot;&gt;&gt;&lt;&lt;include &quot;Frot-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Continue Frotting&quot;&gt;&gt;&lt;&lt;include &quot;Frot-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stop Frotting&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+
     &lt;&lt;case &quot;Trib&quot;&gt;&gt;&lt;&lt;include &quot;Trib-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Tease Ass With Cock&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Cocktease With Ass&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Dialogue&quot;&gt;&gt;
@@ -10124,9 +10174,9 @@ Work on fixing spawning NPC&#39;s
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="Blowjob-Dialogue" tags="nobr Dialogue" position="1000,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
-
+	
 &lt;&lt;if $sex.act == &quot;Take Cock Between Lips&quot;&gt;&gt;
-	&lt;&lt;= either(
+	&lt;&lt;set _lines = [
 		&quot;_n.name grabs you by the head, pressing the tip of $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against your &lt;&lt;= setup.partLower($mc, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; before slowly sliding it into your mouth.&quot;,
 		&quot;With a firm grip, _n.name guides your head toward $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, pushing forward until the tip parts your &lt;&lt;= setup.partLower($mc, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; and slips inside.&quot;,
 		&quot;_n.name takes hold of your head, pressing the head of $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; to your mouth before gently thrusting forward and sliding in deeper.&quot;,
@@ -10135,11 +10185,12 @@ Work on fixing spawning NPC&#39;s
 		&quot;Looking up at $proset.them eagerly, you lean forward and take $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into your mouth, moving slowly as you start to pleasure $proset.them.&quot;,
 		&quot;You lower your head toward $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, your lips parting as you gently begin to suck and lick with growing enthusiasm.&quot;,
 		&quot;Without hesitation, you press your lips to $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;. $proset.they moan softly as you take $proset.them into your mouth.&quot;
-	) &gt;&gt;
+	]&gt;&gt;
+
 
 &lt;&lt;elseif $sex.act == &quot;Enter Mouth&quot;&gt;&gt;
 	/* They put your cock in their mouth */
-	&lt;&lt;= either(
+	&lt;&lt;set _lines = [
 		&quot;Reaching down to grab _n.name&#39;s head, you line the head of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up with $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; before gently pushing your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward and sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into $proset.their mouth.&quot;,
 		&quot;Reaching down to take hold of _n.name&#39;s head, you push the head of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; before slowly bucking your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt; and gently sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into $proset.their mouth.&quot;,
 		&quot;Reaching down to grab $proset.their head, you line the head of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up with $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; before pushing your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward and sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into $proset.their mouth.&quot;,
@@ -10149,17 +10200,23 @@ Work on fixing spawning NPC&#39;s
 		&quot;_n.name wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a muffled moan as $proset.they bob $proset.their head up and down.&quot;,
 		&quot;A muffled moan drifts out from $proset.their mouth and, wrapping $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, $proset.they continue to give you head.&quot;,
 		&quot;Moaning in delight, _n.name wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, licking and sucking as $proset.they continue making muffled moaning noises.&quot;
-	) &gt;&gt;
+	]&gt;&gt;
 
 &lt;&lt;elseif $sex.act == &quot;Suck Cock&quot;&gt;&gt;
-	&lt;&lt;= either(
+	&lt;&lt;set _lines = [
 		&quot;You suckle on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
 		&quot;_n.name moans with pleasure as you continue to blow $proset.them.&quot;,
 		&quot;Your head bobs up and down as you focus fully on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
-	) &gt;&gt;
+	]&gt;&gt;
+
+	&lt;&lt;if _n.genitaltype == &quot;Barbed&quot;&gt;&gt;
+		&lt;&lt;run _lines.push(
+			&quot;You feel the barbs scrape against your throat.&quot;
+		)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $sex.act == &quot;Fuck Mouth&quot;&gt;&gt;
-	&lt;&lt;= either(
+	&lt;&lt;set _lines = [
 		&quot;You eagerly thrust your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; past $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;, letting out a moan as you greedily pump your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;.&quot;,
 		&quot;You desperately buck your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, letting out a moan as you eagerly fuck $proset.their throat.&quot;,
 		&quot;Enthusiastically bucking your hips into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, you let out a moan as you happily continue receiving your blowjob.&quot;,
@@ -10167,29 +10224,31 @@ Work on fixing spawning NPC&#39;s
 		&quot;You buck your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, letting out a moan as you fuck $proset.their throat.&quot;,
 		&quot;Bucking your hips into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, you let out a moan as you continue happily receiving a blowjob.&quot;,
 		&quot;Inside $proset.their mouth, you can feel that practiced tongue of $proset.them swirling around your tip.&quot;
-	) &gt;&gt;
+	]&gt;&gt;
 
 &lt;&lt;elseif $sex.act == &quot;Suck Each Other Off&quot;&gt;&gt;
-	&lt;&lt;= either(
+	&lt;&lt;set _lines = [
 		&quot;You suck _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; while $proset.they suck your &lt;&lt;= setup.partLower($mc, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
 		&quot;You both orally pleasure each other&quot;
-	) &gt;&gt;
+	]&gt;&gt;
 
 &lt;&lt;elseif $sex.act == &quot;Eat Each Other Out&quot;&gt;&gt;
-	&lt;&lt;= either(
+	&lt;&lt;set _lines = [
 		&quot;You lick _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; while $proset.they lick your &lt;&lt;= setup.partLower($mc, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
-	) &gt;&gt;
+	]&gt;&gt;
 
 &lt;&lt;elseif $sex.act == &quot;Suck And Lick Each Other&quot;&gt;&gt;
-	&lt;&lt;= either(
+	&lt;&lt;set _lines = [
 		&quot;You suck _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; while $proset.they lick your &lt;&lt;= setup.partLower($mc, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
-	) &gt;&gt;
+	]&gt;&gt;
 
 &lt;&lt;elseif $sex.act == &quot;Lick And Suck Each Other&quot;&gt;&gt;
-	&lt;&lt;= either(
+	&lt;&lt;set _lines = [
 		&quot;You lick _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; while $proset.they suck your &lt;&lt;= setup.partLower($mc, &#39;genitaltype&#39;, &#39;genital&#39;) &gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
-	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="Boobjob-Dialogue" tags="nobr Dialogue" position="1300,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+	]&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;= either(..._lines) &gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="Boobjob-Dialogue" tags="nobr Dialogue" position="1300,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
@@ -10514,72 +10573,95 @@ You rub your pussy against _n.name&#39;s feet.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Frot-Dialogue" tags="nobr Dialogue" position="1300,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
-	&lt;&lt;if $position is &quot;Sit on Lap&quot;&gt;&gt;
+&lt;&lt;set _pos   = $sex.position || $position || &quot;Default&quot;&gt;&gt;
+&lt;&lt;set _mcGen = setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;)&gt;&gt;
+&lt;&lt;set _nGen  = setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;)&gt;&gt;
+&lt;&lt;set _mcHip = setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;)&gt;&gt;
+&lt;&lt;set _nHip  = setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;)&gt;&gt;
+
+&lt;&lt;if $sex.act == &quot;Frot&quot;&gt;&gt;
+
+	&lt;&lt;if _pos is &quot;Sit on Lap&quot;&gt;&gt;
 		&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 			&lt;&lt;=either(
-				&quot;You turn yourself to face _n.name and line up your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; with _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
+				&quot;You turn to face _n.name and line up your &lt;&lt;=_mcGen&gt;&gt; with _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;
 			)&gt;&gt;
 		&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 			&lt;&lt;=either(
-				&quot;_n.name turns to face you and line up their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; with your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
-			)&gt;&gt;	
+				&quot;_n.name turns to face you and lines up $proset.their &lt;&lt;=_nGen&gt;&gt; with your &lt;&lt;=_mcGen&gt;&gt;.&quot;
+			)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;elseif $position is &quot;Missionary&quot;&gt;&gt;
+
+	&lt;&lt;elseif _pos is &quot;Missionary&quot;&gt;&gt;
 		&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 			&lt;&lt;=either(
-				&quot;_n.name lays on their back as you crawl on top of them. You line up your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; with their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; and rubbed them together.&quot;
+				&quot;_n.name lies on $proset.their back as you crawl on top of $proset.them. You line up your &lt;&lt;=_mcGen&gt;&gt; with $proset.their &lt;&lt;=_nGen&gt;&gt; and rub them together.&quot;
 			)&gt;&gt;
 		&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 			&lt;&lt;=either(
-				&quot;With you on your back, _n.name climbed on top of you, gazes locked. You felt _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; pressed against yours. _n.name began thrusting $proset.their hips against you, your cocks grinding and rubbing aginst each other.&quot;
-			)&gt;&gt;	
-		&lt;&lt;/if&gt;&gt;			
+				&quot;With you on your back and _n.name above you, you feel _n.name&#39;s &lt;&lt;=_nGen&gt;&gt; press against your &lt;&lt;=_mcGen&gt;&gt;. _n.name begins thrusting $proset.their hips against you, your cocks grinding against each other.&quot;
+			)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 			&lt;&lt;=either(
-				&quot;Reaching down, you adjust your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; to line it up with _n.name&#39;s, before starting to slowly thrust, rubbing your shaft against $proset.theirs.&quot;,
-				&quot;You draw _n.name in close, opening your legs to align your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; with $proset.theirs.&quot;,
-				&quot;You draw _n.name in close, positioning yourself so that your groin is pressing against $proset.theirs. You then pull _n.name in eagerly, coaxing $proset.them to thrust and grind $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against you.&quot;,
-				&quot;With a moan, you eagerly press your groin against $proset.theirs before starting to tease your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up against them.&quot;
+				&quot;Reaching down, you adjust your &lt;&lt;=_mcGen&gt;&gt; to line it up with _n.name&#39;s before starting to thrust slowly, rubbing yourself against $proset.them.&quot;,
+				&quot;You draw _n.name in close, opening your legs to align your &lt;&lt;=_mcGen&gt;&gt; with $proset.theirs.&quot;,
+				&quot;You pull _n.name close and position yourself so your groin presses against $proset.theirs, encouraging $proset.them to grind $proset.their &lt;&lt;=_nGen&gt;&gt; against you.&quot;,
+				&quot;With a moan, you eagerly press your groin against $proset.theirs and begin teasing your &lt;&lt;=_mcGen&gt;&gt; against $proset.them.&quot;
 			)&gt;&gt;
 		&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 			&lt;&lt;=either(
-				&quot;Reaching down, _n.name adjusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; to line it up with yours, before starting to slowly thrust, rubbing $proset.their shaft against yours.&quot;,
+				&quot;Reaching down, _n.name adjusts $proset.their &lt;&lt;=_nGen&gt;&gt; to line it up with yours before starting to thrust slowly, rubbing against you.&quot;,
 				&quot;_n.name draws you in close, opening $proset.their legs to align $proset.their groin with yours.&quot;
 			)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;	
-		&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-			&lt;&lt;=either(
-				&quot;Gently bucking $proset.their own &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; in response, _n.name lets out a moan as $proset.they mirror your movements and softly rub $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against yours.&quot;,
-				&quot;Responding with a gentle buck of $proset.their own &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, _n.name starts mirroring your movements, helping to softly rub $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over yours.&quot;,
-				&quot;Happily bucking $proset.their own &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; in response, _n.name lets out a moan as $proset.they mirror your movements and readily rub $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against yours.&quot;,
-				&quot;Responding with a happy buck of $proset.their own &lt;&lt;=_n.body.Hips.toLowerCase&gt;&gt;, _n.name starts mirroring your movements, helping to frantically rub $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over yours.&quot;,
-				&quot;_n.name enthusiastically responds in kind and lets out a moan as $proset.they rub $proset.their own &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over yours.&quot;,
-				&quot;A moan bursts out from between _n.name&#39;s lips, and, eagerly thrusting $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, $proset.they grind $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against yours.&quot;,
-				&quot;Moaning in delight, _n.name eagerly thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; out, using your movements to help grind $proset.their own &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against yours.&quot;,
-				&quot;_n.name happily responds in kind and lets out a moan as $proset.they softly rub $proset.their own &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over your groin.&quot;,
-				&quot;A moan drifts out from between _n.name&#39;s lips, and, gently thrusting $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, $proset.they grind $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against yours.&quot;,
-				&quot;Moaning in pleasure, _n.name gently pushes $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; out, using your movements to help grind $proset.their own &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against yours.&quot;,
-				&quot;_n.name responds in kind and lets out a moan as $proset.they rub $proset.their own &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over yours.&quot;,
-				&quot;A moan bursts out from between _n.name&#39;s lips, and, thrusting $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, $proset.they grind $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against yours.&quot;,
-				&quot;Moaning in pleasure, _n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; out, using your movements to help grind $proset.their own &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against yours.&quot;
-			)&gt;&gt;
-		
-		&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-			&lt;&lt;=either(
-				&quot;Letting out a little moan with every thrust of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you gently rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-				&quot;You let out a series of soft sighs as you gently rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-				&quot;Sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; , you let out a little moan with each pump of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;.&quot;,
-				&quot;Letting out a moan with each thrust of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you continue to rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-				&quot;You let out a series of lewd moans as you rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-				&quot;Rubbing your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; , you let out a moan with each pump of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;.&quot;,
-				&quot;Letting out a moan with each eager thrust of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you passionately rub your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-				&quot;You let out a series of lewd moans as you desperately grind your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up and down over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-				&quot;Eagerly grinding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; over _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; , you let out a moan with each frantic pump of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;.&quot;,
-				&quot;You both shiver from the pleasure from your cocks each time _n.name thrusts.&quot;
-			)&gt;&gt;
-		&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="Grope-Breast-Dialogue" tags="nobr Dialogue" position="1100,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _h is 1&gt;&gt;
+		You notice that you are larger than _n.name.
+	&lt;&lt;elseif _h is -1&gt;&gt;
+		You notice that you are smaller than _n.name.
+	&lt;&lt;else&gt;&gt;
+		You notice that you and _n.name are about the same size.
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif $sex.act == &quot;Continue Frotting&quot;&gt;&gt;
+
+	&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+		&lt;&lt;=either(
+			&quot;Gently bucking $proset.their own &lt;&lt;=_nHip&gt;&gt; in response, _n.name lets out a moan as $proset.they mirror your movements and softly rub $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;Responding with a gentle buck of $proset.their own &lt;&lt;=_nHip&gt;&gt;, _n.name mirrors your movements, helping rub $proset.their &lt;&lt;=_nGen&gt;&gt; up and down over yours.&quot;,
+			&quot;Happily bucking $proset.their own &lt;&lt;=_nHip&gt;&gt; in response, _n.name lets out a moan as $proset.they eagerly rub $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;Responding with a happy buck of $proset.their own &lt;&lt;=_nHip&gt;&gt;, _n.name mirrors your movements, frantically rubbing $proset.their &lt;&lt;=_nGen&gt;&gt; over yours.&quot;,
+			&quot;_n.name responds eagerly and lets out a moan as $proset.they rub $proset.their own &lt;&lt;=_nGen&gt;&gt; up and down over yours.&quot;,
+			&quot;A moan slips from _n.name&#39;s lips as $proset.they thrust $proset.their &lt;&lt;=_nHip&gt;&gt; and grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;Moaning in delight, _n.name eagerly thrusts $proset.their &lt;&lt;=_nHip&gt;&gt;, using your movements to help grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;_n.name happily responds in kind and lets out a moan as $proset.they softly rub $proset.their own &lt;&lt;=_nGen&gt;&gt; over your groin.&quot;,
+			&quot;A moan drifts from _n.name&#39;s lips as $proset.they gently thrust $proset.their &lt;&lt;=_nHip&gt;&gt; and grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;Moaning in pleasure, _n.name gently pushes $proset.their &lt;&lt;=_nHip&gt;&gt; forward, using your movements to help grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;_n.name responds in kind and lets out a moan as $proset.they rub $proset.their own &lt;&lt;=_nGen&gt;&gt; up and down over yours.&quot;,
+			&quot;A moan bursts from _n.name&#39;s lips as $proset.they thrust $proset.their &lt;&lt;=_nHip&gt;&gt; and grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;Moaning in pleasure, _n.name thrusts $proset.their &lt;&lt;=_nHip&gt;&gt; forward, using your movements to help grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;
+		)&gt;&gt;
+
+	&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
+		&lt;&lt;=either(
+			&quot;Letting out a little moan with every thrust of your &lt;&lt;=_mcHip&gt;&gt;, you gently rub your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
+			&quot;You let out a series of soft sighs as you gently rub your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
+			&quot;Sliding your &lt;&lt;=_mcGen&gt;&gt; over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;, you let out a little moan with each pump of your &lt;&lt;=_mcHip&gt;&gt;.&quot;,
+			&quot;Letting out a moan with each thrust of your &lt;&lt;=_mcHip&gt;&gt;, you continue rubbing your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
+			&quot;You let out a series of lewd moans as you rub your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
+			&quot;Rubbing your &lt;&lt;=_mcGen&gt;&gt; over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;, you let out a moan with each pump of your &lt;&lt;=_mcHip&gt;&gt;.&quot;,
+			&quot;Letting out a moan with each eager thrust of your &lt;&lt;=_mcHip&gt;&gt;, you passionately rub your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
+			&quot;You let out a series of lewd moans as you desperately grind your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
+			&quot;Eagerly grinding your &lt;&lt;=_mcGen&gt;&gt; over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;, you let out a moan with each frantic pump of your &lt;&lt;=_mcHip&gt;&gt;.&quot;,
+			&quot;You both shiver with pleasure each time _n.name thrusts against you.&quot;
+		)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="Grope-Breast-Dialogue" tags="nobr Dialogue" position="1100,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.position == &quot;Doggy&quot;&gt;&gt;
@@ -10827,7 +10909,11 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 			&lt;&lt;gram _bottom &quot;subjCap&quot;&gt;&gt; keeps working &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; &lt;&lt;=_topGen&gt;&gt; until &lt;&lt;gram _top &quot;subj&quot;&gt;&gt; &lt;&lt;gverb _top &quot;hit&quot; &quot;hits&quot;&gt;&gt; &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; limit, then &lt;&lt;gram _top &quot;subj&quot;&gt;&gt; &lt;&lt;gverb _top &quot;shoot&quot; &quot;shoots&quot;&gt;&gt; &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; load down &lt;&lt;gram _bottom &quot;poss&quot;&gt;&gt; throat.
 		&lt;&lt;elseif _bottomClimax&gt;&gt;
 			A moment later, &lt;&lt;gram _bottom &quot;poss&quot;&gt;&gt; &lt;&lt;=_bottomGen&gt;&gt; swells in &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; mouth, and a hot stream shoots down &lt;&lt;gram _top &quot;poss&quot;&gt;&gt; throat. &lt;&lt;gram _top &quot;subjCap&quot;&gt;&gt; &lt;&lt;gverb _top &quot;swallow&quot; &quot;swallows&quot;&gt;&gt; as much as &lt;&lt;gram _top &quot;subj&quot;&gt;&gt; can.
+			&lt;&lt;if Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Rainbow Cum&quot;)&gt;&gt;
+			You taste the fruity rainbow flavor of their cum.
+			&lt;&lt;/if&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
+		
 
 	&lt;&lt;case &quot;in pussy&quot;&gt;&gt;
 		&lt;&lt;if _topClimax&gt;&gt;
@@ -11030,15 +11116,22 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 		&quot;Moaning in delight, _n.name eagerly worships your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; by planting a series of passionate kisses on them.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Tease-Ass-Dialogue" tags="nobr" position="100,1225" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Ass With Cock&quot;&gt;&gt;
-&lt;&lt;=either(
+&lt;&lt;set _lines = [
     &quot;You tease _n.name&#39;s ass with your cock.&quot;
-)&gt;&gt;
+]&gt;&gt;
+    &lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
+		&lt;&lt;run _lines.push(
+			&quot;The thought of penetrating them turns you on so much.&quot;
+		)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $sex.act == &quot;Cocktease With Ass&quot;&gt;&gt;
-&lt;&lt;=either(
+&lt;&lt;set _lines = [
     &quot;You tease _n.name&#39;s cock with your ass.&quot;,
     &quot;You feel _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against your buttcheecks.&quot;
-    )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="Tease-Cock-Dialogue" tags="nobr" position="225,1225" size="100,100">&lt;&lt;if $sex.act==&quot;Rub Cock On Face&quot;&gt;&gt;
+    ]&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;= either(..._lines) &gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="Tease-Cock-Dialogue" tags="nobr" position="225,1225" size="100,100">&lt;&lt;if $sex.act==&quot;Rub Cock On Face&quot;&gt;&gt;
     &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	    &lt;&lt;=either(
  	    &quot;You rub your cock on _n.name&#39;s face.&quot;
@@ -11583,26 +11676,27 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="Act-Quote-React" tags="nobr" position="975,1600" size="100,100">/* Character nonverbal reaction. Also works if the character is mute. */
 
 &lt;&lt;if $sex.phase == &quot;climax&quot;&gt;&gt;
-	_n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure of the climax.
+	&lt;&lt;set _lines = [
+		&quot;_n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure of the climax.&quot;
+	]&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;if $sex.act == &quot;Fuck Pussy&quot;&gt;&gt;
-		&lt;&lt;= either(
+		&lt;&lt;set _lines = [
 			&quot;_n.name &lt;&lt;npcNoise&gt;&gt;s at the feeling of fucking a pussy.&quot;,
 			&quot;_n.name &lt;&lt;npcNoise&gt;&gt;s softly, lost in the feeling of fucking a pussy.&quot;,
 			&quot;Pleasure washes over _n.name, making $proset.them &lt;&lt;npcNoise&gt;&gt; softly.&quot;
-		) &gt;&gt;
+		]&gt;&gt;
 
 	&lt;&lt;elseif $sex.act == &quot;Cuddle&quot;&gt;&gt;
-		&lt;&lt;= either(
+		&lt;&lt;set _lines = [
 			&quot;_n.name smiles and leans in.&quot;,
 			&quot;_n.name relaxes and nestles closer.&quot;,
 			&quot;A soft smile crosses _n.name&#39;s face as $proset.they lean into you.&quot;
-		) &gt;&gt;
+		]&gt;&gt;
 
 	&lt;&lt;elseif $sex.act == &quot;Kiss&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;_n.name lets out an eager moan in response.&quot;,
+		&lt;&lt;set _lines = [
 			&quot;_n.name enthusiastically presses $proset.themself against you and thrusts $proset.their tongue into your mouth as $proset.they eagerly return your affection.&quot;,
 			&quot;With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic tongue battle.&quot;,
 			&quot;Letting out a soft moan, _n.name plants a series of gentle kisses on your lips before slowly sliding $proset.their tongue into your mouth.&quot;,
@@ -11610,20 +11704,40 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 			&quot;_n.name presses $proset.themself against you, muffling your moans as $proset.they slide $proset.their tongue into your mouth.&quot;,
 			&quot;_n.name pushes $proset.their tongue deep into your mouth, moaning as $proset.they eagerly return the kiss.&quot;,
 			&quot;With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips.&quot;
-		) &gt;&gt;
+		]&gt;&gt;
 	&lt;&lt;elseif $sex.act == &quot;Push Cock In Ass&quot;&gt;&gt;
 		&lt;&lt;if $sex.position == &quot;Cowgirl&quot;&gt;&gt;
-			&lt;&lt;= either(
-				&quot;_n.name lets out a moan as $proset.they enter you, eagerly bucking $proset.their own &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
-				&quot;With a moan, _n.name eagerly thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your &lt;&lt;= String($mc.assSize || &#39;ass&#39;).toLowerCase() &gt;&gt; ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start energetically fucking you.&quot;,
-				&quot;_n.name lets out a moan as $proset.they enter you, bucking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
-				&quot;With a moan, _n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your $mc.assSize ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start fucking you.&quot;
-		) &gt;&gt;
+			&lt;&lt;set _lines = [
+				&quot;_n.name lets out a &lt;&lt;npcNoise&gt;&gt; as $proset.they enter you, eagerly bucking $proset.their own &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
+				&quot;With a &lt;&lt;npcNoise&gt;&gt;, _n.name eagerly thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your &lt;&lt;= String($mc.assSize || &#39;ass&#39;).toLowerCase() &gt;&gt; ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start energetically fucking you.&quot;,
+				&quot;_n.name lets out a &lt;&lt;npcNoise&gt;&gt; as $proset.they enter you, bucking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
+				&quot;With a &lt;&lt;npcNoise&gt;&gt;, _n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your $mc.assSize ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start fucking you.&quot;
+		]&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;elseif $sex.act == &quot;Enter Ass&quot;&gt;&gt;
+			&lt;&lt;set _lines = [
+				&quot;_n.name moans feeling you slide inside of their ass.&quot;
+			]&gt;&gt;
+	&lt;&lt;elseif $sex.act == &quot;Fuck Ass&quot;&gt;&gt;
+		&lt;&lt;set _lines = [
+			&quot;_n.name moans feeling you fuck their ass.&quot;
+		]&gt;&gt;		
+		&lt;&lt;if _n.sexpref == &quot;Submissive&quot;&gt;&gt;
+			&lt;&lt;run _lines.push(
+			&quot;They eagerly buck their hips in response.&quot;
+			)&gt;&gt;
+		&lt;&lt;elseif _n.sexpref == &quot;Dominant&quot;&gt;&gt;
+			&lt;&lt;run _lines.push(
+			&quot;They grit their teeth, taking it up the ass is something they are not used to.&quot;
+			)&gt;&gt;
+		&lt;&lt;/if&gt;&gt;	
 	&lt;&lt;else&gt;&gt;
-		_n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure.
+		&lt;&lt;set _lines = [
+			&quot;_n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure.&quot;
+		]&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+&lt;&lt;= either(..._lines) &gt;&gt;
 &lt;br&gt;</tw-passagedata><tw-passagedata pid="129" name="Act-Quote" tags="Dialogue nobr" position="1100,1600" size="100,100">&lt;!-- only what the npc says --&gt;
 
 &lt;&lt;set _a = $sex.act or &quot;none&quot;&gt;&gt;
@@ -12049,13 +12163,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 
 &lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;if setup.EnterMouthQuotes&gt;&gt;
-		&lt;&lt;for _p range _personalities&gt;&gt;
-			&lt;&lt;if _p and EnterMouthQuotes[_p]&gt;&gt;
-				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
-			&lt;&lt;/if&gt;&gt;
-		&lt;&lt;/for&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
+	
 	&lt;&lt;if _persMatches.length&gt;&gt;
 		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
 		&lt;&lt;set _pool = EnterMouthQuotes[_chosenPers]&gt;&gt;
@@ -13987,7 +14095,8 @@ Create your character to begin.
 
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _h = &quot;&lt;&lt;HeightCompare&gt;&gt;&quot; &gt;&gt;	
+&lt;&lt;set _h = &quot;&lt;&lt;HeightCompare&gt;&gt;&quot; &gt;&gt;
+&lt;&lt;set _s = &quot;&lt;&lt;SizeCompare&gt;&gt;&quot; &gt;&gt;	
 
 /* ALWAYS rebind Top/Bottom to current */
 /*&lt;&lt;set $sex.Top = $mc&gt;&gt;
@@ -14279,11 +14388,12 @@ Create your character to begin.
 	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 	&lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
 	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = $sex.role&gt;&gt;	&lt;&lt;set _position = $sex.position&gt;&gt;
+	&lt;&lt;set _mode = $sex.role&gt;&gt;	
+	&lt;&lt;set _position = $sex.position&gt;&gt;
 
 	&lt;&lt;set _pool = null&gt;&gt;
 
@@ -16688,7 +16798,7 @@ Create your character to begin.
         $mc.name to either (setup.names),
         $mc.surname to either(&quot;Vanilla&quot;, &quot;Kerr&quot;, &quot;Silva&quot;),
         $mc.gender to either(setup.genders),
-        $mc.sexpref to either(&quot;Dom&quot;,&quot;Sub&quot;,&quot;Switch&quot;),
+        $mc.sexpref to either(&quot;Dominant&quot;,&quot;Submissive&quot;,&quot;Switch&quot;),
         $mc.sexu to either(setup.sexu),
         $mc.pronouns to either(&quot;She/Her&quot;, &quot;He/Him&quot;, &quot;They/Them&quot;),
         $mc.age to random(6, 78),
@@ -17131,6 +17241,24 @@ Create your character to begin.
     &lt;&lt;/script&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
+//to compare the size of the mc and npc, or two npc&#39;s
+&lt;&lt;widget &quot;SizeCompare&quot;&gt;&gt;
+    &lt;&lt;script&gt;&gt;
+    const rank = {
+    &quot;Tiny&quot;: 1,
+    &quot;Small&quot;: 2,
+    &quot;Average&quot;: 3,
+    &quot;Large&quot;: 4,
+    &quot;Huge&quot;: 5
+    };
+
+    const mcS  = rank[$mc.penislength];
+    const npcS = rank[_n.penislength];
+
+    return mcS &gt; npcS ? 1 : mcS &lt; npcS ? -1 : 0;
+    &lt;&lt;/script&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
 &lt;&lt;widget &quot;SexMemory&quot;&gt;&gt;
     /* ensure global memory object exists */
 	&lt;&lt;set $npcMemory = $npcMemory or {}&gt;&gt;
@@ -17156,6 +17284,36 @@ Create your character to begin.
 	&lt;&lt;set _label = _args[0]&gt;&gt;
 	&lt;&lt;set _tip = _args[1]&gt;&gt;
 	&lt;span class=&quot;tooltip-term&quot; tabindex=&quot;0&quot; @data-tooltip=&quot;_tip&quot;&gt;&lt;&lt;print _label&gt;&gt;&lt;/span&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;YourRoomEvent&quot;&gt;&gt;
+    &lt;&lt;if !_n&gt;&gt;
+		[Error] No NPC is here.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+    &lt;&lt;set _pool = null&gt;&gt;
+    &lt;&lt;set _pool = setup.YourRoomEvent&gt;&gt;
+    _n.name is here in your room.
+    &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;p&gt;&lt;&lt;=either(..._pool)&gt;&gt;&lt;/p&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error]: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;YourBathroomEvent&quot;&gt;&gt;
+    &lt;&lt;if !_n&gt;&gt;
+		[Error] No NPC is here.
+		&lt;&lt;return&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+    &lt;&lt;set _pool = null&gt;&gt;
+    &lt;&lt;set _pool = setup.YourBathroomEvent&gt;&gt;
+    _n.name joins you in the bathroom.
+    &lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
+		&lt;p&gt;&lt;&lt;=either(..._pool)&gt;&gt;&lt;/p&gt;
+	&lt;&lt;else&gt;&gt;
+		[Error]: empty dialogue pool.
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="heighttest" tags="" position="1225,2225" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 

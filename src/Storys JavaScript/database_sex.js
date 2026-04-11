@@ -1224,7 +1224,7 @@ setup.sexacts = {
         "Top arousal cap": 300,
         "act label substitution": ["Bottom", "transgender male", "Tease Front Hole With Feet"],
     },
-     "Rub Pussy Against Feet": /* You rub your pussy against their feet.*/
+    "Rub Pussy Against Feet": /* You rub your pussy against their feet.*/
     {
         "positions": [ "Missionary", "Laid Across On Back", "Kneeling"],
         "action type": ["continue"],
@@ -1600,7 +1600,7 @@ setup.sexacts = {
     "Frot":
     {
         "positions": [ "Missionary", "Lap ride", "Standing", "Kneeling Between Thighs", "Perched", "Against Wall", "Laid Across On Back","Scissor"],
-        "action type": ["tease"],
+        "action type": ["penetrate"],
         "Top parts": ["Penis"],
         "Bottom parts": ["Penis"],
         "Top cum locations": ["on penis"],
@@ -1613,6 +1613,36 @@ setup.sexacts = {
         "Bottom dialogue tags": ["frotting"],
         "remember as": ["frotted"],
     },
+    "Continue Frotting":
+    {
+        "positions": [ "Missionary", "Lap ride", "Standing", "Kneeling Between Thighs", "Perched", "Against Wall", "Laid Across On Back","Scissor"],
+        "action type": ["continue"],
+        "Top parts": ["Penis"],
+        "Bottom parts": ["Penis"],
+        "Top cum locations": ["on penis"],
+        "Bottom cum locations": ["on penis"],
+        "masturbation": false,
+        "take virginity": [],
+        "Top arousal": 40,
+        "Bottom arousal": 40,
+        "Top dialogue tags": ["frotting"],
+        "Bottom dialogue tags": ["frotting"],
+        "remember as": ["frotted"],
+    },
+    "Stop Frotting":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "Top parts": ["Penis"],
+        "Bottom parts": ["Penis"],
+        "Top cum locations": [],
+        "Bottom cum locations": [],
+        "masturbation": false,
+        "take virginity": [],
+        "Top arousal": 0,
+        "Bottom arousal": 0,
+    },
+
     "Trib":
     {
         "positions": [ "Missionary", "Laid Across On Back","Scissor"],

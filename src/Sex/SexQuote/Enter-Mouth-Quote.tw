@@ -10,13 +10,7 @@
 <<set _mode = $sex.role>>
 
 <<if _mode == "Top">>
-	<<if setup.EnterMouthQuotes>>
-		<<for _p range _personalities>>
-			<<if _p and EnterMouthQuotes[_p]>>
-				<<run _persMatches.push(_p)>>
-			<</if>>
-		<</for>>
-	<</if>>
+	
 	<<if _persMatches.length>>
 		<<set _chosenPers = setup.pick(_persMatches)>>
 		<<set _pool = EnterMouthQuotes[_chosenPers]>>

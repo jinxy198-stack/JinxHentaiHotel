@@ -55,7 +55,8 @@
 
 <</if>>
 
-<<set _h = "<<HeightCompare>>" >>	
+<<set _h = "<<HeightCompare>>" >>
+<<set _s = "<<SizeCompare>>" >>	
 
 /* ALWAYS rebind Top/Bottom to current */
 /*<<set $sex.Top = $mc>>

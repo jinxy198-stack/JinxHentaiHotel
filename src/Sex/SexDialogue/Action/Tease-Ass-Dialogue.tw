@@ -1,12 +1,19 @@
 :: Tease-Ass-Dialogue [nobr]
 
 <<if $sex.act =="Tease Ass With Cock">>
-<<=either(
+<<set _lines = [
     "You tease _n.name's ass with your cock."
-)>>
+]>>
+    <<if $mc.sexpref == "Dominant">>
+		<<run _lines.push(
+			"The thought of penetrating them turns you on so much."
+		)>>
+	<</if>>
 <<elseif $sex.act == "Cocktease With Ass">>
-<<=either(
+<<set _lines = [
     "You tease _n.name's cock with your ass.",
     "You feel _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> against your buttcheecks."
-    )>>
+    ]>>
 <</if>>
+
+<<= either(..._lines) >>

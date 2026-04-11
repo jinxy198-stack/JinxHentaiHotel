@@ -1,9 +1,9 @@
 :: Blowjob-Dialogue [nobr Dialogue] {"position":"1000,1475","size":"100,100"}
 <<set _npc = _n>>
 <<PronounsSet>>
-
+	
 <<if $sex.act == "Take Cock Between Lips">>
-	<<= either(
+	<<set _lines = [
 		"_n.name grabs you by the head, pressing the tip of $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> against your <<= setup.partLower($mc, 'Lips', 'lips') >> before slowly sliding it into your mouth.",
 		"With a firm grip, _n.name guides your head toward $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >>, pushing forward until the tip parts your <<= setup.partLower($mc, 'Lips', 'lips') >> and slips inside.",
 		"_n.name takes hold of your head, pressing the head of $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> to your mouth before gently thrusting forward and sliding in deeper.",
@@ -12,11 +12,12 @@
 		"Looking up at $proset.them eagerly, you lean forward and take $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into your mouth, moving slowly as you start to pleasure $proset.them.",
 		"You lower your head toward $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >>, your lips parting as you gently begin to suck and lick with growing enthusiasm.",
 		"Without hesitation, you press your lips to $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >>. $proset.they moan softly as you take $proset.them into your mouth."
-	) >>
+	]>>
+
 
 <<elseif $sex.act == "Enter Mouth">>
 	/* They put your cock in their mouth */
-	<<= either(
+	<<set _lines = [
 		"Reaching down to grab _n.name's head, you line the head of your <<= setup.partLower($mc, 'genitals', 'genitals') >> up with $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> before gently pushing your <<= setup.partLower($mc, 'Hips', 'hips') >> forward and sliding your <<= setup.partLower($mc, 'genitals', 'genitals') >> into $proset.their mouth.",
 		"Reaching down to take hold of _n.name's head, you push the head of your <<= setup.partLower($mc, 'genitals', 'genitals') >> against _n.name's <<= setup.partLower(_n, 'Lips', 'lips') >> before slowly bucking your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >> and gently sliding your <<= setup.partLower($mc, 'genitals', 'genitals') >> into $proset.their mouth.",
 		"Reaching down to grab $proset.their head, you line the head of your <<= setup.partLower($mc, 'genitals', 'genitals') >> up with $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> before pushing your <<= setup.partLower($mc, 'Hips', 'hips') >> forward and sliding your <<= setup.partLower($mc, 'genitals', 'genitals') >> into $proset.their mouth.",
@@ -26,17 +27,23 @@
 		"_n.name wraps $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, letting out a muffled moan as $proset.they bob $proset.their head up and down.",
 		"A muffled moan drifts out from $proset.their mouth and, wrapping $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, $proset.they continue to give you head.",
 		"Moaning in delight, _n.name wraps $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, licking and sucking as $proset.they continue making muffled moaning noises."
-	) >>
+	]>>
 
 <<elseif $sex.act == "Suck Cock">>
-	<<= either(
+	<<set _lines = [
 		"You suckle on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
 		"_n.name moans with pleasure as you continue to blow $proset.them.",
 		"Your head bobs up and down as you focus fully on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>."
-	) >>
+	]>>
+
+	<<if _n.genitaltype == "Barbed">>
+		<<run _lines.push(
+			"You feel the barbs scrape against your throat."
+		)>>
+	<</if>>
 
 <<elseif $sex.act == "Fuck Mouth">>
-	<<= either(
+	<<set _lines = [
 		"You eagerly thrust your <<= setup.partLower($mc, 'genitals', 'genitals') >> past $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >>, letting out a moan as you greedily pump your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>.",
 		"You desperately buck your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, letting out a moan as you eagerly fuck $proset.their throat.",
 		"Enthusiastically bucking your hips into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, you let out a moan as you happily continue receiving your blowjob.",
@@ -44,26 +51,28 @@
 		"You buck your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, letting out a moan as you fuck $proset.their throat.",
 		"Bucking your hips into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, you let out a moan as you continue happily receiving a blowjob.",
 		"Inside $proset.their mouth, you can feel that practiced tongue of $proset.them swirling around your tip."
-	) >>
+	]>>
 
 <<elseif $sex.act == "Suck Each Other Off">>
-	<<= either(
+	<<set _lines = [
 		"You suck _n.name's <<= setup.partLower(_n, 'genitaltype', 'genital') >> <<= setup.partLower(_n, 'genitals', 'genitals') >> while $proset.they suck your <<= setup.partLower($mc, 'genitaltype', 'genital') >> <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
 		"You both orally pleasure each other"
-	) >>
+	]>>
 
 <<elseif $sex.act == "Eat Each Other Out">>
-	<<= either(
+	<<set _lines = [
 		"You lick _n.name's <<= setup.partLower(_n, 'genitaltype', 'genital') >> <<= setup.partLower(_n, 'genitals', 'genitals') >> while $proset.they lick your <<= setup.partLower($mc, 'genitaltype', 'genital') >> <<= setup.partLower($mc, 'genitals', 'genitals') >>."
-	) >>
+	]>>
 
 <<elseif $sex.act == "Suck And Lick Each Other">>
-	<<= either(
+	<<set _lines = [
 		"You suck _n.name's <<= setup.partLower(_n, 'genitaltype', 'genital') >> <<= setup.partLower(_n, 'genitals', 'genitals') >> while $proset.they lick your <<= setup.partLower($mc, 'genitaltype', 'genital') >> <<= setup.partLower($mc, 'genitals', 'genitals') >>."
-	) >>
+	]>>
 
 <<elseif $sex.act == "Lick And Suck Each Other">>
-	<<= either(
+	<<set _lines = [
 		"You lick _n.name's <<= setup.partLower(_n, 'genitaltype', 'genital') >> <<= setup.partLower(_n, 'genitals', 'genitals') >> while $proset.they suck your <<= setup.partLower($mc, 'genitaltype', 'genital') >> <<= setup.partLower($mc, 'genitals', 'genitals') >>."
-	) >>
+	]>>
 <</if>>
+
+<<= either(..._lines) >>
