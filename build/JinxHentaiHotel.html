@@ -14134,6 +14134,7 @@ Create your character to begin.
 
 
 &lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="NPC-Talk" tags="nobr" position="100,2225" size="100,100">&lt;&lt;set _n = $ui.npc&gt;&gt;
+&lt;&lt;run setup.normalizeActor(_n)&gt;&gt;
 
 &lt;&lt;set _lines = {
 	Default: [&quot;Hello&quot;,&quot;Hi&quot;],

@@ -1,6 +1,7 @@
 :: NPC-Talk [nobr]
 
 <<set _n = $ui.npc>>
+<<run setup.normalizeActor(_n)>>
 
 <<set _lines = {
 	Default: ["Hello","Hi"],
