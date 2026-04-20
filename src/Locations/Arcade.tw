@@ -1,9 +1,10 @@
-:: Arcade [nobr]
+:: Arcade [nobr location]
 <<set $gamelocation to "Arcade">>
 You enter a large arcade. Lined from wall to wall are all sorts of video games, some retro, some modern, and some next generation.
 
-WORK IN PROGESS
-
+<br>
+Unfortunately a astral barrier blocks the way forward, with the words "THIS AREA IS A WORK IN PROGESS"
+<br>
 <div id="npcsex-actions-bar">
 <<button "Elevator">>
     <<goto "Elevator">>

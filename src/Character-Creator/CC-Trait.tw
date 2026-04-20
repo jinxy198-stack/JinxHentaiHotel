@@ -30,6 +30,9 @@ They are not limited to physical or mental traits. <br>
 <<= setup.traitTips["Hates Furries"] >> <br>
 * <label><<checkbox "_hatesFurries" false true>> Hates Furries</label> <br>
 <br>
+<<= setup.traitTips["Hates Humans"] >> <br>
+* <label><<checkbox "_hatesHumans" false true>> Hates Humans</label> <br>
+<br>
 <div id="traitError"></div>
 
 <<button "Confirm">>
@@ -40,7 +43,11 @@ They are not limited to physical or mental traits. <br>
 	<<elseif _hatesKids and _hatesAdults>>
 		<<replace "#traitError">>
 			<span class="red">You cannot choose both "Hates Kids" and "Hates Adults". They conflict with each other. </span>
-		<</replace>>	
+		<</replace>>
+	<<elseif _hatesFurries and _hatesHumans>>
+		<<replace "#traitError">>
+			<span class="red">You cannot choose both "Hates Furries" and "Hates Humans". They conflict with each other. </span>
+		<</replace>>			
 	<<else>>
 		<<set $mc.traits = $mc.traits.filter(t =>
 			t !== "Will Not Top" &&

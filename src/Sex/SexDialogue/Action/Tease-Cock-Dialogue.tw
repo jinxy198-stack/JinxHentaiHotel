@@ -10,14 +10,4 @@
         "_n.name rubs their cock on your face."
         )>>
     <</if>>
-<<elseif $sex.act == "Rub Cock Against Hand">>
-    <<if $sex.role == "Top">>
-	    <<=either(
- 	        "You rub your cock against _n.name's hand."
-        )>>
-    <<elseif $sex.role == "Bottom">>
-	    <<=either(
-            "_n.name rubs their cock against your hand."
-        )>>
-    <</if>>
 <</if>>

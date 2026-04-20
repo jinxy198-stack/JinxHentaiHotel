@@ -113,20 +113,14 @@
 		<b>Current Room:</b> <<print $gamelocation>><br>
 		<b>Current Position:</b> <<print $sex.position>><br>
 		<b>Previous Position:</b> <<print $sex.previousPosition || "None">><br>
-		<b>Role:</b> <<print $sex.role>><br>
-        
-
+		/*<b>Role:</b> <<print $sex.role>><br>*/
 		<b>Act:</b>
 		<<if $sex.act>>
 			<<print $sex.act>>
 		<<else>>
 			None
-		<</if>>
-		<br>
-
+		<</if>><br>
 		<b>Phase:</b> <<print $sex.phase>><br>
-		<b>Location:</b> <<print $room.location>><br>
-
 		<<if $sex.penetration>>
 			<b>Penetration:</b>
 			<<print $sex.penetration.TopPart>> → <<print $sex.penetration.BottomPart>><br>
@@ -343,7 +337,7 @@
 	<div class="arousal-grid">
 		<div class="arousal-card">
 			<div class="arousal-row">
-				<span class="arousal-name"><<print $sex.Bottom.name>></span>
+				<span class="arousal-name"><<print "Bottom: " + $sex.Bottom.name>></span>
 				<span class="arousal-value"><<print $sex.Bottom.arousal>>/1000</span>
 			</div>
 			<div class="arousal-bar">
@@ -356,7 +350,7 @@
 
 		<div class="arousal-card">
 			<div class="arousal-row">
-				<span class="arousal-name"><<print $sex.Top.name>></span>
+				<span class="arousal-name"><<print "Top: " + $sex.Top.name>></span>
 				<span class="arousal-value"><<print $sex.Top.arousal>>/1000</span>
 			</div>
 			<div class="arousal-bar">
@@ -1288,5 +1282,44 @@
 		<p><<=either(..._pool)>></p>
 	<<else>>
 		[Error]: empty dialogue pool.
+	<</if>>
+<</widget>>
+
+
+<<widget "FoodMenuUI">>
+	<<if !$showFoodMenu>>
+		<<link "Check food menu">>
+			<<set $showFoodMenu = true>>
+			<<replace "#foodMenuUI">><<FoodMenuUI>><</replace>>
+		<</link>>
+	<<else>>
+		<h2>Café Menu</h2>
+
+		<<set _foods = Object.keys(setup.food)>>
+
+		<ul>
+		<<for _i = 0; _i < _foods.length; _i++>>
+			<<set _name = _foods[_i]>>
+			
+			<li>
+				<<capture _name>>
+					<<link _name>>
+						<<set $returnPassage = passage()>>
+						<<set $lastEaten = _name>>
+						<<goto "Event_EatFood">>
+					<</link>>
+				<</capture>>
+				<br>
+				<<if setup.food[_name].description>>
+					<small><<print setup.food[_name].description>></small>
+				<</if>>
+			</li>
+		<</for>>
+		</ul>
+
+		<<link "Close menu">>
+			<<set $showFoodMenu = false>>
+			<<replace "#foodMenuUI">><<FoodMenuUI>><</replace>>
+		<</link>>
 	<</if>>
 <</widget>>

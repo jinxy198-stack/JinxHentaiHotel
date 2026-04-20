@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="168" creator="Twine (Twee 3) Language" creator-version="1.1.4" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet.css" */
+	<!-- UUID://4C4CD595-9114-4854-88E7-C6F01D85E376// --><tw-storydata name="JinxHentaiHotel" startnode="169" creator="Twine (Twee 3) Language" creator-version="1.1.5" ifid="4C4CD595-9114-4854-88E7-C6F01D85E376" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "StoryStylesheet.css" */
 /* =========================================================
    Base layout
    ========================================================= */
@@ -2921,7 +2921,7 @@ setup.vaginalQuotes = {
 
 
 setup.EnterPussyQuotes = {
-  Bottom: {
+  Top: {
     Dominant:["It's inside me!"],
     Submissive: ["You feel so good inside me."],
     Switch: ["It's inside me!"]
@@ -2930,7 +2930,7 @@ setup.EnterPussyQuotes = {
 };
 
 setup.PushCockInQuotes = {
-  Top: {
+  Bottom: {
     Dominant:[
       "Fuck, your tight little cunt feels amazing",
       "Fuck yes, give me all of that fucking pussy",
@@ -3202,6 +3202,11 @@ setup.refreshFullPool = function () {
 	if (traits.includes("Hates Furries")) {
 		pool = pool.filter(function (npc) {
 			return npc && npc.species === "Human";
+		});
+	}
+  if (traits.includes("Hates Humans")) {
+		pool = pool.filter(function (npc) {
+			return npc && npc.species === "Anthro";
 		});
 	}
 
@@ -3838,14 +3843,12 @@ setup.food=
         "flags": ["meat"]
     },
     "Cereal": {
+        description: "A basic meal of milk and processed grain.",
         "aoran": "some",
-        "flags": ["dairy","breakfast"]
-    },
-    "Scrambled eggs": {
-        "aoran": "some",
-        "flags": ["eggs", ,"breakfast"]
+        "flags": ["dairy","wheat","breakfast"]
     },
     "Eggs and bacon": {
+        description: "Do you really need me to explain this?",
         "aoran": "some",
         "flags": ["breakfast"]
     },
@@ -3873,75 +3876,58 @@ setup.food=
         "flags": []
     },
     "Chicken tenders": {
+        "description": "Golden brown fried chicken. Crispy, tender, and juicy. It's finger licking good!",
         "aoran": "some",
         "flags": ["meat"]
-    },
-    "Chicken nuggets": {
-        "aoran": "some",
-        "flags": ["meat"]
-    },
-    "Corn chowder": {
-        "aoran": "some",
-        "flags": ["dairy", "warming"]
     },
     "Fried rice": {
-        "description": "It's literally in the name.",
+        "description": "It's literally in the name. Well there are some assorted veggies added.",
         "aoran": "some",
-        "flags": []
+        "flags": ["vegetables"]
     },
     "Salad": {
+        "description": "A bowl of mixed freshed vegetables.",
         "aoran": "a",
-        "flags": []
+        "flags": ["vegetables"]
     },
-    "Fried tofu": {
+    "Tofu": {
+        "description": "Made from condensed soy milk, this bar is full of rich protein. Often used as a meat substitute.",
         "aoran": "some",
-        "flags": []
+        "flags": ["vegan"]
     },
     "Lasagna": {
+        "description": "A serving of flat pasta stacked on top of the other with meat, cheese, sauce, and vegetables.",
         "aoran": "some",
-        "flags": ["meat", "dairy"]
+        "flags": ["meat", "dairy","vegetables"]
     },
     "Vegan lasagna": {
+        "description": "Same as regular lasagna but with plant-based alternatives for the meat and cheese.",
         "aoran": "some",
-        "flags": []
-    },
-    "Miso risotto": {
-        "aoran": "some",
-        "flags": []
+        "flags": ["vegan"]
     },
     "Lobster": {
+        "description": "Valued for it's tender sweet meat and high nutritional value, a high quality meal to leave one satisfied.",
         "aoran": "a",
         "flags": ["fish"]
     },
     "Steak": {
-        "description":"Crisp but juicy, and sprinkled with just the right amount of salt and spices to bring about the beef's natural flavour",
+        "description":"Crisp but juicy, and sprinkled with just the right amount of salt and spices to bring about the beef's natural flavour.",
         "aoran": "a",
         "flags": ["meat"]
     },
-    "Spicy chili": {
-
+    "Chili Con Carne": {
+        "description": "A spicy stew of meat (usually beef), chili peppers, tomatoes, and spices, with beans often included. Not reccomended for people with low spice tolerance.",
         "aoran": "some",
-        "flags": ["meat"]
+        "flags": ["meat","warming"]
     },
     "Pork chop": {
         "description":"Juicy, pan-seared pork chops, seasoned simply and cooked to tender perfection.",
         "flags": ["meat"]
     },
     "Chicken soup": {
+        "description":"A generous bowl of savory, roasted chicken soup packed with chunky carrots, celery, and potatoes in a rich broth.",
         "aoran": "some",
         "flags": ["meat", "warming"]
-    },
-    "Lentil soup": {
-        "aoran": "some",
-        "flags": ["warming"]
-    },
-    "Shepherd's pie": {
-        "aoran": "some",
-        "flags": ["meat", "dairy", "warming"]
-    },
-    "Chicken chow mein": {
-        "aoran": "some",
-        "flags": ["meat"]
     },
     "Ratatouille": {
         "description": "A colorful medley of tender vegetables simmered in savory tomato sauce. So simple that anyone can cook it.",
@@ -3949,11 +3935,9 @@ setup.food=
         "flags": []
     },
     "Brownie": {
+        "description": "A dense, chewy dark chocolate brownie baked with premium cocoa, featuring a perfectly crackly crust",
+        "aoran": "a",
         "flags": ["dairy", "eggs","dessert"]
-    },
-    "Apple pie": {
-        "aoran": "some",
-        "flags": ["dairy", "eggs"]
     },
     "Ice cream": {
         "aoran": "some",
@@ -3963,9 +3947,6 @@ setup.food=
         "description": "Made by real astronauts. Or made out of astronauts. You're not entirely sure.",
         "aoran": "some",
         "flags": ["dairy", "cooling"]
-    },
-    "Cheesecake": {
-        "flags": ["dairy", "eggs", "dessert"]
     },
     "Tiramisu": {
         "description": "A delicate dessert of espresso-soaked ladyfinger cookies layered in rich mascarpone cream, dusted with cocoa for a perfect balance of sweetness and coffee flavor.",
@@ -5255,21 +5236,6 @@ setup.sexacts = {
         "Top dialogue tags": ["rubbing pussy"],
         "Bottom dialogue tags": ["pussy rubbed"],
     },
-    "Pull Hand To Pussy":  /*Check if needed */
-    {
-        "positions": [ "Missionary", "Laid Across On Back:Bottom",  "Mating Press:Bottom", "Sixty-Nine", "From Behind", "Doggy:Bottom", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:Bottom", "Kneeling Over:Bottom", "Standing", "Standing From Behind", "Lap ride", "Riding Face:Bottom", "Oral Service:Top", "Spooning:Bottom", "Squatting Before:Top", "Double Decker:Bottom", "Kneeling Between Thighs:Bottom", "Against Wall", "Against Wall From Behind:Top", "Perched Oral Service:Top", "Underneath Oral Service:Top", "Laid Across Oral Service:Top"],
-        "action type": ["tease"],
-        "Top parts": ["Hand"],
-        "Bottom parts": ["Vagina"],
-        "Top cum locations": [],
-        "Bottom cum locations": [],
-        "masturbation": false,
-        "take virginity": [],
-        "Top arousal": 40,
-        "Bottom arousal":  10,
-        "Bottom arousal cap": 300,
-        "act label substitution": ["Top", "transgender male", "Pull Hand To Front Hole"],
-    },
     "Finger Pussy": /* Bottom must have a vagina */
     {
         "positions": [ "Missionary", "Laid Across On Back", "Laid Across On Stomach", "Mating Press", "Sixty-Nine", "From Behind", "Doggy", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Sitting", "Standing From Behind", "Lap ride", "Sit On Face", "Oral Service",  "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
@@ -5332,26 +5298,6 @@ setup.sexacts = {
         "take virginity": [],
         "Top arousal": 0,
         "Bottom arousal": 0,
-    },
-
-    "Rub Clit":
-    {
-        "positions": [ "Missionary", "Laid Across On Back", "Laid Across On Stomach", "Mating Press", "Sixty-Nine", "From Behind", "Doggy", "Bent Over", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Standing From Behind", "Lap ride", "Sit On Face", "Oral Service", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
-        "action type": ["tease"],
-        "Top parts": ["Hand"],
-        "Bottom parts": ["Clitoris"],
-        "Top cum locations": [],
-        "Bottom cum locations": [],
-        "masturbation": true,
-        "take virginity": [],
-        "Top arousal": 10,
-        "Bottom arousal": 50,
-        "Top arousal cap": 300,
-        "remember as": ["fingerbang", "given"],
-        "act label substitution": ["Bottom", "transgender male", "Rub T-Dick"],
-        "Top dialogue tags": ["rubbing clit"],
-        "Bottom dialogue tags": ["clit rubbed"],
-        coexist: true,
     },
     "Lick Pussy":
     {
@@ -5458,20 +5404,6 @@ setup.sexacts = {
         "Bottom arousal cap": 300,
         "Top dialogue tags": ["rubbing cock on face"],
         "Bottom dialogue tags": ["face rubbed by cock"],
-    },
-    "Rub Cock Against Hand": /* Check if necessary */
-    {
-        "positions": [ "Sixty-Nine", "Kneeling", "Kneeling Over", "Standing", "Lap ride", "Oral Service", "Perched", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Sit On Face", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
-        "action type": ["tease"],
-        "Top parts": ["Penis"],
-        "Bottom parts": ["Hand"],
-        "Top cum locations": ["on hand"],
-        "Bottom cum locations": [],
-        "masturbation": false,
-        "take virginity": [],
-        "Top arousal": 40,
-        "Bottom arousal": 10,
-        "Bottom arousal cap": 300
     },
     "Lick Foot": /* You lick their foot*/
     {
@@ -6024,6 +5956,19 @@ setup.sexacts = {
         "Top arousal": 50,
         "Bottom arousal cap": 300,
         equal: true,
+    },
+    "Stop Sixty Nine":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "Top parts": ["Penis", "Mouth"],
+        "Bottom parts": ["Mouth", "Penis"],
+        "Top cum locations": [],
+        "Bottom cum locations": [],
+        "masturbation": false,
+        "take virginity": [],
+        "Top arousal": 0,
+        "Bottom arousal": 0,
     },
 
 
@@ -7146,23 +7091,23 @@ setup.sexacts = {
 })();</script><tw-tag name="creation-page" color="red"></tw-tag><tw-tag name="popup" color="blue"></tw-tag><tw-tag name="widget" color="green"></tw-tag><tw-tag name="Popup" color="yellow"></tw-tag><tw-tag name="Dialogue" color="blue"></tw-tag><tw-tag name="nobr" color="orange"></tw-tag><tw-passagedata pid="1" name="Beginning" tags="" position="100,575" size="100,100">&lt;&lt;set $gamelocation to &quot;Hotel Room&quot;&gt;&gt;
 The first sensation you feel is soft fabric against your back. The next is a warm radiance against your front.
 
-&lt;span class=&quot;Jinx&quot;&gt;&quot;So, you&#39;re finally awake 
-I was waiting quite awhile for you to awaken.&quot;
-Now get up $mc.name .&quot;
+&lt;span class=&quot;Jinx&quot;&gt;&quot;So, you&#39;re finally awake. 
+I was waiting quite awhile for you to awaken.
+Now get up $mc.name.&quot;
 &lt;/span&gt;
 &lt;span class=&quot;mc&quot;&gt;
 &quot;W-who are you?&quot;
 &lt;/span&gt;
 &lt;span class=&quot;Jinx&quot;&gt;
-&quot;Haha! You don&#39;t know who I am? I am Jinx, the god of sex and joy. I have chosen you to be my emissary.&quot;
-&quot;If you have questions, best ask them now.&quot;
+&quot;Haha! You don&#39;t know who I am? I am Jinx, the god of sex and joy. And I have chosen you to be my emissary.
+If you have questions, best ask them now.&quot;
 &lt;/span&gt;
 &lt;p&gt;Ask Jinx:&lt;/p&gt;
 &lt;&lt;button &quot;God?&quot;&gt;&gt;&lt;&lt;PopupJinxQ &quot;god&quot; &quot;god?&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Emissary?&quot;&gt;&gt;&lt;&lt;PopupJinxQ &quot;emissary&quot; &quot;Emissary?&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Where am I?&quot;&gt;&gt;&lt;&lt;PopupJinxQ &quot;where?&quot; &quot;Where am I?&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button [[I&#39;m done|DoneQuestions]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="CC-Confirm" tags="" position="25,400" size="100,100">&lt;h1&gt;Hi &lt;span class=&quot;mc&quot;&gt;$mc.name!&lt;/span&gt;&lt;/h1&gt;
+&lt;&lt;button [[I&#39;m done|DoneQuestions]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="CC-Confirm" tags="" position="25,400" size="100,100">&lt;h1&gt;Hi $mc.name!&lt;/h1&gt;
 &lt;h2&gt;Your adventure is about to start...&lt;/h2&gt;
 
 
@@ -7538,7 +7483,8 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
             &lt;br&gt;
             Physique: $mc.physique
             &lt;br&gt;
-         &lt;&lt;if $mc.breastsize&gt;&gt;Breast Size: $mc.breastsize&lt;&lt;/if&gt;&gt;         
+        &lt;&lt;if $mc.breastsize&gt;&gt;Breast Size: $mc.breastsize &lt;&lt;/if&gt;&gt;
+        &lt;br&gt;
         &lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;
@@ -7551,7 +7497,7 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
     &lt;tr id=&quot;trait&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Trait:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
         &lt;&lt;if !$mc.traits&gt;&gt;
-        No traits found
+        &lt;td&gt; No traits found &lt;/td&gt;
         &lt;&lt;else&gt;&gt;
         &lt;td id=&quot;mc-perso&quot;&gt;$mc.traits&lt;/td&gt;
         &lt;&lt;/if&gt;&gt;
@@ -7570,8 +7516,8 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
      &lt;/tr&gt;
      &lt;&lt;if $mc.penislength&gt;&gt;
         &lt;tr&gt;
-         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Penis Length:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-penislength&quot;&gt;$mc.penislength&lt;/td&gt;
+            &lt;th&gt;&lt;u&gt;&lt;strong&gt;Penis Length:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
+            &lt;td id=&quot;mc-penislength&quot;&gt;$mc.penislength&lt;/td&gt;
         &lt;/tr&gt;
         &lt;&lt;/if&gt;&gt;
      &lt;tr&gt;
@@ -7590,20 +7536,17 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
 	Virgin: No
 &lt;&lt;/if&gt;&gt; */
 
-&lt;div&gt;
+&lt;table class=&quot;bodyparts&quot;&gt;
+    &lt;th&gt;&lt;u&gt;&lt;strong&gt;List of Body Parts:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
+    &lt;&lt;if $mc.body&gt;&gt;
+	    &lt;td&gt; &lt;&lt;set _parts = Object.values($mc.body).filter(Boolean)&gt;&gt;
+	    &lt;&lt;= _parts.join(&quot;, &quot;)&gt;&gt; &lt;/td&gt;
+    &lt;&lt;else&gt;&gt;
+	    &lt;i&gt;No body object found on the MC.&lt;/i&gt;
+    &lt;&lt;/if&gt;&gt;
+    &lt;br&gt;
+&lt;/table&gt;
 
-List of body parts:
-&lt;br&gt;
-&lt;ul&gt;
-&lt;&lt;for _key, _val range $mc.body&gt;&gt;
-	&lt;li&gt;
-		&lt;strong&gt;&lt;&lt;print _key&gt;&gt;&lt;/strong&gt; :
-		&lt;&lt;print _val&gt;&gt;
-	&lt;/li&gt;
-&lt;&lt;/for&gt;&gt;
-&lt;/ul&gt;
-
-&lt;/div&gt;
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
     &lt;&lt;button &quot;YES!&quot;&gt;&gt;&lt;&lt;goto &quot;CC-Confirm&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;&lt;button &quot;Go back&quot;&gt;&gt;&lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
@@ -7978,6 +7921,9 @@ They are not limited to physical or mental traits. &lt;br&gt;
 &lt;&lt;= setup.traitTips[&quot;Hates Furries&quot;] &gt;&gt; &lt;br&gt;
 * &lt;label&gt;&lt;&lt;checkbox &quot;_hatesFurries&quot; false true&gt;&gt; Hates Furries&lt;/label&gt; &lt;br&gt;
 &lt;br&gt;
+&lt;&lt;= setup.traitTips[&quot;Hates Humans&quot;] &gt;&gt; &lt;br&gt;
+* &lt;label&gt;&lt;&lt;checkbox &quot;_hatesHumans&quot; false true&gt;&gt; Hates Humans&lt;/label&gt; &lt;br&gt;
+&lt;br&gt;
 &lt;div id=&quot;traitError&quot;&gt;&lt;/div&gt;
 
 &lt;&lt;button &quot;Confirm&quot;&gt;&gt;
@@ -7988,7 +7934,11 @@ They are not limited to physical or mental traits. &lt;br&gt;
 	&lt;&lt;elseif _hatesKids and _hatesAdults&gt;&gt;
 		&lt;&lt;replace &quot;#traitError&quot;&gt;&gt;
 			&lt;span class=&quot;red&quot;&gt;You cannot choose both &quot;Hates Kids&quot; and &quot;Hates Adults&quot;. They conflict with each other. &lt;/span&gt;
-		&lt;&lt;/replace&gt;&gt;	
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;elseif _hatesFurries and _hatesHumans&gt;&gt;
+		&lt;&lt;replace &quot;#traitError&quot;&gt;&gt;
+			&lt;span class=&quot;red&quot;&gt;You cannot choose both &quot;Hates Furries&quot; and &quot;Hates Humans&quot;. They conflict with each other. &lt;/span&gt;
+		&lt;&lt;/replace&gt;&gt;			
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;set $mc.traits = $mc.traits.filter(t =&gt;
 			t !== &quot;Will Not Top&quot; &amp;&amp;
@@ -8138,8 +8088,8 @@ Example of how to use.
 
 
 */</tw-passagedata><tw-passagedata pid="29" name="DoneQuestions" tags="" position="100,700" size="100,100">&lt;span class= &quot;Jinx&quot;&gt;
-Alright, well then if you don&#39;t got any more questions then we can begin. Go and have fun! 
-If you are looking for some ass then I would suggest checking out the lounge on the ground floor.
+&quot;Alright, well then if you don&#39;t got any more questions then we can begin. Go and have fun! 
+Thankfully the creator of the game added more people to the game for you to fuck.&quot;
 &lt;/span&gt;
 
 [[Your Room]]</tw-passagedata><tw-passagedata pid="30" name="Bed-Reflect" tags="nobr" position="1225,350" size="100,100">&lt;&lt;set _mems = setup.get_all_npc_memories()&gt;&gt;
@@ -8197,6 +8147,7 @@ You decide to eat &lt;&lt;print _food.aoran ? _food.aoran : &quot;a&quot;&gt;&gt
 
 &lt;&lt;if _food.consume&gt;&gt;
 &lt;br&gt;&lt;em&gt;&lt;&lt;print _food.consume&gt;&gt;&lt;/em&gt;
+
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if $devMode&gt;&gt;
 	&lt;&lt;if _food.flags&gt;&gt;
@@ -8231,7 +8182,15 @@ You wake up &lt;&lt;if $lastNpc&gt;&gt;$lastNpc.name is sleeping next to you but
 &lt;br&gt;
 
 &lt;&lt;link &quot;Get up&quot; _getuppassage&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;br&gt;</tw-passagedata><tw-passagedata pid="35" name="J-Q-popup" tags="Popup" position="250,750" size="100,100">&lt;&lt;switch _topic&gt;&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="35" name="WatchPorn" tags="nobr" position="600,475" size="100,100">You watch some porn on your laptop. What you saw was so amazing that words cannot describe the experience.
+&lt;br&gt;
+Or the creator of the game didn&#39;t come up with better dialogue yet...
+
+&lt;div id=&quot;npcsex-actions-bar&quot;&gt;
+&lt;&lt;button &quot;Stop watching porn&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Your Room&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="J-Q-popup" tags="Popup" position="250,750" size="100,100">&lt;&lt;switch _topic&gt;&gt;
 	&lt;&lt;case &quot;god&quot;&gt;&gt;
 		&lt;span class=&quot;Jinx&quot;&gt;Yes. I am a god. Specifically the god of joy and sex.&lt;/span&gt;
         &lt;span class=&quot;mc&quot;&gt; &quot;Yeah you just said that...&quot;&lt;/span&gt;
@@ -8244,7 +8203,7 @@ You wake up &lt;&lt;if $lastNpc&gt;&gt;$lastNpc.name is sleeping next to you but
         The thought made you feel excited inside.
         &lt;span class=&quot;Jinx&quot;&gt; Now while it does sound like my task for you is as simple as going around having sex with random people, it&#39;s a little more nuanced than that. You are spreading the joy of having sex to everyone. Too many people are nervous to express their sexual desires and I want you to encourage them to let it out!&quot;&lt;/span&gt;
         &lt;span class= &quot;mc&quot;&gt;&quot;What if they don&#39;t want to have sex with me?&quot; &lt;/span&gt;
-        Jinx shrugged
+        Jinx shrugged.
         &lt;span class= &quot;Jinx&quot;&gt; Then you don&#39;t have sex with them. People have their own desires and sexualities. It would go against my domain to force them to engage in somthing they are not interested in. &lt;/span&gt;
     &lt;&lt;case &quot;where?&quot;&gt;&gt;
     	&lt;span class = &quot;Jinx&quot;&gt;This is my domain, the Jinx Hentai Hotel! Don&#39;t bother looking it up on a map, it exists in it&#39;s own pocket dimension. It also acts as a gateway to any known universe, even some you might find familiar. &lt;/span&gt;
@@ -8264,61 +8223,49 @@ You wake up &lt;&lt;if $lastNpc&gt;&gt;$lastNpc.name is sleeping next to you but
 		&lt;span class=&quot;Jinx&quot;&gt;Ask a question.&lt;/span&gt;
 &lt;&lt;/switch&gt;&gt;
 &lt;br&gt;
-&lt;&lt;button &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="Arcade" tags="nobr" position="725,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Arcade&quot;&gt;&gt;
+&lt;&lt;button &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="37" name="Arcade" tags="nobr location" position="850,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Arcade&quot;&gt;&gt;
 You enter a large arcade. Lined from wall to wall are all sorts of video games, some retro, some modern, and some next generation.
 
-WORK IN PROGESS
-
+&lt;br&gt;
+Unfortunately a astral barrier blocks the way forward, with the words &quot;THIS AREA IS A WORK IN PROGESS&quot;
+&lt;br&gt;
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="37" name="Brothel" tags="nobr" position="850,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Brothel&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="38" name="Brothel" tags="nobr location" position="975,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Brothel&quot;&gt;&gt;
 
 You enter a lavish brothel.
-You see a sign explaining the place.
-&lt;&lt;button &quot;Read Sign&quot;&gt;&gt;&lt;&lt;PopupBrothelSign &quot;Brothel&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+/* You see a sign explaining the place.
+&lt;&lt;button &quot;Read Sign&quot;&gt;&gt;&lt;&lt;PopupBrothelSign &quot;Brothel&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; */
+
+&lt;br&gt;
+Unfortunately a astral barrier blocks the way forward, with the words &quot;THIS AREA IS A WORK IN PROGESS&quot;
+&lt;br&gt;
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="38" name="Cafe" tags="nobr" position="975,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Cafe&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="39" name="Cafe" tags="nobr" position="1100,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Cafe&quot;&gt;&gt;
 
 You enter a large cafe for eating.
 
 
-&lt;h2&gt;Café Menu&lt;/h2&gt;
+&lt;span id=&quot;foodMenuUI&quot;&gt;&lt;&lt;FoodMenuUI&gt;&gt;&lt;/span&gt;
 
-&lt;&lt;set _foods = Object.keys(setup.food)&gt;&gt;
+&lt;&lt;unset $spawnPools&gt;&gt;
+&lt;&lt;run setup.refreshFullPool()&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
+&lt;&lt;SpawnRandomNPCs 15&gt;&gt;
 
-&lt;ul&gt;
-&lt;&lt;for _i = 0; _i &lt; _foods.length; _i++&gt;&gt;
-	&lt;&lt;set _name = _foods[_i]&gt;&gt;
-	
-	&lt;li&gt;
-		&lt;&lt;capture _name&gt;&gt;
-		&lt;&lt;link _name&gt;&gt;
-			&lt;&lt;set $returnPassage = passage()&gt;&gt;
-			&lt;&lt;set $lastEaten = _name&gt;&gt;
-			&lt;&lt;goto Event_EatFood&gt;&gt;
-		&lt;&lt;/link&gt;&gt;
-		&lt;&lt;/capture&gt;&gt;
-		&lt;br&gt;
-		&lt;&lt;if setup.food[_name].description&gt;&gt;
-			&lt;small&gt;&lt;&lt;print setup.food[_name].description&gt;&gt;&lt;/small&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;/li&gt;
-	
-&lt;&lt;/for&gt;&gt;
-&lt;/ul&gt;
-
+&lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="39" name="Elevator" tags="nobr" position="375,975" size="100,100">&lt;&lt;set $gamelocation to &quot;Elevator&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="40" name="Elevator" tags="nobr location" position="375,975" size="100,100">&lt;&lt;set $gamelocation to &quot;Elevator&quot;&gt;&gt;
 You enter the elevator. Some buttons are lit up, indicating you can go there, other&#39;s are currently not available yet.
 &lt;br&gt;
 &lt;div class=&quot;room-hotel&quot;&gt;
@@ -8326,6 +8273,7 @@ You enter the elevator. Some buttons are lit up, indicating you can go there, ot
 [[Jinx&#39;s Room]] &lt;br&gt;
 /* [[Arcade]] &lt;br&gt; */
 [[Cafe]] &lt;br&gt;
+[[Library]] &lt;br&gt;
 /*[[Gym]] &lt;br&gt; */
 /* [[Pool]] &lt;br&gt; */
 /* [[Garden]] &lt;br&gt; */
@@ -8333,29 +8281,33 @@ You enter the elevator. Some buttons are lit up, indicating you can go there, ot
 /*[[Spa]] &lt;br&gt; */
 /*[[Zoo]] &lt;br&gt; */
 [[Resident Hallway|Hotel Hallway]] &lt;br&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="40" name="Garden" tags="nobr" position="1225,475" size="100,100">&lt;&lt;set $gamelocation to &quot;Garden&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="41" name="Garden" tags="nobr location" position="100,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Garden&quot;&gt;&gt;
 
 You enter a beautiful garden.
 
-WORK IN PROGESS
+&lt;br&gt;
+Unfortunately a astral barrier blocks the way forward, with the words &quot;THIS AREA IS A WORK IN PROGESS&quot;
+&lt;br&gt;
 
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="41" name="Gym" tags="nobr" position="100,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Gym&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="42" name="Gym" tags="nobr location" position="225,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Gym&quot;&gt;&gt;
 
-You enter a gym. People are working out.
+You enter a gym. All kinds of equipment line the area to work on your body.
 
-WORK IN PROGESS
+&lt;br&gt;
+Unfortunately a astral barrier blocks the way forward, with the words &quot;THIS AREA IS A WORK IN PROGESS&quot;
+&lt;br&gt;
 
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="42" name="Hotel Hallway" tags="nobr" position="400,850" size="100,100">&lt;&lt;set $gamelocation to &quot;Hotel Hallway&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="Hotel Hallway" tags="nobr location" position="400,850" size="100,100">&lt;&lt;set $gamelocation to &quot;Hotel Hallway&quot;&gt;&gt;
 
 You are in the hotel hallway, doors to other rooms are on each side but you cannot enter them.
 &lt;br&gt;
@@ -8376,7 +8328,7 @@ At the end of the hall is an elevator.
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="Hotel Portal" tags="nobr" position="375,1375" size="100,100">&lt;&lt;set $gamelocation to &quot;Hotel Portal&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="44" name="Hotel Portal" tags="nobr location" position="375,1375" size="100,100">&lt;&lt;set $gamelocation to &quot;Hotel Portal&quot;&gt;&gt;
 You see the portal to travel the multiverse, it is currently out of order.
 
 &lt;br&gt;
@@ -8387,7 +8339,7 @@ You see the portal to travel the multiverse, it is currently out of order.
 &lt;/div&gt;
 
 End of game so far.
-More to be added later.</tw-passagedata><tw-passagedata pid="44" name="Jinx&#39;s Room" tags="nobr" position="125,975" size="100,100">&lt;&lt;set $gamelocation to &quot;Jinx&#39;s Room&quot;&gt;&gt;
+More to be added later.</tw-passagedata><tw-passagedata pid="45" name="Jinx&#39;s Room" tags="nobr location" position="125,975" size="100,100">&lt;&lt;set $gamelocation to &quot;Jinx&#39;s Room&quot;&gt;&gt;
 
 You enter the room.
 The room seems to be in the process of maintenence, and at the end of the room, Jinx sits on the throne.
@@ -8403,7 +8355,8 @@ Welcome my acolyte, do you have question&#39;s for me?
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="Lobby" tags="nobr" position="375,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lobby&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="Library" tags="nobr location" position="725,600" size="100,100">You enter a library. Read what you like but best keep it quiet.
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="47" name="Lobby" tags="nobr location" position="375,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lobby&quot;&gt;&gt;
 You are in the lobby of the hotel, classical music plays as you watch people from various worlds go about their business.
 &lt;br&gt;
 By the entrance you make out the offical greeting board that is meant for all new people.
@@ -8429,7 +8382,7 @@ By the entrance you make out the offical greeting board that is meant for all ne
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="Lounge" tags="nobr" position="500,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lounge&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="48" name="Lounge" tags="nobr location" position="500,1150" size="100,100">&lt;&lt;set $gamelocation to &quot;Lounge&quot;&gt;&gt;
 
 
 A nice place to rest, relax, and socialize. There are some people mingling around the place.
@@ -8446,26 +8399,31 @@ A nice place to rest, relax, and socialize. There are some people mingling aroun
 &lt;&lt;button &quot;Lobby&quot;&gt;&gt;
     &lt;&lt;goto &quot;Lobby&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="47" name="Pool" tags="nobr" position="850,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Pool&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="49" name="Pool" tags="nobr location" position="1100,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Pool&quot;&gt;&gt;
 
 The smell of chlorine entered your nose before you saw the pool area. On the side was a hottub. There was also the entrance to the showers.
 
-WORK IN PROGESS
+&lt;br&gt;
+Unfortunately a astral barrier blocks the way forward, with the words &quot;THIS AREA IS A WORK IN PROGESS&quot;
+&lt;br&gt;
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="48" name="Spa" tags="nobr" position="975,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Spa&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="50" name="Spa" tags="nobr location" position="1225,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Spa&quot;&gt;&gt;
 
+You see a lavish spa for relaxation.
 
-WORK IN PROGESS
+&lt;br&gt;
+Unfortunately a astral barrier blocks the way forward, with the words &quot;THIS AREA IS A WORK IN PROGESS&quot;
+&lt;br&gt;
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 &lt;&lt;button &quot;Elevator&quot;&gt;&gt;
     &lt;&lt;goto &quot;Elevator&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="49" name="TestRoom" tags="nobr" position="1100,600" size="100,100">&lt;&lt;set $gamelocation to &quot;Test Room&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="51" name="TestRoom" tags="nobr" position="100,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Test Room&quot;&gt;&gt;
 
 
 
@@ -8487,7 +8445,7 @@ Spawn keys: &lt;&lt;=$spawnPools ? Object.keys($spawnPools).join(&quot;, &quot;)
 Room NPCs: &lt;&lt;=$roomNPCs ? $roomNPCs.length : 0 &gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="50" name="Your Bathroom" tags="nobr" position="525,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Bathroom&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="52" name="Your Bathroom" tags="nobr location" position="525,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Bathroom&quot;&gt;&gt;
 
 
 &lt;p&gt; You step through the doorway into a clean, polished bathroom. Soft overhead lighting reflects off the marble tiles, giving the room a muted glow. The air is cool and lightly scented. A wide mirror stretches across the wall, framed by smooth metal edging. The sink basin sits beneath it, carved from a single piece of stone, with neatly arranged toiletries placed with precision. The glass shower enclosure stands to the side, its chrome fixtures catching the light. Everything is orderly, quiet, and waiting for you to use it.
@@ -8521,11 +8479,7 @@ Room NPCs: &lt;&lt;=$roomNPCs ? $roomNPCs.length : 0 &gt;&gt;
 	    &lt;&lt;run Dialog.create(&quot;Propose sex with &quot; + $ui.npc.name).wikiPassage(&quot;UI-Attracted-check&quot;).open()&gt;&gt;
 	&lt;&lt;/button&gt;&gt;
 &lt;&lt;/if&gt;&gt;    
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="51" name="Your Room" tags="nobr" position="400,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Room&quot;&gt;&gt;
-You are in your hotel room. It looks like the master suite of a luxury hotel, complete with a large shaped bed. Next to the bed is a phone for calling up people you know for a &#39;good time&#39;.
-To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic.
-On the other side there was a door to your bathroom.
-&lt;br&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="53" name="Your Room" tags="nobr location" position="400,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Room&quot;&gt;&gt;
 &lt;&lt;if $lastNpc&gt;&gt;
 	&lt;&lt;set $ui.npc = $lastNpc&gt;&gt;
 	&lt;&lt;set _n = $ui.npc&gt;&gt;
@@ -8533,6 +8487,14 @@ On the other side there was a door to your bathroom.
 	&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
+You are in your hotel room. It looks like the master suite of a luxury hotel, complete with a large shaped bed. Next to the bed is a phone for calling up people you know for a &#39;good time&#39;.
+&lt;br&gt;
+To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic for you to enjoy. &lt;br&gt;
+On the other side there was a door to your bathroom. Next to the door was a high quality television set complete with the latest game console from a nondescript gaming company.
+&lt;br&gt;
+And in the corner was a desk with a computer for playing around with.
+&lt;br&gt;
+
 &lt;&lt;set _memorylink to {text: &quot;Reflect on memories&quot;, link: &quot;Bed-Reflect&quot;}&gt;&gt;
 &lt;&lt;link _memorylink&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;br&gt;
@@ -8541,7 +8503,10 @@ On the other side there was a door to your bathroom.
 &lt;br&gt;
 &lt;&lt;set _sleeplink to {text: &quot;Sleep&quot;, link: &quot;Sleep&quot;}&gt;&gt;
 &lt;&lt;link _sleeplink&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;&lt;set _pornlink to {text: &quot;Watch Porn on the Computer&quot;, link: &quot;WatchPorn&quot;}&gt;&gt;
+&lt;&lt;link _pornlink&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;br&gt;
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 &lt;&lt;button &quot;Leave your room&quot;&gt;&gt;
@@ -8559,7 +8524,7 @@ On the other side there was a door to your bathroom.
 
 &lt;&lt;/if&gt;&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="52" name="ApplebridgeNPC" tags="init nobr" position="475,400" size="100,100">/* Applebridge */
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="54" name="ApplebridgeNPC" tags="init nobr" position="475,400" size="100,100">/* Applebridge */
 &lt;&lt;set $CoryP = {
     name: &quot;Cory&quot;,
     nickname: &quot;&quot;,
@@ -8695,7 +8660,7 @@ On the other side there was a door to your bathroom.
     traits: [
     &quot;Will Not Top&quot;, &quot;Sex Addict&quot;
     ]
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="CampBuddyNPC" tags="init nobr" position="475,400" size="100,100">/%Camp Buddy %/
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="CampBuddyNPC" tags="init nobr" position="475,400" size="100,100">/%Camp Buddy %/
 &lt;&lt;set $Yoichi_CB = {
     name: &quot;Yoichi&quot;,
     nickname: &quot;&quot;,
@@ -8853,7 +8818,7 @@ On the other side there was a door to your bathroom.
     virgin: false,
     sexpref: &quot;Switch&quot;,
     origin: &quot;Camp Buddy&quot;
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="MiscNPC" tags="init nobr" position="475,725" size="100,100">/*For random npc&#39;s not part of any fandom list */
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="MiscNPC" tags="init nobr" position="725,725" size="100,100">/*For random npc&#39;s not part of any fandom list */
 
 /*Alvin */
 &lt;&lt;set $Alvin = {
@@ -9101,7 +9066,7 @@ On the other side there was a door to your bathroom.
 
 /* Ashido Mina */
 
-/* Allister */</tw-passagedata><tw-passagedata pid="55" name="NPC-List" tags="nobr" position="600,725" size="100,100">&lt;span id=&quot;list&quot;&gt;
+/* Allister */</tw-passagedata><tw-passagedata pid="57" name="NPC-List" tags="nobr" position="850,725" size="100,100">&lt;span id=&quot;list&quot;&gt;
 &lt;&lt;if !$roomNPCs || !$roomNPCs.length&gt;&gt;
 	&lt;em&gt;No one is here.&lt;/em&gt;
 	&lt;&lt;return&gt;&gt;
@@ -9153,7 +9118,7 @@ On the other side there was a door to your bathroom.
 	&lt;/div&gt;
 	&lt;hr&gt;
 &lt;&lt;/for&gt;&gt;
-&lt;/span&gt;</tw-passagedata><tw-passagedata pid="56" name="OCNPC" tags="init nobr" position="475,400" size="100,100">/* already designated NPC&#39;s will have their information stored here. */
+&lt;/span&gt;</tw-passagedata><tw-passagedata pid="58" name="OCNPC" tags="init nobr" position="475,400" size="100,100">/* already designated NPC&#39;s will have their information stored here. */
 
 /*Kevin Snowpaw */
 &lt;&lt;set $KevinNpc = {
@@ -9342,7 +9307,39 @@ On the other side there was a door to your bathroom.
     traits: [
     &quot;Super Speed&quot;, &quot;Gamer&quot;
     ]
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="UTDR-NPC" tags="init nobr" position="850,725" size="100,100">/*Undertale and Deltarune Characters */
+}&gt;&gt;
+
+
+/* Kyler Moss?*/
+
+&lt;&lt;set $Kyler = {
+    name: &quot;Myler&quot;,
+    surname: &quot;Koss&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    trans: &quot;Cisgender&quot;,
+    sexu: &quot;Homosexual&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 21,
+    heterochromia: false,
+    eyes: &quot;Green&quot;,
+    hair: &quot;Combed&quot;,
+    haircolor: &quot;Black&quot;,
+    skincolor: &quot;Fair&quot;,
+    bodyheight: &quot;Average&quot;,
+    physique: &quot;Lithe&quot;,
+    personality: [&quot;Playful&quot;, &quot;Provocative&quot;],
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;,
+    penislength:&quot;Average&quot;,
+    assSize: &quot;Plump&quot;,
+    virgin: false,
+    sexpref: &quot;Switch&quot;,
+    origin: &quot;Unknown&quot;,
+    traits: [
+    
+    ]
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="UTDR-NPC" tags="init nobr" position="1100,725" size="100,100">/*Undertale and Deltarune Characters */
 
 /*Asriel Dreemurr */
 
@@ -9377,7 +9374,7 @@ On the other side there was a door to your bathroom.
 
 /*Chara */
 /* Kris*/
-/* Ralsei*/</tw-passagedata><tw-passagedata pid="58" name="Notes" tags="" position="1950,125" size="100,100">/* 
+/* Ralsei*/</tw-passagedata><tw-passagedata pid="60" name="Notes" tags="" position="1950,125" size="100,100">/* 
 
 Fix the hair input for main character.
 change from _n to $n
@@ -9450,671 +9447,7 @@ Work on fixing spawning NPC&#39;s
 /*
 
 &quot;You&#39;re making me feel funny down there.&quot;
-*/</tw-passagedata><tw-passagedata pid="59" name="Respond-Dialogue" tags="nobr Dialogue" position="1375,1325" size="100,100">/* You respond to certain actions. */
-&lt;br&gt;
-&lt;b&gt;&lt;&lt;=$mc.name&gt;&gt;: &lt;/b&gt;
-&lt;&lt;if $sex.action == &quot;Kiss&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Caress&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Frot&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Grope Breast&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Anal&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;My ass loves your &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; !&quot;,
-			&quot;Good _n.petname! Keep sliding that delicious cock of yours in and out of my ass!&quot;,
-			&quot;What a good _n.petname! Enjoy my ass as your reward now!&quot;,
-			&quot;You like feeling my slutty little asshole gripping down on your cock?!&quot;,
-			&quot;Good _n.petname! Push your &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; deep into my ass!&quot;,
-			&quot;Keep going! Get that &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; deep in my ass like a good _n.petname!&quot;,
-			&quot;Yes! Fuck my ass! Fuck me harder! Don&#39;t stop!&quot;,
-			&quot;Don&#39;t stop! Harder! Fuck my ass! Yes, yes, yes!&quot;,
-			&quot;Oh yes! Fuck my ass! I love your &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; !&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Vaginal&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Cunnilingus&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Blowjob&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Handjob&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Footjob&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Suck Foot&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Rimjob&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Cuddle&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Grope Butt&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Finger Ass&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.action == &quot;Orgasm&quot;&gt;&gt;
-	&lt;&lt;if $sex.roles.dom.name == $mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.roles.sub.name == _$mc.name&gt;&gt;
-	&lt;&lt;if $mc.sexpref == &quot;Dominant&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;DOM-LINE-2 about BODY-PART.&quot;,
-			&quot;DOM-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;
-    &lt;&lt;elseif $mc.sexpref == &quot;Submissive&quot;&gt;&gt;
-		&lt;&lt;=either(
-			&quot;SUB-LINE-1 about BODY-PART.&quot;,
-			&quot;SUB-LINE-2 about BODY-PART.&quot;,
-			&quot;SUB-LINE-3 about BODY-PART.&quot;
-		)&gt;&gt;    
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;=either(
-			&quot;NEUTRAL-DOM-LINE-1 about BODY-PART.&quot;,
-			&quot;NEUTRAL-DOM-LINE-2 about BODY-PART.&quot;
-		)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="ActDialogue" tags="nobr Dialogue" position="1000,1025" size="100,100">&lt;&lt;silently&gt;&gt;
+*/</tw-passagedata><tw-passagedata pid="61" name="ActDialogue" tags="nobr Dialogue" position="1000,1025" size="100,100">&lt;&lt;silently&gt;&gt;
     &lt;&lt;set _a = $sex.act or &quot;none&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
 
@@ -10135,21 +9468,19 @@ Work on fixing spawning NPC&#39;s
     &lt;&lt;case &quot;Pull Face Back&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
 
     &lt;&lt;case &quot;Rub Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Rub-Pussy-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Pull Hand To Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Vagina-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Finger Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Vagina-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Finger Pussy(Continue)&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Vagina-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Stop Fingering&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pull Off Of Finger&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
 
-    &lt;&lt;case &quot;Rub Clit&quot;&gt;&gt;&lt;&lt;include &quot;Finger-Vagina-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Cunnilingus-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Clit&quot;&gt;&gt;&lt;&lt;include &quot;Cunnilingus-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Ride Face&quot;&gt;&gt;&lt;&lt;include &quot;Cunnilingus-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Asshole&quot;&gt;&gt;&lt;&lt;include &quot;Rimjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Cock&quot;&gt;&gt;&lt;&lt;include &quot;Lick-Cock-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Rub Cock On Face&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Cock Against Hand&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Cock-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Lick Foot&quot;&gt;&gt;&lt;&lt;include &quot;Lick-Foot-Dialogue&quot;&gt;&gt;
+
     &lt;&lt;case &quot;Grip Cock&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Wrap Hand Around Cock&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Pump Shaft&quot;&gt;&gt;&lt;&lt;include &quot;Handjob-Dialogue&quot;&gt;&gt;
@@ -10187,7 +9518,7 @@ Work on fixing spawning NPC&#39;s
     &lt;&lt;case &quot;Suck Each Other Off&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Eat Each Other Out&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck And Lick Each Other&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Lick and Suck Each Other&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick And Suck Each Other&quot;&gt;&gt;&lt;&lt;include &quot;Blowjob-Dialogue&quot;&gt;&gt;
 
     &lt;&lt;case &quot;Tease Pussy With Cock&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Pussy-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Cocktease With Pussy&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Pussy-Dialogue&quot;&gt;&gt;
@@ -10240,7 +9571,7 @@ Work on fixing spawning NPC&#39;s
     &lt;&lt;case &quot;Touch Stomach&quot;&gt;&gt;&lt;&lt;include &quot;Feel-Stomach-Dialogue&quot;&gt;&gt;
     
     &lt;&lt;case &quot;Embrace&quot;&gt;&gt;&lt;&lt;include &quot;Embrace-Dialogue&quot;&gt;&gt;
-&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="Anal-Dialogue" tags="nobr Dialogue" position="1200,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="Anal-Dialogue" tags="nobr Dialogue" position="1200,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.act == &quot;Enter Ass&quot;&gt;&gt;
@@ -10390,7 +9721,7 @@ Work on fixing spawning NPC&#39;s
 	&lt;&lt;= either(
 		&quot;You hump your ass back to meet _n.name&#39;s thrusts.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="Blowjob-Dialogue" tags="nobr Dialogue" position="1000,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="Blowjob-Dialogue" tags="nobr Dialogue" position="1000,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 	
 &lt;&lt;if $sex.act == &quot;Take Cock Between Lips&quot;&gt;&gt;
@@ -10466,7 +9797,7 @@ Work on fixing spawning NPC&#39;s
 	]&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;= either(..._lines) &gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="Boobjob-Dialogue" tags="nobr Dialogue" position="1300,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;= either(..._lines) &gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="Boobjob-Dialogue" tags="nobr Dialogue" position="1300,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
@@ -10476,7 +9807,7 @@ Work on fixing spawning NPC&#39;s
 	&lt;&lt;=either(
     &quot;You thrust your $mc.genitals between _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;breastsize&#39;, &#39;breastsize&#39;) &gt;&gt; breasts.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="Caress-Dialogue" tags="Dialogue nobr" position="800,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="Caress-Dialogue" tags="Dialogue nobr" position="800,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
@@ -10528,7 +9859,7 @@ Work on fixing spawning NPC&#39;s
 			&quot;You feel the softness of $proset.their &lt;&lt;=_n.anthro.color.toLowerCase()&gt;&gt; feathers against your hand.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="Cuddle-Dialogue" tags="Dialogue nobr" position="1100,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="Cuddle-Dialogue" tags="Dialogue nobr" position="1100,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.role==&quot;Bottom&quot;&gt;&gt;
@@ -10540,7 +9871,7 @@ Work on fixing spawning NPC&#39;s
     &quot;You wrap your arms around _n.name. They slink their face into your chest.&quot;,
     &quot;You both hug, _n.name snuggling up to you.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="Cunnilingus-Dialogue" tags="nobr Dialogue" position="900,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="Cunnilingus-Dialogue" tags="nobr Dialogue" position="900,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.act == &quot;Lick Pussy&quot;&gt;&gt;
@@ -10577,7 +9908,7 @@ Work on fixing spawning NPC&#39;s
 	&lt;&lt;else&gt;&gt;
 		_n.name grinds $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;pussy&#39;) &gt;&gt; on your face.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="Embrace-Dialogue" tags="nobr Dialogue" position="1100,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="Embrace-Dialogue" tags="nobr Dialogue" position="1100,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $position == &quot;Standing&quot;&gt;&gt;
@@ -10632,7 +9963,7 @@ Work on fixing spawning NPC&#39;s
 	&lt;&lt;/if&gt;&gt;	
 &lt;&lt;else&gt;&gt;
 	You should not be able to read this, that means there&#39;s an error.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="Face-On-Chest-Dialogue" tags="nobr Dialogue" position="900,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="Face-On-Chest-Dialogue" tags="nobr Dialogue" position="900,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.role== &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
@@ -10642,7 +9973,7 @@ Work on fixing spawning NPC&#39;s
 	&lt;&lt;=either(
     &quot;You press your face against _n.name&#39;s chest.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="Feel-Stomach-Dialogue" tags="nobr Dialogue" position="1000,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="Feel-Stomach-Dialogue" tags="nobr Dialogue" position="1000,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
@@ -10653,7 +9984,7 @@ Work on fixing spawning NPC&#39;s
 	&lt;&lt;=either(
     &quot;You press your hand against _n.name&#39;s belly&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="Feet-Acts-Dialogue" tags="nobr" position="1225,850" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Cock With Feet&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Feet-Acts-Dialogue" tags="nobr" position="100,975" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Cock With Feet&quot;&gt;&gt;
 You tease _n.name&#39;s cock with your feet
 &lt;&lt;elseif $sex.act == &quot;Tease Pussy With Feet&quot;&gt;&gt;
 You tease _n.name&#39;s pussy with your feet.
@@ -10674,7 +10005,7 @@ You stroke _n.name&#39;s pussy with your feet.
 &lt;&lt;elseif $sex.act == &quot;Rub Against Feet&quot;&gt;&gt;
 You rub your pussy against _n.name&#39;s feet.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Finger-Ass-Dialogue" tags="Dialogue nobr" position="800,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="Finger-Ass-Dialogue" tags="Dialogue nobr" position="800,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.act == &quot;Finger Ass&quot;&gt;&gt;
@@ -10699,7 +10030,7 @@ You rub your pussy against _n.name&#39;s feet.
             &quot;You slide you &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; back and forth, caressing the walls of _n.name&#39;s inside. $proset.theyUp continues to tense. $proset.theyUp appear to enjoy it very much.&quot;,
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="Finger-Vagina-Dialogue" tags="Dialogue nobr" position="900,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="Finger-Vagina-Dialogue" tags="Dialogue nobr" position="900,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.act == &quot;Finger Pussy&quot;&gt;&gt;
@@ -10725,23 +10056,7 @@ You rub your pussy against _n.name&#39;s feet.
 			&quot;You keep moving your &lt;&lt;= setup.partLower($mc, &#39;Finger&#39;, &#39;finger&#39;) &gt;&gt; in and out of _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Vagina&#39;, &#39;pussy&#39;) &gt;&gt;.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $sex.act == &quot;Pull Hand To Pussy&quot;&gt;&gt;
-	&lt;&lt;= either(
-		&quot;You pull $proset.their hand to your &lt;&lt;= setup.partLower($mc, &#39;Vagina&#39;, &#39;pussy&#39;) &gt;&gt;, urging $proset.them to finger you.&quot;
-	) &gt;&gt;
-
-&lt;&lt;elseif $sex.act == &quot;Rub Clit&quot;&gt;&gt;
-	&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;You rub _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Clitoris&#39;, &#39;clit&#39;) &gt;&gt;.&quot;
-		) &gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;= either(
-			&quot;_n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;Clitoris&#39;, &#39;clit&#39;) &gt;&gt;.&quot;
-		) &gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="Footjob-Dialogue" tags="Dialogue nobr" position="1300,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Footjob-Dialogue" tags="Dialogue nobr" position="1300,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
@@ -10788,7 +10103,7 @@ You rub your pussy against _n.name&#39;s feet.
 		&quot;You fuck _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
 		&quot;_n.name giggles softly to $proset.themself as $proset.their feet glide up and down the length of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Frot-Dialogue" tags="nobr Dialogue" position="1300,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="Frot-Dialogue" tags="nobr Dialogue" position="1300,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;set _pos   = $sex.position || $position || &quot;Default&quot;&gt;&gt;
@@ -10879,7 +10194,7 @@ You rub your pussy against _n.name&#39;s feet.
 		)&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="Grope-Breast-Dialogue" tags="nobr Dialogue" position="1100,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="Grope-Breast-Dialogue" tags="nobr Dialogue" position="1100,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.position == &quot;Doggy&quot;&gt;&gt;
@@ -10913,7 +10228,7 @@ You rub your pussy against _n.name&#39;s feet.
 			&quot;_n.name reaches over and gropes your &lt;&lt;= setup.valueLower($mc, &#39;breastsize&#39;, &#39;average&#39;) &gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;Breasts&#39;, &#39;breasts&#39;) &gt;&gt;.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="Grope-Butt-Dialogue" tags="nobr Dialogue" position="1000,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="Grope-Butt-Dialogue" tags="nobr Dialogue" position="1000,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
     &lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
@@ -10924,7 +10239,7 @@ You rub your pussy against _n.name&#39;s feet.
 	    &lt;&lt;=either(
             &quot;You grab _n.name&#39;s &lt;&lt;= setup.valueLower(_n, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass.&quot;
         )&gt;&gt;
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="Handjob-Dialogue" tags="Dialogue nobr" position="900,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="Handjob-Dialogue" tags="Dialogue nobr" position="900,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.act == &quot;Grip Cock&quot;&gt;&gt;
@@ -10981,7 +10296,7 @@ You rub your pussy against _n.name&#39;s feet.
 	&lt;&lt;elseif $sex.role ==&quot;Top&quot;&gt;&gt;
 		_n.name plays with your foreskin.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="Hotdog-Dialogue" tags="nobr" position="975,975" size="100,100">&lt;&lt;if $sex.act == &quot;Hotdog&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="Hotdog-Dialogue" tags="nobr" position="1100,975" size="100,100">&lt;&lt;if $sex.act == &quot;Hotdog&quot;&gt;&gt;
 You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; ass together around your &lt;&lt;=$mc.penislength.toLowerCase()&gt;&gt; cock as you thrust between them.
 
 &lt;&lt;elseif $sex.act == &quot;Rub Ass On Cock&quot;&gt;&gt;
@@ -10989,7 +10304,7 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
     &quot;You roll your hips, rubbing _n.name&#39;s cock between your cheeks.&quot;,
     &quot;You clench your cheeks against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, squeezing it.&quot;
 )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="Kiss-Dialogue" tags="Dialogue nobr" position="1100,975" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="Kiss-Dialogue" tags="Dialogue nobr" position="1225,975" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 	&lt;&lt;=either(
 		&quot;_n.name leans in and kisses you softly.&quot;,
@@ -10999,18 +10314,18 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 		&quot;You lean down, grabbing _n.name&#39;s head in both hands and pulling _n.name up into a passionate kiss.&quot;,
 		&quot;With a grin, you lean down into _n.name&#39;s chest, breathing in _n.name&#39;s scent before pressing your lips against _n.name&#39;s.&quot;,
 		&quot;Leaning down, you let out a moan as you press your lips against _n.name&#39;s and start to eagerly kiss _n.name.&quot;
-	)&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="Lick-Cock-Dialogue" tags="nobr" position="1225,975" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+	)&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Lick-Cock-Dialogue" tags="nobr" position="100,1100" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     &lt;&lt;=either(
         &quot;_n.name licks your cock.&quot;,
         &quot;_n.name extends their tongue and licks your cockhead.&quot;
     )&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
     You begin to slowly use your tongue to slowly work around _n.name&#39;s tip, making sure you can feel and taste every part of it.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Lick-Foot-Dialogue" tags="" position="100,1100" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Lick-Foot-Dialogue" tags="" position="225,1100" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     _n.name licks your foot.
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
     You lick _n.name&#39;s foot.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Nipple-Acts-Dialogue" tags="nobr" position="225,1100" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Nipples&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="Nipple-Acts-Dialogue" tags="nobr" position="350,1100" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Nipples&quot;&gt;&gt;
     &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
         You tease _n.name&#39;s nipples.
     &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
@@ -11039,7 +10354,7 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
             &quot;_n.name sucks your nipples.&quot;
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="Orgasm-Close-Dialogue" tags="nobr" position="350,1100" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="Orgasm-Close-Dialogue" tags="nobr" position="475,1100" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
 &lt;&lt;set _bottom = $sex.Bottom || $mc&gt;&gt;
 
 &lt;&lt;if $sex.climax.Bottom &amp;&amp; $sex.climax.Top&gt;&gt;
@@ -11057,12 +10372,11 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 	&lt;&lt;if $sex.climax.Top&gt;&gt;
 		&quot;Climax is top&quot;
 	&lt;&lt;/if&gt;&gt;
-	 
 	&lt;&lt;if $sex.climax.Bottom&gt;&gt;
 		&quot;Climax is bottom&quot;
 	&lt;&lt;/if&gt;&gt;
 	
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="OrgasmDialogue" tags="nobr" position="475,1100" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="OrgasmDialogue" tags="nobr" position="600,1100" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
 &lt;&lt;set _bottom = $sex.Bottom || $mc&gt;&gt;
 
 &lt;&lt;set _topClimax = !!($sex.climax &amp;&amp; $sex.climax.Top)&gt;&gt;
@@ -11172,7 +10486,7 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 			&lt;&lt;gram _bottom &quot;subjCap&quot;&gt;&gt; &lt;&lt;gverb _bottom &quot;cum&quot; &quot;cums&quot;&gt;&gt;.
 		&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="Pet-Ears-Dialogue" tags="nobr Dialogue" position="1200,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="Pet-Ears-Dialogue" tags="nobr Dialogue" position="1200,1675" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
@@ -11244,7 +10558,7 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 	&lt;&lt;/if&gt;&gt;
 
 	&lt;&lt;= either(..._lines) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="86" name="Rimjob-Dialogue" tags="nobr Dialogue" position="1000,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="Rimjob-Dialogue" tags="nobr Dialogue" position="1000,1575" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;if $position is &quot;Cowgirl&quot;&gt;&gt;
@@ -11261,7 +10575,7 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
         &quot;_n.name eats out your ass.&quot;,
         &quot;_n.name buries their face in your &lt;&lt;= setup.partLower($mc, &#39;ass&#39;, &#39;ass&#39;) &gt;&gt; and gives it a lick.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="Rub-Butt-Dialogue" tags="nobr" position="850,1100" size="100,100">You rub _n.name&#39;s ass.</tw-passagedata><tw-passagedata pid="88" name="Rub-Pussy-Dialogue" tags="nobr" position="975,1100" size="100,100">/*Add different dialogue based on positions */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="Rub-Butt-Dialogue" tags="nobr" position="975,1100" size="100,100">You rub _n.name&#39;s ass.</tw-passagedata><tw-passagedata pid="89" name="Rub-Pussy-Dialogue" tags="nobr" position="1100,1100" size="100,100">/*Add different dialogue based on positions */
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 
 You rub _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; with your fingers.
@@ -11270,7 +10584,7 @@ You rub _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;gen
 
 _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; with their fingers.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="Stop-Dialogue" tags="nobr" position="1100,1100" size="100,100">&lt;&lt;if $sex.act ==&quot;Release Cock&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="Stop-Dialogue" tags="nobr" position="1225,1100" size="100,100">&lt;&lt;if $sex.act ==&quot;Release Cock&quot;&gt;&gt;
     You release _n.name&#39;s cock.
 &lt;&lt;elseif $sex.act ==&quot;Stop Fingering&quot;&gt;&gt;
     You stop fingering.
@@ -11302,7 +10616,7 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
     You stop fingering _n.name&#39;s ass.
 &lt;&lt;elseif $sex.act ==&quot;Pull Face Back&quot;&gt;&gt;
     You pull your face back.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="SuckFoot-Dialogue" tags="Dialogue nobr" position="800,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="SuckFoot-Dialogue" tags="Dialogue nobr" position="800,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
@@ -11331,7 +10645,7 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 		&quot;A moan bursts out from your mouth as _n.name continues eagerly licking and kissing your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
 		&quot;Moaning in delight, _n.name eagerly worships your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; by planting a series of passionate kisses on them.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Tease-Ass-Dialogue" tags="nobr" position="100,1225" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Ass With Cock&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="Tease-Ass-Dialogue" tags="nobr" position="225,1225" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Ass With Cock&quot;&gt;&gt;
 &lt;&lt;set _lines = [
     &quot;You tease _n.name&#39;s ass with your cock.&quot;
 ]&gt;&gt;
@@ -11347,7 +10661,7 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
     ]&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;= either(..._lines) &gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="Tease-Cock-Dialogue" tags="nobr" position="225,1225" size="100,100">&lt;&lt;if $sex.act==&quot;Rub Cock On Face&quot;&gt;&gt;
+&lt;&lt;= either(..._lines) &gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="Tease-Cock-Dialogue" tags="nobr" position="350,1225" size="100,100">&lt;&lt;if $sex.act==&quot;Rub Cock On Face&quot;&gt;&gt;
     &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	    &lt;&lt;=either(
  	    &quot;You rub your cock on _n.name&#39;s face.&quot;
@@ -11357,21 +10671,11 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
         &quot;_n.name rubs their cock on your face.&quot;
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $sex.act == &quot;Rub Cock Against Hand&quot;&gt;&gt;
-    &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-	    &lt;&lt;=either(
- 	        &quot;You rub your cock against _n.name&#39;s hand.&quot;
-        )&gt;&gt;
-    &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-	    &lt;&lt;=either(
-            &quot;_n.name rubs their cock against your hand.&quot;
-        )&gt;&gt;
-    &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="Tease-Pussy-Dialogue" tags="nobr" position="350,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="Tease-Pussy-Dialogue" tags="nobr" position="475,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
         You tease _n.name&#39;s pussy with your cock.
     &lt;&lt;elseif $sex.role ==&quot;Bottom&quot;&gt;&gt;
         _n.name teases your cock with their pussy.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="Trib-Dialogue" tags="nobr" position="475,1225" size="100,100">You grind your pussies together.</tw-passagedata><tw-passagedata pid="95" name="Vaginal-Dialogue" tags="nobr Dialogue" position="1200,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="Trib-Dialogue" tags="nobr" position="600,1225" size="100,100">You grind your pussies together.</tw-passagedata><tw-passagedata pid="96" name="Vaginal-Dialogue" tags="nobr Dialogue" position="1200,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;set _mcGen = setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;)&gt;&gt;
@@ -11505,7 +10809,7 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 		&quot;Placing your &lt;&lt;= _mcHands &gt;&gt; on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering moan as you impale yourself on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
 		&quot;Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a moan as you spear your &lt;&lt;= _mcVag &gt;&gt; on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="Against-Wall-Dialogue" tags="nobr Dialogue" position="975,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="Against-Wall-Dialogue" tags="nobr Dialogue" position="975,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 /* Supposed to be facing each other against the wall. */
 
@@ -11519,7 +10823,7 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 		&quot;Taking hold of $proset.their shoulders, you push $proset.them up against a nearby wall.&quot;,
 		&quot;Grinding your body against $proset.their back, _n.name feels your breath on the side of $proset.their &lt;&lt;= setup.partLower(_n, &#39;Ear&#39;, &#39;head&#39;) &gt;&gt;.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="Against-Wall-From-Behind-Dialogue" tags="nobr" position="850,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="Against-Wall-From-Behind-Dialogue" tags="nobr" position="975,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     &lt;&lt;=either(
         &quot;You&#39;re standing behind _n.name as they brace themself against the $room.location.&quot;
     )&gt;&gt;
@@ -11528,11 +10832,11 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
         &quot;You&#39;re braced against the $room.location with _n.name behind you.&quot;,
         &quot;_n.name leans you against the $room.location.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="Bent-Over-Dialogue" tags="nobr" position="975,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="Bent-Over-Dialogue" tags="nobr" position="1100,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 You bend _n.name over on the $room.location and step up behind $proset.them.
 &lt;&lt;else&gt;&gt;
 _n.name bends you over on the $room.location and steps up behind you.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="Cowgirl-Dialogue" tags="Dialogue nobr" position="875,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="Cowgirl-Dialogue" tags="Dialogue nobr" position="875,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.role ==&quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
@@ -11549,7 +10853,7 @@ _n.name bends you over on the $room.location and steps up behind you.
 		&quot;_n.name climbed on top of you.&quot;
 	)&gt;&gt;
 	&lt;br&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="Doggystyle-Dialogue" tags="nobr Dialogue" position="675,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="Doggystyle-Dialogue" tags="nobr Dialogue" position="675,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 &lt;&lt;if $sex.role== &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
@@ -11566,12 +10870,12 @@ _n.name bends you over on the $room.location and steps up behind you.
     &lt;&lt;if _h is -1&gt;&gt;
         Because of the height difference, your legs nearly dangle over them.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="Double-Decker-Dialogue" tags="nobr" position="100,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="Double-Decker-Dialogue" tags="nobr" position="225,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 You are underneath _n.name as $proset.they stretch out on their back on the $room.location. They lay their back on you like a recliner.
 
 &lt;&lt;else&gt;&gt;
 You are on your back on the $room.location atop _n.name, laying on them like a recliner.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="Facesit-Dialogue" tags="nobr Dialogue" position="1075,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="Facesit-Dialogue" tags="nobr Dialogue" position="1075,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.role==&quot;Top&quot;&gt;&gt;
@@ -11582,18 +10886,18 @@ You are on your back on the $room.location atop _n.name, laying on them like a r
 	&lt;&lt;=either(
     &quot;You push _n.name onto their back and then lower yourself over their face.&quot;
     )&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="From-Behind-Dialogue" tags="nobr" position="350,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="From-Behind-Dialogue" tags="nobr" position="475,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     You&#39;re behind _n.name, who is on all fours.
 &lt;&lt;else&gt;&gt;
     You&#39;re on all fours with _n.name behind you.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="Kneeling-Between-Thighs-Dialogue" tags="nobr" position="475,1350" size="100,100">/* Same as Missionary? */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="Kneeling-Between-Thighs-Dialogue" tags="nobr" position="600,1350" size="100,100">/* Same as Missionary? */
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     You part your thighs as _n.name kneels between them.
 
 &lt;&lt;else&gt;&gt;
     _n.name parts their thighs as you kneel between them.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="Kneeling-By-Face-Dialogue" tags="nobr" position="600,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="Kneeling-By-Face-Dialogue" tags="nobr" position="725,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     &lt;&lt;if $mc.genitals == &quot;penis&quot;&gt;&gt;
         You kneel down, your dick is in $proset.their face.
     &lt;&lt;else&gt;&gt;
@@ -11601,21 +10905,21 @@ You are on your back on the $room.location atop _n.name, laying on them like a r
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
     _n.name kneels down beside your head, $proset.their _n.genitals is in your face.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="Kneeling-Dialogue" tags="nobr" position="725,1350" size="100,100">/* Should they both be kneeling? */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="Kneeling-Dialogue" tags="nobr" position="850,1350" size="100,100">/* Should they both be kneeling? */
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 _n.name is kneeling before you.
 
 &lt;&lt;else&gt;&gt;
 You&#39;re kneeling before _n.name, looking up at their _n.genitals.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="Kneeling-Over-Dialogue" tags="nobr" position="850,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="Kneeling-Over-Dialogue" tags="nobr" position="975,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     You lie back and pull _n.name over to kneel next to you.
 &lt;&lt;else&gt;&gt;
     _n.name stretches out on $proset.their back and pulls you over to kneel next to them.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="Laid-Across-On-Back-Dialogue" tags="nobr" position="975,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="109" name="Laid-Across-On-Back-Dialogue" tags="nobr" position="1100,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     You push _n.name onto their back on the $room.location and step between their thighs.
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
     You lie back on the $room.location and _n.name steps between your thighs.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="109" name="Laid-Across-On-Stomach-Dialogue" tags="nobr" position="1100,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="Laid-Across-On-Stomach-Dialogue" tags="nobr" position="1225,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     You push _n.name onto their chest on the $room.location and you step up behind $proset.them.
     &lt;&lt;if _n.body ==&quot;tail&quot;&gt;&gt;
         Their tail wags in anticipation.
@@ -11625,11 +10929,11 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
     &lt;&lt;if $mc.body ==&quot;tail&quot;&gt;&gt;
         Your tail wags in anticipation.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="Laid-Across-Oral-Service-Dialogue" tags="nobr" position="1225,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="Laid-Across-Oral-Service-Dialogue" tags="nobr" position="100,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
         You push _n.name back on the $room.location and step up towards $proset.their head.
     &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
         You lie back on the $room.location as _n.name steps up towards your head.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="Lap-ride-Dialogue" tags="nobr" position="100,1475" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="Lap-ride-Dialogue" tags="nobr" position="225,1475" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
 &lt;&lt;set _bottom = $sex.Bottom || $mc&gt;&gt;
 
 &lt;&lt;if $sex.position == &quot;Lap ride&quot;&gt;&gt;
@@ -11653,13 +10957,13 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 			&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; sits on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; lap, facing away from &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="Mating-Press-Dialogue" tags="nobr" position="225,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="Mating-Press-Dialogue" tags="nobr" position="350,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 
 You&#39;re on top of _n.name on the $room.location, $proset.their legs pushed back towards $proset.their head
 
 &lt;&lt;else&gt;&gt;
 You&#39;re on your back $room.location with _n.name on top of you, your legs pushed back towards your head.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="Missionary-Dialogue" tags="nobr Dialogue" position="675,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="Missionary-Dialogue" tags="nobr Dialogue" position="675,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;set _nLegs = setup.partLower(_n, &#39;Legs&#39;, &#39;legs&#39;)&gt;&gt;
@@ -11685,16 +10989,16 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 		&quot;You lie back on the bed as _n.name crawls between your &lt;&lt;=_mcLegs&gt;&gt;.&quot;,
 		&quot;Lying on your back, you spread your &lt;&lt;=_mcLegs&gt;&gt; and look up at _n.name with a needy moan.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="Oral-Service-Dialogue" tags="nobr" position="475,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="Oral-Service-Dialogue" tags="nobr" position="600,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
         You&#39;re lying back on the $room.location with _n.name face between your thighs.
     &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
         Your face is between _n.name thighs as $proset.they lie back on the $room.location.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="Perched-Oral-Service-Dialogue" tags="nobr" position="600,1475" size="100,100">/* Other person is on a higher surface? */
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="Perched-Oral-Service-Dialogue" tags="nobr" position="725,1475" size="100,100">/* Other person is on a higher surface? */
     &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
         _n.name is kneeling between your thighs as you are perched on the $room.location.
     &lt;&lt;else&gt;&gt;
         You are kneeling between _n.name&#39;s parted thighs as $proset.they are on the $room.location.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="Prone-Bone-Dialogue" tags="nobr" position="725,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="Prone-Bone-Dialogue" tags="nobr" position="850,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     You role _n.name onto their stomach on the $room.location and you lay on them.
     &lt;&lt;if _h is 1&gt;&gt;
         Your larger body nearly covers _n.name.
@@ -11708,12 +11012,12 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
     &lt;&lt;elseif _h is -1&gt;&gt;
         _n.name&#39;s body nearly envelops you with how large they are.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="850,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="975,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
     You&#39;re on top of _n.name on the $room.location, straddling $proset.their hips, facing away to give them a view of your ass.
 &lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
     _n.name is on top of you on the $room.location, straddling your hips, facing away to give you a view of their ass.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="Scissor-Dialogue" tags="nobr" position="975,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="Scissor-Dialogue" tags="nobr" position="1100,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 
@@ -11726,7 +11030,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;= either(
 		&quot;_n.name lie on their side with their upper leg planted and intersecting with yours, lining up your crotches together.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="Sitting-Dialogue" tags="nobr Dialogue" position="775,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="Sitting-Dialogue" tags="nobr Dialogue" position="775,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
 &lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
 &lt;&lt;set _seat = $room.location || &quot;floor&quot;&gt;&gt;
@@ -11735,7 +11039,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; and &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; sit on the &lt;&lt;=_seat&gt;&gt;, within arm&#39;s reach.&quot;,
 	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; and &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; sit close together on the &lt;&lt;=_seat&gt;&gt;.&quot;,
 	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; and &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; settle down beside each other on the &lt;&lt;=_seat&gt;&gt;.&quot;
-) &gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="SixtyNine-Dialogue" tags="Dialogue nobr" position="775,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+) &gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="SixtyNine-Dialogue" tags="Dialogue nobr" position="775,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;set _nLegs = setup.partLower(_n, &#39;Legs&#39;, &#39;legs&#39;)&gt;&gt;
@@ -11755,7 +11059,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 		&quot;Sinking down onto your back, you put on the most enticing look you can muster.&quot;,
 		&quot;Jumping down onto all fours, _n.name lowers $proset.themself over the top of you, bringing $proset.their crotch down to your face as $proset.they dip $proset.their head between your &lt;&lt;=_mcLegs&gt;&gt;. Turning $proset.their head to look back at you, $proset.they grin.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="Spooning-Dialogue" tags="nobr" position="100,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="Spooning-Dialogue" tags="nobr" position="225,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
 &lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
 &lt;&lt;set _seat = $room.location || &quot;floor&quot;&gt;&gt;
 
@@ -11769,7 +11073,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; lies on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; side with &lt;&lt;gram _top &#39;obj&#39;&gt;&gt; nestled against &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; back, spooning on the &lt;&lt;=_seat&gt;&gt;.&quot;,
 		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; rests on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; side while &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; spoons close behind on the &lt;&lt;=_seat&gt;&gt;.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="Squatting-Before-Dialogue" tags="nobr" position="225,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Squatting-Before-Dialogue" tags="nobr" position="350,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
 &lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
@@ -11782,7 +11086,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; squats down in front of &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;, bringing &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right to &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; face.&quot;,
 		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; lowers &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;self in front of &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;, leaving &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right in front of &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; face.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Standing-Dialogue" tags="nobr Dialogue" position="1175,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Standing-Dialogue" tags="nobr Dialogue" position="1175,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
 &lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
 
@@ -11790,7 +11094,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; and &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; stand face to face.&quot;,
 	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; stands face to face with &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;.&quot;,
 	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; and &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; remain standing, facing each other.&quot;
-) &gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Standing-From-Behind-Dialogue" tags="nobr" position="475,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+) &gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Standing-From-Behind-Dialogue" tags="nobr" position="600,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
 &lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
 
 &lt;&lt;if $sex.previousPosition == &quot;Standing&quot;&gt;&gt;
@@ -11831,7 +11135,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; grabs &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; until &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; is facing away.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Straddling-Chest-Dialogue" tags="nobr" position="600,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="Straddling-Chest-Dialogue" tags="nobr" position="725,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
 &lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
 &lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
 
@@ -11845,12 +11149,12 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; is straddling &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest.&quot;,
 		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; settles over &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest, pinning &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; beneath &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="Underneath-Oral-Service-Dialogue" tags="nobr" position="725,1600" size="100,100">/* Not needed? */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="Underneath-Oral-Service-Dialogue" tags="nobr" position="850,1600" size="100,100">/* Not needed? */
     &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     _n.name is kneeling between your parted thighs as you sit at the $room.location.
     &lt;&lt;else&gt;&gt;
     You are kneeling between _n.name&#39;s parted thighs as they sit at the $room.location.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="PositionDialogue" tags="nobr Dialogue" position="1100,1025" size="100,100">&lt;&lt;set _p = $sex.position or $position&gt;&gt;
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="PositionDialogue" tags="nobr Dialogue" position="1100,1025" size="100,100">&lt;&lt;set _p = $sex.position or $position&gt;&gt;
 
 /* POSITION (prints once per change) */
 
@@ -11889,7 +11193,16 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
         &lt;&lt;case &quot;Laid Across Oral Service&quot;&gt;&gt;&lt;&lt;include &quot;Laid-Across-Oral-Service-Dialogue&quot;&gt;&gt;
         &lt;&lt;case &quot;Scissor&quot;&gt;&gt;&lt;&lt;include &quot;Scissor-Dialogue&quot;&gt;&gt;
         
-	&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="128" name="Act-Quote-React" tags="nobr" position="975,1600" size="100,100">/* Character nonverbal reaction. Also works if the character is mute. */
+	&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="Act-Quote-React" tags="nobr" position="1100,1600" size="100,100">/* Character nonverbal reaction. Also works if the character is mute. */
+&lt;&lt;set _muffled = false&gt;&gt;
+&lt;&lt;if $sex.role == &quot;Bottom&quot; &amp;&amp; (
+	$sex.act == &quot;Kiss Nipple&quot; ||
+	$sex.act == &quot;Lick Nipple&quot; ||
+	$sex.act == &quot;Suck Nipple&quot;
+)&gt;&gt;
+	&lt;&lt;set _muffled = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
 
 &lt;&lt;if $sex.phase == &quot;climax&quot;&gt;&gt;
 	&lt;&lt;set _lines = [
@@ -11928,12 +11241,34 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 				&quot;With a &lt;&lt;npcNoise&gt;&gt;, _n.name eagerly thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your &lt;&lt;= String($mc.assSize || &#39;ass&#39;).toLowerCase() &gt;&gt; ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start energetically fucking you.&quot;,
 				&quot;_n.name lets out a &lt;&lt;npcNoise&gt;&gt; as $proset.they enter you, bucking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
 				&quot;With a &lt;&lt;npcNoise&gt;&gt;, _n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your $mc.assSize ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start fucking you.&quot;
-		]&gt;&gt;
+			]&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;set _lines = [
+				&quot;_n.name lets out a &lt;&lt;npcNoise&gt;&gt; as they enter you.&quot;
+			]&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;elseif $sex.act == &quot;Enter Ass&quot;&gt;&gt;
 			&lt;&lt;set _lines = [
 				&quot;_n.name moans feeling you slide inside of their ass.&quot;
 			]&gt;&gt;
+	&lt;&lt;elseif $sex.act == &quot;Wrap Hand around Cock&quot;&gt;&gt;
+		&lt;&lt;set _lines = [
+			&quot;_n.name smiles at you during the action.&quot;
+		]&gt;&gt;
+	&lt;&lt;elseif $sex.act == &quot;Fuck Fist&quot;&gt;&gt;
+		&lt;&lt;set _lines = [
+			&quot;_n.name smiles at you during the action.&quot;
+		]&gt;&gt;	
+	&lt;&lt;elseif $sex.act == &quot;Press Face on Chest&quot;&gt;&gt;
+		&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
+			&lt;&lt;set _lines = [
+				&quot;_n.name lets out a muffled noise in your chest.&quot;
+			]&gt;&gt;	
+		&lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
+			&lt;&lt;set _lines = [
+				&quot;_n.name moans feeling you press on their chest.&quot;
+			]&gt;&gt;			
+		&lt;&lt;/if&gt;&gt;		
 	&lt;&lt;elseif $sex.act == &quot;Fuck Ass&quot;&gt;&gt;
 		&lt;&lt;set _lines = [
 			&quot;_n.name moans feeling you fuck their ass.&quot;
@@ -11947,6 +11282,10 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 			&quot;They grit their teeth, taking it up the ass is something they are not used to.&quot;
 			)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;	
+	&lt;&lt;elseif _muffled == true&gt;&gt;
+		&lt;&lt;set _lines = [
+			&quot;_n.name makes a muffled noise.&quot;
+		]&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;set _lines = [
 			&quot;_n.name &lt;&lt;npcNoise&gt;&gt;s from the pleasure.&quot;
@@ -11954,7 +11293,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;= either(..._lines) &gt;&gt;
-&lt;br&gt;</tw-passagedata><tw-passagedata pid="129" name="Act-Quote" tags="Dialogue nobr" position="1100,1600" size="100,100">&lt;!-- only what the npc says --&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="130" name="Act-Quote" tags="Dialogue nobr" position="1225,1600" size="100,100">&lt;!-- only what the npc says --&gt;
 
 &lt;&lt;set _a = $sex.act or &quot;none&quot;&gt;&gt;
 &lt;br&gt;
@@ -11970,7 +11309,6 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
     &lt;&lt;case &quot;Lick Nipple&quot;&gt;&gt;_b&lt;&lt;include &quot;Lick-Nipple-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Nipple&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Nipple-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Finger Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Finger-Pussy-Quote&quot;&gt;&gt;
-    /* &lt;&lt;case &quot;Rub Clit&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt; */
     &lt;&lt;case &quot;Lick Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Cunnilingus-Quote&quot;&gt;&gt;
     /*&lt;&lt;case &quot;Suck Clit&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
     /*&lt;&lt;case &quot;Ride Face&quot;&gt;&gt;_b&lt;&lt;include &quot;&quot;&gt;&gt;*/
@@ -11996,6 +11334,12 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
     &lt;&lt;case &quot;Tease Tip&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Tip-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Suck Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Mouth&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
+
+    &lt;&lt;case &quot;Suck Each Other Off&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Eat Each Other Out&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Suck And Lick Each Other&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Lick And Suck Each Other&quot;&gt;&gt;_b&lt;&lt;include &quot;Suck-Cock-Quote&quot;&gt;&gt;
+
     &lt;&lt;case &quot;Tease Pussy With Cock&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Cock-Pussy-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Cocktease With Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Tease-Cock-Pussy-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Enter Pussy&quot;&gt;&gt;_b&lt;&lt;include &quot;Enter-Pussy-Quote&quot;&gt;&gt;
@@ -12028,7 +11372,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
     &lt;&lt;case &quot;Touch Stomach&quot;&gt;&gt;&lt;&lt;include &quot;Feel-Stomach-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Embrace&quot;&gt;&gt;&lt;&lt;include &quot;Embrace-Quote&quot;&gt;&gt;
 &lt;&lt;/switch&gt;&gt;
-&lt;br&gt;</tw-passagedata><tw-passagedata pid="130" name="Anal-Quote" tags="nobr Dialogue" position="1600,1300" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="131" name="Anal-Quote" tags="nobr Dialogue" position="1600,1300" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
 	[Error] setup.analQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12081,7 +11425,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;= either(..._pool) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Anal quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="Boobjob-Quote" tags="nobr" position="100,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="Boobjob-Quote" tags="nobr" position="225,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
 &lt;&lt;set _msize = $mc.breastsize || &quot;None&quot;&gt;&gt;
 &lt;&lt;set _nsize = _n.breastsize || &quot;None&quot;&gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
@@ -12103,7 +11447,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No boobjob quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="132" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="Caress-Quote" tags="nobr Dialogue" position="1900,1400" size="100,100">&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -12153,7 +11497,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Caress quote pool found.
 	(mode=&lt;&lt;= $sex.role &gt;&gt;, mmaterial=&lt;&lt;= _mmaterial &gt;&gt;, nmaterial=&lt;&lt;= _nmaterial &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="Cuddle-Quote" tags="nobr Dialogue" position="1800,1700" size="100,100">&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="Cuddle-Quote" tags="nobr Dialogue" position="1800,1700" size="100,100">&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
 	[Error] setup.cuddleQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12213,7 +11557,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Cuddle quote pool found.
 	(mode=&lt;&lt;= $sex.role &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="Cunnilingus-Quote" tags="nobr Dialogue" position="1800,1300" size="100,100">&lt;&lt;set _mode = $sex.role&gt;&gt;
 
 &lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _personalities = _n.personality&gt;&gt;
@@ -12266,7 +11610,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Cunnilingus quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="Embrace-Quote" tags="nobr Dialogue" position="1700,1500" size="100,100">&lt;&lt;if !setup.embraceQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="Embrace-Quote" tags="nobr Dialogue" position="1700,1500" size="100,100">&lt;&lt;if !setup.embraceQuotes&gt;&gt;
 	[Error] setup.embraceQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12324,7 +11668,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;=either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Embrace quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="136" name="Enter-Ass-Quote" tags="nobr" position="725,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="Enter-Ass-Quote" tags="nobr" position="850,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
 &lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
 &lt;&lt;set _personalities = _n.personality&gt;&gt;
 
@@ -12369,7 +11713,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Anal quote pool found.
     (mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="Enter-Mouth-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="Enter-Mouth-Quote" tags="nobr Dialogue" position="1600,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
 &lt;&lt;set _mage  = $mc.ageGroup  || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
 &lt;&lt;set _personalities = _n.personality&gt;&gt;
@@ -12411,49 +11755,45 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Enter Mouth pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, nsize=&lt;&lt;=_nsize&gt;&gt;, msize=&lt;&lt;=_msize&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="Enter-Pussy-Quote" tags="nobr" position="975,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="Enter-Pussy-Quote" tags="nobr" position="1100,1725" size="100,100">&lt;&lt;set _pref = _n.sexpref&gt;&gt;
 &lt;&lt;set _size = $mc.penislength&gt;&gt;
 &lt;&lt;set _age  = $mc.ageGroup&gt;&gt;
-
 &lt;&lt;set _mode = $sex.role&gt;&gt;
-
 &lt;&lt;set _personalities = _n.personality&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _persMatches = []&gt;&gt;
 
 
-&lt;&lt;if _mode == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;if setup.PushCockInQuotes.Top&gt;&gt;
+&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;if setup.PushCockInQuotes.Bottom&gt;&gt;
 		&lt;&lt;for _p range _personalities&gt;&gt;
-			&lt;&lt;if _p and setup.PushCockInQuotes.Top[_p]&gt;&gt;
+			&lt;&lt;if _p and setup.PushCockInQuotes.Bottom[_p]&gt;&gt;
 				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
 			&lt;&lt;/if&gt;&gt;
 		&lt;&lt;/for&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;if _persMatches.length&gt;&gt;
 		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
-		&lt;&lt;set _pool = PushCockInQuotes.Top[_chosenPers]&gt;&gt;
+		&lt;&lt;set _pool = PushCockInQuotes.Bottom[_chosenPers]&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;set _pool =
-			setup.PushCockInQuotess.Top[_pref]
-			|| setup.PushCockInQuotes.Top.Neutral
+			setup.PushCockInQuotes.Bottom[_pref]
 		&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif _mode == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;if setup.EnterPussyQuotes.Bottom&gt;&gt;
+&lt;&lt;elseif _mode is &quot;Top&quot;&gt;&gt;
+	&lt;&lt;if setup.EnterPussyQuotes.Top&gt;&gt;
 		&lt;&lt;for _p range _personalities&gt;&gt;
-			&lt;&lt;if _p and setup.EnterPussyQuotes.Bottom[_p]&gt;&gt;
+			&lt;&lt;if _p and setup.EnterPussyQuotes.Top[_p]&gt;&gt;
 				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
 			&lt;&lt;/if&gt;&gt;
 		&lt;&lt;/for&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;if _persMatches.length&gt;&gt;
 		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
-		&lt;&lt;set _pool = EnterPussyQuotes.Bottom[_chosenPers]&gt;&gt;
+		&lt;&lt;set _pool = EnterPussyQuotes.Top[_chosenPers]&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;set _pool =
-			setup.EnterPussyQuotes.Bottom[_pref]
-			|| setup.EnterPussyQuotes.Bottom.Neutral
+			setup.EnterPussyQuotes.Top[_pref]
 		&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12462,7 +11802,8 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;=either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Vaginal quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="139" name="Face-On-Chest-Quote" tags="nobr Dialogue" position="1700,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
+	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, size=&lt;&lt;= _size &gt;&gt;,  nage=&lt;&lt;= _nage &gt;&gt;, mage=&lt;&lt;= _mage &gt;&gt;)
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="Face-On-Chest-Quote" tags="nobr Dialogue" position="1700,1600" size="100,100">&lt;&lt;set _pref = _n.sexpref &gt;&gt;
 &lt;&lt;set _mode = $sex.role &gt;&gt;
 &lt;&lt;set _nsize = _n.breastsize &gt;&gt;
 &lt;&lt;set _msize = $mc.breastsize &gt;&gt;
@@ -12497,7 +11838,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;=either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Face on Chest quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="Feel-Stomach-Quote" tags="Dialogue nobr" position="1700,1200" size="100,100">&lt;&lt;if !setup.feelstomachQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="Feel-Stomach-Quote" tags="Dialogue nobr" position="1700,1200" size="100,100">&lt;&lt;if !setup.feelstomachQuotes&gt;&gt;
 	[Error] setup.feelstomachQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12528,7 +11869,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;=either(..._pool)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	[Error] No Feel Stomach quote pool found.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="Finger-Ass-Quote" tags="nobr Dialogue" position="1900,1200" size="100,100">&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
 &lt;&lt;set _personality = _n.personality&gt;&gt;
 
 &lt;&lt;set _mode = $sex.role&gt;&gt;
@@ -12547,7 +11888,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Finger Ass quote pool found.
 	(mode=&lt;&lt;=_mode&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;, personality=&lt;&lt;=_personality&gt;&gt;, nage=&lt;&lt;=_nage&gt;&gt;, mage=&lt;&lt;=_mage&gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="142" name="Finger-Pussy-Quote" tags="nobr Dialogue" position="1800,1200" size="100,100">&lt;&lt;if !setup.fingerpussyQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Finger-Pussy-Quote" tags="nobr Dialogue" position="1800,1200" size="100,100">&lt;&lt;if !setup.fingerpussyQuotes&gt;&gt;
 	[Error] setup.fingerpussyQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12577,7 +11918,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Finger Pussy quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if !setup.footjobQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="Footjob-Quote" tags="nobr Dialogue" position="1800,1400" size="100,100">&lt;&lt;if !setup.footjobQuotes&gt;&gt;
 	[Error] setup.footjobQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12643,7 +11984,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No footjob quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, size=&lt;&lt;= _size &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;if !setup.frotQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="Frot-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;if !setup.frotQuotes&gt;&gt;
 	[Error] setup.frotQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12706,7 +12047,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Frot quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, msize=&lt;&lt;= _msize &gt;&gt;, nsize=&lt;&lt;= _nsize &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="Fuck-Ass-Quote" tags="nobr" position="600,1850" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="Fuck-Ass-Quote" tags="nobr" position="725,1850" size="100,100">&lt;&lt;if !setup.analQuotes&gt;&gt;
 	[Error] setup.analQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12764,7 +12105,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Anal quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, position=&lt;&lt;= _position &gt;&gt;, msize=&lt;&lt;= _msize &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="Fuck-Pussy-Quote" tags="nobr" position="725,1850" size="100,100">&lt;&lt;if !setup.vaginalQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="Fuck-Pussy-Quote" tags="nobr" position="850,1850" size="100,100">&lt;&lt;if !setup.vaginalQuotes&gt;&gt;
 	[Error] setup.vaginalQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12830,7 +12171,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Fuck Pussy quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, size=&lt;&lt;= _size &gt;&gt;, tight=&lt;&lt;= _tight &gt;&gt;, nage=&lt;&lt;= _nage &gt;&gt;, mage=&lt;&lt;= _mage &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="Grab-Cock-Quote" tags="nobr" position="850,1850" size="100,100">&lt;&lt;if !setup.GrabCockQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="Grab-Cock-Quote" tags="nobr" position="975,1850" size="100,100">&lt;&lt;if !setup.GrabCockQuotes&gt;&gt;
 	[Error] setup.GrabCockQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12899,7 +12240,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No grab cock quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, age=&lt;&lt;= _age &gt;&gt;, size=&lt;&lt;= _size &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="Grope-Breast-Quote" tags="nobr Dialogue" position="1600,1500" size="100,100">&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
 	[Error] setup.gropebreastQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -12985,7 +12326,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No grope breast quote pool found.
 	(role=&lt;&lt;= $sex.role &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, nsize=&lt;&lt;= _nsize &gt;&gt;, msize=&lt;&lt;= _msize &gt;&gt;, nage=&lt;&lt;= _nage &gt;&gt;, mage=&lt;&lt;= _mage &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;if !setup.gropebuttQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="Grope-Butt-Quote" tags="nobr Dialogue" position="1700,1300" size="100,100">&lt;&lt;if !setup.gropebuttQuotes&gt;&gt;
 	[Error] setup.gropebuttQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13063,7 +12404,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Grope Butt quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, nsize=&lt;&lt;= _nsize &gt;&gt;, msize=&lt;&lt;= _msize &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="Handjob-Quote" tags="nobr Dialogue" position="1700,1700" size="100,100">&lt;&lt;if !setup.handjobQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="Handjob-Quote" tags="nobr Dialogue" position="1700,1700" size="100,100">&lt;&lt;if !setup.handjobQuotes&gt;&gt;
 	[Error] setup.handjobQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13082,16 +12423,16 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 &lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
 	&lt;&lt;set _pool =
-		setup.handjobQuotes.Bottom[_pref]
-		|| setup.handjobQuotes.Bottom.Neutral
+		setup.handjobQuotes.Top[_pref]
+		|| setup.handjobQuotes.Top.Neutral
 	&gt;&gt;
 
 &lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;set _persMatches = []&gt;&gt;
 
-	&lt;&lt;if setup.handjobQuotes.Top&gt;&gt;
+	&lt;&lt;if setup.handjobQuotes.Bottom&gt;&gt;
 		&lt;&lt;for _p range _personalities&gt;&gt;
-			&lt;&lt;if _p and Array.isArray(setup.handjobQuotes.Top[_p])&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.handjobQuotes.Bottom[_p])&gt;&gt;
 				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
 			&lt;&lt;/if&gt;&gt;
 		&lt;&lt;/for&gt;&gt;
@@ -13099,27 +12440,27 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 	&lt;&lt;if _persMatches.length&gt;&gt;
 		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
-		&lt;&lt;set _pool = setup.handjobQuotes.Top[_chosenPers]&gt;&gt;
+		&lt;&lt;set _pool = setup.handjobQuotes.Bottom[_chosenPers]&gt;&gt;
 	&lt;&lt;elseif _size is &quot;Tiny&quot;&gt;&gt;
 		&lt;&lt;set _pool =
 			(
-				setup.handjobQuotes.Top[_pref]
-				&amp;&amp; setup.handjobQuotes.Top[_pref].Tiny
-				&amp;&amp; setup.handjobQuotes.Top[_pref].Tiny[_age]
+				setup.handjobQuotes.Bottom[_pref]
+				&amp;&amp; setup.handjobQuotes.Bottom[_pref].Tiny
+				&amp;&amp; setup.handjobQuotes.Bottom[_pref].Tiny[_age]
 			)
 			|| (
-				setup.handjobQuotes.Top[_pref]
-				&amp;&amp; setup.handjobQuotes.Top[_pref].Tiny
+				setup.handjobQuotes.Bottom[_pref]
+				&amp;&amp; setup.handjobQuotes.Bottom[_pref].Tiny
 			)
-			|| setup.handjobQuotes.Top.Neutral
+			|| setup.handjobQuotes.Bottom.Neutral
 		&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;set _pool =
 			(
-				setup.handjobQuotes.Top[_pref]
-				&amp;&amp; setup.handjobQuotes.Top[_pref][_size]
+				setup.handjobQuotes.Bottom[_pref]
+				&amp;&amp; setup.handjobQuotes.Bottom[_pref][_size]
 			)
-			|| setup.handjobQuotes.Top.Neutral
+			|| setup.handjobQuotes.Bottom.Neutral
 		&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13129,7 +12470,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No handjob quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, age=&lt;&lt;= _age &gt;&gt;, size=&lt;&lt;= _size &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="Kiss-Nipple-Quote" tags="nobr" position="100,1975" size="100,100">&lt;&lt;if !$sex or !_n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="Kiss-Nipple-Quote" tags="nobr" position="225,1975" size="100,100">&lt;&lt;if !$sex or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -13168,11 +12509,11 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Kiss Nipple quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="Kiss-Quote" tags="nobr" position="225,1975" size="100,100">&lt;&lt;=either(
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="Kiss-Quote" tags="nobr" position="350,1975" size="100,100">&lt;&lt;=either(
 	&quot;Mmm&quot;,
 	&quot;Mmmph&quot;,
 	&quot;Mmmmm&quot;
-)&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="Lick-Nipple-Quote" tags="nobr" position="350,1975" size="100,100">&lt;&lt;if !$sex or !_n&gt;&gt;
+)&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="Lick-Nipple-Quote" tags="nobr" position="475,1975" size="100,100">&lt;&lt;if !$sex or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -13211,7 +12552,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Lick Nipple quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if !setup.orgasmcloseQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="Orgasm-Close-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if !setup.orgasmcloseQuotes&gt;&gt;
 	[Error] setup.orgasmcloseQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13300,7 +12641,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm Close quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, action=&lt;&lt;= _action &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if !setup.orgasmQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="Orgasm-Quote" tags="nobr Dialogue" position="1900,1300" size="100,100">&lt;&lt;if !setup.orgasmQuotes&gt;&gt;
 	[Error] setup.orgasmQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13376,7 +12717,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, action=&lt;&lt;= _action &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, cum location=&lt;&lt;= _loc &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if !setup.petearsQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="Pet-Ears-Quote" tags="nobr Dialogue" position="1700,1400" size="100,100">&lt;&lt;if !setup.petearsQuotes&gt;&gt;
 	[Error] setup.petearsQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13423,7 +12764,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Pet Ears quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;if !setup.rimjobQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="Rimjob-Quote" tags="nobr Dialogue" position="1800,1500" size="100,100">&lt;&lt;if !setup.rimjobQuotes&gt;&gt;
 	[Error] setup.rimjobQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13466,7 +12807,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Rimjob quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="Suck-Cock-Quote" tags="nobr" position="975,1975" size="100,100">&lt;&lt;if !setup.SuckingQuotes or !setup.blowjobQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="Suck-Cock-Quote" tags="nobr" position="1100,1975" size="100,100">&lt;&lt;if !setup.SuckingQuotes or !setup.blowjobQuotes&gt;&gt;
 	[Error] Suck-Cock quote data is missing.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13511,7 +12852,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Enter Mouth pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;, nage=&lt;&lt;= _nage &gt;&gt;, mage=&lt;&lt;= _mage &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="Suck-Foot-Quote" tags="nobr Dialogue" position="1800,1600" size="100,100">&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="Suck-Foot-Quote" tags="nobr Dialogue" position="1800,1600" size="100,100">&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
 	[Error] setup.suckfootQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13562,7 +12903,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Suck Foot quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="Suck-Nipple-Quote" tags="nobr" position="1225,1975" size="100,100">&lt;&lt;if !$sex or !_n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="Suck-Nipple-Quote" tags="nobr" position="100,2100" size="100,100">&lt;&lt;if !$sex or !_n&gt;&gt;
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -13601,7 +12942,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Suck Nipple quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="Tease-Ass-Cock-Quote" tags="nobr" position="100,2100" size="100,100">&lt;&lt;if !setup.TeaseAssCockQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="Tease-Ass-Cock-Quote" tags="nobr" position="225,2100" size="100,100">&lt;&lt;if !setup.TeaseAssCockQuotes&gt;&gt;
 	[Error] setup.TeaseAssCockQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13642,7 +12983,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Tease Ass Cock quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="Tease-Cock-Pussy-Quote" tags="nobr" position="225,2100" size="100,100">&lt;&lt;if !setup.TeaseCockWithPussyQuotes or !setup.TeasePussyWithCockQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="Tease-Cock-Pussy-Quote" tags="nobr" position="350,2100" size="100,100">&lt;&lt;if !setup.TeaseCockWithPussyQuotes or !setup.TeasePussyWithCockQuotes&gt;&gt;
 	[Error] Tease Cock/Pussy quote data is missing.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13672,7 +13013,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Tease Cock/Pussy quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="Tease-Nipples-Quote" tags="nobr" position="350,2100" size="100,100">&lt;&lt;if !setup.TeaseNippleQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="Tease-Nipples-Quote" tags="nobr" position="475,2100" size="100,100">&lt;&lt;if !setup.TeaseNippleQuotes&gt;&gt;
 	[Error] setup.TeaseNippleQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13716,7 +13057,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Tease Nipple quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="Tease-Tip-Quote" tags="nobr" position="475,2100" size="100,100">&lt;&lt;if !setup.TeaseTipQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="Tease-Tip-Quote" tags="nobr" position="600,2100" size="100,100">&lt;&lt;if !setup.TeaseTipQuotes&gt;&gt;
 	[Error] setup.TeaseTipQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13757,7 +13098,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Tease Tip quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="Trib-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;if !setup.TribQuotes&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="166" name="Trib-Quote" tags="nobr Dialogue" position="1600,1700" size="100,100">&lt;&lt;if !setup.TribQuotes&gt;&gt;
 	[Error] setup.TribQuotes is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13798,7 +13139,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;else&gt;&gt;
 	[Error] No Trib quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="166" name="StoryCaption" tags="nobr" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="StoryCaption" tags="nobr" position="25,150" size="100,100">&lt;&lt;if $gamelocation&gt;&gt;
 &lt;b&gt;Location: &lt;/b&gt;$gamelocation
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
@@ -13808,7 +13149,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;Test-Sex-Encounter&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
+&lt;&lt;if passage() is &quot;Test-Sex-Encounter&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
 	muscle: 4,
 	plump: 4,
 	label: &quot;Average&quot;
@@ -13953,18 +13294,18 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 &lt;&lt;if !$npcMemories&gt;&gt;
 	&lt;&lt;set $npcMemories = {}&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
-&lt;&lt;set $devMode = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
+&lt;&lt;set $devMode = false&gt;&gt;
 &lt;div&gt;
 &lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
 &lt;h3 style=&quot;font-weight: normal;&quot;&gt;This game is meant to simulate interactions of many sexual varieties. 
-Create your character to begin.
+Create your character to begin or you can use the PreSet or Randomizer to skip all that.
 &lt;/h3&gt;
 &lt;center&gt;&lt;&lt;button [[Create Character|Index-CC]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;
 &lt;center&gt;&lt;&lt;button [[Use the Randomiser|CC-Check]]&gt;&gt;&lt;&lt;Randomiser&gt;&gt;&lt;&lt;/button&gt;&gt; | &lt;&lt;button [[Use the Pre-Set|CC-Check]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/center&gt;
 
-&lt;span&gt; Updated as of 3/28/2026 &lt;/span&gt;
+&lt;span&gt; Updated as of 4/18/2026 &lt;/span&gt;
 
 &lt;&lt;if $devMode&gt;&gt;
 &lt;&lt;button [[Test|TestRoom]]&gt;&gt;&lt;&lt;LittleBoy&gt;&gt;&lt;&lt;/button&gt;&gt; 
@@ -13977,7 +13318,7 @@ Create your character to begin.
 &lt;&lt;button [[Test as a Adult Man|Lounge]]&gt;&gt;&lt;&lt;AdultMan&gt;&gt;&lt;&lt;/button&gt;&gt; 
 
 &lt;&lt;/if&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="169" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="170" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
     They nod.
@@ -14029,7 +13370,7 @@ Create your character to begin.
     &lt;&lt;else&gt;&gt;
         &quot;Ok.&quot;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;set _n = $ui.npc&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="NPC-Inspect" tags="nobr" position="900,375" size="100,100">&lt;&lt;set _n = $ui.npc&gt;&gt;
 
 &lt;b&gt;Name:&lt;/b&gt; &lt;&lt;=_n.name&gt;&gt; &lt;&lt;if _n.surname&gt;&gt;&lt;&lt;=_n.surname&gt;&gt;&lt;&lt;/if&gt;&gt; 
 &lt;&lt;if _n.nickname&gt;&gt;
@@ -14133,7 +13474,7 @@ Create your character to begin.
 
 
 
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="NPC-Talk" tags="nobr" position="100,2225" size="100,100">&lt;&lt;set _n = $ui.npc&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="NPC-Talk" tags="nobr" position="225,2225" size="100,100">&lt;&lt;set _n = $ui.npc&gt;&gt;
 &lt;&lt;run setup.normalizeActor(_n)&gt;&gt;
 
 &lt;&lt;set _lines = {
@@ -14214,7 +13555,7 @@ Create your character to begin.
 &lt;&lt;/button&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="173" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
     They shake their head.
@@ -14256,7 +13597,7 @@ Create your character to begin.
     &lt;&lt;else&gt;&gt;
         &quot;No.&quot;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="173" name="Test-Sex-Encounter" tags="nobr" position="350,2225" size="100,100">&lt;&lt;if !$ui or typeof $ui !== &quot;object&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="174" name="Test-Sex-Encounter" tags="nobr" position="475,2225" size="100,100">&lt;&lt;if !$ui or typeof $ui !== &quot;object&quot;&gt;&gt;
 	&lt;&lt;set $ui = {}&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -14358,7 +13699,7 @@ Create your character to begin.
 
 	&lt;div id=&quot;log&quot;&gt;&lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;&lt;/div&gt;
 	&lt;hr&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="174" name="UI-Attracted-check" tags="nobr" position="900,500" size="100,100">&lt;&lt;if $bootyCallNpc&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="175" name="UI-Attracted-check" tags="nobr" position="900,500" size="100,100">&lt;&lt;if $bootyCallNpc&gt;&gt;
 	&lt;&lt;set _n = $bootyCallNpc&gt;&gt;
 	&lt;&lt;set $ui.npc = _n&gt;&gt;
 &lt;&lt;elseif $ui &amp;&amp; $ui.npc&gt;&gt;
@@ -14421,13 +13762,13 @@ Create your character to begin.
 
 &lt;&lt;if $attraction&gt;&gt;&lt;&lt;pick-roles $mc _n&gt;&gt;
 &lt;div id=&quot;role-line&quot;&gt;
-	Top: &lt;&lt;=$sex.roles.dom.name &gt;&gt;
+	Top: &lt;&lt;=$sex.roles.dom.name &gt;&gt; ****
 	Bottom: &lt;&lt;=$sex.roles.sub.name &gt;&gt;
 &lt;/div&gt;
 &lt;&lt;link &quot;Swap roles&quot;&gt;&gt;
 	&lt;&lt;set [$sex.roles.dom, $sex.roles.sub] to [$sex.roles.sub, $sex.roles.dom]&gt;&gt;
 	&lt;&lt;replace &quot;#role-line&quot;&gt;&gt;
-		Top: &lt;&lt;=$sex.roles.dom.name &gt;&gt; 
+		Top: &lt;&lt;=$sex.roles.dom.name &gt;&gt; ****
 		Bottom: &lt;&lt;=$sex.roles.sub.name &gt;&gt;
 	&lt;&lt;/replace&gt;&gt;
 	&lt;br&gt;
@@ -14462,7 +13803,7 @@ Create your character to begin.
 &lt;&lt;else&gt;&gt;
 &lt;br&gt;
 &lt;&lt;include &quot;Reject-Dialogue&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="175" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="176" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
 	&lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
@@ -14574,7 +13915,7 @@ Create your character to begin.
             &quot;Ok, you top.&quot;
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="176" name="Adjective-Widget" tags="widget nobr" position="725,2225" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="177" name="Adjective-Widget" tags="widget nobr" position="850,2225" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
 &quot;growls&quot;, &quot;whines&quot;,&quot;yips&quot;,&quot;bark&quot;,&quot;roar&quot;,&quot;chitters&quot;,&quot;squeaks&quot;,&quot;chirps&quot;,&quot;screech&quot;,&quot;whinnies&quot;
 &lt;&lt;/widget&gt;&gt;
 
@@ -14592,7 +13933,7 @@ Create your character to begin.
 /* &lt;&lt;set $NPCList[_n].penisdesc to &quot;tiny penis&quot;&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;thick cock&quot;,&quot;hefty cock&quot;,&quot;big cock&quot;,&quot;large cock&quot;,&quot;veiny cock&quot;,&quot;meaty cock&quot;)&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;massive cock&quot;,&quot;huge cock&quot;,&quot;humongous cock&quot;,&quot;immense cock&quot;,&quot;gigantic cock&quot;,&quot;enormous cock&quot;)&gt;&gt;
-*/</tw-passagedata><tw-passagedata pid="177" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
+*/</tw-passagedata><tw-passagedata pid="178" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
 &lt;&lt;widget &quot;AnalQuote&quot;&gt;&gt;
 	/* guard */
 	&lt;&lt;if !setup.analQuotes&gt;&gt;
@@ -15545,7 +14886,7 @@ Create your character to begin.
 	&lt;&lt;else&gt;&gt;
 		[Error] VaginalQuote: empty dialogue pool.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="178" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="179" name="Special-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
 /* Creates a single Story NPC from a provided template and registers it globally */
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No template provided to MakeSNPC.
@@ -15942,8 +15283,6 @@ Create your character to begin.
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
-
-
 &lt;&lt;widget &quot;create-body&quot;&gt;&gt;
 	/* Accepts: &lt;&lt;create-body $mc&gt;&gt; or &lt;&lt;create-body _npc&gt;&gt; or &lt;&lt;create-body _n&gt;&gt;.
 	   If called with no args, falls back to $mc. */
@@ -16169,7 +15508,7 @@ Create your character to begin.
 					&lt;&lt;/if&gt;&gt;
 
 				&lt;&lt;case &quot;dragon&quot;&gt;&gt;
-					&lt;&lt;set _char.body.Ear to &quot;Horned Frills&quot;&gt;&gt;
+					&lt;&lt;set _char.body.Ear to &quot;Horned Frill&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Feet to &quot;Draconic Claw&quot;&gt;&gt;
 					&lt;&lt;set _char.body.Tail to &quot;Spiked Tail&quot;&gt;&gt;
 					&lt;&lt;if _hasPenis and !_char.genitaltype&gt;&gt;
@@ -16241,7 +15580,7 @@ Create your character to begin.
 			&lt;&lt;set _char.genitaltype = setup.pick(setup.penistype)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="179" name="Widgets" tags="widget nobr" position="1100,2225" size="100,100">&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;&lt;&lt;print setup.pick(setup.noise[_n.species] || setup.noise[_n.anthro.subtype])&gt;&gt;&lt;&lt;/widget&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="Widgets" tags="widget nobr" position="1225,2225" size="100,100">&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;&lt;&lt;print setup.pick(setup.noise[_n.species] || setup.noise[_n.anthro.subtype])&gt;&gt;&lt;&lt;/widget&gt;&gt;
 
 
 &lt;&lt;widget &quot;gram&quot;&gt;&gt;
@@ -16354,20 +15693,14 @@ Create your character to begin.
 		&lt;b&gt;Current Room:&lt;/b&gt; &lt;&lt;print $gamelocation&gt;&gt;&lt;br&gt;
 		&lt;b&gt;Current Position:&lt;/b&gt; &lt;&lt;print $sex.position&gt;&gt;&lt;br&gt;
 		&lt;b&gt;Previous Position:&lt;/b&gt; &lt;&lt;print $sex.previousPosition || &quot;None&quot;&gt;&gt;&lt;br&gt;
-		&lt;b&gt;Role:&lt;/b&gt; &lt;&lt;print $sex.role&gt;&gt;&lt;br&gt;
-        
-
+		/*&lt;b&gt;Role:&lt;/b&gt; &lt;&lt;print $sex.role&gt;&gt;&lt;br&gt;*/
 		&lt;b&gt;Act:&lt;/b&gt;
 		&lt;&lt;if $sex.act&gt;&gt;
 			&lt;&lt;print $sex.act&gt;&gt;
 		&lt;&lt;else&gt;&gt;
 			None
-		&lt;&lt;/if&gt;&gt;
-		&lt;br&gt;
-
+		&lt;&lt;/if&gt;&gt;&lt;br&gt;
 		&lt;b&gt;Phase:&lt;/b&gt; &lt;&lt;print $sex.phase&gt;&gt;&lt;br&gt;
-		&lt;b&gt;Location:&lt;/b&gt; &lt;&lt;print $room.location&gt;&gt;&lt;br&gt;
-
 		&lt;&lt;if $sex.penetration&gt;&gt;
 			&lt;b&gt;Penetration:&lt;/b&gt;
 			&lt;&lt;print $sex.penetration.TopPart&gt;&gt; → &lt;&lt;print $sex.penetration.BottomPart&gt;&gt;&lt;br&gt;
@@ -16584,7 +15917,7 @@ Create your character to begin.
 	&lt;div class=&quot;arousal-grid&quot;&gt;
 		&lt;div class=&quot;arousal-card&quot;&gt;
 			&lt;div class=&quot;arousal-row&quot;&gt;
-				&lt;span class=&quot;arousal-name&quot;&gt;&lt;&lt;print $sex.Bottom.name&gt;&gt;&lt;/span&gt;
+				&lt;span class=&quot;arousal-name&quot;&gt;&lt;&lt;print &quot;Bottom: &quot; + $sex.Bottom.name&gt;&gt;&lt;/span&gt;
 				&lt;span class=&quot;arousal-value&quot;&gt;&lt;&lt;print $sex.Bottom.arousal&gt;&gt;/1000&lt;/span&gt;
 			&lt;/div&gt;
 			&lt;div class=&quot;arousal-bar&quot;&gt;
@@ -16597,7 +15930,7 @@ Create your character to begin.
 
 		&lt;div class=&quot;arousal-card&quot;&gt;
 			&lt;div class=&quot;arousal-row&quot;&gt;
-				&lt;span class=&quot;arousal-name&quot;&gt;&lt;&lt;print $sex.Top.name&gt;&gt;&lt;/span&gt;
+				&lt;span class=&quot;arousal-name&quot;&gt;&lt;&lt;print &quot;Top: &quot; + $sex.Top.name&gt;&gt;&lt;/span&gt;
 				&lt;span class=&quot;arousal-value&quot;&gt;&lt;&lt;print $sex.Top.arousal&gt;&gt;/1000&lt;/span&gt;
 			&lt;/div&gt;
 			&lt;div class=&quot;arousal-bar&quot;&gt;
@@ -17530,7 +16863,46 @@ Create your character to begin.
 	&lt;&lt;else&gt;&gt;
 		[Error]: empty dialogue pool.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="heighttest" tags="" position="1225,2225" size="100,100">//example test:
+&lt;&lt;/widget&gt;&gt;
+
+
+&lt;&lt;widget &quot;FoodMenuUI&quot;&gt;&gt;
+	&lt;&lt;if !$showFoodMenu&gt;&gt;
+		&lt;&lt;link &quot;Check food menu&quot;&gt;&gt;
+			&lt;&lt;set $showFoodMenu = true&gt;&gt;
+			&lt;&lt;replace &quot;#foodMenuUI&quot;&gt;&gt;&lt;&lt;FoodMenuUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
+		&lt;&lt;/link&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;h2&gt;Café Menu&lt;/h2&gt;
+
+		&lt;&lt;set _foods = Object.keys(setup.food)&gt;&gt;
+
+		&lt;ul&gt;
+		&lt;&lt;for _i = 0; _i &lt; _foods.length; _i++&gt;&gt;
+			&lt;&lt;set _name = _foods[_i]&gt;&gt;
+			
+			&lt;li&gt;
+				&lt;&lt;capture _name&gt;&gt;
+					&lt;&lt;link _name&gt;&gt;
+						&lt;&lt;set $returnPassage = passage()&gt;&gt;
+						&lt;&lt;set $lastEaten = _name&gt;&gt;
+						&lt;&lt;goto &quot;Event_EatFood&quot;&gt;&gt;
+					&lt;&lt;/link&gt;&gt;
+				&lt;&lt;/capture&gt;&gt;
+				&lt;br&gt;
+				&lt;&lt;if setup.food[_name].description&gt;&gt;
+					&lt;small&gt;&lt;&lt;print setup.food[_name].description&gt;&gt;&lt;/small&gt;
+				&lt;&lt;/if&gt;&gt;
+			&lt;/li&gt;
+		&lt;&lt;/for&gt;&gt;
+		&lt;/ul&gt;
+
+		&lt;&lt;link &quot;Close menu&quot;&gt;&gt;
+			&lt;&lt;set $showFoodMenu = false&gt;&gt;
+			&lt;&lt;replace &quot;#foodMenuUI&quot;&gt;&gt;&lt;&lt;FoodMenuUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
+		&lt;&lt;/link&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="heighttest" tags="" position="100,2350" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 
 &lt;&lt;if _h is 1&gt;&gt;

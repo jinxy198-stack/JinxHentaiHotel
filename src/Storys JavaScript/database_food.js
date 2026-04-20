@@ -85,14 +85,12 @@ setup.food=
         "flags": ["meat"]
     },
     "Cereal": {
+        description: "A basic meal of milk and processed grain.",
         "aoran": "some",
-        "flags": ["dairy","breakfast"]
-    },
-    "Scrambled eggs": {
-        "aoran": "some",
-        "flags": ["eggs", ,"breakfast"]
+        "flags": ["dairy","wheat","breakfast"]
     },
     "Eggs and bacon": {
+        description: "Do you really need me to explain this?",
         "aoran": "some",
         "flags": ["breakfast"]
     },
@@ -120,75 +118,58 @@ setup.food=
         "flags": []
     },
     "Chicken tenders": {
+        "description": "Golden brown fried chicken. Crispy, tender, and juicy. It's finger licking good!",
         "aoran": "some",
         "flags": ["meat"]
-    },
-    "Chicken nuggets": {
-        "aoran": "some",
-        "flags": ["meat"]
-    },
-    "Corn chowder": {
-        "aoran": "some",
-        "flags": ["dairy", "warming"]
     },
     "Fried rice": {
-        "description": "It's literally in the name.",
+        "description": "It's literally in the name. Well there are some assorted veggies added.",
         "aoran": "some",
-        "flags": []
+        "flags": ["vegetables"]
     },
     "Salad": {
+        "description": "A bowl of mixed freshed vegetables.",
         "aoran": "a",
-        "flags": []
+        "flags": ["vegetables"]
     },
-    "Fried tofu": {
+    "Tofu": {
+        "description": "Made from condensed soy milk, this bar is full of rich protein. Often used as a meat substitute.",
         "aoran": "some",
-        "flags": []
+        "flags": ["vegan"]
     },
     "Lasagna": {
+        "description": "A serving of flat pasta stacked on top of the other with meat, cheese, sauce, and vegetables.",
         "aoran": "some",
-        "flags": ["meat", "dairy"]
+        "flags": ["meat", "dairy","vegetables"]
     },
     "Vegan lasagna": {
+        "description": "Same as regular lasagna but with plant-based alternatives for the meat and cheese.",
         "aoran": "some",
-        "flags": []
-    },
-    "Miso risotto": {
-        "aoran": "some",
-        "flags": []
+        "flags": ["vegan"]
     },
     "Lobster": {
+        "description": "Valued for it's tender sweet meat and high nutritional value, a high quality meal to leave one satisfied.",
         "aoran": "a",
         "flags": ["fish"]
     },
     "Steak": {
-        "description":"Crisp but juicy, and sprinkled with just the right amount of salt and spices to bring about the beef's natural flavour",
+        "description":"Crisp but juicy, and sprinkled with just the right amount of salt and spices to bring about the beef's natural flavour.",
         "aoran": "a",
         "flags": ["meat"]
     },
-    "Spicy chili": {
-
+    "Chili Con Carne": {
+        "description": "A spicy stew of meat (usually beef), chili peppers, tomatoes, and spices, with beans often included. Not reccomended for people with low spice tolerance.",
         "aoran": "some",
-        "flags": ["meat"]
+        "flags": ["meat","warming"]
     },
     "Pork chop": {
         "description":"Juicy, pan-seared pork chops, seasoned simply and cooked to tender perfection.",
         "flags": ["meat"]
     },
     "Chicken soup": {
+        "description":"A generous bowl of savory, roasted chicken soup packed with chunky carrots, celery, and potatoes in a rich broth.",
         "aoran": "some",
         "flags": ["meat", "warming"]
-    },
-    "Lentil soup": {
-        "aoran": "some",
-        "flags": ["warming"]
-    },
-    "Shepherd's pie": {
-        "aoran": "some",
-        "flags": ["meat", "dairy", "warming"]
-    },
-    "Chicken chow mein": {
-        "aoran": "some",
-        "flags": ["meat"]
     },
     "Ratatouille": {
         "description": "A colorful medley of tender vegetables simmered in savory tomato sauce. So simple that anyone can cook it.",
@@ -196,11 +177,9 @@ setup.food=
         "flags": []
     },
     "Brownie": {
+        "description": "A dense, chewy dark chocolate brownie baked with premium cocoa, featuring a perfectly crackly crust",
+        "aoran": "a",
         "flags": ["dairy", "eggs","dessert"]
-    },
-    "Apple pie": {
-        "aoran": "some",
-        "flags": ["dairy", "eggs"]
     },
     "Ice cream": {
         "aoran": "some",
@@ -210,9 +189,6 @@ setup.food=
         "description": "Made by real astronauts. Or made out of astronauts. You're not entirely sure.",
         "aoran": "some",
         "flags": ["dairy", "cooling"]
-    },
-    "Cheesecake": {
-        "flags": ["dairy", "eggs", "dessert"]
     },
     "Tiramisu": {
         "description": "A delicate dessert of espresso-soaked ladyfinger cookies layered in rich mascarpone cream, dusted with cocoa for a perfect balance of sweetness and coffee flavor.",

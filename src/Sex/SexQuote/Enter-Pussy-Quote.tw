@@ -1,47 +1,44 @@
 :: Enter-Pussy-Quote [nobr]
-<<set _pref = _n.sexpref || "Neutral">>
+
+<<set _pref = _n.sexpref>>
 <<set _size = $mc.penislength>>
 <<set _age  = $mc.ageGroup>>
-
 <<set _mode = $sex.role>>
-
 <<set _personalities = _n.personality>>
 <<set _pool = null>>
 <<set _persMatches = []>>
 
 
-<<if _mode == "Top">>
-	<<if setup.PushCockInQuotes.Top>>
+<<if _mode is "Bottom">>
+	<<if setup.PushCockInQuotes.Bottom>>
 		<<for _p range _personalities>>
-			<<if _p and setup.PushCockInQuotes.Top[_p]>>
+			<<if _p and setup.PushCockInQuotes.Bottom[_p]>>
 				<<run _persMatches.push(_p)>>
 			<</if>>
 		<</for>>
 	<</if>>
 	<<if _persMatches.length>>
 		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = PushCockInQuotes.Top[_chosenPers]>>
+		<<set _pool = PushCockInQuotes.Bottom[_chosenPers]>>
 	<<else>>
 		<<set _pool =
-			setup.PushCockInQuotess.Top[_pref]
-			|| setup.PushCockInQuotes.Top.Neutral
+			setup.PushCockInQuotes.Bottom[_pref]
 		>>
 	<</if>>
-<<elseif _mode == "Bottom">>
-	<<if setup.EnterPussyQuotes.Bottom>>
+<<elseif _mode is "Top">>
+	<<if setup.EnterPussyQuotes.Top>>
 		<<for _p range _personalities>>
-			<<if _p and setup.EnterPussyQuotes.Bottom[_p]>>
+			<<if _p and setup.EnterPussyQuotes.Top[_p]>>
 				<<run _persMatches.push(_p)>>
 			<</if>>
 		<</for>>
 	<</if>>
 	<<if _persMatches.length>>
 		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = EnterPussyQuotes.Bottom[_chosenPers]>>
+		<<set _pool = EnterPussyQuotes.Top[_chosenPers]>>
 	<<else>>
 		<<set _pool =
-			setup.EnterPussyQuotes.Bottom[_pref]
-			|| setup.EnterPussyQuotes.Bottom.Neutral
+			setup.EnterPussyQuotes.Top[_pref]
 		>>
 	<</if>>
 <</if>>
@@ -50,4 +47,5 @@
 	<<=either(..._pool)>>
 <<else>>
 	[Error] No Vaginal quote pool found.
+	(mode=<<= _mode >>, pref=<<= _pref >>, size=<<= _size >>,  nage=<<= _nage >>, mage=<<= _mage >>)
 <</if>>

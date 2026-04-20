@@ -398,8 +398,6 @@
 <</if>>
 <</widget>>
 
-
-
 <<widget "create-body">>
 	/* Accepts: <<create-body $mc>> or <<create-body _npc>> or <<create-body _n>>.
 	   If called with no args, falls back to $mc. */
@@ -625,7 +623,7 @@
 					<</if>>
 
 				<<case "dragon">>
-					<<set _char.body.Ear to "Horned Frills">>
+					<<set _char.body.Ear to "Horned Frill">>
 					<<set _char.body.Feet to "Draconic Claw">>
 					<<set _char.body.Tail to "Spiked Tail">>
 					<<if _hasPenis and !_char.genitaltype>>

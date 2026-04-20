@@ -677,21 +677,6 @@ setup.sexacts = {
         "Top dialogue tags": ["rubbing pussy"],
         "Bottom dialogue tags": ["pussy rubbed"],
     },
-    "Pull Hand To Pussy":  /*Check if needed */
-    {
-        "positions": [ "Missionary", "Laid Across On Back:Bottom",  "Mating Press:Bottom", "Sixty-Nine", "From Behind", "Doggy:Bottom", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling:Bottom", "Kneeling Over:Bottom", "Standing", "Standing From Behind", "Lap ride", "Riding Face:Bottom", "Oral Service:Top", "Spooning:Bottom", "Squatting Before:Top", "Double Decker:Bottom", "Kneeling Between Thighs:Bottom", "Against Wall", "Against Wall From Behind:Top", "Perched Oral Service:Top", "Underneath Oral Service:Top", "Laid Across Oral Service:Top"],
-        "action type": ["tease"],
-        "Top parts": ["Hand"],
-        "Bottom parts": ["Vagina"],
-        "Top cum locations": [],
-        "Bottom cum locations": [],
-        "masturbation": false,
-        "take virginity": [],
-        "Top arousal": 40,
-        "Bottom arousal":  10,
-        "Bottom arousal cap": 300,
-        "act label substitution": ["Top", "transgender male", "Pull Hand To Front Hole"],
-    },
     "Finger Pussy": /* Bottom must have a vagina */
     {
         "positions": [ "Missionary", "Laid Across On Back", "Laid Across On Stomach", "Mating Press", "Sixty-Nine", "From Behind", "Doggy", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Sitting", "Standing From Behind", "Lap ride", "Sit On Face", "Oral Service",  "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
@@ -754,26 +739,6 @@ setup.sexacts = {
         "take virginity": [],
         "Top arousal": 0,
         "Bottom arousal": 0,
-    },
-
-    "Rub Clit":
-    {
-        "positions": [ "Missionary", "Laid Across On Back", "Laid Across On Stomach", "Mating Press", "Sixty-Nine", "From Behind", "Doggy", "Bent Over", "Perched", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Standing From Behind", "Lap ride", "Sit On Face", "Oral Service", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
-        "action type": ["tease"],
-        "Top parts": ["Hand"],
-        "Bottom parts": ["Clitoris"],
-        "Top cum locations": [],
-        "Bottom cum locations": [],
-        "masturbation": true,
-        "take virginity": [],
-        "Top arousal": 10,
-        "Bottom arousal": 50,
-        "Top arousal cap": 300,
-        "remember as": ["fingerbang", "given"],
-        "act label substitution": ["Bottom", "transgender male", "Rub T-Dick"],
-        "Top dialogue tags": ["rubbing clit"],
-        "Bottom dialogue tags": ["clit rubbed"],
-        coexist: true,
     },
     "Lick Pussy":
     {
@@ -880,20 +845,6 @@ setup.sexacts = {
         "Bottom arousal cap": 300,
         "Top dialogue tags": ["rubbing cock on face"],
         "Bottom dialogue tags": ["face rubbed by cock"],
-    },
-    "Rub Cock Against Hand": /* Check if necessary */
-    {
-        "positions": [ "Sixty-Nine", "Kneeling", "Kneeling Over", "Standing", "Lap ride", "Oral Service", "Perched", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Sit On Face", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
-        "action type": ["tease"],
-        "Top parts": ["Penis"],
-        "Bottom parts": ["Hand"],
-        "Top cum locations": ["on hand"],
-        "Bottom cum locations": [],
-        "masturbation": false,
-        "take virginity": [],
-        "Top arousal": 40,
-        "Bottom arousal": 10,
-        "Bottom arousal cap": 300
     },
     "Lick Foot": /* You lick their foot*/
     {
@@ -1446,6 +1397,19 @@ setup.sexacts = {
         "Top arousal": 50,
         "Bottom arousal cap": 300,
         equal: true,
+    },
+    "Stop Sixty Nine":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "Top parts": ["Penis", "Mouth"],
+        "Bottom parts": ["Mouth", "Penis"],
+        "Top cum locations": [],
+        "Bottom cum locations": [],
+        "masturbation": false,
+        "take virginity": [],
+        "Top arousal": 0,
+        "Bottom arousal": 0,
     },
 
 

@@ -118,7 +118,8 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
             <br>
             Physique: $mc.physique
             <br>
-         <<if $mc.breastsize>>Breast Size: $mc.breastsize<</if>>         
+        <<if $mc.breastsize>>Breast Size: $mc.breastsize <</if>>
+        <br>
         </td>
     </tr>
 </table>
@@ -131,7 +132,7 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
     <tr id="trait">
         <th><u><strong>Trait:</strong></u></th>
         <<if !$mc.traits>>
-        No traits found
+        <td> No traits found </td>
         <<else>>
         <td id="mc-perso">$mc.traits</td>
         <</if>>
@@ -150,8 +151,8 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
      </tr>
      <<if $mc.penislength>>
         <tr>
-         <th><u><strong>Penis Length:</strong></u></th>
-        <td id="mc-penislength">$mc.penislength</td>
+            <th><u><strong>Penis Length:</strong></u></th>
+            <td id="mc-penislength">$mc.penislength</td>
         </tr>
         <</if>>
      <tr>
@@ -170,20 +171,17 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
 	Virgin: No
 <</if>> */
 
-<div>
+<table class="bodyparts">
+    <th><u><strong>List of Body Parts:</strong></u></th>
+    <<if $mc.body>>
+	    <td> <<set _parts = Object.values($mc.body).filter(Boolean)>>
+	    <<= _parts.join(", ")>> </td>
+    <<else>>
+	    <i>No body object found on the MC.</i>
+    <</if>>
+    <br>
+</table>
 
-List of body parts:
-<br>
-<ul>
-<<for _key, _val range $mc.body>>
-	<li>
-		<strong><<print _key>></strong> :
-		<<print _val>>
-	</li>
-<</for>>
-</ul>
-
-</div>
 <div id="npcsex-actions-bar">
     <<button "YES!">><<goto "CC-Confirm">><</button>>
     <<button "Go back">><<goto "Index-CC">><</button>>

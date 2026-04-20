@@ -1,9 +1,13 @@
-:: Brothel [nobr]
+:: Brothel [nobr location]
 <<set $gamelocation to "Brothel">>
 
 You enter a lavish brothel.
-You see a sign explaining the place.
-<<button "Read Sign">><<PopupBrothelSign "Brothel">><</button>>
+/* You see a sign explaining the place.
+<<button "Read Sign">><<PopupBrothelSign "Brothel">><</button>> */
+
+<br>
+Unfortunately a astral barrier blocks the way forward, with the words "THIS AREA IS A WORK IN PROGESS"
+<br>
 
 <div id="npcsex-actions-bar">
 <<button "Elevator">>

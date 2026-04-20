@@ -19,16 +19,16 @@
 
 <<if _mode is "Top">>
 	<<set _pool =
-		setup.handjobQuotes.Bottom[_pref]
-		|| setup.handjobQuotes.Bottom.Neutral
+		setup.handjobQuotes.Top[_pref]
+		|| setup.handjobQuotes.Top.Neutral
 	>>
 
 <<elseif _mode is "Bottom">>
 	<<set _persMatches = []>>
 
-	<<if setup.handjobQuotes.Top>>
+	<<if setup.handjobQuotes.Bottom>>
 		<<for _p range _personalities>>
-			<<if _p and Array.isArray(setup.handjobQuotes.Top[_p])>>
+			<<if _p and Array.isArray(setup.handjobQuotes.Bottom[_p])>>
 				<<run _persMatches.push(_p)>>
 			<</if>>
 		<</for>>
@@ -36,27 +36,27 @@
 
 	<<if _persMatches.length>>
 		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = setup.handjobQuotes.Top[_chosenPers]>>
+		<<set _pool = setup.handjobQuotes.Bottom[_chosenPers]>>
 	<<elseif _size is "Tiny">>
 		<<set _pool =
 			(
-				setup.handjobQuotes.Top[_pref]
-				&& setup.handjobQuotes.Top[_pref].Tiny
-				&& setup.handjobQuotes.Top[_pref].Tiny[_age]
+				setup.handjobQuotes.Bottom[_pref]
+				&& setup.handjobQuotes.Bottom[_pref].Tiny
+				&& setup.handjobQuotes.Bottom[_pref].Tiny[_age]
 			)
 			|| (
-				setup.handjobQuotes.Top[_pref]
-				&& setup.handjobQuotes.Top[_pref].Tiny
+				setup.handjobQuotes.Bottom[_pref]
+				&& setup.handjobQuotes.Bottom[_pref].Tiny
 			)
-			|| setup.handjobQuotes.Top.Neutral
+			|| setup.handjobQuotes.Bottom.Neutral
 		>>
 	<<else>>
 		<<set _pool =
 			(
-				setup.handjobQuotes.Top[_pref]
-				&& setup.handjobQuotes.Top[_pref][_size]
+				setup.handjobQuotes.Bottom[_pref]
+				&& setup.handjobQuotes.Bottom[_pref][_size]
 			)
-			|| setup.handjobQuotes.Top.Neutral
+			|| setup.handjobQuotes.Bottom.Neutral
 		>>
 	<</if>>
 <</if>>

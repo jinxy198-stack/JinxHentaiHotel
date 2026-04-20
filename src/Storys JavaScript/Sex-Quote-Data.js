@@ -1596,7 +1596,7 @@ setup.vaginalQuotes = {
 
 
 setup.EnterPussyQuotes = {
-  Bottom: {
+  Top: {
     Dominant:["It's inside me!"],
     Submissive: ["You feel so good inside me."],
     Switch: ["It's inside me!"]
@@ -1605,7 +1605,7 @@ setup.EnterPussyQuotes = {
 };
 
 setup.PushCockInQuotes = {
-  Top: {
+  Bottom: {
     Dominant:[
       "Fuck, your tight little cunt feels amazing",
       "Fuck yes, give me all of that fucking pussy",

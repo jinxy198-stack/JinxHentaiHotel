@@ -137,6 +137,11 @@ setup.refreshFullPool = function () {
 			return npc && npc.species === "Human";
 		});
 	}
+  if (traits.includes("Hates Humans")) {
+		pool = pool.filter(function (npc) {
+			return npc && npc.species === "Anthro";
+		});
+	}
 
 	v.fullPool = pool;
 };

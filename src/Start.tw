@@ -1,17 +1,17 @@
 :: Start {"position":"175,275","size":"100,100"}
 
 /*keep true if you want the test buttons to appear */
-<<set $devMode = true>>
+<<set $devMode = false>>
 <div>
 <h1>Welcome to Jinx Hentai Hotel!</h1>
 <h3 style="font-weight: normal;">This game is meant to simulate interactions of many sexual varieties. 
-Create your character to begin.
+Create your character to begin or you can use the PreSet or Randomizer to skip all that.
 </h3>
 <center><<button [[Create Character|Index-CC]]>><</button>></center>
 <center><<button [[Use the Randomiser|CC-Check]]>><<Randomiser>><</button>> | <<button [[Use the Pre-Set|CC-Check]]>><<PreSet>><</button>>
 </center>
 
-<span> Updated as of 3/28/2026 </span>
+<span> Updated as of 4/18/2026 </span>
 
 <<if $devMode>>
 <<button [[Test|TestRoom]]>><<LittleBoy>><</button>> 

@@ -4,31 +4,14 @@
 You enter a large cafe for eating.
 
 
-<h2>Café Menu</h2>
+<span id="foodMenuUI"><<FoodMenuUI>></span>
 
-<<set _foods = Object.keys(setup.food)>>
+<<unset $spawnPools>>
+<<run setup.refreshFullPool()>>
+<<SpawnPoolOnce "fullPool" $fullPool 15>>
+<<SpawnRandomNPCs 15>>
 
-<ul>
-<<for _i = 0; _i < _foods.length; _i++>>
-	<<set _name = _foods[_i]>>
-	
-	<li>
-		<<capture _name>>
-		<<link _name>>
-			<<set $returnPassage = passage()>>
-			<<set $lastEaten = _name>>
-			<<goto Event_EatFood>>
-		<</link>>
-		<</capture>>
-		<br>
-		<<if setup.food[_name].description>>
-			<small><<print setup.food[_name].description>></small>
-		<</if>>
-	</li>
-	
-<</for>>
-</ul>
-
+<<include "NPC-List">>
 
 <div id="npcsex-actions-bar">
 <<button "Elevator">>

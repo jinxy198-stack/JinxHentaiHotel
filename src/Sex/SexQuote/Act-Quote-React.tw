@@ -1,6 +1,15 @@
 :: Act-Quote-React [nobr]
 
 /* Character nonverbal reaction. Also works if the character is mute. */
+<<set _muffled = false>>
+<<if $sex.role == "Bottom" && (
+	$sex.act == "Kiss Nipple" ||
+	$sex.act == "Lick Nipple" ||
+	$sex.act == "Suck Nipple"
+)>>
+	<<set _muffled = true>>
+<</if>>
+
 
 <<if $sex.phase == "climax">>
 	<<set _lines = [
@@ -39,12 +48,34 @@
 				"With a <<npcNoise>>, _n.name eagerly thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your <<= String($mc.assSize || 'ass').toLowerCase() >> ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start energetically fucking you.",
 				"_n.name lets out a <<npcNoise>> as $proset.they enter you, bucking $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
 				"With a <<npcNoise>>, _n.name thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your $mc.assSize ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start fucking you."
-		]>>
+			]>>
+		<<else>>
+			<<set _lines = [
+				"_n.name lets out a <<npcNoise>> as they enter you."
+			]>>
 		<</if>>
 	<<elseif $sex.act == "Enter Ass">>
 			<<set _lines = [
 				"_n.name moans feeling you slide inside of their ass."
 			]>>
+	<<elseif $sex.act == "Wrap Hand around Cock">>
+		<<set _lines = [
+			"_n.name smiles at you during the action."
+		]>>
+	<<elseif $sex.act == "Fuck Fist">>
+		<<set _lines = [
+			"_n.name smiles at you during the action."
+		]>>	
+	<<elseif $sex.act == "Press Face on Chest">>
+		<<if $sex.role == "Bottom">>
+			<<set _lines = [
+				"_n.name lets out a muffled noise in your chest."
+			]>>	
+		<<elseif $sex.role == "Top">>
+			<<set _lines = [
+				"_n.name moans feeling you press on their chest."
+			]>>			
+		<</if>>		
 	<<elseif $sex.act == "Fuck Ass">>
 		<<set _lines = [
 			"_n.name moans feeling you fuck their ass."
@@ -58,6 +89,10 @@
 			"They grit their teeth, taking it up the ass is something they are not used to."
 			)>>
 		<</if>>	
+	<<elseif _muffled == true>>
+		<<set _lines = [
+			"_n.name makes a muffled noise."
+		]>>
 	<<else>>
 		<<set _lines = [
 			"_n.name <<npcNoise>>s from the pleasure."
