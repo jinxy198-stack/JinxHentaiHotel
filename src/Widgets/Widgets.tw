@@ -1,7 +1,8 @@
 :: Widgets [widget nobr] 
 
-<<widget "npcNoise">><<print setup.pick(setup.noise[_n.species] || setup.noise[_n.anthro.subtype])>><</widget>>
-
+<<widget "npcNoise">>
+    <<print setup.pick(setup.noise[_n.species] || setup.noise[_n.anthro.subtype])>>
+<</widget>>
 
 <<widget "gram">>
 	<<= setup.ref(_args[0], _args[1] || "subj") >>
@@ -10,424 +11,6 @@
 <<widget "gverb">>
 	<<= setup.verb(_args[0], _args[1], _args[2]) >>
 <</widget>>
-
-
-/* gets the room based on your location and issues where you start at */
-<<widget "GetRoom">>
-    <<if $gamelocation =="Your Room">>
-        <<set $room = {
-        type: "bedroom",
-        location: "large floor",
-        furnitureFlags: setup.getRoomFurnitureFlags("bedroom")
-        }>>
-    <<elseif $gamelocation == "Your Bathroom">>
-        <<set $room = {
-        type: "bathroom",
-        location: "large floor",
-        furnitureFlags: setup.getRoomFurnitureFlags("bathroom")
-        }>>
-    <<elseif $gamelocation == "Lounge">>
-        <<set $room = {
-        type: "lounge",
-        location: "large floor",
-        furnitureFlags: setup.getRoomFurnitureFlags("lounge")
-        }>>    
-    <</if>>    
-<</widget>>
-
-
-<<widget "RoomRelocationUI">>
-<div id="UI-Location">
-<h3><u>Relocate</u></h3>
-
-<<set _roomDef = setup.RoomTypes.db[$room.type]>>
-<<set _keys = Object.keys(_roomDef.contents)>>
-
-<ul class="inline-list relocation">
-<<for _i = 0; _i < _keys.length; _i++>>
-    <<set _furnKey = _keys[_i]>>
-    <<set _furn = setup.RoomTypes.furniture[_furnKey]>>
-
-    <<if _furn>>
-    <<capture _furnKey, _furn>>
-    <li>
-        <<button _furn.label>>
-            <<set $debugLastRelocation = _furnKey>>
-            <<set $room.location = _furnKey>>
-            <<set $room.furnitureFlags = _furn.flags || []>>
-            <<set $sex.furnitureFlags = $room.furnitureFlags>>
-            <<run setup.ensureValidSexPosition($sex)>>
-            
-
-            <<replace "#sex-container">>
-                <<SexEncounterUI>>
-                <<RoomRelocationUI>>
-
-            <</replace>>
-
-            <<replace "#log">>
-                <<include "PositionDialogue">>
-			<</replace>>
-
-        <</button>>
-
-        <<if $room.location is _furnKey>>
-            <span class="current-location"> (current)</span>
-        <</if>>
-    </li>
-    <</capture>>
-    <</if>>
-<</for>>
-</ul>
-</div>
-<</widget>>
-
-<<widget "SexEncounterUI">>
-	<<set _isMute = Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
-
-	<<set _climaxQuotePassage = _isMute
-		? "Act-Quote-React"
-		: either("Orgasm-Close-Quote", "Act-Quote-React")>>
-
-	<<set _aftercareQuotePassage = _isMute
-		? "Act-Quote-React"
-		: either("Orgasm-Quote", "Act-Quote-React")>>
-
-	<<set _defaultQuotePassage = _isMute
-		? "Act-Quote-React"
-		: either("Act-Quote", "Act-Quote-React")>>
-
-	<<set _positions = setup.getAvailablePositions($sex) || []>>
-	<<set _acts = setup.getAvailableSexActs($sex) || []>>
-
-	<<run setup.updateCumLocations($sex)>>
-
-<div id="sexUI">
-
-	<!-- ===================== -->
-	<!-- INFO PANEL -->
-	<!-- ===================== -->
-	<div id="UI-Stats">
-		<h3><u>Info</u></h3>
-
-		<b>Current Room:</b> <<print $gamelocation>><br>
-		<b>Current Position:</b> <<print $sex.position>><br>
-		<b>Previous Position:</b> <<print $sex.previousPosition || "None">><br>
-		/*<b>Role:</b> <<print $sex.role>><br>*/
-		<b>Act:</b>
-		<<if $sex.act>>
-			<<print $sex.act>>
-		<<else>>
-			None
-		<</if>><br>
-		<b>Phase:</b> <<print $sex.phase>><br>
-		<<if $sex.penetration>>
-			<b>Penetration:</b>
-			<<print $sex.penetration.TopPart>> → <<print $sex.penetration.BottomPart>><br>
-		<</if>>
-
-		<<button "Inspect NPC">>
-			<<WithNPC _n>>
-			<<run Dialog
-				.create("NPC: " + $ui.npc.name)
-				.wikiPassage("NPC-Inspect")
-				.open()
-			>>
-		<</button>>
-	</div>
-
-	<<if $devMode>>
-		Encounter size: <<= setup.getEncounterSize($sex) >>
-	<</if>>
-
-	<!-- ===================== -->
-	<!-- ACTION PANEL -->
-	<!-- ===================== -->
-	<div id="npcsex-actions-bar">
-
-		<button id="npcsex-toggle" aria-expanded="true">
-			▼ <b>Actions</b>
-		</button>
-
-		<<if setup.shouldShowCumPanel($sex)>>
-			<div class="npcsex-content">
-				<<CumLocationButtons>>
-			</div>
-
-		<<else>>
-			<div class="npcsex-content">
-
-				<!-- POSITIONS -->
-				<h3>Available Positions</h3>
-
-				<<if _positions.length === 0>>
-					<i>None (based on parts/role).</i>
-				<<else>>
-					<ul class="sex-list">
-						<<for _i = 0; _i < _positions.length; _i++>>
-							<<set _p = _positions[_i]>>
-
-							<<if _p === $sex.position>>
-								<li><strong><<print _p>></strong></li>
-							<<else>>
-								<<capture _p>>
-									<li>
-										<<button _p>>
-											<<set $sex.previousPosition = $sex.position>>
-											<<set $sex.position = _p>>
-
-											<<replace "#sexUI">><<SexEncounterUI>><</replace>>
-											<<replace "#intro">><</replace>>
-											<<replace "#log">>
-												<<include "PositionDialogue">>
-											<</replace>>
-											<<replace "#arousal-ui">><<ArousalUI>><</replace>>
-										<</button>>
-									</li>
-								<</capture>>
-							<</if>>
-						<</for>>
-					</ul>
-				<</if>>
-
-				<!-- ACTS -->
-				<h3>Available Acts</h3>
-
-				<<if $sex.phase == "aftercare">>
-					<<if _acts.length === 0>>
-						<i>None (for this position/phase/parts).</i>
-					<<else>>
-						<ul class="sex-list">
-							<<for _i = 0; _i < _acts.length; _i++>>
-								<<set _a = _acts[_i]>>
-								<<set _actDef = setup.sexacts[_a]>>
-
-								<<capture _a>>
-									<li>
-										<<if !setup.actBlockedByTraits($sex, _actDef)>>
-											<<button _a>>
-												<<run
-													const act = setup.sexacts[_a];
-													setup.applySexAct($sex, _a);
-													setup.applyArousalFromAct($sex, act);
-													setup.updateBindings();
-													setup.updateCumLocations($sex);
-												>>
-
-												<<replace "#sexUI">><<SexEncounterUI>><</replace>>
-
-												<<if $sex.phase == "climax">>
-													<<replace "#intro">>
-														<<include "Orgasm-Close-Dialogue">><br>
-														<<include _climaxQuotePassage>>
-													<</replace>>
-
-												<<elseif $sex.phase == "aftercare">>
-													<<replace "#log">><</replace>>
-													<<replace "#intro">>
-														<<include "ActDialogue">>
-														<<include _aftercareQuotePassage>>
-													<</replace>>
-													<<replace "#log">><</replace>>
-													<<replace "#arousal-ui">><<ArousalUI>><</replace>>
-
-												<<else>>
-													<<replace "#log">><</replace>>
-													<<replace "#intro">>
-														<<include "ActDialogue">>
-														<<include _defaultQuotePassage>>
-													<</replace>>
-													<<replace "#log">><</replace>>
-													<<replace "#arousal-ui">><<ArousalUI>><</replace>>
-												<</if>>
-											<</button>>
-										<</if>>
-									</li>
-								<</capture>>
-							<</for>>
-
-							<li>
-								<<button "End Session">>
-                                    <<run setup.record_sex_memory($ui.npc, "had sex with")>>
-									<<set _returnTo = $gamelocation || "Your Room">>
-									<<set $lastNpc = $ui.npc>>
-									<<run setup.resetSexSession()>>
-									<<goto _returnTo>>
-								<</button>>
-							</li>
-						</ul>
-					<</if>>
-
-				<<else>>
-					<<if _acts.length === 0>>
-						<i>None (for this position/phase/parts).</i>
-					<<else>>
-						<ul class="sex-list">
-							<<for _i = 0; _i < _acts.length; _i++>>
-								<<set _a = _acts[_i]>>
-								<<set _actDef = setup.sexacts[_a]>>
-
-								<<if _a === $sex.act && !_actDef["action type"].includes("continue")>>
-									<li><strong><<print _a>></strong></li>
-								<<else>>
-									<<capture _a>>
-										<li>
-											<<if !setup.actBlockedByTraits($sex, _actDef)>>
-												<<button _a>>
-													<<run
-														const act = setup.sexacts[_a];
-														setup.applySexAct($sex, _a);
-														setup.applyArousalFromAct($sex, act);
-														setup.updateBindings();
-														setup.updateCumLocations($sex);
-													>>
-
-													<<replace "#sexUI">><<SexEncounterUI>><</replace>>
-
-													<<if $sex.phase == "climax">>
-														<<replace "#intro">>
-															<<include "Orgasm-Close-Dialogue">><br>
-															<<include _climaxQuotePassage>>
-														<</replace>>
-
-													<<elseif $sex.phase == "aftercare">>
-														<<replace "#log">><</replace>>
-														<<replace "#intro">>
-															<<include "ActDialogue">>
-															<<include _aftercareQuotePassage>>
-														<</replace>>
-														<<replace "#log">><</replace>>
-														<<replace "#arousal-ui">><<ArousalUI>><</replace>>
-
-													<<else>>
-														<<replace "#log">><</replace>>
-														<<replace "#intro">>
-															<<include "ActDialogue">>
-															<<include _defaultQuotePassage>>
-														<</replace>>
-														<<replace "#log">><</replace>>
-														<<replace "#arousal-ui">><<ArousalUI>><</replace>>
-													<</if>>
-												<</button>>
-											<</if>>
-										</li>
-									<</capture>>
-								<</if>>
-							<</for>>
-						</ul>
-					<</if>>
-				<</if>>
-
-			</div>
-		<</if>>
-	</div>
-</div>
-<</widget>>
-
-<<widget "RefreshSexDisplay">>
-	<<replace "#sexUI">><<SexEncounterUI>><</replace>>
-	<<replace "#arousal-ui">><<ArousalUI>><</replace>>
-<</widget>>
-
-
-<<widget "ArousalUI">>
-<div class="arousal-ui">
-	<div class="arousal-title">Arousal</div>
-
-	<div class="arousal-grid">
-		<div class="arousal-card">
-			<div class="arousal-row">
-				<span class="arousal-name"><<print "Bottom: " + $sex.Bottom.name>></span>
-				<span class="arousal-value"><<print $sex.Bottom.arousal>>/1000</span>
-			</div>
-			<div class="arousal-bar">
-				<div
-					class="arousal-fill bottom"
-					@style="'width:' + Math.min(100, (($sex.Bottom.arousal || 0) / 1000) * 100) + '%;'">
-				</div>
-			</div>
-		</div>
-
-		<div class="arousal-card">
-			<div class="arousal-row">
-				<span class="arousal-name"><<print "Top: " + $sex.Top.name>></span>
-				<span class="arousal-value"><<print $sex.Top.arousal>>/1000</span>
-			</div>
-			<div class="arousal-bar">
-				<div
-					class="arousal-fill top"
-					@style="'width:' + Math.min(100, (($sex.Top.arousal || 0) / 1000) * 100) + '%;'">
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<<if $devMode>>
-		<div class="arousal-dev">
-			<div><b>Top Cum Locations:</b> <<print $sex.Top.cumLocation>></div>
-			<div><b>Bottom Cum Locations:</b> <<print $sex.Bottom.cumLocation>></div>
-		</div>
-	<</if>>
-</div>
-<</widget>>
-
-
-<<widget "CumLocationButtons">>
-	<<set _who = _args[0] || "Top">>
-	<<set _actor = $sex && $sex[_who] ? $sex[_who] : null>>
-    <<set _climaxquote = _isMute ? "Act-Quote-React" : either("Orgasm-Quote", "Act-Quote-React")>>
-	<<if !_actor>>
-		<span class="error">[Error] Missing actor for <<print _who>>.</span>
-		<<return>>
-	<</if>>
-
-	<<set _opts = Array.isArray(_actor.cumLocation) ? _actor.cumLocation : []>>
-
-	<<if !_opts.length>>
-		<i>No cum locations available.</i>
-	<<else>>
-		<ul class="sex-list">
-			<<for _i = 0; _i < _opts.length; _i++>>
-				<<set _loc = _opts[_i]>>
-				<<capture _loc>>
-					<li>
-						<<button _loc>>
-							/* save selected location */
-							<<set _actor.selectedCumLocation = _loc>>
-
-							/* move out of climax */
-							<<set $sex.phase = "aftercare">>
-							<<set $sex.cumReady = false>>
-
-							/* optional: climax act marker */
-							<<set $sex.act = "Climax">>
-
-
-							/* refresh state */
-							<<run setup.updateCumLocations($sex)>>
-							<<run setup.updateBindings()>>
-
-                            <<set $sex.chosenCumLocation = _loc>>
-
-							/* redraw the action UI */
-							<<replace "#sexUI">><<SexEncounterUI>><</replace>>
-							<<replace "#arousal-ui">><<ArousalUI>><</replace>>
-
-							/* update text output */
-							<<replace "#log">><</replace>>
-							<<replace "#intro">>
-								<<include "OrgasmDialogue">><br>
-								<<include "Orgasm-Quote">>
-							<</replace>>
-						<</button>>
-					</li>
-				<</capture>>
-			<</for>>
-		</ul>
-	<</if>>
-<</widget>>
-
-
 
 <<widget "ResolvePhysique">>
 	<<set _m = $physique.muscle>>
@@ -475,9 +58,8 @@
         <</if>>
     <</if>>
 
-<<set $mc.physique = $physique.label>>
+    <<set $mc.physique = $physique.label>>
 <</widget>>
-
 
 /* select by id into $ui.npc */
 <<widget "WithNPC">>
@@ -494,7 +76,6 @@
 		<<return>>
 	<</if>>
 <</widget>>
-
 
 <<widget "EnsureSpeciesData">>
 	<<set $mc = $mc or {}>>
@@ -515,7 +96,6 @@
 		<<set $mc.anthro.wingspan = "None">>
 	<</if>>
 <</widget>>
-
 
 <<widget "RenderAnthroSubtype">>
 	<<if $mc.anthro.group is "Furry">>
@@ -589,20 +169,16 @@
 	<</if>>
 <</widget>>
 <<widget "RenderAnthroDynamic">>
-  <div id="anthro-subtype"><<RenderAnthroSubtype>></div>
-  <<RenderWingsUI>>
+    <div id="anthro-subtype"><<RenderAnthroSubtype>></div>
+    <<RenderWingsUI>>
 <</widget>>
 
 <<widget "setGenitals">>
-<<if $mc.gender is "Male">>
-	<<set $mc.genitals to "Penis">>
-<<elseif $mc.gender is "Female">>
-	<<set $mc.genitals to "Vagina">>
-<</if>>
-<</widget>>
-
-<<widget "penisOptions">>
-<<set _penis to ["Cut","Uncut","Phimosis"]>>
+    <<if $mc.gender is "Male">>
+	    <<set $mc.genitals to "Penis">>
+    <<elseif $mc.gender is "Female">>
+	    <<set $mc.genitals to "Vagina">>
+    <</if>>
 <</widget>>
 
 /*************************** 
@@ -721,31 +297,11 @@
         _hairshort to ["--", "Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides"],
         _hairmed to ["--", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads"],
         _hairlong to ["--","Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down"],
-        _hairmisc to ["--","Spiky Anime","Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair"],
+        _hairmisc to ["--","Spiky Anime","Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs"],
         _haircolor to setup.haircolor
     >>
 <</widget>>
 
-/*************************** 
-    FACE WIDGET
-***************************/
-/* 
-    This widget pushed all options ticked into an array.
-    Depending on how your organise features, you may end up with multiple variables (regular variables and/or other arrays).
-*/
-<<widget "AllThisInAnArray">>
-    <<set $mc.facefeatures to []>>
-    <<if _moustache>><<run $mc.facefeatures.push("a moustache")>><</if>>
-    <<if _fullbeard>><<run $mc.facefeatures.push("a full beard")>><</if>>
-    <<if _sideburns>><<run $mc.facefeatures.push("some sideburns")>><</if>>
-    <<if _shadow>><<run $mc.facefeatures.push("shadow")>><</if>>
-    <<if _patch>><<run $mc.facefeatures.push("soul patch")>><</if>>
-    <<if _wrinkles>><<run $mc.facefeatures.push("wrinkles")>><</if>>
-    <<if _mole>><<run $mc.facefeatures.push("a mole")>><</if>>
-    <<if _bm>><<run $mc.facefeatures.push("a beauty mark")>><</if>>
-    <<if _freckles>><<run $mc.facefeatures.push("freckles")>><</if>>
-    <<if _acne>><<run $mc.facefeatures.push("acne")>><</if>>  
-<</widget>>
 
 
 /*************************** 
@@ -801,32 +357,30 @@
         	<<set $mc.anthro.subtype to either(setup.avianTypes)>>
         <</if>>
     <</if>>
-
-        <<create-body $mc>>
-        <<PronounsSet>>
-   	    <<AgeGroupSet>>
-        <<SetTrans>>
-        <<setGenitals>>
-        <<if $mc.genitals is "Penis">>
-    	    <<set $mc.genitaltype to either(setup.penistype)>>
-            <<set $mc.penislength to either(setup.penislength)>>
-        <<elseif $mc.genitals is "Vagina">>
-    	    <<set $mc.genitaltype to either (setup.vaginatype)>>
-            <<set $mc.penislength to null>>
-        <</if>>
-        <<if $heterochromia is false>>
-            <<set $mc.eyes to either(setup.eyecolor)>>
-        <<else>>
-            <<set 
-                _eyesleft to either(setup.eyecolor),
-                _eyesright to either(setup.eyecolor),
-                $mc.eyes to _eyesleft + " and " + _eyesright >>
-        <</if>>
-            <<set 
-                $mc.hair to {},
-                $mc.hair.style to either("Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long (Long Bob)", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro", "Mullet", "Wolf Cut", "Mid-length Dreads" ,"Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky Anime", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Gravity-defying spikes", "Shaved Pattern Designs", "Elemental Hair"),
-                $mc.hair.color to either(setup.haircolor)>>
-
+    <<create-body $mc>>
+    <<PronounsSet>>
+   	<<AgeGroupSet>>
+    <<SetTrans>>
+    <<setGenitals>>
+    <<if $mc.genitals is "Penis">>
+    	<<set $mc.genitaltype to either(setup.penistype)>>
+        <<set $mc.penislength to either(setup.penislength)>>
+    <<elseif $mc.genitals is "Vagina">>
+    	<<set $mc.genitaltype to either (setup.vaginatype)>>
+        <<set $mc.penislength to null>>
+    <</if>>
+    <<if $heterochromia is false>>
+        <<set $mc.eyes to either(setup.eyecolor)>>
+    <<else>>
+        <<set 
+            _eyesleft to either(setup.eyecolor),
+            _eyesright to either(setup.eyecolor),
+            $mc.eyes to _eyesleft + " and " + _eyesright >>
+    <</if>>
+    <<set 
+        $mc.hair to {},
+        $mc.hair.style to either(setup.hairstyle),
+        $mc.hair.color to either(setup.haircolor)>>
     <<if $mc.gender is "Female">>
     	<<set $mc.breastsize to either (setup.breastsize)>>
     <</if>>
@@ -861,9 +415,6 @@
         <<if $pages.hair>>
             <<addclass "#hair" "green">>
         <</if>>
-        <<if $pages.facefeat>>
-            <<addclass "#ffeat" "green">>
-        <</if>>
         <<if $flags.skinChosen>>
             <<addclass "#skin" "green">>
         <</if>>
@@ -888,24 +439,6 @@
 /********************************
     CHANGE POPUP WIDGETS 
 ********************************/
-<<widget "FacialFeaturesPicked">>
-    <<if $mc.facefeatures.includes("a moustache")>><<set _moustache to true>><</if>>
-    <<if $mc.facefeatures.includes("a goatee")>><<set _goatee to true>><</if>>
-    <<if $mc.facefeatures.includes("a full beard")>><<set _fullbeard to true>><</if>>
-    <<if $mc.facefeatures.includes("some sideburns")>><<set _sideburns to true>><</if>>
-    <<if $mc.facefeatures.includes("shadow")>><<set _shadow to true>><</if>>
-    <<if $mc.facefeatures.includes("soul patch")>><<set _patch to true>><</if>>
-    <<if $mc.facefeatures.includes("a handle bar")>><<set _handlebar to true>><</if>>
-    <<if $mc.facefeatures.includes("wrinkles")>><<set _wrinkles to true>><</if>>
-    <<if $mc.facefeatures.includes("a mole")>><<set _mole to true>><</if>>
-    <<if $mc.facefeatures.includes("a unibrow")>><<set _brow to true>><</if>>
-    <<if $mc.facefeatures.includes("thick brows")>><<set _thickbrow to true>><</if>>
-    <<if $mc.facefeatures.includes("thin brows")>><<set _thinbrow to true>><</if>>
-    <<if $mc.facefeatures.includes("a beauty mark")>><<set _bm to true>><</if>>
-    <<if $mc.facefeatures.includes("freckles")>><<set _freckles to true>><</if>>
-    <<if $mc.facefeatures.includes("fluff hair")>><<set _facehair to true>><</if>>
-    <<if $mc.facefeatures.includes("acne")>><<set _acne to true>><</if>>
-<</widget>>
 
 <<widget "PopupSkinChecker">>
     <<if $mc.skin.features.includes("Viligo")>><<set _vitiligo to true>><</if>>
@@ -942,11 +475,9 @@
 <<widget "PopupBrothelSign">>
     <<run Dialog.create("Brothel").wikiPassage("BrothelSign").open();>>
 <</widget>>
-
 <<widget "PopupGreeting">>
     <<run Dialog.create("Greeting").wikiPassage("Greeting").open();>>
 <</widget>>
-
 
 <<widget "PreSet">>
     <<set 
@@ -1186,12 +717,6 @@
 <</widget>>
 
 
-<<widget "Sleep">>
- <<set _wakeuppassage to "WakeUp">>
- <<goto _wakeuppassage>>
-<</widget>>
-
-
 //to compare the heights of the mc and npc, or two npc's
 <<widget "HeightCompare">>
     <<script>>
@@ -1248,78 +773,9 @@
 	<<set $npcMemory[_key].sexCount  += 1>>
 <</widget>> 
 
-
 <<widget "tooltip">>
 	<<set _label = _args[0]>>
 	<<set _tip = _args[1]>>
 	<span class="tooltip-term" tabindex="0" @data-tooltip="_tip"><<print _label>></span>
 <</widget>>
 
-<<widget "YourRoomEvent">>
-    <<if !_n>>
-		[Error] No NPC is here.
-		<<return>>
-	<</if>>
-    <<set _pool = null>>
-    <<set _pool = setup.YourRoomEvent>>
-    _n.name is here in your room.
-    <<if _pool && _pool.length>>
-		<p><<=either(..._pool)>></p>
-	<<else>>
-		[Error]: empty dialogue pool.
-	<</if>>
-<</widget>>
-
-<<widget "YourBathroomEvent">>
-    <<if !_n>>
-		[Error] No NPC is here.
-		<<return>>
-	<</if>>
-    <<set _pool = null>>
-    <<set _pool = setup.YourBathroomEvent>>
-    _n.name joins you in the bathroom.
-    <<if _pool && _pool.length>>
-		<p><<=either(..._pool)>></p>
-	<<else>>
-		[Error]: empty dialogue pool.
-	<</if>>
-<</widget>>
-
-
-<<widget "FoodMenuUI">>
-	<<if !$showFoodMenu>>
-		<<link "Check food menu">>
-			<<set $showFoodMenu = true>>
-			<<replace "#foodMenuUI">><<FoodMenuUI>><</replace>>
-		<</link>>
-	<<else>>
-		<h2>Café Menu</h2>
-
-		<<set _foods = Object.keys(setup.food)>>
-
-		<ul>
-		<<for _i = 0; _i < _foods.length; _i++>>
-			<<set _name = _foods[_i]>>
-			
-			<li>
-				<<capture _name>>
-					<<link _name>>
-						<<set $returnPassage = passage()>>
-						<<set $lastEaten = _name>>
-						<<goto "Event_EatFood">>
-					<</link>>
-				<</capture>>
-				<br>
-				<<if setup.food[_name].description>>
-					<small><<print setup.food[_name].description>></small>
-				<</if>>
-			</li>
-		<</for>>
-		</ul>
-
-		<<link "Close menu">>
-			<<set $showFoodMenu = false>>
-			<<replace "#foodMenuUI">><<FoodMenuUI>><</replace>>
-		<</link>>
-	<</if>>
-<</widget>>

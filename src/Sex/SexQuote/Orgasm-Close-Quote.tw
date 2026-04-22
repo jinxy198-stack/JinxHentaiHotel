@@ -1,7 +1,7 @@
-:: Orgasm-Close-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
+:: Orgasm-Close-Quote [nobr Dialogue]
 
-<<if !setup.orgasmcloseQuotes>>
-	[Error] setup.orgasmcloseQuotes is missing. Define it in StoryInit.
+<<if !setup.orgasmcloseQuotes or !setup.orgasmcloseQuotes.OT or !setup.orgasmcloseQuotes.OB>>
+	[Error] setup.orgasmcloseQuotes, OT, or OB is missing.
 	<<return>>
 <</if>>
 
@@ -9,78 +9,120 @@
 	<<return>>
 <</if>>
 
+<<set _muffled = false>>
+<<if (
+	$sex.role == "Bottom" && (
+		$sex.act == "Kiss Nipple" ||
+		$sex.act == "Lick Nipple" ||
+		$sex.act == "Suck Nipple" ||
+		$sex.act == "Suck Each Other Off" ||
+		$sex.act == "Suck Each Other Off (Continue)" ||
+		$sex.act == "Eat Each Other Out" ||
+		$sex.act == "Eat Each Other Out (Continue)" ||
+		$sex.act == "Suck And Lick Each Other" ||
+		$sex.act == "Suck And Lick Each Other (Continue)" ||
+		$sex.act == "Lick And Suck Each Other" ||
+		$sex.act == "Lick And Suck Each Other (Continue)"
+	)
+) || (
+	$sex.role == "Top" && (
+		$sex.act == "Fuck Mouth" ||
+		$sex.act == "Lick Pussy" ||
+		$sex.act == "Suck Each Other Off" ||
+		$sex.act == "Suck Each Other Off (Continue)" ||
+		$sex.act == "Eat Each Other Out" ||
+		$sex.act == "Eat Each Other Out (Continue)" ||
+		$sex.act == "Suck And Lick Each Other" ||
+		$sex.act == "Suck And Lick Each Other (Continue)" ||
+		$sex.act == "Lick And Suck Each Other" ||
+		$sex.act == "Lick And Suck Each Other (Continue)"
+	)
+)>>
+	<<set _muffled = true>>
+<</if>>
+
 <<set _mode = $sex.role>>
 <<set _pref = _n.sexpref || "Switch">>
 <<set _action = $sex.act>>
-<<set _personalities = _n.personality>>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 <<set _pool = null>>
+<<set _root = null>>
+<<set _actionPool = null>>
+<<set _persMatches = []>>
 
-<<if $sex.climax.Top && $sex.climax.Bottom>>
-	<<set _pool = ["Let's cum together!"]>>
+<<if _muffled>>
+	<<set _pool = setup.MuffledQuotes>>
+<<else>>
+	<<if $sex.climax.Top && $sex.climax.Bottom>>
+		<<set _pool = ["Let's cum together!"]>>
 
-<<elseif $sex.climax.Top>>
-	<<set _persMatches = []>>
+	<<elseif $sex.climax.Top>>
+		<<set _root = setup.orgasmcloseQuotes.OT[_mode]>>
 
-	<<if setup.orgasmcloseQuotes.Top>>
-		<<for _p range _personalities>>
-			<<if _p and Array.isArray(setup.orgasmcloseQuotes.Top[_p])>>
-				<<run _persMatches.push(_p)>>
+		<<if _root>>
+			/* personality arrays directly under OT[_mode] */
+			<<for _p range _personalities>>
+				<<if _p and Array.isArray(_root[_p])>>
+					<<run _persMatches.push(_p)>>
+				<</if>>
+			<</for>>
+
+			<<if _persMatches.length>>
+				<<set _chosenPers = setup.pick(_persMatches)>>
+				<<set _pool = _root[_chosenPers]>>
+			<<else>>
+				<<set _actionPool = _root[_action]>>
+
+				<<if Array.isArray(_actionPool)>>
+					<<set _pool = _actionPool>>
+				<<else>>
+					<<set _pool =
+						(
+							_actionPool &&
+							(_actionPool[_pref] || _actionPool.Switch || _actionPool.Neutral)
+						)
+						|| (
+							_root.default &&
+							(_root.default[_pref] || _root.default.Switch || _root.default.Neutral)
+						)
+						|| null
+					>>
+				<</if>>
 			<</if>>
-		<</for>>
-	<</if>>
+		<</if>>
 
-	<<if _persMatches.length>>
-		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = setup.orgasmcloseQuotes.Top[_chosenPers]>>
-	<<else>>
-		<<set _actionPool = setup.orgasmcloseQuotes.Top[_action]>>
+	<<elseif $sex.climax.Bottom>>
+		<<set _root = setup.orgasmcloseQuotes.OB[_mode]>>
+		<<set _actionPool = _root && _root[_action]>>
 
-		<<if Array.isArray(_actionPool)>>
+		<<if _actionPool and !Array.isArray(_actionPool)>>
+			/* personality arrays under OB[_mode][_action] */
+			<<for _p range _personalities>>
+				<<if _p and Array.isArray(_actionPool[_p])>>
+					<<run _persMatches.push(_p)>>
+				<</if>>
+			<</for>>
+		<</if>>
+
+		<<if _persMatches.length>>
+			<<set _chosenPers = setup.pick(_persMatches)>>
+			<<set _pool = _actionPool[_chosenPers]>>
+		<<elseif Array.isArray(_actionPool)>>
 			<<set _pool = _actionPool>>
 		<<else>>
 			<<set _pool =
 				(
-					_actionPool
-					&& _actionPool[_pref]
+					_actionPool &&
+					(_actionPool[_pref] || _actionPool.Switch || _actionPool.Neutral)
 				)
 				|| (
-					_actionPool
-					&& _actionPool.Neutral
+					_root &&
+					_root.default &&
+					(_root.default[_pref] || _root.default.Switch || _root.default.Neutral)
 				)
-				|| setup.orgasmcloseQuotes.Top.default[_pref]
+				|| null
 			>>
 		<</if>>
-	<</if>>
-
-<<elseif $sex.climax.Bottom>>
-	<<set _actionPool = setup.orgasmcloseQuotes.Bottom[_action]>>
-	<<set _persMatches = []>>
-
-	<<if _actionPool and !Array.isArray(_actionPool)>>
-		<<for _p range _personalities>>
-			<<if _p and Array.isArray(_actionPool[_p])>>
-				<<run _persMatches.push(_p)>>
-			<</if>>
-		<</for>>
-	<</if>>
-
-	<<if _persMatches.length>>
-		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = _actionPool[_chosenPers]>>
-	<<elseif Array.isArray(_actionPool)>>
-		<<set _pool = _actionPool>>
-	<<else>>
-		<<set _pool =
-			(
-				_actionPool
-				&& _actionPool[_pref]
-			)
-			|| (
-				_actionPool
-				
-			)
-			|| setup.orgasmcloseQuotes.Bottom.default[_pref]
-		>>
 	<</if>>
 <</if>>
 

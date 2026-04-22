@@ -1,3 +1,6 @@
 :: Rub-Butt-Dialogue [nobr]
-
-You rub _n.name's ass.
+<<if $sex.role == "Top">>
+    You rub _n.name's ass.
+<<elseif $sex.role == "Bottom">>
+    _n.name rubs your ass.
+<</if>>

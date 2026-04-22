@@ -1,22 +1,17 @@
-:: Beginning {"position":"100,575","size":"100,100"}
+:: Beginning [nobr]{"position":"100,575","size":"100,100"}
 <<set $gamelocation to "Hotel Room">>
 The first sensation you feel is soft fabric against your back. The next is a warm radiance against your front.
-
-<span class="Jinx">"So, you're finally awake. 
-I was waiting quite awhile for you to awaken.
-Now get up $mc.name."
-</span>
-<span class="mc">
-"W-who are you?"
-</span>
-<span class="Jinx">
-"Haha! You don't know who I am? I am Jinx, the god of sex and joy. And I have chosen you to be my emissary.
-If you have questions, best ask them now."
-</span>
+<br>
+<span class="Jinx">"So, you're finally awake. I was waiting quite awhile for you to awaken. Now get up $mc.name." </span><br>
+<span>You open your eyes to see a figure standing over you. Their features are hard to see because of the radiant glow that is almost blinding.</span><br>
+<span class="mc"> "W-who are you?" </span><br>
+<span>The figure lets out a hearty laugh. You feel a sense of calm, they don't seem to be a initial threat.</span>
+<span class="Jinx"> "Haha! You don't know who I am? I am Jinx, the god of sex and joy. And I have chosen you to be my emissary. If you have questions, best ask them now." </span><br>
 <p>Ask Jinx:</p>
-<<button "God?">><<PopupJinxQ "god" "god?">><</button>>
-<<button "Emissary?">><<PopupJinxQ "emissary" "Emissary?">><</button>>
-<<button "Where am I?">><<PopupJinxQ "where?" "Where am I?">><</button>>
+<br>
+<<button "God?">><<PopupJinxQ "god" "god?">><</button>> <br>
+<<button "Emissary?">><<PopupJinxQ "emissary" "Emissary?">><</button>><br>
+<<button "Where am I?">><<PopupJinxQ "where?" "Where am I?">><</button>><br>
 
 <<button [[I'm done|DoneQuestions]]>><</button>>
 

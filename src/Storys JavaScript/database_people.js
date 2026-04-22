@@ -36,7 +36,6 @@ setup.avianTypes=[
     "Duck", "Parrot", "Chicken", "Eagle", "Hawk", "Owl", "Other",
 ];
 
-
 setup.eyecolor= [
     "White", "Grey", "Golden", "Green", "Blue", "Maroon", "Brown", "Black", "Red", "Pink", "Purple", "Lime", "Seafoam", "Cream",
 ];

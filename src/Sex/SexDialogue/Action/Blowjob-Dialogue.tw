@@ -55,10 +55,9 @@
 
 <<elseif $sex.act == "Suck Each Other Off">>
 	<<set _lines = [
-		"You suck _n.name's <<= setup.partLower(_n, 'genitaltype', 'genital') >> <<= setup.partLower(_n, 'genitals', 'genitals') >> while $proset.they suck your <<= setup.partLower($mc, 'genitaltype', 'genital') >> <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
-		"You both orally pleasure each other"
+		"You suck _n.name's <<= setup.partLower(_n, 'genitaltype', 'genital') >> <<= setup.partLower(_n, 'genitals', 'genitals') >> while $proset.they sucks your <<= setup.partLower($mc, 'genitaltype', 'genital') >> <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
+		"You both orally pleasure each other."
 	]>>
-
 <<elseif $sex.act == "Eat Each Other Out">>
 	<<set _lines = [
 		"You lick _n.name's <<= setup.partLower(_n, 'genitaltype', 'genital') >> <<= setup.partLower(_n, 'genitals', 'genitals') >> while $proset.they lick your <<= setup.partLower($mc, 'genitaltype', 'genital') >> <<= setup.partLower($mc, 'genitals', 'genitals') >>."
@@ -71,8 +70,27 @@
 
 <<elseif $sex.act == "Lick And Suck Each Other">>
 	<<set _lines = [
-		"You lick _n.name's <<= setup.partLower(_n, 'genitaltype', 'genital') >> <<= setup.partLower(_n, 'genitals', 'genitals') >> while $proset.they suck your <<= setup.partLower($mc, 'genitaltype', 'genital') >> <<= setup.partLower($mc, 'genitals', 'genitals') >>."
+		"You lick _n.name's <<= setup.partLower(_n, 'genitaltype', 'genital') >> <<= setup.partLower(_n, 'genitals', 'genitals') >> while $proset.they sucks your <<= setup.partLower($mc, 'genitaltype', 'genital') >> <<= setup.partLower($mc, 'genitals', 'genitals') >>."
 	]>>
+<<elseif $sex.act == "Suck Each Other Off (Continue)">>
+	<<set _lines = [
+		"You and _n.name continue to suck each other"
+	]>>
+
+<<elseif $sex.act == "Eat Each Other Out (Continue)">>
+	<<set _lines = [
+		"You and _n.name continue to lick each other."
+	]>>
+
+<<elseif $sex.act == "Suck And Lick Each Other (Continue)">>
+	<<set _lines = [
+		"You and _n.name continue to suck and lick each other."
+	]>>
+
+<<elseif $sex.act == "Lick And Suck Each Other (Continue)">>
+	<<set _lines = [
+		"You and _n.name continue to lick and suck each other."
+	]>>	
 <</if>>
 
 <<= either(..._lines) >>

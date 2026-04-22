@@ -1,9 +1,8 @@
 :: Lounge [nobr location] {"position":"500,1150","size":"100,100"}
 <<set $gamelocation to "Lounge">>
 
-
-A nice place to rest, relax, and socialize. There are some people mingling around the place.
-
+<span> A nice place to rest, relax, and socialize. There are some people mingling around the place. </span>
+<br>
 <div class="room-hotel">
 <<unset $spawnPools>>
 <<run setup.refreshFullPool()>>

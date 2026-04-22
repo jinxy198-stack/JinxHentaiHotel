@@ -58,15 +58,18 @@
 			Cum sprays into the air.
 		<</if>>
 	<<case "on crotch">>
-		<<gram _bottom "subjCap">> <<gverb _bottom "shoot" "shoots">> into your crotch?.
-
+		<<if _topClimax>>
+			<<gram _top "subjCap">> <<gverb _top "shoot" "shoots">> onto <<gram _bottom "poss">> crotch.
+		<<elseif _bottomClimax>>
+			<<gram _bottom "subjCap">> <<gverb _bottom "shoot" "shoots">> onto <<gram _top "poss">> crotch.
+		<</if>>
 	<<case "in mouth">>
 		<<if _topClimax>>
 			<<gram _bottom "subjCap">> keeps working <<gram _top "poss">> <<=_topGen>> until <<gram _top "subj">> <<gverb _top "hit" "hits">> <<gram _top "poss">> limit, then <<gram _top "subj">> <<gverb _top "shoot" "shoots">> <<gram _top "poss">> load down <<gram _bottom "poss">> throat.
 		<<elseif _bottomClimax>>
 			A moment later, <<gram _bottom "poss">> <<=_bottomGen>> swells in <<gram _top "poss">> mouth, and a hot stream shoots down <<gram _top "poss">> throat. <<gram _top "subjCap">> <<gverb _top "swallow" "swallows">> as much as <<gram _top "subj">> can.
 			<<if _n.traits.includes("Rainbow Cum")>>
-			You taste the fruity rainbow flavor of their cum.
+				You taste the fruity rainbow flavor of <<gram _bottom "poss">> cum.
 			<</if>>
 		<</if>>
 	<<case "in pussy">>
@@ -96,7 +99,38 @@
 		<<elseif _bottomClimax>>
 			<<gram _bottom "subjCap">> <<gverb _bottom "shoot" "shoots">> onto <<gram _top "poss">> face.
 		<</if>>
-
+	<<case "on fingers">>
+		<<if _topClimax>>
+			<<set _g = String(_top.gender || "").toLowerCase()>>
+			<<if _g == "female">>
+				<<gram _top "subjCap">> <<gverb _top "squirt" "squirts">> onto <<gram _bottom "poss">> fingers.
+			<<else>>
+				<<gram _top "subjCap">> <<gverb _top "shoot" "shoots">> onto <<gram _bottom "poss">> fingers.
+			<</if>>
+		<<elseif _bottomClimax>>
+			<<set _g = String(_bottom.gender || "").toLowerCase()>>
+			<<if _g == "female">>
+				<<gram _bottom "subjCap">> <<gverb _bottom "squirt" "squirts">> onto <<gram _top "poss">> fingers.
+			<<else>>
+				<<gram _bottom "subjCap">> <<gverb _bottom "shoot" "shoots">> onto <<gram _top "poss">> fingers.
+			<</if>>
+		<</if>>
+	<<case "on cock">>
+		<<if _topClimax>>
+			<<set _g = String(_top.gender || "").toLowerCase()>>
+			<<if _g == "female">>
+				<<gram _top "subjCap">> <<gverb _top "squirt" "squirts">> onto <<gram _bottom "poss">> cock.
+			<<else>>
+				<<gram _top "subjCap">> <<gverb _top "shoot" "shoots">> onto <<gram _bottom "poss">> cock.
+			<</if>>
+		<<elseif _bottomClimax>>
+			<<set _g = String(_bottom.gender || "").toLowerCase()>>
+			<<if _g == "female">>
+				<<gram _bottom "subjCap">> <<gverb _bottom "squirt" "squirts">> onto <<gram _top "poss">> cock.
+			<<else>>
+				<<gram _bottom "subjCap">> <<gverb _bottom "shoot" "shoots">> onto <<gram _top "poss">> cock.
+			<</if>>
+		<</if>>	
 	<<default>>
 		<<if _topClimax && _bottomClimax>>
 			<<if _top === $mc || _bottom === $mc>>

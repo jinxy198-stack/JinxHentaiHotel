@@ -1,81 +1,87 @@
 :: Act-Quote [Dialogue nobr] 
 <!-- only what the npc says -->
 
-<<set _a = $sex.act or "none">>
+<<set _a = $sex.act || "none">>
+<<set _b = "<b> _n.name :</b> " >>
 <br>
-<<set _b = "<b>_n.name:</b>"  >>
-
 <<switch _a>>
-	<<case "Kiss">> _b <<include "Kiss-Quote">>
-    <<case "Pet Ears">>_b<<include "Pet-Ears-Quote">>
-    <<case "Grope Breasts">>_b<<include "Grope-Breast-Quote">>
-    <<case "Tease Nipples">>_b<<include "Tease-Nipples-Quote">>
-    <<case "Press Face on Chest">>_b<<include "Face-On-Chest-Quote">>
-    <<case "Kiss Nipple">>_b<<include "Kiss-Nipple-Quote">>
-    <<case "Lick Nipple">>_b<<include "Lick-Nipple-Quote">>
-    <<case "Suck Nipple">>_b<<include "Suck-Nipple-Quote">>
-    <<case "Finger Pussy">>_b<<include "Finger-Pussy-Quote">>
-    <<case "Lick Pussy">>_b<<include "Cunnilingus-Quote">>
-    /*<<case "Suck Clit">>_b<<include "">>*/
-    /*<<case "Ride Face">>_b<<include "">>*/
-    <<case "Lick Asshole">>_b<<include "Rimjob-Quote">>
-    <<case "Grip Cock">>_b<<include "Grab-Cock-Quote">>
-    <<case "Wrap Hand Around Cock">>_b<<include "Grab-Cock-Quote">>
-    <<case "Grip Cock With Feet">>_b<<include "Footjob-Quote">>
-    <<case "Pull Feet Around Cock">>_b<<include "Footjob-Quote">>
-    /*<<case "Rub Pussy With Feet">>_b<<include "">>*/
-    /*<<case "Pull Feet To Pussy">>_b<<include "">>*/
-    <<case "Take Cock Between Lips">>_b<<include "Enter-Mouth-Quote">>
+	<<case "Kiss">> <<set _hasActQuote = true>><<= _b >> <<include "Kiss-Quote">>
+    <<case "Pet Ears">><<set _hasActQuote = true>><<= _b >><<include "Pet-Ears-Quote">>
+    <<case "Grope Breasts">><<set _hasActQuote = true>><<= _b >><<include "Grope-Breast-Quote">>
+    <<case "Tease Nipples">><<set _hasActQuote = true>><<= _b >><<include "Tease-Nipples-Quote">>
+    <<case "Press Face on Chest">><<set _hasActQuote = true>><<= _b >><<include "Face-On-Chest-Quote">>
+    <<case "Kiss Nipple">><<set _hasActQuote = true>><<= _b >><<include "Kiss-Nipple-Quote">>
+    <<case "Lick Nipple">><<set _hasActQuote = true>><<= _b >><<include "Lick-Nipple-Quote">>
+    <<case "Suck Nipple">><<set _hasActQuote = true>><<= _b >><<include "Suck-Nipple-Quote">>
+    <<case "Finger Pussy">><<set _hasActQuote = true>><<= _b >><<include "Finger-Pussy-Quote">>
+    <<case "Finger Pussy(Continue)">><<set _hasActQuote = true>><<= _b >><<include "Finger-Pussy-Quote">>
+    <<case "Lick Pussy">><<set _hasActQuote = true>><<= _b >><<include "Cunnilingus-Quote">>
+    /*<<case "Suck Clit">><<set _hasActQuote = true>><<= _b >><<include "">>*/
+    /*<<case "Ride Face">><<set _hasActQuote = true>><<= _b >><<include "">>*/
+    <<case "Lick Asshole">><<set _hasActQuote = true>><<= _b >><<include "Rimjob-Quote">>
+    <<case "Grip Cock">><<set _hasActQuote = true>><<= _b >><<include "Grab-Cock-Quote">>
+    <<case "Wrap Hand Around Cock">><<set _hasActQuote = true>><<= _b >><<include "Grab-Cock-Quote">>
+    <<case "Grip Cock With Feet">><<set _hasActQuote = true>><<= _b >><<include "Footjob-Quote">>
+    <<case "Pull Feet Around Cock">><<set _hasActQuote = true>><<= _b >><<include "Footjob-Quote">>
+    /*<<case "Rub Pussy With Feet">><<set _hasActQuote = true>><<= _b >><<include "">>*/
+    /*<<case "Pull Feet To Pussy">><<set _hasActQuote = true>><<= _b >><<include "">>*/
+    <<case "Take Cock Between Lips">><<set _hasActQuote = true>><<= _b >><<include "Enter-Mouth-Quote">>
     <<case "Enter Mouth">><<include "Enter-Mouth-Quote">>
-    <<case "Stroke Shaft With Feet">>_b<<include "Footjob-Quote">>
+    <<case "Stroke Shaft With Feet">><<set _hasActQuote = true>><<= _b >><<include "Footjob-Quote">>
     <<case "Fuck Feet">><<include "Footjob-Quote">>
-    <<case "Stroke Pussy With Feet">>_b<<include "Footjob-Quote">>
-    /*<<case "Tease Cock With Feet">>_b<<include "">>*/
-    /*<<case "Tease Pussy With Feet">>_b<<include "">>*/
-    /*<<case "Rub Cock Against Feet">>_b<<include "">>*/
-    /*<<case "Rub Pussy Against Feet">>_b<<include "">>*/
-    /*<<case "Rub Against Feet">>_b<<include "">>*/
-    <<case "Pump Shaft">>_b<<include "Handjob-Quote">>
-    <<case "Fuck Fist">>_b<<include "Handjob-Quote">>
-    <<case "Tease Tip">>_b<<include "Tease-Tip-Quote">>
-    <<case "Suck Cock">>_b<<include "Suck-Cock-Quote">>
-    <<case "Fuck Mouth">>_b<<include "Suck-Cock-Quote">>
+    <<case "Stroke Pussy With Feet">><<set _hasActQuote = true>><<= _b >><<include "Footjob-Quote">>
+    /*<<case "Tease Cock With Feet">><<set _hasActQuote = true>><<= _b >><<include "">>*/
+    /*<<case "Tease Pussy With Feet">><<set _hasActQuote = true>><<= _b >><<include "">>*/
+    /*<<case "Rub Cock Against Feet">><<set _hasActQuote = true>><<= _b >><<include "">>*/
+    /*<<case "Rub Pussy Against Feet">><<set _hasActQuote = true>><<= _b >><<include "">>*/
+    /*<<case "Rub Against Feet">><<set _hasActQuote = true>><<= _b >><<include "">>*/
+    <<case "Pump Shaft">><<set _hasActQuote = true>><<= _b >><<include "Handjob-Quote">>
+    <<case "Fuck Fist">><<set _hasActQuote = true>><<= _b >><<include "Handjob-Quote">>
+    <<case "Tease Tip">><<set _hasActQuote = true>><<= _b >><<include "Tease-Tip-Quote">>
+    <<case "Suck Cock">><<set _hasActQuote = true>><<= _b >><<include "Suck-Cock-Quote">>
+    <<case "Fuck Mouth">><<set _hasActQuote = true>><<= _b >><<include "Suck-Cock-Quote">>
 
-    <<case "Suck Each Other Off">>_b<<include "Suck-Cock-Quote">>
-    <<case "Eat Each Other Out">>_b<<include "Suck-Cock-Quote">>
-    <<case "Suck And Lick Each Other">>_b<<include "Suck-Cock-Quote">>
-    <<case "Lick And Suck Each Other">>_b<<include "Suck-Cock-Quote">>
+    <<case "Suck Each Other Off">><<set _hasActQuote = true>><<= _b >><<include "SixtyNine-Quote">>
+    <<case "Eat Each Other Out">><<set _hasActQuote = true>><<= _b >><<include "SixtyNine-Quote">>
+    <<case "Suck And Lick Each Other">><<set _hasActQuote = true>><<= _b >><<include "SixtyNine-Quote">>
+    <<case "Lick And Suck Each Other">><<set _hasActQuote = true>><<= _b >><<include "SixtyNine-Quote">>
+    <<case "Suck Each Other Off (Continue)">><<set _hasActQuote = true>><<= _b >><<include "SixtyNine-Quote">><<include "SixtyNine-Quote">>
+    <<case "Eat Each Other Out (Continue)">><<set _hasActQuote = true>><<= _b >><<include "SixtyNine-Quote">><<include "SixtyNine-Quote">>
+    <<case "Suck And Lick Each Other (Continue)">><<set _hasActQuote = true>><<= _b >><<include "SixtyNine-Quote">><<include "SixtyNine-Quote">>
+    <<case "Lick And Suck Each Other (Continue)">><<set _hasActQuote = true>><<= _b >><<include "SixtyNine-Quote">><<include "SixtyNine-Quote">>
 
-    <<case "Tease Pussy With Cock">>_b<<include "Tease-Cock-Pussy-Quote">>
-    <<case "Cocktease With Pussy">>_b<<include "Tease-Cock-Pussy-Quote">>
-    <<case "Enter Pussy">>_b<<include "Enter-Pussy-Quote">>
-    <<case "Push Cock In">>_b<<include "Enter-Pussy-Quote">>
-    <<case "Fuck Pussy">>_b<<include "Fuck-Pussy-Quote">>
-    <<case "Take Cock">>_b<<include "Fuck-Pussy-Quote">>
+    <<case "Tease Pussy With Cock">><<set _hasActQuote = true>><<= _b >><<include "Tease-Cock-Pussy-Quote">>
+    <<case "Cocktease With Pussy">><<set _hasActQuote = true>><<= _b >><<include "Tease-Cock-Pussy-Quote">>
+    <<case "Enter Pussy">><<set _hasActQuote = true>><<= _b >><<include "Enter-Pussy-Quote">>
+    <<case "Push Cock In">><<set _hasActQuote = true>><<= _b >><<include "Enter-Pussy-Quote">>
+    <<case "Fuck Pussy">><<set _hasActQuote = true>><<= _b >><<include "Fuck-Pussy-Quote">>
+    <<case "Take Cock">><<set _hasActQuote = true>><<= _b >><<include "Fuck-Pussy-Quote">>
     
-    <<case "Ride Cock">>_b<<include "Fuck-Pussy-Quote">>
+    <<case "Ride Cock">><<set _hasActQuote = true>><<= _b >><<include "Fuck-Pussy-Quote">>
     
-    <<case "Frot">>_b<<include "Frot-Quote">>
-    <<case "Trib">>_b<<include "Trib-Quote">>
-    /* <<case "Tease Ass With Cock">>_b<<include "">> */
-    /* <<case "Cocktease With Ass">>_b<<include "">> */
-    <<case "Rub Butthole">>_b<<include "Grope-Butt-Quote">>
-    <<case "Enter Ass">>_b<<include "Enter-Ass-Quote">>
-    <<case "Push Cock In Ass">>_b<<include "Enter-Ass-Quote">>
-    <<case "Finger Ass">>_b<<include "Finger-Ass-Quote">>
-    <<case "Finger Ass(Continue)">>_b<<include "Finger-Ass-Quote">>
-    <<case "Fuck Ass">>_b<<include "Fuck-Ass-Quote">>
-    <<case "Take Cock In Ass">>_b<<include "Fuck-Ass-Quote">>
+    <<case "Frot">><<set _hasActQuote = true>><<= _b >><<include "Frot-Quote">>
+    <<case "Continue Frotting">><<set _hasActQuote = true>><<= _b >><<include "Frot-Quote">>
+    <<case "Trib">><<set _hasActQuote = true>><<= _b >><<include "Trib-Quote">>
+    <<case "Tease Ass With Cock">><<set _hasActQuote = true>><<= _b >><<include "Tease-Ass-Cock-Quote">> 
+    <<case "Cocktease With Ass">><<set _hasActQuote = true>><<= _b >><<include "Tease-Ass-Cock-Quote">> 
+    <<case "Grope Ass">><<set _hasActQuote = true>><<= _b >><<include "Grope-Butt-Quote">>
+    <<case "Enter Ass">><<set _hasActQuote = true>><<= _b >><<include "Enter-Ass-Quote">>
+    <<case "Push Cock In Ass">><<set _hasActQuote = true>><<= _b >><<include "Enter-Ass-Quote">>
+    <<case "Finger Ass">><<set _hasActQuote = true>><<= _b >><<include "Finger-Ass-Quote">>
+    <<case "Finger Ass(Continue)">><<set _hasActQuote = true>><<= _b >><<include "Finger-Ass-Quote">>
+    <<case "Fuck Ass">><<set _hasActQuote = true>><<= _b >><<include "Fuck-Ass-Quote">>
+    <<case "Take Cock In Ass">><<set _hasActQuote = true>><<= _b >><<include "Fuck-Ass-Quote">>
     /* Add a Ride cock in ass quote? */
-    /* <<case "Hump Ass Back">>_b<<include "">> */
-    <<case "Fuck Tits">>_b<<include "Boobjob-Quote">>
-    <<case "Use Tits On Cock">>_b<<include "Boobjob-Quote">>
-    <<case "Hotdog">>_b<<include "Tease-Ass-Cock-Quote">>
-    <<case "Rub Ass On Cock">>_b<<include "Tease-Ass-Cock-Quote">>
+    /* <<case "Hump Ass Back">><<set _hasActQuote = true>><<= _b >><<include "">> */
+    <<case "Fuck Tits">><<set _hasActQuote = true>><<= _b >><<include "Boobjob-Quote">>
+    <<case "Use Tits On Cock">><<set _hasActQuote = true>><<= _b >><<include "Boobjob-Quote">>
+    <<case "Hotdog">><<set _hasActQuote = true>><<= _b >><<include "Tease-Ass-Cock-Quote">>
+    <<case "Rub Ass On Cock">><<set _hasActQuote = true>><<= _b >><<include "Tease-Ass-Cock-Quote">>
     
-	<<case "Caress">><<include "Caress-Quote">>
-	<<case "Cuddle">><<include "Cuddle-Quote">>
-    <<case "Touch Stomach">><<include "Feel-Stomach-Quote">>
-    <<case "Embrace">><<include "Embrace-Quote">>
+    <<case "Aftercare Kiss">><<set _hasActQuote = true>><<= _b >><<include "Kiss-Quote">>
+	<<case "Caress">><<set _hasActQuote = true>><<= _b >><<include "Caress-Quote">>
+	<<case "Cuddle">><<set _hasActQuote = true>><<= _b >><<include "Cuddle-Quote">>
+    <<case "Touch Stomach">><<set _hasActQuote = true>><<= _b >><<include "Feel-Stomach-Quote">>
+    <<case "Embrace">><<set _hasActQuote = true>><<= _b >><<include "Embrace-Quote">>
 <</switch>>
 <br>

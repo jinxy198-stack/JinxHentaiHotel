@@ -1,0 +1,27 @@
+:: SixtyNine-Quote [nobr]
+
+<<if !setup.SuckingQuotes or !setup.blowjobQuotes>>
+	[Error] Suck-Cock quote data is missing.
+	<<return>>
+<</if>>
+
+<<if !$sex or !_n>>
+	<<return>>
+<</if>>
+
+<<set _pref = _n.sexpref || "Neutral">>
+<<set _mage = $mc.ageGroup || "Adult">>
+<<set _nage = _n.ageGroup || "Adult">>
+<<set _personalities = _n.personality>>
+
+<<set _pool = null>>
+<<set _mode = $sex.role>>
+
+<<set _pool = setup.SuckingQuotes>>
+
+<<if Array.isArray(_pool) && _pool.length>>
+	<<= either(..._pool) >>
+<<else>>
+	[Error] No Enter Mouth pool found.
+	(mode=<<= _mode >>, pref=<<= _pref >>, nage=<<= _nage >>, mage=<<= _mage >>)
+<</if>>

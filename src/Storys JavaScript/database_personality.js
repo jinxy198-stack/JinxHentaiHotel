@@ -31,6 +31,7 @@ setup.traitTips = {
 	"Hates Kids": "If the player character has this then characters under 18 will not exist",
 	"Hates Adults": "If the player character has this then characters over 18 will not exist",
 	"Hates Furries": "If the player character has this then characters who are antho will not exist.",
+	"Hates Humans": "If the player character has this then characters who are human will not exist.",
 	"Flight": "Is capable of flight or levitation.",
 	"Elastic": "Is able to stretch or elongate their body.",
 	"Super Strength":"Stronger than they appear.",

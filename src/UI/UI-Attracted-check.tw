@@ -24,7 +24,8 @@
 <br>
 * 
 <<if $mc.sexu=="Heterosexual">>
-<span class="flag-text flag-heterosexual">$mc.sexu</span>
+/*<span class="flag-text flag-heterosexual">$mc.sexu</span>*/
+<span>_n.sexu</span>
 <<elseif $mc.sexu=="Homosexual">>
 <span class="flag-text flag-homosexual">$mc.sexu</span>
 <<elseif $mc.sexu=="Bisexual">>
@@ -49,7 +50,8 @@
 <br>
 * 
 <<if _n.sexu=="Heterosexual">>
-<span class="flag-text flag-heterosexual flag-on-black">_n.sexu</span>
+/*<span class="flag-text flag-heterosexual flag-on-black">_n.sexu</span>*/
+<span>_n.sexu</span>
 <<elseif _n.sexu=="Homosexual">>
 <span class="flag-text flag-homosexual">_n.sexu</span>
 <<elseif _n.sexu=="Bisexual">>

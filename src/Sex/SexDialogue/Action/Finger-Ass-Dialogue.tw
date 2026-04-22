@@ -21,7 +21,7 @@
     <<elseif $sex.role == "Top">>
         <<=either(
             "You continue fingering them.",
-            "You slide you <<=$mc.body.Finger.toLowerCase()>> back and forth, caressing the walls of _n.name's inside. $proset.theyUp continues to tense. $proset.theyUp appear to enjoy it very much.",
+            "You slide you <<=$mc.body.Finger.toLowerCase()>> back and forth, caressing the walls of _n.name's inside. $proset.theyUp continues to tense.",
         )>>
     <</if>>
 <</if>>

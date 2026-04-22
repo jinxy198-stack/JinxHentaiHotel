@@ -242,69 +242,41 @@
    * ========================= */
 
   setup.updateCumLocations = function (sex) {
-    if (!sex || !sex.Top || !sex.Bottom || !sex.position) {
-      clearCumLocations(sex);
-      return;
-    }
+	if (!sex || !sex.Top || !sex.Bottom || !sex.position) {
+		clearCumLocations(sex);
+		return;
+	}
 
-    const pos = setup.sexpositions?.[sex.position];
-    if (!pos) {
-      clearCumLocations(sex);
-      return;
-    }
+	const pos = setup.sexpositions?.[sex.position];
+	if (!pos) {
+		clearCumLocations(sex);
+		return;
+	}
 
-    const posTop = unique(pos["Top cum locations"]);
-    const posBottom = unique(pos["Bottom cum locations"]);
+	let topLocations = unique(pos["Top cum locations"]);
+	let bottomLocations = unique(pos["Bottom cum locations"]);
 
-    let topLocations;
-    let bottomLocations;
+	const act = setup.sexacts?.[sex.act];
+	if (act) {
+		const actTop = unique(act["Top cum locations"]);
+		const actBottom = unique(act["Bottom cum locations"]);
 
-    if (sex.role === "equal") {
-      const combined = mergeUnique(posTop, posBottom);
-      topLocations = combined.slice();
-      bottomLocations = combined.slice();
-    } else if (sex.role === "Bottom") {
-      topLocations = posBottom.slice();
-      bottomLocations = posTop.slice();
-    } else {
-      topLocations = posTop.slice();
-      bottomLocations = posBottom.slice();
-    }
+		topLocations = mergeUnique(topLocations, actTop);
+		bottomLocations = mergeUnique(bottomLocations, actBottom);
 
-    const act = setup.sexacts?.[sex.act];
-    if (act) {
-      const actTop = unique(act["Top cum locations"]);
-      const actBottom = unique(act["Bottom cum locations"]);
+		const generalCum = unique(act["cum locations"]);
+		if (generalCum.length) {
+			if (sex.climax?.Top) {
+				topLocations = mergeUnique(topLocations, generalCum);
+			}
+			if (sex.climax?.Bottom) {
+				bottomLocations = mergeUnique(bottomLocations, generalCum);
+			}
+		}
+	}
 
-      if (sex.role === "equal") {
-        const combined = mergeUnique(actTop, actBottom);
-        topLocations = mergeUnique(topLocations, combined);
-        bottomLocations = mergeUnique(bottomLocations, combined);
-      } else if (sex.role === "Bottom") {
-        topLocations = mergeUnique(topLocations, actBottom);
-        bottomLocations = mergeUnique(bottomLocations, actTop);
-      } else {
-        topLocations = mergeUnique(topLocations, actTop);
-        bottomLocations = mergeUnique(bottomLocations, actBottom);
-      }
-
-      const generalCum = unique(act["cum locations"]);
-      if (generalCum.length) {
-        const ejaculator = sex.penetration?.TopPart ? sex.Top : (setup.getActActor(sex) || sex.Top);
-
-        if (ejaculator === sex.Top) {
-          topLocations = mergeUnique(topLocations, generalCum);
-        } else if (ejaculator === sex.Bottom) {
-          bottomLocations = mergeUnique(bottomLocations, generalCum);
-        } else {
-          topLocations = mergeUnique(topLocations, generalCum);
-          bottomLocations = mergeUnique(bottomLocations, generalCum);
-        }
-      }
-    }
-
-    sex.Top.cumLocation = topLocations;
-    sex.Bottom.cumLocation = bottomLocations;
+	sex.Top.cumLocation = topLocations;
+	sex.Bottom.cumLocation = bottomLocations;
   };
 
   /* =========================
@@ -413,13 +385,15 @@
 
   setup.actAllowsPosition = function (act, sex) {
     if (!Array.isArray(act?.positions) || !act.positions.length) return true;
+    if (!sex?.position || !sex?.role) return false;
 
     return act.positions.some(entry => {
-      const [position, role] = String(entry).split(":");
-      if (position !== sex.position) return false;
-      if (!role) return true;
-      if (sex.role === "equal") return true;
-      return role === sex.role;
+        const [position, role] = String(entry).split(":");
+
+        if (position !== sex.position) return false;
+        if (!role) return true;
+
+        return role === sex.role;
     });
   };
 
@@ -455,39 +429,62 @@
     return true;
   };
 
-  setup.isEndActValid = function (act, sex) {
-    if (!sex?.penetration?.TopPart || !sex?.penetration?.BottomPart) return false;
+  setup.pickMatchedRequiredPart = function (actor, parts) {
+  const required = asArray(parts);
+  if (!required.length) return null;
 
-    const currentTop = sex.penetration.TopPart;
-    const currentBottom = sex.penetration.BottomPart;
+  const owned = new Set(asArray(actor?.bodyparts).map(part =>
+    String(part).trim().toLowerCase()
+  ));
 
-    const actTop = act?.["Top parts"]?.[0];
-    const actBottom = getRequiredBottomParts(act)?.[0];
+  const match = required.find(part =>
+    owned.has(String(part).trim().toLowerCase())
+  );
 
-    if (!actTop || !actBottom) return false;
+  return match || required[0] || null;
+};
 
-    if (actTop === currentTop && actBottom === currentBottom) return true;
+setup.isContinueActValid = function (act, sex) {
+  if (!sex?.penetration?.TopPart || !sex?.penetration?.BottomPart) return false;
 
-    if (act["either direction"] === true || act.equal === true) {
-      return actTop === currentBottom && actBottom === currentTop;
-    }
+  const actTopParts = asArray(act?.["Top parts"]);
+  const actBottomParts = asArray(getRequiredBottomParts(act));
 
-    return false;
-  };
+  if (!actTopParts.length || !actBottomParts.length) return false;
 
-  setup.isContinueActValid = function (act, sex) {
-    if (!sex?.penetration?.TopPart || !sex?.penetration?.BottomPart) return false;
+  return (
+    actTopParts.includes(sex.penetration.TopPart) &&
+    actBottomParts.includes(sex.penetration.BottomPart)
+  );
+};
 
-    const actTop = act?.["Top parts"]?.[0];
-    const actBottom = getRequiredBottomParts(act)?.[0];
+setup.isEndActValid = function (act, sex) {
+  if (!sex?.penetration?.TopPart || !sex?.penetration?.BottomPart) return false;
 
-    if (!actTop || !actBottom) return false;
+  const currentTop = sex.penetration.TopPart;
+  const currentBottom = sex.penetration.BottomPart;
 
+  const actTopParts = asArray(act?.["Top parts"]);
+  const actBottomParts = asArray(getRequiredBottomParts(act));
+
+  if (!actTopParts.length || !actBottomParts.length) return false;
+
+  if (
+    actTopParts.includes(currentTop) &&
+    actBottomParts.includes(currentBottom)
+  ) {
+    return true;
+  }
+
+  if (act["either direction"] === true || act.equal === true) {
     return (
-      actTop === sex.penetration.TopPart &&
-      actBottom === sex.penetration.BottomPart
+      actTopParts.includes(currentBottom) &&
+      actBottomParts.includes(currentTop)
     );
-  };
+  }
+
+  return false;
+};
 
   setup.getAvailableSexActs = function (sex) {
     const allowedTypes = setup.getAllowedActTypesForPhase(sex.phase);
@@ -495,13 +492,22 @@
     return Object.entries(setup.sexacts || {})
       .filter(([_, act]) => {
         const types = asArray(act["action type"]);
-
         if (types.includes("end")) {
-          return sex.phase === "continue" && setup.isEndActValid(act, sex);
+          return (
+            sex.phase === "continue" &&
+            setup.isEndActValid(act, sex) &&
+            setup.actAllowsPosition(act, sex) &&
+            setup.actMeetsPartRequirements(sex, act)
+          );
         }
 
         if (types.includes("continue")) {
-          return sex.phase === "continue" && setup.isContinueActValid(act, sex);
+          return (
+            sex.phase === "continue" &&
+            setup.isContinueActValid(act, sex) &&
+            setup.actAllowsPosition(act, sex) &&
+            setup.actMeetsPartRequirements(sex, act)
+          );
         }
 
         if (types.includes("aftercare")) {
@@ -511,7 +517,6 @@
         if (!types.some(type => allowedTypes.includes(type))) return false;
         if (!setup.actAllowsPosition(act, sex)) return false;
         if (!setup.actMeetsPartRequirements(sex, act)) return false;
-
         return true;
       })
       .map(([name]) => name);
@@ -527,53 +532,55 @@
   };
 
   setup.applySexAct = function (sex, actKey) {
-    const act = setup.sexacts?.[actKey];
-    if (!sex || !act) return;
+	const act = setup.sexacts[actKey];
+	if (!act) return;
 
-    sex.history = asArray(sex.history);
-    sex.history.push(actKey);
-    sex.act = actKey;
+	sex.history.push(actKey);
+	sex.act = actKey;
 
-    setup.applyArousalFromAct(sex, act);
+	setup.applyArousalFromAct(sex, act);
 
-    const types = asArray(act["action type"]);
-    const nextBottomPart = getRequiredBottomParts(act)?.[0] ?? null;
+	const types = act["action type"];
 
-    if (types.includes("end")) {
-      sex.penetration = null;
-      sex.phase = "tease";
-      setup.afterSexStateChange(sex);
-      return;
-    }
+	if (types.includes("end")) {
+		sex.penetration = null;
+		sex.phase = "tease";
+		setup.afterSexStateChange(sex);
+		return;
+	}
 
-    if (types.includes("penetrate")) {
-      sex.penetration = {
-        TopPart: act["Top parts"]?.[0] ?? null,
-        BottomPart: nextBottomPart
-      };
-      sex.phase = "continue";
-      setup.afterSexStateChange(sex);
-      return;
-    }
+	if (types.includes("penetrate")) {
+  const { Top, Bottom } = setup.getTopBottomActors(sex);
 
-    if (types.includes("continue")) {
-      sex.phase = "continue";
-      setup.afterSexStateChange(sex);
-      return;
-    }
+  sex.penetration = {
+    TopPart: setup.pickMatchedRequiredPart(Top, act["Top parts"]),
+    BottomPart: setup.pickMatchedRequiredPart(Bottom, getRequiredBottomParts(act))
+  };
 
-    if (types.includes("aftercare") || types.includes("climax")) {
-      sex.phase = "aftercare";
-      sex.cumReady = false;
-      setup.afterSexStateChange(sex);
-      return;
-    }
+  sex.phase = "continue";
+  setup.afterSexStateChange(sex);
+  return;
+  }
 
-    if (types.includes("tease")) {
-      sex.phase = "tease";
-    }
+	if (types.includes("continue")) {
+		sex.phase = "continue";
+		setup.afterSexStateChange(sex);
+		return;
+	}
 
-    setup.afterSexStateChange(sex);
+	if (types.includes("tease")) {
+		sex.phase = "tease";
+		setup.afterSexStateChange(sex);
+		return;
+	}
+
+	if (types.includes("climax")) {
+		sex.phase = "aftercare";
+		setup.afterSexStateChange(sex);
+		return;
+	}
+
+	setup.updateBindings?.();
   };
 
   /* =========================
@@ -643,5 +650,44 @@
       stage: "foreplay",
       log: []
     };
+  };
+
+
+  setup.getActPenetrationPairs = function (act) {
+	const tops = act["Top parts"] || act["top parts"] || [];
+	const bottoms = act["Bottom parts"] || act["bottom parts"] || [];
+
+	const len = Math.min(tops.length, bottoms.length);
+	const pairs = [];
+
+	for (let i = 0; i < len; i++) {
+		pairs.push({
+			topPart: tops[i] ?? null,
+			bottomPart: bottoms[i] ?? null
+		});
+	}
+
+	return pairs.filter(p => p.topPart && p.bottomPart);
+  };
+
+  setup.penetrationPairsMatch = function (aPairs, bPairs) {
+	if (!Array.isArray(aPairs) || !Array.isArray(bPairs)) return false;
+	if (aPairs.length !== bPairs.length) return false;
+
+	return aPairs.every(ap =>
+		bPairs.some(bp =>
+			ap.topPart === bp.topPart &&
+			ap.bottomPart === bp.bottomPart
+		)
+	);
+  };
+
+  setup.describePenetration = function (sex) {
+	const pairs = sex?.penetration?.pairs || [];
+	if (!pairs.length) return "None";
+
+	return pairs
+		.map(p => `${p.topPart} penetrating ${p.bottomPart}`)
+		.join(" | ");
   };
 })();

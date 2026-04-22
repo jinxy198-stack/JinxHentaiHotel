@@ -11,28 +11,44 @@
 
 <<set _mode = $sex.role>>
 <<set _pref = _n.sexpref || "Switch">>
-<<set _personalities = _n.personality>>
+<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
+<<set _persMatches = []>>
 <<set _pool = null>>
 
-<<if Array.isArray(setup.TeaseAssCockQuotes)>>
-	<<set _pool = setup.TeaseAssCockQuotes>>
-<<else>>
-	<<set _persMatches = []>>
-
-	<<for _p range _personalities>>
-		<<if _p and Array.isArray(setup.TeaseAssCockQuotes[_p])>>
-			<<run _persMatches.push(_p)>>
-		<</if>>
-	<</for>>
+<<if _mode is "Bottom">>
+	<<if setup.TeaseAssCockQuotes.Bottom>>
+		<<for _p range _personalities>>
+			<<if _p and Array.isArray(setup.TeaseAssCockQuotes.Bottom[_p])>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
 
 	<<if _persMatches.length>>
 		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = setup.TeaseAssCockQuotes[_chosenPers]>>
+		<<set _pool = setup.TeaseAssCockQuotes.Bottom[_chosenPers]>>
 	<<else>>
-		<<set _pool =
-			setup.TeaseAssCockQuotes[_pref]
-			|| setup.TeaseAssCockQuotes.Neutral
-		>>
+		<<set _pool = 
+			setup.TeaseAssCockQuotes.Bottom
+			|| setup.TeaseAssCockQuotes.Bottom.Neutral>>
+	<</if>>
+
+<<elseif _mode is "Top">>
+	<<if setup.TeaseAssCockQuotes.Top>>
+		<<for _p range _personalities>>
+			<<if _p and Array.isArray(setup.TeaseAssCockQuotes.Top[_p])>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.TeaseAssCockQuotes.Top[_chosenPers]>>
+	<<else>>
+		<<set _pool = 
+		setup.TeaseAssCockQuotes.Top 
+		|| setup.TeaseAssCockQuotes.Top.Neutral>>
 	<</if>>
 <</if>>
 

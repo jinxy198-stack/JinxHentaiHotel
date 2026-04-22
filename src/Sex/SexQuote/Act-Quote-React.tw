@@ -5,15 +5,41 @@
 <<if $sex.role == "Bottom" && (
 	$sex.act == "Kiss Nipple" ||
 	$sex.act == "Lick Nipple" ||
-	$sex.act == "Suck Nipple"
-)>>
+	$sex.act == "Suck Nipple" ||
+	$sex.act == "Suck Each Other Off" ||
+	$sex.act == "Suck Each Other Off (Continue)" ||
+	$sex.act == "Eat Each Other Out" ||
+	$sex.act == "Eat Each Other Out (Continue)" ||
+	$sex.act == "Suck And Lick Each Other" ||
+	$sex.act == "Suck And Lick Each Other (Continue)" ||
+	$sex.act == "Lick And Suck Each Other" ||
+	$sex.act == "Lick And Suck Each Other (Continue)"
+)||
+	$sex.role == "Top" && (
+	$sex.act == "Fuck Mouth" ||	
+	$sex.act == "Lick Pussy" ||	
+	$sex.act == "Suck Each Other Off" ||
+	$sex.act == "Suck Each Other Off (Continue)" ||
+	$sex.act == "Eat Each Other Out" ||
+	$sex.act == "Eat Each Other Out (Continue)" ||
+	$sex.act == "Suck And Lick Each Other" ||
+	$sex.act == "Suck And Lick Each Other (Continue)" ||
+	$sex.act == "Lick And Suck Each Other" ||
+	$sex.act == "Lick And Suck Each Other (Continue)"
+
+)
+>>
 	<<set _muffled = true>>
 <</if>>
 
-
+<<if _muffled == true>>
+		<<set _lines = [
+			"_n.name makes a muffled noise."
+		]>>
+<<else>>
 <<if $sex.phase == "climax">>
 	<<set _lines = [
-		"_n.name <<npcNoise>>s from the pleasure of the climax."
+		"_n.name <<npcNoise>>s from being close to climax."
 	]>>
 
 <<else>>
@@ -89,15 +115,13 @@
 			"They grit their teeth, taking it up the ass is something they are not used to."
 			)>>
 		<</if>>	
-	<<elseif _muffled == true>>
-		<<set _lines = [
-			"_n.name makes a muffled noise."
-		]>>
 	<<else>>
 		<<set _lines = [
-			"_n.name <<npcNoise>>s from the pleasure."
+			"_n.name <<npcNoise>>s from the pleasure.",
+			"$proset.theyUp appear to enjoy it very much."
 		]>>
 	<</if>>
+<</if>>
 <</if>>
 <<= either(..._lines) >>
 <br>

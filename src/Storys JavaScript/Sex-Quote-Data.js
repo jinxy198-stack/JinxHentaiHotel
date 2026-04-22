@@ -105,7 +105,7 @@ setup.analQuotes = {
         "MMM.. fuck!"
       ],
       Submissive: [
-        "That's it, give it to me",
+        "That's it, give it to me!",
         "Yes, pound me...",
         "Fuck me!"
       ]
@@ -119,7 +119,7 @@ setup.analQuotes = {
         "Yeah, give it to me!"
       ],
       Submissive: [
-        "I love it when you're on top of me like this",
+        "I love it when you're on top of me like this.",
         "Yes, pound me...",
         "Fuck me!"
       ],
@@ -351,7 +351,7 @@ setup.cuddleQuotes = {
       "I can feel your heartbeat slowing down."
     ],
     Submissive: [
-      "Your arms feel really comforting…",
+      "Your arms feel really comforting...",
       "Your arms feel so good around me… please don't let go.",
       "I could melt like this if you keep holding me.",
       "I'm exhausted… but being held like this feels amazing.",
@@ -441,7 +441,7 @@ setup.embraceQuotes = {
       "Aw, wanted a hug?"
     ],
     Neutral: [ 
-      "Aw"
+      "Aw..."
     ]
   }
 };
@@ -467,7 +467,7 @@ setup.faceonchestQuotes = {
       "Aww.",
 			"You're making my chest feel good."
     ],
-    Neutral: [
+    Switch: [
       "Is my chest comfy?"
     ]
 };
@@ -624,9 +624,9 @@ setup.fingerpussyQuotes = {
   Bottom: {
     Dominant: [
       "Damn, you're wet!",
-      "Ohh, you're so wet",
-      "Look at you... so wet",
-      "Mmm, already wet"
+      "Ohh, you're so wet.",
+      "Look at you... so wet.",
+      "Mmm, already wet."
     ],
     Submissive: [
       "It's so warm in there.",
@@ -634,14 +634,14 @@ setup.fingerpussyQuotes = {
     ],
     Switch: [
       "It's warm in there.",
-      "Fuck, your pussy is so wet",
-      "Your pussy's so wet"
+      "Fuck, your pussy is so wet.",
+      "Your pussy's so wet."
     ]
   },
   Top: {
     Dominant: [
       "Oh f-fuck!",
-			"That feels nice",
+			"That feels nice.",
 			"Yes... just like that!",
 			"That's the spot, don't stop!"
     ],
@@ -757,61 +757,61 @@ setup.gropebreastQuotes = {
       Pert: {
         Kid: [
           "Nice tits.",
-          "Such nice breasts"
+          "Such nice breasts."
         ],
         Teen: [
           "Nice tits.",
-          "Such nice breasts"
+          "Such nice breasts."
         ],
         Adult: [
           "Nice tits.",
-          "Such perfect perky breasts",
-          "Such nice breasts"
+          "Such perfect perky breasts.",
+          "Such nice breasts."
         ]
       },
       Modest: {
         Kid: [
           "Nice tits.",
-          "Such nice breasts"
+          "Such nice breasts."
         ],
         Teen: [
           "Nice tits.",
-          "Such nice breasts"
+          "Such nice breasts."
         ],
         Adult: [
           "Nice tits.",
-          "Such perfect perky breasts",
-          "Such nice breasts"
+          "Such perfect perky breasts.",
+          "Such nice breasts."
         ]
       },
       Perky: {
         Kid: [
           "Nice tits.",
-          "Such nice breasts"
+          "Such nice breasts."
         ],
         Teen: [
           "Nice tits.",
-          "Such nice breasts"
+          "Such nice breasts."
         ],
         Adult: [
           "Nice tits.",
-          "Such perfect perky breasts",
-          "Such nice breasts"
+          "Such perfect perky breasts.",
+          "Such nice breasts."
         ]
       },
       Full: {
         Kid: [
           "Nice tits.",
-          "Such nice breasts"
+          "Such nice breasts."
         ],
         Teen: [
           "Nice tits.",
-          "Such nice breasts"
+          "Such nice breasts."
         ],
         Adult: [
           "Nice tits.",
-          "Such perfect perky breasts",
-          "Such nice breasts"
+          "Such perfect perky breasts.",
+          "Such nice breasts."
         ]
       },
       Large: {
@@ -826,9 +826,9 @@ setup.gropebreastQuotes = {
         Adult: [
           "Heh, look a the size of these!",
 				  "Damn, these are huge!",
-          "I love your big breasts",
-          "Your huge breasts are so hot",
-          "Love your big breasts"
+          "I love your big breasts.",
+          "Your huge breasts are so hot.",
+          "Love your big breasts."
         ]
       },
       Ample:[
@@ -1082,7 +1082,7 @@ setup.handjobQuotes = {
           "So cute and tiny.",
           "Wow, it's small.",
           "What a cute little dick",
-          "Such a tiny dick"
+          "Such a tiny dick."
         ]
       },
       Small: ["So small, yet so precious."],
@@ -1092,15 +1092,15 @@ setup.handjobQuotes = {
       ],
       Large: [
         "Damn, that's pretty big.",
-        "That's a nice cock",
-        "Nice and big",
-        "Such a big cock"
+        "That's a nice cock.",
+        "Nice and big.",
+        "Such a big cock."
       ],
       Huge: [
         "Fuck, you're hung!",
-        "Fuck, your cock is huge",
-        "Holy shit, that's so massive",
-        "Holy fuck, that's huge"
+        "Fuck, your cock is huge.",
+        "Holy shit, that's so massive.",
+        "Holy fuck, that's huge."
       ]
     },
     Submissive: {
@@ -1152,8 +1152,8 @@ setup.GrabCockQuotes = {
         Adult: [
           "So cute and tiny.",
           "Wow, it's small.",
-          "What a cute little dick",
-          "Such a tiny dick"
+          "What a cute little dick.",
+          "Such a tiny dick."
         ]
       },
       Small: ["So small, yet so precious."],
@@ -1163,15 +1163,15 @@ setup.GrabCockQuotes = {
       ],
       Large: [
         "Damn, that's pretty big.",
-        "That's a nice cock",
-        "Nice and big",
-        "Such a big cock"
+        "That's a nice cock.",
+        "Nice and big.",
+        "Such a big cock."
       ],
       Huge: [
         "Fuck, you're hung!",
-        "Fuck, your cock is huge",
-        "Holy shit, that's so massive",
-        "Holy fuck, that's huge"
+        "Fuck, your cock is huge.",
+        "Holy shit, that's so massive.",
+        "Holy fuck, that's huge."
       ]
     },
     Submissive: {
@@ -1400,122 +1400,155 @@ setup.orgasmQuotes = {
 
 /* ----- ORGASM CLOSE ----- */
 setup.orgasmcloseQuotes = {
-  Bottom: {
-    "Take Cock In Ass": {  
-      Dominant: [
-      "I'm gonna cum in your ass!",
-      "I'm gonna pump you full of my cum!",
-      "Here it comes!"
+  OT:{
+    /*The Top is Cumming */
+    Bottom: {
+    /* You are the bottom */
+      "Take Cock In Ass": {  
+        Dominant: [
+        "I'm gonna cum in your ass!",
+        "I'm gonna pump you full of my cum!",
+        "Here it comes!"
+        ],
+        Submissive: [
+          "I'm... gonna cum!", 
+          "A-agh!! AaaHhhh!!!",
+          "I can't hold it anymore!"
+        ],
+        Switch: [
+          "I'm gonna cum in your ass!", 
+          "I'm cumming!",
+          "Aaaah!!"
+        ]
+      },
+      "Pump Shaft": {
+        Childish:["I'm ready for some facepaint!"],
+        Dominant: ["Don't stop jerking it, I'm so close!"],
+        Submissive: ["Faster, I'm almost there!"],
+        Switch: ["You're gonna jerk the cum out of me!"]
+      },
+      "Finger Pussy":[
+        "You're gonna make me squirt!"
+      ], 
+      "Suck Cock": {
+        Childish:[
+        "Ima.. color your insides..! Nngh.!",
+        "Here cums some trademark.. Oooey Goooey! Aaah..!",
+        "Crossing.. the finish line! Haaah..!"
+        ],
+        Dominant:["I'm gonna cum in your mouth!"],
+        Submissive: ["I'm gonna cum!"],
+        Switch: [
+          "I'm gonna cum!",
+          "Hahh, Arghh!!!"
+        ]
+      },
+      "Stroke Shaft With Feet": {
+        Dominant:["I'm gonna cum on your feet!"],
+        Submissive: ["I'm gonna cum on your feet!"],
+        Switch: ["I'm gonna cum on your feet!"]
+      },
+      /* DEFAULT FALLBACK */
+      default: {
+        Dominant: ["Fuck, I'm gonna cum."],
+        Submissive: ["A-Ah! I'm gonna cum!"],
+        Switch: ["I'm gonna cum!"]
+      }
+    },
+    Top: {
+    /* You are the Top */
+      Childish: [
+      "Mmh..! Getting close to the finish line...!",
+      "I-im about to be a fruit gusher...!"
       ],
-      Submissive: [
-        "I'm... gonna cum!", 
-        "A-agh!! AaaHhhh!!!",
-        "I can't hold it anymore!"
+      "Fuck Ass": {  
+        Dominant: [
+          "Cum in my ass!",
+          "Fill my ass with your spunk!"
+          ],
+        Submissive: [
+          "Oh god, cum in me!"
+        ],
+        Switch: [
+          "C-cum in me!"
+        ]
+      },
+      Handjob: {
+        Dominant: [
+          "Yeah, gonna squeeze it out of you!"
+        ],
+        Submissive: [
+          "Oh, I can feel you cumming."
+        ],
+        Switch: [
+          "Come on, cum."
+        ]
+      },
+      "Finger Pussy": {
+        Dominant: [
+          "You're going to make me squirt!",
+          "Gonna fucking cum.",
+          "Shit, I'm gonna cum.",
+          "Oh fuck, I'm gonna cum."
+        ],
+        Submissive: [
+          "Gonna cum.",
+          "I'm gonna cum.",
+          "Oh fuck, I'm close.",
+          "I'm so close."
+        ],
+        Switch: [
+          "Gonna cum",
+          "I'm gonna cum",
+          "Oh fuck, I'm close",
+          "I'm so close"
+        ]
+      },
+      "Fuck Mouth": [
+        "MMPH"
       ],
-      Switch: ["I'm gonna cum in your ass!", "I'm cumming!","Aaaah!!"]
-    },
-    "Pump Shaft": {
-      Childish:["I'm ready for some facepaint!"],
-      Dominant: ["Don't stop jerking it, I'm so close!"],
-      Submissive: ["Faster, I'm almost there!"],
-      Switch: ["You're gonna jerk the cum out of me!"]
-    },
-    "Finger Pussy":[
-      "I can feel it, you're close? I am as well."
-    ], 
-    "Suck Cock": {
-      Childish:[
-      "Ima.. color your insides..! Nngh.!",
-      "Here cums some trademark.. Oooey Goooey! Aaah..!",
-      "Crossing.. the finish line! Haaah..!"
+      "Lick Pussy": [
+        "MMPH"
       ],
-      Dominant:["I'm gonna cum in your mouth!"],
-      Submissive: ["I'm gonna cum!"],
-      Switch: [
-        "I'm gonna cum!",
-        "Hahh, Arghh!!!"
-      ]
-    },
-    "Stroke Shaft With Feet": {
-      Dominant:["I'm gonna cum on your feet!"],
-      Submissive: ["I'm gonna cum on your feet!"],
-      Switch: ["I'm gonna cum on your feet!"]
-    },
-    /* DEFAULT FALLBACK */
-    default: {
-      Dominant: ["Fuck, I'm gonna cum."],
-      Submissive: ["A-Ah! I'm gonna cum!"],
-      Switch: ["I'm gonna cum!"]
+      "Fuck Feet": {
+        Dominant:["Cum on my feet!"],
+        Submissive: ["Please, cum on my feet!"],
+        Switch: ["Cum on my feet!"]
+      },
+      "Fuck Feet": {
+        Dominant:["Cum on my feet!"],
+        Submissive: ["Please, cum on my feet!"],
+        Switch: ["Cum on my feet!"]
+      },
+      "Fuck Pussy": [
+        "Cum in my Pussy!"
+      ],
+      /* DEFAULT FALLBACK */
+      default: {
+        Dominant: ["Come on, cum!"],
+        Submissive: ["I can see it, let it out."],
+        Switch: ["Let it out."]
+      }
     }
   },
-  Top: {
-    Childish: [
-    "Mmh..! Getting close to the finish line...!",
-    "I-im about to be a fruit gusher...!"
-    ],
-    "Fuck Ass": {  
-      Dominant: [
-        "Cum in my ass!",
-        "Fill my ass with your spunk!"
-        ],
-      Submissive: [
-        "Oh god, cum in me!"
-      ],
-      Switch: [
-        "C-cum in me!"
-      ]
+  OB:{
+    /*The Bottom is Cumming */
+    Top: {
+      /* You are the Top */
+      "Finger Ass(Continue)": ["Keep fingering me, I'm almost there!"],
+      default: {
+        Dominant: ["Fuck, I'm cumming"],
+        Submissive: ["I'm cumming!"],
+        Switch: ["I'm cumming"]
+      }
     },
-    Handjob: {
-      Dominant: [
-        "Yeah, gonna squeeze it out of you!"
-      ],
-      Submissive: [
-        "Oh, I can feel you cumming."
-      ],
-      Switch: [
-        "Come on, cum."
-      ]
-    },
-    "Finger Pussy": {
-      Dominant: [
-        "You're going to make me squirt!",
-        "Gonna fucking cum",
-        "Shit, I'm gonna cum",
-        "Oh fuck, I'm gonna cum"
-      ],
-      Submissive: [
-        "Gonna cum",
-        "I'm gonna cum",
-        "Oh fuck, I'm close",
-        "I'm so close"
-      ],
-      Switch: [
-        "Gonna cum",
-        "I'm gonna cum",
-        "Oh fuck, I'm close",
-        "I'm so close"
-      ]
-    },
-    "Fuck Mouth": [
-      "MMPH"
-    ],
-    "Lick Pussy": [
-      "MMPH"
-    ],
-    "Fuck Feet": {
-      Dominant:["Cum on my feet!"],
-      Submissive: ["Please, cum on my feet!"],
-      Switch: ["Cum on my feet!"]
-    },
-    "Fuck Pussy": [
-      "Cum in my Pussy!"
-    ],
-
-     /* DEFAULT FALLBACK */
-    default: {
-      Dominant: ["Come on, cum!"],
-      Submissive: ["I can see it, let it out."],
-      Switch: ["Let it out."]
+    Bottom: {
+    /* You are the Bottom */  
+      default: {
+        Dominant: ["Go ahead and let it out!"],
+        Submissive: ["You can cum if you want."],
+        Switch: ["Just cum."]
+      }
     }
   }
 };
@@ -1607,16 +1640,16 @@ setup.EnterPussyQuotes = {
 setup.PushCockInQuotes = {
   Bottom: {
     Dominant:[
-      "Fuck, your tight little cunt feels amazing",
-      "Fuck yes, give me all of that fucking pussy",
+      "Fuck, your tight little cunt feels amazing.",
+      "Fuck yes, give me all of that fucking pussy.",
       "Oh yeah, take my cock!"
       ],
     Submissive: [
-      "Fuck, that feels good",
-      "You're so tight",
-      "You feel so good",
-      "Your pussy is so tight",
-      "You feel amazing",
+      "Fuck, that feels good.",
+      "You're so tight.",
+      "You feel so good.",
+      "Your pussy is so tight.",
+      "You feel amazing.",
       "Your pussy is so warm."
     ],
     Switch: ["You feel so nice around my dick."]
@@ -1631,7 +1664,7 @@ setup.TeaseCockWithPussyQuotes =[
 
 setup.TeasePussyWithCockQuotes ={
   Dominant:[
-    "Feel how close I am to being inside you",
+    "Feel how close I am to being inside you.",
     "Feel how hard this cock is for you...",
     "Is that <<=$mc.genitals >> ready for me?"
   ],
@@ -1643,16 +1676,20 @@ setup.TeasePussyWithCockQuotes ={
   ]
 };
 
-setup.TeaseAssCockQuotes = [
-  "Your ass is mesmerising.",
-  "You're good at this.",
-  "Don't stop. Keep going!",
-  "I'm gonna shoot my load all over you.",
-  "I love fucking your asscheeks.",
-  "Your ass feels amazing against my cock.",
-  "I can't wait to shoot my load on you.",
-  "You have such a cute ass on you."
-];
+setup.TeaseAssCockQuotes = {
+  Top:[
+    "Your ass is mesmerising.",
+    "I'm gonna shoot my load all over you.",
+    "I love fucking your asscheeks.",
+    "Your ass feels amazing against my cock.",
+    "I can't wait to shoot my load on you.",
+    "You have such a cute ass on you."],
+  Bottom:[
+    "You're good at this.",
+    "Don't stop. Keep going!",
+    "Wanna get inside me, dont you?"
+  ]
+};
 
 setup.SuckNippleQuotes =[
   "That tickles.",
@@ -1678,8 +1715,8 @@ setup.LickNippleQuotes =[
 ];
 
 setup.TeaseNippleQuotes ={
-  Top:["TEASE NIPPLE TOP"],
-  Bottom:["A-aah..."]
+  Top:["Yes, play with my nipples."],
+  Bottom:["So perky..."]
 };
 
 

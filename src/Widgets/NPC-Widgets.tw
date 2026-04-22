@@ -1,4 +1,4 @@
-:: Special-Widgets [widget nobr] {"position":"400,150","size":"100,100"}
+:: NPC-Widgets [widget nobr] {"position":"400,150","size":"100,100"}
 
 
 <<widget "MakeSNPC">>
@@ -62,7 +62,6 @@
 
 	/* Shortcut reference to pool config */
 	
-
 	/* Localized fallback pools */
 	<<set _names       =  setup.names>>
 	<<set _surnames    =  setup.surnames>>
@@ -92,7 +91,6 @@
 	<<else>>
 		<<set _npc.species = setup.pick(setup.speciesnoFurry)>>
 	<</if>>
-
     
 	/* Gender, pronouns, genitals */
 	<<set _npc.gender = setup.pick(setup.genders)>>
@@ -118,6 +116,7 @@
 	/**********************
 	    SEXUALITY / PREFS
 	**********************/
+	/* Collect sexual preference */
 	<<set _npc.sexu = setup.pick(_sexuPool)>>
 
 	/* Small string used by pick-roles (dom|sub|switch) */
@@ -159,13 +158,13 @@
 	<<set _npc.bodyheight   = setup.pick(_heightPool)>>
 	<<set _npc.physique   = setup.pick(_physiquePool)>>
 	<<set _pool = _persPool.slice()>>
-<<set _npc.personality = []>>
+	<<set _npc.personality = []>>
 
-<<for _i = 0; _i < 2 and _pool.length > 0; _i++>>
-	<<set _pick = setup.pick(_pool)>>
-	<<run _npc.personality.push(_pick)>>
-	<<run _pool.splice(_pool.indexOf(_pick), 1)>>
-<</for>>
+	<<for _i = 0; _i < 2 and _pool.length > 0; _i++>>
+		<<set _pick = setup.pick(_pool)>>
+		<<run _npc.personality.push(_pick)>>
+		<<run _pool.splice(_pool.indexOf(_pick), 1)>>
+	<</for>>
 	<<set _npc.assSize      = setup.pick(_assPool)>>
 	<<set _npc.virgin       = either(true,false)>>
 	<<set _npc.origin       = "Random Person">>
@@ -193,7 +192,6 @@
 				<<set _sub = setup.pick($nonHumanTraitsOptions.scalieType)>>
 			<<case "Avian">>
 				<<set _sub = setup.pick($nonHumanTraitsOptions.avianType)>>
-				
 			<<default>>
 				<<set _sub = "Other">>
 		<</switch>>
@@ -201,7 +199,6 @@
 		<<set _npc.anthro.subtype = _sub>>
 		<<set _npc.anthro.color   = setup.pick(setup.furScalesColors)>>
 		<<set _npc.anthro.pattern = setup.pick(setup.anthroPatterns)>>
-		
 	<</if>>
 
 	/**********************
@@ -364,17 +361,14 @@
 		<<set $sex.roles = { dom: _mc,  sub: _npc }>>
 	<<elseif _mcPref is "sub" and _npcPref is "dom">>
 		<<set $sex.roles = { dom: _npc, sub: _mc }>>
-
 	<<elseif _mcPref is "dom" and _npcPref isnot "dom">>
 		<<set $sex.roles = { dom: _mc,  sub: _npc }>>
 	<<elseif _npcPref is "dom" and _mcPref isnot "dom">>
 		<<set $sex.roles = { dom: _npc, sub: _mc }>>
-
 	<<elseif _mcPref is "sub" and _npcPref isnot "sub">>
 		<<set $sex.roles = { dom: _npc, sub: _mc }>>
 	<<elseif _npcPref is "sub" and _mcPref isnot "sub">>
 		<<set $sex.roles = { dom: _mc,  sub: _npc }>>
-
 	<<else>>
 		<<if either(true,false)>>
 			<<set $sex.roles = { dom: _mc,  sub: _npc }>>
@@ -385,17 +379,14 @@
 <</widget>>
 
 
-
-
 <<widget "make-petname">>
-
-<<if _npc.pronouns is "He/Him">>
-	<<set _npc.petname to "boy">>
-<<elseif _npc.pronouns is "She/Her">>
-	<<set _npc.petname to "girl">>
-<<else>>
-	<<set _npc.petname = "pet">>	
-<</if>>
+	<<if _npc.pronouns is "He/Him">>
+		<<set _npc.petname to "boy">>
+	<<elseif _npc.pronouns is "She/Her">>
+		<<set _npc.petname to "girl">>
+	<<else>>
+		<<set _npc.petname = "pet">>	
+	<</if>>
 <</widget>>
 
 <<widget "create-body">>
@@ -407,7 +398,6 @@
 	<<if !_char or typeof _char !== "object">>
 		[Error] create-body: expected a character object, got <<=_char>>.
 	<<else>>
-
 		/* Base defaults (merge so you don't wipe pre-filled body fields) */
 		<<set _char.body = Object.assign({
 			Head: "Head",
@@ -458,7 +448,6 @@
 				<<set _char.body.Balls = _char.body.Balls || "Balls">>
 				<<set _char.body.Chest = _char.body.Chest || "Chest">>
 				<<set _char.genitals = _char.genitals || "Penis">>
-
 			<<elseif _g is "female">>
 				<<run delete _char.body.Chest>>
 				<<run delete _char.body.Penis>>
@@ -488,10 +477,8 @@
 
 		/* Build bodyparts list (you already have this helper) */
 		<<run setup.normalizeBodyparts(_char)>>
-
 	<</if>>
 <</widget>>
-
 
 <<widget "alternatebody">>
 	<<set _char = _args[0]>>
@@ -507,8 +494,8 @@
 	<<switch _group>>
 		<<case "Furry">>
 			<<set _char.body.Bodymaterial to "Fur">>
-			<<set _char.body.Feet         to "Paws">>
-			<<set _char.body.Ear         to "Furry Ears">>
+			<<set _char.body.Feet to "Paw">>
+			<<set _char.body.Ear to "Furry Ear">>
 			<<if !_char.body.Tail>>
 				<<set _char.body.Tail to "Furry Tail">>
 			<</if>>
@@ -516,7 +503,7 @@
 
 			<<switch _sub>>
 				<<case "canine">>
-					<<set _char.body.Ear to "Floopy Canine Ears">>
+					<<set _char.body.Ear to "Floopy Canine Ear">>
 					<<set _char.body.Feet to "Paw">>
 					<<set _char.body.Tail to "Bushy Tail">>
 					<<if _hasPenis and !_char.genitaltype>>
@@ -524,7 +511,7 @@
 					<</if>>
 
 				<<case "bunny">>
-					<<set _char.body.Ear to "Long Bunny Ears">>
+					<<set _char.body.Ear to "Long Bunny Ear">>
 					<<set _char.body.Feet to "Paw">>
 					<<set _char.body.Tail to "Cotton Tail">>
 					<<if _hasPenis and !_char.genitaltype>>
@@ -532,7 +519,7 @@
 					<</if>>
 
 				<<case "feline">>
-					<<set _char.body.Ear to "Feline Ears">>
+					<<set _char.body.Ear to "Feline Ear">>
 					<<set _char.body.Feet to "Soft Paw">>
 					<<set _char.body.Tail to "Long Feline Tail">>
 					<<if _hasPenis and !_char.genitaltype>>
@@ -540,7 +527,7 @@
 					<</if>>
 
 				<<case "lion">>
-					<<set _char.body.Ear to "Feline Ears">>
+					<<set _char.body.Ear to "Feline Ear">>
 					<<set _char.body.Feet to "Soft Paw">>
 					<<set _char.body.Tail to "Long Feline Tail">>
 					<<if _hasPenis and !_char.genitaltype>>
@@ -548,7 +535,7 @@
 					<</if>>
 
 				<<case "bear">>
-					<<set _char.body.Ear to "Round Bear Ears">>
+					<<set _char.body.Ear to "Round Bear Ear">>
 					<<set _char.body.Feet to "Paw">>
 					<<set _char.body.Tail to "Stubby Tail">>
 					<<if _hasPenis and !_char.genitaltype>>
@@ -556,7 +543,7 @@
 					<</if>>
 
 				<<case "wolf">>
-					<<set _char.body.Ear to "Wolf Ears">>
+					<<set _char.body.Ear to "Wolf Ear">>
 					<<set _char.body.Feet to "Paw">>
 					<<set _char.body.Tail to "Bushy Tail">>
 					<<if _hasPenis and !_char.genitaltype>>
@@ -564,7 +551,7 @@
 					<</if>>
 
 				<<case "goat">>
-					<<set _char.body.Ear to "Goat Ears">>
+					<<set _char.body.Ear to "Goat Ear">>
 					<<set _char.body.Feet to "Hoof">>
 					<<set _char.body.Tail to "Short Goat Tail">>
 					<<if _hasPenis and !_char.genitaltype>>
@@ -572,7 +559,7 @@
 					<</if>>
 
 				<<case "mouse">>
-					<<set _char.body.Ear to "Big Round Ears">>
+					<<set _char.body.Ear to "Big Round Ear">>
 					<<set _char.body.Feet to "Paw">>
 					<<set _char.body.Tail to "Mouse Tail">>
 					<<if _hasPenis and !_char.genitaltype>>
@@ -580,13 +567,13 @@
 					<</if>>
 
 				<<case "pig">>
-					<<set _char.body.Ear to "Pig Ears">>
+					<<set _char.body.Ear to "Pig Ear">>
 					<<set _char.body.Feet to "Trotter">>
 					<<set _char.body.Tail to "Curly Tail">>
 					<<set _char.body.Bodymaterial to "Hide">>
 
 				<<case "fox">>
-					<<set _char.body.Ear to "Fox Ears">>
+					<<set _char.body.Ear to "Fox Ear">>
 					<<set _char.body.Feet to "Paw">>
 					<<set _char.body.Tail to "Poofy Tail">>
 					<<if _hasPenis and !_char.genitaltype>>
@@ -609,7 +596,7 @@
 			<</switch>>
 
 		<<case "Scalie">>
-			<<set _char.body.Bodymaterial to "Scales">>
+			<<set _char.body.Bodymaterial to "Scale">>
 			<<set _char.body.Feet         to "Clawed Feet">>
 			<<set _char.body.Face         to "Snout">>
 			<<set _char.body.Tail         to "Thick Scaled Tail">>
@@ -652,7 +639,7 @@
 			<<set _char.body.Bodymaterial to "Feathers">>
 			<<set _char.body.Feet         to "Talon">>
 			<<set _char.body.Face         to "Beak">>
-			<<set _char.body.Tail         to "Tailfeathers">>
+			<<set _char.body.Tail         to "Tailfeather">>
 			<<set _char.body.Arm         to "Winged Arm">>
 			<<run delete _char.body.Ear>>
 			<<run delete _char.body.Lip>>
@@ -660,33 +647,27 @@
 			<<switch _sub>>
 				<<case "duck">>
 					<<set _char.body.Feet to "Webbed Feet">>
-					
 					<<if _hasPenis and !_char.genitaltype>>
 						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
 					<</if>>
-					<<set _char.anthro.wings   = setup.pick($anthroWingspans)>>
+					<<set _char.anthro.wings = setup.pick($anthroWingspans)>>
 				<<case "parrot">>
-					
 					<<if _hasPenis and !_char.genitaltype>>
 						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
 					<</if>>
-					<<set _char.anthro.wings   = setup.pick($anthroWingspans)>>
+					<<set _char.anthro.wings = setup.pick($anthroWingspans)>>
 				<<case "chicken">>
-					
 					<<if _hasPenis and !_char.genitaltype>>
 						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
 					<</if>>
-
 				<<case "eagle">>
-					
 					<<if _hasPenis and !_char.genitaltype>>
 						<<set _char.genitaltype = either("Tapered","Cut","Uncut")>>
 					<</if>>
-					<<set _char.anthro.wings   = setup.pick($anthroWingspans)>>
+					<<set _char.anthro.wings = setup.pick($anthroWingspans)>>
 				<<default>>
-					<<set _char.anthro.wings   = setup.pick($anthroWingspans)>>
+					<<set _char.anthro.wings = setup.pick($anthroWingspans)>>
 			<</switch>>
-
 		<<default>>
 			/* other groups: no automatic override */
 	<</switch>>

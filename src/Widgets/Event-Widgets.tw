@@ -1,0 +1,74 @@
+::Event Widgets[widget nobr]
+
+<<widget "YourRoomEvent">>
+    <<if !_n>>
+		[Error] No NPC is here.
+		<<return>>
+	<</if>>
+    <<set _pool = null>>
+    <<set _pool = setup.YourRoomEvent>>
+    _n.name is here in your room.
+    <<if _pool && _pool.length>>
+		<p><<=either(..._pool)>></p>
+	<<else>>
+		[Error]: empty dialogue pool.
+	<</if>>
+<</widget>>
+
+<<widget "YourBathroomEvent">>
+    <<if !_n>>
+		[Error] No NPC is here.
+		<<return>>
+	<</if>>
+    <<set _pool = null>>
+    <<set _pool = setup.YourBathroomEvent>>
+    _n.name joins you in the bathroom.
+    <<if _pool && _pool.length>>
+		<p><<=either(..._pool)>></p>
+	<<else>>
+		[Error]: empty dialogue pool.
+	<</if>>
+<</widget>>
+
+<<widget "Sleep">>
+    <<set _wakeuppassage to "WakeUp">>
+    <<goto _wakeuppassage>>
+<</widget>>
+
+<<widget "FoodMenuUI">>
+	<<if !$showFoodMenu>>
+		<<link "Check food menu">>
+			<<set $showFoodMenu = true>>
+			<<replace "#foodMenuUI">><<FoodMenuUI>><</replace>>
+		<</link>>
+	<<else>>
+		<h2>Café Menu</h2>
+
+		<<set _foods = Object.keys(setup.food)>>
+
+		<ul>
+		<<for _i = 0; _i < _foods.length; _i++>>
+			<<set _name = _foods[_i]>>
+			
+			<li>
+				<<capture _name>>
+					<<link _name>>
+						<<set $returnPassage = passage()>>
+						<<set $lastEaten = _name>>
+						<<goto "Event_EatFood">>
+					<</link>>
+				<</capture>>
+				<br>
+				<<if setup.food[_name].description>>
+					<small><<print setup.food[_name].description>></small>
+				<</if>>
+			</li>
+		<</for>>
+		</ul>
+
+		<<link "Close menu">>
+			<<set $showFoodMenu = false>>
+			<<replace "#foodMenuUI">><<FoodMenuUI>><</replace>>
+		<</link>>
+	<</if>>
+<</widget>>

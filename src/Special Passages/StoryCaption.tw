@@ -3,11 +3,9 @@
 <b>Location: </b>$gamelocation
 <</if>>
 <br>
-<<button "Lexicon">><<PopupLexicon>><</button>>
+
 <<button "Credits">><<PopupCredits>><</button>>
-
 <<button "Your Stats">><<PopupStats>><</button>>
-
 <<button "Disclaimer">><<PopupDisc>><</button>>
 <<if passage() is "Test-Sex-Encounter">><<button "How to play">><<PopupTutorial>><</button>><</if>>
 

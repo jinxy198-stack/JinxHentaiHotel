@@ -1,0 +1,421 @@
+::UI-Widgets [widget nobr]
+
+/* gets the room based on your location and issues where you start at */
+<<widget "GetRoom">>
+    <<if $gamelocation =="Your Room">>
+        <<set $room = {
+        type: "bedroom",
+        location: "large floor",
+        furnitureFlags: setup.getRoomFurnitureFlags("bedroom")
+        }>>
+    <<elseif $gamelocation == "Your Bathroom">>
+        <<set $room = {
+        type: "bathroom",
+        location: "large floor",
+        furnitureFlags: setup.getRoomFurnitureFlags("bathroom")
+        }>>
+    <<elseif $gamelocation == "Lounge">>
+        <<set $room = {
+        type: "lounge",
+        location: "large floor",
+        furnitureFlags: setup.getRoomFurnitureFlags("lounge")
+        }>>    
+    <</if>>    
+<</widget>>
+
+<<widget "RoomRelocationUI">>
+<div id="UI-Location">
+<h3><u>Relocate</u></h3>
+
+<<set _roomDef = setup.RoomTypes.db[$room.type]>>
+<<set _keys = Object.keys(_roomDef.contents)>>
+
+<ul class="inline-list relocation">
+<<for _i = 0; _i < _keys.length; _i++>>
+    <<set _furnKey = _keys[_i]>>
+    <<set _furn = setup.RoomTypes.furniture[_furnKey]>>
+
+    <<if _furn>>
+    <<capture _furnKey, _furn>>
+    <li>
+        <<button _furn.label>>
+            <<set $debugLastRelocation = _furnKey>>
+            <<set $room.location = _furnKey>>
+            <<set $room.furnitureFlags = _furn.flags || []>>
+            <<set $sex.furnitureFlags = $room.furnitureFlags>>
+            <<run setup.ensureValidSexPosition($sex)>>
+            
+            <<replace "#sex-container">>
+                <<SexEncounterUI>>
+                <<RoomRelocationUI>>
+            <</replace>>
+
+            <<replace "#log">>
+                <<include "PositionDialogue">>
+			<</replace>>
+        <</button>>
+
+        <<if $room.location is _furnKey>>
+            <span class="current-location"> (current)</span>
+        <</if>>
+    </li>
+    <</capture>>
+    <</if>>
+<</for>>
+</ul>
+</div>
+<</widget>>
+
+<<widget "RenderActQuote">>
+	<<set _renderMute = !!_args[0]>>
+
+	<<if _renderMute>>
+		<<include "Act-Quote-React">>
+	<<else>>
+		<<set _useActQuote = either(true, false)>>
+
+		<<if _useActQuote>>
+			<<set _hasActQuote = false>>
+			<<include "Act-Quote">>
+
+			<<if !_hasActQuote>>
+				<<include "Act-Quote-React">>
+			<</if>>
+		<<else>>
+			<<include "Act-Quote-React">>
+		<</if>>
+	<</if>>
+<</widget>>
+
+
+<<widget "RenderAftercareQuote">>
+	<<set _renderMute = !!_args[0]>>
+
+	<<if _renderMute>>
+		<<include "Act-Quote-React">>
+	<<elseif $sex.aftercareEntryQuote>>
+		<<set $sex.aftercareEntryQuote = false>>
+		<<include "Orgasm-Quote">>
+	<<else>>
+		<<RenderActQuote _renderMute>>
+	<</if>>
+<</widget>>
+
+
+<<widget "HandleSexAct">>
+	<<set _a = _args[0]>>
+	<<set _handleMute = Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
+	<<set _climaxQuotePassage = _handleMute
+		? "Act-Quote-React"
+		: either("Orgasm-Close-Quote", "Act-Quote-React")>>
+
+	<<run
+		const act = setup.sexacts[_a];
+		setup.applySexAct($sex, _a);
+		setup.applyArousalFromAct($sex, act);
+		setup.updateBindings();
+		setup.updateCumLocations($sex);
+	>>
+
+	<<replace "#sexUI">><<SexEncounterUI>><</replace>>
+	<<replace "#log">><</replace>>
+
+	<<if $sex.phase == "climax">>
+		<<replace "#intro">>
+			<<include "Orgasm-Close-Dialogue">><br>
+			<<include _climaxQuotePassage>>
+		<</replace>>
+
+	<<elseif $sex.phase == "aftercare">>
+		<<replace "#intro">>
+			<<include "ActDialogue">>
+			<<RenderAftercareQuote _handleMute>>
+		<</replace>>
+
+	<<else>>
+		<<replace "#intro">>
+			<<include "ActDialogue">>
+			<<RenderActQuote _handleMute>>
+		<</replace>>
+	<</if>>
+
+	<<replace "#arousal-ui">><<ArousalUI>><</replace>>
+<</widget>>
+
+
+<<widget "SexEncounterUI">>
+	<<set _positions = setup.getAvailablePositions($sex) || []>>
+	<<set _acts = setup.getAvailableSexActs($sex) || []>>
+
+	<<run setup.updateCumLocations($sex)>>
+
+<div id="sexUI">
+
+	<!-- ===================== -->
+	<!-- INFO PANEL -->
+	<!-- ===================== -->
+	<div id="UI-Stats">
+		<h3><u>Info</u></h3>
+
+		<b>Current Room:</b> <<print $gamelocation>><br>
+		<b>Current Position:</b> <<print $sex.position>><br>
+		<b>Previous Position:</b> <<print $sex.previousPosition || "None">><br>
+		/*<b>Role:</b> <<print $sex.role>><br>*/
+		<b>Act:</b>
+		<<if $sex.act>>
+			<<print $sex.act>>
+		<<else>>
+			None
+		<</if>><br>
+		<b>Phase:</b> <<print $sex.phase>><br>
+
+		<<if $sex.penetration>>
+			<b>Penetration:</b>
+			<<= setup.describePenetration($sex) >><br>
+		<</if>>
+
+		<<button "Inspect NPC">>
+			<<WithNPC _n>>
+			<<run Dialog
+				.create("NPC: " + $ui.npc.name)
+				.wikiPassage("NPC-Inspect")
+				.open()
+			>>
+		<</button>>
+	</div>
+
+	<<if $devMode>>
+		Encounter size: <<= setup.getEncounterSize($sex) >>
+	<</if>>
+
+	<!-- ===================== -->
+	<!-- ACTION PANEL -->
+	<!-- ===================== -->
+	<div id="npcsex-actions-bar">
+
+		<button id="npcsex-toggle" aria-expanded="true">
+			▼ <b>Actions</b>
+		</button>
+
+		<<if setup.shouldShowCumPanel($sex)>>
+			<div class="npcsex-content">
+				<<if $sex.climax.Top and !$sex.climax.Bottom>>
+					<<CumLocationButtons "Top">>
+				<<elseif $sex.climax.Bottom and !$sex.climax.Top>>
+					<<CumLocationButtons "Bottom">>
+				<<elseif $sex.climax.Top and $sex.climax.Bottom>>
+					<h4>Top Cum Location</h4>
+					<<CumLocationButtons "Top">>
+					<h4>Bottom Cum Location</h4>
+					<<CumLocationButtons "Bottom">>
+				<</if>>
+			</div>
+
+		<<else>>
+			<div class="npcsex-content">
+
+				<!-- POSITIONS -->
+				<h3>Available Positions</h3>
+
+				<<if _positions.length === 0>>
+					<i>None (based on parts/role).</i>
+				<<else>>
+					<ul class="sex-list">
+						<<for _i = 0; _i < _positions.length; _i++>>
+							<<set _p = _positions[_i]>>
+
+							<<if _p === $sex.position>>
+								<li><strong><<print _p>></strong></li>
+							<<else>>
+								<<capture _p>>
+									<li>
+										<<button _p>>
+											<<set $sex.previousPosition = $sex.position>>
+											<<set $sex.position = _p>>
+
+											<<replace "#sexUI">><<SexEncounterUI>><</replace>>
+											<<replace "#intro">><</replace>>
+											<<replace "#log">>
+												<<include "PositionDialogue">>
+											<</replace>>
+											<<replace "#arousal-ui">><<ArousalUI>><</replace>>
+										<</button>>
+									</li>
+								<</capture>>
+							<</if>>
+						<</for>>
+					</ul>
+				<</if>>
+
+				<!-- ACTS -->
+				<h3>Available Acts</h3>
+
+				<<if $sex.phase == "aftercare">>
+					<<if _acts.length === 0>>
+						<i>None (for this position/phase/parts).</i>
+					<<else>>
+						<ul class="sex-list">
+							<<for _i = 0; _i < _acts.length; _i++>>
+								<<set _a = _acts[_i]>>
+								<<set _actDef = setup.sexacts[_a]>>
+
+								<<capture _a>>
+									<li>
+										<<if !setup.actBlockedByTraits($sex, _actDef)>>
+											<<button _a>>
+												<<HandleSexAct _a>>
+											<</button>>
+										<</if>>
+									</li>
+								<</capture>>
+							<</for>>
+
+							<li>
+								<<button "End Session">>
+									<<run setup.record_sex_memory($ui.npc, "had sex with")>>
+									<<set _returnTo = $gamelocation || "Your Room">>
+									<<set $lastNpc = $ui.npc>>
+									<<run setup.resetSexSession()>>
+									<<goto _returnTo>>
+								<</button>>
+							</li>
+						</ul>
+					<</if>>
+
+				<<else>>
+					<<if _acts.length === 0>>
+						<i>None (for this position/phase/parts).</i>
+					<<else>>
+						<ul class="sex-list">
+							<<for _i = 0; _i < _acts.length; _i++>>
+								<<set _a = _acts[_i]>>
+								<<set _actDef = setup.sexacts[_a]>>
+
+								<<if _a === $sex.act && !_actDef["action type"].includes("continue")>>
+									<li><strong><<print _a>></strong></li>
+								<<else>>
+									<<capture _a>>
+										<li>
+											<<if !setup.actBlockedByTraits($sex, _actDef)>>
+												<<button _a>>
+													<<HandleSexAct _a>>
+												<</button>>
+											<</if>>
+										</li>
+									<</capture>>
+								<</if>>
+							<</for>>
+						</ul>
+					<</if>>
+				<</if>>
+
+			</div>
+		<</if>>
+	</div>
+</div>
+<</widget>>
+
+
+<<widget "RefreshSexDisplay">>
+	<<replace "#sexUI">><<SexEncounterUI>><</replace>>
+	<<replace "#arousal-ui">><<ArousalUI>><</replace>>
+<</widget>>
+
+
+<<widget "ArousalUI">>
+<div class="arousal-ui">
+	<div class="arousal-title">Arousal</div>
+
+	<div class="arousal-grid">
+		<div class="arousal-card">
+			<div class="arousal-row">
+				<span class="arousal-name"><<print "Bottom: " + $sex.Bottom.name>></span>
+				<span class="arousal-value"><<print $sex.Bottom.arousal>>/1000</span>
+			</div>
+			<div class="arousal-bar">
+				<div
+					class="arousal-fill bottom"
+					@style="'width:' + Math.min(100, (($sex.Bottom.arousal || 0) / 1000) * 100) + '%;'">
+				</div>
+			</div>
+		</div>
+
+		<div class="arousal-card">
+			<div class="arousal-row">
+				<span class="arousal-name"><<print "Top: " + $sex.Top.name>></span>
+				<span class="arousal-value"><<print $sex.Top.arousal>>/1000</span>
+			</div>
+			<div class="arousal-bar">
+				<div
+					class="arousal-fill top"
+					@style="'width:' + Math.min(100, (($sex.Top.arousal || 0) / 1000) * 100) + '%;'">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<<if $devMode>>
+		<div class="arousal-dev">
+			<div><b>Top Cum Locations:</b> <<print $sex.Top.cumLocation>></div>
+			<div><b>Bottom Cum Locations:</b> <<print $sex.Bottom.cumLocation>></div>
+		</div>
+	<</if>>
+</div>
+<</widget>>
+
+
+<<widget "CumLocationButtons">>
+	<<set _who = _args[0] || "Top">>
+	<<set _actor = $sex && $sex[_who] ? $sex[_who] : null>>
+    /*<<set _climaxquote = _isMute ? "Act-Quote-React" : either("Orgasm-Quote", "Act-Quote-React")>>*/
+	<<if !_actor>>
+		<span class="error">[Error] Missing actor for <<print _who>>.</span>
+		<<return>>
+	<</if>>
+
+	<<set _opts = Array.isArray(_actor.cumLocation) ? _actor.cumLocation : []>>
+
+	<<if !_opts.length>>
+		<i>No cum locations available.</i>
+	<<else>>
+		<ul class="sex-list">
+			<<for _i = 0; _i < _opts.length; _i++>>
+				<<set _loc = _opts[_i]>>
+				<<capture _loc>>
+					<li>
+						<<button _loc>>
+							/* save selected location */
+							<<set _actor.selectedCumLocation = _loc>>
+
+							/* move out of climax */
+							<<set $sex.phase = "aftercare">>
+							<<set $sex.cumReady = false>>
+
+							/* optional: climax act marker */
+							<<set $sex.act = "Climax">>
+                            <<set $sex.aftercareEntryQuote = false>>
+
+
+							/* refresh state */
+							<<run setup.updateCumLocations($sex)>>
+							<<run setup.updateBindings()>>
+
+                            <<set $sex.chosenCumLocation = _loc>>
+
+							/* redraw the action UI */
+							<<replace "#sexUI">><<SexEncounterUI>><</replace>>
+							<<replace "#arousal-ui">><<ArousalUI>><</replace>>
+
+							/* update text output */
+							<<replace "#log">><</replace>>
+							<<replace "#intro">>
+								<<include "OrgasmDialogue">><br>
+								<<include "Orgasm-Quote">>
+							<</replace>>
+						<</button>>
+					</li>
+				<</capture>>
+			<</for>>
+		</ul>
+	<</if>>
+<</widget>>

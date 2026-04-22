@@ -599,7 +599,7 @@ setup.sexacts = {
         "positions": [ "Missionary", "Laid Across On Back", "Mating Press", "Sitting", "Cowgirl", "Kneeling Over", "Standing", "Lap ride", "Against Wall","Face On Chest"],
         "action type": ["continue"],
         "Top parts": ["Head"],
-        "Bottom parts": ["Chest"],
+        "Bottom parts": ["Chest","Breasts"],
         "Top cum locations": [],
         "Bottom cum locations": [],
         "masturbation": false,
@@ -615,7 +615,7 @@ setup.sexacts = {
         "positions": [ "Missionary", "Laid Across On Back", "Mating Press", "Sitting", "Cowgirl", "Kneeling Over", "Standing", "Lap ride", "Against Wall","Face On Chest"],
         "action type": ["continue"],
         "Top parts": ["Head"],
-        "Bottom parts": ["Chest"],
+        "Bottom parts": ["Chest","Breasts"],
         "Top cum locations": [],
         "Bottom cum locations": [],
         "masturbation": false,
@@ -631,7 +631,7 @@ setup.sexacts = {
         "positions": [ "Missionary", "Lap ride", "Laid Across On Back", "Mating Press", "Sitting", "Cowgirl", "Kneeling Over", "Standing", "Lap ride", "Against Wall","Face On Chest"],
         "action type": ["continue"],
         "Top parts": ["Head"],
-        "Bottom parts": ["Chest"],
+        "Bottom parts": ["Chest","Breasts"],
         "Top cum locations": [],
         "Bottom cum locations": [],
         "masturbation": false,
@@ -649,7 +649,7 @@ setup.sexacts = {
         "positions": [],
         "action type": ["end"],
         "Top parts": ["Head"],
-        "Bottom parts": ["Chest"],
+        "Bottom parts": ["Chest","Breasts"],
         "Top cum locations": [],
         "Bottom cum locations": [],
         "masturbation": false,
@@ -846,7 +846,7 @@ setup.sexacts = {
         "Top dialogue tags": ["rubbing cock on face"],
         "Bottom dialogue tags": ["face rubbed by cock"],
     },
-    "Lick Foot": /* You lick their foot*/
+    /*"Lick Foot": 
     {
         "positions": [ "Sixty-Nine", "Missionary", "Kneeling", "Kneeling Over", "Perched", "Laid Across On Back", "Laid Across On Stomach"],
         "action type": ["tease"],
@@ -860,7 +860,7 @@ setup.sexacts = {
         "Bottom arousal": 15,
         "Top arousal cap": 300,
         "Bottom arousal cap": 300,
-    },
+    },*/
 
     "Grip Cock": /* You grip their cock */
     {
@@ -1340,7 +1340,7 @@ setup.sexacts = {
         "take virginity": [],
         "Bottom arousal": 50,
         "Top arousal": 50,
-        "Bottom arousal cap": 300,
+        
         "Top dialogue tags": ["sucking each other"],
         "Bottom dialogue tags": ["sucking each other"],
         equal: true,
@@ -1359,7 +1359,7 @@ setup.sexacts = {
         "take virginity": [],
         "Bottom arousal": 50,
         "Top arousal": 50,
-        "Bottom arousal cap": 300,
+        
         equal: true,
         
     },
@@ -1377,7 +1377,7 @@ setup.sexacts = {
         "take virginity": [],
         "Bottom arousal": 50,
         "Top arousal": 50,
-        "Bottom arousal cap": 300,
+
         equal: true,
         
     },
@@ -1395,21 +1395,136 @@ setup.sexacts = {
         "take virginity": [],
         "Bottom arousal": 50,
         "Top arousal": 50,
-        "Bottom arousal cap": 300,
+        
         equal: true,
     },
-    "Stop Sixty Nine":
+
+    "Suck Each Other Off (Continue)": /* Mutual cocksucking */
     {
-        "positions": [],
-        "action type": ["end"],
+        "positions": [ "Sixty-Nine"],
+        "action type": ["continue"],
         "Top parts": ["Penis", "Mouth"],
         "Bottom parts": ["Mouth", "Penis"],
-        "Top cum locations": [],
-        "Bottom cum locations": [],
+        "Top parts mode": "all",
+        "Bottom parts mode": "all",
+        "Top cum locations": ["in mouth"],
+        "Bottom cum locations": ["in mouth"],
         "masturbation": false,
         "take virginity": [],
-        "Top arousal": 0,
-        "Bottom arousal": 0,
+        "Bottom arousal": 50,
+        "Top arousal": 50,
+        
+        "Top dialogue tags": ["sucking each other"],
+        "Bottom dialogue tags": ["sucking each other"],
+        equal: true,
+    },
+    "Eat Each Other Out (Continue)": /* Mutual eat each other's vagina */
+    {
+        "positions": ["Sixty-Nine"],
+        "action type": ["continue"],
+        "Top parts": ["Vagina", "Mouth"],
+        "Bottom parts": ["Mouth", "Vagina"],
+        "Top parts mode": "all",
+        "Bottom parts mode": "all",
+        "Top cum locations": ["in mouth"],
+        "Bottom cum locations": ["in mouth"],
+        "masturbation": false,
+        "take virginity": [],
+        "Bottom arousal": 50,
+        "Top arousal": 50,
+        
+        equal: true,
+        
+    },
+    "Suck And Lick Each Other (Continue)": /* Mutual cock and pussy suck */
+    {
+        positions: ["Sixty-Nine"],
+        "action type": ["continue"],
+        "Top parts": ["Penis", "Mouth"],
+        "Bottom parts": ["Mouth", "Vagina"],
+        "Top parts mode": "all",
+        "Bottom parts mode": "all",
+        "Top cum locations": ["in mouth"],
+        "Bottom cum locations": ["in mouth"],
+        "masturbation": false,
+        "take virginity": [],
+        "Bottom arousal": 50,
+        "Top arousal": 50,
+        
+        equal: true,
+        
+    },
+    "Lick And Suck Each Other (Continue)": /*Mutual pussy and cock suck */
+    {
+        positions: ["Sixty-Nine"],
+        "action type": ["continue"],
+        "Top parts": ["Vagina", "Mouth"],
+        "Bottom parts": ["Mouth", "Penis"],
+        "Top parts mode": "all",
+        "Bottom parts mode": "all",
+        "Top cum locations": ["in mouth"],
+        "Bottom cum locations": ["in mouth"],
+        "masturbation": false,
+        "take virginity": [],
+        "Bottom arousal": 50,
+        "Top arousal": 50,
+        
+        equal: true,
+    },
+    "Stop Sucking Each Other Off":
+    {
+	    "positions": [],
+	    "action type": ["end"],
+	    "Top parts": ["Penis", "Mouth"],
+	    "Bottom parts": ["Mouth", "Penis"],
+	    "Top arousal": 0,
+	    "Bottom arousal": 0,
+	    "Top cum locations": [],
+	    "Bottom cum locations": [],
+	    "masturbation": false,
+	    "take virginity": [],
+    },
+
+    "Stop Eating Each Other Out":
+    {
+	    "positions": [],
+	    "action type": ["end"],
+	    "Top parts": ["Vagina", "Mouth"],
+	    "Bottom parts": ["Mouth", "Vagina"],
+	    "Top arousal": 0,
+	    "Bottom arousal": 0,
+	    "Top cum locations": [],
+	    "Bottom cum locations": [],
+	    "masturbation": false,
+	    "take virginity": [],
+    },
+
+    "Stop Sucking And Licking Each Other":
+    {
+	    "positions": [],
+	    "action type": ["end"],
+	    "Top parts": ["Penis", "Mouth"],
+	    "Bottom parts": ["Mouth", "Vagina"],
+	    "Top arousal": 0,
+	    "Bottom arousal": 0,
+	    "Top cum locations": [],
+	    "Bottom cum locations": [],
+	    "masturbation": false,
+	    "take virginity": [],
+    },
+
+    "Stop Licking And Sucking Each Other":
+    {
+	    "positions": [],
+	    "action type": ["end"],
+	    "Top parts": ["Vagina", "Mouth"],
+	    "Bottom parts": ["Mouth", "Penis"],
+	    "Top arousal": 0,
+	    "Bottom arousal": 0,
+	    "Top cum locations": [],
+	    "Bottom cum locations": [],
+	    "masturbation": false,
+	    "take virginity": [],
     },
 
 
@@ -1653,7 +1768,7 @@ setup.sexacts = {
         "Top dialogue tags": ["teasing cock with ass"],
         "Bottom dialogue tags": ["cock teased with ass"],
     },
-    "Rub Butthole": /* You rub your fingers on their ass, might not be Top specific? */
+    "Grope Ass": /* You rub your fingers on their ass, might not be Top specific? */
     {
         "positions": [ "Missionary:Bottom", "Lap ride:Bottom", "Reverse Lap ride:Bottom", "Prone Bone:Bottom", "Mating Press:Top", "Sixty-Nine:Bottom", "From Behind:Top", "Doggy:Top", "Bent Over:Top", "Cowgirl:Bottom", "Reverse Cowgirl:Bottom", "Kneeling:Bottom", "Kneeling Over:Bottom", "Standing:Bottom", "Standing From Behind:Top", "Oral Service:Bottom", "Spooning:Top", "Double Decker:Top", "Against Wall From Behind:Top", "Perched Oral Service:Bottom", "Underneath Oral Service:Bottom", "Laid Across On Back:Top", "Laid Across On Stomach:Top", "Laid Across Oral Service:Bottom","Sitting"],
         "action type": ["tease"],
@@ -1781,7 +1896,7 @@ setup.sexacts = {
 
     "Finger Ass": 
     {
-        "positions": [ "Missionary", "Lap ride", "Prone Bone", "Mating Press", "Sixty-Nine", "From Behind", "Doggy", "Bent Over", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Standing From Behind", "Oral Service", "Spooning", "Double Decker", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across On Back", "Laid Across On Stomach", "Laid Across Oral Service", "Sitting"],
+        "positions": [ "Missionary", "Lap ride", "Prone Bone", "Mating Press", "Sixty-Nine", "From Behind", "Doggy", "Bent Over", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Standing From Behind", "Sit On Face", "Oral Service", "Spooning", "Double Decker", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across On Back", "Laid Across On Stomach", "Laid Across Oral Service", "Sitting"],
         "action type": ["penetrate"],
         "Top parts": ["Hand"],
         "Bottom parts": ["Asshole"],
@@ -1798,7 +1913,7 @@ setup.sexacts = {
     },
     "Finger Ass(Continue)": 
     {
-        "positions": [ "Missionary", "Prone Bone", "Mating Press", "Sixty-Nine", "From Behind", "Doggy", "Bent Over", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Standing From Behind", "Lap ride", "Oral Service", "Spooning", "Double Decker", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across On Back", "Laid Across On Stomach", "Laid Across Oral Service"],
+        "positions": [ "Missionary", "Prone Bone", "Mating Press", "Sixty-Nine", "From Behind", "Doggy", "Bent Over", "Cowgirl", "Reverse Cowgirl", "Kneeling", "Kneeling Over", "Standing", "Standing From Behind", "Sit On Face", "Lap ride", "Oral Service", "Spooning", "Double Decker", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across On Back", "Laid Across On Stomach", "Laid Across Oral Service"],
         "action type": ["continue"],
         "Top parts": ["Hand"],
         "Bottom parts": ["Asshole"],

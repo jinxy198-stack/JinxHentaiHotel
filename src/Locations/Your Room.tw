@@ -1,5 +1,12 @@
 :: Your Room [nobr location] {"position":"400,725","size":"100,100"}
 <<set $gamelocation to "Your Room">>
+You are in your hotel room. It looks like the master suite of a luxury hotel, complete with a large shaped bed. Next to the bed is a phone for calling up people you know for a 'good time'.
+<br>
+To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic for you to enjoy. <br>
+On the other side there was a door to your bathroom. Next to the door was a high quality television set complete with the latest game console from a nondescript gaming company.
+<br>
+And in the corner was a desk with a computer for playing around with.
+<br>
 <<if $lastNpc>>
 	<<set $ui.npc = $lastNpc>>
 	<<set _n = $ui.npc>>
@@ -7,12 +14,6 @@
 	<br>
 <</if>>
 <br>
-You are in your hotel room. It looks like the master suite of a luxury hotel, complete with a large shaped bed. Next to the bed is a phone for calling up people you know for a 'good time'.
-<br>
-To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic for you to enjoy. <br>
-On the other side there was a door to your bathroom. Next to the door was a high quality television set complete with the latest game console from a nondescript gaming company.
-<br>
-And in the corner was a desk with a computer for playing around with.
 <br>
 
 <<set _memorylink to {text: "Reflect on memories", link: "Bed-Reflect"}>>

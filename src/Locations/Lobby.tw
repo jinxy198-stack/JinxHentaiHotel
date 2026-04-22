@@ -1,6 +1,6 @@
 :: Lobby [nobr location]{"position":"375,1150","size":"100,100"}
 <<set $gamelocation to "Lobby">>
-You are in the lobby of the hotel, classical music plays as you watch people from various worlds go about their business.
+<span>You are in the lobby of the hotel, classical music plays as you watch people from various worlds go about their business.</span>
 <br>
 By the entrance you make out the offical greeting board that is meant for all new people.
 <<button "Read Greeting">><<PopupGreeting "Greeting">><</button>> <br>

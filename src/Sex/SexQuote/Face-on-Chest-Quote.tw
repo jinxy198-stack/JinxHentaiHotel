@@ -12,19 +12,19 @@
 <<if _mode == "Top">>
 	<<if setup.faceonchestQuotes.Top>>
 		<<for _p range _personalities>>
-			<<if _p and setup.faceonchestQuotes.Top[_p]>>
+			<<if _p and setup.faceonchestQuotes[_p]>>
 				<<run _persMatches.push(_p)>>
 			<</if>>
 		<</for>>
 	<</if>>
 	<<if _persMatches.length>>
 		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = faceonchestQuotes.Top[_chosenPers]>>
+		<<set _pool = faceonchestQuotes[_chosenPers]>>
 	<<else>>
 		<<set _pool =
-			setup.faceonchestQuotes.Top[_pref]
-			&& setup.faceonchestQuotes[_pref][_nsize]
-			|| setup.faceonchestQuotes.Top.Neutral
+			setup.faceonchestQuotes[_pref]
+			|| setup.faceonchestQuotes[_nsize]
+			|| setup.faceonchestQuotes.Neutral
 		>>
 	<</if>>
 <<elseif _mode == "Bottom">>
@@ -36,6 +36,7 @@
 	<<=either(..._pool)>>
 <<else>>
 	[Error] No Face on Chest quote pool found.
+	(mode=<<= _mode >>, pref=<<= _pref >>, nsize=<<= _nsize >>,  )
 <</if>>
 
 
