@@ -1,7 +1,21 @@
 :: Widgets [widget nobr] 
 
 <<widget "npcNoise">>
-    <<print setup.pick(setup.noise[_n.species] || setup.noise[_n.anthro.subtype])>>
+	<<set _pool = setup.noise[_n.species] || setup.noise.Default || ["moan"]>>
+	<<set _noise = setup.pick(_pool)>>
+	<<set _mode = _args[0] || "base">>
+
+	<<if _mode is "s">>
+		<<if _noise.slice(-1) is "y">>
+			<<= _noise.slice(0, -1) + "ies">>
+		<<elseif _noise.slice(-1) is "s">>
+			<<= _noise + "es">>
+		<<else>>
+			<<= _noise + "s">>
+		<</if>>
+	<<else>>
+		<<= _noise>>
+	<</if>>
 <</widget>>
 
 <<widget "gram">>

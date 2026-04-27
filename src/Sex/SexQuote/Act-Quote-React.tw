@@ -39,14 +39,14 @@
 <<else>>
 <<if $sex.phase == "climax">>
 	<<set _lines = [
-		"_n.name <<npcNoise>>s from being close to climax."
+		"_n.name <<npcNoise>> from being close to climax."
 	]>>
 
 <<else>>
 	<<if $sex.act == "Fuck Pussy">>
 		<<set _lines = [
-			"_n.name <<npcNoise>>s at the feeling of fucking a pussy.",
-			"_n.name <<npcNoise>>s softly, lost in the feeling of fucking a pussy.",
+			"_n.name <<npcNoise 's'>> at the feeling of fucking a pussy.",
+			"_n.name <<npcNoise 's'>> softly, lost in the feeling of fucking a pussy.",
 			"Pleasure washes over _n.name, making $proset.them <<npcNoise>> softly."
 		]>>
 
@@ -117,7 +117,7 @@
 		<</if>>	
 	<<else>>
 		<<set _lines = [
-			"_n.name <<npcNoise>>s from the pleasure.",
+			"_n.name <<npcNoise 's'>> from the pleasure.",
 			"$proset.theyUp appear to enjoy it very much."
 		]>>
 	<</if>>

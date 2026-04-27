@@ -177,7 +177,7 @@ setup.noise = {
     Pig:["oink"],
     Canine:["growl"],
     Feline:["meow"],
-    Eagel:["screech"],
+    Eagle:["screech"],
 	Anthro:["moan","groan","squeal"]
 }
 
