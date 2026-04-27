@@ -12,7 +12,7 @@
 
 	<div class="npc-card">
 		<span class= "npc-name"> <b>[<<print _i + 1>>] </b> </span>
-		_n.name<<if _n.surname>> _n.surname<</if>>
+		_n.name<<if _n.nickname>> (_n.nickname)<</if>><<if _n.surname>> _n.surname<</if>>
 		— _n.species
 		<<if _n.species is "Anthro">>
 			/ _n.anthro.group / _n.anthro.subtype

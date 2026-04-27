@@ -7,7 +7,7 @@ You are in the hotel hallway, doors to other rooms are on each side but you cann
 At the end of the hall is an elevator.
 <<unset $spawnPools>>
 <<run setup.refreshFullPool()>>
-<<SpawnPoolOnce "fullPool" $fullPool 15>>
+<<SpawnPoolOnce "fullPool" $fullPool 5>>
 <<SpawnRandomNPCs 15>>
 
 <<include "NPC-List">>

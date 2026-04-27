@@ -165,6 +165,7 @@
 		<<run _npc.personality.push(_pick)>>
 		<<run _pool.splice(_pool.indexOf(_pick), 1)>>
 	<</for>>
+	<<RandomTraits _npc 2 true>>
 	<<set _npc.assSize      = setup.pick(_assPool)>>
 	<<set _npc.virgin       = either(true,false)>>
 	<<set _npc.origin       = "Random Person">>

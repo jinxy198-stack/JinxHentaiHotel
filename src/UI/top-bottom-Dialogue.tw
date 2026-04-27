@@ -8,45 +8,60 @@
         <<set _lines = []>>
 
         <<for _p range _personalities>>
-            <<if _p is "Tough">>
-                <<run _lines.push("You want me in charge? Good, I don't do half-measures.")>>
-            <<elseif _p is "Sassy">>
-                <<run _lines.push("You want me to take over? Fine, hope you're ready to be handled properly.")>>
+            <<if _p is "Brash">>
+                <<run _lines.push("Hmph.")>>
             <<elseif _p is "Brave">>
                 <<run _lines.push("Sure, I can take the lead.")>>
-            <<elseif _p is "Lazy">>
-                <<run _lines.push("You want me to lead? Sure. I'll keep it slow, unless you ask otherwise.")>>
-            <<elseif _p is "Playful">>
-                <<run _lines.push("So you're letting me top? Heh, this will be fun.")>>
-            <<elseif _p is "Kind">>
-                <<run _lines.push("You want me to take the lead? Very well, I'll take care of you.")>>
-            <<elseif _p is "Selfish">>
-                <<run _lines.push("Oh I'm gonna enjoy you submitting to me.")>>
-            <<elseif _p is "Logical">>
-                <<run _lines.push("You want me to lead? Very well if it's what will give the most satisfaction for both.")>>
-            <<elseif _p is "Studious">>
-                <<run _lines.push("You want me to top? I've studied plenty, I won't disappoint.")>>
+            <<elseif _p is "Bubbly">>
+                <<run _lines.push("Hehehe, I can take that role.")>>
+            <<elseif _p is "Childish">>
+                <<run _lines.push("Yay! I get to be in charge!")>>        
+            <<elseif _p is "Chill">>
+                <<run _lines.push("Alright, relax and trust me.")>>
+            <<elseif _p is "Confident">>
+                <<run _lines.push("Trust me, I know what I'm doing.")>>      
             <<elseif _p is "Energetic">>
                 <<run _lines.push("You're letting me top? Alright!")>>
                 <<run _lines.push("Hope you can match my pace!")>>
-            <<elseif _p is "Timid">>
-                <<run _lines.push("You want me to take control…? I… I'll try.")>>
-            <<elseif _p is "Stubborn">>
-                <<run _lines.push("I'm on top and that's final!")>>
-            <<elseif _p is "Serious">>
-                <<run _lines.push("You trust me to lead? Then I'll carry this with full intent. No games.")>>
-            <<elseif _p is "Upbeat">>
-                <<run _lines.push("So I get to lead? Nice — I'll make sure you enjoy every second!")>>
-            <<elseif _p is "Naive">>
-                <<run _lines.push("You want me to lead? I'll do it, just tell me if I do something wrong.")>>
+            <<elseif _p is "Flamboyant">>
+                <<run _lines.push("Fabulous, I'll make this unforgettable.")>>             
+            <<elseif _p is "Kind">>
+                <<run _lines.push("You want me to take the lead? Very well, I'll take care of you.")>>
+            <<elseif _p is "Lazy">>
+                <<run _lines.push("You want me to lead? Sure. I'll keep it slow, unless you ask otherwise.")>>
+            <<elseif _p is "Logical">>
+                <<run _lines.push("You want me to lead? Very well if it's what will give the most satisfaction for both.")>>
             <<elseif _p is "Modest">>
                 <<run _lines.push("I'm not the best but I'll take the lead if it's what you want.")>>
-            <<elseif _p is "Chill">>
-                <<run _lines.push("Alright, relax and trust me.")>>
-            <<elseif _p is "Flamboyant">>
-                <<run _lines.push("Fabulous, I'll make this unforgettable.")>>
-            <<elseif _p is "Brash">>
-                <<run _lines.push("Hmph.")>>
+            <<elseif _p is "Naive">>
+                <<run _lines.push("You want me to lead? I'll do it, just tell me if I do something wrong.")>>
+            <<elseif _p is "Nerdy">>
+                <<run _lines.push("You want me to take the lead? ...Alright. I may have overthought this scenario before.")>>
+                <<run _lines.push("So I'm in charge? Okay. I know a few techniques I'd like to test with you.")>>
+                <<run _lines.push("You want me on top? Hm. I think I can handle that quite effectively.")>>
+                <<run _lines.push("Interesting. If I'm leading, then try to follow my instructions exactly.")>>
+                <<run _lines.push("You want me in charge? Then be good and let me demonstrate what I know.")>>
+                <<run _lines.push("Oh? You want the nerd to take over? Careful, I can get very thorough.")>>                     
+            <<elseif _p is "Playful">>
+                <<run _lines.push("So you're letting me top? Heh, this will be fun.")>>
+            <<elseif _p is "Provocative">>
+                <<run _lines.push("You want me in charge? This will be hot!")>>
+                <<run _lines.push("Oh, you want me to take over? Careful what you ask for.")>>
+                <<run _lines.push("You want me to dominate you? Mmm. I think I'd enjoy that very much.")>>    
+            <<elseif _p is "Sassy">>
+                <<run _lines.push("You want me to take over? Fine, hope you're ready to be handled properly.")>>    
+            <<elseif _p is "Selfish">>
+                <<run _lines.push("Oh I'm gonna enjoy you getting me off.")>>
+            <<elseif _p is "Stubborn">>
+                <<run _lines.push("I'm on top and that's final!")>>
+            <<elseif _p is "Terse">>
+                <<run _lines.push("Alright.")>>                
+            <<elseif _p is "Timid">>
+                <<run _lines.push("You want me to take control…? I… I'll try.")>>
+            <<elseif _p is "Tough">>
+                <<run _lines.push("You want me in charge? Good, I don't do half-measures.")>>    
+            <<elseif _p is "Upbeat">>
+                <<run _lines.push("So I get to lead? Nice — I'll make sure you enjoy every second!")>>    
             <</if>>
         <</for>>
 
@@ -64,45 +79,63 @@
         <<set _lines = []>>
 
         <<for _p range _personalities>>
-            <<if _p is "Selfish">>
-                <<run _lines.push("Oh? You think you can handle me? Fine, just don't expect me to go easy on you.")>>
-            <<elseif _p is "Sassy">>
-                <<run _lines.push("Oh? So you're the boss now? Heh. Don't get sloppy.")>>
+            <<if _p is "Brash">>
+                <<run _lines.push("Hmph.")>>
             <<elseif _p is "Brave">>
                 <<run _lines.push("Hah, you're taking charge? Then you better keep up. I don't follow the weak.")>>
-            <<elseif _p is "Timid">>
-                <<run _lines.push("O-okay… if you want me.")>>
-                <<run _lines.push("I-I want it, but please be gentle.")>>
+            <<elseif _p is "Bubbly">>
+                <<run _lines.push("Haha, then use me as you see fit!")>>
+            <<elseif _p is "Childish">>
+                <<run _lines.push("Ok, you can be in charge.")>>    
+            <<elseif _p is "Chill">>
+                <<run _lines.push("Alright. I'll follow your pace, no need to rush.")>>
+            <<elseif _p is "Confident">>
+                <<run _lines.push("I can take it.")>>        
+            <<elseif _p is "Energetic">>
+                <<run _lines.push("Good, don't hold back!")>>
+            <<elseif _p is "Flamboyant">>
+                <<run _lines.push("Go ahead darling, treat me like a idol!")>>
+            <<elseif _p is "Kind">>
+                <<run _lines.push("If that's what you want, ok.")>>        
             <<elseif _p is "Lazy">>
                 <<run _lines.push("Alright, alright… take the wheel then. Just don't make me do extra effort.")>>
-            <<elseif _p is "Playful">>
-                <<run _lines.push("You wanna top? This will be fun!")>>
-            <<elseif _p is "Upbeat">>
-                <<run _lines.push("Alright, just be sure to enjoy it.")>>
+            <<elseif _p is "Logical">>
+                <<run _lines.push("Confident move. If you can maintain stable control, I have no objections.")>>    
             <<elseif _p is "Modest">>
                 <<run _lines.push("Ok, I trust you… just be gentle with me.")>>
                 <<run _lines.push("If you're leading, then I'll trust your judgment.")>>
-            <<elseif _p is "Logical">>
-                <<run _lines.push("Confident move. If you can maintain stable control, I have no objections.")>>
-            <<elseif _p is "Studious">>
-                <<run _lines.push("You're taking charge? Alright show me.")>>
-            <<elseif _p is "Energetic">>
-                <<run _lines.push("Good, don't hold back.")>>
-            <<elseif _p is "Stubborn">>
-                <<run _lines.push("Tch, think you can break me? Give it your best shot then!")>>
-            <<elseif _p is "Bubbly">>
-                <<run _lines.push("Haha, then use me as you see fit!")>>
             <<elseif _p is "Naive">>
                 <<run _lines.push("Oh, you're really taking charge? Then I'll follow your lead.")>>
-            <<elseif _p is "Blunt">>
-                <<run _lines.push("Ok.")>>
-            <<elseif _p is "Chill">>
-                <<run _lines.push("Alright. I'll follow your pace, no need to rush.")>>
-            <<elseif _p is "Flamboyant">>
-                <<run _lines.push("Go ahead darling, treat me like a star!")>>
-            <<elseif _p is "Brash">>
-                <<run _lines.push("Hmph.")>>
+            <<elseif _p is "Nerdy">>
+                <<elseif _p is "Nerdy">>
+                <<run _lines.push("You want me to give up control? ...Alright. I'm curious how this will feel from the other side.")>>
+                <<run _lines.push("So you want to take the lead? Okay... I'll cooperate. For research purposes.")>>
+                <<run _lines.push("You want me underneath you? Hm. I suppose I can trust your method.")>>
+                <<run _lines.push("Alright, you lead. I'll try not to overanalyze every second of it.")>>    
+            <<elseif _p is "Playful">>
+                <<run _lines.push("You wanna top? This will be fun!")>> 
+            <<elseif _p is "Provocative">>
+                <<run _lines.push("You want me to submit? Hah. Alright then, show me what you've got.")>>
+                <<run _lines.push("So you want control over me? Go on. Impress me.")>>
+                <<run _lines.push("You want me under you? Fine. Let's see if you can handle it.")>>
+                <<run _lines.push("Mmm. You want me to be the obedient one? That could be fun.")>>                           
+            <<elseif _p is "Sassy">>
+                <<run _lines.push("Oh? So you're the boss now? Heh. Don't get sloppy.")>>
+            <<elseif _p is "Selfish">>
+                <<run _lines.push("Oh? You think you can handle me? Fine, just don't expect me to go easy on you.")>>
+            <<elseif _p is "Stubborn">>
+                <<run _lines.push("Tch, think you can break me? Give it your best shot then!")>>
+            <<elseif _p is "Terse">>
+                <<run _lines.push("Ok.")>>            
+            <<elseif _p is "Timid">>
+                <<run _lines.push("O-okay… if you want me.")>>
+                <<run _lines.push("I-I want it, but please be gentle.")>>
+            <<elseif _p is "Tough">>
+                <<run _lines.push("You're taking charge? Alright show me.")>>    
+            <<elseif _p is "Upbeat">>
+                <<run _lines.push("Alright, just be sure to enjoy it.")>>
             <</if>>
+            
         <</for>>
 
         <<if _lines.length>>

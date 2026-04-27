@@ -1,27 +1,28 @@
 
 setup.personalityTips = {
-	Chill: "Steady, patient, and unlikely to rush things.",
-	Timid: "Shy, hesitant, and easily flustered.",
-	Tough: "Blunt, resilient, and hard to intimidate.",
-	Brave: "Bold, assertive, and willing to take risks.",
-	Kind: "Gentle, considerate, and caring.",
-	Childish: "Likes behaving immaturely, regardless of age.",
-	Playful: "Likes to fool around, lewd or not.",
-	Lazy: "Doesn't like to be very active.",
-	Provocative: "Sex is always on your mind and you want to focus on it.",
-	Bubbly: "Consistently cheerful, enthusiastic, and social.",
-	Upbeat: "Likes being positive, no matter the situation.",
-	Terse: "Speaks brief, concise, and to the point, often using few words.",
-	Nerdy: "Passonate and knowledgable on a specific academic.",
-	Confident: "Sure of yourself and likes to take the lead.",
-	Naive: "A charming innocent view of the world, though knows enough.",
-	Flamboyant: "Strikingly bold, showy, or attracting attention.",
 	Brash: "Somewhat rude but still has some kindness inside.",
-	Sassy: "Likes to tease, and is slightly disrespectful.",
+	Brave: "Bold, assertive, and willing to take risks.",
+	Bubbly: "Consistently cheerful, enthusiastic, and social.",
+	Childish: "Likes behaving immaturely, regardless of age.",
+	Chill: "Steady, patient, and unlikely to rush things.",
+	Confident: "Sure of yourself and likes to take the lead.",
+	Energetic: "Full of life and lots of energy to spare.",
+	Flamboyant: "Strikingly bold, showy, or attracting attention.",
+	Kind: "Gentle, considerate, and caring.",
+	Lazy: "Doesn't like to be very active.",
 	Logical: "Socially stunted but very rational.",
 	Modest: "Does not think themselves higher than others.",
-	Energetic: "Full of life and lots of energy to spare.",
-	Stubborn: "Hard to convince to see things from other's point of view."
+	Naive: "A charming innocent view of the world, though knows enough.",
+	Nerdy: "Passonate and knowledgable on a specific academic.",
+	Playful: "Likes to fool around, lewd or not.",
+	Provocative: "Sex is always on your mind and you want to focus on it.",
+	Sassy: "Likes to tease, and is slightly disrespectful.",
+	Selfish: "Thinks of themself first before anyone else.",
+	Stubborn: "Hard to convince to see things from other's point of view.",
+	Terse: "Speaks brief, concise, and to the point, often using few words.",
+	Timid: "Shy, hesitant, and easily flustered.",
+	Tough: "Blunt, resilient, and hard to intimidate.",
+	Upbeat: "Likes being positive, even when things seem bleak.",
 };
 
 setup.traitTips = {
@@ -48,6 +49,140 @@ setup.traitTips = {
 	"Rainbow Cum": "For some reason their cum is multicolored, and tastes kinda fruity.",
 	"Hero": "Fights injustice on a regular basis.",
 	"Criminal": "Commit's crimes on a regular basis",
-	"Nobel": "A person of high wealth and status",
-	"Outlander": "Not used to living in the comforts of civilzation."
+	"Noble": "A person of high wealth and status",
+	"Outlander": "Not used to living in the comforts of civilzation.",
+	"Emissary": "The chosen of the god of the hotel."
+};
+
+
+
+
+/* Main trait list */
+setup.traits = {
+	list: [
+		"Mute",
+		"Will Not Top",
+		"Will Not Bottom",
+		"Sex Addict",
+		"Fighter",
+		"Scholar",
+		"Athlete",
+		"Celebrity",
+		"Glutton",
+		"Genius",
+		"Gamer",
+		"Hero",
+		"Criminal",
+		"Noble",
+		"Outlander",
+		"Ticklish"
+	],
+
+	conflicts: {
+		"Will Not Top": ["Will Not Bottom"],
+		"Will Not Bottom": ["Will Not Top"],
+
+		"Hero": ["Criminal"],
+		"Criminal": ["Hero"],
+
+		"Noble": ["Outlander"],
+		"Outlander": ["Noble"]
+	}
+};
+/* Checks if adding this trait would conflict with existing traits */
+/* Checks if adding this trait would conflict with existing traits */
+setup.traits.canAddTrait = function (char, trait) {
+	var current;
+	var conflicts;
+	var reverseConflicts;
+	var i;
+	var existingTrait;
+
+	if (!char) {
+		return false;
+	}
+
+	if (!Array.isArray(char.traits)) {
+		char.traits = [];
+	}
+
+	current = char.traits;
+
+	/* Prevent duplicates */
+	if (current.includes(trait)) {
+		return false;
+	}
+
+	conflicts = setup.traits.conflicts[trait] || [];
+
+	for (i = 0; i < current.length; i++) {
+		existingTrait = current[i];
+
+		/* Checks if the new trait conflicts with an existing trait */
+		if (conflicts.includes(existingTrait)) {
+			return false;
+		}
+
+		/* Also checks if the existing trait conflicts with the new trait */
+		reverseConflicts = setup.traits.conflicts[existingTrait] || [];
+
+		if (reverseConflicts.includes(trait)) {
+			return false;
+		}
+	}
+
+	return true;
+};
+
+
+/* Adds one trait safely */
+setup.traits.addTrait = function (char, trait) {
+	if (!setup.traits.canAddTrait(char, trait)) {
+		return false;
+	}
+
+	char.traits.push(trait);
+	return true;
+};
+
+
+/* Adds random traits safely, up to maxAmount */
+setup.traits.addRandomTraits = function (char, maxAmount, options) {
+	var pool;
+	var amount;
+	var added;
+	var trait;
+	var index;
+
+	if (!char) {
+		return [];
+	}
+
+	if (!Array.isArray(char.traits)) {
+		char.traits = [];
+	}
+
+	maxAmount = maxAmount || 2;
+	options = options || {};
+
+	/*
+		By default, this gives 0 to maxAmount traits.
+		If you want exactly maxAmount traits, use:
+		{ exact: true }
+	*/
+	amount = options.exact ? maxAmount : random(0, maxAmount);
+
+	pool = setup.traits.list.slice();
+	added = [];
+
+	while (added.length < amount && pool.length > 0) {
+		index = random(0, pool.length - 1);
+		trait = pool.splice(index, 1)[0];
+
+		if (setup.traits.addTrait(char, trait)) {
+			added.push(trait);
+		}
+	}
+
+	return added;
 };

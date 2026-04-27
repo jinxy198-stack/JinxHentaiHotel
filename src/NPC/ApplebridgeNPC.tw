@@ -3,7 +3,7 @@
 /* Applebridge */
 <<set $CoryP = {
     name: "Cory",
-    nickname: "",
+    nickname:[],
     surname: "Park",
     species: "Human",
     gender: "Male",
@@ -18,16 +18,15 @@
     eyes: "Brown",
     hair: "Curly volume",
     haircolor: "Brown",
-    facefeatures: "",
+    facefeatures:[],
     skincolor: "Brown",
-    skinfeatures: "",
+    skinfeatures:[],
     bodyheight: "Average",
     physique: "Toned", 
     personality: ["Brash", "Provocative", "Tough", "Sassy"],
     sexpref: "Dominant",
     origin: "Applebridge",
-    traits: [ "Will Not Bottom", "Sex Addict"
-    ],
+    traits: ["Will Not Bottom", "Sex Addict"],
 }>>
 
 <<set $JaidenB = {
@@ -38,7 +37,7 @@
     trans: "Cisgender",
     sexu: "Bisexual",  
     genitals: "Vagina",
-    genitaltype: "Tight",
+    genitaltype: "Very Tight",
     pronouns: "She/Her",
     age: 9,
     eyes: "Blue",
@@ -70,16 +69,45 @@
     eyes: "Black",
     hair: "Pixie Cut",
     haircolor: "Grey",
-    facefeatures: "",
-    skincolor: "Dark",
-    skinfeatures: "",
+    facefeatures:[],
+    skincolor: "Ebony",
+    skinfeatures:[],
     bodyheight: "Tall",
     physique: "Thick",
     breastsize:"Large",
     personality: ["Brash"],
     assSize: "Portly",
     sexpref: "Dominant",
-    origin: "Applebridge"
+    origin: "Applebridge",
+    traits: ["Noble"]
+}>>
+
+<<set $AmyB = {
+    name: "Amy",
+    nickname:[],
+    surname: "Brant",
+    species: "Human",
+    gender: "Female",
+    trans: "Cisgender",
+    sexu: "Bisexual",  
+    genitals: "Vagina",
+    genitaltype: "Loose",
+    pronouns: "She/Her",
+    age: 30,
+    eyes: "Blue",
+    hair: "Thick and Curly",
+    haircolor: "Black",
+    facefeatures:[],
+    skincolor: "Fair",
+    skinfeatures:[],
+    bodyheight: "Tall",
+    physique: "Thin",
+    breastsize:"Perky",
+    personality: ["Provocative", "Logical", "Confident"],
+    assSize: "Modest",
+    sexpref: "Switch",
+    origin: "Applebridge",
+    traits: ["Sex Addict", "Celebrity"]
 }>>
 
 <<set $OliverT = {
@@ -100,13 +128,41 @@
     hair: "Bobcut",
     haircolor: "Brown",
     skincolor: "Fair",
-    skinfeatures: "",
+    skinfeatures:[],
     bodyheight: "Short",
     physique: "Lean", 
     personality: ["Timid", "Modest","Chill"],
     sexpref: "Submissive",
     origin: "Applebridge",
     traits: ["Gamer", "Athlete"]
+}>>
+
+<<set $WrenT = {
+    name: "Wren",
+    nickname:[],
+    surname: "Townsend",
+    species: "Human",
+    gender: "Female",
+    trans: "Cisgender",
+    sexu: "Pansexual",  /* sexual orientation */
+    genitals: "Vagina",
+    genitaltype: "Tight",
+    pronouns: "She/Her",
+    age: 14,
+    eyes: "Green",
+    hair: "Shoulder Length",
+    haircolor: "Orange",
+    facefeatures:[],
+    skincolor: "Fair",
+    skinfeatures:[],
+    bodyheight: "Average",
+    physique: "Lithe",
+    breastsize:"Small",
+    personality: ["Kind", "Confident", "Energetic"],
+    assSize: "Slim",
+    sexpref: "Dominant",
+    origin: "Applebridge",
+    traits: ["Celebrity", "Athlete"]
 }>>
 
 <<set $LorenC = {
@@ -127,13 +183,38 @@
     hair: "Spiky",
     haircolor: "Blonde",
     skincolor: "Tan",
-    skinfeatures: "",
+    skinfeatures:[],
     bodyheight: "Average",
     physique: "Lithe", 
     personality: ["Provocative", "Sassy", "Energetic"],
     sexpref: "Submissive",
     origin: "Applebridge",
-    traits: [
-    "Will Not Top", "Sex Addict"
-    ]
+    traits: ["Will Not Top", "Sex Addict"]
+}>>
+
+<<set $CaseyB = {
+    name: "Casey",
+    nickname: [],
+    surname: "Buckner",
+    species: "Human",
+    gender: "Male",
+    trans: "Cisgender",
+    sexu: "Homosexual",  
+    genitals: "Penis",
+    genitaltype: "Cut",
+    penislength: "Large",
+    assSize: "Curvaceous",
+    pronouns: "He/Him",
+    age: 28,
+    eyes: "Blue",
+    hair: "Shoulder length",
+    haircolor: "Blonde",
+    skincolor: "Tan",
+    skinfeatures:[],
+    bodyheight: "Tall",
+    physique: "Ample", 
+    personality: ["Naive", "Kind", "Chill","Modest"],
+    sexpref: "Submissive",
+    origin: "Applebridge",
+    traits: ["Sex Addict", "Athlete"]
 }>>

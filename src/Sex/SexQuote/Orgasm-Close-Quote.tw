@@ -9,6 +9,7 @@
 	<<return>>
 <</if>>
 
+/* for when the face is too obscured to speak */
 <<set _muffled = false>>
 <<if (
 	$sex.role == "Bottom" && (

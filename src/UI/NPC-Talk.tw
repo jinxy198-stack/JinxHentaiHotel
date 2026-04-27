@@ -4,29 +4,30 @@
 <<run setup.normalizeActor(_n)>>
 
 <<set _lines = {
-	Default: ["Hello","Hi"],
-	Chill: ["What's up?"],
-	Upbeat: ["Hey there! Great to see you!","Isn't today perfect?"],
-	Timid: ["Ah s-sorry… you startled me. But I'm happy you're here."],
-	Tough: ["Hey. Don't waste my time. Speak if you've got something worth saying."],
+	Default: ["Hello.", "Hi.", "Hey."],
+	Brash: ["Well there you are, lil brat!"],
 	Brave: ["You're here. Good. I was ready for something to happen."],
+	Childish: ["Hiya! You lookin for a funtime?"],
+	Chill: ["What's up?"],
+	Confident: ["There you are, I was seconds away from coming to get you myself."],
+	Energetic: ["Hey, $mc.name!"],
+	Flamboyant: ["Well hello..."]
 	Kind: ["Hi!","You look well.","Hey, seeing you always makes me happy."],
-	Active: ["There you are — I was seconds from coming to get you myself."],
 	Logical: ["You arrived precisely when I anticipated. Efficient..."],
 	Sassy: ["Oh? About time you showed up. I've been waiting awhile."],
-	Mean: ["Well there you are, lil brat!"],
-	Energetic: ["Hey, $mc.name!"],
+	Stubborn: ["Oh, it's you."],
+	Terse: ["Hello.", "Hi.", "Hey."]
+	Timid: ["Ah s-sorry… you startled me. But I'm happy you're here."],
+	Tough: ["Hey. Don't waste my time. Speak if you've got something worth saying."],
 	Playful: ["Hey, $mc.name! Hope you're in the mood for playing around."],
-	Childish: ["Hiya! You lookin for some sticky snuggly funtime?"],
 	Provocative: ["Well hey there..."],
-	Stubborn: ["Oh, it's you."]
+	Upbeat: ["Hey there! Great to see you!","Isn't today perfect?"]
 }>>
 
 <<if _n.traits.includes("Mute")>>
 	<<set _line = "They wave.">>
 <<else>>
 	<<set _validPers = []>>
-
 	<<if Array.isArray(_n.personality) && _n.personality.length>>
 		<<for _p range _n.personality>>
 			<<if _lines[_p]>>
@@ -34,20 +35,16 @@
 			<</if>>
 		<</for>>
 	<</if>>
-
 	<<if _validPers.length>>
 		<<set _chosenPers = setup.pick(_validPers)>>
 		<<set _pool = _lines[_chosenPers]>>
 	<<else>>
 		<<set _pool = _lines.Default>>
 	<</if>>
-
 	<<set _line = setup.pick(_pool)>>
 <</if>>
-
 <<set _key = _n.id || _n.name>>
 <<set _mem = $npcMemory[_key]>>
-
 <<if !_mem or !_mem.interacted>>
 	<<=either(
 		_n.name + " looks you over curiously.",

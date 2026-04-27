@@ -336,13 +336,11 @@
     >>
     <<set _pool = setup.personalities.slice()>>
     <<set $mc.personality to []>>
-
     <<for _i = 0; _i < 2 and _pool.length > 0; _i++>>
 	    <<set _pick = either(..._pool)>>
 	    <<run $mc.personality.push(_pick)>>
 	    <<run _pool.splice(_pool.indexOf(_pick), 1)>>
     <</for>>
-
 
     <<if $mc.species is "Anthro">>
         <<set $mc.skin.color to null>>
@@ -384,6 +382,10 @@
     <<if $mc.gender is "Female">>
     	<<set $mc.breastsize to either (setup.breastsize)>>
     <</if>>
+    <<set $mc.traits to []>>
+    <<RandomTraits $mc 2 true>>
+    <<EnsureMCTrait "Emissary">>
+    
 <</widget>>
 
 <<widget "CheckIfDone">>
@@ -477,6 +479,25 @@
 <</widget>>
 <<widget "PopupGreeting">>
     <<run Dialog.create("Greeting").wikiPassage("Greeting").open();>>
+<</widget>>
+
+<<widget "PopupBook">>
+    <<run Dialog.create().wikiPassage().open();>>
+<</widget>>
+
+<<widget "OpenBook">>
+    <<set _title = _args[0]>>
+    <<set _book = setup.books[_title]>>
+
+    <<if !_book>>
+        <span class="error">[Error] Book not found: <<= _title>></span>
+    <<else>>
+        <<run Dialog.setup(_book.title)>>
+        <<run Dialog.wiki(
+            '<div class="book-text"><p>' + _book.content.join('</p><p>') + '</p></div>'
+        )>>
+        <<run Dialog.open()>>
+    <</if>>
 <</widget>>
 
 <<widget "PreSet">>
@@ -779,3 +800,27 @@
 	<span class="tooltip-term" tabindex="0" @data-tooltip="_tip"><<print _label>></span>
 <</widget>>
 
+/*Makes sure the mc has the specific trait */
+<<widget "EnsureMCTrait">>
+	<<set _trait = _args[0]>>
+
+	<<if !Array.isArray($mc.traits)>>
+		<<set $mc.traits = []>>
+	<</if>>
+
+	<<if !$mc.traits.includes(_trait)>>
+		<<run $mc.traits.push(_trait)>>
+	<</if>>
+<</widget>>
+
+<<widget "RandomTraits">>
+	<<set _char = _args[0]>>
+	<<set _max = _args[1] || 2>>
+	<<set _exact = _args[2] || false>>
+
+	<<if !_char>>
+		<span class="error">[Error] RandomTraits needs a character object.</span>
+	<<else>>
+		<<run setup.traits.addRandomTraits(_char, _max, { exact: _exact })>>
+	<</if>>
+<</widget>>

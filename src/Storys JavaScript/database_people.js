@@ -45,7 +45,7 @@ setup.haircolor= [
 ];
 
 setup.hairstyle=[
-    "Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long Bob", "Pageboy", "Shag cut", "Shoulder Length Waves", "Afro","Cornrow", "Mullet", "Wolf Cut", "Mid-length Dreads", "Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Bald",
+    "Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long Bob", "Pageboy", "Shag cut", "Shoulder length Waves", "Afro","Cornrow", "Mullet", "Wolf Cut", "Mid length Dreads", "Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Bald",
 ]
 
 setup.skincolor= [
@@ -67,7 +67,6 @@ setup.furScalesColors=[
 setup.anthroPatterns=[
     "Solid", "Striped", "Spotted", "Patterned",
 ];
-
 
 setup.physique=[
     "Skinny", "Lean", "Wiry", "Ripped",
@@ -126,7 +125,29 @@ setup.bodyparts = {
 };
 
 setup.personalities= [
-      "Brave", "Playful", "Kind", "Logical", "Studious", "Nerdy", "Timid", "Stubborn", "Tough", "Naive", "Modest", "Chill", "Sassy", "Flamboyant", "Brash", "Energetic", "Selfish", "Confident", "Childish", "Bubbly", "Upbeat", "Blunt", "Provacative", "Lazy", "Terse"
+    "Brash",
+    "Brave", 
+    "Bubbly",
+    "Childish",
+    "Chill",
+    "Confident",
+    "Energetic",
+    "Flamboyant",  
+    "Kind",
+    "Lazy", 
+    "Logical",
+    "Modest",
+    "Naive",   
+    "Nerdy",
+    "Sassy",  
+    "Selfish", 
+    "Stubborn",
+    "Terse",
+    "Timid",
+    "Tough",     
+    "Playful", 
+    "Provacative",  
+    "Upbeat"
 ];
 
 setup.accessory= [

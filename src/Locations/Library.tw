@@ -1,6 +1,28 @@
 ::Library [nobr location]
 
 You enter a library. Read what you like but best keep it quiet.
-<<button "Lexicon">><<PopupLexicon>><</button>>
-<<button "Bestiary">><<PopupLexicon>><</button>>
+
+<div class="room-hotel">
+<<unset $spawnPools>>
+<<run setup.refreshFullPool()>>
+<<SpawnPoolOnce "fullPool" $fullPool 15>>
+<<SpawnRandomNPCs 15>>
+<<include "NPC-List">>
+</div>
+
+<ul>
+<<for _title range Object.keys(setup.books)>>
+    <li>
+        <<button _title>>
+            <<OpenBook _title>>
+        <</button>>
+    </li>
+<</for>>
+</ul>
 <br>
+
+<div id="npcsex-actions-bar">
+<<button "Elevator">>
+    <<goto "Elevator">>
+<</button>>
+</div>

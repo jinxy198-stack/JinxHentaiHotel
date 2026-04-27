@@ -2,7 +2,7 @@
 <<create-body>>
 
 <h1>Is this Correct?</h1>
-//Please review the character page below and confirm the options chosen are correct.// 
+Please review the info below and confirm the options chosen are correct. 
 <h2>Basic Info</h2>
 <table>
     <tr id="name">
@@ -127,14 +127,28 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
 <table>
     <tr id="perso">
         <th><u><strong>Personality:</strong></u></th>
-        <td id="mc-perso">$mc.personality</td>
+        <td id="mc-perso">
+            <<for _i = 0; _i < $mc.personality.length; _i++>>
+		        <<set _personality = $mc.personality[_i]>>
+		        <<set _ptip = setup.personalityTips[_personality]>>
+		        <<tooltip _personality _ptip>>
+		        <<if _i < $mc.personality.length - 1>>, <</if>>
+	        <</for>>
+        </td>
     </tr>
     <tr id="trait">
         <th><u><strong>Trait:</strong></u></th>
         <<if !$mc.traits>>
         <td> No traits found </td>
         <<else>>
-        <td id="mc-perso">$mc.traits</td>
+        <td id="mc-perso">
+            <<for _i = 0; _i < $mc.traits.length; _i++>>
+		        <<set _trait = $mc.traits[_i]>>
+		        <<set _traitTip = setup.traitTips[_trait] || "No description written yet.">>
+		        <<tooltip _trait _traitTip>>
+		        <<if _i < $mc.traits.length - 1>>, <</if>>
+	        <</for>>
+        </td>
         <</if>>
     </tr>
 </table>

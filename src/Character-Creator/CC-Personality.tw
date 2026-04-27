@@ -2,15 +2,28 @@
 
 What term do you use to describe your personality?
 
+* <label><<radiobutton "$mc.personality" "Brash">><<tooltip "Brash" `setup.personalityTips['Brash'] || "No description written yet."`>></label>
 * <label><<radiobutton "$mc.personality" "Brave">><<tooltip "Brave" `setup.personalityTips['Brave'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Timid">><<tooltip "Timid" `setup.personalityTips['Timid'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Chill">><<tooltip "Chill" `setup.personalityTips['Chill'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Playful">><<tooltip "Playful" `setup.personalityTips['Playful'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Bubbly">><<tooltip "Bubbly" `setup.personalityTips['Bubbly'] || "No description written yet."`>></label>
 * <label><<radiobutton "$mc.personality" "Childish">><<tooltip "Childish" `setup.personalityTips['Childish'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Adventerous">><<tooltip "Adventerous" `setup.personalityTips['Adventerous'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Kind">><<tooltip "Kind" `setup.personalityTips['Kind'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Chill">><<tooltip "Chill" `setup.personalityTips['Chill'] || "No description written yet."`>></label>
 * <label><<radiobutton "$mc.personality" "Confident">><<tooltip "Confident" `setup.personalityTips['Confident'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Energetic">><<tooltip "Energetic" `setup.personalityTips['Energetic'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Flamboyant">><<tooltip "Flamboyant" `setup.personalityTips['Flamboyant'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Kind">><<tooltip "Kind" `setup.personalityTips['Kind'] || "No description written yet."`>></label>
 * <label><<radiobutton "$mc.personality" "Lazy">><<tooltip "Lazy" `setup.personalityTips['Lazy'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Logical">><<tooltip "Logical" `setup.personalityTips['Logical'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Modest">><<tooltip "Modest" `setup.personalityTips['Modest'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Naive">><<tooltip "Naive" `setup.personalityTips['Naive'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Nerdy">><<tooltip "Nerdy" `setup.personalityTips['Nerdy'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Playful">><<tooltip "Playful" `setup.personalityTips['Playful'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Provocative">><<tooltip "Provocative" `setup.personalityTips['Provocative'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Sassy">><<tooltip "Sassy" `setup.personalityTips['Sassy'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Stubborn">><<tooltip "Stubborn" `setup.personalityTips['Stubborn'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Terse">><<tooltip "Terse" `setup.personalityTips['Terse'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Timid">><<tooltip "Timid" `setup.personalityTips['Timid'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Tough">><<tooltip "Tough" `setup.personalityTips['Tough'] || "No description written yet."`>></label>
+* <label><<radiobutton "$mc.personality" "Upbeat">><<tooltip "Upbeat" `setup.personalityTips['Upbeat'] || "No description written yet."`>></label>
 
 <<button [[Confirm|Index-CC]]>>
     <<set $pages.perso to true>>

@@ -32,7 +32,7 @@ Does your skin have any notable features?
 
 Pattern
 <<listbox "$mc.anthro.pattern">>
-  <<optionsfrom $anthroPatterns>>
+  <<optionsfrom setup.anthroPatterns>>
 <</listbox>>
 
 <</if>>
