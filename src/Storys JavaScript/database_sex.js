@@ -1850,8 +1850,8 @@ setup.sexacts = {
     {
         "positions": [ "Missionary:Bottom","Lap ride:Bottom", "Reverse Lap ride:Bottom", "Prone Bone:Bottom", "Mating Press:Bottom", "From Behind:Bottom", "Doggy:Bottom", "Bent Over:Bottom", "Cowgirl:Bottom", "Reverse Cowgirl:Bottom", "Standing From Behind:Bottom", "Spooning:Bottom", "Double Decker:Bottom", "Against Wall From Behind:Bottom", "Laid Across On Back:Bottom", "Laid Across On Stomach:Bottom"],
         "action type": ["continue"],
-        "Top parts": ["Asshole"],
-        "Bottom parts": ["Penis"],
+        "Top parts": ["Penis"],
+        "Bottom parts": ["Asshole"],
         "Top cum locations": ["in ass"],
         "Bottom cum locations": [],
         "masturbation": false,

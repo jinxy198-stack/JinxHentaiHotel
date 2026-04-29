@@ -17,6 +17,8 @@
             <<run _lines.push("Oh, sorry nevermind! I got ahead of myself!")>>    
         <<elseif _p is "Chill">>
             <<run _lines.push("Not interested. Don't hate you but I'm just not into it.")>>
+        <<elseif _p is "Confident">>
+            <<run _lines.push("Not interested.")>>    
         <<elseif _p is "Energetic">>
             <<run _lines.push("Mmmm, no thanks. Sorry.")>>
             <<run _lines.push("Love the enthusiasm but I'm gonna pass.")>>
@@ -34,8 +36,12 @@
             <<run _lines.push("I decline. The conditions are not ideal for engagement.")>>              
         <<elseif _p is "Playful">>
             <<run _lines.push("Nah, I don't feel like playing with you.")>>
+        <<elseif _p is "Provocative">>
+            <<run _lines.push("Nah, aint feeling like fucking you.")>>    
         <<elseif _p is "Sassy">>
             <<run _lines.push("No, don't look so shocked. I got other things to do anyway.")>>
+        <<elseif _p is "Stubborn">>
+            <<run _lines.push("N.O.")>>    
         <<elseif _p is "Terse">>
             <<run _lines.push("No.")>>        
         <<elseif _p is "Timid">>

@@ -1,7 +1,7 @@
 :: Your Room [nobr location] {"position":"400,725","size":"100,100"}
 <<set $gamelocation to "Your Room">>
-<<EmptyRoom>>
-
+/*Makes sure no stragglers appear in your room. */
+<<set $roomNPCs = []>>
 You are in your hotel room. It looks like the master suite of a luxury hotel, complete with a large shaped bed. Next to the bed is a phone for calling up people you know for a 'good time'.
 <br>
 To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic for you to enjoy. <br>
@@ -14,9 +14,10 @@ And in the corner was a desk with a computer for playing around with.
 	<<set _n = $ui.npc>>
 	<<YourRoomEvent>>
 	<br>
+	<<RefreshRoomNPCs>>
 <</if>>
 <br>
-<<include "NPC-List">>
+<<include "Partner-List">>
 <br>
 
 <<set _memorylink to {text: "Reflect on memories", link: "Bed-Reflect"}>>

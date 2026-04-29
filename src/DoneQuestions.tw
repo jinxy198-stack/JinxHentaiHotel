@@ -1,9 +1,18 @@
-:: DoneQuestions {"position":"100,700","size":"100,100"}
+:: DoneQuestions [nobr] {"position":"100,700","size":"100,100"}
 <span class= "Jinx">
-"Alright, well then if you don't got any more questions then we can begin. Go and have fun! 
+"Alright, well then if you don't got any more questions then we can begin.
+<br>
+Go and have fun! <br>
 Thankfully the creator of the game added more people to the game for you to fuck."
 </span>
-<span>With that Jinx vanishes, and finally you can see your surroundings.</span>
+<br>
+<span>With that Jinx vanishes, and finally you can see your surroundings. </span>
+<br>
+<<set $spawnPools = {}>>
+<<run setup.refreshFullPool()>>
+<<SpawnPoolOnce "fullPool" $fullPool 15>>
+<<PopulateHotelNPCs 50>>
+<<set $hotelPopulated = true>>
 [[Continue|Your Room]]
 
 

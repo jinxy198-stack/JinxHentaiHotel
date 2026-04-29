@@ -228,68 +228,157 @@
 <</widget>>
 
 
-<<widget "SpawnRandomNPCs">>
-	<<set _total = _args[0] || 20>>
-	<<set $roomNPCs = []>>
+<<widget "AddLastNPCToHotel">>
+	<<set $hotelNPCs = $hotelNPCs || []>>
+	<<set _npc = ($npcs && $npcs.length) ? $npcs[$npcs.length - 1] : null>>
+
+	<<if _npc>>
+		<<run (function () {
+			var exists = false;
+
+			for (var i = 0; i < $hotelNPCs.length; i++) {
+				if ($hotelNPCs[i] && _npc && $hotelNPCs[i].id === _npc.id) {
+					exists = true;
+					break;
+				}
+			}
+
+			if (!exists) {
+				$hotelNPCs.push(_npc);
+			}
+		})()>>
+	<</if>>
+<</widget>>
+
+
+<<widget "PopulateHotelNPCs">>
+	/* Creates the full hotel population only once unless forced. */
+
+	<<set _total = _args[0] || 50>>
+	<<set _force = _args[1] || false>>
+
 	<<set $npcs = $npcs || []>>
 	<<set $npcSeq = $npcSeq || 0>>
 
-	/* Spawn a limited number from each registered pool */
-	<<if $spawnPools>>
-		<<set _keys = Object.keys($spawnPools)>>
-		<<for _k = 0; _k < _keys.length; _k++>>
-			<<set _poolObj = $spawnPools[_keys[_k]]>>
+	<<if _force || !$hotelNPCs || !$hotelNPCs.length>>
+		<<set $hotelNPCs = []>>
 
-			/* Backwards compat: if someone stored an array directly */
-			<<if Array.isArray(_poolObj)>>
-				<<set _templates = _poolObj>>
-				<<set _limit = null>>
-			<<else>>
-				<<set _templates = _poolObj.templates>>
-				<<set _limit = _poolObj.limit>>
-			<</if>>
+		/* Spawn limited/special pools first. */
+		<<if $spawnPools>>
+			<<set _keys = Object.keys($spawnPools)>>
 
-			<<if Array.isArray(_templates) && _templates.length>>
-				<<set _count = (_limit === null) ? _templates.length : Math.min(_limit, _templates.length)>>
+			<<for _k = 0; _k < _keys.length; _k++>>
+				<<set _poolObj = $spawnPools[_keys[_k]]>>
 
-				/* build an index list [0..len-1], shuffle, take first _count */
-				<<set _idx = []>>
-				<<for _i = 0; _i < _templates.length; _i++>>
-					<<run _idx.push(_i)>>
-				<</for>>
-				<<run _idx.sort(() => Math.random() - 0.5)>>
+				/* Backwards compatibility: allow direct arrays. */
+				<<if Array.isArray(_poolObj)>>
+					<<set _templates = _poolObj>>
+					<<set _limit = null>>
+				<<else>>
+					<<set _templates = _poolObj.templates>>
+					<<set _limit = _poolObj.limit>>
+				<</if>>
 
-				<<for _j = 0; _j < _count; _j++>>
-					<<set _tpl = _templates[_idx[_j]]>>
-					<<MakeSNPC _tpl>>
-					<<run $roomNPCs.push($npcs[$npcs.length - 1])>>
-				<</for>>
-			<</if>>
-		<</for>>
+				<<if Array.isArray(_templates) && _templates.length>>
+					<<set _count = (_limit === null) ? _templates.length : Math.min(_limit, _templates.length)>>
+
+					/* Build shuffled index list. */
+					<<set _idx = []>>
+					<<for _i = 0; _i < _templates.length; _i++>>
+						<<run _idx.push(_i)>>
+					<</for>>
+
+					<<run _idx.sort(function () { return Math.random() - 0.5; })>>
+
+					<<for _j = 0; _j < _count; _j++>>
+						<<set _tpl = _templates[_idx[_j]]>>
+						<<MakeSNPC _tpl>>
+						<<AddLastNPCToHotel>>
+					<</for>>
+				<</if>>
+			<</for>>
+		<</if>>
+
+		/* Fill the rest of the hotel with random NPCs. */
+		<<set _need = _total - $hotelNPCs.length>>
+
+		<<if _need > 0>>
+			<<for _t = 0; _t < _need; _t++>>
+				<<MakeRandomNPC>>
+				<<AddLastNPCToHotel>>
+			<</for>>
+		<</if>>
+
+		/* De-dupe and shuffle the hotel population. */
+		<<run (function () {
+			var seen = {};
+			var clean = [];
+
+			for (var i = 0; i < $hotelNPCs.length; i++) {
+				var npc = $hotelNPCs[i];
+
+				if (!npc) {
+					continue;
+				}
+
+				var key = npc.id || npc.name || ("npc_" + i);
+
+				if (!seen[key]) {
+					seen[key] = true;
+					clean.push(npc);
+				}
+			}
+
+			clean.sort(function () {
+				return Math.random() - 0.5;
+			});
+
+			$hotelNPCs = clean;
+		})()>>
+	<</if>>
+<</widget>>
+
+
+<<widget "RefreshRoomNPCs">>
+	/* Selects visible NPCs for the current room from the hotel population. */
+	/*Or if it is a select group of NPCS with you. */
+	<<if $lastNpc>>
+		<<run $roomNPCs.push($lastNpc)>>
+	<<else>>
+
+	<<set _amount = _args[0] || 10>>
+	<<set $roomNPCs = []>>
+	<<set $hotelNPCs = $hotelNPCs || []>>
+
+	<<if !$hotelNPCs.length>>
+		/* Emergency fallback if this is called before the hotel is populated. */
+		<<PopulateHotelNPCs Math.max(50, _amount)>>
 	<</if>>
 
-	/* Fill remaining slots with random NPCs up to _total */
-	<<set _need = _total - $roomNPCs.length>>
-	<<if _need > 0>>
-		<<for _t = 0; _t < _need; _t++>>
-			<<MakeRandomNPC>>
-			<<run $roomNPCs.push($npcs[$npcs.length - 1])>>
-		<</for>>
+	<<set _pool = $hotelNPCs.slice()>>
+	<<run _pool.sort(function () { return Math.random() - 0.5; })>>
+
+	<<for _i = 0; _i < _amount && _i < _pool.length; _i++>>
+		<<run $roomNPCs.push(_pool[_i])>>
+	<</for>>
+	<</if>>
+<</widget>>
+
+
+<<widget "SpawnRandomNPCs">>
+	/* Backwards-compatible wrapper.
+	   Arg 1 = how many NPCs this room shows.
+	   Arg 2 = total hotel population size.
+	*/
+
+	<<set _roomTotal = _args[0] || 15>>
+	<<set _hotelTotal = _args[1] || Math.max(50, _roomTotal)>>
+
+	<<if !$hotelNPCs || !$hotelNPCs.length>>
+		<<PopulateHotelNPCs _hotelTotal>>
 	<</if>>
 
-	/* De-dupe by id */
-	<<run (function(){
-		const seen = new Set();
-		$roomNPCs = $roomNPCs.filter(n => {
-			if (!n || !n.id) return true;
-			if (seen.has(n.id)) return false;
-			seen.add(n.id);
-			return true;
-		});
-	})()>>
-
-	/* Shuffle final */
-	<<run $roomNPCs.sort(() => Math.random() - 0.5)>>
+	<<RefreshRoomNPCs _roomTotal>>
 <</widget>>
 
 
@@ -677,10 +766,4 @@
 			<<set _char.genitaltype = setup.pick(setup.penistype)>>
 		<</if>>
 	<</if>>
-<</widget>>
-
-/*Empty the npc list */
-<<widget "EmptyRoom">>
-	<<unset $spawnPools>>
-	<<run setup.refreshFullPool()>>
 <</widget>>

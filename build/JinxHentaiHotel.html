@@ -6639,8 +6639,8 @@ setup.sexacts = {
     {
         "positions": [ "Missionary:Bottom","Lap ride:Bottom", "Reverse Lap ride:Bottom", "Prone Bone:Bottom", "Mating Press:Bottom", "From Behind:Bottom", "Doggy:Bottom", "Bent Over:Bottom", "Cowgirl:Bottom", "Reverse Cowgirl:Bottom", "Standing From Behind:Bottom", "Spooning:Bottom", "Double Decker:Bottom", "Against Wall From Behind:Bottom", "Laid Across On Back:Bottom", "Laid Across On Stomach:Bottom"],
         "action type": ["continue"],
-        "Top parts": ["Asshole"],
-        "Bottom parts": ["Penis"],
+        "Top parts": ["Penis"],
+        "Bottom parts": ["Asshole"],
         "Top cum locations": ["in ass"],
         "Bottom cum locations": [],
         "masturbation": false,
@@ -8593,11 +8593,20 @@ Example of how to use.
 	&lt;&lt;include &quot;Debug-State&quot;&gt;&gt;
 
 
-*/</tw-passagedata><tw-passagedata pid="28" name="DoneQuestions" tags="" position="100,700" size="100,100">&lt;span class= &quot;Jinx&quot;&gt;
-&quot;Alright, well then if you don&#39;t got any more questions then we can begin. Go and have fun! 
+*/</tw-passagedata><tw-passagedata pid="28" name="DoneQuestions" tags="nobr" position="100,700" size="100,100">&lt;span class= &quot;Jinx&quot;&gt;
+&quot;Alright, well then if you don&#39;t got any more questions then we can begin.
+&lt;br&gt;
+Go and have fun! &lt;br&gt;
 Thankfully the creator of the game added more people to the game for you to fuck.&quot;
 &lt;/span&gt;
-&lt;span&gt;With that Jinx vanishes, and finally you can see your surroundings.&lt;/span&gt;
+&lt;br&gt;
+&lt;span&gt;With that Jinx vanishes, and finally you can see your surroundings. &lt;/span&gt;
+&lt;br&gt;
+&lt;&lt;set $spawnPools = {}&gt;&gt;
+&lt;&lt;run setup.refreshFullPool()&gt;&gt;
+&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
+&lt;&lt;PopulateHotelNPCs 50&gt;&gt;
+&lt;&lt;set $hotelPopulated = true&gt;&gt;
 [[Continue|Your Room]]</tw-passagedata><tw-passagedata pid="29" name="Bed-Reflect" tags="nobr" position="1100,350" size="100,100">&lt;&lt;set _mems = setup.get_all_npc_memories()&gt;&gt;
 
 You lie back on your bed and let your thoughts wander.
@@ -8767,11 +8776,7 @@ You enter a large cafe for eating.
 
 &lt;span id=&quot;foodMenuUI&quot;&gt;&lt;&lt;FoodMenuUI&gt;&gt;&lt;/span&gt;
 
-&lt;&lt;unset $spawnPools&gt;&gt;
-&lt;&lt;run setup.refreshFullPool()&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 15&gt;&gt;
-
+&lt;&lt;RefreshRoomNPCs 15&gt;&gt;
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
@@ -8826,11 +8831,7 @@ You are in the hotel hallway, doors to other rooms are on each side but you cann
 &lt;br&gt;
 &lt;span class=&quot;glitch&quot; data-text=&quot;There is also a door that seems to be locked tight, it&#39;s best you do not enter.&quot;&gt;There is also a door that seems to be locked tight, it&#39;s best you do not enter.&lt;/span&gt;
 At the end of the hall is an elevator.
-&lt;&lt;unset $spawnPools&gt;&gt;
-&lt;&lt;run setup.refreshFullPool()&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 5&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 15&gt;&gt;
-
+&lt;&lt;RefreshRoomNPCs 15&gt;&gt;
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
@@ -8883,8 +8884,7 @@ Welcome my acolyte, do you have question&#39;s for me?
 &lt;br&gt;
 
 &lt;div class=&quot;room-hotel&quot;&gt;
-&lt;&lt;unset $spawnPools&gt;&gt;
-&lt;&lt;run setup.refreshFullPool()&gt;&gt;
+    &lt;&lt;EmptyRoom&gt;&gt;
 &lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 3&gt;&gt;
 &lt;&lt;SpawnRandomNPCs 5&gt;&gt;
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
@@ -8901,8 +8901,7 @@ Welcome my acolyte, do you have question&#39;s for me?
 By the entrance you make out the offical greeting board that is meant for all new people.
 &lt;&lt;button &quot;Read Greeting&quot;&gt;&gt;&lt;&lt;PopupGreeting &quot;Greeting&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;br&gt;
 &lt;div class=&quot;room-hotel&quot;&gt;
-&lt;&lt;unset $spawnPools&gt;&gt;
-&lt;&lt;run setup.refreshFullPool()&gt;&gt;
+&lt;&lt;EmptyRoom&gt;&gt;
 &lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
 &lt;&lt;SpawnRandomNPCs 15&gt;&gt;
 
@@ -8926,10 +8925,7 @@ By the entrance you make out the offical greeting board that is meant for all ne
 &lt;span&gt; A nice place to rest, relax, and socialize. There are some people mingling around the place. &lt;/span&gt;
 &lt;br&gt;
 &lt;div class=&quot;room-hotel&quot;&gt;
-&lt;&lt;unset $spawnPools&gt;&gt;
-&lt;&lt;run setup.refreshFullPool()&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 15&gt;&gt;
+&lt;&lt;RefreshRoomNPCs 15&gt;&gt;
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 &lt;/div&gt;
 
@@ -9002,7 +8998,8 @@ Room NPCs: &lt;&lt;=$roomNPCs ? $roomNPCs.length : 0 &gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;br&gt;
-
+&lt;&lt;include &quot;Partner-List&quot;&gt;&gt;
+&lt;br&gt;
 &lt;div id=&quot;npcsex-actions-bar&quot;&gt;
 &lt;&lt;button &quot;Go back&quot;&gt;&gt;
     &lt;&lt;goto &quot;Your Room&quot;&gt;&gt;
@@ -9014,9 +9011,8 @@ Room NPCs: &lt;&lt;=$roomNPCs ? $roomNPCs.length : 0 &gt;&gt;
 	&lt;&lt;/button&gt;&gt;
 &lt;&lt;/if&gt;&gt;    
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="53" name="Your Room" tags="nobr location" position="400,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Room&quot;&gt;&gt;
-&lt;&lt;unset $spawnPools&gt;&gt;
-
-
+/*Makes sure no stragglers appear in your room. */
+&lt;&lt;set $roomNPCs = []&gt;&gt;
 You are in your hotel room. It looks like the master suite of a luxury hotel, complete with a large shaped bed. Next to the bed is a phone for calling up people you know for a &#39;good time&#39;.
 &lt;br&gt;
 To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic for you to enjoy. &lt;br&gt;
@@ -9029,9 +9025,10 @@ And in the corner was a desk with a computer for playing around with.
 	&lt;&lt;set _n = $ui.npc&gt;&gt;
 	&lt;&lt;YourRoomEvent&gt;&gt;
 	&lt;br&gt;
+	&lt;&lt;RefreshRoomNPCs&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
-&lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
+&lt;&lt;include &quot;Partner-List&quot;&gt;&gt;
 &lt;br&gt;
 
 &lt;&lt;set _memorylink to {text: &quot;Reflect on memories&quot;, link: &quot;Bed-Reflect&quot;}&gt;&gt;
@@ -9300,7 +9297,8 @@ And in the corner was a desk with a computer for playing around with.
     personality: [&quot;Tough&quot;, &quot;Brave&quot;, &quot;Stubborn&quot;,&quot;Confident&quot;, &quot;Brash&quot;,&quot;Provocative&quot;],
     virgin: false,
     sexpref: &quot;Dominant&quot;,
-    origin: &quot;Camp Buddy&quot;
+    origin: &quot;Camp Buddy&quot;,
+    traits: []
 }&gt;&gt;
 
 &lt;&lt;set $Natsumi_CB = {
@@ -9325,7 +9323,8 @@ And in the corner was a desk with a computer for playing around with.
     personality: [&quot;Naive&quot;, &quot;Kind&quot;, &quot;Confident&quot;],
     virgin: false,
     sexpref: &quot;Dominant&quot;,
-    origin: &quot;Camp Buddy&quot;
+    origin: &quot;Camp Buddy&quot;,
+    traits: []
 }&gt;&gt;
 
 &lt;&lt;set $Hunter_CB = {
@@ -9376,7 +9375,8 @@ And in the corner was a desk with a computer for playing around with.
     personality: [&quot;Kind&quot;, &quot;Upbeat&quot;, &quot;Modest&quot;],
     virgin: false,
     sexpref: &quot;Switch&quot;,
-    origin: &quot;Camp Buddy&quot;
+    origin: &quot;Camp Buddy&quot;,
+    traits: []
 }&gt;&gt;
 
 &lt;&lt;set $Hiro_CB = {
@@ -9401,7 +9401,8 @@ And in the corner was a desk with a computer for playing around with.
     personality: [&quot;Energetic&quot;, &quot;Playful&quot;],
     virgin: false,
     sexpref: &quot;Submissive&quot;,
-    origin: &quot;Camp Buddy&quot;
+    origin: &quot;Camp Buddy&quot;,
+    traits: []
 }&gt;&gt;
 
 &lt;&lt;set $Taiga_CB = {
@@ -9426,7 +9427,8 @@ And in the corner was a desk with a computer for playing around with.
     personality: [&quot;Brave&quot;, &quot;Tough&quot;, &quot;Stubborn&quot;],
     virgin: false,
     sexpref: &quot;Switch&quot;,
-    origin: &quot;Camp Buddy&quot;
+    origin: &quot;Camp Buddy&quot;,
+    traits: []
 }&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="MiscNPC" tags="init nobr" position="725,725" size="100,100">/*For random npc&#39;s not part of any fandom list */
 
 /*Alvin */
@@ -9730,7 +9732,8 @@ And in the corner was a desk with a computer for playing around with.
     assSize: &quot;Small&quot;,
     virgin: false,
     sexpref: &quot;Switch&quot;,
-    origin: &quot;Unknown&quot;
+    origin: &quot;Unknown&quot;,
+    traits: []
 }&gt;&gt;
 
 /*OOOey Goooey */
@@ -9827,7 +9830,8 @@ And in the corner was a desk with a computer for playing around with.
     assSize: &quot;Small&quot;,
     virgin: false,
     sexpref: &quot;Switch&quot;,
-    origin: &quot;Unknown&quot;
+    origin: &quot;Unknown&quot;,
+    traits: []
 }&gt;&gt;
 
 /*Carla Lovelie  */
@@ -9854,7 +9858,8 @@ And in the corner was a desk with a computer for playing around with.
     assSize: &quot;Small&quot;,
     virgin: false,
     sexpref: &quot;Switch&quot;,
-    origin: &quot;Unknown&quot;
+    origin: &quot;Unknown&quot;,
+    traits: []
 }&gt;&gt;
 
 /*Turbo Lovelie  */
@@ -14113,42 +14118,44 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
     &lt;&lt;set _lines = []&gt;&gt;
 
     &lt;&lt;for _p range _personalities&gt;&gt;
-        &lt;&lt;if _p is &quot;Chill&quot;&gt;&gt;
-            &lt;&lt;run _lines.push(&quot;Sure. I&#39;m down for it.&quot;)&gt;&gt;
+        &lt;&lt;if _p is &quot;Brash&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;Fine then, you&#39;re lucky I find you attractive.&quot;)&gt;&gt;
+        &lt;&lt;elseif _p is &quot;Brave&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;Yeah! Let&#39;s do this!&quot;)&gt;&gt;    
         &lt;&lt;elseif _p is &quot;Bubbly&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Yes! That sounds exciting I&#39;m totally in the mood for you.&quot;)&gt;&gt;
-        &lt;&lt;elseif _p is &quot;Timid&quot;&gt;&gt;
-            &lt;&lt;run _lines.push(&quot;I… yes. Only if you stay close to me the whole time.&quot;)&gt;&gt;
-        &lt;&lt;elseif _p is &quot;Tough&quot;&gt;&gt;
-            &lt;&lt;run _lines.push(&quot;Heh. You&#39;re bold. Fine I&#39;ll bite. Just try to keep up.&quot;)&gt;&gt;
-        &lt;&lt;elseif _p is &quot;Brave&quot;&gt;&gt;
-            &lt;&lt;run _lines.push(&quot;Yeah! Let&#39;s do this!&quot;)&gt;&gt;
+        &lt;&lt;elseif _p is &quot;Childish&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;Yay! This&#39;ll be fun!&quot;)&gt;&gt;        
+        &lt;&lt;elseif _p is &quot;Chill&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;Sure. I&#39;m down for it.&quot;)&gt;&gt;
+        &lt;&lt;elseif _p is &quot;Confident&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;Sure.&quot;)&gt;&gt;    
+        &lt;&lt;elseif _p is &quot;Energetic&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;Alright! Let&#39;s do this!&quot;)&gt;&gt;    
         &lt;&lt;elseif _p is &quot;Kind&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Yes… I want to do it with you.&quot;)&gt;&gt;
-        &lt;&lt;elseif _p is &quot;Active&quot;&gt;&gt;
-            &lt;&lt;run _lines.push(&quot;Alright! Let&#39;s do this!&quot;)&gt;&gt;
         &lt;&lt;elseif _p is &quot;Lazy&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Sure, as long as it&#39;s not so tiring.&quot;)&gt;&gt;
         &lt;&lt;elseif _p is &quot;Logical&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;It would make sense if we did, alright.&quot;)&gt;&gt;
-        &lt;&lt;elseif _p is &quot;Nerdy&quot;&gt;&gt;
-            &lt;&lt;run _lines.push(&quot;Sure.&quot;)&gt;&gt;
         &lt;&lt;elseif _p is &quot;Sassy&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Yes, obviously. Took you long enough to say it.&quot;)&gt;&gt;
-        &lt;&lt;elseif _p is &quot;Brash&quot;&gt;&gt;
-            &lt;&lt;run _lines.push(&quot;Fine then, you&#39;re lucky I find you attractive.&quot;)&gt;&gt;
-        &lt;&lt;elseif _p is &quot;Energetic&quot;&gt;&gt;
-            &lt;&lt;run _lines.push(&quot;Alright! Let&#39;s do this!&quot;)&gt;&gt;
         &lt;&lt;elseif _p is &quot;Playful&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Sure, this will be fun!&quot;)&gt;&gt;
-        &lt;&lt;elseif _p is &quot;Childish&quot;&gt;&gt;
-            &lt;&lt;run _lines.push(&quot;Yay! This&#39;ll be fun!&quot;)&gt;&gt;
         &lt;&lt;elseif _p is &quot;Modest&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Alright, if you&#39;re sure.&quot;)&gt;&gt;
         &lt;&lt;elseif _p is &quot;Naive&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Uh sure, sounds fun.&quot;)&gt;&gt;
+        &lt;&lt;elseif _p is &quot;Nerdy&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;Sure.&quot;)&gt;&gt;
+        &lt;&lt;elseif _p is &quot;Provocative&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;Let&#39;s fuck!&quot;)&gt;&gt;    
         &lt;&lt;elseif _p is &quot;Stubborn&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Fine, I&#39;m in the mood anyway.&quot;)&gt;&gt;
+        &lt;&lt;elseif _p is &quot;Timid&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;I… yes. Only if you stay close to me the whole time.&quot;)&gt;&gt;
+        &lt;&lt;elseif _p is &quot;Tough&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;Heh. You&#39;re bold. Fine I&#39;ll bite. Just try to keep up.&quot;)&gt;&gt;    
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/for&gt;&gt;
 
@@ -14386,7 +14393,54 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 &lt;&lt;/button&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
-&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="174" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
+&lt;&lt;link &quot;Close&quot;&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="174" name="Partner-List" tags="nobr" position="475,2225" size="100,100">&lt;span id=&quot;list&quot;&gt;
+	&lt;&lt;if !$roomNPCs || !$roomNPCs.length&gt;&gt;
+		&lt;em&gt;No one is here except you.&lt;/em&gt;
+	&lt;&lt;else&gt;&gt;	
+		&lt;h3&gt;LIST OF NPC&#39;S IN THE ROOM.&lt;/h3&gt;
+		&lt;&lt;for _i = 0; _i &lt; $roomNPCs.length; _i++&gt;&gt;
+			&lt;&lt;set _n = $roomNPCs[_i]&gt;&gt;
+			&lt;&lt;PronounsSet&gt;&gt;
+			&lt;div class=&quot;npc-card&quot;&gt;
+				&lt;span class= &quot;npc-name&quot;&gt; &lt;b&gt;[&lt;&lt;print _i + 1&gt;&gt;] &lt;/b&gt; &lt;/span&gt;
+				_n.name&lt;&lt;if _n.nickname&gt;&gt; (_n.nickname)&lt;&lt;/if&gt;&gt;&lt;&lt;if _n.surname&gt;&gt; _n.surname&lt;&lt;/if&gt;&gt;
+				— _n.species
+				&lt;&lt;if _n.species is &quot;Anthro&quot;&gt;&gt;
+					/ _n.anthro.group / _n.anthro.subtype
+				&lt;&lt;/if&gt;&gt;
+				*** _n.gender / _n.trans
+				&lt;br&gt;
+				&lt;i&gt;Age:&lt;/i&gt; _n.age&lt;br&gt;
+				&lt;i&gt;Personality:&lt;/i&gt; &lt;&lt;= Array.isArray(_n.personality) ? _n.personality.join(&quot;, &quot;) : _n.personality &gt;&gt;
+				*** &lt;i&gt;Sex Preference:&lt;/i&gt; _n.sexpref&lt;br&gt;
+				&lt;i&gt;Origin:&lt;/i&gt; _n.origin
+				&lt;br&gt;
+				&lt;div class=&quot;npc-actions&quot;&gt;
+					&lt;&lt;capture _n&gt;&gt;
+						&lt;&lt;button &quot;Inspect&quot;&gt;&gt;
+							&lt;&lt;WithNPC _n&gt;&gt;
+							&lt;&lt;run Dialog
+								.create(&quot;NPC: &quot; + $ui.npc.name)
+								.wikiPassage(&quot;NPC-Inspect&quot;)
+								.open()
+							&gt;&gt;
+						&lt;&lt;/button&gt;&gt;
+						&lt;br&gt;
+						&lt;&lt;button &quot;Talk&quot;&gt;&gt;
+							&lt;&lt;WithNPC _n&gt;&gt;
+							&lt;&lt;run Dialog
+								.create(&quot;Talk to &quot; + $ui.npc.name)
+								.wikiPassage(&quot;NPC-Talk&quot;)
+								.open()
+							&gt;&gt;
+						&lt;&lt;/button&gt;&gt;
+					&lt;&lt;/capture&gt;&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;hr&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;/span&gt;</tw-passagedata><tw-passagedata pid="175" name="Reject-Dialogue" tags="Dialogue nobr" position="1075,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
     They shake their head.
@@ -14404,6 +14458,8 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
             &lt;&lt;run _lines.push(&quot;Oh, sorry nevermind! I got ahead of myself!&quot;)&gt;&gt;    
         &lt;&lt;elseif _p is &quot;Chill&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Not interested. Don&#39;t hate you but I&#39;m just not into it.&quot;)&gt;&gt;
+        &lt;&lt;elseif _p is &quot;Confident&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;Not interested.&quot;)&gt;&gt;    
         &lt;&lt;elseif _p is &quot;Energetic&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Mmmm, no thanks. Sorry.&quot;)&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Love the enthusiasm but I&#39;m gonna pass.&quot;)&gt;&gt;
@@ -14421,8 +14477,12 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
             &lt;&lt;run _lines.push(&quot;I decline. The conditions are not ideal for engagement.&quot;)&gt;&gt;              
         &lt;&lt;elseif _p is &quot;Playful&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;Nah, I don&#39;t feel like playing with you.&quot;)&gt;&gt;
+        &lt;&lt;elseif _p is &quot;Provocative&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;Nah, aint feeling like fucking you.&quot;)&gt;&gt;    
         &lt;&lt;elseif _p is &quot;Sassy&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;No, don&#39;t look so shocked. I got other things to do anyway.&quot;)&gt;&gt;
+        &lt;&lt;elseif _p is &quot;Stubborn&quot;&gt;&gt;
+            &lt;&lt;run _lines.push(&quot;N.O.&quot;)&gt;&gt;    
         &lt;&lt;elseif _p is &quot;Terse&quot;&gt;&gt;
             &lt;&lt;run _lines.push(&quot;No.&quot;)&gt;&gt;        
         &lt;&lt;elseif _p is &quot;Timid&quot;&gt;&gt;
@@ -14439,7 +14499,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
     &lt;&lt;else&gt;&gt;
         &quot;No.&quot;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="175" name="Sex-Encounter" tags="nobr" position="600,2225" size="100,100">&lt;&lt;if !$ui or typeof $ui !== &quot;object&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="176" name="Sex-Encounter" tags="nobr" position="725,2225" size="100,100">&lt;&lt;if !$ui or typeof $ui !== &quot;object&quot;&gt;&gt;
 	&lt;&lt;set $ui = {}&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -14541,7 +14601,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 
 	&lt;div id=&quot;log&quot;&gt;&lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;&lt;/div&gt;
 	&lt;hr&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="176" name="UI-Attracted-check" tags="nobr" position="900,500" size="100,100">&lt;&lt;if $bootyCallNpc&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="177" name="UI-Attracted-check" tags="nobr" position="900,500" size="100,100">&lt;&lt;if $bootyCallNpc&gt;&gt;
 	&lt;&lt;set _n = $bootyCallNpc&gt;&gt;
 	&lt;&lt;set $ui.npc = _n&gt;&gt;
 &lt;&lt;elseif $ui &amp;&amp; $ui.npc&gt;&gt;
@@ -14647,7 +14707,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 &lt;&lt;else&gt;&gt;
 &lt;br&gt;
 &lt;&lt;include &quot;Reject-Dialogue&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="177" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="178" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
 	&lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
@@ -14792,7 +14852,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
             &quot;Ok, you top.&quot;
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="178" name="Adjective-Widget" tags="widget nobr" position="975,2225" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="179" name="Adjective-Widget" tags="widget nobr" position="1100,2225" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
 &quot;growls&quot;, &quot;whines&quot;,&quot;yips&quot;,&quot;bark&quot;,&quot;roar&quot;,&quot;chitters&quot;,&quot;squeaks&quot;,&quot;chirps&quot;,&quot;screech&quot;,&quot;whinnies&quot;
 &lt;&lt;/widget&gt;&gt;
 
@@ -14810,7 +14870,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 /* &lt;&lt;set $NPCList[_n].penisdesc to &quot;tiny penis&quot;&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;thick cock&quot;,&quot;hefty cock&quot;,&quot;big cock&quot;,&quot;large cock&quot;,&quot;veiny cock&quot;,&quot;meaty cock&quot;)&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;massive cock&quot;,&quot;huge cock&quot;,&quot;humongous cock&quot;,&quot;immense cock&quot;,&quot;gigantic cock&quot;,&quot;enormous cock&quot;)&gt;&gt;
-*/</tw-passagedata><tw-passagedata pid="179" name="Event Widgets" tags="widget nobr" position="1100,2225" size="100,100">&lt;&lt;widget &quot;YourRoomEvent&quot;&gt;&gt;
+*/</tw-passagedata><tw-passagedata pid="180" name="Event Widgets" tags="widget nobr" position="1225,2225" size="100,100">&lt;&lt;widget &quot;YourRoomEvent&quot;&gt;&gt;
     &lt;&lt;if !_n&gt;&gt;
 		[Error] No NPC is here.
 		&lt;&lt;return&gt;&gt;
@@ -14881,7 +14941,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 			&lt;&lt;replace &quot;#foodMenuUI&quot;&gt;&gt;&lt;&lt;FoodMenuUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;/link&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="NPC-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="NPC-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
 /* Creates a single Story NPC from a provided template and registers it globally */
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No template provided to MakeSNPC.
@@ -15108,68 +15168,157 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 &lt;&lt;/widget&gt;&gt;
 
 
-&lt;&lt;widget &quot;SpawnRandomNPCs&quot;&gt;&gt;
-	&lt;&lt;set _total = _args[0] || 20&gt;&gt;
-	&lt;&lt;set $roomNPCs = []&gt;&gt;
+&lt;&lt;widget &quot;AddLastNPCToHotel&quot;&gt;&gt;
+	&lt;&lt;set $hotelNPCs = $hotelNPCs || []&gt;&gt;
+	&lt;&lt;set _npc = ($npcs &amp;&amp; $npcs.length) ? $npcs[$npcs.length - 1] : null&gt;&gt;
+
+	&lt;&lt;if _npc&gt;&gt;
+		&lt;&lt;run (function () {
+			var exists = false;
+
+			for (var i = 0; i &lt; $hotelNPCs.length; i++) {
+				if ($hotelNPCs[i] &amp;&amp; _npc &amp;&amp; $hotelNPCs[i].id === _npc.id) {
+					exists = true;
+					break;
+				}
+			}
+
+			if (!exists) {
+				$hotelNPCs.push(_npc);
+			}
+		})()&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+
+&lt;&lt;widget &quot;PopulateHotelNPCs&quot;&gt;&gt;
+	/* Creates the full hotel population only once unless forced. */
+
+	&lt;&lt;set _total = _args[0] || 50&gt;&gt;
+	&lt;&lt;set _force = _args[1] || false&gt;&gt;
+
 	&lt;&lt;set $npcs = $npcs || []&gt;&gt;
 	&lt;&lt;set $npcSeq = $npcSeq || 0&gt;&gt;
 
-	/* Spawn a limited number from each registered pool */
-	&lt;&lt;if $spawnPools&gt;&gt;
-		&lt;&lt;set _keys = Object.keys($spawnPools)&gt;&gt;
-		&lt;&lt;for _k = 0; _k &lt; _keys.length; _k++&gt;&gt;
-			&lt;&lt;set _poolObj = $spawnPools[_keys[_k]]&gt;&gt;
+	&lt;&lt;if _force || !$hotelNPCs || !$hotelNPCs.length&gt;&gt;
+		&lt;&lt;set $hotelNPCs = []&gt;&gt;
 
-			/* Backwards compat: if someone stored an array directly */
-			&lt;&lt;if Array.isArray(_poolObj)&gt;&gt;
-				&lt;&lt;set _templates = _poolObj&gt;&gt;
-				&lt;&lt;set _limit = null&gt;&gt;
-			&lt;&lt;else&gt;&gt;
-				&lt;&lt;set _templates = _poolObj.templates&gt;&gt;
-				&lt;&lt;set _limit = _poolObj.limit&gt;&gt;
-			&lt;&lt;/if&gt;&gt;
+		/* Spawn limited/special pools first. */
+		&lt;&lt;if $spawnPools&gt;&gt;
+			&lt;&lt;set _keys = Object.keys($spawnPools)&gt;&gt;
 
-			&lt;&lt;if Array.isArray(_templates) &amp;&amp; _templates.length&gt;&gt;
-				&lt;&lt;set _count = (_limit === null) ? _templates.length : Math.min(_limit, _templates.length)&gt;&gt;
+			&lt;&lt;for _k = 0; _k &lt; _keys.length; _k++&gt;&gt;
+				&lt;&lt;set _poolObj = $spawnPools[_keys[_k]]&gt;&gt;
 
-				/* build an index list [0..len-1], shuffle, take first _count */
-				&lt;&lt;set _idx = []&gt;&gt;
-				&lt;&lt;for _i = 0; _i &lt; _templates.length; _i++&gt;&gt;
-					&lt;&lt;run _idx.push(_i)&gt;&gt;
-				&lt;&lt;/for&gt;&gt;
-				&lt;&lt;run _idx.sort(() =&gt; Math.random() - 0.5)&gt;&gt;
+				/* Backwards compatibility: allow direct arrays. */
+				&lt;&lt;if Array.isArray(_poolObj)&gt;&gt;
+					&lt;&lt;set _templates = _poolObj&gt;&gt;
+					&lt;&lt;set _limit = null&gt;&gt;
+				&lt;&lt;else&gt;&gt;
+					&lt;&lt;set _templates = _poolObj.templates&gt;&gt;
+					&lt;&lt;set _limit = _poolObj.limit&gt;&gt;
+				&lt;&lt;/if&gt;&gt;
 
-				&lt;&lt;for _j = 0; _j &lt; _count; _j++&gt;&gt;
-					&lt;&lt;set _tpl = _templates[_idx[_j]]&gt;&gt;
-					&lt;&lt;MakeSNPC _tpl&gt;&gt;
-					&lt;&lt;run $roomNPCs.push($npcs[$npcs.length - 1])&gt;&gt;
-				&lt;&lt;/for&gt;&gt;
-			&lt;&lt;/if&gt;&gt;
-		&lt;&lt;/for&gt;&gt;
+				&lt;&lt;if Array.isArray(_templates) &amp;&amp; _templates.length&gt;&gt;
+					&lt;&lt;set _count = (_limit === null) ? _templates.length : Math.min(_limit, _templates.length)&gt;&gt;
+
+					/* Build shuffled index list. */
+					&lt;&lt;set _idx = []&gt;&gt;
+					&lt;&lt;for _i = 0; _i &lt; _templates.length; _i++&gt;&gt;
+						&lt;&lt;run _idx.push(_i)&gt;&gt;
+					&lt;&lt;/for&gt;&gt;
+
+					&lt;&lt;run _idx.sort(function () { return Math.random() - 0.5; })&gt;&gt;
+
+					&lt;&lt;for _j = 0; _j &lt; _count; _j++&gt;&gt;
+						&lt;&lt;set _tpl = _templates[_idx[_j]]&gt;&gt;
+						&lt;&lt;MakeSNPC _tpl&gt;&gt;
+						&lt;&lt;AddLastNPCToHotel&gt;&gt;
+					&lt;&lt;/for&gt;&gt;
+				&lt;&lt;/if&gt;&gt;
+			&lt;&lt;/for&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+
+		/* Fill the rest of the hotel with random NPCs. */
+		&lt;&lt;set _need = _total - $hotelNPCs.length&gt;&gt;
+
+		&lt;&lt;if _need &gt; 0&gt;&gt;
+			&lt;&lt;for _t = 0; _t &lt; _need; _t++&gt;&gt;
+				&lt;&lt;MakeRandomNPC&gt;&gt;
+				&lt;&lt;AddLastNPCToHotel&gt;&gt;
+			&lt;&lt;/for&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+
+		/* De-dupe and shuffle the hotel population. */
+		&lt;&lt;run (function () {
+			var seen = {};
+			var clean = [];
+
+			for (var i = 0; i &lt; $hotelNPCs.length; i++) {
+				var npc = $hotelNPCs[i];
+
+				if (!npc) {
+					continue;
+				}
+
+				var key = npc.id || npc.name || (&quot;npc_&quot; + i);
+
+				if (!seen[key]) {
+					seen[key] = true;
+					clean.push(npc);
+				}
+			}
+
+			clean.sort(function () {
+				return Math.random() - 0.5;
+			});
+
+			$hotelNPCs = clean;
+		})()&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+
+&lt;&lt;widget &quot;RefreshRoomNPCs&quot;&gt;&gt;
+	/* Selects visible NPCs for the current room from the hotel population. */
+	/*Or if it is a select group of NPCS with you. */
+	&lt;&lt;if $lastNpc&gt;&gt;
+		&lt;&lt;run $roomNPCs.push($lastNpc)&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+
+	&lt;&lt;set _amount = _args[0] || 10&gt;&gt;
+	&lt;&lt;set $roomNPCs = []&gt;&gt;
+	&lt;&lt;set $hotelNPCs = $hotelNPCs || []&gt;&gt;
+
+	&lt;&lt;if !$hotelNPCs.length&gt;&gt;
+		/* Emergency fallback if this is called before the hotel is populated. */
+		&lt;&lt;PopulateHotelNPCs Math.max(50, _amount)&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
-	/* Fill remaining slots with random NPCs up to _total */
-	&lt;&lt;set _need = _total - $roomNPCs.length&gt;&gt;
-	&lt;&lt;if _need &gt; 0&gt;&gt;
-		&lt;&lt;for _t = 0; _t &lt; _need; _t++&gt;&gt;
-			&lt;&lt;MakeRandomNPC&gt;&gt;
-			&lt;&lt;run $roomNPCs.push($npcs[$npcs.length - 1])&gt;&gt;
-		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;set _pool = $hotelNPCs.slice()&gt;&gt;
+	&lt;&lt;run _pool.sort(function () { return Math.random() - 0.5; })&gt;&gt;
+
+	&lt;&lt;for _i = 0; _i &lt; _amount &amp;&amp; _i &lt; _pool.length; _i++&gt;&gt;
+		&lt;&lt;run $roomNPCs.push(_pool[_i])&gt;&gt;
+	&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+
+&lt;&lt;widget &quot;SpawnRandomNPCs&quot;&gt;&gt;
+	/* Backwards-compatible wrapper.
+	   Arg 1 = how many NPCs this room shows.
+	   Arg 2 = total hotel population size.
+	*/
+
+	&lt;&lt;set _roomTotal = _args[0] || 15&gt;&gt;
+	&lt;&lt;set _hotelTotal = _args[1] || Math.max(50, _roomTotal)&gt;&gt;
+
+	&lt;&lt;if !$hotelNPCs || !$hotelNPCs.length&gt;&gt;
+		&lt;&lt;PopulateHotelNPCs _hotelTotal&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
-	/* De-dupe by id */
-	&lt;&lt;run (function(){
-		const seen = new Set();
-		$roomNPCs = $roomNPCs.filter(n =&gt; {
-			if (!n || !n.id) return true;
-			if (seen.has(n.id)) return false;
-			seen.add(n.id);
-			return true;
-		});
-	})()&gt;&gt;
-
-	/* Shuffle final */
-	&lt;&lt;run $roomNPCs.sort(() =&gt; Math.random() - 0.5)&gt;&gt;
+	&lt;&lt;RefreshRoomNPCs _roomTotal&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 
@@ -15557,7 +15706,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 			&lt;&lt;set _char.genitaltype = setup.pick(setup.penistype)&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="182" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
 &lt;&lt;widget &quot;AnalQuote&quot;&gt;&gt;
 	/* guard */
 	&lt;&lt;if !setup.analQuotes&gt;&gt;
@@ -16510,7 +16659,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 	&lt;&lt;else&gt;&gt;
 		[Error] VaginalQuote: empty dialogue pool.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="182" name="UI-Widgets" tags="widget nobr" position="225,2350" size="100,100">/* gets the room based on your location and issues where you start at */
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="UI-Widgets" tags="widget nobr" position="350,2350" size="100,100">/* gets the room based on your location and issues where you start at */
 &lt;&lt;widget &quot;GetRoom&quot;&gt;&gt;
     &lt;&lt;if $gamelocation ==&quot;Your Room&quot;&gt;&gt;
         &lt;&lt;set $room = {
@@ -16936,7 +17085,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 			&lt;&lt;/for&gt;&gt;
 		&lt;/ul&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="Widgets" tags="widget nobr" position="350,2350" size="100,100">&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="Widgets" tags="widget nobr" position="475,2350" size="100,100">&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;
 	&lt;&lt;set _pool = setup.noise[_n.species] || setup.noise.Default || [&quot;moan&quot;]&gt;&gt;
 	&lt;&lt;set _noise = setup.pick(_pool)&gt;&gt;
 	&lt;&lt;set _mode = _args[0] || &quot;base&quot;&gt;&gt;
@@ -17776,7 +17925,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;run setup.traits.addRandomTraits(_char, _max, { exact: _exact })&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="heighttest" tags="" position="475,2350" size="100,100">//example test:
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="heighttest" tags="" position="600,2350" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 
 &lt;&lt;if _h is 1&gt;&gt;
