@@ -535,7 +535,7 @@
         $mc.skin.features to [],
         $mc.bodyheight to "Average",
         $mc.physique to "Thin",
-        $mc.personality to "Kind",
+        $mc.personality to ["Kind"],
         $mc.genitals to "Penis",
         $mc.penislength to "Average",
         $mc.genitaltype to "Cut",
@@ -543,9 +543,12 @@
         $mc.sexpref to "Versatile",
         $mc.virgin to true
     >>
+
+
     <<AgeGroupSet>>
     <<SetTrans>>
     <<create-body $mc>>
+    <<EnsureMCTrait "Emissary">>
 <</widget>>
 
 <<widget "LittleBoy">>

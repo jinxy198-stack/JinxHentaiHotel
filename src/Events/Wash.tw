@@ -1,0 +1,13 @@
+::Wash [nobr]
+<<set _loc to $gamelocation>>
+<<set _n = $ui.npc>>
+<<if $lastNpc>>
+    <p>_n.name joins you in the shower and you two wash yourselves.</p> 
+    <p>You both could hardly keep your hands off each other but eventually you are both squeaky clean.</p>
+
+<<else>>
+    <p>You take a nice hot shower.</p>
+    <p>Soon you're clean.</p>
+<</if>>
+
+<<link "Finish Shower" _loc>><</link>>

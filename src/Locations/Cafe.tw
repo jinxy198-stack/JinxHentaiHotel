@@ -6,8 +6,7 @@ You enter a large cafe for eating.
 
 <span id="foodMenuUI"><<FoodMenuUI>></span>
 
-<<unset $spawnPools>>
-<<run setup.refreshFullPool()>>
+<<EmptyRoom>>
 <<SpawnPoolOnce "fullPool" $fullPool 15>>
 <<SpawnRandomNPCs 15>>
 

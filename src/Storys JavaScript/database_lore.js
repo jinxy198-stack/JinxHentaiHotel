@@ -16,8 +16,8 @@ setup.books = {
             "Being the emissary comes with special gifts. One being the ability to inspect other people from just a glance, learning about their physical and mental traits. Another ability is eternal youth, you will remain the age you are indefinetly."
         ]
     },
-    "Bestiary":{
-        title: "Bestiary",
+    "Anthro Bestiary":{
+        title: "Anthro Bestiary",
         content:[
             "A list of species that can exist in the Hotel and necessary information about them. Subject to change.",
             "Humans are the more widespread species to visit the hotel. They are the species that most resembles Jinx's form. Versatile and diverse, they come with many diffent races and cultures.",

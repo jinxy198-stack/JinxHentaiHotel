@@ -679,4 +679,8 @@
 	<</if>>
 <</widget>>
 
-
+/*Empty the npc list */
+<<widget "EmptyRoom">>
+	<<unset $spawnPools>>
+	<<run setup.refreshFullPool()>>
+<</widget>>

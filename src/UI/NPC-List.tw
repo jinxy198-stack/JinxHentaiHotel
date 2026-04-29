@@ -1,55 +1,51 @@
 :: NPC-List [nobr]
 
 <span id="list">
-<<if !$roomNPCs || !$roomNPCs.length>>
-	<em>No one is here.</em>
-	<<return>>
-<</if>>
-
-<<for _i = 0; _i < $roomNPCs.length; _i++>>
-	<<set _n = $roomNPCs[_i]>>
-	<<PronounsSet>>
-
-	<div class="npc-card">
-		<span class= "npc-name"> <b>[<<print _i + 1>>] </b> </span>
-		_n.name<<if _n.nickname>> (_n.nickname)<</if>><<if _n.surname>> _n.surname<</if>>
-		— _n.species
-		<<if _n.species is "Anthro">>
-			/ _n.anthro.group / _n.anthro.subtype
-		<</if>>
-		*** _n.gender / _n.trans
-		<br>
-
-		<i>Age:</i> _n.age<br>
-		
-		<i>Personality:</i> <<= Array.isArray(_n.personality) ? _n.personality.join(", ") : _n.personality >>
-		*** <i>Sex Preference:</i> _n.sexpref<br>
-		<i>Origin:</i> _n.origin
-		<br>
-
-		<div class="npc-actions">
-		<<capture _n>>
-			<<button "Inspect">>
-				<<WithNPC _n>>
-				<<run Dialog
-					.create("NPC: " + $ui.npc.name)
-					.wikiPassage("NPC-Inspect")
-					.open()
-				>>
-			<</button>>
-			<br>
-
-			<<button "Talk">>
-				<<WithNPC _n>>
-				<<run Dialog
-					.create("Talk to " + $ui.npc.name)
-					.wikiPassage("NPC-Talk")
-					.open()
-				>>
-			<</button>>
-		<</capture>>
-		</div>
-	</div>
-	<hr>
-<</for>>
+	<<if !$roomNPCs || !$roomNPCs.length>>
+		<em>No one is here except you.</em>
+	<<else>>	
+		<h3>LIST OF NPC'S IN THE ROOM.</h3>
+		<<for _i = 0; _i < $roomNPCs.length; _i++>>
+			<<set _n = $roomNPCs[_i]>>
+			<<PronounsSet>>
+			<div class="npc-card">
+				<span class= "npc-name"> <b>[<<print _i + 1>>] </b> </span>
+				_n.name<<if _n.nickname>> (_n.nickname)<</if>><<if _n.surname>> _n.surname<</if>>
+				— _n.species
+				<<if _n.species is "Anthro">>
+					/ _n.anthro.group / _n.anthro.subtype
+				<</if>>
+				*** _n.gender / _n.trans
+				<br>
+				<i>Age:</i> _n.age<br>
+				<i>Personality:</i> <<= Array.isArray(_n.personality) ? _n.personality.join(", ") : _n.personality >>
+				*** <i>Sex Preference:</i> _n.sexpref<br>
+				<i>Origin:</i> _n.origin
+				<br>
+				<div class="npc-actions">
+					<<capture _n>>
+						<<button "Inspect">>
+							<<WithNPC _n>>
+							<<run Dialog
+								.create("NPC: " + $ui.npc.name)
+								.wikiPassage("NPC-Inspect")
+								.open()
+							>>
+						<</button>>
+						<br>
+						<<button "Talk">>
+							<<WithNPC _n>>
+							<<run Dialog
+								.create("Talk to " + $ui.npc.name)
+								.wikiPassage("NPC-Talk")
+								.open()
+							>>
+						<</button>>
+					<</capture>>
+				</div>
+			</div>
+			<hr>
+		<</for>>
+	<</if>>
 </span>
+

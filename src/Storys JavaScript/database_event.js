@@ -129,10 +129,10 @@ setup.get_all_npc_memories = function () {
 
 setup.YourRoomEvent = [
 	"$proset.theyUp will leave after you leave your room.",
-	"$proset.theyUp are lounging on your bed."
+	"$proset.theyUp is lounging on your bed."
 ];
 
 
 setup.YourBathroomEvent = [
-	"$proset.theyUp are checking themself out in the mirror."
+	"$proset.theyUp is checking themself out in the mirror."
 ];

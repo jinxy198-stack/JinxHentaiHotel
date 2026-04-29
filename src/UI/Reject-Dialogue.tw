@@ -48,7 +48,7 @@
     <</for>>
 
     <<if _lines.length>>
-        <<= either(..._lines)>>
+        "<<= either(..._lines)>>"
     <<else>>
         "No."
     <</if>>

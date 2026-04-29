@@ -104,6 +104,11 @@
 
 <<widget "HandleSexAct">>
 	<<set _a = _args[0]>>
+	<<set _actDef = setup.sexacts[_a]>>
+	<<set _isStopAction = _actDef
+		&& Array.isArray(_actDef["action type"])
+		&& _actDef["action type"].includes("end")
+	>>
 	<<set _handleMute = Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
 	<<set _climaxQuotePassage = _handleMute
 		? "Act-Quote-React"
@@ -135,7 +140,10 @@
 	<<else>>
 		<<replace "#intro">>
 			<<include "ActDialogue">>
-			<<RenderActQuote _handleMute>>
+
+			<<if !_isStopAction>>
+				<<RenderActQuote _handleMute>>
+			<</if>>
 		<</replace>>
 	<</if>>
 
