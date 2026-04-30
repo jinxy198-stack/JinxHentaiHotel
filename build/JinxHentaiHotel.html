@@ -6634,6 +6634,10 @@ setup.sexacts = {
         "Bottom arousal": 40,
         "Top dialogue tags": ["fucking ass"],
         "Bottom dialogue tags": ["ass fucked"],
+        "blocked traits": {
+            Top: [],   // if the *Top* has any of these traits, block
+            Bottom:  ["Will Not Bottom"]                 // if the *Bottom* has any of these traits, block
+        }
     },
     "Take Cock In Ass":
     {
@@ -6648,6 +6652,10 @@ setup.sexacts = {
         "Bottom arousal": 50,
         "Top dialogue tags": ["fucking with ass"],
         "Bottom dialogue tags": ["fucked with ass"],
+        "blocked traits": {
+            Top: ["Will Not Top"],   // if the *Top* has any of these traits, block
+            Bottom:  []                 // if the *Bottom* has any of these traits, block
+        }
     },
     "Hump Ass Back":
     {
@@ -6662,6 +6670,10 @@ setup.sexacts = {
         "Bottom arousal": 55,
         "Top dialogue tags": ["fucking with ass"],
         "Bottom dialogue tags": ["fucked with ass"],
+        "blocked traits": {
+            Top: ["Will Not Top"],   // if the *Top* has any of these traits, block
+            Bottom:  []                 // if the *Bottom* has any of these traits, block
+        }
     },
     "Pull Out Of Ass":
     {
@@ -9004,12 +9016,6 @@ Room NPCs: &lt;&lt;=$roomNPCs ? $roomNPCs.length : 0 &gt;&gt;
 &lt;&lt;button &quot;Go back&quot;&gt;&gt;
     &lt;&lt;goto &quot;Your Room&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;&lt;if $lastNpc&gt;&gt;
-    &lt;&lt;button &quot;Fuck _n.name in the bathroom&quot;&gt;&gt;
-    	&lt;&lt;WithNPC _n.id&gt;&gt;
-	    &lt;&lt;run Dialog.create(&quot;Propose sex with &quot; + $ui.npc.name).wikiPassage(&quot;UI-Attracted-check&quot;).open()&gt;&gt;
-	&lt;&lt;/button&gt;&gt;
-&lt;&lt;/if&gt;&gt;    
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="53" name="Your Room" tags="nobr location" position="400,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Room&quot;&gt;&gt;
 /*Makes sure no stragglers appear in your room. */
 &lt;&lt;set $roomNPCs = []&gt;&gt;

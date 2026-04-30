@@ -1845,6 +1845,10 @@ setup.sexacts = {
         "Bottom arousal": 40,
         "Top dialogue tags": ["fucking ass"],
         "Bottom dialogue tags": ["ass fucked"],
+        "blocked traits": {
+            Top: [],   // if the *Top* has any of these traits, block
+            Bottom:  ["Will Not Bottom"]                 // if the *Bottom* has any of these traits, block
+        }
     },
     "Take Cock In Ass":
     {
@@ -1859,6 +1863,10 @@ setup.sexacts = {
         "Bottom arousal": 50,
         "Top dialogue tags": ["fucking with ass"],
         "Bottom dialogue tags": ["fucked with ass"],
+        "blocked traits": {
+            Top: ["Will Not Top"],   // if the *Top* has any of these traits, block
+            Bottom:  []                 // if the *Bottom* has any of these traits, block
+        }
     },
     "Hump Ass Back":
     {
@@ -1873,6 +1881,10 @@ setup.sexacts = {
         "Bottom arousal": 55,
         "Top dialogue tags": ["fucking with ass"],
         "Bottom dialogue tags": ["fucked with ass"],
+        "blocked traits": {
+            Top: ["Will Not Top"],   // if the *Top* has any of these traits, block
+            Bottom:  []                 // if the *Bottom* has any of these traits, block
+        }
     },
     "Pull Out Of Ass":
     {
