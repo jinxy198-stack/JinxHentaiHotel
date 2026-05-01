@@ -15,9 +15,7 @@ You enter a library. Read what you like but best keep it quiet.
 <br>
 
 <div class="room-hotel">
-    <<EmptyRoom>>
-<<SpawnPoolOnce "fullPool" $fullPool 3>>
-<<SpawnRandomNPCs 5>>
+<<RefreshRoomNPCs 15>>
 <<include "NPC-List">>
 </div>
 

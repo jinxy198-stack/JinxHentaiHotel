@@ -298,7 +298,9 @@
 		<<set $mc.trans = "Cisgender">>
 	<<elseif $mc.pronouns is "They/Them">>
 		<<set $mc.trans = "Nonbinary">>
-	<<else>>
+	<<elseif !$mc.gender>>
+        <<set $mc.trans = null>>
+    <<else>>
 		<<set $mc.trans = "Transgender">>
 	<</if>>
 <</widget>>

@@ -78,26 +78,26 @@
 /* General MC/PC characteristics */
 <<set $currentLocation to null>>
 <<set $characterTemplate = {
-    name: "",
-    nickname: "",
-    surname: "",
-    species: "",
-    gender: "",
-    sexu: "",  /* sexual orientation */
-    genitals: "",
-    genitaltype: "", /*cut or uncut */
-    pronouns: "",
+    name: null,
+    nickname: null,
+    surname: null,
+    species: null,
+    gender: null,
+    sexu: null,  /* sexual orientation */
+    genitals: null,
+    genitaltype: null, /*cut or uncut */
+    pronouns: null,
     age: null,
-    ageGroup: "",
-    eyes: "",
-    hair: "",
-    haircolor: "",
-    facefeatures: "",
-    skincolor: "",
-    skinfeatures: "",
+    ageGroup: null,
+    eyes: null,
+    hair: null,
+    haircolor: null,
+    facefeatures: null,
+    skincolor: null,
+    skinfeatures: null,
     bodyheight: null,
     physique: null,
-    personality: [],
+    personality: null,
     anthro: {
 		  group: "",
 		  subtype: "",
@@ -123,9 +123,9 @@
 <<set $proset to {}>>
 <<set $mc.skin to {}>>
 <<set $mc.hair to {
-    length: "",
-    style: "",
-    color: ""
+    length: null,
+    style: null,
+    color: null
 }>>
 <<set $mc.virgin to false>>
 

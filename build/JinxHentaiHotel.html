@@ -7870,9 +7870,16 @@ $(document).one(&quot;:passagerender&quot;, function (ev) {
 Please review the info below and confirm the options chosen are correct. 
 &lt;h2&gt;Basic Info&lt;/h2&gt;
 &lt;table&gt;
+    
     &lt;tr id=&quot;name&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;First Name:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-name&quot;&gt;$mc.name&lt;/td&gt;
+        &lt;td id=&quot;mc-name&quot;&gt;
+            &lt;&lt;if $mc.name&gt;&gt;
+                &lt;&lt;=$mc.name&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+                There is no Name 
+            &lt;&lt;/if&gt;&gt;  
+        &lt;/td&gt;  
     &lt;/tr&gt;
     &lt;&lt;if $mc.nickname&gt;&gt;
     &lt;tr id=&quot;nickname&quot;&gt;
@@ -7882,44 +7889,95 @@ Please review the info below and confirm the options chosen are correct.
     &lt;&lt;/if&gt;&gt;
     &lt;tr id=&quot;surname&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Surname:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-surb&quot;&gt;$mc.surname&lt;/td&gt;
+        &lt;td id=&quot;mc-surb&quot;&gt;
+        &lt;&lt;if $mc.surname&gt;&gt;
+            &lt;&lt;=$mc.surname&gt;&gt;
+        &lt;&lt;else&gt;&gt;
+            There is no Surname
+        &lt;&lt;/if&gt;&gt;
+        &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr id=&quot;mc-gender&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Gender Identity:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
         &lt;td id=&quot;mc-identity&quot;&gt;
-            Gender: $mc.gender&lt;br&gt;
-            Sexuality: $mc.sexu
+            Gender: 
+            &lt;&lt;if $mc.gender&gt;&gt;
+                &lt;&lt;=$mc.gender&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+                There is no gender
+            &lt;&lt;/if&gt;&gt;
+            &lt;br&gt;
+            Sexuality: 
+            &lt;&lt;if $mc.sexu&gt;&gt;
+                &lt;&lt;=$mc.sexu&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+                There is no sexuality    
+            &lt;&lt;/if&gt;&gt;    
         &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr id=&quot;pronouns&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Pronouns:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-pro&quot;&gt;$mc.pronouns&lt;/td&gt;
+        &lt;td id=&quot;mc-pro&quot;&gt;
+            &lt;&lt;if $mc.pronouns&gt;&gt;
+                &lt;&lt;=$mc.pronouns&gt;&gt;
+            &lt;&lt;else&gt;&gt; 
+                There are no pronouns selected.    
+            &lt;&lt;/if&gt;&gt;
+        &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr id=&quot;Identity&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Identity:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-identiy&quot;&gt;$mc.trans&lt;/td&gt;
+        &lt;td id=&quot;mc-identiy&quot;&gt;
+        &lt;&lt;if $mc.trans&gt;&gt;
+            &lt;&lt;=$mc.trans&gt;&gt;
+        &lt;&lt;else&gt;&gt;
+            No gender identity for your character is selected.    
+        &lt;&lt;/if&gt;&gt;
+        &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr id=&quot;age&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Age:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-age&quot;&gt;$mc.age&lt;/td&gt;
+        &lt;td id=&quot;mc-age&quot;&gt;
+            &lt;&lt;if $mc.age&gt;&gt;
+                &lt;&lt;=$mc.age&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+                Age is not selected.    
+            &lt;&lt;/if&gt;&gt;
+        &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr id=&quot;age&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Age Group:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-agegroup&quot;&gt;$mc.ageGroup&lt;/td&gt;
+        &lt;td id=&quot;mc-agegroup&quot;&gt;
+            &lt;&lt;if $mc.ageGroup&gt;&gt;
+                &lt;&lt;=$mc.ageGroup&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+                No Age Group is selected.    
+            &lt;&lt;/if&gt;&gt;
+        &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr id=&quot;species&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Species:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-species&quot;&gt;$mc.species&lt;/td&gt;
+        &lt;td id=&quot;mc-species&quot;&gt;
+            &lt;&lt;if $mc.species&gt;&gt;
+                &lt;&lt;=$mc.species&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+                No species is selected.
+            &lt;&lt;/if&gt;&gt;
+        &lt;/td&gt;
     &lt;/tr&gt;
     &lt;&lt;if $mc.species is &quot;Anthro&quot;&gt;&gt;
-    &lt;tr id=&quot;species&quot;&gt;
-        &lt;th&gt;&lt;u&gt;&lt;strong&gt;Type:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-species&quot;&gt;$mc.anthro.group&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr id=&quot;species&quot;&gt;
-        &lt;th&gt;&lt;u&gt;&lt;strong&gt;Subspecies:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-species&quot;&gt;$mc.anthro.subtype&lt;/td&gt;
-    &lt;/tr&gt;
+        &lt;tr id=&quot;species&quot;&gt;
+            &lt;th&gt;&lt;u&gt;&lt;strong&gt;Type:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
+            &lt;td id=&quot;mc-species&quot;&gt;
+                &lt;&lt;=$mc.anthro.group&gt;&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr id=&quot;species&quot;&gt;
+            &lt;th&gt;&lt;u&gt;&lt;strong&gt;Subspecies:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
+            &lt;td id=&quot;mc-species&quot;&gt;
+                &lt;&lt;=$mc.anthro.subtype&gt;&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;/table&gt;
 &lt;h2&gt;Physical:&lt;/h2&gt;
@@ -7927,24 +7985,35 @@ Please review the info below and confirm the options chosen are correct.
 &lt;table&gt;
     &lt;tr id=&quot;eyes&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Eyes:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-eyes&quot;&gt;$mc.eyes&lt;/td&gt;
+        &lt;td id=&quot;mc-eyes&quot;&gt;
+            &lt;&lt;if $mc.eyes&gt;&gt;
+                &lt;&lt;=$mc.eyes&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+                You have no eyes and you must see.               
+            &lt;&lt;/if&gt;&gt;        
+        &lt;/td&gt;
     &lt;/tr&gt;
 &lt;tr id=&quot;hair&quot;&gt; 
 &lt;th&gt;&lt;u&gt;&lt;strong&gt;Hair:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt; 
 &lt;td&gt; 
 &lt;span id=&quot;mc-hairnat&quot;&gt; 
-&lt;&lt;if $mc.hair is &quot;Bald&quot;&gt;&gt; You are $mc.hair. 
-&lt;&lt;else&gt;&gt; 
-You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style . 
-&lt;&lt;/if&gt;&gt;
+    &lt;&lt;if $mc.hair is &quot;Bald&quot;&gt;&gt; 
+        You are &lt;&lt;=$mc.hair&gt;&gt;. 
+    &lt;&lt;else&gt;&gt; 
+        &lt;&lt;if $mc.hair.color &amp;&amp; $mc.hair.style&gt;&gt;
+            You have &lt;&lt;=$mc.hair.color&gt;&gt; hair. Your hair is styled &lt;&lt;=$mc.hair.style&gt;&gt;.
+        &lt;&lt;else&gt;&gt;
+            No details of your hair is selected.     
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
 &lt;/span&gt; 
 &lt;/td&gt; 
 &lt;/tr&gt;
     &lt;&lt;if $mc.facefeatures&gt;&gt;
-    &lt;tr id=&quot;facial-features&quot;&gt;
-        &lt;th&gt;&lt;u&gt;&lt;strong&gt;Facial Features:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-ffeat&quot;&gt;$mc.facefeatures&lt;/td&gt;
-    &lt;/tr&gt;
+        &lt;tr id=&quot;facial-features&quot;&gt;
+            &lt;th&gt;&lt;u&gt;&lt;strong&gt;Facial Features:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
+            &lt;td id=&quot;mc-ffeat&quot;&gt;$mc.facefeatures&lt;/td&gt;
+        &lt;/tr&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;/table&gt;
 &lt;h3&gt;Body&lt;/h3&gt;
@@ -7963,27 +8032,42 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
         &lt;/th&gt;
         &lt;td id=&quot;mc-skin&quot;&gt;
             &lt;&lt;if $mc.skin.color&gt;&gt;
-                $mc.skin.color 
+                &lt;&lt;=$mc.skin.color&gt;&gt;
             &lt;&lt;elseif $mc.anthro.color&gt;&gt;
-                $mc.anthro.color 
+                &lt;&lt;=$mc.anthro.color&gt;&gt;
                 &lt;br&gt;
-                Patterns: $mc.anthro.pattern
-                
+                Patterns: &lt;&lt;=$mc.anthro.pattern&gt;&gt;
             &lt;&lt;else&gt;&gt;
                 ERROR NO SKIN OR BODY COLOR FOUND!
-            &lt;&lt;/if&gt;&gt;     
-        &lt;&lt;if $mc.skin.features&gt;&gt;
-            $mc.skin.features
-        &lt;&lt;/if&gt;&gt;&lt;/td&gt;
+            &lt;&lt;/if&gt;&gt;
+            &lt;br&gt;     
+            &lt;&lt;if $mc.skin.features&gt;&gt;
+                &lt;&lt;=$mc.skin.features&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+                There are no distinguishable skin features.    
+            &lt;&lt;/if&gt;&gt;
+        &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr id=&quot;body-build&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Build:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
         &lt;td id=&quot;mc-build&quot;&gt;
-            Height: $mc.bodyheight
+            Height: 
+                &lt;&lt;if $mc.bodyheight&gt;&gt;
+                    &lt;&lt;=$mc.bodyheight&gt;&gt;
+                &lt;&lt;else&gt;&gt;
+                    There is no height for this character    
+                &lt;&lt;/if&gt;&gt;
             &lt;br&gt;
-            Physique: $mc.physique
+            Physique: 
+                &lt;&lt;if $mc.physique&gt;&gt;
+                    &lt;&lt;=$mc.physique&gt;&gt;
+                &lt;&lt;else&gt;&gt;
+                    There is no phyique for this character    
+                &lt;&lt;/if&gt;&gt;
             &lt;br&gt;
-        &lt;&lt;if $mc.breastsize&gt;&gt;Breast Size: $mc.breastsize &lt;&lt;/if&gt;&gt;
+            &lt;&lt;if $mc.breastsize&gt;&gt;
+                Breast Size: &lt;&lt;=$mc.breastsize&gt;&gt;
+            &lt;&lt;/if&gt;&gt;
         &lt;br&gt;
         &lt;/td&gt;
     &lt;/tr&gt;
@@ -7993,12 +8077,17 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
     &lt;tr id=&quot;perso&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Personality:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
         &lt;td id=&quot;mc-perso&quot;&gt;
+            &lt;&lt;if $mc.personality&gt;&gt;
+            
             &lt;&lt;for _i = 0; _i &lt; $mc.personality.length; _i++&gt;&gt;
 		        &lt;&lt;set _personality = $mc.personality[_i]&gt;&gt;
 		        &lt;&lt;set _ptip = setup.personalityTips[_personality]&gt;&gt;
 		        &lt;&lt;tooltip _personality _ptip&gt;&gt;
 		        &lt;&lt;if _i &lt; $mc.personality.length - 1&gt;&gt;, &lt;&lt;/if&gt;&gt;
 	        &lt;&lt;/for&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+            There is no personality for this character.
+            &lt;&lt;/if&gt;&gt;
         &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr id=&quot;trait&quot;&gt;
@@ -8021,12 +8110,23 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
 &lt;table class=&quot;nsfw&quot;&gt;
     &lt;tr&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Genitals:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-genitals&quot;&gt;$mc.genitals&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
+        &lt;td id=&quot;mc-genitals&quot;&gt;
+            &lt;&lt;if $mc.genitals&gt;&gt;
+                &lt;&lt;=$mc.genitals&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+                You have no genitals, how do you expect to play the game without them?
+            &lt;&lt;/if&gt;&gt;
+        &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Genital type:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-genitaltype&quot;&gt;$mc.genitaltype&lt;/td&gt;
+        &lt;td id=&quot;mc-genitaltype&quot;&gt;
+            &lt;&lt;if $mc.genitaltype&gt;&gt;
+                $mc.genitaltype
+            &lt;&lt;else&gt;&gt;
+                No additional details for the chosen genital available.
+            &lt;&lt;/if&gt;&gt;
+        &lt;/td&gt;
      &lt;/tr&gt;
      &lt;&lt;if $mc.penislength&gt;&gt;
         &lt;tr&gt;
@@ -8036,19 +8136,25 @@ You have $mc.hair.color hair. Your hair is styled in a $mc.hair.style .
         &lt;&lt;/if&gt;&gt;
      &lt;tr&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Ass Size:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-asssize&quot;&gt;$mc.assSize&lt;/td&gt;
+        &lt;td id=&quot;mc-asssize&quot;&gt;
+            &lt;&lt;if $mc.assSize&gt;&gt;
+                &lt;&lt;=$mc.assSize&gt;&gt;
+            &lt;&lt;else&gt;&gt;
+                You ass has no ass size, how is that even possible?    
+            &lt;&lt;/if&gt;&gt;
+        &lt;/td&gt;
     &lt;/tr&gt;
         &lt;tr id=&quot;sexpref&quot;&gt;
         &lt;th&gt;&lt;u&gt;&lt;strong&gt;Sex Preference:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
-        &lt;td id=&quot;mc-sexpref&quot;&gt;$mc.sexpref&lt;/td&gt;
+        &lt;td id=&quot;mc-sexpref&quot;&gt;
+            &lt;&lt;if $mc.sexpref&gt;&gt;
+                $mc.sexpref
+            &lt;&lt;else&gt;&gt;
+                You have no sexual preference
+            &lt;&lt;/if&gt;&gt;
+        &lt;/td&gt;
     &lt;/tr&gt;   
 &lt;/table&gt;
-/*
-&lt;&lt;if $mc.virgin is true&gt;&gt;
-	Virgin?: Yes
-&lt;&lt;elseif $mc.virgin is false&gt;&gt;
-	Virgin: No
-&lt;&lt;/if&gt;&gt; */
 
 &lt;table class=&quot;bodyparts&quot;&gt;
     &lt;th&gt;&lt;u&gt;&lt;strong&gt;List of Body Parts:&lt;/strong&gt;&lt;/u&gt;&lt;/th&gt;
@@ -8948,9 +9054,7 @@ Welcome my acolyte, do you have question&#39;s for me?
 &lt;br&gt;
 
 &lt;div class=&quot;room-hotel&quot;&gt;
-    &lt;&lt;EmptyRoom&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 3&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 5&gt;&gt;
+&lt;&lt;RefreshRoomNPCs 15&gt;&gt;
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 &lt;/div&gt;
 
@@ -8965,10 +9069,7 @@ Welcome my acolyte, do you have question&#39;s for me?
 By the entrance you make out the offical greeting board that is meant for all new people.
 &lt;&lt;button &quot;Read Greeting&quot;&gt;&gt;&lt;&lt;PopupGreeting &quot;Greeting&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;br&gt;
 &lt;div class=&quot;room-hotel&quot;&gt;
-&lt;&lt;EmptyRoom&gt;&gt;
-&lt;&lt;SpawnPoolOnce &quot;fullPool&quot; $fullPool 15&gt;&gt;
-&lt;&lt;SpawnRandomNPCs 15&gt;&gt;
-
+&lt;&lt;RefreshRoomNPCs 15&gt;&gt;
 &lt;&lt;include &quot;NPC-List&quot;&gt;&gt;
 
 &lt;/div&gt;
@@ -14052,26 +14153,26 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 /* General MC/PC characteristics */
 &lt;&lt;set $currentLocation to null&gt;&gt;
 &lt;&lt;set $characterTemplate = {
-    name: &quot;&quot;,
-    nickname: &quot;&quot;,
-    surname: &quot;&quot;,
-    species: &quot;&quot;,
-    gender: &quot;&quot;,
-    sexu: &quot;&quot;,  /* sexual orientation */
-    genitals: &quot;&quot;,
-    genitaltype: &quot;&quot;, /*cut or uncut */
-    pronouns: &quot;&quot;,
+    name: null,
+    nickname: null,
+    surname: null,
+    species: null,
+    gender: null,
+    sexu: null,  /* sexual orientation */
+    genitals: null,
+    genitaltype: null, /*cut or uncut */
+    pronouns: null,
     age: null,
-    ageGroup: &quot;&quot;,
-    eyes: &quot;&quot;,
-    hair: &quot;&quot;,
-    haircolor: &quot;&quot;,
-    facefeatures: &quot;&quot;,
-    skincolor: &quot;&quot;,
-    skinfeatures: &quot;&quot;,
+    ageGroup: null,
+    eyes: null,
+    hair: null,
+    haircolor: null,
+    facefeatures: null,
+    skincolor: null,
+    skinfeatures: null,
     bodyheight: null,
     physique: null,
-    personality: [],
+    personality: null,
     anthro: {
 		  group: &quot;&quot;,
 		  subtype: &quot;&quot;,
@@ -14097,9 +14198,9 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set $proset to {}&gt;&gt;
 &lt;&lt;set $mc.skin to {}&gt;&gt;
 &lt;&lt;set $mc.hair to {
-    length: &quot;&quot;,
-    style: &quot;&quot;,
-    color: &quot;&quot;
+    length: null,
+    style: null,
+    color: null
 }&gt;&gt;
 &lt;&lt;set $mc.virgin to false&gt;&gt;
 
@@ -17420,7 +17521,9 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 		&lt;&lt;set $mc.trans = &quot;Cisgender&quot;&gt;&gt;
 	&lt;&lt;elseif $mc.pronouns is &quot;They/Them&quot;&gt;&gt;
 		&lt;&lt;set $mc.trans = &quot;Nonbinary&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
+	&lt;&lt;elseif !$mc.gender&gt;&gt;
+        &lt;&lt;set $mc.trans = null&gt;&gt;
+    &lt;&lt;else&gt;&gt;
 		&lt;&lt;set $mc.trans = &quot;Transgender&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
