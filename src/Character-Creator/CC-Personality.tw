@@ -1,32 +1,82 @@
-:: CC-Personality [creation-page] {"position":"1425,225","size":"100,100"}
+:: CC-Personality [creation-page nobr] {"position":"1425,225","size":"100,100"}
 
-What term do you use to describe your personality?
+<<silently>>
+	/* Make sure $mc.personality is always an array. */
+	<<if !Array.isArray($mc.personality)>>
+		<<if $mc.personality>>
+			<<set $mc.personality = [$mc.personality]>>
+		<<else>>
+			<<set $mc.personality = []>>
+		<</if>>
+	<</if>>
 
-* <label><<radiobutton "$mc.personality" "Brash">><<tooltip "Brash" `setup.personalityTips['Brash'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Brave">><<tooltip "Brave" `setup.personalityTips['Brave'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Bubbly">><<tooltip "Bubbly" `setup.personalityTips['Bubbly'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Childish">><<tooltip "Childish" `setup.personalityTips['Childish'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Chill">><<tooltip "Chill" `setup.personalityTips['Chill'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Confident">><<tooltip "Confident" `setup.personalityTips['Confident'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Energetic">><<tooltip "Energetic" `setup.personalityTips['Energetic'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Flamboyant">><<tooltip "Flamboyant" `setup.personalityTips['Flamboyant'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Kind">><<tooltip "Kind" `setup.personalityTips['Kind'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Lazy">><<tooltip "Lazy" `setup.personalityTips['Lazy'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Logical">><<tooltip "Logical" `setup.personalityTips['Logical'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Modest">><<tooltip "Modest" `setup.personalityTips['Modest'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Naive">><<tooltip "Naive" `setup.personalityTips['Naive'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Nerdy">><<tooltip "Nerdy" `setup.personalityTips['Nerdy'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Playful">><<tooltip "Playful" `setup.personalityTips['Playful'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Provocative">><<tooltip "Provocative" `setup.personalityTips['Provocative'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Sassy">><<tooltip "Sassy" `setup.personalityTips['Sassy'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Stubborn">><<tooltip "Stubborn" `setup.personalityTips['Stubborn'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Terse">><<tooltip "Terse" `setup.personalityTips['Terse'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Timid">><<tooltip "Timid" `setup.personalityTips['Timid'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Tough">><<tooltip "Tough" `setup.personalityTips['Tough'] || "No description written yet."`>></label>
-* <label><<radiobutton "$mc.personality" "Upbeat">><<tooltip "Upbeat" `setup.personalityTips['Upbeat'] || "No description written yet."`>></label>
+	<<set _personalities = [
+		"Brash",
+		"Brave",
+		"Bubbly",
+		"Childish",
+		"Chill",
+		"Confident",
+		"Energetic",
+		"Flamboyant",
+		"Kind",
+		"Lazy",
+		"Logical",
+		"Modest",
+		"Naive",
+		"Nerdy",
+		"Playful",
+		"Provocative",
+		"Sassy",
+		"Stubborn",
+		"Terse",
+		"Timid",
+		"Tough",
+		"Upbeat"
+	]>>
+<</silently>>
 
-<<button [[Confirm|Index-CC]]>>
-    <<set $pages.perso to true>>
+What terms do you use to describe your personality?
+
+<br>
+//You may choose more than one.//
+
+<br><br>
+
+<div id="personalityError"></div>
+
+<ul>
+<<for _i = 0; _i < _personalities.length; _i++>>
+	<<set _p = _personalities[_i]>>
+	<<capture _p>>
+		<li>
+			<<if $mc.personality.indexOf(_p) !== -1>>
+				<<link "☑">>
+					<<run $mc.personality.splice($mc.personality.indexOf(_p), 1)>>
+					<<goto "CC-Personality">>
+				<</link>>
+			<<else>>
+				<<link "☐">>
+					<<run $mc.personality.push(_p)>>
+					<<goto "CC-Personality">>
+				<</link>>
+			<</if>>
+
+			<<tooltip _p `setup.personalityTips[_p] || "No description written yet."`>>
+		</li>
+	<</capture>>
+<</for>>
+</ul>
+
+<br>
+
+<<button "Confirm">>
+	<<if Array.isArray($mc.personality) && $mc.personality.length > 0>>
+		<<set $pages.perso to true>>
+		<<goto "Index-CC">>
+	<<else>>
+		<<replace "#personalityError">>
+			<span class="error">Please choose at least one personality.</span>
+		<</replace>>
+	<</if>>
 <</button>>
-
-

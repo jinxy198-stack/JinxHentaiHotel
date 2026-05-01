@@ -8285,33 +8285,85 @@ Once you are set on a name you will be sent back to the menu.</tw-passagedata><t
 &lt;&lt;/linkappend&gt;&gt;
 * [[No|Index-CC][$mc.nickname to null]]
 
-Once you are set you will be sent back to the menu.</tw-passagedata><tw-passagedata pid="19" name="CC-Personality" tags="creation-page" position="1425,225" size="100,100">What term do you use to describe your personality?
+Once you are set you will be sent back to the menu.</tw-passagedata><tw-passagedata pid="19" name="CC-Personality" tags="creation-page nobr" position="1425,225" size="100,100">&lt;&lt;silently&gt;&gt;
+	/* Make sure $mc.personality is always an array. */
+	&lt;&lt;if !Array.isArray($mc.personality)&gt;&gt;
+		&lt;&lt;if $mc.personality&gt;&gt;
+			&lt;&lt;set $mc.personality = [$mc.personality]&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;set $mc.personality = []&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Brash&quot;&gt;&gt;&lt;&lt;tooltip &quot;Brash&quot; `setup.personalityTips[&#39;Brash&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Brave&quot;&gt;&gt;&lt;&lt;tooltip &quot;Brave&quot; `setup.personalityTips[&#39;Brave&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Bubbly&quot;&gt;&gt;&lt;&lt;tooltip &quot;Bubbly&quot; `setup.personalityTips[&#39;Bubbly&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Childish&quot;&gt;&gt;&lt;&lt;tooltip &quot;Childish&quot; `setup.personalityTips[&#39;Childish&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Chill&quot;&gt;&gt;&lt;&lt;tooltip &quot;Chill&quot; `setup.personalityTips[&#39;Chill&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Confident&quot;&gt;&gt;&lt;&lt;tooltip &quot;Confident&quot; `setup.personalityTips[&#39;Confident&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Energetic&quot;&gt;&gt;&lt;&lt;tooltip &quot;Energetic&quot; `setup.personalityTips[&#39;Energetic&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Flamboyant&quot;&gt;&gt;&lt;&lt;tooltip &quot;Flamboyant&quot; `setup.personalityTips[&#39;Flamboyant&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Kind&quot;&gt;&gt;&lt;&lt;tooltip &quot;Kind&quot; `setup.personalityTips[&#39;Kind&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Lazy&quot;&gt;&gt;&lt;&lt;tooltip &quot;Lazy&quot; `setup.personalityTips[&#39;Lazy&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Logical&quot;&gt;&gt;&lt;&lt;tooltip &quot;Logical&quot; `setup.personalityTips[&#39;Logical&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Modest&quot;&gt;&gt;&lt;&lt;tooltip &quot;Modest&quot; `setup.personalityTips[&#39;Modest&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Naive&quot;&gt;&gt;&lt;&lt;tooltip &quot;Naive&quot; `setup.personalityTips[&#39;Naive&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Nerdy&quot;&gt;&gt;&lt;&lt;tooltip &quot;Nerdy&quot; `setup.personalityTips[&#39;Nerdy&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Playful&quot;&gt;&gt;&lt;&lt;tooltip &quot;Playful&quot; `setup.personalityTips[&#39;Playful&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Provocative&quot;&gt;&gt;&lt;&lt;tooltip &quot;Provocative&quot; `setup.personalityTips[&#39;Provocative&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Sassy&quot;&gt;&gt;&lt;&lt;tooltip &quot;Sassy&quot; `setup.personalityTips[&#39;Sassy&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Stubborn&quot;&gt;&gt;&lt;&lt;tooltip &quot;Stubborn&quot; `setup.personalityTips[&#39;Stubborn&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Terse&quot;&gt;&gt;&lt;&lt;tooltip &quot;Terse&quot; `setup.personalityTips[&#39;Terse&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Timid&quot;&gt;&gt;&lt;&lt;tooltip &quot;Timid&quot; `setup.personalityTips[&#39;Timid&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Tough&quot;&gt;&gt;&lt;&lt;tooltip &quot;Tough&quot; `setup.personalityTips[&#39;Tough&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
-* &lt;label&gt;&lt;&lt;radiobutton &quot;$mc.personality&quot; &quot;Upbeat&quot;&gt;&gt;&lt;&lt;tooltip &quot;Upbeat&quot; `setup.personalityTips[&#39;Upbeat&#39;] || &quot;No description written yet.&quot;`&gt;&gt;&lt;/label&gt;
+	&lt;&lt;set _personalities = [
+		&quot;Brash&quot;,
+		&quot;Brave&quot;,
+		&quot;Bubbly&quot;,
+		&quot;Childish&quot;,
+		&quot;Chill&quot;,
+		&quot;Confident&quot;,
+		&quot;Energetic&quot;,
+		&quot;Flamboyant&quot;,
+		&quot;Kind&quot;,
+		&quot;Lazy&quot;,
+		&quot;Logical&quot;,
+		&quot;Modest&quot;,
+		&quot;Naive&quot;,
+		&quot;Nerdy&quot;,
+		&quot;Playful&quot;,
+		&quot;Provocative&quot;,
+		&quot;Sassy&quot;,
+		&quot;Stubborn&quot;,
+		&quot;Terse&quot;,
+		&quot;Timid&quot;,
+		&quot;Tough&quot;,
+		&quot;Upbeat&quot;
+	]&gt;&gt;
+&lt;&lt;/silently&gt;&gt;
 
-&lt;&lt;button [[Confirm|Index-CC]]&gt;&gt;
-    &lt;&lt;set $pages.perso to true&gt;&gt;
+What terms do you use to describe your personality?
+
+&lt;br&gt;
+//You may choose more than one.//
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;div id=&quot;personalityError&quot;&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;&lt;for _i = 0; _i &lt; _personalities.length; _i++&gt;&gt;
+	&lt;&lt;set _p = _personalities[_i]&gt;&gt;
+	&lt;&lt;capture _p&gt;&gt;
+		&lt;li&gt;
+			&lt;&lt;if $mc.personality.indexOf(_p) !== -1&gt;&gt;
+				&lt;&lt;link &quot;☑&quot;&gt;&gt;
+					&lt;&lt;run $mc.personality.splice($mc.personality.indexOf(_p), 1)&gt;&gt;
+					&lt;&lt;goto &quot;CC-Personality&quot;&gt;&gt;
+				&lt;&lt;/link&gt;&gt;
+			&lt;&lt;else&gt;&gt;
+				&lt;&lt;link &quot;☐&quot;&gt;&gt;
+					&lt;&lt;run $mc.personality.push(_p)&gt;&gt;
+					&lt;&lt;goto &quot;CC-Personality&quot;&gt;&gt;
+				&lt;&lt;/link&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+
+			&lt;&lt;tooltip _p `setup.personalityTips[_p] || &quot;No description written yet.&quot;`&gt;&gt;
+		&lt;/li&gt;
+	&lt;&lt;/capture&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;/ul&gt;
+
+&lt;br&gt;
+
+&lt;&lt;button &quot;Confirm&quot;&gt;&gt;
+	&lt;&lt;if Array.isArray($mc.personality) &amp;&amp; $mc.personality.length &gt; 0&gt;&gt;
+		&lt;&lt;set $pages.perso to true&gt;&gt;
+		&lt;&lt;goto &quot;Index-CC&quot;&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;replace &quot;#personalityError&quot;&gt;&gt;
+			&lt;span class=&quot;error&quot;&gt;Please choose at least one personality.&lt;/span&gt;
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="CC-Pronouns" tags="creation-page" position="1050,0" size="100,100">&lt;h1&gt;Choose your Pronouns Set&lt;/h1&gt;
 
 
@@ -8463,8 +8515,8 @@ They are not limited to physical or mental traits. &lt;br&gt;
 			t !== &quot;Will Not Bottom&quot; &amp;&amp;
 			t !== &quot;Hates Kids&quot; &amp;&amp;
 			t !== &quot;Hates Furries&quot; &amp;&amp;
-			t !== &quot;Hates Adults&quot; 
-
+			t !== &quot;Hates Adults&quot; &amp;&amp;
+			t !== &quot;Hates Humans&quot;
 		)&gt;&gt;
 
 		&lt;&lt;if _willNotTop&gt;&gt;
@@ -9988,28 +10040,7 @@ Work on fixing spawning NPC&#39;s
     Hell,
     
     
-    Personality:
-    Brave,
-    Shy,
-    Relaxed,
-    Playful,
-    Kind, 
-    Logical,
-    Studious,
-    Active,
-    Lonely,
-    Timid,
-    Stubborn,
-    Serious,
-    Tough,
-    Jolly,
-    Naive,
-    Modest,
-    Quiet,
-    Bashful,
-    Calm,
-    Sassy,
-    Flamboyant
+    McAssSize
     
     Arousal 1 to 100
     
