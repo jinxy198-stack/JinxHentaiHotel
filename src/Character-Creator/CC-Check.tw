@@ -1,5 +1,6 @@
 :: CC-Check [nobr]{"position":"200,400","size":"100,100"}
 <<create-body>>
+<<MissingCC>>
 
 <h1>Is this Correct?</h1>
 Please review the info below and confirm the options chosen are correct. 
@@ -12,7 +13,7 @@ Please review the info below and confirm the options chosen are correct.
             <<if $mc.name>>
                 <<=$mc.name>>
             <<else>>
-                There is no Name 
+                <span class="red">There is no Name.</span> 
             <</if>>  
         </td>  
     </tr>
@@ -28,7 +29,7 @@ Please review the info below and confirm the options chosen are correct.
         <<if $mc.surname>>
             <<=$mc.surname>>
         <<else>>
-            There is no Surname
+            <span class="red">There is no Surname.</span>
         <</if>>
         </td>
     </tr>
@@ -39,14 +40,14 @@ Please review the info below and confirm the options chosen are correct.
             <<if $mc.gender>>
                 <<=$mc.gender>>
             <<else>>
-                There is no gender
+                <span class="red">There is no gender.</span>
             <</if>>
             <br>
             Sexuality: 
             <<if $mc.sexu>>
                 <<=$mc.sexu>>
             <<else>>
-                There is no sexuality    
+                <span class="red">There is no sexuality.</span>    
             <</if>>    
         </td>
     </tr>
@@ -56,18 +57,18 @@ Please review the info below and confirm the options chosen are correct.
             <<if $mc.pronouns>>
                 <<=$mc.pronouns>>
             <<else>> 
-                There are no pronouns selected.    
+                <span class="red">There are no pronouns selected.</span>    
             <</if>>
         </td>
     </tr>
     <tr id="Identity">
         <th><u><strong>Identity:</strong></u></th>
         <td id="mc-identiy">
-        <<if $mc.trans>>
-            <<=$mc.trans>>
-        <<else>>
-            No gender identity for your character is selected.    
-        <</if>>
+            <<if $mc.trans>>
+                <<=$mc.trans>>
+            <<else>>
+                <span class="red">No gender identity for your character is selected.</span>    
+            <</if>>
         </td>
     </tr>
     <tr id="age">
@@ -76,7 +77,7 @@ Please review the info below and confirm the options chosen are correct.
             <<if $mc.age>>
                 <<=$mc.age>>
             <<else>>
-                Age is not selected.    
+                <span class="red">Age is not selected.</span>    
             <</if>>
         </td>
     </tr>
@@ -86,7 +87,7 @@ Please review the info below and confirm the options chosen are correct.
             <<if $mc.ageGroup>>
                 <<=$mc.ageGroup>>
             <<else>>
-                No Age Group is selected.    
+                <span class="red">No Age Group is selected.</span>    
             <</if>>
         </td>
     </tr>
@@ -96,7 +97,7 @@ Please review the info below and confirm the options chosen are correct.
             <<if $mc.species>>
                 <<=$mc.species>>
             <<else>>
-                No species is selected.
+                <span class="red">No species is selected.</span>
             <</if>>
         </td>
     </tr>
@@ -124,26 +125,26 @@ Please review the info below and confirm the options chosen are correct.
             <<if $mc.eyes>>
                 <<=$mc.eyes>>
             <<else>>
-                You have no eyes and you must see.               
+                <span class="red">You have no eyes and you must see.</span>               
             <</if>>        
         </td>
     </tr>
-<tr id="hair"> 
-<th><u><strong>Hair:</strong></u></th> 
-<td> 
-<span id="mc-hairnat"> 
-    <<if $mc.hair is "Bald">> 
-        You are <<=$mc.hair>>. 
-    <<else>> 
-        <<if $mc.hair.color && $mc.hair.style>>
-            You have <<=$mc.hair.color>> hair. Your hair is styled <<=$mc.hair.style>>.
-        <<else>>
-            No details of your hair is selected.     
-        <</if>>
-    <</if>>
-</span> 
-</td> 
-</tr>
+    <tr id="hair"> 
+        <th><u><strong>Hair:</strong></u></th> 
+        <td> 
+            <span id="mc-hairnat"> 
+                <<if $mc.hair is "Bald">> 
+                    You are <<=$mc.hair>>. 
+                <<else>> 
+                    <<if $mc.hair.color && $mc.hair.style>>
+                        You have <<=$mc.hair.color>> hair. Your hair is styled <<=$mc.hair.style>>.
+                    <<else>>
+                        <span class="red">No details of your hair is selected.</span>     
+                    <</if>>
+                <</if>>
+            </span> 
+        </td> 
+    </tr>
     <<if $mc.facefeatures>>
         <tr id="facial-features">
             <th><u><strong>Facial Features:</strong></u></th>
@@ -173,7 +174,7 @@ Please review the info below and confirm the options chosen are correct.
                 <br>
                 Patterns: <<=$mc.anthro.pattern>>
             <<else>>
-                ERROR NO SKIN OR BODY COLOR FOUND!
+                <span class="red">ERROR NO SKIN OR BODY COLOR FOUND!</span>
             <</if>>
             <br>     
             <<if $mc.skin.features>>
@@ -190,14 +191,14 @@ Please review the info below and confirm the options chosen are correct.
                 <<if $mc.bodyheight>>
                     <<=$mc.bodyheight>>
                 <<else>>
-                    There is no height for this character    
+                    <span class="red">There is no height for this character.</span>    
                 <</if>>
             <br>
             Physique: 
                 <<if $mc.physique>>
                     <<=$mc.physique>>
                 <<else>>
-                    There is no phyique for this character    
+                    <span class="red">There is no phyique for this character.</span>    
                 <</if>>
             <br>
             <<if $mc.breastsize>>
@@ -213,31 +214,30 @@ Please review the info below and confirm the options chosen are correct.
         <th><u><strong>Personality:</strong></u></th>
         <td id="mc-perso">
             <<if $mc.personality>>
-            
-            <<for _i = 0; _i < $mc.personality.length; _i++>>
-		        <<set _personality = $mc.personality[_i]>>
-		        <<set _ptip = setup.personalityTips[_personality]>>
-		        <<tooltip _personality _ptip>>
-		        <<if _i < $mc.personality.length - 1>>, <</if>>
-	        <</for>>
+                <<for _i = 0; _i < $mc.personality.length; _i++>>
+		            <<set _personality = $mc.personality[_i]>>
+		            <<set _ptip = setup.personalityTips[_personality]>>
+		            <<tooltip _personality _ptip>>
+		            <<if _i < $mc.personality.length - 1>>, <</if>>
+	            <</for>>
             <<else>>
-            There is no personality for this character.
+                <span class="red">There is no personality for this character.</span>
             <</if>>
         </td>
     </tr>
     <tr id="trait">
         <th><u><strong>Trait:</strong></u></th>
         <<if !$mc.traits>>
-        <td> No traits found </td>
+            <td> No traits found </td>
         <<else>>
-        <td id="mc-perso">
-            <<for _i = 0; _i < $mc.traits.length; _i++>>
-		        <<set _trait = $mc.traits[_i]>>
-		        <<set _traitTip = setup.traitTips[_trait] || "No description written yet.">>
-		        <<tooltip _trait _traitTip>>
-		        <<if _i < $mc.traits.length - 1>>, <</if>>
-	        <</for>>
-        </td>
+            <td id="mc-perso">
+                <<for _i = 0; _i < $mc.traits.length; _i++>>
+		            <<set _trait = $mc.traits[_i]>>
+		            <<set _traitTip = setup.traitTips[_trait] || "No description written yet.">>
+		            <<tooltip _trait _traitTip>>
+		            <<if _i < $mc.traits.length - 1>>, <</if>>
+	            <</for>>
+            </td>
         <</if>>
     </tr>
 </table>
@@ -249,7 +249,7 @@ Please review the info below and confirm the options chosen are correct.
             <<if $mc.genitals>>
                 <<=$mc.genitals>>
             <<else>>
-                You have no genitals, how do you expect to play the game without them?
+                <span class="red">You have no genitals, how do you expect to play the game without them?</span>
             <</if>>
         </td>
     </tr>
@@ -259,33 +259,33 @@ Please review the info below and confirm the options chosen are correct.
             <<if $mc.genitaltype>>
                 $mc.genitaltype
             <<else>>
-                No additional details for the chosen genital available.
+                <span class="red">No additional details for the chosen genital available.</span>
             <</if>>
         </td>
-     </tr>
-     <<if $mc.penislength>>
+    </tr>
+    <<if $mc.penislength>>
         <tr>
             <th><u><strong>Penis Length:</strong></u></th>
             <td id="mc-penislength">$mc.penislength</td>
         </tr>
-        <</if>>
-     <tr>
+    <</if>>
+    <tr>
         <th><u><strong>Ass Size:</strong></u></th>
         <td id="mc-asssize">
             <<if $mc.assSize>>
                 <<=$mc.assSize>>
             <<else>>
-                You ass has no ass size, how is that even possible?    
+                <span class="red">You ass has no ass size, how is that even possible?</span>    
             <</if>>
         </td>
     </tr>
-        <tr id="sexpref">
+    <tr id="sexpref">
         <th><u><strong>Sex Preference:</strong></u></th>
         <td id="mc-sexpref">
             <<if $mc.sexpref>>
-                $mc.sexpref
+                <<=$mc.sexpref>>
             <<else>>
-                You have no sexual preference
+                <span class="red">You have no sexual preference</span>
             <</if>>
         </td>
     </tr>   
@@ -303,9 +303,33 @@ Please review the info below and confirm the options chosen are correct.
 </table>
 
 <div id="npcsex-actions-bar">
-    <<button "YES!">><<goto "CC-Confirm">><</button>>
-    <<button "Go back">><<goto "Index-CC">><</button>>
-	<<button [[Randomize|CC-Check]]>><<Randomiser>><</button>>
+
+	<<if _missing.length === 0>>
+		<<button "YES!">>
+			<<goto "CC-Confirm">>
+		<</button>>
+	<<else>>
+		<div class="cc-missing-warning">
+			<strong>You cannot continue</strong><br>
+			The following critical choices are missing:
+			
+				<<for _i = 0; _i < _missing.length; _i++>>
+					<<= _missing[_i]>>
+                    <<if _i < _missing.length - 1>>, <</if>>
+				<</for>>
+			
+		</div>
+	<</if>>
+
+	<<button "Go back">>
+		<<goto "Index-CC">>
+	<</button>>
+
+	<<button "Randomize">>
+		<<Randomiser>>
+		<<goto "CC-Check">>
+	<</button>>
+
 </div>
 
 

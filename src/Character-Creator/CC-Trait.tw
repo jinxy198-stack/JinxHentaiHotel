@@ -12,6 +12,7 @@ They are not limited to physical or mental traits. <br>
 	<<set _hatesKids = $mc.traits.includes("Hates Kids")>>
 	<<set _hatesAdults = $mc.traits.includes("Hates Adults")>>
 	<<set _hatesFurries = $mc.traits.includes("Hates Furries")>>
+	<<set _hatesHumans = $mc.traits.includes("Hates Humans")>>
 <</silently>>
 
  
@@ -76,6 +77,9 @@ They are not limited to physical or mental traits. <br>
 
 		<<if _hatesFurries>>
 			<<run $mc.traits.push("Hates Furries")>>
+		<</if>>
+		<<if _hatesHumans>>
+			<<run $mc.traits.push("Hates Humans")>>
 		<</if>>
 
 		<<set $pages.trait = true>>

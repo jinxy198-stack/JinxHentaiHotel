@@ -8,6 +8,9 @@ setup.speciesnnew = [
 setup.speciesnoFurry = [
     "Human",
 ];
+setup.speciesnoHuman = [
+    "Anthro",
+];
 
 setup.genders= [
     "Male", "Female",

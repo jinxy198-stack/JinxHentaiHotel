@@ -86,10 +86,12 @@
 	<<set _npc.nickname = "">>
 	<<set _npc.surname  = setup.pick(_surnames)>>
 	
-	<<if $furry>>
-		<<set _npc.species = setup.pick(setup.species)>>
-	<<else>>
+	<<if Array.isArray($mc.traits) && $mc.traits.includes("Hates Furries")>>
 		<<set _npc.species = setup.pick(setup.speciesnoFurry)>>
+	<<elseif Array.isArray($mc.traits) && $mc.traits.includes("Hates Humans")>>
+		<<set _npc.species = setup.pick(setup.speciesnoHuman)>>
+	<<else>>
+		<<set _npc.species = setup.pick(setup.species)>>
 	<</if>>
     
 	/* Gender, pronouns, genitals */
@@ -148,7 +150,8 @@
 		<<set 
             _eyesleft = setup.pick(setup.eyecolor),
             _eyesright = setup.pick(setup.eyecolor),
-            _npc.eyes to _eyesleft + " and " + _eyesright >>
+            _npc.eyes to _eyesleft + " and " + _eyesright 
+		>>
 	<</if>>
 	<<set _npc.hair		= setup.pick(_hairPool)>>
 	<<set _npc.haircolor	 = setup.pick(_hairColor)>>
@@ -766,4 +769,120 @@
 			<<set _char.genitaltype = setup.pick(setup.penistype)>>
 		<</if>>
 	<</if>>
+<</widget>>
+
+
+<<widget "MissingCC">>
+<<set _missing = []>>
+
+/* Safe parent-object checks */
+<<set _hasHairObject = $mc.hair && typeof $mc.hair === "object">>
+<<set _hasSkinObject = $mc.skin && typeof $mc.skin === "object">>
+<<set _hasAnthroObject = $mc.anthro && typeof $mc.anthro === "object">>
+<<set _hasBodyObject = $mc.body && typeof $mc.body === "object">>
+
+/* Basic critical checks */
+<<if !$mc.name>>
+	<<run _missing.push("First Name")>>
+<</if>>
+
+<<if !$mc.surname>>
+	<<run _missing.push("Surname")>>
+<</if>>
+
+<<if !$mc.gender>>
+	<<run _missing.push("Gender")>>
+<</if>>
+
+<<if !$mc.sexu>>
+	<<run _missing.push("Sexuality")>>
+<</if>>
+
+<<if !$mc.pronouns>>
+	<<run _missing.push("Pronouns")>>
+<</if>>
+
+<<if !$mc.trans>>
+	<<run _missing.push("Identity")>>
+<</if>>
+
+<<if !$mc.age>>
+	<<run _missing.push("Age")>>
+<</if>>
+
+<<if !$mc.ageGroup>>
+	<<run _missing.push("Age Group")>>
+<</if>>
+
+<<if !$mc.species>>
+	<<run _missing.push("Species")>>
+<</if>>
+
+/* Anthro-only critical checks */
+<<if $mc.species is "Anthro">>
+	<<if !_hasAnthroObject>>
+		<<run _missing.push("Anthro Details")>>
+	<<else>>
+		<<if !$mc.anthro.group>>
+			<<run _missing.push("Anthro Type")>>
+		<</if>>
+
+		<<if !$mc.anthro.subtype>>
+			<<run _missing.push("Anthro Subspecies")>>
+		<</if>>
+	<</if>>
+<</if>>
+
+/* Physical critical checks */
+<<if !$mc.eyes>>
+	<<run _missing.push("Eyes")>>
+<</if>>
+
+/* Hair is valid if Bald OR has color and style */
+<<if $mc.hair is "Bald">>
+	/* Bald is valid. */
+<<elseif !_hasHairObject || !$mc.hair.color || !$mc.hair.style>>
+	<<run _missing.push("Hair Details")>>
+<</if>>
+
+/* Skin/Fur/Scales/Feathers color can come from skin.color OR anthro.color */
+<<if !((_hasSkinObject && $mc.skin.color) || (_hasAnthroObject && $mc.anthro.color))>>
+	<<run _missing.push("Skin/Fur/Scale/Feather Color")>>
+<</if>>
+
+<<if !$mc.bodyheight>>
+	<<run _missing.push("Height")>>
+<</if>>
+
+<<if !$mc.physique>>
+	<<run _missing.push("Physique")>>
+<</if>>
+
+/* Mental critical checks */
+<<if !Array.isArray($mc.personality) || $mc.personality.length === 0>>
+	<<run _missing.push("Personality")>>
+<</if>>
+
+/* NSFW / gameplay critical checks */
+<<if !$mc.genitals>>
+	<<run _missing.push("Genitals")>>
+<</if>>
+
+<<if !$mc.assSize>>
+	<<run _missing.push("Ass Size")>>
+<</if>>
+
+<<if !$mc.sexpref>>
+	<<run _missing.push("Sex Preference")>>
+<</if>>
+
+/* Body object must exist and contain at least one body part */
+<<if !_hasBodyObject || Object.values($mc.body).filter(Boolean).length === 0>>
+	<<run _missing.push("Body Parts")>>
+<</if>>
+
+/* Only require penis length if the chosen genitals mention penis */
+<<if $mc.genitals && String($mc.genitals).toLowerCase().includes("penis") && !$mc.penislength>>
+	<<run _missing.push("Penis Length")>>
+<</if>>
 <</widget>>
