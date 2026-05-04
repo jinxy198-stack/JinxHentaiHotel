@@ -168,9 +168,9 @@ Please review the info below and confirm the options chosen are correct.
         </th>
         <td id="mc-skin">
             <<if $mc.skin.color>>
-                <<=$mc.skin.color>>
+                Color:<<=$mc.skin.color>>
             <<elseif $mc.anthro.color>>
-                <<=$mc.anthro.color>>
+                Color:<<=$mc.anthro.color>>
                 <br>
                 Patterns: <<=$mc.anthro.pattern>>
             <<else>>

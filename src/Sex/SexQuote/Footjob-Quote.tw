@@ -54,7 +54,6 @@
 		<<set _pool =
 			(
 				setup.footjobQuotes.Top[_pref]
-				&& setup.footjobQuotes.Top[_pref][_size]
 			)
 			|| setup.footjobQuotes.Top.Neutral
 		>>

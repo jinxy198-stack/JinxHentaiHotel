@@ -6,12 +6,12 @@
 
 <<if $sex.role == "Top">>
 	<<= either(
-		"<<gram _top 'subjCap'>> is on the <<=_spot>>, straddling <<gram _bottom 'poss'>> chest.",
-		"<<gram _top 'subjCap'>> settles onto the <<=_spot>>, straddling <<gram _bottom 'poss'>> chest."
+		"<<gram _top 'subjCap'>> <<= setup.be(_top) >> on the <<=_spot>>, straddling <<gram _bottom 'poss'>> chest.",
+		"<<gram _top 'subjCap'>> settle onto the <<=_spot>>, straddling <<gram _bottom 'poss'>> chest."
 	) >>
 <<else>>
 	<<= either(
-		"<<gram _top 'subjCap'>> is straddling <<gram _bottom 'poss'>> chest.",
-		"<<gram _top 'subjCap'>> settles over <<gram _bottom 'poss'>> chest, pinning <<gram _bottom 'obj'>> beneath <<gram _top 'obj'>>."
+		"<<gram _top 'subjCap'>> <<= setup.be(_top) >> straddling <<gram _bottom 'poss'>> chest.",
+		"<<gram _top 'subjCap'>> settle over <<gram _bottom 'poss'>> chest, pinning <<gram _bottom 'obj'>> beneath <<gram _top 'obj'>>."
 	) >>
 <</if>>

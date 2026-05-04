@@ -280,12 +280,12 @@ setup.caressQuotes = {
       Submissive: ["Mmm, that feels nice."],
       Switch: ["That feels nice."]
     },
-    Scales: {
+    Scale: {
       Dominant: ["Yeah, that feels nice."],
       Submissive: ["Your hands feel good on my scales…"],
       Switch: ["That feels nice."]
     },
-    Feathers: {
+    Feather: {
       Dominant: ["Yeah, feel my feathers."],
       Submissive: ["That feels nice. I like your touch."],
       Switch: ["That feels nice."]
@@ -666,7 +666,7 @@ setup.footjobQuotes = {
 			"That's great, $mc.name! Keep it up!",
 			"Your feet feel nice."
     ],
-    Neutral: [
+    Switch: [
       "Your feet are so soft.",
 			"That's great, $mc.name! Keep it up!",
 			"Your feet feel so nice.",
@@ -678,7 +678,6 @@ setup.footjobQuotes = {
     "You're gettin the Beeeeeeans~!",
     "Look! No hands!"
     ],
-
     Dominant: [
       "I can feel your pulse through the soles of my feet, $mc.name."
     ],
@@ -1656,11 +1655,13 @@ setup.PushCockInQuotes = {
   }
 };
 
+
 setup.TeaseCockWithPussyQuotes =[
   "You want to be inside me, don't you?",
   "Is this what you want?",
   "This is what you want, isn't it?"
 ];
+
 
 setup.TeasePussyWithCockQuotes ={
   Dominant:[
@@ -1676,6 +1677,7 @@ setup.TeasePussyWithCockQuotes ={
   ]
 };
 
+/*---Top teases bottom's ass with their cock ----*/
 setup.TeaseAssCockQuotes = {
   Top:[
     "Your ass is mesmerising.",

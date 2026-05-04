@@ -2,13 +2,17 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || _n>>
+<<set _spot = $room.location || "floor">>
+
 <<set _nLegs = setup.partLower(_n, 'Legs', 'legs')>>
 <<set _nHips = setup.partLower(_n, 'Hips', 'hips')>>
 <<set _mcLegs = setup.partLower($mc, 'Legs', 'legs')>>
 
 <<if $sex.role == "Top">>
 	<<= either(
-		"Dropping down onto all fours, you lower yourself over _n.name, bringing your crotch down to $proset.their face as you dip your head between $proset.their <<=_nLegs>>.",
+		"Dropping down onto all fours, <<gram _top 'subj'>> lower <<gram _top 'refl'>> over <<gram _bottom 'subj'>>, bringing <<gram _top 'poss'>> crotch down to $proset.their face as <<gram _top 'subj'>> dip <<gram _top 'poss'>> head between $proset.their <<=_nLegs>>.",
 		"Allowing $proset.them to guide you down, you reach up and take a firm grip on $proset.their <<=_nHips>> before roughly tugging $proset.them into place above you in a sixty-nine."
 	) >>
 

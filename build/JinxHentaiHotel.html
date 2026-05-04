@@ -1605,12 +1605,12 @@ setup.caressQuotes = {
       Submissive: ["Mmm, that feels nice."],
       Switch: ["That feels nice."]
     },
-    Scales: {
+    Scale: {
       Dominant: ["Yeah, that feels nice."],
       Submissive: ["Your hands feel good on my scales…"],
       Switch: ["That feels nice."]
     },
-    Feathers: {
+    Feather: {
       Dominant: ["Yeah, feel my feathers."],
       Submissive: ["That feels nice. I like your touch."],
       Switch: ["That feels nice."]
@@ -1991,7 +1991,7 @@ setup.footjobQuotes = {
 			"That's great, $mc.name! Keep it up!",
 			"Your feet feel nice."
     ],
-    Neutral: [
+    Switch: [
       "Your feet are so soft.",
 			"That's great, $mc.name! Keep it up!",
 			"Your feet feel so nice.",
@@ -2003,7 +2003,6 @@ setup.footjobQuotes = {
     "You're gettin the Beeeeeeans~!",
     "Look! No hands!"
     ],
-
     Dominant: [
       "I can feel your pulse through the soles of my feet, $mc.name."
     ],
@@ -2981,11 +2980,13 @@ setup.PushCockInQuotes = {
   }
 };
 
+
 setup.TeaseCockWithPussyQuotes =[
   "You want to be inside me, don't you?",
   "Is this what you want?",
   "This is what you want, isn't it?"
 ];
+
 
 setup.TeasePussyWithCockQuotes ={
   Dominant:[
@@ -3001,6 +3002,7 @@ setup.TeasePussyWithCockQuotes ={
   ]
 };
 
+/*---Top teases bottom's ass with their cock ----*/
 setup.TeaseAssCockQuotes = {
   Top:[
     "Your ass is mesmerising.",
@@ -5861,20 +5863,6 @@ setup.sexacts = {
         "Bottom arousal": 30,
         "Top arousal cap": 300,
     },
-    "Rub Cock Against Feet": /*You rub your cock against their feet */
-    {
-        "positions": [ "Missionary", "Laid Across On Back", "Kneeling"],
-        "action type": ["continue"],
-        "Top parts": ["Penis"],
-        "Bottom parts": ["Feet"],
-        "Top cum locations": ["on feet"],
-        "Bottom cum locations": [],
-        "masturbation": false,
-        "take virginity": [],
-        "Top arousal": 40,
-        "Bottom arousal": 10,
-        "Bottom arousal cap": 300,
-    },
         "Release Cock From Feet":
     {
         "positions": [],
@@ -6525,7 +6513,7 @@ setup.sexacts = {
     "Trib":
     {
         "positions": [ "Missionary", "Laid Across On Back","Scissor"],
-        "action type": ["tease"],
+        "action type": ["penetrate"],
         "Top parts": ["Vagina"],
         "Bottom parts": ["Vagina"],
         "Top cum locations": ["on pussy"],
@@ -6538,6 +6526,37 @@ setup.sexacts = {
         "Bottom dialogue tags": ["tribbing"],
         "remember as": ["tribbed"],
     },
+    "Continue Tribbing":
+    {
+        "positions": [ "Missionary", "Laid Across On Back","Scissor"],
+        "action type": ["continue"],
+        "Top parts": ["Vagina"],
+        "Bottom parts": ["Vagina"],
+        "Top cum locations": ["on pussy"],
+        "Bottom cum locations": ["on pussy"],
+        "masturbation": false,
+        "take virginity": [],
+        "Top arousal": 40,
+        "Bottom arousal": 40,
+        "Top dialogue tags": ["tribbing"],
+        "Bottom dialogue tags": ["tribbing"],
+        "remember as": ["tribbed"],
+    },
+    "Stop Tribbing":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "Top parts": ["Vagina"],
+        "Bottom parts": ["Vagina"],
+        "Top cum locations": [],
+        "Bottom cum locations": [],
+        "masturbation": false,
+        "take virginity": [],
+        "Top arousal": 0,
+        "Bottom arousal": 0,
+    },
+
+
     "Tease Ass With Cock":
     {
         "positions": [ "Missionary:Top", "Prone Bone:Top", "Mating Press:Top", "From Behind:Top", "Doggy:Top", "Bent Over:Top", "Cowgirl:Top", "Reverse Cowgirl:Top", "Standing From Behind:Top", "Reverse Lap ride:Top", "Spooning:Top", "Double Decker:Top", "Against Wall From Behind:Top", "Laid Across On Back:Top", "Laid Across On Stomach:Top"],
@@ -8036,9 +8055,9 @@ Please review the info below and confirm the options chosen are correct.
         &lt;/th&gt;
         &lt;td id=&quot;mc-skin&quot;&gt;
             &lt;&lt;if $mc.skin.color&gt;&gt;
-                &lt;&lt;=$mc.skin.color&gt;&gt;
+                Color:&lt;&lt;=$mc.skin.color&gt;&gt;
             &lt;&lt;elseif $mc.anthro.color&gt;&gt;
-                &lt;&lt;=$mc.anthro.color&gt;&gt;
+                Color:&lt;&lt;=$mc.anthro.color&gt;&gt;
                 &lt;br&gt;
                 Patterns: &lt;&lt;=$mc.anthro.pattern&gt;&gt;
             &lt;&lt;else&gt;&gt;
@@ -9300,7 +9319,8 @@ And in the corner was a desk with a computer for playing around with.
     personality: [&quot;Kind&quot;, &quot;Playful&quot;,&quot;Bubbly&quot;, &quot;Childish&quot;],
     assSize: &quot;Slim&quot;,
     sexpref: &quot;Switch&quot;,
-    origin: &quot;Applebridge&quot;
+    origin: &quot;Applebridge&quot;,
+    traits: [],
 }&gt;&gt;
 
 &lt;&lt;set $LorraineD = {
@@ -10249,7 +10269,6 @@ Work on fixing spawning NPC&#39;s
     &lt;&lt;case &quot;Stroke Shaft With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
-    &lt;&lt;case &quot;Rub Cock Against Feet&quot;&gt;&gt;&lt;&lt;include &quot;Feet-Acts-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Release Cock From Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Tug Cock Free Of Feet&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
 
@@ -10302,6 +10321,9 @@ Work on fixing spawning NPC&#39;s
     &lt;&lt;case &quot;Stop Frotting&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
 
     &lt;&lt;case &quot;Trib&quot;&gt;&gt;&lt;&lt;include &quot;Trib-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Continue Tribbing&quot;&gt;&gt;&lt;&lt;include &quot;Trib-Dialogue&quot;&gt;&gt;
+    &lt;&lt;case &quot;Stop Tribbing&quot;&gt;&gt;&lt;&lt;include &quot;Stop-Dialogue&quot;&gt;&gt;
+
     &lt;&lt;case &quot;Tease Ass With Cock&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Cocktease With Ass&quot;&gt;&gt;&lt;&lt;include &quot;Tease-Ass-Dialogue&quot;&gt;&gt;
     &lt;&lt;case &quot;Grope Ass&quot;&gt;&gt;&lt;&lt;include &quot;Rub-Butt-Dialogue&quot;&gt;&gt;
@@ -10763,8 +10785,6 @@ Work on fixing spawning NPC&#39;s
 You tease _n.name&#39;s cock with your feet
 &lt;&lt;elseif $sex.act == &quot;Tease Pussy With Feet&quot;&gt;&gt;
 You tease _n.name&#39;s pussy with your feet.
-&lt;&lt;elseif $sex.act == &quot;Rub Cock Against Feet&quot;&gt;&gt;
-You rub your cock against _n.name&#39;s feet.
 &lt;&lt;elseif $sex.act == &quot;Rub Pussy Against Feet&quot;&gt;&gt;
 You rub your pussy against _n.name&#39;s feet.
 &lt;&lt;elseif $sex.act == &quot;Grip Cock With Feet&quot;&gt;&gt;
@@ -10864,19 +10884,6 @@ You rub your pussy against _n.name&#39;s feet.
 		&quot;Pushing your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you start thrusting your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward, letting out a moan as you happily receive a footjob.&quot;,
 		&quot;Pushing _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; together, you let out a moan as you start to pump your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; back and forth, sighing as you receive a footjob.&quot;,
 		&quot;_n.name picks up the pace, sliding $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up against your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
-	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;= either(
-		&quot;_n.name lets out a moan, eagerly bucking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward as $proset.they start eagerly fucking your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
-		&quot;With a moan, _n.name eagerly thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward and slides $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
-		&quot;_n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; deep between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, letting out a moan as $proset.they enjoy the footjob.&quot;
-	) &gt;&gt;
-&lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
-	&lt;&lt;= either(
-		&quot;You fuck _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
-		&quot;_n.name giggles softly to $proset.themself as $proset.their feet glide up and down the length of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Frot-Dialogue" tags="nobr Dialogue" position="1300,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
@@ -11459,7 +11466,9 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 &lt;&lt;elseif $sex.act ==&quot;Stop Licking And Sucking Each Other&quot;&gt;&gt;  
     You both pull back.
 &lt;&lt;elseif $sex.act ==&quot;Stop Frotting&quot;&gt;&gt;  
-    You both pull back.    
+    You both pull back.
+&lt;&lt;elseif $sex.act ==&quot;Stop Tribbing&quot;&gt;&gt;  
+    You both pull back.        
 &lt;&lt;else&gt;&gt;
     You both stop    
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="90" name="SuckFoot-Dialogue" tags="Dialogue nobr" position="800,1775" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
@@ -11888,13 +11897,17 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 ) &gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="SixtyNine-Dialogue" tags="Dialogue nobr" position="775,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
+&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
+&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
+
 &lt;&lt;set _nLegs = setup.partLower(_n, &#39;Legs&#39;, &#39;legs&#39;)&gt;&gt;
 &lt;&lt;set _nHips = setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;)&gt;&gt;
 &lt;&lt;set _mcLegs = setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;)&gt;&gt;
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;Dropping down onto all fours, you lower yourself over _n.name, bringing your crotch down to $proset.their face as you dip your head between $proset.their &lt;&lt;=_nLegs&gt;&gt;.&quot;,
+		&quot;Dropping down onto all fours, &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; lower &lt;&lt;gram _top &#39;refl&#39;&gt;&gt; over &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt;, bringing &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; crotch down to $proset.their face as &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; dip &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; head between $proset.their &lt;&lt;=_nLegs&gt;&gt;.&quot;,
 		&quot;Allowing $proset.them to guide you down, you reach up and take a firm grip on $proset.their &lt;&lt;=_nHips&gt;&gt; before roughly tugging $proset.them into place above you in a sixty-nine.&quot;
 	) &gt;&gt;
 
@@ -11987,13 +12000,13 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; is on the &lt;&lt;=_spot&gt;&gt;, straddling &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest.&quot;,
-		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; settles onto the &lt;&lt;=_spot&gt;&gt;, straddling &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest.&quot;
+		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;= setup.be(_top) &gt;&gt; on the &lt;&lt;=_spot&gt;&gt;, straddling &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest.&quot;,
+		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; settle onto the &lt;&lt;=_spot&gt;&gt;, straddling &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest.&quot;
 	) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;= either(
-		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; is straddling &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest.&quot;,
-		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; settles over &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest, pinning &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; beneath &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
+		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;= setup.be(_top) &gt;&gt; straddling &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest.&quot;,
+		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; settle over &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest, pinning &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; beneath &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="Underneath-Oral-Service-Dialogue" tags="nobr" position="725,1600" size="100,100">/* Not needed? */
     &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
@@ -12130,7 +12143,20 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 	&lt;&lt;elseif $sex.act == &quot;Fuck Fist&quot;&gt;&gt;
 		&lt;&lt;set _lines = [
 			&quot;_n.name smiles at you during the action.&quot;
-		]&gt;&gt;	
+		]&gt;&gt;
+	&lt;&lt;elseif $sex.act == &quot;Stroke Shaft With Feet&quot;&gt;&gt;
+		&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
+			&lt;&lt;= either(
+				&quot;_n.name lets out a moan, eagerly bucking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward as $proset.they start eagerly fucking your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
+				&quot;With a moan, _n.name eagerly thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward and slides $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
+				&quot;_n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; deep between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, letting out a moan as $proset.they enjoy the footjob.&quot;
+			) &gt;&gt;
+		&lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
+			&lt;&lt;= either(
+				&quot;You fuck _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
+				&quot;_n.name giggles softly to $proset.themself as $proset.their feet glide up and down the length of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
+			) &gt;&gt;
+		&lt;&lt;/if&gt;&gt;		
 	&lt;&lt;elseif $sex.act == &quot;Press Face on Chest&quot;&gt;&gt;
 		&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
 			&lt;&lt;set _lines = [
@@ -12195,7 +12221,6 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
     &lt;&lt;case &quot;Stroke Pussy With Feet&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
     /*&lt;&lt;case &quot;Tease Cock With Feet&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
     /*&lt;&lt;case &quot;Tease Pussy With Feet&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
-    /*&lt;&lt;case &quot;Rub Cock Against Feet&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
     /*&lt;&lt;case &quot;Rub Pussy Against Feet&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
     /*&lt;&lt;case &quot;Rub Against Feet&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
     &lt;&lt;case &quot;Pump Shaft&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Handjob-Quote&quot;&gt;&gt;
@@ -12225,6 +12250,8 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
     &lt;&lt;case &quot;Frot&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Frot-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Continue Frotting&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Frot-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Trib&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Trib-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Continue Tribbing&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Trib-Quote&quot;&gt;&gt;
+
     &lt;&lt;case &quot;Tease Ass With Cock&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Tease-Ass-Cock-Quote&quot;&gt;&gt; 
     &lt;&lt;case &quot;Cocktease With Ass&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Tease-Ass-Cock-Quote&quot;&gt;&gt; 
     &lt;&lt;case &quot;Grope Ass&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Grope-Butt-Quote&quot;&gt;&gt;
@@ -12848,7 +12875,6 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 		&lt;&lt;set _pool =
 			(
 				setup.footjobQuotes.Top[_pref]
-				&amp;&amp; setup.footjobQuotes.Top[_pref][_size]
 			)
 			|| setup.footjobQuotes.Top.Neutral
 		&gt;&gt;
@@ -13900,25 +13926,7 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _persMatches = []&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
-&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
-	&lt;&lt;if setup.TeaseAssCockQuotes.Bottom&gt;&gt;
-		&lt;&lt;for _p range _personalities&gt;&gt;
-			&lt;&lt;if _p and Array.isArray(setup.TeaseAssCockQuotes.Bottom[_p])&gt;&gt;
-				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
-			&lt;&lt;/if&gt;&gt;
-		&lt;&lt;/for&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if _persMatches.length&gt;&gt;
-		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
-		&lt;&lt;set _pool = setup.TeaseAssCockQuotes.Bottom[_chosenPers]&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;set _pool = 
-			setup.TeaseAssCockQuotes.Bottom
-			|| setup.TeaseAssCockQuotes.Bottom.Neutral&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif _mode is &quot;Top&quot;&gt;&gt;
+&lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
 	&lt;&lt;if setup.TeaseAssCockQuotes.Top&gt;&gt;
 		&lt;&lt;for _p range _personalities&gt;&gt;
 			&lt;&lt;if _p and Array.isArray(setup.TeaseAssCockQuotes.Top[_p])&gt;&gt;
@@ -13932,8 +13940,26 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 		&lt;&lt;set _pool = setup.TeaseAssCockQuotes.Top[_chosenPers]&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;set _pool = 
-		setup.TeaseAssCockQuotes.Top 
-		|| setup.TeaseAssCockQuotes.Top.Neutral&gt;&gt;
+			setup.TeaseAssCockQuotes.Top
+			|| setup.TeaseAssCockQuotes.Top.Neutral&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;if setup.TeaseAssCockQuotes.Bottom&gt;&gt;
+		&lt;&lt;for _p range _personalities&gt;&gt;
+			&lt;&lt;if _p and Array.isArray(setup.TeaseAssCockQuotes.Bottom[_p])&gt;&gt;
+				&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if _persMatches.length&gt;&gt;
+		&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+		&lt;&lt;set _pool = setup.TeaseAssCockQuotes.Bottom[_chosenPers]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _pool = 
+		setup.TeaseAssCockQuotes.Bottom 
+		|| setup.TeaseAssCockQuotes.Bottom.Neutral&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -13955,9 +13981,9 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
 &lt;&lt;set _mode = $sex.role&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 
-&lt;&lt;if _mode is &quot;Top&quot;&gt;&gt;
+&lt;&lt;if _mode is &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;set _pool = setup.TeaseCockWithPussyQuotes&gt;&gt;
-&lt;&lt;elseif _mode is &quot;Bottom&quot;&gt;&gt;
+&lt;&lt;elseif _mode is &quot;Top&quot;&gt;&gt;
 	&lt;&lt;set _pool =
 		setup.TeasePussyWithCockQuotes[_pref]
 		|| setup.TeasePussyWithCockQuotes.Neutral

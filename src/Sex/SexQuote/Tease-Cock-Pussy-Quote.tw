@@ -13,9 +13,9 @@
 <<set _mode = $sex.role>>
 <<set _pool = null>>
 
-<<if _mode is "Top">>
+<<if _mode is "Bottom">>
 	<<set _pool = setup.TeaseCockWithPussyQuotes>>
-<<elseif _mode is "Bottom">>
+<<elseif _mode is "Top">>
 	<<set _pool =
 		setup.TeasePussyWithCockQuotes[_pref]
 		|| setup.TeasePussyWithCockQuotes.Neutral

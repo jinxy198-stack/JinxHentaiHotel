@@ -35,16 +35,3 @@
 		"_n.name picks up the pace, sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up against your <<= setup.partLower($mc, 'genitals', 'genitals') >>."
 	) >>
 <</if>>
-
-<<if $sex.role == "Bottom">>
-	<<= either(
-		"_n.name lets out a moan, eagerly bucking $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> forward as $proset.they start eagerly fucking your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
-		"With a moan, _n.name eagerly thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> forward and slides $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
-		"_n.name thrusts $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> deep between your <<= setup.partLower($mc, 'Feet', 'feet') >>, letting out a moan as $proset.they enjoy the footjob."
-	) >>
-<<elseif $sex.role == "Top">>
-	<<= either(
-		"You fuck _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>.",
-		"_n.name giggles softly to $proset.themself as $proset.their feet glide up and down the length of your <<= setup.partLower($mc, 'genitals', 'genitals') >>."
-	) >>
-<</if>>

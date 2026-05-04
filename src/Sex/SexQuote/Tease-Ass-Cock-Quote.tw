@@ -15,25 +15,7 @@
 <<set _persMatches = []>>
 <<set _pool = null>>
 
-<<if _mode is "Bottom">>
-	<<if setup.TeaseAssCockQuotes.Bottom>>
-		<<for _p range _personalities>>
-			<<if _p and Array.isArray(setup.TeaseAssCockQuotes.Bottom[_p])>>
-				<<run _persMatches.push(_p)>>
-			<</if>>
-		<</for>>
-	<</if>>
-
-	<<if _persMatches.length>>
-		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = setup.TeaseAssCockQuotes.Bottom[_chosenPers]>>
-	<<else>>
-		<<set _pool = 
-			setup.TeaseAssCockQuotes.Bottom
-			|| setup.TeaseAssCockQuotes.Bottom.Neutral>>
-	<</if>>
-
-<<elseif _mode is "Top">>
+<<if _mode is "Top">>
 	<<if setup.TeaseAssCockQuotes.Top>>
 		<<for _p range _personalities>>
 			<<if _p and Array.isArray(setup.TeaseAssCockQuotes.Top[_p])>>
@@ -47,8 +29,26 @@
 		<<set _pool = setup.TeaseAssCockQuotes.Top[_chosenPers]>>
 	<<else>>
 		<<set _pool = 
-		setup.TeaseAssCockQuotes.Top 
-		|| setup.TeaseAssCockQuotes.Top.Neutral>>
+			setup.TeaseAssCockQuotes.Top
+			|| setup.TeaseAssCockQuotes.Top.Neutral>>
+	<</if>>
+
+<<elseif _mode is "Bottom">>
+	<<if setup.TeaseAssCockQuotes.Bottom>>
+		<<for _p range _personalities>>
+			<<if _p and Array.isArray(setup.TeaseAssCockQuotes.Bottom[_p])>>
+				<<run _persMatches.push(_p)>>
+			<</if>>
+		<</for>>
+	<</if>>
+
+	<<if _persMatches.length>>
+		<<set _chosenPers = setup.pick(_persMatches)>>
+		<<set _pool = setup.TeaseAssCockQuotes.Bottom[_chosenPers]>>
+	<<else>>
+		<<set _pool = 
+		setup.TeaseAssCockQuotes.Bottom 
+		|| setup.TeaseAssCockQuotes.Bottom.Neutral>>
 	<</if>>
 <</if>>
 

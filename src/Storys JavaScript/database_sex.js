@@ -1069,20 +1069,6 @@ setup.sexacts = {
         "Bottom arousal": 30,
         "Top arousal cap": 300,
     },
-    "Rub Cock Against Feet": /*You rub your cock against their feet */
-    {
-        "positions": [ "Missionary", "Laid Across On Back", "Kneeling"],
-        "action type": ["continue"],
-        "Top parts": ["Penis"],
-        "Bottom parts": ["Feet"],
-        "Top cum locations": ["on feet"],
-        "Bottom cum locations": [],
-        "masturbation": false,
-        "take virginity": [],
-        "Top arousal": 40,
-        "Bottom arousal": 10,
-        "Bottom arousal cap": 300,
-    },
         "Release Cock From Feet":
     {
         "positions": [],
@@ -1733,7 +1719,7 @@ setup.sexacts = {
     "Trib":
     {
         "positions": [ "Missionary", "Laid Across On Back","Scissor"],
-        "action type": ["tease"],
+        "action type": ["penetrate"],
         "Top parts": ["Vagina"],
         "Bottom parts": ["Vagina"],
         "Top cum locations": ["on pussy"],
@@ -1746,6 +1732,37 @@ setup.sexacts = {
         "Bottom dialogue tags": ["tribbing"],
         "remember as": ["tribbed"],
     },
+    "Continue Tribbing":
+    {
+        "positions": [ "Missionary", "Laid Across On Back","Scissor"],
+        "action type": ["continue"],
+        "Top parts": ["Vagina"],
+        "Bottom parts": ["Vagina"],
+        "Top cum locations": ["on pussy"],
+        "Bottom cum locations": ["on pussy"],
+        "masturbation": false,
+        "take virginity": [],
+        "Top arousal": 40,
+        "Bottom arousal": 40,
+        "Top dialogue tags": ["tribbing"],
+        "Bottom dialogue tags": ["tribbing"],
+        "remember as": ["tribbed"],
+    },
+    "Stop Tribbing":
+    {
+        "positions": [],
+        "action type": ["end"],
+        "Top parts": ["Vagina"],
+        "Bottom parts": ["Vagina"],
+        "Top cum locations": [],
+        "Bottom cum locations": [],
+        "masturbation": false,
+        "take virginity": [],
+        "Top arousal": 0,
+        "Bottom arousal": 0,
+    },
+
+
     "Tease Ass With Cock":
     {
         "positions": [ "Missionary:Top", "Prone Bone:Top", "Mating Press:Top", "From Behind:Top", "Doggy:Top", "Bent Over:Top", "Cowgirl:Top", "Reverse Cowgirl:Top", "Standing From Behind:Top", "Reverse Lap ride:Top", "Spooning:Top", "Double Decker:Top", "Against Wall From Behind:Top", "Laid Across On Back:Top", "Laid Across On Stomach:Top"],
