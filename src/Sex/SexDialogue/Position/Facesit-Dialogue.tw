@@ -2,13 +2,18 @@
 <<set _npc = _n>>
 <<PronounsSet>>
 
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || _n>>
+<<set _spot = $room.location || "floor">>
+
+
 <<if $sex.role=="Top">>
 	<<=either(
-	"_n.name pushes you onto your back and they lower themself over your face."
+	    "<<gram _bottom 'subjCap'>> pushes <<gram _top 'subj'>> onto <<gram _top 'poss'>> back and they lower themself over <<gram _top 'poss'>> face."
     )>>
 <<elseif $sex.role=="Bottom">>
 	<<=either(
-    "You push _n.name onto their back and then lower yourself over their face."
+        "<<gram _bottom 'subjCap'>> push <<gram _top 'subj'>> onto their back and then lower <<gram _bottom 'refl'>> over their face."
     )>>
 <</if>>
 

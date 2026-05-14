@@ -9912,6 +9912,34 @@ And in the corner was a desk with a computer for playing around with.
     accessory: [&quot;White Mask&quot;],
     origin: &quot;Pokemon&quot;,
     traits: [&quot;Celebrity&quot;,&quot;Fighter&quot;],
+}&gt;&gt;
+
+/*Southern Drawl */
+/*Alfyn Greenpath */
+&lt;&lt;set $Alfyn = {
+    name: &quot;Alfyn&quot;,
+    surname: &quot;Greengrass&quot;,
+    species: &quot;Human&quot;,
+    gender: &quot;Male&quot;,
+    trans: &quot;Cisgender&quot;,
+    sexu: &quot;Pansexual&quot;,  
+    genitals: &quot;Penis&quot;,
+    genitaltype: &quot;Uncut&quot;,
+    penislength: &quot;Average&quot;,
+    assSize: &quot;Tight&quot;,
+    pronouns: &quot;He/Him&quot;,
+    age: 21,
+    eyes: &quot;Brown&quot;,
+    hair: &quot;Disheveled&quot;,
+    haircolor: &quot;Blonde&quot;,
+    skincolor: &quot;Fair&quot;,
+    skinfeatures:[],
+    bodyheight: &quot;Average&quot;,
+    physique: &quot;Toned&quot;, 
+    personality: [&quot;Kind&quot;,&quot;Modest&quot;],
+    sexpref: &quot;Submissive&quot;,
+    origin: &quot;Octopath&quot;,
+    traits: [&quot;Hero&quot;, &quot;Scholar&quot;],
 }&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="OCNPC" tags="init nobr" position="475,400" size="100,100">/* already designated NPC&#39;s will have their information stored here. */
 
 /*Kevin Snowpaw */
@@ -11688,62 +11716,82 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
         &quot;_n.name leans you against the $room.location.&quot;
     )&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="Bent-Over-Dialogue" tags="nobr" position="975,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-You bend _n.name over on the $room.location and step up behind $proset.them.
-&lt;&lt;else&gt;&gt;
-_n.name bends you over on the $room.location and steps up behind you.
+    You bend _n.name over on the $room.location and step up behind $proset.them.
+&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
+    _n.name bends you over on the $room.location and steps up behind you.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="Cowgirl-Dialogue" tags="Dialogue nobr" position="875,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
-&lt;&lt;if $sex.role ==&quot;Bottom&quot;&gt;&gt;
+
+&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;set _bottom = $sex.Bottom || $mc&gt;&gt;
+&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
+
+
+&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
-		&quot;Taking hold of  _n.name&#39;s shoulders, you push $proset.them down onto $proset.their back. You then lower yourself down on top of  $proset.them, bringing your crotch down to bump against $proset.theirs as you straddle $proset.them in the cowgirl position. Once you&#39;ve made yourself comfortable, you grin down at _n.name.&quot;,
+		&quot;Taking hold of _n.name&#39;s shoulders, you push $proset.them down onto $proset.their back. &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; then lower yourself down on top of  $proset.them, bringing your crotch down to bump against $proset.theirs as you straddle $proset.them in the cowgirl position. Once you&#39;ve made yourself comfortable, you grin down at _n.name.&quot;,
 		&quot;Lifting your &lt;&lt;= setup.partLower($mc, &#39;Arms&#39;, &#39;arms&#39;) &gt;&gt;, you take hold of _n.name&#39;s shoulders, and with a little pressure, try to get $proset.them to drop down onto $proset.their back as you smirk. &quot;,
-		&quot;You climb on top of _n.name, sitting your &lt;&lt;= setup.valueLower($mc, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass on their crotch.&quot;
+		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; climb on top of _n.name, sitting &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.valueLower($mc, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass on their crotch.&quot;
 	)&gt;&gt;
-&lt;&lt;elseif $sex.role==&quot;Top&quot;&gt;&gt;
+&lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;=either(
-		&quot;Dropping down and quickly lying on your back, _n.name gets on top and straddles your waist,&quot;,
-		&quot;Jumping down over the top of you, _n.name lowers $proset.themself down over your groin, bringing $proset.their crotch to yours as $proset.they straddle you in the cowgirl position. Leaning forward a little, $proset.they grin down at you,&quot;,
-		&quot;Allowing you to push  $proset.them down, _n.name reaches up and takes a firm grip on your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, before pulling you down so that you&#39;re straddling $proset.them in the cowgirl position. Looking up into your &lt;&lt;=$mc.eyes.toLowerCase()&gt;&gt; eyes, $proset.they smile&quot;,
-		&quot;Taking hold of _n.name&#39;s shoulders, you pull $proset.them down with you as you lie down on your back. With a firm grip on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you push $proset.them back so that they are straddling you in the cowgirl position. Once you&#39;ve made yourself comfortable, you look up at _n.name and smile.&quot;,
+		&quot;Dropping down and quickly lying on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; back, _n.name gets on top and straddles &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; waist,&quot;,
+		&quot;Jumping down over the top of you, _n.name lowers $proset.themself down over &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; groin, bringing $proset.their crotch to yours as $proset.they straddle you in the cowgirl position. Leaning forward a little, $proset.they grin down at you.&quot;,
+		&quot;Allowing you to push  $proset.them down, _n.name reaches up and takes a firm grip on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, before pulling you down so that you&#39;re straddling $proset.them in the cowgirl position. Looking up into &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;=$mc.eyes.toLowerCase()&gt;&gt; eyes, $proset.they smile&quot;,
+		&quot;Taking hold of _n.name&#39;s shoulders, you pull $proset.them down with you as you lie down on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; back. With a firm grip on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you push $proset.them back so that they are straddling you in the cowgirl position. Once you&#39;ve made yourself comfortable, you look up at _n.name and smile.&quot;,
 		&quot;_n.name climbed on top of you.&quot;
 	)&gt;&gt;
 	&lt;br&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="Doggystyle-Dialogue" tags="nobr Dialogue" position="675,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="Doggystyle-Dialogue" tags="nobr Dialogue" position="675,1325" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
+&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
+
+&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
-&lt;&lt;if $sex.role== &quot;Bottom&quot;&gt;&gt;
+
+&lt;&lt;if $sex.role== &quot;Bottom&quot;&gt;&gt; /*If you are the bottom */
 	&lt;&lt;=either(
-    &quot;You drop down on all fours, facing away from _n.name.&quot;,
-    &quot;You get on all fours, presenting your ass out towards _n.name.&quot;
+    &quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; drop down on all fours, facing away from &lt;&lt;gram _top &#39;subj&#39;&gt;&gt;.&quot;,
+    &quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; get on all fours, presenting &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; ass out towards &lt;&lt;gram _top &#39;subj&#39;&gt;&gt;.&quot;
     )&gt;&gt;
-    _n.name climbs up onto your behind.
+    &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; climbs up onto &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; behind.
     &lt;br&gt;
 &lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;=either(
-	&quot;_n.name get on all fours like a dog, and present their &lt;&lt;= setup.partLower(_n, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass to you.&quot;
+	&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; get on all fours like a dog, and present their &lt;&lt;= setup.partLower(_bottom, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass to &lt;&lt;gram _top &#39;subj&#39;&gt;&gt;.&quot;,
+    &quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; mount &lt;&lt;gram _top &#39;refl&#39;&gt;&gt; over &lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt;.&quot;
     )&gt;&gt;
-    You mount yourself over _n.name.
     &lt;&lt;if _h is -1&gt;&gt;
-        Because of the height difference, your legs nearly dangle over them.
+        Because of the height difference, &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; legs nearly dangle over them.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="Double-Decker-Dialogue" tags="nobr" position="100,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-You are underneath _n.name as $proset.they stretch out on their back on the $room.location. They lay their back on you like a recliner.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="Double-Decker-Dialogue" tags="nobr" position="100,1350" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
+&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
 
-&lt;&lt;else&gt;&gt;
-You are on your back on the $room.location atop _n.name, laying on them like a recliner.
+&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+    &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; are underneath &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; as $proset.they stretch out on their back on the &lt;&lt;=_spot&gt;&gt;. They lay their back on &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; like a recliner.
+
+&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
+    &lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; are on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; back on the &lt;&lt;=_spot&gt;&gt; atop _n.name, laying on them like a recliner.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="Facesit-Dialogue" tags="nobr Dialogue" position="1075,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
+&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
+&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
+
+
 &lt;&lt;if $sex.role==&quot;Top&quot;&gt;&gt;
 	&lt;&lt;=either(
-	&quot;_n.name pushes you onto your back and they lower themself over your face.&quot;
+	    &quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; pushes &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; onto &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; back and they lower themself over &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; face.&quot;
     )&gt;&gt;
 &lt;&lt;elseif $sex.role==&quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
-    &quot;You push _n.name onto their back and then lower yourself over their face.&quot;
+        &quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; push &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; onto their back and then lower &lt;&lt;gram _bottom &#39;refl&#39;&gt;&gt; over their face.&quot;
     )&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="From-Behind-Dialogue" tags="nobr" position="350,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     You&#39;re behind _n.name, who is on all fours.
-&lt;&lt;else&gt;&gt;
+&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
     You&#39;re on all fours with _n.name behind you.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="Kneeling-Between-Thighs-Dialogue" tags="nobr" position="475,1350" size="100,100">/* Same as Missionary? */
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
@@ -11812,12 +11860,16 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 			&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; sits on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; lap, facing away from &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="Mating-Press-Dialogue" tags="nobr" position="225,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="Mating-Press-Dialogue" tags="nobr" position="225,1475" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
+&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
 
-You&#39;re on top of _n.name on the $room.location, $proset.their legs pushed back towards $proset.their head
+&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 
-&lt;&lt;else&gt;&gt;
-You&#39;re on your back $room.location with _n.name on top of you, your legs pushed back towards your head.
+    You&#39;re on top of &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; on the $room.location, $proset.their legs pushed back towards $proset.their head
+
+&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
+    You&#39;re on your back $room.location with &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; on top of you, your legs pushed back towards your head.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="Missionary-Dialogue" tags="nobr Dialogue" position="675,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
@@ -14198,7 +14250,8 @@ You&#39;re on your back $room.location with _n.name on top of you, your legs pus
   $BenTen,
   $Ryuko,
   $Luffy,
-  $Killua
+  $Killua,
+  $Alfyn
 
 ]&gt;&gt;
 /* helpers */
@@ -14292,17 +14345,10 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 &lt;center&gt;&lt;&lt;button [[Use the Randomiser|CC-Check]]&gt;&gt;&lt;&lt;Randomiser&gt;&gt;&lt;&lt;/button&gt;&gt; | &lt;&lt;button [[Use the Pre-Set|CC-Check]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/center&gt;
 
-&lt;span&gt; Updated as of 4/18/2026 &lt;/span&gt;
+&lt;span&gt; Updated as of 5/14/2026 &lt;/span&gt;
 
 &lt;&lt;if $devMode&gt;&gt;
 &lt;&lt;button [[Test|TestRoom]]&gt;&gt;&lt;&lt;LittleBoy&gt;&gt;&lt;&lt;/button&gt;&gt; 
-
-&lt;&lt;button [[Test as a Shota|Lounge]]&gt;&gt;&lt;&lt;LittleBoy&gt;&gt;&lt;&lt;/button&gt;&gt; 
-&lt;&lt;button [[Test as a Loli|Lounge]]&gt;&gt;&lt;&lt;LittleGirl&gt;&gt;&lt;&lt;/button&gt;&gt; 
-&lt;&lt;button [[Test as a Teen Boy|Lounge]]&gt;&gt;&lt;&lt;TeenBoy&gt;&gt;&lt;&lt;/button&gt;&gt; 
-&lt;&lt;button [[Test as a Teen Girl|Lounge]]&gt;&gt;&lt;&lt;TeenGirl&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;button [[Test as a Adult Woman|Lounge]]&gt;&gt;&lt;&lt;AdultWoman&gt;&gt;&lt;&lt;/button&gt;&gt;  
-&lt;&lt;button [[Test as a Adult Man|Lounge]]&gt;&gt;&lt;&lt;AdultMan&gt;&gt;&lt;&lt;/button&gt;&gt; 
 
 &lt;&lt;/if&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="170" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;

@@ -1,9 +1,13 @@
 :: Mating-Press-Dialogue [nobr]
 
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || _n>>
+<<set _spot = $room.location || "floor">>
+
 <<if $sex.role == "Top">>
 
-You're on top of _n.name on the $room.location, $proset.their legs pushed back towards $proset.their head
+    You're on top of <<gram _bottom 'subj'>> on the $room.location, $proset.their legs pushed back towards $proset.their head
 
-<<else>>
-You're on your back $room.location with _n.name on top of you, your legs pushed back towards your head.
+<<elseif $sex.role == "Bottom">>
+    You're on your back $room.location with <<gram _top 'subj'>> on top of you, your legs pushed back towards your head.
 <</if>>

@@ -1,21 +1,26 @@
 :: Doggystyle-Dialogue [nobr Dialogue] {"position":"675,1325","size":"100,100"}
 
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || _n>>
+<<set _spot = $room.location || "floor">>
+
 <<set _npc = _n>>
 <<PronounsSet>>
-<<if $sex.role== "Bottom">>
+
+<<if $sex.role== "Bottom">> /*If you are the bottom */
 	<<=either(
-    "You drop down on all fours, facing away from _n.name.",
-    "You get on all fours, presenting your ass out towards _n.name."
+    "<<gram _bottom 'subjCap'>> drop down on all fours, facing away from <<gram _top 'subj'>>.",
+    "<<gram _bottom 'subjCap'>> get on all fours, presenting <<gram _bottom 'poss'>> ass out towards <<gram _top 'subj'>>."
     )>>
-    _n.name climbs up onto your behind.
+    <<gram _top 'subjCap'>> climbs up onto <<gram _bottom 'poss'>> behind.
     <br>
 <<elseif $sex.role == "Top">>
 	<<=either(
-	"_n.name get on all fours like a dog, and present their <<= setup.partLower(_n, 'assSize', 'average') >> ass to you."
+	"<<gram _bottom 'subjCap'>> get on all fours like a dog, and present their <<= setup.partLower(_bottom, 'assSize', 'average') >> ass to <<gram _top 'subj'>>.",
+    "<<gram _top 'subjCap'>> mount <<gram _top 'refl'>> over <<gram _bottom 'subjCap'>>."
     )>>
-    You mount yourself over _n.name.
     <<if _h is -1>>
-        Because of the height difference, your legs nearly dangle over them.
+        Because of the height difference, <<gram _top 'poss'>> legs nearly dangle over them.
     <</if>>
 <</if>>
 

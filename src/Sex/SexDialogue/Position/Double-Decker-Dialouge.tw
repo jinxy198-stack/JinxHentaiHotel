@@ -1,8 +1,12 @@
 :: Double-Decker-Dialogue [nobr]
 
-<<if $sex.role == "Top">>
-You are underneath _n.name as $proset.they stretch out on their back on the $room.location. They lay their back on you like a recliner.
+<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || _n>>
+<<set _spot = $room.location || "floor">>
 
-<<else>>
-You are on your back on the $room.location atop _n.name, laying on them like a recliner.
+<<if $sex.role == "Top">>
+    <<gram _top 'subjCap'>> are underneath <<gram _bottom 'subj'>> as $proset.they stretch out on their back on the <<=_spot>>. They lay their back on <<gram _top 'subjCap'>> like a recliner.
+
+<<elseif $sex.role == "Bottom">>
+    <<gram _bottom 'subjCap'>> are on <<gram _bottom 'poss'>> back on the <<=_spot>> atop _n.name, laying on them like a recliner.
 <</if>>

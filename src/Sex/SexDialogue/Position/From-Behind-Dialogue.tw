@@ -2,6 +2,6 @@
 
 <<if $sex.role == "Top">>
     You're behind _n.name, who is on all fours.
-<<else>>
+<<elseif $sex.role == "Bottom">>
     You're on all fours with _n.name behind you.
 <</if>>
