@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "-ms-text-size-adjust",
+          "speak",
+          "scrollbar-color",
+          "scrollbar-width",
+          "scrollbar-width: thin"
+        ]
+      }
+    ]
+  }
+}
