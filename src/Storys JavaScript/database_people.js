@@ -28,7 +28,7 @@ setup.fantasyGroup=[
 ]
 
 setup.furryTypes=[
-    "Canine", "Feline","Lion", "Bunny", "Fox", "Bear", "Goat", "Mouse", "Pig", "Deer", "Other",
+    "Canine", "Feline", "Lion", "Bunny", "Fox", "Bear", "Goat","Horse","Mouse","Cow", "Pig", "Deer", "Other",
 ];
 
 setup.scalieTypes=[

@@ -173,6 +173,7 @@ setup.noise = {
     Fox: ["yip"],
     Goat:["bleat"],
     Sheep:["bleat"],
+	Mouse:["squeak"],
     Cow:["moo"],
     Pig:["oink"],
     Canine:["growl"],
@@ -181,3 +182,50 @@ setup.noise = {
 	Anthro:["moan","groan","squeal"]
 }
 
+setup.noiseTest = {
+    Human:{
+		"pleasure": ["moan"],
+		"pain": ["groan"],
+		"comfort": ["sigh"],
+		"surprise": ["squeal"],
+		"exertion": ["grunt", "pant"],
+		"climax": ["moan", "scream", "shout"]
+	},
+	Canine:{
+		"pleasure": ["growl"],
+		"pain": ["whimper","yelp"],
+		"comfort": ["pant"],
+		"surprise": ["bark", "yip"],
+		"exertion": ["pant", "growl"],
+		"climax": ["howl"]
+	},
+	Feline:{
+		"pleasure": ["purr","meow"],
+		"pain": ["hiss", "yowl"],
+		"comfort": ["purr"],
+		"surprise": ["hiss", "yowl"]
+	},
+	Cow:{
+		"comfort": ["moo"],
+		"climax": ["bellow"]
+	},
+	Mouse:{
+		"pleasure": ["squeak"],
+		"pain": ["squeak"],
+		"comfort": ["squeak"],
+		"surprise": ["squeak"],
+	},
+	Pig:{
+		"comfort": ["oink"],
+		"surprise": ["grunt"],
+		"climax": ["squeal"]
+	},
+	Default:{
+		"pleasure": ["moan"],
+		"pain": ["groan", "cry", "squeal"],
+		"comfort": ["sigh"],
+		"surprise": ["squeal"],
+		"exertion": ["grunt", "pant"],
+		"climax": ["moan", "scream", "shout"]
+	}
+}
