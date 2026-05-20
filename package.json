@@ -1,0 +1,45 @@
+{
+  "name": "jinxhentaihotel",
+  "version": "0.1.0",
+  "description": "Desktop version of the game Jinx Hentai Hotel",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win nsis"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinxy198-stack/JinxHentaiHotel.git"
+  },
+  "keywords": [],
+  "author": "jinxy198",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jinxy198-stack/JinxHentaiHotel/issues"
+  },
+  "homepage": "https://github.com/jinxy198-stack/JinxHentaiHotel#readme",
+  "devDependencies": {
+    "electron": "^42.2.0",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.jinxy.jinxhentaihotel",
+    "productName": "JinxHentaiHotel",
+    "files": [
+      "main.js",
+      "/build/JinxHentaiHotel.html",
+      "package.json"
+    ],
+    "win": {
+    "target": "nsis",
+    "icon": "build/JinxLogo.png"
+  },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
