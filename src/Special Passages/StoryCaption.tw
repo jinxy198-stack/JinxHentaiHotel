@@ -7,6 +7,11 @@
 <<button "Credits">><<PopupCredits>><</button>>
 <<button "Your Stats">><<PopupStats>><</button>>
 <<button "Disclaimer">><<PopupDisc>><</button>>
-<<if passage() is "Sex-Encounter">><<button "How to play">><<PopupTutorial>><</button>><</if>>
+<<if passage() is "Sex-Encounter">>
+<<button "How to play">><<PopupTutorial>><</button>> <br>
+<div id="arousal-ui">
+	<<ArousalUI>>
+</div>
+<</if>>
 
 

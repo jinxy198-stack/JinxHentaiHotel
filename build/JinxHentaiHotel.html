@@ -118,19 +118,16 @@ body {
 }
 
 #story {
-  max-width: 1500px;
-  margin: 1.5rem 1.5rem 1.5rem 21rem;
+  max-width: none;
   padding: 1.5rem 2rem 6rem;
-  background: linear-gradient(135deg, rgba(10, 10, 20, 0.96), rgba(5, 5, 10, 0.98));
-  border-radius: 16px;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.04),
-    0 0 40px rgba(0, 0, 0, 0.9);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
   overflow-x: hidden;
 }
 
 #passages {
-  max-width: 1100px !important;
+  max-width: 1400px !important;
   width: 100%;
   margin: 0 auto;
 }
@@ -247,6 +244,7 @@ button.active-choice {
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
+  font-size: 0.6rem;
 }
 
 .sex-item a:hover,
@@ -442,6 +440,16 @@ button.active-choice {
     left: 21rem;
     right: 1.5rem;
     margin-top: 0;
+    box-sizing: border-box;
+    transition:
+      transform 0.25s ease,
+      left 0.25s ease,
+      right 0.25s ease;
+  }
+
+  /* When SugarCube's UI bar is collapsed/stowed */
+  #ui-bar.stowed ~ #story #npcsex-actions-bar {
+    left: 4.5rem;
   }
 }
 
@@ -465,6 +473,10 @@ button.active-choice {
   #npcsex-actions-bar {
     left: 21rem;
     right: 1.5rem;
+  }
+
+  #ui-bar.stowed ~ #story #npcsex-actions-bar {
+    left: 4.5rem;
   }
 }
 
@@ -1084,6 +1096,7 @@ h3 {
 #sex-container {
   display: flex;
   justify-content: space-evenly;
+  font-size: 0.8rem;
 }
 
 #arousal-ui {
@@ -14408,7 +14421,12 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;button &quot;Credits&quot;&gt;&gt;&lt;&lt;PopupCredits&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;Sex-Encounter&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $testpc = {
+&lt;&lt;if passage() is &quot;Sex-Encounter&quot;&gt;&gt;
+&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;br&gt;
+&lt;div id=&quot;arousal-ui&quot;&gt;
+	&lt;&lt;ArousalUI&gt;&gt;
+&lt;/div&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $testpc = {
   species: []
 }&gt;&gt;
 &lt;&lt;set $physique = {
@@ -14581,16 +14599,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 
 &lt;span&gt; Updated as of 5/14/2026 &lt;/span&gt;
 
-&lt;/div&gt;
-
-&lt;&lt;set _n = $testpc&gt;&gt;
-&lt;&lt;set _n.species = &quot;Human&quot;&gt;&gt;
-&lt;&lt;set _lines = [
-	&quot;_n.name &lt;&lt;npcNoiseTest &#39;s&#39; &#39;comfort&#39;&gt;&gt; from the pleasure.&quot;
-	
-]&gt;&gt;
-
-&lt;&lt;= either(..._lines) &gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="170" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
     They nod.
@@ -15049,10 +15058,6 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 &lt;div id=&quot;sex-container&quot;&gt;
 	&lt;&lt;SexEncounterUI&gt;&gt;
 	&lt;&lt;RoomRelocationUI&gt;&gt;
-&lt;/div&gt;
-
-&lt;div id=&quot;arousal-ui&quot;&gt;
-	&lt;&lt;ArousalUI&gt;&gt;
 &lt;/div&gt;
 
 &lt;hr&gt;
@@ -17476,7 +17481,6 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 		&lt;b&gt;Current Room:&lt;/b&gt; &lt;&lt;print $gamelocation&gt;&gt;&lt;br&gt;
 		&lt;b&gt;Current Position:&lt;/b&gt; &lt;&lt;print $sex.position&gt;&gt;&lt;br&gt;
 		&lt;b&gt;Previous Position:&lt;/b&gt; &lt;&lt;print $sex.previousPosition || &quot;None&quot;&gt;&gt;&lt;br&gt;
-		/*&lt;b&gt;Role:&lt;/b&gt; &lt;&lt;print $sex.role&gt;&gt;&lt;br&gt;*/
 		&lt;b&gt;Act:&lt;/b&gt;
 		&lt;&lt;if $sex.act&gt;&gt;
 			&lt;&lt;print $sex.act&gt;&gt;
@@ -17544,7 +17548,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 								&lt;li&gt;&lt;strong&gt;&lt;&lt;print _p&gt;&gt;&lt;/strong&gt;&lt;/li&gt;
 							&lt;&lt;else&gt;&gt;
 								&lt;&lt;capture _p&gt;&gt;
-									&lt;li&gt;
+									&lt;li class= &quot;sex-item&quot;&gt;
 										&lt;&lt;button _p&gt;&gt;
 											&lt;&lt;set $sex.previousPosition = $sex.position&gt;&gt;
 											&lt;&lt;set $sex.position = _p&gt;&gt;
@@ -17576,7 +17580,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 								&lt;&lt;set _actDef = setup.sexacts[_a]&gt;&gt;
 
 								&lt;&lt;capture _a&gt;&gt;
-									&lt;li&gt;
+									&lt;li class= &quot;sex-item&quot;&gt;
 										&lt;&lt;if !setup.actBlockedByTraits($sex, _actDef)&gt;&gt;
 											&lt;&lt;button _a&gt;&gt;
 												&lt;&lt;HandleSexAct _a&gt;&gt;
@@ -17611,7 +17615,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 									&lt;li&gt;&lt;strong&gt;&lt;&lt;print _a&gt;&gt;&lt;/strong&gt;&lt;/li&gt;
 								&lt;&lt;else&gt;&gt;
 									&lt;&lt;capture _a&gt;&gt;
-										&lt;li&gt;
+										&lt;li class= &quot;sex-item&quot;&gt;
 											&lt;&lt;if !setup.actBlockedByTraits($sex, _actDef)&gt;&gt;
 												&lt;&lt;button _a&gt;&gt;
 													&lt;&lt;HandleSexAct _a&gt;&gt;
@@ -17698,7 +17702,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 			&lt;&lt;for _i = 0; _i &lt; _opts.length; _i++&gt;&gt;
 				&lt;&lt;set _loc = _opts[_i]&gt;&gt;
 				&lt;&lt;capture _loc&gt;&gt;
-					&lt;li&gt;
+					&lt;li class= &quot;sex-item&quot;&gt;
 						&lt;&lt;button _loc&gt;&gt;
 							/* save selected location */
 							&lt;&lt;set _actor.selectedCumLocation = _loc&gt;&gt;

@@ -218,7 +218,6 @@
 		<b>Current Room:</b> <<print $gamelocation>><br>
 		<b>Current Position:</b> <<print $sex.position>><br>
 		<b>Previous Position:</b> <<print $sex.previousPosition || "None">><br>
-		/*<b>Role:</b> <<print $sex.role>><br>*/
 		<b>Act:</b>
 		<<if $sex.act>>
 			<<print $sex.act>>
@@ -286,7 +285,7 @@
 								<li><strong><<print _p>></strong></li>
 							<<else>>
 								<<capture _p>>
-									<li>
+									<li class= "sex-item">
 										<<button _p>>
 											<<set $sex.previousPosition = $sex.position>>
 											<<set $sex.position = _p>>
@@ -318,7 +317,7 @@
 								<<set _actDef = setup.sexacts[_a]>>
 
 								<<capture _a>>
-									<li>
+									<li class= "sex-item">
 										<<if !setup.actBlockedByTraits($sex, _actDef)>>
 											<<button _a>>
 												<<HandleSexAct _a>>
@@ -328,7 +327,7 @@
 								<</capture>>
 							<</for>>
 
-							<li>
+							<li class= "sex-item">
 								<<button "End Session">>
 									<<run setup.record_sex_memory($ui.npc, "had sex with")>>
 									<<set _returnTo = $gamelocation || "Your Room">>
@@ -353,7 +352,7 @@
 									<li><strong><<print _a>></strong></li>
 								<<else>>
 									<<capture _a>>
-										<li>
+										<li class= "sex-item">
 											<<if !setup.actBlockedByTraits($sex, _actDef)>>
 												<<button _a>>
 													<<HandleSexAct _a>>
@@ -440,7 +439,7 @@
 			<<for _i = 0; _i < _opts.length; _i++>>
 				<<set _loc = _opts[_i]>>
 				<<capture _loc>>
-					<li>
+					<li class= "sex-item">
 						<<button _loc>>
 							/* save selected location */
 							<<set _actor.selectedCumLocation = _loc>>

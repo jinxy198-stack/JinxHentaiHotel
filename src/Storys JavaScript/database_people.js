@@ -107,7 +107,7 @@ setup.vaginatype=[
 ];
 
 setup.sexu= [
-    "Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"
+    "Heterosexual", "Homosexual", "Bisexual", "Pansexual",
 ];
 
 /* body parts database */
