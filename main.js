@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 const path = require("node:path");
 
 function createWindow() {
@@ -16,7 +16,7 @@ function createWindow() {
         }
     });
 
-    win.loadFile(path.join(__dirname, "/build/JinxHentaiHotel.html"));
+    win.loadFile(path.join(__dirname, "build", "JinxHentaiHotel.html"));
 
     // Uncomment this while testing if you want dev tools.
     // win.webContents.openDevTools();
