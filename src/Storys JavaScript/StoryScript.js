@@ -365,3 +365,131 @@ setup.refreshFullPool = function () {
     return sex;
   };
 })();
+
+setup.debug = {
+	ensure() {
+		const v = State.variables;
+
+		if (!v.debug || typeof v.debug !== "object") {
+			v.debug = {};
+		}
+
+		if (typeof v.debug.enabled !== "boolean") {
+			v.debug.enabled = false;
+		}
+
+		if (!Array.isArray(v.debug.dialogueLog)) {
+			v.debug.dialogueLog = [];
+		}
+
+		if (!Array.isArray(v.debug.warnings)) {
+			v.debug.warnings = [];
+		}
+
+		if (!v.debug.maxLines) {
+			v.debug.maxLines = 25;
+		}
+	},
+
+	safeName(obj) {
+		if (!obj) return "None";
+		return obj.name || obj.NPCName || obj.id || "Unnamed";
+	},
+
+	log(type, message, data = {}) {
+		this.ensure();
+
+		const v = State.variables;
+		const d = v.debug;
+
+		if (!d.enabled) return;
+
+		let details = "";
+
+		try {
+			details = JSON.stringify(data);
+		} catch (e) {
+			details = "[Could not stringify debug data]";
+		}
+
+		d.dialogueLog.unshift({
+			turn: State.turns || 0,
+			passage: State.passage || "Unknown",
+			type,
+			message,
+			details
+		});
+
+		d.dialogueLog = d.dialogueLog.slice(0, d.maxLines);
+	},
+
+	quote(source, passageName, data = {}) {
+		this.ensure();
+
+		const v = State.variables;
+
+		v.debug.lastQuote = {
+			source,
+			passageName,
+			npc: this.safeName(v.ui && v.ui.npc),
+			act: v.sex ? v.sex.act : "None",
+			phase: v.sex ? v.sex.phase : "None",
+			position: v.sex ? v.sex.position : "None"
+		};
+
+		this.log("QUOTE", source + " used " + passageName, Object.assign({}, v.debug.lastQuote, data));
+	},
+
+	action(actionName, data = {}) {
+		this.ensure();
+
+		const v = State.variables;
+
+		v.debug.lastAction = {
+			actionName,
+			npc: this.safeName(v.ui && v.ui.npc),
+			phase: v.sex ? v.sex.phase : "None",
+			position: v.sex ? v.sex.position : "None"
+		};
+
+		this.log("ACTION", "Selected action: " + actionName, Object.assign({}, v.debug.lastAction, data));
+	},
+
+	scan(label = "Dialogue scan") {
+		this.ensure();
+
+		const v = State.variables;
+		const warnings = [];
+
+		if (!v.ui) {
+			warnings.push("$ui is missing.");
+		}
+
+		if (!v.ui || !v.ui.npc) {
+			warnings.push("$ui.npc is missing.");
+		}
+
+		if (!v.sex) {
+			warnings.push("$sex is missing.");
+		}
+
+		if (v.sex) {
+			if (!v.sex.Top) warnings.push("$sex.Top is missing.");
+			if (!v.sex.Bottom) warnings.push("$sex.Bottom is missing.");
+			if (!v.sex.phase) warnings.push("$sex.phase is missing.");
+			if (!v.sex.position) warnings.push("$sex.position is missing.");
+		}
+
+		if (v.sex && v.sex.act && setup.sexacts && !setup.sexacts[v.sex.act] && v.sex.act !== "Climax") {
+			warnings.push("Current $sex.act does not exist in setup.sexacts: " + v.sex.act);
+		}
+
+		v.debug.warnings = warnings;
+
+		if (warnings.length > 0) {
+			this.log("WARNING", label, { warnings });
+		}
+
+		return warnings;
+	}
+};

@@ -70,18 +70,38 @@
 	<<set _renderMute = !!_args[0]>>
 
 	<<if _renderMute>>
+		<<run setup.debug.quote("RenderActQuote", "Act-Quote-React", {
+			reason: "NPC is mute"
+		})>>
 		<<include "Act-Quote-React">>
 	<<else>>
 		<<set _useActQuote = either(true, false)>>
 
 		<<if _useActQuote>>
 			<<set _hasActQuote = false>>
+
+			<<run setup.debug.quote("RenderActQuote", "Act-Quote", {
+				reason: "Randomly selected Act-Quote attempt"
+			})>>
+
 			<<include "Act-Quote">>
 
 			<<if !_hasActQuote>>
+				<<run setup.debug.quote("RenderActQuote", "Act-Quote-React", {
+					reason: "Act-Quote failed or had no valid line",
+					fallback: true
+				})>>
 				<<include "Act-Quote-React">>
+			<<else>>
+				<<run setup.debug.quote("RenderActQuote", "Act-Quote", {
+					reason: "Act-Quote succeeded",
+					fallback: false
+				})>>
 			<</if>>
 		<<else>>
+			<<run setup.debug.quote("RenderActQuote", "Act-Quote-React", {
+				reason: "Randomly selected reaction quote"
+			})>>
 			<<include "Act-Quote-React">>
 		<</if>>
 	<</if>>
@@ -92,11 +112,25 @@
 	<<set _renderMute = !!_args[0]>>
 
 	<<if _renderMute>>
+		<<run setup.debug.quote("RenderAftercareQuote", "Act-Quote-React", {
+			reason: "NPC is mute"
+		})>>
 		<<include "Act-Quote-React">>
+
 	<<elseif $sex.aftercareEntryQuote>>
 		<<set $sex.aftercareEntryQuote = false>>
+
+		<<run setup.debug.quote("RenderAftercareQuote", "Orgasm-Quote", {
+			reason: "Aftercare entry quote"
+		})>>
+
 		<<include "Orgasm-Quote">>
+
 	<<else>>
+		<<run setup.debug.quote("RenderAftercareQuote", "RenderActQuote", {
+			reason: "Aftercare is reusing normal act quote flow"
+		})>>
+
 		<<RenderActQuote _renderMute>>
 	<</if>>
 <</widget>>
@@ -104,6 +138,11 @@
 
 <<widget "HandleSexAct">>
 	<<set _a = _args[0]>>
+	<<run setup.debug.action(_a, {
+	beforePhase: $sex ? $sex.phase : "None",
+	beforePosition: $sex ? $sex.position : "None",
+	actExists: !!(setup.sexacts && setup.sexacts[_a])
+	})>>
 	<<set _actDef = setup.sexacts[_a]>>
 	<<set _isStopAction = _actDef
 		&& Array.isArray(_actDef["action type"])
@@ -121,7 +160,14 @@
 		setup.updateBindings();
 		setup.updateCumLocations($sex);
 	>>
-
+	<<run setup.debug.log("STATE", "After HandleSexAct state update", {
+	action: _a,
+	phase: $sex.phase,
+	position: $sex.position,
+	act: $sex.act,
+	top: $sex.Top ? $sex.Top.name : "Missing",
+	bottom: $sex.Bottom ? $sex.Bottom.name : "Missing"
+	})>>
 	<<replace "#sexUI">><<SexEncounterUI>><</replace>>
 	<<replace "#log">><</replace>>
 
@@ -158,7 +204,11 @@
 	<<run setup.updateCumLocations($sex)>>
 
 <div id="sexUI">
-
+	<<if $devMode>>
+		<div id="dialogue-debug-root">
+			<<DialogueDebuggerBody>>
+		</div>
+	<</if>>
 	<!-- ===================== -->
 	<!-- INFO PANEL -->
 	<!-- ===================== -->
@@ -426,4 +476,39 @@
 			<</for>>
 		</ul>
 	<</if>>
+<</widget>>
+
+
+<<widget "DialogueDebuggerBody">>
+	<<run setup.debug.ensure()>>
+	<<run setup.debug.scan("DialogueDebuggerBody")>>
+
+	<div class="dialogue-debugger">
+		<<if $debug.enabled>>
+			<<button "Hide Dialogue Debugger">>
+				<<set $debug.enabled = false>>
+				<<replace "#dialogue-debug-root">>
+					<<DialogueDebuggerBody>>
+				<</replace>>
+			<</button>>
+		<<else>>
+			<<button "Show Dialogue Debugger">>
+				<<set $debug.enabled = true>>
+				<<replace "#dialogue-debug-root">>
+					<<DialogueDebuggerBody>>
+				<</replace>>
+			<</button>>
+		<</if>>
+
+		<<if $debug.enabled>>
+			<hr>
+			<h3>Dialogue Debugger</h3>
+
+			<b>Current Passage:</b> <<print passage()>><br>
+			<b>NPC:</b> <<print $ui && $ui.npc ? $ui.npc.name : "None">><br>
+			<b>Phase:</b> <<print $sex && $sex.phase ? $sex.phase : "None">><br>
+			<b>Position:</b> <<print $sex && $sex.position ? $sex.position : "None">><br>
+			<b>Act:</b> <<print $sex && $sex.act ? $sex.act : "None">><br>
+		<</if>>
+	</div>
 <</widget>>

@@ -1216,3 +1216,42 @@ h3 {
   background: rgba(90, 120, 255, 0.14);
   border: 1px solid rgba(140, 170, 255, 0.25);
 }
+
+
+
+.dialogue-debugger {
+	border: 1px solid #777;
+	background: rgba(0, 0, 0, 0.25);
+	padding: 0.75em;
+	margin-bottom: 1em;
+	font-size: 0.9em;
+}
+
+.dialogue-debugger pre {
+	white-space: pre-wrap;
+	background: rgba(0, 0, 0, 0.35);
+	padding: 0.5em;
+	border: 1px solid #555;
+	max-height: 12em;
+	overflow-y: auto;
+}
+
+.debug-warning-list {
+	color: #ffb3b3;
+}
+
+.debug-ok {
+	color: #9cff9c;
+}
+
+.debug-log {
+	max-height: 18em;
+	overflow-y: auto;
+	background: rgba(0, 0, 0, 0.2);
+	padding: 0.75em 0.75em 0.75em 2em;
+	border: 1px solid #555;
+}
+
+.debug-log li {
+	margin-bottom: 0.75em;
+}

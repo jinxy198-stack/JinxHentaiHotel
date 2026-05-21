@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-init="no-js">
+<html data-init="no-js">
 <head>
 <meta charset="UTF-8" />
 <title>JinxHentaiHotel</title>
@@ -1322,6 +1322,45 @@ h3 {
   border-radius: 999px;
   background: rgba(90, 120, 255, 0.14);
   border: 1px solid rgba(140, 170, 255, 0.25);
+}
+
+
+
+.dialogue-debugger {
+	border: 1px solid #777;
+	background: rgba(0, 0, 0, 0.25);
+	padding: 0.75em;
+	margin-bottom: 1em;
+	font-size: 0.9em;
+}
+
+.dialogue-debugger pre {
+	white-space: pre-wrap;
+	background: rgba(0, 0, 0, 0.35);
+	padding: 0.5em;
+	border: 1px solid #555;
+	max-height: 12em;
+	overflow-y: auto;
+}
+
+.debug-warning-list {
+	color: #ffb3b3;
+}
+
+.debug-ok {
+	color: #9cff9c;
+}
+
+.debug-log {
+	max-height: 18em;
+	overflow-y: auto;
+	background: rgba(0, 0, 0, 0.2);
+	padding: 0.75em 0.75em 0.75em 2em;
+	border: 1px solid #555;
+}
+
+.debug-log li {
+	margin-bottom: 0.75em;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "Sex-Quote-Data.js" */
 
 
@@ -3471,6 +3510,134 @@ setup.refreshFullPool = function () {
     return sex;
   };
 })();
+
+setup.debug = {
+	ensure() {
+		const v = State.variables;
+
+		if (!v.debug || typeof v.debug !== "object") {
+			v.debug = {};
+		}
+
+		if (typeof v.debug.enabled !== "boolean") {
+			v.debug.enabled = false;
+		}
+
+		if (!Array.isArray(v.debug.dialogueLog)) {
+			v.debug.dialogueLog = [];
+		}
+
+		if (!Array.isArray(v.debug.warnings)) {
+			v.debug.warnings = [];
+		}
+
+		if (!v.debug.maxLines) {
+			v.debug.maxLines = 25;
+		}
+	},
+
+	safeName(obj) {
+		if (!obj) return "None";
+		return obj.name || obj.NPCName || obj.id || "Unnamed";
+	},
+
+	log(type, message, data = {}) {
+		this.ensure();
+
+		const v = State.variables;
+		const d = v.debug;
+
+		if (!d.enabled) return;
+
+		let details = "";
+
+		try {
+			details = JSON.stringify(data);
+		} catch (e) {
+			details = "[Could not stringify debug data]";
+		}
+
+		d.dialogueLog.unshift({
+			turn: State.turns || 0,
+			passage: State.passage || "Unknown",
+			type,
+			message,
+			details
+		});
+
+		d.dialogueLog = d.dialogueLog.slice(0, d.maxLines);
+	},
+
+	quote(source, passageName, data = {}) {
+		this.ensure();
+
+		const v = State.variables;
+
+		v.debug.lastQuote = {
+			source,
+			passageName,
+			npc: this.safeName(v.ui && v.ui.npc),
+			act: v.sex ? v.sex.act : "None",
+			phase: v.sex ? v.sex.phase : "None",
+			position: v.sex ? v.sex.position : "None"
+		};
+
+		this.log("QUOTE", source + " used " + passageName, Object.assign({}, v.debug.lastQuote, data));
+	},
+
+	action(actionName, data = {}) {
+		this.ensure();
+
+		const v = State.variables;
+
+		v.debug.lastAction = {
+			actionName,
+			npc: this.safeName(v.ui && v.ui.npc),
+			phase: v.sex ? v.sex.phase : "None",
+			position: v.sex ? v.sex.position : "None"
+		};
+
+		this.log("ACTION", "Selected action: " + actionName, Object.assign({}, v.debug.lastAction, data));
+	},
+
+	scan(label = "Dialogue scan") {
+		this.ensure();
+
+		const v = State.variables;
+		const warnings = [];
+
+		if (!v.ui) {
+			warnings.push("$ui is missing.");
+		}
+
+		if (!v.ui || !v.ui.npc) {
+			warnings.push("$ui.npc is missing.");
+		}
+
+		if (!v.sex) {
+			warnings.push("$sex is missing.");
+		}
+
+		if (v.sex) {
+			if (!v.sex.Top) warnings.push("$sex.Top is missing.");
+			if (!v.sex.Bottom) warnings.push("$sex.Bottom is missing.");
+			if (!v.sex.phase) warnings.push("$sex.phase is missing.");
+			if (!v.sex.position) warnings.push("$sex.position is missing.");
+		}
+
+		if (v.sex && v.sex.act && setup.sexacts && !setup.sexacts[v.sex.act] && v.sex.act !== "Climax") {
+			warnings.push("Current $sex.act does not exist in setup.sexacts: " + v.sex.act);
+		}
+
+		v.debug.warnings = warnings;
+
+		if (warnings.length > 0) {
+			this.log("WARNING", label, { warnings });
+		}
+
+		return warnings;
+	}
+};
 /* twine-user-script #3: "database_dialogue.js" */
 
 setup.isMC = function (char) {
@@ -3647,6 +3814,7 @@ setup.noise = {
     Fox: ["yip"],
     Goat:["bleat"],
     Sheep:["bleat"],
+	Mouse:["squeak"],
     Cow:["moo"],
     Pig:["oink"],
     Canine:["growl"],
@@ -3655,6 +3823,53 @@ setup.noise = {
 	Anthro:["moan","groan","squeal"]
 }
 
+setup.noiseTest = {
+    Human:{
+		"pleasure": ["moan"],
+		"pain": ["groan"],
+		"comfort": ["sigh"],
+		"surprise": ["squeal"],
+		"exertion": ["grunt", "pant"],
+		"climax": ["moan", "scream", "shout"]
+	},
+	Canine:{
+		"pleasure": ["growl"],
+		"pain": ["whimper","yelp"],
+		"comfort": ["pant"],
+		"surprise": ["bark", "yip"],
+		"exertion": ["pant", "growl"],
+		"climax": ["howl"]
+	},
+	Feline:{
+		"pleasure": ["purr","meow"],
+		"pain": ["hiss", "yowl"],
+		"comfort": ["purr"],
+		"surprise": ["hiss", "yowl"]
+	},
+	Cow:{
+		"comfort": ["moo"],
+		"climax": ["bellow"]
+	},
+	Mouse:{
+		"pleasure": ["squeak"],
+		"pain": ["squeak"],
+		"comfort": ["squeak"],
+		"surprise": ["squeak"],
+	},
+	Pig:{
+		"comfort": ["oink"],
+		"surprise": ["grunt"],
+		"climax": ["squeal"]
+	},
+	Default:{
+		"pleasure": ["moan"],
+		"pain": ["groan", "cry", "squeal"],
+		"comfort": ["sigh"],
+		"surprise": ["squeal"],
+		"exertion": ["grunt", "pant"],
+		"climax": ["moan", "scream", "shout"]
+	}
+}
 /* twine-user-script #4: "database_event.js" */
 
 
@@ -4246,7 +4461,7 @@ setup.fantasyGroup=[
 ]
 
 setup.furryTypes=[
-    "Canine", "Feline","Lion", "Bunny", "Fox", "Bear", "Goat", "Mouse", "Pig", "Deer", "Other",
+    "Canine", "Feline", "Lion", "Bunny", "Fox", "Bear", "Goat","Horse","Mouse","Cow", "Pig", "Deer", "Other",
 ];
 
 setup.scalieTypes=[
@@ -10249,7 +10464,16 @@ Work on fixing spawning NPC&#39;s
 /*
 
 &quot;You&#39;re making me feel funny down there.&quot;
-*/</tw-passagedata><tw-passagedata pid="60" name="ActDialogue" tags="nobr Dialogue" position="1000,1025" size="100,100">&lt;&lt;silently&gt;&gt;
+*/
+
+/* noise 
+    Content
+    Pleasure
+    Comfort
+    Tense
+    Surprise
+    Pain
+/*</tw-passagedata><tw-passagedata pid="60" name="ActDialogue" tags="nobr Dialogue" position="1000,1025" size="100,100">&lt;&lt;silently&gt;&gt;
     &lt;&lt;set _a = $sex.act or &quot;none&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
 
@@ -14184,7 +14408,10 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;button &quot;Credits&quot;&gt;&gt;&lt;&lt;PopupCredits&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;if passage() is &quot;Sex-Encounter&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $physique = {
+&lt;&lt;if passage() is &quot;Sex-Encounter&quot;&gt;&gt;&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $testpc = {
+  species: []
+}&gt;&gt;
+&lt;&lt;set $physique = {
 	muscle: 4,
 	plump: 4,
 	label: &quot;Average&quot;
@@ -14194,6 +14421,17 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;set $ui = {}&gt;&gt;
 &lt;&lt;set $lastNpc = null&gt;&gt;
 &lt;&lt;set $npcMemory = {}&gt;&gt;
+&lt;&lt;set $devMode = false&gt;&gt;
+&lt;&lt;if !$debug&gt;&gt;
+	&lt;&lt;set $debug = {
+		enabled: false,
+		dialogueLog: [],
+		warnings: [],
+		lastQuote: null,
+		lastAction: null,
+		maxLines: 25
+	}&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set $roomNPCs = []&gt;&gt;
 
@@ -14252,7 +14490,6 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
   $Luffy,
   $Killua,
   $Alfyn
-
 ]&gt;&gt;
 /* helpers */
 
@@ -14315,10 +14552,9 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;set $mc.virgin to false&gt;&gt;
 
 
-	/* This last one is only for practicality */
+/* This last one is only for practicality */
 &lt;&lt;set $pages to {}&gt;&gt;
 &lt;&lt;set $anthroWingspans = [&quot;None&quot;, &quot;Short&quot;, &quot;Medium&quot;, &quot;Large&quot;, &quot;Massive&quot;]&gt;&gt;
-
 
 &lt;&lt;set $flags = $flags || {}&gt;&gt;
 &lt;&lt;set $flags.skinChosen = false&gt;&gt;
@@ -14334,9 +14570,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 
 &lt;&lt;if !$npcMemories&gt;&gt;
 	&lt;&lt;set $npcMemories = {}&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="Start" tags="" position="175,275" size="100,100">/*keep true if you want the test buttons to appear */
-&lt;&lt;set $devMode = false&gt;&gt;
-&lt;div&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="Start" tags="" position="175,275" size="100,100">&lt;div&gt;
 &lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
 &lt;h3 style=&quot;font-weight: normal;&quot;&gt;This game is meant to simulate interactions of many sexual varieties. 
 Create your character to begin or you can use the PreSet or Randomizer to skip all that.
@@ -14347,11 +14581,16 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 
 &lt;span&gt; Updated as of 5/14/2026 &lt;/span&gt;
 
-&lt;&lt;if $devMode&gt;&gt;
-&lt;&lt;button [[Test|TestRoom]]&gt;&gt;&lt;&lt;LittleBoy&gt;&gt;&lt;&lt;/button&gt;&gt; 
+&lt;/div&gt;
 
-&lt;&lt;/if&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="170" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
+&lt;&lt;set _n = $testpc&gt;&gt;
+&lt;&lt;set _n.species = &quot;Human&quot;&gt;&gt;
+&lt;&lt;set _lines = [
+	&quot;_n.name &lt;&lt;npcNoiseTest &#39;s&#39; &#39;comfort&#39;&gt;&gt; from the pleasure.&quot;
+	
+]&gt;&gt;
+
+&lt;&lt;= either(..._lines) &gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
     They nod.
@@ -17089,18 +17328,38 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 	&lt;&lt;set _renderMute = !!_args[0]&gt;&gt;
 
 	&lt;&lt;if _renderMute&gt;&gt;
+		&lt;&lt;run setup.debug.quote(&quot;RenderActQuote&quot;, &quot;Act-Quote-React&quot;, {
+			reason: &quot;NPC is mute&quot;
+		})&gt;&gt;
 		&lt;&lt;include &quot;Act-Quote-React&quot;&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;set _useActQuote = either(true, false)&gt;&gt;
 
 		&lt;&lt;if _useActQuote&gt;&gt;
 			&lt;&lt;set _hasActQuote = false&gt;&gt;
+
+			&lt;&lt;run setup.debug.quote(&quot;RenderActQuote&quot;, &quot;Act-Quote&quot;, {
+				reason: &quot;Randomly selected Act-Quote attempt&quot;
+			})&gt;&gt;
+
 			&lt;&lt;include &quot;Act-Quote&quot;&gt;&gt;
 
 			&lt;&lt;if !_hasActQuote&gt;&gt;
+				&lt;&lt;run setup.debug.quote(&quot;RenderActQuote&quot;, &quot;Act-Quote-React&quot;, {
+					reason: &quot;Act-Quote failed or had no valid line&quot;,
+					fallback: true
+				})&gt;&gt;
 				&lt;&lt;include &quot;Act-Quote-React&quot;&gt;&gt;
+			&lt;&lt;else&gt;&gt;
+				&lt;&lt;run setup.debug.quote(&quot;RenderActQuote&quot;, &quot;Act-Quote&quot;, {
+					reason: &quot;Act-Quote succeeded&quot;,
+					fallback: false
+				})&gt;&gt;
 			&lt;&lt;/if&gt;&gt;
 		&lt;&lt;else&gt;&gt;
+			&lt;&lt;run setup.debug.quote(&quot;RenderActQuote&quot;, &quot;Act-Quote-React&quot;, {
+				reason: &quot;Randomly selected reaction quote&quot;
+			})&gt;&gt;
 			&lt;&lt;include &quot;Act-Quote-React&quot;&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
@@ -17111,11 +17370,25 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 	&lt;&lt;set _renderMute = !!_args[0]&gt;&gt;
 
 	&lt;&lt;if _renderMute&gt;&gt;
+		&lt;&lt;run setup.debug.quote(&quot;RenderAftercareQuote&quot;, &quot;Act-Quote-React&quot;, {
+			reason: &quot;NPC is mute&quot;
+		})&gt;&gt;
 		&lt;&lt;include &quot;Act-Quote-React&quot;&gt;&gt;
+
 	&lt;&lt;elseif $sex.aftercareEntryQuote&gt;&gt;
 		&lt;&lt;set $sex.aftercareEntryQuote = false&gt;&gt;
+
+		&lt;&lt;run setup.debug.quote(&quot;RenderAftercareQuote&quot;, &quot;Orgasm-Quote&quot;, {
+			reason: &quot;Aftercare entry quote&quot;
+		})&gt;&gt;
+
 		&lt;&lt;include &quot;Orgasm-Quote&quot;&gt;&gt;
+
 	&lt;&lt;else&gt;&gt;
+		&lt;&lt;run setup.debug.quote(&quot;RenderAftercareQuote&quot;, &quot;RenderActQuote&quot;, {
+			reason: &quot;Aftercare is reusing normal act quote flow&quot;
+		})&gt;&gt;
+
 		&lt;&lt;RenderActQuote _renderMute&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
@@ -17123,6 +17396,11 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 
 &lt;&lt;widget &quot;HandleSexAct&quot;&gt;&gt;
 	&lt;&lt;set _a = _args[0]&gt;&gt;
+	&lt;&lt;run setup.debug.action(_a, {
+	beforePhase: $sex ? $sex.phase : &quot;None&quot;,
+	beforePosition: $sex ? $sex.position : &quot;None&quot;,
+	actExists: !!(setup.sexacts &amp;&amp; setup.sexacts[_a])
+	})&gt;&gt;
 	&lt;&lt;set _actDef = setup.sexacts[_a]&gt;&gt;
 	&lt;&lt;set _isStopAction = _actDef
 		&amp;&amp; Array.isArray(_actDef[&quot;action type&quot;])
@@ -17140,7 +17418,14 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 		setup.updateBindings();
 		setup.updateCumLocations($sex);
 	&gt;&gt;
-
+	&lt;&lt;run setup.debug.log(&quot;STATE&quot;, &quot;After HandleSexAct state update&quot;, {
+	action: _a,
+	phase: $sex.phase,
+	position: $sex.position,
+	act: $sex.act,
+	top: $sex.Top ? $sex.Top.name : &quot;Missing&quot;,
+	bottom: $sex.Bottom ? $sex.Bottom.name : &quot;Missing&quot;
+	})&gt;&gt;
 	&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 
@@ -17177,7 +17462,11 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 	&lt;&lt;run setup.updateCumLocations($sex)&gt;&gt;
 
 &lt;div id=&quot;sexUI&quot;&gt;
-
+	&lt;&lt;if $devMode&gt;&gt;
+		&lt;div id=&quot;dialogue-debug-root&quot;&gt;
+			&lt;&lt;DialogueDebuggerBody&gt;&gt;
+		&lt;/div&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;!-- ===================== --&gt;
 	&lt;!-- INFO PANEL --&gt;
 	&lt;!-- ===================== --&gt;
@@ -17445,10 +17734,73 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 			&lt;&lt;/for&gt;&gt;
 		&lt;/ul&gt;
 	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+
+&lt;&lt;widget &quot;DialogueDebuggerBody&quot;&gt;&gt;
+	&lt;&lt;run setup.debug.ensure()&gt;&gt;
+	&lt;&lt;run setup.debug.scan(&quot;DialogueDebuggerBody&quot;)&gt;&gt;
+
+	&lt;div class=&quot;dialogue-debugger&quot;&gt;
+		&lt;&lt;if $debug.enabled&gt;&gt;
+			&lt;&lt;button &quot;Hide Dialogue Debugger&quot;&gt;&gt;
+				&lt;&lt;set $debug.enabled = false&gt;&gt;
+				&lt;&lt;replace &quot;#dialogue-debug-root&quot;&gt;&gt;
+					&lt;&lt;DialogueDebuggerBody&gt;&gt;
+				&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;/button&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;button &quot;Show Dialogue Debugger&quot;&gt;&gt;
+				&lt;&lt;set $debug.enabled = true&gt;&gt;
+				&lt;&lt;replace &quot;#dialogue-debug-root&quot;&gt;&gt;
+					&lt;&lt;DialogueDebuggerBody&gt;&gt;
+				&lt;&lt;/replace&gt;&gt;
+			&lt;&lt;/button&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+
+		&lt;&lt;if $debug.enabled&gt;&gt;
+			&lt;hr&gt;
+			&lt;h3&gt;Dialogue Debugger&lt;/h3&gt;
+
+			&lt;b&gt;Current Passage:&lt;/b&gt; &lt;&lt;print passage()&gt;&gt;&lt;br&gt;
+			&lt;b&gt;NPC:&lt;/b&gt; &lt;&lt;print $ui &amp;&amp; $ui.npc ? $ui.npc.name : &quot;None&quot;&gt;&gt;&lt;br&gt;
+			&lt;b&gt;Phase:&lt;/b&gt; &lt;&lt;print $sex &amp;&amp; $sex.phase ? $sex.phase : &quot;None&quot;&gt;&gt;&lt;br&gt;
+			&lt;b&gt;Position:&lt;/b&gt; &lt;&lt;print $sex &amp;&amp; $sex.position ? $sex.position : &quot;None&quot;&gt;&gt;&lt;br&gt;
+			&lt;b&gt;Act:&lt;/b&gt; &lt;&lt;print $sex &amp;&amp; $sex.act ? $sex.act : &quot;None&quot;&gt;&gt;&lt;br&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;/div&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="Widgets" tags="widget nobr" position="475,2350" size="100,100">&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;
 	&lt;&lt;set _pool = setup.noise[_n.species] || setup.noise.Default || [&quot;moan&quot;]&gt;&gt;
 	&lt;&lt;set _noise = setup.pick(_pool)&gt;&gt;
 	&lt;&lt;set _mode = _args[0] || &quot;base&quot;&gt;&gt;
+
+	&lt;&lt;if _mode is &quot;s&quot;&gt;&gt;
+		&lt;&lt;if _noise.slice(-1) is &quot;y&quot;&gt;&gt;
+			&lt;&lt;= _noise.slice(0, -1) + &quot;ies&quot;&gt;&gt;
+		&lt;&lt;elseif _noise.slice(-1) is &quot;s&quot;&gt;&gt;
+			&lt;&lt;= _noise + &quot;es&quot;&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;= _noise + &quot;s&quot;&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;= _noise&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;npcNoiseTest&quot;&gt;&gt;
+	&lt;&lt;set _mode = _args[0] || &quot;base&quot;&gt;&gt;
+	&lt;&lt;set _type = _args[1] || &quot;pleasure&quot;&gt;&gt;
+
+	/* Get species safely. Assumes _n.species is usually a string like &quot;Human&quot;, &quot;Canine&quot;, etc. */
+	&lt;&lt;set _species = _n &amp;&amp; _n.species ? _n.species : &quot;Default&quot;&gt;&gt;
+
+	/* Get that species&#39; noise table, or Default if missing. */
+	&lt;&lt;set _speciesNoise = setup.noiseTest[_species] || setup.noiseTest.Default&gt;&gt;
+
+	/* Get the requested noise type, or fall back to Default&#39;s version of that type, then pleasure, then moan. */
+	&lt;&lt;set _pool = _speciesNoise[_type] || setup.noiseTest.Default[_type] || setup.noiseTest.Default.pleasure || [&quot;moan&quot;]&gt;&gt;
+
+	&lt;&lt;set _noise = setup.pick(_pool)&gt;&gt;
 
 	&lt;&lt;if _mode is &quot;s&quot;&gt;&gt;
 		&lt;&lt;if _noise.slice(-1) is &quot;y&quot;&gt;&gt;

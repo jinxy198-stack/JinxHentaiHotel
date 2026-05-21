@@ -1,7 +1,5 @@
 :: Start {"position":"175,275","size":"100,100"}
 
-/*keep true if you want the test buttons to appear */
-<<set $devMode = false>>
 <div>
 <h1>Welcome to Jinx Hentai Hotel!</h1>
 <h3 style="font-weight: normal;">This game is meant to simulate interactions of many sexual varieties. 
@@ -13,9 +11,4 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 
 <span> Updated as of 5/14/2026 </span>
 
-<<if $devMode>>
-<<button [[Test|TestRoom]]>><<LittleBoy>><</button>> 
-
-<</if>>
 </div>
-

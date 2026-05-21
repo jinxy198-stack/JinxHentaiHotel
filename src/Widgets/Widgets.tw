@@ -19,10 +19,19 @@
 <</widget>>
 
 <<widget "npcNoiseTest">>
-	<<set _pool = setup.noiseTest[_n.species] || setup.noiseTest.Default || ["moan"]>>
-	<<set _noise = setup.pick(_pool)>>
 	<<set _mode = _args[0] || "base">>
-    <<set _type = _args[1] || "Content">>
+	<<set _type = _args[1] || "pleasure">>
+
+	/* Get species safely. Assumes _n.species is usually a string like "Human", "Canine", etc. */
+	<<set _species = _n && _n.species ? _n.species : "Default">>
+
+	/* Get that species' noise table, or Default if missing. */
+	<<set _speciesNoise = setup.noiseTest[_species] || setup.noiseTest.Default>>
+
+	/* Get the requested noise type, or fall back to Default's version of that type, then pleasure, then moan. */
+	<<set _pool = _speciesNoise[_type] || setup.noiseTest.Default[_type] || setup.noiseTest.Default.pleasure || ["moan"]>>
+
+	<<set _noise = setup.pick(_pool)>>
 
 	<<if _mode is "s">>
 		<<if _noise.slice(-1) is "y">>

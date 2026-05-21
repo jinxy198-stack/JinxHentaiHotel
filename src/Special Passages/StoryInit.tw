@@ -1,5 +1,7 @@
 :: StoryInit {"position":"25,25","size":"100,100"}
-
+<<set $testpc = {
+  species: []
+}>>
 <<set $physique = {
 	muscle: 4,
 	plump: 4,
@@ -10,6 +12,17 @@
 <<set $ui = {}>>
 <<set $lastNpc = null>>
 <<set $npcMemory = {}>>
+<<set $devMode = false>>
+<<if !$debug>>
+	<<set $debug = {
+		enabled: false,
+		dialogueLog: [],
+		warnings: [],
+		lastQuote: null,
+		lastAction: null,
+		maxLines: 25
+	}>>
+<</if>>
 
 <<set $roomNPCs = []>>
 
@@ -68,7 +81,6 @@
   $Luffy,
   $Killua,
   $Alfyn
-
 ]>>
 /* helpers */
 
@@ -131,10 +143,9 @@
 <<set $mc.virgin to false>>
 
 
-	/* This last one is only for practicality */
+/* This last one is only for practicality */
 <<set $pages to {}>>
 <<set $anthroWingspans = ["None", "Short", "Medium", "Large", "Massive"]>>
-
 
 <<set $flags = $flags || {}>>
 <<set $flags.skinChosen = false>>
