@@ -153,7 +153,6 @@ setup.personalities= [
     "Upbeat"
 ];
 
-
 setup.accessory= [
     "Watch", "Glasses", "Necklace", "Head Band"
 ];
