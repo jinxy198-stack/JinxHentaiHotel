@@ -125,13 +125,11 @@ setup.refreshFullPool = function () {
 			return npc && typeof npc.age === "number" && npc.age >= 18;
 		});
 	}
-
 	if (traits.includes("Hates Adults")) {
 		pool = pool.filter(function (npc) {
 			return npc && typeof npc.age === "number" && npc.age < 18;
 		});
 	}
-
 	if (traits.includes("Hates Furries")) {
 		pool = pool.filter(function (npc) {
 			return npc && npc.species === "Human";
@@ -142,7 +140,6 @@ setup.refreshFullPool = function () {
 			return npc && npc.species === "Anthro";
 		});
 	}
-
 	v.fullPool = pool;
 };
 
