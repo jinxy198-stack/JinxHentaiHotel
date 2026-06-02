@@ -10,24 +10,52 @@ body {
   font-size: 15px;
 }
 
-#story {
+/* #story {
   max-width: none;
   padding: 1.5rem 2rem 6rem;
   background: transparent;
   border-radius: 0;
   box-shadow: none;
   overflow-x: hidden;
+} */
+
+#story {
+  max-width: none;
+  margin: 0 1.5rem 0 17.5rem;
+  padding: 1.5rem 1rem 6rem;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow-x: hidden;
 }
 
-#passages {
+
+/* #passages {
   max-width: 1400px !important;
   width: 100%;
   margin: 0 auto;
+} */
+
+#passages {
+  max-width: none !important;
+  width: 100%;
+  margin: 0;
+}
+
+/*@media (max-width: 900px) {
+  #story {
+    margin: 1rem;
+  }
+} */
+
+#ui-bar.stowed ~ #story {
+  margin-left: 4.5rem;
 }
 
 @media (max-width: 900px) {
   #story {
     margin: 1rem;
+    padding: 1rem 1rem 6rem;
   }
 }
 
@@ -118,7 +146,9 @@ button.active-choice {
 .sex-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5em;
+  /*space bewtween buttons*/
+  /*gap: 0.5em; */
+  gap: 0em;
   padding: 0;
   margin: 0.5em 0;
   list-style: none;
@@ -130,14 +160,16 @@ button.active-choice {
 
 .sex-item a,
 .sex-item button {
+  /*padding: 0.4em 0.7em;
+  font-size: 0.6rem;*/
   padding: 0.4em 0.7em;
+  font-size: 0.6rem;
   border-radius: 4px;
   background: #222;
   color: #fff;
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
-  font-size: 0.6rem;
 }
 
 .sex-item a:hover,
@@ -326,11 +358,12 @@ button.active-choice {
   margin: 0.1rem 0.15rem;
 }
 
-@media (min-width: 901px) {
+ @media (min-width: 901px) {
   #npcsex-actions-bar {
     position: fixed;
     bottom: 0;
-    left: 21rem;
+    /*left: 21rem; */
+    left: calc(17.5rem + 1rem);
     right: 1.5rem;
     margin-top: 0;
     box-sizing: border-box;
@@ -342,9 +375,11 @@ button.active-choice {
 
   /* When SugarCube's UI bar is collapsed/stowed */
   #ui-bar.stowed ~ #story #npcsex-actions-bar {
-    left: 4.5rem;
+    /*left: 4.5rem; */
+    left: calc(4.5rem + 1rem);
   }
-}
+} 
+
 
 @media (max-width: 900px) {
   #npcsex-actions-bar {
