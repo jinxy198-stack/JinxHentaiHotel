@@ -39,15 +39,15 @@
 <<else>>
 <<if $sex.phase == "climax">>
 	<<set _lines = [
-		"_n.name <<npcNoise>> from being close to climax."
+		"_n.name <<npcNoise 's' 'exertion'>> from being close to climax."
 	]>>
 
 <<else>>
 	<<if $sex.act == "Fuck Pussy">>
 		<<set _lines = [
-			"_n.name <<npcNoise 's'>> at the feeling of fucking a pussy.",
-			"_n.name <<npcNoise 's'>> softly, lost in the feeling of fucking a pussy.",
-			"Pleasure washes over _n.name, making $proset.them <<npcNoise>> softly."
+			"_n.name <<npcNoise 's' 'pleasure'>> at the feeling of fucking a pussy.",
+			"_n.name <<npcNoise 's' 'comfort'>> softly, lost in the feeling of fucking a pussy.",
+			"Pleasure washes over _n.name, making $proset.them <<npcNoise 'base' 'comfort'>> softly."
 		]>>
 
 	<<elseif $sex.act == "Cuddle">>
@@ -70,14 +70,14 @@
 	<<elseif $sex.act == "Push Cock In Ass">>
 		<<if $sex.position == "Cowgirl">>
 			<<set _lines = [
-				"_n.name lets out a <<npcNoise>> as $proset.they enter you, eagerly bucking $proset.their own <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
-				"With a <<npcNoise>>, _n.name eagerly thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your <<= String($mc.assSize || 'ass').toLowerCase() >> ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start energetically fucking you.",
-				"_n.name lets out a <<npcNoise>> as $proset.they enter you, bucking $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
-				"With a <<npcNoise>>, _n.name thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your $mc.assSize ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start fucking you."
+				"_n.name lets out a <<npcNoise 'base' 'pleasure'>> as $proset.they enter you, eagerly bucking $proset.their own <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
+				"With a <<npcNoise 'base' 'pleasure'>>, _n.name eagerly thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your <<= String($mc.assSize || 'ass').toLowerCase() >> ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start energetically fucking you.",
+				"_n.name lets out a <<npcNoise 'base' 'pleasure'>> as $proset.they enter you, bucking $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
+				"With a <<npcNoise 'base' 'pleasure'>>, _n.name thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your $mc.assSize ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start fucking you."
 			]>>
 		<<else>>
 			<<set _lines = [
-				"_n.name lets out a <<npcNoise>> as they enter you."
+				"_n.name lets out a <<npcNoise 'base' 'pleasure'>> as they enter you."
 			]>>
 		<</if>>
 	<<elseif $sex.act == "Enter Ass">>
@@ -130,7 +130,7 @@
 		<</if>>	
 	<<else>>
 		<<set _lines = [
-			"_n.name <<npcNoise 's'>> from the pleasure.",
+			"_n.name <<npcNoise 's' 'pain'>> from the feeling.",
 			"$proset.theyUp appear to enjoy it very much."
 		]>>
 	<</if>>

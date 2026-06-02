@@ -23,7 +23,7 @@
 		species: "Anthro",
 		anthro: {
 			group: "Furry",
-			subtype: "Bunny",
+			subtype: "Canine",
 			color: "White"
 		},
 		gender: "Male",
@@ -97,7 +97,7 @@
         $mc.hair.style to "Buzz cut",
         $mc.facefeatures to ["A mole"],
         $mc.skin.color to "Tan",
-        $mc.skin.features to [],
+        $mc.skin.features to null,
         $mc.bodyheight to "Average",
         $mc.physique to "Thin",
         $mc.personality to ["Kind"],

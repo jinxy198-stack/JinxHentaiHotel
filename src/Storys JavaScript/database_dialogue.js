@@ -167,27 +167,13 @@ setup.cleanText = function (str) {
 		.trim();
 };
 
-setup.noise = {
-    Human: ["moan","groan","cry","squeal"],
-    Lizard: ["hiss"],
-    Fox: ["yip"],
-    Goat:["bleat"],
-    Sheep:["bleat"],
-	Mouse:["squeak"],
-    Cow:["moo"],
-    Pig:["oink"],
-    Canine:["growl"],
-    Feline:["meow"],
-    Eagle:["screech"],
-	Anthro:["moan","groan","squeal"]
-}
 
-setup.noiseTest = {
+setup.noise = {
     Human:{
 		"pleasure": ["moan"],
 		"pain": ["groan"],
 		"comfort": ["sigh"],
-		"surprise": ["squeal"],
+		"surprise": ["squeal", "shout", "yell"],
 		"exertion": ["grunt", "pant"],
 		"climax": ["moan", "scream", "shout"]
 	},
@@ -205,6 +191,9 @@ setup.noiseTest = {
 		"comfort": ["purr"],
 		"surprise": ["hiss", "yowl"]
 	},
+	Fox:{
+		"pleasure": ["yip"],
+	},
 	Cow:{
 		"comfort": ["moo"],
 		"climax": ["bellow"]
@@ -215,10 +204,19 @@ setup.noiseTest = {
 		"comfort": ["squeak"],
 		"surprise": ["squeak"],
 	},
+	Sheep:{
+		"comfort": ["bleat"],
+	},
+	Goat:{
+		"comfort": ["bleat"],
+	},
 	Pig:{
 		"comfort": ["oink"],
 		"surprise": ["grunt"],
 		"climax": ["squeal"]
+	},
+	Eagle:{
+		"climax": ["screech"]
 	},
 	Default:{
 		"pleasure": ["moan"],

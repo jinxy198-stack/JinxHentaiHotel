@@ -3856,27 +3856,13 @@ setup.cleanText = function (str) {
 		.trim();
 };
 
-setup.noise = {
-    Human: ["moan","groan","cry","squeal"],
-    Lizard: ["hiss"],
-    Fox: ["yip"],
-    Goat:["bleat"],
-    Sheep:["bleat"],
-	Mouse:["squeak"],
-    Cow:["moo"],
-    Pig:["oink"],
-    Canine:["growl"],
-    Feline:["meow"],
-    Eagle:["screech"],
-	Anthro:["moan","groan","squeal"]
-}
 
-setup.noiseTest = {
+setup.noise = {
     Human:{
 		"pleasure": ["moan"],
 		"pain": ["groan"],
 		"comfort": ["sigh"],
-		"surprise": ["squeal"],
+		"surprise": ["squeal", "shout", "yell"],
 		"exertion": ["grunt", "pant"],
 		"climax": ["moan", "scream", "shout"]
 	},
@@ -3894,6 +3880,9 @@ setup.noiseTest = {
 		"comfort": ["purr"],
 		"surprise": ["hiss", "yowl"]
 	},
+	Fox:{
+		"pleasure": ["yip"],
+	},
 	Cow:{
 		"comfort": ["moo"],
 		"climax": ["bellow"]
@@ -3904,10 +3893,19 @@ setup.noiseTest = {
 		"comfort": ["squeak"],
 		"surprise": ["squeak"],
 	},
+	Sheep:{
+		"comfort": ["bleat"],
+	},
+	Goat:{
+		"comfort": ["bleat"],
+	},
 	Pig:{
 		"comfort": ["oink"],
 		"surprise": ["grunt"],
 		"climax": ["squeal"]
+	},
+	Eagle:{
+		"climax": ["screech"]
 	},
 	Default:{
 		"pleasure": ["moan"],
@@ -9485,7 +9483,7 @@ Room NPCs: &lt;&lt;=$roomNPCs ? $roomNPCs.length : 0 &gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="53" name="Your Room" tags="nobr location" position="400,725" size="100,100">&lt;&lt;set $gamelocation to &quot;Your Room&quot;&gt;&gt;
 /*Makes sure no stragglers appear in your room. */
 &lt;&lt;set $roomNPCs = []&gt;&gt;
-You are in your hotel room. It looks like the master suite of a luxury hotel, complete with a large shaped bed. Next to the bed is a phone for calling up people you know for a &#39;good time&#39;.
+You are in your hotel room. It looks like the master suite of a luxury hotel, complete with a large bed. Next to the bed is a phone for calling up people you know for a &#39;good time&#39;.
 &lt;br&gt;
 To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic for you to enjoy. &lt;br&gt;
 On the other side there was a door to your bathroom. Next to the door was a high quality television set complete with the latest game console from a nondescript gaming company.
@@ -10823,11 +10821,11 @@ Work on fixing spawning NPC&#39;s
 		&quot;Reaching down to take hold of _n.name&#39;s head, you push the head of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; before slowly bucking your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt; and gently sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into $proset.their mouth.&quot;,
 		&quot;Reaching down to grab $proset.their head, you line the head of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up with $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; before pushing your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward and sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into $proset.their mouth.&quot;,
 		&quot;_n.name eagerly wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a muffled moan as $proset.they enthusiastically bob $proset.their head up and down.&quot;,
-		&quot;A muffled moan drifts out from _n.name&#39;s mouth and, eagerly wrapping $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, $proset.they enthusiastically continue to give you head.&quot;,
-		&quot;Moaning in delight, _n.name eagerly wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, eagerly licking and sucking as $proset.they continue making muffled noises.&quot;,
-		&quot;_n.name wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a muffled moan as $proset.they bob $proset.their head up and down.&quot;,
+		&quot;A muffled &lt;&lt;npcNoiseTest &#39;base&#39; &#39;pain&#39;&gt;&gt; drifts out from _n.name&#39;s mouth and, eagerly wrapping $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, $proset.they enthusiastically continue to give you head.&quot;,
+		&quot;&lt;&lt;npcNoiseTest &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name eagerly wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, eagerly licking and sucking as $proset.they continue making muffled noises.&quot;,
+		&quot;_n.name wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a muffled &lt;&lt;npcNoiseTest &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they bob $proset.their head up and down.&quot;,
 		&quot;A muffled moan drifts out from $proset.their mouth and, wrapping $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, $proset.they continue to give you head.&quot;,
-		&quot;Moaning in delight, _n.name wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, licking and sucking as $proset.they continue making muffled moaning noises.&quot;
+		&quot;&lt;&lt;npcNoiseTest &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, licking and sucking as $proset.they continue making muffled moaning noises.&quot;
 	]&gt;&gt;
 
 &lt;&lt;elseif $sex.act == &quot;Suck Cock&quot;&gt;&gt;
@@ -11968,7 +11966,16 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 &lt;&lt;PronounsSet&gt;&gt;
 /* Supposed to be facing each other against the wall. */
 
-&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
+&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+    &lt;&lt;=either(
+        &quot;You&#39;re standing behind _n.name as they brace themself against the $room.location.&quot;
+    )&gt;&gt;
+&lt;&lt;else&gt;&gt;
+    &lt;&lt;=either(
+        &quot;You&#39;r back is against the $room.location with _n.name in front of you.&quot;,
+        &quot;_n.name leans you against the $room.location.&quot;
+    )&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="Against-Wall-From-Behind-Dialogue" tags="nobr" position="850,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
 		&quot;You quickly move up against a nearby wall. Placing your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; against the solid surface in front of you, you push your &lt;&lt;= setup.valueLower($mc, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass out and shake it at _n.name, trying to encourage $proset.them to fuck you like this.&quot;
 	) &gt;&gt;
@@ -11978,15 +11985,6 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 		&quot;Taking hold of $proset.their shoulders, you push $proset.them up against a nearby wall.&quot;,
 		&quot;Grinding your body against $proset.their back, _n.name feels your breath on the side of $proset.their &lt;&lt;= setup.partLower(_n, &#39;Ear&#39;, &#39;head&#39;) &gt;&gt;.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="Against-Wall-From-Behind-Dialogue" tags="nobr" position="850,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    &lt;&lt;=either(
-        &quot;You&#39;re standing behind _n.name as they brace themself against the $room.location.&quot;
-    )&gt;&gt;
-&lt;&lt;else&gt;&gt;
-    &lt;&lt;=either(
-        &quot;You&#39;re braced against the $room.location with _n.name behind you.&quot;,
-        &quot;_n.name leans you against the $room.location.&quot;
-    )&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="Bent-Over-Dialogue" tags="nobr" position="975,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     You bend _n.name over on the $room.location and step up behind $proset.them.
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
@@ -12232,7 +12230,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
 		&quot;Dropping down onto all fours, &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; lower &lt;&lt;gram _top &#39;refl&#39;&gt;&gt; over &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt;, bringing &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; crotch down to $proset.their face as &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; dip &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; head between $proset.their &lt;&lt;=_nLegs&gt;&gt;.&quot;,
-		&quot;Allowing $proset.them to guide you down, you reach up and take a firm grip on $proset.their &lt;&lt;=_nHips&gt;&gt; before roughly tugging $proset.them into place above you in a sixty-nine.&quot;
+		&quot;Allowing $proset.them to guide you down, you reach up and take a firm grip of $proset.their &lt;&lt;=_nHips&gt;&gt; before roughly tugging $proset.them into place above you in a sixty-nine.&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
@@ -12539,7 +12537,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
     /*&lt;&lt;case &quot;Rub Pussy With Feet&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
     /*&lt;&lt;case &quot;Pull Feet To Pussy&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;&quot;&gt;&gt;*/
     &lt;&lt;case &quot;Take Cock Between Lips&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Enter-Mouth-Quote&quot;&gt;&gt;
-    &lt;&lt;case &quot;Enter Mouth&quot;&gt;&gt;&lt;&lt;include &quot;Enter-Mouth-Quote&quot;&gt;&gt;
+    &lt;&lt;case &quot;Enter Mouth&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Enter-Mouth-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Stroke Shaft With Feet&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Fuck Feet&quot;&gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
     &lt;&lt;case &quot;Stroke Pussy With Feet&quot;&gt;&gt;&lt;&lt;set _hasActQuote = true&gt;&gt;&lt;&lt;= _b &gt;&gt;&lt;&lt;include &quot;Footjob-Quote&quot;&gt;&gt;
@@ -14622,7 +14620,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;if !$npcMemories&gt;&gt;
 	&lt;&lt;set $npcMemories = {}&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="Start" tags="nobr" position="175,275" size="100,100">&lt;div&gt;
-	&lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
+	&lt;center&gt;&lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;&lt;/center&gt;
 	&lt;br&gt;
 	&lt;h3 style=&quot;font-weight: normal;&quot;&gt;This game is meant to simulate interactions of many sexual varieties. 
 	&lt;br&gt;
@@ -15098,7 +15096,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;set $mc.arousal = 0&gt;&gt;
 
 &lt;div id=&quot;sex-container&quot;&gt;
-&lt;div id=&quot;arousal-ui&quot;&gt;
+	&lt;div id=&quot;arousal-ui&quot;&gt;
 		&lt;&lt;ArousalUI&gt;&gt;
 	&lt;/div&gt;
 	&lt;&lt;SexEncounterUI&gt;&gt;
@@ -15427,7 +15425,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 		species: &quot;Anthro&quot;,
 		anthro: {
 			group: &quot;Furry&quot;,
-			subtype: &quot;Bunny&quot;,
+			subtype: &quot;Canine&quot;,
 			color: &quot;White&quot;
 		},
 		gender: &quot;Male&quot;,
@@ -15501,7 +15499,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
         $mc.hair.style to &quot;Buzz cut&quot;,
         $mc.facefeatures to [&quot;A mole&quot;],
         $mc.skin.color to &quot;Tan&quot;,
-        $mc.skin.features to [],
+        $mc.skin.features to null,
         $mc.bodyheight to &quot;Average&quot;,
         $mc.physique to &quot;Thin&quot;,
         $mc.personality to [&quot;Kind&quot;],
@@ -16467,960 +16465,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;if $mc.genitals &amp;&amp; String($mc.genitals).toLowerCase().includes(&quot;penis&quot;) &amp;&amp; !$mc.penislength&gt;&gt;
 	&lt;&lt;run _missing.push(&quot;Penis Length&quot;)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
-&lt;&lt;widget &quot;AnalQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.analQuotes&gt;&gt;
-		[Error] setup.analQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.penislength || &quot;Average&quot;&gt;&gt;
-	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;set _mode = $sex.role&gt;&gt;	
-	&lt;&lt;set _position = $sex.position&gt;&gt;
-
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.analQuotes.Bottom[_position][_pref]
-		&amp;&amp; setup.analQuotes.Bottom[_pref]
-			|| setup.analQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.analQuotes.Top[_pref]
-					&amp;&amp; setup.analQuotes.Top[_msize] /*Only if _msize is established */
-					&amp;&amp; setup.analQuotes.Top [_position][_pref]
-				)
-				|| setup.analQuotes.Top.Neutral
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] Anal: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- BLOWJOB ----- */
-&lt;&lt;widget &quot;BlowjobQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.blowjobsQuotes&gt;&gt;
-		[Error] setup.blowjobQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.blowjobQuotes.Bottom[_pref]
-			|| setup.blowjobQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.blowjobQuotes.Top[_pref]
-				)
-				|| setup.blowjobQuotes.Top.Neutral
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] Blowjob: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- BOOBJOB ----- */
-/* NOT MADE YET */
-
-/* ----- CARESS ----- */
-&lt;&lt;widget &quot;CaressQuote&quot;&gt;&gt;
-
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-	&lt;&lt;set _materialN = (_n &amp;&amp; _n.body &amp;&amp; _n.body.Bodymaterial) ? _n.body.Bodymaterial : &quot;Skin&quot;&gt;&gt;
-	&lt;&lt;set _materialM = ($mc &amp;&amp; $mc.body &amp;&amp; $mc.body.Bodymaterial) ? $mc.body.Bodymaterial : &quot;Skin&quot;&gt;&gt;
-
-	&lt;&lt;set _pool =
-		setup.caressQuotes[_mode]
-		&amp;&amp; setup.caressQuotes[_mode][_materialN]
-		&amp;&amp; setup.caressQuotes[_mode][_materialN][_pref]
-		|| setup.caressQuotes[_mode][_pref]
-	&gt;&gt;
-
-	&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] No Caress quote pool found.
-		(mode=&lt;&lt;=_mode&gt;&gt;, material=&lt;&lt;=_material&gt;&gt;, pref=&lt;&lt;=_pref&gt;&gt;)
-	&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- CUDDLE ----- */
-&lt;&lt;widget &quot;CuddleQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.cuddleQuotes&gt;&gt;
-		[Error] setup.cuddleQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.cuddleQuotes.Bottom[_pref]
-			|| setup.cuddleQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.cuddleQuotes.Top[_pref]
-				)
-				|| setup.cuddleQuotes.Top.Neutral
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] Cuddle: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- CUNNILINGUS ----- */
-&lt;&lt;widget &quot;CunnilingusQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.cunnilingusQuotes&gt;&gt;
-		[Error] setup.cunnilingusQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.cunnilingusQuotes.Bottom[_pref]
-			|| setup.cunnilingusQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.cunnilingusQuotes.Top[_pref]
-				)
-				|| setup.cunnilingusQuotes.Top.Neutral
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] Cunnilingus: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- EMBRACE ----- */
-&lt;&lt;widget &quot;EmbraceQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.embraceQuotes&gt;&gt;
-		[Error] setup.embraceQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.embraceQuotes.Bottom[_pref]
-			|| setup.embraceQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.embraceQuotes.Top[_pref]
-				)
-				|| setup.embraceQuotes.Top.Neutral
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] Embrace: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- FACE ON CHEST ----- */
-&lt;&lt;widget &quot;FaceOnChestQuote&quot;&gt;&gt;
-
-	/* guard */
-	&lt;&lt;if !setup.faceonchestQuotes&gt;&gt;
-		[Error] setup.faceonchestQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;	&lt;&lt;set _nsize = _n.breastsize || &quot;Average&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.breastsize || &quot;Average&quot;&gt;&gt;
-
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.faceonchestQuotes.Bottom[_pref]
-			|| setup.faceonchestQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.faceonchestQuotes.Top[_pref]
-					setup.faceonchestQuotes.Top[_nsize]
-				)
-				|| setup.faceonchestQuotes.Top.Neutral
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] FaceOnChest: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- FEEL STOMACH ----- */
-&lt;&lt;widget &quot;FeelStomachQuote&quot;&gt;&gt;
-
-	/* guard */
-	&lt;&lt;if !setup.feelstomachQuotes&gt;&gt;
-		[Error] setup.feelstomachQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-		
-	&lt;&lt;set _body = $mc.physique || &quot;Average&quot;&gt;&gt;
-	&lt;&lt;set _material = _n.body.Bodymaterial || null&gt;&gt;
-
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.feelstomachQuotes.Bottom[_body]
-			|| setup.feelstomachQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.feelstomachQuotes.Top[_material]
-				)
-				|| setup.feelstomachQuotes.Top.Neutral.default
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] FeelStomach: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- FINGER ASS ----- */
-&lt;&lt;widget &quot;FingerAssQuote&quot;&gt;&gt;
-
-	/* guard */
-	&lt;&lt;if !setup.fingerassQuotes&gt;&gt;
-		[Error] setup.fingerassQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.fingerassQuotes.Bottom[_pref]
-			|| setup.fingerassQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.fingerassQuotes.Top[_pref]
-				)
-				|| setup.fingerassQuotes.Top.Neutral.default
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] FingerAss: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- FINGER VAGINA ----- */
-&lt;&lt;widget &quot;FingerVaginaQuote&quot;&gt;&gt;
-
-	/* guard */
-	&lt;&lt;if !setup.fingervaginaQuotes&gt;&gt;
-		[Error] setup.fingervaginaQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.fingervaginaQuotes.Bottom[_pref]
-			|| setup.fingervaginaQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.fingervaginaQuotes.Top[_pref]
-				)
-				|| setup.fingervaginaQuotes.Top.Neutral.default
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] FingerVagina: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- FOOTJOB ----- */
-&lt;&lt;widget &quot;FootjobQuote&quot;&gt;&gt;
-
-	/* guard */
-	&lt;&lt;if !setup.footjobQuotes&gt;&gt;
-		[Error] setup.footjobQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _size = $mc.penislength || &quot;average&quot;&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.footjobQuotes.Bottom[_pref]
-			|| setup.footjobQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.footjobQuotes.Top[_pref]
-					&amp;&amp; setup.footjobQuotes.Top[_pref][_size]
-				)
-				|| setup.footjobQuotes.Top.Neutral.default
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] FootjobQuote: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- FROT ----- */
-&lt;&lt;widget &quot;FrotQuote&quot;&gt;&gt;
-/* guard */
-	&lt;&lt;if !setup.frotQuotes&gt;&gt;
-		[Error] setup.frotQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.penislength&gt;&gt;
-	&lt;&lt;set _nsize =_n.penislength&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;set _mode = $sex.role&gt;&gt;	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.frotQuotes.Bottom[_pref]
-			|| setup.frotQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.frotQuotes.Top[_pref]
-				)
-				|| setup.frotQuotes.Top.Neutral.default
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] FrotQuote: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-
-/* ----- GROPE BREAST ----- */
-&lt;&lt;widget &quot;GropeBreastQuote&quot;&gt;&gt;
-/* guard */
-	&lt;&lt;if !setup.gropebreastQuotes&gt;&gt;
-		[Error] setup.gropebreastQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.breastsize &gt;&gt;
-	&lt;&lt;set _nsize = _n.breastsize &gt;&gt;
-	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
-	&lt;&lt;set _nage  = _n.ageGroup  || &quot;Adult&quot;&gt;&gt;
-
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.gropebreastQuotes.Bottom[_pref][_msize][_mage] 
-	|| setup.gropebreastQuotes.Bottom.Neutral&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;run _pool =
-			(
-				setup.gropebreastQuotes.Top[_pref]
-				&amp;&amp; setup.gropebreastQuotes.Top[_pref][_nsize][_nage]
-			)
-			|| setup.gropebreastQuotes.Top.Neutral
-		&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] GropeBreastQuote: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;/widget&gt;&gt;
-
-
-/* ----- GROPE BUTT ----- */
-&lt;&lt;widget &quot;GropeButtQuote&quot;&gt;&gt;
-	&lt;&lt;if !setup.gropebuttQuotes&gt;&gt;
-		[Error] setup.gropebuttQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if !_n or !$sex or !$sex.roles or !$sex.roles.dom or !$sex.roles.sub&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.assSize || &quot;Round&quot;&gt;&gt;
-	&lt;&lt;set _nsize = _n.assSize || &quot;Round&quot;&gt;&gt;
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool =
-			(
-				setup.gropebuttQuotes.Bottom[_nsize]
-				&amp;&amp; setup.gropebuttQuotes.Bottom[_nsize][_pref]
-			)
-			|| 
-			(
-				setup.gropebuttQuotes.Bottom[_nsize]
-				&amp;&amp; setup.gropebuttQuotes.Bottom[_nsize].Neutral
-			)
-
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;set _pool =
-			(
-				setup.gropebuttQuotes.Top[_msize]
-				&amp;&amp; setup.gropebuttQuotes.Top[_msize][_pref]
-			)
-			|| 
-			(
-				setup.gropebuttQuotes.Bottom[_nsize]
-				&amp;&amp; setup.gropebuttQuotes.Bottom[_nsize].Neutral
-			)
-
-		&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] GropeButtQuote: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-
-/* ----- HANDJOB ----- */
-&lt;&lt;widget &quot;HandjobQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.handjobQuotes&gt;&gt;
-		[Error] setup.handjobQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
-	&lt;&lt;set _mage  = $mc.agegroup&gt;&gt;
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.handjobQuotes.Bottom[_pref]
-			|| setup.handjobQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;if _msize == &quot;tiny&quot;&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.handjobQuotes.Top[_pref]
-					&amp;&amp; setup.handjobQuotes.Top[_pref].tiny
-					&amp;&amp; setup.handjobQuotes.Top[_pref].tiny[_mage]
-				)
-				|| setup.handjobQuotes.Top.Neutral
-			&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.handjobQuotes.Top[_pref]
-					&amp;&amp; setup.handjobQuotes.Top[_pref][_msize]
-				)
-				|| setup.handjobQuotes.Top.Neutral
-			&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] HandjobQuote: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- PET EARS ----- */
-&lt;&lt;widget &quot;PetEarsQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.petearsQuotes&gt;&gt;
-		[Error] setup.petearsQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.petearsQuotes.Bottom[_pref]
-			|| setup.petearsQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.petearsQuotes.Top[_pref]
-				)
-				|| setup.petearsQuotes.Top.Neutral
-			&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] PetEarsQuote: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- RIMJOB ----- */
-&lt;&lt;widget &quot;RimjobQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.rimjobQuotes&gt;&gt;
-		[Error] setup.rimjobQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.rimjobQuotes.Bottom[_pref]
-			|| setup.rimjobQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.rimjobQuotes.Top[_pref]
-				)
-				|| setup.rimjobQuotes.Top.Neutral.default
-			&gt;&gt;
-
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] RimjobQuote: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- SUCK FOOT ----- */
-&lt;&lt;widget &quot;SuckFootQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.suckfootQuotes&gt;&gt;
-		[Error] setup.suckfootQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.suckfootQuotes.Bottom[_pref]
-			|| setup.suckfootQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.suckfootQuotes.Top[_pref]
-				)
-				|| setup.suckfootQuotes.Top.Neutral.default
-			&gt;&gt;
-
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] SuckfootQuote: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- ORGASM ----- */
-&lt;&lt;widget &quot;OrgasmQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.orgasmQuotes&gt;&gt;
-		[Error] setup.orgasmQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-	&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;	
-	&lt;&lt;set _action = $sex.action &gt;&gt;
-
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.orgasmQuotes.Bottom[_pref] 
-		&amp;&amp; setup.orgasmQuotes.Bottom[_action][_pref]
-			|| setup.orgasmQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.orgasmQuotes.Top[_pref]
-					&amp;&amp; setup.orgasmQuotes.Bottom[_action][_pref]
-				)
-				|| setup.orgasmQuotes.Top.Neutral.default
-			&gt;&gt;
-
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] OrgasmQuote: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- ORGASM CLOSE----- */
-&lt;&lt;widget &quot;OrgasmCloseQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.orgasmcloseQuotes&gt;&gt;
-		[Error] setup.orgasmcloseQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;	
-	&lt;&lt;set _action = $sex.action &gt;&gt;
-
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.orgasmcloseQuotes.Bottom[_pref] 
-		&amp;&amp; setup.orgasmcloseQuotes.Bottom[_action][_pref]
-			|| setup.orgasmcloseQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-			&lt;&lt;run _pool =
-				(
-					setup.orgasmcloseQuotes.Top[_pref]
-					&amp;&amp; setup.orgasmcloseQuotes.Bottom[_action][_pref]
-				)
-				|| setup.orgasmcloseQuotes.Top.Neutral.default
-			&gt;&gt;
-
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] OrgasmCloseQuote: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-/* ----- VAGINAL ----- */
-&lt;&lt;widget &quot;VaginalQuote&quot;&gt;&gt;
-	/* guard */
-	&lt;&lt;if !setup.vaginalQuotes&gt;&gt;
-		[Error] setup.vaginalQuotes is not defined.
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* normalize inputs */
-	&lt;&lt;set _pref = _n.sexpref || &quot;Neutral&quot;&gt;&gt;
-	&lt;&lt;set _msize = $mc.penislength || &quot;average&quot;&gt;&gt;
-	&lt;&lt;if !$sex or !$sex.roles or !_n&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if $sex.roles.dom and $sex.roles.dom.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;give&quot;&gt;&gt;
-	&lt;&lt;elseif $sex.roles.sub and $sex.roles.sub.name == _n.name&gt;&gt;
-		&lt;&lt;set _mode = &quot;receive&quot;&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;return&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-	&lt;&lt;set _pool = null&gt;&gt;
-
-	/* resolve pool */
-	&lt;&lt;if _mode == &quot;give&quot;&gt;&gt;
-		&lt;&lt;set _pool = setup.vaginalQuotes.Bottom[_pref]
-			|| setup.vaginalQuotes.Bottom.Neutral
-		&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;run _pool =
-			(
-				setup.vaginalQuotes.Top[_pref]
-				&amp;&amp; setup.vaginalQuotes.Top[_pref][_msize]
-			)
-			|| setup.vaginalQuotes.Top.Neutral.default
-		&gt;&gt;
-
-	&lt;&lt;/if&gt;&gt;
-
-	/* output */
-	&lt;&lt;if _pool &amp;&amp; _pool.length&gt;&gt;
-		&lt;&lt;=either(..._pool)&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		[Error] VaginalQuote: empty dialogue pool.
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="UI-Widgets" tags="widget nobr" position="475,2350" size="100,100">/* gets the room based on your location and issues where you start at */
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="UI-Widgets" tags="widget nobr" position="350,2350" size="100,100">/* gets the room based on your location and issues where you start at */
 &lt;&lt;widget &quot;GetRoom&quot;&gt;&gt;
     &lt;&lt;if $gamelocation ==&quot;Your Room&quot;&gt;&gt;
         &lt;&lt;set $room = {
@@ -17936,50 +16981,65 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 			&lt;b&gt;Act:&lt;/b&gt; &lt;&lt;print $sex &amp;&amp; $sex.act ? $sex.act : &quot;None&quot;&gt;&gt;&lt;br&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;/div&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="Widgets" tags="widget nobr" position="600,2350" size="100,100">&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;
-	&lt;&lt;set _pool = setup.noise[_n.species] || setup.noise.Default || [&quot;moan&quot;]&gt;&gt;
-	&lt;&lt;set _noise = setup.pick(_pool)&gt;&gt;
-	&lt;&lt;set _mode = _args[0] || &quot;base&quot;&gt;&gt;
-
-	&lt;&lt;if _mode is &quot;s&quot;&gt;&gt;
-		&lt;&lt;if _noise.slice(-1) is &quot;y&quot;&gt;&gt;
-			&lt;&lt;= _noise.slice(0, -1) + &quot;ies&quot;&gt;&gt;
-		&lt;&lt;elseif _noise.slice(-1) is &quot;s&quot;&gt;&gt;
-			&lt;&lt;= _noise + &quot;es&quot;&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= _noise + &quot;s&quot;&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;= _noise&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="Widgets" tags="widget nobr" position="475,2350" size="100,100">/* Example of uses: */
+/*&lt;&lt;npcNoiseTest &#39;base&#39; &#39;pain&#39;&gt;&gt;       groan */
+/*&lt;&lt;npcNoiseTest &#39;s&#39; &#39;pain&#39;&gt;&gt;          groans */
+/*&lt;&lt;npcNoiseTest &#39;ing&#39; &#39;pain&#39;&gt;&gt;        groaning */
+/*&lt;&lt;npcNoiseTest &#39;cap&#39; &#39;pain&#39;&gt;&gt;        Groan */
+/*&lt;&lt;npcNoiseTest &#39;s cap&#39; &#39;pain&#39;&gt;&gt;      Groans */
+/*&lt;&lt;npcNoiseTest &#39;ing cap&#39; &#39;pain&#39;&gt;&gt;    Groaning */
 &lt;&lt;widget &quot;npcNoiseTest&quot;&gt;&gt;
-	&lt;&lt;set _mode = _args[0] || &quot;base&quot;&gt;&gt;
+	&lt;&lt;set _modeText = (_args[0] || &quot;base&quot;).toLowerCase()&gt;&gt;
+	&lt;&lt;set _modes = _modeText.trim().split(/\s+/)&gt;&gt;
 	&lt;&lt;set _type = _args[1] || &quot;pleasure&quot;&gt;&gt;
 
-	/* Get species safely. Assumes _n.species is usually a string like &quot;Human&quot;, &quot;Canine&quot;, etc. */
+	/* Get species and anthro subtype safely. */
 	&lt;&lt;set _species = _n &amp;&amp; _n.species ? _n.species : &quot;Default&quot;&gt;&gt;
+	&lt;&lt;set _subtype = _n &amp;&amp; _n.anthro &amp;&amp; _n.anthro.subtype ? _n.anthro.subtype : null&gt;&gt;
 
-	/* Get that species&#39; noise table, or Default if missing. */
-	&lt;&lt;set _speciesNoise = setup.noiseTest[_species] || setup.noiseTest.Default&gt;&gt;
+	/* Try species first, then anthro subtype, then Default. */
+	&lt;&lt;set _defaultNoise = setup.noise.Default || {}&gt;&gt;
+	&lt;&lt;set _speciesNoise = setup.noise[_species]&gt;&gt;
 
-	/* Get the requested noise type, or fall back to Default&#39;s version of that type, then pleasure, then moan. */
-	&lt;&lt;set _pool = _speciesNoise[_type] || setup.noiseTest.Default[_type] || setup.noiseTest.Default.pleasure || [&quot;moan&quot;]&gt;&gt;
+	&lt;&lt;if !_speciesNoise &amp;&amp; _subtype&gt;&gt;
+		&lt;&lt;set _speciesNoise = setup.noise[_subtype]&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if !_speciesNoise&gt;&gt;
+		&lt;&lt;set _speciesNoise = _defaultNoise&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* Get the requested noise type, then fallback safely. */
+	&lt;&lt;set _pool = _speciesNoise[_type] || _defaultNoise[_type] || _defaultNoise.pleasure || [&quot;moan&quot;]&gt;&gt;
 
 	&lt;&lt;set _noise = setup.pick(_pool)&gt;&gt;
+	&lt;&lt;set _out = _noise&gt;&gt;
 
-	&lt;&lt;if _mode is &quot;s&quot;&gt;&gt;
-		&lt;&lt;if _noise.slice(-1) is &quot;y&quot;&gt;&gt;
-			&lt;&lt;= _noise.slice(0, -1) + &quot;ies&quot;&gt;&gt;
-		&lt;&lt;elseif _noise.slice(-1) is &quot;s&quot;&gt;&gt;
-			&lt;&lt;= _noise + &quot;es&quot;&gt;&gt;
+	/* Plural mode */
+	&lt;&lt;if _modes.indexOf(&quot;s&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;if _out.slice(-1) is &quot;y&quot;&gt;&gt;
+			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ies&quot;&gt;&gt;
+		&lt;&lt;elseif _out.slice(-1) is &quot;s&quot;&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;es&quot;&gt;&gt;
 		&lt;&lt;else&gt;&gt;
-			&lt;&lt;= _noise + &quot;s&quot;&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;s&quot;&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-		&lt;&lt;= _noise&gt;&gt;
+
+	/* -ing mode */
+	&lt;&lt;elseif _modes.indexOf(&quot;ing&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;if _out.slice(-1) is &quot;e&quot;&gt;&gt;
+			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ing&quot;&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;ing&quot;&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
+
+	/* Capitalize mode */
+	&lt;&lt;if _modes.indexOf(&quot;cap&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;set _out = _out.charAt(0).toUpperCase() + _out.slice(1)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;= _out&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;gram&quot;&gt;&gt;
@@ -18604,7 +17664,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;run setup.traits.addRandomTraits(_char, _max, { exact: _exact })&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="186" name="heighttest" tags="" position="725,2350" size="100,100">//example test:
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="heighttest" tags="" position="600,2350" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 
 &lt;&lt;if _h is 1&gt;&gt;
