@@ -129,7 +129,7 @@ body {
 #story {
   max-width: none;
   margin: 0 1.5rem 0 17.5rem;
-  padding: 1.5rem 1rem 6rem;
+  padding: 1.5rem 0.5rem 6rem;
   background: transparent;
   border-radius: 0;
   box-shadow: none;
@@ -257,7 +257,7 @@ button.active-choice {
   /*gap: 0.5em; */
   gap: 0em;
   padding: 0;
-  margin: 0em 0;
+  margin: 0.5em 0;
   list-style: none;
 }
 
@@ -270,7 +270,7 @@ button.active-choice {
   /*padding: 0.4em 0.7em;
   font-size: 0.6rem;*/
   padding: 0.4em 0.7em;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   border-radius: 4px;
   background: #222;
   color: #fff;
@@ -470,8 +470,8 @@ button.active-choice {
     position: fixed;
     bottom: 0;
     /*left: 21rem; */
-    left: calc(17.5rem + 1rem);
-    right: 1.5rem;
+    left: calc(17.5rem + 0.5rem);
+    right: 0.5rem;
     margin-top: 0;
     box-sizing: border-box;
     transition:
@@ -483,7 +483,7 @@ button.active-choice {
   /* When SugarCube's UI bar is collapsed/stowed */
   #ui-bar.stowed ~ #story #npcsex-actions-bar {
     /*left: 4.5rem; */
-    left: calc(4.5rem + 1rem);
+    left: calc(1.5rem + 0.5rem);
   }
 } 
 
@@ -1136,6 +1136,9 @@ h3 {
 
 #arousal-ui {
   text-align: center;
+  flex: 0 1 320px;
+  min-width: 280px;
+  max-width: 360px;
 }
 
 #npcsex-dialogue {
@@ -14455,9 +14458,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;if passage() is &quot;Sex-Encounter&quot;&gt;&gt;
 	&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;br&gt;
-	&lt;div id=&quot;arousal-ui&quot;&gt;
-		&lt;&lt;ArousalUI&gt;&gt;
-	&lt;/div&gt;
+	
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $testpc = {
   species: []
 }&gt;&gt;
@@ -15097,6 +15098,9 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;set $mc.arousal = 0&gt;&gt;
 
 &lt;div id=&quot;sex-container&quot;&gt;
+&lt;div id=&quot;arousal-ui&quot;&gt;
+		&lt;&lt;ArousalUI&gt;&gt;
+	&lt;/div&gt;
 	&lt;&lt;SexEncounterUI&gt;&gt;
 	&lt;&lt;RoomRelocationUI&gt;&gt;
 &lt;/div&gt;
@@ -17462,6 +17466,9 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
             &lt;&lt;run setup.ensureValidSexPosition($sex)&gt;&gt;
             
             &lt;&lt;replace &quot;#sex-container&quot;&gt;&gt;
+				&lt;div id=&quot;arousal-ui&quot;&gt;
+					&lt;&lt;ArousalUI&gt;&gt;
+				&lt;/div&gt;
                 &lt;&lt;SexEncounterUI&gt;&gt;
                 &lt;&lt;RoomRelocationUI&gt;&gt;
             &lt;&lt;/replace&gt;&gt;
@@ -17569,20 +17576,25 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 		? &quot;Act-Quote-React&quot;
 		: either(&quot;Orgasm-Close-Quote&quot;, &quot;Act-Quote-React&quot;)&gt;&gt;
 
-	&lt;&lt;run
+	/*&lt;&lt;run
 		const act = setup.sexacts[_a];
 		setup.applySexAct($sex, _a);
 		setup.applyArousalFromAct($sex, act);
 		setup.updateBindings();
 		setup.updateCumLocations($sex);
+	&gt;&gt; */
+	&lt;&lt;run
+		setup.applySexAct($sex, _a);
+		setup.updateBindings();
+		setup.updateCumLocations($sex);
 	&gt;&gt;
 	&lt;&lt;run setup.debug.log(&quot;STATE&quot;, &quot;After HandleSexAct state update&quot;, {
-	action: _a,
-	phase: $sex.phase,
-	position: $sex.position,
-	act: $sex.act,
-	top: $sex.Top ? $sex.Top.name : &quot;Missing&quot;,
-	bottom: $sex.Bottom ? $sex.Bottom.name : &quot;Missing&quot;
+		action: _a,
+		phase: $sex.phase,
+		position: $sex.position,
+		act: $sex.act,
+		top: $sex.Top ? $sex.Top.name : &quot;Missing&quot;,
+		bottom: $sex.Bottom ? $sex.Bottom.name : &quot;Missing&quot;
 	})&gt;&gt;
 	&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -17592,13 +17604,11 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 			&lt;&lt;include &quot;Orgasm-Close-Dialogue&quot;&gt;&gt;&lt;br&gt;
 			&lt;&lt;include _climaxQuotePassage&gt;&gt;
 		&lt;&lt;/replace&gt;&gt;
-
 	&lt;&lt;elseif $sex.phase == &quot;aftercare&quot;&gt;&gt;
 		&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
 			&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
 			&lt;&lt;RenderAftercareQuote _handleMute&gt;&gt;
 		&lt;&lt;/replace&gt;&gt;
-
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
 			&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;

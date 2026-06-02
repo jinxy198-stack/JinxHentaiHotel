@@ -22,7 +22,7 @@ body {
 #story {
   max-width: none;
   margin: 0 1.5rem 0 17.5rem;
-  padding: 1.5rem 1rem 6rem;
+  padding: 1.5rem 0.5rem 6rem;
   background: transparent;
   border-radius: 0;
   box-shadow: none;
@@ -163,7 +163,7 @@ button.active-choice {
   /*padding: 0.4em 0.7em;
   font-size: 0.6rem;*/
   padding: 0.4em 0.7em;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   border-radius: 4px;
   background: #222;
   color: #fff;
@@ -363,8 +363,8 @@ button.active-choice {
     position: fixed;
     bottom: 0;
     /*left: 21rem; */
-    left: calc(17.5rem + 1rem);
-    right: 1.5rem;
+    left: calc(17.5rem + 0.5rem);
+    right: 0.5rem;
     margin-top: 0;
     box-sizing: border-box;
     transition:
@@ -376,7 +376,7 @@ button.active-choice {
   /* When SugarCube's UI bar is collapsed/stowed */
   #ui-bar.stowed ~ #story #npcsex-actions-bar {
     /*left: 4.5rem; */
-    left: calc(4.5rem + 1rem);
+    left: calc(1.5rem + 0.5rem);
   }
 } 
 
@@ -1029,6 +1029,9 @@ h3 {
 
 #arousal-ui {
   text-align: center;
+  flex: 0 1 320px;
+  min-width: 280px;
+  max-width: 360px;
 }
 
 #npcsex-dialogue {

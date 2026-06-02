@@ -67,6 +67,9 @@
 <<set $mc.arousal = 0>>
 
 <div id="sex-container">
+	<div id="arousal-ui">
+		<<ArousalUI>>
+	</div>
 	<<SexEncounterUI>>
 	<<RoomRelocationUI>>
 </div>

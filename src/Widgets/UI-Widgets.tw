@@ -46,6 +46,9 @@
             <<run setup.ensureValidSexPosition($sex)>>
             
             <<replace "#sex-container">>
+				<div id="arousal-ui">
+					<<ArousalUI>>
+				</div>
                 <<SexEncounterUI>>
                 <<RoomRelocationUI>>
             <</replace>>
@@ -153,20 +156,25 @@
 		? "Act-Quote-React"
 		: either("Orgasm-Close-Quote", "Act-Quote-React")>>
 
-	<<run
+	/*<<run
 		const act = setup.sexacts[_a];
 		setup.applySexAct($sex, _a);
 		setup.applyArousalFromAct($sex, act);
 		setup.updateBindings();
 		setup.updateCumLocations($sex);
+	>> */
+	<<run
+		setup.applySexAct($sex, _a);
+		setup.updateBindings();
+		setup.updateCumLocations($sex);
 	>>
 	<<run setup.debug.log("STATE", "After HandleSexAct state update", {
-	action: _a,
-	phase: $sex.phase,
-	position: $sex.position,
-	act: $sex.act,
-	top: $sex.Top ? $sex.Top.name : "Missing",
-	bottom: $sex.Bottom ? $sex.Bottom.name : "Missing"
+		action: _a,
+		phase: $sex.phase,
+		position: $sex.position,
+		act: $sex.act,
+		top: $sex.Top ? $sex.Top.name : "Missing",
+		bottom: $sex.Bottom ? $sex.Bottom.name : "Missing"
 	})>>
 	<<replace "#sexUI">><<SexEncounterUI>><</replace>>
 	<<replace "#log">><</replace>>
@@ -176,13 +184,11 @@
 			<<include "Orgasm-Close-Dialogue">><br>
 			<<include _climaxQuotePassage>>
 		<</replace>>
-
 	<<elseif $sex.phase == "aftercare">>
 		<<replace "#intro">>
 			<<include "ActDialogue">>
 			<<RenderAftercareQuote _handleMute>>
 		<</replace>>
-
 	<<else>>
 		<<replace "#intro">>
 			<<include "ActDialogue">>
