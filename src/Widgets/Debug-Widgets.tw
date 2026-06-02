@@ -1,0 +1,115 @@
+::Debug-Widgets [widget nobr]
+<<widget "DebugSetupSexEncounter">>
+	/* Make sure important objects exist */
+	<<set $ui = $ui || {}>>
+	<<set $sex = $sex || {}>>
+	<<set $flags = $flags || {}>>
+	<<set $npcMemory = $npcMemory || {}>>
+
+	/* Fill the player character if you are skipping character creation */
+	<<if !$mc || typeof $mc !== "object" || !$mc.name>>
+		<<set $mc = $mc || {}>>
+		<<set $mc.skin = $mc.skin || {}>>
+		<<set $mc.hair = $mc.hair || {}>>
+		<<TestMC>>
+	<</if>>
+
+	/* Create a test NPC */
+	<<set $ui.npc = {
+		id: "debug-kevin",
+		name: "Kevin",
+		nickname: "Kevy",
+		surname: "Snowpaw",
+		species: "Anthro",
+		anthro: {
+			group: "Furry",
+			subtype: "Bunny",
+			color: "White"
+		},
+		gender: "Male",
+		trans: "Cisgender",
+		sexu: "Bisexual",
+		pronouns: "He/Him",
+		age: 21,
+
+		heterochromia: false,
+		eyes: "Blue",
+		hair: "Bald",
+		bodyheight: "Very Short",
+		physique: "Thin",
+		personality: ["Kind", "Childish"],
+		genitals: "Penis",
+		genitaltype: "Uncut",
+		penislength: "Small",
+		assSize: "Small",
+		virgin: false,
+		sexpref: "Switch",
+		origin: "Debug",
+		traits: []
+	}>>
+
+	/* Set this because your NPC helper widgets use _npc */
+	<<set _npc = $ui.npc>>
+
+	<<PronounsSet>>
+	<<AgeGroupNPC>>
+	<<make-petname>>
+
+	/* Safe to run, and helps prevent body/bodyparts errors */
+	<<create-body $mc>>
+	<<create-body _npc>>
+
+	/* Optional, but useful because Sex-Encounter also expects normalized actors */
+	<<if setup.normalizeActor>>
+		<<run setup.normalizeActor($mc)>>
+		<<run setup.normalizeActor(_npc)>>
+	<</if>>
+
+	/* Setup location. Sex-Encounter will call GetRoom itself. */
+	<<set $gamelocation = "Your Room">>
+
+	/* Keep fallback references available */
+	<<set $lastNpc = setup.clone ? setup.clone($ui.npc) : $ui.npc>>
+	<<set $bootyCallNpc = null>>
+
+	/* Setup encounter roles */
+	<<set $sex.roles = {
+		dom: $mc,
+		sub: $ui.npc
+	}>>
+<</widget>>
+
+<<widget "TestMC">>
+    <<set 
+        $mc.name to "Gary",
+        $mc.nickname to "Sexy",
+        $mc.surname to "Stu",
+        $mc.species to "Human",
+        $mc.gender to "Male",
+        $mc.sexu to "Bisexual",
+        $mc.pronouns to "He/Him",
+        $mc.age to "27",
+        $heterochromia to false,
+        $mc.eyes to "Brown",
+        $mc.hair to {},
+        $mc.hair.length to "Short",
+        $mc.hair.color to "Black",
+        $mc.hair.style to "Buzz cut",
+        $mc.facefeatures to ["A mole"],
+        $mc.skin.color to "Tan",
+        $mc.skin.features to [],
+        $mc.bodyheight to "Average",
+        $mc.physique to "Thin",
+        $mc.personality to ["Kind"],
+        $mc.genitals to "Penis",
+        $mc.penislength to "Average",
+        $mc.genitaltype to "Cut",
+        $mc.assSize to "Average",
+        $mc.sexpref to "Versatile",
+        $mc.virgin to true
+    >>
+    <<AgeGroupSet>>
+    <<SetTrans>>
+    <<create-body $mc>>
+    <<EnsureMCTrait "Emissary">>
+<</widget>>

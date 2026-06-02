@@ -1,14 +1,23 @@
-:: Start {"position":"175,275","size":"100,100"}
+:: Start [nobr] {"position":"175,275","size":"100,100"}
 
 <div>
-<h1>Welcome to Jinx Hentai Hotel!</h1>
-<h3 style="font-weight: normal;">This game is meant to simulate interactions of many sexual varieties. 
-Create your character to begin or you can use the PreSet or Randomizer to skip all that.
-</h3>
-<center><<button [[Create Character|Index-CC]]>><</button>></center>
-<center><<button [[Use the Randomiser|CC-Check]]>><<Randomiser>><</button>> | <<button [[Use the Pre-Set|CC-Check]]>><<PreSet>><</button>>
-</center>
+	<h1>Welcome to Jinx Hentai Hotel!</h1>
+	<br>
+	<h3 style="font-weight: normal;">This game is meant to simulate interactions of many sexual varieties. 
+	<br>
+	Create your character to begin or you can use the PreSet or Randomizer to skip all that.
+	</h3>
+	<br>
+	<center><<button [[Create Character|Index-CC]]>><</button>></center> <br>
+	<center><<button [[Use the Randomiser|CC-Check]]>><<Randomiser>><</button>> | <<button [[Use the Pre-Set|CC-Check]]>><<PreSet>><</button>></center> <br>
 
-<span> Updated as of 5/14/2026 </span>
-
+	<span> Updated as of 5/14/2026 </span>
+	<br>
 </div>
+
+
+<<button "Debug: Sex Encounter" "Sex-Encounter">>
+	<<DebugSetupSexEncounter>>
+<</button>>
+
+<br>

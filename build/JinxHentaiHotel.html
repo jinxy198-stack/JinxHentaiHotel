@@ -3283,13 +3283,11 @@ setup.refreshFullPool = function () {
 			return npc && typeof npc.age === "number" && npc.age >= 18;
 		});
 	}
-
 	if (traits.includes("Hates Adults")) {
 		pool = pool.filter(function (npc) {
 			return npc && typeof npc.age === "number" && npc.age < 18;
 		});
 	}
-
 	if (traits.includes("Hates Furries")) {
 		pool = pool.filter(function (npc) {
 			return npc && npc.species === "Human";
@@ -3300,7 +3298,6 @@ setup.refreshFullPool = function () {
 			return npc && npc.species === "Anthro";
 		});
 	}
-
 	v.fullPool = pool;
 };
 
@@ -4553,7 +4550,7 @@ setup.vaginatype=[
 ];
 
 setup.sexu= [
-    "Heterosexual", "Homosexual", "Bisexual", "Pansexual", "Asexual"
+    "Heterosexual", "Homosexual", "Bisexual", "Pansexual",
 ];
 
 /* body parts database */
@@ -14422,10 +14419,10 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;button &quot;Your Stats&quot;&gt;&gt;&lt;&lt;PopupStats&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;button &quot;Disclaimer&quot;&gt;&gt;&lt;&lt;PopupDisc&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;if passage() is &quot;Sex-Encounter&quot;&gt;&gt;
-&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;br&gt;
-&lt;div id=&quot;arousal-ui&quot;&gt;
-	&lt;&lt;ArousalUI&gt;&gt;
-&lt;/div&gt;
+	&lt;&lt;button &quot;How to play&quot;&gt;&gt;&lt;&lt;PopupTutorial&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;br&gt;
+	&lt;div id=&quot;arousal-ui&quot;&gt;
+		&lt;&lt;ArousalUI&gt;&gt;
+	&lt;/div&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $testpc = {
   species: []
 }&gt;&gt;
@@ -14588,18 +14585,27 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 
 &lt;&lt;if !$npcMemories&gt;&gt;
 	&lt;&lt;set $npcMemories = {}&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="Start" tags="" position="175,275" size="100,100">&lt;div&gt;
-&lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
-&lt;h3 style=&quot;font-weight: normal;&quot;&gt;This game is meant to simulate interactions of many sexual varieties. 
-Create your character to begin or you can use the PreSet or Randomizer to skip all that.
-&lt;/h3&gt;
-&lt;center&gt;&lt;&lt;button [[Create Character|Index-CC]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt;
-&lt;center&gt;&lt;&lt;button [[Use the Randomiser|CC-Check]]&gt;&gt;&lt;&lt;Randomiser&gt;&gt;&lt;&lt;/button&gt;&gt; | &lt;&lt;button [[Use the Pre-Set|CC-Check]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;/center&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="Start" tags="nobr" position="175,275" size="100,100">&lt;div&gt;
+	&lt;h1&gt;Welcome to Jinx Hentai Hotel!&lt;/h1&gt;
+	&lt;br&gt;
+	&lt;h3 style=&quot;font-weight: normal;&quot;&gt;This game is meant to simulate interactions of many sexual varieties. 
+	&lt;br&gt;
+	Create your character to begin or you can use the PreSet or Randomizer to skip all that.
+	&lt;/h3&gt;
+	&lt;br&gt;
+	&lt;center&gt;&lt;&lt;button [[Create Character|Index-CC]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt; &lt;br&gt;
+	&lt;center&gt;&lt;&lt;button [[Use the Randomiser|CC-Check]]&gt;&gt;&lt;&lt;Randomiser&gt;&gt;&lt;&lt;/button&gt;&gt; | &lt;&lt;button [[Use the Pre-Set|CC-Check]]&gt;&gt;&lt;&lt;PreSet&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/center&gt; &lt;br&gt;
 
-&lt;span&gt; Updated as of 5/14/2026 &lt;/span&gt;
+	&lt;span&gt; Updated as of 5/14/2026 &lt;/span&gt;
+	&lt;br&gt;
+&lt;/div&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="170" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
+
+&lt;&lt;button &quot;Debug: Sex Encounter&quot; &quot;Sex-Encounter&quot;&gt;&gt;
+	&lt;&lt;DebugSetupSexEncounter&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="170" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;if _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
     They nod.
@@ -15111,15 +15117,15 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 * 
 &lt;&lt;if $mc.sexu==&quot;Heterosexual&quot;&gt;&gt;
 /*&lt;span class=&quot;flag-text flag-heterosexual&quot;&gt;$mc.sexu&lt;/span&gt;*/
-&lt;span&gt;_n.sexu&lt;/span&gt;
+	&lt;span&gt;_n.sexu&lt;/span&gt;
 &lt;&lt;elseif $mc.sexu==&quot;Homosexual&quot;&gt;&gt;
-&lt;span class=&quot;flag-text flag-homosexual&quot;&gt;$mc.sexu&lt;/span&gt;
+	&lt;span class=&quot;flag-text flag-homosexual&quot;&gt;$mc.sexu&lt;/span&gt;
 &lt;&lt;elseif $mc.sexu==&quot;Bisexual&quot;&gt;&gt;
-&lt;span class=&quot;flag-text flag-bisexual&quot;&gt;$mc.sexu&lt;/span&gt;
+	&lt;span class=&quot;flag-text flag-bisexual&quot;&gt;$mc.sexu&lt;/span&gt;
 &lt;&lt;elseif $mc.sexu==&quot;Pansexual&quot;&gt;&gt;
-&lt;span class=&quot;flag-text flag-pansexual&quot;&gt;$mc.sexu&lt;/span&gt;
+	&lt;span class=&quot;flag-text flag-pansexual&quot;&gt;$mc.sexu&lt;/span&gt;
 &lt;&lt;elseif $mc.sexu==&quot;Asexual&quot;&gt;&gt;
-&lt;span class=&quot;flag-text flag-asexual&quot;&gt;$mc.sexu&lt;/span&gt;
+	&lt;span class=&quot;flag-text flag-asexual&quot;&gt;$mc.sexu&lt;/span&gt;
 &lt;&lt;/if&gt;&gt;
 
 /*$mc.sexu*/
@@ -15137,19 +15143,20 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 * 
 &lt;&lt;if _n.sexu==&quot;Heterosexual&quot;&gt;&gt;
 /*&lt;span class=&quot;flag-text flag-heterosexual flag-on-black&quot;&gt;_n.sexu&lt;/span&gt;*/
-&lt;span&gt;_n.sexu&lt;/span&gt;
+	&lt;span&gt;_n.sexu&lt;/span&gt;
 &lt;&lt;elseif _n.sexu==&quot;Homosexual&quot;&gt;&gt;
-&lt;span class=&quot;flag-text flag-homosexual&quot;&gt;_n.sexu&lt;/span&gt;
+	&lt;span class=&quot;flag-text flag-homosexual&quot;&gt;_n.sexu&lt;/span&gt;
 &lt;&lt;elseif _n.sexu==&quot;Bisexual&quot;&gt;&gt;
-&lt;span class=&quot;flag-text flag-bisexual&quot;&gt;_n.sexu&lt;/span&gt;
+	&lt;span class=&quot;flag-text flag-bisexual&quot;&gt;_n.sexu&lt;/span&gt;
 &lt;&lt;elseif _n.sexu==&quot;Pansexual&quot;&gt;&gt;
-&lt;span class=&quot;flag-text flag-pansexual&quot;&gt;_n.sexu&lt;/span&gt;
+	&lt;span class=&quot;flag-text flag-pansexual&quot;&gt;_n.sexu&lt;/span&gt;
 &lt;&lt;elseif _n.sexu==&quot;Asexual&quot;&gt;&gt;
-&lt;span class=&quot;flag-text flag-asexual flag-on-black&quot;&gt;_n.sexu&lt;/span&gt;
+	&lt;span class=&quot;flag-text flag-asexual flag-on-black&quot;&gt;_n.sexu&lt;/span&gt;
 &lt;&lt;/if&gt;&gt;
 
 
-&lt;&lt;if $attraction&gt;&gt;&lt;&lt;pick-roles $mc _n&gt;&gt;
+&lt;&lt;if $attraction&gt;&gt;
+&lt;&lt;pick-roles $mc _n&gt;&gt;
 &lt;div id=&quot;role-line&quot;&gt;
 	Top: &lt;&lt;=$sex.roles.dom.name &gt;&gt; ****
 	Bottom: &lt;&lt;=$sex.roles.sub.name &gt;&gt;
@@ -15166,7 +15173,9 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 &lt;br&gt;
 &lt;&lt;include &quot;Accept-Dialogue&quot;&gt;&gt;
 &lt;br&gt;
-&lt;div id=&quot;top-bottom-chat&quot;&gt;&lt;&lt;include &quot;top-bottom-Dialogue&quot;&gt;&gt;&lt;/div&gt;
+&lt;div id=&quot;top-bottom-chat&quot;&gt;
+	&lt;&lt;include &quot;top-bottom-Dialogue&quot;&gt;&gt;
+&lt;/div&gt;
 &lt;br&gt;
 &lt;&lt;button &quot;Go have sex&quot;&gt;&gt;
 	&lt;&lt;if !$ui or typeof $ui !== &quot;object&quot;&gt;&gt;
@@ -15191,7 +15200,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;br&gt;
-&lt;&lt;include &quot;Reject-Dialogue&quot;&gt;&gt;
+	&lt;&lt;include &quot;Reject-Dialogue&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="178" name="top-bottom-Dialogue" tags="Dialogue nobr" position="1000,900" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
 
 &lt;&lt;if $sex.roles.dom.name is _n.name&gt;&gt;
@@ -15355,7 +15364,120 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 /* &lt;&lt;set $NPCList[_n].penisdesc to &quot;tiny penis&quot;&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;thick cock&quot;,&quot;hefty cock&quot;,&quot;big cock&quot;,&quot;large cock&quot;,&quot;veiny cock&quot;,&quot;meaty cock&quot;)&gt;&gt;
 * &lt;&lt;set $NPCList[_n].penisdesc to either(&quot;massive cock&quot;,&quot;huge cock&quot;,&quot;humongous cock&quot;,&quot;immense cock&quot;,&quot;gigantic cock&quot;,&quot;enormous cock&quot;)&gt;&gt;
-*/</tw-passagedata><tw-passagedata pid="180" name="Event Widgets" tags="widget nobr" position="1225,2225" size="100,100">&lt;&lt;widget &quot;YourRoomEvent&quot;&gt;&gt;
+*/</tw-passagedata><tw-passagedata pid="180" name="Debug-Widgets" tags="widget nobr" position="1225,2225" size="100,100">&lt;&lt;widget &quot;DebugSetupSexEncounter&quot;&gt;&gt;
+	/* Make sure important objects exist */
+	&lt;&lt;set $ui = $ui || {}&gt;&gt;
+	&lt;&lt;set $sex = $sex || {}&gt;&gt;
+	&lt;&lt;set $flags = $flags || {}&gt;&gt;
+	&lt;&lt;set $npcMemory = $npcMemory || {}&gt;&gt;
+
+	/* Fill the player character if you are skipping character creation */
+	&lt;&lt;if !$mc || typeof $mc !== &quot;object&quot; || !$mc.name&gt;&gt;
+		&lt;&lt;set $mc = $mc || {}&gt;&gt;
+		&lt;&lt;set $mc.skin = $mc.skin || {}&gt;&gt;
+		&lt;&lt;set $mc.hair = $mc.hair || {}&gt;&gt;
+		&lt;&lt;TestMC&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* Create a test NPC */
+	&lt;&lt;set $ui.npc = {
+		id: &quot;debug-kevin&quot;,
+		name: &quot;Kevin&quot;,
+		nickname: &quot;Kevy&quot;,
+		surname: &quot;Snowpaw&quot;,
+		species: &quot;Anthro&quot;,
+		anthro: {
+			group: &quot;Furry&quot;,
+			subtype: &quot;Bunny&quot;,
+			color: &quot;White&quot;
+		},
+		gender: &quot;Male&quot;,
+		trans: &quot;Cisgender&quot;,
+		sexu: &quot;Bisexual&quot;,
+		pronouns: &quot;He/Him&quot;,
+		age: 21,
+
+		heterochromia: false,
+		eyes: &quot;Blue&quot;,
+		hair: &quot;Bald&quot;,
+		bodyheight: &quot;Very Short&quot;,
+		physique: &quot;Thin&quot;,
+		personality: [&quot;Kind&quot;, &quot;Childish&quot;],
+		genitals: &quot;Penis&quot;,
+		genitaltype: &quot;Uncut&quot;,
+		penislength: &quot;Small&quot;,
+		assSize: &quot;Small&quot;,
+		virgin: false,
+		sexpref: &quot;Switch&quot;,
+		origin: &quot;Debug&quot;,
+		traits: []
+	}&gt;&gt;
+
+	/* Set this because your NPC helper widgets use _npc */
+	&lt;&lt;set _npc = $ui.npc&gt;&gt;
+
+	&lt;&lt;PronounsSet&gt;&gt;
+	&lt;&lt;AgeGroupNPC&gt;&gt;
+	&lt;&lt;make-petname&gt;&gt;
+
+	/* Safe to run, and helps prevent body/bodyparts errors */
+	&lt;&lt;create-body $mc&gt;&gt;
+	&lt;&lt;create-body _npc&gt;&gt;
+
+	/* Optional, but useful because Sex-Encounter also expects normalized actors */
+	&lt;&lt;if setup.normalizeActor&gt;&gt;
+		&lt;&lt;run setup.normalizeActor($mc)&gt;&gt;
+		&lt;&lt;run setup.normalizeActor(_npc)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* Setup location. Sex-Encounter will call GetRoom itself. */
+	&lt;&lt;set $gamelocation = &quot;Your Room&quot;&gt;&gt;
+
+	/* Keep fallback references available */
+	&lt;&lt;set $lastNpc = setup.clone ? setup.clone($ui.npc) : $ui.npc&gt;&gt;
+	&lt;&lt;set $bootyCallNpc = null&gt;&gt;
+
+	/* Setup encounter roles */
+	&lt;&lt;set $sex.roles = {
+		dom: $mc,
+		sub: $ui.npc
+	}&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;TestMC&quot;&gt;&gt;
+    &lt;&lt;set 
+        $mc.name to &quot;Gary&quot;,
+        $mc.nickname to &quot;Sexy&quot;,
+        $mc.surname to &quot;Stu&quot;,
+        $mc.species to &quot;Human&quot;,
+        $mc.gender to &quot;Male&quot;,
+        $mc.sexu to &quot;Bisexual&quot;,
+        $mc.pronouns to &quot;He/Him&quot;,
+        $mc.age to &quot;27&quot;,
+        $heterochromia to false,
+        $mc.eyes to &quot;Brown&quot;,
+        $mc.hair to {},
+        $mc.hair.length to &quot;Short&quot;,
+        $mc.hair.color to &quot;Black&quot;,
+        $mc.hair.style to &quot;Buzz cut&quot;,
+        $mc.facefeatures to [&quot;A mole&quot;],
+        $mc.skin.color to &quot;Tan&quot;,
+        $mc.skin.features to [],
+        $mc.bodyheight to &quot;Average&quot;,
+        $mc.physique to &quot;Thin&quot;,
+        $mc.personality to [&quot;Kind&quot;],
+        $mc.genitals to &quot;Penis&quot;,
+        $mc.penislength to &quot;Average&quot;,
+        $mc.genitaltype to &quot;Cut&quot;,
+        $mc.assSize to &quot;Average&quot;,
+        $mc.sexpref to &quot;Versatile&quot;,
+        $mc.virgin to true
+    &gt;&gt;
+    &lt;&lt;AgeGroupSet&gt;&gt;
+    &lt;&lt;SetTrans&gt;&gt;
+    &lt;&lt;create-body $mc&gt;&gt;
+    &lt;&lt;EnsureMCTrait &quot;Emissary&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="Event Widgets" tags="widget nobr" position="100,2350" size="100,100">&lt;&lt;widget &quot;YourRoomEvent&quot;&gt;&gt;
     &lt;&lt;if !_n&gt;&gt;
 		[Error] No NPC is here.
 		&lt;&lt;return&gt;&gt;
@@ -15398,13 +15520,10 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 		&lt;&lt;/link&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		&lt;h2&gt;Café Menu&lt;/h2&gt;
-
 		&lt;&lt;set _foods = Object.keys(setup.food)&gt;&gt;
-
 		&lt;ul&gt;
 		&lt;&lt;for _i = 0; _i &lt; _foods.length; _i++&gt;&gt;
 			&lt;&lt;set _name = _foods[_i]&gt;&gt;
-			
 			&lt;li&gt;
 				&lt;&lt;capture _name&gt;&gt;
 					&lt;&lt;link _name&gt;&gt;
@@ -15420,13 +15539,12 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 			&lt;/li&gt;
 		&lt;&lt;/for&gt;&gt;
 		&lt;/ul&gt;
-
 		&lt;&lt;link &quot;Close menu&quot;&gt;&gt;
 			&lt;&lt;set $showFoodMenu = false&gt;&gt;
 			&lt;&lt;replace &quot;#foodMenuUI&quot;&gt;&gt;&lt;&lt;FoodMenuUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;/link&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="NPC-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="182" name="NPC-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
 /* Creates a single Story NPC from a provided template and registers it globally */
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No template provided to MakeSNPC.
@@ -16310,7 +16428,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 &lt;&lt;if $mc.genitals &amp;&amp; String($mc.genitals).toLowerCase().includes(&quot;penis&quot;) &amp;&amp; !$mc.penislength&gt;&gt;
 	&lt;&lt;run _missing.push(&quot;Penis Length&quot;)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="182" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="Quote-Widgets" tags="widget nobr" position="400,150" size="100,100">/* ----- ANAL ----- */
 &lt;&lt;widget &quot;AnalQuote&quot;&gt;&gt;
 	/* guard */
 	&lt;&lt;if !setup.analQuotes&gt;&gt;
@@ -17263,7 +17381,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 	&lt;&lt;else&gt;&gt;
 		[Error] VaginalQuote: empty dialogue pool.
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="UI-Widgets" tags="widget nobr" position="350,2350" size="100,100">/* gets the room based on your location and issues where you start at */
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="UI-Widgets" tags="widget nobr" position="475,2350" size="100,100">/* gets the room based on your location and issues where you start at */
 &lt;&lt;widget &quot;GetRoom&quot;&gt;&gt;
     &lt;&lt;if $gamelocation ==&quot;Your Room&quot;&gt;&gt;
         &lt;&lt;set $room = {
@@ -17590,7 +17708,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 								&lt;&lt;/capture&gt;&gt;
 							&lt;&lt;/for&gt;&gt;
 
-							&lt;li&gt;
+							&lt;li class= &quot;sex-item&quot;&gt;
 								&lt;&lt;button &quot;End Session&quot;&gt;&gt;
 									&lt;&lt;run setup.record_sex_memory($ui.npc, &quot;had sex with&quot;)&gt;&gt;
 									&lt;&lt;set _returnTo = $gamelocation || &quot;Your Room&quot;&gt;&gt;
@@ -17773,7 +17891,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 			&lt;b&gt;Act:&lt;/b&gt; &lt;&lt;print $sex &amp;&amp; $sex.act ? $sex.act : &quot;None&quot;&gt;&gt;&lt;br&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;/div&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="Widgets" tags="widget nobr" position="475,2350" size="100,100">&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="Widgets" tags="widget nobr" position="600,2350" size="100,100">&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;
 	&lt;&lt;set _pool = setup.noise[_n.species] || setup.noise.Default || [&quot;moan&quot;]&gt;&gt;
 	&lt;&lt;set _noise = setup.pick(_pool)&gt;&gt;
 	&lt;&lt;set _mode = _args[0] || &quot;base&quot;&gt;&gt;
@@ -18026,6 +18144,10 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
     SET PRONOUNS WIDGETS
 ***************************/
 &lt;&lt;widget &quot;PronounsSet&quot;&gt;&gt;
+    &lt;&lt;if !_npc&gt;&gt;
+        
+    &lt;&lt;/if&gt;&gt;
+
 	/* Resolve source: prefer _npc.pronouns; fallback to $mc.pronouns */
 	&lt;&lt;set _raw = (_npc and _npc.pronouns) ? _npc.pronouns : $mc.pronouns&gt;&gt;
 	&lt;&lt;if !_raw&gt;&gt;&lt;&lt;return&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -18346,217 +18468,11 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
         $mc.sexpref to &quot;Versatile&quot;,
         $mc.virgin to true
     &gt;&gt;
-
-
     &lt;&lt;AgeGroupSet&gt;&gt;
     &lt;&lt;SetTrans&gt;&gt;
     &lt;&lt;create-body $mc&gt;&gt;
     &lt;&lt;EnsureMCTrait &quot;Emissary&quot;&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;LittleBoy&quot;&gt;&gt;
-    &lt;&lt;set 
-        $mc.name to &quot;Gary&quot;,
-        $mc.nickname to &quot;Sexy&quot;,
-        $mc.surname to &quot;Stu&quot;,
-        $mc.species to &quot;Human&quot;,
-        $mc.gender to &quot;Male&quot;,
-        $mc.sexu to &quot;Bisexual&quot;,
-        $mc.pronouns to &quot;He/Him&quot;,
-        $mc.age to &quot;10&quot;,
-        $heterochromia to false,
-        $mc.eyes to &quot;Brown&quot;,
-        $mc.hair to {},
-        $mc.hair.length to &quot;Short&quot;,
-        $mc.hair.color to &quot;Black&quot;,
-        $mc.hair.style to &quot;Buzz cut&quot;,
-        $mc.facefeatures to [&quot;A mole&quot;],
-        $mc.skin.color to &quot;Tan&quot;,
-        $mc.bodyheight to &quot;Short&quot;,
-        $mc.physique to &quot;Thin&quot;,
-        $mc.personality to [&quot;Kind&quot;],
-        $mc.genitals to &quot;Penis&quot;,
-        $mc.penislength to &quot;Tiny&quot;,
-        $mc.genitaltype to &quot;Uncut&quot;,
-        $mc.assSize to &quot;Average&quot;,
-        $mc.sexpref to &quot;Versatile&quot;,
-        $mc.virgin to true
-    &gt;&gt;
-    &lt;&lt;AgeGroupSet&gt;&gt;
-    &lt;&lt;SetTrans&gt;&gt;
-    &lt;&lt;create-body $mc&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;LittleGirl&quot;&gt;&gt;
-    &lt;&lt;set 
-        $mc.name to &quot;Mary&quot;,
-        $mc.nickname to &quot;Sexy&quot;,
-        $mc.surname to &quot;Stu&quot;,
-        $mc.species to &quot;Human&quot;,
-        $mc.gender to &quot;Female&quot;,
-        $mc.sexu to &quot;Bisexual&quot;,
-        $mc.pronouns to &quot;She/Her&quot;,
-        $mc.age to &quot;10&quot;,
-        $heterochromia to false,
-        $mc.eyes to &quot;Brown&quot;,
-        $mc.hair to {},
-        $mc.hair.length to &quot;Short&quot;,
-        $mc.hair.color to &quot;Black&quot;,
-        $mc.hair.style to &quot;Buzz cut&quot;,
-        $mc.facefeatures to [&quot;A mole&quot;],
-        $mc.skin.color to &quot;Tan&quot;,
-        $mc.skin.features to [],
-        $mc.bodyheight to &quot;Short&quot;,
-        $mc.physique to &quot;Thin&quot;,
-        $mc.breastsize to &quot;Flat&quot;,
-        $mc.personality to &quot;Kind&quot;,
-        $mc.genitals to &quot;Vagina&quot;,
-        $mc.genitaltype to &quot;Tight&quot;,
-        $mc.assSize to &quot;Average&quot;,
-        $mc.sexpref to &quot;Versatile&quot;,
-        $mc.virgin to true
-    &gt;&gt;
-    &lt;&lt;AgeGroupSet&gt;&gt;
-    &lt;&lt;SetTrans&gt;&gt;
-    &lt;&lt;create-body $mc&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;TeenBoy&quot;&gt;&gt;
-    &lt;&lt;set 
-        $mc.name to &quot;Gary&quot;,
-        $mc.nickname to &quot;Sexy&quot;,
-        $mc.surname to &quot;Stu&quot;,
-        $mc.species to &quot;Human&quot;,
-        $mc.gender to &quot;Male&quot;,
-        $mc.sexu to &quot;Bisexual&quot;,
-        $mc.pronouns to &quot;He/Him&quot;,
-        $mc.age to &quot;16&quot;,
-        $heterochromia to false,
-        $mc.eyes to &quot;Brown&quot;,
-        $mc.hair to {},
-        $mc.hair.length to &quot;Short&quot;,
-        $mc.hair.color to &quot;Black&quot;,
-        $mc.hair.style to &quot;Buzz cut&quot;,
-        $mc.facefeatures to [&quot;A mole&quot;],
-        $mc.skin.color to &quot;Tan&quot;,
-        $mc.skin.features to [],
-        $mc.bodyheight to &quot;Average&quot;,
-        $mc.physique to &quot;Thin&quot;,
-        $mc.personality to &quot;Kind&quot;,
-        $mc.genitals to &quot;Penis&quot;,
-        $mc.penislength to &quot;Average&quot;,
-        $mc.genitaltype to &quot;Cut&quot;,
-        $mc.assSize to &quot;Average&quot;,
-        $mc.sexpref to &quot;Versatile&quot;,
-        $mc.virgin to true
-    &gt;&gt;
-    &lt;&lt;AgeGroupSet&gt;&gt;
-    &lt;&lt;SetTrans&gt;&gt;
-    &lt;&lt;create-body $mc&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;TeenGirl&quot;&gt;&gt;
-    &lt;&lt;set 
-        $mc.name to &quot;Mary&quot;,
-        $mc.nickname to &quot;Sexy&quot;,
-        $mc.surname to &quot;Stu&quot;,
-        $mc.species to &quot;Human&quot;,
-        $mc.gender to &quot;Female&quot;,
-        $mc.sexu to &quot;Bisexual&quot;,
-        $mc.pronouns to &quot;She/Her&quot;,
-        $mc.age to &quot;16&quot;,
-        $heterochromia to false,
-        $mc.eyes to &quot;Brown&quot;,
-        $mc.hair to {},
-        $mc.hair.length to &quot;Short&quot;,
-        $mc.hair.color to &quot;Black&quot;,
-        $mc.hair.style to &quot;Buzz cut&quot;,
-        $mc.facefeatures to [&quot;A mole&quot;],
-        $mc.skin.color to &quot;Tan&quot;,
-        $mc.skin.features to [],
-        $mc.bodyheight to &quot;Average&quot;,
-        $mc.physique to &quot;Thin&quot;,
-        $mc.breastsize to &quot;Small&quot;,
-        $mc.personality to &quot;Kind&quot;,
-        $mc.genitals to &quot;Vagina&quot;,
-        $mc.genitaltype to &quot;Tight&quot;,
-        $mc.assSize to &quot;Average&quot;,
-        $mc.sexpref to &quot;Versatile&quot;,
-        $mc.virgin to true
-    &gt;&gt;
-    &lt;&lt;AgeGroupSet&gt;&gt;
-    &lt;&lt;SetTrans&gt;&gt;
-    &lt;&lt;create-body $mc&gt;&gt; 
-&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;AdultWoman&quot;&gt;&gt;
-    &lt;&lt;set 
-        $mc.name to &quot;Mary&quot;,
-        $mc.nickname to &quot;Sexy&quot;,
-        $mc.surname to &quot;Stu&quot;,
-        $mc.species to &quot;Human&quot;,
-        $mc.gender to &quot;Female&quot;,
-        $mc.sexu to &quot;Bisexual&quot;,
-        $mc.pronouns to &quot;She/Her&quot;,
-        $mc.age to &quot;27&quot;,
-        $heterochromia to false,
-        $mc.eyes to &quot;Brown&quot;,
-        $mc.hair to {},
-        $mc.hair.length to &quot;Short&quot;,
-        $mc.hair.color to &quot;Black&quot;,
-        $mc.hair.style to &quot;Buzz cut&quot;,
-        $mc.facefeatures to [&quot;A mole&quot;],
-        $mc.skin.color to &quot;Tan&quot;,
-        $mc.skin.features to [],
-        $mc.bodyheight to &quot;Tall&quot;,
-        $mc.physique to &quot;Thin&quot;,
-        $mc.breastsize to &quot;Large&quot;,
-        $mc.personality to &quot;Kind&quot;,
-        $mc.genitals to &quot;Vagina&quot;,
-        $mc.genitaltype to &quot;Loose&quot;,
-        $mc.assSize to &quot;Average&quot;,
-        $mc.sexpref to &quot;Versatile&quot;,
-        $mc.virgin to true
-    &gt;&gt;
-    &lt;&lt;AgeGroupSet&gt;&gt;
-    &lt;&lt;SetTrans&gt;&gt;
-    &lt;&lt;create-body $mc&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;AdultMan&quot;&gt;&gt;
-    &lt;&lt;set 
-        $mc.name to &quot;Gary&quot;,
-        $mc.nickname to &quot;Sexy&quot;,
-        $mc.surname to &quot;Stu&quot;,
-        $mc.species to &quot;Human&quot;,
-        $mc.gender to &quot;Male&quot;,
-        $mc.sexu to &quot;Bisexual&quot;,
-        $mc.pronouns to &quot;He/Him&quot;,
-        $mc.age to &quot;27&quot;,
-        $heterochromia to false,
-        $mc.eyes to &quot;Brown&quot;,
-        $mc.hair to {},
-        $mc.hair.length to &quot;Short&quot;,
-        $mc.hair.color to &quot;Black&quot;,
-        $mc.hair.style to &quot;Buzz cut&quot;,
-        $mc.facefeatures to [&quot;A mole&quot;],
-        $mc.skin.color to &quot;Tan&quot;,
-        $mc.skin.features to [],
-        $mc.bodyheight to &quot;Tall&quot;,
-        $mc.physique to &quot;Thin&quot;,
-        $mc.personality to &quot;Kind&quot;,
-        $mc.genitals to &quot;Penis&quot;,
-        $mc.penislength to &quot;Average&quot;,
-        $mc.genitaltype to &quot;Cut&quot;,
-        $mc.assSize to &quot;Average&quot;,
-        $mc.sexpref to &quot;Versatile&quot;,
-        $mc.virgin to true
-    &gt;&gt;
-    &lt;&lt;AgeGroupSet&gt;&gt;
-    &lt;&lt;SetTrans&gt;&gt;
-    &lt;&lt;create-body $mc&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
 
 //to compare the heights of the mc and npc, or two npc&#39;s
 &lt;&lt;widget &quot;HeightCompare&quot;&gt;&gt;
@@ -18643,7 +18559,7 @@ Create your character to begin or you can use the PreSet or Randomizer to skip a
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;run setup.traits.addRandomTraits(_char, _max, { exact: _exact })&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="heighttest" tags="" position="600,2350" size="100,100">//example test:
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="186" name="heighttest" tags="" position="725,2350" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 
 &lt;&lt;if _h is 1&gt;&gt;

@@ -253,6 +253,10 @@
     SET PRONOUNS WIDGETS
 ***************************/
 <<widget "PronounsSet">>
+    <<if !_npc>>
+        
+    <</if>>
+
 	/* Resolve source: prefer _npc.pronouns; fallback to $mc.pronouns */
 	<<set _raw = (_npc and _npc.pronouns) ? _npc.pronouns : $mc.pronouns>>
 	<<if !_raw>><<return>><</if>>
@@ -573,217 +577,11 @@
         $mc.sexpref to "Versatile",
         $mc.virgin to true
     >>
-
-
     <<AgeGroupSet>>
     <<SetTrans>>
     <<create-body $mc>>
     <<EnsureMCTrait "Emissary">>
 <</widget>>
-
-<<widget "LittleBoy">>
-    <<set 
-        $mc.name to "Gary",
-        $mc.nickname to "Sexy",
-        $mc.surname to "Stu",
-        $mc.species to "Human",
-        $mc.gender to "Male",
-        $mc.sexu to "Bisexual",
-        $mc.pronouns to "He/Him",
-        $mc.age to "10",
-        $heterochromia to false,
-        $mc.eyes to "Brown",
-        $mc.hair to {},
-        $mc.hair.length to "Short",
-        $mc.hair.color to "Black",
-        $mc.hair.style to "Buzz cut",
-        $mc.facefeatures to ["A mole"],
-        $mc.skin.color to "Tan",
-        $mc.bodyheight to "Short",
-        $mc.physique to "Thin",
-        $mc.personality to ["Kind"],
-        $mc.genitals to "Penis",
-        $mc.penislength to "Tiny",
-        $mc.genitaltype to "Uncut",
-        $mc.assSize to "Average",
-        $mc.sexpref to "Versatile",
-        $mc.virgin to true
-    >>
-    <<AgeGroupSet>>
-    <<SetTrans>>
-    <<create-body $mc>>
-<</widget>>
-
-<<widget "LittleGirl">>
-    <<set 
-        $mc.name to "Mary",
-        $mc.nickname to "Sexy",
-        $mc.surname to "Stu",
-        $mc.species to "Human",
-        $mc.gender to "Female",
-        $mc.sexu to "Bisexual",
-        $mc.pronouns to "She/Her",
-        $mc.age to "10",
-        $heterochromia to false,
-        $mc.eyes to "Brown",
-        $mc.hair to {},
-        $mc.hair.length to "Short",
-        $mc.hair.color to "Black",
-        $mc.hair.style to "Buzz cut",
-        $mc.facefeatures to ["A mole"],
-        $mc.skin.color to "Tan",
-        $mc.skin.features to [],
-        $mc.bodyheight to "Short",
-        $mc.physique to "Thin",
-        $mc.breastsize to "Flat",
-        $mc.personality to "Kind",
-        $mc.genitals to "Vagina",
-        $mc.genitaltype to "Tight",
-        $mc.assSize to "Average",
-        $mc.sexpref to "Versatile",
-        $mc.virgin to true
-    >>
-    <<AgeGroupSet>>
-    <<SetTrans>>
-    <<create-body $mc>>
-<</widget>>
-
-<<widget "TeenBoy">>
-    <<set 
-        $mc.name to "Gary",
-        $mc.nickname to "Sexy",
-        $mc.surname to "Stu",
-        $mc.species to "Human",
-        $mc.gender to "Male",
-        $mc.sexu to "Bisexual",
-        $mc.pronouns to "He/Him",
-        $mc.age to "16",
-        $heterochromia to false,
-        $mc.eyes to "Brown",
-        $mc.hair to {},
-        $mc.hair.length to "Short",
-        $mc.hair.color to "Black",
-        $mc.hair.style to "Buzz cut",
-        $mc.facefeatures to ["A mole"],
-        $mc.skin.color to "Tan",
-        $mc.skin.features to [],
-        $mc.bodyheight to "Average",
-        $mc.physique to "Thin",
-        $mc.personality to "Kind",
-        $mc.genitals to "Penis",
-        $mc.penislength to "Average",
-        $mc.genitaltype to "Cut",
-        $mc.assSize to "Average",
-        $mc.sexpref to "Versatile",
-        $mc.virgin to true
-    >>
-    <<AgeGroupSet>>
-    <<SetTrans>>
-    <<create-body $mc>>
-<</widget>>
-
-<<widget "TeenGirl">>
-    <<set 
-        $mc.name to "Mary",
-        $mc.nickname to "Sexy",
-        $mc.surname to "Stu",
-        $mc.species to "Human",
-        $mc.gender to "Female",
-        $mc.sexu to "Bisexual",
-        $mc.pronouns to "She/Her",
-        $mc.age to "16",
-        $heterochromia to false,
-        $mc.eyes to "Brown",
-        $mc.hair to {},
-        $mc.hair.length to "Short",
-        $mc.hair.color to "Black",
-        $mc.hair.style to "Buzz cut",
-        $mc.facefeatures to ["A mole"],
-        $mc.skin.color to "Tan",
-        $mc.skin.features to [],
-        $mc.bodyheight to "Average",
-        $mc.physique to "Thin",
-        $mc.breastsize to "Small",
-        $mc.personality to "Kind",
-        $mc.genitals to "Vagina",
-        $mc.genitaltype to "Tight",
-        $mc.assSize to "Average",
-        $mc.sexpref to "Versatile",
-        $mc.virgin to true
-    >>
-    <<AgeGroupSet>>
-    <<SetTrans>>
-    <<create-body $mc>> 
-<</widget>>
-
-<<widget "AdultWoman">>
-    <<set 
-        $mc.name to "Mary",
-        $mc.nickname to "Sexy",
-        $mc.surname to "Stu",
-        $mc.species to "Human",
-        $mc.gender to "Female",
-        $mc.sexu to "Bisexual",
-        $mc.pronouns to "She/Her",
-        $mc.age to "27",
-        $heterochromia to false,
-        $mc.eyes to "Brown",
-        $mc.hair to {},
-        $mc.hair.length to "Short",
-        $mc.hair.color to "Black",
-        $mc.hair.style to "Buzz cut",
-        $mc.facefeatures to ["A mole"],
-        $mc.skin.color to "Tan",
-        $mc.skin.features to [],
-        $mc.bodyheight to "Tall",
-        $mc.physique to "Thin",
-        $mc.breastsize to "Large",
-        $mc.personality to "Kind",
-        $mc.genitals to "Vagina",
-        $mc.genitaltype to "Loose",
-        $mc.assSize to "Average",
-        $mc.sexpref to "Versatile",
-        $mc.virgin to true
-    >>
-    <<AgeGroupSet>>
-    <<SetTrans>>
-    <<create-body $mc>>
-<</widget>>
-
-<<widget "AdultMan">>
-    <<set 
-        $mc.name to "Gary",
-        $mc.nickname to "Sexy",
-        $mc.surname to "Stu",
-        $mc.species to "Human",
-        $mc.gender to "Male",
-        $mc.sexu to "Bisexual",
-        $mc.pronouns to "He/Him",
-        $mc.age to "27",
-        $heterochromia to false,
-        $mc.eyes to "Brown",
-        $mc.hair to {},
-        $mc.hair.length to "Short",
-        $mc.hair.color to "Black",
-        $mc.hair.style to "Buzz cut",
-        $mc.facefeatures to ["A mole"],
-        $mc.skin.color to "Tan",
-        $mc.skin.features to [],
-        $mc.bodyheight to "Tall",
-        $mc.physique to "Thin",
-        $mc.personality to "Kind",
-        $mc.genitals to "Penis",
-        $mc.penislength to "Average",
-        $mc.genitaltype to "Cut",
-        $mc.assSize to "Average",
-        $mc.sexpref to "Versatile",
-        $mc.virgin to true
-    >>
-    <<AgeGroupSet>>
-    <<SetTrans>>
-    <<create-body $mc>>
-<</widget>>
-
 
 //to compare the heights of the mc and npc, or two npc's
 <<widget "HeightCompare">>
