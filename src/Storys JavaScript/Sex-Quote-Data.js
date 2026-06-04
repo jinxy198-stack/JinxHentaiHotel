@@ -1557,7 +1557,7 @@ setup.vaginalQuotes = {
   Bottom: {
     Dominant: [
       "Good _n.petname! Feel my <<=$mc.genitals.toLowerCase()>> slide deep into your little pussy!",
-			"That's right, be a good _n.petname and moan for me! Feel my <<=$mc.genitals.toLowerCase()>> sliding deep into your cute little cunt!",
+			"That's right, be a good _n.petname and <<mcNoise 'base' 'pleasure'>> for me! Feel my <<=$mc.genitals.toLowerCase()>> sliding deep into your cute little cunt!",
 			"Your cute little cunt feels so good squeezing down around my <<=$mc.genitals.toLowerCase()>>!",
 			"Fuck! Your pussy feels so good!",
 			"Oh yes! Take my cock! Take it deep!",

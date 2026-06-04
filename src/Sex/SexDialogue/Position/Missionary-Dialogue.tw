@@ -18,7 +18,7 @@
 
 <<elseif $sex.role == "Bottom">>
 	<<= either(
-		"Looking up at _n.name, you bite your lip and let out a moan before spreading your <<=_mcLegs>> and presenting yourself, ready to be penetrated.",
+		"Looking up at _n.name, you bite your lip and let out a <<mcNoise 'base' 'pleasure'>> before spreading your <<=_mcLegs>> and presenting yourself, ready to be penetrated.",
 		"You spread your <<=_mcLegs>> for _n.name, presenting yourself in anticipation of being penetrated.",
 		"Pulling your <<=_mcFeet>> back to either side, you spread your <<=_mcLegs>>, enticing _n.name to penetrate you.",
 		"You spread your <<=_mcLegs>>, looking up at _n.name and biting your lip as you entice $proset.them to take you.",

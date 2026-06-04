@@ -10,7 +10,7 @@
     <<elseif $sex.role == "Top">>
 	    <<=either(
         "You finger _n.name's ass.",
-        "_n.name shivers as you place your <<=$mc.body.Finger.toLowerCase()>> against $proset.their asshole. You then wiggled your way in. It was hot and tight but so smooth. $proset.theyUp let out a moan. You caress their thigh to calm them."
+        "_n.name shivers as you place your <<=$mc.body.Finger.toLowerCase()>> against $proset.their asshole. You then wiggled your way in. It was hot and tight but so smooth. $proset.theyUp let out a <<npcNoise 'base' 'pain'>>. You caress their thigh to calm them."
         )>>
     <</if>>
 <<elseif $sex.act == "Finger Ass(Continue)">>

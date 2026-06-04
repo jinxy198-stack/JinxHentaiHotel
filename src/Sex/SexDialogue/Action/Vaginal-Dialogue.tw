@@ -41,17 +41,17 @@
 			"Bottoming out on _n.name's <<= _nGen >>, you lean down and grab _n.name's head in both your <<= _mcHands >> before pulling $proset.them into a passionate kiss.",
 			"With a moan, you slide down onto _n.name's <<= _nGen >>, leaning into _n.name's <<= _nBreasts >> and breathing in $proset.their scent before pressing your lips against $proset.theirs.",
 			"You let _n.name's <<= _nGen >> slide even deeper into your <<= _mcVag >> as you lean down and pull $proset.them into a desperate kiss.",
-			"Leaning down, you let out a moan as you bury yourself on _n.name's <<= _nGen >> before leaning forward and pressing your lips against $proset.theirs.",
-			"You reach down to take hold of _n.name's <<= _nGen >> before shuffling into a better position. After teasing the head between your outer lips, you let out a little moan as you slowly drop down and take $proset.them into your <<= _mcVag >>.",
+			"Leaning down, you let out a <<mcNoise 'base' 'pleasure'>> as you bury yourself on _n.name's <<= _nGen >> before leaning forward and pressing your lips against $proset.theirs.",
+			"You reach down to take hold of _n.name's <<= _nGen >> before shuffling into a better position. After teasing the head between your outer lips, you let out a little <<mcNoise 'base' 'pleasure'>> as you slowly drop down and take $proset.them into your <<= _mcVag >>.",
 			"Shuffling into a better position, you line the head of _n.name's <<= _nGen >> up between your <<= _mcLegs >>, and with a slow, steady movement, you gently drop down, taking $proset.them into your <<= _mcVag >>.",
-			"You take a firm hold of _n.name's <<= _nGen >> before shuffling into a better position. After teasing the head between your outer lips, you let out a moan as you eagerly drop down and take $proset.them into your <<= _mcVag >>.",
+			"You take a firm hold of _n.name's <<= _nGen >> before shuffling into a better position. After teasing the head between your outer lips, you let out a <<mcNoise 'base' 'pleasure'>> as you eagerly drop down and take $proset.them into your <<= _mcVag >>.",
 			"Shuffling into a better position, you line the head of _n.name's <<= _nGen >> up between your <<= _mcLegs >>, and with a single movement, you eagerly drop down, taking $proset.them into your <<= _mcVag >>.",
-			"You reach down and roughly grab _n.name's <<= _nGen >> before shuffling into a better position. After teasing the head between your outer lips, you let out a moan as you forcefully drop down and take $proset.them into your <<= _mcVag >>."
+			"You reach down and roughly grab _n.name's <<= _nGen >> before shuffling into a better position. After teasing the head between your outer lips, you let out a <<mcNoise 'base' 'pleasure'>> as you forcefully drop down and take $proset.them into your <<= _mcVag >>."
 		) >>
 	<<elseif $sex.position == "Missionary">>
 		<<= either(
 			"_n.name lines up $proset.their <<= _nGen >> with your <<= _mcVag >> before pushing in.",
-			"_n.name presses into your <<= _mcVag >> in the missionary position, drawing a moan from you."
+			"_n.name presses into your <<= _mcVag >> in the missionary position, drawing a <<mcNoise 'base' 'pleasure'>> from you."
 		) >>
 	<<elseif $sex.position == "Doggy">>
 		<<= either(
@@ -73,8 +73,8 @@
 		<<= either(
 			"Reaching forward, you gently take hold of _n.name's hair, and while continuing to rhythmically slide your <<= _mcGen >> in and out of $proset.their <<= _nVag >>, you slowly pull back, causing _n.name to lift $proset.their head and let out a moan.",
 			"Taking a gentle hold of _n.name's hair in one of your <<= _mcHands >>, you pull $proset.their head back while burying your <<= _mcGen >> deep in $proset.their <<= _nVag >>, softly giggling to yourself as _n.name lets out a moan.",
-			"Taking a gentle hold of _n.name's hair in one of your <<= _mcHands >>, you pull $proset.their head back while burying your <<= _mcGen >> deep in $proset.their <<= _nVag >>, smirking to yourself as _n.name moans.",
-			"Tracing your fingers up the length of _n.name's back, you reach forward and take a gentle hold of $proset.their hair before pulling $proset.their head back and drawing a moan from $proset.them."
+			"Taking a gentle hold of _n.name's hair in one of your <<= _mcHands >>, you pull $proset.their head back while burying your <<= _mcGen >> deep in $proset.their <<= _nVag >>, smirking to yourself as _n.name <<npcNoise 's' 'pleasure'>>.",
+			"Tracing your fingers up the length of _n.name's back, you reach forward and take a gentle hold of $proset.their hair before pulling $proset.their head back and drawing a <<npcNoise 'base' 'pleasure'>>from $proset.them."
 		) >>
 	<<elseif $sex.position == "Missionary">>
 		<<= either(
@@ -84,7 +84,7 @@
 	<<else>>
 		<<= either(
 			"You fuck _n.name's <<= _nVag >>.",
-			"You keep thrusting into _n.name, drawing soft moans from $proset.them."
+			"You keep thrusting into _n.name, drawing soft <<npcNoise 's' 'pleasure'>> from $proset.them."
 		) >>
 	<</if>>
 
@@ -96,7 +96,7 @@
 		) >>
 	<<elseif $sex.position == "Missionary">>
 		<<= either(
-			"You bite your lip and let out a moan before raising your hips and spreading your legs to help _n.name sink $proset.their <<= _nGen >> deeper into your <<= _mcVag >>.",
+			"You bite your lip and let out a <<mcNoise 'base' 'pleasure'>> before raising your hips and spreading your legs to help _n.name sink $proset.their <<= _nGen >> deeper into your <<= _mcVag >>.",
 			"You spread your legs and raise your hips for _n.name, helping $proset.them thrust $proset.their <<= _nGen >> deep into your <<= _mcVag >>.",
 			"Pulling your feet back to either side, you help _n.name thrust $proset.their <<= _nGen >> deeper into your <<= _mcVag >> by raising your hips and spreading your legs.",
 			"You spread your legs and raise your hips, looking up at _n.name and biting your lip as $proset.they continue fucking your <<= _mcVag >>."
@@ -116,21 +116,21 @@
 
 <<elseif $sex.act == "Ride Cock">>
 	<<= either(
-		"_n.name lets out a moan as $proset.they enter you, eagerly bucking $proset.their <<= _nHips >> up as $proset.they start fucking your <<= _mcVag >>.",
+		"_n.name lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they enter you, eagerly bucking $proset.their <<= _nHips >> up as $proset.they start fucking your <<= _mcVag >>.",
 		"With a moan, _n.name eagerly thrusts $proset.their <<= _nHips >> up into your groin, sinking $proset.their <<= _nGen >> into your <<= _mcVag >> as $proset.they start energetically fucking you.",
-		"_n.name lets out a moan as $proset.they enter you, bucking $proset.their <<= _nHips >> up as $proset.they start fucking your <<= _mcVag >>.",
+		"_n.name lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they enter you, bucking $proset.their <<= _nHips >> up as $proset.they start fucking your <<= _mcVag >>.",
 		"With a moan, _n.name thrusts $proset.their <<= _nHips >> up into your groin, sinking $proset.their <<= _nGen >> into your <<= _mcVag >> as $proset.they start fucking you.",
-		"Using your <<= _mcLegs >>, you slowly lift yourself up and down, sliding _n.name's <<= _nGen >> in and out of your <<= _mcVag >> as you moan aloud.",
-		"Lowering your <<= _mcHands >> to your knees, you use your <<= _mcLegs >> to slowly slide yourself up and down, letting out a soft moan as you impale yourself on _n.name's <<= _nGen >>.",
-		"You slowly lift yourself up before sliding back down, letting out a soft moan as you spear your <<= _mcVag >> on _n.name's <<= _nGen >>.",
-		"Using your <<= _mcLegs >>, you lift yourself up and down, sliding _n.name's <<= _nGen >> in and out of your <<= _mcVag >> as you moan aloud.",
+		"Using your <<= _mcLegs >>, you slowly lift yourself up and down, sliding _n.name's <<= _nGen >> in and out of your <<= _mcVag >> as you <<mcNoise 'base' 'pleasure'>> aloud.",
+		"Lowering your <<= _mcHands >> to your knees, you use your <<= _mcLegs >> to slowly slide yourself up and down, letting out a soft <<mcNoise 'base' 'pleasure'>> as you impale yourself on _n.name's <<= _nGen >>.",
+		"You slowly lift yourself up before sliding back down, letting out a soft <<mcNoise 'base' 'pleasure'>> as you spear your <<= _mcVag >> on _n.name's <<= _nGen >>.",
+		"Using your <<= _mcLegs >>, you lift yourself up and down, sliding _n.name's <<= _nGen >> in and out of your <<= _mcVag >> as you <<mcNoise 'base' 'pleasure'>> aloud.",
 		"Leaning forward, you use your <<= _mcHands >> to support some of your weight as you eagerly slide up and down on _n.name's <<= _nGen >>. As you lower your face toward _n.name, you catch a waft of $proset.their scent and bite your lip as you breathe in the intoxicating aroma.",
 		"Leaning forward, you use your <<= _mcHands >> to support some of your weight as you start rapidly bucking up and down on _n.name's <<= _nGen >>. As you lower your face toward _n.name, you catch a waft of $proset.their scent and bite your lip as you breathe in the intoxicating aroma.",
 		"Leaning forward, you use your <<= _mcHands >> to support some of your weight as you slowly slide up and down on _n.name's <<= _nGen >>. As you lower your face toward _n.name, you catch a waft of $proset.their scent and bite your lip as you breathe in the intoxicating aroma.",
-		"Lowering your <<= _mcHands >> to your knees, you use your <<= _mcLegs >> to enthusiastically slide yourself up and down, letting out a moan as you impale yourself on _n.name's <<= _nGen >>.",
-		"You lift yourself up before greedily sliding back down, letting out a moan as you spear your <<= _mcVag >> on _n.name's <<= _nGen >>.",
-		"Using your <<= _mcLegs >>, you rapidly bounce yourself up and down, slamming _n.name's <<= _nGen >> in and out of your <<= _mcVag >> as you moan aloud.",
-		"Placing your <<= _mcHands >> on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering moan as you impale yourself on _n.name's <<= _nGen >>.",
-		"Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a moan as you spear your <<= _mcVag >> on _n.name's <<= _nGen >>."
+		"Lowering your <<= _mcHands >> to your knees, you use your <<= _mcLegs >> to enthusiastically slide yourself up and down, letting out a <<mcNoise 'base' 'pleasure'>> as you impale yourself on _n.name's <<= _nGen >>.",
+		"You lift yourself up before greedily sliding back down, letting out a <<mcNoise 'base' 'pleasure'>> as you spear your <<= _mcVag >> on _n.name's <<= _nGen >>.",
+		"Using your <<= _mcLegs >>, you rapidly bounce yourself up and down, slamming _n.name's <<= _nGen >> in and out of your <<= _mcVag >> as you <<mcNoise 'base' 'pleasure'>> aloud.",
+		"Placing your <<= _mcHands >> on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering <<mcNoise 'base' 'pleasure'>> as you impale yourself on _n.name's <<= _nGen >>.",
+		"Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a <<mcNoise 'base' 'pleasure'>> as you spear your <<= _mcVag >> on _n.name's <<= _nGen >>."
 	) >>
 <</if>>

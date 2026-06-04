@@ -38,7 +38,7 @@
 				"Reaching down, you adjust your <<=_mcGen>> to line it up with _n.name's before starting to thrust slowly, rubbing yourself against $proset.them.",
 				"You draw _n.name in close, opening your legs to align your <<=_mcGen>> with $proset.theirs.",
 				"You pull _n.name close and position yourself so your groin presses against $proset.theirs, encouraging $proset.them to grind $proset.their <<=_nGen>> against you.",
-				"With a moan, you eagerly press your groin against $proset.theirs and begin teasing your <<=_mcGen>> against $proset.them."
+				"With a <<mcNoise 'base' 'pleasure'>>, you eagerly press your groin against $proset.theirs and begin teasing your <<=_mcGen>> against $proset.them."
 			)>>
 		<<elseif $sex.role == "Bottom">>
 			<<=either(
@@ -60,32 +60,32 @@
 
 	<<if $sex.role == "Top">>
 		<<=either(
-			"Gently bucking $proset.their own <<=_nHip>> in response, _n.name lets out a moan as $proset.they mirror your movements and softly rub $proset.their <<=_nGen>> against yours.",
+			"Gently bucking $proset.their own <<=_nHip>> in response, _n.name lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they mirror your movements and softly rub $proset.their <<=_nGen>> against yours.",
 			"Responding with a gentle buck of $proset.their own <<=_nHip>>, _n.name mirrors your movements, helping rub $proset.their <<=_nGen>> up and down over yours.",
-			"Happily bucking $proset.their own <<=_nHip>> in response, _n.name lets out a moan as $proset.they eagerly rub $proset.their <<=_nGen>> against yours.",
+			"Happily bucking $proset.their own <<=_nHip>> in response, _n.name lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they eagerly rub $proset.their <<=_nGen>> against yours.",
 			"Responding with a happy buck of $proset.their own <<=_nHip>>, _n.name mirrors your movements, frantically rubbing $proset.their <<=_nGen>> over yours.",
-			"_n.name responds eagerly and lets out a moan as $proset.they rub $proset.their own <<=_nGen>> up and down over yours.",
-			"A moan slips from _n.name's lips as $proset.they thrust $proset.their <<=_nHip>> and grind $proset.their <<=_nGen>> against yours.",
-			"Moaning in delight, _n.name eagerly thrusts $proset.their <<=_nHip>>, using your movements to help grind $proset.their <<=_nGen>> against yours.",
-			"_n.name happily responds in kind and lets out a moan as $proset.they softly rub $proset.their own <<=_nGen>> over your groin.",
-			"A moan drifts from _n.name's lips as $proset.they gently thrust $proset.their <<=_nHip>> and grind $proset.their <<=_nGen>> against yours.",
-			"Moaning in pleasure, _n.name gently pushes $proset.their <<=_nHip>> forward, using your movements to help grind $proset.their <<=_nGen>> against yours.",
-			"_n.name responds in kind and lets out a moan as $proset.they rub $proset.their own <<=_nGen>> up and down over yours.",
-			"A moan bursts from _n.name's lips as $proset.they thrust $proset.their <<=_nHip>> and grind $proset.their <<=_nGen>> against yours.",
-			"Moaning in pleasure, _n.name thrusts $proset.their <<=_nHip>> forward, using your movements to help grind $proset.their <<=_nGen>> against yours."
+			"_n.name responds eagerly and lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they rub $proset.their own <<=_nGen>> up and down over yours.",
+			"A <<npcNoise 'base' 'pleasure'>> lips from _n.name's lips as $proset.they thrust $proset.their <<=_nHip>> and grind $proset.their <<=_nGen>> against yours.",
+			"<<npcNoise 'ing cap' 'pleasure'>> in delight, _n.name eagerly thrusts $proset.their <<=_nHip>>, using your movements to help grind $proset.their <<=_nGen>> against yours.",
+			"_n.name happily responds in kind and lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they softly rub $proset.their own <<=_nGen>> over your groin.",
+			"A <<npcNoise 'base' 'pleasure'>>drifts from _n.name's lips as $proset.they gently thrust $proset.their <<=_nHip>> and grind $proset.their <<=_nGen>> against yours.",
+			"<<npcNoise 'ing cap' 'pleasure'>> in pleasure, _n.name gently pushes $proset.their <<=_nHip>> forward, using your movements to help grind $proset.their <<=_nGen>> against yours.",
+			"_n.name responds in kind and lets out a <<mcNoise 'base' 'pleasure'>> as $proset.they rub $proset.their own <<=_nGen>> up and down over yours.",
+			"A <<npcNoise 'base' 'pleasure'>>bursts from _n.name's lips as $proset.they thrust $proset.their <<=_nHip>> and grind $proset.their <<=_nGen>> against yours.",
+			"<<npcNoise 'ing cap' 'pleasure'>> in pleasure, _n.name thrusts $proset.their <<=_nHip>> forward, using your movements to help grind $proset.their <<=_nGen>> against yours."
 		)>>
 
 	<<elseif $sex.role == "Bottom">>
 		<<=either(
-			"Letting out a little moan with every thrust of your <<=_mcHip>>, you gently rub your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
+			"Letting out a little <<mcNoise 'base' 'pleasure'>> with every thrust of your <<=_mcHip>>, you gently rub your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
 			"You let out a series of soft sighs as you gently rub your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
-			"Sliding your <<=_mcGen>> over _n.name's <<=_nGen>>, you let out a little moan with each pump of your <<=_mcHip>>.",
-			"Letting out a moan with each thrust of your <<=_mcHip>>, you continue rubbing your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
-			"You let out a series of lewd moans as you rub your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
-			"Rubbing your <<=_mcGen>> over _n.name's <<=_nGen>>, you let out a moan with each pump of your <<=_mcHip>>.",
-			"Letting out a moan with each eager thrust of your <<=_mcHip>>, you passionately rub your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
-			"You let out a series of lewd moans as you desperately grind your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
-			"Eagerly grinding your <<=_mcGen>> over _n.name's <<=_nGen>>, you let out a moan with each frantic pump of your <<=_mcHip>>.",
+			"Sliding your <<=_mcGen>> over _n.name's <<=_nGen>>, you let out a little <<mcNoise 'base' 'pleasure'>> with each pump of your <<=_mcHip>>.",
+			"Letting out a <<mcNoise 'base' 'pleasure'>> with each thrust of your <<=_mcHip>>, you continue rubbing your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
+			"You let out a series of lewd <<mcNoise 's' 'pleasure'>> as you rub your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
+			"Rubbing your <<=_mcGen>> over _n.name's <<=_nGen>>, you let out a <<mcNoise 'base' 'pleasure'>> with each pump of your <<=_mcHip>>.",
+			"Letting out a <<mcNoise 'base' 'pleasure'>> with each eager thrust of your <<=_mcHip>>, you passionately rub your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
+			"You let out a series of lewd <<mcNoise 's' 'pleasure'>> as you desperately grind your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
+			"Eagerly grinding your <<=_mcGen>> over _n.name's <<=_nGen>>, you let out a <<mcNoise 'base' 'pleasure'>> with each frantic pump of your <<=_mcHip>>.",
 			"You both shiver with pleasure each time _n.name thrusts against you."
 		)>>
 	<</if>>

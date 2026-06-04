@@ -331,7 +331,7 @@ setup.sexpositions = {
         "Top cum locations": ["on face", "on chest", "on breasts"],
         "label Top": "receiving",
         "label Bottom": "giving",
-        primary: false,
+        primary: true,
         "secondary positions": ["Kneeling"],
         furniture: ["small seat", "large seat"],
     },

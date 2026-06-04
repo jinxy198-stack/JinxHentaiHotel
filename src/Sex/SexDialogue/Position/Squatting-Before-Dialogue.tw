@@ -6,11 +6,11 @@
 <<if $sex.role == "Top">>
 	<<= either(
 		"<<gram _top 'subjCap'>> squats down in front of <<gram _bottom 'obj'>>, bringing <<gram _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> right to <<gram _bottom 'poss'>> face.",
-		"<<gram _top 'subjCap'>> lowers <<gram _top 'obj'>>self in front of <<gram _bottom 'obj'>>, leaving <<gram _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> right in front of <<gram _bottom 'poss'>> face."
+		"<<gram _top 'subjCap'>> lowers <<gram _top 'refl'>> in front of <<gram _bottom 'obj'>>, leaving <<gram _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> right in front of <<gram _bottom 'poss'>> face."
 	) >>
 <<elseif $sex.role == "Bottom">>
 	<<= either(
-		"<<gram _bottom 'subjCap'>> squats down in front of <<gram _top 'obj'>>, bringing <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> right to <<gram _top 'poss'>> face.",
-		"<<gram _bottom 'subjCap'>> lowers <<gram _bottom 'obj'>>self in front of <<gram _top 'obj'>>, leaving <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> right in front of <<gram _top 'poss'>> face."
+		"<<gram _bottom 'subjCap'>> <<gverb _bottom squat>> down in front of <<gram _top 'obj'>>, bringing <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> right to <<gram _top 'poss'>> face.",
+		"<<gram _bottom 'subjCap'>> <<gverb _bottom lower>> <<gram _bottom 'refl'>> in front of <<gram _top 'obj'>>, leaving <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> right in front of <<gram _top 'poss'>> face."
 	) >>
 <</if>>

@@ -5,33 +5,33 @@
 
 <<if $sex.role == "Bottom">>
 	<<= either(
-		"Gently sliding your <<= setup.partLower($mc, 'Feet', 'feet') >> up and down around _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, you let out a soft moan as you give $proset.them a footjob.",
+		"Gently sliding your <<= setup.partLower($mc, 'Feet', 'feet') >> up and down around _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, you let out a soft <<mcNoise 'base' 'pleasure'>> as you give $proset.them a footjob.",
 		"With a smile, you start gently sliding your <<= setup.partLower($mc, 'Feet', 'feet') >> up and down around $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-		"Slowly pressing your <<= setup.partLower($mc, 'Feet', 'feet') >> together around _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, you let out a moan as you give $proset.them a footjob.",
-		"A moan bursts out from $proset.their mouth before $proset.they start thrusting $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
-		"Moaning in delight, _n.name drives $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
-		"A soft moan drifts out from $proset.their mouth as $proset.they gently thrust $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
-		"Moaning in delight, _n.name gently thrusts $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>."
+		"Slowly pressing your <<= setup.partLower($mc, 'Feet', 'feet') >> together around _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, you let out a <<mcNoise 'base' 'pleasure'>>as you give $proset.them a footjob.",
+		"A <<npcNoise 'base' 'pleasure'>>bursts out from $proset.their mouth before $proset.they start thrusting $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
+		"<<npcNoise 'ing' 'pleasure'>> in delight, _n.name drives $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
+		"A soft <<npcNoise 'base' 'pleasure'>>drifts out from $proset.their mouth as $proset.they gently thrust $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
+		"<<npcNoise 'ing' 'pleasure'>> in delight, _n.name gently thrusts $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>."
 	) >>
 <<elseif $sex.role == "Top">>
 	<<= either(
 		"Sitting up between your legs, _n.name runs $proset.their toes delicately over the skin of your scrotum.",
-		"_n.name lets out a moan as $proset.they start using $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >>, eagerly sliding them up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
-		"With a moan, _n.name starts eagerly sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down against your <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
+		"_n.name lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they start using $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >>, eagerly sliding them up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
+		"With a <<npcNoise 'base' 'pleasure'>>, _n.name starts eagerly sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down against your <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
 		"Eagerly pushing $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> together, you press the head of your <<= setup.partLower($mc, 'genitals', 'genitals') >> up against $proset.their soles before eagerly thrusting your <<= setup.partLower($mc, 'Hips', 'hips') >> forward and starting to fuck the crevice formed between them.",
 		"You rub the head of your <<= setup.partLower($mc, 'genitals', 'genitals') >> against $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> before eagerly pressing $proset.their soles together and starting to fuck the crevice formed between them."
 	) >>
 
 	<<= either(
-		"_n.name starts eagerly sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >> in response. You let out a moan as $proset.they give you an enthusiastic footjob.",
-		"A moan bursts out from between $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> as $proset.they eagerly slide $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
+		"_n.name starts eagerly sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >> in response. You let out a <<mcNoise 'base' 'pleasure'>>as $proset.they give you an enthusiastic footjob.",
+		"A <<npcNoise 'base' 'pleasure'>>bursts out from between $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> as $proset.they eagerly slide $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
 		"Smiling in delight, _n.name eagerly slides $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >> as $proset.they deliver an enthusiastic footjob.",
-		"_n.name starts sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >> in response, letting out a moan as $proset.they give you a footjob.",
-		"Gently sliding your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start steadily bucking your <<= setup.partLower($mc, 'Hips', 'hips') >> back and forth, letting out a little moan with every thrust as you slowly receive a footjob.",
-		"Gently slipping your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start softly thrusting your <<= setup.partLower($mc, 'Hips', 'hips') >> forward, letting out a little moan as you gently receive a footjob.",
-		"Pushing your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start bucking your <<= setup.partLower($mc, 'Hips', 'hips') >> back and forth, letting out a moan with every thrust as you greedily receive a footjob.",
-		"Pushing your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start thrusting your <<= setup.partLower($mc, 'Hips', 'hips') >> forward, letting out a moan as you happily receive a footjob.",
-		"Pushing _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >> together, you let out a moan as you start to pump your <<= setup.partLower($mc, 'Hips', 'hips') >> back and forth, sighing as you receive a footjob.",
+		"_n.name starts sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >> in response, letting out a <<mcNoise 'base' 'pleasure'>>as $proset.they give you a footjob.",
+		"Gently sliding your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start steadily bucking your <<= setup.partLower($mc, 'Hips', 'hips') >> back and forth, letting out a little <<mcNoise 'base' 'pleasure'>>with every thrust as you slowly receive a footjob.",
+		"Gently slipping your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start softly thrusting your <<= setup.partLower($mc, 'Hips', 'hips') >> forward, letting out a little <<mcNoise 'base' 'pleasure'>>as you gently receive a footjob.",
+		"Pushing your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start bucking your <<= setup.partLower($mc, 'Hips', 'hips') >> back and forth, letting out a <<mcNoise 'base' 'pleasure'>>with every thrust as you greedily receive a footjob.",
+		"Pushing your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start thrusting your <<= setup.partLower($mc, 'Hips', 'hips') >> forward, letting out a <<mcNoise 'base' 'pleasure'>>as you happily receive a footjob.",
+		"Pushing _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >> together, you let out a <<mcNoise 'base' 'pleasure'>>as you start to pump your <<= setup.partLower($mc, 'Hips', 'hips') >> back and forth, sighing as you receive a footjob.",
 		"_n.name picks up the pace, sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up against your <<= setup.partLower($mc, 'genitals', 'genitals') >>."
 	) >>
 <</if>>

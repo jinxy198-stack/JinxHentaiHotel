@@ -19,7 +19,7 @@
 		) >>
 	<<elseif $sex.role == "Bottom">>
 		<<= either(
-			"Reaching down to your chest, _n.name starts eagerly fondling and groping your <<= setup.valueLower($mc, 'breastsize', 'average') >> <<= setup.partLower($mc, 'Breasts', 'breasts') >>, drawing a moan from your lips."
+			"Reaching down to your chest, _n.name starts eagerly fondling and groping your <<= setup.valueLower($mc, 'breastsize', 'average') >> <<= setup.partLower($mc, 'Breasts', 'breasts') >>, drawing a <<mcNoise 'base' 'pleasure'>> from your lips."
 		) >>
 	<</if>>
 

@@ -9,9 +9,9 @@
 	) >>
 
 	<<= either(
-		"A happy moan escapes from _n.name's mouth in response to the contact, causing you to smile in delight.",
+		"A happy <<npcNoise 'base' 'pleasure'>> escapes from _n.name's mouth in response to the contact, causing you to smile in delight.",
 		"The happy sigh that escapes your mouth is more than enough to let _n.name know that the gentle caress had the desired effect.",
-		"In response, you let out a happy moan, letting _n.name know that the gesture is much appreciated."
+		"In response, you let out a happy <<npcNoise 'base' 'pleasure'>>, letting _n.name know that the gesture is much appreciated."
 	) >>
 
 <<elseif $sex.role == "Top">>

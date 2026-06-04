@@ -11,7 +11,7 @@
 		"_n.name lets out a sharp gasp as your lips fully engulf $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >>. It twitches from the sensation.",
 		"Looking up at $proset.them eagerly, you lean forward and take $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into your mouth, moving slowly as you start to pleasure $proset.them.",
 		"You lower your head toward $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >>, your lips parting as you gently begin to suck and lick with growing enthusiasm.",
-		"Without hesitation, you press your lips to $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >>. $proset.they moan softly as you take $proset.them into your mouth."
+		"Without hesitation, you press your lips to $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >>. $proset.they <<mcNoise 'base' 'pleasure'>> softly as you take $proset.them into your mouth."
 	]>>
 
 
@@ -21,18 +21,18 @@
 		"Reaching down to grab _n.name's head, you line the head of your <<= setup.partLower($mc, 'genitals', 'genitals') >> up with $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> before gently pushing your <<= setup.partLower($mc, 'Hips', 'hips') >> forward and sliding your <<= setup.partLower($mc, 'genitals', 'genitals') >> into $proset.their mouth.",
 		"Reaching down to take hold of _n.name's head, you push the head of your <<= setup.partLower($mc, 'genitals', 'genitals') >> against _n.name's <<= setup.partLower(_n, 'Lips', 'lips') >> before slowly bucking your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >> and gently sliding your <<= setup.partLower($mc, 'genitals', 'genitals') >> into $proset.their mouth.",
 		"Reaching down to grab $proset.their head, you line the head of your <<= setup.partLower($mc, 'genitals', 'genitals') >> up with $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> before pushing your <<= setup.partLower($mc, 'Hips', 'hips') >> forward and sliding your <<= setup.partLower($mc, 'genitals', 'genitals') >> into $proset.their mouth.",
-		"_n.name eagerly wraps $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, letting out a muffled moan as $proset.they enthusiastically bob $proset.their head up and down.",
+		"_n.name eagerly wraps $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, letting out a muffled <<mcNoise 'base' 'pleasure'>> as $proset.they enthusiastically bob $proset.their head up and down.",
 		"A muffled <<npcNoise 'base' 'pain'>> drifts out from _n.name's mouth and, eagerly wrapping $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, $proset.they enthusiastically continue to give you head.",
 		"<<npcNoise 'ing cap' 'pleasure'>> in delight, _n.name eagerly wraps $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, eagerly licking and sucking as $proset.they continue making muffled noises.",
-		"_n.name wraps $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, letting out a muffled <<npcNoiseTest 'base' 'pleasure'>> as $proset.they bob $proset.their head up and down.",
-		"A muffled moan drifts out from $proset.their mouth and, wrapping $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, $proset.they continue to give you head.",
-		"<<npcNoiseTest 'ing cap' 'pleasure'>> in delight, _n.name wraps $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, licking and sucking as $proset.they continue making muffled moaning noises."
+		"_n.name wraps $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, letting out a muffled <<npcNoise 'base' 'pleasure'>> as $proset.they bob $proset.their head up and down.",
+		"A muffled <<mcNoise 'base' 'pleasure'>> drifts out from $proset.their mouth and, wrapping $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, $proset.they continue to give you head.",
+		"<<npcNoise 'ing cap' 'pleasure'>> in delight, _n.name wraps $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> around your <<= setup.partLower($mc, 'genitals', 'genitals') >>, licking and sucking as $proset.they continue making muffled <<mcNoise 'ing' 'pleasure'>> noises."
 	]>>
 
 <<elseif $sex.act == "Suck Cock">>
 	<<set _lines = [
 		"You suckle on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-		"_n.name moans with pleasure as you continue to blow $proset.them.",
+		"_n.name <<npcNoise 's' 'pleasure'>> with pleasure as you continue to blow $proset.them.",
 		"Your head bobs up and down as you focus fully on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>."
 	]>>
 
@@ -44,12 +44,12 @@
 
 <<elseif $sex.act == "Fuck Mouth">>
 	<<set _lines = [
-		"You eagerly thrust your <<= setup.partLower($mc, 'genitals', 'genitals') >> past $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >>, letting out a moan as you greedily pump your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>.",
-		"You desperately buck your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, letting out a moan as you eagerly fuck $proset.their throat.",
-		"Enthusiastically bucking your hips into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, you let out a moan as you happily continue receiving your blowjob.",
-		"You thrust your <<= setup.partLower($mc, 'genitals', 'genitals') >> past $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >>, letting out a moan as you pump your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>.",
-		"You buck your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, letting out a moan as you fuck $proset.their throat.",
-		"Bucking your hips into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, you let out a moan as you continue happily receiving a blowjob.",
+		"You eagerly thrust your <<= setup.partLower($mc, 'genitals', 'genitals') >> past $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >>, letting out a <<mcNoise 'base' 'pleasure'>> as you greedily pump your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>.",
+		"You desperately buck your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, letting out a <<mcNoise 'base' 'pleasure'>> as you eagerly fuck $proset.their throat.",
+		"Enthusiastically bucking your hips into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, you let out a <<mcNoise 'base' 'pleasure'>> as you happily continue receiving your blowjob.",
+		"You thrust your <<= setup.partLower($mc, 'genitals', 'genitals') >> past $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >>, letting out a <<mcNoise 'base' 'pleasure'>> as you pump your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>.",
+		"You buck your <<= setup.partLower($mc, 'Hips', 'hips') >> into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, letting out a <<mcNoise 'base' 'pleasure'>> as you fuck $proset.their throat.",
+		"Bucking your hips into $proset.their <<= setup.partLower(_n, 'Face', 'face') >>, you let out a <<mcNoise 'base' 'pleasure'>> as you continue happily receiving a blowjob.",
 		"Inside $proset.their mouth, you can feel that practiced tongue of $proset.them swirling around your tip."
 	]>>
 

@@ -2972,7 +2972,7 @@ setup.vaginalQuotes = {
   Bottom: {
     Dominant: [
       "Good _n.petname! Feel my <<=$mc.genitals.toLowerCase()>> slide deep into your little pussy!",
-			"That's right, be a good _n.petname and moan for me! Feel my <<=$mc.genitals.toLowerCase()>> sliding deep into your cute little cunt!",
+			"That's right, be a good _n.petname and <<mcNoise 'base' 'pleasure'>> for me! Feel my <<=$mc.genitals.toLowerCase()>> sliding deep into your cute little cunt!",
 			"Your cute little cunt feels so good squeezing down around my <<=$mc.genitals.toLowerCase()>>!",
 			"Fuck! Your pussy feels so good!",
 			"Oh yes! Take my cock! Take it deep!",
@@ -5386,7 +5386,7 @@ setup.sexpositions = {
         "Top cum locations": ["on face", "on chest", "on breasts"],
         "label Top": "receiving",
         "label Bottom": "giving",
-        primary: false,
+        primary: true,
         "secondary positions": ["Kneeling"],
         furniture: ["small seat", "large seat"],
     },
@@ -10695,11 +10695,11 @@ Work on fixing spawning NPC&#39;s
 &lt;&lt;elseif $sex.act == &quot;Push Cock In Ass&quot;&gt;&gt;
 	&lt;&lt;if $sex.position == &quot;Cowgirl&quot;&gt;&gt;
 		&lt;&lt;= either(
-			&quot;You sink down onto _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a moan as you lean down and grab _n.name&#39;s head in both your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; before pulling $proset.them into a passionate kiss.&quot;,
-			&quot;With a moan, you slide down onto _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, leaning into _n.name&#39;s chest and breathing in $proset.their scent before pressing your lips against $proset.theirs.&quot;,
-			&quot;You let _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; slide deep into your $mc.assSize ass as you let out a moan.&quot;,
-			&quot;Leaning down, you let out a moan as you bury yourself on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; before leaning forward and pressing your lips against $proset.theirs.&quot;,
-			&quot;You reach down to take hold of _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; before shuffling into a better position. After teasing the head over your $mc.assSize ass, you let out a little moan as you slowly drop down and take _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into your ass.&quot;,
+			&quot;You sink down onto _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you lean down and grab _n.name&#39;s head in both your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; before pulling $proset.them into a passionate kiss.&quot;,
+			&quot;With a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;, you slide down onto _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, leaning into _n.name&#39;s chest and breathing in $proset.their scent before pressing your lips against $proset.theirs.&quot;,
+			&quot;You let _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; slide deep into your $mc.assSize ass as you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;.&quot;,
+			&quot;Leaning down, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you bury yourself on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; before leaning forward and pressing your lips against $proset.theirs.&quot;,
+			&quot;You reach down to take hold of _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; before shuffling into a better position. After teasing the head over your $mc.assSize ass, you let out a little &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you slowly drop down and take _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into your ass.&quot;,
 			&quot;Shuffling into a better position, you line the head of _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up between your cheeks, and with a slow, steady movement, you gently drop down and take $proset.them into your $mc.assSize ass.&quot;,
 			&quot;You take a firm hold of _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, then tease the head over your $mc.assSize ass before eagerly dropping down and taking $proset.them into you.&quot;,
 			&quot;Shuffling into a better position, you line the head of _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up between your cheeks, and with a single movement, you eagerly drop down and take $proset.them into your ass.&quot;,
@@ -10763,18 +10763,18 @@ Work on fixing spawning NPC&#39;s
 &lt;&lt;elseif $sex.act == &quot;Take Cock In Ass&quot;&gt;&gt;
 	&lt;&lt;if $sex.position == &quot;Cowgirl&quot; || $sex.position == &quot;Reverse Cowgirl&quot;&gt;&gt;
 		&lt;&lt;= either(
-			&quot;Using your &lt;&lt;= setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;) &gt;&gt;, you slowly lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; in and out of your $mc.assSize ass as you moan aloud.&quot;,
+			&quot;Using your &lt;&lt;= setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;) &gt;&gt;, you slowly lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; in and out of your $mc.assSize ass as you &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; aloud.&quot;,
 			&quot;Leaning forward, you use your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; to support some of your weight as you slowly slide up and down on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-			&quot;Lowering your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; to your knees, you use your &lt;&lt;= setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;) &gt;&gt; to slowly slide yourself up and down, letting out a soft moan as you impale yourself on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-			&quot;You slowly lift yourself up before sliding back down, letting out a soft moan as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-			&quot;Using your &lt;&lt;= setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;) &gt;&gt;, you lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; in and out of your $mc.assSize ass as you moan aloud.&quot;,
+			&quot;Lowering your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; to your knees, you use your &lt;&lt;= setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;) &gt;&gt; to slowly slide yourself up and down, letting out a soft &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you impale yourself on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+			&quot;You slowly lift yourself up before sliding back down, letting out a soft &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+			&quot;Using your &lt;&lt;= setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;) &gt;&gt;, you lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; in and out of your $mc.assSize ass as you &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; aloud.&quot;,
 			&quot;Leaning forward, you use your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; to support some of your weight as you eagerly slide up and down on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-			&quot;Lowering your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; to your knees, you use your &lt;&lt;= setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;) &gt;&gt; to enthusiastically slide yourself up and down, letting out a moan as you impale yourself on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-			&quot;You lift yourself up before greedily sliding back down, letting out a moan as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-			&quot;Using your &lt;&lt;= setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;) &gt;&gt;, you rapidly bounce yourself up and down, slamming _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; in and out of your $mc.assSize ass as you moan aloud.&quot;,
+			&quot;Lowering your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; to your knees, you use your &lt;&lt;= setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;) &gt;&gt; to enthusiastically slide yourself up and down, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you impale yourself on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+			&quot;You lift yourself up before greedily sliding back down, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+			&quot;Using your &lt;&lt;= setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;) &gt;&gt;, you rapidly bounce yourself up and down, slamming _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; in and out of your $mc.assSize ass as you &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; aloud.&quot;,
 			&quot;Leaning forward, you use your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; to support some of your weight as you rapidly buck up and down on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-			&quot;Placing your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering moan as you impale yourself on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-			&quot;Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a moan as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
+			&quot;Placing your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you impale yourself on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+			&quot;Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you spear your $mc.assSize ass on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
 		) &gt;&gt;
 	&lt;&lt;elseif $sex.position == &quot;Missionary&quot;&gt;&gt;
 		&lt;&lt;= either(
@@ -10810,7 +10810,7 @@ Work on fixing spawning NPC&#39;s
 		&quot;_n.name lets out a sharp gasp as your lips fully engulf $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;. It twitches from the sensation.&quot;,
 		&quot;Looking up at $proset.them eagerly, you lean forward and take $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into your mouth, moving slowly as you start to pleasure $proset.them.&quot;,
 		&quot;You lower your head toward $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, your lips parting as you gently begin to suck and lick with growing enthusiasm.&quot;,
-		&quot;Without hesitation, you press your lips to $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;. $proset.they moan softly as you take $proset.them into your mouth.&quot;
+		&quot;Without hesitation, you press your lips to $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;. $proset.they &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; softly as you take $proset.them into your mouth.&quot;
 	]&gt;&gt;
 
 
@@ -10820,18 +10820,18 @@ Work on fixing spawning NPC&#39;s
 		&quot;Reaching down to grab _n.name&#39;s head, you line the head of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up with $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; before gently pushing your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward and sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into $proset.their mouth.&quot;,
 		&quot;Reaching down to take hold of _n.name&#39;s head, you push the head of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; before slowly bucking your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt; and gently sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into $proset.their mouth.&quot;,
 		&quot;Reaching down to grab $proset.their head, you line the head of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up with $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; before pushing your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward and sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into $proset.their mouth.&quot;,
-		&quot;_n.name eagerly wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a muffled moan as $proset.they enthusiastically bob $proset.their head up and down.&quot;,
-		&quot;A muffled &lt;&lt;npcNoiseTest &#39;base&#39; &#39;pain&#39;&gt;&gt; drifts out from _n.name&#39;s mouth and, eagerly wrapping $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, $proset.they enthusiastically continue to give you head.&quot;,
-		&quot;&lt;&lt;npcNoiseTest &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name eagerly wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, eagerly licking and sucking as $proset.they continue making muffled noises.&quot;,
-		&quot;_n.name wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a muffled &lt;&lt;npcNoiseTest &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they bob $proset.their head up and down.&quot;,
-		&quot;A muffled moan drifts out from $proset.their mouth and, wrapping $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, $proset.they continue to give you head.&quot;,
-		&quot;&lt;&lt;npcNoiseTest &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, licking and sucking as $proset.they continue making muffled moaning noises.&quot;
+		&quot;_n.name eagerly wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a muffled &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they enthusiastically bob $proset.their head up and down.&quot;,
+		&quot;A muffled &lt;&lt;npcNoise &#39;base&#39; &#39;pain&#39;&gt;&gt; drifts out from _n.name&#39;s mouth and, eagerly wrapping $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, $proset.they enthusiastically continue to give you head.&quot;,
+		&quot;&lt;&lt;npcNoise &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name eagerly wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, eagerly licking and sucking as $proset.they continue making muffled noises.&quot;,
+		&quot;_n.name wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a muffled &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they bob $proset.their head up and down.&quot;,
+		&quot;A muffled &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; drifts out from $proset.their mouth and, wrapping $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, $proset.they continue to give you head.&quot;,
+		&quot;&lt;&lt;npcNoise &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name wraps $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, licking and sucking as $proset.they continue making muffled &lt;&lt;mcNoise &#39;ing&#39; &#39;pleasure&#39;&gt;&gt; noises.&quot;
 	]&gt;&gt;
 
 &lt;&lt;elseif $sex.act == &quot;Suck Cock&quot;&gt;&gt;
 	&lt;&lt;set _lines = [
 		&quot;You suckle on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-		&quot;_n.name moans with pleasure as you continue to blow $proset.them.&quot;,
+		&quot;_n.name &lt;&lt;npcNoise &#39;s&#39; &#39;pleasure&#39;&gt;&gt; with pleasure as you continue to blow $proset.them.&quot;,
 		&quot;Your head bobs up and down as you focus fully on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
 	]&gt;&gt;
 
@@ -10843,12 +10843,12 @@ Work on fixing spawning NPC&#39;s
 
 &lt;&lt;elseif $sex.act == &quot;Fuck Mouth&quot;&gt;&gt;
 	&lt;&lt;set _lines = [
-		&quot;You eagerly thrust your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; past $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;, letting out a moan as you greedily pump your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;.&quot;,
-		&quot;You desperately buck your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, letting out a moan as you eagerly fuck $proset.their throat.&quot;,
-		&quot;Enthusiastically bucking your hips into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, you let out a moan as you happily continue receiving your blowjob.&quot;,
-		&quot;You thrust your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; past $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;, letting out a moan as you pump your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;.&quot;,
-		&quot;You buck your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, letting out a moan as you fuck $proset.their throat.&quot;,
-		&quot;Bucking your hips into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, you let out a moan as you continue happily receiving a blowjob.&quot;,
+		&quot;You eagerly thrust your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; past $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you greedily pump your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;.&quot;,
+		&quot;You desperately buck your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you eagerly fuck $proset.their throat.&quot;,
+		&quot;Enthusiastically bucking your hips into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you happily continue receiving your blowjob.&quot;,
+		&quot;You thrust your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; past $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you pump your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;.&quot;,
+		&quot;You buck your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you fuck $proset.their throat.&quot;,
+		&quot;Bucking your hips into $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you continue happily receiving a blowjob.&quot;,
 		&quot;Inside $proset.their mouth, you can feel that practiced tongue of $proset.them swirling around your tip.&quot;
 	]&gt;&gt;
 
@@ -10911,9 +10911,9 @@ Work on fixing spawning NPC&#39;s
 	) &gt;&gt;
 
 	&lt;&lt;= either(
-		&quot;A happy moan escapes from _n.name&#39;s mouth in response to the contact, causing you to smile in delight.&quot;,
+		&quot;A happy &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; escapes from _n.name&#39;s mouth in response to the contact, causing you to smile in delight.&quot;,
 		&quot;The happy sigh that escapes your mouth is more than enough to let _n.name know that the gentle caress had the desired effect.&quot;,
-		&quot;In response, you let out a happy moan, letting _n.name know that the gesture is much appreciated.&quot;
+		&quot;In response, you let out a happy &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;, letting _n.name know that the gesture is much appreciated.&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
@@ -10973,19 +10973,19 @@ Work on fixing spawning NPC&#39;s
 	&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 		&lt;&lt;= either(
 			&quot;Shifting your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you reposition yourself to eagerly grind your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;.&quot;,
-			&quot;With a quick shift of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you let out a moan as you greedily press your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Tongue&#39;, &#39;tongue&#39;) &gt;&gt;.&quot;,
+			&quot;With a quick shift of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you greedily press your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Tongue&#39;, &#39;tongue&#39;) &gt;&gt;.&quot;,
 			&quot;Eagerly pressing your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against _n.name&#39;s mouth, you reposition so that you are grinding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;.&quot;,
 			&quot;Shifting your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you reposition yourself to grind your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;.&quot;,
-			&quot;With a quick shift of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you let out a moan as you press your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Tongue&#39;, &#39;tongue&#39;) &gt;&gt;.&quot;,
+			&quot;With a quick shift of your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you press your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Tongue&#39;, &#39;tongue&#39;) &gt;&gt;.&quot;,
 			&quot;Pressing your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against _n.name&#39;s mouth, you reposition so that you are grinding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;.&quot;
 		) &gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;= either(
 			&quot;_n.name repositions $proset.themselves to eagerly grind $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against your &lt;&lt;= setup.partLower($mc, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;.&quot;,
-			&quot;With a quick shift of $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, _n.name lets out a moan as $proset.they greedily press $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against your &lt;&lt;= setup.partLower($mc, &#39;Tongue&#39;, &#39;tongue&#39;) &gt;&gt;.&quot;,
+			&quot;With a quick shift of $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, _n.name lets out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they greedily press $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against your &lt;&lt;= setup.partLower($mc, &#39;Tongue&#39;, &#39;tongue&#39;) &gt;&gt;.&quot;,
 			&quot;Eagerly pressing $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against your mouth, $proset.they reposition $proset.themselves so that $proset.they are grinding $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against your &lt;&lt;= setup.partLower($mc, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;.&quot;,
 			&quot;Shifting $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, $proset.they reposition $proset.themselves to grind $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against your &lt;&lt;= setup.partLower($mc, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;.&quot;,
-			&quot;With a quick shift of $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, $proset.they let out a moan as $proset.they press $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against your &lt;&lt;= setup.partLower($mc, &#39;Tongue&#39;, &#39;tongue&#39;) &gt;&gt;.&quot;,
+			&quot;With a quick shift of $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, $proset.they let out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they press $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against your &lt;&lt;= setup.partLower($mc, &#39;Tongue&#39;, &#39;tongue&#39;) &gt;&gt;.&quot;,
 			&quot;Pressing $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; down against your mouth, $proset.they reposition $proset.themselves so that $proset.they are grinding $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against your &lt;&lt;= setup.partLower($mc, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt;.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
@@ -11109,7 +11109,7 @@ You rub your pussy against _n.name&#39;s feet.
     &lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 	    &lt;&lt;=either(
         &quot;You finger _n.name&#39;s ass.&quot;,
-        &quot;_n.name shivers as you place your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; against $proset.their asshole. You then wiggled your way in. It was hot and tight but so smooth. $proset.theyUp let out a moan. You caress their thigh to calm them.&quot;
+        &quot;_n.name shivers as you place your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; against $proset.their asshole. You then wiggled your way in. It was hot and tight but so smooth. $proset.theyUp let out a &lt;&lt;npcNoise &#39;base&#39; &#39;pain&#39;&gt;&gt;. You caress their thigh to calm them.&quot;
         )&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $sex.act == &quot;Finger Ass(Continue)&quot;&gt;&gt;
@@ -11154,33 +11154,33 @@ You rub your pussy against _n.name&#39;s feet.
 
 &lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;Gently sliding your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down around _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, you let out a soft moan as you give $proset.them a footjob.&quot;,
+		&quot;Gently sliding your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down around _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, you let out a soft &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you give $proset.them a footjob.&quot;,
 		&quot;With a smile, you start gently sliding your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down around $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-		&quot;Slowly pressing your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; together around _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, you let out a moan as you give $proset.them a footjob.&quot;,
-		&quot;A moan bursts out from $proset.their mouth before $proset.they start thrusting $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
-		&quot;Moaning in delight, _n.name drives $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
-		&quot;A soft moan drifts out from $proset.their mouth as $proset.they gently thrust $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
-		&quot;Moaning in delight, _n.name gently thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;
+		&quot;Slowly pressing your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; together around _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as you give $proset.them a footjob.&quot;,
+		&quot;A &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;bursts out from $proset.their mouth before $proset.they start thrusting $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
+		&quot;&lt;&lt;npcNoise &#39;ing&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name drives $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
+		&quot;A soft &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;drifts out from $proset.their mouth as $proset.they gently thrust $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
+		&quot;&lt;&lt;npcNoise &#39;ing&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name gently thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;
 	) &gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
 		&quot;Sitting up between your legs, _n.name runs $proset.their toes delicately over the skin of your scrotum.&quot;,
-		&quot;_n.name lets out a moan as $proset.they start using $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, eagerly sliding them up and down around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-		&quot;With a moan, _n.name starts eagerly sliding $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down against your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+		&quot;_n.name lets out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as $proset.they start using $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, eagerly sliding them up and down around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+		&quot;With a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;, _n.name starts eagerly sliding $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down against your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
 		&quot;Eagerly pushing $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; together, you press the head of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; up against $proset.their soles before eagerly thrusting your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward and starting to fuck the crevice formed between them.&quot;,
 		&quot;You rub the head of your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; against $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; before eagerly pressing $proset.their soles together and starting to fuck the crevice formed between them.&quot;
 	) &gt;&gt;
 
 	&lt;&lt;= either(
-		&quot;_n.name starts eagerly sliding $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; in response. You let out a moan as $proset.they give you an enthusiastic footjob.&quot;,
-		&quot;A moan bursts out from between $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; as $proset.they eagerly slide $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+		&quot;_n.name starts eagerly sliding $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; in response. You let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as $proset.they give you an enthusiastic footjob.&quot;,
+		&quot;A &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;bursts out from between $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; as $proset.they eagerly slide $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
 		&quot;Smiling in delight, _n.name eagerly slides $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; as $proset.they deliver an enthusiastic footjob.&quot;,
-		&quot;_n.name starts sliding $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; in response, letting out a moan as $proset.they give you a footjob.&quot;,
-		&quot;Gently sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you start steadily bucking your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; back and forth, letting out a little moan with every thrust as you slowly receive a footjob.&quot;,
-		&quot;Gently slipping your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you start softly thrusting your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward, letting out a little moan as you gently receive a footjob.&quot;,
-		&quot;Pushing your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you start bucking your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; back and forth, letting out a moan with every thrust as you greedily receive a footjob.&quot;,
-		&quot;Pushing your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you start thrusting your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward, letting out a moan as you happily receive a footjob.&quot;,
-		&quot;Pushing _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; together, you let out a moan as you start to pump your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; back and forth, sighing as you receive a footjob.&quot;,
+		&quot;_n.name starts sliding $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down around your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; in response, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as $proset.they give you a footjob.&quot;,
+		&quot;Gently sliding your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you start steadily bucking your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; back and forth, letting out a little &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;with every thrust as you slowly receive a footjob.&quot;,
+		&quot;Gently slipping your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you start softly thrusting your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward, letting out a little &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as you gently receive a footjob.&quot;,
+		&quot;Pushing your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you start bucking your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; back and forth, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;with every thrust as you greedily receive a footjob.&quot;,
+		&quot;Pushing your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you start thrusting your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as you happily receive a footjob.&quot;,
+		&quot;Pushing _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; together, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as you start to pump your &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; back and forth, sighing as you receive a footjob.&quot;,
 		&quot;_n.name picks up the pace, sliding $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up against your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Frot-Dialogue" tags="nobr Dialogue" position="1300,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
@@ -11222,7 +11222,7 @@ You rub your pussy against _n.name&#39;s feet.
 				&quot;Reaching down, you adjust your &lt;&lt;=_mcGen&gt;&gt; to line it up with _n.name&#39;s before starting to thrust slowly, rubbing yourself against $proset.them.&quot;,
 				&quot;You draw _n.name in close, opening your legs to align your &lt;&lt;=_mcGen&gt;&gt; with $proset.theirs.&quot;,
 				&quot;You pull _n.name close and position yourself so your groin presses against $proset.theirs, encouraging $proset.them to grind $proset.their &lt;&lt;=_nGen&gt;&gt; against you.&quot;,
-				&quot;With a moan, you eagerly press your groin against $proset.theirs and begin teasing your &lt;&lt;=_mcGen&gt;&gt; against $proset.them.&quot;
+				&quot;With a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;, you eagerly press your groin against $proset.theirs and begin teasing your &lt;&lt;=_mcGen&gt;&gt; against $proset.them.&quot;
 			)&gt;&gt;
 		&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 			&lt;&lt;=either(
@@ -11244,32 +11244,32 @@ You rub your pussy against _n.name&#39;s feet.
 
 	&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 		&lt;&lt;=either(
-			&quot;Gently bucking $proset.their own &lt;&lt;=_nHip&gt;&gt; in response, _n.name lets out a moan as $proset.they mirror your movements and softly rub $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;Gently bucking $proset.their own &lt;&lt;=_nHip&gt;&gt; in response, _n.name lets out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as $proset.they mirror your movements and softly rub $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
 			&quot;Responding with a gentle buck of $proset.their own &lt;&lt;=_nHip&gt;&gt;, _n.name mirrors your movements, helping rub $proset.their &lt;&lt;=_nGen&gt;&gt; up and down over yours.&quot;,
-			&quot;Happily bucking $proset.their own &lt;&lt;=_nHip&gt;&gt; in response, _n.name lets out a moan as $proset.they eagerly rub $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;Happily bucking $proset.their own &lt;&lt;=_nHip&gt;&gt; in response, _n.name lets out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as $proset.they eagerly rub $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
 			&quot;Responding with a happy buck of $proset.their own &lt;&lt;=_nHip&gt;&gt;, _n.name mirrors your movements, frantically rubbing $proset.their &lt;&lt;=_nGen&gt;&gt; over yours.&quot;,
-			&quot;_n.name responds eagerly and lets out a moan as $proset.they rub $proset.their own &lt;&lt;=_nGen&gt;&gt; up and down over yours.&quot;,
-			&quot;A moan slips from _n.name&#39;s lips as $proset.they thrust $proset.their &lt;&lt;=_nHip&gt;&gt; and grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
-			&quot;Moaning in delight, _n.name eagerly thrusts $proset.their &lt;&lt;=_nHip&gt;&gt;, using your movements to help grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
-			&quot;_n.name happily responds in kind and lets out a moan as $proset.they softly rub $proset.their own &lt;&lt;=_nGen&gt;&gt; over your groin.&quot;,
-			&quot;A moan drifts from _n.name&#39;s lips as $proset.they gently thrust $proset.their &lt;&lt;=_nHip&gt;&gt; and grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
-			&quot;Moaning in pleasure, _n.name gently pushes $proset.their &lt;&lt;=_nHip&gt;&gt; forward, using your movements to help grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
-			&quot;_n.name responds in kind and lets out a moan as $proset.they rub $proset.their own &lt;&lt;=_nGen&gt;&gt; up and down over yours.&quot;,
-			&quot;A moan bursts from _n.name&#39;s lips as $proset.they thrust $proset.their &lt;&lt;=_nHip&gt;&gt; and grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
-			&quot;Moaning in pleasure, _n.name thrusts $proset.their &lt;&lt;=_nHip&gt;&gt; forward, using your movements to help grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;
+			&quot;_n.name responds eagerly and lets out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as $proset.they rub $proset.their own &lt;&lt;=_nGen&gt;&gt; up and down over yours.&quot;,
+			&quot;A &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; lips from _n.name&#39;s lips as $proset.they thrust $proset.their &lt;&lt;=_nHip&gt;&gt; and grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;&lt;&lt;npcNoise &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name eagerly thrusts $proset.their &lt;&lt;=_nHip&gt;&gt;, using your movements to help grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;_n.name happily responds in kind and lets out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as $proset.they softly rub $proset.their own &lt;&lt;=_nGen&gt;&gt; over your groin.&quot;,
+			&quot;A &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;drifts from _n.name&#39;s lips as $proset.they gently thrust $proset.their &lt;&lt;=_nHip&gt;&gt; and grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;&lt;&lt;npcNoise &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in pleasure, _n.name gently pushes $proset.their &lt;&lt;=_nHip&gt;&gt; forward, using your movements to help grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;_n.name responds in kind and lets out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they rub $proset.their own &lt;&lt;=_nGen&gt;&gt; up and down over yours.&quot;,
+			&quot;A &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;bursts from _n.name&#39;s lips as $proset.they thrust $proset.their &lt;&lt;=_nHip&gt;&gt; and grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;,
+			&quot;&lt;&lt;npcNoise &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in pleasure, _n.name thrusts $proset.their &lt;&lt;=_nHip&gt;&gt; forward, using your movements to help grind $proset.their &lt;&lt;=_nGen&gt;&gt; against yours.&quot;
 		)&gt;&gt;
 
 	&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 		&lt;&lt;=either(
-			&quot;Letting out a little moan with every thrust of your &lt;&lt;=_mcHip&gt;&gt;, you gently rub your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
+			&quot;Letting out a little &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; with every thrust of your &lt;&lt;=_mcHip&gt;&gt;, you gently rub your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
 			&quot;You let out a series of soft sighs as you gently rub your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
-			&quot;Sliding your &lt;&lt;=_mcGen&gt;&gt; over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;, you let out a little moan with each pump of your &lt;&lt;=_mcHip&gt;&gt;.&quot;,
-			&quot;Letting out a moan with each thrust of your &lt;&lt;=_mcHip&gt;&gt;, you continue rubbing your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
-			&quot;You let out a series of lewd moans as you rub your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
-			&quot;Rubbing your &lt;&lt;=_mcGen&gt;&gt; over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;, you let out a moan with each pump of your &lt;&lt;=_mcHip&gt;&gt;.&quot;,
-			&quot;Letting out a moan with each eager thrust of your &lt;&lt;=_mcHip&gt;&gt;, you passionately rub your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
-			&quot;You let out a series of lewd moans as you desperately grind your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
-			&quot;Eagerly grinding your &lt;&lt;=_mcGen&gt;&gt; over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;, you let out a moan with each frantic pump of your &lt;&lt;=_mcHip&gt;&gt;.&quot;,
+			&quot;Sliding your &lt;&lt;=_mcGen&gt;&gt; over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;, you let out a little &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; with each pump of your &lt;&lt;=_mcHip&gt;&gt;.&quot;,
+			&quot;Letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; with each thrust of your &lt;&lt;=_mcHip&gt;&gt;, you continue rubbing your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
+			&quot;You let out a series of lewd &lt;&lt;mcNoise &#39;s&#39; &#39;pleasure&#39;&gt;&gt; as you rub your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
+			&quot;Rubbing your &lt;&lt;=_mcGen&gt;&gt; over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; with each pump of your &lt;&lt;=_mcHip&gt;&gt;.&quot;,
+			&quot;Letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; with each eager thrust of your &lt;&lt;=_mcHip&gt;&gt;, you passionately rub your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
+			&quot;You let out a series of lewd &lt;&lt;mcNoise &#39;s&#39; &#39;pleasure&#39;&gt;&gt; as you desperately grind your &lt;&lt;=_mcGen&gt;&gt; up and down over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;.&quot;,
+			&quot;Eagerly grinding your &lt;&lt;=_mcGen&gt;&gt; over _n.name&#39;s &lt;&lt;=_nGen&gt;&gt;, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; with each frantic pump of your &lt;&lt;=_mcHip&gt;&gt;.&quot;,
 			&quot;You both shiver with pleasure each time _n.name thrusts against you.&quot;
 		)&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
@@ -11294,7 +11294,7 @@ You rub your pussy against _n.name&#39;s feet.
 		) &gt;&gt;
 	&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 		&lt;&lt;= either(
-			&quot;Reaching down to your chest, _n.name starts eagerly fondling and groping your &lt;&lt;= setup.valueLower($mc, &#39;breastsize&#39;, &#39;average&#39;) &gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;Breasts&#39;, &#39;breasts&#39;) &gt;&gt;, drawing a moan from your lips.&quot;
+			&quot;Reaching down to your chest, _n.name starts eagerly fondling and groping your &lt;&lt;= setup.valueLower($mc, &#39;breastsize&#39;, &#39;average&#39;) &gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;Breasts&#39;, &#39;breasts&#39;) &gt;&gt;, drawing a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; from your lips.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
@@ -11326,18 +11326,18 @@ You rub your pussy against _n.name&#39;s feet.
 	&lt;&lt;=either(
 		&quot;Reaching down between $proset.their &lt;&lt;=_n.body.Leg.toLowerCase()&gt;&gt;, you wrap your &lt;&lt; $mc.body.Finger.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;&quot;,
 		&quot;You drop one of your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; down between $proset.their &lt;&lt;=_n.body.Leg.toLowerCase()&gt;&gt; and, taking hold of $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, you start slowly jerking $proset.them off.&quot;,
-		&quot;Reaching down between $proset.their &lt;&lt;=_n.body.Leg.toLowerCase()&gt;&gt;, you eagerly wrap your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a moan as you start rapidly stroking up and down its length.&quot;,
+		&quot;Reaching down between $proset.their &lt;&lt;=_n.body.Leg.toLowerCase()&gt;&gt;, you eagerly wrap your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, letting out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as you start rapidly stroking up and down its length.&quot;,
 		&quot;You drop one of your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; down between $proset.their &lt;&lt;=_n.body.Leg.toLowerCase()&gt;&gt;, and, taking hold of $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, you start eagerly jerking $proset.them off.&quot;,
-		&quot;Teasing your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; over $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, $proset.they let out a moan as you start rapidly stroking up and down $proset.their throbbing length.&quot;,
+		&quot;Teasing your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; over $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, $proset.they let out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as you start rapidly stroking up and down $proset.their throbbing length.&quot;,
 		&quot;Using $proset.their precum as extra lubricant, you gently wrap your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; and jerk $proset.them off.&quot;,
 		&quot;Gently wrapping your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, you slowly start to slide your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; up and down $proset.their &lt;&lt;=_n.penislength.toLowerCase()&gt;&gt; shaft.&quot;,
 		&quot;You gently wrap your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, leaning forward and inhaling $proset.their scent as you gently slide your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; up and down around $proset.their &lt;&lt;=_n.penislength.toLowerCase()&gt;&gt; length.&quot;,
-		&quot;Gently pressing yourself against _n.name, they let out a moan as you softly slide your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+		&quot;Gently pressing yourself against _n.name, they let out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as you softly slide your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
 		&quot;You slide your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; up and down around $proset.their &lt;&lt;=_n.penislength.toLowerCase()&gt;&gt; cock, spreading $proset.their precum all over $proset.their shaft in the process.&quot;,				
 		&quot;Using $proset.their precum as extra lubricant, you wrap your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; around $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; and jerk $proset.them off.&quot;,	
-		&quot;_n.name buck $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; out in response, letting out a delighted moan as $proset.they start enthusiastically imploring you to continue giving $proset.them a handjob.&quot;,
-		&quot;A delighted moan bursts out from between $proset.their &lt;&lt;=_n.body.Lip.toLowerCase()&gt;&gt;, and $proset.they start eagerly thrusting $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; out against $proset.their touch as $proset.they begs you to continue giving $proset.them a handjob.&quot;,	
-		&quot;Moaning in delight, _n.name buck $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward, eagerly imploring you to continue giving $proset.them a handjob.&quot; 
+		&quot;_n.name buck $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; out in response, letting out a delighted &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as $proset.they start enthusiastically imploring you to continue giving $proset.them a handjob.&quot;,
+		&quot;A delighted &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;bursts out from between $proset.their &lt;&lt;=_n.body.Lip.toLowerCase()&gt;&gt;, and $proset.they start eagerly thrusting $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; out against $proset.their touch as $proset.they begs you to continue giving $proset.them a handjob.&quot;,	
+		&quot;&lt;&lt;npcNoise &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name buck $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward, eagerly imploring you to continue giving $proset.them a handjob.&quot; 
 	)&gt;&gt;
 &lt;&lt;elseif $sex.act ==&quot;Wrap Hand Around Cock&quot;&gt;&gt;
 	&lt;&lt;=either(
@@ -11347,9 +11347,9 @@ You rub your pussy against _n.name&#39;s feet.
 &lt;&lt;elseif $sex.act ==&quot;Pump Shaft&quot;&gt;&gt;
 	&lt;&lt;if $sex.role==&quot;Bottom&quot;&gt;&gt;
 		&lt;&lt;=either(
-			&quot;Teasing your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; over $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, _n.name let out a soft moan as you start gently stroking up and down their throbbing length.&quot;,
-			&quot;$proset.theyUP let out a moan as you slide your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their precum-dripping &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
-			&quot;_n.name lets out a reassuring moan as you gently slide your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their precum-dripping &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+			&quot;Teasing your &lt;&lt;=$mc.body.Finger.toLowerCase()&gt;&gt; over $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;, _n.name let out a soft &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as you start gently stroking up and down their throbbing length.&quot;,
+			&quot;$proset.theyUP let out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as you slide your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their precum-dripping &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
+			&quot;_n.name lets out a reassuring &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as you gently slide your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; up and down the length of $proset.their precum-dripping &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt;.&quot;,
 			&quot;You gently slide your &lt;&lt;=$mc.body.Hand.toLowerCase()&gt;&gt; up and down around $proset.their &lt;&lt;=_n.penislength.toLowerCase()&gt;&gt; cock, spreading $proset.their precum all over your shaft in the process.&quot;
 		)&gt;&gt;
 		&lt;&lt;if _n.genitaltype == &quot;Uncut&quot;&gt;&gt;
@@ -11358,7 +11358,7 @@ You rub your pussy against _n.name&#39;s feet.
 	&lt;&lt;elseif $sex.role ==&quot;Top&quot;&gt;&gt;
 		&lt;&lt;=either(
 			&quot;They pump your shaft.&quot;,
-			&quot;You let out a soft moan as _n.name is slowly stroking up and down your length.&quot;
+			&quot;You let out a soft &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as _n.name is slowly stroking up and down your length.&quot;
 		)&gt;&gt;
 		&lt;&lt;if $mc.genitaltype == &quot;Uncut&quot;&gt;&gt;
     		Your foreskin is pulled back and forth from the movement.
@@ -11393,7 +11393,7 @@ You push the cheeks of _n.name&#39;s &lt;&lt;=_n.assSize.toLowerCase()&gt;&gt; a
 		&quot;You lean in, pressing your lips against _n.name&#39;s mouth as you deliver a passionate kiss.&quot;,
 		&quot;You lean in, grabbing _n.name&#39;s head in both hands and pulling _n.name up into a passionate kiss.&quot;,
 		&quot;With a grin, you lean in into _n.name&#39;s chest, breathing in _n.name&#39;s scent before pressing your lips against _n.name&#39;s.&quot;,
-		&quot;Leaning down, you let out a moan as you press your lips against _n.name&#39;s and start to eagerly kiss _n.name.&quot;
+		&quot;Leaning down, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you press your lips against _n.name&#39;s and start to eagerly kiss _n.name.&quot;
 	)&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="Lick-Cock-Dialogue" tags="nobr" position="1225,975" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     &lt;&lt;=either(
         &quot;_n.name licks your cock.&quot;,
@@ -11777,26 +11777,26 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 		&quot;Eagerly lowering your head to $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you press your &lt;&lt;= setup.partLower($mc, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; against them and start passionately kissing and licking them.&quot;,
 		&quot;You lower your head to $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; before eagerly pressing your &lt;&lt;= setup.partLower($mc, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; against them and starting to gently kiss and lick them.&quot;,
 		&quot;After planting a series of gentle kisses on $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you begin lovingly licking them. _n.name lets out a series of soft moans in response.&quot;,
-		&quot;Gently kissing and licking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Toes&#39;, &#39;toes&#39;) &gt;&gt;, you let out a little moan as you lovingly worship $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
-		&quot;You let out a little moan as you press your &lt;&lt;= setup.partLower($mc, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; against $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; before starting to lovingly kiss and lick them.&quot;
+		&quot;Gently kissing and licking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Toes&#39;, &#39;toes&#39;) &gt;&gt;, you let out a little &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you lovingly worship $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
+		&quot;You let out a little &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you press your &lt;&lt;= setup.partLower($mc, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; against $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; before starting to lovingly kiss and lick them.&quot;
 	) &gt;&gt;
 
 	&lt;&lt;= either(
-		&quot;A moan bursts out from between $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; as $proset.they eagerly slide $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down over your &lt;&lt;= setup.partLower($mc, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;.&quot;,
-		&quot;Moaning in delight, _n.name eagerly presses $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; against your mouth as $proset.they enjoy having them worshipped.&quot;
+		&quot;A &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;bursts out from between $proset.their &lt;&lt;= setup.partLower(_n, &#39;Lips&#39;, &#39;lips&#39;) &gt;&gt; as $proset.they eagerly slide $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down over your &lt;&lt;= setup.partLower($mc, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;.&quot;,
+		&quot;&lt;&lt;npcNoise &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name eagerly presses $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; against your mouth as $proset.they enjoy having them worshipped.&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
 		&quot;With a smirk, you eagerly push _n.name&#39;s head down to your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, getting $proset.them to kiss them and start orally worshipping them.&quot;,
-		&quot;Pushing _n.name&#39;s head down to your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you cannot help but moan as you make $proset.them kiss and worship them with $proset.their mouth.&quot;
+		&quot;Pushing _n.name&#39;s head down to your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, you cannot help but &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you make $proset.them kiss and worship them with $proset.their mouth.&quot;
 	) &gt;&gt;
 
 	&lt;&lt;= either(
-		&quot;_n.name starts eagerly sliding your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down over $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, letting out a moan as $proset.they worship them.&quot;,
-		&quot;_n.name eagerly licks and sucks on your &lt;&lt;= setup.partLower($mc, &#39;Toes&#39;, &#39;toes&#39;) &gt;&gt;, letting out a moan as $proset.they worship your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
-		&quot;A moan bursts out from your mouth as _n.name continues eagerly licking and kissing your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
-		&quot;Moaning in delight, _n.name eagerly worships your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; by planting a series of passionate kisses on them.&quot;
+		&quot;_n.name starts eagerly sliding your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; up and down over $proset.their &lt;&lt;= setup.partLower(_n, &#39;Face&#39;, &#39;face&#39;) &gt;&gt;, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they worship them.&quot;,
+		&quot;_n.name eagerly licks and sucks on your &lt;&lt;= setup.partLower($mc, &#39;Toes&#39;, &#39;toes&#39;) &gt;&gt;, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they worship your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
+		&quot;A &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; bursts out from your mouth as _n.name continues eagerly licking and kissing your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
+		&quot;&lt;&lt;npcNoise &#39;ing cap&#39; &#39;pleasure&#39;&gt;&gt; in delight, _n.name eagerly worships your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; by planting a series of passionate kisses on them.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="91" name="Tease-Ass-Dialogue" tags="nobr" position="100,1225" size="100,100">&lt;&lt;if $sex.act ==&quot;Tease Ass With Cock&quot;&gt;&gt;
 &lt;&lt;set _lines = [
@@ -11870,17 +11870,17 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 			&quot;Bottoming out on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;, you lean down and grab _n.name&#39;s head in both your &lt;&lt;= _mcHands &gt;&gt; before pulling $proset.them into a passionate kiss.&quot;,
 			&quot;With a moan, you slide down onto _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;, leaning into _n.name&#39;s &lt;&lt;= _nBreasts &gt;&gt; and breathing in $proset.their scent before pressing your lips against $proset.theirs.&quot;,
 			&quot;You let _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; slide even deeper into your &lt;&lt;= _mcVag &gt;&gt; as you lean down and pull $proset.them into a desperate kiss.&quot;,
-			&quot;Leaning down, you let out a moan as you bury yourself on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; before leaning forward and pressing your lips against $proset.theirs.&quot;,
-			&quot;You reach down to take hold of _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; before shuffling into a better position. After teasing the head between your outer lips, you let out a little moan as you slowly drop down and take $proset.them into your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
+			&quot;Leaning down, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you bury yourself on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; before leaning forward and pressing your lips against $proset.theirs.&quot;,
+			&quot;You reach down to take hold of _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; before shuffling into a better position. After teasing the head between your outer lips, you let out a little &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you slowly drop down and take $proset.them into your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
 			&quot;Shuffling into a better position, you line the head of _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; up between your &lt;&lt;= _mcLegs &gt;&gt;, and with a slow, steady movement, you gently drop down, taking $proset.them into your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
-			&quot;You take a firm hold of _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; before shuffling into a better position. After teasing the head between your outer lips, you let out a moan as you eagerly drop down and take $proset.them into your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
+			&quot;You take a firm hold of _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; before shuffling into a better position. After teasing the head between your outer lips, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you eagerly drop down and take $proset.them into your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
 			&quot;Shuffling into a better position, you line the head of _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; up between your &lt;&lt;= _mcLegs &gt;&gt;, and with a single movement, you eagerly drop down, taking $proset.them into your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
-			&quot;You reach down and roughly grab _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; before shuffling into a better position. After teasing the head between your outer lips, you let out a moan as you forcefully drop down and take $proset.them into your &lt;&lt;= _mcVag &gt;&gt;.&quot;
+			&quot;You reach down and roughly grab _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; before shuffling into a better position. After teasing the head between your outer lips, you let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you forcefully drop down and take $proset.them into your &lt;&lt;= _mcVag &gt;&gt;.&quot;
 		) &gt;&gt;
 	&lt;&lt;elseif $sex.position == &quot;Missionary&quot;&gt;&gt;
 		&lt;&lt;= either(
 			&quot;_n.name lines up $proset.their &lt;&lt;= _nGen &gt;&gt; with your &lt;&lt;= _mcVag &gt;&gt; before pushing in.&quot;,
-			&quot;_n.name presses into your &lt;&lt;= _mcVag &gt;&gt; in the missionary position, drawing a moan from you.&quot;
+			&quot;_n.name presses into your &lt;&lt;= _mcVag &gt;&gt; in the missionary position, drawing a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; from you.&quot;
 		) &gt;&gt;
 	&lt;&lt;elseif $sex.position == &quot;Doggy&quot;&gt;&gt;
 		&lt;&lt;= either(
@@ -11902,8 +11902,8 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 		&lt;&lt;= either(
 			&quot;Reaching forward, you gently take hold of _n.name&#39;s hair, and while continuing to rhythmically slide your &lt;&lt;= _mcGen &gt;&gt; in and out of $proset.their &lt;&lt;= _nVag &gt;&gt;, you slowly pull back, causing _n.name to lift $proset.their head and let out a moan.&quot;,
 			&quot;Taking a gentle hold of _n.name&#39;s hair in one of your &lt;&lt;= _mcHands &gt;&gt;, you pull $proset.their head back while burying your &lt;&lt;= _mcGen &gt;&gt; deep in $proset.their &lt;&lt;= _nVag &gt;&gt;, softly giggling to yourself as _n.name lets out a moan.&quot;,
-			&quot;Taking a gentle hold of _n.name&#39;s hair in one of your &lt;&lt;= _mcHands &gt;&gt;, you pull $proset.their head back while burying your &lt;&lt;= _mcGen &gt;&gt; deep in $proset.their &lt;&lt;= _nVag &gt;&gt;, smirking to yourself as _n.name moans.&quot;,
-			&quot;Tracing your fingers up the length of _n.name&#39;s back, you reach forward and take a gentle hold of $proset.their hair before pulling $proset.their head back and drawing a moan from $proset.them.&quot;
+			&quot;Taking a gentle hold of _n.name&#39;s hair in one of your &lt;&lt;= _mcHands &gt;&gt;, you pull $proset.their head back while burying your &lt;&lt;= _mcGen &gt;&gt; deep in $proset.their &lt;&lt;= _nVag &gt;&gt;, smirking to yourself as _n.name &lt;&lt;npcNoise &#39;s&#39; &#39;pleasure&#39;&gt;&gt;.&quot;,
+			&quot;Tracing your fingers up the length of _n.name&#39;s back, you reach forward and take a gentle hold of $proset.their hair before pulling $proset.their head back and drawing a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;from $proset.them.&quot;
 		) &gt;&gt;
 	&lt;&lt;elseif $sex.position == &quot;Missionary&quot;&gt;&gt;
 		&lt;&lt;= either(
@@ -11913,7 +11913,7 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;= either(
 			&quot;You fuck _n.name&#39;s &lt;&lt;= _nVag &gt;&gt;.&quot;,
-			&quot;You keep thrusting into _n.name, drawing soft moans from $proset.them.&quot;
+			&quot;You keep thrusting into _n.name, drawing soft &lt;&lt;npcNoise &#39;s&#39; &#39;pleasure&#39;&gt;&gt; from $proset.them.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
@@ -11925,7 +11925,7 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 		) &gt;&gt;
 	&lt;&lt;elseif $sex.position == &quot;Missionary&quot;&gt;&gt;
 		&lt;&lt;= either(
-			&quot;You bite your lip and let out a moan before raising your hips and spreading your legs to help _n.name sink $proset.their &lt;&lt;= _nGen &gt;&gt; deeper into your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
+			&quot;You bite your lip and let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; before raising your hips and spreading your legs to help _n.name sink $proset.their &lt;&lt;= _nGen &gt;&gt; deeper into your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
 			&quot;You spread your legs and raise your hips for _n.name, helping $proset.them thrust $proset.their &lt;&lt;= _nGen &gt;&gt; deep into your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
 			&quot;Pulling your feet back to either side, you help _n.name thrust $proset.their &lt;&lt;= _nGen &gt;&gt; deeper into your &lt;&lt;= _mcVag &gt;&gt; by raising your hips and spreading your legs.&quot;,
 			&quot;You spread your legs and raise your hips, looking up at _n.name and biting your lip as $proset.they continue fucking your &lt;&lt;= _mcVag &gt;&gt;.&quot;
@@ -11945,22 +11945,22 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 
 &lt;&lt;elseif $sex.act == &quot;Ride Cock&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;_n.name lets out a moan as $proset.they enter you, eagerly bucking $proset.their &lt;&lt;= _nHips &gt;&gt; up as $proset.they start fucking your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
+		&quot;_n.name lets out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as $proset.they enter you, eagerly bucking $proset.their &lt;&lt;= _nHips &gt;&gt; up as $proset.they start fucking your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
 		&quot;With a moan, _n.name eagerly thrusts $proset.their &lt;&lt;= _nHips &gt;&gt; up into your groin, sinking $proset.their &lt;&lt;= _nGen &gt;&gt; into your &lt;&lt;= _mcVag &gt;&gt; as $proset.they start energetically fucking you.&quot;,
-		&quot;_n.name lets out a moan as $proset.they enter you, bucking $proset.their &lt;&lt;= _nHips &gt;&gt; up as $proset.they start fucking your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
+		&quot;_n.name lets out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as $proset.they enter you, bucking $proset.their &lt;&lt;= _nHips &gt;&gt; up as $proset.they start fucking your &lt;&lt;= _mcVag &gt;&gt;.&quot;,
 		&quot;With a moan, _n.name thrusts $proset.their &lt;&lt;= _nHips &gt;&gt; up into your groin, sinking $proset.their &lt;&lt;= _nGen &gt;&gt; into your &lt;&lt;= _mcVag &gt;&gt; as $proset.they start fucking you.&quot;,
-		&quot;Using your &lt;&lt;= _mcLegs &gt;&gt;, you slowly lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; in and out of your &lt;&lt;= _mcVag &gt;&gt; as you moan aloud.&quot;,
-		&quot;Lowering your &lt;&lt;= _mcHands &gt;&gt; to your knees, you use your &lt;&lt;= _mcLegs &gt;&gt; to slowly slide yourself up and down, letting out a soft moan as you impale yourself on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
-		&quot;You slowly lift yourself up before sliding back down, letting out a soft moan as you spear your &lt;&lt;= _mcVag &gt;&gt; on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
-		&quot;Using your &lt;&lt;= _mcLegs &gt;&gt;, you lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; in and out of your &lt;&lt;= _mcVag &gt;&gt; as you moan aloud.&quot;,
+		&quot;Using your &lt;&lt;= _mcLegs &gt;&gt;, you slowly lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; in and out of your &lt;&lt;= _mcVag &gt;&gt; as you &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; aloud.&quot;,
+		&quot;Lowering your &lt;&lt;= _mcHands &gt;&gt; to your knees, you use your &lt;&lt;= _mcLegs &gt;&gt; to slowly slide yourself up and down, letting out a soft &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you impale yourself on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
+		&quot;You slowly lift yourself up before sliding back down, letting out a soft &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you spear your &lt;&lt;= _mcVag &gt;&gt; on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
+		&quot;Using your &lt;&lt;= _mcLegs &gt;&gt;, you lift yourself up and down, sliding _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; in and out of your &lt;&lt;= _mcVag &gt;&gt; as you &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; aloud.&quot;,
 		&quot;Leaning forward, you use your &lt;&lt;= _mcHands &gt;&gt; to support some of your weight as you eagerly slide up and down on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;. As you lower your face toward _n.name, you catch a waft of $proset.their scent and bite your lip as you breathe in the intoxicating aroma.&quot;,
 		&quot;Leaning forward, you use your &lt;&lt;= _mcHands &gt;&gt; to support some of your weight as you start rapidly bucking up and down on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;. As you lower your face toward _n.name, you catch a waft of $proset.their scent and bite your lip as you breathe in the intoxicating aroma.&quot;,
 		&quot;Leaning forward, you use your &lt;&lt;= _mcHands &gt;&gt; to support some of your weight as you slowly slide up and down on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;. As you lower your face toward _n.name, you catch a waft of $proset.their scent and bite your lip as you breathe in the intoxicating aroma.&quot;,
-		&quot;Lowering your &lt;&lt;= _mcHands &gt;&gt; to your knees, you use your &lt;&lt;= _mcLegs &gt;&gt; to enthusiastically slide yourself up and down, letting out a moan as you impale yourself on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
-		&quot;You lift yourself up before greedily sliding back down, letting out a moan as you spear your &lt;&lt;= _mcVag &gt;&gt; on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
-		&quot;Using your &lt;&lt;= _mcLegs &gt;&gt;, you rapidly bounce yourself up and down, slamming _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; in and out of your &lt;&lt;= _mcVag &gt;&gt; as you moan aloud.&quot;,
-		&quot;Placing your &lt;&lt;= _mcHands &gt;&gt; on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering moan as you impale yourself on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
-		&quot;Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a moan as you spear your &lt;&lt;= _mcVag &gt;&gt; on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;
+		&quot;Lowering your &lt;&lt;= _mcHands &gt;&gt; to your knees, you use your &lt;&lt;= _mcLegs &gt;&gt; to enthusiastically slide yourself up and down, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you impale yourself on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
+		&quot;You lift yourself up before greedily sliding back down, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you spear your &lt;&lt;= _mcVag &gt;&gt; on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
+		&quot;Using your &lt;&lt;= _mcLegs &gt;&gt;, you rapidly bounce yourself up and down, slamming _n.name&#39;s &lt;&lt;= _nGen &gt;&gt; in and out of your &lt;&lt;= _mcVag &gt;&gt; as you &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; aloud.&quot;,
+		&quot;Placing your &lt;&lt;= _mcHands &gt;&gt; on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you impale yourself on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
+		&quot;Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you spear your &lt;&lt;= _mcVag &gt;&gt; on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="Against-Wall-Dialogue" tags="nobr Dialogue" position="975,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
@@ -12158,7 +12158,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;Looking up at _n.name, you bite your lip and let out a moan before spreading your &lt;&lt;=_mcLegs&gt;&gt; and presenting yourself, ready to be penetrated.&quot;,
+		&quot;Looking up at _n.name, you bite your lip and let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; before spreading your &lt;&lt;=_mcLegs&gt;&gt; and presenting yourself, ready to be penetrated.&quot;,
 		&quot;You spread your &lt;&lt;=_mcLegs&gt;&gt; for _n.name, presenting yourself in anticipation of being penetrated.&quot;,
 		&quot;Pulling your &lt;&lt;=_mcFeet&gt;&gt; back to either side, you spread your &lt;&lt;=_mcLegs&gt;&gt;, enticing _n.name to penetrate you.&quot;,
 		&quot;You spread your &lt;&lt;=_mcLegs&gt;&gt;, looking up at _n.name and biting your lip as you entice $proset.them to take you.&quot;,
@@ -12194,18 +12194,20 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
     _n.name is on top of you on the $room.location, straddling your hips, facing away to give you a view of their ass.
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="Scissor-Dialogue" tags="nobr" position="975,1475" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="Scissor-Dialogue" tags="nobr" position="975,1475" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
+&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
+/*&lt;&lt;set _npc = _n&gt;&gt; */
 &lt;&lt;PronounsSet&gt;&gt;
 
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
-        &quot;You lie on your side with your upper leg planted and intersecting with _n.name&#39;s, lining up your crotches together.&quot;
+        &quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; lie on &lt;&lt;gram _top poss&gt;&gt; side with &lt;&lt;gram _top poss&gt;&gt; upper leg planted and intersecting with &lt;&lt;gram _bottom subj&gt;&gt;, lining up your crotches together.&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;_n.name lie on their side with their upper leg planted and intersecting with yours, lining up your crotches together.&quot;
+		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; lie on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; side with &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; upper leg planted and intersecting with &lt;&lt;gram _top&#39;s subj&gt;&gt;, lining up your crotches together.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="Sitting-Dialogue" tags="nobr Dialogue" position="775,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
@@ -12260,12 +12262,12 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
 		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; squats down in front of &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;, bringing &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_top, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right to &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; face.&quot;,
-		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; lowers &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;self in front of &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;, leaving &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_top, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right in front of &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; face.&quot;
+		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; lowers &lt;&lt;gram _top &#39;refl&#39;&gt;&gt; in front of &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;, leaving &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_top, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right in front of &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; face.&quot;
 	) &gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; squats down in front of &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;, bringing &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right to &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; face.&quot;,
-		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; lowers &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;self in front of &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;, leaving &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right in front of &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; face.&quot;
+		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;gverb _bottom squat&gt;&gt; down in front of &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;, bringing &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right to &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; face.&quot;,
+		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;gverb _bottom lower&gt;&gt; &lt;&lt;gram _bottom &#39;refl&#39;&gt;&gt; in front of &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;, leaving &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right in front of &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; face.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Standing-Dialogue" tags="nobr Dialogue" position="1175,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
@@ -12413,15 +12415,15 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;else&gt;&gt;
 &lt;&lt;if $sex.phase == &quot;climax&quot;&gt;&gt;
 	&lt;&lt;set _lines = [
-		&quot;_n.name &lt;&lt;npcNoise&gt;&gt; from being close to climax.&quot;
+		&quot;_n.name &lt;&lt;npcNoise &#39;s&#39; &#39;exertion&#39;&gt;&gt; from being close to climax.&quot;
 	]&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;if $sex.act == &quot;Fuck Pussy&quot;&gt;&gt;
 		&lt;&lt;set _lines = [
-			&quot;_n.name &lt;&lt;npcNoise &#39;s&#39;&gt;&gt; at the feeling of fucking a pussy.&quot;,
-			&quot;_n.name &lt;&lt;npcNoise &#39;s&#39;&gt;&gt; softly, lost in the feeling of fucking a pussy.&quot;,
-			&quot;Pleasure washes over _n.name, making $proset.them &lt;&lt;npcNoise&gt;&gt; softly.&quot;
+			&quot;_n.name &lt;&lt;npcNoise &#39;s&#39; &#39;pleasure&#39;&gt;&gt; at the feeling of fucking a pussy.&quot;,
+			&quot;_n.name &lt;&lt;npcNoise &#39;s&#39; &#39;comfort&#39;&gt;&gt; softly, lost in the feeling of fucking a pussy.&quot;,
+			&quot;Pleasure washes over _n.name, making $proset.them &lt;&lt;npcNoise &#39;base&#39; &#39;comfort&#39;&gt;&gt; softly.&quot;
 		]&gt;&gt;
 
 	&lt;&lt;elseif $sex.act == &quot;Cuddle&quot;&gt;&gt;
@@ -12437,26 +12439,26 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 			&quot;With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic tongue battle.&quot;,
 			&quot;Letting out a soft moan, _n.name plants a series of gentle kisses on your lips before slowly sliding $proset.their tongue into your mouth.&quot;,
 			&quot;With a soft hum, _n.name leans into you, gently pushing $proset.their tongue past your lips.&quot;,
-			&quot;_n.name presses $proset.themself against you, muffling your moans as $proset.they slide $proset.their tongue into your mouth.&quot;,
-			&quot;_n.name pushes $proset.their tongue deep into your mouth, moaning as $proset.they eagerly return the kiss.&quot;,
+			&quot;_n.name presses $proset.themself against you, muffling your &lt;&lt;mcNoise &#39;s&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they slide $proset.their tongue into your mouth.&quot;,
+			&quot;_n.name pushes $proset.their tongue deep into your mouth, &lt;&lt;npcNoise &#39;ing&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they eagerly return the kiss.&quot;,
 			&quot;With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips.&quot;
 		]&gt;&gt;
 	&lt;&lt;elseif $sex.act == &quot;Push Cock In Ass&quot;&gt;&gt;
 		&lt;&lt;if $sex.position == &quot;Cowgirl&quot;&gt;&gt;
 			&lt;&lt;set _lines = [
-				&quot;_n.name lets out a &lt;&lt;npcNoise&gt;&gt; as $proset.they enter you, eagerly bucking $proset.their own &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
-				&quot;With a &lt;&lt;npcNoise&gt;&gt;, _n.name eagerly thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your &lt;&lt;= String($mc.assSize || &#39;ass&#39;).toLowerCase() &gt;&gt; ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start energetically fucking you.&quot;,
-				&quot;_n.name lets out a &lt;&lt;npcNoise&gt;&gt; as $proset.they enter you, bucking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
-				&quot;With a &lt;&lt;npcNoise&gt;&gt;, _n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your $mc.assSize ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start fucking you.&quot;
+				&quot;_n.name lets out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they enter you, eagerly bucking $proset.their own &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
+				&quot;With a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;, _n.name eagerly thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your &lt;&lt;= String($mc.assSize || &#39;ass&#39;).toLowerCase() &gt;&gt; ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start energetically fucking you.&quot;,
+				&quot;_n.name lets out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as $proset.they enter you, bucking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up as $proset.they start fucking your $mc.assSize ass.&quot;,
+				&quot;With a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;, _n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; up into your $mc.assSize ass, sinking $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; into you as $proset.they start fucking you.&quot;
 			]&gt;&gt;
 		&lt;&lt;else&gt;&gt;
 			&lt;&lt;set _lines = [
-				&quot;_n.name lets out a &lt;&lt;npcNoise&gt;&gt; as they enter you.&quot;
+				&quot;_n.name lets out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as they enter you.&quot;
 			]&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;elseif $sex.act == &quot;Enter Ass&quot;&gt;&gt;
 			&lt;&lt;set _lines = [
-				&quot;_n.name moans feeling you slide inside of their ass.&quot;
+				&quot;_n.name &lt;&lt;npcNoise &#39;s&#39; &#39;pleasure&#39;&gt;&gt; feeling you slide inside of their ass.&quot;
 			]&gt;&gt;
 	&lt;&lt;elseif $sex.act == &quot;Wrap Hand around Cock&quot;&gt;&gt;
 		&lt;&lt;set _lines = [
@@ -12471,7 +12473,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 			&lt;&lt;= either(
 				&quot;_n.name lets out a moan, eagerly bucking $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward as $proset.they start eagerly fucking your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
 				&quot;With a moan, _n.name eagerly thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; forward and slides $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;.&quot;,
-				&quot;_n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; deep between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, letting out a moan as $proset.they enjoy the footjob.&quot;
+				&quot;_n.name thrusts $proset.their &lt;&lt;= setup.partLower(_n, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; deep between your &lt;&lt;= setup.partLower($mc, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt;, letting out a &lt;&lt;npcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;as $proset.they enjoy the footjob.&quot;
 			) &gt;&gt;
 		&lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 			&lt;&lt;= either(
@@ -12486,12 +12488,12 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 			]&gt;&gt;	
 		&lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 			&lt;&lt;set _lines = [
-				&quot;_n.name moans feeling you press on their chest.&quot;
+				&quot;_n.name &lt;&lt;npcNoise &#39;s&#39; &#39;pleasure&#39;&gt;&gt; feeling you press on their chest.&quot;
 			]&gt;&gt;			
 		&lt;&lt;/if&gt;&gt;		
 	&lt;&lt;elseif $sex.act == &quot;Fuck Ass&quot;&gt;&gt;
 		&lt;&lt;set _lines = [
-			&quot;_n.name moans feeling you fuck their ass.&quot;
+			&quot;_n.name &lt;&lt;npcNoise &#39;s&#39; &#39;pleasure&#39;&gt;&gt; feeling you fuck their ass.&quot;
 		]&gt;&gt;		
 		&lt;&lt;if _n.sexpref == &quot;Submissive&quot;&gt;&gt;
 			&lt;&lt;run _lines.push(
@@ -12504,7 +12506,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 		&lt;&lt;/if&gt;&gt;	
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;set _lines = [
-			&quot;_n.name &lt;&lt;npcNoise &#39;s&#39;&gt;&gt; from the pleasure.&quot;,
+			&quot;_n.name &lt;&lt;npcNoise &#39;s&#39; &#39;pain&#39;&gt;&gt; from the feeling.&quot;,
 			&quot;$proset.theyUp appear to enjoy it very much.&quot;
 		]&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
@@ -15476,8 +15478,8 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 
 	/* Setup encounter roles */
 	&lt;&lt;set $sex.roles = {
-		dom: $mc,
-		sub: $ui.npc
+		sub: $mc,
+		dom: $ui.npc
 	}&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
@@ -16988,7 +16990,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 /*&lt;&lt;npcNoiseTest &#39;cap&#39; &#39;pain&#39;&gt;&gt;        Groan */
 /*&lt;&lt;npcNoiseTest &#39;s cap&#39; &#39;pain&#39;&gt;&gt;      Groans */
 /*&lt;&lt;npcNoiseTest &#39;ing cap&#39; &#39;pain&#39;&gt;&gt;    Groaning */
-&lt;&lt;widget &quot;npcNoiseTest&quot;&gt;&gt;
+&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;
 	&lt;&lt;set _modeText = (_args[0] || &quot;base&quot;).toLowerCase()&gt;&gt;
 	&lt;&lt;set _modes = _modeText.trim().split(/\s+/)&gt;&gt;
 	&lt;&lt;set _type = _args[1] || &quot;pleasure&quot;&gt;&gt;
@@ -16996,6 +16998,60 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 	/* Get species and anthro subtype safely. */
 	&lt;&lt;set _species = _n &amp;&amp; _n.species ? _n.species : &quot;Default&quot;&gt;&gt;
 	&lt;&lt;set _subtype = _n &amp;&amp; _n.anthro &amp;&amp; _n.anthro.subtype ? _n.anthro.subtype : null&gt;&gt;
+
+	/* Try species first, then anthro subtype, then Default. */
+	&lt;&lt;set _defaultNoise = setup.noise.Default || {}&gt;&gt;
+	&lt;&lt;set _speciesNoise = setup.noise[_species]&gt;&gt;
+
+	&lt;&lt;if !_speciesNoise &amp;&amp; _subtype&gt;&gt;
+		&lt;&lt;set _speciesNoise = setup.noise[_subtype]&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if !_speciesNoise&gt;&gt;
+		&lt;&lt;set _speciesNoise = _defaultNoise&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* Get the requested noise type, then fallback safely. */
+	&lt;&lt;set _pool = _speciesNoise[_type] || _defaultNoise[_type] || _defaultNoise.pleasure || [&quot;moan&quot;]&gt;&gt;
+
+	&lt;&lt;set _noise = setup.pick(_pool)&gt;&gt;
+	&lt;&lt;set _out = _noise&gt;&gt;
+
+	/* Plural mode */
+	&lt;&lt;if _modes.indexOf(&quot;s&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;if _out.slice(-1) is &quot;y&quot;&gt;&gt;
+			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ies&quot;&gt;&gt;
+		&lt;&lt;elseif _out.slice(-1) is &quot;s&quot;&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;es&quot;&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;s&quot;&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+
+	/* -ing mode */
+	&lt;&lt;elseif _modes.indexOf(&quot;ing&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;if _out.slice(-1) is &quot;e&quot;&gt;&gt;
+			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ing&quot;&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;ing&quot;&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* Capitalize mode */
+	&lt;&lt;if _modes.indexOf(&quot;cap&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;set _out = _out.charAt(0).toUpperCase() + _out.slice(1)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;= _out&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;mcNoise&quot;&gt;&gt;
+	&lt;&lt;set _modeText = (_args[0] || &quot;base&quot;).toLowerCase()&gt;&gt;
+	&lt;&lt;set _modes = _modeText.trim().split(/\s+/)&gt;&gt;
+	&lt;&lt;set _type = _args[1] || &quot;pleasure&quot;&gt;&gt;
+
+	/* Get species and anthro subtype safely. */
+	&lt;&lt;set _species = $mc &amp;&amp; $mc.species ? $mc.species : &quot;Default&quot;&gt;&gt;
+	&lt;&lt;set _subtype = $mc &amp;&amp; _n.anthro &amp;&amp; $mc.anthro.subtype ? $mc.anthro.subtype : null&gt;&gt;
 
 	/* Try species first, then anthro subtype, then Default. */
 	&lt;&lt;set _defaultNoise = setup.noise.Default || {}&gt;&gt;
