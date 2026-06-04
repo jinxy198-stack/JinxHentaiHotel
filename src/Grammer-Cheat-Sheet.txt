@@ -1,0 +1,471 @@
+/* =========================================================
+   GRAMMAR HELPER NOTES
+   For Twine / SugarCube dialogue writing
+   =========================================================
+
+   Main idea:
+   These helpers let dialogue work whether the character is the MC
+   or an NPC.
+
+   MC examples:
+   - setup.ref($mc, "subj")      -> "you"
+   - setup.ref($mc, "subjCap")   -> "You"
+   - setup.ref($mc, "poss")      -> "your"
+   - setup.be($mc)               -> "are"
+   - setup.have($mc)             -> "have"
+
+   NPC examples:
+   - setup.ref(_n, "subj")       -> "Kevin"
+   - setup.ref(_n, "subjCap")    -> "Kevin"
+   - setup.ref(_n, "poss")       -> "Kevin's"
+   - setup.be(_n)                -> "is"
+   - setup.have(_n)              -> "has"
+
+
+   ---------------------------------------------------------
+   setup.isMC(char)
+   ---------------------------------------------------------
+   Checks if the character is the player character.
+
+   Example:
+   setup.isMC(_n)
+
+   Returns:
+   true  if _n is the MC
+   false if _n is an NPC
+
+
+   ---------------------------------------------------------
+   setup.ref(char, form)
+   ---------------------------------------------------------
+   Gets a name/player reference.
+
+   Forms:
+   "subj"     -> you / Kevin
+   "subjCap"  -> You / Kevin
+   "obj"      -> you / Kevin
+   "poss"     -> your / Kevin's
+   "refl"     -> yourself / Kevin
+
+   Examples:
+   <<= setup.ref(_n, "subjCap")>> smiles.
+   <<= setup.ref(_n, "poss")>> hand moves.
+
+   Outputs:
+   You smiles.       // if _n is MC, but this needs verb handling
+   Kevin smiles.     // if _n is NPC
+   your hand moves.
+   Kevin's hand moves.
+
+
+   ---------------------------------------------------------
+   setup.pro(char, form, cap)
+   ---------------------------------------------------------
+   Gets pronouns instead of names.
+
+   Forms:
+   "subj"     -> he / she / they / you
+   "obj"      -> him / her / them / you
+   "poss"     -> his / her / their / your
+   "possNoun" -> his / hers / theirs / yours
+   "refl"     -> himself / herself / themselves / yourself
+
+   cap:
+   true  -> Capitalize
+   false -> lowercase
+
+   Examples:
+   <<= setup.pro(_n, "subj", true)>> looks away.
+   <<= setup.pro(_n, "poss")>> expression changes.
+
+   Outputs:
+   He looks away.
+   Their expression changes.
+
+
+   ---------------------------------------------------------
+   setup.verb(char, base, thirdPerson)
+   ---------------------------------------------------------
+   Changes a verb depending on MC or NPC.
+
+   MC:
+   setup.verb($mc, "smile") -> "smile"
+
+   NPC:
+   setup.verb(_n, "smile") -> "smiles"
+
+   Examples:
+   <<= setup.ref(_n, "subjCap")>> <<= setup.verb(_n, "smile")>>.
+
+   Outputs:
+   You smile.
+   Kevin smiles.
+
+   thirdPerson is optional for irregular verbs.
+
+   Example:
+   setup.verb(_n, "go", "goes")
+
+
+   ---------------------------------------------------------
+   setup.verbEx(char, base, thirdPerson, asPronoun)
+   ---------------------------------------------------------
+   Better version of setup.verb when using pronouns.
+
+   Use asPronoun = true when the subject is a pronoun.
+
+   Example:
+   <<= setup.pro(_n, "subj", true)>> <<= setup.verbEx(_n, "smile", null, true)>>.
+
+   Outputs:
+   He smiles.
+   They smile.
+
+   Important:
+   This fixes problems like:
+   "They smiles"  // wrong
+   "They smile"   // correct
+
+
+   ---------------------------------------------------------
+   setup.be(char, tense)
+   ---------------------------------------------------------
+   Handles "is/are/was/were" for MC vs NPC by name.
+
+   Examples:
+   setup.be($mc)          -> "are"
+   setup.be(_n)           -> "is"
+   setup.be($mc, "past")  -> "were"
+   setup.be(_n, "past")   -> "was"
+
+   Example:
+   <<= setup.ref(_n, "subjCap")>> <<= setup.be(_n)>> nearby.
+
+   Outputs:
+   You are nearby.
+   Kevin is nearby.
+
+
+   ---------------------------------------------------------
+   setup.beEx(char, tense, asPronoun)
+   ---------------------------------------------------------
+   Better version of setup.be when using pronouns.
+
+   Example:
+   <<= setup.pro(_n, "subj", true)>> <<= setup.beEx(_n, "present", true)>> quiet.
+
+   Outputs:
+   He is quiet.
+   They are quiet.
+
+
+   ---------------------------------------------------------
+   setup.have(char)
+   ---------------------------------------------------------
+   Handles "have/has" for MC vs NPC by name.
+
+   Examples:
+   setup.have($mc) -> "have"
+   setup.have(_n)  -> "has"
+
+   Example:
+   <<= setup.ref(_n, "subjCap")>> <<= setup.have(_n)>> blue eyes.
+
+   Outputs:
+   You have blue eyes.
+   Kevin has blue eyes.
+
+
+   ---------------------------------------------------------
+   setup.haveEx(char, asPronoun)
+   ---------------------------------------------------------
+   Better version of setup.have when using pronouns.
+
+   Example:
+   <<= setup.pro(_n, "subj", true)>> <<= setup.haveEx(_n, true)>> blue eyes.
+
+   Outputs:
+   He has blue eyes.
+   They have blue eyes.
+
+
+   ---------------------------------------------------------
+   setup.doEx(char, asPronoun)
+   ---------------------------------------------------------
+   Handles "do/does".
+
+   Examples:
+   setup.doEx($mc)        -> "do"
+   setup.doEx(_n)         -> "does"
+   setup.doEx(_n, true)   -> "do" if they/them
+
+   Example:
+   <<= setup.pro(_n, "subj", true)>> <<= setup.doEx(_n, true)>> not move.
+
+   Outputs:
+   He does not move.
+   They do not move.
+
+
+   ---------------------------------------------------------
+   setup.part(char, key, fallback)
+   setup.partLower(char, key, fallback)
+   ---------------------------------------------------------
+   Gets body/property values safely.
+
+   Checks:
+   1. char[key]
+   2. char.body[key]
+   3. fallback
+
+   Examples:
+   setup.part(_n, "hair", "hair")
+   setup.partLower(_n, "hands", "hands")
+
+   Good for:
+   - hair
+   - eyes
+   - hands
+   - feet
+   - tail
+   - ears
+
+
+   ---------------------------------------------------------
+   setup.value(char, key, fallback)
+   setup.valueLower(char, key, fallback)
+   ---------------------------------------------------------
+   Gets a normal character value safely.
+
+   Unlike setup.part(), this only checks char[key].
+
+   Examples:
+   setup.value(_n, "species", "Human")
+   setup.valueLower(_n, "gender", "unknown")
+
+
+   ---------------------------------------------------------
+   setup.article(word)
+   ---------------------------------------------------------
+   Gives "a" or "an".
+
+   Examples:
+   setup.article("apple") -> "an"
+   setup.article("cat")   -> "a"
+
+
+   ---------------------------------------------------------
+   setup.articleEx(word)
+   setup.articlePhrase(word)
+   ---------------------------------------------------------
+   Improved article helper.
+
+   Examples:
+   setup.articleEx("hour")          -> "an"
+   setup.articleEx("university")    -> "a"
+   setup.articlePhrase("apple")     -> "an apple"
+   setup.articlePhrase("cat")       -> "a cat"
+
+
+   ---------------------------------------------------------
+   setup.plural(count, singular, plural)
+   ---------------------------------------------------------
+   Simple plural helper.
+
+   Examples:
+   setup.plural(1, "hand")      -> "hand"
+   setup.plural(2, "hand")      -> "hands"
+   setup.plural(2, "person", "people") -> "people"
+
+
+   ---------------------------------------------------------
+   setup.pluralize(word, count, customPlural)
+   ---------------------------------------------------------
+   Better plural helper.
+
+   Examples:
+   setup.pluralize("hand", 2)    -> "hands"
+   setup.pluralize("box", 2)     -> "boxes"
+   setup.pluralize("body", 2)    -> "bodies"
+   setup.pluralize("person", 2)  -> "people"
+
+
+   ---------------------------------------------------------
+   setup.countPhrase(count, singular, plural)
+   ---------------------------------------------------------
+   Gives the number and correct noun.
+
+   Examples:
+   setup.countPhrase(1, "hand")   -> "1 hand"
+   setup.countPhrase(2, "hand")   -> "2 hands"
+   setup.countPhrase(2, "person") -> "2 people"
+
+
+   ---------------------------------------------------------
+   setup.list(arr)
+   ---------------------------------------------------------
+   Turns an array into a readable list.
+
+   Examples:
+   setup.list(["Kevin"]) 
+   -> "Kevin"
+
+   setup.list(["Kevin", "Yoichi"])
+   -> "Kevin and Yoichi"
+
+   setup.list(["Kevin", "Yoichi", "Alex"])
+   -> "Kevin, Yoichi, and Alex"
+
+
+   ---------------------------------------------------------
+   setup.cap(str)
+   ---------------------------------------------------------
+   Capitalizes the first letter.
+
+   Examples:
+   setup.cap("hello") -> "Hello"
+
+
+   ---------------------------------------------------------
+   setup.speakerName(char)
+   ---------------------------------------------------------
+   Gets display name for dialogue labels.
+
+   Examples:
+   setup.speakerName($mc) -> "You"
+   setup.speakerName(_n)  -> "Kevin"
+
+
+   ---------------------------------------------------------
+   setup.cleanText(str)
+   ---------------------------------------------------------
+   Cleans extra spaces before punctuation.
+
+   Example:
+   setup.cleanText("Hello , world !")
+   -> "Hello, world!"
+
+
+   ---------------------------------------------------------
+   setup.ordinal(num)
+   ---------------------------------------------------------
+   Converts numbers to 1st, 2nd, 3rd, etc.
+
+   Examples:
+   setup.ordinal(1)  -> "1st"
+   setup.ordinal(2)  -> "2nd"
+   setup.ordinal(3)  -> "3rd"
+   setup.ordinal(4)  -> "4th"
+   setup.ordinal(11) -> "11th"
+   setup.ordinal(21) -> "21st"
+
+
+   ---------------------------------------------------------
+   setup.inflect(word, form)
+   ---------------------------------------------------------
+   Changes a word into another form.
+
+   Forms:
+   "base" -> moan
+   "s"    -> moans
+   "ing"  -> moaning
+   "ed"   -> moaned
+
+   Examples:
+   setup.inflect("moan", "s")    -> "moans"
+   setup.inflect("cry", "s")     -> "cries"
+   setup.inflect("cry", "ing")   -> "crying"
+   setup.inflect("move", "ing")  -> "moving"
+   setup.inflect("move", "ed")   -> "moved"
+
+
+   ---------------------------------------------------------
+   setup.getNoiseTable(char)
+   ---------------------------------------------------------
+   Gets the correct noise table.
+
+   Checks:
+   1. char.species
+   2. char.anthro.subtype
+   3. Default noise table
+
+   Useful because Anthro characters may have:
+   species: "Anthro"
+   anthro.subtype: "Canine"
+
+
+   ---------------------------------------------------------
+   setup.noiseWord(char, type, form)
+   ---------------------------------------------------------
+   Picks a noise and changes its grammar form.
+
+   Types:
+   "pleasure"
+   "pain"
+   "comfort"
+   "surprise"
+   "exertion"
+   "climax"
+
+   Forms:
+   "base"
+   "s"
+   "ing"
+   "ed"
+
+   Examples:
+   setup.noiseWord(_n, "comfort", "base") -> "sigh"
+   setup.noiseWord(_n, "comfort", "s")    -> "sighs"
+   setup.noiseWord(_n, "comfort", "ing")  -> "sighing"
+
+
+   ---------------------------------------------------------
+   Common Twine Examples
+   ---------------------------------------------------------
+
+   Name subject:
+   <<= setup.ref(_n, "subjCap")>> <<= setup.verb(_n, "smile")>>.
+
+   Output:
+   You smile.
+   Kevin smiles.
+
+
+   Pronoun subject:
+   <<= setup.pro(_n, "subj", true)>> <<= setup.beEx(_n, "present", true)>> quiet.
+
+   Output:
+   He is quiet.
+   They are quiet.
+
+
+   Possessive:
+   <<= setup.ref(_n, "poss")>> hand moves.
+
+   Output:
+   your hand moves.
+   Kevin's hand moves.
+
+
+   Noise:
+   <<= setup.ref(_n, "subjCap")>> <<= setup.noiseWord(_n, "comfort", "s")>> softly.
+
+   Output:
+   You sigh softly.
+   Kevin sighs softly.
+
+
+   Article:
+   You hear <<= setup.articlePhrase(setup.noiseWord(_n, "surprise", "base"))>>.
+
+   Output:
+   You hear a yelp.
+   You hear an honest gasp.
+
+
+   Count:
+   There <<= setup.beEx($mc)>> <<= setup.countPhrase(2, "person")>> nearby.
+
+   Output:
+   There are 2 people nearby.
+*/

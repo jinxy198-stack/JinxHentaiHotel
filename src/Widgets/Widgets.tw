@@ -115,13 +115,25 @@
 	<<= _out>>
 <</widget>>
 
-<<widget "gram">>
-	<<= setup.ref(_args[0], _args[1] || "subj") >>
-<</widget>>
+<<widget "gram">><<= setup.ref(_args[0], _args[1] || "subj") >><</widget>>
 
-<<widget "gverb">>
-	<<= setup.verb(_args[0], _args[1], _args[2]) >>
-<</widget>>
+<<widget "ref">><<= setup.ref(_args[0], _args[1] || "subj")>><</widget>>
+
+<<widget "pro">><<= setup.pro(_args[0], _args[1] || "subj", _args[2] || false)>><</widget>>
+
+<<widget "verb">><<= setup.verb(_args[0], _args[1] || "", _args[2])>><</widget>>
+
+<<widget "verbEx">><<= setup.verbEx(_args[0], _args[1] || "", _args[2], _args[3] || false)>><</widget>>
+
+<<widget "be">><<= setup.be(_args[0], _args[1] || "present")>><</widget>>
+
+<<widget "beEx">><<= setup.beEx(_args[0], _args[1] || "present", _args[2] || false)>><</widget>>
+
+<<widget "have">><<= setup.have(_args[0])>><</widget>>
+
+<<widget "haveEx">><<= setup.haveEx(_args[0], _args[1] || false)>><</widget>>
+
+<<widget "gverb">><<= setup.verb(_args[0], _args[1], _args[2]) >><</widget>>
 
 <<widget "ResolvePhysique">>
 	<<set _m = $physique.muscle>>

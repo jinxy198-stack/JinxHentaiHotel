@@ -3711,7 +3711,7 @@ setup.ref = function (char, form) {
 			return isMC ? "you" : name;
 
 		case "poss":
-			return isMC ? "your" : (/s$/i.test(name) ? name + "'" : name + "'s");
+			return isMC ? "your" : (/s$/i.test(name) ? name + "'" : name + "'s");	
 
 		case "refl":
 			return isMC ? "yourself" : name;
@@ -3857,6 +3857,415 @@ setup.cleanText = function (str) {
 };
 
 
+/* =========================
+   Safe Grammar Pronouns
+   ========================= */
+
+/*
+	Use a unique name so this does not conflict with any other
+	pronoun system you already have.
+*/
+setup.grammarPronouns = {
+	"He/Him": {
+		subj: "he",
+		obj: "him",
+		poss: "his",
+		possNoun: "his",
+		refl: "himself",
+		pluralVerb: false
+	},
+	"She/Her": {
+		subj: "she",
+		obj: "her",
+		poss: "her",
+		possNoun: "hers",
+		refl: "herself",
+		pluralVerb: false
+	},
+	"They/Them": {
+		subj: "they",
+		obj: "them",
+		poss: "their",
+		possNoun: "theirs",
+		refl: "themselves",
+		pluralVerb: true
+	},
+	"Ae/Aer": {
+		subj: "ae",
+		obj: "aer",
+		poss: "aer",
+		possNoun: "aers",
+		refl: "aerself",
+		pluralVerb: false
+	},
+	"E/Em": {
+		subj: "e",
+		obj: "em",
+		poss: "eir",
+		possNoun: "eirs",
+		refl: "emself",
+		pluralVerb: false
+	}
+};
+
+setup.normalizePronounKey = function (key) {
+	key = String(key || "").trim();
+
+	const map = {
+		"he": "He/Him",
+		"him": "He/Him",
+		"he/him": "He/Him",
+		"male": "He/Him",
+
+		"she": "She/Her",
+		"her": "She/Her",
+		"she/her": "She/Her",
+		"female": "She/Her",
+
+		"they": "They/Them",
+		"them": "They/Them",
+		"they/them": "They/Them",
+		"nonbinary": "They/Them",
+		"non-binary": "They/Them",
+
+		"ae/aer": "Ae/Aer",
+		"e/em": "E/Em"
+	};
+
+	return map[key.toLowerCase()] || key || "They/Them";
+};
+
+setup.getPronouns = function (char) {
+	const fallback = setup.grammarPronouns["They/Them"];
+
+	if (!char) {
+		return fallback;
+	}
+
+	const rawKey = char.pronouns || char.pronoun || char.pronounSet || char.gender || "They/Them";
+	const key = setup.normalizePronounKey(rawKey);
+
+	return setup.grammarPronouns[key] || fallback;
+};
+
+setup.pro = function (char, form, cap) {
+	if (!char) {
+		return "";
+	}
+
+	if (setup.isMC(char)) {
+		switch (form) {
+			case "subj":
+				return cap ? "You" : "you";
+			case "obj":
+				return cap ? "You" : "you";
+			case "poss":
+				return cap ? "Your" : "your";
+			case "possNoun":
+				return cap ? "Yours" : "yours";
+			case "refl":
+				return cap ? "Yourself" : "yourself";
+			default:
+				return cap ? "You" : "you";
+		}
+	}
+
+	const p = setup.getPronouns(char) || setup.grammarPronouns["They/Them"];
+
+	let word;
+
+	switch (form) {
+		case "subj":
+			word = p.subj;
+			break;
+		case "obj":
+			word = p.obj;
+			break;
+		case "poss":
+			word = p.poss;
+			break;
+		case "possNoun":
+			word = p.possNoun;
+			break;
+		case "refl":
+			word = p.refl;
+			break;
+		default:
+			word = p.subj;
+			break;
+	}
+
+	word = word || "they";
+
+	return cap ? setup.cap(word) : word;
+};
+
+setup.usesPluralVerb = function (char, asPronoun) {
+	if (setup.isMC(char)) {
+		return true;
+	}
+
+	if (asPronoun) {
+		const p = setup.getPronouns(char);
+		return p && p.pluralVerb === true;
+	}
+
+	return false;
+};
+
+/* More flexible verb helper.
+   Use asPronoun: true when the subject is a pronoun.
+*/
+setup.verbEx = function (char, base, thirdPerson, asPronoun) {
+	if (setup.usesPluralVerb(char, asPronoun)) {
+		return base;
+	}
+
+	return setup.verb(char, base, thirdPerson);
+};
+
+setup.beEx = function (char, tense, asPronoun) {
+	tense = tense || "present";
+
+	const plural = setup.usesPluralVerb(char, asPronoun);
+
+	if (tense === "past") {
+		return plural ? "were" : "was";
+	}
+
+	return plural ? "are" : "is";
+};
+
+setup.haveEx = function (char, asPronoun) {
+	return setup.usesPluralVerb(char, asPronoun) ? "have" : "has";
+};
+
+setup.doEx = function (char, asPronoun) {
+	return setup.usesPluralVerb(char, asPronoun) ? "do" : "does";
+};
+
+/* Possessive name helper: James' / Kevin's */
+setup.namePoss = function (name) {
+	name = String(name || "Someone").trim();
+	return /s$/i.test(name) ? name + "'" : name + "'s";
+};
+
+/* Improved article helper.
+   Handles: an hour, a university, a one-time thing.
+*/
+setup.articleEx = function (word) {
+	word = String(word || "").trim();
+	if (!word) {
+		return "";
+	}
+
+	const lower = word.toLowerCase();
+
+	if (/^(honest|honor|hour|heir)\b/.test(lower)) {
+		return "an";
+	}
+
+	if (/^(university|unicorn|unique|user|useful|unit|usual)\b/.test(lower)) {
+		return "a";
+	}
+
+	if (/^one\b/.test(lower)) {
+		return "a";
+	}
+
+	return /^[aeiou]/i.test(word) ? "an" : "a";
+};
+
+setup.articlePhrase = function (word) {
+	word = String(word || "").trim();
+	if (!word) {
+		return "";
+	}
+
+	return setup.articleEx(word) + " " + word;
+};
+
+/* Better plural helper with some irregular words. */
+setup.irregularPlurals = {
+	person: "people",
+	man: "men",
+	woman: "women",
+	child: "children",
+	foot: "feet",
+	tooth: "teeth",
+	mouse: "mice",
+	goose: "geese",
+	knife: "knives",
+	wife: "wives",
+	leaf: "leaves",
+	wolf: "wolves"
+};
+
+setup.pluralize = function (word, count, customPlural) {
+	word = String(word || "");
+
+	if (count === 1) {
+		return word;
+	}
+
+	if (customPlural) {
+		return customPlural;
+	}
+
+	const lower = word.toLowerCase();
+
+	if (setup.irregularPlurals[lower]) {
+		return setup.irregularPlurals[lower];
+	}
+
+	if (/(s|sh|ch|x|z)$/i.test(word)) {
+		return word + "es";
+	}
+
+	if (/[^aeiou]y$/i.test(word)) {
+		return word.slice(0, -1) + "ies";
+	}
+
+	if (/(f)$/i.test(word)) {
+		return word.slice(0, -1) + "ves";
+	}
+
+	if (/(fe)$/i.test(word)) {
+		return word.slice(0, -2) + "ves";
+	}
+
+	return word + "s";
+};
+
+setup.countPhrase = function (count, singular, plural) {
+	return count + " " + setup.pluralize(singular, count, plural);
+};
+
+/* Ordinals: 1st, 2nd, 3rd, 4th, 11th, 21st */
+setup.ordinal = function (num) {
+	num = Number(num);
+
+	const mod100 = num % 100;
+
+	if (mod100 >= 11 && mod100 <= 13) {
+		return num + "th";
+	}
+
+	switch (num % 10) {
+		case 1:
+			return num + "st";
+		case 2:
+			return num + "nd";
+		case 3:
+			return num + "rd";
+		default:
+			return num + "th";
+	}
+};
+
+/* General word inflection.
+   Useful for noises and action words:
+   moan -> moans / moaning / moaned
+   cry -> cries / crying / cried
+*/
+setup.inflect = function (word, form) {
+	word = String(word || "");
+
+	if (!word) {
+		return "";
+	}
+
+	form = form || "base";
+
+	if (form === "base") {
+		return word;
+	}
+
+	if (form === "s") {
+		if (/(s|sh|ch|x|z|o)$/i.test(word)) {
+			return word + "es";
+		}
+		if (/[^aeiou]y$/i.test(word)) {
+			return word.slice(0, -1) + "ies";
+		}
+		return word + "s";
+	}
+
+	if (form === "ing") {
+		if (/ie$/i.test(word)) {
+			return word.slice(0, -2) + "ying";
+		}
+		if (/[^e]e$/i.test(word) && !/(ee|ye|oe)$/i.test(word)) {
+			return word.slice(0, -1) + "ing";
+		}
+		return word + "ing";
+	}
+
+	if (form === "ed") {
+		if (/e$/i.test(word)) {
+			return word + "d";
+		}
+		if (/[^aeiou]y$/i.test(word)) {
+			return word.slice(0, -1) + "ied";
+		}
+		return word + "ed";
+	}
+
+	return word;
+};
+
+setup.pickOne = function (arr) {
+	arr = arr || [];
+	if (arr.length === 0) {
+		return "";
+	}
+
+	if (setup.pick) {
+		return setup.pick(arr);
+	}
+
+	return arr[Math.floor(Math.random() * arr.length)];
+};
+
+setup.getNoiseTable = function (char) {
+	if (!char) {
+		return setup.noise.Default;
+	}
+
+	/* Direct species match: Human, Canine, Feline, etc. */
+	if (char.species && setup.noise[char.species]) {
+		return setup.noise[char.species];
+	}
+
+	/* Anthro subtype match: Bunny, Fox, Canine, Feline, etc. */
+	if (char.anthro && char.anthro.subtype && setup.noise[char.anthro.subtype]) {
+		return setup.noise[char.anthro.subtype];
+	}
+
+	return setup.noise.Default;
+};
+
+setup.noiseWord = function (char, type, form) {
+	type = type || "pleasure";
+	form = form || "base";
+
+	const table = setup.getNoiseTable(char);
+	const defaultTable = setup.noise.Default;
+
+	let pool = table[type];
+
+	if (!pool && defaultTable) {
+		pool = defaultTable[type];
+	}
+
+	if (!pool) {
+		pool = ["moan"];
+	}
+
+	const word = setup.pickOne(pool);
+
+	return setup.inflect(word, form);
+};
 setup.noise = {
     Human:{
 		"pleasure": ["moan"],
@@ -11963,27 +12372,32 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 		&quot;Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you spear your &lt;&lt;= _mcVag &gt;&gt; on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="Against-Wall-Dialogue" tags="nobr Dialogue" position="975,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
-&lt;&lt;PronounsSet&gt;&gt;
+&lt;&lt;set _top = $sex.role == &quot;Top&quot; ? $mc : _n&gt;&gt;
+&lt;&lt;set _bottom = $sex.role == &quot;Top&quot; ? _n : $mc&gt;&gt;
+&lt;&lt;set _loc = ($room &amp;&amp; $room.location) ? $room.location : &quot;wall&quot;&gt;&gt;
+
 /* Supposed to be facing each other against the wall. */
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    &lt;&lt;=either(
-        &quot;You&#39;re standing behind _n.name as they brace themself against the $room.location.&quot;
-    )&gt;&gt;
-&lt;&lt;else&gt;&gt;
-    &lt;&lt;=either(
-        &quot;You&#39;r back is against the $room.location with _n.name in front of you.&quot;,
-        &quot;_n.name leans you against the $room.location.&quot;
-    )&gt;&gt;
+	&lt;&lt;= either(
+		&quot;You&#39;re standing behind &lt;&lt;ref _bottom &#39;obj&#39;&gt;&gt; as &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verbEx _bottom &#39;brace&#39; null true&gt;&gt; &lt;&lt;pro _bottom &#39;refl&#39;&gt;&gt; against the &lt;&lt;= _loc&gt;&gt;.&quot;,
+		&quot;&lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;lean&#39;&gt;&gt; forward against the &lt;&lt;= _loc&gt;&gt; while you stand close behind.&quot;
+	)&gt;&gt;
+
+&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
+	&lt;&lt;= either(
+		&quot;Your back is against the &lt;&lt;= _loc&gt;&gt; with &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; in front of you.&quot;,
+		&quot;&lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;lean&#39;&gt;&gt; you against the &lt;&lt;= _loc&gt;&gt;.&quot;
+	)&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="Against-Wall-From-Behind-Dialogue" tags="nobr" position="850,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;You quickly move up against a nearby wall. Placing your &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; against the solid surface in front of you, you push your &lt;&lt;= setup.valueLower($mc, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass out and shake it at _n.name, trying to encourage $proset.them to fuck you like this.&quot;
+		&quot;&lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; quickly move up against a nearby wall. Placing &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; against the solid surface in front of &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt;, &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; push &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.valueLower($mc, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass out and shake it at &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;, trying to encourage &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; to fuck &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; like this.&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;Taking hold of $proset.their shoulders, you push $proset.them up against a nearby wall.&quot;,
-		&quot;Grinding your body against $proset.their back, _n.name feels your breath on the side of $proset.their &lt;&lt;= setup.partLower(_n, &#39;Ear&#39;, &#39;head&#39;) &gt;&gt;.&quot;
+		&quot;Taking hold of &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; shoulders, &lt;&lt;ref _top &#39;poss&#39;&gt;&gt; push &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; up against a nearby wall.&quot;,
+		&quot;Grinding &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; body against &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; back, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; feels &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; breath on the side of &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_n, &#39;Ear&#39;, &#39;head&#39;) &gt;&gt;.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="Bent-Over-Dialogue" tags="nobr" position="975,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
     You bend _n.name over on the $room.location and step up behind $proset.them.
@@ -12207,7 +12621,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; lie on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; side with &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; upper leg planted and intersecting with &lt;&lt;gram _top&#39;s subj&gt;&gt;, lining up your crotches together.&quot;
+		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; lie on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; side with &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; upper leg planted and intersecting with &lt;&lt;gram _top &#39;subj&#39;&gt;&gt;, lining up your crotches together.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="Sitting-Dialogue" tags="nobr Dialogue" position="775,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
@@ -15478,8 +15892,8 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 
 	/* Setup encounter roles */
 	&lt;&lt;set $sex.roles = {
-		sub: $mc,
-		dom: $ui.npc
+		dom: $mc,
+		sub: $ui.npc
 	}&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
@@ -17098,13 +17512,25 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 	&lt;&lt;= _out&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
-&lt;&lt;widget &quot;gram&quot;&gt;&gt;
-	&lt;&lt;= setup.ref(_args[0], _args[1] || &quot;subj&quot;) &gt;&gt;
-&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &quot;gram&quot;&gt;&gt;&lt;&lt;= setup.ref(_args[0], _args[1] || &quot;subj&quot;) &gt;&gt;&lt;&lt;/widget&gt;&gt;
 
-&lt;&lt;widget &quot;gverb&quot;&gt;&gt;
-	&lt;&lt;= setup.verb(_args[0], _args[1], _args[2]) &gt;&gt;
-&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &quot;ref&quot;&gt;&gt;&lt;&lt;= setup.ref(_args[0], _args[1] || &quot;subj&quot;)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;pro&quot;&gt;&gt;&lt;&lt;= setup.pro(_args[0], _args[1] || &quot;subj&quot;, _args[2] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;verb&quot;&gt;&gt;&lt;&lt;= setup.verb(_args[0], _args[1] || &quot;&quot;, _args[2])&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;verbEx&quot;&gt;&gt;&lt;&lt;= setup.verbEx(_args[0], _args[1] || &quot;&quot;, _args[2], _args[3] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;be&quot;&gt;&gt;&lt;&lt;= setup.be(_args[0], _args[1] || &quot;present&quot;)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;beEx&quot;&gt;&gt;&lt;&lt;= setup.beEx(_args[0], _args[1] || &quot;present&quot;, _args[2] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;have&quot;&gt;&gt;&lt;&lt;= setup.have(_args[0])&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;haveEx&quot;&gt;&gt;&lt;&lt;= setup.haveEx(_args[0], _args[1] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;gverb&quot;&gt;&gt;&lt;&lt;= setup.verb(_args[0], _args[1], _args[2]) &gt;&gt;&lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;ResolvePhysique&quot;&gt;&gt;
 	&lt;&lt;set _m = $physique.muscle&gt;&gt;
