@@ -1,7 +1,7 @@
 :: Laid-Across-On-Back-Dialogue [nobr]
 
 <<if $sex.role == "Top">>
-    You push _n.name onto their back on the $room.location and step between their thighs.
+    <<ref _top 'subjCap'>> <<verb _top 'push'>> <<ref _bottom 'subj'>> onto <<pro _bottom 'poss'>> back on the <<= _spot>> and step between <<pro _bottom 'poss'>> thighs.
 <<elseif $sex.role == "Bottom">>
-    You lie back on the $room.location and _n.name steps between your thighs.
+    <<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> back on the <<= _spot>> and <<ref _top 'subj'>> <<verb _top 'step'>> between <<ref _bottom 'poss'>> thighs.
 <</if>>

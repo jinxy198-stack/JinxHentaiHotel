@@ -5816,12 +5816,12 @@ setup.sexpositions = {
     {
         label: "kneeling by face",
         "Bottom": ["Mouth"],
-        "Top": ["Penis"],
+        "Top": ["Penis", "Vagina"],
         "Bottom cum locations": ["on yourself"],
         "Top cum locations": ["on face", "on chest", "on breasts"],
         "label Top": "receiving",
         "label Bottom": "giving",
-        primary: false,
+        primary: true,
         furniture: ["horizontal surface"],
     },
     "Sixty-Nine":
@@ -12371,191 +12371,144 @@ _n.name rubs your &lt;&lt;= setup.partLower($mc, &#39;genitals&#39;, &#39;genita
 		&quot;Placing your &lt;&lt;= _mcHands &gt;&gt; on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you impale yourself on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;,
 		&quot;Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; as you spear your &lt;&lt;= _mcVag &gt;&gt; on _n.name&#39;s &lt;&lt;= _nGen &gt;&gt;.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="Against-Wall-Dialogue" tags="nobr Dialogue" position="975,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
-&lt;&lt;set _top = $sex.role == &quot;Top&quot; ? $mc : _n&gt;&gt;
-&lt;&lt;set _bottom = $sex.role == &quot;Top&quot; ? _n : $mc&gt;&gt;
-&lt;&lt;set _loc = ($room &amp;&amp; $room.location) ? $room.location : &quot;wall&quot;&gt;&gt;
-
-/* Supposed to be facing each other against the wall. */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="Against-Wall-Dialogue" tags="nobr Dialogue" position="975,1225" size="100,100">/* Supposed to be facing each other against the wall. */
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;You&#39;re standing behind &lt;&lt;ref _bottom &#39;obj&#39;&gt;&gt; as &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verbEx _bottom &#39;brace&#39; null true&gt;&gt; &lt;&lt;pro _bottom &#39;refl&#39;&gt;&gt; against the &lt;&lt;= _loc&gt;&gt;.&quot;,
-		&quot;&lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;lean&#39;&gt;&gt; forward against the &lt;&lt;= _loc&gt;&gt; while you stand close behind.&quot;
+		&quot;&lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;be _top &gt;&gt; standing behind &lt;&lt;ref _bottom &#39;obj&#39;&gt;&gt; as &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verbEx _bottom &#39;brace&#39; null true&gt;&gt; &lt;&lt;pro _bottom &#39;refl&#39;&gt;&gt; against the &lt;&lt;= _loc&gt;&gt;.&quot;,
+		&quot;&lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;lean&#39;&gt;&gt; forward against the &lt;&lt;= _loc&gt;&gt; while &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; stand close behind.&quot;
 	)&gt;&gt;
 
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;Your back is against the &lt;&lt;= _loc&gt;&gt; with &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; in front of you.&quot;,
-		&quot;&lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;lean&#39;&gt;&gt; you against the &lt;&lt;= _loc&gt;&gt;.&quot;
+		&quot;&lt;&lt;refcap _bottom &#39;poss&#39;&gt;&gt; back is against the &lt;&lt;= _loc&gt;&gt; with &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; in front of &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt;.&quot;,
+		&quot;&lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;lean&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; against the &lt;&lt;= _loc&gt;&gt;.&quot;
 	)&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="Against-Wall-From-Behind-Dialogue" tags="nobr" position="850,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;&lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; quickly move up against a nearby wall. Placing &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; against the solid surface in front of &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt;, &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; push &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.valueLower($mc, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass out and shake it at &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;, trying to encourage &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; to fuck &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; like this.&quot;
+		&quot;&lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; quickly &lt;&lt;verb _bottom &#39;move&#39;&gt;&gt; up against a nearby wall. Placing &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;Hands&#39;, &#39;hands&#39;) &gt;&gt; against the solid surface in front of &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt;, &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;push&#39;&gt;&gt; &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.valueLower(_bottom, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass out and &lt;&lt;verb _bottom &#39;shake&#39;&gt;&gt; it at &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;, trying to encourage &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; to fuck &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; like this.&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;Taking hold of &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; shoulders, &lt;&lt;ref _top &#39;poss&#39;&gt;&gt; push &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; up against a nearby wall.&quot;,
-		&quot;Grinding &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; body against &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; back, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; feels &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; breath on the side of &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_n, &#39;Ear&#39;, &#39;head&#39;) &gt;&gt;.&quot;
+		&quot;Taking hold of &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; shoulders, &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;push&#39;&gt;&gt; &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; up against a nearby wall.&quot;,
+		&quot;Grinding &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; body against &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; back, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;feel&#39;&gt;&gt; &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; breath on the side of &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_n, &#39;Ear&#39;, &#39;head&#39;) &gt;&gt;.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="Bent-Over-Dialogue" tags="nobr" position="975,1225" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    You bend _n.name over on the $room.location and step up behind $proset.them.
+    &lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; bend _n.name over on the $room.location and step up behind $proset.them.
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
     _n.name bends you over on the $room.location and steps up behind you.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="Cowgirl-Dialogue" tags="Dialogue nobr" position="875,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
-&lt;&lt;PronounsSet&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="Cowgirl-Dialogue" tags="Dialogue nobr" position="875,1225" size="100,100">&lt;&lt;PronounsSet&gt;&gt;
 
-&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || $mc&gt;&gt;
 &lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
 
 
 &lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
-		&quot;Taking hold of _n.name&#39;s shoulders, you push $proset.them down onto $proset.their back. &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; then lower yourself down on top of  $proset.them, bringing your crotch down to bump against $proset.theirs as you straddle $proset.them in the cowgirl position. Once you&#39;ve made yourself comfortable, you grin down at _n.name.&quot;,
-		&quot;Lifting your &lt;&lt;= setup.partLower($mc, &#39;Arms&#39;, &#39;arms&#39;) &gt;&gt;, you take hold of _n.name&#39;s shoulders, and with a little pressure, try to get $proset.them to drop down onto $proset.their back as you smirk. &quot;,
-		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; climb on top of _n.name, sitting &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.valueLower($mc, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass on their crotch.&quot;
+		&quot;Taking hold of &lt;&lt;ref _top &#39;poss&#39;&gt;&gt; shoulders, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; push &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; down onto &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; back. &lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; then &lt;&lt;verb _bottom &#39;lower&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;refl&#39;&gt;&gt; down on top of &lt;&lt;pro _top &#39;obj&#39;&gt;&gt;, bringing &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; butt down to bump against &lt;&lt;pro _top &#39;possNoun&#39;&gt;&gt; crotch as &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; straddle &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; in the cowgirl position. Once &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;have _bottom &gt;&gt; made &lt;&lt;ref _top &#39;refl&#39;&gt;&gt; comfortable, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;look&#39;&gt;&gt; down at &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;.&quot;,
+		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; climb on top of &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;, sitting &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.valueLower($mc, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass on &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; crotch.&quot;
 	)&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;=either(
-		&quot;Dropping down and quickly lying on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; back, _n.name gets on top and straddles &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; waist,&quot;,
-		&quot;Jumping down over the top of you, _n.name lowers $proset.themself down over &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; groin, bringing $proset.their crotch to yours as $proset.they straddle you in the cowgirl position. Leaning forward a little, $proset.they grin down at you.&quot;,
-		&quot;Allowing you to push  $proset.them down, _n.name reaches up and takes a firm grip on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, before pulling you down so that you&#39;re straddling $proset.them in the cowgirl position. Looking up into &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;=$mc.eyes.toLowerCase()&gt;&gt; eyes, $proset.they smile&quot;,
-		&quot;Taking hold of _n.name&#39;s shoulders, you pull $proset.them down with you as you lie down on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; back. With a firm grip on _n.name&#39;s &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, you push $proset.them back so that they are straddling you in the cowgirl position. Once you&#39;ve made yourself comfortable, you look up at _n.name and smile.&quot;,
-		&quot;_n.name climbed on top of you.&quot;
+		&quot;Dropping down and quickly lying on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; back, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; gets on top and straddles &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; waist,&quot;,
+		&quot;Jumping down over the top of &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; lowers &lt;&lt;ref _bottom &#39;refl&#39;&gt;&gt; down over &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; groin, bringing &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; crotch to &lt;&lt;pro _top &#39;possNoun&#39;&gt;&gt; as &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; straddle &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; in the cowgirl position. Leaning forward a little, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; grin down at &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;.&quot;,
+		&quot;Allowing &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; to push &lt;&lt;ref _bottom &#39;obj&#39;&gt;&gt; down, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; reaches up and takes a firm grip on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower($mc, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, before pulling &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; down so that &lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;be _top &gt;&gt; straddling &lt;&lt;ref _bottom &#39;obj&#39;&gt;&gt; in the cowgirl position. Looking up into &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;=$mc.eyes.toLowerCase()&gt;&gt; eyes, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; smile&quot;,
+		&quot;Taking hold of &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; shoulders, &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; pull &lt;&lt;ref _bottom &#39;obj&#39;&gt;&gt; down with &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; as &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; lie down on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; back. With a firm grip on &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt;, &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; push &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; back so that they are straddling &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; in the cowgirl position. Once &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;have _top &gt;&gt; made &lt;&lt;ref _top &#39;refl&#39;&gt;&gt; comfortable, &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; look up at &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; and smile.&quot;,
+		&quot;&lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;climb&#39;&gt;&gt; on top of &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;.&quot;
 	)&gt;&gt;
 	&lt;br&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="Doggystyle-Dialogue" tags="nobr Dialogue" position="675,1325" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
-&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="Doggystyle-Dialogue" tags="nobr Dialogue" position="675,1325" size="100,100">&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
 
-&lt;&lt;set _npc = _n&gt;&gt;
 &lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;if $sex.role== &quot;Bottom&quot;&gt;&gt; /*If you are the bottom */
 	&lt;&lt;=either(
-    &quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; drop down on all fours, facing away from &lt;&lt;gram _top &#39;subj&#39;&gt;&gt;.&quot;,
+    &quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;drop&#39;&gt;&gt; down on all fours, facing away from &lt;&lt;gram _top &#39;subj&#39;&gt;&gt;.&quot;,
     &quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; get on all fours, presenting &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; ass out towards &lt;&lt;gram _top &#39;subj&#39;&gt;&gt;.&quot;
     )&gt;&gt;
-    &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; climbs up onto &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; behind.
+    &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;climb&#39;&gt;&gt; up onto &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; behind.
     &lt;br&gt;
 &lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;=either(
-	&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; get on all fours like a dog, and present their &lt;&lt;= setup.partLower(_bottom, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass to &lt;&lt;gram _top &#39;subj&#39;&gt;&gt;.&quot;,
+	&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; get on all fours like a dog, and &lt;&lt;verb _bottom &#39;present&#39;&gt;&gt; &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;assSize&#39;, &#39;average&#39;) &gt;&gt; ass to &lt;&lt;gram _top &#39;subj&#39;&gt;&gt;.&quot;,
     &quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; mount &lt;&lt;gram _top &#39;refl&#39;&gt;&gt; over &lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt;.&quot;
     )&gt;&gt;
     &lt;&lt;if _h is -1&gt;&gt;
-        Because of the height difference, &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; legs nearly dangle over them.
+        Because of the height difference, &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; legs nearly dangle over &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt;.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="Double-Decker-Dialogue" tags="nobr" position="100,1350" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
-&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
-
-&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; are underneath &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; as $proset.they stretch out on their back on the &lt;&lt;=_spot&gt;&gt;. They lay their back on &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; like a recliner.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="101" name="Double-Decker-Dialogue" tags="nobr" position="100,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+    &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;be _top&gt;&gt; underneath &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; as &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; stretch out on &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; back on the &lt;&lt;=_spot&gt;&gt;. &lt;&lt;pro _bottom &#39;obj&#39; true &gt;&gt; lay their back on &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; like a recliner.
 
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-    &lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; are on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; back on the &lt;&lt;=_spot&gt;&gt; atop _n.name, laying on them like a recliner.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="Facesit-Dialogue" tags="nobr Dialogue" position="1075,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
-&lt;&lt;PronounsSet&gt;&gt;
+    &lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; are on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; back on the &lt;&lt;=_spot&gt;&gt; atop &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;, laying on them like a recliner.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="Facesit-Dialogue" tags="nobr Dialogue" position="1075,1325" size="100,100">&lt;&lt;PronounsSet&gt;&gt;
 
-&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
 &lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
 
 
 &lt;&lt;if $sex.role==&quot;Top&quot;&gt;&gt;
 	&lt;&lt;=either(
-	    &quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; pushes &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; onto &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; back and they lower themself over &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; face.&quot;
+	    &quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;push&#39;&gt;&gt; &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; onto &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; back and &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;lower&#39;&gt;&gt; &lt;&lt;pro _bottom &#39;refl&#39;&gt;&gt; over &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; face.&quot;
     )&gt;&gt;
 &lt;&lt;elseif $sex.role==&quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;=either(
-        &quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; push &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; onto their back and then lower &lt;&lt;gram _bottom &#39;refl&#39;&gt;&gt; over their face.&quot;
+        &quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;push&#39;&gt;&gt; &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; onto &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; back and then &lt;&lt;verb _bottom &#39;lower&#39;&gt;&gt; &lt;&lt;gram _bottom &#39;refl&#39;&gt;&gt; over &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; face.&quot;
     )&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="From-Behind-Dialogue" tags="nobr" position="350,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    You&#39;re behind _n.name, who is on all fours.
+    &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;be _top&gt;&gt; behind &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt;, who is on all fours.
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-    You&#39;re on all fours with _n.name behind you.
+    &lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;be _bottom&gt;&gt; on all fours with &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; behind &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt;.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="Kneeling-Between-Thighs-Dialogue" tags="nobr" position="475,1350" size="100,100">/* Same as Missionary? */
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    You part your thighs as _n.name kneels between them.
-
-&lt;&lt;else&gt;&gt;
-    _n.name parts their thighs as you kneel between them.
-
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="Kneeling-By-Face-Dialogue" tags="nobr" position="600,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    &lt;&lt;if $mc.genitals == &quot;penis&quot;&gt;&gt;
-        You kneel down, your dick is in $proset.their face.
-    &lt;&lt;else&gt;&gt;
-        You kneel down, your pussy is in $proset.their face.
-    &lt;&lt;/if&gt;&gt;
+    &lt;&lt;gram _top &#39;subjcap&#39;&gt;&gt; part &lt;&lt;ref _top &#39;poss&#39;&gt;&gt; thighs as &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;kneel&#39;&gt;&gt; between them.
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-    _n.name kneels down beside your head, $proset.their _n.genitals is in your face.
+    &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; parts &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; thighs as &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;kneel&#39;&gt;&gt; between them.
+
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="105" name="Kneeling-By-Face-Dialogue" tags="nobr" position="600,1350" size="100,100">&lt;&lt;if _top.genitals == &quot;Penis&quot;&gt;&gt;
+    &lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;kneel&#39;&gt;&gt; down by &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt;, &lt;&lt;ref _top &#39;poss&#39;&gt;&gt; dick is in &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; face.
+&lt;&lt;elseif _top.genitals == &quot;Vagina&quot;&gt;&gt;
+    &lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;kneel&#39;&gt;&gt; down, &lt;&lt;ref _top &#39;poss&#39;&gt;&gt; pussy is in &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; face.
+&lt;&lt;else&gt;&gt;
+    Error, the top&#39;s genitals cannot be determined.    
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="Kneeling-Dialogue" tags="nobr" position="725,1350" size="100,100">/* Should they both be kneeling? */
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-_n.name is kneeling before you.
+    &lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; is kneeling before &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;.
 
-&lt;&lt;else&gt;&gt;
-You&#39;re kneeling before _n.name, looking up at their _n.genitals.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="Kneeling-Over-Dialogue" tags="nobr" position="850,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    You lie back and pull _n.name over to kneel next to you.
-&lt;&lt;else&gt;&gt;
-    _n.name stretches out on $proset.their back and pulls you over to kneel next to them.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="Laid-Across-On-Back-Dialogue" tags="nobr" position="975,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    You push _n.name onto their back on the $room.location and step between their thighs.
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-    You lie back on the $room.location and _n.name steps between your thighs.
+    &lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;be _bottom&gt;&gt; kneeling before &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;, looking up at their _top.genitals.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="107" name="Kneeling-Over-Dialogue" tags="nobr" position="850,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+    &lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; lie back and pull &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; over to kneel next to you.
+&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
+    &lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;stretch&#39;&gt;&gt; out on &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; back and &lt;&lt;verb _bottom &#39;pull&#39;&gt;&gt; &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; over to kneel next to &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt;.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="Laid-Across-On-Back-Dialogue" tags="nobr" position="975,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+    &lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;push&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; onto &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; back on the &lt;&lt;= _spot&gt;&gt; and step between &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; thighs.
+&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
+    &lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;lie&#39;&gt;&gt; back on the &lt;&lt;= _spot&gt;&gt; and &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;step&#39;&gt;&gt; between &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; thighs.
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="109" name="Laid-Across-On-Stomach-Dialogue" tags="nobr" position="1100,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    You push _n.name onto their chest on the $room.location and you step up behind $proset.them.
-    &lt;&lt;if _n.body ==&quot;tail&quot;&gt;&gt;
-        Their tail wags in anticipation.
+    &lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;push&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; onto their chest on the &lt;&lt;= _spot&gt;&gt; and &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;step&#39;&gt;&gt; up behind &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt;.
+    &lt;&lt;if _bottom.body.Tail&gt;&gt;
+        &lt;&lt;pro _bottom &#39;poss&#39; true&gt;&gt; tail wags in anticipation.
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-    _n.name pushes you onto your chest on the $room.location and steps up behind you.
-    &lt;&lt;if $mc.body ==&quot;tail&quot;&gt;&gt;
-        Your tail wags in anticipation.
+    &lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;push&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; onto &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; chest on the &lt;&lt;= _spot&gt;&gt; and &lt;&lt;verb _top &#39;step&#39;&gt;&gt; up behind &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt;.
+    &lt;&lt;if _bottom.body.Tail&gt;&gt;
+        &lt;&lt;pro _bottom &#39;poss&#39; true&gt;&gt; tail wags in anticipation.
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="Laid-Across-Oral-Service-Dialogue" tags="nobr" position="1225,1350" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-        You push _n.name back on the $room.location and step up towards $proset.their head.
+        &lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;push&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; back on the &lt;&lt;= _spot&gt;&gt; and &lt;&lt;verb _top &#39;step&#39;&gt;&gt; up towards &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; head.
     &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-        You lie back on the $room.location as _n.name steps up towards your head.
-    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="Lap-ride-Dialogue" tags="nobr" position="100,1475" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || $mc&gt;&gt;
-
-&lt;&lt;if $sex.position == &quot;Lap ride&quot;&gt;&gt;
-	&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; sits on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; lap, looking at &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
-		) &gt;&gt;
-	&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; sits on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; lap, looking at &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
-		) &gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
+        &lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;lie&#39;&gt;&gt; back on the &lt;&lt;= _spot&gt;&gt; as &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;step&#39;&gt;&gt; up towards &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; head.
+    &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="Lap-ride-Dialogue" tags="nobr" position="100,1475" size="100,100">&lt;&lt;if $sex.position == &quot;Lap ride&quot;&gt;&gt;
+	&lt;&lt;= either(
+		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;sit&#39;&gt;&gt; on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; lap, looking at &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
+	) &gt;&gt;
 &lt;&lt;elseif $sex.position == &quot;Reverse Lap ride&quot;&gt;&gt;
-	&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; sits on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; lap, facing away from &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
-		) &gt;&gt;
-	&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-		&lt;&lt;= either(
-			&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; sits on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; lap, facing away from &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
-		) &gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="Mating-Press-Dialogue" tags="nobr" position="225,1475" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
-&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
+	&lt;&lt;= either(
+		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;sit&#39;&gt;&gt; on &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; lap, facing away from &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
+	) &gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="Mating-Press-Dialogue" tags="nobr" position="225,1475" size="100,100">&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
 
-&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-
-    You&#39;re on top of &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; on the $room.location, $proset.their legs pushed back towards $proset.their head
-
-&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-    You&#39;re on your back $room.location with &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; on top of you, your legs pushed back towards your head.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="Missionary-Dialogue" tags="nobr Dialogue" position="675,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
-&lt;&lt;PronounsSet&gt;&gt;
+&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;be _top&gt;&gt; on top of &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; on the _spot, &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; legs pushed back towards &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; head.</tw-passagedata><tw-passagedata pid="113" name="Missionary-Dialogue" tags="nobr Dialogue" position="675,1225" size="100,100">&lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;set _nLegs = setup.partLower(_n, &#39;Legs&#39;, &#39;legs&#39;)&gt;&gt;
 &lt;&lt;set _mcLegs = setup.partLower($mc, &#39;Legs&#39;, &#39;legs&#39;)&gt;&gt;
@@ -12564,80 +12517,65 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;Taking hold of _n.name&#39;s shoulders, you push $proset.them down onto $proset.their back. Kneeling between $proset.their &lt;&lt;=_nLegs&gt;&gt;, you pause and look down into $proset.their &lt;&lt;=_nEyes&gt;&gt; eyes.&quot;,
-		&quot;_n.name lies back on the bed and lifts $proset.their &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; into the air for you.&quot;,
-		&quot;You guide _n.name onto $proset.their back, settling yourself between $proset.their &lt;&lt;=_nLegs&gt;&gt; as you look down at $proset.them.&quot;,
-		&quot;_n.name lies beneath you, spreading $proset.their &lt;&lt;=_nLegs&gt;&gt; as you move into position.&quot;
+		&quot;Taking hold of &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; shoulders, &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;push&#39;&gt;&gt; &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; down onto &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; back. Kneeling between &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_nLegs&gt;&gt;, &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; pause and look down into &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_nEyes&gt;&gt; eyes.&quot;,
+		&quot;&lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;lie&#39;&gt;&gt; back on the bed and &lt;&lt;verb _top &#39;lift&#39;&gt;&gt; &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_n, &#39;Feet&#39;, &#39;feet&#39;) &gt;&gt; into the air for &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;.&quot;,
+		&quot;&lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;guide&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; onto &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; back, settling &lt;&lt;pro _top &#39;refl&#39;&gt;&gt; between &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_nLegs&gt;&gt; as &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;look&#39;&gt;&gt; down at &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt;.&quot;,
+		&quot;&lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;lie&#39;&gt;&gt; beneath &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;, spreading &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_nLegs&gt;&gt; as &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;move&#39;&gt;&gt; into position.&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;Looking up at _n.name, you bite your lip and let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; before spreading your &lt;&lt;=_mcLegs&gt;&gt; and presenting yourself, ready to be penetrated.&quot;,
-		&quot;You spread your &lt;&lt;=_mcLegs&gt;&gt; for _n.name, presenting yourself in anticipation of being penetrated.&quot;,
-		&quot;Pulling your &lt;&lt;=_mcFeet&gt;&gt; back to either side, you spread your &lt;&lt;=_mcLegs&gt;&gt;, enticing _n.name to penetrate you.&quot;,
-		&quot;You spread your &lt;&lt;=_mcLegs&gt;&gt;, looking up at _n.name and biting your lip as you entice $proset.them to take you.&quot;,
-		&quot;Much to your delight, _n.name kneels down between your &lt;&lt;=_mcLegs&gt;&gt;, and as $proset.they take hold of one to push it wider, you let out a moan.&quot;,
-		&quot;You lie back on the bed as _n.name crawls between your &lt;&lt;=_mcLegs&gt;&gt;.&quot;,
-		&quot;Lying on your back, you spread your &lt;&lt;=_mcLegs&gt;&gt; and look up at _n.name with a needy moan.&quot;
+		&quot;Looking up at &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;bite&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; lip and let out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt; before spreading &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_mcLegs&gt;&gt; and presenting &lt;&lt;pro _bottom &#39;refl&#39;&gt;&gt;, ready to be penetrated.&quot;,
+		&quot;&lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;spread&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_mcLegs&gt;&gt; for &lt;&lt;ref _top &#39;subj&#39;&gt;&gt;, presenting &lt;&lt;pro _bottom &#39;refl&#39;&gt;&gt; in anticipation of being penetrated.&quot;,
+		&quot;Pulling &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_mcFeet&gt;&gt; back to either side, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;spread&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_mcLegs&gt;&gt;, enticing &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; to penetrate &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt;.&quot;,
+		&quot;&lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;spread&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_mcLegs&gt;&gt;, looking up at &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; and biting &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; lip as &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;entice&#39;&gt;&gt; &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; to take &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt;.&quot;,
+		&quot;Much to &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; delight, &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; kneels down between &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_mcLegs&gt;&gt;, and as &lt;&lt;pro _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;take&#39;&gt;&gt; hold of one to push it wider, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;let&#39;&gt;&gt; out a &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;.&quot;,
+		&quot;&lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;lie&#39;&gt;&gt; back on the bed as &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;crawl&#39;&gt;&gt; between &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_mcLegs&gt;&gt;.&quot;,
+		&quot;Lying on &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; back, &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;spread&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_mcLegs&gt;&gt; and &lt;&lt;verb _bottom &#39;look&#39;&gt;&gt; up at &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; with a needy &lt;&lt;mcNoise &#39;base&#39; &#39;pleasure&#39;&gt;&gt;.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="Oral-Service-Dialogue" tags="nobr" position="475,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-        You&#39;re lying back on the $room.location with _n.name face between your thighs.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="Oral-Service-Dialogue" tags="nobr" position="475,1475" size="100,100">&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
+    &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+        &lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;be _top&gt;&gt; lying back on the _spot with &lt;&lt;ref _bottom &#39;poss&#39;&gt;&gt; face between &lt;&lt;ref _top &#39;poss&#39;&gt;&gt; thighs.
     &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-        Your face is between _n.name thighs as $proset.they lie back on the $room.location.
+        &lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; face is between &lt;&lt;ref _top &#39;poss&#39;&gt;&gt; thighs as &lt;&lt;pro _top &#39;subj&#39;&gt;&gt; lie back on the _spot.
     &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="Perched-Oral-Service-Dialogue" tags="nobr" position="600,1475" size="100,100">/* Other person is on a higher surface? */
     &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
         _n.name is kneeling between your thighs as you are perched on the $room.location.
     &lt;&lt;else&gt;&gt;
         You are kneeling between _n.name&#39;s parted thighs as $proset.they are on the $room.location.
     &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="116" name="Prone-Bone-Dialogue" tags="nobr" position="725,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    You role _n.name onto their stomach on the $room.location and you lay on them.
+    &lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;roll&#39;&gt;&gt; &lt;&lt;ref _bottom &#39;subj&#39;&gt;&gt; onto &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; stomach on the &lt;&lt;= _spot&gt;&gt; and &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;lay&#39;&gt;&gt; on &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt;.
     &lt;&lt;if _h is 1&gt;&gt;
         Your larger body nearly covers _n.name.
     &lt;&lt;elseif _h is -1&gt;&gt;
         The size difference between you two is pretty noticable.
     &lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
-    You roll onto your stomach on the $room.location as _n.name lays on you.
+    &lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;roll&#39;&gt;&gt; onto &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; stomach on the &lt;&lt;= _spot&gt;&gt; as &lt;&lt;ref _top&gt;&gt; &lt;&lt;verb _top &#39;lay&#39;&gt;&gt; on &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt;.
     &lt;&lt;if _h is 1&gt;&gt;
         The size difference between you two is pretty noticable.
     &lt;&lt;elseif _h is -1&gt;&gt;
         _n.name&#39;s body nearly envelops you with how large they are.
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="850,1475" size="100,100">&lt;&lt;if $sex.role == &quot;Bottom&quot;&gt;&gt;
-    You&#39;re on top of _n.name on the $room.location, straddling $proset.their hips, facing away to give them a view of your ass.
-&lt;&lt;elseif $sex.role == &quot;Top&quot;&gt;&gt;
-    _n.name is on top of you on the $room.location, straddling your hips, facing away to give you a view of their ass.
-
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="Scissor-Dialogue" tags="nobr" position="975,1475" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
-/*&lt;&lt;set _npc = _n&gt;&gt; */
-&lt;&lt;PronounsSet&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="ReverseCowgirl-Dialogue" tags="Dialogue nobr" position="850,1475" size="100,100">&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;be _bottom&gt;&gt; on top of &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; on the &lt;&lt;= _spot&gt;&gt;, straddling &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; hips, facing away to give &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; a view of &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; ass.</tw-passagedata><tw-passagedata pid="118" name="Scissor-Dialogue" tags="nobr" position="975,1475" size="100,100">&lt;&lt;PronounsSet&gt;&gt;
 
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
-        &quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; lie on &lt;&lt;gram _top poss&gt;&gt; side with &lt;&lt;gram _top poss&gt;&gt; upper leg planted and intersecting with &lt;&lt;gram _bottom subj&gt;&gt;, lining up your crotches together.&quot;
+        &quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;lie&#39;&gt;&gt; on &lt;&lt;gram _top poss&gt;&gt; side with &lt;&lt;gram _top poss&gt;&gt; upper leg planted and intersecting with &lt;&lt;gram _bottom subj&gt;&gt;, lining up your crotches together.&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; lie on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; side with &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; upper leg planted and intersecting with &lt;&lt;gram _top &#39;subj&#39;&gt;&gt;, lining up your crotches together.&quot;
+		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;lie&#39;&gt;&gt; on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; side with &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; upper leg planted and intersecting with &lt;&lt;gram _top &#39;subj&#39;&gt;&gt;, lining up your crotches together.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="Sitting-Dialogue" tags="nobr Dialogue" position="775,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
-&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
-&lt;&lt;set _seat = $room.location || &quot;floor&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="Sitting-Dialogue" tags="nobr Dialogue" position="775,1225" size="100,100">&lt;&lt;set _seat = $room.location || &quot;floor&quot;&gt;&gt;
 
 &lt;&lt;= either(
 	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; and &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; sit on the &lt;&lt;=_seat&gt;&gt;, within arm&#39;s reach.&quot;,
 	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; and &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; sit close together on the &lt;&lt;=_seat&gt;&gt;.&quot;,
 	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; and &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; settle down beside each other on the &lt;&lt;=_seat&gt;&gt;.&quot;
-) &gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="SixtyNine-Dialogue" tags="Dialogue nobr" position="775,1325" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
-&lt;&lt;PronounsSet&gt;&gt;
-
-&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
-&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
+) &gt;&gt;</tw-passagedata><tw-passagedata pid="120" name="SixtyNine-Dialogue" tags="Dialogue nobr" position="775,1325" size="100,100">&lt;&lt;PronounsSet&gt;&gt;
 
 &lt;&lt;set _nLegs = setup.partLower(_n, &#39;Legs&#39;, &#39;legs&#39;)&gt;&gt;
 &lt;&lt;set _nHips = setup.partLower(_n, &#39;Hips&#39;, &#39;hips&#39;)&gt;&gt;
@@ -12645,113 +12583,105 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;Dropping down onto all fours, &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; lower &lt;&lt;gram _top &#39;refl&#39;&gt;&gt; over &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt;, bringing &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; crotch down to $proset.their face as &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; dip &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; head between $proset.their &lt;&lt;=_nLegs&gt;&gt;.&quot;,
-		&quot;Allowing $proset.them to guide you down, you reach up and take a firm grip of $proset.their &lt;&lt;=_nHips&gt;&gt; before roughly tugging $proset.them into place above you in a sixty-nine.&quot;
+		&quot;Dropping down onto all fours, &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;lower&#39;&gt;&gt; &lt;&lt;gram _top &#39;refl&#39;&gt;&gt; over &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt;, bringing &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; crotch down to &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; face as &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;dip&#39;&gt;&gt; &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; head between &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_nLegs&gt;&gt;.&quot;,
+		&quot;Allowing &lt;&lt;ref _bottom &#39;obj&#39;&gt;&gt; to guide &lt;&lt;ref _top &#39;obj&#39;&gt;&gt; down, &lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;reach&#39;&gt;&gt; up and take a firm grip of &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_nHips&gt;&gt; before roughly tugging &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; into place above &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; in a sixty-nine.&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;Reaching up to take hold of _n.name&#39;s shoulders, you put on the most enticing look you can muster as you try to pull $proset.them down.&quot;,
-		&quot;Taking hold of _n.name&#39;s shoulders, you tug $proset.them down on top of you as you lie back. Pulling $proset.their &lt;&lt;=_nHips&gt;&gt; into place so that $proset.they&#39;re poised above you in a reversed all-fours position, you look up at $proset.their crotch hovering over your face and smirk.&quot;,
-		&quot;Sinking down onto your back, you put on the most enticing look you can muster.&quot;,
-		&quot;Jumping down onto all fours, _n.name lowers $proset.themself over the top of you, bringing $proset.their crotch down to your face as $proset.they dip $proset.their head between your &lt;&lt;=_mcLegs&gt;&gt;. Turning $proset.their head to look back at you, $proset.they grin.&quot;
+		&quot;Reaching up to take hold of &lt;&lt;ref _top &#39;poss&#39;&gt;&gt; shoulders, &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;put&#39;&gt;&gt; on the most enticing look &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; can muster as &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;try&#39;&gt;&gt; to pull &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; down.&quot;,
+		&quot;Taking hold of _n.name&#39;s shoulders, &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;tug&#39;&gt;&gt; &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; down on top of &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; as &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;lie&#39;&gt;&gt; back. Pulling &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; &lt;&lt;=_nHips&gt;&gt; into place so that &lt;&lt;pro _top &#39;subj&#39;&gt;&gt; &lt;&lt;be _top&gt;&gt; poised above &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; in a reversed all-fours position, &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;look&#39;&gt;&gt; up at &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; crotch hovering over &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; face and smirk.&quot;,
+		&quot;Sinking down onto &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; back, &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;put&#39;&gt;&gt; on the most enticing look &lt;&lt;pro _bottom &#39;subj&#39;&gt;&gt; can muster.&quot;,
+		&quot;Jumping down onto all fours, &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;lower&#39;&gt;&gt; &lt;&lt;pro _top &#39;refl&#39;&gt;&gt; over the top of &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt;, bringing &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; crotch down to &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; face as &lt;&lt;pro _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;dip&#39;&gt;&gt; &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; head between &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_mcLegs&gt;&gt;. Turning &lt;&lt;pro _top &#39;poss&#39;&gt;&gt; head to look back at &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt;, &lt;&lt;pro _top &#39;subj&#39;&gt;&gt; grin.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="Spooning-Dialogue" tags="nobr" position="100,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
-&lt;&lt;set _seat = $room.location || &quot;floor&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="Spooning-Dialogue" tags="nobr" position="100,1600" size="100,100">&lt;&lt;set _seat = $room.location || &quot;floor&quot;&gt;&gt;
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; nestles up against &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; back, spooning on the &lt;&lt;=_seat&gt;&gt;.&quot;,
+		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;nestle&#39;&gt;&gt; up against &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; back, spooning on the &lt;&lt;=_seat&gt;&gt;.&quot;,
 		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; lies close behind &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;, the two of them spooning on the &lt;&lt;=_seat&gt;&gt;.&quot;
 	) &gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;= either(
-		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; lies on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; side with &lt;&lt;gram _top &#39;obj&#39;&gt;&gt; nestled against &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; back, spooning on the &lt;&lt;=_seat&gt;&gt;.&quot;,
-		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; rests on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; side while &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; spoons close behind on the &lt;&lt;=_seat&gt;&gt;.&quot;
+		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; lies on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; side with &lt;&lt;gram _top &#39;obj&#39;&gt;&gt; nestled against &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; back, spooning on the _seat.&quot;,
+		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; rests on &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; side while &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; spoons close behind on the _seat.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="Squatting-Before-Dialogue" tags="nobr" position="225,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
-
-&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="122" name="Squatting-Before-Dialogue" tags="nobr" position="225,1600" size="100,100">&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; squats down in front of &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;, bringing &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_top, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right to &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; face.&quot;,
-		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; lowers &lt;&lt;gram _top &#39;refl&#39;&gt;&gt; in front of &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;, leaving &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_top, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right in front of &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; face.&quot;
+		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;squat&#39;&gt;&gt; down in front of &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;, bringing &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_top, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right to &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; face.&quot;,
+		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;lower&#39;&gt;&gt; &lt;&lt;gram _top &#39;refl&#39;&gt;&gt; in front of &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;, leaving &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_top, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right in front of &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; face.&quot;
 	) &gt;&gt;
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
 		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;gverb _bottom squat&gt;&gt; down in front of &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;, bringing &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right to &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; face.&quot;,
 		&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;gverb _bottom lower&gt;&gt; &lt;&lt;gram _bottom &#39;refl&#39;&gt;&gt; in front of &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;, leaving &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;genitals&#39;, &#39;genitals&#39;) &gt;&gt; right in front of &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; face.&quot;
 	) &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Standing-Dialogue" tags="nobr Dialogue" position="1175,1225" size="100,100">&lt;&lt;set _npc = _n&gt;&gt;
-&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
-
-&lt;&lt;= either(
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="Standing-Dialogue" tags="nobr Dialogue" position="1175,1225" size="100,100">&lt;&lt;= either(
 	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; and &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; stand face to face.&quot;,
-	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;gverb _top &#39;stand&#39; &#39;stands&#39;&gt;&gt; face to face with &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;.&quot;,
+	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;stand&#39;&gt;&gt; face to face with &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt;.&quot;,
 	&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; and &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; remain standing, facing each other.&quot;
-) &gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Standing-From-Behind-Dialogue" tags="nobr" position="475,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
-
-&lt;&lt;if $sex.previousPosition == &quot;Standing&quot;&gt;&gt;
+) &gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="Standing-From-Behind-Dialogue" tags="nobr" position="475,1600" size="100,100">&lt;&lt;if $sex.previousPosition == &quot;Standing&quot;&gt;&gt;
 	&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 		&lt;&lt;= either(
-			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; grasps &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; around.&quot;,
-			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; takes hold of &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; to face away.&quot;
+			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;grasp&#39;&gt;&gt; &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and &lt;&lt;verb _top &#39;turn&#39;&gt;&gt; &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; around.&quot;,
+			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;take&#39;&gt;&gt; hold of &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turn &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; to face away.&quot;
 		) &gt;&gt;
 	&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 		&lt;&lt;= either(
 			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; grasps &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; around.&quot;,
-			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; takes hold of &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; to face away.&quot;
+			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;take&#39;&gt;&gt; hold of &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; to face away.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $sex.previousPosition == &quot;Kneeling&quot;&gt;&gt;
 	&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 		&lt;&lt;= either(
-			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; pulls &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; to &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; feet, then grasps &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; to face away.&quot;,
-			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; helps &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; stand, then guides &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; until &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; is facing away.&quot;
+			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;pull&#39;&gt;&gt; &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; to &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; feet, then grasps &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and &lt;&lt;verb _top &#39;turn&#39;&gt;&gt; &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; to face away.&quot;,
+			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;help&#39;&gt;&gt; &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; stand, then guides &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; until &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; is facing away.&quot;
 		) &gt;&gt;
 	&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 		&lt;&lt;= either(
-			&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; rises to &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; feet, then turns to face away from &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;,
-			&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; stands and turns around, presenting &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; back to &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
+			&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;rise&#39;&gt;&gt; to &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; feet, then &lt;&lt;verb _bottom &#39;turn&#39;&gt;&gt; to face away from &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;,
+			&quot;&lt;&lt;gram _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _bottom &#39;stand&#39;&gt;&gt; and &lt;&lt;verb _bottom &#39;turn&#39;&gt;&gt; around, presenting &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; back to &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 		&lt;&lt;= either(
-			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; grasps &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; to face away.&quot;,
+			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;grasp&#39;&gt;&gt; &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; to face away.&quot;,
 			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; takes hold of &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and guides &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; around until &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; is facing away.&quot;
 		) &gt;&gt;
 	&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 		&lt;&lt;= either(
-			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; grasps &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; to face away.&quot;,
-			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; grabs &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; until &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; is facing away.&quot;
+			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;grasp&#39;&gt;&gt; &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; to face away.&quot;,
+			&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;verb _top &#39;grab&#39;&gt;&gt; &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; by the &lt;&lt;= setup.partLower(_bottom, &#39;Hips&#39;, &#39;hips&#39;) &gt;&gt; and turns &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; until &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt; &lt;&lt;be _bottom&gt;&gt; facing away.&quot;
 		) &gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Straddling-Chest-Dialogue" tags="nobr" position="600,1600" size="100,100">&lt;&lt;set _top = $sex.Top || $mc&gt;&gt;
-&lt;&lt;set _bottom = $sex.Bottom || _n&gt;&gt;
-&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="125" name="Straddling-Chest-Dialogue" tags="nobr" position="600,1600" size="100,100">&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
 
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
 		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;= setup.be(_top) &gt;&gt; on the &lt;&lt;=_spot&gt;&gt;, straddling &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest.&quot;,
 		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; settle onto the &lt;&lt;=_spot&gt;&gt;, straddling &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest.&quot;
 	) &gt;&gt;
-&lt;&lt;else&gt;&gt;
+&lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
 	&lt;&lt;= either(
-		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;= setup.be(_top) &gt;&gt; straddling &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest.&quot;,
-		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; settle over &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest, pinning &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; beneath &lt;&lt;gram _top &#39;obj&#39;&gt;&gt;.&quot;
+		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;= setup.be(_top) &gt;&gt; straddling &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; chest.&quot;,
+		&quot;&lt;&lt;gram _top &#39;subjCap&#39;&gt;&gt; settle over &lt;&lt;gram _bottom &#39;poss&#39;&gt;&gt; chest, pinning &lt;&lt;gram _bottom &#39;obj&#39;&gt;&gt; beneath &lt;&lt;pro _top &#39;obj&#39;&gt;&gt;.&quot;
 	) &gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="126" name="Underneath-Oral-Service-Dialogue" tags="nobr" position="725,1600" size="100,100">/* Not needed? */
     &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
-    _n.name is kneeling between your parted thighs as you sit at the $room.location.
-    &lt;&lt;else&gt;&gt;
-    You are kneeling between _n.name&#39;s parted thighs as they sit at the $room.location.
+        &lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; &lt;&lt;be _bottom&gt;&gt; kneeling between &lt;&lt;ref _top &#39;poss&#39;&gt;&gt; parted thighs as &lt;&lt;pro _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;sit&#39;&gt;&gt; at the &lt;&lt;= _spot&gt;&gt;.
+    &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
+        &lt;&lt;ref _bottom &#39;subjCap&#39;&gt;&gt; are kneeling between &lt;&lt;ref _top &#39;poss&#39;&gt;&gt; parted thighs as &lt;&lt;pro _top &#39;subj&#39;&gt;&gt; sit at the &lt;&lt;= _spot&gt;&gt;.
     &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="PositionDialogue" tags="nobr Dialogue" position="1100,1025" size="100,100">&lt;&lt;set _p = $sex.position or $position&gt;&gt;
+
+&lt;&lt;set _npc = _n&gt;&gt;
+&lt;&lt;set _top = $sex.role == &quot;Top&quot; ? $mc : _n&gt;&gt;
+&lt;&lt;set _bottom = $sex.role == &quot;Top&quot; ? _n : $mc&gt;&gt;
+&lt;&lt;set _loc = ($room &amp;&amp; $room.location) ? $room.location : &quot;wall&quot;&gt;&gt;
+&lt;&lt;set _spot = $room.location || &quot;floor&quot;&gt;&gt;
 
 /* POSITION (prints once per change) */
 
@@ -15799,11 +15729,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
             &quot;Ok, you top.&quot;
         &lt;&lt;/if&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="179" name="Adjective-Widget" tags="widget nobr" position="1100,2225" size="100,100">&lt;&lt;widget &quot;AnimalAdj&quot;&gt;&gt;
-&quot;growls&quot;, &quot;whines&quot;,&quot;yips&quot;,&quot;bark&quot;,&quot;roar&quot;,&quot;chitters&quot;,&quot;squeaks&quot;,&quot;chirps&quot;,&quot;screech&quot;,&quot;whinnies&quot;
-&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;CumAdj&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="179" name="Adjective-Widget" tags="widget nobr" position="1100,2225" size="100,100">&lt;&lt;widget &quot;CumAdj&quot;&gt;&gt;
 &quot;semen&quot;, &quot;sperm&quot;, &quot;cum&quot;
 &lt;&lt;/widget&gt;&gt;
 
@@ -15892,8 +15818,8 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 
 	/* Setup encounter roles */
 	&lt;&lt;set $sex.roles = {
-		dom: $mc,
-		sub: $ui.npc
+		sub: $mc,
+		dom: $ui.npc
 	}&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
@@ -15930,7 +15856,142 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
     &lt;&lt;SetTrans&gt;&gt;
     &lt;&lt;create-body $mc&gt;&gt;
     &lt;&lt;EnsureMCTrait &quot;Emissary&quot;&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="Event Widgets" tags="widget nobr" position="100,2350" size="100,100">&lt;&lt;widget &quot;YourRoomEvent&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="Dialogue-Widget" tags="widget nobr" position="100,2350" size="100,100">/* Example of uses: */
+/*&lt;&lt;npcNoiseTest &#39;base&#39; &#39;pain&#39;&gt;&gt;       groan */
+/*&lt;&lt;npcNoiseTest &#39;s&#39; &#39;pain&#39;&gt;&gt;          groans */
+/*&lt;&lt;npcNoiseTest &#39;ing&#39; &#39;pain&#39;&gt;&gt;        groaning */
+/*&lt;&lt;npcNoiseTest &#39;cap&#39; &#39;pain&#39;&gt;&gt;        Groan */
+/*&lt;&lt;npcNoiseTest &#39;s cap&#39; &#39;pain&#39;&gt;&gt;      Groans */
+/*&lt;&lt;npcNoiseTest &#39;ing cap&#39; &#39;pain&#39;&gt;&gt;    Groaning */
+&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;
+	&lt;&lt;set _modeText = (_args[0] || &quot;base&quot;).toLowerCase()&gt;&gt;
+	&lt;&lt;set _modes = _modeText.trim().split(/\s+/)&gt;&gt;
+	&lt;&lt;set _type = _args[1] || &quot;pleasure&quot;&gt;&gt;
+
+	/* Get species and anthro subtype safely. */
+	&lt;&lt;set _species = _n &amp;&amp; _n.species ? _n.species : &quot;Default&quot;&gt;&gt;
+	&lt;&lt;set _subtype = _n &amp;&amp; _n.anthro &amp;&amp; _n.anthro.subtype ? _n.anthro.subtype : null&gt;&gt;
+
+	/* Try species first, then anthro subtype, then Default. */
+	&lt;&lt;set _defaultNoise = setup.noise.Default || {}&gt;&gt;
+	&lt;&lt;set _speciesNoise = setup.noise[_species]&gt;&gt;
+
+	&lt;&lt;if !_speciesNoise &amp;&amp; _subtype&gt;&gt;
+		&lt;&lt;set _speciesNoise = setup.noise[_subtype]&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if !_speciesNoise&gt;&gt;
+		&lt;&lt;set _speciesNoise = _defaultNoise&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* Get the requested noise type, then fallback safely. */
+	&lt;&lt;set _pool = _speciesNoise[_type] || _defaultNoise[_type] || _defaultNoise.pleasure || [&quot;moan&quot;]&gt;&gt;
+
+	&lt;&lt;set _noise = setup.pick(_pool)&gt;&gt;
+	&lt;&lt;set _out = _noise&gt;&gt;
+
+	/* Plural mode */
+	&lt;&lt;if _modes.indexOf(&quot;s&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;if _out.slice(-1) is &quot;y&quot;&gt;&gt;
+			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ies&quot;&gt;&gt;
+		&lt;&lt;elseif _out.slice(-1) is &quot;s&quot;&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;es&quot;&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;s&quot;&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+
+	/* -ing mode */
+	&lt;&lt;elseif _modes.indexOf(&quot;ing&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;if _out.slice(-1) is &quot;e&quot;&gt;&gt;
+			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ing&quot;&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;ing&quot;&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* Capitalize mode */
+	&lt;&lt;if _modes.indexOf(&quot;cap&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;set _out = _out.charAt(0).toUpperCase() + _out.slice(1)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;= _out&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;mcNoise&quot;&gt;&gt;
+	&lt;&lt;set _modeText = (_args[0] || &quot;base&quot;).toLowerCase()&gt;&gt;
+	&lt;&lt;set _modes = _modeText.trim().split(/\s+/)&gt;&gt;
+	&lt;&lt;set _type = _args[1] || &quot;pleasure&quot;&gt;&gt;
+
+	/* Get species and anthro subtype safely. */
+	&lt;&lt;set _species = $mc &amp;&amp; $mc.species ? $mc.species : &quot;Default&quot;&gt;&gt;
+	&lt;&lt;set _subtype = $mc &amp;&amp; _n.anthro &amp;&amp; $mc.anthro.subtype ? $mc.anthro.subtype : null&gt;&gt;
+
+	/* Try species first, then anthro subtype, then Default. */
+	&lt;&lt;set _defaultNoise = setup.noise.Default || {}&gt;&gt;
+	&lt;&lt;set _speciesNoise = setup.noise[_species]&gt;&gt;
+
+	&lt;&lt;if !_speciesNoise &amp;&amp; _subtype&gt;&gt;
+		&lt;&lt;set _speciesNoise = setup.noise[_subtype]&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;if !_speciesNoise&gt;&gt;
+		&lt;&lt;set _speciesNoise = _defaultNoise&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* Get the requested noise type, then fallback safely. */
+	&lt;&lt;set _pool = _speciesNoise[_type] || _defaultNoise[_type] || _defaultNoise.pleasure || [&quot;moan&quot;]&gt;&gt;
+
+	&lt;&lt;set _noise = setup.pick(_pool)&gt;&gt;
+	&lt;&lt;set _out = _noise&gt;&gt;
+
+	/* Plural mode */
+	&lt;&lt;if _modes.indexOf(&quot;s&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;if _out.slice(-1) is &quot;y&quot;&gt;&gt;
+			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ies&quot;&gt;&gt;
+		&lt;&lt;elseif _out.slice(-1) is &quot;s&quot;&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;es&quot;&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;s&quot;&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+
+	/* -ing mode */
+	&lt;&lt;elseif _modes.indexOf(&quot;ing&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;if _out.slice(-1) is &quot;e&quot;&gt;&gt;
+			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ing&quot;&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;set _out = _out + &quot;ing&quot;&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	/* Capitalize mode */
+	&lt;&lt;if _modes.indexOf(&quot;cap&quot;) &gt;= 0&gt;&gt;
+		&lt;&lt;set _out = _out.charAt(0).toUpperCase() + _out.slice(1)&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+
+	&lt;&lt;= _out&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;gram&quot;&gt;&gt;&lt;&lt;= setup.ref(_args[0], _args[1] || &quot;subj&quot;) &gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;ref&quot;&gt;&gt;&lt;&lt;= setup.ref(_args[0], _args[1] || &quot;subj&quot;)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;refcap&quot;&gt;&gt;&lt;&lt;= setup.cap(setup.ref(_args[0], _args[1] || &quot;subj&quot;))&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;pro&quot;&gt;&gt;&lt;&lt;= setup.pro(_args[0], _args[1] || &quot;subj&quot;, _args[2] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;verb&quot;&gt;&gt;&lt;&lt;= setup.verb(_args[0], _args[1] || &quot;&quot;, _args[2])&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;verbEx&quot;&gt;&gt;&lt;&lt;= setup.verbEx(_args[0], _args[1] || &quot;&quot;, _args[2], _args[3] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;be&quot;&gt;&gt;&lt;&lt;= setup.be(_args[0], _args[1] || &quot;present&quot;)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;beEx&quot;&gt;&gt;&lt;&lt;= setup.beEx(_args[0], _args[1] || &quot;present&quot;, _args[2] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;have&quot;&gt;&gt;&lt;&lt;= setup.have(_args[0])&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;haveEx&quot;&gt;&gt;&lt;&lt;= setup.haveEx(_args[0], _args[1] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;gverb&quot;&gt;&gt;&lt;&lt;= setup.verb(_args[0], _args[1], _args[2]) &gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="182" name="Event Widgets" tags="widget nobr" position="225,2350" size="100,100">&lt;&lt;widget &quot;YourRoomEvent&quot;&gt;&gt;
     &lt;&lt;if !_n&gt;&gt;
 		[Error] No NPC is here.
 		&lt;&lt;return&gt;&gt;
@@ -15997,7 +16058,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 			&lt;&lt;replace &quot;#foodMenuUI&quot;&gt;&gt;&lt;&lt;FoodMenuUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;/link&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="182" name="NPC-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="NPC-Widgets" tags="widget nobr" position="400,150" size="100,100">&lt;&lt;widget &quot;MakeSNPC&quot;&gt;&gt;
 /* Creates a single Story NPC from a provided template and registers it globally */
 	&lt;&lt;if _args.length == 0&gt;&gt;
 		[Error] No template provided to MakeSNPC.
@@ -16881,7 +16942,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 &lt;&lt;if $mc.genitals &amp;&amp; String($mc.genitals).toLowerCase().includes(&quot;penis&quot;) &amp;&amp; !$mc.penislength&gt;&gt;
 	&lt;&lt;run _missing.push(&quot;Penis Length&quot;)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="UI-Widgets" tags="widget nobr" position="350,2350" size="100,100">/* gets the room based on your location and issues where you start at */
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="UI-Widgets" tags="widget nobr" position="475,2350" size="100,100">/* gets the room based on your location and issues where you start at */
 &lt;&lt;widget &quot;GetRoom&quot;&gt;&gt;
     &lt;&lt;if $gamelocation ==&quot;Your Room&quot;&gt;&gt;
         &lt;&lt;set $room = {
@@ -17397,142 +17458,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 			&lt;b&gt;Act:&lt;/b&gt; &lt;&lt;print $sex &amp;&amp; $sex.act ? $sex.act : &quot;None&quot;&gt;&gt;&lt;br&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;/div&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="Widgets" tags="widget nobr" position="475,2350" size="100,100">/* Example of uses: */
-/*&lt;&lt;npcNoiseTest &#39;base&#39; &#39;pain&#39;&gt;&gt;       groan */
-/*&lt;&lt;npcNoiseTest &#39;s&#39; &#39;pain&#39;&gt;&gt;          groans */
-/*&lt;&lt;npcNoiseTest &#39;ing&#39; &#39;pain&#39;&gt;&gt;        groaning */
-/*&lt;&lt;npcNoiseTest &#39;cap&#39; &#39;pain&#39;&gt;&gt;        Groan */
-/*&lt;&lt;npcNoiseTest &#39;s cap&#39; &#39;pain&#39;&gt;&gt;      Groans */
-/*&lt;&lt;npcNoiseTest &#39;ing cap&#39; &#39;pain&#39;&gt;&gt;    Groaning */
-&lt;&lt;widget &quot;npcNoise&quot;&gt;&gt;
-	&lt;&lt;set _modeText = (_args[0] || &quot;base&quot;).toLowerCase()&gt;&gt;
-	&lt;&lt;set _modes = _modeText.trim().split(/\s+/)&gt;&gt;
-	&lt;&lt;set _type = _args[1] || &quot;pleasure&quot;&gt;&gt;
-
-	/* Get species and anthro subtype safely. */
-	&lt;&lt;set _species = _n &amp;&amp; _n.species ? _n.species : &quot;Default&quot;&gt;&gt;
-	&lt;&lt;set _subtype = _n &amp;&amp; _n.anthro &amp;&amp; _n.anthro.subtype ? _n.anthro.subtype : null&gt;&gt;
-
-	/* Try species first, then anthro subtype, then Default. */
-	&lt;&lt;set _defaultNoise = setup.noise.Default || {}&gt;&gt;
-	&lt;&lt;set _speciesNoise = setup.noise[_species]&gt;&gt;
-
-	&lt;&lt;if !_speciesNoise &amp;&amp; _subtype&gt;&gt;
-		&lt;&lt;set _speciesNoise = setup.noise[_subtype]&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if !_speciesNoise&gt;&gt;
-		&lt;&lt;set _speciesNoise = _defaultNoise&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* Get the requested noise type, then fallback safely. */
-	&lt;&lt;set _pool = _speciesNoise[_type] || _defaultNoise[_type] || _defaultNoise.pleasure || [&quot;moan&quot;]&gt;&gt;
-
-	&lt;&lt;set _noise = setup.pick(_pool)&gt;&gt;
-	&lt;&lt;set _out = _noise&gt;&gt;
-
-	/* Plural mode */
-	&lt;&lt;if _modes.indexOf(&quot;s&quot;) &gt;= 0&gt;&gt;
-		&lt;&lt;if _out.slice(-1) is &quot;y&quot;&gt;&gt;
-			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ies&quot;&gt;&gt;
-		&lt;&lt;elseif _out.slice(-1) is &quot;s&quot;&gt;&gt;
-			&lt;&lt;set _out = _out + &quot;es&quot;&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;set _out = _out + &quot;s&quot;&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-
-	/* -ing mode */
-	&lt;&lt;elseif _modes.indexOf(&quot;ing&quot;) &gt;= 0&gt;&gt;
-		&lt;&lt;if _out.slice(-1) is &quot;e&quot;&gt;&gt;
-			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ing&quot;&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;set _out = _out + &quot;ing&quot;&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* Capitalize mode */
-	&lt;&lt;if _modes.indexOf(&quot;cap&quot;) &gt;= 0&gt;&gt;
-		&lt;&lt;set _out = _out.charAt(0).toUpperCase() + _out.slice(1)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;= _out&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;mcNoise&quot;&gt;&gt;
-	&lt;&lt;set _modeText = (_args[0] || &quot;base&quot;).toLowerCase()&gt;&gt;
-	&lt;&lt;set _modes = _modeText.trim().split(/\s+/)&gt;&gt;
-	&lt;&lt;set _type = _args[1] || &quot;pleasure&quot;&gt;&gt;
-
-	/* Get species and anthro subtype safely. */
-	&lt;&lt;set _species = $mc &amp;&amp; $mc.species ? $mc.species : &quot;Default&quot;&gt;&gt;
-	&lt;&lt;set _subtype = $mc &amp;&amp; _n.anthro &amp;&amp; $mc.anthro.subtype ? $mc.anthro.subtype : null&gt;&gt;
-
-	/* Try species first, then anthro subtype, then Default. */
-	&lt;&lt;set _defaultNoise = setup.noise.Default || {}&gt;&gt;
-	&lt;&lt;set _speciesNoise = setup.noise[_species]&gt;&gt;
-
-	&lt;&lt;if !_speciesNoise &amp;&amp; _subtype&gt;&gt;
-		&lt;&lt;set _speciesNoise = setup.noise[_subtype]&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;if !_speciesNoise&gt;&gt;
-		&lt;&lt;set _speciesNoise = _defaultNoise&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* Get the requested noise type, then fallback safely. */
-	&lt;&lt;set _pool = _speciesNoise[_type] || _defaultNoise[_type] || _defaultNoise.pleasure || [&quot;moan&quot;]&gt;&gt;
-
-	&lt;&lt;set _noise = setup.pick(_pool)&gt;&gt;
-	&lt;&lt;set _out = _noise&gt;&gt;
-
-	/* Plural mode */
-	&lt;&lt;if _modes.indexOf(&quot;s&quot;) &gt;= 0&gt;&gt;
-		&lt;&lt;if _out.slice(-1) is &quot;y&quot;&gt;&gt;
-			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ies&quot;&gt;&gt;
-		&lt;&lt;elseif _out.slice(-1) is &quot;s&quot;&gt;&gt;
-			&lt;&lt;set _out = _out + &quot;es&quot;&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;set _out = _out + &quot;s&quot;&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-
-	/* -ing mode */
-	&lt;&lt;elseif _modes.indexOf(&quot;ing&quot;) &gt;= 0&gt;&gt;
-		&lt;&lt;if _out.slice(-1) is &quot;e&quot;&gt;&gt;
-			&lt;&lt;set _out = _out.slice(0, -1) + &quot;ing&quot;&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;set _out = _out + &quot;ing&quot;&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	/* Capitalize mode */
-	&lt;&lt;if _modes.indexOf(&quot;cap&quot;) &gt;= 0&gt;&gt;
-		&lt;&lt;set _out = _out.charAt(0).toUpperCase() + _out.slice(1)&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;= _out&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;gram&quot;&gt;&gt;&lt;&lt;= setup.ref(_args[0], _args[1] || &quot;subj&quot;) &gt;&gt;&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;ref&quot;&gt;&gt;&lt;&lt;= setup.ref(_args[0], _args[1] || &quot;subj&quot;)&gt;&gt;&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;pro&quot;&gt;&gt;&lt;&lt;= setup.pro(_args[0], _args[1] || &quot;subj&quot;, _args[2] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;verb&quot;&gt;&gt;&lt;&lt;= setup.verb(_args[0], _args[1] || &quot;&quot;, _args[2])&gt;&gt;&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;verbEx&quot;&gt;&gt;&lt;&lt;= setup.verbEx(_args[0], _args[1] || &quot;&quot;, _args[2], _args[3] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;be&quot;&gt;&gt;&lt;&lt;= setup.be(_args[0], _args[1] || &quot;present&quot;)&gt;&gt;&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;beEx&quot;&gt;&gt;&lt;&lt;= setup.beEx(_args[0], _args[1] || &quot;present&quot;, _args[2] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;have&quot;&gt;&gt;&lt;&lt;= setup.have(_args[0])&gt;&gt;&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;haveEx&quot;&gt;&gt;&lt;&lt;= setup.haveEx(_args[0], _args[1] || false)&gt;&gt;&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;gverb&quot;&gt;&gt;&lt;&lt;= setup.verb(_args[0], _args[1], _args[2]) &gt;&gt;&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;ResolvePhysique&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="Widgets" tags="widget nobr" position="600,2350" size="100,100">&lt;&lt;widget &quot;ResolvePhysique&quot;&gt;&gt;
 	&lt;&lt;set _m = $physique.muscle&gt;&gt;
 	&lt;&lt;set _p = $physique.plump&gt;&gt;
 
@@ -18146,7 +18072,7 @@ You&#39;re kneeling before _n.name, looking up at their _n.genitals.
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;run setup.traits.addRandomTraits(_char, _max, { exact: _exact })&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="heighttest" tags="" position="600,2350" size="100,100">//example test:
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="186" name="heighttest" tags="" position="725,2350" size="100,100">//example test:
 &lt;&lt;set _h = &lt;&lt;HeightCompare&gt;&gt; &gt;&gt;
 
 &lt;&lt;if _h is 1&gt;&gt;

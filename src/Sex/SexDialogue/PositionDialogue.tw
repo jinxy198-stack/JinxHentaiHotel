@@ -1,6 +1,12 @@
 :: PositionDialogue [nobr Dialogue] {"position":"1100,1025","size":"100,100"}
 <<set _p = $sex.position or $position>>
 
+<<set _npc = _n>>
+<<set _top = $sex.role == "Top" ? $mc : _n>>
+<<set _bottom = $sex.role == "Top" ? _n : $mc>>
+<<set _loc = ($room && $room.location) ? $room.location : "wall">>
+<<set _spot = $room.location || "floor">>
+
 /* POSITION (prints once per change) */
 
 	<<switch _p>>

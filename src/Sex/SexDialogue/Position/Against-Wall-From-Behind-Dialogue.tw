@@ -2,12 +2,12 @@
 
 <<if $sex.role == "Bottom">>
 	<<= either(
-		"<<ref _bottom 'subjCap'>> quickly move up against a nearby wall. Placing <<ref _bottom 'poss'>> <<= setup.partLower($mc, 'Hands', 'hands') >> against the solid surface in front of <<pro _bottom 'obj'>>, <<pro _bottom 'subj'>> push <<pro _bottom 'poss'>> <<= setup.valueLower($mc, 'assSize', 'average') >> ass out and shake it at <<ref _top 'subj'>>, trying to encourage <<pro _top 'obj'>> to fuck <<pro _bottom 'obj'>> like this."
+		"<<ref _bottom 'subjCap'>> quickly <<verb _bottom 'move'>> up against a nearby wall. Placing <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hands', 'hands') >> against the solid surface in front of <<pro _bottom 'obj'>>, <<pro _bottom 'subj'>> <<verb _bottom 'push'>> <<pro _bottom 'poss'>> <<= setup.valueLower(_bottom, 'assSize', 'average') >> ass out and <<verb _bottom 'shake'>> it at <<ref _top 'subj'>>, trying to encourage <<pro _top 'obj'>> to fuck <<pro _bottom 'obj'>> like this."
 	) >>
 
 <<elseif $sex.role == "Top">>
 	<<= either(
-		"Taking hold of <<ref _bottom 'poss'>> shoulders, <<ref _top 'subj'>> push <<pro _bottom 'obj'>> up against a nearby wall.",
-		"Grinding <<pro _top 'poss'>> body against <<pro _bottom 'poss'>> back, <<ref _bottom 'subj'>> feels <<pro _top 'poss'>> breath on the side of <<pro _bottom 'poss'>> <<= setup.partLower(_n, 'Ear', 'head') >>."
+		"Taking hold of <<ref _bottom 'poss'>> shoulders, <<ref _top 'subj'>> <<verb _top 'push'>> <<pro _bottom 'obj'>> up against a nearby wall.",
+		"Grinding <<pro _top 'poss'>> body against <<pro _bottom 'poss'>> back, <<ref _bottom 'subj'>> <<verb _bottom 'feel'>> <<pro _top 'poss'>> breath on the side of <<pro _bottom 'poss'>> <<= setup.partLower(_n, 'Ear', 'head') >>."
 	) >>
 <</if>>

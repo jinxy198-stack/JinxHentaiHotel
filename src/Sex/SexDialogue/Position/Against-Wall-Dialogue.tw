@@ -1,21 +1,16 @@
 :: Against-Wall-Dialogue [nobr Dialogue] {"position":"975,1225","size":"100,100"}
 
-<<set _npc = _n>>
-<<set _top = $sex.role == "Top" ? $mc : _n>>
-<<set _bottom = $sex.role == "Top" ? _n : $mc>>
-<<set _loc = ($room && $room.location) ? $room.location : "wall">>
-
 /* Supposed to be facing each other against the wall. */
 
 <<if $sex.role == "Top">>
 	<<= either(
-		"You're standing behind <<ref _bottom 'obj'>> as <<pro _bottom 'subj'>> <<verbEx _bottom 'brace' null true>> <<pro _bottom 'refl'>> against the <<= _loc>>.",
-		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lean'>> forward against the <<= _loc>> while you stand close behind."
+		"<<ref _top 'subjCap'>> <<be _top >> standing behind <<ref _bottom 'obj'>> as <<pro _bottom 'subj'>> <<verbEx _bottom 'brace' null true>> <<pro _bottom 'refl'>> against the <<= _loc>>.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lean'>> forward against the <<= _loc>> while <<ref _top 'subj'>> stand close behind."
 	)>>
 
 <<elseif $sex.role == "Bottom">>
 	<<= either(
-		"Your back is against the <<= _loc>> with <<ref _top 'subj'>> in front of you.",
-		"<<ref _top 'subjCap'>> <<verb _top 'lean'>> you against the <<= _loc>>."
+		"<<refcap _bottom 'poss'>> back is against the <<= _loc>> with <<ref _top 'subj'>> in front of <<ref _bottom 'subj'>>.",
+		"<<ref _top 'subjCap'>> <<verb _top 'lean'>> <<ref _bottom 'subj'>> against the <<= _loc>>."
 	)>>
 <</if>>

@@ -1,6 +1,5 @@
 :: Missionary-Dialogue [nobr Dialogue] {"position":"675,1225","size":"100,100"}
 
-<<set _npc = _n>>
 <<PronounsSet>>
 
 <<set _nLegs = setup.partLower(_n, 'Legs', 'legs')>>
@@ -10,20 +9,20 @@
 
 <<if $sex.role == "Top">>
 	<<= either(
-		"Taking hold of _n.name's shoulders, you push $proset.them down onto $proset.their back. Kneeling between $proset.their <<=_nLegs>>, you pause and look down into $proset.their <<=_nEyes>> eyes.",
-		"_n.name lies back on the bed and lifts $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> into the air for you.",
-		"You guide _n.name onto $proset.their back, settling yourself between $proset.their <<=_nLegs>> as you look down at $proset.them.",
-		"_n.name lies beneath you, spreading $proset.their <<=_nLegs>> as you move into position."
+		"Taking hold of <<ref _bottom 'poss'>> shoulders, <<ref _top 'subj'>> <<verb _top 'push'>> <<pro _bottom 'obj'>> down onto <<pro _bottom 'poss'>> back. Kneeling between <<pro _bottom 'poss'>> <<=_nLegs>>, <<ref _top 'subj'>> pause and look down into <<pro _bottom 'poss'>> <<=_nEyes>> eyes.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> back on the bed and <<verb _top 'lift'>> <<pro _bottom 'poss'>> <<= setup.partLower(_n, 'Feet', 'feet') >> into the air for <<ref _top 'subj'>>.",
+		"<<ref _top 'subjCap'>> <<verb _top 'guide'>> <<ref _bottom 'subj'>> onto <<pro _bottom 'poss'>> back, settling <<pro _top 'refl'>> between <<pro _bottom 'poss'>> <<=_nLegs>> as <<ref _top 'subj'>> <<verb _top 'look'>> down at <<pro _bottom 'obj'>>.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> beneath <<ref _top 'subj'>>, spreading <<pro _bottom 'poss'>> <<=_nLegs>> as <<ref _top 'subj'>> <<verb _top 'move'>> into position."
 	) >>
 
 <<elseif $sex.role == "Bottom">>
 	<<= either(
-		"Looking up at _n.name, you bite your lip and let out a <<mcNoise 'base' 'pleasure'>> before spreading your <<=_mcLegs>> and presenting yourself, ready to be penetrated.",
-		"You spread your <<=_mcLegs>> for _n.name, presenting yourself in anticipation of being penetrated.",
-		"Pulling your <<=_mcFeet>> back to either side, you spread your <<=_mcLegs>>, enticing _n.name to penetrate you.",
-		"You spread your <<=_mcLegs>>, looking up at _n.name and biting your lip as you entice $proset.them to take you.",
-		"Much to your delight, _n.name kneels down between your <<=_mcLegs>>, and as $proset.they take hold of one to push it wider, you let out a moan.",
-		"You lie back on the bed as _n.name crawls between your <<=_mcLegs>>.",
-		"Lying on your back, you spread your <<=_mcLegs>> and look up at _n.name with a needy moan."
+		"Looking up at <<ref _top 'subj'>>, <<ref _bottom 'subj'>> <<verb _bottom 'bite'>> <<ref _bottom 'poss'>> lip and let out a <<mcNoise 'base' 'pleasure'>> before spreading <<ref _bottom 'poss'>> <<=_mcLegs>> and presenting <<pro _bottom 'refl'>>, ready to be penetrated.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_mcLegs>> for <<ref _top 'subj'>>, presenting <<pro _bottom 'refl'>> in anticipation of being penetrated.",
+		"Pulling <<ref _bottom 'poss'>> <<=_mcFeet>> back to either side, <<ref _bottom 'subj'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_mcLegs>>, enticing <<ref _top 'subj'>> to penetrate <<ref _bottom 'subj'>>.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_mcLegs>>, looking up at <<ref _top 'subj'>> and biting <<ref _bottom 'poss'>> lip as <<ref _bottom 'subj'>> <<verb _bottom 'entice'>> <<pro _top 'obj'>> to take <<ref _bottom 'subj'>>.",
+		"Much to <<ref _bottom 'poss'>> delight, <<ref _top 'subj'>> kneels down between <<ref _bottom 'poss'>> <<=_mcLegs>>, and as <<pro _top 'subj'>> <<verb _top 'take'>> hold of one to push it wider, <<ref _bottom 'subj'>> <<verb _bottom 'let'>> out a <<mcNoise 'base' 'pleasure'>>.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> back on the bed as <<ref _top 'subj'>> <<verb _top 'crawl'>> between <<ref _bottom 'poss'>> <<=_mcLegs>>.",
+		"Lying on <<ref _bottom 'poss'>> back, <<ref _bottom 'subj'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_mcLegs>> and <<verb _bottom 'look'>> up at <<ref _top 'subj'>> with a needy <<mcNoise 'base' 'pleasure'>>."
 	) >>
 <</if>>

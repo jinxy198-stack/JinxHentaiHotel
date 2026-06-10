@@ -1,12 +1,10 @@
 :: Squatting-Before-Dialogue [nobr]
 
-<<set _top = $sex.Top || $mc>>
-<<set _bottom = $sex.Bottom || _n>>
 
 <<if $sex.role == "Top">>
 	<<= either(
-		"<<gram _top 'subjCap'>> squats down in front of <<gram _bottom 'obj'>>, bringing <<gram _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> right to <<gram _bottom 'poss'>> face.",
-		"<<gram _top 'subjCap'>> lowers <<gram _top 'refl'>> in front of <<gram _bottom 'obj'>>, leaving <<gram _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> right in front of <<gram _bottom 'poss'>> face."
+		"<<gram _top 'subjCap'>> <<verb _top 'squat'>> down in front of <<gram _bottom 'obj'>>, bringing <<gram _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> right to <<pro _bottom 'poss'>> face.",
+		"<<gram _top 'subjCap'>> <<verb _top 'lower'>> <<gram _top 'refl'>> in front of <<gram _bottom 'obj'>>, leaving <<gram _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> right in front of <<pro _bottom 'poss'>> face."
 	) >>
 <<elseif $sex.role == "Bottom">>
 	<<= either(

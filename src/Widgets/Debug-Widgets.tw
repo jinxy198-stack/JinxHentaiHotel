@@ -74,8 +74,8 @@
 
 	/* Setup encounter roles */
 	<<set $sex.roles = {
-		dom: $mc,
-		sub: $ui.npc
+		sub: $mc,
+		dom: $ui.npc
 	}>>
 <</widget>>
 

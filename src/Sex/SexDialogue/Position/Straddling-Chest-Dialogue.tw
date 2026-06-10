@@ -1,7 +1,5 @@
 :: Straddling-Chest-Dialogue [nobr]
 
-<<set _top = $sex.Top || $mc>>
-<<set _bottom = $sex.Bottom || _n>>
 <<set _spot = $room.location || "floor">>
 
 <<if $sex.role == "Top">>
@@ -9,9 +7,9 @@
 		"<<gram _top 'subjCap'>> <<= setup.be(_top) >> on the <<=_spot>>, straddling <<gram _bottom 'poss'>> chest.",
 		"<<gram _top 'subjCap'>> settle onto the <<=_spot>>, straddling <<gram _bottom 'poss'>> chest."
 	) >>
-<<else>>
+<<elseif $sex.role == "Bottom">>
 	<<= either(
-		"<<gram _top 'subjCap'>> <<= setup.be(_top) >> straddling <<gram _bottom 'poss'>> chest.",
-		"<<gram _top 'subjCap'>> settle over <<gram _bottom 'poss'>> chest, pinning <<gram _bottom 'obj'>> beneath <<gram _top 'obj'>>."
+		"<<gram _top 'subjCap'>> <<= setup.be(_top) >> straddling <<pro _bottom 'poss'>> chest.",
+		"<<gram _top 'subjCap'>> settle over <<gram _bottom 'poss'>> chest, pinning <<gram _bottom 'obj'>> beneath <<pro _top 'obj'>>."
 	) >>
 <</if>>

@@ -1,7 +1,7 @@
 :: Underneath-Oral-Service-Dialogue [nobr]
     /* Not needed? */
     <<if $sex.role == "Top">>
-    _n.name is kneeling between your parted thighs as you sit at the $room.location.
-    <<else>>
-    You are kneeling between _n.name's parted thighs as they sit at the $room.location.
+        <<ref _bottom 'subjCap'>> <<be _bottom>> kneeling between <<ref _top 'poss'>> parted thighs as <<pro _top 'subj'>> <<verb _top 'sit'>> at the <<= _spot>>.
+    <<elseif $sex.role == "Bottom">>
+        <<ref _bottom 'subjCap'>> are kneeling between <<ref _top 'poss'>> parted thighs as <<pro _top 'subj'>> <<verb _top 'sit'>> on the <<= _spot>>.
     <</if>>

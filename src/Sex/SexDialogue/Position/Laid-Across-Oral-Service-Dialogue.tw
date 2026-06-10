@@ -1,7 +1,7 @@
 :: Laid-Across-Oral-Service-Dialogue [nobr]
 
     <<if $sex.role == "Top">>
-        You push _n.name back on the $room.location and step up towards $proset.their head.
+        <<ref _top 'subjCap'>> <<verb _top 'push'>> <<ref _bottom 'subj'>> back on the <<= _spot>> and <<verb _top 'step'>> up towards <<pro _bottom 'poss'>> head.
     <<elseif $sex.role == "Bottom">>
-        You lie back on the $room.location as _n.name steps up towards your head.
+        <<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> back on the <<= _spot>> as <<ref _top 'subj'>> <<verb _top 'step'>> up towards <<pro _bottom 'poss'>> head.
     <</if>>

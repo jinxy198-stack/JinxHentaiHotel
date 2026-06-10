@@ -1,14 +1,14 @@
 :: Prone-Bone-Dialogue [nobr]
 
 <<if $sex.role == "Top">>
-    You role _n.name onto their stomach on the $room.location and you lay on them.
+    <<ref _top 'subjCap'>> <<verb _top 'roll'>> <<ref _bottom 'subj'>> onto <<pro _bottom 'poss'>> stomach on the <<= _spot>> and <<ref _top 'subj'>> <<verb _top 'lay'>> on <<pro _bottom 'obj'>>.
     <<if _h is 1>>
         Your larger body nearly covers _n.name.
     <<elseif _h is -1>>
         The size difference between you two is pretty noticable.
     <</if>>
 <<elseif $sex.role == "Bottom">>
-    You roll onto your stomach on the $room.location as _n.name lays on you.
+    <<ref _bottom 'subjCap'>> <<verb _bottom 'roll'>> onto <<pro _bottom 'poss'>> stomach on the <<= _spot>> as <<ref _top>> <<verb _top 'lay'>> on <<pro _bottom 'obj'>>.
     <<if _h is 1>>
         The size difference between you two is pretty noticable.
     <<elseif _h is -1>>

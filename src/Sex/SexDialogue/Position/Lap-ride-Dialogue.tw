@@ -1,27 +1,11 @@
 :: Lap-ride-Dialogue [nobr]
 
-<<set _top = $sex.Top || $mc>>
-<<set _bottom = $sex.Bottom || $mc>>
-
 <<if $sex.position == "Lap ride">>
-	<<if $sex.role == "Top">>
-		<<= either(
-			"<<gram _bottom 'subjCap'>> sits on <<gram _top 'poss'>> lap, looking at <<gram _top 'obj'>>."
-		) >>
-	<<elseif $sex.role == "Bottom">>
-		<<= either(
-			"<<gram _bottom 'subjCap'>> sits on <<gram _top 'poss'>> lap, looking at <<gram _top 'obj'>>."
-		) >>
-	<</if>>
-
+	<<= either(
+		"<<gram _bottom 'subjCap'>> <<verb _bottom 'sit'>> on <<gram _top 'poss'>> lap, looking at <<gram _top 'obj'>>."
+	) >>
 <<elseif $sex.position == "Reverse Lap ride">>
-	<<if $sex.role == "Top">>
-		<<= either(
-			"<<gram _bottom 'subjCap'>> sits on <<gram _top 'poss'>> lap, facing away from <<gram _top 'obj'>>."
-		) >>
-	<<elseif $sex.role == "Bottom">>
-		<<= either(
-			"<<gram _bottom 'subjCap'>> sits on <<gram _top 'poss'>> lap, facing away from <<gram _top 'obj'>>."
-		) >>
-	<</if>>
+	<<= either(
+		"<<gram _bottom 'subjCap'>> <<verb _bottom 'sit'>> on <<gram _top 'poss'>> lap, facing away from <<gram _top 'obj'>>."
+	) >>
 <</if>>

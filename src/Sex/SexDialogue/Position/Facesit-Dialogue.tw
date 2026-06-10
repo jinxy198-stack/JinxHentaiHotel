@@ -1,19 +1,17 @@
 :: Facesit-Dialogue [nobr Dialogue] {"position":"1075,1325","size":"100,100"}
-<<set _npc = _n>>
+
 <<PronounsSet>>
 
-<<set _top = $sex.Top || $mc>>
-<<set _bottom = $sex.Bottom || _n>>
 <<set _spot = $room.location || "floor">>
 
 
 <<if $sex.role=="Top">>
 	<<=either(
-	    "<<gram _bottom 'subjCap'>> pushes <<gram _top 'subj'>> onto <<gram _top 'poss'>> back and they lower themself over <<gram _top 'poss'>> face."
+	    "<<gram _bottom 'subjCap'>> <<verb _bottom 'push'>> <<gram _top 'subj'>> onto <<gram _top 'poss'>> back and <<pro _bottom 'subj'>> <<verb _bottom 'lower'>> <<pro _bottom 'refl'>> over <<gram _top 'poss'>> face."
     )>>
 <<elseif $sex.role=="Bottom">>
 	<<=either(
-        "<<gram _bottom 'subjCap'>> push <<gram _top 'subj'>> onto their back and then lower <<gram _bottom 'refl'>> over their face."
+        "<<gram _bottom 'subjCap'>> <<verb _bottom 'push'>> <<gram _top 'subj'>> onto <<pro _top 'poss'>> back and then <<verb _bottom 'lower'>> <<gram _bottom 'refl'>> over <<pro _top 'poss'>> face."
     )>>
 <</if>>
 

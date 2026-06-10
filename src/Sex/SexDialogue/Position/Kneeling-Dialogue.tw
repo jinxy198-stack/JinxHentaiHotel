@@ -2,8 +2,8 @@
 
 /* Should they both be kneeling? */
 <<if $sex.role == "Top">>
-_n.name is kneeling before you.
+    <<ref _bottom 'subjCap'>> is kneeling before <<ref _top 'subj'>>.
 
-<<else>>
-You're kneeling before _n.name, looking up at their _n.genitals.
+<<elseif $sex.role == "Bottom">>
+    <<ref _bottom 'subjCap'>> <<be _bottom>> kneeling before <<ref _top 'subj'>>, looking up at their _top.genitals.
 <</if>>

@@ -352,12 +352,12 @@ setup.sexpositions = {
     {
         label: "kneeling by face",
         "Bottom": ["Mouth"],
-        "Top": ["Penis"],
+        "Top": ["Penis", "Vagina"],
         "Bottom cum locations": ["on yourself"],
         "Top cum locations": ["on face", "on chest", "on breasts"],
         "label Top": "receiving",
         "label Bottom": "giving",
-        primary: false,
+        primary: true,
         furniture: ["horizontal surface"],
     },
     "Sixty-Nine":

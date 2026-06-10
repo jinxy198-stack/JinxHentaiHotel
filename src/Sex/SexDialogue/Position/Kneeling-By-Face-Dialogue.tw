@@ -1,11 +1,10 @@
 :: Kneeling-By-Face-Dialogue [nobr]
 
-<<if $sex.role == "Top">>
-    <<if $mc.genitals == "penis">>
-        You kneel down, your dick is in $proset.their face.
-    <<else>>
-        You kneel down, your pussy is in $proset.their face.
-    <</if>>
-<<elseif $sex.role == "Bottom">>
-    _n.name kneels down beside your head, $proset.their _n.genitals is in your face.
+
+<<if _top.genitals == "Penis">>
+    <<ref _top 'subjCap'>> <<verb _top 'kneel'>> down by <<ref _bottom 'subj'>>, <<ref _top 'poss'>> dick is in <<pro _bottom 'poss'>> face.
+<<elseif _top.genitals == "Vagina">>
+    <<ref _top 'subjCap'>> <<verb _top 'kneel'>> down, <<ref _top 'poss'>> pussy is in <<pro _bottom 'poss'>> face.
+<<else>>
+    Error, the top's genitals cannot be determined.    
 <</if>>

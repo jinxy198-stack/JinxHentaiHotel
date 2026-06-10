@@ -1,8 +1,6 @@
 :: Sitting-Dialogue [nobr Dialogue] {"position":"775,1225","size":"100,100"}
 
-<<set _npc = _n>>
-<<set _top = $sex.Top || $mc>>
-<<set _bottom = $sex.Bottom || _n>>
+
 <<set _seat = $room.location || "floor">>
 
 <<= either(

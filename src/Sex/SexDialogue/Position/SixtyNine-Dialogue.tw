@@ -1,10 +1,6 @@
 :: SixtyNine-Dialogue [Dialogue nobr] {"position":"775,1325","size":"100,100"}
-<<set _npc = _n>>
-<<PronounsSet>>
 
-<<set _top = $sex.Top || $mc>>
-<<set _bottom = $sex.Bottom || _n>>
-<<set _spot = $room.location || "floor">>
+<<PronounsSet>>
 
 <<set _nLegs = setup.partLower(_n, 'Legs', 'legs')>>
 <<set _nHips = setup.partLower(_n, 'Hips', 'hips')>>
@@ -12,15 +8,15 @@
 
 <<if $sex.role == "Top">>
 	<<= either(
-		"Dropping down onto all fours, <<gram _top 'subj'>> lower <<gram _top 'refl'>> over <<gram _bottom 'subj'>>, bringing <<gram _top 'poss'>> crotch down to $proset.their face as <<gram _top 'subj'>> dip <<gram _top 'poss'>> head between $proset.their <<=_nLegs>>.",
-		"Allowing $proset.them to guide you down, you reach up and take a firm grip of $proset.their <<=_nHips>> before roughly tugging $proset.them into place above you in a sixty-nine."
+		"Dropping down onto all fours, <<gram _top 'subj'>> <<verb _top 'lower'>> <<gram _top 'refl'>> over <<gram _bottom 'subj'>>, bringing <<gram _top 'poss'>> crotch down to <<pro _bottom 'poss'>> face as <<gram _top 'subj'>> <<verb _top 'dip'>> <<gram _top 'poss'>> head between <<pro _bottom 'poss'>> <<=_nLegs>>.",
+		"Allowing <<ref _bottom 'obj'>> to guide <<ref _top 'obj'>> down, <ref _top 'subj'>> <<verb _top 'reach'>> up and take a firm grip of <<pro _bottom 'poss'>> <<=_nHips>> before roughly tugging <<pro _bottom 'obj'>> into place above <<pro _top 'obj'>> in a sixty-nine."
 	) >>
 
 <<elseif $sex.role == "Bottom">>
 	<<= either(
-		"Reaching up to take hold of _n.name's shoulders, you put on the most enticing look you can muster as you try to pull $proset.them down.",
-		"Taking hold of _n.name's shoulders, you tug $proset.them down on top of you as you lie back. Pulling $proset.their <<=_nHips>> into place so that $proset.they're poised above you in a reversed all-fours position, you look up at $proset.their crotch hovering over your face and smirk.",
-		"Sinking down onto your back, you put on the most enticing look you can muster.",
-		"Jumping down onto all fours, _n.name lowers $proset.themself over the top of you, bringing $proset.their crotch down to your face as $proset.they dip $proset.their head between your <<=_mcLegs>>. Turning $proset.their head to look back at you, $proset.they grin."
+		"Reaching up to take hold of <<ref _top 'poss'>> shoulders, <<pro _bottom 'subj'>> <<verb _bottom 'put'>> on the most enticing look <<pro _bottom 'subj'>> can muster as <<pro _bottom 'subj'>> <<verb _bottom 'try'>> to pull <<pro _top 'obj'>> down.",
+		"Taking hold of _n.name's shoulders, <<pro _bottom 'subj'>> <<verb _bottom 'tug'>> <<pro _top 'obj'>> down on top of <<pro _bottom 'obj'>> as <<pro _bottom 'subj'>> <<verb _bottom 'lie'>> back. Pulling <<pro _top 'poss'>> <<=_nHips>> into place so that <<pro _top 'subj'>> <<be _top>> poised above <<pro _bottom 'obj'>> in a reversed all-fours position, <<pro _bottom 'subj'>> <<verb _bottom 'look'>> up at <<pro _top 'poss'>> crotch hovering over <<pro _bottom 'poss'>> face and smirk.",
+		"Sinking down onto <<pro _bottom 'poss'>> back, <<pro _bottom 'subj'>> <<verb _bottom 'put'>> on the most enticing look <<pro _bottom 'subj'>> can muster.",
+		"Jumping down onto all fours, <<ref _top 'subj'>> <<verb _top 'lower'>> <<pro _top 'refl'>> over the top of <<pro _bottom 'obj'>>, bringing <<pro _top 'poss'>> crotch down to <<pro _bottom 'poss'>> face as <<pro _top 'subj'>> <<verb _top 'dip'>> <<pro _top 'poss'>> head between <<pro _bottom 'poss'>> <<=_mcLegs>>. Turning <<pro _top 'poss'>> head to look back at <<pro _bottom 'obj'>>, <<pro _top 'subj'>> grin."
 	) >>
 <</if>>
