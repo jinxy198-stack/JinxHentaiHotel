@@ -286,10 +286,11 @@
 
 		<<else>>
 			<div class="npcsex-content">
+			<<if $sex.phase != "aftercare">>
 
 				<!-- POSITIONS -->
 				<h3>Available Positions</h3>
-
+			
 				<<if _positions.length === 0>>
 					<i>None (based on parts/role).</i>
 				<<else>>
@@ -319,7 +320,7 @@
 						<</for>>
 					</ul>
 				<</if>>
-
+			<</if>>
 				<!-- ACTS -->
 				<h3>Available Acts</h3>
 

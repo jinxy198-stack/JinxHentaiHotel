@@ -12451,7 +12451,7 @@ Work on fixing spawning NPC&#39;s
 &lt;&lt;if $sex.role == &quot;Top&quot;&gt;&gt;
 	&lt;&lt;= either(
 		&quot;Dropping down onto all fours, &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;lower&#39;&gt;&gt; &lt;&lt;gram _top &#39;refl&#39;&gt;&gt; over &lt;&lt;gram _bottom &#39;subj&#39;&gt;&gt;, bringing &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; crotch down to &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; face as &lt;&lt;gram _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;dip&#39;&gt;&gt; &lt;&lt;gram _top &#39;poss&#39;&gt;&gt; head between &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_nLegs&gt;&gt;.&quot;,
-		&quot;Allowing &lt;&lt;ref _bottom &#39;obj&#39;&gt;&gt; to guide &lt;&lt;ref _top &#39;obj&#39;&gt;&gt; down, &lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;reach&#39;&gt;&gt; up and take a firm grip of &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_nHips&gt;&gt; before roughly tugging &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; into place above &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; in a sixty-nine.&quot;
+		&quot;Allowing &lt;&lt;ref _bottom &#39;obj&#39;&gt;&gt; to guide &lt;&lt;ref _top &#39;obj&#39;&gt;&gt; down, &lt;&lt;ref _top &#39;subj&#39;&gt;&gt; &lt;&lt;verb _top &#39;reach&#39;&gt;&gt; up and take a firm grip of &lt;&lt;pro _bottom &#39;poss&#39;&gt;&gt; &lt;&lt;=_nHips&gt;&gt; before roughly tugging &lt;&lt;pro _bottom &#39;obj&#39;&gt;&gt; into place above &lt;&lt;pro _top &#39;obj&#39;&gt;&gt; in a sixty-nine.&quot;
 	) &gt;&gt;
 
 &lt;&lt;elseif $sex.role == &quot;Bottom&quot;&gt;&gt;
@@ -17121,10 +17121,11 @@ Work on fixing spawning NPC&#39;s
 
 		&lt;&lt;else&gt;&gt;
 			&lt;div class=&quot;npcsex-content&quot;&gt;
+			&lt;&lt;if $sex.phase != &quot;aftercare&quot;&gt;&gt;
 
 				&lt;!-- POSITIONS --&gt;
 				&lt;h3&gt;Available Positions&lt;/h3&gt;
-
+			
 				&lt;&lt;if _positions.length === 0&gt;&gt;
 					&lt;i&gt;None (based on parts/role).&lt;/i&gt;
 				&lt;&lt;else&gt;&gt;
@@ -17154,7 +17155,7 @@ Work on fixing spawning NPC&#39;s
 						&lt;&lt;/for&gt;&gt;
 					&lt;/ul&gt;
 				&lt;&lt;/if&gt;&gt;
-
+			&lt;&lt;/if&gt;&gt;
 				&lt;!-- ACTS --&gt;
 				&lt;h3&gt;Available Acts&lt;/h3&gt;
 
