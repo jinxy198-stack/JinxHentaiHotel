@@ -38,14 +38,14 @@
 		bodyheight: "Very Short",
 		physique: "Thin",
 		personality: ["Kind", "Childish"],
-		genitals: "Penis",
+		genitals: "Penis", /* Penis or Vagina */
 		genitaltype: "Uncut",
-		penislength: "Small",
+		penislength: "Average",
 		assSize: "Small",
 		virgin: false,
-		sexpref: "Switch",
+		sexpref: "Submissive",
 		origin: "Debug",
-		traits: []
+		traits: ["Slutty"]
 	}>>
 
 	/* Set this because your NPC helper widgets use _npc */
@@ -73,9 +73,10 @@
 	<<set $bootyCallNpc = null>>
 
 	/* Setup encounter roles */
+	/* Either dom or sub */
 	<<set $sex.roles = {
-		sub: $mc,
-		dom: $ui.npc
+		dom: $mc,
+		sub: $ui.npc
 	}>>
 <</widget>>
 
@@ -102,10 +103,11 @@
         $mc.physique to "Thin",
         $mc.personality to ["Kind"],
         $mc.genitals to "Penis",
-        $mc.penislength to "Average",
-        $mc.genitaltype to "Cut",
+        $mc.penislength to "Small",
+        $mc.genitaltype to "Uncut",
+		$mc.breastSize to "Small",
         $mc.assSize to "Average",
-        $mc.sexpref to "Versatile",
+        $mc.sexpref to "Switch",
         $mc.virgin to true
     >>
     <<AgeGroupSet>>

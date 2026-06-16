@@ -1,18 +1,18 @@
 :: Tease-Ass-Dialogue [nobr]
 
 <<if $sex.act =="Tease Ass With Cock">>
-<<set _lines = [
-    "You tease _n.name's ass with your cock."
-]>>
-    <<if $mc.sexpref == "Dominant">>
+    <<set _lines = [
+        "<<ref _top 'subjCap'>> <<verb _top 'tease'>> <<ref _bottom 'poss'>> ass with <<pro _top 'poss'>> cock."
+    ]>>
+    <<if _top.sexpref == "Dominant">>
 		<<run _lines.push(
-			"The thought of penetrating them turns you on so much."
+			"The thought of penetrating <<pro _bottom 'obj'>> turns <<ref _top 'obj'>> on so much."
 		)>>
 	<</if>>
 <<elseif $sex.act == "Cocktease With Ass">>
-<<set _lines = [
-    "You tease _n.name's cock with your ass.",
-    "You feel _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> against your buttcheecks."
+    <<set _lines = [
+        "<<ref _top 'subjCap'>> <<verb _top 'tease'>> <<ref _bottom 'poss'>> cock with <<pro _top 'poss'>> ass.",
+        "<<ref _top 'subjCap'>> <<verb _top 'feel'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<pro _top 'poss'>> buttcheecks."
     ]>>
 <</if>>
 

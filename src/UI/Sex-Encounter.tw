@@ -54,6 +54,15 @@
 /* normalize Top/Bottom after role assignment */
 <<run setup.normalizeSexActors($sex)>>
 
+
+<<set _npc = _n>>
+<<set _top = $sex.role == "Top" ? $mc : _n>>
+<<set _bottom = $sex.role == "Top" ? _n : $mc>>
+/*<<set _top = $sex.Top || $mc>>
+<<set _bottom = $sex.Bottom || _npc>>*/
+<<set _loc = ($room && $room.location) ? $room.location : "wall">>
+<<set _spot = $room.location || "floor">>
+
 <<set _h = "<<HeightCompare>>">>
 <<set _s = "<<SizeCompare>>">>
 

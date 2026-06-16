@@ -1,55 +1,69 @@
 :: Caress-Dialogue [Dialogue nobr] {"position":"800,1575","size":"100,100"}
 
-<<set _npc = _n>>
 <<PronounsSet>>
+
+<<set _topHand = setup.partLower(_top, 'Hand', 'hand')>>
+<<set _topFinger = setup.partLower(_top, 'Finger', 'finger')>>
+<<set _topFingers = setup.partLower(_top, 'Fingers', 'fingers')>>
+
+<<set _bottomArm = setup.partLower(_bottom, 'Arm', 'arm')>>
+<<set _bottomFace = setup.partLower(_bottom, 'Face', 'face')>>
+<<set _bottomCheek = setup.partLower(_bottom, 'Cheek', 'cheek')>>
+
+<<set _bottomBody = _bottom.body || {}>>
+<<set _bottomMaterial = _bottomBody.Bodymaterial || "">>
+<<set _bottomSkinColor = _bottom.skincolor ? _bottom.skincolor.toLowerCase() + " " : "">>
+<<set _bottomAnthroColor = _bottom.anthro && _bottom.anthro.color ? _bottom.anthro.color.toLowerCase() + " " : "">>
 
 <<if $sex.role == "Bottom">>
 	<<= either(
-		"_n.name gently caresses your <<= setup.partLower($mc, 'Arm', 'arm') >>, testing your reaction."
+		"<<ref _top 'subjCap'>> gently <<verb _top 'caress'>> <<ref _bottom 'poss'>> <<= _bottomArm >>, testing <<pro _bottom 'poss'>> reaction.",
+		"<<ref _top 'subjCap'>> softly <<verb _top 'stroke'>> <<ref _bottom 'poss'>> <<= _bottomArm >>, watching how <<pro _bottom 'subj'>> <<verb _bottom 'respond'>>.",
+		"<<ref _top 'subjCap'>> <<verb _top 'brush'>> <<pro _top 'poss'>> <<= _topFingers >> along <<ref _bottom 'poss'>> <<= _bottomArm >> with a careful, affectionate touch."
 	) >>
 
 	<<= either(
-		"A happy <<npcNoise 'base' 'pleasure'>> escapes from _n.name's mouth in response to the contact, causing you to smile in delight.",
-		"The happy sigh that escapes your mouth is more than enough to let _n.name know that the gentle caress had the desired effect.",
-		"In response, you let out a happy <<npcNoise 'base' 'pleasure'>>, letting _n.name know that the gesture is much appreciated."
+		"The gentle contact makes <<ref _bottom 'obj'>> smile, letting <<ref _top 'obj'>> know the gesture is appreciated.",
+		"A happy sigh escapes <<ref _bottom 'obj'>> in response to the contact, causing <<ref _top 'obj'>> to smile in delight.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'relax'>> beneath the touch, clearly enjoying the soft attention."
 	) >>
 
 <<elseif $sex.role == "Top">>
 	<<= either(
-		"Wanting to make _n.name feel loved, you lift your <<= setup.partLower($mc, 'Hand', 'hand') >> and gently stroke your <<= setup.partLower($mc, 'Fingers', 'fingers') >> over $proset.their face.",
-		"Lifting your <<= setup.partLower($mc, 'Hand', 'hand') >>, you softly trace your <<= setup.partLower($mc, 'Fingers', 'fingers') >> over _n.name's cheek to make $proset.them feel loved.",
-		"Seeking to put _n.name at ease, you raise your <<= setup.partLower($mc, 'Hand', 'hand') >> and lovingly caress $proset.their face with your <<= setup.partLower($mc, 'Fingers', 'fingers') >>.",
-		"Your <<= setup.partLower($mc, 'Finger', 'finger') >> glides across _n.name's body."
+		"Wanting to make <<ref _bottom 'obj'>> feel loved, <<ref _top 'subj'>> <<verb _top 'lift'>> <<pro _top 'poss'>> <<= _topHand >> and gently <<verb _top 'stroke'>> <<pro _top 'poss'>> <<= _topFingers >> over <<ref _bottom 'poss'>> <<= _bottomFace >>.",
+		"<<ref _top 'subjCap'>> softly <<verb _top 'trace'>> <<pro _top 'poss'>> <<= _topFingers >> over <<ref _bottom 'poss'>> <<= _bottomCheek >>, trying to make <<ref _bottom 'obj'>> feel loved.",
+		"Seeking to put <<ref _bottom 'obj'>> at ease, <<ref _top 'subj'>> lovingly <<verb _top 'caress'>> <<ref _bottom 'poss'>> <<= _bottomFace >> with <<pro _top 'poss'>> <<= _topFingers >>.",
+		"<<ref _top 'subjCap'>> gently <<verb _top 'glide'>> <<pro _top 'poss'>> <<= _topFinger >> across <<ref _bottom 'poss'>> body."
 	) >>
 
-	/* Describe body texture */
-	<<if _n.body.Bodymaterial == "Skin">>
+	/* Describe bottom body texture */
+	<<if _bottomMaterial == "Skin">>
 		<<set _lines = [
-			"You feel $proset.their silky-smooth <<=_n.skincolor.toLowerCase()>> skin against your hand.",
-			"$proset.their skin is as smooth as silk."
+			"<<ref _top 'subjCap'>> <<verb _top 'feel'>> <<ref _bottom 'poss'>> silky-smooth <<= _bottomSkinColor >>skin beneath <<pro _top 'poss'>> <<= _topHand >>.",
+			"<<ref _bottom 'possCap'>> skin feels smooth and warm beneath <<ref _top 'poss'>> touch."
 		]>>
 
-		<<if _n.physique == "Toned">>
+		<<if _bottom.physique == "Toned">>
 			<<run _lines.push(
-				"Beneath $proset.their smooth skin, you can feel the firm definition of $proset.their toned body."
+				"Beneath <<ref _bottom 'poss'>> smooth skin, <<ref _top 'subj'>> can feel the firm definition of <<pro _bottom 'poss'>> toned body."
 			)>>
 		<</if>>
 
 		<<= either(..._lines) >>
 
-	<<elseif _n.body.Bodymaterial == "Fur">>
+	<<elseif _bottomMaterial == "Fur">>
 		<<= either(
-			"You feel the softness of $proset.their <<=_n.anthro.color.toLowerCase()>> fur against your hand."
+			"<<ref _top 'subjCap'>> <<verb _top 'feel'>> the softness of <<ref _bottom 'poss'>> <<= _bottomAnthroColor >>fur beneath <<pro _top 'poss'>> <<= _topHand >>."
 		) >>
 
-	<<elseif _n.body.Bodymaterial == "Scales">>
+	<<elseif _bottomMaterial == "Scales">>
 		<<= either(
-			"You feel the smoothness of $proset.their <<=_n.anthro.color.toLowerCase()>> scales against your hand."
+			"<<ref _top 'subjCap'>> <<verb _top 'feel'>> the smoothness of <<ref _bottom 'poss'>> <<= _bottomAnthroColor >>scales beneath <<pro _top 'poss'>> <<= _topHand >>."
 		) >>
 
-	<<elseif _n.body.Bodymaterial == "Feathers">>
+	<<elseif _bottomMaterial == "Feathers">>
 		<<= either(
-			"You feel the softness of $proset.their <<=_n.anthro.color.toLowerCase()>> feathers against your hand."
+			"<<ref _top 'subjCap'>> <<verb _top 'feel'>> the softness of <<ref _bottom 'poss'>> <<= _bottomAnthroColor >>feathers beneath <<pro _top 'poss'>> <<= _topHand >>."
 		) >>
 	<</if>>
 <</if>>

@@ -1,13 +1,7 @@
 :: Face-On-Chest-Dialogue [nobr Dialogue] {"position":"900,1775","size":"100,100"}
 
-<<set _npc = _n>>
 <<PronounsSet>>
-<<if $sex.role== "Bottom">>
-	<<=either(
- 	"_n.name presses their face against your chest."
-    )>>
-<<elseif $sex.role == "Top">>
-	<<=either(
-    "You press your face against _n.name's chest."
-    )>>
-<</if>>
+
+<<=either(
+    "<<ref _top 'subjCap'>> <<verb _top 'press'>> <<pro _top 'poss'>> face against <<ref _bottom 'poss'>> chest."
+)>>

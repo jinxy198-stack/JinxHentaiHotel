@@ -1,39 +1,34 @@
 :: Cunnilingus-Dialogue [nobr Dialogue] {"position":"900,1475","size":"100,100"}
-<<set _npc = _n>>
+
 <<PronounsSet>>
 
 <<if $sex.act == "Lick Pussy">>
-	<<if $sex.role == "Top">>
-		<<= either(
-			"Shifting your <<= setup.partLower($mc, 'Hips', 'hips') >>, you reposition yourself to eagerly grind your <<= setup.partLower($mc, 'genitals', 'genitals') >> against _n.name's <<= setup.partLower(_n, 'Lips', 'lips') >>.",
-			"With a quick shift of your <<= setup.partLower($mc, 'Hips', 'hips') >>, you let out a <<mcNoise 'base' 'pleasure'>> as you greedily press your <<= setup.partLower($mc, 'genitals', 'genitals') >> down against _n.name's <<= setup.partLower(_n, 'Tongue', 'tongue') >>.",
-			"Eagerly pressing your <<= setup.partLower($mc, 'genitals', 'genitals') >> down against _n.name's mouth, you reposition so that you are grinding your <<= setup.partLower($mc, 'genitals', 'genitals') >> against _n.name's <<= setup.partLower(_n, 'Lips', 'lips') >>.",
-			"Shifting your <<= setup.partLower($mc, 'Hips', 'hips') >>, you reposition yourself to grind your <<= setup.partLower($mc, 'genitals', 'genitals') >> against _n.name's <<= setup.partLower(_n, 'Lips', 'lips') >>.",
-			"With a quick shift of your <<= setup.partLower($mc, 'Hips', 'hips') >>, you let out a <<mcNoise 'base' 'pleasure'>> as you press your <<= setup.partLower($mc, 'genitals', 'genitals') >> down against _n.name's <<= setup.partLower(_n, 'Tongue', 'tongue') >>.",
-			"Pressing your <<= setup.partLower($mc, 'genitals', 'genitals') >> down against _n.name's mouth, you reposition so that you are grinding your <<= setup.partLower($mc, 'genitals', 'genitals') >> against _n.name's <<= setup.partLower(_n, 'Lips', 'lips') >>."
+	<<if $sex.role == "Bottom">>
+		/* top licks bottom's pussy*/
+		<<= either(  
+			"Shifting <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>> reposition <<ref _bottom 'refl'>> to eagerly grind <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>.",
+			"With a quick shift of <<ref _top 'poss'>> <<= setup.partLower(_top, 'Hips', 'hips') >>, <<pro _top 'subj'>> <<verb _top 'let'>> out a <<mcNoise 'base' 'pleasure'>> as <<pro _top 'subj'>> greedily press <<pro _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> down against <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Tongue', 'tongue') >>.",
+			"Eagerly pressing <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> mouth, <<ref _bottom 'subj'>> reposition so that <<pro _bottom 'subj'>> <<be _bottom>> grinding <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<pro _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>.",
+			"Shifting <<ref _top 'poss'>> <<= setup.partLower(_top, 'Hips', 'hips') >>, <<pro _top 'subj'>>  reposition <<ref _top 'refl'>> to grind <<pro _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> against <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Lips', 'lips') >>.",
+			"With a quick shift of <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>> let out a <<mcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verbEx _bottom 'press'>> <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Tongue', 'tongue') >>.",
+			"Pressing <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> mouth, <<pro _bottom 'subj'>>  <<verb _bottom 'reposition'>> so that <<pro _bottom 'subj'>> are grinding <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<pro _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>."
 		) >>
-	<<else>>
+	<<elseif $sex.role == "Top">>
+		/* bottom licks top's pussy */
 		<<= either(
-			"_n.name repositions $proset.themselves to eagerly grind $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> against your <<= setup.partLower($mc, 'Lips', 'lips') >>.",
-			"With a quick shift of $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >>, _n.name lets out a <<npcNoise 'base' 'pleasure'>> as $proset.they greedily press $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> down against your <<= setup.partLower($mc, 'Tongue', 'tongue') >>.",
-			"Eagerly pressing $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> down against your mouth, $proset.they reposition $proset.themselves so that $proset.they are grinding $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> against your <<= setup.partLower($mc, 'Lips', 'lips') >>.",
-			"Shifting $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >>, $proset.they reposition $proset.themselves to grind $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> against your <<= setup.partLower($mc, 'Lips', 'lips') >>.",
-			"With a quick shift of $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >>, $proset.they let out a <<npcNoise 'base' 'pleasure'>> as $proset.they press $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> down against your <<= setup.partLower($mc, 'Tongue', 'tongue') >>.",
-			"Pressing $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> down against your mouth, $proset.they reposition $proset.themselves so that $proset.they are grinding $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> against your <<= setup.partLower($mc, 'Lips', 'lips') >>."
+			"<<ref _bottom 'subjCap'>> repositions <<pro _bottom 'refl'>> to eagerly grind <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<pro _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>.",
+			"With a quick shift of <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>> <<verbEx _bottom 'let'>> out a <<npcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> greedily press <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Tongue', 'tongue') >>.",
+			"Eagerly pressing <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> mouth, <<pro _bottom 'subj'>> reposition <<pro _bottom 'refl'>>  so that <<pro _bottom 'subj'>> are grinding <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<pro _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>.",
+			"Shifting <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>>  reposition <<pro _bottom 'refl'>> to grind <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>.",
+			"With a quick shift of <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>> <<verbEx _bottom 'let'>> out a <<npcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'press'>> <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Tongue', 'tongue') >>.",
+			"Pressing <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> mouth, <<pro _bottom 'subj'>> reposition <<pro _bottom 'refl'>>  so that <<pro _bottom 'subj'>> are grinding <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<pro _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>."
 		) >>
 	<</if>>
 
 <<elseif $sex.act == "Suck Clit">>
-	<<if $sex.role == "Top">>
-		You suck on _n.name's <<= setup.partLower(_n, 'Clitoris', 'clit') >>.
-	<<else>>
-		_n.name sucks on your <<= setup.partLower($mc, 'Clitoris', 'clit') >>.
-	<</if>>
-
-<<elseif $sex.act == "Ride Face">>
-	<<if $sex.role == "Top">>
-		You grind your <<= setup.partLower($mc, 'genitals', 'pussy') >> on _n.name's face.
-	<<else>>
-		_n.name grinds $proset.their <<= setup.partLower(_n, 'genitals', 'pussy') >> on your face.
+	<<if $sex.role == "Bottom">>
+		<<ref _top 'subjCap'>> <<verb _top 'suck'>> on <<ref _bottom 'poss'>> <<= setup.partLower(_n, 'Clitoris', 'clit') >>.
+	<<elseif $sex.role == "Top">>
+		<<ref _top 'subjCap'>> <<verb _top 'suck'>> on <<ref _bottom 'poss'>> <<= setup.partLower($mc, 'Clitoris', 'clit') >>.
 	<</if>>
 <</if>>

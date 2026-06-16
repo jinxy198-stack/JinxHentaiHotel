@@ -1,49 +1,39 @@
 :: Stop-Dialogue [nobr]
 
 <<if $sex.act =="Release Cock">>
-    You release _n.name's cock.
+    <<ref _bottom 'subjCap'>> <<verb _bottom 'release'>> <<ref _top 'poss'>> cock.
 <<elseif $sex.act =="Stop Fingering">>
-    You stop fingering.
+    <<ref _top 'subjCap'>> <<verb _top 'stop'>> fingering <<ref _bottom 'poss'>> vagina.
 <<elseif $sex.act =="Pull Off Of Finger">>
-    You pull off of finger.
+    <<ref _bottom 'subjCap'>> <<verb _bottom 'pull'>> off of <<ref _top 'poss'>> finger.
 <<elseif $sex.act =="Tug Cock Free">>
-    You pull your cock free from _n.name.
+    <<ref _top 'subjCap'>> <<verb _top 'pull'>> <<pro _top 'poss'>> cock free from <<ref _bottom 'subj'>>.
 <<elseif $sex.act =="Release Cock From Feet">>
-    You move your feet away from _n.name's cock.
+    <<ref _top 'subjCap'>> move <<pro _top 'poss'>> feet away from <<ref _bottom 'poss'>> cock.
 <<elseif $sex.act =="Tug Cock Free Of Feet">>
-    You tug your cock free from _n.name's feet.
+    <<ref _top 'subjCap'>> <<verb _top 'tug'>> <<pro _top 'poss'>> cock free from <<ref _bottom 'poss'>> feet.
 <<elseif $sex.act =="Move Feet Away From Pussy">>
-    You move your feet away from _n.name's pussy.
+    <<ref _top 'subjCap'>> <<verb _top 'move'>> <<pro _top 'poss'>> feet away from <<ref _bottom 'poss'>> pussy.
 <<elseif $sex.act =="Pull Away From Feet">>
-    You pull your pussy away from _n.name's feet.
+    <<ref _top 'subjCap'>> <<verb _top 'pull'>> <<pro _top 'poss'>> pussy away from <<ref _bottom 'poss'>> feet.
 <<elseif $sex.act =="Pull Out Of Mouth">>
-    You pull your cock out of _n.name's mouth.
+    <<ref _top 'subjCap'>> <<verb _top 'pull'>> <<pro _top 'poss'>> cock out of <<ref _bottom 'poss'>> mouth.
 <<elseif $sex.act =="Pull Mouth Off Of Cock">>
-    You pull your mouth off of _n.name's cock
+    <<ref _top 'subjCap'>> <<verb _top 'pull'>> <<pro _top 'poss'>> mouth off of <<ref _bottom 'poss'>> cock
 <<elseif $sex.act =="Pull Out">>
-    You pull your cock out of _n.name's pussy
+    <<ref _top 'subjCap'>> <<verb _top 'pull'>> <<pro _top 'poss'>> cock out of <<ref _bottom 'poss'>> pussy.
 <<elseif $sex.act =="Pull Off">>
-    You pull your pussy off of _n.name's cock.
+    <<ref _top 'subjCap'>> <<verb _top 'pull'>> <<pro _top 'poss'>> pussy off of <<ref _bottom 'poss'>> cock.
 <<elseif $sex.act =="Pull Out Of Ass">>
-    You pull out of _n.name's ass.
+    <<ref _top 'subjCap'>> <<verb _top 'pull'>> out of <<ref _bottom 'poss'>> ass.
 <<elseif $sex.act =="Pull Ass Off Of Cock">>
-    You pull your ass off of _n.name's cock.
+    <<ref _bottom 'subjCap'>> <<verb _bottom 'pull'>> <<pro _bottom 'poss'>> ass off of <<ref _top 'poss'>> cock.
 <<elseif $sex.act =="Stop Fingering Ass">>
-    You stop fingering _n.name's ass.
+    <<ref _top 'subjCap'>> <<verb _top 'stop'>> fingering <<ref _bottom 'poss'>> ass.
 <<elseif $sex.act =="Pull Face Back">>
-    You pull your face back.
-<<elseif $sex.act =="Stop Sucking Each Other Off">>
-    You both pull back.
-<<elseif $sex.act =="Stop Eating Each Other Out">>
-    You both pull back.
-<<elseif $sex.act =="Stop Sucking And Licking Each Other">>
-    You both pull back.
-<<elseif $sex.act =="Stop Licking And Sucking Each Other">>  
-    You both pull back.
-<<elseif $sex.act =="Stop Frotting">>  
-    You both pull back.
-<<elseif $sex.act =="Stop Tribbing">>  
-    You both pull back.        
+    <<ref _top 'subjCap'>> <<verb _top 'pull'>> <<pro _top 'poss'>> face back.
+<<elseif $sex.act =="Stop Sucking Each Other Off" || $sex.act =="Stop Eating Each Other Out" || $sex.act =="Stop Sucking And Licking Each Other" || "Stop Licking And Sucking Each Other" || $sex.act =="Stop Frotting" || $sex.act =="Stop Tribbing">>
+    <<ref _top 'subjCap'>> and <<ref _bottom 'subj'>> both pull back.
 <<else>>
-    You both stop    
+    <<ref _top 'subjCap'>> and <<ref _bottom 'subj'>> both stop.    
 <</if>>

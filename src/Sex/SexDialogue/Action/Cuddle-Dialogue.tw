@@ -1,16 +1,16 @@
 :: Cuddle-Dialogue [Dialogue nobr] {"position":"1100,1675","size":"100,100"}
 
-<<set _npc = _n>>
+
 <<PronounsSet>>
 
 <<if $sex.role=="Bottom">>
 	<<=either(
- 	"_n.name wrap their arms around you. You lay your head on their chest."
+ 	    "<<ref _top 'subjCap'>> <<verb _top 'wrap'>> <<pro _top 'poss'>> arms around <<ref _bottom 'subj'>>. <<pro _bottom 'subj' true>> lay <<pro _bottom 'poss'>> head on <<pro _top 'poss'>> chest."
     )>>
 <<elseif $sex.role == "Top">>
 	<<=either(
-    "You wrap your arms around _n.name. They slink their face into your chest.",
-    "You both hug, _n.name snuggling up to you."
+        "<<ref _top 'subjCap'>> <<verb _top 'wrap'>> <<pro _top 'poss'>> arms around <<ref _bottom 'subj'>>. <<pro _bottom 'poss' true>> slink <<pro _bottom 'poss' >> face into <<ref _top 'poss'>> chest.",
+        "<<ref _bottom 'subjCap'>> <<verb _bottom 'snuggle'>> up to <<ref _top 'subj'>>."
     )>>
 <</if>>
 

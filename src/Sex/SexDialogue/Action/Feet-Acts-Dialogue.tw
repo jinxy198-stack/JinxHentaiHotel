@@ -1,22 +1,19 @@
 ::Feet-Acts-Dialogue [nobr]
 
 <<if $sex.act =="Tease Cock With Feet">>
-You tease _n.name's cock with your feet
+    <<ref _top 'subjCap'>> <<verb _top 'tease'>> <<ref _bottom 'poss'>> cock with <<pro _top 'poss'>> feet.
 <<elseif $sex.act == "Tease Pussy With Feet">>
-You tease _n.name's pussy with your feet.
+    <<ref _top 'subjCap'>> <<verb _top 'tease'>> <<ref _bottom 'poss'>> pussy with <<pro _top 'poss'>> feet.
 <<elseif $sex.act == "Rub Pussy Against Feet">>
-You rub your pussy against _n.name's feet.
+    <<ref _top 'subjCap'>> <<verb _top 'rub'>> <<pro _top 'poss'>> pussy against <<ref _bottom 'poss'>> feet.
 <<elseif $sex.act == "Grip Cock With Feet">>
-You wrap your feet around _n.name's cock.
+    <<ref _bottom 'subjCap'>> <<verb _bottom 'wrap'>> <<pro _bottom 'poss'>> feet around <<ref _top 'poss'>> cock.
 <<elseif $sex.act == "Pull Feet Around Cock">>
-You pull _n.name's feet to your cock.
-<<elseif $sex.act == "Rub Pussy With Feet">>
-You rub _n.name's pussy with your feet.
+    <<ref _top 'subjCap'>> <<verb _top 'pull'>> <<ref _bottom 'poss'>> feet to <<pro _top 'poss'>> cock.
+<<elseif $sex.act == "Rub Pussy With Feet" || $sex.act == "Rub Against Feet">>
+    <<ref _top 'subjCap'>> <<verb _top 'rub'>> <<ref _bottom 'poss'>> pussy with <<pro _top 'poss'>> feet.
 <<elseif $sex.act == "Pull Feet To Pussy">>
-You pull _n.name's feet to your pussy.
+    <<ref _top 'subjCap'>> <<verb _top 'pull'>> <<ref _bottom 'poss'>> feet to <<pro _top 'poss'>> pussy.
 <<elseif $sex.act == "Stroke Pussy With Feet">>
-You stroke _n.name's pussy with your feet.
-<<elseif $sex.act == "Rub Against Feet">>
-You rub your pussy against _n.name's feet.
-
+    <<ref _top 'subjCap'>> <<verb _top 'stroke'>> <<ref _bottom 'poss'>> pussy with <<pro _top 'poss'>> feet.
 <</if>>

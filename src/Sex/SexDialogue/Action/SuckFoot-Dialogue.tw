@@ -1,7 +1,7 @@
 :: SuckFoot-Dialogue [Dialogue nobr] {"position":"800,1775","size":"100,100"}
 <<set _npc = _n>>
 <<PronounsSet>>
-
+/* Is this needed? */
 <<if $sex.role == "Bottom">>
 	<<= either(
 		"Eagerly lowering your head to $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >>, you press your <<= setup.partLower($mc, 'Lips', 'lips') >> against them and start passionately kissing and licking them.",

@@ -1,7 +1,6 @@
 :: OrgasmDialogue [nobr]
 
-<<set _top = $sex.Top || $mc>>
-<<set _bottom = $sex.Bottom || $mc>>
+
 <<set _topClimax = !!($sex.climax && $sex.climax.Top)>>
 <<set _bottomClimax = !!($sex.climax && $sex.climax.Bottom)>>
 <<set _cumLoc = $sex.chosenCumLocation || "">>

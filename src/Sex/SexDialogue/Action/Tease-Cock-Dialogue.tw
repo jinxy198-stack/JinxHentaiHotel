@@ -1,13 +1,7 @@
 :: Tease-Cock-Dialogue [nobr]
 
 <<if $sex.act=="Rub Cock On Face">>
-    <<if $sex.role == "Top">>
-	    <<=either(
- 	    "You rub your cock on _n.name's face."
-        )>>
-    <<elseif $sex.role == "Bottom">>
-	    <<=either(
-        "_n.name rubs their cock on your face."
-        )>>
-    <</if>>
+	<<=either(
+ 	    "<<ref _top 'subjCap'>> <<verb _top 'tease'>> <<pro _top 'poss'>> cock on <<ref _bottom 'poss'>> face."
+    )>>
 <</if>>

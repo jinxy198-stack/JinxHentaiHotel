@@ -1,38 +1,19 @@
 :: Embrace-Dialogue [nobr Dialogue] {"position":"1100,1575","size":"100,100"}
 
-<<set _npc = _n>>
 <<PronounsSet>>
 
-<<if $position == "Standing">>
-	<<if $sex.role == "Bottom">>		
-		<<=either(
-			"_n.name wraps their arms around you, giving you a nice hug."
-		)>>		
-	<<elseif $sex.role == "Top">>		
-		<<=either(
-			"You wrap your arms around _n.name, giving them a nice hug."
-		)>>		
-	<</if>>
+<<if $position == "Standing">>		
+	<<=either(
+		"<<ref _top 'subjCap'>> <<verb _top 'wrap'>> <<pro _top 'poss'>> arms around <<ref _bottom 'obj'>>, giving <<pro _bottom 'obj'>> a nice hug."
+	)>>		
 <<elseif $position == "Sitting">>
-	<<if $sex.role == "Bottom">>		
-		<<=either(
-			"_n.name wraps their arms around you."
-		)>>		
-	<<elseif $sex.role == "Top">>	
-		<<=either(
-			"You wrap your arms around _n.name."
-		)>>
-	<</if>>
+	<<=either(
+		"<<ref _top 'subjCap'>> <<verb _top 'wrap'>> <<pro _top 'poss'>> arms around <<ref _bottom 'onbj'>>."
+	)>>
 <<elseif $position == "Doggystyle">>
-	<<if $sex.role == "Bottom">>		
-		<<=either(
-			"_n.name looms over your back and wraps their arms around you."
-		)>>		
-	<<elseif $sex.role == "Top">>		
-		<<=either(
-			"You loom over _n.name's back and wrap your arms around them."
-		)>>		
-	<</if>>
+	<<=either(
+		"<<ref _top 'subjCap'>> <<verb _top 'loom'>> over <<ref _bottom 'poss'>> back and <<verb _top 'subjCap'>> <<pro _top 'poss'>> arms around <<pro _bottom 'obj>>."
+	)>>		
 <<elseif $position == "Missionary">>
 	<<if $sex.role == "Bottom">>
 		<<=either(

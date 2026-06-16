@@ -4,13 +4,13 @@
 
 <<if $sex.role == "Top">>
 	<<= either(
-		"<<ref _top 'subjCap'>> <<be _top >> standing behind <<ref _bottom 'obj'>> as <<pro _bottom 'subj'>> <<verbEx _bottom 'brace' null true>> <<pro _bottom 'refl'>> against the <<= _loc>>.",
-		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lean'>> forward against the <<= _loc>> while <<ref _top 'subj'>> stand close behind."
+		"<<ref _top 'subjCap'>> <<be _top >> standing behind <<ref _bottom 'obj'>> as <<pro _bottom 'subj'>> <<verbEx _bottom 'brace' null true>> <<pro _bottom 'refl'>> against the wall.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lean'>> forward against the wall while <<ref _top 'subj'>> stand close behind."
 	)>>
 
 <<elseif $sex.role == "Bottom">>
 	<<= either(
-		"<<refcap _bottom 'poss'>> back is against the <<= _loc>> with <<ref _top 'subj'>> in front of <<ref _bottom 'subj'>>.",
-		"<<ref _top 'subjCap'>> <<verb _top 'lean'>> <<ref _bottom 'subj'>> against the <<= _loc>>."
+		"<<refcap _bottom 'poss'>> back is against the wall with <<ref _top 'subj'>> in front of <<ref _bottom 'subj'>>.",
+		"<<ref _top 'subjCap'>> <<verb _top 'lean'>> <<ref _bottom 'subj'>> against the wall."
 	)>>
 <</if>>

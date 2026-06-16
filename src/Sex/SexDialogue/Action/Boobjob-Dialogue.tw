@@ -1,15 +1,9 @@
 :: Boobjob-Dialogue [nobr Dialogue] {"position":"1300,1775","size":"100,100"}
 
-<<set _npc = _n>>
 <<PronounsSet>>
-<<if $sex.role == "Bottom">>
-	<<=either(
- 	"_n.name thrusts their _n.genitals between your <<= setup.partLower($mc, 'breastsize', 'breastsize') >>."
-    )>>
-<<else>>
-	<<=either(
-    "You thrust your $mc.genitals between _n.name's <<= setup.partLower(_n, 'breastsize', 'breastsize') >> breasts."
-    )>>
-<</if>>
+<<=either(
+    "<<ref _top 'subjCap'>> <<verb _top 'thrust'>> <<pro _top 'poss'>> _top.genitals between <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'breastsize', 'breastsize') >> breasts."
+)>>
+
 
 

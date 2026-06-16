@@ -1,21 +1,14 @@
 :: Rimjob-Dialogue [nobr Dialogue] {"position":"1000,1575","size":"100,100"}
-<<set _npc = _n>>
 <<PronounsSet>>
-<<if $sex.role == "Top">>
-	<<if $position is "Cowgirl">>
+
+	<<if $sex.position == "Sit On Face">>
         <<=either(
- 	        "You lick up and down the crack of the ass pressing down on your mouth."
+ 	        "<<ref _top 'subjCap'>> <<verb _top 'lick'>> up and down the crack of <<ref _bottom 'poss'>> ass pressing down on <<pro _top 'poss'>> mouth."
         )>>
     <<else>>
         <<=either(
- 	        "You eat out _n.name's ass."
+ 	        "<<ref _top 'subjCap'>> <<verb _top 'eat'>> out <<ref _bottom 'poss'>> ass.",
+            "<<ref _top 'subjCap'>> <<verb _top 'bury'>> <<pro _top 'poss'>> face in <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'ass', 'ass') >> and gives it a lick."
         )>>
     <</if>>
-<<elseif $sex.role == "Bottom">>
-	<<=either(
-        "_n.name eats out your ass.",
-        "_n.name buries their face in your <<= setup.partLower($mc, 'ass', 'ass') >> and gives it a lick."
-    )>>
-<</if>>
-
 

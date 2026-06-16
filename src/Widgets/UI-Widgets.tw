@@ -178,7 +178,7 @@
 	})>>
 	<<replace "#sexUI">><<SexEncounterUI>><</replace>>
 	<<replace "#log">><</replace>>
-
+	
 	<<if $sex.phase == "climax">>
 		<<replace "#intro">>
 			<<include "Orgasm-Close-Dialogue">><br>
@@ -371,7 +371,6 @@
 						</ul>
 					<</if>>
 				<</if>>
-
 			</div>
 		<</if>>
 	</div>
@@ -392,7 +391,7 @@
 	<div class="arousal-grid">
 		<div class="arousal-card">
 			<div class="arousal-row">
-				<span class="arousal-name"><<print "Bottom: " + $sex.Bottom.name>></span>
+				<span class="arousal-name"><<if _bottom == $mc>><b>YOU</b> <</if>><<print "Bottom: " + $sex.Bottom.name>></span>
 				<span class="arousal-value"><<print $sex.Bottom.arousal>>/1000</span>
 			</div>
 			<div class="arousal-bar">
@@ -405,7 +404,7 @@
 
 		<div class="arousal-card">
 			<div class="arousal-row">
-				<span class="arousal-name"><<print "Top: " + $sex.Top.name>></span>
+				<span class="arousal-name"><<if _top == $mc>><b>YOU</b> <</if>><<print "Top: " + $sex.Top.name>></span>
 				<span class="arousal-value"><<print $sex.Top.arousal>>/1000</span>
 			</div>
 			<div class="arousal-bar">

@@ -1,11 +1,22 @@
 :: Hotdog-Dialogue [nobr]
 
+<<PronounsSet>>
+
+<<set _topGenitals = setup.partLower(_top, 'genitals', 'genitals')>>
+<<set _bottomAssSize = _bottom.assSize ? _bottom.assSize.toLowerCase() + " " : "">>
+<<set _bottomAss = _bottomAssSize + "ass">>
+
 <<if $sex.act == "Hotdog">>
-You push the cheeks of _n.name's <<=_n.assSize.toLowerCase()>> ass together around your <<=$mc.penislength.toLowerCase()>> cock as you thrust between them.
+	<<= either(
+		"<<ref _top 'subjCap'>> <<verb _top 'push'>> <<ref _bottom 'poss'>> cheeks together around <<pro _top 'poss'>> <<= _topGenitals >> as <<pro _top 'subj'>> <<verb _top 'thrust'>> between them.",
+		"<<ref _top 'subjCap'>> <<verb _top 'press'>> <<pro _top 'poss'>> <<= _topGenitals >> between <<ref _bottom 'poss'>> cheeks and <<verb _top 'roll'>> <<pro _top 'poss'>> hips forward.",
+		"<<ref _top 'subjCap'>> <<verb _top 'grip'>> <<ref _bottom 'poss'>> <<= _bottomAss >>, holding the cheeks together as <<pro _top 'subj'>> <<verb _top 'slide'>> <<pro _top 'poss'>> <<= _topGenitals >> between them."
+	) >>
 
 <<elseif $sex.act == "Rub Ass On Cock">>
-<<=either(
-    "You roll your hips, rubbing _n.name's cock between your cheeks.",
-    "You clench your cheeks against _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, squeezing it."
-)>>
+	<<= either(
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'roll'>> <<pro _bottom 'poss'>> hips, rubbing <<ref _top 'poss'>> <<= _topGenitals >> between <<pro _bottom 'poss'>> cheeks.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'clench'>> <<pro _bottom 'poss'>> cheeks around <<ref _top 'poss'>> <<= _topGenitals >>, squeezing it with slow, teasing pressure.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'press'>> back against <<ref _top 'obj'>>, grinding <<pro _bottom 'poss'>> <<= _bottomAss >> over <<ref _top 'poss'>> <<= _topGenitals >>."
+	) >>
 <</if>>

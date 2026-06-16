@@ -1,27 +1,14 @@
 :: Finger-Ass-Dialogue [Dialogue nobr] {"position":"800,1675","size":"100,100"}
-<<set _npc = _n>>
 <<PronounsSet>>
 
 <<if $sex.act == "Finger Ass">>
-    <<if $sex.role == "Bottom">>
-	    <<=either(
- 	    "_n.name fingers your ass."
-        )>>
-    <<elseif $sex.role == "Top">>
-	    <<=either(
-        "You finger _n.name's ass.",
-        "_n.name shivers as you place your <<=$mc.body.Finger.toLowerCase()>> against $proset.their asshole. You then wiggled your way in. It was hot and tight but so smooth. $proset.theyUp let out a <<npcNoise 'base' 'pain'>>. You caress their thigh to calm them."
-        )>>
-    <</if>>
+	<<=either(
+        "<<ref _top 'subjCap'>> <<verb _top 'finger'>> <<ref _bottom 'poss'>> ass.",
+        "<<ref _bottom 'subjCap'>> <<verb _bottom 'shiver'>> as <<ref _top 'subj'>> <<verb _top 'place'>> <<pro _top 'poss'>> <<=_top.body.Finger.toLowerCase()>> against <<pro _bottom 'poss'>> asshole. <<pro _top 'subj'>> then <<verb _top 'wiggle'>> <<pro _top 'poss'>> way in. It was hot and tight but so smooth. <<pro _bottom 'subj' true>> <<verbEx _bottom 'let'>> out a <<npcNoise 'base' 'pain'>>. <<pro _top 'subjCap'>> <<verb _top 'caress'>> <<pro _bottom 'poss'>> thigh to calm <<pro _bottom 'obj'>>."
+    )>>
 <<elseif $sex.act == "Finger Ass(Continue)">>
-    <<if $sex.role == "Bottom">>
-        <<=either(
-            "They continue fingering you."
-        )>>
-    <<elseif $sex.role == "Top">>
-        <<=either(
-            "You continue fingering them.",
-            "You slide you <<=$mc.body.Finger.toLowerCase()>> back and forth, caressing the walls of _n.name's inside. $proset.theyUp continues to tense.",
-        )>>
-    <</if>>
+    <<=either(
+        "<<ref _top 'subjCap'>> <<verb _top 'continue'>> fingering <<ref _bottom 'obj'>>.",
+        "<<ref _top 'subjCap'>> <<verb _top 'slide'>> <<pro _top 'poss'>> <<=_top.body.Finger.toLowerCase()>> back and forth, caressing the walls of <<ref _bottom 'poss'>> insides. <<pro _bottom 'subj' true>> <<verbEx _bottom 'contunue'>> to tense.",
+    )>>
 <</if>>

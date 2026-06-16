@@ -1,37 +1,46 @@
 :: Footjob-Dialogue [Dialogue nobr] {"position":"1300,1575","size":"100,100"}
 
-<<set _npc = _n>>
+
 <<PronounsSet>>
 
-<<if $sex.role == "Bottom">>
-	<<= either(
-		"Gently sliding your <<= setup.partLower($mc, 'Feet', 'feet') >> up and down around _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, you let out a soft <<mcNoise 'base' 'pleasure'>> as you give $proset.them a footjob.",
-		"With a smile, you start gently sliding your <<= setup.partLower($mc, 'Feet', 'feet') >> up and down around $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-		"Slowly pressing your <<= setup.partLower($mc, 'Feet', 'feet') >> together around _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, you let out a <<mcNoise 'base' 'pleasure'>>as you give $proset.them a footjob.",
-		"A <<npcNoise 'base' 'pleasure'>>bursts out from $proset.their mouth before $proset.they start thrusting $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
-		"<<npcNoise 'ing' 'pleasure'>> in delight, _n.name drives $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
-		"A soft <<npcNoise 'base' 'pleasure'>>drifts out from $proset.their mouth as $proset.they gently thrust $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
-		"<<npcNoise 'ing' 'pleasure'>> in delight, _n.name gently thrusts $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>."
-	) >>
-<<elseif $sex.role == "Top">>
-	<<= either(
-		"Sitting up between your legs, _n.name runs $proset.their toes delicately over the skin of your scrotum.",
-		"_n.name lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they start using $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >>, eagerly sliding them up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
-		"With a <<npcNoise 'base' 'pleasure'>>, _n.name starts eagerly sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down against your <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
-		"Eagerly pushing $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> together, you press the head of your <<= setup.partLower($mc, 'genitals', 'genitals') >> up against $proset.their soles before eagerly thrusting your <<= setup.partLower($mc, 'Hips', 'hips') >> forward and starting to fuck the crevice formed between them.",
-		"You rub the head of your <<= setup.partLower($mc, 'genitals', 'genitals') >> against $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> before eagerly pressing $proset.their soles together and starting to fuck the crevice formed between them."
-	) >>
 
-	<<= either(
-		"_n.name starts eagerly sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >> in response. You let out a <<mcNoise 'base' 'pleasure'>>as $proset.they give you an enthusiastic footjob.",
-		"A <<npcNoise 'base' 'pleasure'>>bursts out from between $proset.their <<= setup.partLower(_n, 'Lips', 'lips') >> as $proset.they eagerly slide $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
-		"Smiling in delight, _n.name eagerly slides $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >> as $proset.they deliver an enthusiastic footjob.",
-		"_n.name starts sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up and down around your <<= setup.partLower($mc, 'genitals', 'genitals') >> in response, letting out a <<mcNoise 'base' 'pleasure'>>as $proset.they give you a footjob.",
-		"Gently sliding your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start steadily bucking your <<= setup.partLower($mc, 'Hips', 'hips') >> back and forth, letting out a little <<mcNoise 'base' 'pleasure'>>with every thrust as you slowly receive a footjob.",
-		"Gently slipping your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start softly thrusting your <<= setup.partLower($mc, 'Hips', 'hips') >> forward, letting out a little <<mcNoise 'base' 'pleasure'>>as you gently receive a footjob.",
-		"Pushing your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start bucking your <<= setup.partLower($mc, 'Hips', 'hips') >> back and forth, letting out a <<mcNoise 'base' 'pleasure'>>with every thrust as you greedily receive a footjob.",
-		"Pushing your <<= setup.partLower($mc, 'genitals', 'genitals') >> between _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>, you start thrusting your <<= setup.partLower($mc, 'Hips', 'hips') >> forward, letting out a <<mcNoise 'base' 'pleasure'>>as you happily receive a footjob.",
-		"Pushing _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >> together, you let out a <<mcNoise 'base' 'pleasure'>>as you start to pump your <<= setup.partLower($mc, 'Hips', 'hips') >> back and forth, sighing as you receive a footjob.",
-		"_n.name picks up the pace, sliding $proset.their <<= setup.partLower(_n, 'Feet', 'feet') >> up against your <<= setup.partLower($mc, 'genitals', 'genitals') >>."
-	) >>
+<<set _topGenitals = setup.partLower(_top, 'genitals', 'genitals')>>
+<<set _topHips = setup.partLower(_top, 'Hips', 'hips')>>
+<<set _topScrotum = setup.partLower(_top, 'Scrotum', 'scrotum')>>
+
+<<set _bottomFeet = setup.partLower(_bottom, 'Feet', 'feet')>>
+<<set _bottomToes = setup.partLower(_bottom, 'Toes', 'toes')>>
+<<set _bottomLips = setup.partLower(_bottom, 'Lips', 'lips')>>
+
+<<if $sex.role == "Bottom">>
+<<= either(
+"Gently sliding <<pro _bottom 'poss'>> <<= _bottomFeet >> up and down around <<ref _top 'poss'>> <<= _topGenitals >>, <<ref _bottom 'subj'>> <<verb _bottom 'give'>> <<ref _top 'obj'>> a slow footjob.",
+"With a smile, <<ref _bottom 'subj'>> <<verb _bottom 'start'>> gently sliding <<pro _bottom 'poss'>> <<= _bottomFeet >> up and down around <<ref _top 'poss'>> <<= _topGenitals >>.",
+"<<ref _bottom 'subjCap'>> slowly <<verb _bottom 'press'>> <<pro _bottom 'poss'>> <<= _bottomFeet >> together around <<ref _top 'poss'>> <<= _topGenitals >>, squeezing with slow, teasing pressure.",
+"<<ref _top 'subjCap'>> <<verb _top 'let'>> out a pleased sound before starting to thrust <<pro _top 'poss'>> <<= _topGenitals >> between <<ref _bottom 'poss'>> <<= _bottomFeet >>.",
+"<<ref _top 'subjCap'>> eagerly <<verb _top 'drive'>> <<pro _top 'poss'>> <<= _topGenitals >> between <<ref _bottom 'poss'>> <<= _bottomFeet >>.",
+"A pleased sound drifts from <<ref _top 'poss'>> <<= _bottomLips >> as <<pro _top 'subj'>> gently <<verb _top 'thrust'>> <<pro _top 'poss'>> <<= _topGenitals >> between <<ref _bottom 'poss'>> <<= _bottomFeet >>.",
+"<<ref _top 'subjCap'>> gently <<verb _top 'push'>> <<pro _top 'poss'>> hips forward, sliding <<pro _top 'poss'>> <<= _topGenitals >> between <<ref _bottom 'poss'>> <<= _bottomFeet >>."
+) >>
+
+<<elseif $sex.role == "Top">>
+<<= either(
+"Sitting up between <<ref _top 'poss'>> legs, <<ref _bottom 'subj'>> delicately <<verb _bottom 'run'>> <<pro _bottom 'poss'>> <<= _bottomToes >> over <<ref _top 'poss'>> <<= _topScrotum >>.",
+"<<ref _bottom 'subjCap'>> <<verb _bottom 'start'>> using <<pro _bottom 'poss'>> <<= _bottomFeet >>, eagerly sliding them up and down around <<ref _top 'poss'>> <<= _topGenitals >>.",
+"With a pleased sound, <<ref _bottom 'subj'>> eagerly <<verb _bottom 'slide'>> <<pro _bottom 'poss'>> <<= _bottomFeet >> up and down against <<ref _top 'poss'>> <<= _topGenitals >>.",
+"<<ref _bottom 'subjCap'>> eagerly <<verb _bottom 'push'>> <<pro _bottom 'poss'>> <<= _bottomFeet >> together as <<ref _top 'subj'>> <<verb _top 'press'>> the head of <<pro _top 'poss'>> <<= _topGenitals >> against <<pro _bottom 'poss'>> soles.",
+"<<ref _top 'subjCap'>> <<verb _top 'rub'>> the head of <<pro _top 'poss'>> <<= _topGenitals >> against <<ref _bottom 'poss'>> <<= _bottomFeet >> before pressing <<pro _bottom 'poss'>> soles together."
+) >>
+
+<<= either(
+	"<<ref _bottom 'subjCap'>> eagerly <<verb _bottom 'slide'>> <<pro _bottom 'poss'>> <<= _bottomFeet >> up and down around <<ref _top 'poss'>> <<= _topGenitals >>, giving <<ref _top 'obj'>> an enthusiastic footjob.",
+	"A pleased sound escapes <<ref _bottom 'obj'>> as <<pro _bottom 'subj'>> eagerly <<verb _bottom 'slide'>> <<pro _bottom 'poss'>> <<= _bottomFeet >> up and down around <<ref _top 'poss'>> <<= _topGenitals >>.",
+	"Smiling in delight, <<ref _bottom 'subj'>> eagerly <<verb _bottom 'work'>> <<pro _bottom 'poss'>> <<= _bottomFeet >> around <<ref _top 'poss'>> <<= _topGenitals >>.",
+	"<<ref _bottom 'subjCap'>> <<verb _bottom 'keep'>> sliding <<pro _bottom 'poss'>> <<= _bottomFeet >> up and down around <<ref _top 'poss'>> <<= _topGenitals >>, clearly enjoying giving <<ref _top 'obj'>> a footjob.",
+	"<<ref _top 'subjCap'>> gently <<verb _top 'slide'>> <<pro _top 'poss'>> <<= _topGenitals >> between <<ref _bottom 'poss'>> <<= _bottomFeet >> and <<verb _top 'start'>> steadily bucking <<pro _top 'poss'>> <<= _topHips >> back and forth.",
+	"<<ref _top 'subjCap'>> softly <<verb _top 'thrust'>> <<pro _top 'poss'>> <<= _topHips >> forward, slipping <<pro _top 'poss'>> <<= _topGenitals >> between <<ref _bottom 'poss'>> <<= _bottomFeet >>.",
+	"<<ref _top 'subjCap'>> <<verb _top 'push'>> <<pro _top 'poss'>> <<= _topGenitals >> between <<ref _bottom 'poss'>> <<= _bottomFeet >> and <<verb _top 'buck'>> forward into the pressure.",
+	"<<ref _bottom 'subjCap'>> <<verb _bottom 'press'>> <<pro _bottom 'poss'>> <<= _bottomFeet >> together while <<ref _top 'subj'>> <<verb _top 'pump'>> <<pro _top 'poss'>> <<= _topHips >> back and forth.",
+	"<<ref _bottom 'subjCap'>> <<verb _bottom 'pick'>> up the pace, sliding <<pro _bottom 'poss'>> <<= _bottomFeet >> faster against <<ref _top 'poss'>> <<= _topGenitals >>."
+) >>
 <</if>>

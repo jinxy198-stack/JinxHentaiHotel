@@ -1,93 +1,60 @@
 :: Frot-Dialogue [nobr Dialogue] {"position":"1300,1475","size":"100,100"}
-<<set _npc = _n>>
+
+
 <<PronounsSet>>
 
-<<set _pos   = $sex.position || $position || "Default">>
-<<set _mcGen = setup.partLower($mc, 'genitals', 'genitals')>>
-<<set _nGen  = setup.partLower(_n, 'genitals', 'genitals')>>
-<<set _mcHip = setup.partLower($mc, 'Hips', 'hips')>>
-<<set _nHip  = setup.partLower(_n, 'Hips', 'hips')>>
+
+<<set _pos = $sex.position || $position || "Default">>
+
+<<set _topGen = setup.partLower(_top, 'genitals', 'genitals')>>
+<<set _bottomGen = setup.partLower(_bottom, 'genitals', 'genitals')>>
+<<set _topHips = setup.partLower(_top, 'Hips', 'hips')>>
+<<set _bottomHips = setup.partLower(_bottom, 'Hips', 'hips')>>
 
 <<if $sex.act == "Frot">>
-
 	<<if _pos is "Sit on Lap">>
-		<<if $sex.role == "Top">>
-			<<=either(
-				"You turn to face _n.name and line up your <<=_mcGen>> with _n.name's <<=_nGen>>."
-			)>>
-		<<elseif $sex.role == "Bottom">>
-			<<=either(
-				"_n.name turns to face you and lines up $proset.their <<=_nGen>> with your <<=_mcGen>>."
-			)>>
-		<</if>>
-
+		<<= either(
+			"<<ref _top 'subjCap'>> <<verb _top 'turn'>> to face <<ref _bottom 'obj'>> and <<verb _top 'line'>> up <<pro _top 'poss'>> <<= _topGen >> with <<ref _bottom 'poss'>> <<= _bottomGen >>.",
+			"<<ref _top 'subjCap'>> <<verb _top 'shift'>> into position on <<ref _bottom 'poss'>> lap, pressing <<pro _top 'poss'>> <<= _topGen >> against <<ref _bottom 'poss'>> <<= _bottomGen >>."
+		) >>
 	<<elseif _pos is "Missionary">>
-		<<if $sex.role == "Top">>
-			<<=either(
-				"_n.name lies on $proset.their back as you crawl on top of $proset.them. You line up your <<=_mcGen>> with $proset.their <<=_nGen>> and rub them together."
-			)>>
-		<<elseif $sex.role == "Bottom">>
-			<<=either(
-				"With you on your back and _n.name above you, you feel _n.name's <<=_nGen>> press against your <<=_mcGen>>. _n.name begins thrusting $proset.their hips against you, your cocks grinding against each other."
-			)>>
-		<</if>>
-
+		<<= either(
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> on <<pro _bottom 'poss'>> back as <<ref _top 'subj'>> <<verb _top 'crawl'>> on top. <<ref _top 'subjCap'>> <<verb _top 'line'>> up <<pro _top 'poss'>> <<= _topGen >> with <<ref _bottom 'poss'>> <<= _bottomGen >> and <<verb _top 'rub'>> them together.",
+			"With <<ref _bottom 'obj'>> on <<pro _bottom 'poss'>> back and <<ref _top 'obj'>> above, <<ref _top 'subj'>> <<verb _top 'press'>> <<pro _top 'poss'>> <<= _topGen >> against <<ref _bottom 'poss'>> <<= _bottomGen >> and <<verb _top 'start'>> grinding slowly."
+		) >>
 	<<else>>
-		<<if $sex.role == "Top">>
-			<<=either(
-				"Reaching down, you adjust your <<=_mcGen>> to line it up with _n.name's before starting to thrust slowly, rubbing yourself against $proset.them.",
-				"You draw _n.name in close, opening your legs to align your <<=_mcGen>> with $proset.theirs.",
-				"You pull _n.name close and position yourself so your groin presses against $proset.theirs, encouraging $proset.them to grind $proset.their <<=_nGen>> against you.",
-				"With a <<mcNoise 'base' 'pleasure'>>, you eagerly press your groin against $proset.theirs and begin teasing your <<=_mcGen>> against $proset.them."
-			)>>
-		<<elseif $sex.role == "Bottom">>
-			<<=either(
-				"Reaching down, _n.name adjusts $proset.their <<=_nGen>> to line it up with yours before starting to thrust slowly, rubbing against you.",
-				"_n.name draws you in close, opening $proset.their legs to align $proset.their groin with yours."
-			)>>
+		<<= either(
+			"Reaching down, <<ref _top 'subj'>> <<verb _top 'adjust'>> <<pro _top 'poss'>> <<= _topGen >> to line it up with <<ref _bottom 'poss'>> <<= _bottomGen >> before starting to thrust slowly, rubbing against <<ref _bottom 'obj'>>.",
+			"<<ref _top 'subjCap'>> <<verb _top 'draw'>> <<ref _bottom 'obj'>> in close, opening <<pro _top 'poss'>> legs enough to align <<pro _top 'poss'>> <<= _topGen >> with <<ref _bottom 'poss'>> <<= _bottomGen >>.",
+			"<<ref _top 'subjCap'>> <<verb _top 'pull'>> <<ref _bottom 'obj'>> close and <<verb _top 'position'>> <<pro _top 'refl'>> so <<pro _bottom 'poss'>> <<= _bottomGen >> <<verb _bottom 'press'>> against <<ref _top 'possNoun'>> <<= _topGen>>.",
+			"With a pleased sound, <<ref _top 'subj'>> eagerly <<verb _top 'press'>> <<pro _top 'poss'>> groin against <<ref _bottom 'poss'>> and <<verb _top 'begin'>> teasing <<pro _top 'poss'>> <<= _topGen >> against <<ref _bottom 'poss'>> <<= _bottomGen >>."
+		) >>
+	<</if>>
+	<<if typeof _h !== "undefined">>
+		<<if _h is 1>>
+			You notice that <<ref $mc 'subj'>> <<verb $mc 'are' 'is'>> larger than <<ref _npc 'obj'>>.
+		<<elseif _h is -1>>
+			You notice that <<ref $mc 'subj'>> <<verb $mc 'are' 'is'>> smaller than <<ref _npc 'obj'>>.
+		<<else>>
+			You notice that <<ref $mc 'subj'>> and <<ref _npc 'subj'>> are about the same size.
 		<</if>>
 	<</if>>
-
-	<<if _h is 1>>
-		You notice that you are larger than _n.name.
-	<<elseif _h is -1>>
-		You notice that you are smaller than _n.name.
-	<<else>>
-		You notice that you and _n.name are about the same size.
-	<</if>>
-
 <<elseif $sex.act == "Continue Frotting">>
-
 	<<if $sex.role == "Top">>
-		<<=either(
-			"Gently bucking $proset.their own <<=_nHip>> in response, _n.name lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they mirror your movements and softly rub $proset.their <<=_nGen>> against yours.",
-			"Responding with a gentle buck of $proset.their own <<=_nHip>>, _n.name mirrors your movements, helping rub $proset.their <<=_nGen>> up and down over yours.",
-			"Happily bucking $proset.their own <<=_nHip>> in response, _n.name lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they eagerly rub $proset.their <<=_nGen>> against yours.",
-			"Responding with a happy buck of $proset.their own <<=_nHip>>, _n.name mirrors your movements, frantically rubbing $proset.their <<=_nGen>> over yours.",
-			"_n.name responds eagerly and lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they rub $proset.their own <<=_nGen>> up and down over yours.",
-			"A <<npcNoise 'base' 'pleasure'>> lips from _n.name's lips as $proset.they thrust $proset.their <<=_nHip>> and grind $proset.their <<=_nGen>> against yours.",
-			"<<npcNoise 'ing cap' 'pleasure'>> in delight, _n.name eagerly thrusts $proset.their <<=_nHip>>, using your movements to help grind $proset.their <<=_nGen>> against yours.",
-			"_n.name happily responds in kind and lets out a <<npcNoise 'base' 'pleasure'>>as $proset.they softly rub $proset.their own <<=_nGen>> over your groin.",
-			"A <<npcNoise 'base' 'pleasure'>>drifts from _n.name's lips as $proset.they gently thrust $proset.their <<=_nHip>> and grind $proset.their <<=_nGen>> against yours.",
-			"<<npcNoise 'ing cap' 'pleasure'>> in pleasure, _n.name gently pushes $proset.their <<=_nHip>> forward, using your movements to help grind $proset.their <<=_nGen>> against yours.",
-			"_n.name responds in kind and lets out a <<mcNoise 'base' 'pleasure'>> as $proset.they rub $proset.their own <<=_nGen>> up and down over yours.",
-			"A <<npcNoise 'base' 'pleasure'>>bursts from _n.name's lips as $proset.they thrust $proset.their <<=_nHip>> and grind $proset.their <<=_nGen>> against yours.",
-			"<<npcNoise 'ing cap' 'pleasure'>> in pleasure, _n.name thrusts $proset.their <<=_nHip>> forward, using your movements to help grind $proset.their <<=_nGen>> against yours."
-		)>>
-
+		<<= either(
+			"<<ref _bottom 'subjCap'>> gently <<verb _bottom 'buck'>> <<pro _bottom 'poss'>> <<= _bottomHips >> in response, mirroring <<ref _top 'poss'>> movements as <<pro _bottom 'subj'>> softly <<verb _bottom 'rub'>> <<pro _bottom 'poss'>> <<= _bottomGen >> against <<ref _top 'possNoun'>>.",
+			"Responding with a gentle roll of <<pro _bottom 'poss'>> <<= _bottomHips >>, <<ref _bottom 'subj'>> <<verb _bottom 'mirror'>> <<ref _top 'poss'>> rhythm and <<verb _bottom 'help'>> <<verb _bottom 'rub'>> <<pro _bottom 'poss'>> <<= _bottomGen >> against <<ref _top 'poss'>> <<= _topGen >>.",
+			"<<ref _bottom 'subjCap'>> eagerly <<verb _bottom 'respond'>> in kind, grinding <<pro _bottom 'poss'>> <<= _bottomGen >> against <<ref _top 'poss'>> <<= _topGen >> with growing enthusiasm.",
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'let'>> out a pleased sound as <<pro _bottom 'subj'>> <<verb _bottom 'thrust'>> <<pro _bottom 'poss'>> <<= _bottomHips >> forward and <<verb _bottom 'grind'>> <<pro _bottom 'poss'>> <<= _bottomGen >> against <<ref _top 'possNoun'>>.",
+			"<<ref _bottom 'subjCap'>> happily <<verb _bottom 'push'>> <<pro _bottom 'poss'>> <<= _bottomHips >> forward, using <<ref _top 'poss'>> movements to help grind <<pro _bottom 'poss'>> <<= _bottomGen >> against <<ref _top 'possNoun'>>."
+		) >>
 	<<elseif $sex.role == "Bottom">>
-		<<=either(
-			"Letting out a little <<mcNoise 'base' 'pleasure'>> with every thrust of your <<=_mcHip>>, you gently rub your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
-			"You let out a series of soft sighs as you gently rub your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
-			"Sliding your <<=_mcGen>> over _n.name's <<=_nGen>>, you let out a little <<mcNoise 'base' 'pleasure'>> with each pump of your <<=_mcHip>>.",
-			"Letting out a <<mcNoise 'base' 'pleasure'>> with each thrust of your <<=_mcHip>>, you continue rubbing your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
-			"You let out a series of lewd <<mcNoise 's' 'pleasure'>> as you rub your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
-			"Rubbing your <<=_mcGen>> over _n.name's <<=_nGen>>, you let out a <<mcNoise 'base' 'pleasure'>> with each pump of your <<=_mcHip>>.",
-			"Letting out a <<mcNoise 'base' 'pleasure'>> with each eager thrust of your <<=_mcHip>>, you passionately rub your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
-			"You let out a series of lewd <<mcNoise 's' 'pleasure'>> as you desperately grind your <<=_mcGen>> up and down over _n.name's <<=_nGen>>.",
-			"Eagerly grinding your <<=_mcGen>> over _n.name's <<=_nGen>>, you let out a <<mcNoise 'base' 'pleasure'>> with each frantic pump of your <<=_mcHip>>.",
-			"You both shiver with pleasure each time _n.name thrusts against you."
-		)>>
+		<<= either(
+			"<<ref _bottom 'subjCap'>> gently <<verb _bottom 'rub'>> <<pro _bottom 'poss'>> <<= _bottomGen >> up and down over <<ref _top 'poss'>> <<= _topGen >>, letting the shared friction build between them.",
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'let'>> out a series of soft sighs as <<pro _bottom 'subj'>> <<verb _bottom 'grind'>> <<pro _bottom 'poss'>> <<= _bottomGen >> against <<ref _top 'possNoun'>>.",
+			"Sliding <<pro _bottom 'poss'>> <<= _bottomGen >> over <<ref _top 'poss'>> <<= _topGen >>, <<ref _bottom 'subj'>> <<verb _bottom 'move'>> with each pump of <<pro _bottom 'poss'>> <<= _bottomHips >>.",
+			"<<ref _bottom 'subjCap'>> eagerly <<verb _bottom 'grind'>> against <<ref _top 'obj'>>, rubbing <<pro _bottom 'poss'>> <<= _bottomGen >> over <<ref _top 'poss'>> <<= _topGen >> again and again.",
+			"Both of them shiver each time <<ref _top 'subj'>> and <<ref _bottom 'subj'>> grind together."
+		) >>
 	<</if>>
-
 <</if>>

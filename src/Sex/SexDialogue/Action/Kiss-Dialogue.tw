@@ -1,13 +1,13 @@
 :: Kiss-Dialogue [Dialogue nobr]
-<<set _npc = _n>>
+
 <<PronounsSet>>
 	<<=either(
-		"_n.name leans in and kisses you softly.",
-		"You peck _n.name on the lips.",
-		"_n.name makes out with you.",
-		"You lean in, pressing your lips against _n.name's mouth as you deliver a passionate kiss.",
-		"You lean in, grabbing _n.name's head in both hands and pulling _n.name up into a passionate kiss.",
-		"With a grin, you lean in into _n.name's chest, breathing in _n.name's scent before pressing your lips against _n.name's.",
-		"Leaning down, you let out a <<mcNoise 'base' 'pleasure'>> as you press your lips against _n.name's and start to eagerly kiss _n.name."
+		"<<ref _top 'subjCap'>> <<verb _top 'lean'>> in and <<verb _top 'kiss'>> <<ref _bottom 'subj'>> softly.",
+		"<<ref _top 'subjCap'>> <<verb _top 'peck'>> <<ref _bottom 'subj'>> on the lips.",
+		"<<ref _top 'subjCap'>> <<verb _top 'make'>> out with <<ref _bottom 'subj'>>.",
+		"<<ref _top 'subjCap'>> <<verb _top 'lean'>> in, pressing <<pro _top 'poss'>> lips against <<ref _bottom 'poss'>> mouth as <<pro _top 'subj'>> <<verb _top 'deliver'>> a passionate kiss.",
+		"<<ref _top 'subjCap'>> <<verb _top 'lean'>> in, grabbing <<ref _bottom 'poss'>> head in both hands and pulling <<pro _bottom 'obj'>> up into a passionate kiss.",
+		"With a grin, <<ref _top 'subj'>> <<verb _top 'lean'>> into <<ref _bottom 'poss'>> chest, breathing in <<pro _bottom 'poss'>> scent before pressing <<pro _top 'poss'>> lips against <<pro _bottom 'poss'>>.",
+		"Leaning down, <<ref _top 'subj'>> <<verb _top 'let'>> out a <<mcNoise 'base' 'pleasure'>> as <<pro _top 'subj'>> <<verb _top 'press'>> <<pro _top 'poss'>> lips against <<ref _bottom 'poss'>> and start to eagerly kiss <<pro _bottom 'obj'>>."
 	)>>
 

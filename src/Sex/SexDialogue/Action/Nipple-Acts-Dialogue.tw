@@ -1,32 +1,14 @@
 :: Nipple-Acts-Dialogue [nobr]
 
 <<if $sex.act =="Tease Nipples">>
-    <<if $sex.role == "Top">>
-        You tease _n.name's nipples.
-    <<elseif $sex.role == "Bottom">>
-        <<=either(
-            "_n.name teases your nipples.",
-            "_n.name rubbed their finger against your nipples."
-        )>>
-    <</if>>
+    <<=either(
+        "<<ref _top 'subjCap'>> <<verb _top 'tease'>> <<ref _bottom 'poss'>> nipples.",
+        "<<ref _top 'subjCap'>> <<verb _top 'rub'>> <<pro _top 'poss'>> finger against <<ref _bottom 'poss'>> nipples."
+    )>>
 <<elseif $sex.act == "Kiss Nipple">>
-    <<if $sex.role == "Top">>
-        You kiss _n.name's nipples
-    <<elseif $sex.role == "Bottom">>
-        _n.name kisses your nipples.
-    <</if>>
+    <<ref _top 'subjCap'>> <<verb _top 'kiss'>> <<ref _bottom 'poss'>> nipples.
 <<elseif $sex.act == "Lick Nipple">>
-    <<if $sex.role == "Top">>
-        You lick _n.name's nipples.
-    <<elseif $sex.role == "Bottom">>
-        _n.name licks your nipples.
-    <</if>>
+    <<ref _top 'subjCap'>> <<verb _top 'lick'>> <<ref _bottom 'poss'>> nipples.
 <<elseif $sex.act == "Suck Nipple">>
-    <<if $sex.role == "Top">>
-        You suck _n.name's nipples
-    <<elseif $sex.role == "Bottom">>
-        <<=either(  
-            "_n.name sucks your nipples."
-        )>>
-    <</if>>
+    <<ref _top 'subjCap'>> <<verb _top 'suck'>> <<ref _bottom 'poss'>> nipples.
 <</if>>

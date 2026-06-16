@@ -742,7 +742,7 @@ setup.sexacts = {
     },
     "Lick Pussy":
     {
-        "positions": ["Sit On Face", "Sixty-Nine", "Kneeling", "Kneeling Over", "Oral Service", "Squatting Before", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
+        "positions": ["Sit On Face", "Sixty-Nine", "Kneeling:Bottom", "Kneeling Over", "Oral Service", "Squatting Before", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
         "action type": ["tease"],
         "Top parts": ["Tongue"],
         "Bottom parts": ["Vagina"],
@@ -778,23 +778,6 @@ setup.sexacts = {
         "Bottom dialogue tags": ["pussy licked"],
         coexist: true,
     },
-    "Ride Face": /*Check if redundant */
-    {
-        "positions": [ "Riding Face:Top", "Kneeling:Top", "Kneeling Over:Top", "Oral Service:Top", "Squatting Before:Top", "Perched Oral Service:Top", "Underneath Oral Service:Top", "Laid Across Oral Service:Top"],
-        "action type": ["tease"],
-        "Top parts": ["Vagina"],
-        "Bottom parts": ["Mouth"],
-        "Top cum locations": [],
-        "Bottom cum locations": ["in mouth"],
-        "masturbation": false,
-        "take virginity": [],
-        "Top arousal": 50,
-        "Bottom arousal": 10,
-        "Bottom arousal cap": 300,
-        "remember as": ["cunnilingus", "received"],
-        "Top dialogue tags": ["Sit On Face"],
-        "Bottom dialogue tags": ["face ridden"],
-    },
     // oral/hand cock service actions
     "Lick Asshole":
     {
@@ -816,7 +799,7 @@ setup.sexacts = {
     },
     "Lick Cock":
     {
-        "positions": [ "Sixty-Nine", "Kneeling", "Kneeling Over", "Oral Service", "Kneeling By Face", "Squatting Before", "Sit On Face", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
+        "positions": [ "Sixty-Nine", "Kneeling", "Kneeling Over", "Oral Service", "Kneeling By Face", "Squatting Before", "Sit On Face: Bottom", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
         "action type": ["tease"],
         "Top parts": ["Penis"],
         "Bottom parts": ["Tongue"],

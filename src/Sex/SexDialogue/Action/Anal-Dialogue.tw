@@ -1,153 +1,162 @@
 :: Anal-Dialogue [nobr Dialogue] {"position":"1200,1575","size":"100,100"}
 
-<<set _npc = _n>>
-<<PronounsSet>>
+
+
+<<set _topGenitals = setup.partLower(_top, 'genitals', 'genitals')>>
+<<set _bottomGenitals = setup.partLower(_bottom, 'genitals', 'genitals')>>
+<<set _bottomHands = setup.partLower(_bottom, 'Hands', 'hands')>>
+<<set _bottomLegs = setup.partLower(_bottom, 'Legs', 'legs')>>
+<<set _bottomFeet = setup.partLower(_bottom, 'Feet', 'feet')>>
+<<set _bottomAssDesc = setup.partLower(_bottom, 'assSize', '')>>
+<<set _bottomAss = (_bottomAssDesc ? _bottomAssDesc + ' ' : '') + 'ass'>>
 
 <<if $sex.act == "Enter Ass">>
 	<<if $sex.position == "Cowgirl">>
 		<<= either(
-			"You both moan as _n.name slides $proset.their ass down onto your <<= setup.partLower($mc, 'genitals', 'genitals') >>. Soon, $proset.their butt rests fully on your thighs."
+			"<<ref _top 'subjCap'>> and <<ref _bottom 'subj'>> moan as <<ref _bottom 'subj'>> <<verb _bottom 'slide'>> <<pro _bottom 'poss'>> <<= _bottomAss >> down onto <<ref _top 'poss'>> <<= _topGenitals >>. Soon, <<ref _bottom 'poss'>> butt rests fully on <<pro _top 'poss'>> thighs."
 		) >>
 	<<elseif $sex.position == "Reverse Cowgirl">>
 		<<= either(
-			"Facing away from you, _n.name lowers $proset.their ass onto your <<= setup.partLower($mc, 'genitals', 'genitals') >>."
+			"Facing away from <<ref _top 'obj'>>, <<ref _bottom 'subj'>> <<verb _bottom 'lower'>> <<pro _bottom 'poss'>> <<= _bottomAss >> onto <<ref _top 'poss'>> <<= _topGenitals >>."
 		) >>
 	<<elseif $sex.position == "Missionary">>
 		<<= either(
-			"You enter _n.name's ass in the missionary position.",
-			"You line up your <<= setup.partLower($mc, 'genitals', 'genitals') >> with _n.name's ass and press forward, feeling $proset.their tightness envelop your <<= setup.partLower($mc, 'genitals', 'genitals') >>."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >> in the missionary position.",
+			"<<ref _top 'subjCap'>> <<verb _top 'line'>> up <<pro _top 'poss'>> <<= _topGenitals >> with <<ref _bottom 'poss'>> <<= _bottomAss >> and <<verb _top 'press'>> forward, feeling <<pro _bottom 'poss'>> tightness around <<pro _top 'poss'>> <<= _topGenitals >>."
 		) >>
 	<<elseif $sex.position == "Mating Press">>
 		<<= either(
-			"You enter _n.name's ass in a mating press."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >> in a mating press."
 		) >>
 	<<elseif $sex.position == "Doggy">>
 		<<= either(
-			"You enter _n.name's ass in the doggy style position.",
-			"You line up your <<= setup.partLower($mc, 'genitals', 'genitals') >> with _n.name's ass and press forward, feeling $proset.their tightness envelop your <<= setup.partLower($mc, 'genitals', 'genitals') >>."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >> in the doggy style position.",
+			"<<ref _top 'subjCap'>> <<verb _top 'line'>> up <<pro _top 'poss'>> <<= _topGenitals >> with <<ref _bottom 'poss'>> <<= _bottomAss >> and <<verb _top 'press'>> forward, feeling <<pro _bottom 'poss'>> tightness around <<pro _top 'poss'>> <<= _topGenitals >>."
 		) >>
-	<<elseif $sex.position == "Lean against wall">>
+	<<elseif $sex.position == "Against Wall From Behind">>
 		<<= either(
-			"You enter _n.name's ass as $proset.they lean against the wall."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >> as <<ref _bottom 'subj'>> <<verb _bottom 'lean'>> against the wall."
 		) >>
 	<<elseif $sex.position == "Prone Bone">>
 		<<= either(
-			"You enter _n.name's ass in the prone bone position."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >> in the prone bone position."
 		) >>
 	<<elseif $sex.position == "Spooning">>
 		<<= either(
-			"You enter _n.name's ass in the spooning position."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >> while spooning."
 		) >>
 	<<else>>
 		<<= either(
-			"You enter _n.name's ass."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >>."
 		) >>
 	<</if>>
 
 <<elseif $sex.act == "Push Cock In Ass">>
 	<<if $sex.position == "Cowgirl">>
 		<<= either(
-			"You sink down onto _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, letting out a <<mcNoise 'base' 'pleasure'>> as you lean down and grab _n.name's head in both your <<= setup.partLower($mc, 'Hands', 'hands') >> before pulling $proset.them into a passionate kiss.",
-			"With a <<mcNoise 'base' 'pleasure'>>, you slide down onto _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, leaning into _n.name's chest and breathing in $proset.their scent before pressing your lips against $proset.theirs.",
-			"You let _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> slide deep into your $mc.assSize ass as you let out a <<mcNoise 'base' 'pleasure'>>.",
-			"Leaning down, you let out a <<mcNoise 'base' 'pleasure'>> as you bury yourself on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> before leaning forward and pressing your lips against $proset.theirs.",
-			"You reach down to take hold of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> before shuffling into a better position. After teasing the head over your $mc.assSize ass, you let out a little <<mcNoise 'base' 'pleasure'>> as you slowly drop down and take _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> into your ass.",
-			"Shuffling into a better position, you line the head of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> up between your cheeks, and with a slow, steady movement, you gently drop down and take $proset.them into your $mc.assSize ass.",
-			"You take a firm hold of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, then tease the head over your $mc.assSize ass before eagerly dropping down and taking $proset.them into you.",
-			"Shuffling into a better position, you line the head of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> up between your cheeks, and with a single movement, you eagerly drop down and take $proset.them into your ass.",
-			"You reach down and roughly grab _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>, tease the head over your $mc.assSize ass, then forcefully drop down and take $proset.them into you.",
-			"Shuffling into a better position, you line the head of _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> up between your cheeks, and with a single movement, you roughly drop down and take $proset.them into your ass."
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'sink'>> down onto <<ref _top 'poss'>> <<= _topGenitals >>, letting out a <<mcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'lean'>> down and <<verb _bottom 'grab'>> <<ref _top 'poss'>> head in both <<pro _bottom 'poss'>> <<= _bottomHands >> before pulling <<ref _top 'obj'>> into a passionate kiss.",
+			"With a <<mcNoise 'base' 'pleasure'>>, <<ref _bottom 'subj'>> <<verb _bottom 'slide'>> down onto <<ref _top 'poss'>> <<= _topGenitals >>, leaning into <<ref _top 'poss'>> chest and breathing in <<pro _top 'poss'>> scent before pressing <<pro _bottom 'poss'>> lips against <<ref _top 'poss'>> lips.",
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'let'>> <<ref _top 'poss'>> <<= _topGenitals >> slide deep into <<pro _bottom 'poss'>> <<= _bottomAss >> as <<pro _bottom 'subj'>> <<verb _bottom 'let'>> out a <<mcNoise 'base' 'pleasure'>>.",
+			"Leaning down, <<ref _bottom 'subj'>> <<verb _bottom 'let'>> out a <<mcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'bury'>> <<pro _bottom 'refl'>> on <<ref _top 'poss'>> <<= _topGenitals >> before leaning forward and pressing <<pro _bottom 'poss'>> lips against <<ref _top 'poss'>> lips.",
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'reach'>> down to take hold of <<ref _top 'poss'>> <<= _topGenitals >> before shuffling into a better position. After teasing the head over <<pro _bottom 'poss'>> <<= _bottomAss >>, <<pro _bottom 'subj'>> <<verb _bottom 'let'>> out a little <<mcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> slowly <<verb _bottom 'drop'>> down and <<verb _bottom 'take'>> it inside.",
+			"Shuffling into a better position, <<ref _bottom 'subj'>> <<verb _bottom 'line'>> the head of <<ref _top 'poss'>> <<= _topGenitals >> up between <<pro _bottom 'poss'>> cheeks, then gently <<verb _bottom 'drop'>> down and <<verb _bottom 'take'>> it into <<pro _bottom 'poss'>> <<= _bottomAss >>.",
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'take'>> a firm hold of <<ref _top 'poss'>> <<= _topGenitals >>, then <<verb _bottom 'tease'>> the head over <<pro _bottom 'poss'>> <<= _bottomAss >> before eagerly dropping down and taking it inside.",
+			"Shuffling into a better position, <<ref _bottom 'subj'>> <<verb _bottom 'line'>> the head of <<ref _top 'poss'>> <<= _topGenitals >> up between <<pro _bottom 'poss'>> cheeks, then eagerly <<verb _bottom 'drop'>> down and <<verb _bottom 'take'>> it into <<pro _bottom 'poss'>> <<= _bottomAss >>.",
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'reach'>> down and roughly <<verb _bottom 'grab'>> <<ref _top 'poss'>> <<= _topGenitals >>, <<verb _bottom 'tease'>> the head over <<pro _bottom 'poss'>> <<= _bottomAss >>, then forcefully <<verb _bottom 'drop'>> down and <<verb _bottom 'take'>> it inside.",
+			"Shuffling into a better position, <<ref _bottom 'subj'>> <<verb _bottom 'line'>> the head of <<ref _top 'poss'>> <<= _topGenitals >> up between <<pro _bottom 'poss'>> cheeks, then roughly <<verb _bottom 'drop'>> down and <<verb _bottom 'take'>> it into <<pro _bottom 'poss'>> <<= _bottomAss >>."
 		) >>
 	<<elseif $sex.position == "Reverse Cowgirl">>
 		<<= either(
-			"You lower your ass onto _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>."
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'lower'>> <<pro _bottom 'poss'>> <<= _bottomAss >> onto <<ref _top 'poss'>> <<= _topGenitals >>."
 		) >>
 	<<elseif $sex.position == "Missionary">>
 		<<= either(
-			"_n.name enters your ass in the missionary position.",
-			"_n.name grunts as $proset.they enter your ass."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >> in the missionary position.",
+			"<<ref _top 'subjCap'>> <<verb _top 'grunt'>> as <<pro _top 'subj'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >>."
 		) >>
 	<<elseif $sex.position == "Doggy">>
 		<<= either(
-			"_n.name enters your ass in the doggy style position."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >> in the doggy style position."
 		) >>
 	<<elseif $sex.position == "Lean against wall">>
 		<<= either(
-			"_n.name enters your ass as you lean against the wall."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >> as <<ref _bottom 'subj'>> <<verb _bottom 'lean'>> against the wall."
 		) >>
 	<<elseif $sex.position == "Prone Bone">>
 		<<= either(
-			"_n.name enters your ass in the prone bone position."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >> in the prone bone position."
 		) >>
 	<<elseif $sex.position == "Spooning">>
 		<<= either(
-			"_n.name enters your ass in the spooning position."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >> while spooning."
 		) >>
 	<<else>>
 		<<= either(
-			"_n.name enters your ass."
+			"<<ref _top 'subjCap'>> <<verb _top 'enter'>> <<ref _bottom 'poss'>> <<= _bottomAss >>."
 		) >>
 	<</if>>
 
 <<elseif $sex.act == "Fuck Ass">>
 	<<if $sex.position == "Cowgirl" || $sex.position == "Reverse Cowgirl">>
 		<<= either(
-			"_n.name bounces up and down on your <<= setup.partLower($mc, 'genitals', 'genitals') >> in a controlled rhythm.",
-			"_n.name's pace increases, pushing your <<= setup.partLower($mc, 'genitals', 'genitals') >> deeper into $proset.their hole.",
-			"The sight of _n.name bouncing on your <<= setup.partLower($mc, 'genitals', 'genitals') >>, bliss written across $proset.their face, turns you on.",
-			"_n.name leans forward, putting $proset.their hands on your bare chest. Balanced like this, $proset.they begin bouncing $proset.their ass up and down the length of your cock.",
-			"You lie back, enjoying the feeling of $proset.their ass gripping your cock."
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'bounce'>> up and down on <<ref _top 'poss'>> <<= _topGenitals >> in a controlled rhythm.",
+			"The pace increases, pushing <<ref _top 'poss'>> <<= _topGenitals >> deeper into <<ref _bottom 'poss'>> hole.",
+			"The sight of <<ref _bottom 'obj'>> bouncing on <<ref _top 'poss'>> <<= _topGenitals >>, bliss written across <<pro _bottom 'poss'>> face, turns <<ref _top 'obj'>> on.",
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'lean'>> forward, putting <<pro _bottom 'poss'>> <<= _bottomHands >> on <<ref _top 'poss'>> bare chest. Balanced like this, <<pro _bottom 'subj'>> <<verb _bottom 'begin'>> bouncing <<pro _bottom 'poss'>> <<= _bottomAss >> up and down the length of <<ref _top 'poss'>> <<= _topGenitals >>.",
+			"<<ref _top 'subjCap'>> <<verb _top 'lie'>> back, enjoying the feeling of <<ref _bottom 'poss'>> <<= _bottomAss >> gripping <<pro _top 'poss'>> <<= _topGenitals >>."
 		) >>
 	<<elseif $sex.position == "Doggy">>
 		<<= either(
-			"You hump _n.name's ass like an animal."
+			"<<ref _top 'subjCap'>> <<verb _top 'hump'>> <<ref _bottom 'poss'>> <<= _bottomAss >> like an animal."
 		) >>
 	<<elseif $sex.position == "Missionary">>
 		<<= either(
-			"$proset.their feet kick in the air with your thrusts, $proset.their toes curling and uncurling in pleasure."
+			"<<ref _bottom 'poss'>> <<= _bottomFeet >> kick in the air with <<ref _top 'poss'>> thrusts, <<pro _bottom 'poss'>> toes curling and uncurling in pleasure."
 		) >>
 	<<else>>
 		<<= either(
-			"You both keep fucking."
+			"<<ref _top 'subjCap'>> and <<ref _bottom 'subj'>> keep moving together."
 		) >>
 	<</if>>
 
 <<elseif $sex.act == "Take Cock In Ass">>
 	<<if $sex.position == "Cowgirl" || $sex.position == "Reverse Cowgirl">>
 		<<= either(
-			"Using your <<= setup.partLower($mc, 'Legs', 'legs') >>, you slowly lift yourself up and down, sliding _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> in and out of your $mc.assSize ass as you <<mcNoise 'base' 'pleasure'>> aloud.",
-			"Leaning forward, you use your <<= setup.partLower($mc, 'Hands', 'hands') >> to support some of your weight as you slowly slide up and down on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-			"Lowering your <<= setup.partLower($mc, 'Hands', 'hands') >> to your knees, you use your <<= setup.partLower($mc, 'Legs', 'legs') >> to slowly slide yourself up and down, letting out a soft <<mcNoise 'base' 'pleasure'>> as you impale yourself on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-			"You slowly lift yourself up before sliding back down, letting out a soft <<mcNoise 'base' 'pleasure'>> as you spear your $mc.assSize ass on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-			"Using your <<= setup.partLower($mc, 'Legs', 'legs') >>, you lift yourself up and down, sliding _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> in and out of your $mc.assSize ass as you <<mcNoise 'base' 'pleasure'>> aloud.",
-			"Leaning forward, you use your <<= setup.partLower($mc, 'Hands', 'hands') >> to support some of your weight as you eagerly slide up and down on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-			"Lowering your <<= setup.partLower($mc, 'Hands', 'hands') >> to your knees, you use your <<= setup.partLower($mc, 'Legs', 'legs') >> to enthusiastically slide yourself up and down, letting out a <<mcNoise 'base' 'pleasure'>> as you impale yourself on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-			"You lift yourself up before greedily sliding back down, letting out a <<mcNoise 'base' 'pleasure'>> as you spear your $mc.assSize ass on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-			"Using your <<= setup.partLower($mc, 'Legs', 'legs') >>, you rapidly bounce yourself up and down, slamming _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >> in and out of your $mc.assSize ass as you <<mcNoise 'base' 'pleasure'>> aloud.",
-			"Leaning forward, you use your <<= setup.partLower($mc, 'Hands', 'hands') >> to support some of your weight as you rapidly buck up and down on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-			"Placing your <<= setup.partLower($mc, 'Hands', 'hands') >> on the floor behind you for support, you start rapidly bouncing yourself up and down, letting out a shuddering <<mcNoise 'base' 'pleasure'>> as you impale yourself on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>.",
-			"Grinning down at _n.name, you start enthusiastically bouncing up and down, letting out a <<mcNoise 'base' 'pleasure'>> as you spear your $mc.assSize ass on _n.name's <<= setup.partLower(_n, 'genitals', 'genitals') >>."
+			"Using <<pro _bottom 'poss'>> <<= _bottomLegs >>, <<ref _bottom 'subj'>> slowly <<verb _bottom 'lift'>> <<pro _bottom 'refl'>> up and down, sliding <<ref _top 'poss'>> <<= _topGenitals >> in and out of <<pro _bottom 'poss'>> <<= _bottomAss >> as <<pro _bottom 'subj'>> <<verb _bottom 'moan'>> aloud.",
+			"Leaning forward, <<ref _bottom 'subj'>> <<verb _bottom 'use'>> <<pro _bottom 'poss'>> <<= _bottomHands >> to support some of <<pro _bottom 'poss'>> weight as <<pro _bottom 'subj'>> slowly <<verb _bottom 'slide'>> up and down on <<ref _top 'poss'>> <<= _topGenitals >>.",
+			"Lowering <<pro _bottom 'poss'>> <<= _bottomHands >> to <<pro _bottom 'poss'>> knees, <<ref _bottom 'subj'>> <<verb _bottom 'use'>> <<pro _bottom 'poss'>> <<= _bottomLegs >> to slowly slide <<pro _bottom 'refl'>> up and down, letting out a soft <<mcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'impale'>> <<pro _bottom 'refl'>> on <<ref _top 'poss'>> <<= _topGenitals >>.",
+			"<<ref _bottom 'subjCap'>> slowly <<verb _bottom 'lift'>> <<pro _bottom 'refl'>> up before sliding back down, letting out a soft <<mcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'spear'>> <<pro _bottom 'poss'>> <<= _bottomAss >> on <<ref _top 'poss'>> <<= _topGenitals >>.",
+			"Using <<pro _bottom 'poss'>> <<= _bottomLegs >>, <<ref _bottom 'subj'>> <<verb _bottom 'lift'>> <<pro _bottom 'refl'>> up and down, sliding <<ref _top 'poss'>> <<= _topGenitals >> in and out of <<pro _bottom 'poss'>> <<= _bottomAss >> as <<pro _bottom 'subj'>> <<verb _bottom 'moan'>> aloud.",
+			"Leaning forward, <<ref _bottom 'subj'>> <<verb _bottom 'use'>> <<pro _bottom 'poss'>> <<= _bottomHands >> to support some of <<pro _bottom 'poss'>> weight as <<pro _bottom 'subj'>> eagerly <<verb _bottom 'slide'>> up and down on <<ref _top 'poss'>> <<= _topGenitals >>.",
+			"Lowering <<pro _bottom 'poss'>> <<= _bottomHands >> to <<pro _bottom 'poss'>> knees, <<ref _bottom 'subj'>> <<verb _bottom 'use'>> <<pro _bottom 'poss'>> <<= _bottomLegs >> to enthusiastically slide <<pro _bottom 'refl'>> up and down, letting out a <<mcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'impale'>> <<pro _bottom 'refl'>> on <<ref _top 'poss'>> <<= _topGenitals >>.",
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'lift'>> <<pro _bottom 'refl'>> up before greedily sliding back down, letting out a <<mcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'spear'>> <<pro _bottom 'poss'>> <<= _bottomAss >> on <<ref _top 'poss'>> <<= _topGenitals >>.",
+			"Using <<pro _bottom 'poss'>> <<= _bottomLegs >>, <<ref _bottom 'subj'>> rapidly <<verb _bottom 'bounce'>> <<pro _bottom 'refl'>> up and down, slamming <<ref _top 'poss'>> <<= _topGenitals >> in and out of <<pro _bottom 'poss'>> <<= _bottomAss >> as <<pro _bottom 'subj'>> <<verb _bottom 'moan'>> aloud.",
+			"Leaning forward, <<ref _bottom 'subj'>> <<verb _bottom 'use'>> <<pro _bottom 'poss'>> <<= _bottomHands >> to support some of <<pro _bottom 'poss'>> weight as <<pro _bottom 'subj'>> rapidly <<verb _bottom 'buck'>> up and down on <<ref _top 'poss'>> <<= _topGenitals >>.",
+			"Placing <<pro _bottom 'poss'>> <<= _bottomHands >> on the floor behind <<ref _bottom 'obj'>> for support, <<ref _bottom 'subj'>> <<verb _bottom 'start'>> rapidly bouncing <<pro _bottom 'refl'>> up and down, letting out a shuddering <<mcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'impale'>> <<pro _bottom 'refl'>> on <<ref _top 'poss'>> <<= _topGenitals >>.",
+			"Grinning down at <<ref _top 'obj'>>, <<ref _bottom 'subj'>> <<verb _bottom 'start'>> enthusiastically bouncing up and down, letting out a <<mcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'spear'>> <<pro _bottom 'poss'>> <<= _bottomAss >> on <<ref _top 'poss'>> <<= _topGenitals >>."
 		) >>
 	<<elseif $sex.position == "Missionary">>
 		<<= either(
-			"Your body rocks back and forth on the bed as $proset.they thrust into you with force."
+			"<<ref _bottom 'poss'>> body rocks back and forth on the bed as <<ref _top 'subj'>> <<verb _top 'thrust'>> into <<ref _bottom 'obj'>> with force."
 		) >>
 	<<elseif $sex.position == "Doggy">>
 		<<= either(
-			"_n.name fucks your ass like an animal.",
-			"$proset.theyUp begin to pick up a rhythm, thrusting into you over and over. Each time $proset.they do, your body is jolted forward by the impact."
+			"<<ref _top 'subjCap'>> <<verb _top 'fuck'>> <<ref _bottom 'poss'>> <<= _bottomAss >> like an animal.",
+			"<<ref _top 'subjCap'>> <<verb _top 'begin'>> to pick up a rhythm, thrusting into <<ref _bottom 'obj'>> over and over. Each time <<pro _top 'subj'>> <<verb _top 'do'>>, <<ref _bottom 'poss'>> body is jolted forward by the impact."
 		) >>
 	<<elseif $sex.position == "Lean against wall">>
 		<<= either(
-			"_n.name thrusts into you, slamming $proset.their hips against your ass as $proset.they pump $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> in and out.",
-			"$proset.they begin to pick up a rhythm, thrusting into you over and over. Each time $proset.they do, your body is jolted forward by the impact."
+			"<<ref _top 'subjCap'>> <<verb _top 'thrust'>> into <<ref _bottom 'obj'>>, slamming <<pro _top 'poss'>> hips against <<ref _bottom 'poss'>> <<= _bottomAss >> as <<pro _top 'subj'>> <<verb _top 'pump'>> <<pro _top 'poss'>> <<= _topGenitals >> in and out.",
+			"<<ref _top 'subjCap'>> <<verb _top 'begin'>> to pick up a rhythm, thrusting into <<ref _bottom 'obj'>> over and over. Each time <<pro _top 'subj'>> <<verb _top 'do'>>, <<ref _bottom 'poss'>> body is jolted forward by the impact."
 		) >>
 	<<else>>
-		_n.name fucks you.	
+		<<= either(
+			"<<ref _top 'subjCap'>> <<verb _top 'fuck'>> <<ref _bottom 'obj'>>."
+		) >>
 	<</if>>
 
 <<elseif $sex.act == "Hump Ass Back">>
 	<<= either(
-		"You hump your ass back to meet _n.name's thrusts."
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'hump'>> <<pro _bottom 'poss'>> <<= _bottomAss >> back to meet <<ref _top 'poss'>> thrusts."
 	) >>
 <</if>>

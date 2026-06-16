@@ -16,7 +16,8 @@
 	$sex.act == "Lick And Suck Each Other (Continue)"
 )||
 	$sex.role == "Top" && (
-	$sex.act == "Fuck Mouth" ||	
+	$sex.act == "Fuck Mouth" ||
+	$sex.act == "Enter Mouth" ||	
 	$sex.act == "Lick Pussy" ||	
 	$sex.act == "Suck Each Other Off" ||
 	$sex.act == "Suck Each Other Off (Continue)" ||
@@ -27,114 +28,132 @@
 	$sex.act == "Lick And Suck Each Other" ||
 	$sex.act == "Lick And Suck Each Other (Continue)"
 
-)
->>
+)>>
 	<<set _muffled = true>>
 <</if>>
 
 <<if _muffled == true>>
+	<<if _top != $mc>>
 		<<set _lines = [
-			"_n.name makes a muffled noise."
+			"<<ref _top 'subjCap'>> makes a muffled noise."
 		]>>
+	<<elseif _bottom != $mc>>
+		<<set _lines = [
+			"<<ref _bottom 'subjCap'>> makes a muffled noise."
+		]>>	
+	<</if>>
 <<else>>
-<<if $sex.phase == "climax">>
-	<<set _lines = [
-		"_n.name <<npcNoise 's' 'exertion'>> from being close to climax."
-	]>>
-
-<<else>>
-	<<if $sex.act == "Fuck Pussy">>
-		<<set _lines = [
-			"_n.name <<npcNoise 's' 'pleasure'>> at the feeling of fucking a pussy.",
-			"_n.name <<npcNoise 's' 'comfort'>> softly, lost in the feeling of fucking a pussy.",
-			"Pleasure washes over _n.name, making $proset.them <<npcNoise 'base' 'comfort'>> softly."
-		]>>
-
-	<<elseif $sex.act == "Cuddle">>
-		<<set _lines = [
-			"_n.name smiles and leans in.",
-			"_n.name relaxes and nestles closer.",
-			"A soft smile crosses _n.name's face as $proset.they lean into you."
-		]>>
-
-	<<elseif $sex.act == "Kiss">>
-		<<set _lines = [
-			"_n.name enthusiastically presses $proset.themself against you and thrusts $proset.their tongue into your mouth as $proset.they eagerly return your affection.",
-			"With a delighted moan, _n.name leans into you, pushing $proset.their tongue past your lips as $proset.they pull you into a frantic tongue battle.",
-			"Letting out a soft moan, _n.name plants a series of gentle kisses on your lips before slowly sliding $proset.their tongue into your mouth.",
-			"With a soft hum, _n.name leans into you, gently pushing $proset.their tongue past your lips.",
-			"_n.name presses $proset.themself against you, muffling your <<mcNoise 's' 'pleasure'>> as $proset.they slide $proset.their tongue into your mouth.",
-			"_n.name pushes $proset.their tongue deep into your mouth, <<npcNoise 'ing' 'pleasure'>> as $proset.they eagerly return the kiss.",
-			"With an eager moan, _n.name grinds back against you, thrusting $proset.their tongue past your lips."
-		]>>
-	<<elseif $sex.act == "Push Cock In Ass">>
-		<<if $sex.position == "Cowgirl">>
+	/* Climax does not currently work, needs work.*/
+	<<if $sex.phase == "climax">>
+		<<if _top != $mc>>
 			<<set _lines = [
-				"_n.name lets out a <<npcNoise 'base' 'pleasure'>> as $proset.they enter you, eagerly bucking $proset.their own <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
-				"With a <<npcNoise 'base' 'pleasure'>>, _n.name eagerly thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your <<= String($mc.assSize || 'ass').toLowerCase() >> ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start energetically fucking you.",
-				"_n.name lets out a <<npcNoise 'base' 'pleasure'>> as $proset.they enter you, bucking $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up as $proset.they start fucking your $mc.assSize ass.",
-				"With a <<npcNoise 'base' 'pleasure'>>, _n.name thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> up into your $mc.assSize ass, sinking $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> into you as $proset.they start fucking you."
+				"<<ref _top 'subjCap'>> <<npcNoise 's' 'exertion'>> from being close to climax."
 			]>>
-		<<else>>
+		<<elseif _bottom != $mc>>
 			<<set _lines = [
-				"_n.name lets out a <<npcNoise 'base' 'pleasure'>> as they enter you."
-			]>>
-		<</if>>
-	<<elseif $sex.act == "Enter Ass">>
-			<<set _lines = [
-				"_n.name <<npcNoise 's' 'pleasure'>> feeling you slide inside of their ass."
-			]>>
-	<<elseif $sex.act == "Wrap Hand around Cock">>
-		<<set _lines = [
-			"_n.name smiles at you during the action."
-		]>>
-	<<elseif $sex.act == "Fuck Fist">>
-		<<set _lines = [
-			"_n.name smiles at you during the action."
-		]>>
-	<<elseif $sex.act == "Stroke Shaft With Feet">>
-		<<if $sex.role == "Bottom">>
-			<<= either(
-				"_n.name lets out a moan, eagerly bucking $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> forward as $proset.they start eagerly fucking your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
-				"With a moan, _n.name eagerly thrusts $proset.their <<= setup.partLower(_n, 'Hips', 'hips') >> forward and slides $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> between your <<= setup.partLower($mc, 'Feet', 'feet') >>.",
-				"_n.name thrusts $proset.their <<= setup.partLower(_n, 'genitals', 'genitals') >> deep between your <<= setup.partLower($mc, 'Feet', 'feet') >>, letting out a <<npcNoise 'base' 'pleasure'>>as $proset.they enjoy the footjob."
-			) >>
-		<<elseif $sex.role == "Top">>
-			<<= either(
-				"You fuck _n.name's <<= setup.partLower(_n, 'Feet', 'feet') >>.",
-				"_n.name giggles softly to $proset.themself as $proset.their feet glide up and down the length of your <<= setup.partLower($mc, 'genitals', 'genitals') >>."
-			) >>
-		<</if>>		
-	<<elseif $sex.act == "Press Face on Chest">>
-		<<if $sex.role == "Bottom">>
-			<<set _lines = [
-				"_n.name lets out a muffled noise in your chest."
+				"<<ref _bottom 'subjCap'>> <<npcNoise 's' 'exertion'>> from being close to climax."
 			]>>	
-		<<elseif $sex.role == "Top">>
-			<<set _lines = [
-				"_n.name <<npcNoise 's' 'pleasure'>> feeling you press on their chest."
-			]>>			
-		<</if>>		
-	<<elseif $sex.act == "Fuck Ass">>
-		<<set _lines = [
-			"_n.name <<npcNoise 's' 'pleasure'>> feeling you fuck their ass."
-		]>>		
-		<<if _n.sexpref == "Submissive">>
-			<<run _lines.push(
-			"They eagerly buck their hips in response."
-			)>>
-		<<elseif _n.sexpref == "Dominant">>
-			<<run _lines.push(
-			"They grit their teeth, taking it up the ass is something they are not used to."
-			)>>
-		<</if>>	
+		<</if>>
+		
 	<<else>>
-		<<set _lines = [
-			"_n.name <<npcNoise 's' 'pain'>> from the feeling.",
-			"$proset.theyUp appear to enjoy it very much."
-		]>>
+		<<if $sex.act == "Fuck Pussy">>
+			<<set _lines = [
+				"<<ref _bottom 'subjCap'>> <<npcNoise 's' 'pleasure'>> at the feeling of fucking a pussy.",
+				"<<ref _bottom 'subjCap'>> <<npcNoise 's' 'comfort'>> softly, lost in the feeling of fucking a pussy.",
+				"Pleasure washes over <<ref _bottom 'subjCap'>>, making <<pro _bottom 'obj'>> <<npcNoise 'base' 'comfort'>> softly."
+			]>>
+		<<elseif $sex.act == "Cuddle">>
+			<<set _lines = [
+				"<<ref _bottom 'subjCap'>> <<verb _bottom 'smile'>> and <<verb _bottom 'lean'>> in.",
+				"<<ref _bottom 'subjCap'>> <<verb _bottom 'relax'>> and <<verb _bottom 'nestle'>> closer.",
+				"A soft smile crosses <<ref _bottom 'poss'>> face as <<pro _bottom 'subj'>> <<verbEx _bottom 'lean'>> into <<ref _top 'subj'>>."
+			]>>
+		<<elseif $sex.act == "Kiss">>
+			<<set _lines = [
+				"<<ref _bottom 'subjCap'>> enthusiastically <<verb _bottom 'press'>> <<pro _bottom 'refl'>> against <<ref _top 'subj'>> and <<verb _bottom 'thrust'>> <<pro _bottom 'poss'>> tongue into <<ref _top 'poss'>> mouth as <<pro _bottom 'subj'>> eagerly return <<pro _top 'poss'>> affection.",
+				"With a delighted moan, <<ref _bottom 'subj'>> leans into <<ref _top 'subj'>>, pushing <<pro _bottom 'poss'>> tongue past <<pro _top 'poss'>> lips as <<pro _bottom 'subj'>> <<verbEx _bottom 'pull'>> <<pro _top 'subj'>> into a frantic tongue battle.",
+				"Letting out a soft moan, <<ref _bottom 'subj'>> <<verb _bottom 'plant'>> a series of gentle kisses on <<ref _top 'poss'>> lips before slowly sliding <<pro _top 'poss'>> tongue into <<pro _top 'poss'>> mouth.",
+				"With a soft hum, <<ref _bottom 'subj'>> <<verb _bottom 'lean'>> into <<ref _top 'subj'>>, gently pushing <<pro _bottom 'poss'>> tongue past <<ref _top 'poss'>> lips.",
+				"<<ref _bottom 'subjCap'>> <<verb _bottom 'press'>> <<pro _bottom 'refl'>> against <<ref _top 'subj'>>, muffling <<pro _top 'poss'>> <<mcNoise 's' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'slide'>> <<pro _bottom 'poss'>> tongue into <<pro _top 'poss'>> mouth.",
+				"<<ref _bottom 'subjCap'>> <<verb _bottom 'push'>> <<pro _bottom 'poss'>> tongue deep into <<ref _top 'poss'>> mouth, <<npcNoise 'ing' 'pleasure'>> as <<pro _bottom 'subj'>> eagerly return the kiss.",
+				"With an eager moan, <<ref _bottom 'subj'>> <<verb _bottom 'grind'>> back against <<ref _top 'subj'>>, thrusting <<pro _bottom 'poss'>> tongue past <<pro _top 'poss'>> lips."
+			]>>		
+		<<elseif $sex.act == "Push Cock In Ass">>
+			<<if $sex.position == "Cowgirl">>
+				<<set _lines = [
+					"<<ref _top 'subjCap'>> <<verb _top 'let'>> out a <<npcNoise 'base' 'pleasure'>> as <<pro _top 'subj'>> <<verb _top 'enter'>> <<ref _bottom 'subj'>>, eagerly bucking <<pro _top 'poss'>> own <<= setup.partLower(_top, 'Hips', 'hips') >> up as <<pro _top 'subj'>> start fucking <<ref _bottom 'poss'>> _bottom.assSize ass.",
+					"With a <<npcNoise 'base' 'pleasure'>>, <<ref _top 'subj'>> eagerly thrusts <<pro _top 'poss'>> <<= setup.partLower(_top, 'Hips', 'hips') >> up into <<ref _bottom 'poss'>> <<= String(_bottom.assSize || 'ass').toLowerCase() >> ass, sinking <<pro _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> into <<ref _bottom 'obj'>> and start energetically fucking <<pro _bottom 'obj'>>.",
+					"<<ref _top 'subjCap'>> <<verb _top 'let'>> out a <<npcNoise 'base' 'pleasure'>> as <<pro _top 'subj'>> <<verb _top 'enter'>> <<ref _bottom 'subj'>>, bucking <<pro _top 'poss'>> <<= setup.partLower(_top, 'Hips', 'hips') >> up as <<pro _top 'subj'>> start fucking <<ref _bottom 'poss'>> _bottom.assSize ass.",
+					"With a <<npcNoise 'base' 'pleasure'>>, <<ref _top 'subj'>> <<verb _top 'thrust'>> <<pro _top 'poss'>> <<= setup.partLower(_top, 'Hips', 'hips') >> up into <<ref _bottom 'poss'>> _bottom.assSize ass, sinking <<pro _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> into <<ref _bottom 'obj'>> as <<pro _top 'subj'>> start fucking <<pro _bottom 'obj'>>."
+				]>>
+			<<else>>
+				<<set _lines = [
+					"<<ref _top 'subjCap'>> <<verb _top 'let'>> out a <<npcNoise 'base' 'pleasure'>> as <<pro _top 'poss'>> <<verb _top 'enter'>> <<ref _bottom 'subj'>>."
+				]>>
+			<</if>>
+		<<elseif $sex.act == "Enter Ass">>
+			<<set _lines = [
+				"<<ref _bottom 'subjCap'>> <<npcNoise 's' 'pleasure'>> feeling <<ref _top 'subj'>> <<verb _top 'slide'>> inside of <<pro _bottom 'poss'>> ass."
+			]>>
+		<<elseif $sex.act == "Wrap Hand Around Cock">>
+			<<set _lines = [
+				"<<ref _bottom 'subjCap'>> <<verb _bottom 'smile'>> at <<ref _top 'subj'>> during the action."
+			]>>
+		<<elseif $sex.act == "Fuck Fist">>
+			<<set _lines = [
+				"<<ref _bottom 'subjCap'>> <<verb _bottom 'smile'>> at <<ref _top 'subj'>> during the action."
+			]>>
+		<<elseif $sex.act == "Stroke Shaft With Feet">>
+			<<if $sex.role == "Bottom">>
+				<<set _lines = [
+					"<<ref _top 'subjCap'>> <<verb _top 'let'>> out a moan, eagerly bucking <<pro _top 'poss'>> <<= setup.partLower(_top, 'Hips', 'hips') >> forward as <<pro _top 'subj'>> start eagerly fucking <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Feet', 'feet') >>.",
+					"With a moan, <<ref _top 'subj'>> eagerly <<verb _top 'thrust'>> <<pro _top 'poss'>> <<= setup.partLower(_top, 'Hips', 'hips') >> forward and slides <<pro _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> between <<ref _bottom 'poss'>> <<= setup.partLower($mc, 'Feet', 'feet') >>.",
+					"<<ref _top 'subjCap'>> <<verb _top 'thrust'>> <<pro _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> deep between <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Feet', 'feet') >>, letting out a <<npcNoise 'base' 'pleasure'>> as <<pro _top 'subj'>> <<verb _top 'enjoy'>> the footjob."
+				]>>
+			<<elseif $sex.role == "Top">>
+				<<set _lines = [
+					"<<ref _top 'subjCap'>> <<verb _top 'fuck'>> <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Feet', 'feet') >>.",
+					"<<ref _bottom 'subjCap'>> giggles softly to <<pro _bottom 'refl'>> as <<pro _bottom 'poss'>> feet glide up and down the length of <<ref _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >>."
+				]>>
+			<</if>>		
+		<<elseif $sex.act == "Press Face on Chest">>
+			<<if $sex.role == "Bottom">>
+				<<set _lines = [
+					"<<ref _top 'subjCap'>> <<verb _top 'let'>> out a muffled noise in <<ref _bottom 'poss'>> chest."
+				]>>	
+			<<elseif $sex.role == "Top">>
+				<<set _lines = [
+					"<<ref _bottom 'subjCap'>> <<npcNoise 's' 'pleasure'>> feeling <<ref _top 'obj'>> press on <<pro _top 'poss'>> chest."
+				]>>			
+			<</if>>		
+		<<elseif $sex.act == "Fuck Ass">>
+			<<set _lines = [
+				"<<ref _bottom 'subjCap'>> <<npcNoise 's' 'pleasure'>> feeling <<ref _top 'obj'>> fuck <<pro _bottom 'poss'>> ass."
+			]>>		
+			<<if _bottom.sexpref == "Submissive">>
+				<<run _lines.push(
+					"<<ref _bottom 'subjCap'>> eagerly <<verb _bottom 'buck'>> <<pro _bottom 'poss'>> hips in response."
+				)>>
+			<<elseif _bottom.sexpref == "Dominant">>
+				<<run _lines.push(
+					"<<ref _bottom 'subjCap'>> <<verb _bottom 'grit'>> <<pro _bottom 'poss'>> teeth, taking it up the ass is something <<pro _bottom 'subj'>> are not used to."
+				)>>
+			<</if>>	
+		<<else>>
+			<<if _top != $mc>>
+				<<set _lines = [
+					"<<ref _top 'subjCap'>> <<npcNoise 's' 'pain'>> from the feeling.",
+					"<<ref _top 'subjCap'>> <<verb _top 'appear'>> to enjoy it very much."
+				]>>
+			<<elseif _bottom != $mc>>
+				<<set _lines = [
+					"<<ref _bottom 'subjCap'>> <<npcNoise 's' 'pain'>> from the feeling.",
+					"<<ref _bottom 'subjCap'>> <<verb _bottom 'appear'>> to enjoy it very much."
+				]>>	
+			<</if>>
+		<</if>>
 	<</if>>
 <</if>>
-<</if>>
+<br>
 <<= either(..._lines) >>
 <br>

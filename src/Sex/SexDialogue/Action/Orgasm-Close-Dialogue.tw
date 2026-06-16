@@ -1,8 +1,5 @@
 :: Orgasm-Close-Dialogue [nobr]
 
-<<set _top = $sex.Top || $mc>>
-<<set _bottom = $sex.Bottom || $mc>>
-
 <<if $sex.climax.Bottom && $sex.climax.Top>>
 	<<gram _top "subjCap">> and <<gram _bottom "obj">> are both close to climax.
 <<elseif $sex.climax.Top>>
@@ -21,5 +18,4 @@
 	<<if $sex.climax.Bottom>>
 		"Climax is bottom"
 	<</if>>
-	
 <</if>>

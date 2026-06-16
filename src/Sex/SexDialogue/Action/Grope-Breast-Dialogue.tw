@@ -1,36 +1,17 @@
 :: Grope-Breast-Dialogue [nobr Dialogue] {"position":"1100,1475","size":"100,100"}
-<<set _npc = _n>>
+
 <<PronounsSet>>
 
 <<if $sex.position == "Doggy">>
-	<<if $sex.role == "Top">>
-		<<= either(
-			"You reach under _n.name and grope $proset.their <<= setup.valueLower(_n, 'breastsize', 'average') >> <<= setup.partLower(_n, 'Breasts', 'breasts') >>."
-		) >>
-	<<elseif $sex.role == "Bottom">>
-		<<= either(
-			"_n.name reaches under you and gropes your <<= setup.partLower($mc, 'Breasts', 'breasts') >>."
-		) >>
-	<</if>>
+	<<= either(
+		"<<ref _top 'subjCap'>> <<verb _top 'reach'>> under <<ref _bottom 'obj'>> and grope <<pro _bottom 'poss'>> <<= setup.valueLower(_bottom, 'breastsize', 'average') >> <<= setup.partLower(_bottom, 'Breasts', 'breasts') >>."
+	)>>
 <<elseif $sex.position == "Cowgirl">>
-	<<if $sex.role == "Top">>
-		<<= either(
-			"Reaching up to _n.name's chest, you start fondling and groping $proset.their <<= setup.valueLower(_n, 'breastsize', 'average') >> <<= setup.partLower(_n, 'Breasts', 'breasts') >>. _n.name lets out a soft moan."
-		) >>
-	<<elseif $sex.role == "Bottom">>
-		<<= either(
-			"Reaching down to your chest, _n.name starts eagerly fondling and groping your <<= setup.valueLower($mc, 'breastsize', 'average') >> <<= setup.partLower($mc, 'Breasts', 'breasts') >>, drawing a <<mcNoise 'base' 'pleasure'>> from your lips."
-		) >>
-	<</if>>
-
+	<<= either(
+		"Reaching up to <<ref _bottom 'poss'>> chest, <<ref _top 'subj'>> start fondling and groping <<pro _bottom 'poss'>> <<= setup.valueLower(_bottom, 'breastsize', 'average') >> <<= setup.partLower(_bottom, 'Breasts', 'breasts') >>."
+	)>>
 <<else>>
-	<<if $sex.role == "Top">>
-		<<= either(
-			"You reach over and grope _n.name's <<= setup.valueLower(_n, 'breastsize', 'average') >> <<= setup.partLower(_n, 'Breasts', 'breasts') >>."
-		) >>
-	<<elseif $sex.role == "Bottom">>
-		<<= either(
-			"_n.name reaches over and gropes your <<= setup.valueLower($mc, 'breastsize', 'average') >> <<= setup.partLower($mc, 'Breasts', 'breasts') >>."
-		) >>
-	<</if>>
+	<<= either(
+		"<<ref _top 'subjCap'>> <<verb _top 'reach'>> over and grope <<ref _bottom 'poss'>> <<= setup.valueLower(_n, 'breastsize', 'average') >> <<= setup.partLower(_n, 'Breasts', 'breasts') >>."
+	)>>
 <</if>>
