@@ -2818,6 +2818,10 @@ setup.orgasmcloseQuotes = {
     /*The Top is Cumming */
     Bottom: {
     /* You are the bottom */
+      Childish: [
+      "Mmh..! Getting close to the finish line...!",
+      "I-im about to be a fruit gusher...!"
+      ],
       "Take Cock In Ass": {  
         Dominant: [
         "I'm gonna cum in your ass!",
@@ -2872,8 +2876,7 @@ setup.orgasmcloseQuotes = {
     Top: {
     /* You are the Top */
       Childish: [
-      "Mmh..! Getting close to the finish line...!",
-      "I-im about to be a fruit gusher...!"
+      "Hehe, you ready to splooge?"
       ],
       "Fuck Ass": {  
         Dominant: [
@@ -11779,8 +11782,9 @@ Work on fixing spawning NPC&#39;s
 	&lt;&lt;if $sex.climax.Bottom&gt;&gt;
 		&quot;Climax is bottom&quot;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="OrgasmDialogue" tags="nobr" position="475,1100" size="100,100">&lt;&lt;set _topClimax = !!($sex.climax &amp;&amp; $sex.climax.Top)&gt;&gt;
-&lt;&lt;set _bottomClimax = !!($sex.climax &amp;&amp; $sex.climax.Bottom)&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="84" name="OrgasmDialogue" tags="nobr" position="475,1100" size="100,100">&lt;&lt;set _orgasm = $sex.orgasmSnapshot || $sex.climax || {}&gt;&gt;
+&lt;&lt;set _topClimax = !!_orgasm.Top&gt;&gt;
+&lt;&lt;set _bottomClimax = !!_orgasm.Bottom&gt;&gt;
 &lt;&lt;set _cumLoc = $sex.chosenCumLocation || &quot;&quot;&gt;&gt;
 
 &lt;&lt;set _topGen = setup.partLower(_top, &#39;genitals&#39;, _top.genital || &#39;genitals&#39;)&gt;&gt;
@@ -12623,7 +12627,7 @@ Work on fixing spawning NPC&#39;s
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	/* Climax does not currently work, needs work.*/
-	&lt;&lt;if $sex.phase == &quot;climax&quot;&gt;&gt;
+	&lt;&lt;if $sex.climax &amp;&amp; ($sex.climax.Top || $sex.climax.Bottom)&gt;&gt;
 		&lt;&lt;if _top != $mc&gt;&gt;
 			&lt;&lt;set _lines = [
 				&quot;&lt;&lt;ref _top &#39;subjCap&#39;&gt;&gt; &lt;&lt;npcNoise &#39;s&#39; &#39;exertion&#39;&gt;&gt; from being close to climax.&quot;
@@ -12733,7 +12737,7 @@ Work on fixing spawning NPC&#39;s
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;br&gt;
+
 &lt;&lt;= either(..._lines) &gt;&gt;
 &lt;br&gt;</tw-passagedata><tw-passagedata pid="129" name="Act-Quote" tags="Dialogue nobr" position="1100,1600" size="100,100">&lt;!-- only what the npc says --&gt;
 
@@ -15668,7 +15672,7 @@ Work on fixing spawning NPC&#39;s
 		hair: &quot;Bald&quot;,
 		bodyheight: &quot;Very Short&quot;,
 		physique: &quot;Thin&quot;,
-		personality: [&quot;Kind&quot;, &quot;Childish&quot;],
+		personality: [&quot;Kind&quot;],
 		genitals: &quot;Penis&quot;, /* Penis or Vagina */
 		genitaltype: &quot;Uncut&quot;,
 		penislength: &quot;Average&quot;,
@@ -16987,18 +16991,25 @@ Work on fixing spawning NPC&#39;s
 		? &quot;Act-Quote-React&quot;
 		: either(&quot;Orgasm-Close-Quote&quot;, &quot;Act-Quote-React&quot;)&gt;&gt;
 
-	/*&lt;&lt;run
-		const act = setup.sexacts[_a];
-		setup.applySexAct($sex, _a);
-		setup.applyArousalFromAct($sex, act);
-		setup.updateBindings();
-		setup.updateCumLocations($sex);
-	&gt;&gt; */
 	&lt;&lt;run
+		const act = setup.sexacts[_a];
+
 		setup.applySexAct($sex, _a);
+
+		if (_wasAftercare) {
+			$sex.phase = &quot;aftercare&quot;;
+			$sex.cumReady = false;
+			$sex.climax = { Top: false, Bottom: false };
+		}
+
 		setup.updateBindings();
 		setup.updateCumLocations($sex);
 	&gt;&gt;
+	/*&lt;&lt;run
+		setup.applySexAct($sex, _a);
+		setup.updateBindings();
+		setup.updateCumLocations($sex);
+	&gt;&gt;*/
 	&lt;&lt;run setup.debug.log(&quot;STATE&quot;, &quot;After HandleSexAct state update&quot;, {
 		action: _a,
 		phase: $sex.phase,
@@ -17009,16 +17020,19 @@ Work on fixing spawning NPC&#39;s
 	})&gt;&gt;
 	&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-
-	&lt;&lt;if $sex.phase == &quot;climax&quot;&gt;&gt;
-		&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
-			&lt;&lt;include &quot;Orgasm-Close-Dialogue&quot;&gt;&gt;&lt;br&gt;
-			&lt;&lt;include _climaxQuotePassage&gt;&gt;
-		&lt;&lt;/replace&gt;&gt;
-	&lt;&lt;elseif $sex.phase == &quot;aftercare&quot;&gt;&gt;
+	
+	
+	/*&lt;&lt;if $sex.phase == &quot;climax&quot;&gt;&gt;*/
+	
+	&lt;&lt;if $sex.phase == &quot;aftercare&quot;&gt;&gt;
 		&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
 			&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
 			&lt;&lt;RenderAftercareQuote _handleMute&gt;&gt;
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;elseif $sex.climax &amp;&amp; ($sex.climax.Top || $sex.climax.Bottom)&gt;&gt;
+		&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
+			&lt;&lt;include &quot;Orgasm-Close-Dialogue&quot;&gt;&gt; &lt;br&gt;
+			&lt;&lt;include _climaxQuotePassage&gt;&gt;
 		&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
@@ -17202,7 +17216,6 @@ Work on fixing spawning NPC&#39;s
 						&lt;/ul&gt;
 					&lt;&lt;/if&gt;&gt;
 				&lt;&lt;/if&gt;&gt;
-
 			&lt;/div&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;/div&gt;
@@ -17280,10 +17293,20 @@ Work on fixing spawning NPC&#39;s
 						&lt;&lt;button _loc&gt;&gt;
 							/* save selected location */
 							&lt;&lt;set _actor.selectedCumLocation = _loc&gt;&gt;
+							&lt;&lt;set $sex.chosenCumLocation = _loc&gt;&gt;
+
+							/* snapshot climax info for OrgasmDialogue */
+							&lt;&lt;set $sex.orgasmSnapshot = {
+								Top: !!($sex.climax &amp;&amp; $sex.climax.Top),
+								Bottom: !!($sex.climax &amp;&amp; $sex.climax.Bottom),
+								who: _who,
+								location: _loc
+							}&gt;&gt;
 
 							/* move out of climax */
 							&lt;&lt;set $sex.phase = &quot;aftercare&quot;&gt;&gt;
 							&lt;&lt;set $sex.cumReady = false&gt;&gt;
+							&lt;&lt;set $sex.climax = { Top: false, Bottom: false }&gt;&gt;
 
 							/* optional: climax act marker */
 							&lt;&lt;set $sex.act = &quot;Climax&quot;&gt;&gt;
@@ -17294,7 +17317,6 @@ Work on fixing spawning NPC&#39;s
 							&lt;&lt;run setup.updateCumLocations($sex)&gt;&gt;
 							&lt;&lt;run setup.updateBindings()&gt;&gt;
 
-                            &lt;&lt;set $sex.chosenCumLocation = _loc&gt;&gt;
 
 							/* redraw the action UI */
 							&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;

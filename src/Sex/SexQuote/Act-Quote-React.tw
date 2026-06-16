@@ -44,7 +44,7 @@
 	<</if>>
 <<else>>
 	/* Climax does not currently work, needs work.*/
-	<<if $sex.phase == "climax">>
+	<<if $sex.climax && ($sex.climax.Top || $sex.climax.Bottom)>>
 		<<if _top != $mc>>
 			<<set _lines = [
 				"<<ref _top 'subjCap'>> <<npcNoise 's' 'exertion'>> from being close to climax."
@@ -154,6 +154,6 @@
 		<</if>>
 	<</if>>
 <</if>>
-<br>
+
 <<= either(..._lines) >>
 <br>

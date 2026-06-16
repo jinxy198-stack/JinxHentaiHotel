@@ -156,18 +156,25 @@
 		? "Act-Quote-React"
 		: either("Orgasm-Close-Quote", "Act-Quote-React")>>
 
-	/*<<run
-		const act = setup.sexacts[_a];
-		setup.applySexAct($sex, _a);
-		setup.applyArousalFromAct($sex, act);
-		setup.updateBindings();
-		setup.updateCumLocations($sex);
-	>> */
 	<<run
+		const act = setup.sexacts[_a];
+
 		setup.applySexAct($sex, _a);
+
+		if (_wasAftercare) {
+			$sex.phase = "aftercare";
+			$sex.cumReady = false;
+			$sex.climax = { Top: false, Bottom: false };
+		}
+
 		setup.updateBindings();
 		setup.updateCumLocations($sex);
 	>>
+	/*<<run
+		setup.applySexAct($sex, _a);
+		setup.updateBindings();
+		setup.updateCumLocations($sex);
+	>>*/
 	<<run setup.debug.log("STATE", "After HandleSexAct state update", {
 		action: _a,
 		phase: $sex.phase,
@@ -179,15 +186,18 @@
 	<<replace "#sexUI">><<SexEncounterUI>><</replace>>
 	<<replace "#log">><</replace>>
 	
-	<<if $sex.phase == "climax">>
-		<<replace "#intro">>
-			<<include "Orgasm-Close-Dialogue">><br>
-			<<include _climaxQuotePassage>>
-		<</replace>>
-	<<elseif $sex.phase == "aftercare">>
+	
+	/*<<if $sex.phase == "climax">>*/
+	
+	<<if $sex.phase == "aftercare">>
 		<<replace "#intro">>
 			<<include "ActDialogue">>
 			<<RenderAftercareQuote _handleMute>>
+		<</replace>>
+	<<elseif $sex.climax && ($sex.climax.Top || $sex.climax.Bottom)>>
+		<<replace "#intro">>
+			<<include "Orgasm-Close-Dialogue">> <br>
+			<<include _climaxQuotePassage>>
 		<</replace>>
 	<<else>>
 		<<replace "#intro">>
@@ -448,10 +458,20 @@
 						<<button _loc>>
 							/* save selected location */
 							<<set _actor.selectedCumLocation = _loc>>
+							<<set $sex.chosenCumLocation = _loc>>
+
+							/* snapshot climax info for OrgasmDialogue */
+							<<set $sex.orgasmSnapshot = {
+								Top: !!($sex.climax && $sex.climax.Top),
+								Bottom: !!($sex.climax && $sex.climax.Bottom),
+								who: _who,
+								location: _loc
+							}>>
 
 							/* move out of climax */
 							<<set $sex.phase = "aftercare">>
 							<<set $sex.cumReady = false>>
+							<<set $sex.climax = { Top: false, Bottom: false }>>
 
 							/* optional: climax act marker */
 							<<set $sex.act = "Climax">>
@@ -462,7 +482,6 @@
 							<<run setup.updateCumLocations($sex)>>
 							<<run setup.updateBindings()>>
 
-                            <<set $sex.chosenCumLocation = _loc>>
 
 							/* redraw the action UI */
 							<<replace "#sexUI">><<SexEncounterUI>><</replace>>

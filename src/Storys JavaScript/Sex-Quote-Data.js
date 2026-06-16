@@ -1403,6 +1403,10 @@ setup.orgasmcloseQuotes = {
     /*The Top is Cumming */
     Bottom: {
     /* You are the bottom */
+      Childish: [
+      "Mmh..! Getting close to the finish line...!",
+      "I-im about to be a fruit gusher...!"
+      ],
       "Take Cock In Ass": {  
         Dominant: [
         "I'm gonna cum in your ass!",
@@ -1457,8 +1461,7 @@ setup.orgasmcloseQuotes = {
     Top: {
     /* You are the Top */
       Childish: [
-      "Mmh..! Getting close to the finish line...!",
-      "I-im about to be a fruit gusher...!"
+      "Hehe, you ready to splooge?"
       ],
       "Fuck Ass": {  
         Dominant: [

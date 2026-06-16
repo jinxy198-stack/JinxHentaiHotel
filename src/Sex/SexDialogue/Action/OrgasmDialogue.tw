@@ -1,8 +1,9 @@
 :: OrgasmDialogue [nobr]
 
 
-<<set _topClimax = !!($sex.climax && $sex.climax.Top)>>
-<<set _bottomClimax = !!($sex.climax && $sex.climax.Bottom)>>
+<<set _orgasm = $sex.orgasmSnapshot || $sex.climax || {}>>
+<<set _topClimax = !!_orgasm.Top>>
+<<set _bottomClimax = !!_orgasm.Bottom>>
 <<set _cumLoc = $sex.chosenCumLocation || "">>
 
 <<set _topGen = setup.partLower(_top, 'genitals', _top.genital || 'genitals')>>
