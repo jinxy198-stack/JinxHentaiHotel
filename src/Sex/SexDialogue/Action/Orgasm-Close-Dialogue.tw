@@ -1,11 +1,11 @@
 :: Orgasm-Close-Dialogue [nobr]
 
 <<if $sex.climax.Bottom && $sex.climax.Top>>
-	<<gram _top "subjCap">> and <<gram _bottom "obj">> are both close to climax.
+	<<ref _top "subjCap">> and <<ref _bottom "obj">> are both close to climax.
 <<elseif $sex.climax.Top>>
-	<<gram _top "subjCap">> <<= setup.be(_top) >> close to climax.
+	<<ref _top "subjCap">> <<= setup.be(_top) >> close to climax.
 <<elseif $sex.climax.Bottom>>
-	<<gram _bottom "subjCap">> <<= setup.be(_bottom) >> close to climax.
+	<<ref _bottom "subjCap">> <<= setup.be(_bottom) >> close to climax.
 <</if>>
 
 <<if $devMode>>

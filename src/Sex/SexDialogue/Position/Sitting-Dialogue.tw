@@ -4,7 +4,7 @@
 <<set _seat = $room.location || "floor">>
 
 <<= either(
-	"<<gram _top 'subjCap'>> and <<gram _bottom 'obj'>> sit on the <<=_seat>>, within arm's reach.",
-	"<<gram _top 'subjCap'>> and <<gram _bottom 'obj'>> sit close together on the <<=_seat>>.",
-	"<<gram _top 'subjCap'>> and <<gram _bottom 'obj'>> settle down beside each other on the <<=_seat>>."
+	"<<ref _top 'subjCap'>> and <<ref _bottom 'obj'>> sit on the <<=_seat>>, within arm's reach.",
+	"<<ref _top 'subjCap'>> and <<ref _bottom 'obj'>> sit close together on the <<=_seat>>.",
+	"<<ref _top 'subjCap'>> and <<ref _bottom 'obj'>> settle down beside each other on the <<=_seat>>."
 ) >>

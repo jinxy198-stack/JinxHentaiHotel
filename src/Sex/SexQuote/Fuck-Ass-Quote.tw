@@ -2,60 +2,66 @@
 
 <<if !setup.analQuotes>>
 	[Error] setup.analQuotes is missing. Define it in StoryInit.
-	<<return>>
-<</if>>
 
-<<if !$sex or !_n>>
-	<<return>>
-<</if>>
+<<elseif !$sex>>
+	<!-- No active sex state. -->
 
-<<set _pref = _n.sexpref || "Switch">>
-<<set _msize = $mc.penislength || "Average">>
-<<set _personalities = _n.personality>>
+<<else>>	
 
-<<set _mode = $sex.role>>
-<<set _position = $sex.position>>
-<<set _pool = null>>
+	<<if !_quote>>
+		<!-- No quote speaker. This is expected if $mc is the watcher. -->
 
-<<if _mode is "Bottom">>
-	<<set _pool =
-		(
-			setup.analQuotes.Bottom[_position]
-			&& setup.analQuotes.Bottom[_position][_pref]
-		)
-		|| setup.analQuotes.Bottom[_pref]
-		|| setup.analQuotes.Bottom.Neutral
-	>>
-
-<<elseif _mode is "Top">>
-	<<set _persMatches = []>>
-
-	<<if setup.analQuotes.Top[_position]>>
-		<<for _p range _personalities>>
-			<<if _p and setup.analQuotes.Top[_position][_p]>>
-				<<run _persMatches.push(_p)>>
-			<</if>>
-		<</for>>
-	<</if>>
-
-	<<if _persMatches.length>>
-		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = setup.analQuotes.Top[_position][_chosenPers]>>
 	<<else>>
-		<<set _pool =
-			(
-				setup.analQuotes.Top[_position]
-				&& setup.analQuotes.Top[_position][_pref]
-			)
-			|| setup.analQuotes.Top[_pref]
-			|| setup.analQuotes.Top.Neutral
-		>>
-	<</if>>
-<</if>>
 
-<<if Array.isArray(_pool) && _pool.length>>
-	<<= either(..._pool) >>
-<<else>>
-	[Error] No Anal quote pool found.
-	(mode=<<= _mode >>, pref=<<= _pref >>, position=<<= _position >>, msize=<<= _msize >>)
+
+		<<set _pref = _qc.sexpref || "Switch">>
+		<<set _msize = $mc.penislength || "Average">>
+		<<set _personalities = _qc.personality || []>>
+		<<set _position = $sex.position>>
+		<<set _pool = null>>
+
+		<<if _quoteRole is "Bottom">>
+			<<set _pool =
+				(
+					setup.analQuotes.Bottom[_position]
+					&& setup.analQuotes.Bottom[_position][_pref]
+				)
+				|| setup.analQuotes.Bottom[_pref]
+				|| setup.analQuotes.Bottom.Neutral
+			>>
+
+		<<elseif _quoteRole is "Top">>
+			<<set _persMatches = []>>
+
+			<<if setup.analQuotes.Top[_position]>>
+				<<for _p range _personalities>>
+					<<if _p and setup.analQuotes.Top[_position][_p]>>
+						<<run _persMatches.push(_p)>>
+					<</if>>
+				<</for>>
+			<</if>>
+
+			<<if _persMatches.length>>
+				<<set _chosenPers = setup.pick(_persMatches)>>
+				<<set _pool = setup.analQuotes.Top[_position][_chosenPers]>>
+			<<else>>
+				<<set _pool =
+					(
+						setup.analQuotes.Top[_position]
+						&& setup.analQuotes.Top[_position][_pref]
+					)
+					|| setup.analQuotes.Top[_pref]
+					|| setup.analQuotes.Top.Neutral
+				>>
+			<</if>>
+		<</if>>
+
+		<<if Array.isArray(_pool) && _pool.length>>
+			<<= either(..._pool) >>
+		<<else>>
+			[Error] No Anal quote pool found.
+			(mode=<<= _mode >>, pref=<<= _pref >>, position=<<= _position >>, msize=<<= _msize >>)
+		<</if>>
+		
+	<</if>>
 <</if>>

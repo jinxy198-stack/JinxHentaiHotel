@@ -4,12 +4,12 @@
 
 <<if $sex.role == "Top">>
 	<<= either(
-		"<<gram _top 'subjCap'>> <<= setup.be(_top) >> on the <<=_spot>>, straddling <<gram _bottom 'poss'>> chest.",
-		"<<gram _top 'subjCap'>> settle onto the <<=_spot>>, straddling <<gram _bottom 'poss'>> chest."
+		"<<ref _top 'subjCap'>> <<= setup.be(_top) >> on the <<=_spot>>, straddling <<ref _bottom 'poss'>> chest.",
+		"<<ref _top 'subjCap'>> settle onto the <<=_spot>>, straddling <<ref _bottom 'poss'>> chest."
 	) >>
 <<elseif $sex.role == "Bottom">>
 	<<= either(
-		"<<gram _top 'subjCap'>> <<= setup.be(_top) >> straddling <<pro _bottom 'poss'>> chest.",
-		"<<gram _top 'subjCap'>> settle over <<gram _bottom 'poss'>> chest, pinning <<gram _bottom 'obj'>> beneath <<pro _top 'obj'>>."
+		"<<ref _top 'subjCap'>> <<= setup.be(_top) >> straddling <<pro _bottom 'poss'>> chest.",
+		"<<ref _top 'subjCap'>> settle over <<ref _bottom 'poss'>> chest, pinning <<ref _bottom 'obj'>> beneath <<pro _top 'obj'>>."
 	) >>
 <</if>>

@@ -1,8 +1,8 @@
 :: Double-Decker-Dialogue [nobr]
 
 <<if $sex.role == "Top">>
-    <<gram _top 'subjCap'>> <<be _top>> underneath <<gram _bottom 'subj'>> as <<pro _bottom 'subj'>> stretch out on <<pro _bottom 'poss'>> back on the <<=_spot>>. <<pro _bottom 'obj' true >> lay their back on <<gram _top 'subjCap'>> like a recliner.
+    <<ref _top 'subjCap'>> <<be _top>> underneath <<ref _bottom 'subj'>> as <<pro _bottom 'subj'>> stretch out on <<pro _bottom 'poss'>> back on the <<=_spot>>. <<pro _bottom 'obj' true >> lay their back on <<ref _top 'subjCap'>> like a recliner.
 
 <<elseif $sex.role == "Bottom">>
-    <<gram _bottom 'subjCap'>> are on <<gram _bottom 'poss'>> back on the <<=_spot>> atop <<ref _top 'subj'>>, laying on them like a recliner.
+    <<ref _bottom 'subjCap'>> are on <<ref _bottom 'poss'>> back on the <<=_spot>> atop <<ref _top 'subj'>>, laying on them like a recliner.
 <</if>>

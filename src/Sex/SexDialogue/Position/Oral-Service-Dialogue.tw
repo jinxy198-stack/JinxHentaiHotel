@@ -1,7 +1,7 @@
 :: Oral-Service-Dialogue [nobr]
 <<set _spot = $room.location || "floor">>
     <<if $sex.role == "Top">>
-        <<gram _top 'subjCap'>> <<be _top>> lying back on the _spot with <<ref _bottom 'poss'>> face between <<ref _top 'poss'>> thighs.
+        <<ref _top 'subjCap'>> <<be _top>> lying back on the _spot with <<ref _bottom 'poss'>> face between <<ref _top 'poss'>> thighs.
     <<elseif $sex.role == "Bottom">>
         <<ref _bottom 'subjCap'>> face is between <<ref _top 'poss'>> thighs as <<pro _top 'subj'>> lie back on the _spot.
     <</if>>

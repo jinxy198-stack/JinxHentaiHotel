@@ -7,20 +7,20 @@
 		/* top licks bottom's pussy*/
 		<<= either(  
 			"Shifting <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>> reposition <<ref _bottom 'refl'>> to eagerly grind <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>.",
-			"With a quick shift of <<ref _top 'poss'>> <<= setup.partLower(_top, 'Hips', 'hips') >>, <<pro _top 'subj'>> <<verb _top 'let'>> out a <<mcNoise 'base' 'pleasure'>> as <<pro _top 'subj'>> greedily press <<pro _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> down against <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Tongue', 'tongue') >>.",
+			"With a quick shift of <<ref _top 'poss'>> <<= setup.partLower(_top, 'Hips', 'hips') >>, <<pro _top 'subj'>> <<verb _top 'let'>> out a <<noise _top 'base' 'pleasure'>> as <<pro _top 'subj'>> greedily press <<pro _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> down against <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Tongue', 'tongue') >>.",
 			"Eagerly pressing <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> mouth, <<ref _bottom 'subj'>> reposition so that <<pro _bottom 'subj'>> <<be _bottom>> grinding <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<pro _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>.",
 			"Shifting <<ref _top 'poss'>> <<= setup.partLower(_top, 'Hips', 'hips') >>, <<pro _top 'subj'>>  reposition <<ref _top 'refl'>> to grind <<pro _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >> against <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Lips', 'lips') >>.",
-			"With a quick shift of <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>> let out a <<mcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verbEx _bottom 'press'>> <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Tongue', 'tongue') >>.",
+			"With a quick shift of <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>> let out a <<noise _bottom 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verbEx _bottom 'press'>> <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Tongue', 'tongue') >>.",
 			"Pressing <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> mouth, <<pro _bottom 'subj'>>  <<verb _bottom 'reposition'>> so that <<pro _bottom 'subj'>> are grinding <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<pro _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>."
 		) >>
 	<<elseif $sex.role == "Top">>
 		/* bottom licks top's pussy */
 		<<= either(
 			"<<ref _bottom 'subjCap'>> repositions <<pro _bottom 'refl'>> to eagerly grind <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<pro _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>.",
-			"With a quick shift of <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>> <<verbEx _bottom 'let'>> out a <<npcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> greedily press <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Tongue', 'tongue') >>.",
+			"With a quick shift of <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>> <<verbEx _bottom 'let'>> out a <<noise _bottom 'base' 'pleasure'>> as <<pro _bottom 'subj'>> greedily press <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Tongue', 'tongue') >>.",
 			"Eagerly pressing <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> mouth, <<pro _bottom 'subj'>> reposition <<pro _bottom 'refl'>>  so that <<pro _bottom 'subj'>> are grinding <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<pro _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>.",
 			"Shifting <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>>  reposition <<pro _bottom 'refl'>> to grind <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>.",
-			"With a quick shift of <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>> <<verbEx _bottom 'let'>> out a <<npcNoise 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'press'>> <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Tongue', 'tongue') >>.",
+			"With a quick shift of <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >>, <<pro _bottom 'subj'>> <<verbEx _bottom 'let'>> out a <<noise _bottom 'base' 'pleasure'>> as <<pro _bottom 'subj'>> <<verb _bottom 'press'>> <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> <<= setup.partLower(_top, 'Tongue', 'tongue') >>.",
 			"Pressing <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> down against <<ref _top 'poss'>> mouth, <<pro _bottom 'subj'>> reposition <<pro _bottom 'refl'>>  so that <<pro _bottom 'subj'>> are grinding <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> against <<pro _top 'poss'>> <<= setup.partLower(_top, 'Lips', 'lips') >>."
 		) >>
 	<</if>>
@@ -29,6 +29,6 @@
 	<<if $sex.role == "Bottom">>
 		<<ref _top 'subjCap'>> <<verb _top 'suck'>> on <<ref _bottom 'poss'>> <<= setup.partLower(_n, 'Clitoris', 'clit') >>.
 	<<elseif $sex.role == "Top">>
-		<<ref _top 'subjCap'>> <<verb _top 'suck'>> on <<ref _bottom 'poss'>> <<= setup.partLower($mc, 'Clitoris', 'clit') >>.
+		<<ref _top 'subjCap'>> <<verb _top 'suck'>> on <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Clitoris', 'clit') >>.
 	<</if>>
 <</if>>

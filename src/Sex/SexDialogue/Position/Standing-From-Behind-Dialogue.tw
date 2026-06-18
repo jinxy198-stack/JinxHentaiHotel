@@ -3,39 +3,39 @@
 <<if $sex.previousPosition == "Standing">>
 	<<if $sex.role == "Top">>
 		<<= either(
-			"<<gram _top 'subjCap'>> <<verb _top 'grasp'>> <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and <<verb _top 'turn'>> <<pro _bottom 'obj'>> around.",
-			"<<gram _top 'subjCap'>> <<verb _top 'take'>> hold of <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turn <<pro _bottom 'obj'>> to face away."
+			"<<ref _top 'subjCap'>> <<verb _top 'grasp'>> <<ref _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and <<verb _top 'turn'>> <<pro _bottom 'obj'>> around.",
+			"<<ref _top 'subjCap'>> <<verb _top 'take'>> hold of <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turn <<pro _bottom 'obj'>> to face away."
 		) >>
 	<<elseif $sex.role == "Bottom">>
 		<<= either(
-			"<<gram _top 'subjCap'>> grasps <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> around.",
-			"<<gram _top 'subjCap'>> <<verb _top 'take'>> hold of <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> to face away."
+			"<<ref _top 'subjCap'>> grasps <<ref _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<ref _bottom 'obj'>> around.",
+			"<<ref _top 'subjCap'>> <<verb _top 'take'>> hold of <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<ref _bottom 'obj'>> to face away."
 		) >>
 	<</if>>
 
 <<elseif $sex.previousPosition == "Kneeling">>
 	<<if $sex.role == "Top">>
 		<<= either(
-			"<<gram _top 'subjCap'>> <<verb _top 'pull'>> <<gram _bottom 'obj'>> to <<gram _bottom 'poss'>> feet, then grasps <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and <<verb _top 'turn'>> <<gram _bottom 'obj'>> to face away.",
-			"<<gram _top 'subjCap'>> <<verb _top 'help'>> <<gram _bottom 'obj'>> stand, then guides <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> until <<gram _bottom 'subj'>> is facing away."
+			"<<ref _top 'subjCap'>> <<verb _top 'pull'>> <<ref _bottom 'obj'>> to <<ref _bottom 'poss'>> feet, then grasps <<ref _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and <<verb _top 'turn'>> <<ref _bottom 'obj'>> to face away.",
+			"<<ref _top 'subjCap'>> <<verb _top 'help'>> <<ref _bottom 'obj'>> stand, then guides <<ref _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> until <<ref _bottom 'subj'>> is facing away."
 		) >>
 	<<elseif $sex.role == "Bottom">>
 		<<= either(
-			"<<gram _bottom 'subjCap'>> <<verb _bottom 'rise'>> to <<gram _bottom 'poss'>> feet, then <<verb _bottom 'turn'>> to face away from <<gram _top 'obj'>>.",
-			"<<gram _bottom 'subjCap'>> <<verb _bottom 'stand'>> and <<verb _bottom 'turn'>> around, presenting <<gram _bottom 'poss'>> back to <<gram _top 'obj'>>."
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'rise'>> to <<ref _bottom 'poss'>> feet, then <<verb _bottom 'turn'>> to face away from <<ref _top 'obj'>>.",
+			"<<ref _bottom 'subjCap'>> <<verb _bottom 'stand'>> and <<verb _bottom 'turn'>> around, presenting <<ref _bottom 'poss'>> back to <<ref _top 'obj'>>."
 		) >>
 	<</if>>
 
 <<else>>
 	<<if $sex.role == "Top">>
 		<<= either(
-			"<<gram _top 'subjCap'>> <<verb _top 'grasp'>> <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> to face away.",
-			"<<gram _top 'subjCap'>> takes hold of <<gram _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >> and guides <<gram _bottom 'obj'>> around until <<gram _bottom 'subj'>> is facing away."
+			"<<ref _top 'subjCap'>> <<verb _top 'grasp'>> <<ref _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<ref _bottom 'obj'>> to face away.",
+			"<<ref _top 'subjCap'>> takes hold of <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'Hips', 'hips') >> and guides <<ref _bottom 'obj'>> around until <<ref _bottom 'subj'>> is facing away."
 		) >>
 	<<elseif $sex.role == "Bottom">>
 		<<= either(
-			"<<gram _top 'subjCap'>> <<verb _top 'grasp'>> <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> to face away.",
-			"<<gram _top 'subjCap'>> <<verb _top 'grab'>> <<gram _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<gram _bottom 'obj'>> until <<gram _bottom 'subj'>> <<be _bottom>> facing away."
+			"<<ref _top 'subjCap'>> <<verb _top 'grasp'>> <<ref _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<ref _bottom 'obj'>> to face away.",
+			"<<ref _top 'subjCap'>> <<verb _top 'grab'>> <<ref _bottom 'obj'>> by the <<= setup.partLower(_bottom, 'Hips', 'hips') >> and turns <<ref _bottom 'obj'>> until <<ref _bottom 'subj'>> <<be _bottom>> facing away."
 		) >>
 	<</if>>
 <</if>>

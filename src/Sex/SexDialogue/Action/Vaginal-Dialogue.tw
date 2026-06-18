@@ -2,9 +2,6 @@
 
 <<PronounsSet>>
 
-<<set _top = $sex.Top || ($sex.role == "Top" ? $mc : _npc)>>
-<<set _bottom = $sex.Bottom || ($sex.role == "Top" ? _npc : $mc)>>
-
 <<set _pos = $sex.position || $position || "Default">>
 
 <<set _topGenitals = setup.partLower(_top, 'genitals', 'genitals')>>

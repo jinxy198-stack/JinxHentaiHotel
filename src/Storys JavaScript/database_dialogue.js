@@ -1,39 +1,60 @@
 
 setup.isMC = function (char) {
-	return char === State.variables.mc;
+	const mc = State.variables.mc;
+
+	if (!char || !mc) {
+		return false;
+	}
+
+	return char === mc || char.isMC === true || char.id === "mc";
 };
 
 setup.ref = function (char, form) {
-	if (!char) {
-		return "";
+	form = form || "subj";
+
+	if (setup.isMC(char)) {
+		switch (form) {
+			case "subj":
+				return "you";
+			case "subjCap":
+				return "You";
+			case "obj":
+				return "you";
+			case "poss":
+				return "your";
+			case "possCap":
+				return "Your";
+			case "refl":
+				return "yourself";
+			default:
+				return "you";
+		}
 	}
 
-	const isMC = setup.isMC(char);
-	const name = char.name || "Someone";
+	const name = char && char.name ? char.name : "someone";
 
 	switch (form) {
 		case "subj":
-			return isMC ? "you" : name;
-
 		case "subjCap":
-			return isMC ? "You" : name;
-
 		case "obj":
-			return isMC ? "you" : name;
+			return name;
 
 		case "poss":
-			return isMC ? "your" : (/s$/i.test(name) ? name + "'" : name + "'s");	
+			return name + "'s";
+
+		case "possCap":
+			return name + "'s";
 
 		case "refl":
-			return isMC ? "yourself" : name;
+			return name + "self";
 
 		default:
-			return isMC ? "you" : name;
+			return name;
 	}
 };
 
 setup.verb = function (char, base, thirdPerson) {
-	if (char === State.variables.mc) {
+	if (setup.isMC(char)) {
 		return base;
 	}
 
@@ -44,9 +65,11 @@ setup.verb = function (char, base, thirdPerson) {
 	if (/(s|sh|ch|x|z|o)$/i.test(base)) {
 		return base + "es";
 	}
+
 	if (/[^aeiou]y$/i.test(base)) {
 		return base.slice(0, -1) + "ies";
 	}
+
 	return base + "s";
 };
 
@@ -119,17 +142,22 @@ setup.valueLower = function (char, key, fallback) {
 };
 
 setup.be = function (char, tense) {
-	const isMC = char === State.variables.mc;
+	const isMC = setup.isMC(char);
 	tense = tense || "present";
 
 	if (tense === "past") {
 		return isMC ? "were" : "was";
 	}
+
 	return isMC ? "are" : "is";
 };
 
 setup.have = function (char) {
-	return char === State.variables.mc ? "have" : "has";
+	return setup.isMC(char) ? "have" : "has";
+};
+
+setup.speakerName = function (char) {
+	return setup.isMC(char) ? "You" : ((char && char.name) || "Someone");
 };
 
 setup.article = function (word) {
@@ -156,9 +184,6 @@ setup.cap = function (str) {
 	return str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
 };
 
-setup.speakerName = function (char) {
-	return char === State.variables.mc ? "You" : (char.name || "Someone");
-};
 
 setup.cleanText = function (str) {
 	return String(str || "")

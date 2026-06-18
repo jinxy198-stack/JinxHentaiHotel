@@ -2,7 +2,7 @@
 
 /* ----- ANAL ----- */
 setup.analQuotes = {
-  Bottom: {
+  Top: {
     Cowgirl: {
       Dominant: [
         "Bounce on my cock!",
@@ -56,11 +56,11 @@ setup.analQuotes = {
       Submissive: [
         "Ahh, so tight, so good!",
 				"Ah! Ah! Ah!",
-				"Ah, $mc.name.",
+				"Ah, _top.name.",
 				"I-It's so tight!",
-				"Ah, you're so tight, $mc.name!",
+				"Ah, you're so tight, _top.name!",
 				"You're doing so well! You feel amazing, $mc.name!",
-				"$mc.name, $mc.name, $mc.name!",
+				"_top.name, _top.name, _top.name!",
 				"Don't worry, I'll be gentle.",
         "Oh... oh...",
         "Use my ass...",
@@ -69,7 +69,7 @@ setup.analQuotes = {
       Switch: [
         "This feels so good!",
 				"Ah! Ah! Ah!",
-				"Ah, $mc.name.",
+				"Ah, _top.name.",
 				"I-It's so tight!",
         "Oh... oh...",
         "Use my ass...",
@@ -77,12 +77,12 @@ setup.analQuotes = {
         "A-Ahhh..."
       ]
   },
-  Top: {
+  Bottom: {
     Cowgirl: {
       Childish:[
-      "Whee, hehe! Bouncy, bouncy!",
-      "Yeehaw, hehehe!",
-      "Boingy Boingy Boingy~!"
+        "Whee, hehe! Bouncy, bouncy!",
+        "Yeehaw, hehehe!",
+        "Boingy Boingy Boingy~!"
       ],
 
       Dominant: [
@@ -125,8 +125,8 @@ setup.analQuotes = {
       ],
     },
     Childish:[
-    "Take me to poundtown, $mc.name!",
-    "R-really butt-on mashing, $mc.name! H-haah...~"
+      "Take me to poundtown, _top.name!",
+      "R-really butt-on mashing, _top.name! H-haah...~"
     ],
     Dominant: [
       "Yeah, like that!! Ooh!",
@@ -139,9 +139,9 @@ setup.analQuotes = {
 			"Now shut it and let me enjoy this Grade A dick of yours!",
 			"Keep fucking me!",
 			"Yes! Yes! Give it to me! AH!",
-			"Good $mc.petname! Keep sliding that delicious cock of yours in and out of my ass!",
+			"Good _top.petname! Keep sliding that delicious cock of yours in and out of my ass!",
 			"You like feeling my slutty little asshole gripping down on your cock?!",
-      "Fuck, $mc.name, you've stuffed me good..."
+      "Fuck, _top.name, you've stuffed me good..."
     ],
     Submissive: [
       "Yes! That's it! Oh, yes! Yes!",
@@ -1560,7 +1560,7 @@ setup.vaginalQuotes = {
   Bottom: {
     Dominant: [
       "Good _n.petname! Feel my <<=$mc.genitals.toLowerCase()>> slide deep into your little pussy!",
-			"That's right, be a good _n.petname and <<mcNoise 'base' 'pleasure'>> for me! Feel my <<=$mc.genitals.toLowerCase()>> sliding deep into your cute little cunt!",
+			"That's right, be a good _n.petname and <<noise _bottom 'base' 'pleasure'>> for me! Feel my <<=_top.genitals.toLowerCase()>> sliding deep into your cute little cunt!",
 			"Your cute little cunt feels so good squeezing down around my <<=$mc.genitals.toLowerCase()>>!",
 			"Fuck! Your pussy feels so good!",
 			"Oh yes! Take my cock! Take it deep!",

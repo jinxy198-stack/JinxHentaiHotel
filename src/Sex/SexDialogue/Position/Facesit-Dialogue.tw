@@ -7,11 +7,11 @@
 
 <<if $sex.role=="Top">>
 	<<=either(
-	    "<<gram _bottom 'subjCap'>> <<verb _bottom 'push'>> <<gram _top 'subj'>> onto <<gram _top 'poss'>> back and <<pro _bottom 'subj'>> <<verb _bottom 'lower'>> <<pro _bottom 'refl'>> over <<gram _top 'poss'>> face."
+	    "<<ref _bottom 'subjCap'>> <<verb _bottom 'push'>> <<ref _top 'subj'>> onto <<ref _top 'poss'>> back and <<pro _bottom 'subj'>> <<verb _bottom 'lower'>> <<pro _bottom 'refl'>> over <<ref _top 'poss'>> face."
     )>>
 <<elseif $sex.role=="Bottom">>
 	<<=either(
-        "<<gram _bottom 'subjCap'>> <<verb _bottom 'push'>> <<gram _top 'subj'>> onto <<pro _top 'poss'>> back and then <<verb _bottom 'lower'>> <<gram _bottom 'refl'>> over <<pro _top 'poss'>> face."
+        "<<ref _bottom 'subjCap'>> <<verb _bottom 'push'>> <<ref _top 'subj'>> onto <<pro _top 'poss'>> back and then <<verb _bottom 'lower'>> <<ref _bottom 'refl'>> over <<pro _top 'poss'>> face."
     )>>
 <</if>>
 

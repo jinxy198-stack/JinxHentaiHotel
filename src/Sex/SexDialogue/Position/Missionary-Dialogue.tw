@@ -2,27 +2,31 @@
 
 <<PronounsSet>>
 
-<<set _nLegs = setup.partLower(_n, 'Legs', 'legs')>>
-<<set _mcLegs = setup.partLower($mc, 'Legs', 'legs')>>
-<<set _mcFeet = setup.partLower($mc, 'Feet', 'feet')>>
-<<set _nEyes = setup.valueLower(_n, 'eyes', 'eyes')>>
+<<set _bLegs = setup.partLower(_bottom, 'Legs', 'legs')>>
+<<set _tLegs = setup.partLower(_top, 'Legs', 'legs')>>
+
+<<set _tFeet = setup.partLower(_top, 'Feet', 'feet')>>
+<<set _bFeet = setup.partLower(_bottom, 'Feet', 'feet')>>
+
+<<set _bEyes = setup.valueLower(_bottom, 'eyes', 'eyes')>>
+<<set _tEyes = setup.valueLower(_top, 'eyes', 'eyes')>>
 
 <<if $sex.role == "Top">>
 	<<= either(
-		"Taking hold of <<ref _bottom 'poss'>> shoulders, <<ref _top 'subj'>> <<verb _top 'push'>> <<pro _bottom 'obj'>> down onto <<pro _bottom 'poss'>> back. Kneeling between <<pro _bottom 'poss'>> <<=_nLegs>>, <<ref _top 'subj'>> pause and look down into <<pro _bottom 'poss'>> <<=_nEyes>> eyes.",
-		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> back on the bed and <<verb _top 'lift'>> <<pro _bottom 'poss'>> <<= setup.partLower(_n, 'Feet', 'feet') >> into the air for <<ref _top 'subj'>>.",
-		"<<ref _top 'subjCap'>> <<verb _top 'guide'>> <<ref _bottom 'subj'>> onto <<pro _bottom 'poss'>> back, settling <<pro _top 'refl'>> between <<pro _bottom 'poss'>> <<=_nLegs>> as <<ref _top 'subj'>> <<verb _top 'look'>> down at <<pro _bottom 'obj'>>.",
-		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> beneath <<ref _top 'subj'>>, spreading <<pro _bottom 'poss'>> <<=_nLegs>> as <<ref _top 'subj'>> <<verb _top 'move'>> into position."
+		"Taking hold of <<ref _bottom 'poss'>> shoulders, <<ref _top 'subj'>> <<verb _top 'push'>> <<pro _bottom 'obj'>> down onto <<pro _bottom 'poss'>> back. Kneeling between <<pro _bottom 'poss'>> <<=_bLegs>>, <<ref _top 'subj'>> pause and look down into <<pro _bottom 'poss'>> <<=_bEyes>> eyes.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> back on the bed and <<verb _top 'lift'>> <<pro _bottom 'poss'>> <<= _bFeet >> into the air for <<ref _top 'subj'>>.",
+		"<<ref _top 'subjCap'>> <<verb _top 'guide'>> <<ref _bottom 'subj'>> onto <<pro _bottom 'poss'>> back, settling <<pro _top 'refl'>> between <<pro _bottom 'poss'>> <<=_bLegs>> as <<ref _top 'subj'>> <<verb _top 'look'>> down at <<pro _bottom 'obj'>>.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> beneath <<ref _top 'subj'>>, spreading <<pro _bottom 'poss'>> <<=_bLegs>> as <<ref _top 'subj'>> <<verb _top 'move'>> into position."
 	) >>
 
 <<elseif $sex.role == "Bottom">>
 	<<= either(
-		"Looking up at <<ref _top 'subj'>>, <<ref _bottom 'subj'>> <<verb _bottom 'bite'>> <<ref _bottom 'poss'>> lip and let out a <<mcNoise 'base' 'pleasure'>> before spreading <<ref _bottom 'poss'>> <<=_mcLegs>> and presenting <<pro _bottom 'refl'>>, ready to be penetrated.",
-		"<<ref _bottom 'subjCap'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_mcLegs>> for <<ref _top 'subj'>>, presenting <<pro _bottom 'refl'>> in anticipation of being penetrated.",
-		"Pulling <<ref _bottom 'poss'>> <<=_mcFeet>> back to either side, <<ref _bottom 'subj'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_mcLegs>>, enticing <<ref _top 'subj'>> to penetrate <<ref _bottom 'subj'>>.",
-		"<<ref _bottom 'subjCap'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_mcLegs>>, looking up at <<ref _top 'subj'>> and biting <<ref _bottom 'poss'>> lip as <<ref _bottom 'subj'>> <<verb _bottom 'entice'>> <<pro _top 'obj'>> to take <<ref _bottom 'subj'>>.",
-		"Much to <<ref _bottom 'poss'>> delight, <<ref _top 'subj'>> kneels down between <<ref _bottom 'poss'>> <<=_mcLegs>>, and as <<pro _top 'subj'>> <<verb _top 'take'>> hold of one to push it wider, <<ref _bottom 'subj'>> <<verb _bottom 'let'>> out a <<mcNoise 'base' 'pleasure'>>.",
-		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> back on the bed as <<ref _top 'subj'>> <<verb _top 'crawl'>> between <<ref _bottom 'poss'>> <<=_mcLegs>>.",
-		"Lying on <<ref _bottom 'poss'>> back, <<ref _bottom 'subj'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_mcLegs>> and <<verb _bottom 'look'>> up at <<ref _top 'subj'>> with a needy <<mcNoise 'base' 'pleasure'>>."
+		"Looking up at <<ref _top 'subj'>>, <<ref _bottom 'subj'>> <<verb _bottom 'bite'>> <<ref _bottom 'poss'>> lip and let out a <<noise _bottom 'base' 'pleasure'>> before spreading <<ref _bottom 'poss'>> <<=_bLegs>> and presenting <<pro _bottom 'refl'>>, ready to be penetrated.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_bLegs>> for <<ref _top 'subj'>>, presenting <<pro _bottom 'refl'>> in anticipation of being penetrated.",
+		"Pulling <<ref _bottom 'poss'>> <<=_bFeet>> back to either side, <<ref _bottom 'subj'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_bLegs>>, enticing <<ref _top 'subj'>> to penetrate <<ref _bottom 'subj'>>.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_bLegs>>, looking up at <<ref _top 'subj'>> and biting <<ref _bottom 'poss'>> lip as <<ref _bottom 'subj'>> <<verb _bottom 'entice'>> <<pro _top 'obj'>> to take <<ref _bottom 'subj'>>.",
+		"Much to <<ref _bottom 'poss'>> delight, <<ref _top 'subj'>> <<verb _top 'kneel'>> down between <<ref _bottom 'poss'>> <<=_bLegs>>, and as <<pro _top 'subj'>> <<verb _top 'take'>> hold of one to push it wider, <<ref _bottom 'subj'>> <<verb _bottom 'let'>> out a <<noise _bottom 'base' 'pleasure'>>.",
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> back on the bed as <<ref _top 'subj'>> <<verb _top 'crawl'>> between <<ref _bottom 'poss'>> <<=_bLegs>>.",
+		"Lying on <<ref _bottom 'poss'>> back, <<ref _bottom 'subj'>> <<verb _bottom 'spread'>> <<ref _bottom 'poss'>> <<=_bLegs>> and <<verb _bottom 'look'>> up at <<ref _top 'subj'>> with a needy <<noise _bottom 'base' 'pleasure'>>."
 	) >>
 <</if>>

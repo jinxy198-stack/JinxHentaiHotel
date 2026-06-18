@@ -11,13 +11,15 @@
 	<center><<button [[Create Character|Index-CC]]>><</button>></center> <br>
 	<center><<button [[Use the Randomiser|CC-Check]]>><<Randomiser>><</button>> | <<button [[Use the Pre-Set|CC-Check]]>><<PreSet>><</button>></center> <br>
 
-	<span> Updated as of 5/14/2026 </span>
+	<span> Updated as of 6/16/2026 </span>
 	<br>
 </div>
 
 
-<<button "Debug: Sex Encounter" "Sex-Encounter">>
+<<button "Debug: Sex Encounter">>
 	<<DebugSetupSexEncounter>>
+	<<run Dialog.create("Propose sex with " + $ui.npc.name).wikiPassage("UI-Attracted-check").open()>>
+	/*<<goto "Sex-Encounter">>*/
 <</button>>
 
 <br>

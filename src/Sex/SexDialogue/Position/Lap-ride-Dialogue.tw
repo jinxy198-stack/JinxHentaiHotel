@@ -2,10 +2,10 @@
 
 <<if $sex.position == "Lap ride">>
 	<<= either(
-		"<<gram _bottom 'subjCap'>> <<verb _bottom 'sit'>> on <<gram _top 'poss'>> lap, looking at <<gram _top 'obj'>>."
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'sit'>> on <<ref _top 'poss'>> lap, looking at <<ref _top 'obj'>>."
 	) >>
 <<elseif $sex.position == "Reverse Lap ride">>
 	<<= either(
-		"<<gram _bottom 'subjCap'>> <<verb _bottom 'sit'>> on <<gram _top 'poss'>> lap, facing away from <<gram _top 'obj'>>."
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'sit'>> on <<ref _top 'poss'>> lap, facing away from <<ref _top 'obj'>>."
 	) >>
 <</if>>

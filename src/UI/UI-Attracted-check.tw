@@ -1,112 +1,166 @@
 :: UI-Attracted-check [nobr] {"position":"900,500","size":"100,100"}
 
+<<set $ui = $ui || {}>>
+
+/*
+	_a and _b are the attraction pair.
+	_third is an optional third role candidate.
+
+	Important:
+	_third does NOT mean Watcher.
+	_third only means "third person who can be Top, Bottom, or Watcher."
+*/
+
 <<if $bootyCallNpc>>
-	<<set _n = $bootyCallNpc>>
-	<<set $ui.npc = _n>>
+	<<set _a = $mc>>
+	<<set _b = $bootyCallNpc>>
+	<<set _third = null>>
+
+	<<set $ui.npc = _b>>
+	<<set _n = _b>>
+
+<<elseif $ui && $ui.npc && $ui.npc2>>
+	<<set _a = $ui.npc>>
+	<<set _b = $ui.npc2>>
+	<<set _third = $mc>>
+
+	/* Keep old dialogue references from breaking */
+	<<set _n = _b>>
+
 <<elseif $ui && $ui.npc>>
-	<<set _n = $ui.npc>>
+	<<set _a = $mc>>
+	<<set _b = $ui.npc>>
+	<<set _third = null>>
+
+	<<set _n = _b>>
+
 <<else>>
 	No NPC selected.
 	<<return>>
 <</if>>
 
-<<set _key = _n.id || _n.name>>
-<<check-attraction $mc _n>>
-<b>$mc.name: </b>
-<br>
-* <<if $mc.gender=="Male">>
-	<span class="blue">$mc.gender</span>
-<<elseif $mc.gender=="Female">>
-	<span class="pink">$mc.gender</span>
-<<else>>
-	<span class="green">$mc.gender</span>
-<</if>>
-<br>
-* 
-<<if $mc.sexu=="Heterosexual">>
-/*<span class="flag-text flag-heterosexual">$mc.sexu</span>*/
-	<span>_n.sexu</span>
-<<elseif $mc.sexu=="Homosexual">>
-	<span class="flag-text flag-homosexual">$mc.sexu</span>
-<<elseif $mc.sexu=="Bisexual">>
-	<span class="flag-text flag-bisexual">$mc.sexu</span>
-<<elseif $mc.sexu=="Pansexual">>
-	<span class="flag-text flag-pansexual">$mc.sexu</span>
-<<elseif $mc.sexu=="Asexual">>
-	<span class="flag-text flag-asexual">$mc.sexu</span>
+<<if !_a || !_b>>
+	Missing attraction-check characters.
+	<<return>>
 <</if>>
 
-/*$mc.sexu*/
-<br>
-<b>_n.name: </b>
-<br>
-* <<if _n.gender=="Male">>
-	<span class="blue">_n.gender</span>
-<<elseif _n.gender=="Female">>
-	<span class="pink">_n.gender</span>
-<<else>>
-	<span class="green">_n.gender</span>
-<</if>>
-<br>
-* 
-<<if _n.sexu=="Heterosexual">>
-/*<span class="flag-text flag-heterosexual flag-on-black">_n.sexu</span>*/
-	<span>_n.sexu</span>
-<<elseif _n.sexu=="Homosexual">>
-	<span class="flag-text flag-homosexual">_n.sexu</span>
-<<elseif _n.sexu=="Bisexual">>
-	<span class="flag-text flag-bisexual">_n.sexu</span>
-<<elseif _n.sexu=="Pansexual">>
-	<span class="flag-text flag-pansexual">_n.sexu</span>
-<<elseif _n.sexu=="Asexual">>
-	<span class="flag-text flag-asexual flag-on-black">_n.sexu</span>
-<</if>>
+<<set _key = (_a.id || _a.name) + "-" + (_b.id || _b.name)>>
 
+<<check-attraction-group _a _b _third>>
+
+<div class="attraction-check">
+	<h3>Attraction Check</h3>
+
+	<b>_a.name:</b>
+	<br>
+	* 
+	<<if _a.gender == "Male">>
+		<span class="blue">_a.gender</span>
+	<<elseif _a.gender == "Female">>
+		<span class="pink">_a.gender</span>
+	<<else>>
+		<span class="green">_a.gender</span>
+	<</if>>
+	<br>
+	*
+	
+		<span>_a.sexu</span>
+	
+
+	<br><br>
+
+	<b>_b.name:</b>
+	<br>
+	* 
+	<<if _b.gender == "Male">>
+		<span class="blue">_b.gender</span>
+	<<elseif _b.gender == "Female">>
+		<span class="pink">_b.gender</span>
+	<<else>>
+		<span class="green">_b.gender</span>
+	<</if>>
+	<br>
+	*
+	
+		<span>_b.sexu</span>
+	
+	<<if _third>>
+		<br><br>
+		<b>_third.name:</b>
+		<br>
+		* 
+		<<if _third.gender == "Male">>
+			<span class="blue">_third.gender</span>
+		<<elseif _third.gender == "Female">>
+			<span class="pink">_third.gender</span>
+		<<else>>
+			<span class="green">_third.gender</span>
+		<</if>>
+		<br>
+		*
+		
+			<span>_third.sexu</span>
+		
+	<</if>>
+</div>
 
 <<if $attraction>>
-<<pick-roles $mc _n>>
-<div id="role-line">
-	Top: <<=$sex.roles.dom.name >> ****
-	Bottom: <<=$sex.roles.sub.name >>
+
+	/* This still uses your old role picker, but now it can receive NPC/NPC too. */
+	<<pick-roles _a _b _third>>
+
+<div id="role-choice-root">
+	<<include "Role-Choice-UI">>
 </div>
-<<link "Swap roles">>
-	<<set [$sex.roles.dom, $sex.roles.sub] to [$sex.roles.sub, $sex.roles.dom]>>
-	<<replace "#role-line">>
-		Top: <<=$sex.roles.dom.name >> ****
-		Bottom: <<=$sex.roles.sub.name >>
-	<</replace>>
+
 	<br>
-    <<replace "#top-bottom-chat">><<include "top-bottom-Dialogue">><</replace>>
-<</link>>
-<br>
-<<include "Accept-Dialogue">>
-<br>
-<div id="top-bottom-chat">
-	<<include "top-bottom-Dialogue">>
-</div>
-<br>
-<<button "Go have sex">>
-	<<if !$ui or typeof $ui !== "object">>
-		<<set $ui = {}>>
-	<</if>>
 
-	<<if $bootyCallNpc>>
-		<<set $ui.npc = clone($bootyCallNpc)>>
-		<<set $lastNpc = clone($bootyCallNpc)>>
-	<<else>>
-		<<WithNPC _n.id>>
-		<<set $lastNpc = $ui.npc>>
-	<</if>>
+	<<include "Accept-Dialogue">>
 
-	<<run Dialog.close()>>
+	<br>
 
-	<<if $gamelocation != "Your Bathroom">>
-		<<set $gamelocation = "Your Room">>
-	<</if>>
+	<div id="top-bottom-chat">
+		<<include "top-bottom-Dialogue">>
+	</div>
 
-	<<goto "Sex-Encounter">>
-<</button>>
+	<br>
+
+	<<button "Go have sex">>
+		<<set $ui = $ui || {}>>
+
+		<<set $ui.npc = $sex.roles.dom>>
+		<<set $ui.npc2 = $sex.roles.sub>>
+
+		<<set $myRoomNPCs = []>>
+
+		<<if $sex.roles.dom>>
+			<<run $myRoomNPCs.push($sex.roles.dom)>>
+		<</if>>
+
+		<<if $sex.roles.sub && $sex.roles.sub !== $sex.roles.dom>>
+			<<run $myRoomNPCs.push($sex.roles.sub)>>
+		<</if>>
+
+		<<set $lastNpc = $sex.roles.dom>>
+
+		<<run Dialog.close()>>
+
+		<<if $gamelocation != "Your Bathroom">>
+			<<set $gamelocation = "Your Room">>
+		<</if>>
+
+		<<if $sex.roles.watcher>>
+			<<run setup.startSexEncounter($sex.roles.dom, $sex.roles.sub, $sex.roles.watcher)>>
+		<<else>>
+			<<run setup.startSexEncounter($sex.roles.dom, $sex.roles.sub)>>
+		<</if>>
+
+		<<goto "Sex-Encounter">>
+	<</button>>
+
 <<else>>
-<br>
+
+	<br>
 	<<include "Reject-Dialogue">>
+
 <</if>>

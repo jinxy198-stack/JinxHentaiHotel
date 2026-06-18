@@ -1,7 +1,7 @@
 :: From-Behind-Dialogue [nobr]
 
 <<if $sex.role == "Top">>
-    <<gram _top 'subjCap'>> <<be _top>> behind <<gram _bottom 'subj'>>, who is on all fours.
+    <<ref _top 'subjCap'>> <<be _top>> behind <<ref _bottom 'subj'>>, who is on all fours.
 <<elseif $sex.role == "Bottom">>
-    <<gram _bottom 'subjCap'>> <<be _bottom>> on all fours with <<gram _top 'subj'>> behind <<gram _bottom 'subj'>>.
+    <<ref _bottom 'subjCap'>> <<be _bottom>> on all fours with <<ref _top 'subj'>> behind <<ref _bottom 'subj'>>.
 <</if>>

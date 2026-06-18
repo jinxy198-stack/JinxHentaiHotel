@@ -756,6 +756,22 @@ table.nsfw {
   margin-top: 8px;
 }
 
+.role-choice-table {
+	border-collapse: separate;
+	border-spacing: 0.75em 0.4em;
+}
+
+.role-choice-table th,
+.role-choice-table td {
+	padding: 0.35em 0.75em;
+	text-align: center;
+}
+
+.role-choice-table td:first-child,
+.role-choice-table th:first-child {
+	text-align: left;
+}
+
 h1,
 h2,
 h3 {

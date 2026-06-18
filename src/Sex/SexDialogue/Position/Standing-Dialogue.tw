@@ -2,7 +2,7 @@
 
 
 <<= either(
-	"<<gram _top 'subjCap'>> and <<gram _bottom 'obj'>> stand face to face.",
-	"<<gram _top 'subjCap'>> <<verb _top 'stand'>> face to face with <<gram _bottom 'obj'>>.",
-	"<<gram _top 'subjCap'>> and <<gram _bottom 'obj'>> remain standing, facing each other."
+	"<<ref _top 'subjCap'>> and <<ref _bottom 'obj'>> stand face to face.",
+	"<<ref _top 'subjCap'>> <<verb _top 'stand'>> face to face with <<ref _bottom 'obj'>>.",
+	"<<ref _top 'subjCap'>> and <<ref _bottom 'obj'>> remain standing, facing each other."
 ) >>

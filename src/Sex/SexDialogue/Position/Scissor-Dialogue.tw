@@ -5,11 +5,11 @@
 
 <<if $sex.role == "Top">>
 	<<= either(
-        "<<gram _top 'subjCap'>> <<verb _top 'lie'>> on <<gram _top 'poss'>> side with <<gram _top 'poss'>> upper leg planted and intersecting with <<gram _bottom 'poss'>>, lining up your crotches together."
+        "<<ref _top 'subjCap'>> <<verb _top 'lie'>> on <<ref _top 'poss'>> side with <<ref _top 'poss'>> upper leg planted and intersecting with <<ref _bottom 'poss'>>, lining up your crotches together."
 	) >>
 
 <<elseif $sex.role == "Bottom">>
 	<<= either(
-		"<<gram _bottom 'subjCap'>> <<verb _bottom 'lie'>> on <<gram _bottom 'poss'>> side with <<gram _bottom 'poss'>> upper leg planted and intersecting with <<gram _top 'poss'>>, lining up your crotches together."
+		"<<ref _bottom 'subjCap'>> <<verb _bottom 'lie'>> on <<ref _bottom 'poss'>> side with <<ref _bottom 'poss'>> upper leg planted and intersecting with <<ref _top 'poss'>>, lining up your crotches together."
 	) >>
 <</if>>

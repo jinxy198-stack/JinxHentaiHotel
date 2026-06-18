@@ -65,6 +65,12 @@
 	<</if>>
 <</widget>>
 
+<<widget "WithNPC2">>
+	<<set $ui = $ui || {}>>
+	<<set $ui.npc2 = _args[0]>>
+	<<set _n2 = $ui.npc2>>
+<</widget>>
+
 <<widget "EnsureSpeciesData">>
 	<<set $mc = $mc or {}>>
 	<<set $mc.species = $mc.species or setup.species[0]>>
@@ -539,11 +545,13 @@
     "Tall": 4,
     "Very Tall": 5
     };
-
+    /*
     const mcH  = rank[$mc.height];
     const npcH = rank[_n.height];
-
-    return mcH > npcH ? 1 : mcH < npcH ? -1 : 0;
+    */
+    const tH  = rank[_top.height];
+    const bH = rank[_bottom.height];
+    return tH > bH ? 1 : tH < bH ? -1 : 0;
     <</script>>
 <</widget>>
 
@@ -558,10 +566,10 @@
     "Huge": 5
     };
 
-    const mcS  = rank[$mc.penislength];
-    const npcS = rank[_n.penislength];
+    const tS  = rank[_top.penislength];
+    const bS = rank[_bottom.penislength];
 
-    return mcS > npcS ? 1 : mcS < npcS ? -1 : 0;
+    return tS > bS ? 1 : tS < bS ? -1 : 0;
     <</script>>
 <</widget>>
 

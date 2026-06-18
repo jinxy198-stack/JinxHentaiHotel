@@ -6,8 +6,14 @@
 		<<return>>
 	<</if>>
     <<set _pool = null>>
-    <<set _pool = setup.YourRoomEvent>>
+    
     _n.name is here in your room.
+	<<if $ui.npc2>>
+		and _n2.name is here too.
+		<<set _pool = setup.YourRoomEvent2>>
+	<<else>>	
+		<<set _pool = setup.YourRoomEvent>>
+	<</if>>
     <<if _pool && _pool.length>>
 		<p><<=either(..._pool)>></p>
 	<<else>>

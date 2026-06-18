@@ -63,43 +63,43 @@
 
 <<elseif $sex.act == "Suck Each Other Off">>
 	<<set _lines = [
-		"<<ref $mc 'subjCap'>> <<verb $mc 'suck'>> <<ref _npc 'poss'>> <<= setup.partLower(_npc, 'genitals', 'genitals') >> while <<ref _npc 'subj'>> <<verb _npc 'suck'>> <<ref $mc 'poss'>> <<= setup.partLower($mc, 'genitals', 'genitals') >>.",
-		"<<ref $mc 'subjCap'>> and <<ref _npc 'subj'>> orally pleasure each other."
+		"<<ref _top 'subjCap'>> <<verb _top 'suck'>> <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> while <<ref _bottom 'subj'>> <<verb _bottom 'suck'>> <<ref _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >>.",
+		"<<ref _top 'subjCap'>> and <<ref _bottom 'subj'>> orally pleasure each other."
 	]>>
 
 <<elseif $sex.act == "Eat Each Other Out">>
 	<<set _lines = [
-		"<<ref $mc 'subjCap'>> <<verb $mc 'lick'>> <<ref _npc 'poss'>> <<= setup.partLower(_npc, 'genitals', 'genitals') >> while <<ref _npc 'subj'>> <<verb _npc 'lick'>> <<ref $mc 'poss'>> <<= setup.partLower($mc, 'genitals', 'genitals') >>."
+		"<<ref _top 'subjCap'>> <<verb _top 'lick'>> <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> while <<ref _bottom 'subj'>> <<verb _bottom 'lick'>> <<ref _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >>."
 	]>>
 
 <<elseif $sex.act == "Suck And Lick Each Other">>
 	<<set _lines = [
-		"<<ref $mc 'subjCap'>> <<verb $mc 'suck'>> <<ref _npc 'poss'>> <<= setup.partLower(_npc, 'genitals', 'genitals') >> while <<ref _npc 'subj'>> <<verb _npc 'lick'>> <<ref $mc 'poss'>> <<= setup.partLower($mc, 'genitals', 'genitals') >>."
+		"<<ref _top 'subjCap'>> <<verb _top 'suck'>> <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> while <<ref _bottom 'subj'>> <<verb _bottom 'lick'>> <<ref _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >>."
 	]>>
 
 <<elseif $sex.act == "Lick And Suck Each Other">>
 	<<set _lines = [
-		"<<ref $mc 'subjCap'>> <<verb $mc 'lick'>> <<ref _npc 'poss'>> <<= setup.partLower(_npc, 'genitals', 'genitals') >> while <<ref _npc 'subj'>> <<verb _npc 'suck'>> <<ref $mc 'poss'>> <<= setup.partLower($mc, 'genitals', 'genitals') >>."
+		"<<ref _top 'subjCap'>> <<verb _top 'lick'>> <<ref _bottom 'poss'>> <<= setup.partLower(_bottom, 'genitals', 'genitals') >> while <<ref _bottom 'subj'>> <<verb _bottom 'suck'>> <<ref _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >>."
 	]>>
 
 <<elseif $sex.act == "Suck Each Other Off (Continue)">>
 	<<set _lines = [
-		"<<ref $mc 'subjCap'>> and <<ref _npc 'subj'>> continue sucking each other off."
+		"<<ref _top 'subjCap'>> and <<ref _bottom 'subj'>> continue sucking each other off."
 	]>>
 
 <<elseif $sex.act == "Eat Each Other Out (Continue)">>
 	<<set _lines = [
-		"<<ref $mc 'subjCap'>> and <<ref _npc 'subj'>> continue licking each other."
+		"<<ref _top 'subjCap'>> and <<ref _bottom 'subj'>> continue licking each other."
 	]>>
 
 <<elseif $sex.act == "Suck And Lick Each Other (Continue)">>
 	<<set _lines = [
-		"<<ref $mc 'subjCap'>> and <<ref _npc 'subj'>> continue sucking and licking each other."
+		"<<ref _top 'subjCap'>> and <<ref _bottom 'subj'>> continue sucking and licking each other."
 	]>>
 
 <<elseif $sex.act == "Lick And Suck Each Other (Continue)">>
 	<<set _lines = [
-		"<<ref $mc 'subjCap'>> and <<ref _npc 'subj'>> continue licking and sucking each other."
+		"<<ref _top 'subjCap'>> and <<ref _bottom 'subj'>> continue licking and sucking each other."
 	]>>
 <</if>>
 

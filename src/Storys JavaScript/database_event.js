@@ -131,6 +131,10 @@ setup.YourRoomEvent = [
 	"$proset.theyUp will leave after you leave your room.",
 	"$proset.theyUp is lounging on your bed."
 ];
+setup.YourRoomEvent2 = [
+	"They both will leave after you leave your room.",
+	"_n.name and _n2.name are lounging on your bed."
+];
 
 
 setup.YourBathroomEvent = [

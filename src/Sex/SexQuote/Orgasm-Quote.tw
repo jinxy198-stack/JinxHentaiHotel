@@ -72,7 +72,7 @@
 <</if>>
 
 <<if Array.isArray(_pool) && _pool.length>>
-	"<<= either(..._pool) >>"
+	"<<= _b >><<= either(..._pool) >>"
 <<else>>
 	[Error] No Orgasm quote pool found.
 	(mode=<<= _mode >>, action=<<= _action >>, pref=<<= _pref >>, cum location=<<= _loc >>)

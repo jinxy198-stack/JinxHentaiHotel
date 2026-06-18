@@ -6,14 +6,26 @@
 <<set _mage  = $mc.ageGroup  || "Adult">>
 <<set _nage  = _n.ageGroup  || "Adult">>
 
+<<set _tsize = _top.breastsize || "None">>
+<<set _bsize = _bottom.breastsize || "None">>
+<<set _tage  = _top.ageGroup  || "Adult">>
+<<set _bage  = _bottom.ageGroup  || "Adult">>
 
-<<set _mode = $sex.role>>
+
+<<set _quote = setup.getSexQuoteSpeaker($sex)>>
+
+<<if !_quote>>
+	<<return>>
+<</if>>
+
+<<set _n = _quote.char>>
+<<set _mode = _quote.role>>
 <<set _personalities = _n.personality>>
 
 
-<<if $sex.role =="Top">>
+<<if _mode =="Top">>
 	<<set _pool = setup.BoobjobQuotes.Top[_pref]>>
-<<elseif $sex.role =="Bottom">>
+<<elseif _mode =="Bottom">>
 	<<set _pool = setup.BoobjobQuotes.Bottom[_pref]>> 
 <</if>>
 

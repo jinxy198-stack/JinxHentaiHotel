@@ -2,7 +2,6 @@
 <<widget "DebugSetupSexEncounter">>
 	/* Make sure important objects exist */
 	<<set $ui = $ui || {}>>
-	<<set $sex = $sex || {}>>
 	<<set $flags = $flags || {}>>
 	<<set $npcMemory = $npcMemory || {}>>
 
@@ -14,7 +13,7 @@
 		<<TestMC>>
 	<</if>>
 
-	/* Create a test NPC */
+	/* NPC A: test Top */
 	<<set $ui.npc = {
 		id: "debug-kevin",
 		name: "Kevin",
@@ -31,53 +30,127 @@
 		sexu: "Bisexual",
 		pronouns: "He/Him",
 		age: 21,
-
 		heterochromia: false,
 		eyes: "Blue",
 		hair: "Bald",
 		bodyheight: "Very Short",
 		physique: "Thin",
 		personality: ["Kind"],
-		genitals: "Penis", /* Penis or Vagina */
+		genitals: "Penis",
 		genitaltype: "Uncut",
 		penislength: "Average",
 		assSize: "Small",
 		virgin: false,
+		sexpref: "Dominant",
+		origin: "Debug",
+		traits: []
+	}>>
+
+	/* NPC B: test Bottom */
+	<<set $ui.npc2 = {
+		id: "debug-alex",
+		name: "Alex",
+		nickname: "Alex",
+		surname: "Test",
+		species: "Human",
+		gender: "Male",
+		trans: "Cisgender",
+		sexu: "Bisexual",
+		pronouns: "He/Him",
+		age: 22,
+		heterochromia: false,
+		eyes: "Brown",
+		hair: "Short",
+		bodyheight: "Average",
+		physique: "Average",
+		personality: ["Chill"],
+		genitals: "Penis",
+		genitaltype: "Cut",
+		penislength: "Average",
+		assSize: "Average",
+		virgin: false,
 		sexpref: "Submissive",
 		origin: "Debug",
-		traits: ["Slutty"]
+		traits: []
 	}>>
 
-	/* Set this because your NPC helper widgets use _npc */
+	/* Optional: name these clearly for debug use */
+	<<set $ui.sexTop = $ui.npc>>
+	<<set $ui.sexBottom = $ui.npc2>>
+	<<set $ui.sexWatcher = $mc>>
+
+	/* New sex encounter state */
+	<<set $sex = {
+		participants: [],
+		roles: {
+			Top: [],
+			Bottom: [],
+			Watcher: []
+		},
+
+		Top: null,
+		Bottom: null,
+		Watcher: null,
+		top: null,
+		bottom: null,
+
+		position: "Standing",
+		previousPosition: null,
+
+		phase: "tease",
+		stage: "foreplay",
+		act: "Waiting",
+
+		actor: null,
+		target: null,
+		support: null,
+		actorRole: null,
+		targetRole: null,
+		supportRole: null,
+
+		engagedParts: {
+			Top: [],
+			Bottom: [],
+			Watcher: []
+		},
+
+		penetration: null,
+		climax: {},
+		cumReady: false,
+
+		furnitureFlags: [],
+		history: [],
+		log: []
+	}>>
+
+	/* Assign NPC/NPC/Watcher roles */
+	<<run setup.sexAddParticipant($ui.npc, "Top")>>
+	<<run setup.sexAddParticipant($ui.npc2, "Bottom")>>
+	<<run setup.sexAddParticipant($mc, "Watcher")>>
+
+	/* Keep old code alive */
+	<<run setup.sexSyncLegacy()>>
+
+	/* Your older code often expects these */
 	<<set _npc = $ui.npc>>
+	<<set _n = $ui.npc>>
+	<<set $n = _n>>
 
-	<<PronounsSet>>
-	<<AgeGroupNPC>>
-	<<make-petname>>
+	/* Normalize all test actors */
+	<<run setup.normalizeActor($mc)>>
+	<<run setup.normalizeActor($ui.npc)>>
+	<<run setup.normalizeActor($ui.npc2)>>
 
-	/* Safe to run, and helps prevent body/bodyparts errors */
-	<<create-body $mc>>
-	<<create-body _npc>>
-
-	/* Optional, but useful because Sex-Encounter also expects normalized actors */
-	<<if setup.normalizeActor>>
-		<<run setup.normalizeActor($mc)>>
-		<<run setup.normalizeActor(_npc)>>
-	<</if>>
-
-	/* Setup location. Sex-Encounter will call GetRoom itself. */
-	<<set $gamelocation = "Your Room">>
-
-	/* Keep fallback references available */
-	<<set $lastNpc = setup.clone ? setup.clone($ui.npc) : $ui.npc>>
-	<<set $bootyCallNpc = null>>
-
-	/* Setup encounter roles */
-	/* Either dom or sub */
-	<<set $sex.roles = {
-		dom: $mc,
-		sub: $ui.npc
+	/* Useful debug proof */
+	<<set $debugSexTest = {
+		top: $sex.Top ? $sex.Top.name : "none",
+		bottom: $sex.Bottom ? $sex.Bottom.name : "none",
+		watcher: $sex.Watcher ? $sex.Watcher.name : "none",
+		count: $sex.participants.length
 	}>>
+	<<set $lastNpc = $ui.npc>>
+	<<set $bootyCallNpc = null>>
+	<<set $gamelocation = "Your Room">>
 <</widget>>
 
 <<widget "TestMC">>

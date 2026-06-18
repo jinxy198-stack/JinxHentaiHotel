@@ -2,20 +2,18 @@
 
 <<PronounsSet>>
 
-<<set _spot = $room.location || "floor">>
-
 
 <<if $sex.role == "Bottom">>
 	<<=either(
-		"Taking hold of <<ref _top 'poss'>> shoulders, <<ref _bottom 'subj'>> push <<pro _top 'obj'>> down onto <<pro _top 'poss'>> back. <<gram _bottom 'subjCap'>> then <<verb _bottom 'lower'>> <<ref _bottom 'refl'>> down on top of <<pro _top 'obj'>>, bringing <<ref _bottom 'poss'>> butt down to bump against <<pro _top 'possNoun'>> crotch as <<ref _bottom 'subj'>> straddle <<pro _top 'obj'>> in the cowgirl position. Once <<ref _bottom 'subj'>> <<have _bottom >> made <<ref _top 'refl'>> comfortable, <<ref _bottom 'subj'>> <<verb _bottom 'look'>> down at <<ref _top 'subj'>>.",
-		"<<gram _bottom 'subjCap'>> climb on top of <<ref _top 'subj'>>, sitting <<gram _bottom 'poss'>> <<= setup.valueLower($mc, 'assSize', 'average') >> ass on <<pro _top 'poss'>> crotch."
+		"Taking hold of <<ref _top 'poss'>> shoulders, <<ref _bottom 'subj'>> push <<pro _top 'obj'>> down onto <<pro _top 'poss'>> back. <<ref _bottom 'subjCap'>> then <<verb _bottom 'lower'>> <<ref _bottom 'refl'>> down on top of <<pro _top 'obj'>>, bringing <<ref _bottom 'poss'>> butt down to bump against <<pro _top 'possNoun'>> crotch as <<ref _bottom 'subj'>> straddle <<pro _top 'obj'>> in the cowgirl position. Once <<ref _bottom 'subj'>> <<have _bottom >> made <<ref _top 'refl'>> comfortable, <<ref _bottom 'subj'>> <<verb _bottom 'look'>> down at <<ref _top 'subj'>>.",
+		"<<ref _bottom 'subjCap'>> climb on top of <<ref _top 'subj'>>, sitting <<ref _bottom 'poss'>> <<= setup.valueLower(_bottom, 'assSize', 'average') >> ass on <<pro _top 'poss'>> crotch."
 	)>>
 <<elseif $sex.role == "Top">>
 	<<=either(
-		"Dropping down and quickly lying on <<gram _top 'poss'>> back, <<ref _bottom 'subj'>> gets on top and straddles <<gram _top 'poss'>> waist,",
-		"Jumping down over the top of <<ref _top 'subj'>>, <<ref _bottom 'subj'>> lowers <<ref _bottom 'refl'>> down over <<gram _top 'poss'>> groin, bringing <<ref _bottom 'poss'>> crotch to <<pro _top 'possNoun'>> as <<ref _bottom 'subj'>> straddle <<ref _top 'subj'>> in the cowgirl position. Leaning forward a little, <<ref _bottom 'subj'>> grin down at <<ref _top 'subj'>>.",
-		"Allowing <<ref _top 'subj'>> to push <<ref _bottom 'obj'>> down, <<ref _bottom 'subj'>> reaches up and takes a firm grip on <<gram _top 'poss'>> <<= setup.partLower($mc, 'Hips', 'hips') >>, before pulling <<ref _top 'subj'>> down so that <<ref _top 'subjCap'>> <<be _top >> straddling <<ref _bottom 'obj'>> in the cowgirl position. Looking up into <<gram _top 'poss'>> <<=$mc.eyes.toLowerCase()>> eyes, <<ref _bottom 'subj'>> smile",
-		"Taking hold of <<ref _bottom 'poss'>> shoulders, <<ref _top 'subj'>> pull <<ref _bottom 'obj'>> down with <<ref _top 'subj'>> as <<ref _top 'subj'>> lie down on <<gram _top 'poss'>> back. With a firm grip on <<ref _bottom 'poss'>> <<= setup.partLower(_n, 'Hips', 'hips') >>, <<ref _top 'subj'>> push <<pro _bottom 'obj'>> back so that they are straddling <<ref _top 'subj'>> in the cowgirl position. Once <<ref _top 'subj'>> <<have _top >> made <<ref _top 'refl'>> comfortable, <<ref _top 'subj'>> look up at <<ref _bottom 'subj'>> and smile.",
+		"Dropping down and quickly lying on <<ref _top 'poss'>> back, <<ref _bottom 'subj'>> gets on top and straddles <<ref _top 'poss'>> waist,",
+		"Jumping down over the top of <<ref _top 'subj'>>, <<ref _bottom 'subj'>> lowers <<ref _bottom 'refl'>> down over <<ref _top 'poss'>> groin, bringing <<ref _bottom 'poss'>> crotch to <<pro _top 'possNoun'>> as <<ref _bottom 'subj'>> straddle <<ref _top 'subj'>> in the cowgirl position. Leaning forward a little, <<ref _bottom 'subj'>> grin down at <<ref _top 'subj'>>.",
+		"Allowing <<ref _top 'subj'>> to push <<ref _bottom 'obj'>> down, <<ref _bottom 'subj'>> reaches up and takes a firm grip on <<ref _top 'poss'>> <<= setup.partLower(_top, 'Hips', 'hips') >>, before pulling <<ref _top 'subj'>> down so that <<ref _top 'subjCap'>> <<be _top >> straddling <<ref _bottom 'obj'>> in the cowgirl position. Looking up into <<ref _top 'poss'>> <<=_top.eyes.toLowerCase()>> eyes, <<ref _bottom 'subj'>> smile",
+		"Taking hold of <<ref _bottom 'poss'>> shoulders, <<ref _top 'subj'>> pull <<ref _bottom 'obj'>> down with <<ref _top 'subj'>> as <<ref _top 'subj'>> lie down on <<ref _top 'poss'>> back. With a firm grip on <<ref _bottom 'poss'>> <<= setup.partLower(_n, 'Hips', 'hips') >>, <<ref _top 'subj'>> push <<pro _bottom 'obj'>> back so that they are straddling <<ref _top 'subj'>> in the cowgirl position. Once <<ref _top 'subj'>> <<have _top >> made <<ref _top 'refl'>> comfortable, <<ref _top 'subj'>> look up at <<ref _bottom 'subj'>> and smile.",
 		"<<ref _bottom 'subj'>> <<verb _bottom 'climb'>> on top of <<ref _top 'subj'>>."
 	)>>
 	<br>

@@ -1,9 +1,20 @@
 :: Act-Quote [Dialogue nobr] 
 <!-- only what the npc says -->
 
-<<set _a = $sex.act || "none">>
-<<set _b = "<b> _n.name :</b> " >>
-<br>
+<<set _quote = setup.getSexQuoteSpeaker($sex)>>
+
+<<if !_quote>>
+	<<set _hasActQuote = false>>
+
+<<else>>
+	<<set _qc = _quote.char>>
+	<<set _quoteRole = _quote.role>>
+	<<PronounsSet>>
+
+	<<set _a = $sex.act || "none">>
+	<<set _b = "<b>" + _qc.name + ":</b> ">>
+
+	<br>
 <<switch _a>>
 	<<case "Kiss">> <<set _hasActQuote = true>><<= _b >> <<include "Kiss-Quote">>
     <<case "Pet Ears">><<set _hasActQuote = true>><<= _b >><<include "Pet-Ears-Quote">>
@@ -85,3 +96,12 @@
     <<case "Embrace">><<set _hasActQuote = true>><<= _b >><<include "Embrace-Quote">>
 <</switch>>
 <br>
+<<if $devMode>>
+<div class="debug">
+	Top: <<= $sex.roles && $sex.roles.dom ? $sex.roles.dom.name : "none" >><br>
+	Bottom: <<= $sex.roles && $sex.roles.sub ? $sex.roles.sub.name : "none" >><br>
+	Watcher: <<= $sex.roles && $sex.roles.watcher ? $sex.roles.watcher.name : "none" >><br>
+	MC: <<= $mc.name >>
+</div>
+<</if>>
+<</if>>

@@ -1,20 +1,22 @@
 ::Dialogue-Widget [widget nobr]
 
 /* Example of uses: */
-/*<<npcNoiseTest 'base' 'pain'>>       groan */
-/*<<npcNoiseTest 's' 'pain'>>          groans */
-/*<<npcNoiseTest 'ing' 'pain'>>        groaning */
-/*<<npcNoiseTest 'cap' 'pain'>>        Groan */
-/*<<npcNoiseTest 's cap' 'pain'>>      Groans */
-/*<<npcNoiseTest 'ing cap' 'pain'>>    Groaning */
-<<widget "npcNoise">>
-	<<set _modeText = (_args[0] || "base").toLowerCase()>>
+/*<<noise _top 'base' 'pain'>>       groan */
+/*<<noise _top 's' 'pain'>>          groans */
+/*<<noise _top 'ing' 'pain'>>        groaning */
+/*<<noise _top 'cap' 'pain'>>        Groan */
+/*<<noise _top 's cap' 'pain'>>      Groans */
+/*<<noise _top 'ing cap' 'pain'>>    Groaning */
+
+<<widget "noise">>
+	<<set _noChar = _args[0] || "NONE">>
+	<<set _modeText = (_args[1] || "base").toLowerCase()>>
 	<<set _modes = _modeText.trim().split(/\s+/)>>
-	<<set _type = _args[1] || "pleasure">>
+	<<set _type = _args[2] || "pleasure">>
 
 	/* Get species and anthro subtype safely. */
-	<<set _species = _n && _n.species ? _n.species : "Default">>
-	<<set _subtype = _n && _n.anthro && _n.anthro.subtype ? _n.anthro.subtype : null>>
+	<<set _species = _noChar && _noChar.species ? _noChar.species : "Default">>
+	<<set _subtype = _noChar && _noChar.anthro && _noChar.anthro.subtype ? _noChar.anthro.subtype : null>>
 
 	/* Try species first, then anthro subtype, then Default. */
 	<<set _defaultNoise = setup.noise.Default || {}>>
@@ -61,61 +63,6 @@
 	<<= _out>>
 <</widget>>
 
-<<widget "mcNoise">>
-	<<set _modeText = (_args[0] || "base").toLowerCase()>>
-	<<set _modes = _modeText.trim().split(/\s+/)>>
-	<<set _type = _args[1] || "pleasure">>
-
-	/* Get species and anthro subtype safely. */
-	<<set _species = $mc && $mc.species ? $mc.species : "Default">>
-	<<set _subtype = $mc && _n.anthro && $mc.anthro.subtype ? $mc.anthro.subtype : null>>
-
-	/* Try species first, then anthro subtype, then Default. */
-	<<set _defaultNoise = setup.noise.Default || {}>>
-	<<set _speciesNoise = setup.noise[_species]>>
-
-	<<if !_speciesNoise && _subtype>>
-		<<set _speciesNoise = setup.noise[_subtype]>>
-	<</if>>
-
-	<<if !_speciesNoise>>
-		<<set _speciesNoise = _defaultNoise>>
-	<</if>>
-
-	/* Get the requested noise type, then fallback safely. */
-	<<set _pool = _speciesNoise[_type] || _defaultNoise[_type] || _defaultNoise.pleasure || ["moan"]>>
-
-	<<set _noise = setup.pick(_pool)>>
-	<<set _out = _noise>>
-
-	/* Plural mode */
-	<<if _modes.indexOf("s") >= 0>>
-		<<if _out.slice(-1) is "y">>
-			<<set _out = _out.slice(0, -1) + "ies">>
-		<<elseif _out.slice(-1) is "s">>
-			<<set _out = _out + "es">>
-		<<else>>
-			<<set _out = _out + "s">>
-		<</if>>
-
-	/* -ing mode */
-	<<elseif _modes.indexOf("ing") >= 0>>
-		<<if _out.slice(-1) is "e">>
-			<<set _out = _out.slice(0, -1) + "ing">>
-		<<else>>
-			<<set _out = _out + "ing">>
-		<</if>>
-	<</if>>
-
-	/* Capitalize mode */
-	<<if _modes.indexOf("cap") >= 0>>
-		<<set _out = _out.charAt(0).toUpperCase() + _out.slice(1)>>
-	<</if>>
-
-	<<= _out>>
-<</widget>>
-
-<<widget "gram">><<= setup.ref(_args[0], _args[1] || "subj") >><</widget>>
 
 <<widget "ref">><<= setup.ref(_args[0], _args[1] || "subj")>><</widget>>
 

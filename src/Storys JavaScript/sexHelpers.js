@@ -329,12 +329,20 @@
    * ========================= */
 
   setup.getEncounterSize = function (sex) {
-    let count = 0;
-    if (sex?.Top) count++;
-    if (sex?.Bottom) count++;
-    if (Array.isArray(sex?.participants)) count += sex.participants.length;
-    return count;
-  };
+	if (!sex) {
+		return 0;
+	}
+
+	if (Array.isArray(sex.participants) && sex.participants.length) {
+		return [...new Set(sex.participants.filter(Boolean))].length;
+	}
+
+	return [...new Set([
+		sex.Top,
+		sex.Bottom,
+		sex.Watcher
+	].filter(Boolean))].length;
+};
 
   setup.isPositionValid = function (positionKey, sex) {
     const pos = setup.sexpositions?.[positionKey];
@@ -788,3 +796,163 @@ setup.getAvailableSexActs = function (sex) {
 		.join(" | ");
   };
 })();
+
+
+setup.sameChar = function (a, b) {
+	if (!a || !b) {
+		return false;
+	}
+
+	if (a === b) {
+		return true;
+	}
+
+	if (a.id != null && b.id != null) {
+		return a.id === b.id;
+	}
+
+	if (a.isMC && b.isMC) {
+		return true;
+	}
+
+	if (a.name && b.name && a.name === b.name) {
+		if (!a.surname && !b.surname) {
+			return true;
+		}
+
+		return a.surname === b.surname;
+	}
+
+	return false;
+};
+
+setup.getSexQuoteSpeaker = function (sex) {
+	const mc = State.variables.mc;
+
+	if (!sex || !mc) {
+		return null;
+	}
+
+	if (setup.sexSyncLegacy && sex === State.variables.sex) {
+		setup.sexSyncLegacy();
+	}
+
+	const top =
+		sex.Top
+		|| (sex.roles && sex.roles.dom)
+		|| (sex.roles && sex.roles.Top && sex.roles.Top[0])
+		|| null;
+
+	const bottom =
+		sex.Bottom
+		|| (sex.roles && sex.roles.sub)
+		|| (sex.roles && sex.roles.Bottom && sex.roles.Bottom[0])
+		|| null;
+
+	const watcher =
+		sex.Watcher
+		|| (sex.roles && sex.roles.watcher)
+		|| (sex.roles && sex.roles.Watcher && sex.roles.Watcher[0])
+		|| null;
+
+	/*
+		MC is Top, so Bottom NPC speaks.
+	*/
+	if (setup.sameChar(top, mc)) {
+		return bottom
+			? {
+				char: bottom,
+				role: "Bottom"
+			}
+			: null;
+	}
+
+	/*
+		MC is Bottom, so Top NPC speaks.
+	*/
+	if (setup.sameChar(bottom, mc)) {
+		return top
+			? {
+				char: top,
+				role: "Top"
+			}
+			: null;
+	}
+
+	/*
+		MC is Watcher, so no quote for now.
+	*/
+	if (setup.sameChar(watcher, mc)) {
+		return null;
+	}
+
+	return null;
+};
+
+setup.getSexRoleOf = function (char, sex) {
+	if (!char || !sex || !sex.roles) {
+		return null;
+	}
+
+	if (setup.sameChar(char, sex.roles.dom)) {
+		return "Top";
+	}
+
+	if (setup.sameChar(char, sex.roles.sub)) {
+		return "Bottom";
+	}
+
+	if (setup.sameChar(char, sex.roles.watcher)) {
+		return "Watcher";
+	}
+
+	return null;
+};
+
+setup.syncMcSexRole = function (sex) {
+	const mc = State.variables.mc;
+
+	if (!sex || !mc) {
+		return null;
+	}
+
+	const top =
+		sex.Top
+		|| (sex.roles && sex.roles.dom)
+		|| (sex.roles && sex.roles.Top && sex.roles.Top[0])
+		|| null;
+
+	const bottom =
+		sex.Bottom
+		|| (sex.roles && sex.roles.sub)
+		|| (sex.roles && sex.roles.Bottom && sex.roles.Bottom[0])
+		|| null;
+
+	const watcher =
+		sex.Watcher
+		|| (sex.roles && sex.roles.watcher)
+		|| (sex.roles && sex.roles.Watcher && sex.roles.Watcher[0])
+		|| null;
+
+	if (setup.sameChar && setup.sameChar(top, mc)) {
+		sex.role = "Top";
+		sex.mcRole = "Top";
+		return "Top";
+	}
+
+	if (setup.sameChar && setup.sameChar(bottom, mc)) {
+		sex.role = "Bottom";
+		sex.mcRole = "Bottom";
+		return "Bottom";
+	}
+
+	if (setup.sameChar && setup.sameChar(watcher, mc)) {
+		sex.role = "Watcher";
+		sex.mcRole = "Watcher";
+		return "Watcher";
+	}
+
+	sex.role = null;
+	sex.mcRole = null;
+	return null;
+};

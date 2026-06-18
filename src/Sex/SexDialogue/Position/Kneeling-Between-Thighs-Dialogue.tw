@@ -2,8 +2,8 @@
 
 /* Same as Missionary? */
 <<if $sex.role == "Top">>
-    <<gram _top 'subjcap'>> part <<ref _top 'poss'>> thighs as <<gram _bottom 'subj'>> <<verb _bottom 'kneel'>> between them.
+    <<ref _top 'subjcap'>> part <<ref _top 'poss'>> thighs as <<ref _bottom 'subj'>> <<verb _bottom 'kneel'>> between them.
 <<elseif $sex.role == "Bottom">>
-    <<gram _bottom 'subj'>> parts <<ref _bottom 'poss'>> thighs as <<gram _top 'subj'>> <<verb _top 'kneel'>> between them.
+    <<ref _bottom 'subj'>> parts <<ref _bottom 'poss'>> thighs as <<ref _top 'subj'>> <<verb _top 'kneel'>> between them.
 
 <</if>>

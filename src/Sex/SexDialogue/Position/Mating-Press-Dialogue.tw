@@ -2,4 +2,4 @@
 
 <<set _spot = $room.location || "floor">>
 
-<<gram _top 'subjCap'>> <<be _top>> on top of <<gram _bottom 'subj'>> on the _spot, <<pro _bottom 'poss'>> legs pushed back towards <<pro _bottom 'poss'>> head.
+<<ref _top 'subjCap'>> <<be _top>> on top of <<ref _bottom 'subj'>> on the _spot, <<pro _bottom 'poss'>> legs pushed back towards <<pro _bottom 'poss'>> head.

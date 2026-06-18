@@ -1,7 +1,25 @@
-:: Your Room [nobr location] {"position":"400,725","size":"100,100"}
+:: Your Room [nobr location]
 <<set $gamelocation to "Your Room">>
-/*Makes sure no stragglers appear in your room. */
+<<set $ui = $ui || {}>>
+
 <<set $roomNPCs = []>>
+
+<<if $myRoomNPCs && $myRoomNPCs.length>>
+	<<for _i = 0; _i < $myRoomNPCs.length; _i++>>
+		<<set _roomChar = $myRoomNPCs[_i]>>
+		<<if _roomChar && !$roomNPCs.includes(_roomChar)>>
+			<<run $roomNPCs.push(_roomChar)>>
+		<</if>>
+	<</for>>
+<</if>>
+
+<<if $roomNPCs.length >= 1>>
+	<<set $ui.npc = $roomNPCs[0]>>
+<</if>>
+
+<<if $roomNPCs.length >= 2>>
+	<<set $ui.npc2 = $roomNPCs[1]>>
+<</if>>
 You are in your hotel room. It looks like the master suite of a luxury hotel, complete with a large bed. Next to the bed is a phone for calling up people you know for a 'good time'.
 <br>
 To the side was a mini bar with assorted drinks, both alcoholic and non alcoholic for you to enjoy. <br>
@@ -12,6 +30,9 @@ And in the corner was a desk with a computer for playing around with.
 <<if $lastNpc>>
 	<<set $ui.npc = $lastNpc>>
 	<<set _n = $ui.npc>>
+	<<if $ui.npc2>>
+		<<set _n2 = $lastNpc2>>
+	<</if>>
 	<<YourRoomEvent>>
 	<br>
 	<<RefreshRoomNPCs>>
@@ -34,8 +55,31 @@ And in the corner was a desk with a computer for playing around with.
 <br>
 
 <div id="npcsex-actions-bar">
+<<if $ui.npc && $ui.npc2>>
+	<<button "Start Encounter With These Two">>
+		<<if !$ui.npc>>
+			You need a first NPC.
+		<<elseif !$ui.npc2>>
+			You need a second NPC.
+		<<else>>
+			/*<<run setup.startSexEncounter($ui.npc, $ui.npc2, $mc)>>
+			<<goto "Sex-Encounter">>*/
+			<<run Dialog.create("Propose sex ").wikiPassage("UI-Attracted-check").open()>>
+		<</if>>
+	<</button>>
+<<elseif $ui.npc>>
+	<<button "Start Encounter With This NPC">>
+		<<if !$ui.npc>>
+			You need a first NPC.
+		<<else>>
+			<<run setup.startSexEncounter($ui.npc, null, $mc)>>
+			<<goto "Sex-Encounter">>
+		<</if>>
+<</button>>
+<</if>>
 <<button "Leave your room">>
 	<<set $lastNpc = null>>
+	<<set $lastNpc2 = null>>
     <<goto "Hotel Hallway">>
 <</button>>
 <<if $lastNpc>>

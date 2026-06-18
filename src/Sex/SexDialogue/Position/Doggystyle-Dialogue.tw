@@ -7,18 +7,18 @@
 
 <<if $sex.role== "Bottom">> /*If you are the bottom */
 	<<=either(
-    "<<gram _bottom 'subjCap'>> <<verb _bottom 'drop'>> down on all fours, facing away from <<gram _top 'subj'>>.",
-    "<<gram _bottom 'subjCap'>> get on all fours, presenting <<gram _bottom 'poss'>> ass out towards <<gram _top 'subj'>>."
+    "<<ref _bottom 'subjCap'>> <<verb _bottom 'drop'>> down on all fours, facing away from <<ref _top 'subj'>>.",
+    "<<ref _bottom 'subjCap'>> get on all fours, presenting <<ref _bottom 'poss'>> ass out towards <<ref _top 'subj'>>."
     )>>
-    <<gram _top 'subjCap'>> <<verb _top 'climb'>> up onto <<gram _bottom 'poss'>> behind.
+    <<ref _top 'subjCap'>> <<verb _top 'climb'>> up onto <<ref _bottom 'poss'>> behind.
     <br>
 <<elseif $sex.role == "Top">>
 	<<=either(
-	"<<gram _bottom 'subjCap'>> get on all fours like a dog, and <<verb _bottom 'present'>> <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'assSize', 'average') >> ass to <<gram _top 'subj'>>.",
-    "<<gram _top 'subjCap'>> mount <<gram _top 'refl'>> over <<gram _bottom 'subjCap'>>."
+	"<<ref _bottom 'subjCap'>> get on all fours like a dog, and <<verb _bottom 'present'>> <<pro _bottom 'poss'>> <<= setup.partLower(_bottom, 'assSize', 'average') >> ass to <<ref _top 'subj'>>.",
+    "<<ref _top 'subjCap'>> mount <<ref _top 'refl'>> over <<ref _bottom 'subjCap'>>."
     )>>
     <<if _h is -1>>
-        Because of the height difference, <<gram _top 'poss'>> legs nearly dangle over <<pro _bottom 'obj'>>.
+        Because of the height difference, <<ref _top 'poss'>> legs nearly dangle over <<pro _bottom 'obj'>>.
     <</if>>
 <</if>>
 

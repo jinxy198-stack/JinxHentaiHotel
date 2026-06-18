@@ -1,28 +1,24 @@
 :: Finger-Vagina-Dialogue [Dialogue nobr] {"position":"900,1675","size":"100,100"}
 
-<<set _npc = _n>>
 <<PronounsSet>>
-
-<<set _top = $sex.Top || ($sex.role == "Top" ? $mc : _npc)>>
-<<set _bottom = $sex.Bottom || ($sex.role == "Top" ? _npc : $mc)>>
 
 <<set _topFinger = setup.partLower(_top, 'Finger', 'finger')>>
 <<set _topFingers = setup.partLower(_top, 'Fingers', 'fingers')>>
 <<set _bottomVagina = setup.partLower(_bottom, 'Vagina', 'pussy')>>
 
 <<if $sex.act == "Finger Pussy">>
-<<= either(
-"<<ref _top 'subjCap'>> slowly <<verb _top 'slide'>> <<pro _top 'poss'>> <<= _topFinger >> into <<ref _bottom 'poss'>> <<= _bottomVagina >>.",
-"<<ref _top 'subjCap'>> gently <<verb _top 'press'>> <<pro _top 'poss'>> <<= _topFinger >> against <<ref _bottom 'poss'>> <<= _bottomVagina >> before sliding it inside.",
-"<<ref _top 'subjCap'>> carefully <<verb _top 'ease'>> <<pro _top 'poss'>> <<= _topFinger >> into <<ref _bottom 'poss'>> <<= _bottomVagina >>, watching <<ref _bottom 'obj'>> for a reaction."
-) >>
+    <<= either(
+        "<<ref _top 'subjCap'>> slowly <<verb _top 'slide'>> <<pro _top 'poss'>> <<= _topFinger >> into <<ref _bottom 'poss'>> <<= _bottomVagina >>.",
+        "<<ref _top 'subjCap'>> gently <<verb _top 'press'>> <<pro _top 'poss'>> <<= _topFinger >> against <<ref _bottom 'poss'>> <<= _bottomVagina >> before sliding it inside.",
+        "<<ref _top 'subjCap'>> carefully <<verb _top 'ease'>> <<pro _top 'poss'>> <<= _topFinger >> into <<ref _bottom 'poss'>> <<= _bottomVagina >>, watching <<ref _bottom 'obj'>> for a reaction."
+    ) >>
 
 <<elseif $sex.act == "Finger Pussy(Continue)">>
-<<= either(
-"<<ref _top 'subjCap'>> <<verb _top 'finger'>> <<ref _bottom 'poss'>> <<= _bottomVagina >>.",
-"<<ref _top 'subjCap'>> <<verb _top 'keep'>> moving <<pro _top 'poss'>> <<= _topFinger >> in and out of <<ref _bottom 'poss'>> <<= _bottomVagina >>.",
-"<<ref _top 'subjCap'>> steadily <<verb _top 'work'>> <<pro _top 'poss'>> <<= _topFinger >> inside <<ref _bottom 'poss'>> <<= _bottomVagina >>.",
-"<<ref _top 'subjCap'>> <<verb _top 'curl'>> <<pro _top 'poss'>> <<= _topFinger >> slightly as <<pro _top 'subj'>> <<verb _top 'continue'>> fingering <<ref _bottom 'obj'>>.",
-"<<ref _top 'poss'>> <<= _topFingers >> move with a slow, steady rhythm as <<pro _top 'subj'>> <<verb _top 'pleasure'>> <<ref _bottom 'poss'>> <<= _bottomVagina >>."
-) >>
+    <<= either(
+        "<<ref _top 'subjCap'>> <<verb _top 'finger'>> <<ref _bottom 'poss'>> <<= _bottomVagina >>.",
+        "<<ref _top 'subjCap'>> <<verb _top 'keep'>> moving <<pro _top 'poss'>> <<= _topFinger >> in and out of <<ref _bottom 'poss'>> <<= _bottomVagina >>.",
+        "<<ref _top 'subjCap'>> steadily <<verb _top 'work'>> <<pro _top 'poss'>> <<= _topFinger >> inside <<ref _bottom 'poss'>> <<= _bottomVagina >>.",
+        "<<ref _top 'subjCap'>> <<verb _top 'curl'>> <<pro _top 'poss'>> <<= _topFinger >> slightly as <<pro _top 'subj'>> <<verb _top 'continue'>> fingering <<ref _bottom 'obj'>>.",
+        "<<ref _top 'poss'>> <<= _topFingers >> move with a slow, steady rhythm as <<pro _top 'subj'>> <<verb _top 'pleasure'>> <<ref _bottom 'poss'>> <<= _bottomVagina >>."
+    ) >>
 <</if>>

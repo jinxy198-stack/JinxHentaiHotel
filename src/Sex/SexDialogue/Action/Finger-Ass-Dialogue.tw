@@ -4,7 +4,7 @@
 <<if $sex.act == "Finger Ass">>
 	<<=either(
         "<<ref _top 'subjCap'>> <<verb _top 'finger'>> <<ref _bottom 'poss'>> ass.",
-        "<<ref _bottom 'subjCap'>> <<verb _bottom 'shiver'>> as <<ref _top 'subj'>> <<verb _top 'place'>> <<pro _top 'poss'>> <<=_top.body.Finger.toLowerCase()>> against <<pro _bottom 'poss'>> asshole. <<pro _top 'subj'>> then <<verb _top 'wiggle'>> <<pro _top 'poss'>> way in. It was hot and tight but so smooth. <<pro _bottom 'subj' true>> <<verbEx _bottom 'let'>> out a <<npcNoise 'base' 'pain'>>. <<pro _top 'subjCap'>> <<verb _top 'caress'>> <<pro _bottom 'poss'>> thigh to calm <<pro _bottom 'obj'>>."
+        "<<ref _bottom 'subjCap'>> <<verb _bottom 'shiver'>> as <<ref _top 'subj'>> <<verb _top 'place'>> <<pro _top 'poss'>> <<=_top.body.Finger.toLowerCase()>> against <<pro _bottom 'poss'>> asshole. <<pro _top 'subj'>> then <<verb _top 'wiggle'>> <<pro _top 'poss'>> way in. It was hot and tight but so smooth. <<pro _bottom 'subj' true>> <<verbEx _bottom 'let'>> out a <<noise _bottom 'base' 'pain'>>. <<pro _top 'subjCap'>> <<verb _top 'caress'>> <<pro _bottom 'poss'>> thigh to calm <<pro _bottom 'obj'>>."
     )>>
 <<elseif $sex.act == "Finger Ass(Continue)">>
     <<=either(

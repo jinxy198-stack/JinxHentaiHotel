@@ -132,6 +132,9 @@
 <<set $mc.anthro.color   = $mc.anthro.color   or {}>>
 <<set $mc.anthro.pattern = $mc.anthro.pattern or {}>>
 
+<<set $mc.id = $mc.id || "mc">>
+<<set $mc.isMC = true>>
+
 /* General attributes */
 <<set $proset to {}>>
 <<set $mc.skin to {}>>

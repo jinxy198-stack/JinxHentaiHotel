@@ -161,6 +161,8 @@
 
 		setup.applySexAct($sex, _a);
 
+		setup.syncMcSexRole($sex);
+
 		if (_wasAftercare) {
 			$sex.phase = "aftercare";
 			$sex.cumReady = false;
@@ -214,6 +216,7 @@
 
 
 <<widget "SexEncounterUI">>
+	<<run setup.syncMcSexRole($sex)>>
 	<<set _positions = setup.getAvailablePositions($sex) || []>>
 	<<set _acts = setup.getAvailableSexActs($sex) || []>>
 
@@ -347,6 +350,10 @@
 							<li class= "sex-item">
 								<<button "End Session">>
 									<<run setup.record_sex_memory($ui.npc, "had sex with")>>
+									<<if $ui.npc2>>
+										<<run setup.record_sex_memory($ui.npc2, "had sex with")>>
+										<<set $lastNpc2 = $ui.npc2>>
+									<</if>>	
 									<<set _returnTo = $gamelocation || "Your Room">>
 									<<set $lastNpc = $ui.npc>>
 									<<run setup.resetSexSession()>>
@@ -396,6 +403,31 @@
 
 
 <<widget "ArousalUI">>
+<<set _top = $sex && $sex.Top ? $sex.Top : null>>
+<<set _bottom = $sex && $sex.Bottom ? $sex.Bottom : null>>
+<<set _watcher = $sex && $sex.Watcher ? $sex.Watcher : null>>
+
+<<if _top && typeof _top.arousal !== "number">>
+	<<set _top.arousal = 0>>
+<</if>>
+
+<<if _bottom && typeof _bottom.arousal !== "number">>
+	<<set _bottom.arousal = 0>>
+<</if>>
+
+<<if _watcher && typeof _watcher.arousal !== "number">>
+	<<set _watcher.arousal = 0>>
+<</if>>
+
+<<if !_top or !_bottom>>
+	<div class="arousal-ui">
+		<b>Arousal</b><br>
+		<span class="red">[Debug Error] Missing Top or Bottom.</span><br>
+		Top: <<= _top ? _top.name : "None" >><br>
+		Bottom: <<= _bottom ? _bottom.name : "None" >>
+	</div>
+	<<return>>
+<</if>>
 <div class="arousal-ui">
 	<div class="arousal-title">Arousal</div>
 

@@ -421,54 +421,173 @@
 	<<set $attraction = _result>>
 <</widget>>
 
+<<widget "check-attraction-group">>
+	<<run setup.checkAttractionGroup(_args[0], _args[1], _args[2])>>
+<</widget>>
+
 
 <<widget "pick-roles">>
-	/* Determines dom/sub roles between MC and NPC */
-	<<set _mc  = _args[0]>>
-	<<set _npc = _args[1]>>
+	/* 
+		Args:
+		_args[0] = character A
+		_args[1] = character B
+		_args[2] = optional watcher / third character
 
-	/* Normalize preference keys */
-	<<set _mcPref  = (_mc.sexpref  or "switch")>>
-	<<set _npcPref = (_npc.sexpref or "switch")>>
+		Stores:
+		$sex.roles.dom      = Top
+		$sex.roles.sub      = Bottom
+		$sex.roles.watcher  = Watcher
 
-	/* Initialize role object */
-	<<set $sex to $sex or {}>>
-	<<set $sex.roles to { dom: null, sub: null }>>
+		Also mirrors:
+		$sex.roles.Top
+		$sex.roles.Bottom
+		$sex.roles.Watcher
+	*/
 
-	/* Optional forced override */
-	<<if $forceDom is "mc">>
-		<<set $sex.roles = { dom: _mc,  sub: _npc }>>
-		<<return>>
-	<<elseif $forceDom is "npc">>
-		<<set $sex.roles = { dom: _npc, sub: _mc }>>
+	<<set _a = _args[0]>>
+	<<set _b = _args[1]>>
+	<<set _w = _args[2] || null>>
+
+	<<if !_a || !_b>>
+		<<set $sex = $sex || {}>>
+		<<set $sex.roles = $sex.roles || {}>>
 		<<return>>
 	<</if>>
 
-	/* simple logic:
-	   1) exact match dom/sub
-	   2) one wants dom → they dom
-	   3) one wants sub → the other dom
-	   4) tie → coin flip
-	*/
-	<<if _mcPref is "dom" and _npcPref is "sub">>
-		<<set $sex.roles = { dom: _mc,  sub: _npc }>>
-	<<elseif _mcPref is "sub" and _npcPref is "dom">>
-		<<set $sex.roles = { dom: _npc, sub: _mc }>>
-	<<elseif _mcPref is "dom" and _npcPref isnot "dom">>
-		<<set $sex.roles = { dom: _mc,  sub: _npc }>>
-	<<elseif _npcPref is "dom" and _mcPref isnot "dom">>
-		<<set $sex.roles = { dom: _npc, sub: _mc }>>
-	<<elseif _mcPref is "sub" and _npcPref isnot "sub">>
-		<<set $sex.roles = { dom: _npc, sub: _mc }>>
-	<<elseif _npcPref is "sub" and _mcPref isnot "sub">>
-		<<set $sex.roles = { dom: _mc,  sub: _npc }>>
+	<<set $sex = $sex || {}>>
+	<<set $sex.roles = $sex.roles || {}>>
+
+	/* Candidate list */
+	<<set $sex.roleCandidates = [_a, _b]>>
+
+	<<if _w && _w !== _a && _w !== _b>>
+		<<run $sex.roleCandidates.push(_w)>>
+	<</if>>
+
+	/* Normalize preference strings */
+	<<set _aPref = ((_a.sexpref || "Switch") + "").toLowerCase()>>
+	<<set _bPref = ((_b.sexpref || "Switch") + "").toLowerCase()>>
+
+	<<if _aPref is "dominant">>
+		<<set _aPref = "dom">>
+	<<elseif _aPref is "submissive">>
+		<<set _aPref = "sub">>
+	<</if>>
+
+	<<if _bPref is "dominant">>
+		<<set _bPref = "dom">>
+	<<elseif _bPref is "submissive">>
+		<<set _bPref = "sub">>
+	<</if>>
+
+	/* Default Top/Bottom guess */
+	<<if _aPref is "dom" and _bPref is "sub">>
+		<<set $sex.roles.dom = _a>>
+		<<set $sex.roles.sub = _b>>
+	<<elseif _aPref is "sub" and _bPref is "dom">>
+		<<set $sex.roles.dom = _b>>
+		<<set $sex.roles.sub = _a>>
+	<<elseif _aPref is "dom" and _bPref isnot "dom">>
+		<<set $sex.roles.dom = _a>>
+		<<set $sex.roles.sub = _b>>
+	<<elseif _bPref is "dom" and _aPref isnot "dom">>
+		<<set $sex.roles.dom = _b>>
+		<<set $sex.roles.sub = _a>>
+	<<elseif _aPref is "sub" and _bPref isnot "sub">>
+		<<set $sex.roles.dom = _b>>
+		<<set $sex.roles.sub = _a>>
+	<<elseif _bPref is "sub" and _aPref isnot "sub">>
+		<<set $sex.roles.dom = _a>>
+		<<set $sex.roles.sub = _b>>
 	<<else>>
-		<<if either(true,false)>>
-			<<set $sex.roles = { dom: _mc,  sub: _npc }>>
+		<<if either(true, false)>>
+			<<set $sex.roles.dom = _a>>
+			<<set $sex.roles.sub = _b>>
 		<<else>>
-			<<set $sex.roles = { dom: _npc, sub: _mc }>>
+			<<set $sex.roles.dom = _b>>
+			<<set $sex.roles.sub = _a>>
 		<</if>>
 	<</if>>
+
+	/* Third person defaults to Watcher */
+	<<set $sex.roles.watcher = _w>>
+
+	<<sync-preview-roles>>
+<</widget>>
+
+<<widget "sync-preview-roles">>
+	<<set $sex = $sex || {}>>
+	<<set $sex.roles = $sex.roles || {}>>
+
+	/* Old compatibility */
+	<<set $sex.Top = $sex.roles.dom || null>>
+	<<set $sex.Bottom = $sex.roles.sub || null>>
+	<<set $sex.Watcher = $sex.roles.watcher || null>>
+
+	<<set $sex.top = $sex.Top>>
+	<<set $sex.bottom = $sex.Bottom>>
+
+	/* New role arrays */
+	<<set $sex.roles.Top = $sex.Top ? [$sex.Top] : []>>
+	<<set $sex.roles.Bottom = $sex.Bottom ? [$sex.Bottom] : []>>
+	<<set $sex.roles.Watcher = $sex.Watcher ? [$sex.Watcher] : []>>
+
+	/* MC's current perspective role */
+	<<if $sex.Top === $mc>>
+		<<set $sex.role = "Top">>
+	<<elseif $sex.Bottom === $mc>>
+		<<set $sex.role = "Bottom">>
+	<<elseif $sex.Watcher === $mc>>
+		<<set $sex.role = "Watcher">>
+	<<else>>
+		<<set $sex.role = "Watcher">>
+	<</if>>
+<</widget>>
+
+<<widget "assign-preview-role">>
+	<<set _char = _args[0]>>
+	<<set _role = _args[1]>>
+
+	<<if !_char || !_role>>
+		<<return>>
+	<</if>>
+
+	<<set $sex = $sex || {}>>
+	<<set $sex.roles = $sex.roles || {}>>
+
+	<<set _oldTop = $sex.roles.dom || null>>
+	<<set _oldBottom = $sex.roles.sub || null>>
+	<<set _oldWatcher = $sex.roles.watcher || null>>
+
+	<<if _role is "Top">>
+		<<if _oldBottom === _char>>
+			<<set $sex.roles.sub = _oldTop>>
+		<<elseif _oldWatcher === _char>>
+			<<set $sex.roles.watcher = _oldTop>>
+		<</if>>
+
+		<<set $sex.roles.dom = _char>>
+
+	<<elseif _role is "Bottom">>
+		<<if _oldTop === _char>>
+			<<set $sex.roles.dom = _oldBottom>>
+		<<elseif _oldWatcher === _char>>
+			<<set $sex.roles.watcher = _oldBottom>>
+		<</if>>
+
+		<<set $sex.roles.sub = _char>>
+
+	<<elseif _role is "Watcher">>
+		<<if _oldTop === _char>>
+			<<set $sex.roles.dom = _oldWatcher>>
+		<<elseif _oldBottom === _char>>
+			<<set $sex.roles.sub = _oldWatcher>>
+		<</if>>
+
+		<<set $sex.roles.watcher = _char>>
+	<</if>>
+
+	<<sync-preview-roles>>
 <</widget>>
 
 

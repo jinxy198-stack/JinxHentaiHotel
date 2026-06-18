@@ -1,0 +1,101 @@
+:: Role-Choice-UI [nobr]
+
+<<set _candidates = $sex.roleCandidates || []>>
+
+<<if !_candidates.length>>
+	<span class="red">[Debug Error] No role candidates found.</span>
+	<<return>>
+<</if>>
+
+<div id="role-line">
+	<b>Current Roles</b><br>
+	<u>Top:</u> <<= $sex.roles.dom ? $sex.roles.dom.name : "None" >> ****
+	<u>Bottom:</u> <<= $sex.roles.sub ? $sex.roles.sub.name : "None" >> ****
+	<u>Watcher:</u> <<= $sex.roles.watcher ? $sex.roles.watcher.name : "None" >>
+</div>
+
+<br>
+
+<table class="role-choice-table">
+	<tr>
+		<th>Character</th>
+		<th><u>Top</u></th>
+		<th><u>Bottom</u></th>
+		<th><u>Watcher</u></th>
+	</tr>
+
+	<<for _i = 0; _i < _candidates.length; _i++>>
+		<<set _char = _candidates[_i]>>
+
+		<<if _char>>
+			<tr>
+				<td>
+					
+					<<if setup.isMC(_char)>>
+						<br><b>YOU</b>
+                    <<else>>
+                        <b><<= _char.name >></b>
+					<</if>>
+				</td>
+
+				<td>
+					<<capture _char>>
+						<<if $sex.roles.dom === _char>>
+							<center><b>Selected</b></center>
+						<<else>>
+							<<button "Top">>
+								<<assign-preview-role _char "Top">>
+								<<replace "#role-choice-root">>
+									<<include "Role-Choice-UI">>
+								<</replace>>
+                                
+								<<replace "#top-bottom-chat">>
+									<<include "top-bottom-Dialogue">>
+								<</replace>>
+                            
+							<</button>>
+						<</if>>
+					<</capture>>
+				</td>
+
+				<td>
+					<<capture _char>>
+						<<if $sex.roles.sub === _char>>
+							<center><b>Selected</b></center>
+						<<else>>
+							<<button "Bottom">>
+								<<assign-preview-role _char "Bottom">>
+								<<replace "#role-choice-root">>
+									<<include "Role-Choice-UI">>
+								<</replace>>
+								<<replace "#top-bottom-chat">>
+									<<include "top-bottom-Dialogue">>
+								<</replace>>
+							<</button>>
+						<</if>>
+					<</capture>>
+				</td>
+
+				<td>
+					<<capture _char>>
+						<<if _candidates.length < 3>>
+							<em>N/A</em>
+						<<elseif $sex.roles.watcher === _char>>
+							<center><b>Selected</b></center>
+						<<else>>
+							<<button "Watcher">>
+								<<assign-preview-role _char "Watcher">>
+								<<replace "#role-choice-root">>
+									<<include "Role-Choice-UI">>
+								<</replace>>
+								<<replace "#top-bottom-chat">>
+									<<include "top-bottom-Dialogue">>
+								<</replace>>
+							<</button>>
+						<</if>>
+					<</capture>>
+				</td>
+			</tr>
+		<</if>>
+	<</for>>
+</table>

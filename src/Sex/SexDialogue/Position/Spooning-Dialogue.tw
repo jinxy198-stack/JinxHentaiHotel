@@ -4,12 +4,12 @@
 
 <<if $sex.role == "Top">>
 	<<= either(
-		"<<gram _top 'subjCap'>> <<verb _top 'nestle'>> up against <<gram _bottom 'poss'>> back, spooning on the <<=_seat>>.",
-		"<<gram _top 'subjCap'>> lies close behind <<gram _bottom 'obj'>>, the two of them spooning on the <<=_seat>>."
+		"<<ref _top 'subjCap'>> <<verb _top 'nestle'>> up against <<ref _bottom 'poss'>> back, spooning on the <<=_seat>>.",
+		"<<ref _top 'subjCap'>> lies close behind <<ref _bottom 'obj'>>, the two of them spooning on the <<=_seat>>."
 	) >>
 <<else>>
 	<<= either(
-		"<<gram _bottom 'subjCap'>> lies on <<gram _bottom 'poss'>> side with <<gram _top 'obj'>> nestled against <<gram _bottom 'poss'>> back, spooning on the _seat.",
-		"<<gram _bottom 'subjCap'>> rests on <<gram _bottom 'poss'>> side while <<gram _top 'subj'>> spoons close behind on the _seat."
+		"<<ref _bottom 'subjCap'>> lies on <<ref _bottom 'poss'>> side with <<ref _top 'obj'>> nestled against <<ref _bottom 'poss'>> back, spooning on the _seat.",
+		"<<ref _bottom 'subjCap'>> rests on <<ref _bottom 'poss'>> side while <<ref _top 'subj'>> spoons close behind on the _seat."
 	) >>
 <</if>>

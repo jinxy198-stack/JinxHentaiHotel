@@ -32,11 +32,11 @@
 	<</if>>
 	<<if typeof _h !== "undefined">>
 		<<if _h is 1>>
-			You notice that <<ref $mc 'subj'>> <<verb $mc 'are' 'is'>> larger than <<ref _npc 'obj'>>.
+			You notice that <<ref _top 'subj'>> <<be _top>> larger than <<ref _bottom 'obj'>>.
 		<<elseif _h is -1>>
-			You notice that <<ref $mc 'subj'>> <<verb $mc 'are' 'is'>> smaller than <<ref _npc 'obj'>>.
+			You notice that <<ref _top 'subj'>> <<be _top>> smaller than <<ref _bottom 'obj'>>.
 		<<else>>
-			You notice that <<ref $mc 'subj'>> and <<ref _npc 'subj'>> are about the same size.
+			You notice that <<ref _top 'subj'>> and <<ref _bottom 'subj'>> are about the same size.
 		<</if>>
 	<</if>>
 <<elseif $sex.act == "Continue Frotting">>

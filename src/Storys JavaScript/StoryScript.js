@@ -490,3 +490,291 @@ setup.debug = {
 		return warnings;
 	}
 };
+
+setup.sexEnsure = function (sex) {
+	sex = sex || State.variables.sex || {};
+
+	sex.participants = Array.isArray(sex.participants)
+		? sex.participants
+		: [];
+
+	sex.roles = sex.roles || {};
+	sex.roles.Top = Array.isArray(sex.roles.Top) ? sex.roles.Top : [];
+	sex.roles.Bottom = Array.isArray(sex.roles.Bottom) ? sex.roles.Bottom : [];
+	sex.roles.Watcher = Array.isArray(sex.roles.Watcher) ? sex.roles.Watcher : [];
+
+	sex.climax = sex.climax || {};
+	sex.engagedParts = sex.engagedParts || {};
+	sex.history = sex.history || [];
+	sex.log = sex.log || [];
+
+	return sex;
+};
+
+setup.sexAddParticipant = function (char, role) {
+	const sex = setup.sexEnsure(State.variables.sex);
+
+	if (!char) {
+		return;
+	}
+
+	if (!sex.participants.includes(char)) {
+		sex.participants.push(char);
+	}
+
+	if (role) {
+		setup.sexAssignRole(char, role);
+	}
+};
+
+setup.sexRemoveFromRoles = function (char) {
+	const sex = setup.sexEnsure(State.variables.sex);
+
+	["Top", "Bottom", "Watcher"].forEach(role => {
+		sex.roles[role] = sex.roles[role].filter(c => c !== char);
+	});
+};
+
+setup.sexAssignRole = function (char, role) {
+	const sex = setup.sexEnsure(State.variables.sex);
+
+	if (!char || !["Top", "Bottom", "Watcher"].includes(role)) {
+		return;
+	}
+
+	if (!sex.participants.includes(char)) {
+		sex.participants.push(char);
+	}
+
+	setup.sexRemoveFromRoles(char);
+
+	sex.roles[role].push(char);
+
+	setup.sexSyncLegacy();
+};
+
+setup.sexRoleList = function (role, sex) {
+	sex = setup.sexEnsure(sex || State.variables.sex);
+
+	return Array.isArray(sex.roles?.[role])
+		? sex.roles[role].filter(Boolean)
+		: [];
+};
+
+setup.sexRole = function (role, sex) {
+	return setup.sexRoleList(role, sex)[0] || null;
+};
+
+setup.sexHasRole = function (char, role, sex) {
+	return setup.sexRoleList(role, sex).includes(char);
+};
+
+setup.sexSyncLegacy = function () {
+	const sex = setup.sexEnsure(State.variables.sex);
+
+	/*
+		New role arrays.
+	*/
+	sex.Top = setup.sexRole("Top", sex);
+	sex.Bottom = setup.sexRole("Bottom", sex);
+	sex.Watcher = setup.sexRole("Watcher", sex);
+
+	/*
+		Old aliases.
+	*/
+	sex.top = sex.Top;
+	sex.bottom = sex.Bottom;
+
+	/*
+		Older role-choice aliases.
+		This is the missing part.
+	*/
+	sex.roles.dom = sex.Top;
+	sex.roles.sub = sex.Bottom;
+	sex.roles.watcher = sex.Watcher;
+
+	/*
+		MC perspective role.
+	*/
+	if (sex.Top === State.variables.mc) {
+		sex.role = "Top";
+	} else if (sex.Bottom === State.variables.mc) {
+		sex.role = "Bottom";
+	} else if (sex.Watcher === State.variables.mc) {
+		sex.role = "Watcher";
+	} else {
+		sex.role = null;
+	}
+};
+
+setup.getEncounterSize = function (sex) {
+	sex = setup.sexEnsure(sex || State.variables.sex);
+
+	return sex.participants.filter(Boolean).length;
+};
+
+setup.startSexEncounter = function (topChar, bottomChar, watcherChar) {
+	const V = State.variables;
+
+	V.sex = {
+		participants: [],
+		roles: {
+			Top: [],
+			Bottom: [],
+			Watcher: []
+		},
+
+		Top: null,
+		Bottom: null,
+		Watcher: null,
+		top: null,
+		bottom: null,
+
+		position: "Standing",
+		previousPosition: null,
+
+		phase: "tease",
+		stage: "foreplay",
+		act: null,
+
+		actor: null,
+		target: null,
+		support: null,
+		actorRole: null,
+		targetRole: null,
+		supportRole: null,
+
+		engagedParts: {},
+		penetration: null,
+		climax: {},
+		cumReady: false,
+
+		furnitureFlags: [],
+		history: [],
+		log: []
+	};
+
+	setup.sexAddParticipant(topChar, "Top");
+	setup.sexAddParticipant(bottomChar, "Bottom");
+
+	if (watcherChar) {
+		setup.sexAddParticipant(watcherChar, "Watcher");
+	}
+
+	setup.sexSyncLegacy();
+};
+
+setup.sexWatcherJoinAs = function (watcherChar, newRole) {
+	if (!watcherChar) {
+		return;
+	}
+
+	if (!["Top", "Bottom"].includes(newRole)) {
+		return;
+	}
+
+	setup.sexAssignRole(watcherChar, newRole);
+	setup.sexSyncLegacy();
+};
+
+setup.sexSetActActors = function (actName, actor, target, support) {
+	const sex = setup.sexEnsure(State.variables.sex);
+
+	sex.act = actName;
+
+	sex.actor = actor || setup.sexRole("Top", sex);
+	sex.target = target || setup.sexRole("Bottom", sex);
+	sex.support = support || setup.sexRole("Watcher", sex);
+
+	sex.actorRole = setup.sexHasRole(sex.actor, "Top", sex)
+		? "Top"
+		: setup.sexHasRole(sex.actor, "Bottom", sex)
+			? "Bottom"
+			: setup.sexHasRole(sex.actor, "Watcher", sex)
+				? "Watcher"
+				: null;
+
+	sex.targetRole = setup.sexHasRole(sex.target, "Top", sex)
+		? "Top"
+		: setup.sexHasRole(sex.target, "Bottom", sex)
+			? "Bottom"
+			: setup.sexHasRole(sex.target, "Watcher", sex)
+				? "Watcher"
+				: null;
+
+	setup.sexSyncLegacy();
+};
+
+setup.isAttractedTo = function (fromChar, toChar) {
+	if (!fromChar || !toChar) {
+		return false;
+	}
+
+	const fromGender = fromChar.gender || "";
+	const toGender = toChar.gender || "";
+	const sexuality = fromChar.sexu || "Unknown";
+
+	switch (sexuality) {
+		case "Homosexual":
+			return fromGender === toGender;
+
+		case "Heterosexual":
+			return fromGender !== toGender;
+
+		case "Bisexual":
+		case "Pansexual":
+			return true;
+
+		case "Asexual":
+			return false;
+
+		default:
+			return false;
+	}
+};
+
+setup.checkAttractionGroup = function (a, b, third) {
+	const V = State.variables;
+
+	const chars = [];
+
+	[a, b, third].forEach(char => {
+		if (char && !chars.includes(char)) {
+			chars.push(char);
+		}
+	});
+
+	const checks = [];
+	let allPass = chars.length >= 2;
+
+	for (let i = 0; i < chars.length; i++) {
+		const fromChar = chars[i];
+
+		for (let j = 0; j < chars.length; j++) {
+			const toChar = chars[j];
+
+			if (!fromChar || !toChar || fromChar === toChar) {
+				continue;
+			}
+
+			const result = setup.isAttractedTo(fromChar, toChar);
+
+			checks.push({
+				from: fromChar,
+				to: toChar,
+				fromName: fromChar.name || "Unknown",
+				toName: toChar.name || "Unknown",
+				result: result
+			});
+
+			if (!result) {
+				allPass = false;
+			}
+		}
+	}
+
+	V.attractionChecks = checks;
+	V.attraction = allPass;
+
+	return allPass;
+};
