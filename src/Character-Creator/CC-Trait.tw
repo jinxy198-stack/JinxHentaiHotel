@@ -6,7 +6,6 @@ They are not limited to physical or mental traits. <br>
 	<<if !Array.isArray($mc.traits)>>
 		<<set $mc.traits = []>>
 	<</if>>
-
 	<<set _willNotTop = $mc.traits.includes("Will Not Top")>>
 	<<set _willNotBottom = $mc.traits.includes("Will Not Bottom")>>
 	<<set _hatesKids = $mc.traits.includes("Hates Kids")>>
@@ -14,7 +13,6 @@ They are not limited to physical or mental traits. <br>
 	<<set _hatesFurries = $mc.traits.includes("Hates Furries")>>
 	<<set _hatesHumans = $mc.traits.includes("Hates Humans")>>
 <</silently>>
-
  
 <<= setup.traitTips["Will Not Top"] >><br>
 * <label><<checkbox "_willNotTop" false true>> Will Not Top</label> <br>

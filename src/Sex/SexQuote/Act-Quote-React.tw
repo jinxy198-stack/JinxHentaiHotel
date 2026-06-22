@@ -1,8 +1,32 @@
 :: Act-Quote-React [nobr]
 
+/* Pull current roles from the new role system. */
+<<set _top = $sex.roles && $sex.roles.dom ? $sex.roles.dom : _top>>
+<<set _bottom = $sex.roles && $sex.roles.sub ? $sex.roles.sub : _bottom>>
+<<set _watcher = $sex.roles && $sex.roles.watcher ? $sex.roles.watcher : _watcher>>
+
+/* MC's current role, replacing old $sex.role checks. */
+<<set _mcRole = null>>
+<<if setup.isMC(_top)>>
+	<<set _mcRole = "Top">>
+<<elseif setup.isMC(_bottom)>>
+	<<set _mcRole = "Bottom">>
+<<elseif setup.isMC(_watcher)>>
+	<<set _mcRole = "Watcher">>
+<</if>>
+
+/* Default observed reaction target. Never let this be the MC. */
+<<set _react = null>>
+<<if _bottom && !setup.isMC(_bottom)>>
+	<<set _react = _bottom>>
+<<elseif _top && !setup.isMC(_top)>>
+	<<set _react = _top>>
+<<elseif _watcher && !setup.isMC(_watcher)>>
+	<<set _react = _watcher>>
+<</if>>
 /* Character nonverbal reaction. Also works if the character is mute. */
 <<set _muffled = false>>
-<<if $sex.role == "Bottom" && (
+<<if _mcRole == "Bottom" && (
 	$sex.act == "Kiss Nipple" ||
 	$sex.act == "Lick Nipple" ||
 	$sex.act == "Suck Nipple" ||
@@ -15,7 +39,7 @@
 	$sex.act == "Lick And Suck Each Other" ||
 	$sex.act == "Lick And Suck Each Other (Continue)"
 )||
-	$sex.role == "Top" && (
+	_mcRole == "Top" && (
 	$sex.act == "Fuck Mouth" ||
 	$sex.act == "Enter Mouth" ||	
 	$sex.act == "Lick Pussy" ||	
@@ -33,14 +57,12 @@
 <</if>>
 
 <<if _muffled == true>>
-	<<if _top != $mc>>
+	<<if _react>>
 		<<set _lines = [
-			"<<ref _top 'subjCap'>> makes a muffled noise."
+			"<<ref _react 'subjCap'>> makes a muffled noise."
 		]>>
-	<<elseif _bottom != $mc>>
-		<<set _lines = [
-			"<<ref _bottom 'subjCap'>> makes a muffled noise."
-		]>>	
+	<<else>>
+		<<return>>
 	<</if>>
 <<else>>
 	/* Climax does not currently work, needs work.*/
@@ -88,7 +110,7 @@
 				]>>
 			<<else>>
 				<<set _lines = [
-					"<<ref _top 'subjCap'>> <<verb _top 'let'>> out a <<noise _top 'base' 'pleasure'>> as <<pro _top 'poss'>> <<verb _top 'enter'>> <<ref _bottom 'subj'>>."
+					"<<ref _top 'subjCap'>> <<verb _top 'let'>> out a <<noise _top 'base' 'pleasure'>> as <<pro _top 'subj'>> <<verb _top 'enter'>> <<ref _bottom 'subj'>>."
 				]>>
 			<</if>>
 		<<elseif $sex.act == "Enter Ass">>
@@ -140,16 +162,13 @@
 				)>>
 			<</if>>	
 		<<else>>
-			<<if _top != $mc>>
+			<<if _react>>
 				<<set _lines = [
-					"<<ref _top 'subjCap'>> <<noise _top 's' 'pain'>> from the feeling.",
-					"<<ref _top 'subjCap'>> <<verb _top 'appear'>> to enjoy it very much."
+					"<<ref _react 'subjCap'>> <<noise _react 's' 'pain'>> from the feeling.",
+					"<<ref _react 'subjCap'>> <<verb _react 'appear'>> to enjoy it very much."
 				]>>
-			<<elseif _bottom != $mc>>
-				<<set _lines = [
-					"<<ref _bottom 'subjCap'>> <<noise _bottom 's' 'pain'>> from the feeling.",
-					"<<ref _bottom 'subjCap'>> <<verb _bottom 'appear'>> to enjoy it very much."
-				]>>	
+			<<else>>
+				<<return>>
 			<</if>>
 		<</if>>
 	<</if>>

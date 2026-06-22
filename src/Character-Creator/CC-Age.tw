@@ -1,13 +1,14 @@
-:: CC-Age [creation-page] {"position":"1175,100","size":"100,100"}
+:: CC-Age [creation-page nobr] {"position":"1175,100","size":"100,100"}
 <h1>Indicate your Age</h1>
-
+<br>
 What is your age?
+<br>
 *  Age: <<numberbox "_agenumber" 18 autofocus>> 
 <<button [[Confirm|Index-CC]]>>
 	<<set $mc.age to _agenumber>>
     <<AgeGroupSet>>
 <</button>>
-
-* [[I'd rather not share my age|Index-CC][$mc.age to "{/}"]]
+<br>
+/* * [[I'd rather not share my age|Index-CC][$mc.age to "{/}"]] */
 
 

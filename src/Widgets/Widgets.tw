@@ -121,11 +121,10 @@
 			<<optionsfrom setup.anthroGroup>>
 		<</listbox>>
 
-		<<button "Apply type">>
+		/*<<button "Apply type">>
 			<<replace "#anthro-dynamic">><<RenderAnthroDynamic>><</replace>>
-			/*<<MC-Create-body>>*/
             <<create-body $mc>>
-		<</button>>
+		<</button>>*/
 
 		<div id="anthro-dynamic"><<RenderAnthroDynamic>></div>
 	<</if>>
@@ -623,3 +622,37 @@
 		<<run setup.traits.addRandomTraits(_char, _max, { exact: _exact })>>
 	<</if>>
 <</widget>>
+
+<<widget "CCChoiceButtons">>
+	<<set _obj = _args[0] || $mc>>
+	<<set _prop = _args[1]>>
+	<<set _options = _args[2] || []>>
+	<<set _target = _args[3] || "">>
+	<<set _refreshPassage = _args[4] || "">>
+
+	<<if !_obj || !_prop || !_options.length>>
+		<span class="red">[CCChoiceButtons Error] Missing object, property, or options.</span>
+	<<else>>
+		<ul class="cc-choice-list">
+		<<for _i = 0; _i < _options.length; _i++>>
+			<<set _choice = _options[_i]>>
+			<<set _label = _obj[_prop] === _choice ? "✓ " + _choice : _choice>>
+
+			<<capture _obj _prop _choice _target _refreshPassage>>
+				
+					<<button _label>>
+						<<set _obj[_prop] = _choice>>
+
+						<<if _target && _refreshPassage>>
+							<<replace _target>>
+								<<include _refreshPassage>>
+							<</replace>>
+						<</if>>
+					<</button>>
+				
+			<</capture>>
+		<</for>>
+		</ul>
+	<</if>>
+<</widget>>
+

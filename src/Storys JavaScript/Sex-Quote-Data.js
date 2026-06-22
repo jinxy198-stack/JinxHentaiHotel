@@ -1,5 +1,3 @@
-
-
 /* ----- ANAL ----- */
 setup.analQuotes = {
   Top: {
@@ -1332,6 +1330,7 @@ setup.orgasmQuotes = {
       Submissive: ["Mnnngh!!"],
       Switch: ["Mnnngh!!"],
     },
+    
      /* DEFAULT FALLBACK */
     default: {
       Dominant: ["Ahh. That was a good fuck."],
@@ -1396,6 +1395,232 @@ setup.orgasmQuotes = {
     }
   }
 };
+
+setup.orgasmQuotesTest = {
+	OT: {
+		Top: {
+			Kind: [
+				"[OT.Top.Kind] Direct personality quote reached."
+			],
+      /* top cums in ass, bottom speaks */
+			"in ass": {
+				Kind: [
+					"[OT.Top.Inside.Kind] Location personality quote reached."
+				],
+        Childish: [
+          "Relax n let a load off $mc.name~ Mmm...~",
+          "Hee hee, Yayy! I feel extra warm inside now!",
+          "Yayyy! You crossed the finish line! Winner~!"
+        ],
+				Submissive: [
+					"[OT.Top.Inside.Submissive] Location sexpref quote reached."
+				],
+				Dominant: [
+					"Fuck that was alot.",
+          "Fuck, you really filled me up, _n.name...",
+          "Mmf! That's the stuff!"
+				],
+				Switch: [
+					"[OT.Top.Inside.Switch] Location sexpref quote reached."
+				]
+			},
+      /*Top cumming on floor, bottom speaks.*/
+			"on floor": {
+				Kind: [
+					"[OT.Top.Outside.Kind] Location personality quote reached."
+				],
+				Submissive: [
+					"[OT.Top.Outside.Submissive] Location sexpref quote reached."
+				],
+				Dominant: [
+					"[OT.Top.Outside.Dominant] Location sexpref quote reached."
+				],
+				Switch: [
+					"[OT.Top.Outside.Switch] Location sexpref quote reached."
+				]
+			},
+      /* Top cums in mouth, bottom speaks? */
+      "in mouth":{
+        
+        Neutral: ["Mnnngh!!"]
+      },
+      /* Default for top speaker cumming */
+			default: {
+				Submissive: [
+					"Phew, that felt good."
+				],
+				Dominant: [
+					"Ahh. That was a good fuck."
+				],
+				Switch: [
+					"Mmm, that was nice."
+				]
+			}
+		},
+
+		Bottom: {
+			Kind: [
+				"[OT.Bottom.Kind] Direct personality quote reached."
+			],
+
+			"in ass": {
+				Kind: [
+					"[OT.Bottom.Inside.Kind] Location personality quote reached."
+				],
+				Submissive: [
+					"[OT.Bottom.Inside.Submissive] Location sexpref quote reached."
+				],
+				Dominant: [
+					"[OT.Bottom.Inside.Dominant] Location sexpref quote reached."
+				],
+				Switch: [
+					"[OT.Bottom.Inside.Switch] Location sexpref quote reached."
+				],
+				Neutral: [
+					"[OT.Bottom.Inside.Neutral] Location neutral fallback reached."
+				]
+			},
+
+			"on ground": {
+				Kind: [
+					"[OT.Bottom.Outside.Kind] Location personality quote reached."
+				],
+				Submissive: [
+					"[OT.Bottom.Outside.Submissive] Location sexpref quote reached."
+				],
+				Dominant: [
+					"[OT.Bottom.Outside.Dominant] Location sexpref quote reached."
+				],
+				Switch: [
+					"[OT.Bottom.Outside.Switch] Location sexpref quote reached."
+				],
+				Neutral: [
+					"[OT.Bottom.Outside.Neutral] Location neutral fallback reached."
+				]
+			},
+
+			default: {
+				Submissive: [
+					"[OT.Bottom.default.Submissive] Default sexpref fallback reached."
+				],
+				Dominant: [
+					"[OT.Bottom.default.Dominant] Default sexpref fallback reached."
+				],
+				Switch: [
+					"[OT.Bottom.default.Switch] Default switch fallback reached."
+				],
+				Neutral: [
+					"[OT.Bottom.default.Neutral] Default neutral fallback reached."
+				]
+			}
+		}
+	},
+	OB: {
+		Top: {
+			Kind: [
+				"[OB.Top.Kind] Direct personality quote reached."
+			],
+      /* bottom is cumming in ass, bottom speaks? 
+			"in ass": {
+				Kind: [
+					"[OB.Top.Inside.Kind] Location personality quote reached."
+				],
+				Submissive: [
+					"[OB.Top.Inside.Submissive] Location sexpref quote reached."
+				],
+				Dominant: [
+					"[OB.Top.Inside.Dominant] Location sexpref quote reached."
+				],
+				Switch: [
+					"[OB.Top.Inside.Switch] Location sexpref quote reached."
+				]
+			},*/
+      /* bottom is cumming on the ground, bottom speaks? */
+			"on ground": {
+				Kind: [
+					"O-Oh, hope that doesn't stain anything."
+				],
+				Submissive: [
+					"That felt good..."
+				],
+				Dominant: [
+					"Fuck yeah!"
+				],
+				Switch: [
+					"[OB.Top.Outside.Switch] Location sexpref quote reached."
+				]
+			},
+      /* default bottom is cumming, bottom speaks*/
+			default: {
+				Submissive: [
+					"[OB.Top.default.Submissive] Default sexpref fallback reached."
+				],
+				Dominant: [
+					"[OB.Top.default.Dominant] Default sexpref fallback reached."
+				],
+				Switch: [
+					"[OB.Top.default.Switch] Default switch fallback reached."
+				],
+				Neutral: [
+					"[OB.Top.default.Neutral] Default neutral fallback reached."
+				]
+			}
+		},
+    /*Bottom is cumming, top speaks */
+		Bottom: {
+			Kind: [
+				"[OB.Bottom.Kind] Direct personality quote reached."
+			],
+      /*bottom cums in ass, top speaks? 
+			"in ass": {
+				Kind: [
+					"[OB.Bottom.Inside.Kind] Location personality quote reached."
+				],
+				Submissive: [
+					"[OB.Bottom.Inside.Submissive] Location sexpref quote reached."
+				],
+				Dominant: [
+					"[OB.Bottom.Inside.Dominant] Location sexpref quote reached."
+				],
+				Switch: [
+					"[OB.Bottom.Inside.Switch] Location sexpref quote reached."
+				],
+				Neutral: [
+					"[OB.Bottom.Inside.Neutral] Location neutral fallback reached."
+				]
+			},*/
+      /* Bottom is cumming on ground, Top Speaks */
+			"on ground": {
+				Kind: [
+					"[OB.Bottom.Outside.Kind] Location personality quote reached."
+				],
+				Submissive: [
+					"Wow, looks like you enjoyed that."
+				],
+				Dominant: [
+					"[OB.Bottom.Outside.Dominant] Location sexpref quote reached."
+				],
+				Switch: [
+					"[OB.Bottom.Outside.Switch] Location sexpref quote reached."
+				]
+			},
+      /* Default bottom cumming, top speaks */
+			default: {
+				Submissive: [
+					"[OB.Bottom.default.Submissive] Default sexpref fallback reached."
+				],
+				Dominant: [
+					"[OB.Bottom.default.Dominant] Default sexpref fallback reached."
+				],
+				Switch: [
+					"Looks like you enjoyed that."
+				]
+			}
+		}
+	}
+};
+
+
 
 /* ----- ORGASM CLOSE ----- */
 setup.orgasmcloseQuotes = {

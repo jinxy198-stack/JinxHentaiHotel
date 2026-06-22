@@ -1,11 +1,12 @@
-:: CC-Name [creation-page]
+:: CC-Name [creation-page nobr]
 <h1>Choose your Name</h1>
-
+<br>
 What is your name?
+<br>
 <<textbox "$mc.name" "">>
-
+<br>
 <div id="nameError"></div>
-
+<br>
 <<button "Confirm">>
 	<<if !$mc.name || !$mc.name.trim()>>
 		<<replace "#nameError">>
@@ -16,5 +17,3 @@ What is your name?
 		<<goto "Index-CC">>
 	<</if>>
 <</button>>
-
-Once you are set on a name you will be sent back to the menu.

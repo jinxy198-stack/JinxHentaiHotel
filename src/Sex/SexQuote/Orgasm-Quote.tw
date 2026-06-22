@@ -1,79 +1,138 @@
-:: Orgasm-Quote [nobr Dialogue] {"position":"1900,1300","size":"100,100"}
+:: Orgasm-Quote [nobr Dialogue]
 
-<<if !setup.orgasmQuotes>>
-	[Error] setup.orgasmQuotes is missing. Define it in StoryInit.
+/*<<if !setup.orgasmQuotes or !setup.orgasmQuotes.OT or !setup.orgasmQuotes.OB>>
+	[Error] setup.orgasmQuotes, OT, or OB is missing. Define it in StoryInit.
 	<<return>>
-<</if>>
+<</if>>*/
 
 <<if !$sex or !_n>>
 	<<return>>
 <</if>>
 
-<<set _mode = $sex.role>>
-<<set _pref = _n.sexpref || "Switch">>
-<<set _action = $sex.act>>
-<<set _personalities = _n.personality>>
-<<set _pool = null>>
+/* Do not let the MC speak. */
+/*<<if setup.isMC(_n)>>
+	<<return>>
+<</if>>*/
 
-<<if _mode is "Bottom">>
-	<<set _pool =
-		(
-			setup.orgasmQuotes.Bottom[_loc]
-			&& setup.orgasmQuotes.Bottom[_loc][_pref]
-		)
-		|| (
-			setup.orgasmQuotes.Bottom[_loc]
-			&& setup.orgasmQuotes.Bottom[_loc].Neutral
-		)
-		|| (
-			setup.orgasmQuotes.Bottom.default
-			&& setup.orgasmQuotes.Bottom.default[_pref]
-		)
-		|| (
-			setup.orgasmQuotes.Bottom.default
-			&& setup.orgasmQuotes.Bottom.default.Neutral
-		)
-	>>
+/* Pull current roles from the new role system. */
+<<set _top = $sex.roles && $sex.roles.dom ? $sex.roles.dom : ($sex.Top || null)>>
+<<set _bottom = $sex.roles && $sex.roles.sub ? $sex.roles.sub : ($sex.Bottom || null)>>
+<<set _watcher = $sex.roles && $sex.roles.watcher ? $sex.roles.watcher : null>>
 
-<<elseif _mode is "Top">>
-	<<set _persMatches = []>>
+/* MC perspective role. This replaces old $sex.role. */
+<<set _mode = null>>
+<<if setup.isMC(_top)>>
+	<<set _mode = "Top">>
+<<elseif setup.isMC(_bottom)>>
+	<<set _mode = "Bottom">>
+<<elseif setup.isMC(_watcher)>>
+	<<set _mode = "Watcher">>
+<</if>>
 
-	<<if setup.orgasmQuotes.Top[_loc]>>
-		<<for _p range _personalities>>
-			<<if _p and Array.isArray(setup.orgasmQuotes.Top[_loc][_p])>>
-				<<run _persMatches.push(_p)>>
-			<</if>>
-		<</for>>
+/* Use orgasm snapshot because $sex.climax may already be cleared in aftercare. */
+<<set _snap = $sex.orgasmSnapshot || {}>>
+<<set _orgasmSide = _snap.who || (_snap.Top ? "Top" : (_snap.Bottom ? "Bottom" : null))>>
+<<set _loc = _snap.location || $sex.chosenCumLocation || _loc || "default">>
+
+/* Pick the actual quote speaker. Never allow this to be the MC. */
+<<set _speaker = _n>>
+
+<<if !_speaker || setup.isMC(_speaker)>>
+	<<if _orgasmSide is "Top">>
+		<<if _top && !setup.isMC(_top)>>
+			<<set _speaker = _top>>
+			<<set _pref = _top.sexpref>>
+		<<elseif _bottom && !setup.isMC(_bottom)>>
+			<<set _speaker = _bottom>>
+			<<set _pref = _bottom.sexpref>>
+		<<elseif _watcher && !setup.isMC(_watcher)>>
+			<<set _speaker = _watcher>>
+		<<else>>
+			<<return>>
+		<</if>>
+	<<elseif _orgasmSide is "Bottom">>
+		<<if _bottom && !setup.isMC(_bottom)>>
+			<<set _speaker = _bottom>>
+			<<set _pref = _bottom.sexpref>>
+		<<elseif _top && !setup.isMC(_top)>>
+			<<set _speaker = _top>>
+			<<set _pref = _top.sexpref>>
+		<<elseif _watcher && !setup.isMC(_watcher)>>
+			<<set _speaker = _watcher>>
+		<<else>>
+			<<return>>
+		<</if>>
 	<</if>>
+<</if>>
+<<set _action = $sex.act>>
+<<set _pool = null>>
+<<set _root = null>>
+<<set _actionPool = null>>
+<<set _persMatches = []>>
+
+
+<<if !_mode>>
+	[Error] Could not determine MC role for Orgasm quote.
+	<<return>>
+<</if>>
+
+<<if _orgasmSide is "Top">>
+	<<set _root = setup.orgasmQuotesTest.OT[_mode]>>
+<<elseif _orgasmSide is "Bottom">>
+	<<set _root = setup.orgasmQuotesTest.OB[_mode]>>
+<<else>>
+	[Error] Could not determine orgasm side.
+	<<return>>
+<</if>>
+
+<<if _root>>
+	/* First: personality arrays directly under root. */
+	<<for _p range _personalities>>
+		<<if _p and Array.isArray(_root[_p])>>
+			<<run _persMatches.push(_p)>>
+		<</if>>
+	<</for>>
 
 	<<if _persMatches.length>>
 		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = setup.orgasmQuotes.Top[_loc][_chosenPers]>>
+		<<set _pool = _root[_chosenPers]>>
 	<<else>>
-		<<set _pool =
-			(
-				setup.orgasmQuotes.Top[_loc]
-				&& setup.orgasmQuotes.Top[_loc][_pref]
-			)
-			|| (
-				setup.orgasmQuotes.Top[_loc]
-				&& setup.orgasmQuotes.Top[_loc].Neutral
-			)
-			|| (
-				setup.orgasmQuotes.Top.default
-				&& setup.orgasmQuotes.Top.default[_pref]
-			)
-			|| (
-				setup.orgasmQuotes.Top.default
-				&& setup.orgasmQuotes.Top.default.Neutral
-			)
-		>>
+		/* Second: cum-location pool. */
+		<<set _actionPool = _root[_loc]>>
+
+		<<if _actionPool and !Array.isArray(_actionPool)>>
+			/* Personality arrays under root[_loc]. */
+			<<for _p range _personalities>>
+				<<if _p and Array.isArray(_actionPool[_p])>>
+					<<run _persMatches.push(_p)>>
+				<</if>>
+			<</for>>
+		<</if>>
+
+		<<if _persMatches.length>>
+			<<set _chosenPers = setup.pick(_persMatches)>>
+			<<set _pool = _actionPool[_chosenPers]>>
+		<<elseif Array.isArray(_actionPool)>>
+			<<set _pool = _actionPool>>
+		<<else>>
+			<<set _pool =
+				(
+					_actionPool &&
+					(_actionPool[_pref] || _actionPool.Switch || _actionPool.Neutral)
+				)
+				|| (
+					_root.default &&
+					(_root.default[_pref] || _root.default.Switch || _root.default.Neutral)
+				)
+				|| null
+			>>
+		<</if>>
 	<</if>>
 <</if>>
 
 <<if Array.isArray(_pool) && _pool.length>>
-	"<<= _b >><<= either(..._pool) >>"
+	<<= _b >>"<<= either(..._pool) >>"
 <<else>>
 	[Error] No Orgasm quote pool found.
-	(mode=<<= _mode >>, action=<<= _action >>, pref=<<= _pref >>, cum location=<<= _loc >>)
+	(mode=<<= _mode >>, orgasmSide=<<= _orgasmSide >>, loc=<<= _loc >>, pref=<<= _pref >>)
 <</if>>

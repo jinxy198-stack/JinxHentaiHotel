@@ -10,30 +10,7 @@
 		<</if>>
 	<</if>>
 
-	<<set _personalities = [
-		"Brash",
-		"Brave",
-		"Bubbly",
-		"Childish",
-		"Chill",
-		"Confident",
-		"Energetic",
-		"Flamboyant",
-		"Kind",
-		"Lazy",
-		"Logical",
-		"Modest",
-		"Naive",
-		"Nerdy",
-		"Playful",
-		"Provocative",
-		"Sassy",
-		"Stubborn",
-		"Terse",
-		"Timid",
-		"Tough",
-		"Upbeat"
-	]>>
+	<<set _personalities = setup.personalities>>
 <</silently>>
 
 What terms do you use to describe your personality?

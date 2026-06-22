@@ -1,13 +1,13 @@
-:: CC-Nickname [creation-page] {"position":"675,100","size":"100,100"}
-<h1>Choose your Nickname</h1>\
-
-//Do you go by a nickname?//
+:: CC-Nickname [creation-page nobr] {"position":"675,100","size":"100,100"}
+<h1>Choose your Nickname</h1>
+<br>
+//Do you go by a nickname?// <br>
 * <<linkappend "Yes, I do!">>:
-> Nickname: <<textbox "$mc.nickname" "" autofocus>> <<button [[Confirm|Index-CC]]>><</button>>
+<br>
+Nickname: <<textbox "$mc.nickname" "" autofocus>> <<button [[Confirm|Index-CC]]>><</button>>
 <</linkappend>>
+<br>
 * [[No|Index-CC][$mc.nickname to null]]
-
-Once you are set you will be sent back to the menu.
 
 
 

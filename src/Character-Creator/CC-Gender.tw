@@ -1,20 +1,26 @@
-:: CC-Gender [creation-page] {"position":"925,100","size":"100,100"}
-<h1>Set your Gender Identity</h1>
-What term do you use to describe your gender?
-* <label><<radiobutton "$mc.gender" "Male" checked>> Male</label>
-* <label><<radiobutton "$mc.gender" "Female">> Female</label>
+:: CC-Gender [creation-page nobr] {"position":"925,100","size":"100,100"}
 
 
-What do you identify your sexuality as?
-* <label><<radiobutton "$mc.sexu" "Heterosexual" checked>> Heterosexual</label>
-* <label><<radiobutton "$mc.sexu" "Homosexual">> Homosexual</label>
-* <label><<radiobutton "$mc.sexu" "Bisexual">> Bisexual</label>
-* <label><<radiobutton "$mc.sexu" "Pansexual">> Pansexual</label>
-* <label><<radiobutton "$mc.sexu" "Asexual">> Asexual</label>
+<div id="cc-gender-root">
+    <h1>Set your Gender Identity</h1>
+    What term do you use to describe your gender?
 
-<<button "Confirm">>
-    <<set $pages.gender to true>>
-        <<goto "Index-CC">>
-<</button>>
+	<<set _gender = setup.genders >>
+    <<set _sexu = setup.sexu >>
+	<<CCChoiceButtons $mc "gender" _gender "#cc-gender-root" "CC-Gender">>
+	
+    What do you identify your sexuality as?
+    <<CCChoiceButtons $mc "sexu" _sexu "#cc-gender-root" "CC-Gender">>
+	<br>
+	<<button "Confirm">>
+		<<if !$mc.gender>>
+			<span class="red"> Please choose a gender.</span>
+        <<elseif !$mc.sexu>>
+            <span class="red"> Please choose your sexuality.</span>
+		<<else>>
+			<<set $pages.gender = true>>
+			<<goto "Index-CC">>
+		<</if>>
+	<</button>>
 
-
+</div>

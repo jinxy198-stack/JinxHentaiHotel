@@ -50,7 +50,9 @@ setup.haircolor= [
 setup.hairstyle=[
     "Buzz cut", "Crew Cut",  "Ceaser cut", "Undercut", "Faux Hawk", "Pixie Cut", "Bowl Cut", "Curly Crop", "Shaved Sides", "Bob Cut", "Long Bob", "Pageboy", "Shag cut", "Shoulder length Waves", "Afro","Cornrow", "Mullet", "Wolf Cut", "Mid length Dreads", "Straight and Sleek", "Loose Waves", "Curly volume", "Braided", "Ponytail", "Pigtails", "Space Buns", "Dreadlocks", "Half-Up Half Down", "Spiky", "Wild Mane", "Flowing Magical Locks", "Asymmetrial Cut", "Bald",
 ]
-
+setup.sexpreference = [
+    "Dominant", "Switch", "Submissive"
+];
 setup.skincolor= [
     "Pale", "Fair", "Tan", "Olive", "Brown", "Ebony",
 ];
@@ -78,24 +80,27 @@ setup.physique=[
     "Round", "Portly", "Stocky", "Jacked",
 ];
 
-setup.height=[
+setup.height2 = [
     "Very short", "Short", "Average", "Tall", "Very tall", "Towering",
 ];
 
-setup.assSize=[
+setup.assSize = [
     "Flat", "Skinny", "Slender", "Slim", "Tight", "Modest", "Round", "Muscular", "Plump", "Curvaceous", "Portly", "Thick", "Large", "Huge",
 ];
 
-setup.breastsize=[
+setup.breastsize = [
     "Flat", "Tiny", "Small", "Pert", "Modest", "Perky", "Full", "Large", "Ample", "Massive", "Enormous",
 ];
 
-setup.penistype= [
+setup.penistype = [
     "Phimosis","Uncut", "Cut"
 ];
 
-setup.penistypeMore= [
+setup.penistypeMore = [
     "Tapered", "Knotted", "Barbed","Sheathed","Ribbed"
+];
+setup.penistypeFull = [
+    "Phimosis","Uncut", "Cut", "Tapered", "Knotted", "Barbed","Sheathed","Ribbed"
 ];
 
 setup.penislength=[
@@ -127,7 +132,7 @@ setup.bodyparts = {
     Tongue: "Tongue"
 };
 
-setup.personalities= [
+setup.personalities = [
     "Brash",
     "Brave", 
     "Bubbly",

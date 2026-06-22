@@ -1,18 +1,17 @@
-:: CC-Pronouns [creation-page] {"position":"1050,0","size":"100,100"}
-<h1>Choose your Pronouns Set</h1>
+:: CC-Pronouns [creation-page nobr] {"position":"1050,0","size":"100,100"}
 
-
-What pronoun set are you most comfortable with?
-* <label><<radiobutton "$mc.pronouns" "He/Him" checked>>He/Him</label>
-* <label><<radiobutton "$mc.pronouns" "She/Her" >>She/Her</label>
-* <label><<radiobutton "$mc.pronouns" "They/Them">>They/Them</label>
-
-
-<<button "Confirm">>
-    <<set $pages.pronouns to true>>
-
-        <<PronounsSet>>
-        <<goto "Index-CC">>
-<</button>>
-
-
+<div id="cc-pronouns-root">
+	<h1>Choose your Pronouns</h1>
+	<br>
+	<<set _pro = setup.pronouns >>
+	<<CCChoiceButtons $mc "pronouns" _pro "#cc-pronouns-root" "CC-Pronouns">>
+	<br>
+	<<button "Confirm">>
+		<<if !$mc.pronouns>>
+			<span class="red">Please choose a pronoun.</span>
+		<<else>>
+			<<set $pages.pronouns = true>>
+			<<goto "Index-CC">>
+		<</if>>
+	<</button>>
+</div>

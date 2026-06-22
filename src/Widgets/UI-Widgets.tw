@@ -217,6 +217,7 @@
 
 <<widget "SexEncounterUI">>
 	<<run setup.syncMcSexRole($sex)>>
+	<<run setup.getSexControlRole($sex)>>
 	<<set _positions = setup.getAvailablePositions($sex) || []>>
 	<<set _acts = setup.getAvailableSexActs($sex) || []>>
 
@@ -258,6 +259,24 @@
 				.open()
 			>>
 		<</button>>
+		<<if $sex.role is "Watcher">>
+			<div class="watcher-control-role">
+				<b>Watching:</b>
+				<<= $sex.Top ? $sex.Top.name : "Top" >> as Top /
+				<<= $sex.Bottom ? $sex.Bottom.name : "Bottom" >> as Bottom
+				<br>
+				<<button "Focus on Top">>
+					<<set $sex.controlRole = "Top">>
+					<<RefreshSexDisplay>>
+				<</button>>
+
+				<<button "Focus on Bottom">>
+					<<set $sex.controlRole = "Bottom">>
+					<<RefreshSexDisplay>>
+				<</button>>
+			</div>
+			<br>
+		<</if>>
 	</div>
 
 	<<if $devMode>>
@@ -327,6 +346,7 @@
 				<!-- ACTS -->
 				<h3>Available Acts</h3>
 
+				
 				<<if $sex.phase == "aftercare">>
 					<<if _acts.length === 0>>
 						<i>None (for this position/phase/parts).</i>

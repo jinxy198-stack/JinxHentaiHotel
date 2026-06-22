@@ -30,7 +30,7 @@
 				|| setup.analQuotes.Bottom.Neutral
 			>>
 
-		<<elseif _quoteRole is "Top">>
+		<<elseif _quoteRole = "Top">>
 			<<set _persMatches = []>>
 
 			<<if setup.analQuotes.Top[_position]>>

@@ -1,7 +1,16 @@
 :: PositionDialogue [nobr Dialogue] {"position":"1100,1025","size":"100,100"}
 <<set _p = $sex.position or $position>>
 
+/* Save MC's real role. */
+<<set _savedSexRole = $sex.role>>
 
+/* 
+	If MC is watching, position dialogue still needs a Top/Bottom viewpoint.
+	Use controlRole for dialogue only.
+*/
+<<if $sex.role is "Watcher">>
+	<<set $sex.role = $sex.controlRole || "Top">>
+<</if>>
 
 /* POSITION (prints once per change) */
 

@@ -11,16 +11,19 @@
 How long is your hair? (If you have no hair, choose bald.)<br><br>
 
 
-
 <<button "Short Hair">>
 	<<removeclass ".hairshort,.hairmed,.hairlong,.hairmisc,.hairdetails" "visible">>
 	<<addclass ".hairshort,.hairdetails" "visible">>
 	<<replace "#hairError">><</replace>>
 	<<replace "#hairStatus">><</replace>>
+
 	<<if !$mc.hair or $mc.hair is "Bald" or typeof $mc.hair !== "object">>
 		<<set $mc.hair = {}>>
 	<</if>>
+
 	<<set $mc.hair.length = "Short">>
+	<<set $mc.hair.style = _hairshort[0]>>
+	<<set $mc.hair.color = $mc.hair.color || _haircolor[0]>>
 <</button>>
 
 <<button "Medium Hair">>
@@ -28,10 +31,14 @@ How long is your hair? (If you have no hair, choose bald.)<br><br>
 	<<addclass ".hairmed,.hairdetails" "visible">>
 	<<replace "#hairError">><</replace>>
 	<<replace "#hairStatus">><</replace>>
+
 	<<if !$mc.hair or $mc.hair is "Bald" or typeof $mc.hair !== "object">>
 		<<set $mc.hair = {}>>
 	<</if>>
+
 	<<set $mc.hair.length = "Medium">>
+	<<set $mc.hair.style = _hairmed[0]>>
+	<<set $mc.hair.color = $mc.hair.color || _haircolor[0]>>
 <</button>>
 
 <<button "Long Hair">>
@@ -39,10 +46,14 @@ How long is your hair? (If you have no hair, choose bald.)<br><br>
 	<<addclass ".hairlong,.hairdetails" "visible">>
 	<<replace "#hairError">><</replace>>
 	<<replace "#hairStatus">><</replace>>
+
 	<<if !$mc.hair or $mc.hair is "Bald" or typeof $mc.hair !== "object">>
 		<<set $mc.hair = {}>>
 	<</if>>
+
 	<<set $mc.hair.length = "Long">>
+	<<set $mc.hair.style = _hairlong[0]>>
+	<<set $mc.hair.color = $mc.hair.color || _haircolor[0]>>
 <</button>>
 
 <<button "Misc Hair">>
@@ -50,10 +61,14 @@ How long is your hair? (If you have no hair, choose bald.)<br><br>
 	<<addclass ".hairmisc,.hairdetails" "visible">>
 	<<replace "#hairError">><</replace>>
 	<<replace "#hairStatus">><</replace>>
+
 	<<if !$mc.hair or $mc.hair is "Bald" or typeof $mc.hair !== "object">>
 		<<set $mc.hair = {}>>
 	<</if>>
+
 	<<set $mc.hair.length = "Misc">>
+	<<set $mc.hair.style = _hairmisc[0]>>
+	<<set $mc.hair.color = $mc.hair.color || _haircolor[0]>>
 <</button>>
 
 <<button "No, I am bald.">>
@@ -102,7 +117,7 @@ How long is your hair? (If you have no hair, choose bald.)<br><br>
 </div>
 
 <<button "Confirm">>
-	<<if $mc.hair is "Bald" or ($mc.hair.length and $mc.hair.style and $mc.hair.color)>>
+	<<if $mc.hair is "Bald" or (typeof $mc.hair === "object" and $mc.hair.length and $mc.hair.style and $mc.hair.color)>>
 		<<set $pages.hair = true>>
 		<<goto "Index-CC">>
 	<<else>>

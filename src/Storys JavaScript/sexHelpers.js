@@ -407,7 +407,7 @@
    * ACT VALIDATION HELPERS
    * ========================= */
 
-  setup.actAllowsPosition = function (act, sex) {
+  setup.actAllowsPositionLegacy = function (act, sex) {
     if (!Array.isArray(act?.positions) || !act.positions.length) return true;
     if (!sex?.position || !sex?.role) return false;
 
@@ -419,6 +419,34 @@
 
         return role === sex.role;
     });
+  };
+  setup.actAllowsPosition = function (act, sex) {
+	sex = sex || State.variables.sex;
+
+	const positions = asArray(act.positions || act["positions"] || []);
+
+	if (!positions.length) {
+		return true;
+	}
+
+	const currentPosition = sex.position;
+	const role = setup.getSexControlRole(sex) || sex.role;
+
+	return positions.some(pos => {
+		const parts = String(pos).split(":");
+		const posName = parts[0];
+		const requiredRole = parts[1] || null;
+
+		if (posName !== currentPosition) {
+			return false;
+		}
+
+		if (!requiredRole) {
+			return true;
+		}
+
+		return requiredRole === role;
+	});
   };
 
   setup.actMeetsParts = function (sex, act) {
@@ -880,13 +908,32 @@ setup.getSexQuoteSpeaker = function (sex) {
 	}
 
 	/*
-		MC is Watcher, so no quote for now.
-	*/
-	if (setup.sameChar(watcher, mc)) {
-		return null;
+	MC is Watcher.
+	Let the opposite NPC speak based on the current control role.
+  */
+  if (setup.sameChar(watcher, mc)) {
+	const controlRole = setup.getSexControlRole(sex);
+
+	if (controlRole === "Top") {
+		return bottom
+			? {
+				char: bottom,
+				role: "Bottom"
+			}
+			: null;
+	}
+
+	if (controlRole === "Bottom") {
+		return top
+			? {
+				char: top,
+				role: "Top"
+			}
+			: null;
 	}
 
 	return null;
+  }
 };
 
 setup.getSexRoleOf = function (char, sex) {
@@ -954,5 +1001,37 @@ setup.syncMcSexRole = function (sex) {
 
 	sex.role = null;
 	sex.mcRole = null;
+	return null;
+};
+
+
+setup.getSexControlRole = function (sex) {
+	sex = sex || State.variables.sex;
+
+	if (!sex) {
+		return null;
+	}
+
+	/*
+		Normal MC participation:
+		Use MC's actual role.
+	*/
+	if (sex.role === "Top" || sex.role === "Bottom") {
+		sex.controlRole = sex.role;
+		return sex.controlRole;
+	}
+
+	/*
+		Watcher mode:
+		The player is watching, but needs a Top/Bottom action perspective.
+	*/
+	if (sex.role === "Watcher") {
+		if (sex.controlRole !== "Top" && sex.controlRole !== "Bottom") {
+			sex.controlRole = "Top";
+		}
+
+		return sex.controlRole;
+	}
+
 	return null;
 };
