@@ -8,12 +8,44 @@
 <<if !$sex or !_n>>
 	<<return>>
 <</if>>
+/* Pull role characters from the new role system. */
+<<set _top = $sex.roles && $sex.roles.dom ? $sex.roles.dom : ($sex.Top || _top || null)>>
+<<set _bottom = $sex.roles && $sex.roles.sub ? $sex.roles.sub : ($sex.Bottom || _bottom || null)>>
+<<set _watcher = $sex.roles && $sex.roles.watcher ? $sex.roles.watcher : (_watcher || null)>>
 
-<<set _mode = $sex.role>>
-<<set _pref = _n.sexpref || "Neutral">>
-<<set _size = $mc.penislength || "Average">>
-<<set _age = $mc.ageGroup || "Adult">>
-<<set _personalities = _n.personality>>
+/* MC perspective role. Do not overwrite this with $sex.role. */
+<<set _mode = null>>
+<<if setup.isMC(_top)>>
+	<<set _mode = "Top">>
+<<elseif setup.isMC(_bottom)>>
+	<<set _mode = "Bottom">>
+<<elseif setup.isMC(_watcher)>>
+	<<set _mode = "Watcher">>
+<</if>>
+
+/* Pick the actual quote speaker. Never allow this to be the MC. */
+<<set _speaker = _n>>
+
+<<if !_speaker || setup.isMC(_speaker)>>
+	<<if _top && !setup.isMC(_top)>>
+		<<set _speaker = _top>>
+		<<set _size = _bottom.penislength || "Average">>
+		<<set _age = _bottom.ageGroup || "Adult">>
+	<<elseif _bottom && !setup.isMC(_bottom)>>
+		<<set _speaker = _bottom>>
+		<<set _size = _top.penislength || "Average">>
+		<<set _age = _top.ageGroup || "Adult">>
+	<<elseif _watcher && !setup.isMC(_watcher)>>
+		<<set _speaker = _watcher>>
+	<<else>>
+		<<return>>
+	<</if>>
+<</if>>
+
+
+<<set _pref = _speaker.sexpref || "Neutral">>
+
+<<set _personalities =  Array.isArray(_speaker.personality) ? _speaker.personality : [_speaker.personality]>>
 
 <<set _pool = null>>
 
@@ -52,20 +84,17 @@
 				|| (
 					_prefPool
 					&& _prefPool[_size]
-					&& _prefPool[_size].Neutral
 				)
 				|| (
 					_prefPool
-					&& _prefPool.Neutral
 				)
-				|| setup.GrabCockQuotes.Top.Neutral
 			>>
 		<</if>>
 	<</if>>
 <</if>>
 
 <<if Array.isArray(_pool) && _pool.length>>
-	<<= either(..._pool) >>
+	"<<= either(..._pool) >>"
 <<else>>
 	[Error] No grab cock quote pool found.
 	(mode=<<= _mode >>, pref=<<= _pref >>, age=<<= _age >>, size=<<= _size >>)

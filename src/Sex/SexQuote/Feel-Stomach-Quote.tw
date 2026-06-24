@@ -1,4 +1,6 @@
 :: Feel-Stomach-Quote [Dialogue nobr] {"position":"1700,1200","size":"100,100"}
+
+/*Passage currently not in use */
 <<if !setup.feelstomachQuotes>>
 	[Error] setup.feelstomachQuotes is missing. Define it in StoryInit.
 	<<return>>
@@ -27,7 +29,7 @@
 <</if>>
 
 <<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+	"<<=either(..._pool)>>"
 <<else>>
 	[Error] No Feel Stomach quote pool found.
 <</if>>

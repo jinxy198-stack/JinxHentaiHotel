@@ -9,17 +9,55 @@
 	<<return>>
 <</if>>
 
-<<set _pref = _n.sexpref || "Neutral">>
-<<set _msize = $mc.breastsize || "None">>
-<<set _nsize = _n.breastsize || "None">>
+/* Pull role characters from the new role system. */
+<<set _top = $sex.roles && $sex.roles.dom ? $sex.roles.dom : ($sex.Top || _top || null)>>
+<<set _bottom = $sex.roles && $sex.roles.sub ? $sex.roles.sub : ($sex.Bottom || _bottom || null)>>
+<<set _watcher = $sex.roles && $sex.roles.watcher ? $sex.roles.watcher : (_watcher || null)>>
+
+/* MC perspective role. Do not overwrite this with $sex.role. */
+<<set _mode = null>>
+<<if setup.isMC(_top)>>
+	<<set _mode = "Top">>
+<<elseif setup.isMC(_bottom)>>
+	<<set _mode = "Bottom">>
+<<elseif setup.isMC(_watcher)>>
+	<<set _mode = "Watcher">>
+<</if>>
+
+/* Pick the actual quote speaker. Never allow this to be the MC. */
+<<set _speaker = _n>>
+
+<<if !_speaker || setup.isMC(_speaker)>>
+	<<if _top && !setup.isMC(_top)>>
+		<<set _speaker = _top>>
+		<<set _msize = _bottom.breastsize || "None">>
+	<<elseif _bottom && !setup.isMC(_bottom)>>
+		<<set _speaker = _bottom>>
+		<<set _msize = _top.breastsize || "None">>
+	<<elseif _watcher && !setup.isMC(_watcher)>>
+		<<set _speaker = _watcher>>
+	<<else>>
+		<<return>>
+	<</if>>
+<</if>>
+
+/* Make existing quote text that uses _n point to the actual speaker. */
+<<set _n = _speaker>>
+
+<<set _pref = _speaker.sexpref || "Neutral">>
+/*<<set _msize = $mc.breastsize || "None">>*/
+
+<<set _nsize = _speaker.breastsize || "None">>
+
 <<set _mage = $mc.ageGroup || "Adult">>
-<<set _nage = _n.ageGroup || "Adult">>
-<<set _personalities = _n.personality>>
+
+<<set _nage = _speaker.ageGroup || "Adult">>
+<<set _personalities = Array.isArray(_speaker.personality) ? _speaker.personality : [_speaker.personality]>>
 
 <<set _pool = null>>
 <<set _persMatches = []>>
 
-<<if $sex.role is "Top">>
+<<if _mode is "Top">>
 	<<if setup.gropebreastQuotes.Top>>
 		<<for _p range _personalities>>
 			<<if _p and Array.isArray(setup.gropebreastQuotes.Top[_p])>>
@@ -47,7 +85,7 @@
 		>>
 	<</if>>
 
-<<elseif $sex.role is "Bottom">>
+<<elseif _mode is "Bottom">>
 	<<set _persMatches = []>>
 
 	<<if setup.gropebreastQuotes.Bottom>>
@@ -82,7 +120,7 @@
 <</if>>
 
 <<if Array.isArray(_pool) && _pool.length>>
-	<<= either(..._pool) >>
+	"<<= either(..._pool) >>"
 <<else>>
 	[Error] No grope breast quote pool found.
 	(role=<<= $sex.role >>, pref=<<= _pref >>, nsize=<<= _nsize >>, msize=<<= _msize >>, nage=<<= _nage >>, mage=<<= _mage >>)

@@ -9,7 +9,7 @@
     )>>
 <<elseif $sex.role == "Top">>
 	<<=either(
-        "<<ref _top 'subjCap'>> <<verb _top 'wrap'>> <<pro _top 'poss'>> arms around <<ref _bottom 'subj'>>. <<pro _bottom 'poss' true>> slink <<pro _bottom 'poss' >> face into <<ref _top 'poss'>> chest.",
+        "<<ref _top 'subjCap'>> <<verb _top 'wrap'>> <<pro _top 'poss'>> arms around <<ref _bottom 'subj'>>. <<pro _bottom 'subj' true>> <<verbEx _bottom 'slink'>> <<pro _bottom 'poss' >> face into <<ref _top 'poss'>> chest.",
         "<<ref _bottom 'subjCap'>> <<verb _bottom 'snuggle'>> up to <<ref _top 'subj'>>."
     )>>
 <</if>>

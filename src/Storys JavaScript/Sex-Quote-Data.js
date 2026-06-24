@@ -1,6 +1,6 @@
 /* ----- ANAL ----- */
 setup.analQuotes = {
-  Top: {
+  Bottom: {
     Cowgirl: {
       Dominant: [
         "Bounce on my cock!",
@@ -75,7 +75,7 @@ setup.analQuotes = {
         "A-Ahhh..."
       ]
   },
-  Bottom: {
+  Top: {
     Cowgirl: {
       Childish:[
         "Whee, hehe! Bouncy, bouncy!",
@@ -88,7 +88,7 @@ setup.analQuotes = {
         "Let me enjoy this Grade A dick of yours!"
       ],
       Submissive: [
-        "Fuck me hard!",
+        "I hope this feels good for you to.",
 				"Ahh",
 				"You feel so good inside me."
       ],
@@ -953,7 +953,18 @@ setup.gropebuttQuotes = {
       "I love how round your ass is.",
       "I love how your ass feels."
       ]   
-  },
+    },
+    Average: {  
+      Dominant: [
+      "Your hands are so warm..."
+      ],
+      Submissive: [
+      "Your hands are so warm..."
+      ],
+      Neutral: [
+      "Your hands are so warm..."
+      ]   
+    },
     Large: {  
       Dominant: [
       "I love how your ass feels.",
@@ -1028,6 +1039,17 @@ setup.gropebuttQuotes = {
       "Your hands are so warm..."
       ]   
     },
+  Average: {  
+      Dominant: [
+      "Your hands are so warm..."
+      ],
+      Submissive: [
+      "Your hands are so warm..."
+      ],
+      Neutral: [
+      "Your hands are so warm..."
+      ]   
+    },  
   Large: {  
       Dominant: [
       "Your hands are so warm..."
@@ -1105,7 +1127,7 @@ setup.handjobQuotes = {
         Kid: ["Perfect size for someone your age."],
         Adult: ["So cute and tiny."]
       },
-      Small: ["Don't feel bad about the size, I like it."],
+      Small: ["Cute"],
       Average: [
         "Perfect size."
       ],
@@ -1236,15 +1258,15 @@ setup.rimjobQuotes = {
     ],
     Dominant: [
       "Fuck, eat my ass!",
-			"Good _n.petname! Keep that $mc.body.Tongue of yours busy in my ass!",
+			"Good _n.petname! Keep that tongue of yours busy in my ass!",
 			"What a good _n.petname! You love the taste of my ass, don't you?!",
-			"Don't stop! Deeper! Get your $mc.body.Tongue into my ass! Yes, yes, yes!",
+			"Don't stop! Deeper! Get your tongue into my ass! Yes, yes, yes!",
 			"Fuck yeah!",
 			"Get in there more!"
     ],
     Submissive: [
-      "Yes! I love your $mc.body.Tongue! Please don't stop!",
-			"Oh yes! Taste my ass! I love your $mc.body.Tongue! Get it deeper!"
+      "Yes! I love your tongue! Please don't stop!",
+			"Oh yes! Taste my ass! I love your tongue! Get it deeper!"
     ],
     Switch: [
       "O-oh fuck!",
@@ -1907,14 +1929,15 @@ setup.TeasePussyWithCockQuotes ={
 
 /*---Top teases bottom's ass with their cock ----*/
 setup.TeaseAssCockQuotes = {
-  Top:[
+  /*Top speaks */
+  Bottom:[
     "Your ass is mesmerising.",
     "I'm gonna shoot my load all over you.",
     "I love fucking your asscheeks.",
     "Your ass feels amazing against my cock.",
     "I can't wait to shoot my load on you.",
     "You have such a cute ass on you."],
-  Bottom:[
+  Top:[
     "You're good at this.",
     "Don't stop. Keep going!",
     "Wanna get inside me, dont you?"

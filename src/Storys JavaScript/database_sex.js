@@ -917,8 +917,8 @@ setup.sexacts = {
     {
         "positions": [ "Sixty-Nine","Lap ride", "Reverse Lap ride", "Kneeling", "Kneeling Over", "Standing", "Oral Service", "Spooning", "Kneeling By Face", "Squatting Before", "Double Decker", "Kneeling Between Thighs", "Sit On Face", "Perched", "Against Wall", "Against Wall From Behind", "Perched Oral Service", "Underneath Oral Service", "Laid Across Oral Service"],
         "action type": ["continue"],
-        "Top parts": ["Hand"],
-        "Bottom parts": ["Penis"],
+        "Top parts": ["Penis"],
+        "Bottom parts": ["Hand"],
         "Top cum locations": [],
         "Bottom cum locations": ["on hand"],
         "masturbation": true,

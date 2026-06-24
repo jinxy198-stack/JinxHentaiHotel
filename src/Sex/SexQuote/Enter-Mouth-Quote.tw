@@ -39,9 +39,6 @@
 	<</if>>
 <</if>>
 
-/* Make existing quote text that uses _n point to the actual speaker. */
-<<set _n = _speaker>>
-
 <<set _pref = _speaker.sexpref || "Neutral">>
 <<set _mage  = $mc.ageGroup  || "Adult">>
 <<set _nage  = _speaker.ageGroup  || "Adult">>
@@ -49,26 +46,18 @@
 <<set _pool = null>>
 <<set _persMatches = []>>
 
-<<set _mode = $sex.role>>
 
 <<if _mode == "Top">>
-	
-	<<if _persMatches.length>>
-		<<set _chosenPers = setup.pick(_persMatches)>>
-		<<set _pool = EnterMouthQuotes[_chosenPers]>>
-	<<else>>
-		<<set _pool =
-			setup.EnterMouthQuotes
-		>>
-	<</if>>
+	<<set _pool =
+		setup.EnterMouthQuotes
+	>>
 <<elseif _mode == "Bottom">>
-	<<if setup.TakeCockBetweenLipsQuotes>>
-		<<for _p range _personalities>>
-			<<if _p and setup.TakeCockBetweenLipsQuotes[_p]>>
-				<<run _persMatches.push(_p)>>
-			<</if>>
-		<</for>>
-	<</if>>
+	<<for _p range _personalities>>
+		<<if _p and Array.isArray(setup.TakeCockBetweenLipsQuotes[_p])>>
+			<<run _persMatches.push(_p)>>
+		<</if>>
+	<</for>>
+	
 	<<if _persMatches.length>>
 		<<set _chosenPers = setup.pick(_persMatches)>>
 		<<set _pool = TakeCockBetweenLipsQuotes[_chosenPers]>>
@@ -80,7 +69,7 @@
 <</if>>
 
 <<if _pool && _pool.length>>
-	<<=either(..._pool)>>
+	"<<=either(..._pool)>>"
 <<else>>
 	[Error] No Enter Mouth pool found.
 	(mode=<<=_mode>>, pref=<<=_pref>>, nsize=<<=_nsize>>, msize=<<=_msize>>, nage=<<=_nage>>, mage=<<=_mage>>)

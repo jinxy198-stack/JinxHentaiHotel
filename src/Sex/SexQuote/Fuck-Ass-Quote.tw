@@ -3,24 +3,47 @@
 <<if !setup.analQuotes>>
 	[Error] setup.analQuotes is missing. Define it in StoryInit.
 
-<<elseif !$sex>>
-	<!-- No active sex state. -->
+<</if>>
 
-<<else>>	
+/* Pull role characters from the new role system. */
+<<set _top = $sex.roles && $sex.roles.dom ? $sex.roles.dom : ($sex.Top || _top || null)>>
+<<set _bottom = $sex.roles && $sex.roles.sub ? $sex.roles.sub : ($sex.Bottom || _bottom || null)>>
+<<set _watcher = $sex.roles && $sex.roles.watcher ? $sex.roles.watcher : (_watcher || null)>>
 
-	<<if !_quote>>
-		<!-- No quote speaker. This is expected if $mc is the watcher. -->
+/* MC perspective role. Do not overwrite this with $sex.role. */
+<<set _mode = null>>
+<<if setup.isMC(_top)>>
+	<<set _mode = "Top">>
+<<elseif setup.isMC(_bottom)>>
+	<<set _mode = "Bottom">>
+<<elseif setup.isMC(_watcher)>>
+	<<set _mode = "Watcher">>
+<</if>>
 
+/* Pick the actual quote speaker. Never allow this to be the MC. */
+<<set _speaker = _n>>
+
+<<if !_speaker || setup.isMC(_speaker)>>
+	<<if _top && !setup.isMC(_top)>>
+		<<set _speaker = _top>>
+		<<set _msize = _bottom.penislength || "Average">>
+	<<elseif _bottom && !setup.isMC(_bottom)>>
+		<<set _speaker = _bottom>>
+		<<set _msize = _top.penislength || "Average">>
+	<<elseif _watcher && !setup.isMC(_watcher)>>
+		<<set _speaker = _watcher>>
 	<<else>>
+		<<return>>
+	<</if>>
+<</if>>
 
+<<set _pref = _speaker.sexpref || "Switch">>
 
-		<<set _pref = _qc.sexpref || "Switch">>
-		<<set _msize = $mc.penislength || "Average">>
-		<<set _personalities = _qc.personality || []>>
-		<<set _position = $sex.position>>
-		<<set _pool = null>>
+<<set _personalities = _speaker.personality || []>>
+<<set _position = $sex.position>>
+<<set _pool = null>>
 
-		<<if _quoteRole is "Bottom">>
+		<<if _mode is "Bottom">>
 			<<set _pool =
 				(
 					setup.analQuotes.Bottom[_position]
@@ -30,7 +53,7 @@
 				|| setup.analQuotes.Bottom.Neutral
 			>>
 
-		<<elseif _quoteRole = "Top">>
+		<<elseif _mode = "Top">>
 			<<set _persMatches = []>>
 
 			<<if setup.analQuotes.Top[_position]>>
@@ -57,11 +80,10 @@
 		<</if>>
 
 		<<if Array.isArray(_pool) && _pool.length>>
-			<<= either(..._pool) >>
+			"<<= either(..._pool) >>"
 		<<else>>
 			[Error] No Anal quote pool found.
 			(mode=<<= _mode >>, pref=<<= _pref >>, position=<<= _position >>, msize=<<= _msize >>)
 		<</if>>
 		
-	<</if>>
-<</if>>
+

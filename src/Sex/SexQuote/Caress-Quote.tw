@@ -3,14 +3,46 @@
 	<<return>>
 <</if>>
 
-<<set _pref = _n.sexpref || "Switch">>
-<<set _mmaterial = ($mc && $mc.body && $mc.body.Bodymaterial) ? $mc.body.Bodymaterial : "Skin">>
-<<set _nmaterial = (_n && _n.body && _n.body.Bodymaterial) ? _n.body.Bodymaterial : "Skin">>
-<<set _personalities = _n.personality>>
+/* Pull role characters from the new role system. */
+<<set _top = $sex.roles && $sex.roles.dom ? $sex.roles.dom : ($sex.Top || _top || null)>>
+<<set _bottom = $sex.roles && $sex.roles.sub ? $sex.roles.sub : ($sex.Bottom || _bottom || null)>>
+<<set _watcher = $sex.roles && $sex.roles.watcher ? $sex.roles.watcher : (_watcher || null)>>
+
+/* MC perspective role. Do not overwrite this with $sex.role. */
+<<set _mode = null>>
+<<if setup.isMC(_top)>>
+	<<set _mode = "Top">>
+<<elseif setup.isMC(_bottom)>>
+	<<set _mode = "Bottom">>
+<<elseif setup.isMC(_watcher)>>
+	<<set _mode = "Watcher">>
+<</if>>
+
+/* Pick the actual quote speaker. Never allow this to be the MC. */
+<<set _speaker = _n>>
+
+<<if !_speaker || setup.isMC(_speaker)>>
+	<<if _top && !setup.isMC(_top)>>
+		<<set _speaker = _top>>
+		<<set _mmaterial = (_bottom && _bottom.body && _bottom.body.Bodymaterial) ? _bottom.body.Bodymaterial : "Skin">>
+	<<elseif _bottom && !setup.isMC(_bottom)>>
+		<<set _speaker = _bottom>>
+		<<set _mmaterial = (_top && _top.body && _top.body.Bodymaterial) ? _top.body.Bodymaterial : "Skin">>
+	<<elseif _watcher && !setup.isMC(_watcher)>>
+		<<set _speaker = _watcher>>
+	<<else>>
+		<<return>>
+	<</if>>
+<</if>>
+
+<<set _pref = _speaker.sexpref || "Switch">>
+/*<<set _mmaterial = ($mc && $mc.body && $mc.body.Bodymaterial) ? $mc.body.Bodymaterial : "Skin">>*/
+<<set _nmaterial = (_speaker && _speaker.body && _speaker.body.Bodymaterial) ? _speaker.body.Bodymaterial : "Skin">>
+<<set _personalities = _speaker.personality>>
 
 <<set _pool = null>>
 
-<<if $sex.role is "Bottom">>
+<<if _mode is "Bottom">>
 	<<set _pool =
 		(
 			setup.caressQuotes.Bottom[_mmaterial]
@@ -19,7 +51,7 @@
 		|| setup.caressQuotes.Bottom[_pref]
 		|| setup.caressQuotes.Bottom.Neutral
 	>>
-<<elseif $sex.role is "Top">>
+<<elseif _mode is "Top">>
 	<<set _persMatches = []>>
 
 	<<if setup.caressQuotes.Top>>
@@ -45,7 +77,7 @@
 <</if>>
 
 <<if Array.isArray(_pool) && _pool.length>>
-	<<= either(..._pool) >>
+	"<<= either(..._pool) >>"
 <<else>>
 	[Error] No Caress quote pool found.
 	(mode=<<= $sex.role >>, mmaterial=<<= _mmaterial >>, nmaterial=<<= _nmaterial >>, pref=<<= _pref >>)
