@@ -46,7 +46,9 @@
 			<<set _speaker = _bottom>>
 			<<set _pref = _bottom.sexpref>>
 		<<elseif _watcher && !setup.isMC(_watcher)>>
-			<<set _speaker = _watcher>>
+			/* Test 
+			<<set _speaker = _watcher>> */
+			<<set _speaker = _top>>
 		<<else>>
 			<<return>>
 		<</if>>
@@ -58,7 +60,9 @@
 			<<set _speaker = _top>>
 			<<set _pref = _top.sexpref>>
 		<<elseif _watcher && !setup.isMC(_watcher)>>
-			<<set _speaker = _watcher>>
+			/* Test 
+			<<set _speaker = _watcher>> */
+			<<set _speaker = _bottom>>
 		<<else>>
 			<<return>>
 		<</if>>

@@ -651,7 +651,8 @@ setup.startSexEncounter = function (topChar, bottomChar, watcherChar) {
 
 		furnitureFlags: [],
 		history: [],
-		log: []
+		log: [],
+		arousalByKey: {},
 	};
 
 	setup.sexAddParticipant(topChar, "Top");
@@ -662,6 +663,7 @@ setup.startSexEncounter = function (topChar, bottomChar, watcherChar) {
 	}
 
 	setup.sexSyncLegacy();
+	setup.resetEncounterArousal(V.sex);
 };
 
 setup.sexWatcherJoinAs = function (watcherChar, newRole) {

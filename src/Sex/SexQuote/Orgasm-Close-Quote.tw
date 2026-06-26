@@ -9,59 +9,166 @@
 	<<return>>
 <</if>>
 
-/* for when the face is too obscured to speak */
-<<set _muffled = false>>
-<<if (
-	$sex.role == "Bottom" && (
-		$sex.act == "Kiss Nipple" ||
-		$sex.act == "Lick Nipple" ||
-		$sex.act == "Suck Nipple" ||
-		$sex.act == "Suck Each Other Off" ||
-		$sex.act == "Suck Each Other Off (Continue)" ||
-		$sex.act == "Eat Each Other Out" ||
-		$sex.act == "Eat Each Other Out (Continue)" ||
-		$sex.act == "Suck And Lick Each Other" ||
-		$sex.act == "Suck And Lick Each Other (Continue)" ||
-		$sex.act == "Lick And Suck Each Other" ||
-		$sex.act == "Lick And Suck Each Other (Continue)"
-	)
-) || (
-	$sex.role == "Top" && (
-		$sex.act == "Fuck Mouth" ||
-		$sex.act == "Lick Pussy" ||
-		$sex.act == "Suck Each Other Off" ||
-		$sex.act == "Suck Each Other Off (Continue)" ||
-		$sex.act == "Eat Each Other Out" ||
-		$sex.act == "Eat Each Other Out (Continue)" ||
-		$sex.act == "Suck And Lick Each Other" ||
-		$sex.act == "Suck And Lick Each Other (Continue)" ||
-		$sex.act == "Lick And Suck Each Other" ||
-		$sex.act == "Lick And Suck Each Other (Continue)"
-	)
-)>>
-	<<set _muffled = true>>
+/* Pull current roles from the new role system. */
+<<set _top = $sex.roles && $sex.roles.dom ? $sex.roles.dom : ($sex.Top || null)>>
+<<set _bottom = $sex.roles && $sex.roles.sub ? $sex.roles.sub : ($sex.Bottom || null)>>
+<<set _watcher = $sex.roles && $sex.roles.watcher ? $sex.roles.watcher : null>>
+
+/* MC perspective role. Do not overwrite this with $sex.role. */
+<<set _mode = null>>
+<<if setup.isMC(_top)>>
+	<<set _mode = "Top">>
+<<elseif setup.isMC(_bottom)>>
+	<<set _mode = "Bottom">>
+<<elseif setup.isMC(_watcher)>>
+	<<set _mode = "Watcher">>
 <</if>>
 
-<<set _mode = $sex.role>>
-<<set _pref = _n.sexpref || "Switch">>
+<<if !_mode>>
+	[Error] Could not determine MC role for Orgasm Close quote.
+	<<return>>
+<</if>>
+
+/* Use current climax first, but allow snapshot fallback. */
+<<set _climax = $sex.climax || $sex.orgasmSnapshot || {}>>
+<<set _topClose = !!_climax.Top>>
+<<set _bottomClose = !!_climax.Bottom>>
+<<set _bothClose = _topClose && _bottomClose>>
+<<set _orgasmSide = _bothClose ? "Both" : (_climax.who || (_topClose ? "Top" : (_bottomClose ? "Bottom" : null)))>>
+
+<<if !_orgasmSide>>
+	[Error] Could not determine orgasm-close side.
+	<<return>>
+<</if>>
+
+/* Pick the actual quote speaker. Never allow this to be the MC. */
+<<set _speaker = _n>>
+
+<<if !_speaker || setup.isMC(_speaker)>>
+	<<if _orgasmSide is "Top">>
+		<<if _top && !setup.isMC(_top)>>
+			<<set _speaker = _top>>
+		<<elseif _bottom && !setup.isMC(_bottom)>>
+			<<set _speaker = _bottom>>
+		<<elseif _watcher && !setup.isMC(_watcher)>>
+			<<set _speaker = _watcher>>
+		<<else>>
+			<<return>>
+		<</if>>
+	<<elseif _orgasmSide is "Bottom">>
+		<<if _bottom && !setup.isMC(_bottom)>>
+			<<set _speaker = _bottom>>
+		<<elseif _top && !setup.isMC(_top)>>
+			<<set _speaker = _top>>
+		<<elseif _watcher && !setup.isMC(_watcher)>>
+			<<set _speaker = _watcher>>
+		<<else>>
+			<<return>>
+		<</if>>
+	<<elseif _orgasmSide is "Both">>
+		<<if _top && !setup.isMC(_top)>>
+			<<set _speaker = _top>>
+		<<elseif _bottom && !setup.isMC(_bottom)>>
+			<<set _speaker = _bottom>>
+		<<elseif _watcher && !setup.isMC(_watcher)>>
+			<<set _speaker = _watcher>>
+		<<else>>
+			<<return>>
+		<</if>>
+	<</if>>
+<</if>>
+
+<<if !_speaker || setup.isMC(_speaker)>>
+	<<return>>
+<</if>>
+
+/* Make quote data use the resolved speaker, not whatever _n originally was. */
+<<set _pref = _speaker.sexpref || "Switch">>
+<<set _personalities = Array.isArray(_speaker.personality) ? _speaker.personality : (_speaker.personality ? [_speaker.personality] : [])>>
+<<set _b = "<b>" + (_speaker.name || "Someone") + ":</b> ">>
+
+/* Figure out the speaker's actual sex role, separate from MC perspective mode. */
+<<set _speakerRole = null>>
+<<if _speaker === _top>>
+	<<set _speakerRole = "Top">>
+<<elseif _speaker === _bottom>>
+	<<set _speakerRole = "Bottom">>
+<<elseif _speaker === _watcher>>
+	<<set _speakerRole = "Watcher">>
+<</if>>
+
 <<set _action = $sex.act>>
-<<set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]>>
 <<set _pool = null>>
 <<set _root = null>>
 <<set _actionPool = null>>
+<<set _defaultPool = null>>
 <<set _persMatches = []>>
+<<set _chosenPers = null>>
+<<set _lookupMode = _mode>>
+
+/* For when the speaker's face/mouth is too obscured to speak clearly. */
+<<set _bottomMuffledActs = [
+	"Kiss Nipple",
+	"Lick Nipple",
+	"Suck Nipple",
+	"Suck Each Other Off",
+	"Suck Each Other Off (Continue)",
+	"Eat Each Other Out",
+	"Eat Each Other Out (Continue)",
+	"Suck And Lick Each Other",
+	"Suck And Lick Each Other (Continue)",
+	"Lick And Suck Each Other",
+	"Lick And Suck Each Other (Continue)"
+]>>
+
+<<set _topMuffledActs = [
+	"Fuck Mouth",
+	"Lick Pussy",
+	"Suck Each Other Off",
+	"Suck Each Other Off (Continue)",
+	"Eat Each Other Out",
+	"Eat Each Other Out (Continue)",
+	"Suck And Lick Each Other",
+	"Suck And Lick Each Other (Continue)",
+	"Lick And Suck Each Other",
+	"Lick And Suck Each Other (Continue)"
+]>>
+
+<<set _muffled = false>>
+<<if _speakerRole is "Bottom" && _bottomMuffledActs.includes(_action)>>
+	<<set _muffled = true>>
+<<elseif _speakerRole is "Top" && _topMuffledActs.includes(_action)>>
+	<<set _muffled = true>>
+<</if>>
 
 <<if _muffled>>
-	<<set _pool = setup.MuffledQuotes>>
+	<<set _pool = setup.MuffledQuotes || null>>
 <<else>>
-	<<if $sex.climax.Top && $sex.climax.Bottom>>
+	<<if _orgasmSide is "Both">>
 		<<set _pool = ["Let's cum together!"]>>
 
-	<<elseif $sex.climax.Top>>
-		<<set _root = setup.orgasmcloseQuotes.OT[_mode]>>
+	<<else>>
+		<<if _orgasmSide is "Top">>
+			<<set _root = setup.orgasmcloseQuotes.OT[_lookupMode]>>
+
+			/* If your close quote data has no Watcher branch, fall back to Top/Bottom style pools. */
+			<<if !_root && _mode is "Watcher">>
+				<<set _lookupMode = either("Top", "Bottom")>>
+				<<set _root = setup.orgasmcloseQuotes.OT[_lookupMode]>>
+			<</if>>
+
+		<<elseif _orgasmSide is "Bottom">>
+			<<set _root = setup.orgasmcloseQuotes.OB[_lookupMode]>>
+
+			/* If your close quote data has no Watcher branch, fall back to Top/Bottom style pools. */
+			<<if !_root && _mode is "Watcher">>
+				<<set _lookupMode = either("Top", "Bottom")>>
+				<<set _root = setup.orgasmcloseQuotes.OB[_lookupMode]>>
+			<</if>>
+		<</if>>
 
 		<<if _root>>
-			/* personality arrays directly under OT[_mode] */
+			/* First: personality arrays directly under root. */
 			<<for _p range _personalities>>
 				<<if _p and Array.isArray(_root[_p])>>
 					<<run _persMatches.push(_p)>>
@@ -72,64 +179,48 @@
 				<<set _chosenPers = setup.pick(_persMatches)>>
 				<<set _pool = _root[_chosenPers]>>
 			<<else>>
+				/* Second: action pool. */
+				<<set _persMatches = []>>
 				<<set _actionPool = _root[_action]>>
+				<<set _defaultPool = _root.default>>
 
-				<<if Array.isArray(_actionPool)>>
+				<<if _actionPool and !Array.isArray(_actionPool)>>
+					/* Personality arrays under root[action]. */
+					<<for _p range _personalities>>
+						<<if _p and Array.isArray(_actionPool[_p])>>
+							<<run _persMatches.push(_p)>>
+						<</if>>
+					<</for>>
+				<</if>>
+
+				<<if _persMatches.length>>
+					<<set _chosenPers = setup.pick(_persMatches)>>
+					<<set _pool = _actionPool[_chosenPers]>>
+				<<elseif Array.isArray(_actionPool)>>
 					<<set _pool = _actionPool>>
-				<<else>>
-					<<set _pool =
-						(
-							_actionPool &&
-							(_actionPool[_pref] || _actionPool.Switch || _actionPool.Neutral)
-						)
-						|| (
-							_root.default &&
-							(_root.default[_pref] || _root.default.Switch || _root.default.Neutral)
-						)
-						|| null
-					>>
+				<<elseif _actionPool && Array.isArray(_actionPool[_pref])>>
+					<<set _pool = _actionPool[_pref]>>
+				<<elseif _actionPool && Array.isArray(_actionPool.Switch)>>
+					<<set _pool = _actionPool.Switch>>
+				<<elseif _actionPool && Array.isArray(_actionPool.Neutral)>>
+					<<set _pool = _actionPool.Neutral>>
+				<<elseif Array.isArray(_defaultPool)>>
+					<<set _pool = _defaultPool>>
+				<<elseif _defaultPool && Array.isArray(_defaultPool[_pref])>>
+					<<set _pool = _defaultPool[_pref]>>
+				<<elseif _defaultPool && Array.isArray(_defaultPool.Switch)>>
+					<<set _pool = _defaultPool.Switch>>
+				<<elseif _defaultPool && Array.isArray(_defaultPool.Neutral)>>
+					<<set _pool = _defaultPool.Neutral>>
 				<</if>>
 			<</if>>
-		<</if>>
-
-	<<elseif $sex.climax.Bottom>>
-		<<set _root = setup.orgasmcloseQuotes.OB[_mode]>>
-		<<set _actionPool = _root && _root[_action]>>
-
-		<<if _actionPool and !Array.isArray(_actionPool)>>
-			/* personality arrays under OB[_mode][_action] */
-			<<for _p range _personalities>>
-				<<if _p and Array.isArray(_actionPool[_p])>>
-					<<run _persMatches.push(_p)>>
-				<</if>>
-			<</for>>
-		<</if>>
-
-		<<if _persMatches.length>>
-			<<set _chosenPers = setup.pick(_persMatches)>>
-			<<set _pool = _actionPool[_chosenPers]>>
-		<<elseif Array.isArray(_actionPool)>>
-			<<set _pool = _actionPool>>
-		<<else>>
-			<<set _pool =
-				(
-					_actionPool &&
-					(_actionPool[_pref] || _actionPool.Switch || _actionPool.Neutral)
-				)
-				|| (
-					_root &&
-					_root.default &&
-					(_root.default[_pref] || _root.default.Switch || _root.default.Neutral)
-				)
-				|| null
-			>>
 		<</if>>
 	<</if>>
 <</if>>
 
 <<if Array.isArray(_pool) && _pool.length>>
-	"<<= _b >><<= either(..._pool) >>"
+	<<= _b >>"<<= either(..._pool) >>"
 <<else>>
 	[Error] No Orgasm Close quote pool found.
-	(mode=<<= _mode >>, action=<<= _action >>, pref=<<= _pref >>)
+	(mode=<<= _mode >>, lookupMode=<<= _lookupMode >>, speakerRole=<<= _speakerRole >>, orgasmSide=<<= _orgasmSide >>, action=<<= _action >>, pref=<<= _pref >>)
 <</if>>

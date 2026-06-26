@@ -151,58 +151,223 @@
     return required.some(type => owned.has(type));
   };
 
-  /* =========================
-   * AROUSAL / PHASE HELPERS
-   * ========================= */
+/* =========================
+ * AROUSAL / PHASE HELPERS
+ * ========================= */
 
-  function applyArousalDelta(actor, delta, cap) {
-    if (!actor || typeof delta !== "number") return;
+/*
+	Important:
+	- $sex.arousalByKey is the session's real arousal storage.
+	- actor.arousal is only a mirrored display value.
+	- This prevents arousal from resetting when Top/Bottom actor references are rebuilt.
+*/
 
-    actor.arousal = numeric(actor.arousal);
+function getArousalKey(actor) {
+	if (!actor) return null;
 
-    if (cap !== undefined && actor.arousal >= cap) return;
+	const V = State.variables;
 
-    actor.arousal += delta;
+	if (actor === V.mc || actor.isMC === true) {
+		return "mc";
+	}
 
-    if (typeof cap === "number" && actor.arousal > cap) {
-      actor.arousal = cap;
-    }
-  }
+	if (actor.id != null) {
+		return "id:" + actor.id;
+	}
 
-  setup.applyArousalFromAct = function (sex, act) {
-    if (!sex || !act || !sex.Top || !sex.Bottom) return;
+	if (actor.uid != null) {
+		return "uid:" + actor.uid;
+	}
 
-    applyArousalDelta(sex.Top, act["Top arousal"], act["Top arousal cap"]);
-    applyArousalDelta(sex.Bottom, act["Bottom arousal"], act["Bottom arousal cap"]);
+	if (actor.npcId != null) {
+		return "npcId:" + actor.npcId;
+	}
 
-    setup.checkForClimax(sex);
-  };
+	if (actor.NPCID != null) {
+		return "NPCID:" + actor.NPCID;
+	}
 
-  setup.checkForClimax = function (sex) {
-    if (!sex || !sex.Top || !sex.Bottom) return false;
-    if (sex.phase === "climax" || sex.phase === "aftercare") return false;
+	const nameKey = [
+		actor.name || "",
+		actor.surname || "",
+		actor.nickname || ""
+	].join("|").trim();
 
-    const topArousal = numeric(sex.Top.arousal);
-    const bottomArousal = numeric(sex.Bottom.arousal);
+	return nameKey ? "name:" + nameKey : null;
+}
 
-    const topClimax = topArousal >= CLIMAX_THRESHOLD;
-    const bottomClimax = bottomArousal >= CLIMAX_THRESHOLD;
+function numeric(value, fallback = 0) {
+	if (typeof value === "number" && Number.isFinite(value)) {
+		return value;
+	}
 
-    if (!topClimax && !bottomClimax) return false;
+	if (typeof value === "string" && value.trim() !== "") {
+		const parsed = Number(value);
+		if (Number.isFinite(parsed)) {
+			return parsed;
+		}
+	}
 
-    sex.phase = "climax";
-    sex.climax = {
-      Top: topClimax,
-      Bottom: bottomClimax
-    };
-    sex.cumReady = true;
+	return fallback;
+}
 
-    return true;
-  };
+function ensureArousalStore(sex) {
+	if (!sex) return {};
 
-  setup.checkOrgasm = function (actor) {
-    return numeric(actor?.arousal) >= CLIMAX_THRESHOLD;
-  };
+	if (!sex.arousalByKey || typeof sex.arousalByKey !== "object") {
+		sex.arousalByKey = {};
+	}
+
+	return sex.arousalByKey;
+}
+
+function writeActorArousal(sex, actor, value) {
+	if (!sex || !actor) return 0;
+
+	const store = ensureArousalStore(sex);
+	const key = getArousalKey(actor);
+	const cleanValue = Math.max(0, numeric(value, 0));
+
+	actor.arousal = cleanValue;
+
+	if (key) {
+		store[key] = cleanValue;
+	}
+
+	return cleanValue;
+}
+
+function syncActorArousal(sex, actor) {
+	if (!sex || !actor) return 0;
+
+	const store = ensureArousalStore(sex);
+	const key = getArousalKey(actor);
+
+	const actorValue = numeric(actor.arousal, null);
+	const storedValue = key ? numeric(store[key], null) : null;
+
+	let value = 0;
+
+	if (actorValue !== null && storedValue !== null) {
+		/*
+			Use the higher value so a temporary actor-side reset to 0
+			does not destroy the real session value.
+		*/
+		value = Math.max(actorValue, storedValue);
+	} else if (storedValue !== null) {
+		value = storedValue;
+	} else if (actorValue !== null) {
+		value = actorValue;
+	}
+
+	return writeActorArousal(sex, actor, value);
+}
+
+setup.ensureSexArousal = function (sex) {
+	if (!sex) return sex;
+
+	ensureArousalStore(sex);
+
+	syncActorArousal(sex, sex.Top);
+	syncActorArousal(sex, sex.Bottom);
+	syncActorArousal(sex, sex.Watcher);
+
+	if (Array.isArray(sex.participants)) {
+		sex.participants.forEach(actor => syncActorArousal(sex, actor));
+	}
+
+	return sex;
+};
+
+setup.getArousal = function (sex, actor) {
+	return syncActorArousal(sex, actor);
+};
+
+setup.setArousal = function (sex, actor, value) {
+	return writeActorArousal(sex, actor, value);
+};
+
+setup.addArousal = function (sex, actor, delta, cap) {
+	if (!sex || !actor) return 0;
+
+	const current = syncActorArousal(sex, actor);
+	const amount = numeric(delta, 0);
+
+	let next = current + amount;
+
+	const capValue = numeric(cap, null);
+
+	if (capValue !== null) {
+		if (current >= capValue) {
+			return writeActorArousal(sex, actor, current);
+		}
+
+		if (next > capValue) {
+			next = capValue;
+		}
+	}
+
+	return writeActorArousal(sex, actor, next);
+};
+
+setup.resetEncounterArousal = function (sex) {
+	if (!sex) return;
+
+	sex.arousalByKey = {};
+
+	const actors = [
+		sex.Top,
+		sex.Bottom,
+		sex.Watcher
+	];
+
+	if (Array.isArray(sex.participants)) {
+		sex.participants.forEach(actor => actors.push(actor));
+	}
+
+	[...new Set(actors.filter(Boolean))].forEach(actor => {
+		writeActorArousal(sex, actor, 0);
+	});
+};
+
+setup.applyArousalFromAct = function (sex, act) {
+	if (!sex || !act || !sex.Top || !sex.Bottom) return;
+
+	setup.ensureSexArousal(sex);
+
+	setup.addArousal(sex, sex.Top, act["Top arousal"], act["Top arousal cap"]);
+	setup.addArousal(sex, sex.Bottom, act["Bottom arousal"], act["Bottom arousal cap"]);
+
+	setup.checkForClimax(sex);
+};
+
+setup.checkForClimax = function (sex) {
+	if (!sex || !sex.Top || !sex.Bottom) return false;
+	if (sex.phase === "climax" || sex.phase === "aftercare") return false;
+
+	setup.ensureSexArousal(sex);
+
+	const topArousal = setup.getArousal(sex, sex.Top);
+	const bottomArousal = setup.getArousal(sex, sex.Bottom);
+
+	const topClimax = topArousal >= CLIMAX_THRESHOLD;
+	const bottomClimax = bottomArousal >= CLIMAX_THRESHOLD;
+
+	if (!topClimax && !bottomClimax) return false;
+
+	sex.phase = "climax";
+	sex.climax = {
+		Top: topClimax,
+		Bottom: bottomClimax
+	};
+	sex.cumReady = true;
+
+	return true;
+};
+
+setup.checkOrgasm = function (actor) {
+	return numeric(actor?.arousal) >= CLIMAX_THRESHOLD;
+};
 
   setup.shouldShowCumPanel = function (sex) {
     return !!(sex && (sex.phase === "climax" || sex.cumReady === true));
@@ -751,6 +916,7 @@ setup.getAvailableSexActs = function (sex) {
 
     if (V.mc) V.mc.arousal = 0;
     if (V.ui?.npc) V.ui.npc.arousal = 0;
+    if (V.ui?.npc2) V.ui.npc2.arousal = 0;
 
     V.orgasm = {
       top: false,
@@ -781,7 +947,8 @@ setup.getAvailableSexActs = function (sex) {
       climax: {},
       cumReady: false,
       stage: "foreplay",
-      log: []
+      log: [],
+      arousalByKey: {}
     };
   };
 

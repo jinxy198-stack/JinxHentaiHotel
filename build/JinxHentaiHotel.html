@@ -1519,7 +1519,7 @@ setup.analQuotes = {
         "Let me enjoy this Grade A dick of yours!"
       ],
       Submissive: [
-        "Fuck me hard!",
+        "I hope this feels good for you to.",
 				"Ahh",
 				"You feel so good inside me."
       ],
@@ -3102,6 +3102,24 @@ setup.orgasmcloseQuotes = {
           "Aaaah!!"
         ]
       },
+      /*Test? */
+      "Fuck Ass": {  
+        Dominant: [
+        "I'm gonna cum in your ass!",
+        "I'm gonna pump you full of my cum!",
+        "Here it comes!"
+        ],
+        Submissive: [
+          "I'm... gonna cum!", 
+          "A-agh!! AaaHhhh!!!",
+          "I can't hold it anymore!"
+        ],
+        Switch: [
+          "I'm gonna cum in your ass!", 
+          "I'm cumming!",
+          "Aaaah!!"
+        ]
+      },
       "Pump Shaft": {
         Childish:["I'm ready for some facepaint!"],
         Dominant: ["Don't stop jerking it, I'm so close!"],
@@ -3141,7 +3159,8 @@ setup.orgasmcloseQuotes = {
       Childish: [
       "Hehe, you ready to splooge?"
       ],
-      "Fuck Ass": {  
+
+      /*"Fuck Ass": {  
         Dominant: [
           "Cum in my ass!",
           "Fill my ass with your spunk!"
@@ -3151,6 +3170,23 @@ setup.orgasmcloseQuotes = {
         ],
         Switch: [
           "C-cum in me!"
+        ]
+      },*/
+      "Fuck Ass": {  
+        Dominant: [
+        "I'm gonna cum in your ass!",
+        "I'm gonna pump you full of my cum!",
+        "Here it comes!"
+        ],
+        Submissive: [
+          "I'm... gonna cum!", 
+          "A-agh!! AaaHhhh!!!",
+          "I can't hold it anymore!"
+        ],
+        Switch: [
+          "I'm gonna cum in your ass!", 
+          "I'm cumming!",
+          "Aaaah!!"
         ]
       },
       Handjob: {
@@ -4114,7 +4150,8 @@ setup.startSexEncounter = function (topChar, bottomChar, watcherChar) {
 
 		furnitureFlags: [],
 		history: [],
-		log: []
+		log: [],
+		arousalByKey: {},
 	};
 
 	setup.sexAddParticipant(topChar, "Top");
@@ -4125,6 +4162,7 @@ setup.startSexEncounter = function (topChar, bottomChar, watcherChar) {
 	}
 
 	setup.sexSyncLegacy();
+	setup.resetEncounterArousal(V.sex);
 };
 
 setup.sexWatcherJoinAs = function (watcherChar, newRole) {
@@ -8227,58 +8265,223 @@ setup.traits.addRandomTraits = function (char, maxAmount, options) {
     return required.some(type => owned.has(type));
   };
 
-  /* =========================
-   * AROUSAL / PHASE HELPERS
-   * ========================= */
+/* =========================
+ * AROUSAL / PHASE HELPERS
+ * ========================= */
 
-  function applyArousalDelta(actor, delta, cap) {
-    if (!actor || typeof delta !== "number") return;
+/*
+	Important:
+	- $sex.arousalByKey is the session's real arousal storage.
+	- actor.arousal is only a mirrored display value.
+	- This prevents arousal from resetting when Top/Bottom actor references are rebuilt.
+*/
 
-    actor.arousal = numeric(actor.arousal);
+function getArousalKey(actor) {
+	if (!actor) return null;
 
-    if (cap !== undefined && actor.arousal >= cap) return;
+	const V = State.variables;
 
-    actor.arousal += delta;
+	if (actor === V.mc || actor.isMC === true) {
+		return "mc";
+	}
 
-    if (typeof cap === "number" && actor.arousal > cap) {
-      actor.arousal = cap;
-    }
-  }
+	if (actor.id != null) {
+		return "id:" + actor.id;
+	}
 
-  setup.applyArousalFromAct = function (sex, act) {
-    if (!sex || !act || !sex.Top || !sex.Bottom) return;
+	if (actor.uid != null) {
+		return "uid:" + actor.uid;
+	}
 
-    applyArousalDelta(sex.Top, act["Top arousal"], act["Top arousal cap"]);
-    applyArousalDelta(sex.Bottom, act["Bottom arousal"], act["Bottom arousal cap"]);
+	if (actor.npcId != null) {
+		return "npcId:" + actor.npcId;
+	}
 
-    setup.checkForClimax(sex);
-  };
+	if (actor.NPCID != null) {
+		return "NPCID:" + actor.NPCID;
+	}
 
-  setup.checkForClimax = function (sex) {
-    if (!sex || !sex.Top || !sex.Bottom) return false;
-    if (sex.phase === "climax" || sex.phase === "aftercare") return false;
+	const nameKey = [
+		actor.name || "",
+		actor.surname || "",
+		actor.nickname || ""
+	].join("|").trim();
 
-    const topArousal = numeric(sex.Top.arousal);
-    const bottomArousal = numeric(sex.Bottom.arousal);
+	return nameKey ? "name:" + nameKey : null;
+}
 
-    const topClimax = topArousal >= CLIMAX_THRESHOLD;
-    const bottomClimax = bottomArousal >= CLIMAX_THRESHOLD;
+function numeric(value, fallback = 0) {
+	if (typeof value === "number" && Number.isFinite(value)) {
+		return value;
+	}
 
-    if (!topClimax && !bottomClimax) return false;
+	if (typeof value === "string" && value.trim() !== "") {
+		const parsed = Number(value);
+		if (Number.isFinite(parsed)) {
+			return parsed;
+		}
+	}
 
-    sex.phase = "climax";
-    sex.climax = {
-      Top: topClimax,
-      Bottom: bottomClimax
-    };
-    sex.cumReady = true;
+	return fallback;
+}
 
-    return true;
-  };
+function ensureArousalStore(sex) {
+	if (!sex) return {};
 
-  setup.checkOrgasm = function (actor) {
-    return numeric(actor?.arousal) >= CLIMAX_THRESHOLD;
-  };
+	if (!sex.arousalByKey || typeof sex.arousalByKey !== "object") {
+		sex.arousalByKey = {};
+	}
+
+	return sex.arousalByKey;
+}
+
+function writeActorArousal(sex, actor, value) {
+	if (!sex || !actor) return 0;
+
+	const store = ensureArousalStore(sex);
+	const key = getArousalKey(actor);
+	const cleanValue = Math.max(0, numeric(value, 0));
+
+	actor.arousal = cleanValue;
+
+	if (key) {
+		store[key] = cleanValue;
+	}
+
+	return cleanValue;
+}
+
+function syncActorArousal(sex, actor) {
+	if (!sex || !actor) return 0;
+
+	const store = ensureArousalStore(sex);
+	const key = getArousalKey(actor);
+
+	const actorValue = numeric(actor.arousal, null);
+	const storedValue = key ? numeric(store[key], null) : null;
+
+	let value = 0;
+
+	if (actorValue !== null && storedValue !== null) {
+		/*
+			Use the higher value so a temporary actor-side reset to 0
+			does not destroy the real session value.
+		*/
+		value = Math.max(actorValue, storedValue);
+	} else if (storedValue !== null) {
+		value = storedValue;
+	} else if (actorValue !== null) {
+		value = actorValue;
+	}
+
+	return writeActorArousal(sex, actor, value);
+}
+
+setup.ensureSexArousal = function (sex) {
+	if (!sex) return sex;
+
+	ensureArousalStore(sex);
+
+	syncActorArousal(sex, sex.Top);
+	syncActorArousal(sex, sex.Bottom);
+	syncActorArousal(sex, sex.Watcher);
+
+	if (Array.isArray(sex.participants)) {
+		sex.participants.forEach(actor => syncActorArousal(sex, actor));
+	}
+
+	return sex;
+};
+
+setup.getArousal = function (sex, actor) {
+	return syncActorArousal(sex, actor);
+};
+
+setup.setArousal = function (sex, actor, value) {
+	return writeActorArousal(sex, actor, value);
+};
+
+setup.addArousal = function (sex, actor, delta, cap) {
+	if (!sex || !actor) return 0;
+
+	const current = syncActorArousal(sex, actor);
+	const amount = numeric(delta, 0);
+
+	let next = current + amount;
+
+	const capValue = numeric(cap, null);
+
+	if (capValue !== null) {
+		if (current >= capValue) {
+			return writeActorArousal(sex, actor, current);
+		}
+
+		if (next > capValue) {
+			next = capValue;
+		}
+	}
+
+	return writeActorArousal(sex, actor, next);
+};
+
+setup.resetEncounterArousal = function (sex) {
+	if (!sex) return;
+
+	sex.arousalByKey = {};
+
+	const actors = [
+		sex.Top,
+		sex.Bottom,
+		sex.Watcher
+	];
+
+	if (Array.isArray(sex.participants)) {
+		sex.participants.forEach(actor => actors.push(actor));
+	}
+
+	[...new Set(actors.filter(Boolean))].forEach(actor => {
+		writeActorArousal(sex, actor, 0);
+	});
+};
+
+setup.applyArousalFromAct = function (sex, act) {
+	if (!sex || !act || !sex.Top || !sex.Bottom) return;
+
+	setup.ensureSexArousal(sex);
+
+	setup.addArousal(sex, sex.Top, act["Top arousal"], act["Top arousal cap"]);
+	setup.addArousal(sex, sex.Bottom, act["Bottom arousal"], act["Bottom arousal cap"]);
+
+	setup.checkForClimax(sex);
+};
+
+setup.checkForClimax = function (sex) {
+	if (!sex || !sex.Top || !sex.Bottom) return false;
+	if (sex.phase === "climax" || sex.phase === "aftercare") return false;
+
+	setup.ensureSexArousal(sex);
+
+	const topArousal = setup.getArousal(sex, sex.Top);
+	const bottomArousal = setup.getArousal(sex, sex.Bottom);
+
+	const topClimax = topArousal >= CLIMAX_THRESHOLD;
+	const bottomClimax = bottomArousal >= CLIMAX_THRESHOLD;
+
+	if (!topClimax && !bottomClimax) return false;
+
+	sex.phase = "climax";
+	sex.climax = {
+		Top: topClimax,
+		Bottom: bottomClimax
+	};
+	sex.cumReady = true;
+
+	return true;
+};
+
+setup.checkOrgasm = function (actor) {
+	return numeric(actor?.arousal) >= CLIMAX_THRESHOLD;
+};
 
   setup.shouldShowCumPanel = function (sex) {
     return !!(sex && (sex.phase === "climax" || sex.cumReady === true));
@@ -8827,6 +9030,7 @@ setup.getAvailableSexActs = function (sex) {
 
     if (V.mc) V.mc.arousal = 0;
     if (V.ui?.npc) V.ui.npc.arousal = 0;
+    if (V.ui?.npc2) V.ui.npc2.arousal = 0;
 
     V.orgasm = {
       top: false,
@@ -8857,7 +9061,8 @@ setup.getAvailableSexActs = function (sex) {
       climax: {},
       cumReady: false,
       stage: "foreplay",
-      log: []
+      log: [],
+      arousalByKey: {}
     };
   };
 
@@ -15622,59 +15827,166 @@ And in the corner was a desk with a computer for playing around with.
 	&lt;&lt;return&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-/* for when the face is too obscured to speak */
-&lt;&lt;set _muffled = false&gt;&gt;
-&lt;&lt;if (
-	$sex.role == &quot;Bottom&quot; &amp;&amp; (
-		$sex.act == &quot;Kiss Nipple&quot; ||
-		$sex.act == &quot;Lick Nipple&quot; ||
-		$sex.act == &quot;Suck Nipple&quot; ||
-		$sex.act == &quot;Suck Each Other Off&quot; ||
-		$sex.act == &quot;Suck Each Other Off (Continue)&quot; ||
-		$sex.act == &quot;Eat Each Other Out&quot; ||
-		$sex.act == &quot;Eat Each Other Out (Continue)&quot; ||
-		$sex.act == &quot;Suck And Lick Each Other&quot; ||
-		$sex.act == &quot;Suck And Lick Each Other (Continue)&quot; ||
-		$sex.act == &quot;Lick And Suck Each Other&quot; ||
-		$sex.act == &quot;Lick And Suck Each Other (Continue)&quot;
-	)
-) || (
-	$sex.role == &quot;Top&quot; &amp;&amp; (
-		$sex.act == &quot;Fuck Mouth&quot; ||
-		$sex.act == &quot;Lick Pussy&quot; ||
-		$sex.act == &quot;Suck Each Other Off&quot; ||
-		$sex.act == &quot;Suck Each Other Off (Continue)&quot; ||
-		$sex.act == &quot;Eat Each Other Out&quot; ||
-		$sex.act == &quot;Eat Each Other Out (Continue)&quot; ||
-		$sex.act == &quot;Suck And Lick Each Other&quot; ||
-		$sex.act == &quot;Suck And Lick Each Other (Continue)&quot; ||
-		$sex.act == &quot;Lick And Suck Each Other&quot; ||
-		$sex.act == &quot;Lick And Suck Each Other (Continue)&quot;
-	)
-)&gt;&gt;
-	&lt;&lt;set _muffled = true&gt;&gt;
+/* Pull current roles from the new role system. */
+&lt;&lt;set _top = $sex.roles &amp;&amp; $sex.roles.dom ? $sex.roles.dom : ($sex.Top || null)&gt;&gt;
+&lt;&lt;set _bottom = $sex.roles &amp;&amp; $sex.roles.sub ? $sex.roles.sub : ($sex.Bottom || null)&gt;&gt;
+&lt;&lt;set _watcher = $sex.roles &amp;&amp; $sex.roles.watcher ? $sex.roles.watcher : null&gt;&gt;
+
+/* MC perspective role. Do not overwrite this with $sex.role. */
+&lt;&lt;set _mode = null&gt;&gt;
+&lt;&lt;if setup.isMC(_top)&gt;&gt;
+	&lt;&lt;set _mode = &quot;Top&quot;&gt;&gt;
+&lt;&lt;elseif setup.isMC(_bottom)&gt;&gt;
+	&lt;&lt;set _mode = &quot;Bottom&quot;&gt;&gt;
+&lt;&lt;elseif setup.isMC(_watcher)&gt;&gt;
+	&lt;&lt;set _mode = &quot;Watcher&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;set _mode = $sex.role&gt;&gt;
-&lt;&lt;set _pref = _n.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;if !_mode&gt;&gt;
+	[Error] Could not determine MC role for Orgasm Close quote.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+/* Use current climax first, but allow snapshot fallback. */
+&lt;&lt;set _climax = $sex.climax || $sex.orgasmSnapshot || {}&gt;&gt;
+&lt;&lt;set _topClose = !!_climax.Top&gt;&gt;
+&lt;&lt;set _bottomClose = !!_climax.Bottom&gt;&gt;
+&lt;&lt;set _bothClose = _topClose &amp;&amp; _bottomClose&gt;&gt;
+&lt;&lt;set _orgasmSide = _bothClose ? &quot;Both&quot; : (_climax.who || (_topClose ? &quot;Top&quot; : (_bottomClose ? &quot;Bottom&quot; : null)))&gt;&gt;
+
+&lt;&lt;if !_orgasmSide&gt;&gt;
+	[Error] Could not determine orgasm-close side.
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+/* Pick the actual quote speaker. Never allow this to be the MC. */
+&lt;&lt;set _speaker = _n&gt;&gt;
+
+&lt;&lt;if !_speaker || setup.isMC(_speaker)&gt;&gt;
+	&lt;&lt;if _orgasmSide is &quot;Top&quot;&gt;&gt;
+		&lt;&lt;if _top &amp;&amp; !setup.isMC(_top)&gt;&gt;
+			&lt;&lt;set _speaker = _top&gt;&gt;
+		&lt;&lt;elseif _bottom &amp;&amp; !setup.isMC(_bottom)&gt;&gt;
+			&lt;&lt;set _speaker = _bottom&gt;&gt;
+		&lt;&lt;elseif _watcher &amp;&amp; !setup.isMC(_watcher)&gt;&gt;
+			&lt;&lt;set _speaker = _watcher&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;return&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;elseif _orgasmSide is &quot;Bottom&quot;&gt;&gt;
+		&lt;&lt;if _bottom &amp;&amp; !setup.isMC(_bottom)&gt;&gt;
+			&lt;&lt;set _speaker = _bottom&gt;&gt;
+		&lt;&lt;elseif _top &amp;&amp; !setup.isMC(_top)&gt;&gt;
+			&lt;&lt;set _speaker = _top&gt;&gt;
+		&lt;&lt;elseif _watcher &amp;&amp; !setup.isMC(_watcher)&gt;&gt;
+			&lt;&lt;set _speaker = _watcher&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;return&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;elseif _orgasmSide is &quot;Both&quot;&gt;&gt;
+		&lt;&lt;if _top &amp;&amp; !setup.isMC(_top)&gt;&gt;
+			&lt;&lt;set _speaker = _top&gt;&gt;
+		&lt;&lt;elseif _bottom &amp;&amp; !setup.isMC(_bottom)&gt;&gt;
+			&lt;&lt;set _speaker = _bottom&gt;&gt;
+		&lt;&lt;elseif _watcher &amp;&amp; !setup.isMC(_watcher)&gt;&gt;
+			&lt;&lt;set _speaker = _watcher&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;return&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if !_speaker || setup.isMC(_speaker)&gt;&gt;
+	&lt;&lt;return&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+/* Make quote data use the resolved speaker, not whatever _n originally was. */
+&lt;&lt;set _pref = _speaker.sexpref || &quot;Switch&quot;&gt;&gt;
+&lt;&lt;set _personalities = Array.isArray(_speaker.personality) ? _speaker.personality : (_speaker.personality ? [_speaker.personality] : [])&gt;&gt;
+&lt;&lt;set _b = &quot;&lt;b&gt;&quot; + (_speaker.name || &quot;Someone&quot;) + &quot;:&lt;/b&gt; &quot;&gt;&gt;
+
+/* Figure out the speaker&#39;s actual sex role, separate from MC perspective mode. */
+&lt;&lt;set _speakerRole = null&gt;&gt;
+&lt;&lt;if _speaker === _top&gt;&gt;
+	&lt;&lt;set _speakerRole = &quot;Top&quot;&gt;&gt;
+&lt;&lt;elseif _speaker === _bottom&gt;&gt;
+	&lt;&lt;set _speakerRole = &quot;Bottom&quot;&gt;&gt;
+&lt;&lt;elseif _speaker === _watcher&gt;&gt;
+	&lt;&lt;set _speakerRole = &quot;Watcher&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
 &lt;&lt;set _action = $sex.act&gt;&gt;
-&lt;&lt;set _personalities = Array.isArray(_n.personality) ? _n.personality : [_n.personality]&gt;&gt;
 &lt;&lt;set _pool = null&gt;&gt;
 &lt;&lt;set _root = null&gt;&gt;
 &lt;&lt;set _actionPool = null&gt;&gt;
+&lt;&lt;set _defaultPool = null&gt;&gt;
 &lt;&lt;set _persMatches = []&gt;&gt;
+&lt;&lt;set _chosenPers = null&gt;&gt;
+&lt;&lt;set _lookupMode = _mode&gt;&gt;
+
+/* For when the speaker&#39;s face/mouth is too obscured to speak clearly. */
+&lt;&lt;set _bottomMuffledActs = [
+	&quot;Kiss Nipple&quot;,
+	&quot;Lick Nipple&quot;,
+	&quot;Suck Nipple&quot;,
+	&quot;Suck Each Other Off&quot;,
+	&quot;Suck Each Other Off (Continue)&quot;,
+	&quot;Eat Each Other Out&quot;,
+	&quot;Eat Each Other Out (Continue)&quot;,
+	&quot;Suck And Lick Each Other&quot;,
+	&quot;Suck And Lick Each Other (Continue)&quot;,
+	&quot;Lick And Suck Each Other&quot;,
+	&quot;Lick And Suck Each Other (Continue)&quot;
+]&gt;&gt;
+
+&lt;&lt;set _topMuffledActs = [
+	&quot;Fuck Mouth&quot;,
+	&quot;Lick Pussy&quot;,
+	&quot;Suck Each Other Off&quot;,
+	&quot;Suck Each Other Off (Continue)&quot;,
+	&quot;Eat Each Other Out&quot;,
+	&quot;Eat Each Other Out (Continue)&quot;,
+	&quot;Suck And Lick Each Other&quot;,
+	&quot;Suck And Lick Each Other (Continue)&quot;,
+	&quot;Lick And Suck Each Other&quot;,
+	&quot;Lick And Suck Each Other (Continue)&quot;
+]&gt;&gt;
+
+&lt;&lt;set _muffled = false&gt;&gt;
+&lt;&lt;if _speakerRole is &quot;Bottom&quot; &amp;&amp; _bottomMuffledActs.includes(_action)&gt;&gt;
+	&lt;&lt;set _muffled = true&gt;&gt;
+&lt;&lt;elseif _speakerRole is &quot;Top&quot; &amp;&amp; _topMuffledActs.includes(_action)&gt;&gt;
+	&lt;&lt;set _muffled = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if _muffled&gt;&gt;
-	&lt;&lt;set _pool = setup.MuffledQuotes&gt;&gt;
+	&lt;&lt;set _pool = setup.MuffledQuotes || null&gt;&gt;
 &lt;&lt;else&gt;&gt;
-	&lt;&lt;if $sex.climax.Top &amp;&amp; $sex.climax.Bottom&gt;&gt;
+	&lt;&lt;if _orgasmSide is &quot;Both&quot;&gt;&gt;
 		&lt;&lt;set _pool = [&quot;Let&#39;s cum together!&quot;]&gt;&gt;
 
-	&lt;&lt;elseif $sex.climax.Top&gt;&gt;
-		&lt;&lt;set _root = setup.orgasmcloseQuotes.OT[_mode]&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;if _orgasmSide is &quot;Top&quot;&gt;&gt;
+			&lt;&lt;set _root = setup.orgasmcloseQuotes.OT[_lookupMode]&gt;&gt;
+
+			/* If your close quote data has no Watcher branch, fall back to Top/Bottom style pools. */
+			&lt;&lt;if !_root &amp;&amp; _mode is &quot;Watcher&quot;&gt;&gt;
+				&lt;&lt;set _lookupMode = either(&quot;Top&quot;, &quot;Bottom&quot;)&gt;&gt;
+				&lt;&lt;set _root = setup.orgasmcloseQuotes.OT[_lookupMode]&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+
+		&lt;&lt;elseif _orgasmSide is &quot;Bottom&quot;&gt;&gt;
+			&lt;&lt;set _root = setup.orgasmcloseQuotes.OB[_lookupMode]&gt;&gt;
+
+			/* If your close quote data has no Watcher branch, fall back to Top/Bottom style pools. */
+			&lt;&lt;if !_root &amp;&amp; _mode is &quot;Watcher&quot;&gt;&gt;
+				&lt;&lt;set _lookupMode = either(&quot;Top&quot;, &quot;Bottom&quot;)&gt;&gt;
+				&lt;&lt;set _root = setup.orgasmcloseQuotes.OB[_lookupMode]&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
 
 		&lt;&lt;if _root&gt;&gt;
-			/* personality arrays directly under OT[_mode] */
+			/* First: personality arrays directly under root. */
 			&lt;&lt;for _p range _personalities&gt;&gt;
 				&lt;&lt;if _p and Array.isArray(_root[_p])&gt;&gt;
 					&lt;&lt;run _persMatches.push(_p)&gt;&gt;
@@ -15685,66 +15997,50 @@ And in the corner was a desk with a computer for playing around with.
 				&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
 				&lt;&lt;set _pool = _root[_chosenPers]&gt;&gt;
 			&lt;&lt;else&gt;&gt;
+				/* Second: action pool. */
+				&lt;&lt;set _persMatches = []&gt;&gt;
 				&lt;&lt;set _actionPool = _root[_action]&gt;&gt;
+				&lt;&lt;set _defaultPool = _root.default&gt;&gt;
 
-				&lt;&lt;if Array.isArray(_actionPool)&gt;&gt;
+				&lt;&lt;if _actionPool and !Array.isArray(_actionPool)&gt;&gt;
+					/* Personality arrays under root[action]. */
+					&lt;&lt;for _p range _personalities&gt;&gt;
+						&lt;&lt;if _p and Array.isArray(_actionPool[_p])&gt;&gt;
+							&lt;&lt;run _persMatches.push(_p)&gt;&gt;
+						&lt;&lt;/if&gt;&gt;
+					&lt;&lt;/for&gt;&gt;
+				&lt;&lt;/if&gt;&gt;
+
+				&lt;&lt;if _persMatches.length&gt;&gt;
+					&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
+					&lt;&lt;set _pool = _actionPool[_chosenPers]&gt;&gt;
+				&lt;&lt;elseif Array.isArray(_actionPool)&gt;&gt;
 					&lt;&lt;set _pool = _actionPool&gt;&gt;
-				&lt;&lt;else&gt;&gt;
-					&lt;&lt;set _pool =
-						(
-							_actionPool &amp;&amp;
-							(_actionPool[_pref] || _actionPool.Switch || _actionPool.Neutral)
-						)
-						|| (
-							_root.default &amp;&amp;
-							(_root.default[_pref] || _root.default.Switch || _root.default.Neutral)
-						)
-						|| null
-					&gt;&gt;
+				&lt;&lt;elseif _actionPool &amp;&amp; Array.isArray(_actionPool[_pref])&gt;&gt;
+					&lt;&lt;set _pool = _actionPool[_pref]&gt;&gt;
+				&lt;&lt;elseif _actionPool &amp;&amp; Array.isArray(_actionPool.Switch)&gt;&gt;
+					&lt;&lt;set _pool = _actionPool.Switch&gt;&gt;
+				&lt;&lt;elseif _actionPool &amp;&amp; Array.isArray(_actionPool.Neutral)&gt;&gt;
+					&lt;&lt;set _pool = _actionPool.Neutral&gt;&gt;
+				&lt;&lt;elseif Array.isArray(_defaultPool)&gt;&gt;
+					&lt;&lt;set _pool = _defaultPool&gt;&gt;
+				&lt;&lt;elseif _defaultPool &amp;&amp; Array.isArray(_defaultPool[_pref])&gt;&gt;
+					&lt;&lt;set _pool = _defaultPool[_pref]&gt;&gt;
+				&lt;&lt;elseif _defaultPool &amp;&amp; Array.isArray(_defaultPool.Switch)&gt;&gt;
+					&lt;&lt;set _pool = _defaultPool.Switch&gt;&gt;
+				&lt;&lt;elseif _defaultPool &amp;&amp; Array.isArray(_defaultPool.Neutral)&gt;&gt;
+					&lt;&lt;set _pool = _defaultPool.Neutral&gt;&gt;
 				&lt;&lt;/if&gt;&gt;
 			&lt;&lt;/if&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-
-	&lt;&lt;elseif $sex.climax.Bottom&gt;&gt;
-		&lt;&lt;set _root = setup.orgasmcloseQuotes.OB[_mode]&gt;&gt;
-		&lt;&lt;set _actionPool = _root &amp;&amp; _root[_action]&gt;&gt;
-
-		&lt;&lt;if _actionPool and !Array.isArray(_actionPool)&gt;&gt;
-			/* personality arrays under OB[_mode][_action] */
-			&lt;&lt;for _p range _personalities&gt;&gt;
-				&lt;&lt;if _p and Array.isArray(_actionPool[_p])&gt;&gt;
-					&lt;&lt;run _persMatches.push(_p)&gt;&gt;
-				&lt;&lt;/if&gt;&gt;
-			&lt;&lt;/for&gt;&gt;
-		&lt;&lt;/if&gt;&gt;
-
-		&lt;&lt;if _persMatches.length&gt;&gt;
-			&lt;&lt;set _chosenPers = setup.pick(_persMatches)&gt;&gt;
-			&lt;&lt;set _pool = _actionPool[_chosenPers]&gt;&gt;
-		&lt;&lt;elseif Array.isArray(_actionPool)&gt;&gt;
-			&lt;&lt;set _pool = _actionPool&gt;&gt;
-		&lt;&lt;else&gt;&gt;
-			&lt;&lt;set _pool =
-				(
-					_actionPool &amp;&amp;
-					(_actionPool[_pref] || _actionPool.Switch || _actionPool.Neutral)
-				)
-				|| (
-					_root &amp;&amp;
-					_root.default &amp;&amp;
-					(_root.default[_pref] || _root.default.Switch || _root.default.Neutral)
-				)
-				|| null
-			&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
-	&quot;&lt;&lt;= _b &gt;&gt;&lt;&lt;= either(..._pool) &gt;&gt;&quot;
+	&lt;&lt;= _b &gt;&gt;&quot;&lt;&lt;= either(..._pool) &gt;&gt;&quot;
 &lt;&lt;else&gt;&gt;
 	[Error] No Orgasm Close quote pool found.
-	(mode=&lt;&lt;= _mode &gt;&gt;, action=&lt;&lt;= _action &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
+	(mode=&lt;&lt;= _mode &gt;&gt;, lookupMode=&lt;&lt;= _lookupMode &gt;&gt;, speakerRole=&lt;&lt;= _speakerRole &gt;&gt;, orgasmSide=&lt;&lt;= _orgasmSide &gt;&gt;, action=&lt;&lt;= _action &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="Orgasm-Quote" tags="nobr Dialogue" position="475,1975" size="100,100">/*&lt;&lt;if !setup.orgasmQuotes or !setup.orgasmQuotes.OT or !setup.orgasmQuotes.OB&gt;&gt;
 	[Error] setup.orgasmQuotes, OT, or OB is missing. Define it in StoryInit.
 	&lt;&lt;return&gt;&gt;
@@ -15791,7 +16087,9 @@ And in the corner was a desk with a computer for playing around with.
 			&lt;&lt;set _speaker = _bottom&gt;&gt;
 			&lt;&lt;set _pref = _bottom.sexpref&gt;&gt;
 		&lt;&lt;elseif _watcher &amp;&amp; !setup.isMC(_watcher)&gt;&gt;
-			&lt;&lt;set _speaker = _watcher&gt;&gt;
+			/* Test 
+			&lt;&lt;set _speaker = _watcher&gt;&gt; */
+			&lt;&lt;set _speaker = _top&gt;&gt;
 		&lt;&lt;else&gt;&gt;
 			&lt;&lt;return&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
@@ -15803,7 +16101,9 @@ And in the corner was a desk with a computer for playing around with.
 			&lt;&lt;set _speaker = _top&gt;&gt;
 			&lt;&lt;set _pref = _top.sexpref&gt;&gt;
 		&lt;&lt;elseif _watcher &amp;&amp; !setup.isMC(_watcher)&gt;&gt;
-			&lt;&lt;set _speaker = _watcher&gt;&gt;
+			/* Test 
+			&lt;&lt;set _speaker = _watcher&gt;&gt; */
+			&lt;&lt;set _speaker = _bottom&gt;&gt;
 		&lt;&lt;else&gt;&gt;
 			&lt;&lt;return&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
@@ -16462,7 +16762,7 @@ And in the corner was a desk with a computer for playing around with.
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if Array.isArray(_pool) &amp;&amp; _pool.length&gt;&gt;
-	&lt;&lt;= either(..._pool) &gt;&gt;
+	&quot;&lt;&lt;= either(..._pool) &gt;&gt;&quot;
 &lt;&lt;else&gt;&gt;
 	[Error] No Tease Cock/Pussy quote pool found.
 	(mode=&lt;&lt;= _mode &gt;&gt;, pref=&lt;&lt;= _pref &gt;&gt;)
@@ -16829,7 +17129,7 @@ And in the corner was a desk with a computer for playing around with.
 &lt;&lt;button &quot;Debug: Sex Encounter&quot;&gt;&gt;
 	&lt;&lt;DebugSetupSexEncounter&gt;&gt;
 	&lt;&lt;run Dialog.create(&quot;Propose sex with &quot; + $ui.npc.name).wikiPassage(&quot;UI-Attracted-check&quot;).open()&gt;&gt;
-	/*&lt;&lt;goto &quot;Sex-Encounter&quot;&gt;&gt;*/
+	
 &lt;&lt;/button&gt;&gt;
 
 &lt;br&gt;</tw-passagedata><tw-passagedata pid="169" name="Accept-Dialogue" tags="Dialogue nobr" position="950,775" size="100,100">&lt;&lt;set _personalities = _n.personality&gt;&gt;
@@ -17435,17 +17735,7 @@ And in the corner was a desk with a computer for playing around with.
 &lt;&lt;set $sex.furnitureFlags = $room.furnitureFlags&gt;&gt;
 
 /* arousal meter for encounter participants */
-&lt;&lt;if $sex.Top &amp;&amp; typeof $sex.Top.arousal !== &quot;number&quot;&gt;&gt;
-	&lt;&lt;set $sex.Top.arousal = 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if $sex.Bottom &amp;&amp; typeof $sex.Bottom.arousal !== &quot;number&quot;&gt;&gt;
-	&lt;&lt;set $sex.Bottom.arousal = 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if $sex.Watcher &amp;&amp; typeof $sex.Watcher.arousal !== &quot;number&quot;&gt;&gt;
-	&lt;&lt;set $sex.Watcher.arousal = 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;run setup.ensureSexArousal($sex)&gt;&gt;
 
 &lt;div id=&quot;sex-container&quot;&gt;
 	&lt;div id=&quot;arousal-ui&quot;&gt;
@@ -17792,6 +18082,7 @@ And in the corner was a desk with a computer for playing around with.
 		sexu: &quot;Bisexual&quot;,
 		pronouns: &quot;He/Him&quot;,
 		age: 21,
+		ageGroup: &quot;Adult&quot;,
 		heterochromia: false,
 		eyes: &quot;Blue&quot;,
 		hair: &quot;Bald&quot;,
@@ -17807,7 +18098,7 @@ And in the corner was a desk with a computer for playing around with.
 		origin: &quot;Debug&quot;,
 		traits: []
 	}&gt;&gt;
-
+	&lt;&lt;create-body $ui.npc&gt;&gt;
 	/* NPC B: test Bottom */
 	&lt;&lt;set $ui.npc2 = {
 		id: &quot;debug-alex&quot;,
@@ -17820,6 +18111,7 @@ And in the corner was a desk with a computer for playing around with.
 		sexu: &quot;Bisexual&quot;,
 		pronouns: &quot;She/Her&quot;,
 		age: 22,
+		ageGroup: &quot;Adult&quot;,
 		heterochromia: false,
 		eyes: &quot;Brown&quot;,
 		hair: &quot;Short&quot;,
@@ -17836,6 +18128,7 @@ And in the corner was a desk with a computer for playing around with.
 		origin: &quot;Debug&quot;,
 		traits: []
 	}&gt;&gt;
+	&lt;&lt;create-body $ui.npc2&gt;&gt;
 
 	/* Optional: name these clearly for debug use */
 	&lt;&lt;set $ui.sexTop = $ui.npc&gt;&gt;
@@ -19112,69 +19405,64 @@ And in the corner was a desk with a computer for playing around with.
 &lt;&lt;widget &quot;GetRoom&quot;&gt;&gt;
     &lt;&lt;if $gamelocation ==&quot;Your Room&quot;&gt;&gt;
         &lt;&lt;set $room = {
-        type: &quot;bedroom&quot;,
-        location: &quot;large floor&quot;,
-        furnitureFlags: setup.getRoomFurnitureFlags(&quot;bedroom&quot;)
+     		type: &quot;bedroom&quot;,
+        	location: &quot;large floor&quot;,
+        	furnitureFlags: setup.getRoomFurnitureFlags(&quot;bedroom&quot;)
         }&gt;&gt;
     &lt;&lt;elseif $gamelocation == &quot;Your Bathroom&quot;&gt;&gt;
         &lt;&lt;set $room = {
-        type: &quot;bathroom&quot;,
-        location: &quot;large floor&quot;,
-        furnitureFlags: setup.getRoomFurnitureFlags(&quot;bathroom&quot;)
+        	type: &quot;bathroom&quot;,
+        	location: &quot;large floor&quot;,
+        	furnitureFlags: setup.getRoomFurnitureFlags(&quot;bathroom&quot;)
         }&gt;&gt;
     &lt;&lt;elseif $gamelocation == &quot;Lounge&quot;&gt;&gt;
         &lt;&lt;set $room = {
-        type: &quot;lounge&quot;,
-        location: &quot;large floor&quot;,
-        furnitureFlags: setup.getRoomFurnitureFlags(&quot;lounge&quot;)
+        	type: &quot;lounge&quot;,
+        	location: &quot;large floor&quot;,
+        	furnitureFlags: setup.getRoomFurnitureFlags(&quot;lounge&quot;)
         }&gt;&gt;    
     &lt;&lt;/if&gt;&gt;    
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;RoomRelocationUI&quot;&gt;&gt;
-&lt;div id=&quot;UI-Location&quot;&gt;
-&lt;h3&gt;&lt;u&gt;Relocate&lt;/u&gt;&lt;/h3&gt;
+	&lt;div id=&quot;UI-Location&quot;&gt;
+		&lt;h3&gt;&lt;u&gt;Relocate&lt;/u&gt;&lt;/h3&gt;
+		&lt;&lt;set _roomDef = setup.RoomTypes.db[$room.type]&gt;&gt;
+		&lt;&lt;set _keys = Object.keys(_roomDef.contents)&gt;&gt;
 
-&lt;&lt;set _roomDef = setup.RoomTypes.db[$room.type]&gt;&gt;
-&lt;&lt;set _keys = Object.keys(_roomDef.contents)&gt;&gt;
+		&lt;ul class=&quot;inline-list relocation&quot;&gt;
+		&lt;&lt;for _i = 0; _i &lt; _keys.length; _i++&gt;&gt;
+    		&lt;&lt;set _furnKey = _keys[_i]&gt;&gt;
+    		&lt;&lt;set _furn = setup.RoomTypes.furniture[_furnKey]&gt;&gt;
 
-&lt;ul class=&quot;inline-list relocation&quot;&gt;
-&lt;&lt;for _i = 0; _i &lt; _keys.length; _i++&gt;&gt;
-    &lt;&lt;set _furnKey = _keys[_i]&gt;&gt;
-    &lt;&lt;set _furn = setup.RoomTypes.furniture[_furnKey]&gt;&gt;
-
-    &lt;&lt;if _furn&gt;&gt;
-    &lt;&lt;capture _furnKey, _furn&gt;&gt;
-    &lt;li&gt;
-        &lt;&lt;button _furn.label&gt;&gt;
-            &lt;&lt;set $debugLastRelocation = _furnKey&gt;&gt;
-            &lt;&lt;set $room.location = _furnKey&gt;&gt;
-            &lt;&lt;set $room.furnitureFlags = _furn.flags || []&gt;&gt;
-            &lt;&lt;set $sex.furnitureFlags = $room.furnitureFlags&gt;&gt;
-            &lt;&lt;run setup.ensureValidSexPosition($sex)&gt;&gt;
+    		&lt;&lt;if _furn&gt;&gt;
+    			&lt;&lt;capture _furnKey, _furn&gt;&gt;
+    				&lt;li&gt;
+        				&lt;&lt;button _furn.label&gt;&gt;
+            				&lt;&lt;set $debugLastRelocation = _furnKey&gt;&gt;
+            				&lt;&lt;set $room.location = _furnKey&gt;&gt;
+            				&lt;&lt;set $room.furnitureFlags = _furn.flags || []&gt;&gt;
+            				&lt;&lt;set $sex.furnitureFlags = $room.furnitureFlags&gt;&gt;
+            				&lt;&lt;run setup.ensureValidSexPosition($sex)&gt;&gt;
             
-            &lt;&lt;replace &quot;#sex-container&quot;&gt;&gt;
-				&lt;div id=&quot;arousal-ui&quot;&gt;
-					&lt;&lt;ArousalUI&gt;&gt;
-				&lt;/div&gt;
-                &lt;&lt;SexEncounterUI&gt;&gt;
-                &lt;&lt;RoomRelocationUI&gt;&gt;
-            &lt;&lt;/replace&gt;&gt;
+            				&lt;&lt;replace &quot;#sex-container&quot;&gt;&gt;
+								&lt;div id=&quot;arousal-ui&quot;&gt;&lt;&lt;ArousalUI&gt;&gt;&lt;/div&gt;
+                				&lt;&lt;SexEncounterUI&gt;&gt;
+                				&lt;&lt;RoomRelocationUI&gt;&gt;
+            				&lt;&lt;/replace&gt;&gt;
 
-            &lt;&lt;replace &quot;#log&quot;&gt;&gt;
-                &lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;
-			&lt;&lt;/replace&gt;&gt;
-        &lt;&lt;/button&gt;&gt;
+            				&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;include &quot;PositionDialogue&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+        				&lt;&lt;/button&gt;&gt;
 
-        &lt;&lt;if $room.location is _furnKey&gt;&gt;
-            &lt;span class=&quot;current-location&quot;&gt; (current)&lt;/span&gt;
-        &lt;&lt;/if&gt;&gt;
-    &lt;/li&gt;
-    &lt;&lt;/capture&gt;&gt;
-    &lt;&lt;/if&gt;&gt;
-&lt;&lt;/for&gt;&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
+        				&lt;&lt;if $room.location is _furnKey&gt;&gt;
+            				&lt;span class=&quot;current-location&quot;&gt; (current)&lt;/span&gt;
+        				&lt;&lt;/if&gt;&gt;
+    				&lt;/li&gt;
+    			&lt;&lt;/capture&gt;&gt;
+    		&lt;&lt;/if&gt;&gt;
+		&lt;&lt;/for&gt;&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;RenderActQuote&quot;&gt;&gt;
@@ -19234,7 +19522,6 @@ And in the corner was a desk with a computer for playing around with.
 		&lt;&lt;run setup.debug.quote(&quot;RenderAftercareQuote&quot;, &quot;Orgasm-Quote&quot;, {
 			reason: &quot;Aftercare entry quote&quot;
 		})&gt;&gt;
-
 		&lt;&lt;include &quot;Orgasm-Quote&quot;&gt;&gt;
 
 	&lt;&lt;else&gt;&gt;
@@ -19255,36 +19542,23 @@ And in the corner was a desk with a computer for playing around with.
 	actExists: !!(setup.sexacts &amp;&amp; setup.sexacts[_a])
 	})&gt;&gt;
 	&lt;&lt;set _actDef = setup.sexacts[_a]&gt;&gt;
-	&lt;&lt;set _isStopAction = _actDef
-		&amp;&amp; Array.isArray(_actDef[&quot;action type&quot;])
-		&amp;&amp; _actDef[&quot;action type&quot;].includes(&quot;end&quot;)
-	&gt;&gt;
+	&lt;&lt;set _isStopAction = _actDef &amp;&amp; Array.isArray(_actDef[&quot;action type&quot;]) &amp;&amp; _actDef[&quot;action type&quot;].includes(&quot;end&quot;)&gt;&gt;
 	&lt;&lt;set _handleMute = Array.isArray(_n.traits) &amp;&amp; _n.traits.includes(&quot;Mute&quot;)&gt;&gt;
 	&lt;&lt;set _climaxQuotePassage = _handleMute
 		? &quot;Act-Quote-React&quot;
 		: either(&quot;Orgasm-Close-Quote&quot;, &quot;Act-Quote-React&quot;)&gt;&gt;
-
 	&lt;&lt;run
 		const act = setup.sexacts[_a];
-
 		setup.applySexAct($sex, _a);
-
 		setup.syncMcSexRole($sex);
-
 		if (_wasAftercare) {
 			$sex.phase = &quot;aftercare&quot;;
 			$sex.cumReady = false;
 			$sex.climax = { Top: false, Bottom: false };
 		}
-
 		setup.updateBindings();
 		setup.updateCumLocations($sex);
 	&gt;&gt;
-	/*&lt;&lt;run
-		setup.applySexAct($sex, _a);
-		setup.updateBindings();
-		setup.updateCumLocations($sex);
-	&gt;&gt;*/
 	&lt;&lt;run setup.debug.log(&quot;STATE&quot;, &quot;After HandleSexAct state update&quot;, {
 		action: _a,
 		phase: $sex.phase,
@@ -19295,9 +19569,6 @@ And in the corner was a desk with a computer for playing around with.
 	})&gt;&gt;
 	&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace &quot;#log&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-	
-	
-	/*&lt;&lt;if $sex.phase == &quot;climax&quot;&gt;&gt;*/
 	
 	&lt;&lt;if $sex.phase == &quot;aftercare&quot;&gt;&gt;
 		&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
@@ -19312,7 +19583,6 @@ And in the corner was a desk with a computer for playing around with.
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;replace &quot;#intro&quot;&gt;&gt;
 			&lt;&lt;include &quot;ActDialogue&quot;&gt;&gt;
-
 			&lt;&lt;if !_isStopAction&gt;&gt;
 				&lt;&lt;RenderActQuote _handleMute&gt;&gt;
 			&lt;&lt;/if&gt;&gt;
@@ -19333,9 +19603,7 @@ And in the corner was a desk with a computer for playing around with.
 
 &lt;div id=&quot;sexUI&quot;&gt;
 	&lt;&lt;if $devMode&gt;&gt;
-		&lt;div id=&quot;dialogue-debug-root&quot;&gt;
-			&lt;&lt;DialogueDebuggerBody&gt;&gt;
-		&lt;/div&gt;
+		&lt;div id=&quot;dialogue-debug-root&quot;&gt;&lt;&lt;DialogueDebuggerBody&gt;&gt;&lt;/div&gt;
 	&lt;&lt;/if&gt;&gt;
 	&lt;!-- ===================== --&gt;
 	&lt;!-- INFO PANEL --&gt;
@@ -19359,8 +19627,24 @@ And in the corner was a desk with a computer for playing around with.
 			&lt;&lt;= setup.describePenetration($sex) &gt;&gt;&lt;br&gt;
 		&lt;&lt;/if&gt;&gt;
 
-		&lt;&lt;button &quot;Inspect NPC&quot;&gt;&gt;
+		/*&lt;&lt;button &quot;Inspect NPC&quot;&gt;&gt;
 			&lt;&lt;WithNPC _n&gt;&gt;
+			&lt;&lt;run Dialog
+				.create(&quot;NPC: &quot; + $ui.npc.name)
+				.wikiPassage(&quot;NPC-Inspect&quot;)
+				.open()
+			&gt;&gt;
+		&lt;&lt;/button&gt;&gt;*/
+		&lt;&lt;button &quot;Inspect Top&quot;&gt;&gt;
+			&lt;&lt;WithNPC _top&gt;&gt;
+			&lt;&lt;run Dialog
+				.create(&quot;NPC: &quot; + $ui.npc.name)
+				.wikiPassage(&quot;NPC-Inspect&quot;)
+				.open()
+			&gt;&gt;
+		&lt;&lt;/button&gt;&gt;
+		&lt;&lt;button &quot;Inspect Bottom&quot;&gt;&gt;
+			&lt;&lt;WithNPC _bottom&gt;&gt;
 			&lt;&lt;run Dialog
 				.create(&quot;NPC: &quot; + $ui.npc.name)
 				.wikiPassage(&quot;NPC-Inspect&quot;)
@@ -19382,8 +19666,7 @@ And in the corner was a desk with a computer for playing around with.
 					&lt;&lt;set $sex.controlRole = &quot;Bottom&quot;&gt;&gt;
 					&lt;&lt;RefreshSexDisplay&gt;&gt;
 				&lt;&lt;/button&gt;&gt;
-			&lt;/div&gt;
-			&lt;br&gt;
+			&lt;/div&gt;&lt;br&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;/div&gt;
 
@@ -19436,7 +19719,6 @@ And in the corner was a desk with a computer for playing around with.
 										&lt;&lt;button _p&gt;&gt;
 											&lt;&lt;set $sex.previousPosition = $sex.position&gt;&gt;
 											&lt;&lt;set $sex.position = _p&gt;&gt;
-
 											&lt;&lt;replace &quot;#sexUI&quot;&gt;&gt;&lt;&lt;SexEncounterUI&gt;&gt;&lt;&lt;/replace&gt;&gt;
 											&lt;&lt;replace &quot;#intro&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 											&lt;&lt;replace &quot;#log&quot;&gt;&gt;
@@ -19454,7 +19736,6 @@ And in the corner was a desk with a computer for playing around with.
 				&lt;!-- ACTS --&gt;
 				&lt;h3&gt;Available Acts&lt;/h3&gt;
 
-				
 				&lt;&lt;if $sex.phase == &quot;aftercare&quot;&gt;&gt;
 					&lt;&lt;if _acts.length === 0&gt;&gt;
 						&lt;i&gt;None (for this position/phase/parts).&lt;/i&gt;
@@ -19490,7 +19771,6 @@ And in the corner was a desk with a computer for playing around with.
 							&lt;/li&gt;
 						&lt;/ul&gt;
 					&lt;&lt;/if&gt;&gt;
-
 				&lt;&lt;else&gt;&gt;
 					&lt;&lt;if _acts.length === 0&gt;&gt;
 						&lt;i&gt;None (for this position/phase/parts).&lt;/i&gt;
@@ -19531,69 +19811,62 @@ And in the corner was a desk with a computer for playing around with.
 
 
 &lt;&lt;widget &quot;ArousalUI&quot;&gt;&gt;
-&lt;&lt;set _top = $sex &amp;&amp; $sex.Top ? $sex.Top : null&gt;&gt;
-&lt;&lt;set _bottom = $sex &amp;&amp; $sex.Bottom ? $sex.Bottom : null&gt;&gt;
-&lt;&lt;set _watcher = $sex &amp;&amp; $sex.Watcher ? $sex.Watcher : null&gt;&gt;
+	&lt;&lt;set _top = $sex &amp;&amp; $sex.Top ? $sex.Top : null&gt;&gt;
+	&lt;&lt;set _bottom = $sex &amp;&amp; $sex.Bottom ? $sex.Bottom : null&gt;&gt;
+	&lt;&lt;set _watcher = $sex &amp;&amp; $sex.Watcher ? $sex.Watcher : null&gt;&gt;
 
-&lt;&lt;if _top &amp;&amp; typeof _top.arousal !== &quot;number&quot;&gt;&gt;
-	&lt;&lt;set _top.arousal = 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+	&lt;&lt;run setup.ensureSexArousal($sex)&gt;&gt;
 
-&lt;&lt;if _bottom &amp;&amp; typeof _bottom.arousal !== &quot;number&quot;&gt;&gt;
-	&lt;&lt;set _bottom.arousal = 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if _watcher &amp;&amp; typeof _watcher.arousal !== &quot;number&quot;&gt;&gt;
-	&lt;&lt;set _watcher.arousal = 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if !_top or !_bottom&gt;&gt;
-	&lt;div class=&quot;arousal-ui&quot;&gt;
-		&lt;b&gt;Arousal&lt;/b&gt;&lt;br&gt;
-		&lt;span class=&quot;red&quot;&gt;[Debug Error] Missing Top or Bottom.&lt;/span&gt;&lt;br&gt;
-		Top: &lt;&lt;= _top ? _top.name : &quot;None&quot; &gt;&gt;&lt;br&gt;
-		Bottom: &lt;&lt;= _bottom ? _bottom.name : &quot;None&quot; &gt;&gt;
-	&lt;/div&gt;
-	&lt;&lt;return&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;div class=&quot;arousal-ui&quot;&gt;
-	&lt;div class=&quot;arousal-title&quot;&gt;Arousal&lt;/div&gt;
-
-	&lt;div class=&quot;arousal-grid&quot;&gt;
-		&lt;div class=&quot;arousal-card&quot;&gt;
-			&lt;div class=&quot;arousal-row&quot;&gt;
-				&lt;span class=&quot;arousal-name&quot;&gt;&lt;&lt;if _bottom == $mc&gt;&gt;&lt;b&gt;YOU&lt;/b&gt; &lt;&lt;/if&gt;&gt;&lt;&lt;print &quot;Bottom: &quot; + $sex.Bottom.name&gt;&gt;&lt;/span&gt;
-				&lt;span class=&quot;arousal-value&quot;&gt;&lt;&lt;print $sex.Bottom.arousal&gt;&gt;/1000&lt;/span&gt;
-			&lt;/div&gt;
-			&lt;div class=&quot;arousal-bar&quot;&gt;
-				&lt;div
-					class=&quot;arousal-fill bottom&quot;
-					@style=&quot;&#39;width:&#39; + Math.min(100, (($sex.Bottom.arousal || 0) / 1000) * 100) + &#39;%;&#39;&quot;&gt;
-				&lt;/div&gt;
-			&lt;/div&gt;
+	&lt;&lt;set _topArousal = _top ? setup.getArousal($sex, _top) : 0&gt;&gt;
+	&lt;&lt;set _bottomArousal = _bottom ? setup.getArousal($sex, _bottom) : 0&gt;&gt;
+	&lt;&lt;set _watcherArousal = _watcher ? setup.getArousal($sex, _watcher) : 0&gt;&gt;
+	&lt;&lt;if !_top or !_bottom&gt;&gt;
+		&lt;div class=&quot;arousal-ui&quot;&gt;
+			&lt;b&gt;Arousal&lt;/b&gt;&lt;br&gt;
+			&lt;span class=&quot;red&quot;&gt;[Debug Error] Missing Top or Bottom.&lt;/span&gt;&lt;br&gt;
+			Top: &lt;&lt;= _top ? _top.name : &quot;None&quot; &gt;&gt;&lt;br&gt;
+			Bottom: &lt;&lt;= _bottom ? _bottom.name : &quot;None&quot; &gt;&gt;
 		&lt;/div&gt;
-
-		&lt;div class=&quot;arousal-card&quot;&gt;
-			&lt;div class=&quot;arousal-row&quot;&gt;
-				&lt;span class=&quot;arousal-name&quot;&gt;&lt;&lt;if _top == $mc&gt;&gt;&lt;b&gt;YOU&lt;/b&gt; &lt;&lt;/if&gt;&gt;&lt;&lt;print &quot;Top: &quot; + $sex.Top.name&gt;&gt;&lt;/span&gt;
-				&lt;span class=&quot;arousal-value&quot;&gt;&lt;&lt;print $sex.Top.arousal&gt;&gt;/1000&lt;/span&gt;
-			&lt;/div&gt;
-			&lt;div class=&quot;arousal-bar&quot;&gt;
-				&lt;div
-					class=&quot;arousal-fill top&quot;
-					@style=&quot;&#39;width:&#39; + Math.min(100, (($sex.Top.arousal || 0) / 1000) * 100) + &#39;%;&#39;&quot;&gt;
-				&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-
-	&lt;&lt;if $devMode&gt;&gt;
-		&lt;div class=&quot;arousal-dev&quot;&gt;
-			&lt;div&gt;&lt;b&gt;Top Cum Locations:&lt;/b&gt; &lt;&lt;print $sex.Top.cumLocation&gt;&gt;&lt;/div&gt;
-			&lt;div&gt;&lt;b&gt;Bottom Cum Locations:&lt;/b&gt; &lt;&lt;print $sex.Bottom.cumLocation&gt;&gt;&lt;/div&gt;
-		&lt;/div&gt;
+		&lt;&lt;return&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;/div&gt;
+	&lt;div class=&quot;arousal-ui&quot;&gt;
+		&lt;div class=&quot;arousal-title&quot;&gt;Arousal&lt;/div&gt;
+
+		&lt;div class=&quot;arousal-grid&quot;&gt;
+			&lt;div class=&quot;arousal-card&quot;&gt;
+				&lt;div class=&quot;arousal-row&quot;&gt;
+					&lt;span class=&quot;arousal-name&quot;&gt;&lt;&lt;if _bottom == $mc&gt;&gt;&lt;b&gt;YOU&lt;/b&gt; &lt;&lt;/if&gt;&gt;&lt;&lt;print &quot;Bottom: &quot; + $sex.Bottom.name&gt;&gt;&lt;/span&gt;
+					&lt;span class=&quot;arousal-value&quot;&gt;&lt;&lt;print _bottomArousal&gt;&gt;/1000&lt;/span&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;arousal-bar&quot;&gt;
+					&lt;div
+						class=&quot;arousal-fill bottom&quot;
+						@style=&quot;&#39;width:&#39; + Math.min(100, (_bottomArousal / 1000) * 100) + &#39;%;&#39;&quot;&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+
+			&lt;div class=&quot;arousal-card&quot;&gt;
+				&lt;div class=&quot;arousal-row&quot;&gt;
+					&lt;span class=&quot;arousal-name&quot;&gt;&lt;&lt;if _top == $mc&gt;&gt;&lt;b&gt;YOU&lt;/b&gt; &lt;&lt;/if&gt;&gt;&lt;&lt;print &quot;Top: &quot; + $sex.Top.name&gt;&gt;&lt;/span&gt;
+					&lt;span class=&quot;arousal-value&quot;&gt;&lt;&lt;print _topArousal&gt;&gt;/1000&lt;/span&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;arousal-bar&quot;&gt;
+					&lt;div
+						class=&quot;arousal-fill top&quot;
+						@style=&quot;&#39;width:&#39; + Math.min(100, (_topArousal / 1000) * 100) + &#39;%;&#39;&quot;&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;&lt;if $devMode&gt;&gt;
+			&lt;div class=&quot;arousal-dev&quot;&gt;
+				&lt;div&gt;&lt;b&gt;Top Cum Locations:&lt;/b&gt; &lt;&lt;print $sex.Top.cumLocation&gt;&gt;&lt;/div&gt;
+				&lt;div&gt;&lt;b&gt;Bottom Cum Locations:&lt;/b&gt; &lt;&lt;print $sex.Bottom.cumLocation&gt;&gt;&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;&lt;/if&gt;&gt;
+	&lt;/div&gt;
 &lt;&lt;/widget&gt;&gt;
 
 

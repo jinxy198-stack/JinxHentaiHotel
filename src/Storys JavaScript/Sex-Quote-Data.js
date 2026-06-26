@@ -1671,6 +1671,24 @@ setup.orgasmcloseQuotes = {
           "Aaaah!!"
         ]
       },
+      /*Test? */
+      "Fuck Ass": {  
+        Dominant: [
+        "I'm gonna cum in your ass!",
+        "I'm gonna pump you full of my cum!",
+        "Here it comes!"
+        ],
+        Submissive: [
+          "I'm... gonna cum!", 
+          "A-agh!! AaaHhhh!!!",
+          "I can't hold it anymore!"
+        ],
+        Switch: [
+          "I'm gonna cum in your ass!", 
+          "I'm cumming!",
+          "Aaaah!!"
+        ]
+      },
       "Pump Shaft": {
         Childish:["I'm ready for some facepaint!"],
         Dominant: ["Don't stop jerking it, I'm so close!"],
@@ -1710,7 +1728,8 @@ setup.orgasmcloseQuotes = {
       Childish: [
       "Hehe, you ready to splooge?"
       ],
-      "Fuck Ass": {  
+
+      /*"Fuck Ass": {  
         Dominant: [
           "Cum in my ass!",
           "Fill my ass with your spunk!"
@@ -1720,6 +1739,23 @@ setup.orgasmcloseQuotes = {
         ],
         Switch: [
           "C-cum in me!"
+        ]
+      },*/
+      "Fuck Ass": {  
+        Dominant: [
+        "I'm gonna cum in your ass!",
+        "I'm gonna pump you full of my cum!",
+        "Here it comes!"
+        ],
+        Submissive: [
+          "I'm... gonna cum!", 
+          "A-agh!! AaaHhhh!!!",
+          "I can't hold it anymore!"
+        ],
+        Switch: [
+          "I'm gonna cum in your ass!", 
+          "I'm cumming!",
+          "Aaaah!!"
         ]
       },
       Handjob: {

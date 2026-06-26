@@ -19,7 +19,7 @@
 <<button "Debug: Sex Encounter">>
 	<<DebugSetupSexEncounter>>
 	<<run Dialog.create("Propose sex with " + $ui.npc.name).wikiPassage("UI-Attracted-check").open()>>
-	/*<<goto "Sex-Encounter">>*/
+	
 <</button>>
 
 <br>

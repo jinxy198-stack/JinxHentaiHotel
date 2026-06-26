@@ -30,6 +30,7 @@
 		sexu: "Bisexual",
 		pronouns: "He/Him",
 		age: 21,
+		ageGroup: "Adult",
 		heterochromia: false,
 		eyes: "Blue",
 		hair: "Bald",
@@ -45,7 +46,7 @@
 		origin: "Debug",
 		traits: []
 	}>>
-
+	<<create-body $ui.npc>>
 	/* NPC B: test Bottom */
 	<<set $ui.npc2 = {
 		id: "debug-alex",
@@ -58,6 +59,7 @@
 		sexu: "Bisexual",
 		pronouns: "She/Her",
 		age: 22,
+		ageGroup: "Adult",
 		heterochromia: false,
 		eyes: "Brown",
 		hair: "Short",
@@ -74,6 +76,7 @@
 		origin: "Debug",
 		traits: []
 	}>>
+	<<create-body $ui.npc2>>
 
 	/* Optional: name these clearly for debug use */
 	<<set $ui.sexTop = $ui.npc>>

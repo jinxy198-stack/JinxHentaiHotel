@@ -4,69 +4,64 @@
 <<widget "GetRoom">>
     <<if $gamelocation =="Your Room">>
         <<set $room = {
-        type: "bedroom",
-        location: "large floor",
-        furnitureFlags: setup.getRoomFurnitureFlags("bedroom")
+     		type: "bedroom",
+        	location: "large floor",
+        	furnitureFlags: setup.getRoomFurnitureFlags("bedroom")
         }>>
     <<elseif $gamelocation == "Your Bathroom">>
         <<set $room = {
-        type: "bathroom",
-        location: "large floor",
-        furnitureFlags: setup.getRoomFurnitureFlags("bathroom")
+        	type: "bathroom",
+        	location: "large floor",
+        	furnitureFlags: setup.getRoomFurnitureFlags("bathroom")
         }>>
     <<elseif $gamelocation == "Lounge">>
         <<set $room = {
-        type: "lounge",
-        location: "large floor",
-        furnitureFlags: setup.getRoomFurnitureFlags("lounge")
+        	type: "lounge",
+        	location: "large floor",
+        	furnitureFlags: setup.getRoomFurnitureFlags("lounge")
         }>>    
     <</if>>    
 <</widget>>
 
 <<widget "RoomRelocationUI">>
-<div id="UI-Location">
-<h3><u>Relocate</u></h3>
+	<div id="UI-Location">
+		<h3><u>Relocate</u></h3>
+		<<set _roomDef = setup.RoomTypes.db[$room.type]>>
+		<<set _keys = Object.keys(_roomDef.contents)>>
 
-<<set _roomDef = setup.RoomTypes.db[$room.type]>>
-<<set _keys = Object.keys(_roomDef.contents)>>
+		<ul class="inline-list relocation">
+		<<for _i = 0; _i < _keys.length; _i++>>
+    		<<set _furnKey = _keys[_i]>>
+    		<<set _furn = setup.RoomTypes.furniture[_furnKey]>>
 
-<ul class="inline-list relocation">
-<<for _i = 0; _i < _keys.length; _i++>>
-    <<set _furnKey = _keys[_i]>>
-    <<set _furn = setup.RoomTypes.furniture[_furnKey]>>
-
-    <<if _furn>>
-    <<capture _furnKey, _furn>>
-    <li>
-        <<button _furn.label>>
-            <<set $debugLastRelocation = _furnKey>>
-            <<set $room.location = _furnKey>>
-            <<set $room.furnitureFlags = _furn.flags || []>>
-            <<set $sex.furnitureFlags = $room.furnitureFlags>>
-            <<run setup.ensureValidSexPosition($sex)>>
+    		<<if _furn>>
+    			<<capture _furnKey, _furn>>
+    				<li>
+        				<<button _furn.label>>
+            				<<set $debugLastRelocation = _furnKey>>
+            				<<set $room.location = _furnKey>>
+            				<<set $room.furnitureFlags = _furn.flags || []>>
+            				<<set $sex.furnitureFlags = $room.furnitureFlags>>
+            				<<run setup.ensureValidSexPosition($sex)>>
             
-            <<replace "#sex-container">>
-				<div id="arousal-ui">
-					<<ArousalUI>>
-				</div>
-                <<SexEncounterUI>>
-                <<RoomRelocationUI>>
-            <</replace>>
+            				<<replace "#sex-container">>
+								<div id="arousal-ui"><<ArousalUI>></div>
+                				<<SexEncounterUI>>
+                				<<RoomRelocationUI>>
+            				<</replace>>
 
-            <<replace "#log">>
-                <<include "PositionDialogue">>
-			<</replace>>
-        <</button>>
+            				<<replace "#log">><<include "PositionDialogue">><</replace>>
+        				<</button>>
 
-        <<if $room.location is _furnKey>>
-            <span class="current-location"> (current)</span>
-        <</if>>
-    </li>
-    <</capture>>
-    <</if>>
-<</for>>
-</ul>
-</div>
+        				<<if $room.location is _furnKey>>
+            				<span class="current-location"> (current)</span>
+        				<</if>>
+    				</li>
+    			<</capture>>
+    		<</if>>
+		<</for>>
+		</ul>
+	</div>
 <</widget>>
 
 <<widget "RenderActQuote">>
@@ -126,7 +121,6 @@
 		<<run setup.debug.quote("RenderAftercareQuote", "Orgasm-Quote", {
 			reason: "Aftercare entry quote"
 		})>>
-
 		<<include "Orgasm-Quote">>
 
 	<<else>>
@@ -147,36 +141,23 @@
 	actExists: !!(setup.sexacts && setup.sexacts[_a])
 	})>>
 	<<set _actDef = setup.sexacts[_a]>>
-	<<set _isStopAction = _actDef
-		&& Array.isArray(_actDef["action type"])
-		&& _actDef["action type"].includes("end")
-	>>
+	<<set _isStopAction = _actDef && Array.isArray(_actDef["action type"]) && _actDef["action type"].includes("end")>>
 	<<set _handleMute = Array.isArray(_n.traits) && _n.traits.includes("Mute")>>
 	<<set _climaxQuotePassage = _handleMute
 		? "Act-Quote-React"
 		: either("Orgasm-Close-Quote", "Act-Quote-React")>>
-
 	<<run
 		const act = setup.sexacts[_a];
-
 		setup.applySexAct($sex, _a);
-
 		setup.syncMcSexRole($sex);
-
 		if (_wasAftercare) {
 			$sex.phase = "aftercare";
 			$sex.cumReady = false;
 			$sex.climax = { Top: false, Bottom: false };
 		}
-
 		setup.updateBindings();
 		setup.updateCumLocations($sex);
 	>>
-	/*<<run
-		setup.applySexAct($sex, _a);
-		setup.updateBindings();
-		setup.updateCumLocations($sex);
-	>>*/
 	<<run setup.debug.log("STATE", "After HandleSexAct state update", {
 		action: _a,
 		phase: $sex.phase,
@@ -187,9 +168,6 @@
 	})>>
 	<<replace "#sexUI">><<SexEncounterUI>><</replace>>
 	<<replace "#log">><</replace>>
-	
-	
-	/*<<if $sex.phase == "climax">>*/
 	
 	<<if $sex.phase == "aftercare">>
 		<<replace "#intro">>
@@ -204,7 +182,6 @@
 	<<else>>
 		<<replace "#intro">>
 			<<include "ActDialogue">>
-
 			<<if !_isStopAction>>
 				<<RenderActQuote _handleMute>>
 			<</if>>
@@ -225,9 +202,7 @@
 
 <div id="sexUI">
 	<<if $devMode>>
-		<div id="dialogue-debug-root">
-			<<DialogueDebuggerBody>>
-		</div>
+		<div id="dialogue-debug-root"><<DialogueDebuggerBody>></div>
 	<</if>>
 	<!-- ===================== -->
 	<!-- INFO PANEL -->
@@ -251,8 +226,24 @@
 			<<= setup.describePenetration($sex) >><br>
 		<</if>>
 
-		<<button "Inspect NPC">>
+		/*<<button "Inspect NPC">>
 			<<WithNPC _n>>
+			<<run Dialog
+				.create("NPC: " + $ui.npc.name)
+				.wikiPassage("NPC-Inspect")
+				.open()
+			>>
+		<</button>>*/
+		<<button "Inspect Top">>
+			<<WithNPC _top>>
+			<<run Dialog
+				.create("NPC: " + $ui.npc.name)
+				.wikiPassage("NPC-Inspect")
+				.open()
+			>>
+		<</button>>
+		<<button "Inspect Bottom">>
+			<<WithNPC _bottom>>
 			<<run Dialog
 				.create("NPC: " + $ui.npc.name)
 				.wikiPassage("NPC-Inspect")
@@ -274,8 +265,7 @@
 					<<set $sex.controlRole = "Bottom">>
 					<<RefreshSexDisplay>>
 				<</button>>
-			</div>
-			<br>
+			</div><br>
 		<</if>>
 	</div>
 
@@ -328,7 +318,6 @@
 										<<button _p>>
 											<<set $sex.previousPosition = $sex.position>>
 											<<set $sex.position = _p>>
-
 											<<replace "#sexUI">><<SexEncounterUI>><</replace>>
 											<<replace "#intro">><</replace>>
 											<<replace "#log">>
@@ -346,7 +335,6 @@
 				<!-- ACTS -->
 				<h3>Available Acts</h3>
 
-				
 				<<if $sex.phase == "aftercare">>
 					<<if _acts.length === 0>>
 						<i>None (for this position/phase/parts).</i>
@@ -382,7 +370,6 @@
 							</li>
 						</ul>
 					<</if>>
-
 				<<else>>
 					<<if _acts.length === 0>>
 						<i>None (for this position/phase/parts).</i>
@@ -423,69 +410,62 @@
 
 
 <<widget "ArousalUI">>
-<<set _top = $sex && $sex.Top ? $sex.Top : null>>
-<<set _bottom = $sex && $sex.Bottom ? $sex.Bottom : null>>
-<<set _watcher = $sex && $sex.Watcher ? $sex.Watcher : null>>
+	<<set _top = $sex && $sex.Top ? $sex.Top : null>>
+	<<set _bottom = $sex && $sex.Bottom ? $sex.Bottom : null>>
+	<<set _watcher = $sex && $sex.Watcher ? $sex.Watcher : null>>
 
-<<if _top && typeof _top.arousal !== "number">>
-	<<set _top.arousal = 0>>
-<</if>>
+	<<run setup.ensureSexArousal($sex)>>
 
-<<if _bottom && typeof _bottom.arousal !== "number">>
-	<<set _bottom.arousal = 0>>
-<</if>>
-
-<<if _watcher && typeof _watcher.arousal !== "number">>
-	<<set _watcher.arousal = 0>>
-<</if>>
-
-<<if !_top or !_bottom>>
-	<div class="arousal-ui">
-		<b>Arousal</b><br>
-		<span class="red">[Debug Error] Missing Top or Bottom.</span><br>
-		Top: <<= _top ? _top.name : "None" >><br>
-		Bottom: <<= _bottom ? _bottom.name : "None" >>
-	</div>
-	<<return>>
-<</if>>
-<div class="arousal-ui">
-	<div class="arousal-title">Arousal</div>
-
-	<div class="arousal-grid">
-		<div class="arousal-card">
-			<div class="arousal-row">
-				<span class="arousal-name"><<if _bottom == $mc>><b>YOU</b> <</if>><<print "Bottom: " + $sex.Bottom.name>></span>
-				<span class="arousal-value"><<print $sex.Bottom.arousal>>/1000</span>
-			</div>
-			<div class="arousal-bar">
-				<div
-					class="arousal-fill bottom"
-					@style="'width:' + Math.min(100, (($sex.Bottom.arousal || 0) / 1000) * 100) + '%;'">
-				</div>
-			</div>
+	<<set _topArousal = _top ? setup.getArousal($sex, _top) : 0>>
+	<<set _bottomArousal = _bottom ? setup.getArousal($sex, _bottom) : 0>>
+	<<set _watcherArousal = _watcher ? setup.getArousal($sex, _watcher) : 0>>
+	<<if !_top or !_bottom>>
+		<div class="arousal-ui">
+			<b>Arousal</b><br>
+			<span class="red">[Debug Error] Missing Top or Bottom.</span><br>
+			Top: <<= _top ? _top.name : "None" >><br>
+			Bottom: <<= _bottom ? _bottom.name : "None" >>
 		</div>
-
-		<div class="arousal-card">
-			<div class="arousal-row">
-				<span class="arousal-name"><<if _top == $mc>><b>YOU</b> <</if>><<print "Top: " + $sex.Top.name>></span>
-				<span class="arousal-value"><<print $sex.Top.arousal>>/1000</span>
-			</div>
-			<div class="arousal-bar">
-				<div
-					class="arousal-fill top"
-					@style="'width:' + Math.min(100, (($sex.Top.arousal || 0) / 1000) * 100) + '%;'">
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<<if $devMode>>
-		<div class="arousal-dev">
-			<div><b>Top Cum Locations:</b> <<print $sex.Top.cumLocation>></div>
-			<div><b>Bottom Cum Locations:</b> <<print $sex.Bottom.cumLocation>></div>
-		</div>
+		<<return>>
 	<</if>>
-</div>
+	<div class="arousal-ui">
+		<div class="arousal-title">Arousal</div>
+
+		<div class="arousal-grid">
+			<div class="arousal-card">
+				<div class="arousal-row">
+					<span class="arousal-name"><<if _bottom == $mc>><b>YOU</b> <</if>><<print "Bottom: " + $sex.Bottom.name>></span>
+					<span class="arousal-value"><<print _bottomArousal>>/1000</span>
+				</div>
+				<div class="arousal-bar">
+					<div
+						class="arousal-fill bottom"
+						@style="'width:' + Math.min(100, (_bottomArousal / 1000) * 100) + '%;'">
+					</div>
+				</div>
+			</div>
+
+			<div class="arousal-card">
+				<div class="arousal-row">
+					<span class="arousal-name"><<if _top == $mc>><b>YOU</b> <</if>><<print "Top: " + $sex.Top.name>></span>
+					<span class="arousal-value"><<print _topArousal>>/1000</span>
+				</div>
+				<div class="arousal-bar">
+					<div
+						class="arousal-fill top"
+						@style="'width:' + Math.min(100, (_topArousal / 1000) * 100) + '%;'">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<<if $devMode>>
+			<div class="arousal-dev">
+				<div><b>Top Cum Locations:</b> <<print $sex.Top.cumLocation>></div>
+				<div><b>Bottom Cum Locations:</b> <<print $sex.Bottom.cumLocation>></div>
+			</div>
+		<</if>>
+	</div>
 <</widget>>
 
 

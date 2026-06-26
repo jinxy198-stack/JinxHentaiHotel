@@ -115,17 +115,7 @@
 <<set $sex.furnitureFlags = $room.furnitureFlags>>
 
 /* arousal meter for encounter participants */
-<<if $sex.Top && typeof $sex.Top.arousal !== "number">>
-	<<set $sex.Top.arousal = 0>>
-<</if>>
-
-<<if $sex.Bottom && typeof $sex.Bottom.arousal !== "number">>
-	<<set $sex.Bottom.arousal = 0>>
-<</if>>
-
-<<if $sex.Watcher && typeof $sex.Watcher.arousal !== "number">>
-	<<set $sex.Watcher.arousal = 0>>
-<</if>>
+<<run setup.ensureSexArousal($sex)>>
 
 <div id="sex-container">
 	<div id="arousal-ui">
