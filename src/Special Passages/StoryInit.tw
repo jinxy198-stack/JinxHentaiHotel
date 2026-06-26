@@ -12,7 +12,7 @@
 <<set $ui = {}>>
 <<set $lastNpc = null>>
 <<set $npcMemory = {}>>
-<<set $devMode = false>>
+<<set $devMode = true>>
 <<if !$debug>>
 	<<set $debug = {
 		enabled: false,

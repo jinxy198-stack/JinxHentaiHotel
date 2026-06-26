@@ -4,6 +4,6 @@
 <<if $sex.role == "Top">>
     <<ref _top 'subjcap'>> part <<ref _top 'poss'>> thighs as <<ref _bottom 'subj'>> <<verb _bottom 'kneel'>> between them.
 <<elseif $sex.role == "Bottom">>
-    <<ref _bottom 'subj'>> parts <<ref _bottom 'poss'>> thighs as <<ref _top 'subj'>> <<verb _top 'kneel'>> between them.
+    <<ref _bottom 'subjcap'>> <<verb _bottom 'part'>> <<ref _bottom 'poss'>> thighs as <<ref _top 'subj'>> <<verb _top 'kneel'>> between them.
 
 <</if>>

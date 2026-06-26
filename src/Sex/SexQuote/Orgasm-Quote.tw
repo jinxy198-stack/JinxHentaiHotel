@@ -1,18 +1,8 @@
 :: Orgasm-Quote [nobr Dialogue]
 
-/*<<if !setup.orgasmQuotes or !setup.orgasmQuotes.OT or !setup.orgasmQuotes.OB>>
-	[Error] setup.orgasmQuotes, OT, or OB is missing. Define it in StoryInit.
-	<<return>>
-<</if>>*/
-
 <<if !$sex or !_n>>
 	<<return>>
 <</if>>
-
-/* Do not let the MC speak. */
-/*<<if setup.isMC(_n)>>
-	<<return>>
-<</if>>*/
 
 /* Pull current roles from the new role system. */
 <<set _top = $sex.roles && $sex.roles.dom ? $sex.roles.dom : ($sex.Top || null)>>

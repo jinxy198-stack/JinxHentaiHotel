@@ -247,22 +247,22 @@ setup.BoobjobQuotes = {
 setup.caressQuotes = {
   Bottom: {
     Skin:{
-      Dominant: ["You like me feeling you up?"],
+      Dominant: ["You like me feeling up your skin?"],
       Submissive: ["Your skin is so smooth."],
       Switch: ["Your skin is so smooth."]
     },
     Scales:{
-      Dominant: ["You like me feeling you up?"],
+      Dominant: ["You like me feeling up your scales?"],
       Submissive: ["Your scales have such a smooth pattern."],
       Switch: ["Your scales have such a smooth pattern."]
     },
     Feathers:{
-      Dominant: ["You like me feeling you up?"],
+      Dominant: ["You like me feeling up your feathers?"],
       Submissive: ["Your feathers feel light and gentle."],
       Switch: ["Your feathers feel light and gentle."]
     },
     Fur:{
-      Dominant: ["You like me feeling you up?"],
+      Dominant: ["You like me feeling up your fur?"],
       Submissive: ["Your fur is so warm… it feels comforting."],
       Switch: ["Your fur is so fluffy!"]
     }
@@ -1386,8 +1386,8 @@ setup.orgasmQuotes = {
     },
     "on penis": {
       Childish:[
-      "Have some Cumfetti! Happy Birthday! Hehehe!",
-      "You need more colors! Here you go hehehe~!"
+        "Have some Cumfetti! Happy Birthday! Hehehe!",
+        "You need more colors! Here you go hehehe~!"
       ],
       Dominant: ["Fuck yeah!..."],
       Submissive: ["A-Ahhh...!"],
@@ -1435,7 +1435,7 @@ setup.orgasmQuotesTest = {
           "Yayyy! You crossed the finish line! Winner~!"
         ],
 				Submissive: [
-					"[OT.Top.Inside.Submissive] Location sexpref quote reached."
+					"You're filling me up!"
 				],
 				Dominant: [
 					"Fuck that was alot.",
@@ -1443,7 +1443,7 @@ setup.orgasmQuotesTest = {
           "Mmf! That's the stuff!"
 				],
 				Switch: [
-					"[OT.Top.Inside.Switch] Location sexpref quote reached."
+					"M-my ass... you filled me up so much!"
 				]
 			},
       /*Top cumming on floor, bottom speaks.*/
@@ -1463,8 +1463,14 @@ setup.orgasmQuotesTest = {
 			},
       /* Top cums in mouth, bottom speaks? */
       "in mouth":{
-        
         Neutral: ["Mnnngh!!"]
+      },
+      /* Bottom cums on top's hand, top speaks */
+      "on hand":{
+        Neutral: ["Got it all over my hand..."]
+      },
+      "on face":{
+        Neutral: ["Got it all over my face..."]
       },
       /* Default for top speaker cumming */
 			default: {
@@ -1481,9 +1487,9 @@ setup.orgasmQuotesTest = {
 		},
 
 		Bottom: {
-			Kind: [
+			/*Kind: [
 				"[OT.Bottom.Kind] Direct personality quote reached."
-			],
+			],*/
 
 			"in ass": {
 				Kind: [
@@ -1502,24 +1508,10 @@ setup.orgasmQuotesTest = {
 					"[OT.Bottom.Inside.Neutral] Location neutral fallback reached."
 				]
 			},
-
-			"on ground": {
-				Kind: [
-					"[OT.Bottom.Outside.Kind] Location personality quote reached."
-				],
-				Submissive: [
-					"[OT.Bottom.Outside.Submissive] Location sexpref quote reached."
-				],
-				Dominant: [
-					"[OT.Bottom.Outside.Dominant] Location sexpref quote reached."
-				],
-				Switch: [
-					"[OT.Bottom.Outside.Switch] Location sexpref quote reached."
-				],
-				Neutral: [
-					"[OT.Bottom.Outside.Neutral] Location neutral fallback reached."
-				]
-			},
+      /*Top cums in bottom's mouth, top speaks */
+      "in mouth": {
+        Neutral: ["Yeah, drink it up."]
+      },
 
 			default: {
 				Submissive: [
@@ -1539,9 +1531,9 @@ setup.orgasmQuotesTest = {
 	},
 	OB: {
 		Top: {
-			Kind: [
+			/*Kind: [
 				"[OB.Top.Kind] Direct personality quote reached."
-			],
+			],*/
       /* bottom is cumming in ass, bottom speaks? 
 			"in ass": {
 				Kind: [
@@ -1572,6 +1564,23 @@ setup.orgasmQuotesTest = {
 					"[OB.Top.Outside.Switch] Location sexpref quote reached."
 				]
 			},
+      /* top is cumming in pussy, bottom speaks*/
+			"in pussy":{
+        Dominant:["Fuck, fill me up!"],
+        Submissive:["OOOHHHH!"],
+        Switch:["Oh Yeah!"]
+      },
+      /*top is cumming on cock, bottom speaks? */
+      "on penis": {
+        Childish:[
+          "Have some Cumfetti! Happy Birthday! Hehehe!",
+          "You need more colors! Here you go hehehe~!"
+        ],
+        Dominant: ["Fuck yeah!..."],
+        Submissive: ["A-Ahhh...!"],
+        Switch: ["A-Ahhh...!"]
+      },
+
       /* default bottom is cumming, bottom speaks*/
 			default: {
 				Submissive: [
@@ -1590,9 +1599,9 @@ setup.orgasmQuotesTest = {
 		},
     /*Bottom is cumming, top speaks */
 		Bottom: {
-			Kind: [
+			/*Kind: [
 				"[OB.Bottom.Kind] Direct personality quote reached."
-			],
+			],*/
       /*bottom cums in ass, top speaks? 
 			"in ass": {
 				Kind: [
@@ -1674,9 +1683,9 @@ setup.orgasmcloseQuotes = {
       /*Test? */
       "Fuck Ass": {  
         Dominant: [
-        "I'm gonna cum in your ass!",
-        "I'm gonna pump you full of my cum!",
-        "Here it comes!"
+          "I'm gonna cum in your ass!",
+          "I'm gonna pump you full of my cum!",
+          "Here it comes!"
         ],
         Submissive: [
           "I'm... gonna cum!", 
@@ -1700,9 +1709,9 @@ setup.orgasmcloseQuotes = {
       ], 
       "Suck Cock": {
         Childish:[
-        "Ima.. color your insides..! Nngh.!",
-        "Here cums some trademark.. Oooey Goooey! Aaah..!",
-        "Crossing.. the finish line! Haaah..!"
+          "Ima.. color your insides..! Nngh.!",
+          "Here cums some trademark.. Oooey Goooey! Aaah..!",
+          "Crossing.. the finish line! Haaah..!"
         ],
         Dominant:["I'm gonna cum in your mouth!"],
         Submissive: ["I'm gonna cum!"],
@@ -1818,6 +1827,21 @@ setup.orgasmcloseQuotes = {
   },
   OB:{
     /*The Bottom is Cumming */
+    /* Top is going to cum in bottom's mouth, top speaks.*/
+    "Suck Cock": {
+        Childish:[
+          "Ima.. color your insides..! Nngh.!",
+          "Here cums some trademark.. Oooey Goooey! Aaah..!",
+          "Crossing.. the finish line! Haaah..!"
+        ],
+        Dominant:["I'm gonna cum in your mouth!"],
+        Submissive: ["I'm gonna cum!"],
+        Switch: [
+          "I'm gonna cum!",
+          "Hahh, Arghh!!!"
+        ]
+      },
+    
     Top: {
       /* You are the Top */
       "Finger Ass(Continue)": ["Keep fingering me, I'm almost there!"],

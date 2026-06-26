@@ -34,6 +34,12 @@
 		<<return>>
 	<</if>>
 <</if>>
+<<if _speaker = _top>>
+	<<set _mmaterial = (_bottom && _bottom.body && _bottom.body.Bodymaterial) ? _bottom.body.Bodymaterial : "Skin">>
+<<elseif _speaker = _bottom>>
+	<<set _mmaterial = (_top && _top.body && _top.body.Bodymaterial) ? _top.body.Bodymaterial : "Skin">>
+
+<</if>>
 
 <<set _pref = _speaker.sexpref || "Switch">>
 /*<<set _mmaterial = ($mc && $mc.body && $mc.body.Bodymaterial) ? $mc.body.Bodymaterial : "Skin">>*/
@@ -80,5 +86,5 @@
 	"<<= either(..._pool) >>"
 <<else>>
 	[Error] No Caress quote pool found.
-	(mode=<<= $sex.role >>, mmaterial=<<= _mmaterial >>, nmaterial=<<= _nmaterial >>, pref=<<= _pref >>)
+	(mode= <<= _mode>>, speaker <<= _speaker>>,mmaterial=<<= _mmaterial >>, nmaterial=<<= _nmaterial >>, pref=<<= _pref >>)
 <</if>>

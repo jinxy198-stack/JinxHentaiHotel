@@ -65,18 +65,56 @@
 		<<return>>
 	<</if>>
 <<else>>
-	/* Climax does not currently work, needs work.*/
+		/* Climax reaction. */
 	<<if $sex.climax && ($sex.climax.Top || $sex.climax.Bottom)>>
-		<<if _top != $mc>>
-			<<set _lines = [
-				"<<ref _top 'subjCap'>> <<noise _top 's' 'exertion'>> from being close to climax."
-			]>>
-		<<elseif _bottom != $mc>>
-			<<set _lines = [
-				"<<ref _bottom 'subjCap'>> <<noise _bottom 's' 'exertion'>> from being close to climax."
-			]>>	
+		<<set _lines = []>>
+		<<set _topCame = !!$sex.climax.Top>>
+		<<set _bottomCame = !!$sex.climax.Bottom>>
+
+		/* Top climaxed and Top is not the MC. */
+		<<if _topCame && _top && !setup.isMC(_top)>>
+			<<run _lines.push(
+				"<<ref _top 'subjCap'>> <<verb _top 'shudder'>>, feeling close.",
+				"<<ref _top 'subjCap'>> <<verb _top 'tense'>> sharply, a <<noise _top 'base' 'pleasure'>> escaping as the climax is about to hit.",
+				"<<ref _top 'subjCap'>> <<verb _top 'buck'>> instinctively, caught in the rush of being close."
+			)>>
 		<</if>>
-		
+
+		/* Bottom climaxed and Bottom is not the MC. */
+		<<if _bottomCame && _bottom && !setup.isMC(_bottom)>>
+			<<run _lines.push(
+				"<<ref _bottom 'subjCap'>> <<verb _bottom 'shudder'>>, knowing you are close.",
+				"<<ref _bottom 'subjCap'>> <<verb _bottom 'tense'>> sharply, a <<noise _bottom 'base' 'pleasure'>> escaping as the climax is about to hit."
+			)>>
+		<</if>>
+
+		/* MC Top climaxed, so show Bottom's reaction. */
+		<<if !_lines.length && _topCame && _top && setup.isMC(_top) && _bottom && !setup.isMC(_bottom)>>
+			<<run _lines.push(
+				"<<ref _bottom 'subjCap'>> <<verb _bottom 'shudder'>> against you, feeling your climax approaching.",
+				"<<ref _bottom 'subjCap'>> <<verb _bottom 'tense'>> beneath you, knowing you are close."
+			)>>
+		<</if>>
+
+		/* MC Bottom climaxed, so show Top's reaction. */
+		<<if !_lines.length && _bottomCame && _bottom && setup.isMC(_bottom) && _top && !setup.isMC(_top)>>
+			<<run _lines.push(
+				"<<ref _top 'subjCap'>> <<verb _top 'react'>> to your climax with a soft <<noise _top 'base' 'pleasure'>>.",
+				"<<ref _top 'subjCap'>> <<verb _top 'shudder'>> against you as your climax overtakes the moment.",
+				"<<ref _top 'subjCap'>> <<verb _top 'tense'>> above you, clearly affected by your release."
+			)>>
+		<</if>>
+
+		/* Last-resort fallback. */
+		<<if !_lines.length>>
+			<<if _react>>
+				<<set _lines = [
+					"<<ref _react 'subjCap'>> <<verb _react 'react'>> with a soft <<noise _react 'base' 'pleasure'>>."
+				]>>
+			<<else>>
+				<<return>>
+			<</if>>
+		<</if>>
 	<<else>>
 		<<if $sex.act == "Fuck Pussy">>
 			<<set _lines = [
@@ -138,6 +176,26 @@
 					"<<ref _bottom 'subjCap'>> giggles softly to <<pro _bottom 'refl'>> as <<pro _bottom 'poss'>> feet glide up and down the length of <<ref _top 'poss'>> <<= setup.partLower(_top, 'genitals', 'genitals') >>."
 				]>>
 			<</if>>		
+		<<elseif $sex.act == "Grope Ass">>
+			<<if $sex.role == "Bottom">>
+				<<set _lines = [
+					"<<ref _top 'subjCap'>> <<verb _top 'smile'>> as they continue to rub <<ref _bottom 'poss'>> ass."
+				]>>
+			<<elseif $sex.role == "Top">>
+				<<set _lines = [
+					"<<ref _bottom 'subjCap'>> <<noise _bottom 's' 'pleasure'>> as they feel <<ref _top 'subj'>> rub <<pro _bottom 'poss'>> ass."
+				]>>
+			<</if>>	
+		<<elseif $sex.act == "Finger Ass" || $sex.act == "Finger Ass(Continue)">>
+			<<if $sex.role == "Bottom">>
+				<<set _lines = [
+					"<<ref _top 'subjCap'>> <<verb _top 'smile'>> as they finger <<ref _bottom 'poss'>> ass."
+				]>>
+			<<elseif $sex.role == "Top">>
+				<<set _lines = [
+					"<<ref _bottom 'subjCap'>> <<noise _bottom 's' 'pleasure'>> as they feel <<ref _top 'subj'>> finger <<pro _bottom 'poss'>> ass."
+				]>>
+			<</if>>	
 		<<elseif $sex.act == "Press Face on Chest">>
 			<<if $sex.role == "Bottom">>
 				<<set _lines = [

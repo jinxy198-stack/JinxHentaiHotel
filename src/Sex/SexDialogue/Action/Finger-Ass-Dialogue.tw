@@ -9,6 +9,6 @@
 <<elseif $sex.act == "Finger Ass(Continue)">>
     <<=either(
         "<<ref _top 'subjCap'>> <<verb _top 'continue'>> fingering <<ref _bottom 'obj'>>.",
-        "<<ref _top 'subjCap'>> <<verb _top 'slide'>> <<pro _top 'poss'>> <<=_top.body.Finger.toLowerCase()>> back and forth, caressing the walls of <<ref _bottom 'poss'>> insides. <<pro _bottom 'subj' true>> <<verbEx _bottom 'contunue'>> to tense.",
+        "<<ref _top 'subjCap'>> <<verb _top 'slide'>> <<pro _top 'poss'>> <<=_top.body.Finger.toLowerCase()>> back and forth, caressing the walls of <<ref _bottom 'poss'>> insides. <<pro _bottom 'subj' true>> <<verbEx _bottom 'continue'>> to tense.",
     )>>
 <</if>>
